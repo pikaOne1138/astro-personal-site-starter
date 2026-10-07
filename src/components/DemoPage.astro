@@ -1,0 +1,84 @@
+---
+import DemoLayout from '../layouts/DemoLayout.astro';
+import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
+interface Props { kind: Kind; theme: Theme; }
+const { kind, theme } = Astro.props;
+const k = kindMeta[kind];
+const t = themeMeta[theme];
+const base = import.meta.env.BASE_URL;
+const articles = [
+  ['把複雜的事，寫成你自己也願意重讀的文字','寫作方法','7 min'],
+  ['一個好網站，不需要把所有東西都放首頁','網站思考','5 min'],
+  ['知識不是收集越多越好，而是能不能找到','個人知識','9 min'],
+];
+const services = [
+  ['第一次對談','先把現在卡住的地方說清楚，再一起判斷適合的方向。','50 分鐘'],
+  ['深度陪伴','給需要一段時間整理議題的人，一個穩定而有結構的空間。','4–8 次'],
+  ['主題工作坊','把複雜的概念拆成可以體驗、理解、帶回生活的練習。','小團體'],
+];
+---
+<DemoLayout title={`${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+  <div class="page-shell">
+    <header class="site-nav">
+      <a class="brand" href={base}><span class="brand-mark">●</span><span>One Studio</span></a>
+      <nav class="desktop-nav" aria-label="主要導覽">
+        {kind === 'knowledge' ? <><a href="#latest">文章</a><a href="#topics">主題</a><a href="#about">關於</a></> : <><a href="#services">服務</a><a href="#process">合作方式</a><a href="#about">關於我</a><a href="#faq">FAQ</a></>}
+      </nav>
+      <a class="nav-cta" href={kind === 'knowledge' ? '#newsletter' : '#booking'}>{kind === 'knowledge' ? '訂閱來信' : '預約初談'}</a>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">{k.eyebrow} · {t.label}</p>
+          <h1>{k.title}</h1>
+          <p class="lede">{k.intro}</p>
+          <div class="hero-actions">
+            <a class="button primary" href={kind === 'knowledge' ? '#latest' : '#booking'}>{kind === 'knowledge' ? '從精選文章開始' : '預約第一次聊聊'} <span>→</span></a>
+            <a class="button text" href={kind === 'knowledge' ? '#topics' : '#process'}>{kind === 'knowledge' ? '瀏覽主題' : '先看看合作方式'}</a>
+          </div>
+          <p class="microcopy">{theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
+        </div>
+        <div class="hero-art" aria-hidden="true" data-reveal style="--i:1"><div class="art-frame"><div class="art-orb"></div><div class="art-line"></div><div class="art-note">{t.zh}</div></div></div>
+      </section>
+
+      {kind === 'knowledge' ? <>
+        <section class="section topics" id="topics" data-reveal>
+          <div class="section-heading"><p class="eyebrow">START HERE</p><h2>第一次來，可以從這三個方向開始。</h2></div>
+          <div class="topic-grid">
+            <article><span>01</span><h3>AI × 工作方法</h3><p>不是追工具，而是整理怎麼把 AI 真的放進日常流程。</p></article>
+            <article><span>02</span><h3>個人知識系統</h3><p>從蒐集走向理解，讓筆記可以重新被找到與使用。</p></article>
+            <article><span>03</span><h3>網站與創作</h3><p>把散落在平台上的內容，慢慢長成自己的基地。</p></article>
+          </div>
+        </section>
+
+        <section class="section editorial" id="latest" data-reveal>
+          <div class="section-heading row"><div><p class="eyebrow">FEATURED</p><h2>最近值得讀的東西。</h2></div><a class="quiet-link" href="#">所有文章 →</a></div>
+          <div class="feature-grid">
+            <article class="feature-card"><div class="visual-placeholder"><span>01</span></div><p class="meta">網站思考 · 8 min</p><h3>不是做一個「很完整」的網站，而是先做一個願意持續更新的地方。</h3><p>從首頁、文章、About 到 CTA，只留下真的會用到的東西。</p></article>
+            <div class="article-list">{articles.map(([title,cat,time],i)=><a href="#" class="article-row"><span class="num">0{i+2}</span><span class="article-main"><small>{cat} · {time}</small><strong>{title}</strong></span><span class="arrow">↗</span></a>)}</div>
+          </div>
+        </section>
+
+        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder"><span>作者照片</span></div><div><p class="eyebrow">ABOUT</p><h2>我喜歡把複雜的東西拆開，再重新拼成可以用的樣子。</h2><p>這裡記錄我怎麼理解 AI、網站、知識工具，以及那些還沒有答案但值得繼續想的問題。</p><a class="quiet-link" href="#">更多關於我 →</a></div></section>
+
+        <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>偶爾寄一封，讀完會想一想的信。</h2><p>不追新聞、不塞滿工具清單，只整理真正值得留下的東西。</p><form class="fake-form"><input type="email" placeholder="你的 Email" aria-label="Email" /><button type="button">訂閱來信</button></form></section>
+      </> : <>
+        <section class="section empathy" data-reveal><p class="eyebrow">YOU MAY BE HERE BECAUSE...</p><h2>有些時候，你不是不知道該怎麼辦，只是已經撐得太久了。</h2><div class="feeling-grid"><div><span>01</span><p>腦袋知道很多方法，情緒卻還是一直繞回原點。</p></div><div><span>02</span><p>關係裡總是在照顧別人，卻很難知道自己真正需要什麼。</p></div><div><span>03</span><p>生活看起來沒有大問題，但你知道自己其實不太快樂。</p></div><div><span>04</span><p>想改變，卻不知道第一步要從哪裡開始。</p></div></div></section>
+
+        <section class="section services" id="services" data-reveal><div class="section-heading"><p class="eyebrow">HOW I CAN HELP</p><h2>我們可以從適合你的節奏開始。</h2></div><div class="service-grid">{services.map(([title,desc,meta],i)=><article class="service-card"><span class="num">0{i+1}</span><h3>{title}</h3><p>{desc}</p><small>{meta}</small><a href="#">了解這項服務 →</a></article>)}</div></section>
+
+        <section class="section process" id="process" data-reveal><div class="section-heading"><p class="eyebrow">FIRST VISIT</p><h2>第一次來，不需要先準備好答案。</h2></div><ol class="steps"><li><span>1</span><div><h3>留下需求</h3><p>用表單或 LINE 簡單告訴我你目前想談的事情。</p></div></li><li><span>2</span><div><h3>第一次對談</h3><p>我們先理解狀況，也看看彼此的工作方式是否合適。</p></div></li><li><span>3</span><div><h3>一起決定下一步</h3><p>不預設一定要長期合作，而是找到現在真正需要的形式。</p></div></li></ol></section>
+
+        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder warm"><span>自然光人像</span></div><div><p class="eyebrow">ABOUT ME</p><h2>專業不是站得離你很遠，而是能陪你把眼前的事情看清楚。</h2><p>我是林安，一名以關係與情緒工作為核心的陪伴者。我的方式不急著給答案，更重視理解你怎麼走到今天，以及什麼改變對你才真的有意義。</p><div class="credentials"><span>專業訓練</span><span>持續督導</span><span>線上／實體</span></div></div></section>
+
+        <section class="section faq" id="faq" data-reveal><p class="eyebrow">FAQ</p><h2>你可能想先知道。</h2><details open><summary>第一次談話會發生什麼？</summary><p>先了解你現在最想處理的事情，也會說明合作方式、頻率與界線，不需要先把自己整理好。</p></details><details><summary>我不確定自己的問題算不算嚴重，可以來嗎？</summary><p>可以。初談本來就是用來判斷需求與適合度，不需要先替自己下結論。</p></details><details><summary>可以先用 LINE 問問題嗎？</summary><p>可以先確認服務形式與時段；需要深入討論的內容會留到正式會談中。</p></details></section>
+
+        <section class="section booking" id="booking" data-reveal><div><p class="eyebrow">WHEN YOU'RE READY</p><h2>不用急著做很大的決定，先聊一次就好。</h2><p>預約 20 分鐘初談，看看這是不是適合你的下一步。</p></div><div class="booking-actions"><a class="button primary" href="#">預約初談 →</a><a class="button text" href="#">LINE 詢問</a></div></section>
+      </>}
+    </main>
+
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={base}>六種 Demo</a><a href="#">Instagram</a><a href="#">Email</a></div><small>Astro Workshop UI Research Prototype · 2026</small></footer>
+  </div>
+  {kind === 'helper' && <a class="mobile-sticky" href="#booking">預約初談 <span>→</span></a>}
+</DemoLayout>
