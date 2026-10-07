@@ -1,0 +1,10 @@
+---
+import DemoPage from '../../../components/DemoPage.astro';
+import { kinds, themes, type Kind, type Theme } from '../../../data';
+export function getStaticPaths() {
+  return kinds.flatMap((kind)=>themes.map((theme)=>({params:{kind,theme},props:{kind,theme}})));
+}
+interface Props { kind: Kind; theme: Theme; }
+const { kind, theme } = Astro.props;
+---
+<DemoPage kind={kind} theme={theme} />
