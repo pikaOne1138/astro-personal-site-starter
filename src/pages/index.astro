@@ -1,0 +1,32 @@
+---
+import DemoLayout from '../layouts/DemoLayout.astro';
+import { kindMeta, themeMeta, kinds, themes } from '../data';
+const base = import.meta.env.BASE_URL;
+---
+<DemoLayout title="Astro Workshop · 6 UI Demos" description="Astro 工作坊 2 種網站架構 × 3 種視覺人格">
+  <main class="demo-index">
+    <header class="index-hero">
+      <p class="eyebrow">ASTRO WORKSHOP · UI CRAFT LAB</p>
+      <h1>兩種網站任務，三種視覺人格。</h1>
+      <p>這不是六套互不相干的網站，而是 <strong>2 種內容架構 × 3 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
+    </header>
+    <div class="matrix">
+      {kinds.map((kind)=><section class="matrix-group">
+        <div class="matrix-heading">
+          <span>{kind === 'knowledge' ? 'A' : 'B'}</span>
+          <div><h2>{kindMeta[kind].label}</h2><p>{kindMeta[kind].intro}</p></div>
+        </div>
+        <div class="demo-grid">
+          {themes.map((theme)=><a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
+            <div class="demo-swatch"><span></span><span></span><span></span></div>
+            <small>{themeMeta[theme].label}</small>
+            <h3>{themeMeta[theme].zh}</h3>
+            <p>{themeMeta[theme].mood}</p>
+            <b>開啟 Demo →</b>
+          </a>)}
+        </div>
+      </section>)}
+    </div>
+    <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
+  </main>
+</DemoLayout>
