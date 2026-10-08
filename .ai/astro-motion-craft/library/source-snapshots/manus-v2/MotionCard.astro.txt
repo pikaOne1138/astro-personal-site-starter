@@ -1,0 +1,46 @@
+---
+interface Props { reveal?: boolean; delay?: number; className?: string; tilt?: boolean; spotlight?: boolean; tiltMax?: number; }
+const { reveal = false, delay = 0, className = '', tilt = false, spotlight = false, tiltMax = 4 } = Astro.props;
+const safeDelay = Math.max(0, Math.min(delay, 1400));
+const safeTilt = Math.max(1, Math.min(tiltMax, 8));
+---
+<div class:list={['card-lift', 'motion-card', className]} data-motion-card data-tilt={tilt ? 'true' : 'false'} data-spotlight={spotlight ? 'true' : 'false'} data-reveal={reveal ? true : undefined} data-reveal-variant="fade-up" data-reveal-once="true" style={`--reveal-delay:${safeDelay}ms;--tilt-limit:${safeTilt}deg`}>
+  <slot />
+</div>
+<script>
+  import { initializeReveals } from '../../scripts/reveal';
+  initializeReveals();
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-motion-card]')];
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (hasFinePointer && !reduced) {
+    cards.forEach((card) => {
+      if (card.dataset.tilt !== 'true' && card.dataset.spotlight !== 'true') return;
+      let frame = 0;
+      let latest: PointerEvent | null = null;
+      card.addEventListener('pointerenter', () => card.classList.add('is-tilting'));
+      card.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        latest = event;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          if (!latest) return;
+          const rect = card.getBoundingClientRect();
+          const x = (latest.clientX - rect.left) / rect.width;
+          const y = (latest.clientY - rect.top) / rect.height;
+          const limit = Math.min(8, Math.max(1, Number.parseFloat(card.style.getPropertyValue('--tilt-limit')) || 4));
+          card.style.setProperty('--tilt-x', `${((x - .5) * limit * 2).toFixed(2)}deg`);
+          card.style.setProperty('--tilt-y', `${((.5 - y) * limit * 2).toFixed(2)}deg`);
+          card.style.setProperty('--spot-x', `${(x * rect.width).toFixed(1)}px`);
+          card.style.setProperty('--spot-y', `${(y * rect.height).toFixed(1)}px`);
+        });
+      }, { passive: true });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('is-tilting');
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+      });
+    });
+  }
+</script>
