@@ -6,6 +6,8 @@ For GitHub PRs, previews, deployment, visual verification, or merging: **read `.
 
 For articles, Content Collections, SEO, Pagefind, RSS, sitemap, draft/publication rules or content updates: **read `.ai/astro-content-publishing/SKILL.md` first** and follow its references. `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
 
+For the interactive student planner at `/starter/`, read `src/data/starter-config.ts`, `src/pages/starter/index.astro`, and `.ai/astro-starter-onboarding/SKILL.md`. Layout selection, brand visual tokens and navigation plans must remain distinct. The planner exports a Site Brief, **not** a deployed or fully assembled independent site.
+
 Project goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
