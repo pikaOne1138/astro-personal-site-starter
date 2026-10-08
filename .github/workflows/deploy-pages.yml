@@ -68,6 +68,17 @@ jobs:
       - name: Add or remove this PR preview
         if: github.event_name == 'workflow_run'
         run: node scripts/apply-pr-preview.mjs
+      - name: Verify assembled artifact contains the PR preview
+        if: github.event_name == 'workflow_run'
+        run: |
+          PR_NUMBER="$(node -p "require('./.preview-incoming/event/event.json').number")"
+          ACTION="$(node -p "require('./.preview-incoming/event/event.json').action")"
+          if [ "$ACTION" != "closed" ]; then
+            echo "Checking dist/pr-preview/pr-$PR_NUMBER/index.html"
+            test -s "dist/pr-preview/pr-$PR_NUMBER/index.html"
+            test -s "dist/pr-preview/pr-$PR_NUMBER/demo.css"
+            find "dist/pr-preview/pr-$PR_NUMBER" -maxdepth 2 -type f | head -35
+          fi
       - name: Keep deployment snapshot in gh-pages branch
         # gh-pages is only a snapshot store here. Pages publishing stays set to GitHub Actions.
         uses: JamesIves/github-pages-deploy-action@v4
@@ -83,6 +94,27 @@ jobs:
       - name: Publish through official GitHub Pages artifact deployment
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify live Pages URL returns PR's HTML (not just 200)
+        if: github.event_name == 'workflow_run'
+        env:
+          SITE: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          PR_NUMBER="$(node -p "require('./.preview-incoming/event/event.json').number")"
+          ACTION="$(node -p "require('./.preview-incoming/event/event.json').action")"
+          if [ "$ACTION" = "closed" ]; then exit 0; fi
+          URL="${SITE%/}/pr-preview/pr-${PR_NUMBER}/"
+          echo "Validating deployed preview: $URL"
+          for attempt in $(seq 1 12); do
+            CODE="$(curl --connect-timeout 8 --max-time 18 -L -s -o /tmp/preview.html -w '%{http_code}' "$URL" || true)"
+            echo "Attempt $attempt: HTTP $CODE"
+            if [ "$CODE" = "200" ] && cmp -s "dist/pr-preview/pr-${PR_NUMBER}/index.html" /tmp/preview.html; then
+              echo "Confirmed deployed PR preview exactly matches generated HTML."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::PR preview URL did not serve the PR's expected HTML. No 'deployed' bot comment will be posted."
+          exit 1
       - name: Link preview in pull request after publishing
         if: github.event_name == 'workflow_run'
         uses: actions/github-script@v7
