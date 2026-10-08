@@ -93,19 +93,20 @@
     "slug": "reading-atlas",
     "kind": "knowledge",
     "title": "閱讀年鑑",
-    "en": "THE READING ATLAS",
-    "structure": "年度編輯封面 × 主題章節",
+    "en": "THE READING ALMANAC",
+    "structure": "巨型年份封面 × 十二個月線格 × 年度之書",
     "audience": "讀書筆記、知識整理者、長期寫作者",
-    "description": "Claude 研究延伸：年度封面、精選閱讀路線與主題索引",
+    "description": "Claude 實作：無圖片巨大年份封面、月份分類、年度選書與編輯式目錄",
     "palette": "atlas",
     "image": "k-essayist.webp",
     "headline": "每一年讀過的書，都值得留下一張地圖。",
     "modules": [
-      "年度精選",
-      "閱讀章節",
-      "主題路線"
+      "年度大字封面",
+      "月份書單篩選",
+      "年度之書",
+      "書目索引"
     ],
-    "source": "Claude 研究延伸設計"
+    "source": "Claude Editorial Skill · 完整首頁示範"
   },
   {
     "slug": "clinician",
@@ -201,18 +202,19 @@
     "slug": "trust-path",
     "kind": "helper",
     "title": "信任路徑",
-    "en": "A CLEAR FIRST STEP",
-    "structure": "訪客疑問 × 透明服務流程",
+    "en": "THE TRUST PATH",
+    "structure": "訪客提問 × 五站路線 × 透明服務資訊",
     "audience": "心理師、教練、需要明確合作資訊的助人者",
-    "description": "Claude 研究延伸：由訪客問題、服務方式、資格、費用一路走向預約",
+    "description": "Claude 實作：深色編輯封面、五個服務節點、第一次會談資訊與清晰界線",
     "palette": "trust",
     "image": "c-clinician.webp",
     "headline": "讓每個第一次來的人，都知道下一步會發生什麼。",
     "modules": [
-      "訪客疑問",
-      "適合度",
-      "費用與預約界線"
+      "五站服務路徑",
+      "服務適配",
+      "透明流程",
+      "界線與費用"
     ],
-    "source": "Claude 研究延伸設計"
+    "source": "Claude Editorial Skill · 完整首頁示範"
   }
 ]
