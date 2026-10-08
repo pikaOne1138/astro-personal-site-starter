@@ -182,3 +182,7 @@ When asked to refine scrolling reveal, stagger, hover tilt/spotlight, image zoom
 
 ## Reusable motion effects library
 The reusable motion research + integration library lives in `.ai/astro-motion-craft/library/`. When generating or enhancing UI motion, read that catalog and relevant source-grounded recipe first, along with `.ai/astro-motion-craft/SKILL.md`; do not generate novel hover/reveal logic while equivalent existing components are available. Manus v2 references are not automatically installed runtime effects.
+
+
+## Common long-page navigation: BackToTop
+For long landing pages, article archives and document views reuse `BackToTop` through the shared DemoLayout. It belongs to the common blocks registry, not the effects registry. Ensure the right-bottom control appears only after meaningful scrolling, stays clear of safe areas and overlays, has a keyboard accessible name, and returns to the page top instantly if the visitor prefers reduced motion. Avoid duplicating event listeners in child pages.
