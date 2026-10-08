@@ -63,7 +63,12 @@ const practice=helperPractice[theme];
       </section>}
 
       {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>
-        {['AI × 工作方法','網站與創作','個人知識系統','閱讀與學習'].map((x,i)=><article><span>0{i+1}</span><div><h2>{x}</h2><p>把同一主題的文章收在一起，讓內容量長大後仍然找得到。</p></div><b>{8-i} 篇 →</b></article>)}
+        {[
+          {title:'資訊',description:'從數位工具、科技趨勢到網路生活，整理值得理解的資訊與實用觀察。'},
+          {title:'宅文化',description:'聊動畫、漫畫、遊戲與影視作品，收藏那些讓人投入其中的角色和故事。'},
+          {title:'心理',description:'從情緒、人際關係到自我覺察，用生活經驗探索內在世界的各種面貌。'},
+          {title:'旅遊',description:'記下城市散步、地方風景與旅途見聞，分享路上遇見的人事物。'},
+        ].map((topic,i)=><article><span>0{i+1}</span><div><h2>{topic.title}</h2><p>{topic.description}</p></div><b>主題示範</b></article>)}
       </section>}
 
       {page === 'start-here' && <section class="v02-content v02-reading-path" data-reveal>
