@@ -64,3 +64,7 @@ Use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astr
 
 ## Distinct layout library (not theme permutations)
 `/layouts/` contains 12 structurally different native Astro homepage previews, driven by `src/data/layout-directions.json`; six knowledge/editorial and six professional care. Follow `.ai/astro-layout-craft/SKILL.md` for information architecture, section order, hero proportion and structural compositions. **Do not replace all 12 with the same template plus color variants.** These layouts are distinct from 54 functional blocks and 7 effects and are not registered as blocks. Ten concepts are adapted from the user's `astro-ten-site-directions.zip`; two are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
+
+## New editorial design source of truth
+
+For layout-related AI tasks, consult `.ai/astro-layout-craft/SKILL.md` AND `.ai/astro-editorial-layout-design/SKILL.md`; never invent a generic hero/cards grid if original recipes exist. Forty exact reusable Astro compositions (12 Hero, 8 Sections, 6 Lists, 6 Rhythm, 8 CTA/Trust) are stored in the editorial skill recipes/code and rendered at `/layouts/recipes/`. Evidence and QA rules are supplied in references and checklists. Inspect 1440,1280,768,390 screenshots; green CI only proves build. Reading Atlas and Trust Path now use the source Claude examples, with explicitly fictional demonstration details.
