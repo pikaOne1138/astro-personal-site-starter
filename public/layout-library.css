@@ -187,3 +187,26 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .lay-lab-modules-list li strong{display:block;font-size:15px;margin-top:6px;line-height:1.55}
 @media(max-width:980px){.lay--learning-lab>.lay-lab-head,.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{width:min(calc(100% - 48px),900px)}.lay--learning-lab>.lay-lab-hero{gap:25px;padding-block:50px}.lay-lab-hero h1{font-size:clamp(47px,6.7vw,75px)}}
 @media(max-width:680px){.lay--learning-lab>.lay-lab-head,.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{width:calc(100% - 36px)}.lay-lab-head nav{order:3;width:100%;justify-content:flex-start}.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{grid-template-columns:1fr}.lay--learning-lab>.lay-lab-hero{padding:45px 0 65px}.lay-lab-hero h1{font-size:clamp(46px,10vw,70px)}.lay-lab-hero-figure{margin-top:14px}.lay--learning-lab>.lay-lab-path{padding:35px 0 65px}.lay--learning-lab>.lay-lab-modules{padding:30px 22px;margin-bottom:45px}.lay-lab-modules h2{font-size:38px}.lay-lab-steps{padding-left:40px}}
+
+
+/* Full-window surface audit: site max-width is for content, never the background.
+   Keep each direction's own palette across both viewport margins. */
+html[data-layout="field-notes"] body{background:#f0eee4}
+html[data-layout="essayist"] body{background:#f4efe6}
+html[data-layout="curator"] body{background:#f2edef}
+html[data-layout="radio-letter"] body{background:#111923;color:#f5f2e8}
+html[data-layout="reading-atlas"] body{background:#f9f3e5}
+html[data-layout="clinician"] body{background:#f0f5f1}
+html[data-layout="somatic"] body{background:#e9e8dc}
+html[data-layout="coach"] body{background:#f1ecdf}
+html[data-layout="collective"] body{background:#f9ecc8}
+html[data-layout="trust-path"] body{background:#f2f5f2}
+/* The site owns the reading canvas. The outer page still owns its edge-to-edge
+   color surface, even on ultra-wide displays. */
+.lay-site:not(.lay--somatic):not(.lay--learning-lab){
+ width:min(calc(100% - 2 * clamp(16px,3vw,64px)),1340px);
+ margin-inline:auto;
+}
+.lay-preview-footer{background:transparent;color:inherit;width:min(calc(100% - 40px),1280px);margin-inline:auto;border-top:1px solid currentColor;opacity:.7;padding:22px 0 34px}
+html[data-layout="radio-letter"] .lay-preview-footer{color:#f5f2e8}
+.lay-preview-footer a{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
