@@ -1,0 +1,39 @@
+---
+/**
+ * Base.astro — 範例站共用的最小 layout：只放 reset、focus、skip link、reduced-motion。
+ * 不含任何視覺決策（字體、色彩、版型都由頁面與 tokens 決定），避免所有頁面看起來是同一個模板。
+ * theme: 傳入的 CSS 變數覆寫字串，例如 "--ed-paper:#fff;--ed-ink:#111"（見 reading-almanac 與 trust-path）。
+ */
+import '../../.ai/astro-editorial-layout-design/recipes/code/tokens.css';
+interface Props { title: string; description: string; theme?: string; themeColor?: string }
+const { title, description, theme = '', themeColor = '#f5f1e8' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={themeColor} />
+    <title>{title}</title>
+  </head>
+  <body style={theme}>
+    <a class="skip" href="#main">跳到主要內容</a>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; min-width: 320px; font-family: var(--ed-sans, system-ui, sans-serif); line-height: 1.6; background: var(--ed-paper, #f5f1e8); color: var(--ed-ink, #222018); }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  button, input, textarea { font: inherit; }
+  :focus-visible { outline: 3px solid var(--ed-accent, #9a3b24); outline-offset: 4px; }
+  .skip { position: fixed; z-index: 100; top: 8px; left: 8px; padding: .65rem 1rem; background: #fff; color: #111; transform: translateY(-160%); }
+  .skip:focus { transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
