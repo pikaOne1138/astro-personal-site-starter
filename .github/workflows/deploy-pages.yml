@@ -1,38 +1,105 @@
 name: Deploy Astro to GitHub Pages
+
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["PR Preview Build"]
+    types: [completed]
   workflow_dispatch:
+
+# Only this trusted workflow publishes GitHub Pages.
+# PR workflows upload static artifacts without privileged deployment tokens.
+concurrency:
+  group: github-pages-deployment
+  cancel-in-progress: false
+
 permissions:
-  contents: read
+  contents: write
+  actions: read
   pages: write
   id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  pull-requests: write
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm install
-      - run: npm run build
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
   deploy:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy
+      - name: Checkout trusted main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build production site
+        run: npm run build
+      - name: Restore previously deployed PR previews
+        run: |
+          if git fetch origin gh-pages:refs/remotes/origin/gh-pages; then
+            if git cat-file -e refs/remotes/origin/gh-pages:pr-preview 2>/dev/null; then
+              git archive refs/remotes/origin/gh-pages pr-preview | tar -xf - -C dist
+            fi
+          fi
+      - name: Fetch newly completed PR preview artifacts
+        if: github.event_name == 'workflow_run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          mkdir -p .preview-incoming/event
+          gh run download "$RUN_ID" --name preview-event --dir .preview-incoming/event
+          node -e "const e=require('./.preview-incoming/event/event.json'); if(!Number.isSafeInteger(e.number)||e.number<1||!['opened','reopened','synchronize','closed'].includes(e.action))process.exit(1)"
+          if [ "$(node -p "require('./.preview-incoming/event/event.json').action")" != "closed" ]; then
+            mkdir -p .preview-incoming/site
+            gh run download "$RUN_ID" --name preview-site --dir .preview-incoming/site
+          fi
+      - name: Add or remove this PR preview
+        if: github.event_name == 'workflow_run'
+        run: node scripts/apply-pr-preview.mjs
+      - name: Keep deployment snapshot in gh-pages branch
+        # gh-pages is only a snapshot store here. Pages publishing stays set to GitHub Actions.
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          force: false
+          single-commit: false
+      - name: Upload combined production and preview site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish through official GitHub Pages artifact deployment
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Link preview in pull request after publishing
+        if: github.event_name == 'workflow_run'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const info = JSON.parse(fs.readFileSync('.preview-incoming/event/event.json', 'utf8'));
+            const marker = '<!-- astro-pr-preview-bot -->';
+            const { owner, repo } = context.repo;
+            const url = `https://${owner}.github.io/${repo}/pr-preview/pr-${info.number}/`;
+            const body = info.action === 'closed'
+              ? `${marker}\nPR #${info.number} 已關閉，預覽檔案已清理。`
+              : `${marker}\n**Astro PR Preview 已部署**\n\n[開啟 PR #${info.number} 預覽網站](${url})\n\n請確認電腦版、手機版、CSS、圖片及連結，再決定是否合併。`;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: info.number });
+            const prior = comments.find(c => c.user?.type === 'Bot' && c.body?.includes(marker));
+            if (prior) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: prior.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: info.number, body });
+            }
