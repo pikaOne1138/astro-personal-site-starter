@@ -1,0 +1,29 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='coach')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[8];
+const next=directions[10];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="coach">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-coach-head"><strong>MAKE A MOVE<span>!</span></strong><span>GOALS · ACTION · REFLECTION</span><a href="#section-a">START →</a></header>
+<section class="lay-coach-hero"><div><p>ISSUE 001 / YOUR NEXT MOVE</p><h1>不只想明白。<br/><em>也真的</em><br/>往前一步。</h1><a href="#section-a">探索行動路線 ↗</a></div><div class="lay-coach-art"><img src={image} alt="實作型教練工作筆記與拼貼色塊" loading="eager"/><span>GET MOVING / 2026</span></div></section>
+<section id="section-a" class="lay-coach-action"><p>THE METHOD / THREE STEPS</p><h2>把「我應該」<br/>變成「我做得到」。</h2><div><article><span>01 — CLARIFY</span><h3>定義問題</h3><p>你真正想前進的方向是什麼？</p></article><article><span>02 — EXPERIMENT</span><h3>做個嘗試</h3><p>從一件能開始的小事進行。</p></article><article><span>03 — REVIEW</span><h3>回頭調整</h3><p>讓經驗而非完美計畫帶路。</p></article></div></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
