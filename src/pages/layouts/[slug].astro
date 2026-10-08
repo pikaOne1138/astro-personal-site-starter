@@ -15,78 +15,76 @@ const next=directions[(directions.findIndex(d=>d.slug===item.slug)+1)%directions
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={item.description}/><title>{item.title}｜Astro 網站版型庫</title><link rel="stylesheet" href={base+'layout-library.css'}/></head>
 <body>
 <a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<nav class="lay-toolbar" aria-label="版型預覽工具"><a href={all} aria-label="返回版型庫">← 版型庫</a><span>{item.source} · {kindLabel} · {item.title}</span><a href="#layout-notes">版型拆解 ↓</a></nav>
 <main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-{item.slug==='field-notes'&&<>
+{item.slug==='field-notes'&&<div class="lay-variant">
 <header class="lay-field-header"><strong>FIELD<br/>NOTES</strong><span>VOL. 06 — 2026 / 秋季採集</span><a href="#section-a">觀察索引 ↘</a></header>
 <div class="lay-field-columns"><aside class="lay-field-rail">01—05 <span>FIELD INDEX</span><span>24°48′N</span></aside><section class="lay-field-hero"><small>一種慢慢觀看世界的方法 / OBSERVATION 001</small><h1>先把世界<br/>記錄下來，<br/><em>再慢慢理解。</em></h1><p>寫下沿途遇見的細節、反覆出現的模式，以及暫時還沒有答案的問題。</p><figure><img src={image} alt="田野筆記網站風格示範圖" loading="eager"/><figcaption>FIG. 06 — 一頁尚未完成的觀察記錄</figcaption></figure></section><aside class="lay-field-aside">MARGIN NOTE<blockquote>有時候，一個準確的問題，比一個快速的答案更值得留下。</blockquote>— 研究手記</aside></div>
 <section id="section-a" class="lay-field-ledger"><h2>最近，我在留意這些事。</h2><ol><li>06.18　 一座城市如何留下安靜的空間 <b>觀察</b></li><li>06.11　 閱讀札記裡反覆出現的三個詞 <b>閱讀</b></li><li>05.29　 記錄，不等於急著下結論 <b>方法</b></li></ol></section>
-</>}
-{item.slug==='essayist'&&<>
+</div>}
+{item.slug==='essayist'&&<div class="lay-variant">
 <header class="lay-essay-top"><span>THE ESSAYIST</span><span>ISSUE NO. 01　|　READ SLOWLY</span><a href="#section-a">INDEX ↘</a></header>
 <section class="lay-essay-hero"><small>獨立思考刊物 / A PLACE FOR LONG READING</small><h1>寫下那些<br/><i>值得花時間</i><br/>想清楚的事。</h1><div class="lay-essay-deck"><p>每篇文章都是一段未必快速、卻值得慢慢走過的思考。</p><span>01 / 06</span></div></section>
 <section class="lay-essay-feature"><figure><img src={image} alt="晨光中的筆記與書寫工具" loading="eager"/></figure><article><small>EDITOR'S LETTER · 精選專欄</small><h2>慢一點，才能聽見文章真正要說的話。</h2><p>從觀察到書寫，我們讓想法在文字裡停留足夠久。</p><a href="#section-a">閱讀本期文章 →</a></article></section>
 <section id="section-a" class="lay-essay-index"><h2>本期目錄 <span>CONTENTS / 03</span></h2><p>01　關於反覆閱讀的意義 <span>8 MIN</span></p><p>02　從複雜到清晰：一種書寫方法 <span>11 MIN</span></p><p>03　替那些還沒想懂的事留空間 <span>6 MIN</span></p></section>
-</>}
-{item.slug==='learning-lab'&&<>
+</div>}
+{item.slug==='learning-lab'&&<div class="lay-variant">
 <header class="lay-lab-head"><strong><span>L</span> LEARNING LAB</strong><nav><a href="#section-a">學習路徑</a><a href="#section-b">單元</a></nav><span class="lay-lab-dot">● OPEN CLASSROOM</span></header>
 <section class="lay-lab-hero"><div><small>A CLEARER WAY TO LEARN</small><h1>把好奇心<br/><em>變成一條路。</em></h1><p>不用一次弄懂所有事。從觀察與整理開始，學會把概念用在自己的生活裡。</p><a href="#section-a">開始學習 ↘</a></div><img src={image} alt="學習地圖與幾何紙張拼貼" loading="eager"/></section>
 <section id="section-a" class="lay-lab-path"><div><small>THE LEARNING PATH</small><h2>走一遍，<br/>就知道怎麼繼續。</h2><p>勾選完成項目，看看自己的學習路徑走到哪裡。</p><p class="lay-lab-count" data-lab-count aria-live="polite">0 / 3 已完成</p><progress max="3" value="0" data-lab-progress>0</progress></div><ol>{['看見問題','整理線索','動手練習'].map((text,i)=><li><b>0{i+1}</b><strong>{text}</strong><label><input type="checkbox" data-lab-check/> 完成</label></li>)}</ol></section>
 <section id="section-b" class="lay-lab-modules"><span>OPEN MODULES</span><h2>最近開放的學習單元</h2><div class="lay-lab-modules-grid"><article>01 <h3>如何從筆記找到自己的問題</h3></article><article>02 <h3>用一張圖整理複雜概念</h3></article><article>03 <h3>寫成能分享的文字</h3></article></div></section>
 <script is:inline>const checks=[...document.querySelectorAll('[data-lab-check]')],bar=document.querySelector('[data-lab-progress]'),count=document.querySelector('[data-lab-count]');checks.forEach(check=>check.addEventListener('change',()=>{const done=checks.filter(c=>c.checked).length;bar.value=done;count.textContent=done+' / '+checks.length+' 已完成'}));</script>
-</>}
-{item.slug==='curator'&&<>
+</div>}
+{item.slug==='curator'&&<div class="lay-variant">
 <header class="lay-curator-head"><strong>THE CURATOR / 06</strong><span>OBJECTS, IDEAS, RELATIONS</span><a href="#section-a">館藏索引 ↘</a></header>
 <section class="lay-curator-hero"><div><small>AN INDEX OF ATTENTION</small><h1>喜歡的事物，<br/>值得好好<span>收藏。</span></h1><p>不是單純把東西放在一起，而是重新排列它們之間的關係。</p></div><div class="lay-curator-collage"><div class="lay-curator-main"><img src={image} alt="策展圖像拼貼" loading="eager"/></div><div class="lay-curator-color">001 <span>ARCHIVE</span></div><div class="lay-curator-note">收集 / 分類 / 再發現</div></div></section>
 <section id="section-a" class="lay-curator-catalog"><h2>主題收藏 / THE INDEX</h2>{['關於日常的觀看','閱讀中的圖像','文字與物件之間'].map((title,i)=><details><summary><span>0{i+1}</span><strong>{title}</strong><em>＋</em></summary><p>這個分類保存相關的觀察、參考來源與延伸閱讀。正式網站可把內容連到各分類頁面。</p></details>)}</section>
-</>}
-{item.slug==='radio-letter'&&<>
+</div>}
+{item.slug==='radio-letter'&&<div class="lay-variant">
 <header class="lay-radio-head"><strong>◉ RADIO LETTER</strong><span>ON AIR / LETTER NO. 06</span><a href="#section-a">EPISODES ↘</a></header>
 <section class="lay-radio-hero"><div><small>TRANSMITTING THOUGHTS</small><h1>把思考，<br/><em>寄成一封</em><br/>聽得見的信。</h1><p>聲音、文字與那些在生活裡反覆出現的小問題。</p><div class="lay-radio-wave" aria-hidden="true">▂ ▅ ▃ ▇ ▂ ▆ ▄ ▃ ▆ ▂ ▇ ▃ ▅ ▂</div></div><figure><img src={image} alt="麥克風與廣播器材" loading="eager"/><figcaption>STUDIO / NIGHT 06</figcaption></figure></section>
 <section class="lay-radio-player"><span>NOW PLAYING · 第 06 封通信</span><h2>如果今晚能慢一點</h2><p>播放示範採用瀏覽器原生控制，正式節目請替換為自有授權音檔。</p><audio controls preload="none"><source src="https://tenwebs-6qkx6x5p.manus.space/audio/radio-letter-demo.mp3" type="audio/mpeg"/>瀏覽器不支援音訊。</audio></section>
 <section id="section-a" class="lay-radio-episodes"><h2>最近來信</h2><ol><li><span>06</span> 如果今晚能慢一點 <small>25 SEC · DEMO</small></li><li><span>05</span> 讓想法在路上待久一些 <small>ARCHIVE</small></li><li><span>04</span> 一封寄給未來的自己 <small>ARCHIVE</small></li></ol></section>
-</>}
-{item.slug==='reading-atlas'&&<>
+</div>}
+{item.slug==='reading-atlas'&&<div class="lay-variant">
 <header class="lay-atlas-head"><span>READING ATLAS</span><span>2026 / THE ANNUAL EDITION</span></header>
 <section class="lay-atlas-cover"><p>ANNUAL EDITION · NO. 01</p><h1>每一年<br/>讀過的書，<br/><i>都值得留下一張地圖。</i></h1><div><span>ARCHIVE OF IDEAS</span><span>TWENTY TWENTY SIX</span></div></section>
 <section class="lay-atlas-main"><aside><h2>探索今年的閱讀路線</h2><p>不是依時間往下堆文章，而是先依問題、書籍與主題建立章節。</p><img src={image} alt="閱讀與筆記場景"/></aside><ol>{['從好奇開始','和不同觀點相遇','把閱讀帶回生活','年度回顧與延伸'].map((t,i)=><li><span>CHAPTER 0{i+1}</span><strong>{t}</strong><b>↗</b></li>)}</ol></section>
-</>}
-{item.slug==='clinician'&&<>
+</div>}
+{item.slug==='clinician'&&<div class="lay-variant">
 <header class="lay-clin-head"><strong>CLEAR PRACTICE</strong><nav><a href="#section-a">服務方式</a><a href="#section-b">常見疑問</a></nav><span>PROFESSIONAL PRACTICE</span></header>
 <section class="lay-clin-hero"><div><small>INFORMATION BEFORE COMMITMENT</small><h1>先清楚了解，<br/>再決定是否開始。</h1><p>我們把服務內容、範圍、專業資格與諮詢程序都說清楚，讓每個選擇有充分資訊。</p><a href="#section-a">了解服務方式 ↗</a></div><img src={image} alt="明亮的專業會談空間" loading="eager"/></section>
 <section class="lay-clin-facts" id="section-a"><h2>服務的基本資訊</h2><dl><div><dt>服務類型</dt><dd>個別諮詢／示範</dd></div><div><dt>正式資格</dt><dd>需由服務者核實並公開</dd></div><div><dt>收費與時長</dt><dd>應在預約前確認</dd></div><div><dt>服務界線</dt><dd>不取代緊急醫療協助</dd></div></dl></section>
 <section class="lay-clin-fit" id="section-b"><h2>這項服務可能適合誰？</h2><div><article><h3>可能適合</h3><p>想了解服務方式、合作目標及專業界線的人。</p></article><article><h3>需要其他資源</h3><p>處於立即危機或需要緊急救援者，應優先尋求適當的專業支援。</p></article></div></section>
-</>}
-{item.slug==='companion'&&<>
+</div>}
+{item.slug==='companion'&&<div class="lay-variant">
 <header class="lay-letter-head"><span>A LETTER TO YOU</span><span>一個可以慢慢說話的地方</span></header>
 <section class="lay-letter-hero"><div class="lay-letter-text"><p>親愛的你：</p><h1>這裡有一段時間，<br/><em>留給你慢慢說。</em></h1><p>也許你已經努力很久，也許你還不知道從哪裡開始。你可以先看看這裡的故事、工作方式與約定，再決定是否靠近。</p><a href="#section-a">慢慢了解這個空間 ↓</a></div><img src={image} alt="溫暖午後的空間與茶杯" loading="eager"/></section>
 <section id="section-a" class="lay-letter-story"><span>01 / A QUIET BEGINNING</span><h2>不急著給答案，<br/>先有一個能停下來的地方。</h2><p>真正的陪伴，不是用漂亮的句子替別人決定方向，而是讓選擇與界線被尊重。</p></section>
 <section class="lay-letter-invite"><small>WHEN YOU FEEL READY</small><h2>如果這樣的節奏適合你，<br/>我們再談下一步。</h2><p>此站為示範版型，尚未啟用真實預約服務。</p><a href={all}>看更多網站版型 ↗</a></section>
-</>}
-{item.slug==='somatic'&&<>
+</div>}
+{item.slug==='somatic'&&<div class="lay-variant">
 <header class="lay-body-head"><strong>BODY / RHYTHM</strong><span>SPACE · BREATH · CONSENT</span></header>
 <section class="lay-body-hero" style={`background-image:linear-gradient(0deg,rgba(18,28,20,.64),rgba(18,28,20,.03)),url("${image}")`}><div><small>A SLOWER KIND OF SPACE</small><h1>讓身體重新<br/>有一點可以<br/><em>呼吸的空間。</em></h1><a href="#section-a">沿著身體的節奏往下 ↓</a></div></section>
 <section class="lay-body-intro" id="section-a"><small>01 / ARRIVE</small><h2>身體可以先到，<br/>語言可以慢一點。</h2><p>這個版型用完整的空間視覺開場，後續才談觸碰、同意、工作方式與適合對象。</p></section>
 <section class="lay-body-process"><article><span>01</span><h3>先理解感受</h3><p>從當下的身體狀態開始。</p></article><article><span>02</span><h3>確認界線</h3><p>事先說明觸碰並取得同意。</p></article><article><span>03</span><h3>慢慢整理</h3><p>將身體經驗帶回生活。</p></article></section>
-</>}
-{item.slug==='coach'&&<>
+</div>}
+{item.slug==='coach'&&<div class="lay-variant">
 <header class="lay-coach-head"><strong>MAKE A MOVE<span>!</span></strong><span>GOALS · ACTION · REFLECTION</span><a href="#section-a">START →</a></header>
 <section class="lay-coach-hero"><div><p>ISSUE 001 / YOUR NEXT MOVE</p><h1>不只想明白。<br/><em>也真的</em><br/>往前一步。</h1><a href="#section-a">探索行動路線 ↗</a></div><div class="lay-coach-art"><img src={image} alt="實作型教練工作筆記與拼貼色塊" loading="eager"/><span>GET MOVING / 2026</span></div></section>
 <section id="section-a" class="lay-coach-action"><p>THE METHOD / THREE STEPS</p><h2>把「我應該」<br/>變成「我做得到」。</h2><div><article><span>01 — CLARIFY</span><h3>定義問題</h3><p>你真正想前進的方向是什麼？</p></article><article><span>02 — EXPERIMENT</span><h3>做個嘗試</h3><p>從一件能開始的小事進行。</p></article><article><span>03 — REVIEW</span><h3>回頭調整</h3><p>讓經驗而非完美計畫帶路。</p></article></div></section>
-</>}
-{item.slug==='collective'&&<>
+</div>}
+{item.slug==='collective'&&<div class="lay-variant">
 <header class="lay-community-head"><strong>COMMON GROUND ◌</strong><nav><a href="#section-a">我們一起做</a><a href="#section-b">近期活動</a></nav></header>
 <section class="lay-community-hero"><div><small>PEOPLE / PRACTICE / COMMON GOOD</small><h1>不同專業一起，<br/><em>讓陪伴有更多種可能。</em></h1><p>一個能讓不同背景的實作者、來訪者與社群相遇的地方。</p><a href="#section-a">認識我們 ↘</a></div><figure><img src={image} alt="團隊共作與卡片討論場景" loading="eager"/></figure></section>
 <section class="lay-community-team" id="section-a"><h2>一個工作室，<br/>好幾種看事情的方法。</h2><div><article><span>01 / BODY</span><h3>身體與覺察</h3><p>從感受理解日常的節奏。</p></article><article><span>02 / RELATION</span><h3>關係與對話</h3><p>從溝通尋找連結與界線。</p></article><article><span>03 / PRACTICE</span><h3>學習與行動</h3><p>從小步驟開始實際嘗試。</p></article></div></section>
 <section class="lay-community-events" id="section-b"><h2>近期共學與相遇</h2><p>活動日期與名額皆為示範，正式上線請接入真實日曆或報名系統。</p><div><span>COMING SOON</span><strong>開放工作室 / 共同閱讀</strong><span>↗</span></div></section>
-</>}
-{item.slug==='trust-path'&&<>
+</div>}
+{item.slug==='trust-path'&&<div class="lay-variant">
 <header class="lay-trust-head"><strong>CARE / CLARITY</strong><span>A CLEAR FIRST STEP</span><a href="#section-a">如何開始 ↘</a></header>
 <section class="lay-trust-hero"><div><p>WELCOME / FIRST VISIT</p><h1>讓每個第一次來的人，<br/><em>都知道下一步會發生什麼。</em></h1><p>不是先要求訪客相信你，而是一步一步說明你的專業、方式、限制與選擇。</p></div><img src={image} alt="清晰的專業會談空間" loading="eager"/></section>
 <section class="lay-trust-questions" id="section-a"><h2>你可能先想問的三件事</h2><div><article><span>01</span><h3>這項服務適合我嗎？</h3><p>從你的困擾與期待開始，不做超出專業界線的承諾。</p></article><article><span>02</span><h3>第一次會怎麼進行？</h3><p>流程、時間、保密與可以暫停的權利都清楚列出。</p></article><article><span>03</span><h3>費用和預約如何安排？</h3><p>先確認正式費用與政策，再進入真實的預約入口。</p></article></div></section>
 <section class="lay-trust-end"><p>YOUR NEXT STEP, WHEN YOU ARE READY</p><h2>保持清楚，就是一種尊重。</h2><a href={all}>先比較其他網站方向 →</a></section>
-</>}
+</div>}
 </main>
-<section id="layout-notes" class="lay-notes"><div><span class="lay-notes-tag">版型拆解 / LAYOUT BLUEPRINT</span><h2>{item.title}</h2><p>{item.description}</p></div><dl><div><dt>主要排版特徵</dt><dd>{item.structure}</dd></div><div><dt>適合對象</dt><dd>{item.audience}</dd></div><div><dt>可重用區塊</dt><dd>{item.modules.join('、')}</dd></div><div><dt>參考來源</dt><dd>{item.source}</dd></div></dl><p class="lay-note-disclaimer">版型為教學與視覺原型。預約、合格資格、公開推薦、影音與服務資訊需由站長設定；示範不代表實際服務正在營運。</p></section>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← {previous.title}</a><a href={all}>返回全部 12 款</a><a href={all+next.slug+'/'}>{next.title} →</a></footer>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
 </body></html>
