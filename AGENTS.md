@@ -52,3 +52,7 @@ Search is built from **all rendered static HTML** by Pagefind after `astro build
 
 ## Mandatory motion-reference library
 For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.ai/astro-motion-craft/library/README.md`. Next consult `library/effect-catalog.md` and the matching recipe (`reveal-and-stagger`, `pointer-interactions`, or `content-interactions`). The recipes distinguish Manus v2 ZIP source behavior from our adaptation, and unimplemented references from actual components. Do not treat ZIP effects or Tailwind v4 as installed; do not introduce duplicate observers, global theme overrides or unverified animation claims. Update recipes and catalog when motion runtime changes.
+
+
+## Dedicated effects gallery
+`/effects/` is a separate accessible motion library. Effects runtime lives under `src/components/effects/` (Reveal, StaggerGroup, MotionCard, ZoomImage, MagneticButton, UnderlineLink, MotionFAQ), CSS in `public/effects.css`, and effects inventory in `src/data/effects.registry.json`. The seven effects are distinct from 53 website content blocks, so don't add them to `blocks.registry.json`. Motion Skill and source-grounded recipes MUST guide any new animation. Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic, keyboard focus and all four themes. Demo is not evidence of production QA until browser tested.
