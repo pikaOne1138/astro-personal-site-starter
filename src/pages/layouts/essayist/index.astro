@@ -1,30 +1,15 @@
 ---
-import directions from '../../../data/layout-directions.json';
-const item=directions.find(d=>d.slug==='essayist')!;
-const base=import.meta.env.BASE_URL;
-const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
-const all=base+'layouts/';
-const previous=directions[0];
-const next=directions[2];
+import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 ---
-<!doctype html>
-<html lang="zh-Hant" data-layout="essayist">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content={item.description}/>
-<title>{item.title+'｜網站版型庫'}</title>
-<link rel="stylesheet" href={base+'layout-library.css'}/>
-</head>
-<body>
-<a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-
-<header class="lay-essay-top"><span>THE ESSAYIST</span><span>ISSUE NO. 01　|　READ SLOWLY</span><a href="#section-a">INDEX ↘</a></header>
-<section class="lay-essay-hero"><small>獨立思考刊物 / A PLACE FOR LONG READING</small><h1>寫下那些<br/><i>值得花時間</i><br/>想清楚的事。</h1><div class="lay-essay-deck"><p>每篇文章都是一段未必快速、卻值得慢慢走過的思考。</p><span>01 / 06</span></div></section>
-<section class="lay-essay-feature"><figure><img src={image} alt="晨光中的筆記與書寫工具" loading="eager"/></figure><article><small>EDITOR'S LETTER · 精選專欄</small><h2>慢一點，才能聽見文章真正要說的話。</h2><p>從觀察到書寫，我們讓想法在文字裡停留足夠久。</p><a href="#section-a">閱讀本期文章 →</a></article></section>
-<section id="section-a" class="lay-essay-index"><h2>本期目錄 <span>CONTENTS / 03</span></h2><p>01　關於反覆閱讀的意義 <span>8 MIN</span></p><p>02　從複雜到清晰：一種書寫方法 <span>11 MIN</span></p><p>03　替那些還沒想懂的事留空間 <span>6 MIN</span></p></section>
-</main>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
-</body>
-</html>
+<DirectionLayout title="長文書房｜知識網站方向 02" description="以散文、評論和深度長文為核心的作家型知識網站首頁。">
+  <main id="main" class="es-site">
+    <header class="es-header"><a href={import.meta.env.BASE_URL + 'layouts/'} class="es-wordmark">間隙<span> / ESSAYS</span></a><nav><a href="#current">本期長文</a><a href="#notebook">讀者來信</a><a href={import.meta.env.BASE_URL + 'layouts/'}>看其他方向 ↗</a></nav></header>
+    <section class="es-cover" id="current"><p class="es-label">ISSUE 018 / 2026 AUTUMN</p><h1>把一個問題<br /><em>想完整。</em></h1><div class="es-cover-bottom"><p>長文寫作、生活觀察，還有那些<br />不必急著說服別人的念頭。</p><a href="#essay" class="es-read">讀本期文章 <span>↓</span></a></div><figure><img src="https://tenwebs-6qkx6x5p.manus.space/images/directions/k-essayist.webp" alt="晨光落在書寫桌上的空白筆記本與茶杯" /><figcaption>桌上還留著昨天沒有寫完的句子。</figcaption></figure><span class="es-margin-mark">A SLOWER WAY<br />TO THINK</span></section>
+    <article class="es-article" id="essay"><header><p>FEATURED ESSAY <span>閱讀約 9 分鐘</span></p><h2>我們為什麼總想要<br />馬上得到答案？</h2><p class="es-standfirst">也許不是每個問題都需要一個結論。有些問題，只需要一個可以住下來的地方。</p></header><div class="es-prose"><p class="es-dropcap">把問題交給搜尋框，是一種熟悉的動作。輸入、等待、挑選看起來最像答案的那一段。我們學會了在幾秒內收集資訊，卻不一定有時間知道：自己真正想問的是什麼。</p><p>我最近試著在筆記本上多留一頁空白。不把它當成待完成的清單，也不急著把每一句話整理成漂亮的結論。先寫下那個還有點模糊的問題，接著，讓它陪我走一段路。</p><blockquote>「理解有時不是抵達答案，<br />而是能把問題看得更清楚。」</blockquote><p>當思考不再需要立刻被發表，細節就會多一點時間長出來。這也是寫作對我最實際的提醒：不是替每件事下註解，而是先讓它被好好看見。</p><a class="es-more" href="#notebook">繼續讀這封信 ↗</a></div></article>
+    <section class="es-notebook" id="notebook"><div><p class="es-label">FROM THE NOTEBOOK</p><h2>還沒有整理完的<br /><i>一些念頭。</i></h2></div><ol><li><span>07 / 08</span><a href="#current">留白不是沒有內容</a></li><li><span>06 / 22</span><a href="#current">走路時想到的事，不一定要立刻記下來</a></li><li><span>05 / 30</span><a href="#current">一本書怎麼改變我們提問的方式</a></li></ol></section>
+    <footer class="es-footer"><span>間隙 / 一份寫給願意慢讀的人</span><a href={import.meta.env.BASE_URL + 'layouts/'}>回到十種設計方向</a><span>每月一封，不催促閱讀。</span></footer>
+  </main>
+</DirectionLayout>
+<style>
+.es-site{--es-ink:#292722;--es-paper:#f7f3e9;--es-red:#b24331;min-height:100vh;background:var(--es-paper);color:var(--es-ink);padding:0 clamp(1rem,5vw,5rem);font-family:Georgia,"Noto Serif TC",serif}.es-header{height:76px;border-bottom:1px solid #cfc9bd;display:flex;justify-content:space-between;align-items:center}.es-wordmark{font-size:1.25rem;text-decoration:none;letter-spacing:-.04em}.es-wordmark span{font: .62rem ui-monospace,monospace;letter-spacing:.12em;color:#555}.es-header nav{display:flex;gap:1.5rem;font: .68rem ui-monospace,monospace}.es-header nav a{text-decoration:none}.es-cover{position:relative;max-width:1280px;margin:0 auto;padding:clamp(3rem,8vw,8rem) 0 5rem;min-height:620px}.es-label{font: .65rem ui-monospace,monospace;letter-spacing:.15em;color:var(--es-red)}.es-cover h1{position:relative;z-index:2;font-size:clamp(5rem,14vw,13rem);letter-spacing:-.1em;line-height:.82;font-weight:400;margin:1rem 0;max-width:940px}.es-cover h1 em{font-style:italic;color:var(--es-red);padding-left:.8em}.es-cover-bottom{position:relative;z-index:3;display:flex;align-items:end;gap:3rem;margin:2rem 0 0 8vw}.es-cover-bottom p{font-size:1rem;line-height:1.8;color:#646057}.es-read{font: .72rem ui-monospace,monospace;color:var(--es-ink);text-decoration:none;border-bottom:1px solid var(--es-red);padding-bottom:.5rem}.es-read span{color:var(--es-red);margin-left:.5rem}.es-cover figure{position:absolute;right:2%;top:13%;width:min(35%,430px);margin:0;transform:rotate(2deg)}.es-cover figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:saturate(.75)}.es-cover figcaption{font: .62rem ui-monospace,monospace;color:#5c574e;margin-top:.6rem}.es-margin-mark{position:absolute;right:0;bottom:1.6rem;font: .6rem ui-monospace,monospace;line-height:1.6;letter-spacing:.12em;color:#5e594f;text-align:right}.es-article{max-width:1080px;margin:0 auto 7rem;border-top:1px solid #aaa397;padding-top:2rem;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,8vw,8rem)}.es-article header>p:first-child{font: .64rem ui-monospace,monospace;letter-spacing:.12em;color:var(--es-red);display:flex;justify-content:space-between;gap:1rem}.es-article header h2{font-size:clamp(2.7rem,6vw,5rem);font-weight:400;letter-spacing:-.075em;line-height:1.04;margin:2rem 0 1.5rem}.es-standfirst{font-size:1.18rem;line-height:1.75;color:#5e5a52;max-width:400px}.es-prose{max-width:580px;font-size:1.06rem;line-height:2.05;padding-top:2rem}.es-prose p{margin:0 0 1.5rem}.es-dropcap:first-letter{float:left;font-size:4.2rem;line-height:.83;padding:.12rem .5rem 0 0;color:var(--es-red)}.es-prose blockquote{font-size:1.7rem;line-height:1.6;border-left:1px solid var(--es-red);padding-left:1.2rem;margin:2.5rem 0;font-style:italic}.es-more{color:var(--es-red);font: .72rem ui-monospace,monospace;text-decoration:none;border-bottom:1px solid;padding-bottom:.3rem}.es-notebook{max-width:1080px;margin:0 auto 6rem;background:#ece5d8;padding:2.3rem clamp(1.2rem,5vw,4.5rem);display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;transform:rotate(-.5deg)}.es-notebook h2{font-size:clamp(2rem,4vw,3.6rem);line-height:1.05;font-weight:400;margin:.4rem 0}.es-notebook h2 i{color:var(--es-red)}.es-notebook ol{list-style:none;padding:0;margin:0}.es-notebook li{display:grid;grid-template-columns:74px 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid #c5bcad}.es-notebook li span{font: .65rem ui-monospace,monospace;color:#59544b}.es-notebook li a{text-decoration:none;font-size:.92rem}.es-footer{border-top:1px solid #cfc9bd;padding:1rem 0 2rem;display:flex;justify-content:space-between;gap:1rem;font: .63rem ui-monospace,monospace;color:#716c63}.es-footer a{color:var(--es-red)}@media(max-width:760px){.es-header{height:auto;padding:1rem 0;align-items:flex-start}.es-header nav{gap:.8rem;flex-wrap:wrap;justify-content:flex-end}.es-cover{min-height:0;padding:4rem 0 3rem}.es-cover h1{font-size:clamp(4rem,17vw,7rem)}.es-cover figure{position:relative;top:auto;right:auto;width:75%;margin:2rem 0 0 auto}.es-cover-bottom{margin:1.5rem 0 0;flex-wrap:wrap;gap:1rem}.es-margin-mark{bottom:1rem}.es-article{grid-template-columns:1fr;gap:0;margin-bottom:4rem}.es-article header h2{margin:1rem 0}.es-prose{padding-top:0}.es-notebook{grid-template-columns:1fr;gap:1rem;margin-bottom:4rem}.es-footer{flex-wrap:wrap}}@media(max-width:480px){.es-header{flex-direction:column;gap:.7rem}.es-header nav{justify-content:flex-start}.es-cover h1{font-size:17vw}.es-cover h1 em{padding-left:.2em}.es-cover figure{width:100%}.es-notebook li{grid-template-columns:56px 1fr}.es-footer{flex-direction:column}}
+</style>
