@@ -1,0 +1,38 @@
+---
+/**
+ * S05 article-lead — 左：標題 + 導言；右：正文欄（≤ 36rem、行高 2.05、首字放大、引言）（衍生自 02 .es-article）。
+ * 修正 02：標題用 text-wrap: balance + 欄寬限制，不用 <br/>，不會出現孤字。
+ */
+interface Props { label?: string; time?: string; title?: string; standfirst?: string; paras?: string[]; quote?: string; more?: string; href?: string }
+const {
+  label = 'FEATURED ESSAY', time = '閱讀約 9 分鐘', title = '我們為什麼總想要馬上得到答案？',
+  standfirst = '也許不是每個問題都需要一個結論。有些問題，只需要一個可以住下來的地方。',
+  paras = ['把問題交給搜尋框，是一種熟悉的動作。輸入、等待、挑選看起來最像答案的那一段。我們學會了在幾秒內收集資訊，卻不一定有時間知道：自己真正想問的是什麼。', '我最近試著在筆記本上多留一頁空白。不把它當成待完成的清單，也不急著把每一句話整理成漂亮的結論。'],
+  quote = '理解有時不是抵達答案，而是能把問題看得更清楚。', more = '繼續讀這封信', href = '#',
+} = Astro.props;
+---
+<section class="s05">
+  <header>
+    <p class="meta"><span>{label}</span><span>{time}</span></p>
+    <h2>{title}</h2>
+    <p class="stand">{standfirst}</p>
+  </header>
+  <div class="prose">
+    <p class="drop">{paras[0]}</p>
+    <blockquote>「{quote}」</blockquote>
+    {paras.slice(1).map((p) => <p>{p}</p>)}
+    <a href={href}>{more} ↗</a>
+  </div>
+</section>
+<style>
+  .s05 { max-width: 1080px; margin-inline: auto; padding: 2rem var(--ed-gutter, 5vw) 0; border-top: 1px solid var(--ed-line, #aaa397); display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(2rem, 8vw, 8rem); color: var(--ed-ink, #292722); }
+  .meta { display: flex; justify-content: space-between; gap: 1rem; font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #b24331); margin: 0; }
+  h2 { font: 400 clamp(2.4rem, 5.2vw, 4.4rem)/1.12 var(--ed-serif, Georgia, serif); letter-spacing: -.03em; margin: 2rem 0 1.5rem; max-inline-size: 9em; text-wrap: balance; }
+  .stand { font-size: 1.18rem; line-height: 1.75; color: var(--ed-ink-2, #5e5a52); max-width: 22em; }
+  .prose { max-width: 36rem; font: 1.06rem/2.05 var(--ed-serif, Georgia, serif); padding-top: 2rem; }
+  .prose p { margin: 0 0 1.5rem; }
+  .drop::first-letter { float: left; font-size: 4.2rem; line-height: .83; padding: .12rem .5rem 0 0; color: var(--ed-accent, #b24331); }
+  blockquote { margin: 2.5rem 0; padding-left: 1.2rem; border-left: 1px solid var(--ed-accent-deco, #b24331); font: italic 1.6rem/1.6 var(--ed-serif, Georgia, serif); }
+  .prose a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ed-accent, #b24331); font: .8rem var(--ed-mono, monospace); text-decoration: none; border-bottom: 1px solid currentColor; }
+  @media (max-width: 760px) { .s05 { grid-template-columns: 1fr; gap: 0; } h2 { margin: 1rem 0; } .prose { padding-top: 1rem; } }
+</style>
