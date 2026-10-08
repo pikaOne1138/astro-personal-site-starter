@@ -9,6 +9,7 @@ import { helperPractice } from '../data/helper-content';
 import SocialLinks from './blocks/SocialLinks.astro';
 import NewsletterSignup from './blocks/NewsletterSignup.astro';
 import { articlesV2 } from '../data/articles-v2';
+import { knowledgePractice } from '../data/knowledge-demo-topics';
 interface Props { kind: Kind; theme: Theme; }
 const { kind, theme } = Astro.props;
 const k = kindMeta[kind];
@@ -16,49 +17,48 @@ const t = themeMeta[theme];
 const base = import.meta.env.BASE_URL;
 const articles=articlesV2.slice(0,3);
 const practice=helperPractice[theme];
+const journal=knowledgePractice[theme];
 const services = practice.services;
 ---
-<DemoLayout title={`${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+<DemoLayout title={`${k.label} · ${t.zh}`} description={kind === 'knowledge' ? journal.intro : k.intro} theme={theme} kind={kind}>
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current="home" />
 
     <main>
       <section class="hero section">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">{kind === 'helper' ? practice.eyebrow : k.eyebrow} · {t.label}</p>
-          <h1>{kind === 'helper' ? practice.hero : k.title}</h1>
-          <p class="lede">{kind === 'helper' ? practice.intro : k.intro}</p>
+          <p class="eyebrow">{kind === 'helper' ? practice.eyebrow : journal.eyebrow} · {t.label}</p>
+          <h1>{kind === 'helper' ? practice.hero : journal.hero}</h1>
+          <p class="lede">{kind === 'helper' ? practice.intro : journal.intro}</p>
           <div class="hero-actions">
             <a class="button primary" href={kind === 'knowledge' ? '#latest' : '#booking'}>{kind === 'knowledge' ? '從精選文章開始' : '了解服務與預約方式'} <span>→</span></a>
             <a class="button text" href={kind === 'knowledge' ? '#topics' : '#process'}>{kind === 'knowledge' ? '瀏覽主題' : '先看看合作方式'}</a>
           </div>
-          <p class="microcopy">{kind === 'helper' ? practice.promise : theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : theme === 'botanical' ? '讓自然的節奏與清楚的內容，陪伴每一次閱讀。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
+          <p class="microcopy">{kind === 'helper' ? practice.promise : journal.promise}</p>
         </div>
         <div class="hero-art" aria-hidden="true" data-reveal style="--i:1"><div class="art-frame"><div class="art-orb"></div><div class="art-line"></div><div class="art-note">{t.zh}</div></div></div>
       </section>
 
       {kind === 'knowledge' ? <>
         <section class="section topics" id="topics" data-reveal>
-          <div class="section-heading"><p class="eyebrow">START HERE</p><h2>第一次來，可以從這三個方向開始。</h2></div>
+          <div class="section-heading"><p class="eyebrow">START HERE</p><h2>{journal.topicHeading}</h2></div>
           <div class="topic-grid">
-            <article><span>01</span><h3>AI × 工作方法</h3><p>不是追工具，而是整理怎麼把 AI 真的放進日常流程。</p></article>
-            <article><span>02</span><h3>個人知識系統</h3><p>從蒐集走向理解，讓筆記可以重新被找到與使用。</p></article>
-            <article><span>03</span><h3>網站與創作</h3><p>把散落在平台上的內容，慢慢長成自己的基地。</p></article>
+            {journal.topics.map((topic,i)=><article><span>{String(i+1).padStart(2,'0')}</span><h3>{topic.title}</h3><p>{topic.short}</p></article>)}
           </div>
         </section>
 
         <section class="section editorial" id="latest" data-reveal>
-          <div class="section-heading row"><div><p class="eyebrow">FEATURED</p><h2>最近值得讀的東西。</h2></div><a class="quiet-link" href={`${base}${kind}/${theme}/articles/`}>所有文章 →</a></div>
+          <div class="section-heading row"><div><p class="eyebrow">FEATURED</p><h2>{journal.featuredHeading}</h2></div><a class="quiet-link" href={`${base}${kind}/${theme}/articles/`}>所有文章 →</a></div>
           <div class="feature-grid">
-            <article class="feature-card"><div class="visual-placeholder"><span>01</span></div><p class="meta">網站思考 · 8 min</p><h3>不是做一個「很完整」的網站，而是先做一個願意持續更新的地方。</h3><p>從首頁、文章、About 到 CTA，只留下真的會用到的東西。</p></article>
+            <article class="feature-card"><div class="visual-placeholder"><span>01</span></div><p class="meta">{journal.specialty} · 內容示範</p><h3>{journal.featuredTitle}</h3><p>{journal.featuredIntro}</p></article>
             <div class="article-list">{articles.map((article,i)=><a href={`${base}${kind}/${theme}/articles/${article.slug}/`} class="article-row"><span class="num">0{i+2}</span><span class="article-main"><small>{article.category} · {article.readingMinutes} min</small><strong>{article.title}</strong></span><span class="arrow">↗</span></a>)}</div>
           </div>
           <p style="margin-top:32px"><a class="button primary" href={`${base}${kind}/${theme}/articles/`}>文章搜尋・標籤・日期日曆 →</a></p>
         </section>
 
-        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder"><span>作者照片</span></div><div><p class="eyebrow">ABOUT</p><h2>我喜歡把複雜的東西拆開，再重新拼成可以用的樣子。</h2><p>這裡記錄我怎麼理解 AI、網站、知識工具，以及那些還沒有答案但值得繼續想的問題。</p><a class="quiet-link" href="#">更多關於我 →</a></div></section>
+        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder"><span>作者照片</span></div><div><p class="eyebrow">ABOUT</p><h2>{journal.aboutTitle}</h2><p>{journal.about}</p><a class="quiet-link" href={`${base}${kind}/${theme}/about/`}>更多關於我 →</a></div></section>
 
-        <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>偶爾寄一封，讀完會想一想的信。</h2><p>不追新聞、不塞滿工具清單，只整理真正值得留下的東西。</p><NewsletterSignup title="訂閱來信" description="此示範尚未連接訂閱平台，正式站需提供安全的外部服務網址。" /><a class="button text" href={`${base}${kind}/${theme}/resources/`}>查看內容資源 →</a></section>
+        <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>{journal.newsletterTitle}</h2><p>{journal.newsletterIntro}</p><NewsletterSignup title="訂閱來信" description="此示範尚未連接訂閱平台，正式站需提供安全的外部服務網址。" /><a class="button text" href={`${base}${kind}/${theme}/resources/`}>查看內容資源 →</a></section>
       </> : <>
         <section class="section empathy" data-reveal><p class="eyebrow">WHO THIS IS FOR · {practice.specialty}</p><h2>{practice.reasonsTitle}</h2><div class="feeling-grid">{practice.reasons.map((reason,i)=><div><span>{String(i+1).padStart(2,'0')}</span><p>{reason}</p></div>)}</div></section>
 

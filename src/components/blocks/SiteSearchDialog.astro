@@ -32,6 +32,12 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
   const status=dialog?.querySelector<HTMLElement>('[data-search-status]');
   if(dialog&&field&&resultList&&status){
     let pagefindPromise:Promise<PagefindApi>|null=null;
+    type ExactDoc={url:string;title:string;text:string};
+    let exactPromise:Promise<ExactDoc[]>|null=null;
+    const exactIndex=()=>exactPromise??=fetch((dialog.dataset.pagefindBase||'/')+'search/exact-zh.json')
+      .then(response=>{if(!response.ok)throw new Error('Exact index unavailable');return response.json()})
+      .then((payload:{docs:ExactDoc[]})=>payload.docs);
+
     let seq=0;
     const initialize=()=>pagefindPromise??=(async()=>{
       const base=dialog.dataset.pagefindBase||'/';
@@ -47,19 +53,39 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
       if(!query){status.textContent='輸入關鍵字，可搜尋頁面內文與標題';return;}
       status.textContent='正在搜尋…';
       try {
+        const isChinese=/[\u3400-\u9fff]/u.test(query);
+        const normalized=query.replace(/\s+/g,'').toLocaleLowerCase();
+        let exact:ExactDoc[]=[];
+        if(isChinese){
+          const docs=await exactIndex();
+          exact=docs.filter(d=>(d.title+' '+d.text).replace(/\s+/g,'').toLocaleLowerCase().includes(normalized));
+          exact.sort((a,b)=>Number(b.title.includes(query))-Number(a.title.includes(query)));
+        }
         const api=await initialize();
         const found=await api.search(query);
-        const data=await Promise.all(found.results.slice(0,20).map(hit=>hit.data()));
+        const data=await Promise.all(found.results.slice(0,60).map(hit=>hit.data()));
         if(mySeq!==seq)return;
-        status.textContent=found.results.length?'找到 '+found.results.length+' 筆相關頁面（最多顯示 20 筆）':'找不到符合關鍵字的頁面。';
-        for(const entry of data){
-          const li=document.createElement('li'),a=document.createElement('a');
-          a.href=entry.url;
+        const urls=new Set(exact.map(d=>d.url));
+        const fuzzy=data.filter(d=>!urls.has(d.url));
+        const entries=[
+          ...exact.map(d=>{
+            const pos=(d.title+' '+d.text).replace(/\s+/g,'').toLocaleLowerCase().indexOf(normalized);
+            return {url:d.url,title:d.title,excerpt:d.text.slice(Math.max(0,pos-45),pos+query.length+90),isExact:true};
+          }),
+          ...fuzzy.map(d=>({url:d.url,title:d.meta?.title||'網站頁面',excerpt:d.plain_excerpt||d.excerpt?.replace(/<[^>]*>/g,'')||'',isExact:false})),
+        ];
+        const shown=entries.slice(0,20);
+        status.textContent=exact.length
+          ? '找到 '+exact.length+' 筆完整字串匹配'+(fuzzy.length?'，另有相關結果':'')+'（最多顯示 20 筆）'
+          : found.results.length?'找到 '+found.results.length+' 筆相關頁面（最多顯示 20 筆）':'找不到符合關鍵字的頁面。';
+        for(const entry of shown){
+          const li=document.createElement('li'),link=document.createElement('a');
+          link.href=entry.url;
           const title=document.createElement('strong');
-          title.textContent=entry.meta?.title||'網站頁面';
+          title.textContent=entry.title+(entry.isExact?' · 完整字串匹配':'');
           const excerpt=document.createElement('span');
-          excerpt.textContent=entry.plain_excerpt||entry.excerpt?.replace(/<[^>]*>/g,'')||'';
-          a.append(title,excerpt);li.append(a);resultList.append(li);
+          excerpt.textContent=entry.excerpt;
+          link.append(title,excerpt);li.append(link);resultList.append(li);
         }
       }catch(error){
         if(mySeq!==seq)return;
