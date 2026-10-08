@@ -1,0 +1,5 @@
+---
+interface Props {name:string;role:string;bio:string;image?:string;}
+const {name,role,bio,image}=Astro.props;
+---
+<section class="ab-split"><div class="ab-image-panel">{image ? <img src={image} alt={name} loading="lazy"/> : <div class="ab-placeholder">HELLO, I'M HERE</div>}</div><div><p class="ab-eyebrow">{role}</p><h2>{name}</h2><p>{bio}</p></div></section>
