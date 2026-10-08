@@ -47,3 +47,13 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 維護 `src/data/layout-directions.json` 的用途、來源、主要架構和模組清單；可用 `layout slug` 做可配置選擇，然後把 demo sections 重構成可放在其他路由的 Astro compositions。**Layout Library 不計入 54 個網站功能 blocks 或 7 個 effects 的登錄數**，避免不同層級的數字混淆。
 
 推薦學員操作：先看 12 種網站版型 → 選一個最接近內容任務的 → 在元件庫換區塊 → 在特效庫選輕量動效 → 最後調整配色與自己的文字。
+
+## 版面質感的強制檢查：置中畫布與留白
+
+PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路徑和課程模組在桌面橫向過度撐開。學員在比較版型時，這屬於結構性退化，不是單純換色。
+
+- **先測量原站的內容畫布（content container）**：大螢幕版面一般須採最大寬度（依版型約 1000–1360px）+ 左右 auto margin；絕不在未比對的情況下直接使用滿版百分比 padding 當作留白方案。
+- 例外可使用全幅背景（somatic 影像等），但主標題、文字和 CTA 仍要有受控的內層 container。
+- 留白不是只有 padding：要保留 Hero 文字占比、圖片寬高、H1 標題斷行、板塊密度、全幅段落和容器段落的節奏。
+- Manus Learning Lab 的特色是黃底高亮大標、貼紙式路線圖片、垂直節點時間軸、課程區塊內的細列表；不可以退化成全寬色塊三列表。
+- 比對原站和 PR 時，至少截取相同寬度的桌面全頁和 390px 手機畫面，查 Hero、兩側留白、路徑與底部。**GitHub Actions build 成功不能取代視覺驗收。**
