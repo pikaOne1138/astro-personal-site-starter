@@ -1,0 +1,5 @@
+---
+interface Props { brand?: string; links?: {label:string;href:string}[]; cta?: {label:string;href:string}; }
+const {brand='Your Studio',links=[{label:'首頁',href:'#top'},{label:'服務',href:'#services'},{label:'關於',href:'#about'}],cta}=Astro.props;
+---
+<header class="ab-header"><a class="ab-brand" href="#top">{brand}</a><nav aria-label="主要導覽">{links.map(x=><a href={x.href}>{x.label}</a>)}</nav>{cta && <a class="ab-button outline" href={cta.href}>{cta.label}</a>}</header>
