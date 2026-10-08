@@ -160,3 +160,7 @@ Use reusable `SocialLinks.astro` for social platforms and contact identity, rath
 Compose `SiteSearchDialog` + narrow divider + `SocialLinks size="sm"` on the desktop navbar via `SiteNav`'s optional `socialLinks` list. Do not duplicate nav links or crowd narrow screens; social icons are hidden below 850px. Use single-color CSS mask icons that inherit theme foreground/accent, subtle focus, consistent spacing, and no invented account links. Header can opt out with `socialLinks={[]}`. Demo defaults show verified GitHub repo + deployed demo site only.
 
 Mobile menu `MobileMenu` accepts the same `socialLinks` array as desktop `SiteNav`; render its SocialLinks beneath all mobile nav items, separated by a subtle hairline, with 44px icon tap targets and no fabricated URLs. Do not hide all social access on mobile; only hide the desktop duplicate. Keep dialog keyboard and focus behavior.
+
+
+## Current practical block implementation
+Branch `feat/v2-5-reading-sharing` adds Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress. 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 Reuse the existing paper/morning/studio/botanical design tokens and functional /blocks/ category layout. Do not show internal version numbers on visitor-facing pages. No fake inputs, services, professional qualifications, media links, emergency contacts, or newsletter submissions. Preserve BASE_URL and PR-preview-first workflow.
