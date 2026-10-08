@@ -29,7 +29,7 @@
 - `publishedAt` (YYYY-MM-DD)
 - `readingMinutes`
 
-`src/site-map.ts` derives article route generation from it. The browsing interface is `/explore/`, displaying real links to the generated `/knowledge/paper/articles/:slug/` example route. The sample articles and publication dates are *fixtures*, not claims of genuine published posts.
+`src/site-map.ts` derives article route generation from it. The standalone library browsing interface is `/explore/`; each full demo also owns `/{kind}/{theme}/explore/` with links to its **own** article pages, displaying real links to the generated `/knowledge/paper/articles/:slug/` example route. The sample articles and publication dates are *fixtures*, not claims of genuine published posts.
 
 Use one date/time convention per real site and distinguish published from updated dates. SEO canonical URLs and actual slug histories must be preserved when migrating WordPress content.
 
@@ -56,3 +56,6 @@ Avoid launching an external runtime, complex search backend, or article editor f
 - PR-specific BASE_URL works for CSS and every internal link.
 - Two site architectures × four design personalities and original V1.5 block gallery remain intact.
 - Build succeeds; preview URL is verified before claiming success.
+
+## Full-site demo integration
+All eight `{knowledge,helper} × {paper,morning,studio,botanical}` demo sites use `/[kind]/[theme]/explore/`. The `SiteNav.astro` **找文章** link is real and visible on mobile. Each demo's article list links to theme-specific detail pages and its tag/date chips return to its own explorer. Article pages demonstrate accordion, list, callout, grid, comparison table, content carousel, and related articles. Demo data remains illustrative. Keep original routes and global `/explore/` working.
