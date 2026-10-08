@@ -131,6 +131,7 @@ const theme = '--ed-paper:#f6f0e6;--ed-ink:#2a2118;--ed-ink-2:#5c4f42;--ed-accen
     </div>
   </main>
   <div id="refer-cta"><C05 kicker="A CLEAR FIRST STEP" lines={['先問一個', '一般問題也可以。']} primary={{ t: '寄一封簡短的信', href: '#' }} secondary={{ t: '回到第一站', href: '#scope' }} fine="這是設計原型；正式上線請換成安全且合規的聯絡方式，不要在一般表單收集病歷或敏感資料。" /></div>
+  <p class="tp-return"><a href={import.meta.env.BASE_URL + "layouts/"}>← 比較其他版型</a></p>
 </Base>
 <style>
   .lab { font: .75rem var(--ed-mono); letter-spacing: .14em; color: var(--ed-accent); margin: 0 0 .6rem; }
@@ -231,3 +232,4 @@ const theme = '--ed-paper:#f6f0e6;--ed-ink:#2a2118;--ed-ink-2:#5c4f42;--ed-accen
     .timeline { grid-template-columns: 1fr; } .timeline li, .timeline li:nth-child(2n), .timeline li:not(:first-child) { padding-left: 0; }
   }
 </style>
+<style>.tp-return{max-width:var(--ed-wide,1320px);margin:0 auto;padding:18px var(--ed-gutter,4vw) 30px;font:13px var(--ed-mono,monospace);text-align:right;background:var(--ed-paper)}.tp-return a{color:var(--ed-ink);text-underline-offset:5px}</style>
