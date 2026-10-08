@@ -1,0 +1,44 @@
+---
+/**
+ * H03 hard-shadow-split — 左文 / 右圖 + 硬陰影 + 螢光標記（衍生自 03 學習實驗室、09 教練）
+ * 識別來自「2px 邊框 + Npx Npx 0 色」硬陰影與一段被標示的短語，不是顏色。
+ * 注意：不要同時再加 rotate、貼紙、箭頭（那是 09 的簽名）。
+ */
+interface Props { overline?: string; first?: string; marked?: string; body?: string; cta?: string; href?: string; hint?: string; src?: string; alt?: string; cap?: string }
+const {
+  overline = 'A CLEARER WAY TO LEARN', first = '把好奇心', marked = '變成一條路。',
+  body = '不用一次弄懂所有事。從一個小概念開始，學會觀察、整理，再把它用在自己的生活裡。',
+  cta = '看學習路徑', href = '#path', hint = '自學也可以有方向。',
+  src, alt = '', cap = '學習地圖 / 第一版',
+} = Astro.props;
+---
+<section class="h03">
+  <div class="copy">
+    <p class="label">{overline}</p>
+    <h1><span class="ph">{first}</span> <mark class="ph">{marked}</mark></h1>
+    <p class="body">{body}</p>
+    <div class="act"><a class="btn" href={href}>{cta} <b aria-hidden="true">↘</b></a><span>{hint}</span></div>
+  </div>
+  <figure>
+    {src ? <img src={src} alt={alt} width="1200" height="900" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+    <figcaption>{cap}</figcaption>
+  </figure>
+</section>
+<style>
+  .h03 { --blue: var(--ed-accent, #2449d8); --hi: var(--ed-hi, #ffd23e);
+    max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(2.5rem, 6vw, 4rem) var(--ed-gutter, 4vw); display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; min-height: 36rem; color: var(--ed-ink, #101f52); }
+  .label { font: 700 .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--blue); margin: 0; }
+  h1 { font: 800 clamp(3rem, 8.5vw, 7.5rem)/1.06 var(--ed-sans, sans-serif); letter-spacing: -.03em; margin: 1rem 0; text-wrap: balance; }
+  .ph { display: inline-block; }
+  mark { background: var(--hi); color: inherit; padding: 0 .15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .body { max-width: 30em; line-height: 1.8; }
+  .act { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 2rem; }
+  .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.2rem; background: var(--blue); color: #fff; font: 700 .9rem var(--ed-sans, sans-serif); text-decoration: none; box-shadow: 4px 4px 0 var(--hi); }
+  .btn b { margin-left: 1rem; }
+  .act span { font-size: .875rem; color: var(--ed-ink-2, #3e4a6b); }
+  figure { margin: 0; }
+  figure img, .art { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--ed-ink, #101f52); box-shadow: 12px 12px 0 var(--hi); }
+  .art { background: conic-gradient(from 200deg at 30% 60%, #b7c5ff, #fff 25%, #f28a6a 45%, #b7c5ff 70%, #fff); }
+  figcaption { font: .75rem var(--ed-mono, monospace); margin-top: 1.1rem; }
+  @media (max-width: 760px) { .h03 { grid-template-columns: 1fr; min-height: 0; } figure { width: 94%; margin-left: auto; } figure img, .art { box-shadow: 8px 8px 0 var(--hi); } }
+</style>
