@@ -1,0 +1,30 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='radio-letter')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[3];
+const next=directions[5];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="radio-letter">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-radio-head"><strong>◉ RADIO LETTER</strong><span>ON AIR / LETTER NO. 06</span><a href="#section-a">EPISODES ↘</a></header>
+<section class="lay-radio-hero"><div><small>TRANSMITTING THOUGHTS</small><h1>把思考，<br/><em>寄成一封</em><br/>聽得見的信。</h1><p>聲音、文字與那些在生活裡反覆出現的小問題。</p><div class="lay-radio-wave" aria-hidden="true">▂ ▅ ▃ ▇ ▂ ▆ ▄ ▃ ▆ ▂ ▇ ▃ ▅ ▂</div></div><figure><img src={image} alt="麥克風與廣播器材" loading="eager"/><figcaption>STUDIO / NIGHT 06</figcaption></figure></section>
+<section class="lay-radio-player"><span>NOW PLAYING · 第 06 封通信</span><h2>如果今晚能慢一點</h2><p>播放示範採用瀏覽器原生控制，正式節目請替換為自有授權音檔。</p><audio controls preload="none"><source src="https://tenwebs-6qkx6x5p.manus.space/audio/radio-letter-demo.mp3" type="audio/mpeg"/>瀏覽器不支援音訊。</audio></section>
+<section id="section-a" class="lay-radio-episodes"><h2>最近來信</h2><ol><li><span>06</span> 如果今晚能慢一點 <small>25 SEC · DEMO</small></li><li><span>05</span> 讓想法在路上待久一些 <small>ARCHIVE</small></li><li><span>04</span> 一封寄給未來的自己 <small>ARCHIVE</small></li></ol></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
