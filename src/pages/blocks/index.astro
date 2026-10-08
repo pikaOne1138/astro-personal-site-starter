@@ -34,6 +34,10 @@ import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
 import SiteSearchDialog from '../../components/blocks/SiteSearchDialog.astro';
 import MobileMenu from '../../components/blocks/MobileMenu.astro';
 import SocialLinks from '../../components/blocks/SocialLinks.astro';
+import ResourceCard from '../../components/blocks/ResourceCard.astro';
+import ResourceLibrary from '../../components/blocks/ResourceLibrary.astro';
+import LeadMagnetCard from '../../components/blocks/LeadMagnetCard.astro';
+import NewsletterSignup from '../../components/blocks/NewsletterSignup.astro';
 import Breadcrumbs from '../../components/blocks/Breadcrumbs.astro';
 import ArticleNavigation from '../../components/blocks/ArticleNavigation.astro';
 import ArticleShare from '../../components/blocks/ArticleShare.astro';
@@ -132,6 +136,10 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleNavigation</strong><span>真實的上一／下一篇文章</span></div><ArticleNavigation previous={{title:articlesV2[1].title,href:base+'knowledge/paper/articles/'+articlesV2[1].slug+'/'}} next={{title:articlesV2[0].title,href:base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'}} indexHref={base+'knowledge/paper/articles/'}/></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleShare</strong><span>LINE、Facebook、Email、複製網址</span></div><ArticleShare url={'https://pikaOne1138.github.io'+base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'} title={articlesV2[0].title}/></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ReadingProgress</strong><span>閱讀文章時頂部顯示的進度</span></div><p>進度線可於完整文章頁實際滾動體驗，不在元件清單頁額外啟動。</p><a class="ab-text-link" href={base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'}>體驗閱讀進度 →</a></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ResourceCard</strong><span>影片、書籍、文章與資源卡</span></div><ResourceCard kind="link" title="網站架構入門" description="介紹網站主要頁面、架構與閱讀路徑。" href={base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ResourceLibrary</strong><span>不同媒體類型共用的資源索引</span></div><ResourceLibrary items={[{kind:'video',title:'網站影音示範',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk',description:'外部影片來源示範'},{kind:'link',title:'閱讀網站架構文章',href:base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'},{kind:'tool',title:'查看 Astro 範例程式',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>LeadMagnetCard</strong><span>免費資源／下載卡</span></div><LeadMagnetCard title="架站範例原始碼" description="開啟公開範例專案，研究網站結構與元件。" href="https://github.com/pikaOne1138/astro-personal-site-starter" format="公開免費資源"/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>NewsletterSignup</strong><span>可串接訂閱服務的外部入口</span></div><NewsletterSignup description="未配置真實訂閱平台之前，不顯示假送出按鈕。"/></div>
   </section>
   <section id="professional" class="ab-category">
     <h2 class="ab-category-title">06 / 專業服務與建立信任</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>

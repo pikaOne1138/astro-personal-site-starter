@@ -946,5 +946,85 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "resource-card",
+    "name": "ResourceCard",
+    "category": "content",
+    "path": "src/components/blocks/ResourceCard.astro",
+    "keywords": [
+      "ResourceCard"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "resource-library",
+    "name": "ResourceLibrary",
+    "category": "content",
+    "path": "src/components/blocks/ResourceLibrary.astro",
+    "keywords": [
+      "ResourceLibrary"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "lead-magnet-card",
+    "name": "LeadMagnetCard",
+    "category": "content",
+    "path": "src/components/blocks/LeadMagnetCard.astro",
+    "keywords": [
+      "LeadMagnetCard"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "newsletter-signup",
+    "name": "NewsletterSignup",
+    "category": "common",
+    "path": "src/components/blocks/NewsletterSignup.astro",
+    "keywords": [
+      "NewsletterSignup"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]

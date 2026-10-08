@@ -1,0 +1,7 @@
+---
+interface Props {title:string;description?:string;href?:string;kind?:'video'|'audio'|'book'|'pdf'|'tool'|'link';meta?:string}
+const {title,description,href,kind='link',meta}=Astro.props;
+const labels={video:'影片',audio:'音訊',book:'書籍',pdf:'下載資源',tool:'工具',link:'延伸閱讀'};
+const valid=href&&(href.startsWith('https://')||href.startsWith('/')||href.startsWith('./'));
+---
+<article class="practical-resource-card"><div class="practical-resource-meta"><span>{labels[kind]}</span>{meta&&<small>{meta}</small>}</div><h3>{title}</h3>{description&&<p>{description}</p>}{valid?<a href={href} target={href.startsWith('https://')?'_blank':undefined} rel={href.startsWith('https://')?'noopener noreferrer':undefined}>查看資源 ↗</a>:<small class="practical-notice">尚未設定可用的資源連結</small>}</article>

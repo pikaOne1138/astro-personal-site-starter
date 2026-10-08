@@ -10,6 +10,9 @@ import PricingDetails from './blocks/PricingDetails.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
 import MediaEmbed from './blocks/MediaEmbed.astro';
 import SocialLinks from './blocks/SocialLinks.astro';
+import ResourceLibrary from './blocks/ResourceLibrary.astro';
+import LeadMagnetCard from './blocks/LeadMagnetCard.astro';
+import NewsletterSignup from './blocks/NewsletterSignup.astro';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
 const { kind, theme, page } = Astro.props;
@@ -68,8 +71,13 @@ const articleMeta=articlesV2;
       </section>}
 
       {page === 'resources' && <div class="v02-content"><MediaEmbed type="youtube" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" title="YouTube 影音嵌入操作示範" caption="工作坊影片元件示範：請替換為有權使用的影片。" /></div>}
+      {page === 'resources' && <section class="v02-content" data-reveal>
+        <ResourceLibrary title="可以探索的資源" items={[{kind:'link',title:'閱讀首頁資訊架構',description:'網站結構與導覽入門',href:root+'articles/'+articlesV2[0].slug+'/'},{kind:'video',title:'YouTube 媒體嵌入示範',description:'開啟影音來源',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk'},{kind:'tool',title:'Astro 工作坊範例原始碼',description:'公開 GitHub 範例',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/>
+        <LeadMagnetCard title="取得網站範例原始碼" description="可閱讀的免費程式碼素材，無須填寫個資。" href="https://github.com/pikaOne1138/astro-personal-site-starter" format="公開免費資源"/>
+        <NewsletterSignup title="訂閱文章更新" description="這份示範網站尚未串接電子報服務，正式網站可指定自己選用的平台。"/>
+      </section>}
       {page === 'resources' && <section class="v02-content v02-resource" data-reveal>
-        <div><p class="eyebrow">FREE RESOURCE</p><h2>把網站需求整理清楚的 20 個問題</h2><p>示範「低壓 CTA」：免費資源可以承接還不想購買或預約的人。</p><a class="button primary" href="#">取得資源 <span>→</span></a></div>
+        <div><p class="eyebrow">FREE RESOURCE</p><h2>把網站需求整理清楚的 20 個問題</h2><p>示範「低壓 CTA」：免費資源可以承接還不想購買或預約的人。</p><a class="button primary" href="https://github.com/pikaOne1138/astro-personal-site-starter" target="_blank" rel="noopener noreferrer">開啟公開範例資源 <span>→</span></a></div>
         <div class="art-frame"><div class="art-orb"></div><div class="art-note">PDF</div></div>
       </section>}
 

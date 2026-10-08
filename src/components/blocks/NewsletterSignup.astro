@@ -1,0 +1,7 @@
+---
+interface Props {title?:string;description?:string;href?:string;frequency?:string;privacyUrl?:string}
+const {title='訂閱來信',description='收到新的文章與整理。',href,frequency,privacyUrl}=Astro.props;
+let destination:string|undefined;
+try{const url=new URL(href||'');if(url.protocol==='https:')destination=url.href}catch{}
+---
+<section class="practical-newsletter" aria-label="電子報訂閱"><div><span class="practical-resource-kicker">NEWSLETTER</span><h3>{title}</h3><p>{description}</p>{frequency&&<small>{frequency}</small>}</div><div class="practical-newsletter-action">{destination?<a href={destination} target="_blank" rel="noopener noreferrer">前往訂閱頁面 ↗</a>:<p class="practical-notice">尚未串接電子報服務。請設定正式訂閱連結。</p>}{privacyUrl?.startsWith('https://')&&<a class="practical-privacy" href={privacyUrl}>隱私政策</a>}</div></section>
