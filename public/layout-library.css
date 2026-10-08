@@ -210,3 +210,23 @@ html[data-layout="trust-path"] body{background:#f2f5f2}
 .lay-preview-footer{background:transparent;color:inherit;width:min(calc(100% - 40px),1280px);margin-inline:auto;border-top:1px solid currentColor;opacity:.7;padding:22px 0 34px}
 html[data-layout="radio-letter"] .lay-preview-footer{color:#f5f2e8}
 .lay-preview-footer a{text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+
+
+/* Original ZIP palette audit (not invented approximations). */
+html[data-layout="field-notes"] body,.lay--field-notes{background:#f1eee4}
+html[data-layout="essayist"] body,.lay--essayist{background:#f7f3e9}
+html[data-layout="curator"] body,.lay--curator{background:#efebe6}
+html[data-layout="radio-letter"] body,.lay--radio-letter{background:#111a24}
+html[data-layout="clinician"] body,.lay--clinician{background:#f4f7f5}
+html[data-layout="somatic"] body,.lay--somatic{background:#e8e6dc}
+html[data-layout="coach"] body,.lay--coach{background:#f1eadb}
+html[data-layout="collective"] body,.lay--collective{background:#f8f5eb}
+/* Manus originals constrain section internals independently.
+   Retain breathing room in each layout, not an artificial clipped background box. */
+.lay--field-notes{max-width:1360px}
+.lay--essayist{max-width:1280px}
+.lay--curator{max-width:1300px}
+.lay--radio-letter{max-width:1320px}
+.lay--clinician{max-width:1260px}
+.lay--coach,.lay--collective{max-width:1320px}
+.lay--somatic{max-width:none}
