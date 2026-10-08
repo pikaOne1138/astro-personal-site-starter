@@ -90,3 +90,25 @@
 .fx-page[data-intensity=off] .motion-underline{transition:none!important}
 .fx-page[data-intensity=expressive] .motion-card-demo[data-tilt=true].is-tilting{box-shadow:var(--shadow)}
 .fx-page[data-intensity=expressive] .motion-magnetic:hover{box-shadow:var(--shadow)}
+
+
+/* Replay is a real CSS animation; CSS transitions cannot be restarted reliably
+   by toggling visibility and transition in the same rendering frame. */
+.fx-motion-status{font-size:13px;line-height:1.65;color:var(--muted);padding:9px 14px;margin:0 0 22px;border-left:2px solid var(--accent);background:var(--surface)}
+@keyframes fx-replay-fade-up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fx-replay-fade{from{opacity:0}to{opacity:1}}
+@keyframes fx-replay-soft-zoom{from{opacity:0;transform:scale(.90)}to{opacity:1;transform:scale(1)}}
+@keyframes fx-replay-blur-up{from{opacity:0;filter:blur(12px);transform:translateY(16px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes fx-replay-slide-left{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fx-replay-slide-right{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fx-replay-clip-up{from{opacity:0;clip-path:inset(100% 0 0 0)}to{opacity:1;clip-path:inset(0)}}
+.motion-reveal.motion-replaying{animation-name:fx-replay-fade-up;animation-duration:var(--motion-duration,620ms);animation-timing-function:cubic-bezier(.22,1,.36,1);animation-fill-mode:both;animation-delay:var(--motion-delay,0ms);transition:none!important}
+.motion-reveal--fade.motion-replaying{animation-name:fx-replay-fade}
+.motion-reveal--soft-zoom.motion-replaying{animation-name:fx-replay-soft-zoom}
+.motion-reveal--blur-up.motion-replaying{animation-name:fx-replay-blur-up}
+.motion-reveal--slide-left.motion-replaying{animation-name:fx-replay-slide-left}
+.motion-reveal--slide-right.motion-replaying{animation-name:fx-replay-slide-right}
+.motion-reveal--clip-up.motion-replaying{animation-name:fx-replay-clip-up}
+.fx-page[data-intensity=expressive] .motion-reveal{--motion-duration:840ms}
+@media(prefers-reduced-motion:reduce){.motion-reveal.motion-replaying{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}}
+.fx-page[data-intensity=off] .motion-reveal.motion-replaying{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
