@@ -4,10 +4,10 @@ const base=import.meta.env.BASE_URL;
 const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / EDITORIAL',description:'不一定從文章卡片開始。試著比較田野觀察、長篇閱讀、課程路徑、策展收藏、聲音內容與年度主題索引的閱讀方法。'},{kind:'helper',label:'助人者與專業服務',en:'CARE / PROFESSIONAL',description:'清晰的專業說明、溫柔的故事入口、身體感受、行動導向教練、多人工作室，以及訪客優先的信任路徑。'}];
 ---
 <!doctype html><html lang="zh-Hant">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="12 種真正不同的 Astro 網站版型：閱讀動線、內容架構、區塊比例與互動方式，適合架站工作坊學員參考。"/><title>網站版型庫｜12 種獨立網站方向</title><link rel="stylesheet" href={base+'layout-gallery.css'}/></head>
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="12 種真正不同的網站版型：閱讀動線、內容架構、區塊比例與互動方式，適合架站工作坊學員參考。"/><title>網站版型庫｜12 種獨立網站方向</title><link rel="stylesheet" href={base+'layout-gallery.css'}/></head>
 <body>
 <a class="gallery-skip" href="#main">跳到版型列表</a>
-<header class="gallery-nav"><a href={base}>ASTRO / WORKSHOP</a><nav aria-label="工作坊展示庫"><a href={base+'blocks/'}>元件庫</a><a href={base+'effects/'}>特效庫</a><a href={base+'layouts/'} aria-current="page">版型庫</a></nav></header>
+<header class="gallery-nav"><a href={base}>WEBSITE / WORKSHOP</a><nav aria-label="工作坊展示庫"><a href={base+'blocks/'}>元件庫</a><a href={base+'effects/'}>特效庫</a><a href={base+'layouts/'} aria-current="page">版型庫</a></nav></header>
 <main id="main">
 <section class="gallery-hero"><p class="gallery-kicker">LAYOUT LIBRARY / 12 DISTINCT DIRECTIONS</p><h1>網站不只換顏色。<br/><em>也可以換一種說故事的方法。</em></h1><p class="gallery-lead">這裡比較的是<strong>整頁版面與資訊動線</strong>：先放什麼、哪裡留白、圖片與文字怎麼互相安排，以及訪客會如何往下閱讀。它不綁定原本的紙墨、晨光、靜室、植感四套視覺主題。</p><div class="gallery-summary"><span>12 種完整首頁原型</span><span>06 知識／內容</span><span>06 助人／專業服務</span></div></section>
 <section class="gallery-recipe-entry"><div><p class="gallery-kicker">EDITORIAL COMPOSITION LIBRARY / 40 RECIPES</p><h2>網站的設計感，來自構圖選擇。</h2><p>除了比較 12 款完整首頁，還能拆開看 12 種 Hero、8 種內容分區、6 種列表、6 種節奏和 8 種信任／CTA 形式。</p></div><a href={base+'layouts/recipes/'}>探索 40 種構圖配方 ↗</a></section>
@@ -30,5 +30,5 @@ const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / 
   </div>
 </section>)}
 <section id="compare" class="gallery-compare"><div><p class="gallery-kicker">HOW TO CHOOSE</p><h2>先選閱讀動線，<br/>再決定顏色。</h2></div><div><p><strong>01．你希望訪客先做什麼？</strong> 閱讀觀點、探索文章、跟著學習、收聽節目，還是確認專業服務。</p><p><strong>02．你最主要的內容是什麼？</strong> 長文、分類資料庫、課程、影像、影音、服務流程，會決定適合哪種首頁排列。</p><p><strong>03．最後才調整品牌視覺。</strong> 色彩、字體、圓角、動效，都可以在選定版面結構後再更改。</p><a href={base+'blocks/'}>到元件庫挑選區塊 ↗</a></div></section>
-</main><footer class="gallery-footer"><span>ASTRO / LAYOUT LIBRARY</span><a href={base}>回工作坊首頁 ↑</a></footer>
+</main><footer class="gallery-footer"><span>WEBSITE / LAYOUT LIBRARY</span><a href={base}>回工作坊首頁 ↑</a></footer>
 </body></html>
