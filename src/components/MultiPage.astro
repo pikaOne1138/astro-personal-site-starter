@@ -74,13 +74,13 @@ const journal=knowledgePractice[theme];
 
       {page === 'resources' && <div class="v02-content"><MediaEmbed type="youtube" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" title="YouTube 影音嵌入操作示範" caption="工作坊影片元件示範：請替換為有權使用的影片。" /></div>}
       {page === 'resources' && <section class="v02-content" data-reveal>
-        <ResourceLibrary title={kind==='knowledge' ? journal.resourceTitle : "可以探索的資源"} items={[{kind:'link',title:'閱讀首頁資訊架構',description:'網站結構與導覽入門',href:root+'articles/'+articlesV2[0].slug+'/'},{kind:'video',title:'YouTube 媒體嵌入示範',description:'開啟影音來源',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk'},{kind:'tool',title:'Astro 工作坊範例原始碼',description:'公開 GitHub 範例',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/>
+        <ResourceLibrary title={kind==='knowledge' ? journal.resourceTitle : "可以探索的資源"} items={[{kind:'link',title:'網站架構範例文章',description:'工作坊教材：示範文章與閱讀頁結構',href:root+'articles/'+articlesV2[0].slug+'/'},{kind:'video',title:'YouTube 媒體嵌入示範',description:'開啟影音來源',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk'},{kind:'tool',title:'Astro 工作坊範例原始碼',description:'公開 GitHub 範例',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/>
         <LeadMagnetCard title="取得網站範例原始碼" description="可閱讀的免費程式碼素材，無須填寫個資。" href="https://github.com/pikaOne1138/astro-personal-site-starter" format="公開免費資源"/>
         <NewsletterSignup title={journal.newsletterTitle} description={journal.newsletterIntro}/>
       </section>}
       {page === 'resources' && <section class="v02-content v02-resource" data-reveal>
-        <div><p class="eyebrow">FREE RESOURCE</p><h2>把網站需求整理清楚的 20 個問題</h2><p>示範「低壓 CTA」：免費資源可以承接還不想購買或預約的人。</p><a class="button primary" href="https://github.com/pikaOne1138/astro-personal-site-starter" target="_blank" rel="noopener noreferrer">開啟公開範例資源 <span>→</span></a></div>
-        <div class="art-frame"><div class="art-orb"></div><div class="art-note">PDF</div></div>
+        <div><p class="eyebrow">FREE RESOURCE</p><h2>{journal.resourceTitle}</h2><p>{journal.resourceIntro} 目前僅提供工作坊原始碼供參考，尚無另外的主題資源下載。</p><a class="button primary" href="https://github.com/pikaOne1138/astro-personal-site-starter" target="_blank" rel="noopener noreferrer">開啟公開範例資源 <span>→</span></a></div>
+        <div class="art-frame"><div class="art-orb"></div><div class="art-note">DEMO</div></div>
       </section>}
 
       {page === 'services' && <section class="v02-content v02-service-list" data-reveal>
