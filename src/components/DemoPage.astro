@@ -32,7 +32,7 @@ const services = [
             <a class="button primary" href={kind === 'knowledge' ? '#latest' : '#booking'}>{kind === 'knowledge' ? '從精選文章開始' : '預約第一次聊聊'} <span>→</span></a>
             <a class="button text" href={kind === 'knowledge' ? '#topics' : '#process'}>{kind === 'knowledge' ? '瀏覽主題' : '先看看合作方式'}</a>
           </div>
-          <p class="microcopy">{theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
+          <p class="microcopy">{theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : theme === 'botanical' ? '讓自然的節奏與清楚的內容，陪伴每一次閱讀。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
         </div>
         <div class="hero-art" aria-hidden="true" data-reveal style="--i:1"><div class="art-frame"><div class="art-orb"></div><div class="art-line"></div><div class="art-note">{t.zh}</div></div></div>
       </section>
@@ -73,7 +73,7 @@ const services = [
       </>}
     </main>
 
-    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={base}>六種 Demo</a><a href="#">Instagram</a><a href="#">Email</a></div><small>Astro Workshop UI Research Prototype · 2026</small></footer>
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={base}>八種 Demo</a><a href="#">Instagram</a><a href="#">Email</a></div><small>Astro Workshop UI Research Prototype · 2026</small></footer>
   </div>
   {kind === 'helper' && <a class="mobile-sticky" href="#booking">預約初談 <span>→</span></a>}
 </DemoLayout>

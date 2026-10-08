@@ -15,9 +15,13 @@
 - **blog**：`PostCard`、`PostGrid`、`FeaturedPost`、`CategoryLinks`、`TableOfContents`、`AuthorBox`
 - **professional**：`ServiceCard`、`AboutProfile`、`ProcessSteps`、`Testimonial`、`FAQ`、`ContactSection`
 
+## 設計權威與共用規範
+- 元件介面以本文件、元件索引與 `src/components/blocks/*.astro` 實作為準。
+- 設計規格請參考 `.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library-v1.5.md`；不得任意新增不在既有字級與間距系統中的數值。
+
 ## AI 組裝規範
 1. 先看 `src/data/blocks.registry.json`，挑選用途相符的元件，再讀元件 `Props`。
-2. 不要修改 Demo 原本的六個路徑。第四套配色新增為 `knowledge/botanical/` 與 `helper/botanical/`。
+2. 保留原本六個 Demo 路徑，並維護新增加的兩個植感 Demo 路徑（共八個）。第四套配色新增為 `knowledge/botanical/` 與 `helper/botanical/`。
 3. 用現有 Astro Props 傳入資料；元件本身不包含 CMS、會員、資料庫、金流或真正的預約系統。
 4. `PostGrid` 接收 `posts`；`FeatureGrid`、`Stats`、`ProcessSteps`、`FAQ` 接收 `items`。
 5. `HeroSplit`、`ImageText` 使用 `reversed` 切換左右；`FeatureGrid` 使用 `columns={2}` 或 `columns={3}`。
