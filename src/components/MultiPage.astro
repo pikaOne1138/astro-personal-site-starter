@@ -1,0 +1,100 @@
+---
+import DemoLayout from '../layouts/DemoLayout.astro';
+import SiteNav from './SiteNav.astro';
+import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
+import { detailPages, type PageId } from '../site-map';
+
+interface Props { kind: Kind; theme: Theme; page: PageId; }
+const { kind, theme, page } = Astro.props;
+const k = kindMeta[kind];
+const t = themeMeta[theme];
+const base = import.meta.env.BASE_URL;
+const root = `${base}${kind}/${theme}/`;
+
+const pageTitle: Record<string,string> = {
+  articles: '文章',
+  topics: '主題索引',
+  'start-here': 'Start Here',
+  about: '關於我',
+  resources: '資源',
+  services: '服務項目',
+  'first-visit': '第一次來？',
+  faq: '常見問題',
+  booking: '預約與聯絡',
+};
+
+const articleMeta = [
+  ['網站思考','首頁是大廳，不是整棟房子','5 min','homepage-is-a-lobby'],
+  ['寫作方法','把複雜的事，寫成願意重讀的文字','7 min','make-complex-things-clear'],
+  ['個人知識','知識不是收集越多越好，而是能不能重新找到','9 min','make-complex-things-clear'],
+];
+---
+<DemoLayout title={`${pageTitle[page]} · ${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+  <div class="page-shell">
+    <SiteNav kind={kind} theme={theme} current={page} />
+    <main class="v02-page">
+      <section class="v02-pagehero" data-reveal>
+        <p class="eyebrow">{k.eyebrow} · {t.label}</p>
+        <h1>{pageTitle[page]}</h1>
+        <p>{page === 'about' ? '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。' :
+          page === 'articles' ? '把內容整理成可以探索、回訪與累積的入口，而不是把所有文章塞在首頁。' :
+          page === 'services' ? '把「我可以怎麼幫你」說清楚，讓訪客可以先理解，再決定是否往下一步。' :
+          page === 'first-visit' ? '把未知變成已知：流程、費用、方式、界線與第一次會發生什麼。' :
+          page === 'booking' ? '低壓力的下一步：先確認適合度，再開始合作。' :
+          '這一頁從首頁拆出來，讓首頁只負責引導，而不是承擔所有資訊。'}</p>
+      </section>
+
+      {page === 'articles' && <section class="v02-content" data-reveal>
+        <div class="v02-filter"><span>全部</span><span>網站思考</span><span>AI 工作方法</span><span>個人知識</span></div>
+        <div class="v02-article-grid">
+          {articleMeta.map(([cat,title,time,slug],i)=><a class="v02-article-card" href={`${root}articles/${slug}/`}>
+            <span class="num">0{i+1}</span><small>{cat} · {time}</small><h2>{title}</h2><p>這是一篇範例文章，用來示範文章總覽與文章內頁不是同一種資訊密度。</p><b>閱讀文章 →</b>
+          </a>)}
+        </div>
+      </section>}
+
+      {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>
+        {['AI × 工作方法','網站與創作','個人知識系統','閱讀與學習'].map((x,i)=><article><span>0{i+1}</span><div><h2>{x}</h2><p>把同一主題的文章收在一起，讓內容量長大後仍然找得到。</p></div><b>{8-i} 篇 →</b></article>)}
+      </section>}
+
+      {page === 'start-here' && <section class="v02-content v02-reading-path" data-reveal>
+        <article><span>01</span><h2>如果你第一次來</h2><p>先讀三篇最能代表這個網站的文章，而不是從最新文章倒著翻。</p></article>
+        <article><span>02</span><h2>如果你正在做網站</h2><p>從首頁、內容架構、CTA 到部署，依照一條路徑閱讀。</p></article>
+        <article><span>03</span><h2>如果你只是想逛逛</h2><p>直接從主題索引進入，跟著好奇心走。</p></article>
+      </section>}
+
+      {page === 'resources' && <section class="v02-content v02-resource" data-reveal>
+        <div><p class="eyebrow">FREE RESOURCE</p><h2>把網站需求整理清楚的 20 個問題</h2><p>示範「低壓 CTA」：免費資源可以承接還不想購買或預約的人。</p><a class="button primary" href="#">取得資源 <span>→</span></a></div>
+        <div class="art-frame"><div class="art-orb"></div><div class="art-note">PDF</div></div>
+      </section>}
+
+      {page === 'services' && <section class="v02-content v02-service-list" data-reveal>
+        {detailPages.services.map((s,i)=><a class="v02-service-row" href={`${root}services/${s.slug}/`}><span>0{i+1}</span><div><h2>{s.title}</h2><p>{i===0?'先理解需求、確認適合度，再一起決定下一步。':'需要一段時間整理議題時，提供穩定而有結構的陪伴。'}</p></div><b>了解服務 →</b></a>)}
+      </section>}
+
+      {page === 'first-visit' && <section class="v02-content" data-reveal>
+        <ol class="steps">
+          <li><span>1</span><div><h3>留下需求</h3><p>只需要說現在最想處理的事情，不用先整理成完整故事。</p></div></li>
+          <li><span>2</span><div><h3>確認方式與費用</h3><p>時間、形式、費用、取消規則都先說清楚。</p></div></li>
+          <li><span>3</span><div><h3>第一次對談</h3><p>先認識彼此與需求，不預設一定要長期合作。</p></div></li>
+        </ol>
+        <aside class="v02-note"><strong>第一次來最需要的是降低未知。</strong><p>這頁不是銷售頁，而是把會讓人猶豫的問題先回答。</p></aside>
+      </section>}
+
+      {page === 'about' && <section class="v02-content about-split" data-reveal>
+        <div class="portrait-placeholder"><span>自然光人像 / 作者照</span></div>
+        <div><p class="eyebrow">WHY I DO THIS</p><h2>{kind === 'knowledge' ? '我喜歡把複雜的東西拆開，再重新拼成可以使用的樣子。' : '專業不是站得離你很遠，而是能陪你把眼前的事情看清楚。'}</h2><p>這裡保留完整的故事、工作方式與背景。首頁只放三行短版，想深入認識的人再進來。</p><div class="credentials"><span>工作方法</span><span>經歷時間軸</span><span>專業背景</span></div></div>
+      </section>}
+
+      {page === 'faq' && <section class="v02-content faq" data-reveal>
+        {['第一次談話會發生什麼？','我不確定自己適不適合，可以先問嗎？','線上與實體怎麼選？','取消或改期怎麼處理？'].map((q,i)=><details open={i===0}><summary>{q}</summary><p>這裡放簡短、具體、降低不確定性的回答。需要更完整的說明，再連到合作方式或預約頁。</p></details>)}
+      </section>}
+
+      {page === 'booking' && <section class="v02-content v02-booking" data-reveal>
+        <div><p class="eyebrow">NEXT STEP</p><h2>不用一次決定全部，先確認這是不是適合你的下一步。</h2><p>正式模板可以接 Google Form、Tally、Cal.com 或 LINE；這裡只保留網站端的轉換入口，不自己打造 CRM。</p></div>
+        <form class="v02-form"><label>你的名字<input placeholder="怎麼稱呼你？" /></label><label>Email<input type="email" placeholder="you@example.com" /></label><label>想先聊什麼？<textarea rows="5" placeholder="簡單說就好"></textarea></label><button type="button">送出需求 →</button></form>
+      </section>}
+    </main>
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={root}>回首頁</a><a href={base}>六種 Demo</a></div><small>v0.2 Multipage Architecture · Astro Workshop</small></footer>
+  </div>
+</DemoLayout>

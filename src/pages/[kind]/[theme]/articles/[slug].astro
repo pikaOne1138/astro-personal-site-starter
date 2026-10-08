@@ -1,0 +1,33 @@
+---
+import DemoLayout from '../../../../layouts/DemoLayout.astro';
+import SiteNav from '../../../../components/SiteNav.astro';
+import { allArticlePaths } from '../../../../site-map';
+import { kindMeta, themeMeta, type Kind, type Theme } from '../../../../data';
+
+export function getStaticPaths() { return allArticlePaths(); }
+interface Props { kind: Kind; theme: Theme; article: {slug:string; title:string}; }
+const { kind, theme, article } = Astro.props;
+const k = kindMeta[kind]; const t = themeMeta[theme];
+const base = import.meta.env.BASE_URL;
+const root = `${base}${kind}/${theme}/`;
+---
+<DemoLayout title={`${article.title} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+  <div class="page-shell">
+    <SiteNav kind={kind} theme={theme} current="articles" />
+    <main class="v02-article">
+      <header data-reveal><p class="eyebrow">網站思考 · 7 MIN READ</p><h1>{article.title}</h1><p class="v02-deck">文章頁的工作不是炫技，而是讓讀者願意一直讀下去，並且知道讀完可以往哪裡走。</p><div class="v02-byline">2026.10.08　·　One Studio　·　最後更新</div></header>
+      <article data-reveal>
+        <p class="v02-lead">首頁是大廳，不是整棟房子。這句話同時也是 v0.2 從 Landing Page 原型走向真正網站架構的核心。</p>
+        <h2>首頁只負責讓人知道下一步</h2>
+        <p>當文章、About、服務、FAQ 全部塞在首頁時，網站很容易看起來像一張很長的銷售頁。把詳細資訊拆成真正的頁面後，首頁反而可以更有呼吸感。</p>
+        <blockquote>精緻感不是加入更多東西，而是每個東西都有自己的位置。</blockquote>
+        <h2>文章頁也有自己的資訊架構</h2>
+        <p>標題、摘要、日期、閱讀寬度、段落節奏、引言、相關文章與文末 CTA，各自都有不同功能。模板應該先把這些結構做好，再讓學員替換內容。</p>
+        <aside class="v02-note"><strong>Workshop 原則</strong><p>先把可閱讀、可導覽、可修改做好，再加入搜尋、留言、會員等進階功能。</p></aside>
+        <h2>下一步</h2>
+        <p>讀完後不要把人丟在頁尾。可以推薦同主題文章、回主題頁，或提供一個低壓力的訂閱入口。</p>
+      </article>
+      <nav class="v02-postnav"><a href={`${root}articles/`}>← 回文章總覽</a><a href={`${root}about/`}>認識作者 →</a></nav>
+    </main>
+  </div>
+</DemoLayout>

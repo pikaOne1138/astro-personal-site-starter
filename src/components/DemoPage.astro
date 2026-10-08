@@ -1,6 +1,7 @@
 ---
 import DemoLayout from '../layouts/DemoLayout.astro';
 import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
+import SiteNav from './SiteNav.astro';
 interface Props { kind: Kind; theme: Theme; }
 const { kind, theme } = Astro.props;
 const k = kindMeta[kind];
@@ -19,13 +20,7 @@ const services = [
 ---
 <DemoLayout title={`${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
   <div class="page-shell">
-    <header class="site-nav">
-      <a class="brand" href={base}><span class="brand-mark">●</span><span>One Studio</span></a>
-      <nav class="desktop-nav" aria-label="主要導覽">
-        {kind === 'knowledge' ? <><a href="#latest">文章</a><a href="#topics">主題</a><a href="#about">關於</a></> : <><a href="#services">服務</a><a href="#process">合作方式</a><a href="#about">關於我</a><a href="#faq">FAQ</a></>}
-      </nav>
-      <a class="nav-cta" href={kind === 'knowledge' ? '#newsletter' : '#booking'}>{kind === 'knowledge' ? '訂閱來信' : '預約初談'}</a>
-    </header>
+    <SiteNav kind={kind} theme={theme} current="home" />
 
     <main>
       <section class="hero section">

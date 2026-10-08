@@ -1,0 +1,24 @@
+---
+import DemoLayout from '../../../../layouts/DemoLayout.astro';
+import SiteNav from '../../../../components/SiteNav.astro';
+import { allServicePaths } from '../../../../site-map';
+import { themeMeta, type Theme } from '../../../../data';
+
+export function getStaticPaths() { return allServicePaths(); }
+interface Props { theme: Theme; service: {slug:string; title:string}; }
+const { theme, service } = Astro.props;
+const t = themeMeta[theme];
+const base = import.meta.env.BASE_URL;
+const root = `${base}helper/${theme}/`;
+---
+<DemoLayout title={`${service.title} · ${t.zh}`} description="服務詳細頁" theme={theme} kind="helper">
+  <div class="page-shell">
+    <SiteNav kind="helper" theme={theme} current="services" />
+    <main class="v02-service-detail">
+      <header data-reveal><p class="eyebrow">SERVICE · {t.label}</p><h1>{service.title}</h1><p>服務頁不只回答「這是什麼」，還要說清楚適合誰、怎麼進行、費用與下一步。</p></header>
+      <section class="v02-service-facts" data-reveal><div><small>適合誰</small><strong>想先把現在的狀況說清楚的人</strong></div><div><small>形式</small><strong>線上 / 實體</strong></div><div><small>時間</small><strong>50 分鐘</strong></div></section>
+      <section class="v02-prose" data-reveal><h2>你不需要先知道問題的答案</h2><p>第一次會談的目的是理解，而不是要求你先整理好自己。這裡會清楚說明工作方式、界線與你可以期待什麼。</p><h2>進行方式</h2><ol><li>留下簡短需求</li><li>確認時間與形式</li><li>第一次會談</li><li>一起決定是否繼續</li></ol><h2>費用與取消</h2><p>正式模板應把價格與取消規則放在容易找到的位置，不用逼訪客私訊才知道。</p></section>
+      <div class="v02-service-cta"><div><p class="eyebrow">NEXT STEP</p><h2>如果你還不確定，先聊一次。</h2></div><a class="button primary" href={`${root}booking/`}>預約初談 <span>→</span></a></div>
+    </main>
+  </div>
+</DemoLayout>

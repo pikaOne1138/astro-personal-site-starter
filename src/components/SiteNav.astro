@@ -1,0 +1,33 @@
+---
+import { pageMap } from '../site-map';
+import type { Kind, Theme } from '../data';
+
+interface Props {
+  kind: Kind;
+  theme: Theme;
+  current?: string;
+}
+const { kind, theme, current = 'home' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const root = `${base}${kind}/${theme}/`;
+const links = pageMap[kind].filter((item) => item.nav);
+const cta = kind === 'knowledge'
+  ? { label: '訂閱來信', href: `${root}resources/` }
+  : { label: '預約初談', href: `${root}booking/` };
+---
+<header class:list={['v02-nav', `v02-nav--${theme}`]}>
+  {theme === 'paper' && <div class="paper-masthead"><a href={root}>ONE JOURNAL</a><span>{kind === 'knowledge' ? 'IDEAS · NOTES · ESSAYS' : 'PRACTICE · NOTES · SERVICES'}</span></div>}
+  <div class="v02-nav__inner">
+    {theme !== 'paper' && <a class="v02-brand" href={root}>
+      <span class="v02-brand__mark">{theme === 'morning' ? '◌' : '□'}</span>
+      <span>One Studio</span>
+    </a>}
+    <nav class="v02-links" aria-label="主要導覽">
+      {links.map((item) => <a class:list={[current === item.id && 'is-current']} href={`${root}${item.id}/`}>{item.label}</a>)}
+    </nav>
+    <div class="v02-actions">
+      {theme === 'studio' && kind === 'knowledge' && <button class="v02-search" type="button" aria-label="搜尋">⌘K</button>}
+      <a class="v02-cta" href={cta.href}>{cta.label}</a>
+    </div>
+  </div>
+</header>
