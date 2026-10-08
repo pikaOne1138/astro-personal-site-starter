@@ -1,0 +1,26 @@
+---
+interface Props {type:'youtube'|'audio'|'podcast';url?:string;title:string;caption?:string;}
+const {type,url,title,caption}=Astro.props;
+let source:string|null=null;let external:string|null=null;
+try{
+  if(url){
+    const u=new URL(url);
+    if(u.protocol==='https:'){
+      external=u.toString();
+      if(type==='youtube'){
+        let id:string|null=null;
+        if(['youtube.com','www.youtube.com','m.youtube.com'].includes(u.hostname))id=u.searchParams.get('v')||(u.pathname.startsWith('/shorts/')?u.pathname.split('/')[2]:null)||(u.pathname.startsWith('/embed/')?u.pathname.split('/')[2]:null);
+        if(u.hostname==='youtu.be')id=u.pathname.slice(1).split('/')[0];
+        if(id&&/^[\w-]{11}$/.test(id))source='https://www.youtube-nocookie.com/embed/'+id;
+      }else if(type==='audio'&&/\.(mp3|ogg|wav|m4a)$/i.test(u.pathname))source=u.toString();
+    }
+  }
+}catch{}
+---
+<figure class="practical-media">
+  {source&&type==='youtube'?<div class="practical-video"><iframe src={source} title={title} loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>:
+  source&&type==='audio'?<audio controls preload="none" src={source} aria-label={title}><a href={source}>開啟音訊</a></audio>:
+  external?<a class="practical-action" href={external} target="_blank" rel="noopener noreferrer">{title}（外部媒體） ↗</a>:
+  <p class="practical-notice">尚未設定可用的媒體來源。</p>}
+  {caption&&<figcaption>{caption}</figcaption>}
+</figure>
