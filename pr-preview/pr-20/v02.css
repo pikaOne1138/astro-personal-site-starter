@@ -48,8 +48,10 @@
 .v2-search-panel-heading{display:flex;align-items:start;justify-content:space-between;gap:24px}
 .v2-search-eyebrow{margin:0;color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.12em}
 .v2-search-panel h2{font:600 32px/1.25 var(--heading);margin:8px 0 24px}
-.v2-search-close{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:14px;padding:8px 0}
-.v2-search-close kbd{font:inherit;border:1px solid var(--line);border-radius:var(--radius);padding:0 8px}
+.v2-search-close{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:70px;min-height:44px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;padding:8px 10px;transition:background .2s,color .2s}
+.v2-search-close:hover{background:var(--surface-2);color:var(--text)}
+.v2-search-close kbd{font:500 11px var(--body);border:1px solid var(--line);border-radius:999px;padding:2px 6px;line-height:1.4}
+.v2-search-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .v2-search-field{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg)}
 .v2-search-field svg{flex:none;color:var(--muted)}
 .v2-search-field input{border:0;outline:0;min-width:0;width:100%;font-size:16px;background:transparent;color:var(--text)}
