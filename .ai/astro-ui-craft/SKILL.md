@@ -178,3 +178,7 @@ For article archives use the shared `ArticleViewSwitcher.astro` with list/cards/
 
 ## Motion and interaction craft
 When asked to refine scrolling reveal, stagger, hover tilt/spotlight, image zoom/pan, magnetic CTA, animated underline or FAQ open transitions, first follow `.ai/astro-motion-craft/SKILL.md` and `.ai/astro-motion-craft/references/manus-v2-motion-map.md`. The Manus v2 files are reference material, not installed components. Favor existing four theme variables, unobtrusive editorial motion, progressive enhancement and mobile/reduced-motion fallback over importing a separate Tailwind theme.
+
+
+## Reusable motion effects library
+The reusable motion research + integration library lives in `.ai/astro-motion-craft/library/`. When generating or enhancing UI motion, read that catalog and relevant source-grounded recipe first, along with `.ai/astro-motion-craft/SKILL.md`; do not generate novel hover/reveal logic while equivalent existing components are available. Manus v2 references are not automatically installed runtime effects.
