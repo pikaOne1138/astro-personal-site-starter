@@ -1,0 +1,29 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='curator')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[2];
+const next=directions[4];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="curator">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-curator-head"><strong>THE CURATOR / 06</strong><span>OBJECTS, IDEAS, RELATIONS</span><a href="#section-a">館藏索引 ↘</a></header>
+<section class="lay-curator-hero"><div><small>AN INDEX OF ATTENTION</small><h1>喜歡的事物，<br/>值得好好<span>收藏。</span></h1><p>不是單純把東西放在一起，而是重新排列它們之間的關係。</p></div><div class="lay-curator-collage"><div class="lay-curator-main"><img src={image} alt="策展圖像拼貼" loading="eager"/></div><div class="lay-curator-color">001 <span>ARCHIVE</span></div><div class="lay-curator-note">收集 / 分類 / 再發現</div></div></section>
+<section id="section-a" class="lay-curator-catalog"><h2>主題收藏 / THE INDEX</h2>{['關於日常的觀看','閱讀中的圖像','文字與物件之間'].map((title,i)=><details><summary><span>0{i+1}</span><strong>{title}</strong><em>＋</em></summary><p>這個分類保存相關的觀察、參考來源與延伸閱讀。正式網站可把內容連到各分類頁面。</p></details>)}</section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
