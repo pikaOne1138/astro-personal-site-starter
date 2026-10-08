@@ -109,3 +109,18 @@
 @media(prefers-reduced-motion:reduce){.practical-menu-dialog{scroll-behavior:auto}}
 
 @media(max-width:600px){.v02-actions .v02-explore-link{display:none}.v02-nav__inner{gap:8px}.v02-actions{gap:8px}.v02-actions .v02-cta{font-size:14px}.v02-brand{font-size:14px}.practical-menu-toggle{font-size:14px}}
+
+/* SocialLinks: compact social identity row; same tokens across four themes. */
+.social-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-block:18px}
+.social-links__item{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:44px;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--text);text-decoration:none;font-size:14px;line-height:1.4;transition:border-color var(--fast),background var(--fast)}
+.social-links__item img{display:block;flex:none;width:20px;height:20px;object-fit:contain;opacity:.88}
+.social-links__item svg{flex:none}
+.social-links__item:hover{border-color:var(--accent);background:var(--bg)}
+.social-links__item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.social-links__preview{opacity:.7;cursor:default}
+.social-links__preview:hover{border-color:var(--line);background:var(--surface)}
+.social-links--labels .social-links__item{min-width:0;padding-inline:14px}
+.social-links--sm{gap:6px}
+.social-links--sm .social-links__item{min-width:40px;min-height:40px;padding:9px}
+.social-links--sm .social-links__item img,.social-links--sm .social-links__item svg{width:18px;height:18px}
+@media(prefers-reduced-motion:reduce){.social-links__item{transition:none}}
