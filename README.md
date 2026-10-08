@@ -142,3 +142,8 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 動效參考庫（Manus v2 × 現有 Astro）
 
 `.ai/astro-motion-craft/library/` 已建立跨 AI 可重複利用的特效參考庫：`effect-catalog.md` 對照現有元件與 Manus v2，`recipes/` 提供 Reveal／Stagger、卡片 Tilt／Spotlight／磁吸 CTA，以及 Zoom／Pan、連結底線、FAQ 展開的源碼行為、參數與整合方法。新的 `.ai/astro-motion-craft/SKILL.md` 會先讀資料庫，再依不同風格與使用情境選擇效果。**這些是實作參考與決策規格，不代表相關特效全部已經加到目前的網站。** 原四套主題 CSS 不被 Manus Tailwind 配置覆蓋。
+
+
+### 獨立特效庫（可操作 Demo）
+
+`/effects/` 是元件庫 `/blocks/` 旁的特效展示站。七個可重複運用的 Astro effects，涵蓋七種 Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、Magnetic Button、三種動態底線及可調 FAQ；依六類 Demo 排列。能切換紙墨／晨光／靜室／植感，及關閉／輕柔／鮮明動態，進場與群組有重播按鈕。效果和網站內容元件**分開計數**：網站元件仍由 `blocks.registry.json` 決定，特效使用 `effects.registry.json`，源碼 `src/components/effects/`，CSS `public/effects.css`。Motion Skill 已加入這套元件與 Manus 參考庫的整合指引，預覽建置與實際操作須分別驗收。
