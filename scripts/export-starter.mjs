@@ -44,7 +44,7 @@ assets['.github/workflows/deploy.yml']=[
 '          path: dist',
 '      - id: deploy',
 '        uses: actions/deploy-pages@v4'
-].join('\\n')+'\\n';
+].join('\n')+'\n';
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
