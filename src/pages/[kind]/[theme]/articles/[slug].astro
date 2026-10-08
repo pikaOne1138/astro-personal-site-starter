@@ -35,7 +35,7 @@ const articleHref=(slug:string)=>root+'articles/'+slug+'/';
 const articleUrl=new URL(articleHref(article.slug),Astro.site??Astro.url).href;
 const related=articlesV2.filter(a=>a.slug!==article.slug && a.tags.some(t=>meta?.tags.includes(t))).slice(0,3).map(a=>({title:a.title,excerpt:a.excerpt,href:root+'articles/'+a.slug+'/'}));
 ---
-<DemoLayout title={`${article.title} · ${t.zh}`} description={entry.data.description} theme={theme} kind={kind} articlePublishedAt={entry.data.publishedAt.toISOString()} articleUpdatedAt={entry.data.updatedAt?.toISOString()} canonicalURL={entry.data.canonicalURL}>
+<DemoLayout title={`${article.title} · ${t.zh}`} description={entry.data.description} theme={theme} kind={kind} articlePublishedAt={entry.data.publishedAt.toISOString()} articleUpdatedAt={entry.data.updatedAt?.toISOString()} canonicalURL={entry.data.canonicalURL ?? new URL(`${base}knowledge/paper/articles/${encodeURIComponent(article.slug)}/`, Astro.site ?? Astro.url).href}>
   <link rel="stylesheet" href={base+"blocks-v2.css"}/>
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current="articles" />
