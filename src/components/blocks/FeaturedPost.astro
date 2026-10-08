@@ -1,0 +1,5 @@
+---
+interface Props {title:string;excerpt:string;category?:string;href?:string;}
+const {title,excerpt,category='精選文章',href='#'}=Astro.props;
+---
+<article class="ab-featured-post"><div class="ab-featured-art">EDITOR'S PICK</div><div><p class="ab-eyebrow">{category}</p><h2><a href={href}>{title}</a></h2><p>{excerpt}</p><a class="ab-text-link" href={href}>開始閱讀 ↗</a></div></article>
