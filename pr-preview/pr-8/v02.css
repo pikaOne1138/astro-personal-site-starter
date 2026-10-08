@@ -39,9 +39,9 @@
 .v02-nav--botanical .v02-cta{background:var(--accent);color:white;border-radius:var(--radius)}
 
 /* V2: native full-site search dialog. Uses existing theme tokens and an opaque dialog surface. */
-.v02-actions .v2-site-search-trigger{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:var(--radius);cursor:pointer}
-.v02-actions .v2-site-search-trigger:hover{color:var(--accent);border-color:var(--accent)}
-.v02-actions .v2-site-search-trigger:focus-visible,.v2-search-panel button:focus-visible,.v2-search-panel input:focus-visible,.v2-search-matches a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.v2-site-search-trigger{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:var(--radius);cursor:pointer}
+.v2-site-search-trigger:hover{color:var(--accent);border-color:var(--accent)}
+.v2-site-search-trigger:focus-visible,.v2-search-panel button:focus-visible,.v2-search-panel input:focus-visible,.v2-search-matches a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .v2-site-search-dialog{position:fixed;inset:0;margin:auto;width:min(640px,calc(100vw - 32px));max-height:min(80vh,760px);padding:0;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface);color:var(--text);box-shadow:0 24px 64px rgb(0 0 0/.2);overflow-y:auto;overscroll-behavior:contain}
 .v2-site-search-dialog::backdrop{background:rgb(20 20 20/.55)}
 .v2-search-panel{padding:32px}
@@ -64,4 +64,4 @@
 .v2-search-matches strong{font-size:16px;font-weight:600}
 .v2-search-matches span{font-size:14px;color:var(--muted)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:600px){.v2-search-panel{padding:24px}.v2-site-search-dialog{max-height:90vh}.v02-actions .v2-site-search-trigger{width:44px;height:44px}}
+@media(max-width:600px){.v2-search-panel{padding:24px}.v2-site-search-dialog{max-height:90vh}.v2-site-search-trigger{width:44px;height:44px}}
