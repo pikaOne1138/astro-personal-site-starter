@@ -1,0 +1,24 @@
+---
+interface Props {links:{label:string;href:string}[];label?:string;}
+const {links,label='選單'}=Astro.props;
+const menuId='mobile-menu-'+Math.random().toString(36).slice(2,9);
+---
+<div class="practical-menu" data-mobile-menu>
+  <button class="practical-menu-toggle" type="button" aria-label={'開啟'+label} aria-expanded="false" aria-controls={menuId} data-menu-open><span aria-hidden="true">☰</span><span>選單</span></button>
+  <dialog id={menuId} class="practical-menu-dialog" aria-label="網站導覽">
+    <div class="practical-menu-head"><strong>網站導覽</strong><button type="button" data-menu-close aria-label="關閉選單">關閉 ✕</button></div>
+    <nav aria-label="手機主要導覽">{links.map(link=><a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>)}</nav>
+  </dialog>
+</div>
+<script>
+document.querySelectorAll<HTMLElement>('[data-mobile-menu]').forEach(host=>{
+  const trigger=host.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const dialog=host.querySelector<HTMLDialogElement>('dialog');
+  if(!trigger||!dialog)return;
+  trigger.addEventListener('click',()=>{dialog.showModal();trigger.setAttribute('aria-expanded','true');dialog.querySelector<HTMLButtonElement>('[data-menu-close]')?.focus()});
+  const close=()=>dialog.close();
+  dialog.querySelector('[data-menu-close]')?.addEventListener('click',close);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
+  dialog.addEventListener('close',()=>{trigger.setAttribute('aria-expanded','false');trigger.focus()});
+});
+</script>

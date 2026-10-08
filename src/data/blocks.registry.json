@@ -702,5 +702,140 @@
       "botanical"
     ],
     "version": "V2"
+  },
+  {
+    "id": "mobile-menu",
+    "name": "MobileMenu",
+    "category": "common",
+    "path": "src/components/blocks/MobileMenu.astro",
+    "keywords": [
+      "手機導覽",
+      "漢堡選單",
+      "抽屜式導覽"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "booking-link",
+    "name": "BookingLink",
+    "category": "professional",
+    "path": "src/components/blocks/BookingLink.astro",
+    "keywords": [
+      "預約",
+      "Google表單",
+      "外部排程"
+    ],
+    "compatibleWith": [
+      "helper",
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "contact-actions",
+    "name": "ContactActions",
+    "category": "professional",
+    "path": "src/components/blocks/ContactActions.astro",
+    "keywords": [
+      "LINE",
+      "電話",
+      "Email",
+      "聯絡"
+    ],
+    "compatibleWith": [
+      "helper",
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "pricing-details",
+    "name": "PricingDetails",
+    "category": "professional",
+    "path": "src/components/blocks/PricingDetails.astro",
+    "keywords": [
+      "價格",
+      "服務時長",
+      "費用"
+    ],
+    "compatibleWith": [
+      "helper",
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "trust-info",
+    "name": "TrustInfo",
+    "category": "professional",
+    "path": "src/components/blocks/TrustInfo.astro",
+    "keywords": [
+      "資格",
+      "信任資訊",
+      "服務政策",
+      "隱私"
+    ],
+    "compatibleWith": [
+      "helper",
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "media-embed",
+    "name": "MediaEmbed",
+    "category": "article",
+    "path": "src/components/blocks/MediaEmbed.astro",
+    "keywords": [
+      "YouTube",
+      "Podcast",
+      "音訊",
+      "影片嵌入"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]

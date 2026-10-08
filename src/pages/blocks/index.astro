@@ -31,6 +31,12 @@ import ArticleList from '../../components/blocks/ArticleList.astro';
 import RelatedArticles from '../../components/blocks/RelatedArticles.astro';
 import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
 import SiteSearchDialog from '../../components/blocks/SiteSearchDialog.astro';
+import MobileMenu from '../../components/blocks/MobileMenu.astro';
+import BookingLink from '../../components/blocks/BookingLink.astro';
+import ContactActions from '../../components/blocks/ContactActions.astro';
+import PricingDetails from '../../components/blocks/PricingDetails.astro';
+import TrustInfo from '../../components/blocks/TrustInfo.astro';
+import MediaEmbed from '../../components/blocks/MediaEmbed.astro';
 import { articlesV2 } from '../../data/articles-v2';
 const base=import.meta.env.BASE_URL;
 const posts=[{title:'把生活寫成自己的知識地圖',category:'個人寫作',excerpt:'從一個小小的觀察開始，整理值得長期留下的想法。',href:'#posts'},{title:'一篇值得重讀的閱讀筆記',category:'閱讀',excerpt:'不求寫得很多，只求每次回來，都能找到一點啟發。',href:'#posts'},{title:'建立自己的內容基地',category:'方法',excerpt:'用簡單的架構，讓每篇內容都有清楚的去處。',href:'#posts'}];
@@ -38,7 +44,7 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：35 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：41 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
@@ -68,6 +74,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
       <SiteSearchDialog kind="knowledge" theme="paper" />
     </div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>MobileMenu</strong><span>手機用可展開導覽（請縮小視窗測試）</span></div><p>八款完整網站的手機導覽列已改用此元件；支援開關、Esc 及鍵盤焦點。</p><div class="practical-gallery-mobile"><MobileMenu links={[{label:'知識首頁',href:base+'knowledge/paper/'},{label:'文章探索',href:base+'knowledge/paper/explore/'},{label:'聯絡與預約',href:base+'helper/paper/booking/'}]}/></div></div>
   </section>
   <section id="hero" class="ab-category">
     <h2 class="ab-category-title">02 / 首頁主視覺</h2><p class="ab-category-intro">可選左右圖文、置中標題或滿版色塊主視覺。</p>
@@ -106,6 +113,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleComparison</strong><span>易閱讀的比較表格</span></div><ArticleComparison caption="文章探索方式比較" headers={['方式','適合情境']} rows={ [['關鍵字搜尋','已知道想找什麼'],['標籤雲','想探索相關主題'],['月份列表','想回顧某段時間的內容'],['日曆','記得發文日期']] } /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>RelatedArticles</strong><span>延伸閱讀</span></div><RelatedArticles articles={articlesV2.slice(0,2).map(a=>({title:a.title,excerpt:a.excerpt,href:base+'knowledge/paper/articles/'+a.slug+'/'}))} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ContentCarousel</strong><span>水平捲動、箭頭導覽</span></div><ContentCarousel title="推薦探索的主題"><article><h4>文章寫作</h4><p>讓文字清楚、耐讀。</p></article><article><h4>網站架構</h4><p>幫新讀者找到入口。</p></article><article><h4>知識整理</h4><p>累積日後找得到的內容。</p></article><article><h4>日常紀錄</h4><p>慢慢寫下自己的觀察。</p></article></ContentCarousel></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>MediaEmbed</strong><span>16:9 YouTube、音訊、Podcast 外連</span></div><MediaEmbed type="youtube" title="影片嵌入元件展示" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" caption="示範網址可替換成你有權使用的內容，無效連結不呈現假播放器。" /></div>
   </section>
   <section id="professional" class="ab-category">
     <h2 class="ab-category-title">06 / 專業服務與建立信任</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
@@ -115,6 +123,10 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>Testimonial</strong><span>客戶回饋（內容為示例）</span></div><Testimonial quote="這段介紹應放入已獲同意公開的真實回饋，不要把示例當成實際見證。" name="示範文字" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>FAQ</strong><span>原生 HTML 可展開項目</span></div><FAQ items={faq} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ContactSection</strong><span>聯絡與預約入口</span></div><ContactSection title="可以先從聊聊開始。" description="了解服務是否符合你的需求，再決定是否預約。" href="#examples" label="觀看網站範例" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>BookingLink</strong><span>外部表單／排程服務入口</span></div><BookingLink description="尚未設定實際預約網址時，不會顯示假的提交按鈕。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ContactActions</strong><span>LINE／Email／電話</span></div><ContactActions email="demo@example.com" /><p class="practical-caption">上方 Email 為示範格式，正式站請替換成真實聯絡資訊。</p></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>PricingDetails</strong><span>時長、費用、形式與備註</span></div><PricingDetails items={[{name:'首次諮詢',duration:'30 分鐘',format:'線上',note:'費用依實際服務公告'},{name:'主題課程',format:'實體或線上',note:'此表為版型展示，不代表任何真實服務'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>TrustInfo</strong><span>可信任的資格、服務界線與政策</span></div><TrustInfo format="線上／實體依實際服務提供者設定" notice="此為網站展示範例；請使用已核實的專業資格與個資政策。" /></div>
   </section>
 
   <section id="examples" class="ab-category">

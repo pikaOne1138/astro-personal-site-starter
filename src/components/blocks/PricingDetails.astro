@@ -1,0 +1,14 @@
+---
+interface Props {items:{name:string;price?:string;duration?:string;format?:string;note?:string}[];disclaimer?:string;}
+const {items,disclaimer}=Astro.props;
+---
+<section class="practical-block practical-pricing" aria-label="服務費用與方式">
+ <h3>服務方式與費用</h3>
+ <dl>{items.map(item=><div class="practical-pricing-row"><dt>{item.name}</dt><dd>
+ {item.duration&&<span>{item.duration}</span>}
+ {item.format&&<span>{item.format}</span>}
+ <strong>{item.price||'費用請洽詢'}</strong>
+ {item.note&&<small>{item.note}</small>}
+ </dd></div>)}</dl>
+ {disclaimer&&<p class="practical-caption">{disclaimer}</p>}
+</section>

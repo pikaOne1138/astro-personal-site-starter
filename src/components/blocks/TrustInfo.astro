@@ -1,0 +1,18 @@
+---
+interface Props {professionalName?:string;credentials?:string[];areas?:string[];format?:string;policy?:string;privacyUrl?:string;notice?:string;}
+const {professionalName,credentials=[],areas=[],format,policy,privacyUrl,notice}=Astro.props;
+const hasPrivacy=privacyUrl?.startsWith('https://')||privacyUrl?.startsWith('/');
+const hasData=professionalName||credentials.length||areas.length||format||policy||notice;
+---
+<section class="practical-block practical-trust" aria-label="專業與服務資訊">
+  <h3>專業與服務資訊</h3>
+  {hasData?<dl>
+    {professionalName&&<div><dt>服務提供者</dt><dd>{professionalName}</dd></div>}
+    {credentials.length>0&&<div><dt>專業資格</dt><dd>{credentials.join('、')}</dd></div>}
+    {areas.length>0&&<div><dt>服務地區</dt><dd>{areas.join('、')}</dd></div>}
+    {format&&<div><dt>服務形式</dt><dd>{format}</dd></div>}
+    {policy&&<div><dt>預約／取消政策</dt><dd>{policy}</dd></div>}
+    {notice&&<div><dt>重要提醒</dt><dd>{notice}</dd></div>}
+  </dl>:<p class="practical-notice">請依實際服務資料設定專業與信任資訊；不使用假證照或虛構見證。</p>}
+  {hasPrivacy&&<a class="practical-textlink" href={privacyUrl}>閱讀隱私政策 →</a>}
+</section>

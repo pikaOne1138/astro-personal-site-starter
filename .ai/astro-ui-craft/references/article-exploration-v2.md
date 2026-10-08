@@ -67,3 +67,12 @@ All eight `{knowledge,helper} × {paper,morning,studio,botanical}` demo sites us
 
 ## Sticky navigation overlay rule
 The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must have a fully opaque navigation backing** (including Botanical and Morning). Do not rely on transparent backgrounds or blurred translucent surfaces where search fields or page text can become visible behind nav labels. Verify screenshots at page top, halfway down, and scrolled with search field crossing navigation; confirm z-order and mobile CTA visibility.
+
+## Practical website blocks (V2.5 internal milestone; do not put version tags on visitor pages)
+- `MobileMenu`: native dialog; pass an array of real navigation links. Esc, backdrop click, focus return, keyboard access. Mobile displays hamburger; never show decorative MENU without working navigation.
+- `BookingLink`: optional `href` (HTTPS external booking) or `embedUrl`; never pretend to submit unconfigured forms. Default is a clear unavailable state; always review external provider privacy.
+- `ContactActions`: optional email, phone, LINE link. Validate and omit invalid/unconfigured options; show clear unavailable state instead of dead links.
+- `PricingDetails`: cost, duration, mode and terms; do not invent amounts, cancellation policy, insurance or credentials.
+- `TrustInfo`: verifiable credentials, regions, format, real privacy URL and service scope/limitations. Never invent testimonials or crisis resources; provide correct region-specific information only when configured.
+- `MediaEmbed`: YouTube via youtube-nocookie and optional HTML audio; for podcasts or unsupported platforms use an explicit external link; all videos have title, lazy loading and responsive 16:9 layout. Avoid autoplay.
+- Every new block stays inside functional categories in /blocks/, in `blocks.registry.json`, and appears in at least one real demo route; do not make disconnected showcase-only blocks. Keep theme tokens, RWD and screenreader focus behavior.

@@ -11,6 +11,7 @@ import RelatedArticles from '../../../../components/blocks/RelatedArticles.astro
 import ArticleGrid from '../../../../components/blocks/ArticleGrid.astro';
 import ArticleComparison from '../../../../components/blocks/ArticleComparison.astro';
 import ContentCarousel from '../../../../components/blocks/ContentCarousel.astro';
+import MediaEmbed from '../../../../components/blocks/MediaEmbed.astro';
 
 export function getStaticPaths() { return allArticlePaths(); }
 interface Props { kind: Kind; theme: Theme; article: {slug:string; title:string}; }
@@ -47,6 +48,9 @@ const related=articlesV2.filter(a=>a.slug!==article.slug && a.tags.some(t=>meta?
         </ArticleGrid>
         <h2>ArticleComparison：比較表格</h2>
         <ArticleComparison caption="文章探索工具比較" headers={['元件','使用情境']} rows={ [['搜尋','記得文章主題或關鍵字'],['標籤','想找同主題的其他文章'],['月份封存','想回顧一段時間的文章'],['日曆','記得哪一天發布']] } />
+        <h2>影音內容可以放在文章裡</h2>
+        <p>以下是通用媒體嵌入示範，實際發布時應替換成與文章主題相關的授權內容。</p>
+        <MediaEmbed type="youtube" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" title="YouTube 嵌入技術示範" caption="示範用影片，不代表本文資料來源。"/>
         <h2>下一步</h2>
         <p>讀完後不要把人丟在頁尾。可以推薦同主題文章、回主題頁，或提供一個低壓力的訂閱入口。</p>
       </article>
