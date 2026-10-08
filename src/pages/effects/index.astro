@@ -44,6 +44,22 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       </div>
       <p class="fx-diagnostics__detail" data-motion-diagnostics>檢查中…</p>
     </div>
+    <section class="fx-system-guide" aria-labelledby="motion-system-title">
+      <details class="fx-system-guide__details" open>
+        <summary><span><strong id="motion-system-title">看不到動畫？先檢查裝置的「動態效果」設定</strong><small>Windows、macOS、iPhone／iPad、Android 的設定位置</small></span><span aria-hidden="true">＋</span></summary>
+        <div class="fx-system-guide__body">
+          <p>這個網站會遵守裝置或瀏覽器回報的 <code>prefers-reduced-motion</code> 設定。如果系統關閉動畫或啟用「減少動態」，進場、圖片 Zoom、動態底線等效果可能會被停用。這不是網頁載入失敗；你可以保持原有的無障礙偏好，改用上方的「仍要在此頁試玩動畫」進行暫時預覽。</p>
+          <div class="fx-system-guide__grid">
+            <div><h3>Windows 11</h3><p><strong>設定 → 協助工具 → 視覺效果 → 動畫效果：開啟</strong></p><p>你截圖中的就是這個開關。與旁邊的「透明效果」不同，不必為了動畫打開透明效果。</p></div>
+            <div><h3>Windows 10</h3><p><strong>設定 → 輕鬆存取 → 顯示 → 在 Windows 中顯示動畫：開啟</strong></p><p>也可以在 Windows 設定中搜尋「動畫」。</p></div>
+            <div><h3>macOS</h3><p><strong>蘋果選單 → 系統設定 → 輔助使用 → 動態效果／顯示 → 減少動態：關閉</strong></p><p>不同 macOS 版本可能在「動態效果」或「顯示」中。<a href="https://support.apple.com/guide/mac-help/change-motion-settings-for-accessibility-mchla3c4f1da/mac" target="_blank" rel="noopener noreferrer">Apple 設定說明 ↗</a></p></div>
+            <div><h3>iPhone／iPad</h3><p><strong>設定 → 輔助使用 → 動態效果 → 減少動態效果：關閉</strong></p><p>即使開啟動畫，手機沒有滑鼠懸停，3D Tilt、Spotlight、Pan、磁吸仍可能不啟用。<a href="https://support.apple.com/en-us/111781" target="_blank" rel="noopener noreferrer">Apple 設定說明 ↗</a></p></div>
+            <div><h3>Android</h3><p><strong>設定 → 無障礙／協助工具 → 色彩與動態 → 移除動畫：關閉</strong></p><p>各品牌名稱可能不同，建議在設定中搜尋「移除動畫」。<a href="https://support.google.com/accessibility/answer/11183305?hl=zh-TW" target="_blank" rel="noopener noreferrer">Google 設定說明 ↗</a></p></div>
+          </div>
+          <p class="fx-system-guide__footer">調整後請重新整理此頁並按「重新檢查」。如果系統已允許動畫、診斷也顯示 CSS 和 JS 已載入，但仍沒有任何效果，才需要繼續檢查瀏覽器的開發者工具動態模擬、擴充功能或網站程式。</p>
+        </div>
+      </details>
+    </section>
     <nav class="fx-jump" aria-label="特效分類">
       <a href="#reveal">01 進場</a><a href="#stagger">02 群組</a><a href="#cards">03 互動卡片</a><a href="#images">04 圖片</a><a href="#actions">05 按鈕與連結</a><a href="#faq">06 FAQ</a>
     </nav>
