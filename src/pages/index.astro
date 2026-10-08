@@ -12,6 +12,10 @@ const base = import.meta.env.BASE_URL;
       <h1>從喜歡的設計開始<span class="hero-line">打造自己的網站</span></h1>
       <p>不需要先懂程式或設計，看看不同網站怎麼呈現內容<span class="hero-line">挑選喜歡的版型、風格和功能，讓 AI 協助你逐步完成自己的網站</span></p>
     </header>
+    <section class="starter-entry" aria-label="開始規劃自己的網站">
+      <div><p class="eyebrow">YOUR OWN WEBSITE</p><h2>選好方向後，開始規劃你的網站</h2><p>選版型、品牌色、網站頁面與導航，產生一份能交給 AI 接續製作的規格。</p></div>
+      <a href={base+'starter/'}>開始規劃網站 →</a>
+    </section>
     <section class="matrix-group showcase-examples" aria-labelledby="examples-title">
       <div class="matrix-heading">
         <span>A</span>
@@ -106,6 +110,11 @@ const base = import.meta.env.BASE_URL;
       </div>
     </section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
+  <style>
+      .starter-entry{display:flex;align-items:center;justify-content:space-between;gap:32px;margin:0 0 64px;padding:28px 32px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+      .starter-entry h2{margin:4px 0 10px;font-size:clamp(22px,2.7vw,30px)}.starter-entry p{margin:0}.starter-entry>a{flex-shrink:0;text-decoration:none;border:1px solid var(--accent);border-radius:6px;padding:12px 18px;color:var(--accent);font-weight:700}
+      @media(max-width:680px){.starter-entry{display:block;padding:24px}.starter-entry>a{display:inline-block;margin-top:20px}}
+    </style>
   </main>
 </DemoLayout>
 
