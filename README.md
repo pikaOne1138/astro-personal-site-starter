@@ -168,3 +168,10 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ## Claude editorial design Skill + interactive composition gallery
 
 `/layouts/recipes/` demonstrates 40 Astro compositions across five live recipe labs. These are design recipes, separate from website functionality Blocks (54) and Motion Effects (7). The imported editorial Skill is at `.ai/astro-editorial-layout-design/` with ten-site source analysis, 40 Astro source recipes, design failure cases, four-viewport QA checklists and Chromium audit script. The site layouts `reading-atlas` and `trust-path` now use the full original Claude prototype source rather than our simplified AI imitations. Prototype claims, certifications and book statistics are example data and must not be presented as real services. Browser visual QA is still needed before merging.
+
+
+### Claude Editorial Skill ＋ 40 個構圖配方
+
+`/layouts/recipes/` 提供五類真正渲染的 Astro 配方（Hero 12、內容分區 8、列表 6、視覺節奏 6、CTA／信任 8），原始 ID 保留 H01–H12、S01–S08、L01–L06、R01–R06、C01–C08。原始 Claude 設計規則、十站逆向、對照評分、人工驗收與自動化腳本收在 `.ai/astro-editorial-layout-design/`；網站實際引用 `src/components/editorial-recipes/` 下的 Astro 元件。配方展示為版型庫的分支，與 54 個功能元件、7 個動效元件分開計數。
+
+閱讀年鑑與信任路徑已以 Claude ZIP 的完整 Astro 站型取代此前手工簡化版，並繼承 GitHub Pages 的 BASE_URL 與 Astro 5 相容的組件路徑。**CI 編譯通過不代表 4 寬度的視覺人工驗收完成**；仍需按 Skill 驗收。
