@@ -1,4 +1,5 @@
 import { kinds, themes, type Kind, type Theme } from './data';
+import { articlesV2 } from './data/articles-v2';
 
 export type PageId =
   | 'articles' | 'topics' | 'start-here' | 'about' | 'resources'
@@ -23,10 +24,7 @@ export const pageMap: Record<Kind, Array<{id: PageId; label: string; nav?: boole
 };
 
 export const detailPages = {
-  articles: [
-    { slug: 'make-complex-things-clear', title: '把複雜的事，寫成願意重讀的文字' },
-    { slug: 'homepage-is-a-lobby', title: '首頁是大廳，不是整棟房子' },
-  ],
+  articles: articlesV2.map(({slug,title})=>({slug,title})),
   services: [
     { slug: 'first-conversation', title: '第一次對談' },
     { slug: 'deep-support', title: '深度陪伴' },
