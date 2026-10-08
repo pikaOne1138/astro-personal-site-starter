@@ -1,0 +1,30 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='trust-path')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[10];
+const next=directions[0];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="trust-path">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-trust-head"><strong>CARE / CLARITY</strong><span>A CLEAR FIRST STEP</span><a href="#section-a">如何開始 ↘</a></header>
+<section class="lay-trust-hero"><div><p>WELCOME / FIRST VISIT</p><h1>讓每個第一次來的人，<br/><em>都知道下一步會發生什麼。</em></h1><p>不是先要求訪客相信你，而是一步一步說明你的專業、方式、限制與選擇。</p></div><img src={image} alt="清晰的專業會談空間" loading="eager"/></section>
+<section class="lay-trust-questions" id="section-a"><h2>你可能先想問的三件事</h2><div><article><span>01</span><h3>這項服務適合我嗎？</h3><p>從你的困擾與期待開始，不做超出專業界線的承諾。</p></article><article><span>02</span><h3>第一次會怎麼進行？</h3><p>流程、時間、保密與可以暫停的權利都清楚列出。</p></article><article><span>03</span><h3>費用和預約如何安排？</h3><p>先確認正式費用與政策，再進入真實的預約入口。</p></article></div></section>
+<section class="lay-trust-end"><p>YOUR NEXT STEP, WHEN YOU ARE READY</p><h2>保持清楚，就是一種尊重。</h2><a href={all}>先比較其他網站方向 →</a></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
