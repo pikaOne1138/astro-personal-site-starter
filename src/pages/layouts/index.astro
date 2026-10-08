@@ -11,12 +11,6 @@ const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / 
 <main id="main">
 <section class="gallery-hero"><p class="gallery-kicker">LAYOUT LIBRARY / 12 DISTINCT DIRECTIONS</p><h1>網站不只換顏色。<br/><em>也可以換一種說故事的方法。</em></h1><p class="gallery-lead">這裡比較的是<strong>整頁版面與資訊動線</strong>：先放什麼、哪裡留白、圖片與文字怎麼互相安排，以及訪客會如何往下閱讀。它不綁定原本的紙墨、晨光、靜室、植感四套視覺主題。</p><div class="gallery-summary"><span>12 種完整首頁原型</span><span>06 知識／內容</span><span>06 助人／專業服務</span></div></section>
 <section class="gallery-recipe-entry"><div><p class="gallery-kicker">EDITORIAL COMPOSITION LIBRARY / 40 RECIPES</p><h2>網站的設計感，來自構圖選擇。</h2><p>除了比較 12 款完整首頁，還能拆開看 12 種 Hero、8 種內容分區、6 種列表、6 種節奏和 8 種信任／CTA 形式。</p></div><a href={base+'layouts/recipes/'}>探索 40 種構圖配方 ↗</a></section>
-<section class="recipe-entry" aria-labelledby="recipe-entry-title">
-  <div><p class="gallery-kicker">40 EDITORIAL COMPOSITIONS / DESIGN RECIPES</p>
-  <h2 id="recipe-entry-title">看過整頁版型，<br/><em>再拆解構圖的方法。</em></h2>
-  <p>Claude 整理的 40 組可重用 Astro 配方：12 種 Hero、8 種內容分區、6 種列表、6 種節奏、8 種 CTA 與信任資訊。每類都有可直接打開的互動展示。</p></div>
-  <a href={base+'layouts/recipes/'}>進入構圖配方展示庫 <span aria-hidden="true">↗</span></a>
-</section>
 <nav class="gallery-jump" aria-label="版型分類"><a href="#knowledge">探索知識網站 ↓</a><a href="#helper">探索助人者網站 ↓</a><a href="#compare">怎麼挑版型？ ↓</a></nav>
 {sections.map(section=><section class="gallery-section" id={section.kind==='helper'?'helper':'knowledge'}>
   <header class="gallery-section-head"><div><p class="gallery-kicker">{section.en}</p><h2>{section.label} <small>06</small></h2></div><p>{section.description}</p></header>
