@@ -1,0 +1,12 @@
+---
+import DemoLayout from '../layouts/DemoLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<DemoLayout title="找不到這個頁面｜網站設計展示" description="這個頁面不存在，請返回網站展示總覽。">
+  <main class="demo-index" style="min-height:70vh;display:grid;align-content:center;gap:24px;">
+    <p class="eyebrow">404 · PAGE NOT FOUND</p>
+    <h1>這個頁面不存在</h1>
+    <p>網址可能已改變，或者你開啟的內容已經不存在。</p>
+    <p><a href={base}>← 返回設計展示總覽</a></p>
+  </main>
+</DemoLayout>
