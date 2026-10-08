@@ -5,12 +5,12 @@
  * 設計決策見 examples/reading-almanac/DECISIONS.md；旋鈕見 direction.md。
  */
 import Base from '../../../layouts/EditorialBase.astro';
-import H11 from '../../../../.ai/astro-editorial-layout-design/recipes/code/heroes/H11-numeral-index.astro';
-import R02 from '../../../../.ai/astro-editorial-layout-design/recipes/code/rhythm/R02-band-alternation.astro';
-import R05 from '../../../../.ai/astro-editorial-layout-design/recipes/code/rhythm/R05-voice-heading.astro';
-import L06 from '../../../../.ai/astro-editorial-layout-design/recipes/code/lists/L06-leader-toc.astro';
-import C07 from '../../../../.ai/astro-editorial-layout-design/recipes/code/cta-trust/C07-subscribe-cadence.astro';
-import C08 from '../../../../.ai/astro-editorial-layout-design/recipes/code/cta-trust/C08-provenance-note.astro';
+import H11 from '../../../components/editorial-recipes/heroes/H11-numeral-index.astro';
+import R02 from '../../../components/editorial-recipes/rhythm/R02-band-alternation.astro';
+import R05 from '../../../components/editorial-recipes/rhythm/R05-voice-heading.astro';
+import L06 from '../../../components/editorial-recipes/lists/L06-leader-toc.astro';
+import C07 from '../../../components/editorial-recipes/cta-trust/C07-subscribe-cadence.astro';
+import C08 from '../../../components/editorial-recipes/cta-trust/C08-provenance-note.astro';
 
 type Kind = 'fic' | 'nf';
 const months: { m: string; name: string; theme: string; title: string; verdict: string; pages: number; kind: Kind; re?: boolean }[] = [
