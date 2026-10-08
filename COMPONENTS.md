@@ -140,3 +140,8 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## 特效庫／效果元件（獨立於網站積木）
 
 可試用入口：`/effects/`。效果檔案：`src/components/effects/{Reveal,StaggerGroup,MotionCard,ZoomImage,MagneticButton,UnderlineLink,MotionFAQ}.astro`；登錄：`src/data/effects.registry.json`；樣式 `public/effects.css`。支持 Reveal variant/delay/duration/once、Stagger step/start、MotionCard tilt/spotlight/tiltMax、ZoomImage effect/alt/caption、MagneticButton href、UnderlineLink variant、MotionFAQ items/variant/openFirst。七個效果**不計入**網站內容元件數量。新頁面應先查 Motion Skill 和 `library/effect-catalog.md`，避免全站濫用動畫。功能驗收需操作、鍵盤、觸控、降低動態與四種 theme。
+
+
+## BackToTop｜返回頁首（共用元件）
+
+`src/components/blocks/BackToTop.astro`：`threshold=420`（捲動超過多少 px 後顯示）、`label='返回頁首'`、`bottom='24px'`、`right='24px'`、`className`。已放進共用 `DemoLayout.astro`，因此所有使用此 Layout 的網站與元件／特效展示頁都會自動出現，不需要每一頁重複實例化。右下角懸浮、手機 safe-area、鍵盤可聚焦；遵守 `prefers-reduced-motion`，必要時以非平滑捲動返回頁首。Registry 新增 BackToTop 後為 54 個網站內容元件（特效庫 7 個 effects 分開計數）。
