@@ -1,100 +1,101 @@
-# GitHub-only Astro PR Preview：首次啟用與使用
+# GitHub-only Astro PR Preview — 一次設定，後續自動預覽
 
-> 狀態：這份文件隨基礎設施 PR 提交；**在部署設定完成前，預覽網址尚未啟用**。
-> 正式站仍使用既有 GitHub Pages，不需要 Cloudflare 或在學員電腦上執行 Astro。
+## 目標
 
-## Architecture
+學員不需本地跑站、購買網域、Cloudflare 或設定額外 PAT。維持現在的 **GitHub Pages → GitHub Actions** 發布來源。每次 AI 改版開 PR，成功建置後自動得到獨立的線上預覽網址。
+
+## Pipeline
 
 ```text
-main (production) -> npm run build -> gh-pages:/ (production)
-feature branch -> Pull Request N -> npm run build (PR base) -> gh-pages:/pr-preview/pr-N/ 
-PR closed -> remove gh-pages:/pr-preview/pr-N/
+                   PR #N (same-repository branch)
+                              |
+                       PR Preview Build
+                   (read-only, no deploy token)
+                              |
+                  preview-site artifact + event.json
+                              |
+             trusted main-branch workflow_run
+                              |
+       npm run build (main, production base)
+          + saved previews from gh-pages snapshot
+          + add/remove PR N preview artifact
+                              |
+           GitHub Pages deploy-pages (artifact)
+                              |
+               PR bot comment with preview link
+
+main push -> same trusted workflow -> keep existing previews -> deploy production
+PR closed -> remove its preview -> deploy production + remaining previews
 ```
 
-Example preview: `https://pikaOne1138.github.io/astro-personal-site-starter/pr-preview/pr-2/` (**example only until deployed**).
+`gh-pages` is only a saved copy of the latest assembled output so that previews survive future production deployments. It is **NOT** the GitHub Pages publishing source. We rely on `actions/deploy-pages` to publish because a push made by `GITHUB_TOKEN` does not by itself trigger the branch-based Pages build.
 
-## Before switching Pages source
+## Initial setup (maintainer)
 
-The current `.github/workflows/deploy-pages.yml` deploys to Pages using GitHub Actions artifacts. The `rossjrw/pr-preview-action` needs branch-based Pages hosting. We **do not switch settings automatically**.
+1. Check **Settings → Pages → Build and deployment → Source = GitHub Actions**. **Do not change it to Deploy from a branch.**
+2. Merge the PR adding these files only after review:
+   - `astro.config.mjs` (configurable `ASTRO_BASE_PATH`)
+   - `.github/workflows/pr-preview.yml`
+   - `.github/workflows/deploy-pages.yml`
+   - `scripts/apply-pr-preview.mjs`
+   - `.ai/astro-pr-preview/SKILL.md`
+3. Open **Actions**, check the new `Deploy Astro to GitHub Pages` workflow ran successfully on the merge to `main`. Check the production site still works.
+4. For the existing UI **PR #2**, make a small new commit to its source branch so the `synchronize` PR event re-triggers the build. The PR build workflow is read-only. After it succeeds, `Deploy Astro to GitHub Pages` processes its artifact and adds a PR comment with the preview URL.
+5. Click the actual posted URL. Check `/blocks/`, both website types, styling, images, and mobile views.
+6. Only merge PR #2 after accepting its preview.
 
-### Step 1: Merge this infrastructure PR into main
+## Typical preview URL
 
-After review, merge the PR that adds:
-- `astro.config.mjs` build-time `ASTRO_BASE_PATH`
-- `.github/workflows/publish-gh-pages.yml`
-- `.github/workflows/pr-preview.yml`
-- `.ai/astro-pr-preview/SKILL.md`
+```text
+https://pikaOne1138.github.io/astro-personal-site-starter/pr-preview/pr-2/
+```
 
-The old direct Pages workflow is kept for the first migration stage to preserve the live website.
+This is a **format example**, not confirmation that a preview has been deployed.
 
-### Step 2: Ensure gh-pages branch has production files
+## Required access
 
-In **Actions**, run **Publish main to gh-pages branch** (workflow_dispatch) if needed. Wait for success. Confirm `gh-pages` exists and contains `index.html` and `demo.css` (plus generated route folders). This workflow also runs on pushes to main.
+Workflow files request permissions explicitly:
+- PR Preview Build: `contents: read`, no privileges.
+- Trusted deployment: `contents: write` (snapshot store), `actions: read` (download artifacts), `pages: write`, `id-token: write` (publish), `pull-requests: write` (comment).
 
-### Step 3: Change one GitHub repository setting
+If blocked by organization/repository Actions policy, check **Settings → Actions → General → Workflow permissions**, then review Action run errors. No custom PAT is needed by design.
 
-Go to **Settings > Pages > Build and deployment > Source**:
-- Select **Deploy from a branch**
-- Branch: `gh-pages`
-- Folder: `/(root)`
-- Save and wait for Pages to publish.
+### Security considerations
+- Only branches belonging to the same repository are accepted for the preview pipeline. Fork PRs are not published.
+- The trusted workflow does not run PR code; it only downloads static site artifacts and checks event metadata.
+- Production uses code checked out from `main`, not the PR.
+- Do not publish private documents, API keys, or secret variables into a public preview. Static previews are public.
+- GitHub pages publication is global; the workflow serializes Pages deployments so open PR previews survive concurrent deploys.
 
-Then verify the **existing production URL** still works:
-`https://pikaOne1138.github.io/astro-personal-site-starter/`
+## Astro path handling
 
-If not working, restore the previous Pages source ('GitHub Actions') and investigate before touching PR deployments.
-
-### Step 4: Verify PR preview
-
-Visit existing [PR #2](https://github.com/pikaOne1138/astro-personal-site-starter/pull/2).
-
-The preview workflow runs when a PR is opened/reopened or updated. If PR #2 predates activation, manually trigger it:
-1. **Actions > PR Preview (GitHub Pages) > Run workflow** (must be present on default branch).
-2. Enter PR number **2**.
-3. Wait for success; inspect the action's PR comment or workflow summary.
-4. Open actual preview URL and check the V1.5 homepage, `blocks/`, knowledge/helper demos, CSS and mobile layout.
-
-A possible URL format is `https://pikaOne1138.github.io/astro-personal-site-starter/pr-preview/pr-2/` — **not confirmed live until workflow succeeds**.
-
-### Step 5: Remove old direct Pages workflow (later)
-
-When the branch-based deployment and PR preview both succeed, remove `.github/workflows/deploy-pages.yml` in a follow-up PR to avoid two competing deployment approaches. This is intentionally separated from setup to allow rollback.
-
-## Permissions
-
-Workflows declare job permissions:
-- Production publisher: `contents: write`
-- PR previews: `contents: write`, `pull-requests: write`
-
-If GitHub blocks publication or PR comments, check **Settings > Actions > General > Workflow permissions**. Depending on repository policy, 'Read and write permissions' may need to be enabled by repository owner.
-
-**Security**: preview workflow only runs for branches within the same repository. Do not run untrusted fork PR code with privileged tokens. Keep previews public-content-only (no API keys, private records, tokens).
-
-## Common base-path mistakes
-
-Production:
+Production build base:
 ```text
 /astro-personal-site-starter/
 ```
 
-Preview:
+PR #2 preview base:
 ```text
-/astro-personal-site-starter/pr-preview/pr-N/
+/astro-personal-site-starter/pr-preview/pr-2/
 ```
 
-Correct Astro:
-```astro
----
-const base = import.meta.env.BASE_URL;
----
-<a href={`${base}blocks/`}>元件庫</a>
-<link rel="stylesheet" href={`${base}demo.css`} />
-```
+Use `import.meta.env.BASE_URL` for links and `public/` assets. The HTML/components/data do not need separate copies for previews.
 
-Avoid hard-coding `/astro-personal-site-starter/` in site links.
+## Acceptance
 
-## Acceptance and rollback
+- [ ] PR Preview Build succeeded
+- [ ] Deploy Astro to GitHub Pages succeeded
+- [ ] Preview bot comment contains real URL
+- [ ] Preview homepage and /blocks/ work
+- [ ] Desktop and mobile are correct
+- [ ] No broken links, images or styling
+- [ ] Existing production site unchanged before merge
+- [ ] User explicitly approves merging
 
-- Workflow success does not guarantee visual correctness. Review the website in a browser.
-- If switching Pages source breaks the production site, switch back to **GitHub Actions** and investigate; do not merge PR #2 during failure.
-- Skill: `.ai/astro-pr-preview/SKILL.md`.
+## Rollback
+
+If the new workflow fails on the first merge, do not switch Pages source. Restore the previous `.github/workflows/deploy-pages.yml` from Git history on a new PR and merge it. The previous deployment mechanism remains supported while Source is GitHub Actions. The `gh-pages` snapshot branch is not used as a publishing source and cannot by itself overwrite the live site.
+
+## Skill
+
+See `.ai/astro-pr-preview/SKILL.md`.
