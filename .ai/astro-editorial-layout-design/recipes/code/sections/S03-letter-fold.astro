@@ -1,0 +1,34 @@
+---
+/**
+ * S03 letter-fold — 「一封信」內容區：信紙底色 + 虛線摺痕 + 左欄 meta（衍生自 07 溫柔陪伴 .co-letter）。
+ * 正文欄 ≤ 610px、行高 2.1。摺痕在手機移除，meta 變橫向 wrap。
+ */
+interface Props { meta?: string[]; dear?: string; paras?: string[]; signoff?: string[]; fine?: string }
+const {
+  meta = ['一封沒有催促的信', '寫給正在想著要不要聯絡的人', '2026 / 秋'], dear = '你好，',
+  paras = ['如果你來到這裡，可能已經在心裡想過幾次：現在適合找人談談嗎？我會不會需要先把事情整理得很清楚？', '你不必先有答案，也不用把自己準備成一個「很會求助的人」。我們可以從此刻最接近你的那件事開始。', '第一次談話會先確認你希望得到什麼、我可以提供什麼，以及我們是否適合一起工作。你可以只問問題，也可以談完再決定。'],
+  signoff = ['願你今天有一點空間，', '陪伴者的名字'], fine = '正式上線時，請替換成站長本人文字，並清楚說明資格、服務範圍、費用與緊急狀況的求助方式。',
+} = Astro.props;
+---
+<section class="s03">
+  <article>
+    <div class="meta">{meta.map((m) => <span>{m}</span>)}</div>
+    <div class="body">
+      <p class="dear">{dear}</p>
+      {paras.map((p) => <p>{p}</p>)}
+      <p class="sign">{signoff[0]}<br />{signoff[1]}</p>
+      <p class="fine">{fine}</p>
+    </div>
+  </article>
+</section>
+<style>
+  .s03 { padding-inline: var(--ed-gutter, 5vw); }
+  article { position: relative; max-width: 1030px; margin-inline: auto; background: var(--ed-panel, #f1e6dc); padding: 1.5rem clamp(1.2rem, 6vw, 5rem) 3rem; display: grid; grid-template-columns: .6fr 1.4fr; gap: 5vw; color: var(--ed-ink, #4b312d); }
+  article::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px dashed var(--ed-line, #d2b7aa); }
+  .meta { display: flex; flex-direction: column; gap: 1rem; font: .75rem/1.6 var(--ed-mono, monospace); color: var(--ed-ink-2, #6f534c); }
+  .body { max-width: 38rem; font-size: 1.03rem; line-height: 2.1; color: var(--ed-ink-2, #624843); position: relative; }
+  .body p { margin: 0 0 1.2rem; } .dear { font-size: 1.5rem; color: var(--ed-ink, #4b312d); }
+  .sign { margin-top: 2rem; color: var(--ed-accent, #8f554a); }
+  .fine { border-top: 1px solid var(--ed-line, #d4beb1); padding-top: .8rem; font: .75rem/1.7 var(--ed-mono, monospace); }
+  @media (max-width: 800px) { article { grid-template-columns: 1fr; gap: 1rem; } article::before { display: none; } .meta { flex-direction: row; flex-wrap: wrap; border-bottom: 1px dashed var(--ed-line, #d2b7aa); padding-bottom: .8rem; } }
+</style>
