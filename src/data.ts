@@ -1,4 +1,4 @@
-export const themes = ['paper','morning','studio'] as const;
+export const themes = ['paper','morning','studio','botanical'] as const;
 export const kinds = ['knowledge','helper'] as const;
 export type Theme = typeof themes[number];
 export type Kind = typeof kinds[number];
@@ -7,6 +7,7 @@ export const themeMeta = {
   paper: { label: 'Paper & Ink', zh: '紙墨', mood: '有深度・像一本排版講究的獨立刊物' },
   morning: { label: 'Morning Light', zh: '晨光', mood: '溫暖安心・像早晨灑進房間的光' },
   studio: { label: 'Quiet Studio', zh: '靜室', mood: '清晰可靠・像一間安靜精準的工作室' },
+  botanical: { label: 'Botanical Calm', zh: '植感', mood: '自然舒展・像午後走進一座安靜的花園' },
 } as const;
 
 export const kindMeta = {
