@@ -130,3 +130,8 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## 可配置動態
 
 動態設計規則由 `.ai/astro-motion-craft/SKILL.md` 維護。Manus v2 動態目前是參考候選（Reveal variants、Stagger、MotionCard tilt/spotlight、ZoomImage、UnderlineLink、Button magnetic、FAQ variants），不能宣稱已全數加入本 Registry；請按 Skill 的設計目的、減少動態、觸控與鍵盤測試要求實作。
+
+
+## 可重用動效參考庫與 Skill
+
+讀取 `.ai/astro-motion-craft/library/README.md` 進入特效型錄與三份 source-grounded recipes。來源為上傳 Manus v2 ZIP 的 Effects / Button / FAQ 原始碼，與本專案既有 `data-reveal`、卡片 hover、FAQ/Link/Button 等功能交叉對照。元件若尚未在本專案實作，不計入 `blocks.registry.json` 的正式元件數；日後移植需先經 Motion Skill 強度政策、觸控/reduced-motion/no-JS 規範與 PR preview 驗收。
