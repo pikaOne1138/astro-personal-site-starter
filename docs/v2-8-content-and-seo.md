@@ -1,5 +1,7 @@
 # V2.8｜內容與搜尋引擎基礎設施
 
+**AI 操作規範：`.ai/astro-content-publishing/SKILL.md`。** 本文件保留為這次 V2.8 的階段說明與歷史背景；後續 AI 新增文章、調整 SEO、建置或發布，必須先讀 Skill 及其 `references/`，再檢查專案最新原始碼。
+
 本階段不包含 WordPress 遷移、CMS 後台、資料庫或自建預約系統。
 
 ## 新增文章
