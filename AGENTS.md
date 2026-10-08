@@ -44,3 +44,7 @@ Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`.
 
 ## Article index views and compact mobile navigation
 Use `ArticleViewSwitcher` as the canonical article archive renderer; it supports list, cards and grid from the same article fixtures/data, real article links and optional filtering data attributes. Always preserve working explore search, tag/calendar/month filters and responsive design. The website navbar should contain one Articles navigation entry, a distinct Search icon and an icon-only mobile menu (aria-label), with optional social links inside the dialog; avoid duplicating a separate 'find articles' toolbar link. Do not manually hardcode the registry count.
+
+
+## Search, canonical articles and Motion Skill
+Search is built from **all rendered static HTML** by Pagefind after `astro build` (see `package.json`). Avoid hardcoded metadata indexes: the global SiteSearchDialog loads Pagefind relative to `import.meta.env.BASE_URL` and must work on Github Pages PR preview subpaths. Article pages are canonical at `/[kind]/[theme]/articles/`, with ArticleArchive combining list/cards/grid, query, tags, calendar and months; legacy `explore/` redirects retaining query/hash. Motion work MUST use `.ai/astro-motion-craft/SKILL.md`, preserve four themes and reduced-motion/touch/keyboard behavior. Manus effect APIs are reference-only until explicitly implemented; don't claim they've shipped.
