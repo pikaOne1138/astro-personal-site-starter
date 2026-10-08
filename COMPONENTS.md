@@ -99,3 +99,7 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
 
 元件登錄至 `src/data/blocks.registry.json`（此 PR 分支共 46 個），在 `/blocks/` 依**功能與使用場景**展示，並接入八款 Demo 共用的實際頁面。請務必執行 GitHub PR Preview 驗收（手機 375／390px、鍵盤、連結與未設定狀態）。
+
+## ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup
+可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。
+皆已在 /blocks/ 功能分類展示、同步 registry，並接入 Demo 站。須以 GitHub PR Preview 測試手機與鍵盤。
