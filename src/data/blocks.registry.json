@@ -1093,5 +1093,29 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "back-to-top",
+    "name": "BackToTop",
+    "category": "common",
+    "path": "src/components/blocks/BackToTop.astro",
+    "keywords": [
+      "返回頂部",
+      "回到頁首",
+      "Back to Top",
+      "scroll top",
+      "長頁導覽"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]
