@@ -56,3 +56,7 @@ For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.
 
 ## Dedicated effects gallery
 `/effects/` is a separate accessible motion library. Effects runtime lives under `src/components/effects/` (Reveal, StaggerGroup, MotionCard, ZoomImage, MagneticButton, UnderlineLink, MotionFAQ), CSS in `public/effects.css`, and effects inventory in `src/data/effects.registry.json`. The seven effects are distinct from 53 website content blocks, so don't add them to `blocks.registry.json`. Motion Skill and source-grounded recipes MUST guide any new animation. Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic, keyboard focus and all four themes. Demo is not evidence of production QA until browser tested.
+
+
+## BackToTop / return to top
+Use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astro`; do not copy/paste separate scroll handlers into each page. The shared control is hidden near the top, appears after its threshold, respects `prefers-reduced-motion`, has an accessible button label, 44+ px touch target, and uses existing four-theme tokens. When adding a new top-level layout, reuse this component. Do not count BackToTop as an effects-library item.
