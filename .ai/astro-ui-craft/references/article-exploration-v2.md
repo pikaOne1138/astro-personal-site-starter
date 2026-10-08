@@ -2,13 +2,18 @@
 
 > This reference extends V1.5. Read `COMPONENTS.md`, `src/data/blocks.registry.json`, and actual component Props before assembly.
 
-## Added capabilities (11 blocks)
+## Added capabilities (12 blocks)
 
 ### Article discovery
 - `ArticleSearch` — GET form with query parameter `q`
 - `TagCloud` — linkable tags with usage counts (`tag`)
 - `ArchiveMonths` — months and article counts (`month`)
 - `PostCalendar` — Monday-first calendar with clickable publication dates (`date`)
+
+### Full-site search
+- `SiteSearchDialog` — accessible native `dialog` modal. Magnifying-glass icon in navbar; keyboard shortcuts `Ctrl+K` and `⌘K`; Esc closes; searches current website's *page titles, descriptions, article metadata, and service names*. Results link to actual routes and preserve current theme/kind. It is **not full-text page-body search** and must never be described as such.
+- Keep the dedicated `/[kind]/[theme]/explore/` page for article filters, tags, month and calendar. They serve different tasks.
+- Search dialog must be opaque, keyboard-accessible and focus trapped by native `showModal()`. Use existing design tokens, do not put a translucent overlay in the sticky header.
 
 ### Article body
 - `ArticleAccordion` — native accessible `details/summary` foldout with slot.
