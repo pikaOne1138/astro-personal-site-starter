@@ -1,0 +1,33 @@
+---
+/**
+ * S02 fit-pair — 「可能適合」/「可能需要其他資源」並置（衍生自 06 清晰臨床 .cl-scope）。
+ * 兩格同權重；分隔線在手機轉 90 度（border-left → border-top）。非適用者要給替代資源。
+ */
+interface Props { label?: string; title?: string; voice?: string; fit?: { tag: string; head: string; items: string[] }; other?: { tag: string; head: string; items: string[]; note?: string } }
+const {
+  label = '01 / SCOPE & FIT', title = '先確認，', voice = '這是不是合適的支持。',
+  fit = { tag: '可能適合', head: '你想先一起釐清現況', items: ['想了解可選擇的支持方式', '希望知道流程、費用與界線', '願意先談期待，再決定下一步'] },
+  other = { tag: '可能需要其他資源', head: '這個網站不提供緊急協助', items: ['正處於立即危險或危機情況', '需要此服務範圍以外的醫療支持', '需要即時求助或當地緊急資源'], note: '請聯繫所在地的緊急服務或合適的專業資源。' },
+} = Astro.props;
+---
+<section class="s02">
+  <header><p class="label">{label}</p><h2><span class="ph">{title}</span> <em class="ph">{voice}</em></h2></header>
+  <div class="cols">
+    <article><span class="tag">{fit.tag}</span><h3>{fit.head}</h3><ul>{fit.items.map((i) => <li>{i}</li>)}</ul></article>
+    <article class="other"><span class="tag">{other.tag}</span><h3>{other.head}</h3><ul>{other.items.map((i) => <li>{i}</li>)}</ul>{other.note && <p>{other.note}</p>}</article>
+  </div>
+</section>
+<style>
+  .s02 { max-width: var(--ed-wide, 1260px); margin-inline: auto; padding: 2rem var(--ed-gutter, 4vw) 0; border-top: 1px solid var(--ed-line, #cdd8d5); display: grid; grid-template-columns: .8fr 1.2fr; gap: 5vw; color: var(--ed-ink, #18313a); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #3d5b68); margin: 0; }
+  h2 { font: 700 clamp(2.2rem, 4.6vw, 4.2rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .6rem 0; text-wrap: balance; }
+  .ph { display: inline-block; } em { font: 400 italic 1em var(--ed-serif, Georgia, serif); color: var(--ed-accent, #3d5b68); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ed-line, #cdd8d5); align-self: start; }
+  article { padding: 1.5rem; } article.other { border-left: 1px solid var(--ed-line, #cdd8d5); background: var(--ed-panel, #eaf0ed); }
+  .tag { font: .75rem var(--ed-mono, monospace); color: var(--ed-accent, #3d5b68); }
+  h3 { font-size: 1.05rem; margin: .5rem 0; }
+  ul { padding-left: 1.1rem; font-size: .9rem; line-height: 2; margin: 0; }
+  article p { font-size: .8rem; line-height: 1.6; color: var(--ed-ink-2, #4a5d62); margin: .8rem 0 0; }
+  @media (max-width: 850px) { .s02 { grid-template-columns: 1fr; gap: 1.5rem; } }
+  @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } article.other { border-left: 0; border-top: 1px solid var(--ed-line, #cdd8d5); } }
+</style>
