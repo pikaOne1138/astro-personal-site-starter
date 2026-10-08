@@ -1,0 +1,5 @@
+---
+interface Props {items:{label:string;href:string}[];title?:string;}
+const {items,title='本文目錄'}=Astro.props;
+---
+<nav class="ab-toc" aria-label={title}><strong>{title}</strong><ol>{items.map(x=><li><a href={x.href}>{x.label}</a></li>)}</ol></nav>
