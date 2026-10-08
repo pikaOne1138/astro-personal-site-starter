@@ -141,3 +141,10 @@
 /* Single-color brand silhouettes follow each design system's text/accent tone. */
 .social-links__brand-icon{display:block;flex:none;width:20px;height:20px;background:currentColor;-webkit-mask-image:var(--social-mask);mask-image:var(--social-mask);-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .social-links--sm .social-links__brand-icon{width:18px;height:18px}
+
+/* Social profiles remain accessible at the bottom of the native mobile dialog. */
+.practical-menu-social{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.practical-menu-social>p{font-size:12px;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
+.practical-menu-social .social-links{margin:0;gap:8px}
+.practical-menu-social .social-links__item{width:44px;height:44px;min-width:44px;min-height:44px;padding:12px;border:1px solid var(--line);border-radius:50%;background:transparent}
+.practical-menu-social .social-links__item:hover{border-color:var(--accent);background:var(--bg);color:var(--accent)}
