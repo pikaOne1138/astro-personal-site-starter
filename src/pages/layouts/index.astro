@@ -24,7 +24,7 @@ const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / 
               ? <div class="gallery-card-illustration gallery-card-illustration--trust" aria-label="信任路徑：深咖啡色封面與五個節點的服務流程"><small>A CLEAR FIRST STEP</small><strong>先知道，<br/>再決定。</strong><span>● ─ ● ─ ● ─ ● ─ ●</span></div>
               : <img src={'https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image} alt={item.title+'的視覺氛圍參考'} loading="lazy" />}
           <span class="gallery-card-no">{String(i+1+(section.kind==='helper'?6:0)).padStart(2,'0')}</span><span class="gallery-card-open">開啟完整版面 ↗</span></div>
-        <div class="gallery-card-body"><p class="gallery-card-en">{item.en}</p><h3>{item.title}</h3><p class="gallery-card-audience">{item.audience}</p><p class="gallery-card-description">{item.description}</p><div class="gallery-card-structure"><span>版面結構</span><b>{item.structure}</b></div><span class="gallery-card-source">{item.source}</span></div>
+        <div class="gallery-card-body"><p class="gallery-card-en">{item.en}</p><h3>{item.title}</h3><p class="gallery-card-audience">{item.audience}</p><p class="gallery-card-description">{item.description}</p><div class="gallery-card-structure"><span>版面結構</span><b>{item.structure}</b></div></div>
       </a>
     </article>)}
   </div>
