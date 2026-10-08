@@ -1,30 +1,23 @@
 ---
-import directions from '../../../data/layout-directions.json';
-const item=directions.find(d=>d.slug==='companion')!;
 const base=import.meta.env.BASE_URL;
-const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
 const all=base+'layouts/';
-const previous=directions[6];
-const next=directions[8];
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/c-companion.webp';
 ---
 <!doctype html>
-<html lang="zh-Hant" data-layout="companion">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content={item.description}/>
-<title>{item.title+'｜網站版型庫'}</title>
-<link rel="stylesheet" href={base+'layout-library.css'}/>
-</head>
+<html lang="zh-Hant">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="適合關係導向、善於傾聽與低壓邀請的陪伴者服務首頁。"/>
+<title>溫柔陪伴｜網站版型庫</title>
+<link rel="stylesheet" href={base+'companion-source.css'}/></head>
 <body>
-<a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-
-<header class="lay-letter-head"><span>A LETTER TO YOU</span><span>一個可以慢慢說話的地方</span></header>
-<section class="lay-letter-hero"><div class="lay-letter-text"><p>親愛的你：</p><h1>這裡有一段時間，<br/><em>留給你慢慢說。</em></h1><p>也許你已經努力很久，也許你還不知道從哪裡開始。你可以先看看這裡的故事、工作方式與約定，再決定是否靠近。</p><a href="#section-a">慢慢了解這個空間 ↓</a></div><img src={image} alt="溫暖午後的空間與茶杯" loading="eager"/></section>
-<section id="section-a" class="lay-letter-story"><span>01 / A QUIET BEGINNING</span><h2>不急著給答案，<br/>先有一個能停下來的地方。</h2><p>真正的陪伴，不是用漂亮的句子替別人決定方向，而是讓選擇與界線被尊重。</p></section>
-<section class="lay-letter-invite"><small>WHEN YOU FEEL READY</small><h2>如果這樣的節奏適合你，<br/>我們再談下一步。</h2><p>此站為示範版型，尚未啟用真實預約服務。</p><a href={all}>看更多網站版型 ↗</a></section>
+<a class="direction-skip" href="#main">跳到主要內容</a>
+<main id="main" class="co-site">
+<header class="co-header"><a href={all} class="co-logo">小小來信 <span>LETTER / 07</span></a><nav><a href="#letter">寫給你的信</a><a href="#how">我們怎麼一起工作</a><a href={all}>看其他樣子 ↗</a></nav><a class="co-postmark" href="#contact">寄一封信</a></header>
+<section class="co-hero"><div class="co-hero-copy"><p class="co-kicker">A NOTE FOR THE DAYS THAT FEEL FULL</p><h1>你可以先從<br/><i>想說的那一小段開始。</i></h1><p>不需要準備好一個完整的故事。願意停一下、把最近的感受說出來，就已經是一個開始。</p><a href="#letter" class="co-open">讀一封寫給你的信 <span>↓</span></a><div class="co-hero-sign">慢慢來，<br/>我們有時間。</div></div><figure><img src={image} alt="午後光線下的沙發、茶杯與安靜角落"/><figcaption>給自己一個可以坐下來的地方。</figcaption></figure><span class="co-flower" aria-hidden="true">✳</span></section>
+<article class="co-letter" id="letter"><div class="co-letter-meta"><span>一封沒有催促的信</span><span>寫給正在想著要不要聯絡的人</span><span>2026 / 秋</span></div><div class="co-letter-body"><p class="co-dear">你好，</p><p>如果你來到這裡，可能已經在心裡想過幾次：現在適合找人談談嗎？我會不會需要先把事情整理得很清楚？</p><p>你不必先有答案，也不用把自己準備成一個「很會求助的人」。我們可以從此刻最接近你的那件事開始，慢慢看它想告訴你什麼。</p><p>第一次談話會先確認你希望得到什麼、我可以提供什麼，以及我們是否適合一起工作。你可以只問問題，也可以在談完之後再決定。</p><p class="co-signoff">願你今天有一點空間，<br/>陪伴者的名字</p><p class="co-fineprint">正式上線時，請替換成站長本人文字，並清楚說明資格、服務範圍、費用與緊急狀況的求助方式。</p></div></article>
+<section class="co-how" id="how"><p class="co-kicker">A LITTLE MORE ABOUT THE PROCESS</p><h2>不用急著預約，<br/><i>先知道會發生什麼。</i></h2><div class="co-how-row"><article><span>01</span><h3>先寫下問題</h3><p>可以只問流程、費用和服務是否適合。</p></article><article><span>02</span><h3>一起理解期待</h3><p>初次會談先談彼此的期待與界線。</p></article><article><span>03</span><h3>把選擇留給你</h3><p>談完再決定要不要繼續，沒有催促。</p></article></div><a href="#contact" class="co-invite">留一個一般問題 <span>↗</span></a></section>
+<section class="co-contact" id="contact"><div><p class="co-kicker">A QUIET WAY TO BEGIN</p><h2>如果你願意，<br/>我們可以從一封信開始。</h2></div><p>這是視覺原型，尚未連接安全表單。正式服務請使用合規聯絡方式；不要透過公開網站收集敏感健康資訊。</p><a href={all}>比較其他網站方向 ↗</a></section>
+<footer class="co-footer"><span>小小來信 / 陪伴者服務示意</span><span>每段故事都可以有自己的速度。</span></footer>
 </main>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
 </body>
 </html>
