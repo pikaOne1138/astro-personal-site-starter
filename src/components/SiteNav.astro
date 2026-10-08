@@ -1,5 +1,6 @@
 ---
 import { pageMap } from '../site-map';
+import SiteSearchDialog from './blocks/SiteSearchDialog.astro';
 import type { Kind, Theme } from '../data';
 
 interface Props {
@@ -26,6 +27,7 @@ const cta = kind === 'knowledge'
       {links.map((item) => <a class:list={[current === item.id && 'is-current']} href={`${root}${item.id}/`}>{item.label}</a>)}
     </nav>
     <div class="v02-actions">
+      <SiteSearchDialog kind={kind} theme={theme} />
       <a class="v02-search v02-explore-link" href={root+'explore/'} aria-current={current==='explore'?'page':undefined}>找文章</a>
       <a class="v02-cta" href={cta.href}>{cta.label}</a>
     </div>
