@@ -90,3 +90,12 @@ import FAQ from '../components/blocks/FAQ.astro';
 `SiteNav.astro` 已組合 `SiteSearchDialog`、細線分隔符、`SocialLinks`。`socialLinks` props 可以自訂平台與網址；預設 Demo 使用可查證的 GitHub 專案與展示網站，避免虛構個人 IG／YouTube。桌面視窗顯示小圖示，窄屏時收起社群列，保留手機導覽與搜尋。社群圖示使用 SVG mask 跟隨各 Theme 的前景色與 hover accent；不加上彩色社群方塊，也不使用假連結。可設定空陣列 `socialLinks={[]}` 完全隱藏。
 
 手機導覽列的 `MobileMenu` 會接收相同 `socialLinks`，在彈出選單主連結後、分隔線下展示可點擊社群圖示，桌面版仍顯示在搜尋旁。兩端共用資料，不應維護兩份不同帳號設定。
+
+
+## 本批新增元件（內部開發里程碑）
+
+Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
+
+文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
+
+元件登錄至 `src/data/blocks.registry.json`（此 PR 分支共 46 個），在 `/blocks/` 依**功能與使用場景**展示，並接入八款 Demo 共用的實際頁面。請務必執行 GitHub PR Preview 驗收（手機 375／390px、鍵盤、連結與未設定狀態）。
