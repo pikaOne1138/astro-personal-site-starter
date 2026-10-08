@@ -84,3 +84,7 @@ import FAQ from '../components/blocks/FAQ.astro';
 | `MediaEmbed` | `type:'youtube'|'audio'|'podcast'`、`url`、`title`、`caption`；YouTube/音訊直接嵌入、未支援 Podcast 提供外部連結 |
 
 六個元件已依用途列入 `/blocks/`；最新 Registry 為 42 個。請在紙墨／晨光／靜室／植感、375/390px 手機尺寸與鍵盤操作下逐一驗收。
+
+### 精緻導覽列（Header SocialLinks）
+
+`SiteNav.astro` 已組合 `SiteSearchDialog`、細線分隔符、`SocialLinks`。`socialLinks` props 可以自訂平台與網址；預設 Demo 使用可查證的 GitHub 專案與展示網站，避免虛構個人 IG／YouTube。桌面視窗顯示小圖示，窄屏時收起社群列，保留手機導覽與搜尋。社群圖示使用 SVG mask 跟隨各 Theme 的前景色與 hover accent；不加上彩色社群方塊，也不使用假連結。可設定空陣列 `socialLinks={[]}` 完全隱藏。
