@@ -1,0 +1,30 @@
+---
+interface Props { title: string; description: string; theme?: string; }
+const { title, description, theme = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f3ec" />
+    <title>{title}</title>
+  </head>
+  <body class={theme}>
+    <a class="direction-skip" href="#main">跳到主要內容</a>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; min-width: 320px; font-family: system-ui, sans-serif; line-height: 1.5; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  button, input, textarea { font: inherit; }
+  :focus-visible { outline: 3px solid #d34f38; outline-offset: 4px; }
+  .direction-skip { position: fixed; z-index: 100; top: 8px; left: 8px; padding: .65rem 1rem; background: #fff; color: #111; transform: translateY(-160%); }
+  .direction-skip:focus { transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+</style>
