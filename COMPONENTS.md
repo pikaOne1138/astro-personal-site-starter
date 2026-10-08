@@ -112,3 +112,10 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ### 助人者四種示範內容（與主題解耦）
 
 `src/data/helper-content.ts` 定義 `helperPractice[theme]` 示範資料：paper 身體工作、morning 諮商心理、studio 教練、botanical 靈氣。各自有首頁定位、專業服務卡、三步驟流程、FAQ、服務適配與界線、預約文案。元件依 Props 自由引用，不應把這四種專業固化成只能用某個設計主題。所有名稱、資格、費用、實際治療與預約需由網站持有人核實與設定。
+
+
+## ArticleViewSwitcher：文章列表／卡片／網格
+
+`ArticleViewSwitcher.astro` 是可重複使用的文章索引元件（本分支 Registry 53 個）。必填 `items`、`articleBase`；選配 `exploreBase`、`defaultView='list'|'cards'|'grid'`、`controls`、`filterable`。列表為細線編輯式清單；卡片為寬鬆兩欄；網格為三欄密集索引。三種共享同樣資料與文章 URL，手機降為單欄；搜尋／標籤／日期篩選在 explore 頁以 `data-article` 作用於同一組文章，切換排版不破壞篩選。頁面 JS 僅控制展開的視覺模式，不讀取後端。元件展示在 /blocks/ 的「文章探索與清單」。
+
+導航列在手機寬度僅呈現漢堡圖示與全站搜尋放大鏡（含可存取名稱），「文章」作為主要導覽項目；進階篩選另列「文章探索」。原本額外的「找文章」文字控制已移除，CTA 留在手機選單內；社群連結保留於彈出選單最下方。
