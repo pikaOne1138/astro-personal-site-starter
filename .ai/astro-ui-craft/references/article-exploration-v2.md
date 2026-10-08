@@ -88,3 +88,6 @@ The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must h
 Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress.
 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
 Components are configurable Astro blocks, no heavy frontend framework dependency. Required: real route targets or explicit unconfigured state, keyboard focus, 375/390px responsive layout, SSR-readable content, reduced-motion, external-service transparency. Article URL handling must respect GitHub Pages BASE_URL.
+
+## Practical component batch feat/v2-5-resources-newsletter
+Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
