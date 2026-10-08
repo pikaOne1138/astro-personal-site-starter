@@ -109,3 +109,7 @@ npm run build
 ### 元件補完：Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress
 
 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 此分支元件庫總數 46 個，新增的積木均在功能分類展示，實際網站亦有示範入口；正式部署需依真正內容配置第三方服務。
+
+
+## V2.5 B resources
+New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. No fake subscription submissions. Align Registry and Gallery, and configure actual external endpoints.
