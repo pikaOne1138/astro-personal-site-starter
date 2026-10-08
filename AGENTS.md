@@ -48,3 +48,7 @@ Use `ArticleViewSwitcher` as the canonical article archive renderer; it supports
 
 ## Search, canonical articles and Motion Skill
 Search is built from **all rendered static HTML** by Pagefind after `astro build` (see `package.json`). Avoid hardcoded metadata indexes: the global SiteSearchDialog loads Pagefind relative to `import.meta.env.BASE_URL` and must work on Github Pages PR preview subpaths. Article pages are canonical at `/[kind]/[theme]/articles/`, with ArticleArchive combining list/cards/grid, query, tags, calendar and months; legacy `explore/` redirects retaining query/hash. Motion work MUST use `.ai/astro-motion-craft/SKILL.md`, preserve four themes and reduced-motion/touch/keyboard behavior. Manus effect APIs are reference-only until explicitly implemented; don't claim they've shipped.
+
+
+## Mandatory motion-reference library
+For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.ai/astro-motion-craft/library/README.md`. Next consult `library/effect-catalog.md` and the matching recipe (`reveal-and-stagger`, `pointer-interactions`, or `content-interactions`). The recipes distinguish Manus v2 ZIP source behavior from our adaptation, and unimplemented references from actual components. Do not treat ZIP effects or Tailwind v4 as installed; do not introduce duplicate observers, global theme overrides or unverified animation claims. Update recipes and catalog when motion runtime changes.
