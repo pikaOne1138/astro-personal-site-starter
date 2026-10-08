@@ -80,6 +80,7 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 ## V2 article exploration and rich-content blocks
 - Read `references/article-exploration-v2.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
 - Use the shared `src/data/articles-v2.ts` schema and `src/site-map.ts` routes. Counts, dates, links and matches must derive from real article data.
+- `SiteSearchDialog` provides magnifying-glass full-site **navigation index** popup (site pages, articles, services) with Ctrl+K/⌘K and Esc. It must preserve site kind/theme and display real targets; it is not full-body search.
 - Current V2 `/explore/` supports metadata search, **not full-body search**. Never misrepresent its scope.
 - Maintain existing typography, spacing and motion tokens in V2 components; do not introduce arbitrary design values.
 
