@@ -1,0 +1,28 @@
+---
+import directions from '../../data/layout-directions.json';
+const base=import.meta.env.BASE_URL;
+const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / EDITORIAL',description:'不一定從文章卡片開始。試著比較田野觀察、長篇閱讀、課程路徑、策展收藏、聲音內容與年度主題索引的閱讀方法。'},{kind:'helper',label:'助人者與專業服務',en:'CARE / PROFESSIONAL',description:'清晰的專業說明、溫柔的故事入口、身體感受、行動導向教練、多人工作室，以及訪客優先的信任路徑。'}];
+---
+<!doctype html><html lang="zh-Hant">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="12 種真正不同的 Astro 網站版型：閱讀動線、內容架構、區塊比例與互動方式，適合架站工作坊學員參考。"/><title>網站版型庫｜12 種獨立網站方向</title><link rel="stylesheet" href={base+'layout-gallery.css'}/></head>
+<body>
+<a class="gallery-skip" href="#main">跳到版型列表</a>
+<header class="gallery-nav"><a href={base}>ASTRO / WORKSHOP</a><nav aria-label="工作坊展示庫"><a href={base+'blocks/'}>元件庫</a><a href={base+'effects/'}>特效庫</a><a href={base+'layouts/'} aria-current="page">版型庫</a></nav></header>
+<main id="main">
+<section class="gallery-hero"><p class="gallery-kicker">LAYOUT LIBRARY / 12 DISTINCT DIRECTIONS</p><h1>網站不只換顏色。<br/><em>也可以換一種說故事的方法。</em></h1><p class="gallery-lead">這裡比較的是<strong>整頁版面與資訊動線</strong>：先放什麼、哪裡留白、圖片與文字怎麼互相安排，以及訪客會如何往下閱讀。它不綁定原本的紙墨、晨光、靜室、植感四套視覺主題。</p><div class="gallery-summary"><span>12 種完整首頁原型</span><span>06 知識／內容</span><span>06 助人／專業服務</span></div></section>
+<nav class="gallery-jump" aria-label="版型分類"><a href="#knowledge">探索知識網站 ↓</a><a href="#helper">探索助人者網站 ↓</a><a href="#compare">怎麼挑版型？ ↓</a></nav>
+{sections.map(section=><section class="gallery-section" id={section.kind==='helper'?'helper':'knowledge'}>
+  <header class="gallery-section-head"><div><p class="gallery-kicker">{section.en}</p><h2>{section.label} <small>06</small></h2></div><p>{section.description}</p></header>
+  <div class="gallery-grid">
+    {directions.filter(d=>d.kind===section.kind).map((item,i)=><article class:list={['gallery-card','gallery-card--'+item.palette]}>
+      <a href={base+'layouts/'+item.slug+'/'} aria-label={'預覽'+item.title+'完整首頁'}>
+        <div class="gallery-card-image"><img src={'https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image} alt={item.title+'的視覺氛圍參考'} loading="lazy"/><span class="gallery-card-no">{String(i+1+(section.kind==='helper'?6:0)).padStart(2,'0')}</span><span class="gallery-card-open">開啟完整版面 ↗</span></div>
+        <div class="gallery-card-body"><p class="gallery-card-en">{item.en}</p><h3>{item.title}</h3><p class="gallery-card-audience">{item.audience}</p><p class="gallery-card-description">{item.description}</p><div class="gallery-card-structure"><span>版面結構</span><b>{item.structure}</b></div><span class="gallery-card-source">{item.source}</span></div>
+      </a>
+    </article>)}
+  </div>
+</section>)}
+<section id="compare" class="gallery-compare"><div><p class="gallery-kicker">HOW TO CHOOSE</p><h2>先選閱讀動線，<br/>再決定顏色。</h2></div><div><p><strong>01．你希望訪客先做什麼？</strong> 閱讀觀點、探索文章、跟著學習、收聽節目，還是確認專業服務。</p><p><strong>02．你最主要的內容是什麼？</strong> 長文、分類資料庫、課程、影像、影音、服務流程，會決定適合哪種首頁排列。</p><p><strong>03．最後才調整品牌視覺。</strong> 色彩、字體、圓角、動效，都可以在選定版面結構後再更改。</p><a href={base+'blocks/'}>到元件庫挑選區塊 ↗</a></div></section>
+<section class="gallery-provenance"><h2>來源與可重用性</h2><p><strong>Manus（10 款）：</strong>參照使用者上傳的 <code>astro-ten-site-directions.zip</code>，保留其十種資訊結構、閱讀動線與應用定位；本版改寫成可在目前 Astro 專案獨立使用的原生示範頁。</p><p><strong>Claude（2 款）：</strong>閱讀年鑑與信任路徑是根據 Claude 視覺研究和三種網站風格規格的延伸設計，並非 Claude 原本交付的兩個網站原始碼。</p><p>本站示範的音檔、照片、資格、費用與活動資料不可視為真實服務。展示照片暫時引用你已上架的 Manus 站點素材；未來若要做可離線移轉的正式模板，應改為具授權的自託管檔案。</p></section>
+</main><footer class="gallery-footer"><span>ASTRO / LAYOUT LIBRARY</span><a href={base}>回工作坊首頁 ↑</a></footer>
+</body></html>
