@@ -112,3 +112,8 @@ version: 1
 
 ## Layout composition is a separate layer
 Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layout-craft/SKILL.md`. Do not use motion to compensate for a weak layout; choose the content reading flow first. A subtle reveal fits only selected sections and never makes distinct website layouts identical.
+
+
+## 與 Claude 編輯式構圖的使用順序
+
+先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的 40 款構圖配方，最後才由本 Motion Skill 加入必要的動效。即使元件可用 Tilt/Spotlight/Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。
