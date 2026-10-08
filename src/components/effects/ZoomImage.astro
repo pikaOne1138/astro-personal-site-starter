@@ -11,7 +11,7 @@ const {src,alt,effect='zoom',caption,className=''}=Astro.props;
     let frame=0;let last:PointerEvent|undefined;
     const reset=()=>{cancelAnimationFrame(frame);frame=0;image.style.removeProperty('--pan-x');image.style.removeProperty('--pan-y')};
     image.addEventListener('pointermove',ev=>{
-      if(!fine.matches||reduced.matches||ev.pointerType==='touch')return;last=ev;
+      if(!fine.matches||(reduced.matches && document.documentElement.dataset.allowMotionDemo!=='true')||ev.pointerType==='touch')return;last=ev;
       if(frame)return;frame=requestAnimationFrame(()=>{
         frame=0;if(!last)return;
         const rect=image.getBoundingClientRect();if(!rect.width||!rect.height)return;
