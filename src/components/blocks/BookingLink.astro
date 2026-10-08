@@ -1,0 +1,14 @@
+---
+interface Props {href?:string;label?:string;description?:string;embedUrl?:string;}
+const {href,label='查看預約方式',description='預約由外部服務處理。',embedUrl}=Astro.props;
+const safe=(value?:string)=>{if(!value)return null;try{const url=new URL(value);return url.protocol==='https:'?url.toString():null}catch{return null}};
+const target=safe(href),embed=safe(embedUrl);
+---
+<section class="practical-block practical-booking" aria-label="預約資訊">
+  <h3>預約與初步聯絡</h3>
+  <p>{description}</p>
+  {embed ? <iframe src={embed} title="外部預約服務" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> :
+   target ? <a class="practical-action" href={target} target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span></a> :
+   <p class="practical-notice">目前未開放線上預約，請使用其他聯絡方式。</p>}
+  {embed && <p class="practical-caption">預約內容由第三方服務提供，請先確認其個資政策。</p>}
+</section>
