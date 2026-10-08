@@ -1,0 +1,63 @@
+---
+name: astro-motion-craft
+description: Design, tune and audit restrained Astro motion interactions using reusable effects, four existing theme tokens and accessibility-first performance constraints.
+version: 1
+---
+
+# Astro Motion Craft — 動效與微互動設計 Skill
+
+## 何時使用
+
+使用者要求：網站「更精緻」、滾動出場、Stagger、3D Tilt／Spotlight、圖片 Zoom／Pan、磁吸 CTA、連結底線、FAQ 展開動態；或要求減少動畫、提高易讀性、維持手機效能。此 Skill 是設計與工程**規格**；不可宣稱本專案已實作所有 Manus 效果。參照 `references/manus-v2-motion-map.md` 中逐項實作對照。
+
+## 步驟（必須依序）
+
+1. **讀元件與版本事實**：先查 `src/data/blocks.registry.json`、`src/components/`、`public/v02.css`、`public/blocks*.css`、`.ai/astro-ui-craft/SKILL.md`；不要把 Manus 原始檔名誤認為本專案已安裝。確認頁面是知識／部落格或身體工作、諮商心理、教練、靈氣等助人者。
+2. **定義動作目的**：每個效果必須完成至少一項目的：建立層級、提示可操作性、協助閱讀、降低資訊密度、清楚回饋。無目的不加。
+3. **選動效強度**：預設 `subtle`；若沒有指定，**不要**全站使用 tilt、spotlight、magnetic、parallax。
+4. **沿用四套主題**：paper/morning/studio/botanical 使用現有 `--text`, `--muted`, `--accent`, `--surface`, `--line`, `--radius` 等 CSS 變數。不要直接導入 Manus 的 forest／sage Tailwind palette 覆蓋設計；若必須使用 Tailwind v4，先確定現有 Astro 建置、CSS cascade 與依賴相容。
+5. **先檢查現有效果**：global `[data-reveal]`、`TableOfContents`、`FAQ`、`PostCard` hover、`ArticleViewSwitcher` 已有互動。可以增強，但不能雙重 observer、重複轉場或重設焦點。
+6. **在四套主題與兩類網站驗證**：375/390px、平板、桌機；觸控、滑鼠、鍵盤與 `prefers-reduced-motion:reduce`。無 JavaScript 時文字、FAQ、導覽必須可見可用。
+7. **分支與合併**：用 GitHub PR 做小幅且可預覽的變更，更新 Registry、展示、`COMPONENTS.md`、Skill／reference；Build 成功、瀏覽器實測後請使用者確認才合併。
+
+## 強度政策
+
+| 等級 | 使用範圍 | 位移／時間／效果 |
+|---|---|---|
+| `off` | 使用者要求、動態不適、資訊密集頁 | 不使用非必要出場、傾斜、磁吸；保留 focus/按鈕狀態 |
+| **`subtle` 預設** | 長文章、服務頁、專業資訊 | reveal 單次、6–14px、450–750ms；hover 1–3px，陰影細微；只 1 個主視覺焦點 |
+| `expressive` 選配 | 行銷首頁、可操作示範、非長閱讀主欄 | 允許少量 stagger、soft zoom、spotlight／tilt **擇一**；tilt 1–4°、延遲疊加最多 600ms |
+
+數值是**本專案建議值**，不是 Manus 原始元件的原封設定。Manus 的實際限制另見 references。
+
+## 效果使用場景
+
+| 元件／效果 | 適合 | 不應使用 |
+|---|---|---|
+| Reveal (fade/soft zoom/slide/clip) | Hero、區段第一次進入 | 每行文字重播、重要文字先隱藏、長篇正文段段飛入 |
+| StaggerGroup | 3–6 張服務／文章卡片 | 過多項目逐張延遲導致頁面卡頓 |
+| MotionCard tilt / spotlight | 少量行銷卡片、可選功能示範 | 關於／法務／費用等需安定閱讀的主內容；手機追蹤 |
+| ZoomImage zoom / pan | 攝影、作品集、視覺故事 | 文字截圖、圖表、需要精確閱讀的圖片 |
+| Button magnetic | 最多一個高辨識度 CTA | 所有按鈕，尤其手機或關鍵表單動作 |
+| UnderlineLink | 文字 CTA、文章索引與 footer | 依靠 hover 才顯示連結意義 |
+| FAQ Accordion | 常見問題 | 過度複雜的高度動畫、變成無法鍵盤操作的自製 div |
+| ReadingProgress | 長文章 | 將整頁頁腳也納入閱讀進度 |
+
+## 不可妥協的降級要求
+
+- `prefers-reduced-motion: reduce`：取消平移、縮放、3D、磁吸與非必要延遲；內容立即可見。
+- 只有 `(hover:hover) and (pointer:fine)` 啟用 3D Tilt、Spotlight 指標追蹤、Pan 與 Magnetic。觸控關閉指標追蹤；鍵盤焦點必須仍有清楚可見的狀態。
+- 不在 server-rendered HTML 將核心內容永久設為 `opacity:0`；有 JS + IntersectionObserver 才漸進增強。對 `IntersectionObserver`／`ResizeObserver` 缺席提供立即可見 fallback。
+- 避免 layout thrash：以 transform/opacity 為主；scroll 用 passive listener + rAF；mouseleave 回復狀態；必要時 observer disconnect。
+- 照片與文字不得因動畫造成版面位移；圖片固定 aspect ratio + alt；no-JS 保留所有內容。
+- 交互型元件使用原生 button/link/details，支援 Tab、Enter/Space、Esc、focus-visible；不要在無互動 div 上假裝按鈕。
+
+## AI 產出契約
+
+若使用者請求「做出某網站同款精緻感」：
+1. 先輸出簡短**動效地圖**：頁面區段、效果、用途、強度、觸控／reduced-motion 行為。
+2. 檢查是否可由既有元件 props 達成；新效果需提供可重用 Props 與 `className` 或 `class` 合併方式。
+3. 保留內容可讀性、SEO、網站速度、真實 CTA；示範型效果不要讓正式網站看起來像動畫 playground。
+4. PR 預覽附簡單前後對照與鍵盤／觸控驗收，不主張僅因 build 通過就等於動效品質過關。
+
+> Manus v2 參考資料：`manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md` 與使用者提供的 `manusCR-v2astro-editorial-care-tailwind-motion.zip`。這些是**設計研究來源**，不直接代表本 repo 的已安裝依賴或現有實作。
