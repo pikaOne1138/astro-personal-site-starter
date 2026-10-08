@@ -1,0 +1,23 @@
+---
+interface Props {href?:string;className?:string;label?:string;}
+const {href,className='',label='體驗磁吸效果'}=Astro.props;
+---
+{href?<a class:list={['motion-magnetic',className]} href={href} data-motion-magnetic>{label} <span aria-hidden="true">↗</span></a>:<button type="button" class:list={['motion-magnetic',className]} data-motion-magnetic>{label} <span aria-hidden="true">↗</span></button>}
+<script>
+  const fine=window.matchMedia('(hover:hover) and (pointer:fine)');
+  const reduced=window.matchMedia('(prefers-reduced-motion:reduce)');
+  document.querySelectorAll<HTMLElement>('[data-motion-magnetic]:not([data-magnetic-installed])').forEach(button=>{
+    button.dataset.magneticInstalled='true';let raf=0;let last:PointerEvent|undefined;
+    const reset=()=>{cancelAnimationFrame(raf);raf=0;button.style.removeProperty('--magnetic-x');button.style.removeProperty('--magnetic-y')};
+    button.addEventListener('pointermove',event=>{
+      if(!fine.matches||reduced.matches||event.pointerType==='touch')return;last=event;
+      if(raf)return;raf=requestAnimationFrame(()=>{
+        raf=0;if(!last)return;const rect=button.getBoundingClientRect();if(!rect.width||!rect.height)return;
+        button.style.setProperty('--magnetic-x',(((last.clientX-rect.left)/rect.width-.5)*8).toFixed(1)+'px');
+        button.style.setProperty('--magnetic-y',(((last.clientY-rect.top)/rect.height-.5)*6).toFixed(1)+'px');
+      });
+    },{passive:true});
+    button.addEventListener('pointerleave',reset);button.addEventListener('pointercancel',reset);
+    fine.addEventListener('change',reset);reduced.addEventListener('change',reset);
+  });
+</script>
