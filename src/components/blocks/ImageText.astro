@@ -1,0 +1,5 @@
+---
+interface Props {title:string;description:string;image?:string;imageAlt?:string;reversed?:boolean;}
+const {title,description,image,imageAlt='',reversed=false}=Astro.props;
+---
+<section class:list={['ab-split',{'ab-reverse':reversed}]}><div class="ab-image-panel">{image ? <img src={image} alt={imageAlt} loading="lazy"/> : <div class="ab-placeholder">IMAGE + STORY</div>}</div><div><p class="ab-eyebrow">OUR PHILOSOPHY</p><h2>{title}</h2><p>{description}</p></div></section>
