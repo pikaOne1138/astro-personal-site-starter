@@ -1,5 +1,5 @@
 /* v0.2 multipage + three distinct navigation systems */
-.v02-nav{position:sticky;top:0;z-index:30}
+.v02-nav{position:sticky;top:0;z-index:100;background:var(--bg);isolation:isolate;border-bottom:1px solid var(--line)}
 .v02-nav__inner{width:min(calc(100% - 40px),var(--container));margin:auto;min-height:68px;display:flex;align-items:center;gap:28px}
 .v02-brand{display:flex;align-items:center;gap:10px;font-weight:600}.v02-brand__mark{color:var(--accent)}
 .v02-links{display:flex;gap:26px;margin-left:auto}.v02-links a{font-size:16px;font-weight:500;line-height:1.5;color:var(--muted);position:relative}.v02-links a.is-current{color:var(--text)}
@@ -12,10 +12,10 @@
 .v02-nav--paper .v02-nav__inner{min-height:50px}.v02-nav--paper .v02-links{margin-left:0}.v02-nav--paper .v02-links a{text-transform:uppercase;letter-spacing:.055em;font-size:14px}.v02-nav--paper .v02-links a.is-current:after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:2px;background:var(--accent)}.v02-nav--paper .v02-actions{margin-left:auto}.v02-nav--paper .v02-cta{border:1px solid var(--text);border-radius:2px}
 
 /* Morning: floating pill */
-.v02-nav--morning{top:14px;background:transparent;padding-bottom:14px}.v02-nav--morning .v02-nav__inner{min-height:60px;margin-top:14px;padding:0 10px 0 18px;border-radius:999px;background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(16px);box-shadow:0 10px 35px rgb(58 51 48/.08);border:1px solid color-mix(in srgb,var(--line) 70%,transparent)}.v02-nav--morning .v02-links a.is-current{background:var(--accent-soft);border-radius:999px;padding:5px 10px}.v02-nav--morning .v02-cta{background:var(--accent);color:white}
+.v02-nav--morning{top:0;background:var(--bg);padding-bottom:14px;border-bottom:0}.v02-nav--morning .v02-nav__inner{min-height:60px;margin-top:14px;padding:0 10px 0 18px;border-radius:999px;background:var(--surface);box-shadow:0 10px 35px rgb(58 51 48/.08);border:1px solid color-mix(in srgb,var(--line) 70%,transparent)}.v02-nav--morning .v02-links a.is-current{background:var(--accent-soft);border-radius:999px;padding:5px 10px}.v02-nav--morning .v02-cta{background:var(--accent);color:white}
 
 /* Studio: precise bar + geometric underline */
-.v02-nav--studio{background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.v02-nav--studio .v02-nav__inner{min-height:64px}.v02-nav--studio .v02-links a:after{content:"";position:absolute;left:50%;right:50%;bottom:-21px;height:2px;background:var(--accent);transition:left var(--fast),right var(--fast)}.v02-nav--studio .v02-links a:hover:after,.v02-nav--studio .v02-links a.is-current:after{left:0;right:0}.v02-nav--studio .v02-cta{background:var(--accent);color:white;border-radius:8px}
+.v02-nav--studio{background:var(--bg);border-bottom:1px solid var(--line)}.v02-nav--studio .v02-nav__inner{min-height:64px}.v02-nav--studio .v02-links a:after{content:"";position:absolute;left:50%;right:50%;bottom:-21px;height:2px;background:var(--accent);transition:left var(--fast),right var(--fast)}.v02-nav--studio .v02-links a:hover:after,.v02-nav--studio .v02-links a.is-current:after{left:0;right:0}.v02-nav--studio .v02-cta{background:var(--accent);color:white;border-radius:8px}
 
 .v02-page,.v02-article,.v02-service-detail{width:min(calc(100% - 40px),var(--container));margin:auto}.v02-pagehero{padding:clamp(72px,10vw,130px) 0 56px;border-bottom:1px solid var(--line);max-width:850px}.v02-pagehero h1,.v02-article h1,.v02-service-detail h1{font:600 clamp(48px,7vw,84px)/1.08 var(--heading);letter-spacing:-.035em;margin:0}.v02-pagehero>p:last-child,.v02-service-detail header>p:last-child{max-width:62ch;color:var(--muted);font-size:19px}.v02-content{padding:72px 0 120px}.v02-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}.v02-filter span{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px}.v02-article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.v02-article-card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);transition:transform var(--base) var(--ease),box-shadow var(--base)}.v02-article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.v02-article-card small{display:block;color:var(--muted);margin-top:38px}.v02-article-card h2{font:600 27px/1.3 var(--heading)}.v02-article-card p{color:var(--muted)}.v02-article-card b{font-size:14px;color:var(--accent)}
 .v02-topic-list article,.v02-service-row{display:grid;grid-template-columns:55px 1fr auto;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}.v02-topic-list article:first-child,.v02-service-list .v02-service-row:first-child{border-top:1px solid var(--line)}.v02-topic-list h2,.v02-service-row h2{font:600 27px var(--heading);margin:0}.v02-topic-list p,.v02-service-row p{color:var(--muted);margin:4px 0}.v02-topic-list>article>span,.v02-service-row>span{color:var(--accent);font-size:12px}.v02-topic-list b,.v02-service-row b{font-size:13px}
@@ -32,3 +32,8 @@
 .v02-actions .v02-explore-link:hover,.v02-actions .v02-explore-link[aria-current="page"]{border-color:var(--accent);color:var(--accent)}
 @media(max-width:850px){.v02-actions .v02-explore-link{display:inline-flex}}
 @media(max-width:420px){.v02-nav__inner{gap:8px}.v02-actions{gap:8px}.v02-actions .v02-explore-link{padding:8px}.v02-actions .v02-cta{padding:8px 12px}}
+
+/* Botanical V2 navigation: opaque sticky surface prevents content showing through. */
+.v02-nav--botanical{background:var(--bg);border-bottom:1px solid var(--line)}
+.v02-nav--botanical .v02-nav__inner{min-height:68px}
+.v02-nav--botanical .v02-cta{background:var(--accent);color:white;border-radius:var(--radius)}
