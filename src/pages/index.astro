@@ -5,10 +5,10 @@ import { kindMeta, themeMeta, kinds, themes } from '../data';
 import { helperPractice } from '../data/helper-content';
 const base = import.meta.env.BASE_URL;
 ---
-<DemoLayout title="Astro Workshop · 8 UI Demos + Blocks" description="Astro 工作坊 2 種網站架構 × 4 種視覺人格">
+<DemoLayout title="網站設計工作坊 · 八款網站示範" description="網站工作坊：兩種網站架構與四種視覺風格">
   <main class="demo-index">
     <header class="index-hero">
-      <p class="eyebrow">ASTRO WORKSHOP · UI CRAFT LAB</p>
+      <p class="eyebrow">PERSONAL WEBSITE · DESIGN STUDIO</p>
       <h1>兩種網站任務，四種視覺人格。</h1>
       <p>這不是八套互不相干的網站，而是 <strong>2 種內容架構 × 4 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
     </header>
@@ -39,19 +39,19 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div class="library-entry-grid">
         <a class="demo-card library-entry-card" href={`${base}blocks/`}>
-          <p class="eyebrow">ASTRO BLOCKS · COMPONENT LIBRARY</p>
+          <p class="eyebrow">WEBSITE BLOCKS · COMPONENT LIBRARY</p>
           <h3>元件庫 · 網站怎麼組成</h3>
           <p>文章、首頁、服務、導覽、搜尋與各種內容排版。探索 {blockRegistry.length} 個元件，切換四套風格，直接比較實際網站。</p>
           <b>進入元件展示站 →</b>
         </a>
         <a class="demo-card library-entry-card" href={base+'effects/'}>
-          <p class="eyebrow">ASTRO MOTION · EFFECTS LIBRARY</p>
+          <p class="eyebrow">MOTION · EFFECTS LIBRARY</p>
           <h3>特效庫 · 網站怎麼互動</h3>
           <p>Reveal、Stagger、Tilt／Spotlight、Zoom／Pan、磁吸按鈕、動態底線與 FAQ。實際播放與調整動效強度。</p>
           <b>進入互動特效庫 →</b>
         </a>
         <a class="demo-card library-entry-card" href={base+'layouts/'}>
-          <p class="eyebrow">ASTRO LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
+          <p class="eyebrow">LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
           <h3>版型庫 · 網站怎麼說故事</h3>
           <p>12 種獨立的網站結構與內容閱讀動線：六款知識內容、六款助人專業。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
           <b>進入 12 種版型庫 →</b>
@@ -107,7 +107,7 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div class="demo-grid">
         <a class="demo-card theme-paper" href={base+'knowledge/paper/articles/'}>
-          <small>KNOWLEDGE / PAPER</small><h3>文章索引站</h3><p>試著搜尋 Astro、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗文章探索 →</b>
+          <small>KNOWLEDGE / PAPER</small><h3>文章索引站</h3><p>試著搜尋文章關鍵字、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗文章探索 →</b>
         </a>
         <a class="demo-card theme-botanical" href={base+'helper/botanical/articles/'}>
           <small>HELPER / BOTANICAL</small><h3>助人者文章探索</h3><p>使用植感配色與同一套探索功能；文章內頁可操作折疊、Grid、比較表與輪播。</p><b>體驗文章探索 →</b>
