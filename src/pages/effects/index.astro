@@ -36,6 +36,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
         <button type="button" data-fx-intensity="expressive" aria-pressed="false">鮮明</button>
       </div>
     </div>
+    <p class="fx-motion-status" role="status" aria-live="polite" data-motion-status>檢查瀏覽器動效設定中…</p>
     <nav class="fx-jump" aria-label="特效分類">
       <a href="#reveal">01 進場</a><a href="#stagger">02 群組</a><a href="#cards">03 互動卡片</a><a href="#images">04 圖片</a><a href="#actions">05 按鈕與連結</a><a href="#faq">06 FAQ</a>
     </nav>
@@ -132,14 +133,36 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       page.dataset.intensity=button.dataset.fxIntensity;
       intensityButtons.forEach(item=>item.setAttribute('aria-pressed',String(button===item)));
     }));
+    const motionStatus=document.querySelector<HTMLElement>('[data-motion-status]');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const fine=window.matchMedia('(hover: hover) and (pointer: fine)');
+    const showStatus=()=>{
+      if(!motionStatus)return;
+      const effectsOff=page?.dataset.intensity==='off';
+      motionStatus.textContent=reduced.matches
+        ? '目前系統已啟用「減少動態」，進場、3D 和磁吸效果會自動停用。'
+        : effectsOff
+          ? '目前選擇「關閉」動效。切換「輕柔」或「鮮明」可以觀看效果。'
+          : fine.matches
+            ? '已啟用動效。滾動或按「重播效果」，3D 效果請將滑鼠移到卡片上。'
+            : '目前是觸控或非精準滑鼠模式：可看進場動畫，Tilt／Spotlight／Pan／磁吸會停用。';
+    };
+    reduced.addEventListener('change',showStatus);
+    fine.addEventListener('change',showStatus);
+    intensityButtons.forEach(button=>button.addEventListener('click',showStatus));
+    showStatus();
     document.querySelectorAll<HTMLButtonElement>('[data-motion-replay]').forEach(button=>{
       button.addEventListener('click',()=>{
         const group=button.closest('[data-motion-demo]');
         const elements=Array.from(group?.querySelectorAll<HTMLElement>('[data-motion-reveal]')||[]);
         if(!elements.length)return;
-        elements.forEach(el=>{el.classList.add('motion-is-pending');el.style.transition='none';el.classList.remove('motion-is-visible')});
-        void elements[0].offsetHeight;
-        requestAnimationFrame(()=>{elements.forEach(el=>{el.style.removeProperty('transition');el.classList.add('motion-is-visible')})});
+        if(reduced.matches||page?.dataset.intensity==='off'){showStatus();return;}
+        elements.forEach(el=>{
+          el.classList.remove('motion-replaying');
+          void el.offsetWidth;
+          el.classList.add('motion-replaying');
+          el.addEventListener('animationend',()=>el.classList.remove('motion-replaying'),{once:true});
+        });
       });
     });
     const faqPreview=document.querySelector<HTMLElement>('[data-faq-preview] .motion-faq');
