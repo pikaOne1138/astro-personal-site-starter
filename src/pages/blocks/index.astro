@@ -62,7 +62,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
-    <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a>
+    <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a> <a class="ab-gallery-back" href={base+'effects/'} style="margin-left:16px">動態特效庫 ↗</a>
     <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
@@ -166,7 +166,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
     </div>
   </section>
-  <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md</footer>
+  <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md · 特效請至獨立特效庫</footer>
 </main>
 <script is:inline>
   document.querySelectorAll('[data-block-theme]').forEach(button=>button.addEventListener('click',()=>{
