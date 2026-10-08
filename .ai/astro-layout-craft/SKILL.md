@@ -57,3 +57,12 @@ PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路
 - 留白不是只有 padding：要保留 Hero 文字占比、圖片寬高、H1 標題斷行、板塊密度、全幅段落和容器段落的節奏。
 - Manus Learning Lab 的特色是黃底高亮大標、貼紙式路線圖片、垂直節點時間軸、課程區塊內的細列表；不可以退化成全寬色塊三列表。
 - 比對原站和 PR 時，至少截取相同寬度的桌面全頁和 390px 手機畫面，查 Hero、兩側留白、路徑與底部。**GitHub Actions build 成功不能取代視覺驗收。**
+
+## 強制遵循原始版型，不允許憑印象「重做」
+
+當使用者有提供 ZIP／現有源碼且要求相同或高保真版型：
+- **第一選項是移植原始 DOM、CSS 和互動**，而不是用自己的 `.lay-hero`、`.lay-cards` 重新編排。只做 GitHub Pages BASE_URL、圖片位置與 Astro 版本相容的必要轉換。
+- 將每款原始版型的 CSS 保留為相對獨立的 styles（例如 `companion-source.css`、`learning-lab-source.css`），避免共用 `layout-library.css` 覆寫它特有的構圖。
+- 每款的全頁背景與實際內容畫布是兩個不同層級；避免讓背景也被 max-width 裁成窄島，亦不能以滿版背景替代應有的閱讀留白。
+- 合併前檢查 `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` 的「是否已完整對照原稿」欄位；對照未完成的款式不能當作「12 款已復刻完成」。
+- 使用者已多次指出「Learning Lab 步驟圓點壓字」「Companion 背景被裁窄島」。這些屬原始碼可避免的問題；先讀源碼，不准再靠猜測調 CSS。
