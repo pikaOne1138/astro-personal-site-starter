@@ -9,13 +9,13 @@ const base=import.meta.env.BASE_URL;
 const root=base+'explore/';
 const articleRoot=base+'knowledge/paper/articles/';
 ---
-<DemoLayout title="文章探索 · Astro Blocks V2" description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆">
+<DemoLayout title="文章探索 · Astro Blocks" description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆">
   <link rel="stylesheet" href={base+'blocks.css'} />
   <link rel="stylesheet" href={base+'blocks-v2.css'} />
   <main class="ab-gallery v2-explorer">
     <header class="ab-gallery-header">
       <a class="ab-gallery-back" href={base+'blocks/'}>← 返回元件庫</a>
-      <p class="ab-eyebrow" style="margin-top:32px">ASTRO BLOCKS V2 · ARTICLE DISCOVERY</p>
+      <p class="ab-eyebrow" style="margin-top:32px">ASTRO BLOCKS · ARTICLE DISCOVERY</p>
       <h1>用搜尋、標籤與日期，重新找到文章。</h1>
       <p>這是可操作的文章探索示範：搜尋標題／摘要／分類／標籤，或點擊月份和日曆上有文章的日期。下方六篇文章均為工作坊示範資料，不是真實發布紀錄。</p>
       <a class="ab-chip" href={root}>清除條件，顯示全部</a>
