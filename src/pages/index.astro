@@ -3,12 +3,12 @@ import DemoLayout from '../layouts/DemoLayout.astro';
 import { kindMeta, themeMeta, kinds, themes } from '../data';
 const base = import.meta.env.BASE_URL;
 ---
-<DemoLayout title="Astro Workshop · 6 UI Demos" description="Astro 工作坊 2 種網站架構 × 3 種視覺人格">
+<DemoLayout title="Astro Workshop · 8 UI Demos + Blocks" description="Astro 工作坊 2 種網站架構 × 4 種視覺人格">
   <main class="demo-index">
     <header class="index-hero">
       <p class="eyebrow">ASTRO WORKSHOP · UI CRAFT LAB</p>
-      <h1>兩種網站任務，三種視覺人格。</h1>
-      <p>這不是六套互不相干的網站，而是 <strong>2 種內容架構 × 3 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
+      <h1>兩種網站任務，四種視覺人格。</h1>
+      <p>這不是八套互不相干的網站，而是 <strong>2 種內容架構 × 4 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
     </header>
     <div class="matrix">
       {kinds.map((kind)=><section class="matrix-group">
