@@ -1,0 +1,5 @@
+---
+interface Props {columns?:2|3;}
+const {columns=2}=Astro.props;
+---
+<div class:list={['v2-article-grid',columns===3?'columns-3':'columns-2']}><slot /></div>
