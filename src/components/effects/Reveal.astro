@@ -1,0 +1,26 @@
+---
+type Variant='fade-up'|'fade'|'soft-zoom'|'blur-up'|'slide-left'|'slide-right'|'clip-up';
+interface Props {variant?:Variant;delay?:number;duration?:number;once?:boolean;className?:string;}
+const {variant='fade-up',delay=0,duration=620,once=true,className=''}=Astro.props;
+const d=Math.max(0,Math.min(1400,Number.isFinite(delay)?delay:0));
+const t=Math.max(300,Math.min(1400,Number.isFinite(duration)?duration:620));
+---
+<div class:list={['motion-reveal','motion-reveal--'+variant,className]} data-motion-reveal data-motion-once={String(once)} style={`--motion-delay:${d}ms;--motion-duration:${t}ms`}><slot/></div>
+<script>
+  const prefersReduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const activate=()=>{
+    const elements=Array.from(document.querySelectorAll<HTMLElement>('[data-motion-reveal]:not([data-motion-ready])'));
+    if(!elements.length)return;
+    if(prefersReduced.matches||!('IntersectionObserver' in window)){elements.forEach(el=>{el.classList.add('motion-is-visible');el.dataset.motionReady='true';});return;}
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const el=entry.target as HTMLElement;
+        if(entry.isIntersecting){el.classList.add('motion-is-visible');if(el.dataset.motionOnce!=='false')observer.unobserve(el);}
+        else if(el.dataset.motionOnce==='false')el.classList.remove('motion-is-visible');
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -4% 0px'});
+    elements.forEach(el=>{el.dataset.motionReady='true';el.classList.add('motion-is-pending');observer.observe(el);});
+  };
+  // Shared gallery can assign stagger delays before observer starts.
+  requestAnimationFrame(activate);
+</script>
