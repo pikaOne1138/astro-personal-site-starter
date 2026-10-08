@@ -1,0 +1,9 @@
+---
+type Variant = 'grow' | 'center' | 'marker';
+interface Props { href: string; arrow?: boolean; external?: boolean; variant?: Variant; className?: string; }
+const { href, arrow = false, external = false, variant = 'grow', className = '' } = Astro.props;
+---
+<a class:list={['link-underline', 'effect-link', `effect-link--${variant}`, className]} href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
+  <slot />{arrow && <span class="button-arrow" aria-hidden="true">↗</span>}
+  {external && <span class="sr-only">（另開新視窗）</span>}
+</a>
