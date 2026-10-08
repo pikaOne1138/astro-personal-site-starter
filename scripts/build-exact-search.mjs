@@ -31,7 +31,10 @@ const docs=files.map(path=>{
 }).filter(Boolean);
 mkdirSync(join(dist,'search'),{recursive:true});
 writeFileSync(join(dist,'search','exact-zh.json'),JSON.stringify({version:1,docs}));
-const topic=docs.find(d=>d.url.endsWith('/knowledge/paper/topics/'));
-if(!topic||!topic.text.includes('內容量長大'))throw Error('Chinese search regression: missing exact content in topics HTML');
-if(!docs.some(d=>d.text.includes('內容量長大')))throw Error('No page contains target Chinese string');
-console.log('Exact Chinese index verified:',docs.length,'HTML pages; topic phrase found');
+const expected=[['paper','數位工具'],['morning','動畫與漫畫'],['studio','人際關係'],['botanical','城市散步']];
+for(const [theme,phrase] of expected){
+  const topic=docs.find(d=>d.url.endsWith('/knowledge/'+theme+'/topics/'));
+  if(!topic||!topic.text.includes(phrase))throw Error('Chinese search regression: missing '+phrase+' in '+theme+' topic page');
+  if(!docs.some(d=>d.url.endsWith('/knowledge/'+theme+'/')&&d.text.includes(phrase)))throw Error('Knowledge homepage topic not indexed: '+theme);
+}
+console.log('Exact Chinese index verified:',docs.length,'HTML pages; four themed topic phrases found');
