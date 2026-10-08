@@ -1,8 +1,8 @@
 ---
 import DemoLayout from '../layouts/DemoLayout.astro';
 import blockRegistry from '../data/blocks.registry.json';
-import { kindMeta, themeMeta, kinds, themes } from '../data';
-import { helperPractice } from '../data/helper-content';
+import { kindMeta, kinds } from '../data';
+import ShowcaseDemoGrid from '../components/ShowcaseDemoGrid.astro';
 const base = import.meta.env.BASE_URL;
 ---
 <DemoLayout title="網站設計展示總覽｜從喜歡的設計開始" description="從網站版型、視覺風格、功能元件與互動細節開始，探索自己的個人網站。">
@@ -31,15 +31,7 @@ const base = import.meta.env.BASE_URL;
               ? '適合記錄生活、分享觀點、整理知識與長期累積文章。可體驗搜尋、標籤、文章分類與閱讀功能。'
               : '適合心理師、療癒師、教練與顧問。可體驗服務介紹、合作流程、常見問題與預約入口。'}</p>
           </div>
-          <div class="demo-grid">
-            {themes.map((theme)=><a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
-              <div class="demo-swatch"><span></span><span></span><span></span></div>
-              <small>{themeMeta[theme].label}</small>
-              <h3>{themeMeta[theme].zh}{kind==='helper' ? ' · '+helperPractice[theme].specialty : ''}</h3>
-              <p>{kind==='helper' ? helperPractice[theme].intro : themeMeta[theme].mood}</p>
-              <b>開啟 Demo →</b>
-            </a>)}
-          </div>
+          <ShowcaseDemoGrid kind={kind} />
         </div>)}
       </div>
     </section>
