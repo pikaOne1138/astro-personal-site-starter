@@ -13,6 +13,9 @@ import SocialLinks from './blocks/SocialLinks.astro';
 import ResourceLibrary from './blocks/ResourceLibrary.astro';
 import LeadMagnetCard from './blocks/LeadMagnetCard.astro';
 import NewsletterSignup from './blocks/NewsletterSignup.astro';
+import PractitionerCard from './blocks/PractitionerCard.astro';
+import ServiceFit from './blocks/ServiceFit.astro';
+import { helperPractice } from '../data/helper-content';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
 const { kind, theme, page } = Astro.props;
@@ -34,15 +37,16 @@ const pageTitle: Record<string,string> = {
 };
 
 const articleMeta=articlesV2;
+const practice=helperPractice[theme];
 ---
-<DemoLayout title={`${pageTitle[page]} · ${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+<DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:k.intro} theme={theme} kind={kind}>
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current={page} />
     <main class="v02-page">
       <section class="v02-pagehero" data-reveal>
-        <p class="eyebrow">{k.eyebrow} · {t.label}</p>
-        <h1>{pageTitle[page]}</h1>
-        <p>{page === 'about' ? '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。' :
+        <p class="eyebrow">{kind==='helper'?practice.eyebrow:k.eyebrow} · {t.label}</p>
+        <h1>{kind==='helper' && page==='services' ? practice.serviceTitle : pageTitle[page]}</h1>
+        <p>{kind==='helper' && page==='about' ? practice.about : kind==='helper' && page==='services' ? practice.intro : kind==='helper' && page==='first-visit' ? practice.visitIntro : kind==='helper' && page==='faq' ? '常見問題依專業類別說明服務形式、限制與你的選擇權。' : kind==='helper' && page==='booking' ? practice.bookingDescription : page === 'about' ? '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。' :
           page === 'articles' ? '把內容整理成可以探索、回訪與累積的入口，而不是把所有文章塞在首頁。' :
           page === 'services' ? '把「我可以怎麼幫你」說清楚，讓訪客可以先理解，再決定是否往下一步。' :
           page === 'first-visit' ? '把未知變成已知：流程、費用、方式、界線與第一次會發生什麼。' :
@@ -82,32 +86,30 @@ const articleMeta=articlesV2;
       </section>}
 
       {page === 'services' && <section class="v02-content v02-service-list" data-reveal>
-        <PricingDetails items={[{name:'第一次對談',duration:'示範：可設定時長',format:'線上／實體需自行設定'},{name:'深度陪伴',duration:'依服務方案確認',note:'此處是範例資訊，不代表實際收費'}]} disclaimer="請填入已確認的服務費用與預約政策；此網站僅為展示。" />
-        {detailPages.services.map((s,i)=><a class="v02-service-row" href={`${root}services/${s.slug}/`}><span>0{i+1}</span><div><h2>{s.title}</h2><p>{i===0?'先理解需求、確認適合度，再一起決定下一步。':'需要一段時間整理議題時，提供穩定而有結構的陪伴。'}</p></div><b>了解服務 →</b></a>)}
+        <ServiceFit suitable={practice.suitable} notSuitable={practice.notSuitable} notice={practice.fitNotice} />
+        <PricingDetails items={practice.services.map(item=>({name:item.title,duration:item.meta,format:'服務形式由提供者確認'}))} disclaimer={practice.pricingNote} />
+        {detailPages.services.map((s,i)=><a class="v02-service-row" href={`${root}services/${s.slug}/`}><span>0{i+1}</span><div><h2>{practice.services[i]?.title||s.title}</h2><p>{practice.services[i]?.description||practice.intro}</p></div><b>了解服務 →</b></a>)}
       </section>}
 
       {page === 'first-visit' && <section class="v02-content" data-reveal>
-        <ol class="steps">
-          <li><span>1</span><div><h3>留下需求</h3><p>只需要說現在最想處理的事情，不用先整理成完整故事。</p></div></li>
-          <li><span>2</span><div><h3>確認方式與費用</h3><p>時間、形式、費用、取消規則都先說清楚。</p></div></li>
-          <li><span>3</span><div><h3>第一次對談</h3><p>先認識彼此與需求，不預設一定要長期合作。</p></div></li>
-        </ol>
-        <aside class="v02-note"><strong>第一次來最需要的是降低未知。</strong><p>這頁不是銷售頁，而是把會讓人猶豫的問題先回答。</p></aside>
+        <h2>{practice.processTitle}</h2>
+        <ol class="steps">{practice.process.map((item,i)=><li><span>{i+1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></li>)}</ol>
+        <aside class="v02-note"><strong>先理解流程，再決定是否參與。</strong><p>{practice.terms}</p></aside>
       </section>}
 
-      {page === 'about' && kind === 'helper' && <div class="v02-content"><TrustInfo format="依服務提供者實際提供方式設定" notice="本站為模板示範；專業資格、服務地區與隱私政策應由使用者自行確認填寫。" /></div>}
+      {page === 'about' && kind === 'helper' && <div class="v02-content"><PractitionerCard name="示範專業者" role={practice.practiceLabel} bio={practice.about} specialties={practice.concepts} profileHref={root+'services/'} /><TrustInfo format={practice.specialty} policy={practice.terms} notice="本站為模板示範；正式服務請核實資格、地區、聯絡方式及相關政策。" /></div>}
       {page === 'about' && <section class="v02-content about-split" data-reveal>
         <div class="portrait-placeholder"><span>自然光人像 / 作者照</span></div>
-        <div><p class="eyebrow">WHY I DO THIS</p><h2>{kind === 'knowledge' ? '我喜歡把複雜的東西拆開，再重新拼成可以使用的樣子。' : '專業不是站得離你很遠，而是能陪你把眼前的事情看清楚。'}</h2><p>這裡保留完整的故事、工作方式與背景。首頁只放三行短版，想深入認識的人再進來。</p><div class="credentials"><span>工作方法</span><span>經歷時間軸</span><span>專業背景</span></div></div>
+        <div><p class="eyebrow">WHY I DO THIS</p><h2>{kind === 'knowledge' ? '我喜歡把複雜的東西拆開，再重新拼成可以使用的樣子。' : practice.aboutTitle}</h2><p>{kind==='helper'?practice.about:'這裡保留完整的故事、工作方式與背景。首頁只放三行短版，想深入認識的人再進來。'}</p><div class="credentials"><span>工作方法</span><span>經歷時間軸</span><span>專業背景</span></div></div>
       </section>}
 
       {page === 'faq' && <section class="v02-content faq" data-reveal>
-        {['第一次談話會發生什麼？','我不確定自己適不適合，可以先問嗎？','線上與實體怎麼選？','取消或改期怎麼處理？'].map((q,i)=><details open={i===0}><summary>{q}</summary><p>這裡放簡短、具體、降低不確定性的回答。需要更完整的說明，再連到合作方式或預約頁。</p></details>)}
+        {(kind==='helper'?practice.faqs:[{question:'第一次談話會發生什麼？',answer:'請先閱讀服務說明與合作方式。'}]).map((item,i)=><details open={i===0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
       </section>}
 
       {page === 'booking' && <section class="v02-content v02-booking" data-reveal>
-        <div><p class="eyebrow">NEXT STEP</p><h2>不用一次決定全部，先確認這是不是適合你的下一步。</h2><p>正式模板可以接 Google Form、Tally、Cal.com 或 LINE；這裡只保留網站端的轉換入口，不自己打造 CRM。</p></div>
-        <div class="practical-stack"><BookingLink description="這是工作坊網站示範；尚未設定真實預約平台，請先閱讀服務內容。" /><ContactActions /></div>
+        <div><p class="eyebrow">NEXT STEP</p><h2>{practice.bookingTitle}</h2><p>{practice.bookingDescription}</p></div>
+        <div class="practical-stack"><BookingLink description={practice.bookingDescription} /><ContactActions /></div>
       </section>}
     </main>
     <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><SocialLinks size="sm" items={[{platform:"github",href:"https://github.com/pikaOne1138/astro-personal-site-starter",label:"模板原始碼"},{platform:"website",href:"https://pikaOne1138.github.io/astro-personal-site-starter/",label:"工作坊網站"}]}/><div class="footer-links"><a href={root}>回首頁</a><a href={base}>八種 Demo</a></div><small>Astro Workshop · 多頁式網站</small></footer>
