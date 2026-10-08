@@ -159,6 +159,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       const underline=document.querySelector<HTMLElement>('.motion-underline--grow');
       const underlineStyle=underline?getComputedStyle(underline):null;
       const hasUnderline=Boolean(underlineStyle&&underlineStyle.backgroundImage!=='none');
+      if(!stylesLoaded){const panel=document.querySelector<HTMLElement>('.fx-page');stylesLoaded=Boolean(hasUnderline&&panel&&getComputedStyle(panel).paddingTop==='30px');}
       if(detail)detail.textContent=
         '特效樣式：'+(stylesLoaded?'已載入':'未載入')+
         '｜特效腳本：'+(compiledScripts?'已執行':'尚未執行')+
@@ -205,7 +206,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
     const underlineReplay=document.querySelector<HTMLButtonElement>('[data-underline-replay]');
     const underlineGroup=document.querySelector<HTMLElement>('[data-underline-demo]');
     underlineReplay?.addEventListener('click',()=>{
-      if(!underlineGroup||reduced.matches||page?.dataset.intensity==='off'){showStatus();return;}
+      if(!underlineGroup||motionDisabled()||page?.dataset.intensity==='off'){showStatus();return;}
       underlineGroup.classList.remove('fx-underline-playing');
       void underlineGroup.offsetWidth;
       underlineGroup.classList.add('fx-underline-playing');
