@@ -152,3 +152,6 @@ Before handoff:
 
 ## Practical interactive blocks and real services
 Use `.ai/astro-ui-craft/references/article-exploration-v2.md` practical-block guidance for MobileMenu, BookingLink, ContactActions, PricingDetails, TrustInfo, MediaEmbed. Do not create fake form submissions, invented third-party appointments, testimonials or credentials. Keep GitHub Actions PR previews, and obtain user consent before merge.
+
+## Social identity links
+Use reusable `SocialLinks.astro` for social platforms and contact identity, rather than hardcoding text links or inventing brand URLs. Accept only configured HTTPS destinations or explicitly validated mailto/tel. Include aria labels and visible keyboard focus; preserve current four themes and do not show missing profiles. `ContactActions` wraps `SocialLinks` with LINE/Email/phone when data exists. Keep icon-brand trademark/individual license considerations in component docs; avoid user-facing release numbers.
