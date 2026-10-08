@@ -1,0 +1,6 @@
+---
+import Button from './Button.astro';
+interface Props {title:string;description:string;image?:string;action?:string;href?:string;}
+const {title,description,image,action='開始閱讀',href='#more'}=Astro.props;
+---
+<section class="ab-hero ab-hero-image" style={image ? `background-image:linear-gradient(90deg,rgba(20,30,28,.82),rgba(20,30,28,.18)),url('${image.replaceAll("'","%27")}')` : undefined}><div><p class="ab-eyebrow">FEATURED STORY</p><h1>{title}</h1><p>{description}</p><Button href={href}>{action} →</Button></div></section>
