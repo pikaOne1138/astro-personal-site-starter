@@ -1,0 +1,5 @@
+---
+interface Props {name:string;bio:string;image?:string;}
+const {name,bio,image}=Astro.props;
+---
+<aside class="ab-author">{image ? <img src={image} alt={name} loading="lazy"/> : <div class="ab-avatar" aria-hidden="true">{name.slice(0,1)}</div>}<div><span class="ab-eyebrow">ABOUT THE AUTHOR</span><h3>{name}</h3><p>{bio}</p></div></aside>
