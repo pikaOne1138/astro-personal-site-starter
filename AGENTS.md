@@ -60,3 +60,7 @@ For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.
 
 ## BackToTop / return to top
 Use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astro`; do not copy/paste separate scroll handlers into each page. The shared control is hidden near the top, appears after its threshold, respects `prefers-reduced-motion`, has an accessible button label, 44+ px touch target, and uses existing four-theme tokens. When adding a new top-level layout, reuse this component. Do not count BackToTop as an effects-library item.
+
+
+## Distinct layout library (not theme permutations)
+`/layouts/` contains 12 structurally different native Astro homepage previews, driven by `src/data/layout-directions.json`; six knowledge/editorial and six professional care. Follow `.ai/astro-layout-craft/SKILL.md` for information architecture, section order, hero proportion and structural compositions. **Do not replace all 12 with the same template plus color variants.** These layouts are distinct from 54 functional blocks and 7 effects and are not registered as blocks. Ten concepts are adapted from the user's `astro-ten-site-directions.zip`; two are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
