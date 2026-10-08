@@ -96,6 +96,11 @@ npm run build
 
 ### 可操作的導覽／服務／媒體共用元件
 
-元件庫目前 41 個 Astro blocks。新增手機導覽 `MobileMenu`、預約串接 `BookingLink`、LINE/Email/電話 `ContactActions`、服務資訊 `PricingDetails`、專業／政策 `TrustInfo`、影片與音訊 `MediaEmbed`。
+元件庫目前 42 個 Astro blocks。新增手機導覽 `MobileMenu`、預約串接 `BookingLink`、LINE/Email/電話 `ContactActions`、服務資訊 `PricingDetails`、專業／政策 `TrustInfo`、影片與音訊 `MediaEmbed`。
 
 目前 Demo 是**教材示範資料**，尚未設定使用者自己的預約平台、訂閱系統、專業資格與隱私政策。未配置的元件應呈現明確的未設定狀態，不得假裝成功送出、預約或提供專業服務。真實連結請由網站擁有者自行設定。
+
+
+### 社群圖示與連結
+
+`SocialLinks.astro` 可放在頁尾、個人介紹、聯絡頁或社群入口。支援 Instagram、Facebook、Threads、YouTube、LINE、GitHub、LinkedIn、X、TikTok、Pinterest、Discord、Telegram、Spotify、Email、電話、網站與 RSS。圖示由 Simple Icons 固定 v16 版本的 SVG CDN 提供；通用信封／電話／網站使用內嵌 SVG。未填連結不顯示，無須帳號或 JS 追蹤。正式上線時確認外部 CDN 可用性和各品牌商標政策；可改為自託管 SVG。
