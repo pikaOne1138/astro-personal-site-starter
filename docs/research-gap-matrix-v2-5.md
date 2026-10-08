@@ -70,7 +70,14 @@ V2.5 的完整範圍與單批開發量必須區分。**媒體嵌入、可信任�
 9. `ProfessionalProfile/CredentialList` — 具備可核實資格、專長與所在地的個人／團隊元件（與 TrustInfo 共享資料定義）。
 10. `ShareBar` — 複製網址與分享入口。
 
-**下階段（非本批核心）**：`TopicCollection/Pagination` 併入 V2.8 內容架構；`ReadingProgress`、`ImageGallery` 可依需求選配；複雜媒體 feed／自動播放、第三方會員／金流不做。
+**完整保留的原始候選清單，不因批次縮減而刪除**：
+- **知識／部落格**：`SeriesNavigation`（系列文章）、`PostNavigation`（上下篇）、`TopicCollection`（主題集合）、`ResourceLibrary`（PDF／工具資源）、`NewsletterSignup`、`Breadcrumbs`、`ShareBar`、`ReadingProgress`、`ImageGallery`（含圖說／授權）、`MediaEmbed`（YouTube／Podcast／音訊）、`Pagination`、`AuthorBox`／文章 metadata。
+- **助人者／個人服務**：`BookingLink/Embed`、`ContactActions`、`PricingDetails`、`ProfessionalProfile/CredentialList`、`ServiceFit`（適合／不適合）、`TrustInfo/TrustFooter`（身分、地區、資格、服務界線、隱私及必要安全聲明）、`MediaEmbed`。
+- **跨網站**：`MobileMenu`、`Breadcrumbs`、可用的表單串接及明確的空值退場、四套樣式與 RWD/鍵盤操作。
+- **內容工程底座（V2.8）**：Astro Content Collections／MDX、RSS、sitemap、SEO／Open Graph、404、響應式圖片、WordPress slug/permalink 保留、分類與分頁、build-time 全文索引（有需要才加）。
+- **原本已具備，但仍要驗收**：`ServiceCard`、`FAQ`、`Testimonial`、`TableOfContents`、`RelatedArticles`、`ContentCarousel`、`SiteSearchDialog`，不要以新增同義元件重複造輪子。
+
+**分批決策**：V2.5 第一批 6 組、第二批 4 組；`ServiceFit`、`ImageGallery`、`ReadingProgress`、`SeriesNavigation`、`ResourceLibrary` 等列 **V2.5 擴充清單**，視實際模板內容採用，不默默移除。涉及真實分類／文章資料的 `TopicCollection/Pagination` 隨 V2.8 一起做；複雜媒體 feed／自動播放、第三方會員／金流不做。
 
 **兩項不可忽略的驗收**：
 - `MediaEmbed` 必須在**知識／部落格文章**與**助人者服務或資源頁**各有一個可播放／可開啟的實際 Demo；影片 16:9 RWD、`title`、lazy loading、隱私保護模式或明確外連 fallback，無法嵌入時不顯示假播放器。
