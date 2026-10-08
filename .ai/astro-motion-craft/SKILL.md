@@ -81,3 +81,12 @@ version: 1
 > 參考庫是常駐的設計資產，新增效果、修正既有效果時，也要回填 `library/effect-catalog.md` 的狀態與對應 recipe。
 
 > Manus v2 參考資料：`manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md` 與使用者提供的 `manusCR-v2astro-editorial-care-tailwind-motion.zip`。這些是**設計研究來源**，不直接代表本 repo 的已安裝依賴或現有實作。
+
+
+## 實際可操作的特效庫（本 PR 新增）
+
+- 預覽網址：`/effects/`（GitHub Pages 請加上 repo BASE_URL；PR 預覽走 `/pr-preview/pr-N/effects/`）。
+- 元件來源：`src/components/effects/`，七個實際元件：`Reveal`、`StaggerGroup`、`MotionCard`、`ZoomImage`、`MagneticButton`、`UnderlineLink`、`MotionFAQ`；索引：`src/data/effects.registry.json`。
+- 六個可操作的分類：Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、磁吸／底線、可調 FAQ。可切換四套 Theme 和 off／subtle／expressive 強度，且 Reveal／Stagger 可重播。
+- **與原有 53 個 blocks 分開計數**：效果不是網站內容型區塊。後續組裝網站時優先將 effects 與既有 blocks 組合，必要時再抽象成可覆寫的 props，不要把整個展示頁複製到實站。
+- 舊文獻中標示「待移植」的效果已至少有**本 PR 版本的基本 Demo**，但並不表示與 Manus CSS、Tailwind 或所有參數完全一致。確認輸入方式、視覺與動效後才可說「正式完成」。
