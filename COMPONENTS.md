@@ -70,3 +70,16 @@ import FAQ from '../components/blocks/FAQ.astro';
 - 助人者／專業服務：`/helper/{theme}/`
 
 兩種架構各有四種配色，共八個網址，沿用原有 Demo 的共用架構；展示站元件可逐步引入新的自訂頁面。
+
+## 真正可使用的導覽、媒體與服務資訊元件
+
+| 元件 | 用途與必要設定 |
+|---|---|
+| `MobileMenu` | 手機展開選單，`links:[{label,href}]`；Escape 關閉並返回焦點 |
+| `BookingLink` | 外部排程 `href` 或支援 HTTPS 的 `embedUrl`；未設定時不假裝能預約 |
+| `ContactActions` | 選配 `email`、`phone`、`lineUrl`；會略過無效網址 |
+| `PricingDetails` | `items:[{name,price?,duration?,format?,note?}]` 與免責說明 |
+| `TrustInfo` | 可驗證的身分／資格／服務地區／政策／隱私；不產生假數據 |
+| `MediaEmbed` | `type:'youtube'|'audio'|'podcast'`、`url`、`title`、`caption`；YouTube/音訊直接嵌入、未支援 Podcast 提供外部連結 |
+
+六個元件已依用途列入 `/blocks/`；最新 Registry 為 41 個。請在紙墨／晨光／靜室／植感、375/390px 手機尺寸與鍵盤操作下逐一驗收。
