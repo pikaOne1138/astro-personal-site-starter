@@ -1,0 +1,5 @@
+---
+interface Props {items:{question:string;answer:string}[];}
+const {items}=Astro.props;
+---
+<div class="ab-faq">{items.map(x=><details><summary>{x.question}</summary><p>{x.answer}</p></details>)}</div>
