@@ -6,6 +6,12 @@ For GitHub PRs, previews, deployment, visual verification, or merging: **read `.
 
 For articles, Content Collections, SEO, Pagefind, RSS, sitemap, draft/publication rules or content updates: **read `.ai/astro-content-publishing/SKILL.md` first** and follow its references. `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
 
+For a student choosing a design direction (including numbered mockup references), brand colors, page architecture, menus or blocks: **read `.ai/astro-starter-onboarding/SKILL.md`** before planning the site. Layout direction, brand theme and navigation are separate decisions.
+
+For deploying a **student-owned independent website** to GitHub Pages or optional Cloudflare: **read `.ai/astro-starter-deploy/SKILL.md`**. This is distinct from the showcase's existing PR preview infrastructure; never reuse hardcoded showcase URLs in student sites.
+
+For site updates, backups, broken deployments, rollback and restoration: **read `.ai/astro-site-maintenance/SKILL.md`**. Require explicit approval for merges, destructive changes, DNS adjustments or public-site rollback.
+
 Project goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
