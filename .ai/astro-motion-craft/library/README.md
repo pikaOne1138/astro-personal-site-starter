@@ -28,3 +28,12 @@
 6. 更新 gallery / Registry（**只有新成立的 runtime 元件才加 Registry**）和 AI Skill；PR Preview 建置＋真實互動驗收，未確認不合併。
 
 > 避免把「參考庫中有此效果」描述成「正式網站已實作此效果」。原始參數與適配決策請分開敘述。
+
+
+## 線上互動範例和效果登錄表
+
+- Astro 展示：`src/pages/effects/index.astro` → `/effects/`，四套主題即時切換。
+- 可重複使用：`src/components/effects/*.astro`；一組效果不等於一個完整頁面。
+- 機器可讀效果登錄：`src/data/effects.registry.json`，含可用變體、預設強度、觸控與減少動態策略。
+- 實際樣式：`public/effects.css`；自製本地插畫 `public/effects-sample.svg`，無外部影像依賴。
+- 檢查效果是否已實作時先查上述 runtime 檔案。源碼快照及 recipe 屬研究佐證，不是 production bundle。
