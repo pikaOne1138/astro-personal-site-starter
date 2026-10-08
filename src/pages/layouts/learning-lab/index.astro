@@ -2,61 +2,42 @@
 import directions from '../../../data/layout-directions.json';
 const item=directions.find(d=>d.slug==='learning-lab')!;
 const base=import.meta.env.BASE_URL;
-const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/k-learning-lab.webp';
 const all=base+'layouts/';
-const previous=directions[1];
-const next=directions[3];
+const lessons=[
+  {n:'01',type:'START HERE',title:'看見問題',text:'先分辨現象、問題與你真正想理解的事。',color:'yellow'},
+  {n:'02',type:'FIELD NOTE',title:'整理線索',text:'把零散資訊放進一張看得懂的地圖。',color:'blue'},
+  {n:'03',type:'TRY IT',title:'動手練習',text:'把概念帶進生活，測試它是否真的有用。',color:'coral'}
+];
 ---
 <!doctype html>
-<html lang="zh-Hant" data-layout="learning-lab">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content={item.description}/>
-<title>{item.title+'｜網站版型庫'}</title>
-<link rel="stylesheet" href={base+'layout-library.css'}/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/><title>學習實驗室｜網站版型庫</title>
+<link rel="stylesheet" href={base+'learning-lab-source.css'}/>
 </head>
 <body>
-<a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-
-<header class="lay-lab-head">
-  <strong class="lay-lab-logo"><span aria-hidden="true">L</span><span>LEARNING<br/>LAB / 07</span></strong>
-  <nav aria-label="學習實驗室導覽"><a href="#section-a">學習路徑</a><a href="#section-b">課程單元</a><a href={all}>其他站型 ↗</a></nav>
-  <span class="lay-lab-dot">● OPEN CLASSROOM</span>
-</header>
-<section class="lay-lab-hero">
-  <div class="lay-lab-hero-copy">
-    <small>A CLEARER WAY TO LEARN</small>
-    <h1>把好奇心<br/><em>變成一條<br/>路。</em></h1>
-    <p>不用一次弄懂所有事。從一個小概念開始，學會觀察、整理，再把它用在自己的生活裡。</p>
-    <div class="lay-lab-hero-action"><a href="#section-a">學習路徑 <span aria-hidden="true">↘</span></a><small>由學也可以有方向。</small></div>
-  </div>
-  <figure class="lay-lab-hero-figure"><img src={image} alt="學習地圖與幾何紙張拼貼" loading="eager"/><figcaption>學習地圖 / 第一版</figcaption></figure>
-</section>
-<section id="section-a" class="lay-lab-path">
-  <div class="lay-lab-path-intro"><small>THE LEARNING PATH / 03 STEPS</small>
-    <h2>走一遍，<br/>就知道怎麼<br/>繼續。</h2>
-    <p>每個主題都有成可完成的幾個小步驟；勾選完成項目，看看自己的學習路徑走到哪裡。</p>
-    <div class="lay-lab-progress-meta"><span>目前路徑</span><span class="lay-lab-count" data-lab-count aria-live="polite">0 / 3 個步驟</span></div>
-    <progress max="3" value="0" data-lab-progress>0</progress>
-  </div>
-  <ol class="lay-lab-steps">
-    <li><span class="lay-lab-step-no">01</span><div class="lay-lab-step-text"><small>START HERE</small><strong>看見問題</strong><p>先分辨線索、問題與你真正想理解的事。</p></div><label><input type="checkbox" data-lab-check/> 完成</label></li>
-    <li><span class="lay-lab-step-no">02</span><div class="lay-lab-step-text"><small>FIELD NOTE</small><strong>整理線索</strong><p>把零散資訊放進一張看得懂的地圖。</p></div><label><input type="checkbox" data-lab-check/> 完成</label></li>
-    <li><span class="lay-lab-step-no">03</span><div class="lay-lab-step-text"><small>TRY IT</small><strong>動手練習</strong><p>把概念帶進生活，測試它是否真的有用。</p></div><label><input type="checkbox" data-lab-check/> 完成</label></li>
-  </ol>
-</section>
-<section id="section-b" class="lay-lab-modules">
-  <div class="lay-lab-modules-intro"><small>OPEN MODULES</small><h2>最近開放的<br/><em>學習單元。</em></h2><a href="#section-a">比較 10 種網站方向 ↗</a></div>
-  <ol class="lay-lab-modules-list">
-    <li><span>01</span><div><small>閱讀方法 / 12 分鐘</small><strong>如何從筆記找到自己的問題</strong></div><span aria-hidden="true">↗</span></li>
-    <li><span>02</span><div><small>概念整理 / 8 分鐘</small><strong>用一張圖整理複雜概念</strong></div><span aria-hidden="true">↗</span></li>
-    <li><span>03</span><div><small>寫作實驗 / 15 分鐘</small><strong>把一個想法，寫成能和人分享的文字</strong></div><span aria-hidden="true">↗</span></li>
-  </ol>
-</section>
-<script is:inline>const checks=[...document.querySelectorAll('[data-lab-check]')],bar=document.querySelector('[data-lab-progress]'),count=document.querySelector('[data-lab-count]');checks.forEach(check=>check.addEventListener('change',()=>{const done=checks.filter(c=>c.checked).length;bar.value=done;count.textContent=done+' / '+checks.length+' 已完成'}));</script>
+<a class="direction-skip" href="#main">跳到主要內容</a>
+<main id="main" class="ll-site">
+  <header class="ll-header"><a href={all} class="ll-brand"><span class="ll-brand-mark">L</span>LEARNING<br />LAB / 07</a><nav><a href="#path">學習路徑</a><a href="#units">課程單元</a><a href={all}>其他站型 ↗</a></nav><span class="ll-status"><i></i> OPEN CLASSROOM</span></header>
+  <section class="ll-hero"><div class="ll-hero-copy"><p class="ll-overline">A CLEARER WAY TO LEARN</p><h1>把好奇心<br /><span>變成一條路。</span></h1><p>不用一次弄懂所有事。從一個小概念開始，學會觀察、整理，再把它用在自己的生活裡。</p><div class="ll-actions"><a class="ll-button" href="#path">看學習路徑 <b>↘</b></a><span>自學也可以有方向。</span></div></div><figure class="ll-hero-art"><img src={image} alt="紙張拼貼的學習地圖與幾何路徑"/><figcaption>學習地圖 / 第一版</figcaption></figure><div class="ll-side-index"><span>INTRO</span><span>01 / 05</span><span>→</span></div></section>
+  <section class="ll-path" id="path"><header><p class="ll-overline">THE LEARNING PATH / 03 STEPS</p><h2>走一遍，<br />就知道怎麼繼續。</h2><p>每個主題都拆成可完成的幾個小步驟；勾選完成項目，看看自己的學習路徑走到哪裡。</p><div class="ll-progress"><div><label for="ll-progress">目前路徑</label><span id="ll-progress-label" aria-live="polite">0 / 3 個步驟</span></div><progress id="ll-progress" max="3" value="0" aria-label="學習路徑完成進度">0%</progress></div></header><ol class="ll-track">{lessons.map(lesson=><li class:list={['ll-unit','ll-unit--'+lesson.color]}><span class="ll-unit-no">{lesson.n}</span><div><p>{lesson.type}</p><h3>{lesson.title}</h3><span>{lesson.text}</span></div><label class="ll-complete"><input class="ll-check" type="checkbox"/><span>完成</span></label></li>)}</ol></section>
+  <section class="ll-modules" id="units"><div class="ll-modules-heading"><p class="ll-overline">OPEN MODULES</p><h2>最近開放的<br /><i>學習單元。</i></h2><a href={all}>比較 12 種網站方向 ↗</a></div><div class="ll-module-list"><article><span class="ll-module-num">01</span><div><p>讀書方法 / 12 分鐘</p><h3>如何從筆記裡找到自己的問題</h3></div><span class="ll-module-arrow">↗</span></article><article><span class="ll-module-num">02</span><div><p>觀察練習 / 8 分鐘</p><h3>用一張簡單的圖整理複雜概念</h3></div><span class="ll-module-arrow">↗</span></article><article><span class="ll-module-num">03</span><div><p>寫作實驗 / 15 分鐘</p><h3>把一個想法，寫成能和人分享的文字</h3></div><span class="ll-module-arrow">↗</span></article></div></section>
+  <footer class="ll-footer"><span>LEARNING LAB / 教學與知識設計</span><span>學會怎麼學，然後把方法帶走。</span><a href={all}>返回比較頁</a></footer>
 </main>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
-</body>
-</html>
+<script is:inline>
+(() => {
+ const site=document.querySelector('.ll-site');if(!site)return;
+ const checks=Array.from(site.querySelectorAll('.ll-check'));
+ const progress=site.querySelector('#ll-progress');
+ const label=site.querySelector('#ll-progress-label');
+ const update=()=>{const complete=checks.filter(check=>check.checked).length;
+   if(progress)progress.value=complete;
+   if(label)label.textContent=`${complete} / ${checks.length} 個步驟`;
+   checks.forEach(check=>check.closest('.ll-unit')?.classList.toggle('is-done',check.checked));
+ };
+ checks.forEach(check=>check.addEventListener('change',update));update();
+})();
+</script>
+</body></html>
