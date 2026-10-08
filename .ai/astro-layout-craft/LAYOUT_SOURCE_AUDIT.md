@@ -1,49 +1,41 @@
-# PR #20｜12 款版型原始檔比對與視覺驗收
+# Layout source audit｜PR #20
 
-> 本表記錄**真正的實作狀態**。Build 成功、路由能開、背景顏色相符，均不能代替同尺寸瀏覽器全頁視覺比對。
+## Manus 原始程式移植：10 / 10
 
-原始資料：使用者上傳 `astro-ten-site-directions.zip`，`src/pages/directions/knowledge/` 與 `care/`，以及 `src/layouts/DirectionLayout.astro`。十款 Manus 的源碼在獨立頁面具有各自 DOM、CSS 與有限 JS；不可僅以我們原本通用 `lay-*` 元件換色重寫。
+來源為使用者提供的 `astro-ten-site-directions.zip`。十款皆已**直接把 ZIP 中各自的 `.astro` HTML、scoped CSS、RWD 規則及頁內 JavaScript 移植**到獨立的 `src/pages/layouts/<slug>/index.astro`，另新增原始 `src/layouts/DirectionLayout.astro`。這不是以原圖猜測重新寫的版型。
 
-| 版型 | 原始 ZIP 的閱讀容器與底色 | 本 PR 最新修正 | 是否已完整對照原稿 |
-|---|---|---|---|
-| 田野筆記 field-notes | `fn-site #f1eee4`，整頁底色、內層最大 1360px；側邊筆記與 ledger | 底色已延伸整個 viewport、寬度上限比對；現為重新設計的 Astro DOM | **否**，還需直接移植來源節點與 CSS |
-| 長文書房 essayist | `es-site #f7f3e9`，內層 1280/1080/940px 不同閱讀節奏 | 修正滿版紙張色與容器上限 | **否**，仍需原始文字排版與章節結構 |
-| 學習實驗室 learning-lab | `ll-site #f4f5ef`，1280–1320px 內層；`ll-track` → `ll-unit` Grid → `ll-unit-no` | 已按原始 DOM 與原始 CSS 建立獨立檔案 `learning-lab-source.css`，修正原本節點壓字及遺漏 CSS | **原始碼結構與樣式已還原**，仍待同尺寸視覺截圖驗收 |
-| 收藏者目錄 curator | `cu-site #efebe6`，1300px，拼貼展牆與索引 | 修正外圍背景及寬度 | **否**，還需逐區移植 |
-| 聲音通信 radio-letter | `ra-site #111a24`，1320px，聲音節目專屬結構 | 修正深色背景至整個視窗 | **否**，還需音訊與時間軸源碼 |
-| 清晰臨床 clinician | `cl-site #f4f7f5`，1260px、兩欄服務適配、可摺疊流程 | 修正整頁底色、上限 | **否**，需完整專業資訊與原生 details |
-| 溫柔陪伴 companion | `co-site #fbf5ed`，Hero 1240px、信件 1030px、how 1100px；底色填滿 viewport | **使用原始 ZIP 的 `co-*` HTML 結構與樣式**，`companion-source.css`；恢復非對稱 Hero、真正書信內容、信紙中縫、3 階段流程；去掉錯誤的米色窄島與黑條 | **原始碼結構與樣式已還原**，仍待同尺寸視覺截圖驗收 |
-| 身體與節律 somatic | `so-site #e8e6dc`，真全幅感官影像、內層約 1240px | 滿版背景與例外寬度 | **否**，需重新驗證全幅場景 |
-| 實作型教練 coach | `ma-site #f1eadb`，1320px、編輯式行動版 | 滿版底色、容器上限 | **否**，需重建原本清單與細節 |
-| 共好工作室 collective | `cg-site #f8f5eb`，1320px、多成員及活動模組 | 滿版底色、容器上限 | **否**，需成員內容與活動版面 |
-| 閱讀年鑑 reading-atlas | **Claude 研究延伸，ZIP 沒有原稿** | 繼續作為獨立新設計 | **需獨立視覺驗收** |
-| 信任路徑 trust-path | **Claude 研究延伸，ZIP 沒有原稿** | 繼續作為獨立新設計 | **需獨立視覺驗收** |
+| 頁面 | ZIP 原始目錄 | GitHub 目標 |
+|---|---|---|
+| field-notes | knowledge/field-notes.astro | layouts/field-notes/index.astro |
+| essayist | knowledge/essayist.astro | layouts/essayist/index.astro |
+| learning-lab | knowledge/learning-lab.astro | layouts/learning-lab/index.astro |
+| curator | knowledge/curator.astro | layouts/curator/index.astro |
+| radio-letter | knowledge/radio-letter.astro | layouts/radio-letter/index.astro |
+| clinician | care/clinician.astro | layouts/clinician/index.astro |
+| companion | care/companion.astro | layouts/companion/index.astro |
+| somatic | care/somatic.astro | layouts/somatic/index.astro |
+| coach | care/coach.astro | layouts/coach/index.astro |
+| collective | care/collective.astro | layouts/collective/index.astro |
 
-## 此次踩到的結構錯誤
+## 不可避免的路徑調整
 
-1. 只在 `.lay-site` 設定底色，又對 `.lay-site` 設 `max-width`，導致超出內容容器的 `body` 仍是不同顏色，產生突兀的長條背景。正確做法：全視窗底色由 `body` 控制、欄位寬度由內容區塊控制。
-2. 以通用 CSS 重造來源的特有元件（如 Learning Lab 的 Grid 時間軸），造成步驟圓點壓字。來源已有 `ll-track`、`ll-unit`、`ll-unit-no` 應直接移植。
-3. 改成獨立 CSS 後沒有提交檔案，導致 CSS 404。CI 應強制檢查頁面連結的本地資源存在。
-4. 一次告訴使用者「12 款完成」卻沒有逐頁桌面、手機、原稿比對。未經同尺寸驗收不得宣稱全部視覺完成。
+- ZIP 的 `href="/directions/"` 改成 `import.meta.env.BASE_URL + 'layouts/'`，能適應 GitHub Pages 主站及 PR Preview 子路徑。
+- 圖片仍使用 ZIP 原檔名，但**目前引用使用者已發布的 Manus 站點圖片**，不是自託管；製成離線交付模板時需把 ZIP 的 `public/images/directions/` 素材另行放入專案。
+- `radio-letter` 的來源音檔 `/audio/demo-episode.mp3` 暫引用 Manus 演示站的公開音檔網址。遠端實際播放仍需瀏覽器測試。
+- 「十種」比較入口文案調整成十二種。其他頁面編排、原始 CSS selector 與互動不以新造的通用版型取代。
+- 兩款 Claude 延伸版型 `reading-atlas`、`trust-path` **沒有在 Manus ZIP 中對應的原始頁**，依研究獨立實作。它們與十個移植版型來源不同。
 
-## 合併門檻
+## 已完成的機器驗證
 
-- 十二頁 1440/1280px 桌面、390px 手機全頁截圖，與 Manus 原稿逐區比對；Claude 兩款另外檢查設計一致性。
-- 原本 10 款必須保留彼此不同的原生 DOM/CSS 資料流，不能用一套 Hero/cards 替代。
-- 所有背景能自然延伸到視窗兩側，同時文字有合理最大寬度；沒有任何橫向捲動。
-- 僅說明真的接上的功能；學員不會把示範音訊／假預約當成正式服務。
-- 同時通過 Build、實際瀏覽器操作與原始檔案比對後，才請使用者考慮合併。
+- GitHub Actions：Astro / Pagefind 建置成功。
+- 直接核對已部署 `gh-pages` 上 10 個 PR Preview HTML，均具有來源中的原始 `fn-/es-/ll-/cu-/ra-/cl-/co-/so-/ma-/cg-` class，均無 `item.slug===` 漏出，回連包含 `/pr-preview/pr-20/layouts/`，且 HTML 含樣式與示範圖片。
+- 舊的兩份手工仿製 CSS `learning-lab-source.css`、`companion-source.css` 已刪除，避免混用。
 
-**本 PR 尚未達成全部門檻，不能合併。**
+## 尚未驗證，合併前仍需處理
 
-## 2026-10-08 原始碼完整移植更新（取代本文件先前未完成狀態）
+- 1440px 與 390px 實際瀏覽器全頁截圖，同尺寸和原始站逐一比較。
+- 十款遠端圖片載入成功與 `radio-letter` 遠端音訊確實可播放。
+- 觸控、Tab 操作、`prefers-reduced-motion` 和無橫向卷軸。
+- Claude 的兩款新創版型另行驗證，不誤稱 Manus 原始移植。
 
-**Manus 10／10 個原始站型均已用 ZIP 裡的 Astro source 完整替換**，不是自創 `.lay-*` 的結構復刻：
-
-- `src/layouts/DirectionLayout.astro`：從 ZIP 一併移植其共用排版及全域 reset。
-- `src/pages/layouts/{field-notes,essayist,learning-lab,curator,radio-letter,clinician,companion,somatic,coach,collective}/index.astro`：各自移植 ZIP 的原始完整頁面，包括 scoped CSS、媒體查詢、真實區塊順序與互動，避免原先推測的 DOM/CSS。
-- **唯一調整**：原始 `/directions/` 站內比較連結改為 `import.meta.env.BASE_URL + 'layouts/'`；十款圖片使用使用者已上架 Manus 的公開演示圖 URL（原始檔名保持不變）；廣播 Demo 音檔改為遠端演示站路徑；「十款方向」的返回文案按十二款展示更新。保留原始的內容、文字、標題和設計比例。
-- Manus 圖片與音訊目前仍依賴遠端演示站，**不能當作完全可離線的正式教學模板**；日後須根據授權改成專案本地檔案。Claude 延伸的 `reading-atlas`、`trust-path` 仍屬獨立新創作，沒有 Manus 原版可對照。
-- 之前另行建立的 `public/learning-lab-source.css` 與 `public/companion-source.css` 現已不被這十款原始 Astro 頁面引用；後續可刪除以免混淆。不要再將手工重寫版視作來源真相。
-
-**程式移植已完成** 與 **視覺驗收已完成** 不同：正式瀏覽器同尺寸截圖、手機操作、圖片與音訊遠端載入仍需獨立檢查。CI 綠燈僅代表 Astro 編譯成功。
+**原始碼移植已完成。視覺逐頁驗收仍進行中。PR #20 未合併。**
