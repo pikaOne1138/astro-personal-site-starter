@@ -135,3 +135,8 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## 可重用動效參考庫與 Skill
 
 讀取 `.ai/astro-motion-craft/library/README.md` 進入特效型錄與三份 source-grounded recipes。來源為上傳 Manus v2 ZIP 的 Effects / Button / FAQ 原始碼，與本專案既有 `data-reveal`、卡片 hover、FAQ/Link/Button 等功能交叉對照。元件若尚未在本專案實作，不計入 `blocks.registry.json` 的正式元件數；日後移植需先經 Motion Skill 強度政策、觸控/reduced-motion/no-JS 規範與 PR preview 驗收。
+
+
+## 特效庫／效果元件（獨立於網站積木）
+
+可試用入口：`/effects/`。效果檔案：`src/components/effects/{Reveal,StaggerGroup,MotionCard,ZoomImage,MagneticButton,UnderlineLink,MotionFAQ}.astro`；登錄：`src/data/effects.registry.json`；樣式 `public/effects.css`。支持 Reveal variant/delay/duration/once、Stagger step/start、MotionCard tilt/spotlight/tiltMax、ZoomImage effect/alt/caption、MagneticButton href、UnderlineLink variant、MotionFAQ items/variant/openFirst。七個效果**不計入**網站內容元件數量。新頁面應先查 Motion Skill 和 `library/effect-catalog.md`，避免全站濫用動畫。功能驗收需操作、鍵盤、觸控、降低動態與四種 theme。
