@@ -1,0 +1,30 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='somatic')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[7];
+const next=directions[9];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="somatic">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-body-head"><strong>BODY / RHYTHM</strong><span>SPACE · BREATH · CONSENT</span></header>
+<section class="lay-body-hero" style={`background-image:linear-gradient(0deg,rgba(18,28,20,.64),rgba(18,28,20,.03)),url("${image}")`}><div><small>A SLOWER KIND OF SPACE</small><h1>讓身體重新<br/>有一點可以<br/><em>呼吸的空間。</em></h1><a href="#section-a">沿著身體的節奏往下 ↓</a></div></section>
+<section class="lay-body-intro" id="section-a"><small>01 / ARRIVE</small><h2>身體可以先到，<br/>語言可以慢一點。</h2><p>這個版型用完整的空間視覺開場，後續才談觸碰、同意、工作方式與適合對象。</p></section>
+<section class="lay-body-process"><article><span>01</span><h3>先理解感受</h3><p>從當下的身體狀態開始。</p></article><article><span>02</span><h3>確認界線</h3><p>事先說明觸碰並取得同意。</p></article><article><span>03</span><h3>慢慢整理</h3><p>將身體經驗帶回生活。</p></article></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
