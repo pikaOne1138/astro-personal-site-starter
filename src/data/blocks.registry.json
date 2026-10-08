@@ -1026,5 +1026,45 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "practitioner-card",
+    "name": "PractitionerCard",
+    "category": "professional",
+    "path": "src/components/blocks/PractitionerCard.astro",
+    "keywords": [
+      "PractitionerCard"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "service-fit",
+    "name": "ServiceFit",
+    "category": "professional",
+    "path": "src/components/blocks/ServiceFit.astro",
+    "keywords": [
+      "ServiceFit"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]
