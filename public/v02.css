@@ -107,3 +107,5 @@
 }
 @media(max-width:420px){.practical-menu-toggle{padding:8px}.practical-menu-toggle span:last-child{display:none}}
 @media(prefers-reduced-motion:reduce){.practical-menu-dialog{scroll-behavior:auto}}
+
+@media(max-width:600px){.v02-actions .v02-explore-link{display:none}.v02-nav__inner{gap:8px}.v02-actions{gap:8px}.v02-actions .v02-cta{font-size:14px}.v02-brand{font-size:14px}.practical-menu-toggle{font-size:14px}}
