@@ -27,3 +27,6 @@ Rules:
 
 ## Practical blocks and safety (V2.5 internal milestone)
 Use `src/data/blocks.registry.json` (41 blocks), `COMPONENTS.md`, and `.ai/astro-ui-craft/references/article-exploration-v2.md` together. New `MobileMenu`, `BookingLink`, `ContactActions`, `PricingDetails`, `TrustInfo`, and `MediaEmbed` must be reachable in the functional block gallery and actual demo pages. Never create inactive `#` submission links, pretend a booking or subscription exists, invent a professional license, contact policy, client testimonial, or crisis number. Preserve existing four themes, keyboard navigation, BASE_URL, and GitHub PR preview workflow. Keep milestone/version markers in developer docs, not public-facing pages.
+
+## Shared social icons
+`SocialLinks.astro` is the canonical icon + platform link component (Registry 42), also used by `ContactActions`. The component gallery uses preview-only icons with no fake profile URLs. Real site footers use verified project GitHub and project website links, not fabricated social accounts. Never replace configured profile URLs with brand home pages, and preserve link labels, social platform trademark guidelines and theme tokens.
