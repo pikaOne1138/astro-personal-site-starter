@@ -1,0 +1,25 @@
+---
+interface Props {target?:string;label?:string}
+const {target='[data-reading-body]',label='文章閱讀進度'}=Astro.props;
+---
+<div class="practical-reading-progress" role="progressbar" aria-label={label} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-reading-progress data-reading-target={target}><span></span></div>
+<script>
+document.querySelectorAll<HTMLElement>('[data-reading-progress]').forEach(bar=>{
+ const target=document.querySelector<HTMLElement>(bar.dataset.readingTarget||'[data-reading-body]');
+ if(!target)return;
+ let ticking=false;
+ const update=()=>{
+   ticking=false;
+   const rect=target.getBoundingClientRect();
+   const length=Math.max(1,target.offsetHeight-window.innerHeight*0.45);
+   const passed=-rect.top+window.innerHeight*0.25;
+   const pct=Math.round(Math.max(0,Math.min(100,passed/length*100)));
+   bar.style.setProperty('--read-progress',pct+'%');
+   bar.setAttribute('aria-valuenow',String(pct));
+ };
+ const onScroll=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
+ window.addEventListener('scroll',onScroll,{passive:true});
+ window.addEventListener('resize',onScroll,{passive:true});
+ update();
+});
+</script>
