@@ -9,6 +9,7 @@ import ContactActions from './blocks/ContactActions.astro';
 import PricingDetails from './blocks/PricingDetails.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
 import MediaEmbed from './blocks/MediaEmbed.astro';
+import SocialLinks from './blocks/SocialLinks.astro';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
 const { kind, theme, page } = Astro.props;
@@ -101,6 +102,6 @@ const articleMeta=articlesV2;
         <div class="practical-stack"><BookingLink description="這是工作坊網站示範；尚未設定真實預約平台，請先閱讀服務內容。" /><ContactActions /></div>
       </section>}
     </main>
-    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={root}>回首頁</a><a href={base}>八種 Demo</a></div><small>v0.2 Multipage Architecture · Astro Workshop</small></footer>
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><SocialLinks size="sm" items={[{platform:"github",href:"https://github.com/pikaOne1138/astro-personal-site-starter",label:"模板原始碼"},{platform:"website",href:"https://pikaOne1138.github.io/astro-personal-site-starter/",label:"工作坊網站"}]}/><div class="footer-links"><a href={root}>回首頁</a><a href={base}>八種 Demo</a></div><small>Astro Workshop · 多頁式網站</small></footer>
   </div>
 </DemoLayout>

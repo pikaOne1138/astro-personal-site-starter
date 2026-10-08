@@ -4,6 +4,7 @@ import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import SiteNav from './SiteNav.astro';
 import BookingLink from './blocks/BookingLink.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
+import SocialLinks from './blocks/SocialLinks.astro';
 import { articlesV2 } from '../data/articles-v2';
 interface Props { kind: Kind; theme: Theme; }
 const { kind, theme } = Astro.props;
@@ -74,7 +75,7 @@ const services = [
       </>}
     </main>
 
-    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={base}>八種 Demo</a><a href="#">Instagram</a><a href="#">Email</a></div><small>Astro Workshop UI Research Prototype · 2026</small></footer>
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><SocialLinks size="sm" items={[{platform:"github",href:"https://github.com/pikaOne1138/astro-personal-site-starter",label:"模板原始碼"},{platform:"website",href:"https://pikaOne1138.github.io/astro-personal-site-starter/",label:"工作坊網站"}]}/><div class="footer-links"><a href={base}>八種 Demo</a></div><small>Astro Workshop UI Research Prototype · 2026</small></footer>
   </div>
   {kind === 'helper' && <a class="mobile-sticky" href="#booking">預約初談 <span>→</span></a>}
 </DemoLayout>

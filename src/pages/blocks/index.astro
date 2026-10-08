@@ -32,6 +32,7 @@ import RelatedArticles from '../../components/blocks/RelatedArticles.astro';
 import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
 import SiteSearchDialog from '../../components/blocks/SiteSearchDialog.astro';
 import MobileMenu from '../../components/blocks/MobileMenu.astro';
+import SocialLinks from '../../components/blocks/SocialLinks.astro';
 import BookingLink from '../../components/blocks/BookingLink.astro';
 import ContactActions from '../../components/blocks/ContactActions.astro';
 import PricingDetails from '../../components/blocks/PricingDetails.astro';
@@ -44,7 +45,7 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：41 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：42 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
@@ -75,6 +76,13 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <SiteSearchDialog kind="knowledge" theme="paper" />
     </div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>MobileMenu</strong><span>手機用可展開導覽（請縮小視窗測試）</span></div><p>八款完整網站的手機導覽列已改用此元件；支援開關、Esc 及鍵盤焦點。</p><div class="practical-gallery-mobile"><MobileMenu links={[{label:'知識首頁',href:base+'knowledge/paper/'},{label:'文章探索',href:base+'knowledge/paper/explore/'},{label:'聯絡與預約',href:base+'helper/paper/booking/'}]}/></div></div>
+    <div class="ab-demo">
+      <div class="ab-demo-label"><strong>SocialLinks</strong><span>社群圖示／圖示＋名稱連結</span></div>
+      <p>可組合 Instagram、Facebook、Threads、LINE、YouTube、TikTok、LinkedIn、Discord、Telegram、Spotify、Email、電話、GitHub、X、Pinterest、網站及 RSS。第一行純預覽，不會跳轉到虛構帳號；第二行是真實專案連結。</p>
+      <SocialLinks showLabels={true} previewPlatforms={['instagram','facebook','threads','line','youtube','tiktok','linkedin','discord','telegram','spotify','email','phone']}/>
+      <SocialLinks showLabels={true} items={[{platform:'github',href:'https://github.com/pikaOne1138/astro-personal-site-starter',label:'GitHub 專案'},{platform:'website',href:'https://pikaOne1138.github.io/astro-personal-site-starter/',label:'網站示範'}]}/>
+      <p class="practical-caption">未設定網址的平台不會出現假連結。社群圖示使用 Simple Icons v16，使用時仍須留意平台商標規範。</p>
+    </div>
   </section>
   <section id="hero" class="ab-category">
     <h2 class="ab-category-title">02 / 首頁主視覺</h2><p class="ab-category-intro">可選左右圖文、置中標題或滿版色塊主視覺。</p>

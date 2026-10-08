@@ -837,5 +837,34 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "social-links",
+    "name": "SocialLinks",
+    "category": "common",
+    "path": "src/components/blocks/SocialLinks.astro",
+    "keywords": [
+      "社群連結",
+      "社交媒體",
+      "Instagram",
+      "Facebook",
+      "Threads",
+      "LINE",
+      "YouTube",
+      "TikTok",
+      "GitHub",
+      "社群圖示"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]

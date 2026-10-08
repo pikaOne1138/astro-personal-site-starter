@@ -80,6 +80,13 @@ import FAQ from '../components/blocks/FAQ.astro';
 | `ContactActions` | 選配 `email`、`phone`、`lineUrl`；會略過無效網址 |
 | `PricingDetails` | `items:[{name,price?,duration?,format?,note?}]` 與免責說明 |
 | `TrustInfo` | 可驗證的身分／資格／服務地區／政策／隱私；不產生假數據 |
+| `SocialLinks` | `items:[{platform,href,label?}]`；支援社群品牌圖示與 email／phone／website／RSS。`showLabels` 顯示文字，`previewPlatforms` 只顯示不可點擊圖示樣板；空網址不輸出連結。外部品牌圖示使用 Simple Icons v16（固定版本 CDN，需留意商標與個別授權）。 |
 | `MediaEmbed` | `type:'youtube'|'audio'|'podcast'`、`url`、`title`、`caption`；YouTube/音訊直接嵌入、未支援 Podcast 提供外部連結 |
 
-六個元件已依用途列入 `/blocks/`；最新 Registry 為 41 個。請在紙墨／晨光／靜室／植感、375/390px 手機尺寸與鍵盤操作下逐一驗收。
+六個元件已依用途列入 `/blocks/`；最新 Registry 為 42 個。請在紙墨／晨光／靜室／植感、375/390px 手機尺寸與鍵盤操作下逐一驗收。
+
+### 精緻導覽列（Header SocialLinks）
+
+`SiteNav.astro` 已組合 `SiteSearchDialog`、細線分隔符、`SocialLinks`。`socialLinks` props 可以自訂平台與網址；預設 Demo 使用可查證的 GitHub 專案與展示網站，避免虛構個人 IG／YouTube。桌面視窗顯示小圖示，窄屏時收起社群列，保留手機導覽與搜尋。社群圖示使用 SVG mask 跟隨各 Theme 的前景色與 hover accent；不加上彩色社群方塊，也不使用假連結。可設定空陣列 `socialLinks={[]}` 完全隱藏。
+
+手機導覽列的 `MobileMenu` 會接收相同 `socialLinks`，在彈出選單主連結後、分隔線下展示可點擊社群圖示，桌面版仍顯示在搜尋旁。兩端共用資料，不應維護兩份不同帳號設定。

@@ -152,3 +152,11 @@ Before handoff:
 
 ## Practical interactive blocks and real services
 Use `.ai/astro-ui-craft/references/article-exploration-v2.md` practical-block guidance for MobileMenu, BookingLink, ContactActions, PricingDetails, TrustInfo, MediaEmbed. Do not create fake form submissions, invented third-party appointments, testimonials or credentials. Keep GitHub Actions PR previews, and obtain user consent before merge.
+
+## Social identity links
+Use reusable `SocialLinks.astro` for social platforms and contact identity, rather than hardcoding text links or inventing brand URLs. Accept only configured HTTPS destinations or explicitly validated mailto/tel. Include aria labels and visible keyboard focus; preserve current four themes and do not show missing profiles. `ContactActions` wraps `SocialLinks` with LINE/Email/phone when data exists. Keep icon-brand trademark/individual license considerations in component docs; avoid user-facing release numbers.
+
+### Refined social icons in site headers
+Compose `SiteSearchDialog` + narrow divider + `SocialLinks size="sm"` on the desktop navbar via `SiteNav`'s optional `socialLinks` list. Do not duplicate nav links or crowd narrow screens; social icons are hidden below 850px. Use single-color CSS mask icons that inherit theme foreground/accent, subtle focus, consistent spacing, and no invented account links. Header can opt out with `socialLinks={[]}`. Demo defaults show verified GitHub repo + deployed demo site only.
+
+Mobile menu `MobileMenu` accepts the same `socialLinks` array as desktop `SiteNav`; render its SocialLinks beneath all mobile nav items, separated by a subtle hairline, with 44px icon tap targets and no fabricated URLs. Do not hide all social access on mobile; only hide the desktop duplicate. Keep dialog keyboard and focus behavior.

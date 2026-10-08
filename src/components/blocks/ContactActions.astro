@@ -1,14 +1,16 @@
 ---
+import SocialLinks from './SocialLinks.astro';
 interface Props {email?:string;phone?:string;lineUrl?:string;}
 const {email,phone,lineUrl}=Astro.props;
 const mail=email?.trim().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)?.[0];
 const telephone=phone?.replace(/[^+0-9]/g,'');
 let line:string|null=null;
 try{const u=new URL(lineUrl||'');if(u.protocol==='https:'&&['line.me','lin.ee','page.line.me','liff.line.me'].includes(u.hostname))line=u.toString()}catch{}
+const contacts: Array<{platform:'line'|'email'|'phone';href:string;label:string}>=[];
+if(line)contacts.push({platform:'line',href:line,label:'LINE 聯絡'});
+if(mail)contacts.push({platform:'email',href:mail,label:'Email 聯絡'});
+if(telephone)contacts.push({platform:'phone',href:telephone,label:'電話聯絡'});
 ---
 <div class="practical-contacts" aria-label="聯絡方式">
- {line && <a href={line} target="_blank" rel="noopener noreferrer">LINE 聯絡 ↗</a>}
- {mail && <a href={'mailto:'+mail}>Email 聯絡 ↗</a>}
- {telephone && <a href={'tel:'+telephone}>電話聯絡 ↗</a>}
- {!line&&!mail&&!telephone&&<p class="practical-notice">目前尚未提供公開聯絡方式。</p>}
+ {contacts.length>0?<SocialLinks showLabels items={contacts} />:<p class="practical-notice">目前尚未提供公開聯絡方式。</p>}
 </div>

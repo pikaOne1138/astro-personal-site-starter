@@ -2,14 +2,16 @@
 import { pageMap } from '../site-map';
 import SiteSearchDialog from './blocks/SiteSearchDialog.astro';
 import MobileMenu from './blocks/MobileMenu.astro';
+import SocialLinks from './blocks/SocialLinks.astro';
 import type { Kind, Theme } from '../data';
 
 interface Props {
   kind: Kind;
   theme: Theme;
   current?: string;
+  socialLinks?: Array<{platform:'instagram'|'facebook'|'threads'|'youtube'|'line'|'github'|'linkedin'|'x'|'tiktok'|'pinterest'|'discord'|'telegram'|'spotify'|'email'|'phone'|'website'|'rss';href:string;label?:string}>;
 }
-const { kind, theme, current = 'home' } = Astro.props;
+const { kind, theme, current = 'home', socialLinks = [{platform:'github',href:'https://github.com/pikaOne1138/astro-personal-site-starter',label:'範例專案 GitHub'},{platform:'website',href:'https://pikaOne1138.github.io/astro-personal-site-starter/',label:'網站範例'}] } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const root = `${base}${kind}/${theme}/`;
 const links = pageMap[kind].filter((item) => item.nav);
@@ -28,8 +30,11 @@ const cta = kind === 'knowledge'
       {links.map((item) => <a class:list={[current === item.id && 'is-current']} href={`${root}${item.id}/`}>{item.label}</a>)}
     </nav>
     <div class="v02-actions">
-      <MobileMenu links={[{label:"首頁",href:root},...links.map(item=>({label:item.label,href:root+item.id+"/"})),{label:"找文章",href:root+"explore/"},{label:cta.label,href:cta.href}]} />
-      <SiteSearchDialog kind={kind} theme={theme} />
+      <MobileMenu socialLinks={socialLinks} links={[{label:"首頁",href:root},...links.map(item=>({label:item.label,href:root+item.id+"/"})),{label:"找文章",href:root+"explore/"},{label:cta.label,href:cta.href}]} />
+      <div class="v02-nav__utilities" aria-label="搜尋與社群連結">
+        <SiteSearchDialog kind={kind} theme={theme} />
+        {socialLinks.length>0 && <div class="v02-nav__social"><SocialLinks size="sm" title="社群與網站連結" items={socialLinks} /></div>}
+      </div>
       <a class="v02-search v02-explore-link" href={root+'explore/'} aria-current={current==='explore'?'page':undefined}>找文章</a>
       <a class="v02-cta" href={cta.href}>{cta.label}</a>
     </div>
