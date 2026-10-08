@@ -1,0 +1,21 @@
+name: Standalone Starter Export Check
+on:
+  pull_request:
+    paths:
+      - 'scripts/export-starter.mjs'
+      - 'scripts/verify-starter-export.mjs'
+      - 'src/data/layout-directions.json'
+      - '.github/workflows/starter-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  standalone-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check generated knowledge and helper sites
+        run: FULL_STARTER_BUILD=1 node scripts/verify-starter-export.mjs
