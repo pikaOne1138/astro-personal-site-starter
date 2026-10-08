@@ -10,7 +10,7 @@ const {href,className='',label='體驗磁吸效果'}=Astro.props;
     button.dataset.magneticInstalled='true';let raf=0;let last:PointerEvent|undefined;
     const reset=()=>{cancelAnimationFrame(raf);raf=0;button.style.removeProperty('--magnetic-x');button.style.removeProperty('--magnetic-y')};
     button.addEventListener('pointermove',event=>{
-      if(!fine.matches||reduced.matches||event.pointerType==='touch')return;last=event;
+      if(!fine.matches||(reduced.matches && document.documentElement.dataset.allowMotionDemo!=='true')||event.pointerType==='touch')return;last=event;
       if(raf)return;raf=requestAnimationFrame(()=>{
         raf=0;if(!last)return;const rect=button.getBoundingClientRect();if(!rect.width||!rect.height)return;
         button.style.setProperty('--magnetic-x',(((last.clientX-rect.left)/rect.width-.5)*8).toFixed(1)+'px');
