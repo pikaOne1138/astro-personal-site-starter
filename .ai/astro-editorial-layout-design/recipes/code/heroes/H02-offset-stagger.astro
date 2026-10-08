@@ -1,0 +1,48 @@
+---
+/**
+ * H02 offset-stagger — 巨大標題（8 欄）+ 錯位傾斜圖（落在標題右上欄，不壓字）
+ * 衍生自 02 長文書房「超大標題 + 疊圖」，但**修正其缺陷**：圖片只與標題「錯位」，
+ * 文字與 figcaption 之間保留 ≥ 1.5rem，不產生字形互撞。
+ */
+interface Props { label?: string; phrases?: string[]; voice?: string; sub?: string; cta?: string; href?: string; src?: string; alt?: string; cap?: string }
+const {
+  label = 'ISSUE 018 / 2026 AUTUMN',
+  phrases = ['把一個問題'],
+  voice = '想完整。',
+  sub = '長文寫作、生活觀察，還有那些不必急著說服別人的念頭。',
+  cta = '讀本期文章', href = '#essay',
+  src, alt = '', cap = '桌上還留著昨天沒有寫完的句子。',
+} = Astro.props;
+---
+<section class="h02">
+  <p class="label">{label}</p>
+  <h1>{phrases.map((p) => <span class="ph">{p}</span>)} <em class="ph">{voice}</em></h1>
+  <figure>
+    {src ? <img src={src} alt={alt} width="900" height="600" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+    <figcaption>{cap}</figcaption>
+  </figure>
+  <div class="bottom">
+    <p>{sub}</p>
+    <a href={href}>{cta} <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+<style>
+  .h02 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(3rem, 8vw, 7rem) var(--ed-gutter, 4vw) var(--ed-s6, 5rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(.5rem, 1.5vw, 1.5rem); color: var(--ed-ink, #222); }
+  .label { grid-column: 1 / -1; font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #9a3b24); margin: 0 0 1rem; }
+  h1 { grid-column: 1 / 9; grid-row: 2; font: 400 clamp(3.2rem, 10vw, 9rem)/1.06 var(--ed-serif, Georgia, serif); letter-spacing: -.035em; margin: 0; text-wrap: balance; }
+  .ph { display: inline-block; }
+  h1 em { display: block; font-style: italic; color: var(--ed-accent, #9a3b24); padding-left: .6em; }
+  figure { grid-column: 9 / -1; grid-row: 2 / 4; align-self: start; margin: 2rem 0 0; transform: rotate(2deg); }
+  figure img, .art { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .art { background: linear-gradient(135deg, var(--ed-panel, #ebe4d4), color-mix(in srgb, var(--ed-accent-deco, #c8613f) 35%, var(--ed-panel, #ebe4d4))); }
+  figcaption { font: .75rem/1.5 var(--ed-mono, monospace); color: var(--ed-ink-2, #57534a); margin-top: .6rem; }
+  .bottom { grid-column: 1 / 9; grid-row: 3; display: flex; align-items: flex-end; flex-wrap: wrap; gap: 1rem 3rem; margin: 2rem 0 0 8%; }
+  .bottom p { max-width: 26em; text-wrap: pretty; font-size: 1rem; line-height: 1.8; color: var(--ed-ink-2, #57534a); margin: 0; }
+  .bottom a { display: inline-flex; align-items: center; min-height: 44px; font: .8rem var(--ed-mono, monospace); color: var(--ed-ink, #222); text-decoration: none; border-bottom: 1px solid var(--ed-accent, #9a3b24); }
+  .bottom a span { color: var(--ed-accent, #9a3b24); margin-left: .6rem; }
+  @media (max-width: 760px) {
+    h1 { grid-column: 1 / -1; grid-row: auto; }
+    figure { grid-column: 1 / -1; grid-row: auto; width: 78%; margin: 2rem 0 0 auto; }
+    .bottom { grid-column: 1 / -1; grid-row: auto; margin: 1.5rem 0 0; }
+  }
+</style>
