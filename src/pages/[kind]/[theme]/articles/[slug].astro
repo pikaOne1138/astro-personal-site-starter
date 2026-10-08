@@ -3,6 +3,11 @@ import DemoLayout from '../../../../layouts/DemoLayout.astro';
 import SiteNav from '../../../../components/SiteNav.astro';
 import { allArticlePaths } from '../../../../site-map';
 import { kindMeta, themeMeta, type Kind, type Theme } from '../../../../data';
+import { articlesV2 } from '../../../../data/articles-v2';
+import ArticleAccordion from '../../../../components/blocks/ArticleAccordion.astro';
+import ArticleCallout from '../../../../components/blocks/ArticleCallout.astro';
+import ArticleList from '../../../../components/blocks/ArticleList.astro';
+import RelatedArticles from '../../../../components/blocks/RelatedArticles.astro';
 
 export function getStaticPaths() { return allArticlePaths(); }
 interface Props { kind: Kind; theme: Theme; article: {slug:string; title:string}; }
@@ -10,12 +15,15 @@ const { kind, theme, article } = Astro.props;
 const k = kindMeta[kind]; const t = themeMeta[theme];
 const base = import.meta.env.BASE_URL;
 const root = `${base}${kind}/${theme}/`;
+const meta=articlesV2.find(a=>a.slug===article.slug);
+const related=articlesV2.filter(a=>a.slug!==article.slug && a.tags.some(t=>meta?.tags.includes(t))).slice(0,3).map(a=>({title:a.title,excerpt:a.excerpt,href:root+'articles/'+a.slug+'/'}));
 ---
 <DemoLayout title={`${article.title} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
+  <link rel="stylesheet" href={base+"blocks-v2.css"}/>
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current="articles" />
     <main class="v02-article">
-      <header data-reveal><p class="eyebrow">網站思考 · 7 MIN READ</p><h1>{article.title}</h1><p class="v02-deck">文章頁的工作不是炫技，而是讓讀者願意一直讀下去，並且知道讀完可以往哪裡走。</p><div class="v02-byline">2026.10.08　·　One Studio　·　最後更新</div></header>
+      <header data-reveal><p class="eyebrow">{meta?.category ?? "文章"} · {meta?.readingMinutes ?? 7} MIN READ</p><h1>{article.title}</h1><p class="v02-deck">文章頁的工作不是炫技，而是讓讀者願意一直讀下去，並且知道讀完可以往哪裡走。</p><div class="v02-byline">工作坊示範文章 · 發布日期 {meta?.publishedAt ?? "未設定"} · One Studio</div></header>
       <article data-reveal>
         <p class="v02-lead">首頁是大廳，不是整棟房子。這句話同時也是 v0.2 從 Landing Page 原型走向真正網站架構的核心。</p>
         <h2>首頁只負責讓人知道下一步</h2>
@@ -24,10 +32,15 @@ const root = `${base}${kind}/${theme}/`;
         <h2>文章頁也有自己的資訊架構</h2>
         <p>標題、摘要、日期、閱讀寬度、段落節奏、引言、相關文章與文末 CTA，各自都有不同功能。模板應該先把這些結構做好，再讓學員替換內容。</p>
         <aside class="v02-note"><strong>Workshop 原則</strong><p>先把可閱讀、可導覽、可修改做好，再加入搜尋、留言、會員等進階功能。</p></aside>
+        <h2>文章裡可以有哪些輔助區塊？</h2>
+        <ArticleCallout title="重點摘要" tone="tip">先釐清問題，再選擇文章的結構；不是每一篇都需要所有區塊。</ArticleCallout>
+        <ArticleList ordered items={['先讓主文保持可閱讀','需要補充的細節放入折疊區塊','讓延伸閱讀導向真的存在的文章']} />
+        <ArticleAccordion title="延伸補充：為什麼需要標籤與日期？"><p>當文章數量增加，讀者可能記得主題、關鍵字或發文時間。搜尋、標籤雲與日曆提供不同的回訪路徑。</p></ArticleAccordion>
         <h2>下一步</h2>
         <p>讀完後不要把人丟在頁尾。可以推薦同主題文章、回主題頁，或提供一個低壓力的訂閱入口。</p>
       </article>
-      <nav class="v02-postnav"><a href={`${root}articles/`}>← 回文章總覽</a><a href={`${root}about/`}>認識作者 →</a></nav>
+      <RelatedArticles articles={related}/>
+      <nav class="v02-postnav"><a href={base+"explore/"}>← 搜尋與探索文章</a><a href={`${root}about/`}>認識作者 →</a></nav>
     </main>
   </div>
 </DemoLayout>
