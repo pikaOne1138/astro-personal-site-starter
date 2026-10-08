@@ -1,0 +1,15 @@
+---
+interface Props {name:string;role?:string;bio?:string;photo?:string;credentials?:string[];areas?:string[];specialties?:string[];profileHref?:string;bookingHref?:string;availability?:string}
+const {name,role,bio,photo,credentials=[],areas=[],specialties=[],profileHref,bookingHref,availability}=Astro.props;
+const safe=(href?:string)=>href&&(href.startsWith('/')||href.startsWith('./')||href.startsWith('https://'))?href:undefined;
+---
+<article class="practical-practitioner">
+ {photo?<img src={photo} alt={name+'的專業介紹照片'} loading="lazy" width="320" height="400"/>:<div class="practical-practitioner__monogram" aria-hidden="true">{name.slice(0,1)}</div>}
+ <div class="practical-practitioner__content"><span class="practical-resource-kicker">專業服務者</span><h3>{name}</h3>{role&&<p class="practical-practitioner__role">{role}</p>}{bio&&<p>{bio}</p>}
+ {credentials.length>0&&<p><strong>資格／訓練：</strong>{credentials.join('、')}</p>}
+ {areas.length>0&&<p><strong>服務地區：</strong>{areas.join('、')}</p>}
+ {specialties.length>0&&<p><strong>專長：</strong>{specialties.join('、')}</p>}
+ {availability&&<p class="practical-practitioner__status">{availability}</p>}
+ <div class="practical-practitioner__actions">{safe(profileHref)&&<a href={profileHref}>了解更多 →</a>}{safe(bookingHref)&&<a href={bookingHref}>了解預約方式 ↗</a>}</div>
+ </div>
+</article>
