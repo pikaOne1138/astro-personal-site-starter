@@ -16,7 +16,8 @@ export const GET: APIRoute = ({ site }) => {
     const root = kind + '/' + theme + '/';
     routes.add(root);
     for (const page of pageMap[kind]) routes.add(root + page.id + '/');
-    for (const article of articlesV2) routes.add(root + 'articles/' + encodeURIComponent(article.slug) + '/');
+    // The same demo article appears in eight themes; list its canonical URL once.
+    if (kind === 'knowledge' && theme === 'paper') for (const article of articlesV2) routes.add(root + 'articles/' + encodeURIComponent(article.slug) + '/');
     if (kind === 'helper') for (const slug of ['first-conversation', 'deep-support']) routes.add(root + 'services/' + slug + '/');
   }
   const xml = '<?xml version="1.0" encoding="UTF-8"?>' +
