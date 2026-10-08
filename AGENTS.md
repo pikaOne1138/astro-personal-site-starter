@@ -34,3 +34,6 @@ Use `src/data/blocks.registry.json` (41 blocks), `COMPONENTS.md`, and `.ai/astro
 
 ### feat/v2-5-reading-sharing
 Added Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress. 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 Docs, registry and gallery must stay aligned; do not merge without user approval.
+
+## Practical component batch feat/v2-5-resources-newsletter
+Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
