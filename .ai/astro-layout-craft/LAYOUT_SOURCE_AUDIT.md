@@ -35,3 +35,15 @@
 - 同時通過 Build、實際瀏覽器操作與原始檔案比對後，才請使用者考慮合併。
 
 **本 PR 尚未達成全部門檻，不能合併。**
+
+## 2026-10-08 原始碼完整移植更新（取代本文件先前未完成狀態）
+
+**Manus 10／10 個原始站型均已用 ZIP 裡的 Astro source 完整替換**，不是自創 `.lay-*` 的結構復刻：
+
+- `src/layouts/DirectionLayout.astro`：從 ZIP 一併移植其共用排版及全域 reset。
+- `src/pages/layouts/{field-notes,essayist,learning-lab,curator,radio-letter,clinician,companion,somatic,coach,collective}/index.astro`：各自移植 ZIP 的原始完整頁面，包括 scoped CSS、媒體查詢、真實區塊順序與互動，避免原先推測的 DOM/CSS。
+- **唯一調整**：原始 `/directions/` 站內比較連結改為 `import.meta.env.BASE_URL + 'layouts/'`；十款圖片使用使用者已上架 Manus 的公開演示圖 URL（原始檔名保持不變）；廣播 Demo 音檔改為遠端演示站路徑；「十款方向」的返回文案按十二款展示更新。保留原始的內容、文字、標題和設計比例。
+- Manus 圖片與音訊目前仍依賴遠端演示站，**不能當作完全可離線的正式教學模板**；日後須根據授權改成專案本地檔案。Claude 延伸的 `reading-atlas`、`trust-path` 仍屬獨立新創作，沒有 Manus 原版可對照。
+- 之前另行建立的 `public/learning-lab-source.css` 與 `public/companion-source.css` 現已不被這十款原始 Astro 頁面引用；後續可刪除以免混淆。不要再將手工重寫版視作來源真相。
+
+**程式移植已完成** 與 **視覺驗收已完成** 不同：正式瀏覽器同尺寸截圖、手機操作、圖片與音訊遠端載入仍需獨立檢查。CI 綠燈僅代表 Astro 編譯成功。
