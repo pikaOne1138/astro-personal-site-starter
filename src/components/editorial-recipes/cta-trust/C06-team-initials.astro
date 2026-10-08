@@ -1,0 +1,31 @@
+---
+/**
+ * C06 team-initials — 成員呈現：一位「主角」大列 + 其餘成員列表（避免等寬三卡），以首字頭像代替未授權照片。
+ * 衍生自 10 .cg-person（首字頭像、佔位說明），但**改掉等欄等高三卡**（失敗 F01）。
+ * 照片只在取得當事人同意後才換入；畫面上顯示「示意資料」旗標。
+ */
+interface Props { title?: string; note?: string; lead?: { init: string; name: string; role: string; bio: string }; others?: { init: string; name: string; role: string }[] }
+const {
+  title = '不同專業，共同照看。', note = '以下人物為版型示範資料；正式網站請替換成真實團隊簡介與經當事人同意的照片。',
+  lead = { init: '林', name: '林以安', role: '心理教育／社群對話', bio: '示意簡介：說明這位成員負責什麼、不負責什麼，以及何時會轉介給其他成員。' },
+  others = [{ init: '陳', name: '陳柏宇', role: '生涯支持／工作設計' }, { init: '周', name: '周佳寧', role: '身體練習／團體引導' }],
+} = Astro.props;
+---
+<section class="c06">
+  <header><h2>{title}</h2><p class="note">{note}</p></header>
+  <div class="grid">
+    <article class="lead"><span class="av" aria-hidden="true">{lead.init}</span><div><h3>{lead.name}</h3><p class="role">{lead.role}</p><p>{lead.bio}</p></div></article>
+    <ul>{others.map((o) => <li><span class="av sm" aria-hidden="true">{o.init}</span><div><h3>{o.name}</h3><p class="role">{o.role}</p></div></li>)}</ul>
+  </div>
+</section>
+<style>
+  .c06 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 0 var(--ed-gutter, 4vw); color: var(--ed-ink, #203d68); }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 1.5rem; }
+  h2 { font: 800 clamp(2rem, 4.4vw, 4rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: 0; text-wrap: balance; } .note { max-width: 26em; margin: 0; font-size: .85rem; line-height: 1.7; color: var(--ed-ink-2, #4c5c78); }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1px; background: var(--ed-line, #d8d4c9); border: 1px solid var(--ed-line, #d8d4c9); }
+  .lead { display: flex; gap: 1.5rem; padding: 2rem; background: #f0ddd7; } ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--ed-line, #d8d4c9); }
+  li { display: flex; gap: 1rem; align-items: center; padding: 1.2rem 1.5rem; } li:nth-child(1) { background: #dfe6f8; } li:nth-child(2) { background: #f5e8bb; }
+  .av { flex: none; display: grid; place-items: center; width: 5.5rem; height: 5.5rem; border-radius: 50%; background: #fbf5e9; border: 1px solid var(--ed-line, #d8d4c9); font-size: 2rem; color: var(--ed-accent, #2d55cf); } .av.sm { width: 3.6rem; height: 3.6rem; font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; margin: 0 0 .2rem; } .role { font-size: .85rem; color: var(--ed-ink-2, #3e4e6b); margin: 0 0 .6rem; } li .role { margin: 0; } .lead p:last-child { font-size: .95rem; line-height: 1.8; margin: 0; max-width: 28em; }
+  @media (max-width: 860px) { header { flex-direction: column; align-items: flex-start; gap: .5rem; } .grid { grid-template-columns: 1fr; } .lead { flex-direction: column; padding: 1.5rem; } }
+</style>
