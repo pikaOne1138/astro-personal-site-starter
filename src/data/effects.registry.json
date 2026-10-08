@@ -1,0 +1,100 @@
+[
+  {
+    "id": "reveal",
+    "name": "Reveal",
+    "path": "src/components/effects/Reveal.astro",
+    "variants": [
+      "fade-up",
+      "fade",
+      "soft-zoom",
+      "blur-up",
+      "slide-left",
+      "slide-right",
+      "clip-up"
+    ],
+    "category": "entrance",
+    "defaultIntensity": "subtle",
+    "touch": "supported",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "stagger-group",
+    "name": "StaggerGroup",
+    "path": "src/components/effects/StaggerGroup.astro",
+    "variants": [
+      "step",
+      "start"
+    ],
+    "category": "entrance",
+    "defaultIntensity": "subtle",
+    "touch": "supported",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "motion-card",
+    "name": "MotionCard",
+    "path": "src/components/effects/MotionCard.astro",
+    "variants": [
+      "tilt",
+      "spotlight"
+    ],
+    "category": "pointer",
+    "defaultIntensity": "off",
+    "touch": "disabled",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "zoom-image",
+    "name": "ZoomImage",
+    "path": "src/components/effects/ZoomImage.astro",
+    "variants": [
+      "zoom",
+      "pan",
+      "none"
+    ],
+    "category": "image",
+    "defaultIntensity": "subtle",
+    "touch": "pan-disabled",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "magnetic-button",
+    "name": "MagneticButton",
+    "path": "src/components/effects/MagneticButton.astro",
+    "variants": [
+      "magnetic"
+    ],
+    "category": "cta",
+    "defaultIntensity": "off",
+    "touch": "disabled",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "underline-link",
+    "name": "UnderlineLink",
+    "path": "src/components/effects/UnderlineLink.astro",
+    "variants": [
+      "grow",
+      "center",
+      "marker"
+    ],
+    "category": "text",
+    "defaultIntensity": "subtle",
+    "touch": "static-link",
+    "reducedMotion": "static"
+  },
+  {
+    "id": "motion-faq",
+    "name": "MotionFAQ",
+    "path": "src/components/effects/MotionFAQ.astro",
+    "variants": [
+      "line",
+      "soft",
+      "cards"
+    ],
+    "category": "disclosure",
+    "defaultIntensity": "subtle",
+    "touch": "supported",
+    "reducedMotion": "static"
+  }
+]
