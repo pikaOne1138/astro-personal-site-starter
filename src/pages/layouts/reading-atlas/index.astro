@@ -1,0 +1,29 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='reading-atlas')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[4];
+const next=directions[6];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="reading-atlas">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-atlas-head"><span>READING ATLAS</span><span>2026 / THE ANNUAL EDITION</span></header>
+<section class="lay-atlas-cover"><p>ANNUAL EDITION · NO. 01</p><h1>每一年<br/>讀過的書，<br/><i>都值得留下一張地圖。</i></h1><div><span>ARCHIVE OF IDEAS</span><span>TWENTY TWENTY SIX</span></div></section>
+<section class="lay-atlas-main"><aside><h2>探索今年的閱讀路線</h2><p>不是依時間往下堆文章，而是先依問題、書籍與主題建立章節。</p><img src={image} alt="閱讀與筆記場景"/></aside><ol>{['從好奇開始','和不同觀點相遇','把閱讀帶回生活','年度回顧與延伸'].map((t,i)=><li><span>CHAPTER 0{i+1}</span><strong>{t}</strong><b>↗</b></li>)}</ol></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
