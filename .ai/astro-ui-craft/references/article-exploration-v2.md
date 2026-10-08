@@ -76,3 +76,9 @@ The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must h
 - `TrustInfo`: verifiable credentials, regions, format, real privacy URL and service scope/limitations. Never invent testimonials or crisis resources; provide correct region-specific information only when configured.
 - `MediaEmbed`: YouTube via youtube-nocookie and optional HTML audio; for podcasts or unsupported platforms use an explicit external link; all videos have title, lazy loading and responsive 16:9 layout. Avoid autoplay.
 - Every new block stays inside functional categories in /blocks/, in `blocks.registry.json`, and appears in at least one real demo route; do not make disconnected showcase-only blocks. Keep theme tokens, RWD and screenreader focus behavior.
+
+### SocialLinks component
+- `SocialLinks` displays curated social identity links as icon-only or icon+label; can be placed under shared navigation/footers, about profiles or contact sections.
+- Supported platform keys: instagram, facebook, threads, youtube, line, github, linkedin, x, tiktok, pinterest, discord, telegram, spotify, email, phone, website, rss.
+- `items:[{platform,href,label?}]`, `showLabels`, `size`. `previewPlatforms` is only for the block gallery and must not pretend to contain real working profiles.
+- Simple Icons pinned v16 SVG CDN (brand-specific trademark policies apply); contact/generic SVG is inlined. Never expose arbitrary off-domain URL schemes, do not fabricate accounts. For production privacy/reliability, optionally self-host selected brand icons.
