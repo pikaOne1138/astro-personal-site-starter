@@ -38,19 +38,17 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫 V2" description="可讓 AI 自由組裝的 Astro 元件庫：35 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：35 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
     <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a>
-    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY V2</p>
+    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
-    <p><strong>V1.5</strong>｜23 個核心元件、四套配色與微動畫。</p>
-    <p><strong>V2</strong>｜新增 12 個元件：文章搜尋、標籤雲、月份封存、文章日曆與進階文章排版。累計 35 個元件。</p>
-    <p>AI 自動選元件仍屬 V3。</p>
-    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#v2">V2 文章探索與排版</a><a href="#examples">完整範例</a></div>
+    <p>探索 35 個可重用元件，包含首頁主視覺、文章搜尋、標籤雲、月份封存、日曆、進階文章排版與服務區塊。支援四套配色與細緻的互動效果。</p>
+    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#v2">文章探索與排版</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
       <span>預覽配色：</span>
       <button data-block-theme="paper" aria-pressed="true">紙墨</button>
@@ -99,7 +97,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
   </section>
 
   <section id="v2" class="ab-category">
-    <h2 class="ab-category-title">06 / V2 文章探索</h2>
+    <h2 class="ab-category-title">06 / 文章探索</h2>
     <p class="ab-category-intro">ArticleSearch、TagCloud、ArchiveMonths、PostCalendar：四個元件共用文章日期、標籤與分類索引。能搜尋、按月份篩選、點日曆上的日期找到對應文章。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleSearch · TagCloud · ArchiveMonths · PostCalendar</strong><span>可實際操作的文章探索</span></div>
       <p>直接進入互動 Demo：搜尋關鍵字「Astro」，點選「資訊架構」標籤，或點 2026 年 10 月 8 日，即可檢視相符文章。</p>
@@ -110,7 +108,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
       <SiteSearchDialog kind="knowledge" theme="paper" />
     </div>
-    <h2 class="ab-category-title">07 / V2 進階文章元件</h2>
+    <h2 class="ab-category-title">07 / 進階文章元件</h2>
     <p class="ab-category-intro">不是把文章變成複雜的編輯器，而是為需要的段落提供有設計規範的內容區塊。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleAccordion</strong><span>可展開／收合的延伸內容</span></div><ArticleAccordion title="想看進一步解釋嗎？"><p>適合術語補充、長篇案例或不影響主要閱讀流程的背景說明。</p></ArticleAccordion></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleList</strong><span>數字列表與項目條列</span></div><ArticleList ordered items={['先確認文章主題與讀者需求','依照內容決定標題與段落結構','在文末補上延伸閱讀或下一步']} /></div>
