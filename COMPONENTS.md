@@ -24,6 +24,7 @@
 - 文章探索：`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar`
 - 進階文章：`ArticleAccordion`、`ArticleList`、`ArticleGrid`、`ArticleCallout`、`ArticleComparison`、`RelatedArticles`、`ContentCarousel`
 - 範例：`/explore/`，可以搜尋標題、摘要、分類、標籤，並按月份與指定日期找文章。
+- 完整網站整合：`/knowledge/{theme}/explore/` 與 `/helper/{theme}/explore/`，八款 Demo 導覽列都有「找文章」，並連到該風格的文章頁；文章內文示範 Accordion／List／Grid／Callout／Comparison／Carousel／RelatedArticles。
 - 統一示範資料：`src/data/articles-v2.ts`，包括 slug、標題、摘要、分類、標籤、發文日期、閱讀時間。
 - 所有月份、日曆日期、標籤數量和結果頁都以相同的文章資料產生；不存在的發文日期不可點。
 - V2 示範文章與日期都是教材，不代表真實發文記錄。正式網站應接 Astro Content Collections 或匯入文章資料。
