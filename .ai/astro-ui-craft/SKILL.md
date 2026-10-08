@@ -77,6 +77,12 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 - If a new value is genuinely necessary, explain why, centralize it as a token, and request approval before introducing it; do not silently modify the design system.
 - Existing legacy values in styles are not blanket permission to invent more. A cleanup to full tokenization should be separate from an unrelated UI edit.
 
+## V2 article exploration and rich-content blocks
+- Read `references/article-exploration-v2.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
+- Use the shared `src/data/articles-v2.ts` schema and `src/site-map.ts` routes. Counts, dates, links and matches must derive from real article data.
+- Current V2 `/explore/` supports metadata search, **not full-body search**. Never misrepresent its scope.
+- Maintain existing typography, spacing and motion tokens in V2 components; do not introduce arbitrary design values.
+
 ## Component library (mandatory before page assembly)
 - Read `references/component-library-v1.5.md` first for the catalog, scope, variants, and design integration rules.
 - Read `COMPONENTS.md` and `src/data/blocks.registry.json` for the maintained component names, use cases and registry.
