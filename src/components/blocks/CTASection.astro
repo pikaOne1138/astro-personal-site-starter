@@ -1,0 +1,6 @@
+---
+import Button from './Button.astro';
+interface Props {title:string;description:string;action:string;href:string;}
+const {title,description,action,href}=Astro.props;
+---
+<section class="ab-cta"><p class="ab-eyebrow">NEXT STEP</p><h2>{title}</h2><p>{description}</p><Button href={href}>{action} →</Button></section>
