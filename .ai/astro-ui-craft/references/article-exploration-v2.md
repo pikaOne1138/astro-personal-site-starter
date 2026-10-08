@@ -59,3 +59,6 @@ Avoid launching an external runtime, complex search backend, or article editor f
 
 ## Full-site demo integration
 All eight `{knowledge,helper} × {paper,morning,studio,botanical}` demo sites use `/[kind]/[theme]/explore/`. The `SiteNav.astro` **找文章** link is real and visible on mobile. Each demo's article list links to theme-specific detail pages and its tag/date chips return to its own explorer. Article pages demonstrate accordion, list, callout, grid, comparison table, content carousel, and related articles. Demo data remains illustrative. Keep original routes and global `/explore/` working.
+
+## Sticky navigation overlay rule
+The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must have a fully opaque navigation backing** (including Botanical and Morning). Do not rely on transparent backgrounds or blurred translucent surfaces where search fields or page text can become visible behind nav labels. Verify screenshots at page top, halfway down, and scrolled with search field crossing navigation; confirm z-order and mobile CTA visibility.
