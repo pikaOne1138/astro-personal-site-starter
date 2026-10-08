@@ -1,0 +1,30 @@
+---
+/**
+ * S08 evidence-table — 可核實資訊表（dl）：每列 label | value | 狀態旗標（待填 / 已填）。
+ * 規則：沒有可查證的內容就顯示「待填」旗標，不寫形容詞、不編造年資或數字。
+ * 衍生自 06 .cl-credentials，並 [NEW] 加入狀態旗標，讓佔位在畫面上可被看見。
+ */
+interface Props { label?: string; title?: string; sub?: string; rows?: { k: string; v?: string; src?: string }[] }
+const {
+  label = '03 / VERIFIED INFORMATION', title = '可核實的專業背景',
+  sub = '只列出實際持有、可查證且與服務相關的資格；不放未確認的年資、療效或數據。',
+  rows = [{ k: '資格／執照', v: '', src: '站長提供證書字號後填入' }, { k: '服務地區', v: '台北市（示意）', src: '站長確認' }, { k: '服務時間', v: '', src: '站長確認' }],
+} = Astro.props;
+---
+<section class="s08">
+  <div><p class="label">{label}</p><h2>{title}</h2><p class="sub">{sub}</p></div>
+  <dl>{rows.map((r) => (
+    <div class:list={{ todo: !r.v }}><dt>{r.k}</dt><dd>{r.v || '—'}</dd><dd class="flag">{r.v ? '已填 · ' : '待填 · '}{r.src}</dd></div>
+  ))}</dl>
+</section>
+<style>
+  .s08 { max-width: var(--ed-wide, 1260px); margin-inline: auto; padding: 0 var(--ed-gutter, 4vw); display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; color: var(--ed-ink, #18313a); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #3d5b68); margin: 0; }
+  h2 { font: 700 clamp(2.2rem, 4.6vw, 4.2rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .6rem 0; }
+  .sub { max-width: 28em; font-size: .9rem; line-height: 1.8; color: var(--ed-ink-2, #4a5d62); }
+  dl { margin: 0; align-self: end; } dl > div { display: grid; grid-template-columns: 8rem 1fr; gap: .2rem 1rem; padding: .9rem 0; border-top: 1px solid var(--ed-line, #cdd8d5); font-size: .9rem; }
+  dt { color: var(--ed-ink-2, #4a5d62); } dd { margin: 0; }
+  .flag { grid-column: 2; font: .75rem var(--ed-mono, monospace); color: var(--ed-ink-2, #4a5d62); }
+  .todo .flag { color: var(--ed-accent, #9a3b24); }
+  @media (max-width: 760px) { .s08 { grid-template-columns: 1fr; gap: 1.5rem; } dl > div { grid-template-columns: 6.5rem 1fr; } }
+</style>
