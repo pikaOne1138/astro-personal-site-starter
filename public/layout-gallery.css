@@ -30,14 +30,6 @@
 
 
 /* Claude design recipe gateway — structurally distinct from layout cards. */
-.recipe-entry{max-width:1310px;margin:14px auto 64px;padding:34px clamp(24px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px 50px;background:#e8e7dd;border-top:2px solid #33372c}
-.recipe-entry h2{font:500 clamp(29px,3.8vw,51px)/1.22 Georgia,"Noto Serif TC",serif;letter-spacing:-.04em;margin:12px 0 14px}
-.recipe-entry h2 em{font-weight:400;color:#8c5749}
-.recipe-entry p:not(.gallery-kicker){font-size:14px;line-height:1.85;color:#5c6057;max-width:620px}
-.recipe-entry>a{display:inline-flex;justify-content:space-between;gap:38px;align-items:center;background:#27392f;color:#faf8f0;padding:15px 22px;font-size:13px;min-height:48px}
-.recipe-entry>a:hover{background:#45594c}
-@media(max-width:1400px){.recipe-entry{margin-inline:clamp(20px,5vw,80px)}}
-@media(max-width:700px){.recipe-entry{grid-template-columns:1fr;margin:16px 20px 44px;padding:26px 23px}.recipe-entry>a{width:100%}}
 
 
 /* Original CSS typographic thumbnails for Claude's two newly implemented designs.
