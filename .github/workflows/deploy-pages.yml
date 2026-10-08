@@ -107,8 +107,8 @@ jobs:
           for attempt in $(seq 1 12); do
             CODE="$(curl --connect-timeout 8 --max-time 18 -L -s -o /tmp/preview.html -w '%{http_code}' "$URL" || true)"
             echo "Attempt $attempt: HTTP $CODE"
-            if [ "$CODE" = "200" ] && grep -q '8 UI Demos + Blocks' /tmp/preview.html; then
-              echo "Confirmed deployed PR preview contains expected PR HTML."
+            if [ "$CODE" = "200" ] && cmp -s "dist/pr-preview/pr-${PR_NUMBER}/index.html" /tmp/preview.html; then
+              echo "Confirmed deployed PR preview exactly matches generated HTML."
               exit 0
             fi
             sleep 10
