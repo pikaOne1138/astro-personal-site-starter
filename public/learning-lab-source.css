@@ -1,0 +1,32 @@
+/* Faithful CSS adaptation from user-provided original Astro Learning Lab */
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:#f4f5ef;font-family:system-ui,sans-serif;line-height:1.5}
+img{display:block;max-width:100%}a{color:inherit}button,input{font:inherit}
+:focus-visible{outline:3px solid #d34f38;outline-offset:4px}
+.direction-skip{position:fixed;z-index:100;top:8px;left:8px;padding:.65rem 1rem;background:#fff;color:#111;transform:translateY(-160%)}.direction-skip:focus{transform:translateY(0)}
+.ll-site{--ll-ink:#101f52;--ll-blue:#2449d8;--ll-yellow:#ffd23e;--ll-paper:#f4f5ef;background:var(--ll-paper);color:var(--ll-ink);min-height:100vh;padding:0 clamp(1rem,4vw,4.5rem) 2rem;font-family:Arial,"Noto Sans TC",sans-serif}
+.ll-header{height:84px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--ll-ink);gap:1rem}
+.ll-brand{font-size:.66rem;line-height:1.05;letter-spacing:.08em;font-weight:800;text-decoration:none;display:grid;grid-template-columns:38px 1fr;align-items:center}.ll-brand-mark{grid-row:span 2;background:var(--ll-yellow);width:32px;height:32px;display:grid;place-items:center;font-size:1.1rem;border-radius:50%}
+.ll-header nav{display:flex;gap:1.6rem;font-size:.77rem;font-weight:700}.ll-header nav a{text-decoration:none}
+.ll-status{font:.6rem ui-monospace,monospace;letter-spacing:.1em}.ll-status i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#45a667;margin-right:.4rem}
+.ll-hero{max-width:1320px;margin:0 auto;min-height:590px;display:grid;grid-template-columns:1.02fr .98fr 40px;align-items:center;gap:3rem;padding:4rem 0}
+.ll-overline{font:.65rem ui-monospace,monospace;letter-spacing:.13em;color:var(--ll-blue);font-weight:700}
+.ll-hero-copy h1{font-size:clamp(4rem,8.5vw,8.5rem);line-height:.96;letter-spacing:-.09em;margin:1rem 0}.ll-hero-copy h1 span{background:var(--ll-yellow);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.ll-hero-copy>p:not(.ll-overline){max-width:470px;line-height:1.8;font-size:1rem}
+.ll-actions{display:flex;align-items:center;gap:1rem;margin-top:2rem}.ll-button{background:var(--ll-blue);color:white;padding:.9rem 1.1rem;text-decoration:none;font-size:.8rem;font-weight:700;box-shadow:4px 4px 0 var(--ll-yellow)}.ll-button b{margin-left:1rem}.ll-actions>span{font-size:.68rem;color:#536080}
+.ll-hero-art{margin:0;position:relative}.ll-hero-art img{width:100%;aspect-ratio:4/3;object-fit:cover;border:2px solid var(--ll-ink);box-shadow:12px 12px 0 var(--ll-yellow);transform:rotate(1deg)}.ll-hero-art figcaption{font:.62rem ui-monospace,monospace;margin-top:1rem}
+.ll-side-index{height:260px;border-left:1px solid var(--ll-ink);display:flex;flex-direction:column;justify-content:space-between;align-items:center;font:.6rem ui-monospace,monospace;writing-mode:vertical-rl}
+.ll-path{max-width:1320px;margin:2rem auto 6rem;display:grid;grid-template-columns:.7fr 1.3fr;gap:6vw;border-top:2px solid var(--ll-ink);padding-top:2rem}.ll-path header h2,.ll-modules-heading h2{font-size:clamp(2.6rem,5vw,5rem);line-height:.98;letter-spacing:-.08em;margin:.5rem 0 1rem}.ll-path header>p:last-child{max-width:350px;line-height:1.8;color:#4c5875}
+.ll-progress{margin-top:1.4rem;max-width:340px}.ll-progress>div{display:flex;justify-content:space-between;font:.62rem ui-monospace,monospace;color:#354469;margin-bottom:.4rem}.ll-progress progress{width:100%;height:9px;accent-color:var(--ll-blue)}
+.ll-track{list-style:none;margin:0;padding:0;position:relative}.ll-track::before{content:"";position:absolute;left:27px;top:30px;bottom:30px;width:2px;background:var(--ll-blue)}
+.ll-unit{position:relative;display:grid;grid-template-columns:58px 1fr 78px;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid #cbd0db;transition:background .2s}
+.ll-unit.is-done{background:#e9f0df}.ll-complete{display:flex;align-items:center;gap:.4rem;font:.62rem ui-monospace,monospace;color:#354469;cursor:pointer}.ll-check{width:17px;height:17px;accent-color:var(--ll-blue)}
+.ll-unit-no{width:54px;height:54px;background:var(--ll-yellow);border:2px solid var(--ll-ink);border-radius:50%;display:grid;place-items:center;font:.75rem ui-monospace,monospace;z-index:1}.ll-unit--blue .ll-unit-no{background:#b7c5ff}.ll-unit--coral .ll-unit-no{background:#f28a6a}
+.ll-unit h3{font-size:1.5rem;margin:.1rem 0}.ll-unit p{font:.58rem ui-monospace,monospace;color:var(--ll-blue);letter-spacing:.12em;margin:0}.ll-unit div>span{font-size:.8rem;color:#505c78}.ll-unit>a{text-decoration:none;color:var(--ll-blue)}
+.ll-modules{max-width:1320px;margin:0 auto 6rem;background:#e5e8f2;padding:clamp(1.2rem,4vw,3rem);display:grid;grid-template-columns:.72fr 1.28fr;gap:4vw}
+.ll-modules-heading h2 i{font-family:Georgia,serif;font-weight:400}.ll-modules-heading>a{font-size:.74rem;color:var(--ll-blue)}
+.ll-module-list article{display:grid;grid-template-columns:48px 1fr 24px;gap:1rem;align-items:center;border-top:1px solid #aab1cb;padding:1rem 0}.ll-module-num{font:.7rem ui-monospace,monospace;color:var(--ll-blue)}.ll-module-list p{font:.6rem ui-monospace,monospace;color:#586688;margin:0}.ll-module-list h3{font-size:1.08rem;margin:.25rem 0}.ll-module-arrow{color:var(--ll-blue)}
+.ll-footer{max-width:1320px;margin:auto;border-top:2px solid var(--ll-ink);padding:1rem 0;display:flex;justify-content:space-between;gap:1rem;font:.6rem ui-monospace,monospace}.ll-footer a{color:var(--ll-blue)}
+@media(max-width:900px){.ll-hero{grid-template-columns:1fr 1fr;gap:2rem}.ll-side-index{display:none}.ll-path,.ll-modules{grid-template-columns:1fr;gap:1.5rem}}
+@media(max-width:600px){.ll-header{height:auto;padding:1rem 0;flex-wrap:wrap}.ll-header nav{order:3;width:100%;justify-content:space-between;gap:.6rem;font-size:.68rem}.ll-status{font-size:.52rem}.ll-hero{grid-template-columns:1fr;padding:3rem 0}.ll-hero-copy h1{font-size:18vw}.ll-hero-art{width:94%;margin-left:auto}.ll-path{margin-bottom:4rem}.ll-unit{grid-template-columns:46px 1fr 68px;gap:.7rem}.ll-complete{font-size:.55rem;gap:.25rem}.ll-check{width:15px;height:15px}.ll-unit-no{width:42px;height:42px}.ll-track::before{left:20px}.ll-unit h3{font-size:1.2rem}.ll-modules{margin-bottom:4rem}.ll-footer{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
