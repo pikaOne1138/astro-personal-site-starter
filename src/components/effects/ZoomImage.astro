@@ -1,0 +1,25 @@
+---
+interface Props {src:string;alt:string;effect?:'zoom'|'pan'|'none';caption?:string;className?:string;}
+const {src,alt,effect='zoom',caption,className=''}=Astro.props;
+---
+<figure class:list={['motion-image','motion-image--'+effect,className]} data-motion-image={effect}><div class="motion-image__frame"><img src={src} alt={alt} loading="lazy" decoding="async" /></div>{caption&&<figcaption>{caption}</figcaption>}</figure>
+<script>
+  const fine=window.matchMedia('(hover:hover) and (pointer:fine)');
+  const reduced=window.matchMedia('(prefers-reduced-motion:reduce)');
+  document.querySelectorAll<HTMLElement>('[data-motion-image="pan"]:not([data-pan-installed])').forEach(image=>{
+    image.dataset.panInstalled='true';
+    let frame=0;let last:PointerEvent|undefined;
+    const reset=()=>{cancelAnimationFrame(frame);frame=0;image.style.removeProperty('--pan-x');image.style.removeProperty('--pan-y')};
+    image.addEventListener('pointermove',ev=>{
+      if(!fine.matches||reduced.matches||ev.pointerType==='touch')return;last=ev;
+      if(frame)return;frame=requestAnimationFrame(()=>{
+        frame=0;if(!last)return;
+        const rect=image.getBoundingClientRect();if(!rect.width||!rect.height)return;
+        const x=(last.clientX-rect.left)/rect.width-.5,y=(last.clientY-rect.top)/rect.height-.5;
+        image.style.setProperty('--pan-x',(-x*10).toFixed(1)+'px');image.style.setProperty('--pan-y',(-y*8).toFixed(1)+'px');
+      });
+    },{passive:true});
+    image.addEventListener('pointerleave',reset);image.addEventListener('pointercancel',reset);
+    reduced.addEventListener('change',reset);fine.addEventListener('change',reset);
+  });
+</script>
