@@ -1,0 +1,52 @@
+---
+/**
+ * H06 spec-sheet — 規格書式 hero：文案 → 低壓主動作 → 三欄 meta（衍生自 06 清晰臨床）
+ * 信任資訊放在 hero 內；meta 值為待填欄位，**不得填入未驗證的資格或數字**。
+ * 手機：meta 改為 label 左 / value 右 的單欄，避免三欄擠成極小字。
+ */
+interface Props { overline?: string; phrases?: string[]; body?: string; cta?: string; href?: string; hint?: string; meta?: { k: string; v: string }[]; src?: string; alt?: string; cap?: string }
+const {
+  overline = '專業關係，從清楚開始', phrases = ['讓你知道', '接下來會發生什麼。'],
+  body = '先說明服務能協助的範圍、哪些情況需要其他資源，以及初次聯絡後的流程。你可以看完，再決定是否適合。',
+  cta = '了解服務範圍', href = '#scope', hint = '不必先承諾預約。',
+  meta = [{ k: '服務對象', v: '請填入實際範圍' }, { k: '會談方式', v: '實體／遠距請核實' }, { k: '資格資訊', v: '僅列可驗證資料' }],
+  src, alt = '', cap = '會談空間示意。實際服務地點請依網站經營者更新。',
+} = Astro.props;
+---
+<section class="h06">
+  <div class="copy">
+    <p class="label">{overline}</p>
+    <h1>{phrases.map((p) => <span class="ph">{p}</span>)}</h1>
+    <p class="body">{body}</p>
+    <div class="act"><a class="btn" href={href}>{cta} <span aria-hidden="true">↓</span></a><span class="hint">{hint}</span></div>
+    <dl class="meta">{meta.map((m) => <div><dt>{m.k}</dt><dd>{m.v}</dd></div>)}</dl>
+  </div>
+  <figure>
+    {src ? <img src={src} alt={alt} width="1200" height="900" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+    <figcaption>{cap}</figcaption>
+  </figure>
+</section>
+<style>
+  .h06 { max-width: var(--ed-wide, 1260px); margin-inline: auto; padding: clamp(3rem, 7vw, 5rem) var(--ed-gutter, 4vw) clamp(3rem, 7vw, 5.5rem); display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; color: var(--ed-ink, #18313a); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #3d5b68); text-transform: uppercase; margin: 0; }
+  h1 { font: 700 clamp(2.8rem, 6.4vw, 6rem)/1.08 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .7rem 0 1.2rem; text-wrap: balance; }
+  .ph { display: block; }
+  .body { max-width: 31em; line-height: 1.9; color: var(--ed-ink-2, #4a5d62); }
+  .act { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin: 1.5rem 0 2.3rem; }
+  .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.1rem; background: var(--ed-ink, #18313a); color: #fff; text-decoration: none; font-size: .9rem; border-radius: 2px; }
+  .btn span { margin-left: .8rem; }
+  .hint { font-size: .875rem; color: var(--ed-ink-2, #4a5d62); }
+  .meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; border-top: 1px solid var(--ed-line, #cdd8d5); padding-top: 1rem; margin: 0; }
+  dt { font-size: .75rem; color: var(--ed-ink-2, #4a5d62); }
+  dd { margin: .2rem 0 0; font-size: .875rem; font-weight: 600; }
+  figure { margin: 0; }
+  figure img, .art { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
+  .art { background: linear-gradient(90deg, #e1e9e6 0 38%, #d1dcd8 38% 40%, #eef3f1 40%); }
+  figcaption { font-size: .75rem; color: var(--ed-ink-2, #4a5d62); margin-top: .55rem; }
+  @media (max-width: 850px) { .h06 { grid-template-columns: 1fr; } figure { width: 80%; margin-left: auto; } }
+  @media (max-width: 560px) {
+    .meta { grid-template-columns: 1fr; gap: 0; }
+    .meta div { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem 0; border-bottom: 1px solid var(--ed-line, #cdd8d5); }
+    dd { margin: 0; text-align: right; } figure { width: 100%; }
+  }
+</style>
