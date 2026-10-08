@@ -1,0 +1,33 @@
+---
+interface Props {url:string;title:string}
+const {url,title}=Astro.props;
+let shareUrl:string|undefined;
+try { const u=new URL(url); if(u.protocol==='https:')shareUrl=u.href; } catch {}
+const destinations=shareUrl?[
+{name:'LINE',href:'https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(shareUrl)},
+{name:'Facebook',href:'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(shareUrl)},
+{name:'Email',href:'mailto:?subject='+encodeURIComponent(title)+'&body='+encodeURIComponent(shareUrl)}
+]:[];
+---
+{shareUrl&&<div class="practical-share" aria-label="分享這篇文章">
+ <span class="practical-share__label">分享文章</span>
+ {destinations.map(d=><a href={d.href} target={d.name==='Email'?undefined:'_blank'} rel={d.name==='Email'?undefined:'noopener noreferrer'}>{d.name} ↗</a>)}
+ <button type="button" data-copy-article-url={shareUrl}>複製連結</button><output class="practical-share__status" aria-live="polite"></output>
+</div>}
+<script>
+document.querySelectorAll<HTMLButtonElement>('[data-copy-article-url]').forEach(button=>{
+ button.addEventListener('click',async()=>{
+  const value=button.dataset.copyArticleUrl||'';
+  const output=button.parentElement?.querySelector<HTMLOutputElement>('output');
+  try{
+    await navigator.clipboard.writeText(value);
+    if(output)output.textContent='已複製連結';
+  }catch{
+    if(output){output.textContent='請選取下方網址手動複製：';}
+    let input=button.parentElement?.querySelector<HTMLInputElement>('input[data-copy-fallback]');
+    if(!input){input=document.createElement('input');input.readOnly=true;input.setAttribute('data-copy-fallback','');button.parentElement?.append(input);}
+    if(input){input.value=value;input.focus();input.select();}
+  }
+ });
+});
+</script>
