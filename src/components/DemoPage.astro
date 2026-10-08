@@ -4,6 +4,7 @@ import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import SiteNav from './SiteNav.astro';
 import BookingLink from './blocks/BookingLink.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
+import NewsletterSignup from './blocks/NewsletterSignup.astro';
 import SocialLinks from './blocks/SocialLinks.astro';
 import { articlesV2 } from '../data/articles-v2';
 interface Props { kind: Kind; theme: Theme; }
@@ -58,7 +59,7 @@ const services = [
 
         <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder"><span>作者照片</span></div><div><p class="eyebrow">ABOUT</p><h2>我喜歡把複雜的東西拆開，再重新拼成可以用的樣子。</h2><p>這裡記錄我怎麼理解 AI、網站、知識工具，以及那些還沒有答案但值得繼續想的問題。</p><a class="quiet-link" href="#">更多關於我 →</a></div></section>
 
-        <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>偶爾寄一封，讀完會想一想的信。</h2><p>不追新聞、不塞滿工具清單，只整理真正值得留下的東西。</p><p class="microcopy">電子報尚未串接；正式啟用時需設定可用的訂閱平台。</p><a class="button text" href={`${base}${kind}/${theme}/resources/`}>查看內容資源 →</a></section>
+        <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>偶爾寄一封，讀完會想一想的信。</h2><p>不追新聞、不塞滿工具清單，只整理真正值得留下的東西。</p><NewsletterSignup title="訂閱來信" description="此示範尚未連接訂閱平台，正式站需提供安全的外部服務網址。" /><a class="button text" href={`${base}${kind}/${theme}/resources/`}>查看內容資源 →</a></section>
       </> : <>
         <section class="section empathy" data-reveal><p class="eyebrow">YOU MAY BE HERE BECAUSE...</p><h2>有些時候，你不是不知道該怎麼辦，只是已經撐得太久了。</h2><div class="feeling-grid"><div><span>01</span><p>腦袋知道很多方法，情緒卻還是一直繞回原點。</p></div><div><span>02</span><p>關係裡總是在照顧別人，卻很難知道自己真正需要什麼。</p></div><div><span>03</span><p>生活看起來沒有大問題，但你知道自己其實不太快樂。</p></div><div><span>04</span><p>想改變，卻不知道第一步要從哪裡開始。</p></div></div></section>
 
