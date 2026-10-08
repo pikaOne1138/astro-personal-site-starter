@@ -42,6 +42,7 @@ const articleMeta=articlesV2;
 const practice=helperPractice[theme];
 ---
 <DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:k.intro} theme={theme} kind={kind}>
+  {page==='articles'&&<link rel="stylesheet" href={base+"blocks-v2.css"}/>}
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current={page} />
     <main class="v02-page">
