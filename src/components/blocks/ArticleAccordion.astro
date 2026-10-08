@@ -1,0 +1,5 @@
+---
+interface Props {title:string;open?:boolean;}
+const {title,open=false}=Astro.props;
+---
+<details class="v2-article-accordion" open={open}><summary>{title}</summary><div class="v2-accordion-body"><slot /></div></details>

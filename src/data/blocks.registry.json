@@ -446,5 +446,236 @@
       "studio",
       "botanical"
     ]
+  },
+  {
+    "id": "article-search",
+    "name": "ArticleSearch",
+    "category": "blog",
+    "path": "src/components/blocks/ArticleSearch.astro",
+    "keywords": [
+      "關鍵字搜尋",
+      "文章查詢"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "tag-cloud",
+    "name": "TagCloud",
+    "category": "blog",
+    "path": "src/components/blocks/TagCloud.astro",
+    "keywords": [
+      "標籤雲",
+      "主題標籤"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "archive-months",
+    "name": "ArchiveMonths",
+    "category": "blog",
+    "path": "src/components/blocks/ArchiveMonths.astro",
+    "keywords": [
+      "月份列表",
+      "文章封存"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "post-calendar",
+    "name": "PostCalendar",
+    "category": "blog",
+    "path": "src/components/blocks/PostCalendar.astro",
+    "keywords": [
+      "文章日曆",
+      "日期篩選"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "article-accordion",
+    "name": "ArticleAccordion",
+    "category": "article",
+    "path": "src/components/blocks/ArticleAccordion.astro",
+    "keywords": [
+      "折疊",
+      "延伸內容"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "article-callout",
+    "name": "ArticleCallout",
+    "category": "article",
+    "path": "src/components/blocks/ArticleCallout.astro",
+    "keywords": [
+      "提示框",
+      "重點"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "article-grid",
+    "name": "ArticleGrid",
+    "category": "article",
+    "path": "src/components/blocks/ArticleGrid.astro",
+    "keywords": [
+      "Grid",
+      "卡片排版"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "article-comparison",
+    "name": "ArticleComparison",
+    "category": "article",
+    "path": "src/components/blocks/ArticleComparison.astro",
+    "keywords": [
+      "比較表格",
+      "表格"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "related-articles",
+    "name": "RelatedArticles",
+    "category": "article",
+    "path": "src/components/blocks/RelatedArticles.astro",
+    "keywords": [
+      "延伸閱讀",
+      "相關文章"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "article-list",
+    "name": "ArticleList",
+    "category": "article",
+    "path": "src/components/blocks/ArticleList.astro",
+    "keywords": [
+      "條列",
+      "步驟列表"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
+  },
+  {
+    "id": "content-carousel",
+    "name": "ContentCarousel",
+    "category": "article",
+    "path": "src/components/blocks/ContentCarousel.astro",
+    "keywords": [
+      "輪播",
+      "水平滑動"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
   }
 ]

@@ -23,21 +23,33 @@ import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
 import Testimonial from '../../components/blocks/Testimonial.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import ContactSection from '../../components/blocks/ContactSection.astro';
+import ArticleAccordion from '../../components/blocks/ArticleAccordion.astro';
+import ArticleCallout from '../../components/blocks/ArticleCallout.astro';
+import ArticleGrid from '../../components/blocks/ArticleGrid.astro';
+import ArticleComparison from '../../components/blocks/ArticleComparison.astro';
+import ArticleList from '../../components/blocks/ArticleList.astro';
+import RelatedArticles from '../../components/blocks/RelatedArticles.astro';
+import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
+import { articlesV2 } from '../../data/articles-v2';
 const base=import.meta.env.BASE_URL;
 const posts=[{title:'把生活寫成自己的知識地圖',category:'個人寫作',excerpt:'從一個小小的觀察開始，整理值得長期留下的想法。',href:'#posts'},{title:'一篇值得重讀的閱讀筆記',category:'閱讀',excerpt:'不求寫得很多，只求每次回來，都能找到一點啟發。',href:'#posts'},{title:'建立自己的內容基地',category:'方法',excerpt:'用簡單的架構，讓每篇內容都有清楚的去處。',href:'#posts'}];
 const services=[{title:'一對一陪伴',description:'從你目前的困擾與期待出發，找到可以安心探索的方向。'},{title:'主題工作坊',description:'用清晰易懂的練習，讓新的覺察落在日常生活裡。'},{title:'線上諮詢',description:'以有彈性的方式進行，適合無法到場的合作需求。'}];
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫 V1.5" description="可讓 AI 自由組裝的 Astro 元件庫：23 個核心元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫 V2" description="可讓 AI 自由組裝的 Astro 元件庫：34 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
+<link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
     <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a>
-    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY V1.5</p>
+    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY V2</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
-    <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。V1.5 提供 23 個核心元件、四套配色及微動畫；進階搜尋、輪播與自動選元件留待後續版本。</p>
-    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#examples">完整範例</a></div>
+    <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
+    <p><strong>V1.5</strong>｜23 個核心元件、四套配色與微動畫。</p>
+    <p><strong>V2</strong>｜新增 11 個元件：文章搜尋、標籤雲、月份封存、文章日曆與進階文章排版。累計 34 個元件。</p>
+    <p>AI 自動選元件仍屬 V3。</p>
+    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#v2">V2 文章探索與排版</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
       <span>預覽配色：</span>
       <button data-block-theme="paper" aria-pressed="true">紙墨</button>
@@ -84,8 +96,26 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>FAQ</strong><span>原生 HTML 可展開項目</span></div><FAQ items={faq} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ContactSection</strong><span>聯絡與預約入口</span></div><ContactSection title="可以先從聊聊開始。" description="了解服務是否符合你的需求，再決定是否預約。" href="#examples" label="觀看網站範例" /></div>
   </section>
+
+  <section id="v2" class="ab-category">
+    <h2 class="ab-category-title">06 / V2 文章探索</h2>
+    <p class="ab-category-intro">ArticleSearch、TagCloud、ArchiveMonths、PostCalendar：四個元件共用文章日期、標籤與分類索引。能搜尋、按月份篩選、點日曆上的日期找到對應文章。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleSearch · TagCloud · ArchiveMonths · PostCalendar</strong><span>可實際操作的文章探索</span></div>
+      <p>直接進入互動 Demo：搜尋關鍵字「Astro」，點選「資訊架構」標籤，或點 2026 年 10 月 8 日，即可檢視相符文章。</p>
+      <a class="ab-button primary" href={base+'explore/'}>開啟文章搜尋、標籤與日曆 →</a>
+    </div>
+    <h2 class="ab-category-title">07 / V2 進階文章元件</h2>
+    <p class="ab-category-intro">不是把文章變成複雜的編輯器，而是為需要的段落提供有設計規範的內容區塊。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleAccordion</strong><span>可展開／收合的延伸內容</span></div><ArticleAccordion title="想看進一步解釋嗎？"><p>適合術語補充、長篇案例或不影響主要閱讀流程的背景說明。</p></ArticleAccordion></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleList</strong><span>數字列表與項目條列</span></div><ArticleList ordered items={['先確認文章主題與讀者需求','依照內容決定標題與段落結構','在文末補上延伸閱讀或下一步']} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleGrid</strong><span>二欄、三欄說明卡</span></div><ArticleGrid columns={2}><div><h3>文章大綱</h3><p>先整理要說的內容，再安排閱讀順序。</p></div><div><h3>補充資料</h3><p>將延伸資訊放在不干擾主要內容的位置。</p></div></ArticleGrid></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleCallout</strong><span>Note / Tip / Warning</span></div><ArticleCallout title="閱讀提醒" tone="tip">這是一般資訊提示；重要內容不應只依賴顏色傳達。</ArticleCallout></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleComparison</strong><span>易閱讀的比較表格</span></div><ArticleComparison caption="文章探索方式比較" headers={['方式','適合情境']} rows={ [['關鍵字搜尋','已知道想找什麼'],['標籤雲','想探索相關主題'],['月份列表','想回顧某段時間的內容'],['日曆','記得發文日期']] } /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>RelatedArticles</strong><span>延伸閱讀</span></div><RelatedArticles articles={articlesV2.slice(0,2).map(a=>({title:a.title,excerpt:a.excerpt,href:base+'knowledge/paper/articles/'+a.slug+'/'}))} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ContentCarousel</strong><span>水平捲動、箭頭導覽</span></div><ContentCarousel title="推薦探索的主題"><article><h4>文章寫作</h4><p>讓文字清楚、耐讀。</p></article><article><h4>網站架構</h4><p>幫新讀者找到入口。</p></article><article><h4>知識整理</h4><p>累積日後找得到的內容。</p></article><article><h4>日常紀錄</h4><p>慢慢寫下自己的觀察。</p></article></ContentCarousel></div>
+  </section>
   <section id="examples" class="ab-category">
-    <h2 class="ab-category-title">06 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。原有六個 Demo 仍保留。</p>
+    <h2 class="ab-category-title">08 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。八個完整網站 Demo 均保留。</p>
     <div class="ab-grid ab-cols-2">
       <div class="ab-feature"><p class="ab-eyebrow">A / KNOWLEDGE</p><h3>知識／部落格</h3><p>文章、分類、閱讀與作者介紹的完整入口。</p><a class="ab-text-link" href={`${base}knowledge/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}knowledge/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}knowledge/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}knowledge/botanical/`}>植感 →</a></div>
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>

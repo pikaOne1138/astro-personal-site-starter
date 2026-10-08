@@ -25,6 +25,14 @@
 
 - Astro Blocks V1.5：https://pikaOne1138.github.io/astro-personal-site-starter/blocks/
 
+## V2 文章探索與內容元件
+
+- 文章探索 Demo： https://pikaOne1138.github.io/astro-personal-site-starter/explore/
+- 共 34 個元件：V1.5 的 23 個 + V2 的 11 個
+- 搜尋標題、摘要、分類、標籤；按月份或日期瀏覽文章
+- 折疊、條列、Grid、提示框、比較表、延伸閱讀和輪播
+- 範例文章日期是工作坊教材，並非真實發文紀錄；完整內文檢索尚未實作
+
 ## Architecture
 
 這不是 8 套互不相干的網站，而是：

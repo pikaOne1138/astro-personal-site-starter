@@ -1,0 +1,19 @@
+---
+interface Props {dates:string[];month:string;baseHref:string;active?:string;}
+const {dates,month,baseHref,active}=Astro.props;
+const [year,monthNum]=month.split('-').map(Number);
+const offset=(new Date(Date.UTC(year,monthNum-1,1)).getUTCDay()+6)%7;
+const days=new Date(Date.UTC(year,monthNum,0)).getUTCDate();
+const published=new Set(dates);
+const squares=Array.from({length:offset+days},(_,i)=>i<offset?null:i-offset+1);
+---
+<section class="v2-calendar" aria-label={month+' 文章發布日曆'}>
+<h3><time datetime={month}>{year} 年 {monthNum} 月</time></h3>
+<div class="v2-calendar-grid" role="group" aria-label="星期一至星期日">
+{['一','二','三','四','五','六','日'].map(d=><span class="v2-weekday" aria-hidden="true">{d}</span>)}
+{squares.map(day=>{
+if(day===null)return <span aria-hidden="true"></span>;
+const date=month+'-'+String(day).padStart(2,'0');
+return published.has(date)?<a href={baseHref+'?date='+date} class:list={['v2-calendar-day','has-post',{active:active===date}]} aria-label={date+'，查看當日文章'}>{day}</a>:<span class="v2-calendar-day" aria-label={date+'，沒有文章'}>{day}</span>;
+})}
+</div><p>有底色的日期可點擊查看當天文章。</p></section>

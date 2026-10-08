@@ -1,0 +1,58 @@
+# Astro Blocks V2 — Article Discovery & Rich Content Reference
+
+> This reference extends V1.5. Read `COMPONENTS.md`, `src/data/blocks.registry.json`, and actual component Props before assembly.
+
+## Added capabilities (11 blocks)
+
+### Article discovery
+- `ArticleSearch` — GET form with query parameter `q`
+- `TagCloud` — linkable tags with usage counts (`tag`)
+- `ArchiveMonths` — months and article counts (`month`)
+- `PostCalendar` — Monday-first calendar with clickable publication dates (`date`)
+
+### Article body
+- `ArticleAccordion` — native accessible `details/summary` foldout with slot.
+- `ArticleList` — numbered or bulleted list based on items.
+- `ArticleGrid` — two-/three-column layouts for side-by-side explanations, using slots.
+- `ArticleCallout` — note / tip / warning, communicates meaning in text and border not color alone.
+- `ArticleComparison` — captioned comparison tables using headers and rows.
+- `RelatedArticles` — genuine internal related-post links.
+- `ContentCarousel` — horizontal scroll-snap cards with actual next/previous controls, keyboard scrolling and reduced-motion handling.
+
+## Data contract
+
+`src/data/articles-v2.ts` is the **single workshop sample dataset**, with:
+- `slug` (unique stable URL identifier)
+- `title`, `excerpt`
+- `category` (one primary classification)
+- `tags` (multiple)
+- `publishedAt` (YYYY-MM-DD)
+- `readingMinutes`
+
+`src/site-map.ts` derives article route generation from it. The browsing interface is `/explore/`, displaying real links to the generated `/knowledge/paper/articles/:slug/` example route. The sample articles and publication dates are *fixtures*, not claims of genuine published posts.
+
+Use one date/time convention per real site and distinguish published from updated dates. SEO canonical URLs and actual slug histories must be preserved when migrating WordPress content.
+
+## Search/archives implementation
+
+- Search is a **client-side index over metadata** (title, excerpt, category, tags), not yet a full-body or multilingual ranked search engine.
+- `q`, `tag`, `month`, `date` are URL parameters for linkable discovery states.
+- Month counts, tag counts, calendar dates and visible results all derive from the same data set.
+- Static-first: no custom server, database, or account.
+- For a real larger site, replace fixtures with Astro Content Collections and consider build-time full-content indexing (e.g. Pagefind) in a separate iteration rather than pretending fixture search is universal full-text search.
+
+## Design constraints
+
+Inherit the established four design personalities and type/spacing tokens. **優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。**
+
+Avoid launching an external runtime, complex search backend, or article editor for beginner workshop users. On mobile, archives and calendar stack below the results. Use semantic headings, links and focusable date controls. Keep date navigation and search useful without fabricated links.
+
+## QA
+
+- Search q matches title/category/tags/summary and shows an empty state.
+- Clicking a tag/month/calendar date selects exactly matching articles and updates result count.
+- Month calendar aligns Monday first, correct number of days, only published dates clickable.
+- Every article result opens a real generated article URL.
+- PR-specific BASE_URL works for CSS and every internal link.
+- Two site architectures × four design personalities and original V1.5 block gallery remain intact.
+- Build succeeds; preview URL is verified before claiming success.

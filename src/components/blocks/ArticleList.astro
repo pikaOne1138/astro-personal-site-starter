@@ -1,0 +1,5 @@
+---
+interface Props {items:string[];ordered?:boolean;}
+const {items,ordered=false}=Astro.props;
+---
+{ordered?<ol class="v2-article-list">{items.map(item=><li>{item}</li>)}</ol>:<ul class="v2-article-list">{items.map(item=><li>{item}</li>)}</ul>}

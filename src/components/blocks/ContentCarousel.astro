@@ -1,0 +1,20 @@
+---
+interface Props {title?:string;}
+const {title='內容輪播'}=Astro.props;
+---
+<section class="v2-carousel" aria-label={title}>
+<div class="v2-carousel-top"><h3>{title}</h3><div class="v2-carousel-controls"><button type="button" data-prev aria-label="向前瀏覽">←</button><button type="button" data-next aria-label="向後瀏覽">→</button></div></div>
+<div class="v2-carousel-track" tabindex="0" aria-label={title}><slot /></div>
+</section>
+<script>
+document.querySelectorAll<HTMLElement>('.v2-carousel').forEach(carousel=>{
+if(carousel.dataset.ready)return;
+carousel.dataset.ready='true';
+const track=carousel.querySelector<HTMLElement>('.v2-carousel-track');
+if(!track)return;
+const step=()=>Math.max(track.clientWidth*0.8,200);
+const behavior=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth';
+carousel.querySelector('[data-prev]')?.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:behavior==='smooth'?'smooth':'instant'}));
+carousel.querySelector('[data-next]')?.addEventListener('click',()=>track.scrollBy({left:step(),behavior:behavior==='smooth'?'smooth':'instant'}));
+});
+</script>
