@@ -1,0 +1,23 @@
+---
+/**
+ * C08 provenance-note — 知識型內容的「出處說明」：作者／最後更新／做法／更正方式，一欄 dl。
+ * 這是不靠形容詞的信任：讀者能核對「誰寫的、何時改的、怎麼做的、錯了怎麼告訴你」。
+ * 日期等欄位請由內容資料帶入（此處為示意值）。
+ */
+interface Props { title?: string; rows?: { k: string; v: string; href?: string }[] }
+const {
+  title = '這篇文章怎麼來的',
+  rows = [{ k: '作者', v: '站長名（示意）' }, { k: '最後更新', v: '2026-10-08' }, { k: '做法', v: '讀完全書後寫，引用處標頁碼；書單評分標準見「如何選書」。', href: '#' }, { k: '更正', v: '發現錯誤請來信，更正會列在文末並註明日期。', href: '#' }],
+} = Astro.props;
+---
+<aside class="c08">
+  <h2>{title}</h2>
+  <dl>{rows.map((r) => <div><dt>{r.k}</dt><dd>{r.href ? <a href={r.href}>{r.v}</a> : r.v}</dd></div>)}</dl>
+</aside>
+<style>
+  .c08 { max-width: 40rem; padding: 1.2rem 0; border-top: 2px solid var(--ed-ink, #222018); color: var(--ed-ink, #222018); }
+  h2 { font: 700 .75rem var(--ed-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--ed-accent, #9a3b24); margin: 0 0 .6rem; }
+  dl { margin: 0; } dl > div { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: .7rem 0; border-top: 1px solid var(--ed-line, #cfc8b8); font-size: 1rem; line-height: 1.7; }
+  dt { font: .75rem var(--ed-mono, monospace); color: var(--ed-ink-2, #57534a); padding-top: .15rem; } dd { margin: 0; } a { color: var(--ed-accent, #9a3b24); }
+  @media (max-width: 480px) { dl > div { grid-template-columns: 1fr; gap: .1rem; } }
+</style>
