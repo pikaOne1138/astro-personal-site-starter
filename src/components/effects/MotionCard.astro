@@ -12,7 +12,7 @@ const limit=Math.max(1,Math.min(8,tiltMax));
     let raf=0;let last:PointerEvent|undefined;
     const reset=()=>{cancelAnimationFrame(raf);raf=0;last=undefined;card.style.removeProperty('--tilt-x');card.style.removeProperty('--tilt-y');card.style.removeProperty('--spot-x');card.style.removeProperty('--spot-y');card.classList.remove('is-tilting')};
     card.addEventListener('pointermove',event=>{
-      if(!fine.matches||reduce.matches||event.pointerType==='touch')return;
+      if(!fine.matches||(reduce.matches && document.documentElement.dataset.allowMotionDemo!=='true')||event.pointerType==='touch')return;
       last=event;if(raf)return;
       raf=requestAnimationFrame(()=>{
         raf=0;if(!last)return;
