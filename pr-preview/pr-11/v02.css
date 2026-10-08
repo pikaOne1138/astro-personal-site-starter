@@ -124,3 +124,20 @@
 .social-links--sm .social-links__item{min-width:40px;min-height:40px;padding:9px}
 .social-links--sm .social-links__item img,.social-links--sm .social-links__item svg{width:18px;height:18px}
 @media(prefers-reduced-motion:reduce){.social-links__item{transition:none}}
+
+/* Header social composition: unobtrusive search + hairline divider + brand links. */
+.v02-nav__utilities{display:flex;align-items:center;gap:14px;flex:none}
+.v02-nav__utilities .v2-site-search-trigger{width:40px;height:40px;border:0;background:transparent;border-radius:var(--radius);color:var(--text)}
+.v02-nav__utilities .v2-site-search-trigger:hover{background:var(--surface);color:var(--accent)}
+.v02-nav__social{display:flex;align-items:center;padding-left:14px;border-left:1px solid var(--line)}
+.v02-nav__social .social-links{margin:0;gap:2px}
+.v02-nav__social .social-links__item{width:36px;height:36px;min-height:36px;min-width:36px;border:0;border-radius:50%;background:transparent;padding:8px;color:var(--text)}
+.v02-nav__social .social-links__item:hover{background:var(--surface);color:var(--accent);border:0}
+.v02-nav__social .social-links__item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:1050px){.v02-nav__inner{gap:16px}.v02-links{gap:14px}.v02-links a{font-size:14px}}
+@media(max-width:850px){.v02-nav__social{display:none}.v02-nav__utilities{gap:4px}}
+@media(max-width:430px){.v02-nav__inner{gap:6px}.v02-actions{gap:5px}.v02-actions .v02-cta{padding-inline:10px}}
+
+/* Single-color brand silhouettes follow each design system's text/accent tone. */
+.social-links__brand-icon{display:block;flex:none;width:20px;height:20px;background:currentColor;-webkit-mask-image:var(--social-mask);mask-image:var(--social-mask);-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.social-links--sm .social-links__brand-icon{width:18px;height:18px}
