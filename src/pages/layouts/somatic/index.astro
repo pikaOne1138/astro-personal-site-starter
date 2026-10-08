@@ -1,30 +1,16 @@
 ---
-import directions from '../../../data/layout-directions.json';
-const item=directions.find(d=>d.slug==='somatic')!;
-const base=import.meta.env.BASE_URL;
-const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
-const all=base+'layouts/';
-const previous=directions[7];
-const next=directions[9];
+import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 ---
-<!doctype html>
-<html lang="zh-Hant" data-layout="somatic">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content={item.description}/>
-<title>{item.title+'｜網站版型庫'}</title>
-<link rel="stylesheet" href={base+'layout-library.css'}/>
-</head>
-<body>
-<a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-
-<header class="lay-body-head"><strong>BODY / RHYTHM</strong><span>SPACE · BREATH · CONSENT</span></header>
-<section class="lay-body-hero" style={`background-image:linear-gradient(0deg,rgba(18,28,20,.64),rgba(18,28,20,.03)),url("${image}")`}><div><small>A SLOWER KIND OF SPACE</small><h1>讓身體重新<br/>有一點可以<br/><em>呼吸的空間。</em></h1><a href="#section-a">沿著身體的節奏往下 ↓</a></div></section>
-<section class="lay-body-intro" id="section-a"><small>01 / ARRIVE</small><h2>身體可以先到，<br/>語言可以慢一點。</h2><p>這個版型用完整的空間視覺開場，後續才談觸碰、同意、工作方式與適合對象。</p></section>
-<section class="lay-body-process"><article><span>01</span><h3>先理解感受</h3><p>從當下的身體狀態開始。</p></article><article><span>02</span><h3>確認界線</h3><p>事先說明觸碰並取得同意。</p></article><article><span>03</span><h3>慢慢整理</h3><p>將身體經驗帶回生活。</p></article></section>
-</main>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
-</body>
-</html>
+<DirectionLayout title="身體與節律｜助人服務方向 08" description="適合身體工作、呼吸練習與自然取向助人者的感官式服務首頁。">
+  <main id="main" class="so-site">
+    <header class="so-header"><a href={import.meta.env.BASE_URL + 'layouts/'} class="so-logo">身體<br /><i>與節律</i><small>BODY / RHYTHM</small></a><nav><a href="#practice">練習方式</a><a href="#sessions">服務安排</a><a href={import.meta.env.BASE_URL + 'layouts/'}>十款網站方向</a></nav><a class="so-contact" href="#sessions">先了解，不急著決定 ↗</a></header>
+    <section class="so-hero"><img class="so-hero-img" src="https://tenwebs-6qkx6x5p.manus.space/images/directions/c-somatic.webp" alt="光線落在木地板、亞麻抱枕與練習墊上" /><div class="so-veil"></div><div class="so-hero-copy"><p class="so-kicker">A PRACTICE OF RETURNING</p><h1>先回到<br /><em>身體裡。</em></h1><p>在說明之前，先感受呼吸、重量與此刻的空間。練習不是表現得更好，而是多一點機會注意自己。</p><a href="#practice">看看練習如何開始 <span>↓</span></a></div><span class="so-vertical">BREATH / PAUSE / NOTICE</span><span class="so-frame-note">SPACE FOR PRACTICE — 01</span></section>
+    <section class="so-intro"><p class="so-kicker">A SLOWER ARRIVAL</p><p class="so-intro-quote">「不用趕著變成別的樣子。<br />我們先聽聽看，現在的你在哪裡。」</p><div class="so-intro-side"><p>這裡提供的是練習與陪伴，不是療效承諾。每個人的經驗不同，所有身體活動都可以依自身狀況調整或暫停。</p><a href={import.meta.env.BASE_URL + 'layouts/'}>這只是十種網站方向之一 ↗</a></div></section>
+    <section class="so-practice" id="practice"><div class="so-practice-head"><p class="so-kicker">THREE SMALL ANCHORS</p><h2>一段練習，<br /><i>可以很簡單。</i></h2></div><ol><li><span>01 / ARRIVE</span><div><h3>找到支撐</h3><p>留意腳下的地面、椅子的重量，或任何讓你感覺較穩定的接觸點。</p></div><b>↘</b></li><li><span>02 / NOTICE</span><div><h3>觀察呼吸</h3><p>不需要刻意改變，只注意呼吸此刻的速度與所在的位置。</p></div><b>↘</b></li><li><span>03 / CHOOSE</span><div><h3>選一個下一步</h3><p>可以繼續、稍作休息，或把注意力帶回眼前的環境。</p></div><b>↗</b></li></ol></section>
+    <section class="so-sessions" id="sessions"><p class="so-kicker">PRACTICE / SERVICE DETAILS</p><div><h2>先了解安排，<br />再選擇是否開始。</h2><p>請在正式網站列出實際服務內容、適用對象、時間、地點、費用與注意事項。需要醫療建議或急迫協助時，請聯絡合適的專業或當地緊急服務。</p></div><a href={import.meta.env.BASE_URL + 'layouts/'}>查看其他網站原型 <span>↗</span></a></section>
+    <footer class="so-footer"><span>身體與節律 / 練習型服務示意</span><span>注意，不評分；選擇，不催促。</span><a href={import.meta.env.BASE_URL + 'layouts/'}>返回比較頁</a></footer>
+  </main>
+</DirectionLayout>
+<style>
+.so-site{--so-ink:#ece9dc;--so-dim:#c3c4ad;--so-olive:#3e4b37;--so-clay:#825339;background:#e8e6dc;color:#283128;min-height:100vh;font-family:Georgia,"Noto Serif TC",serif}.so-header{position:absolute;z-index:3;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:1.2rem clamp(1rem,4vw,4rem);color:white;border-bottom:1px solid #ffffff3c}.so-logo{text-decoration:none;font-size:1.1rem;line-height:.95}.so-logo i{font-weight:400;color:#d5b7a0}.so-logo small{display:block;font: .5rem ui-monospace,monospace;letter-spacing:.14em;margin-top:.45rem}.so-header nav{display:flex;gap:1.7rem;font: .65rem ui-monospace,monospace}.so-header nav a{text-decoration:none}.so-contact{font-size:.68rem;text-decoration:none;border-bottom:1px solid #ffffff9c;padding-bottom:.35rem}.so-hero{position:relative;min-height:min(850px,100svh);display:flex;align-items:center;overflow:hidden;background:#394938;color:var(--so-ink);padding:110px clamp(1rem,9vw,9rem) 4rem}.so-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:so-breathe 24s ease-in-out infinite alternate}.so-veil{position:absolute;inset:0;background:linear-gradient(90deg,#1c291fc9 0%,#27332d7a 47%,#25302c14 100%)}.so-hero-copy{position:relative;z-index:1;max-width:680px}.so-kicker{font: .62rem ui-monospace,monospace;letter-spacing:.16em;color:var(--so-clay);text-transform:uppercase}.so-hero .so-kicker{color:#ddad8e}.so-hero h1{font-size:clamp(5rem,11vw,10rem);line-height:.9;letter-spacing:-.09em;font-weight:400;margin:1rem 0}.so-hero h1 em{font-weight:400;color:#d8b092}.so-hero-copy>p:not(.so-kicker){max-width:440px;line-height:1.9;color:#e2e2d6}.so-hero-copy>a{display:inline-block;margin-top:1.5rem;font: .68rem ui-monospace,monospace;color:white;text-decoration:none;border-bottom:1px solid #d7aa8b;padding-bottom:.5rem}.so-hero-copy>a span{margin-left:1rem}.so-vertical{position:absolute;right:2rem;top:40%;writing-mode:vertical-rl;font: .56rem ui-monospace,monospace;letter-spacing:.18em;color:#ffffffa6}.so-frame-note{position:absolute;bottom:1.3rem;left:clamp(1rem,4vw,4rem);font: .55rem ui-monospace,monospace;letter-spacing:.12em;color:#ffffff9c}.so-intro{max-width:1240px;margin:0 auto;padding:6rem clamp(1rem,4vw,4rem);display:grid;grid-template-columns:.7fr 1.2fr .8fr;gap:4vw;align-items:start}.so-intro-quote{font-size:clamp(1.8rem,3.6vw,3.3rem);line-height:1.35;letter-spacing:-.06em;margin:0;color:#52604b}.so-intro-side{font-size:.78rem;line-height:1.8;color:#505e4e}.so-intro-side a{font: .61rem ui-monospace,monospace;color:#674631}.so-practice{background:var(--so-olive);color:var(--so-ink);padding:clamp(2rem,6vw,5rem) clamp(1rem,8vw,8rem);display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw}.so-practice-head h2,.so-sessions h2{font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.02;letter-spacing:-.08em;font-weight:400;margin:.8rem 0}.so-practice-head h2 i{color:#d5aa8d;font-weight:400}.so-practice ol{list-style:none;margin:0;padding:0}.so-practice li{display:grid;grid-template-columns:100px 1fr 25px;gap:1rem;align-items:start;padding:1.3rem 0;border-top:1px solid #ffffff3c}.so-practice li>span{font: .58rem ui-monospace,monospace;color:#d4ad91}.so-practice li h3{font-size:1.3rem;font-weight:400;margin:0 0 .4rem}.so-practice li p{font-size:.78rem;line-height:1.8;color:#d0d5c4;margin:0}.so-practice li>b{font-weight:400;color:#d5aa8d}.so-sessions{max-width:1240px;margin:auto;padding:5rem clamp(1rem,4vw,4rem);display:grid;grid-template-columns:.55fr 1.3fr .55fr;gap:3vw;align-items:start}.so-sessions h2{font-size:clamp(2.2rem,4vw,4rem)}.so-sessions>div>p{font-size:.8rem;line-height:1.9;max-width:560px;color:#4d5d4b}.so-sessions>a{align-self:end;color:#674631;font: .64rem ui-monospace,monospace}.so-footer{background:#deddd2;padding:1rem clamp(1rem,4vw,4rem);display:flex;justify-content:space-between;gap:1rem;font: .58rem ui-monospace,monospace;color:#4d5c49}.so-footer a{color:#634935}@keyframes so-breathe{to{transform:scale(1.06)}}@media(max-width:850px){.so-header nav{gap:.8rem}.so-intro{grid-template-columns:.5fr 1.5fr}.so-intro-side{grid-column:2}.so-practice{grid-template-columns:1fr;gap:1rem}.so-sessions{grid-template-columns:1fr 1.5fr}.so-sessions>a{grid-column:2}}@media(max-width:560px){.so-header{flex-wrap:wrap;gap:.7rem}.so-header nav{order:3;width:100%;justify-content:space-between;font-size:.58rem}.so-contact{font-size:.58rem}.so-hero{min-height:760px;min-height:95svh;padding:120px 1.2rem 4rem}.so-hero h1{font-size:18vw}.so-vertical{right:.8rem}.so-intro{grid-template-columns:1fr;gap:1.2rem;padding:3.5rem 1.2rem}.so-intro-side{grid-column:auto}.so-practice{padding:3rem 1.2rem}.so-practice li{grid-template-columns:76px 1fr 18px;gap:.6rem}.so-practice li>span{font-size:.51rem}.so-sessions{grid-template-columns:1fr;padding:3rem 1.2rem;gap:.8rem}.so-sessions>a{grid-column:auto}.so-footer{flex-direction:column}}
+</style>
