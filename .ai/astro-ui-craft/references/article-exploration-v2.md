@@ -95,3 +95,7 @@ Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設�
 
 ## Helper content examples
 `src/data/helper-content.ts` defines distinct demos for bodywork, counseling psychology, coaching and Reiki. These are content profiles, not restrictions on design themes. Never invent credentials or medical claims. `PractitionerCard` and `ServiceFit` are registered reusable blocks.
+
+
+### Switchable article archive patterns
+`ArticleViewSwitcher` accepts `items` (article records with slug/title/excerpt/category/tags/publishedAt/readingMinutes), `articleBase`, `exploreBase`, `defaultView` and `filterable`. Use for both `/[kind]/[theme]/articles/` and `/explore/`, retaining URL-based search/filter behavior. Do not style all three as the same grid of identical cards. Accessible aria-pressed buttons switch list/cards/grid client-side. The reading/search dialog remains separate from the archive page.

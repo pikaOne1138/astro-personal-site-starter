@@ -14,6 +14,7 @@ import Stats from '../../components/blocks/Stats.astro';
 import CTASection from '../../components/blocks/CTASection.astro';
 import PostCard from '../../components/blocks/PostCard.astro';
 import PostGrid from '../../components/blocks/PostGrid.astro';
+import ArticleViewSwitcher from '../../components/blocks/ArticleViewSwitcher.astro';
 import FeaturedPost from '../../components/blocks/FeaturedPost.astro';
 import CategoryLinks from '../../components/blocks/CategoryLinks.astro';
 import TableOfContents from '../../components/blocks/TableOfContents.astro';
@@ -111,6 +112,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
   <section id="blog" class="ab-category">
     <h2 class="ab-category-title">04 / 文章探索與清單</h2><p class="ab-category-intro">從文章列表、精選文章、分類、標籤，到搜尋、月份與日期封存。適合內容型網站，也可用於助人者的文章專區。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostCard</strong><span>單張文章卡</span></div><div style="max-width:330px"><PostCard {...posts[0]} /></div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleViewSwitcher</strong><span>互動切換：列表／卡片／網格，三種真正不同的文章排版</span></div><ArticleViewSwitcher items={articlesV2.slice(0,6)} articleBase={base+'knowledge/paper/articles/'} exploreBase={base+'knowledge/paper/explore/'} defaultView="list" /><p class="practical-caption">點選三個排列按鈕切換；同一批文章資料即可重複用在知識網站與助人者的文章專區。</p></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostGrid</strong><span>三欄文章清單</span></div><PostGrid posts={posts} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>FeaturedPost</strong><span>精選文章</span></div><FeaturedPost title="我們為什麼需要一個自己的網站？" excerpt="從社群貼文走向可累積的個人知識基地。" href="#blog" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>CategoryLinks</strong><span>文章分類連結</span></div><CategoryLinks active="全部" items={[{label:'全部',href:'#blog'},{label:'寫作',href:'#blog'},{label:'閱讀',href:'#blog'},{label:'生活',href:'#blog'}]} /></div>

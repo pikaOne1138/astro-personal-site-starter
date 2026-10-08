@@ -1066,5 +1066,32 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "article-view-switcher",
+    "name": "ArticleViewSwitcher",
+    "category": "article",
+    "path": "src/components/blocks/ArticleViewSwitcher.astro",
+    "keywords": [
+      "文章列表",
+      "文章卡片",
+      "網格",
+      "列表切換",
+      "文章索引",
+      "list view",
+      "card view",
+      "grid view"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]

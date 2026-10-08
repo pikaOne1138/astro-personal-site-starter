@@ -6,7 +6,7 @@ const {links,label='選單',socialLinks=[]}=Astro.props;
 const menuId='mobile-menu-'+Math.random().toString(36).slice(2,9);
 ---
 <div class="practical-menu" data-mobile-menu>
-  <button class="practical-menu-toggle" type="button" aria-label={'開啟'+label} aria-expanded="false" aria-controls={menuId} data-menu-open><span aria-hidden="true">☰</span><span>選單</span></button>
+  <button class="practical-menu-toggle" type="button" aria-label={'開啟'+label} aria-expanded="false" aria-controls={menuId} data-menu-open><svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <dialog id={menuId} class="practical-menu-dialog" aria-label="網站導覽">
     <div class="practical-menu-head"><strong>網站導覽</strong><button type="button" data-menu-close aria-label="關閉選單">關閉 ✕</button></div>
     <nav aria-label="手機主要導覽">{links.map(link=><a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>)}</nav>

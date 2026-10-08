@@ -30,12 +30,11 @@ const cta = kind === 'knowledge'
       {links.map((item) => <a class:list={[current === item.id && 'is-current']} href={`${root}${item.id}/`}>{item.label}</a>)}
     </nav>
     <div class="v02-actions">
-      <MobileMenu socialLinks={socialLinks} links={[{label:"首頁",href:root},...links.map(item=>({label:item.label,href:root+item.id+"/"})),{label:"找文章",href:root+"explore/"},{label:cta.label,href:cta.href}]} />
+      <MobileMenu socialLinks={socialLinks} links={[{label:"首頁",href:root},...links.map(item=>({label:item.label,href:root+item.id+"/"})),{label:"文章探索",href:root+"explore/"},{label:cta.label,href:cta.href}]} />
       <div class="v02-nav__utilities" aria-label="搜尋與社群連結">
         <SiteSearchDialog kind={kind} theme={theme} />
         {socialLinks.length>0 && <div class="v02-nav__social"><SocialLinks size="sm" title="社群與網站連結" items={socialLinks} /></div>}
       </div>
-      <a class="v02-search v02-explore-link" href={root+'explore/'} aria-current={current==='explore'?'page':undefined}>找文章</a>
       <a class="v02-cta" href={cta.href}>{cta.label}</a>
     </div>
   </div>

@@ -15,6 +15,7 @@ import LeadMagnetCard from './blocks/LeadMagnetCard.astro';
 import NewsletterSignup from './blocks/NewsletterSignup.astro';
 import PractitionerCard from './blocks/PractitionerCard.astro';
 import ServiceFit from './blocks/ServiceFit.astro';
+import ArticleViewSwitcher from './blocks/ArticleViewSwitcher.astro';
 import { helperPractice } from '../data/helper-content';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
@@ -56,12 +57,8 @@ const practice=helperPractice[theme];
 
       {page === 'articles' && <section class="v02-content" data-reveal>
         <div class="v02-filter"><a href={root+'explore/'}>全部文章</a>{Array.from(new Set(articlesV2.map(article=>article.category))).map(category=><a href={root+'explore/?q='+encodeURIComponent(category)}>{category}</a>)}</div>
-        <div class="v02-article-grid">
-          {articleMeta.map(({category,title,readingMinutes,slug},i)=><a class="v02-article-card" href={`${root}articles/${slug}/`}>
-            <span class="num">0{i+1}</span><small>{category} · {readingMinutes} min</small><h2>{title}</h2><p>{articleMeta[i].excerpt}</p><b>閱讀文章 →</b>
-          </a>)}
-        </div>
-        <p style="margin-top:32px"><a class="button primary" href={root+'explore/'}>搜尋文章／標籤／日曆 →</a></p>
+        <ArticleViewSwitcher items={articlesV2} articleBase={root+'articles/'} exploreBase={root+'explore/'} defaultView="list" />
+        <p style="margin-top:32px"><a class="button primary" href={root+'explore/'}>使用搜尋、標籤與日曆篩選 →</a></p>
       </section>}
 
       {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>

@@ -40,3 +40,7 @@ Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設�
 
 ## Four distinct helper-site content demos
 Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`. It demonstrates four distinct applications across paper/bodywork, morning/counseling, studio/coaching and botanical/Reiki. Layout components stay theme-agnostic; do not reinsert vague generic filler. Maintain clear scope, informed consent, no unverified licenses/medical claims and no false booking flows.
+
+
+## Article index views and compact mobile navigation
+Use `ArticleViewSwitcher` as the canonical article archive renderer; it supports list, cards and grid from the same article fixtures/data, real article links and optional filtering data attributes. Always preserve working explore search, tag/calendar/month filters and responsive design. The website navbar should contain one Articles navigation entry, a distinct Search icon and an icon-only mobile menu (aria-label), with optional social links inside the dialog; avoid duplicating a separate 'find articles' toolbar link. Do not manually hardcode the registry count.
