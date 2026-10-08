@@ -2,14 +2,14 @@
 .v02-nav{position:sticky;top:0;z-index:30}
 .v02-nav__inner{width:min(calc(100% - 40px),var(--container));margin:auto;min-height:68px;display:flex;align-items:center;gap:28px}
 .v02-brand{display:flex;align-items:center;gap:10px;font-weight:600}.v02-brand__mark{color:var(--accent)}
-.v02-links{display:flex;gap:26px;margin-left:auto}.v02-links a{font-size:14px;color:var(--muted);position:relative}.v02-links a.is-current{color:var(--text)}
-.v02-actions{display:flex;align-items:center;gap:10px}.v02-cta{min-height:42px;padding:8px 16px;display:inline-flex;align-items:center;border-radius:999px;font-size:14px;font-weight:600}.v02-search{border:0;background:transparent;color:var(--muted);padding:8px}
+.v02-links{display:flex;gap:26px;margin-left:auto}.v02-links a{font-size:16px;font-weight:500;line-height:1.5;color:var(--muted);position:relative}.v02-links a.is-current{color:var(--text)}
+.v02-actions{display:flex;align-items:center;gap:10px}.v02-cta{min-height:42px;padding:8px 16px;display:inline-flex;align-items:center;border-radius:999px;font-size:15px;font-weight:600}.v02-search{border:0;background:transparent;color:var(--muted);padding:8px}
 
 /* Paper: editorial masthead + ruled navigation */
 .v02-nav--paper{background:var(--bg);border-bottom:1px solid var(--text)}
 .paper-masthead{width:min(calc(100% - 40px),var(--container));margin:auto;padding:18px 0 10px;display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line)}
 .paper-masthead a{font:600 clamp(24px,3vw,38px)/1 var(--heading);letter-spacing:-.03em}.paper-masthead span{font-size:10px;letter-spacing:.18em;color:var(--muted)}
-.v02-nav--paper .v02-nav__inner{min-height:50px}.v02-nav--paper .v02-links{margin-left:0}.v02-nav--paper .v02-links a{text-transform:uppercase;letter-spacing:.08em;font-size:12px}.v02-nav--paper .v02-links a.is-current:after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:2px;background:var(--accent)}.v02-nav--paper .v02-actions{margin-left:auto}.v02-nav--paper .v02-cta{border:1px solid var(--text);border-radius:2px}
+.v02-nav--paper .v02-nav__inner{min-height:50px}.v02-nav--paper .v02-links{margin-left:0}.v02-nav--paper .v02-links a{text-transform:uppercase;letter-spacing:.055em;font-size:14px}.v02-nav--paper .v02-links a.is-current:after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:2px;background:var(--accent)}.v02-nav--paper .v02-actions{margin-left:auto}.v02-nav--paper .v02-cta{border:1px solid var(--text);border-radius:2px}
 
 /* Morning: floating pill */
 .v02-nav--morning{top:14px;background:transparent;padding-bottom:14px}.v02-nav--morning .v02-nav__inner{min-height:60px;margin-top:14px;padding:0 10px 0 18px;border-radius:999px;background:color-mix(in srgb,var(--surface) 78%,transparent);backdrop-filter:blur(16px);box-shadow:0 10px 35px rgb(58 51 48/.08);border:1px solid color-mix(in srgb,var(--line) 70%,transparent)}.v02-nav--morning .v02-links a.is-current{background:var(--accent-soft);border-radius:999px;padding:5px 10px}.v02-nav--morning .v02-cta{background:var(--accent);color:white}
