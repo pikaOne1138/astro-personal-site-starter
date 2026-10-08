@@ -33,6 +33,10 @@ import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
 import SiteSearchDialog from '../../components/blocks/SiteSearchDialog.astro';
 import MobileMenu from '../../components/blocks/MobileMenu.astro';
 import SocialLinks from '../../components/blocks/SocialLinks.astro';
+import Breadcrumbs from '../../components/blocks/Breadcrumbs.astro';
+import ArticleNavigation from '../../components/blocks/ArticleNavigation.astro';
+import ArticleShare from '../../components/blocks/ArticleShare.astro';
+import ReadingProgress from '../../components/blocks/ReadingProgress.astro';
 import BookingLink from '../../components/blocks/BookingLink.astro';
 import ContactActions from '../../components/blocks/ContactActions.astro';
 import PricingDetails from '../../components/blocks/PricingDetails.astro';
@@ -45,7 +49,7 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：42 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：46 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
@@ -122,6 +126,11 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>RelatedArticles</strong><span>延伸閱讀</span></div><RelatedArticles articles={articlesV2.slice(0,2).map(a=>({title:a.title,excerpt:a.excerpt,href:base+'knowledge/paper/articles/'+a.slug+'/'}))} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ContentCarousel</strong><span>水平捲動、箭頭導覽</span></div><ContentCarousel title="推薦探索的主題"><article><h4>文章寫作</h4><p>讓文字清楚、耐讀。</p></article><article><h4>網站架構</h4><p>幫新讀者找到入口。</p></article><article><h4>知識整理</h4><p>累積日後找得到的內容。</p></article><article><h4>日常紀錄</h4><p>慢慢寫下自己的觀察。</p></article></ContentCarousel></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>MediaEmbed</strong><span>16:9 YouTube、音訊、Podcast 外連</span></div><MediaEmbed type="youtube" title="影片嵌入元件展示" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" caption="示範網址可替換成你有權使用的內容，無效連結不呈現假播放器。" /></div>
+  </section>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>Breadcrumbs</strong><span>首頁／文章索引／目前文章</span></div><Breadcrumbs items={[{label:'首頁',href:base},{label:'文章',href:base+'knowledge/paper/articles/'},{label:'閱讀體驗'}]}/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleNavigation</strong><span>真實的上一／下一篇文章</span></div><ArticleNavigation previous={{title:articlesV2[1].title,href:base+'knowledge/paper/articles/'+articlesV2[1].slug+'/'}} next={{title:articlesV2[0].title,href:base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'}} indexHref={base+'knowledge/paper/articles/'}/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleShare</strong><span>LINE、Facebook、Email、複製網址</span></div><ArticleShare url={'https://pikaOne1138.github.io'+base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'} title={articlesV2[0].title}/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ReadingProgress</strong><span>閱讀文章時頂部顯示的進度</span></div><p>進度線可於完整文章頁實際滾動體驗，不在元件清單頁額外啟動。</p><a class="ab-text-link" href={base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'}>體驗閱讀進度 →</a></div>
   </section>
   <section id="professional" class="ab-category">
     <h2 class="ab-category-title">06 / 專業服務與建立信任</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
