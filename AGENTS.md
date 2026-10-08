@@ -19,7 +19,7 @@ Rules:
 2. Preserve static-first architecture unless the user explicitly requests a web app.
 3. UI refinement means typography, spacing, hierarchy, image treatment, motion restraint, responsive behavior, and accessibility—not adding decorative effects.
 4. Preserve all eight demo URLs (two architectures × four styles), plus the `/blocks/` gallery.
-5. Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and its `references/component-library-v1.5.md`. Prioritize existing design tokens and spacing/type scales: **do not silently introduce arbitrary design values.**
+5. Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and its `references/component-library-v1.5.md`; for V2 article features also read `references/article-exploration-v2.md`. Prioritize existing design tokens and spacing/type scales: **do not silently introduce arbitrary design values.**
 6. Before writing a new section, inspect `COMPONENTS.md` and `src/data/blocks.registry.json`, and reuse components under `src/components/blocks/` where suitable.
 7. Component names and Props are the interface for AI-assisted assembly; preserve backwards compatibility.
 8. Run `npm run build` before declaring completion; follow the PR Preview Skill and ask for explicit approval before merging.
