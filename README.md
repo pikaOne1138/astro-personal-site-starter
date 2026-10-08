@@ -126,3 +126,14 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 三種文章索引與精簡手機導覽
 
 `ArticleViewSwitcher` 可以把同一組文章切換為編輯式列表、內容卡片或密集網格，整合在所有八款 Demo 的文章列表與文章探索頁，並可保留標籤／月份／日期搜尋功能。手機頂部僅留漢堡圖示與放大鏡，全站文章清單在「文章」，進階工具位於「文章探索」。元件總數由 `blocks.registry.json` 自動驅動展示文案；開發中功能必須先走 PR 預覽。
+
+
+### 全站內文搜尋與單一文章索引
+
+正式建置改為 `astro build && pagefind --site dist`，使用免費 Pagefind 產生靜態全文索引；不用外部後端服務。全站放大鏡可查詢網站公開靜態 HTML 的實際文字（關於、服務、FAQ、文章等），並維持 GitHub Pages 正式／PR Preview 的不同 BASE_URL；搜尋索引隨每次重新建置更新。本機 `astro dev` 不自動生成 Pagefind 索引，需先 `npm run build` 並以 `npm run preview` 測試全文搜尋。
+
+`/[kind]/[theme]/articles/` 是唯一主要文章索引，直接提供列表／卡片／網格、搜尋、標籤、月份與日期工具；舊 `explore/` 會保留搜尋參數轉往文章索引。頁首改成精簡「文章」。
+
+### 動效調整 Skill
+
+`.ai/astro-motion-craft/SKILL.md` 與其 `references/manus-v2-motion-map.md` 記錄 Manus v2 提供的 Reveal 七種模式、Stagger、Tilt／Spotlight、Zoom／Pan、magnetic Button、UnderlineLink、FAQ variants 與 Tailwind className 相容策略。注意：**此 PR 只新增可供 AI 使用的規範，不代表上述所有特效元件已移植**。現有四套 Theme CSS 與 reduced-motion 保持優先，需另外透過實作 PR 逐項移植。
