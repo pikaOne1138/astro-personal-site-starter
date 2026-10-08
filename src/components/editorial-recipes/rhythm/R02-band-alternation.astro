@@ -1,0 +1,19 @@
+---
+/**
+ * R02 band-alternation — 滿版色帶：背景永遠滿版，內容限寬（衍生自 08 的帶狀做法，並抽成元件）。
+ * tone: paper | panel | dark；明度波形「淺 → 深 → 淺」取代卡片分隔。
+ * dark 色帶會重新映射 --ed-ink / --ed-ink-2 / --ed-accent / --ed-line，子元件不必另寫深色版。
+ * 關鍵：padding-inline: max(gutter, (100% - wide) / 2 + gutter)。不要把背景放在 max-width 容器上（失敗 F06）。
+ */
+interface Props { tone?: 'paper' | 'panel' | 'dark'; wide?: string; pad?: string }
+const { tone = 'paper', wide = 'var(--ed-wide, 1320px)', pad = 'clamp(3rem, 6vw, 5rem)' } = Astro.props;
+---
+<section class={`r02 ${tone}`} style={`--wide:${wide};--pad:${pad}`}><slot /></section>
+<style>
+  .r02 { padding: var(--pad) max(var(--ed-gutter, 4vw), calc((100% - var(--wide)) / 2 + var(--ed-gutter, 4vw))); }
+  .paper { background: var(--ed-paper, #f5f1e8); color: var(--ed-ink, #222018); }
+  .panel { background: var(--ed-panel, #ebe4d4); color: var(--ed-ink, #222018); }
+  .dark { background: var(--ed-dark, #17212b); color: var(--ed-on-dark, #ecece6);
+    /* token remapping：深色帶內，所有讀 --ed-* 的子元件自動換成淺字配色（對比 ≥ 4.5:1） */
+    --ed-ink: var(--ed-on-dark, #ecece6); --ed-ink-2: var(--ed-on-dark-2, #b4bcc4); --ed-accent: #e9bf9f; --ed-line: #ffffff33; --ed-panel: #ffffff14; --ed-paper: var(--ed-dark, #17212b); }
+</style>
