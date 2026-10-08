@@ -164,3 +164,7 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 - 檔案：`src/data/layout-directions.json`（全部資料）、`src/pages/layouts/index.astro`（比較）、`src/pages/layouts/[slug].astro`（12 款各自的首頁 DOM）、`public/layout-gallery.css`、`public/layout-library.css`。新增 AI Skill：`.ai/astro-layout-craft/SKILL.md`。
 - **內容原型非完整正式網站**：實際文章資料庫、預約服務、團隊成員與影音節目需後續設定。方向範例的展示圖片暫以使用者已上架的 Manus 圖片網址提供；未來發給學員的獨立模板應先確定授權並改為自託管。
 - 版型是一個不同層級的概念，**不計入**網站 blocks 與 motion effects 登錄元件數量。
+
+## Claude editorial design Skill + interactive composition gallery
+
+`/layouts/recipes/` demonstrates 40 Astro compositions across five live recipe labs. These are design recipes, separate from website functionality Blocks (54) and Motion Effects (7). The imported editorial Skill is at `.ai/astro-editorial-layout-design/` with ten-site source analysis, 40 Astro source recipes, design failure cases, four-viewport QA checklists and Chromium audit script. The site layouts `reading-atlas` and `trust-path` now use the full original Claude prototype source rather than our simplified AI imitations. Prototype claims, certifications and book statistics are example data and must not be presented as real services. Browser visual QA is still needed before merging.
