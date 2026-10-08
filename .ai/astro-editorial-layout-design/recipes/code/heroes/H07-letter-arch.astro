@@ -1,0 +1,43 @@
+---
+/**
+ * H07 letter-arch — 低壓邀請：鬆行距大標 + 拱形圖 + 斜放的簽名短句（衍生自 07 溫柔陪伴）
+ * 簽名短句放進 figure 內（相對 figure 定位），不會與正文互撞。
+ * 注意：整頁沒有實心主按鈕 → CTA 用描邊膠囊（見 cta-trust C01）。
+ */
+interface Props { kicker?: string; first?: string; voice?: string; body?: string; cta?: string; href?: string; sign?: string[]; src?: string; alt?: string; cap?: string }
+const {
+  kicker = 'A NOTE FOR THE DAYS THAT FEEL FULL', first = '你可以先從', voice = '想說的那一小段開始。',
+  body = '不需要準備好一個完整的故事。願意停一下、把最近的感受說出來，就已經是一個開始。',
+  cta = '讀一封寫給你的信', href = '#letter', sign = ['慢慢來，', '我們有時間。'],
+  src, alt = '', cap = '給自己一個可以坐下來的地方。',
+} = Astro.props;
+---
+<section class="h07">
+  <div class="copy">
+    <p class="label">{kicker}</p>
+    <h1><span class="ph">{first}</span> <em class="ph">{voice}</em></h1>
+    <p class="body">{body}</p>
+    <a class="pill" href={href}>{cta} <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure>
+    {src ? <img src={src} alt={alt} width="1200" height="800" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+    <figcaption>{cap}</figcaption>
+    <p class="sign" aria-hidden="true">{sign[0]}<br />{sign[1]}</p>
+  </figure>
+</section>
+<style>
+  .h07 { max-width: var(--ed-mid, 1240px); margin-inline: auto; padding: clamp(3rem, 7vw, 5rem) var(--ed-gutter, 5vw) clamp(5rem, 9vw, 6.5rem); display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; color: var(--ed-ink, #4b312d); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #7c4d43); margin: 0; }
+  h1 { font: 400 clamp(3rem, 6.6vw, 6rem)/1.14 var(--ed-serif, Georgia, serif); letter-spacing: -.02em; margin: .8rem 0 1.3rem; text-wrap: balance; }
+  .ph { display: inline-block; }
+  h1 em { font-style: italic; color: var(--ed-accent, #9f5e53); }
+  .body { font-size: 1.05rem; line-height: 1.95; color: var(--ed-ink-2, #745a53); max-width: 28em; }
+  .pill { display: inline-flex; align-items: center; min-height: 48px; margin-top: 1rem; padding: 0 1.3rem; border: 1px solid var(--ed-accent-deco, #c57e6e); border-radius: 40px; color: var(--ed-accent, #8f554a); text-decoration: none; font-size: .9rem; }
+  .pill span { margin-left: .8rem; }
+  figure { position: relative; margin: 0; }
+  figure img, .art { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 44% 44% 4px 4px; }
+  .art { background: radial-gradient(circle at 25% 80%, #e8c9bb 0 20%, #0000 21%), linear-gradient(180deg, #f1e2d6, #e4c7b6); }
+  figcaption { text-align: right; font-size: .8rem; color: var(--ed-ink-2, #6f5049); margin-top: .6rem; }
+  .sign { position: absolute; right: 0; bottom: -3.4rem; margin: 0; font-size: 1.1rem; line-height: 1.8; color: var(--ed-accent, #7c4d43); transform: rotate(-4deg); }
+  @media (max-width: 800px) { .h07 { grid-template-columns: 1fr; padding-bottom: 6rem; } figure { width: 86%; margin-left: auto; } }
+</style>
