@@ -137,3 +137,8 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 動效調整 Skill
 
 `.ai/astro-motion-craft/SKILL.md` 與其 `references/manus-v2-motion-map.md` 記錄 Manus v2 提供的 Reveal 七種模式、Stagger、Tilt／Spotlight、Zoom／Pan、magnetic Button、UnderlineLink、FAQ variants 與 Tailwind className 相容策略。注意：**此 PR 只新增可供 AI 使用的規範，不代表上述所有特效元件已移植**。現有四套 Theme CSS 與 reduced-motion 保持優先，需另外透過實作 PR 逐項移植。
+
+
+### 動效參考庫（Manus v2 × 現有 Astro）
+
+`.ai/astro-motion-craft/library/` 已建立跨 AI 可重複利用的特效參考庫：`effect-catalog.md` 對照現有元件與 Manus v2，`recipes/` 提供 Reveal／Stagger、卡片 Tilt／Spotlight／磁吸 CTA，以及 Zoom／Pan、連結底線、FAQ 展開的源碼行為、參數與整合方法。新的 `.ai/astro-motion-craft/SKILL.md` 會先讀資料庫，再依不同風格與使用情境選擇效果。**這些是實作參考與決策規格，不代表相關特效全部已經加到目前的網站。** 原四套主題 CSS 不被 Manus Tailwind 配置覆蓋。
