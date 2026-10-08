@@ -1,0 +1,30 @@
+---
+/**
+ * C04 process-then-contact — 先說會發生什麼（3 站），再給聯絡方式；CTA 緊跟最後一站。
+ * 以 grid 的 3 欄 + 連接線表達順序；手機轉單欄並改成垂直連接。無卡片、無陰影。
+ */
+interface Props { title?: string; stops?: { t: string; d: string; you?: string }[]; cta?: { t: string; href: string }; note?: string }
+const {
+  title = '聯絡之後，會發生這三件事',
+  stops = [{ t: '1 天內回覆', d: '確認你的問題屬於服務範圍。', you: '你只需要：一句話描述想問的事' }, { t: '一次 20 分鐘的初談', d: '談期待與界線，不收費（示意）。', you: '你只需要：決定時間' }, { t: '你決定', d: '繼續、暫停，或轉介。', you: '你只需要：告訴我你的決定' }],
+  cta = { t: '先問一個一般問題', href: '#contact' }, note = '以上時程與費用為示意，正式站請填入實際內容。',
+} = Astro.props;
+---
+<section class="c04">
+  <h2>{title}</h2>
+  <ol>{stops.map((s, i) => <li><span class="n">{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3><p>{s.d}</p>{s.you && <small>{s.you}</small>}</li>)}</ol>
+  <div class="end"><a href={cta.href}>{cta.t}</a><span>{note}</span></div>
+</section>
+<style>
+  .c04 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 0 var(--ed-gutter, 4vw); color: var(--ed-ink, #18313a); }
+  h2 { font: 700 clamp(1.6rem, 3vw, 2.4rem)/1.25 var(--ed-sans, sans-serif); margin: 0 0 1.5rem; }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: s; }
+  li { position: relative; padding-top: 1.2rem; border-top: 2px solid var(--ed-ink, #18313a); }
+  li::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--ed-ink, #18313a); }
+  .n { font: .75rem var(--ed-mono, monospace); color: var(--ed-accent, #3d5b68); } h3 { font-size: 1.2rem; margin: .3rem 0; }
+  p { margin: 0 0 .5rem; font-size: .95rem; line-height: 1.75; color: var(--ed-ink-2, #4a5d62); } small { font-size: .85rem; color: var(--ed-ink, #18313a); }
+  .end { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.5rem; margin-top: 2rem; }
+  .end a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.3rem; background: var(--ed-ink, #18313a); color: #fff; text-decoration: none; }
+  .end span { font-size: .85rem; color: var(--ed-ink-2, #4a5d62); }
+  @media (max-width: 760px) { ol { grid-template-columns: 1fr; gap: 1.5rem; } li { border-top: 0; border-left: 2px solid var(--ed-ink, #18313a); padding: 0 0 0 1.2rem; } li::before { top: 0; left: -6px; } }
+</style>
