@@ -82,3 +82,9 @@ The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must h
 - Supported platform keys: instagram, facebook, threads, youtube, line, github, linkedin, x, tiktok, pinterest, discord, telegram, spotify, email, phone, website, rss.
 - `items:[{platform,href,label?}]`, `showLabels`, `size`. `previewPlatforms` is only for the block gallery and must not pretend to contain real working profiles.
 - Simple Icons pinned v16 SVG CDN (brand-specific trademark policies apply); contact/generic SVG is inlined. Never expose arbitrary off-domain URL schemes, do not fabricate accounts. For production privacy/reliability, optionally self-host selected brand icons.
+
+
+### Practical block additions: feat/v2-5-reading-sharing
+Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress.
+文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
+Components are configurable Astro blocks, no heavy frontend framework dependency. Required: real route targets or explicit unconfigured state, keyboard focus, 375/390px responsive layout, SSR-readable content, reduced-motion, external-service transparency. Article URL handling must respect GitHub Pages BASE_URL.
