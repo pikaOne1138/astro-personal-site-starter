@@ -4,7 +4,7 @@
  * 不含任何視覺決策（字體、色彩、版型都由頁面與 tokens 決定），避免所有頁面看起來是同一個模板。
  * theme: 傳入的 CSS 變數覆寫字串，例如 "--ed-paper:#fff;--ed-ink:#111"（見 reading-almanac 與 trust-path）。
  */
-import '../../.ai/astro-editorial-layout-design/recipes/code/tokens.css';
+import '../styles/editorial-tokens.css';
 interface Props { title: string; description: string; theme?: string; themeColor?: string }
 const { title, description, theme = '', themeColor = '#f5f1e8' } = Astro.props;
 ---
