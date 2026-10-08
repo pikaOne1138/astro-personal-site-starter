@@ -1,0 +1,450 @@
+[
+  {
+    "id": "button",
+    "name": "Button",
+    "category": "common",
+    "path": "src/components/blocks/Button.astro",
+    "keywords": [
+      "common",
+      "Button"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "section-heading",
+    "name": "SectionHeading",
+    "category": "common",
+    "path": "src/components/blocks/SectionHeading.astro",
+    "keywords": [
+      "common",
+      "SectionHeading"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "site-header",
+    "name": "SiteHeader",
+    "category": "common",
+    "path": "src/components/blocks/SiteHeader.astro",
+    "keywords": [
+      "導覽",
+      "navbar"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "site-footer",
+    "name": "SiteFooter",
+    "category": "common",
+    "path": "src/components/blocks/SiteFooter.astro",
+    "keywords": [
+      "頁尾"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "hero-split",
+    "name": "HeroSplit",
+    "category": "hero",
+    "path": "src/components/blocks/HeroSplit.astro",
+    "keywords": [
+      "左右圖文",
+      "首頁",
+      "split hero"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "hero-centered",
+    "name": "HeroCentered",
+    "category": "hero",
+    "path": "src/components/blocks/HeroCentered.astro",
+    "keywords": [
+      "置中主視覺",
+      "hero"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "hero-image",
+    "name": "HeroImage",
+    "category": "hero",
+    "path": "src/components/blocks/HeroImage.astro",
+    "keywords": [
+      "滿版背景",
+      "首屏"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "image-text",
+    "name": "ImageText",
+    "category": "content",
+    "path": "src/components/blocks/ImageText.astro",
+    "keywords": [
+      "content",
+      "ImageText"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "feature-grid",
+    "name": "FeatureGrid",
+    "category": "content",
+    "path": "src/components/blocks/FeatureGrid.astro",
+    "keywords": [
+      "優勢",
+      "特色"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "stats",
+    "name": "Stats",
+    "category": "content",
+    "path": "src/components/blocks/Stats.astro",
+    "keywords": [
+      "content",
+      "Stats"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "c-t-a-section",
+    "name": "CTASection",
+    "category": "content",
+    "path": "src/components/blocks/CTASection.astro",
+    "keywords": [
+      "content",
+      "CTASection"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "post-card",
+    "name": "PostCard",
+    "category": "blog",
+    "path": "src/components/blocks/PostCard.astro",
+    "keywords": [
+      "blog",
+      "PostCard"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "post-grid",
+    "name": "PostGrid",
+    "category": "blog",
+    "path": "src/components/blocks/PostGrid.astro",
+    "keywords": [
+      "部落格",
+      "文章清單"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "featured-post",
+    "name": "FeaturedPost",
+    "category": "blog",
+    "path": "src/components/blocks/FeaturedPost.astro",
+    "keywords": [
+      "blog",
+      "FeaturedPost"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "category-links",
+    "name": "CategoryLinks",
+    "category": "blog",
+    "path": "src/components/blocks/CategoryLinks.astro",
+    "keywords": [
+      "blog",
+      "CategoryLinks"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "table-of-contents",
+    "name": "TableOfContents",
+    "category": "blog",
+    "path": "src/components/blocks/TableOfContents.astro",
+    "keywords": [
+      "文章目錄",
+      "toc"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "author-box",
+    "name": "AuthorBox",
+    "category": "blog",
+    "path": "src/components/blocks/AuthorBox.astro",
+    "keywords": [
+      "blog",
+      "AuthorBox"
+    ],
+    "compatibleWith": [
+      "knowledge"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "service-card",
+    "name": "ServiceCard",
+    "category": "professional",
+    "path": "src/components/blocks/ServiceCard.astro",
+    "keywords": [
+      "服務卡片",
+      "專業"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "about-profile",
+    "name": "AboutProfile",
+    "category": "professional",
+    "path": "src/components/blocks/AboutProfile.astro",
+    "keywords": [
+      "professional",
+      "AboutProfile"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "process-steps",
+    "name": "ProcessSteps",
+    "category": "professional",
+    "path": "src/components/blocks/ProcessSteps.astro",
+    "keywords": [
+      "professional",
+      "ProcessSteps"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "testimonial",
+    "name": "Testimonial",
+    "category": "professional",
+    "path": "src/components/blocks/Testimonial.astro",
+    "keywords": [
+      "professional",
+      "Testimonial"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "f-a-q",
+    "name": "FAQ",
+    "category": "professional",
+    "path": "src/components/blocks/FAQ.astro",
+    "keywords": [
+      "問答",
+      "折疊"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  },
+  {
+    "id": "contact-section",
+    "name": "ContactSection",
+    "category": "professional",
+    "path": "src/components/blocks/ContactSection.astro",
+    "keywords": [
+      "預約入口",
+      "聯絡"
+    ],
+    "compatibleWith": [
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ]
+  }
+]
