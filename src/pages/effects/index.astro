@@ -49,7 +49,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
             <div class="fx-demo-article"><span class="fx-mini-label">{item.variant}</span><b>{item.name}</b><small>移到畫面中，或點「重播效果」</small></div>
           </Reveal>)}
         </div>
-        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播效果</button></div>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播進場（慢速）</button><span class="fx-hint">按一次後觀察卡片由淡入、位移到清晰的變化。</span></div>
       </div>
       <p class="fx-source">元件：<code>Reveal.astro</code>　變體：fade-up / fade / soft-zoom / blur-up / slide-left / slide-right / clip-up</p>
     </section>
@@ -62,7 +62,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
           <Reveal variant="fade-up" once={false}><article class="fx-demo-article"><span class="fx-mini-label">02 / EXPLORE</span><b>深入理解</b><small>每一次多知道一點</small></article></Reveal>
           <Reveal variant="fade-up" once={false}><article class="fx-demo-article"><span class="fx-mini-label">03 / GROW</span><b>累積實踐</b><small>慢慢長出自己的步調</small></article></Reveal>
         </StaggerGroup>
-        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播依序進場</button></div>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播群組（慢速）</button><span class="fx-hint">三張卡片會從左至右依序進入。</span></div>
       </div>
       <p class="fx-source">元件：<code>StaggerGroup.astro</code> + <code>Reveal.astro</code>　參數：step / start</p>
     </section>
@@ -92,11 +92,12 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
         <MagneticButton href="#faq" label="探索更多互動"/>
         <div style="height:36px"></div>
         <span class="fx-mini-label">UNDERLINE LINK · 3 STYLES</span>
-        <div class="fx-grid">
+        <div class="fx-grid fx-underline-gallery" data-underline-demo>
           <div><UnderlineLink href="#faq" variant="grow">Grow · 從左到右 →</UnderlineLink></div>
           <div><UnderlineLink href="#faq" variant="center">Center · 從中心展開 →</UnderlineLink></div>
           <div><UnderlineLink href="#faq" variant="marker">Marker · 柔和底色標記 →</UnderlineLink></div>
         </div>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-underline-replay>↺ 慢速展示三種底線</button><span class="fx-hint">按下後不必把滑鼠移到文字上，也能完整觀察從無到有的過程。</span></div>
       </div>
       <p class="fx-source">元件：<code>MagneticButton.astro</code> / <code>UnderlineLink.astro</code></p>
     </section>
@@ -164,6 +165,16 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
           el.addEventListener('animationend',()=>el.classList.remove('motion-replaying'),{once:true});
         });
       });
+    });
+    const underlineReplay=document.querySelector<HTMLButtonElement>('[data-underline-replay]');
+    const underlineGroup=document.querySelector<HTMLElement>('[data-underline-demo]');
+    underlineReplay?.addEventListener('click',()=>{
+      if(!underlineGroup||reduced.matches||page?.dataset.intensity==='off'){showStatus();return;}
+      underlineGroup.classList.remove('fx-underline-playing');
+      void underlineGroup.offsetWidth;
+      underlineGroup.classList.add('fx-underline-playing');
+      underlineReplay.disabled=true;
+      window.setTimeout(()=>{underlineGroup.classList.remove('fx-underline-playing');underlineReplay.disabled=false;},2100);
     });
     const faqPreview=document.querySelector<HTMLElement>('[data-faq-preview] .motion-faq');
     const faqButtons=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-faq-style]'));
