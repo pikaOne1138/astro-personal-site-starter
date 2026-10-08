@@ -9,8 +9,9 @@ import S06 from '../../../../components/editorial-recipes/sections/S06-index-she
 import S07 from '../../../../components/editorial-recipes/sections/S07-accordion-panel.astro';
 import S08 from '../../../../components/editorial-recipes/sections/S08-evidence-table.astro';
 ---
-<Base title="Recipe lab — Sections" description="8 種內容分區配方的實際渲染">
+<Base title="內容分區｜Astro 構圖配方庫" description="8 種內容分區配方的實際渲染">
   <main id="main" style="display:grid;gap:var(--ed-section);padding-block:var(--ed-section)">
+    <header class="editorial-recipe-header"><a href={import.meta.env.BASE_URL+'layouts/recipes/'}>← 返回構圖配方庫</a><div><p>ASTRO EDITORIAL / SOURCE-BASED RECIPES</p><h1>內容分區</h1><p>8 種區塊方式：宣言、適合度、長文、書信與證據表。</p></div></header>
     <S01 /><S02 /><S03 /><S04 /><S05 /><S06 /><S07 /><S08 />
   </main>
 </Base>
