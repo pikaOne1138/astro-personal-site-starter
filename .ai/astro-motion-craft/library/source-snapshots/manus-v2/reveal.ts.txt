@@ -1,0 +1,26 @@
+export function initializeReveals(): void {
+  const nodes = [...document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-reveal-initialized])')];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || !('IntersectionObserver' in window) || nodes.length === 0) return;
+
+  document.documentElement.classList.add('motion-ready');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const node = entry.target as HTMLElement;
+      if (entry.isIntersecting) {
+        node.classList.remove('reveal-pending');
+        node.classList.add('reveal-in');
+        if (node.dataset.revealOnce !== 'false') observer.unobserve(node);
+      } else if (node.dataset.revealOnce === 'false') {
+        node.classList.remove('reveal-in');
+        node.classList.add('reveal-pending');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  nodes.forEach((node) => {
+    node.dataset.revealInitialized = 'true';
+    node.classList.add('reveal-pending');
+    observer.observe(node);
+  });
+}
