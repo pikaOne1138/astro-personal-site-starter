@@ -1,78 +1,17 @@
 ---
-import DemoLayout from '../../../../layouts/DemoLayout.astro';
-import SiteNav from '../../../../components/SiteNav.astro';
-import { kinds, themes, kindMeta, themeMeta, type Kind, type Theme } from '../../../../data';
-import ArticleSearch from '../../../../components/blocks/ArticleSearch.astro';
-import TagCloud from '../../../../components/blocks/TagCloud.astro';
-import ArchiveMonths from '../../../../components/blocks/ArchiveMonths.astro';
-import PostCalendar from '../../../../components/blocks/PostCalendar.astro';
-import ArticleViewSwitcher from '../../../../components/blocks/ArticleViewSwitcher.astro';
-import { articlesV2, articleTags, articleMonths } from '../../../../data/articles-v2';
-const base=import.meta.env.BASE_URL;
-export function getStaticPaths() {return kinds.flatMap(kind=>themes.map(theme=>({params:{kind,theme},props:{kind,theme}})));}
+import {kinds,themes,type Kind,type Theme} from '../../../../data';
+export function getStaticPaths(){return kinds.flatMap(kind=>themes.map(theme=>({params:{kind,theme},props:{kind,theme}})));}
 interface Props {kind:Kind;theme:Theme;}
 const {kind,theme}=Astro.props;
-const root=base+kind+'/'+theme+'/explore/';
-const articleRoot=base+kind+'/'+theme+'/articles/';
+const base=import.meta.env.BASE_URL;
+const destination=base+kind+'/'+theme+'/articles/';
 ---
-<DemoLayout title={"文章探索 · "+kindMeta[kind].label+" · "+themeMeta[theme].zh} description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆" kind={kind} theme={theme}>
-  <link rel="stylesheet" href={base+'blocks.css'} />
-  <link rel="stylesheet" href={base+'blocks-v2.css'} />
-  <SiteNav kind={kind} theme={theme} current="explore"/>
-  <main class="ab-gallery v2-explorer">
-    <header class="ab-gallery-header">
-      <a class="ab-gallery-back" href={base+kind+'/'+theme+'/articles/'}>← 返回文章列表</a>
-      <p class="ab-eyebrow" style="margin-top:32px">ARTICLE DISCOVERY · {themeMeta[theme].label}</p>
-      <h1>所有文章，依你喜歡的方式瀏覽。</h1>
-      <p>可切換列表、卡片、網格，也能搜尋標題、摘要、分類與標籤，點擊月份或日曆上的日期。這裡的六篇文章都是工作坊示範資料，非實際發布紀錄。</p>
-      <a class="ab-chip" href={root}>清除條件，顯示全部</a>
-    </header>
-    <div class="v2-explorer-layout">
-      <div class="v2-primary">
-        <section aria-label="文章搜尋與結果">
-          <ArticleSearch action={root}/>
-          <div class="v2-results-heading"><h2>文章列表</h2><p data-result-counter role="status" aria-live="polite">載入文章中…</p></div>
-          <p data-active-filter class="v2-active-filter" hidden></p>
-          <ArticleViewSwitcher items={articlesV2} articleBase={articleRoot} exploreBase={root} defaultView="list" filterable={true} />
-          <p data-empty hidden>目前沒有符合條件的文章。<a href={root}>查看全部文章 →</a></p>
-        </section>
-      </div>
-      <aside class="v2-explorer-aside" aria-label="文章探索工具">
-        <section><h2>標籤雲</h2><TagCloud tags={articleTags} baseHref={root}/></section>
-        <section><h2>月份列表</h2><ArchiveMonths months={articleMonths} baseHref={root}/></section>
-        <section><h2>文章日曆</h2><p class="v2-side-note">示範資料按實際設定的日期顯示；沒有文章的日期無法點擊。</p>
-          {articleMonths.map(({month},i)=><details class="v2-calendar-disclosure" open={i===0}><summary>{month.replace('-', ' 年 ')} 月</summary><PostCalendar dates={articlesV2.filter(a=>a.publishedAt.startsWith(month)).map(a=>a.publishedAt)} month={month} baseHref={root}/></details>)}
-        </section>
-      </aside>
-    </div>
-  </main>
-  <script>
-    const url=new URL(window.location.href);
-    const q=(url.searchParams.get('q')||'').trim().toLocaleLowerCase();
-    const tag=url.searchParams.get('tag')||'';
-    const month=url.searchParams.get('month')||'';
-    const date=url.searchParams.get('date')||'';
-    const input=document.querySelector<HTMLInputElement>('#v2-article-search');
-    if(input)input.value=url.searchParams.get('q')||'';
-    const cards=Array.from(document.querySelectorAll<HTMLElement>('[data-article]'));
-    let count=0;
-    cards.forEach(el=>{
-      const haystack=[el.dataset.title,el.dataset.excerpt,el.dataset.category,el.dataset.tags].join(' ').toLocaleLowerCase();
-      const matches=(!q||haystack.includes(q))&&(!tag||(el.dataset.tags||'').split('|').includes(tag))&&(!month||(el.dataset.date||'').startsWith(month))&&(!date||el.dataset.date===date);
-      el.hidden=!matches;
-      if(matches)count++;
-    });
-    const counter=document.querySelector<HTMLElement>('[data-result-counter]');
-    if(counter)counter.textContent='符合條件：'+count+' 篇';
-    const current=document.querySelector<HTMLElement>('[data-active-filter]');
-    const active=[q&&'搜尋：'+q,tag&&'標籤：'+tag,month&&'月份：'+month,date&&'日期：'+date].filter(Boolean);
-    if(current&&active.length){current.hidden=false;current.textContent='目前條件｜'+active.join(' / ');}
-    const empty=document.querySelector<HTMLElement>('[data-empty]');
-    if(empty)empty.hidden=count!==0;
-    document.querySelectorAll<HTMLAnchorElement>('.v2-tags a,.v2-archive a,.v2-calendar-day.has-post').forEach(a=>{
-      const target=new URL(a.href);
-      const selected=[['tag',tag],['month',month],['date',date]].some(([key,value])=>!!value&&target.searchParams.get(key)===value);
-      if(selected)a.setAttribute('aria-current','true');
-    });
-  </script>
-</DemoLayout>
+<html lang="zh-Hant"><head><meta charset="UTF-8"/><meta name="robots" content="noindex,follow"/><meta http-equiv="refresh" content={`0;url=${destination}`}/><title>前往文章列表</title></head>
+<body><main><p>文章探索已整合至文章列表。<a href={destination}>前往全部文章</a></p></main>
+<script is:inline define:vars={{destination}}>
+ const target=new URL(destination,window.location.origin);
+ target.search=window.location.search;
+ target.hash=window.location.hash;
+ window.location.replace(target.href);
+</script>
+</body></html>

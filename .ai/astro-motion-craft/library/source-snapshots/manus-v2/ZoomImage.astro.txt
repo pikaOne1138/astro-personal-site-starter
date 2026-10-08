@@ -1,0 +1,33 @@
+---
+type Effect = 'zoom' | 'pan' | 'none';
+interface Props { src: string; alt: string; href?: string; aspectRatio?: '4 / 3' | '16 / 9' | '1 / 1' | '3 / 2'; loading?: 'eager' | 'lazy'; effect?: Effect; position?: string; className?: string; }
+const { src, alt, href, aspectRatio = '3 / 2', loading = 'lazy', effect = 'zoom', position = 'center', className = '' } = Astro.props;
+const classes = ['image-zoom', 'zoom-image', `zoom-image--${effect}`, className];
+const style = `--image-ratio:${aspectRatio};--image-position:${position}`;
+---
+{href ? (
+  <a class:list={classes} href={href} style={style} data-effect={effect}><img src={src} alt={alt} loading={loading} decoding="async" /></a>
+) : (
+  <figure class:list={classes} style={style} data-effect={effect}><img src={src} alt={alt} loading={loading} decoding="async" /></figure>
+)}
+<script>
+  const images = [...document.querySelectorAll<HTMLElement>('.zoom-image[data-effect="pan"]')];
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (finePointer && !reduced) {
+    images.forEach((image) => {
+      image.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        const rect = image.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        image.style.setProperty('--pan-x', `${(-x * 10).toFixed(1)}px`);
+        image.style.setProperty('--pan-y', `${(-y * 8).toFixed(1)}px`);
+      }, { passive: true });
+      image.addEventListener('pointerleave', () => {
+        image.style.setProperty('--pan-x', '0px');
+        image.style.setProperty('--pan-y', '0px');
+      });
+    });
+  }
+</script>

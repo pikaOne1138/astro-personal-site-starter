@@ -174,3 +174,15 @@ Do not reuse generic vague 'companionship, exploration, talk it through' filler 
 
 ## Article index layout and mobile navigation
 For article archives use the shared `ArticleViewSwitcher.astro` with list/cards/grid layouts rather than implementing new duplicated archives. List is editorial ruled rows, cards are spacious two-column blocks, grid is a dense three-column typography-led index. Four visual themes reuse existing tokens; on small screens they collapse to one column. Keep articles, search, tags, calendar and month browsing connected to real routes. In mobile site navigation, use a 44px hamburger SVG-only button with an accessible name, alongside the existing search icon; keep full links and social icons inside the dialog. Do not repeat 'find articles' when an Articles nav link exists.
+
+
+## Motion and interaction craft
+When asked to refine scrolling reveal, stagger, hover tilt/spotlight, image zoom/pan, magnetic CTA, animated underline or FAQ open transitions, first follow `.ai/astro-motion-craft/SKILL.md` and `.ai/astro-motion-craft/references/manus-v2-motion-map.md`. The Manus v2 files are reference material, not installed components. Favor existing four theme variables, unobtrusive editorial motion, progressive enhancement and mobile/reduced-motion fallback over importing a separate Tailwind theme.
+
+
+## Reusable motion effects library
+The reusable motion research + integration library lives in `.ai/astro-motion-craft/library/`. When generating or enhancing UI motion, read that catalog and relevant source-grounded recipe first, along with `.ai/astro-motion-craft/SKILL.md`; do not generate novel hover/reveal logic while equivalent existing components are available. Manus v2 references are not automatically installed runtime effects.
+
+
+## Common long-page navigation: BackToTop
+For long landing pages, article archives and document views reuse `BackToTop` through the shared DemoLayout. It belongs to the common blocks registry, not the effects registry. Ensure the right-bottom control appears only after meaningful scrolling, stays clear of safe areas and overlays, has a keyboard accessible name, and returns to the page top instantly if the visitor prefers reduced motion. Avoid duplicating event listeners in child pages.

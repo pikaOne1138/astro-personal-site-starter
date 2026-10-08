@@ -1,0 +1,17 @@
+---
+interface Props {step?:number;start?:number;className?:string;}
+const {step=90,start=0,className=''}=Astro.props;
+const safeStep=Math.max(20,Math.min(260,step));
+const safeStart=Math.max(0,Math.min(1200,start));
+---
+<div class:list={['motion-stagger',className]} data-motion-stagger data-step={safeStep} data-start={safeStart}><slot/></div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-motion-stagger]:not([data-motion-stagger-ready])').forEach(group=>{
+    group.dataset.motionStaggerReady='true';
+    const step=Math.max(20,Math.min(260,Number(group.dataset.step)||90));
+    const start=Math.max(0,Math.min(1200,Number(group.dataset.start)||0));
+    Array.from(group.children).forEach((child,index)=>{
+      if(child instanceof HTMLElement&&child.hasAttribute('data-motion-reveal'))child.style.setProperty('--motion-delay',Math.min(1400,start+index*step)+'ms');
+    });
+  });
+</script>

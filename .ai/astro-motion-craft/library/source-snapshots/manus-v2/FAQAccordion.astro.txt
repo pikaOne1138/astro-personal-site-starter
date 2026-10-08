@@ -1,0 +1,16 @@
+---
+interface FAQItem { question: string; answer: string }
+interface Props { items: FAQItem[]; heading?: string; openFirst?: boolean; variant?: 'line' | 'soft' | 'cards'; className?: string; }
+const { items, heading, openFirst = false, variant = 'line', className = '' } = Astro.props;
+---
+<section class:list={['faq-block', `faq-block--${variant}`, className]} aria-label={heading || '常見問題'}>
+  {heading && <h2 class="serif faq-heading">{heading}</h2>}
+  <div class="faq-list">
+    {items.map((item, index) => (
+        <details class:list={['faq-item', `faq-item--${variant}`]} open={openFirst && index === 0}>
+        <summary>{item.question}<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>{item.answer}</p></div>
+      </details>
+    ))}
+  </div>
+</section>

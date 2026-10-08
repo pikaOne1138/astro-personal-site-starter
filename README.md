@@ -126,3 +126,29 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 三種文章索引與精簡手機導覽
 
 `ArticleViewSwitcher` 可以把同一組文章切換為編輯式列表、內容卡片或密集網格，整合在所有八款 Demo 的文章列表與文章探索頁，並可保留標籤／月份／日期搜尋功能。手機頂部僅留漢堡圖示與放大鏡，全站文章清單在「文章」，進階工具位於「文章探索」。元件總數由 `blocks.registry.json` 自動驅動展示文案；開發中功能必須先走 PR 預覽。
+
+
+### 全站內文搜尋與單一文章索引
+
+正式建置改為 `astro build && pagefind --site dist`，使用免費 Pagefind 產生靜態全文索引；不用外部後端服務。全站放大鏡可查詢網站公開靜態 HTML 的實際文字（關於、服務、FAQ、文章等），並維持 GitHub Pages 正式／PR Preview 的不同 BASE_URL；搜尋索引隨每次重新建置更新。本機 `astro dev` 不自動生成 Pagefind 索引，需先 `npm run build` 並以 `npm run preview` 測試全文搜尋。
+
+`/[kind]/[theme]/articles/` 是唯一主要文章索引，直接提供列表／卡片／網格、搜尋、標籤、月份與日期工具；舊 `explore/` 會保留搜尋參數轉往文章索引。頁首改成精簡「文章」。
+
+### 動效調整 Skill
+
+`.ai/astro-motion-craft/SKILL.md` 與其 `references/manus-v2-motion-map.md` 記錄 Manus v2 提供的 Reveal 七種模式、Stagger、Tilt／Spotlight、Zoom／Pan、magnetic Button、UnderlineLink、FAQ variants 與 Tailwind className 相容策略。注意：**此 PR 只新增可供 AI 使用的規範，不代表上述所有特效元件已移植**。現有四套 Theme CSS 與 reduced-motion 保持優先，需另外透過實作 PR 逐項移植。
+
+
+### 動效參考庫（Manus v2 × 現有 Astro）
+
+`.ai/astro-motion-craft/library/` 已建立跨 AI 可重複利用的特效參考庫：`effect-catalog.md` 對照現有元件與 Manus v2，`recipes/` 提供 Reveal／Stagger、卡片 Tilt／Spotlight／磁吸 CTA，以及 Zoom／Pan、連結底線、FAQ 展開的源碼行為、參數與整合方法。新的 `.ai/astro-motion-craft/SKILL.md` 會先讀資料庫，再依不同風格與使用情境選擇效果。**這些是實作參考與決策規格，不代表相關特效全部已經加到目前的網站。** 原四套主題 CSS 不被 Manus Tailwind 配置覆蓋。
+
+
+### 獨立特效庫（可操作 Demo）
+
+`/effects/` 是元件庫 `/blocks/` 旁的特效展示站。七個可重複運用的 Astro effects，涵蓋七種 Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、Magnetic Button、三種動態底線及可調 FAQ；依六類 Demo 排列。能切換紙墨／晨光／靜室／植感，及關閉／輕柔／鮮明動態，進場與群組有重播按鈕。效果和網站內容元件**分開計數**：網站元件仍由 `blocks.registry.json` 決定，特效使用 `effects.registry.json`，源碼 `src/components/effects/`，CSS `public/effects.css`。Motion Skill 已加入這套元件與 Manus 參考庫的整合指引，預覽建置與實際操作須分別驗收。
+
+
+### 返回頁首共用元件
+
+`BackToTop.astro` 已加入 `DemoLayout`，適用八款示範網站、文章與展示頁。捲動 420px 後右下角出現箭頭，單擊回到頂端；手機安全邊距、鍵盤可操作，系統減少動態時停用平滑捲動。這是可重用網站元件，登錄在 54 個 blocks 內，不重複計入動效庫。

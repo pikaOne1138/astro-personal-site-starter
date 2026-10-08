@@ -44,3 +44,19 @@ Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`.
 
 ## Article index views and compact mobile navigation
 Use `ArticleViewSwitcher` as the canonical article archive renderer; it supports list, cards and grid from the same article fixtures/data, real article links and optional filtering data attributes. Always preserve working explore search, tag/calendar/month filters and responsive design. The website navbar should contain one Articles navigation entry, a distinct Search icon and an icon-only mobile menu (aria-label), with optional social links inside the dialog; avoid duplicating a separate 'find articles' toolbar link. Do not manually hardcode the registry count.
+
+
+## Search, canonical articles and Motion Skill
+Search is built from **all rendered static HTML** by Pagefind after `astro build` (see `package.json`). Avoid hardcoded metadata indexes: the global SiteSearchDialog loads Pagefind relative to `import.meta.env.BASE_URL` and must work on Github Pages PR preview subpaths. Article pages are canonical at `/[kind]/[theme]/articles/`, with ArticleArchive combining list/cards/grid, query, tags, calendar and months; legacy `explore/` redirects retaining query/hash. Motion work MUST use `.ai/astro-motion-craft/SKILL.md`, preserve four themes and reduced-motion/touch/keyboard behavior. Manus effect APIs are reference-only until explicitly implemented; don't claim they've shipped.
+
+
+## Mandatory motion-reference library
+For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.ai/astro-motion-craft/library/README.md`. Next consult `library/effect-catalog.md` and the matching recipe (`reveal-and-stagger`, `pointer-interactions`, or `content-interactions`). The recipes distinguish Manus v2 ZIP source behavior from our adaptation, and unimplemented references from actual components. Do not treat ZIP effects or Tailwind v4 as installed; do not introduce duplicate observers, global theme overrides or unverified animation claims. Update recipes and catalog when motion runtime changes.
+
+
+## Dedicated effects gallery
+`/effects/` is a separate accessible motion library. Effects runtime lives under `src/components/effects/` (Reveal, StaggerGroup, MotionCard, ZoomImage, MagneticButton, UnderlineLink, MotionFAQ), CSS in `public/effects.css`, and effects inventory in `src/data/effects.registry.json`. The seven effects are distinct from 53 website content blocks, so don't add them to `blocks.registry.json`. Motion Skill and source-grounded recipes MUST guide any new animation. Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic, keyboard focus and all four themes. Demo is not evidence of production QA until browser tested.
+
+
+## BackToTop / return to top
+Use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astro`; do not copy/paste separate scroll handlers into each page. The shared control is hidden near the top, appears after its threshold, respects `prefers-reduced-motion`, has an accessible button label, 44+ px touch target, and uses existing four-theme tokens. When adding a new top-level layout, reuse this component. Do not count BackToTop as an effects-library item.

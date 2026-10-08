@@ -119,3 +119,29 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 `ArticleViewSwitcher.astro` 是可重複使用的文章索引元件（本分支 Registry 53 個）。必填 `items`、`articleBase`；選配 `exploreBase`、`defaultView='list'|'cards'|'grid'`、`controls`、`filterable`。列表為細線編輯式清單；卡片為寬鬆兩欄；網格為三欄密集索引。三種共享同樣資料與文章 URL，手機降為單欄；搜尋／標籤／日期篩選在 explore 頁以 `data-article` 作用於同一組文章，切換排版不破壞篩選。頁面 JS 僅控制展開的視覺模式，不讀取後端。元件展示在 /blocks/ 的「文章探索與清單」。
 
 導航列在手機寬度僅呈現漢堡圖示與全站搜尋放大鏡（含可存取名稱），「文章」作為主要導覽項目；進階篩選另列「文章探索」。原本額外的「找文章」文字控制已移除，CTA 留在手機選單內；社群連結保留於彈出選單最下方。
+
+
+## 單一文章入口與真正的全站搜尋
+
+全站放大鏡 `SiteSearchDialog` 改由 Pagefind 在 build 後對公開靜態 HTML 建全文索引；閱讀到的所有頁面文字可被搜尋，而不只搜尋資料陣列的 `title/excerpt`。`npm run build` 會生成 `dist/pagefind/`；正式站與 PR preview 以 `BASE_URL` 設定正確的搜尋資源與結果網址。若未 build index（如 `astro dev`）會給出明確說明，不應假裝搜尋成功。
+
+`ArticleArchive` 是頁級組合（不另計 Registry block），將 `ArticleViewSwitcher`、`ArticleSearch`、`TagCloud`、`ArchiveMonths` 和 `PostCalendar` 結合至 `/articles/`。舊 `/explore/` 保留相容跳轉，不維護另一套重複文章頁。
+
+## 可配置動態
+
+動態設計規則由 `.ai/astro-motion-craft/SKILL.md` 維護。Manus v2 動態目前是參考候選（Reveal variants、Stagger、MotionCard tilt/spotlight、ZoomImage、UnderlineLink、Button magnetic、FAQ variants），不能宣稱已全數加入本 Registry；請按 Skill 的設計目的、減少動態、觸控與鍵盤測試要求實作。
+
+
+## 可重用動效參考庫與 Skill
+
+讀取 `.ai/astro-motion-craft/library/README.md` 進入特效型錄與三份 source-grounded recipes。來源為上傳 Manus v2 ZIP 的 Effects / Button / FAQ 原始碼，與本專案既有 `data-reveal`、卡片 hover、FAQ/Link/Button 等功能交叉對照。元件若尚未在本專案實作，不計入 `blocks.registry.json` 的正式元件數；日後移植需先經 Motion Skill 強度政策、觸控/reduced-motion/no-JS 規範與 PR preview 驗收。
+
+
+## 特效庫／效果元件（獨立於網站積木）
+
+可試用入口：`/effects/`。效果檔案：`src/components/effects/{Reveal,StaggerGroup,MotionCard,ZoomImage,MagneticButton,UnderlineLink,MotionFAQ}.astro`；登錄：`src/data/effects.registry.json`；樣式 `public/effects.css`。支持 Reveal variant/delay/duration/once、Stagger step/start、MotionCard tilt/spotlight/tiltMax、ZoomImage effect/alt/caption、MagneticButton href、UnderlineLink variant、MotionFAQ items/variant/openFirst。七個效果**不計入**網站內容元件數量。新頁面應先查 Motion Skill 和 `library/effect-catalog.md`，避免全站濫用動畫。功能驗收需操作、鍵盤、觸控、降低動態與四種 theme。
+
+
+## BackToTop｜返回頁首（共用元件）
+
+`src/components/blocks/BackToTop.astro`：`threshold=420`（捲動超過多少 px 後顯示）、`label='返回頁首'`、`bottom='24px'`、`right='24px'`、`className`。已放進共用 `DemoLayout.astro`，因此所有使用此 Layout 的網站與元件／特效展示頁都會自動出現，不需要每一頁重複實例化。右下角懸浮、手機 safe-area、鍵盤可聚焦；遵守 `prefers-reduced-motion`，必要時以非平滑捲動返回頁首。Registry 新增 BackToTop 後為 54 個網站內容元件（特效庫 7 個 effects 分開計數）。

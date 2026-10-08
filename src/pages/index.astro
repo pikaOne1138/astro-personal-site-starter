@@ -29,23 +29,34 @@ const base = import.meta.env.BASE_URL;
         </div>
       </section>)}
     </div>
-    <section class="matrix-group blocks-entry" aria-labelledby="blocks-title">
+    <section class="matrix-group blocks-entry" aria-labelledby="libraries-title">
       <div class="matrix-heading">
         <span>C</span>
-        <div><h2 id="blocks-title">元件庫 · 自由組裝你的網站</h2><p>不只能選完整網站，也能挑選喜歡的首頁、文章與服務區塊。探索 {blockRegistry.length} 個可重用元件，包含四套配色、文章搜尋、標籤、月份日曆與進階文章排版。記下元件名稱，就能交給 AI 組裝。</p></div>
+        <div>
+          <h2 id="libraries-title">元件庫與特效庫 · 自由組裝你的網站</h2>
+          <p>從 {blockRegistry.length} 個網站內容元件選擇需要的區塊，再搭配七組可重複使用的動態特效。兩套資料庫互相配合，也都可以獨立使用。</p>
+        </div>
       </div>
-      <a class="demo-card" href={`${base}blocks/`} style="display:block;max-width:750px">
-        <p class="eyebrow">ASTRO BLOCKS · COMPONENT LIBRARY</p>
-        <h3>元件庫 + 展示站 + 完整網站範例</h3>
-        <p>可預覽 {blockRegistry.length} 個網站元件，涵蓋首頁、文章、服務、搜尋與多種內容排版；自由切換四套視覺風格，並開啟八款完整網站範例。</p>
-        <b>進入元件展示站 →</b>
-      </a>
+      <div class="library-entry-grid">
+        <a class="demo-card library-entry-card" href={`${base}blocks/`}>
+          <p class="eyebrow">ASTRO BLOCKS · COMPONENT LIBRARY</p>
+          <h3>元件庫 · 網站怎麼組成</h3>
+          <p>文章、首頁、服務、導覽、搜尋與各種內容排版。探索 {blockRegistry.length} 個元件，切換四套風格，直接比較實際網站。</p>
+          <b>進入元件展示站 →</b>
+        </a>
+        <a class="demo-card library-entry-card" href={base+'effects/'}>
+          <p class="eyebrow">ASTRO MOTION · EFFECTS LIBRARY</p>
+          <h3>特效庫 · 網站怎麼互動</h3>
+          <p>Reveal、Stagger、Tilt／Spotlight、Zoom／Pan、磁吸按鈕、動態底線與 FAQ。實際播放與調整動效強度。</p>
+          <b>進入互動特效庫 →</b>
+        </a>
+      </div>
     </section>
     <section class="matrix-group blocks-entry" aria-labelledby="search-features-title">
       <div class="matrix-heading">
         <span>D</span>
         <div>
-          <h2 id="search-features-title">搜尋與文章探索 · 五種找內容的方法</h2>
+          <h2 id="search-features-title">全站搜尋與文章瀏覽 · 五種找內容的方法</h2>
           <p>搜尋不只有一個輸入框。依照訪客記得的是關鍵字、主題或日期，選擇最適合的入口。這五個元件可以各自使用，也能組合在同一個網站。</p>
         </div>
       </div>
@@ -56,32 +67,32 @@ const base = import.meta.env.BASE_URL;
           <p>點網站導覽列的放大鏡，直接跳出搜尋視窗，查找頁面、文章與服務；也能按 Ctrl+K／⌘K 開啟、Esc 關閉。</p>
           <b>到網站試用放大鏡 →</b>
         </a>
-        <a class="demo-card" href={base+'knowledge/paper/explore/'}>
+        <a class="demo-card" href={base+'knowledge/paper/articles/'}>
           <small>ARTICLE SEARCH</small>
           <h3>關鍵字 · 文章搜尋</h3>
           <p>輸入文章標題、摘要、分類或標籤中的關鍵字，立即篩選文章清單，找到後直接開啟內頁。</p>
           <b>試用文章搜尋 →</b>
         </a>
-        <a class="demo-card" href={base+'knowledge/paper/explore/?tag='+encodeURIComponent('資訊架構')}>
+        <a class="demo-card" href={base+'knowledge/paper/articles/?tag='+encodeURIComponent('資訊架構')}>
           <small>TAG CLOUD</small>
           <h3>標籤雲 · 依主題探索</h3>
           <p>不確定關鍵字時，可以從標籤開始瀏覽；點一下就只顯示擁有相同標籤的文章。</p>
           <b>試試「資訊架構」標籤 →</b>
         </a>
-        <a class="demo-card" href={base+'knowledge/paper/explore/?month=2026-10'}>
+        <a class="demo-card" href={base+'knowledge/paper/articles/?month=2026-10'}>
           <small>ARCHIVE MONTHS</small>
           <h3>月份列表 · 回顧舊文章</h3>
           <p>依年月整理發表紀錄，列出每個月份有幾篇文章；點選月份就能查看該段時間的內容。</p>
           <b>查看 2026 年 10 月文章 →</b>
         </a>
-        <a class="demo-card" href={base+'knowledge/paper/explore/?date=2026-10-08'}>
+        <a class="demo-card" href={base+'knowledge/paper/articles/?date=2026-10-08'}>
           <small>POST CALENDAR</small>
           <h3>文章日曆 · 按日期查找</h3>
           <p>在日曆上標出有文章的日期；只有實際有發文的日期可點擊，按下後顯示當天的文章。</p>
           <b>查看 10 月 8 日文章 →</b>
         </a>
       </div>
-      <p class="microcopy">目前示範以六篇教材文章呈現；搜尋涵蓋網站頁面與文章的標題、摘要及關鍵詞，尚非文章全文檢索。</p>
+      <p class="microcopy">目前使用六篇教材文章；放大鏡採用建置時產生的全文索引，可搜尋各類靜態頁面的實際內容。文章列表另提供標籤、月份與日期篩選。</p>
     </section>
     <section class="matrix-group blocks-entry" aria-labelledby="v2-demo-title">
       <div class="matrix-heading">
@@ -89,10 +100,10 @@ const base = import.meta.env.BASE_URL;
         <div><h2 id="v2-demo-title">互動功能 Demo</h2><p>不只有元件展示：直接操作文章搜尋、標籤雲、月份列表和日曆，點選日期找到真實存在的示範文章。</p></div>
       </div>
       <div class="demo-grid">
-        <a class="demo-card theme-paper" href={base+'knowledge/paper/explore/'}>
-          <small>KNOWLEDGE / PAPER</small><h3>文章探索站</h3><p>試著搜尋 Astro、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗文章探索 →</b>
+        <a class="demo-card theme-paper" href={base+'knowledge/paper/articles/'}>
+          <small>KNOWLEDGE / PAPER</small><h3>文章索引站</h3><p>試著搜尋 Astro、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗文章探索 →</b>
         </a>
-        <a class="demo-card theme-botanical" href={base+'helper/botanical/explore/'}>
+        <a class="demo-card theme-botanical" href={base+'helper/botanical/articles/'}>
           <small>HELPER / BOTANICAL</small><h3>助人者文章探索</h3><p>使用植感配色與同一套探索功能；文章內頁可操作折疊、Grid、比較表與輪播。</p><b>體驗文章探索 →</b>
         </a>
       </div>
@@ -100,3 +111,12 @@ const base = import.meta.env.BASE_URL;
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   </main>
 </DemoLayout>
+
+<style>
+  .library-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+  .library-entry-card{min-width:0;max-width:none!important;display:flex!important;flex-direction:column;gap:12px;min-height:250px}
+  .library-entry-card h3{margin:0}
+  .library-entry-card p{margin:0}
+  .library-entry-card b{display:block;margin-top:auto;padding-top:26px}
+  @media(max-width:720px){.library-entry-grid{grid-template-columns:1fr}.library-entry-card{min-height:220px}}
+</style>

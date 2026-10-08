@@ -1,0 +1,60 @@
+---
+import ArticleSearch from './blocks/ArticleSearch.astro';
+import TagCloud from './blocks/TagCloud.astro';
+import ArchiveMonths from './blocks/ArchiveMonths.astro';
+import PostCalendar from './blocks/PostCalendar.astro';
+import ArticleViewSwitcher from './blocks/ArticleViewSwitcher.astro';
+import {articlesV2,articleTags,articleMonths} from '../data/articles-v2';
+interface Props {root:string;}
+const {root}=Astro.props;
+const articleBase=root+'articles/';
+---
+<div class="v2-explorer-layout article-archive" data-article-archive>
+  <div class="v2-primary">
+    <section aria-label="文章清單與篩選">
+      <ArticleSearch action={articleBase} placeholder="搜尋文章標題、摘要或標籤…" />
+      <div class="v2-results-heading"><h2>全部文章</h2><p data-result-counter role="status" aria-live="polite">共 {articlesV2.length} 篇示範文章</p></div>
+      <p data-active-filter class="v2-active-filter" hidden></p>
+      <ArticleViewSwitcher items={articlesV2} articleBase={articleBase} exploreBase={articleBase} defaultView="list" filterable />
+      <p data-empty hidden>目前沒有符合條件的文章。<a href={articleBase}>查看全部文章 →</a></p>
+    </section>
+  </div>
+  <aside class="v2-explorer-aside" aria-label="依標籤與日期找文章">
+    <section><h2>主題標籤</h2><TagCloud tags={articleTags} baseHref={articleBase} /></section>
+    <section><h2>依月份瀏覽</h2><ArchiveMonths months={articleMonths} baseHref={articleBase}/></section>
+    <section><h2>文章日曆</h2><p class="v2-side-note">有文章的日期可以點擊。</p>
+      {articleMonths.map(({month},i)=><details class="v2-calendar-disclosure" open={i===0}><summary>{month.replace('-',' 年 ')} 月</summary><PostCalendar month={month} dates={articlesV2.filter(a=>a.publishedAt.startsWith(month)).map(a=>a.publishedAt)} baseHref={articleBase}/></details>)}
+    </section>
+  </aside>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-article-archive]').forEach(archive=>{
+    const url=new URL(window.location.href);
+    const q=(url.searchParams.get('q')||'').trim().toLocaleLowerCase();
+    const tag=url.searchParams.get('tag')||'';
+    const month=url.searchParams.get('month')||'';
+    const date=url.searchParams.get('date')||'';
+    const input=archive.querySelector<HTMLInputElement>('input[name="q"]');
+    if(input)input.value=url.searchParams.get('q')||'';
+    const cards=Array.from(archive.querySelectorAll<HTMLElement>('[data-article]'));
+    let count=0;
+    cards.forEach(el=>{
+      const haystack=[el.dataset.title,el.dataset.excerpt,el.dataset.category,el.dataset.tags].join(' ').toLocaleLowerCase();
+      const matches=(!q||haystack.includes(q))&&(!tag||(el.dataset.tags||'').split('|').includes(tag))&&(!month||(el.dataset.date||'').startsWith(month))&&(!date||el.dataset.date===date);
+      el.hidden=!matches;
+      if(matches)count++;
+    });
+    const counter=archive.querySelector<HTMLElement>('[data-result-counter]');
+    if(counter)counter.textContent='符合條件：'+count+' 篇';
+    const active=[q&&'搜尋：'+q,tag&&'標籤：'+tag,month&&'月份：'+month,date&&'日期：'+date].filter(Boolean);
+    const activeLabel=archive.querySelector<HTMLElement>('[data-active-filter]');
+    if(activeLabel&&active.length){activeLabel.hidden=false;activeLabel.textContent='目前條件｜'+active.join(' / ');}
+    const empty=archive.querySelector<HTMLElement>('[data-empty]');
+    if(empty)empty.hidden=count!==0;
+    archive.querySelectorAll<HTMLAnchorElement>('.v2-tags a,.v2-archive a,.v2-calendar-day.has-post').forEach(a=>{
+      const target=new URL(a.href);
+      const selected=[['tag',tag],['month',month],['date',date]].some(([key,value])=>!!value&&target.searchParams.get(key)===value);
+      if(selected)a.setAttribute('aria-current','true');
+    });
+  });
+</script>

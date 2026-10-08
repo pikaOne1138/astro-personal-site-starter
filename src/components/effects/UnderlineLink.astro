@@ -1,0 +1,5 @@
+---
+interface Props {href:string;variant?:'grow'|'center'|'marker';external?:boolean;className?:string;}
+const {href,variant='grow',external=false,className=''}=Astro.props;
+---
+<a class:list={['motion-underline','motion-underline--'+variant,className]} href={href} target={external?'_blank':undefined} rel={external?'noopener noreferrer':undefined}><slot/>{external&&<span class="sr-only">（另開新視窗）</span>}</a>

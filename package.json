@@ -5,10 +5,13 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist --root-selector main",
     "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^5.14.0"
+  },
+  "devDependencies": {
+    "pagefind": "^1.4.0"
   }
 }

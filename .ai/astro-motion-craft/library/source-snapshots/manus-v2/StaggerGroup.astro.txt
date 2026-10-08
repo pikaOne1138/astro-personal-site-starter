@@ -1,0 +1,18 @@
+---
+interface Props { step?: number; start?: number; className?: string; }
+const { step = 90, start = 0, className = '' } = Astro.props;
+const safeStep = Math.max(20, Math.min(step, 260));
+const safeStart = Math.max(0, Math.min(start, 1200));
+---
+<div class:list={['stagger-group', className]} data-stagger-group data-stagger-step={safeStep} data-stagger-start={safeStart}>
+  <slot />
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-stagger-group]').forEach((group) => {
+    const step = Math.max(20, Math.min(Number(group.dataset.staggerStep) || 90, 260));
+    const start = Math.max(0, Math.min(Number(group.dataset.staggerStart) || 0, 1200));
+    group.querySelectorAll<HTMLElement>(':scope > [data-reveal]').forEach((item, index) => {
+      item.style.setProperty('--reveal-delay', `${Math.min(1600, start + index * step)}ms`);
+    });
+  });
+</script>

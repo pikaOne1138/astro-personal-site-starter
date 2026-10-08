@@ -1,0 +1,6 @@
+---
+interface Item {question:string;answer:string;}
+interface Props {items:Item[];variant?:'line'|'soft'|'cards';openFirst?:boolean;className?:string;}
+const {items,variant='line',openFirst=false,className=''}=Astro.props;
+---
+<div class:list={['motion-faq','motion-faq--'+variant,className]}>{items.map((item,i)=><details open={openFirst&&i===0}><summary>{item.question}<span aria-hidden="true">＋</span></summary><div class="motion-faq__answer"><p>{item.answer}</p></div></details>)}</div>

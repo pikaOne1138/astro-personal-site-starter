@@ -16,6 +16,7 @@ import NewsletterSignup from './blocks/NewsletterSignup.astro';
 import PractitionerCard from './blocks/PractitionerCard.astro';
 import ServiceFit from './blocks/ServiceFit.astro';
 import ArticleViewSwitcher from './blocks/ArticleViewSwitcher.astro';
+import ArticleArchive from './ArticleArchive.astro';
 import { helperPractice } from '../data/helper-content';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
@@ -41,24 +42,24 @@ const articleMeta=articlesV2;
 const practice=helperPractice[theme];
 ---
 <DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:k.intro} theme={theme} kind={kind}>
+  {page==='articles'&&<link rel="stylesheet" href={base+"blocks-v2.css"}/>}
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current={page} />
     <main class="v02-page">
-      <section class="v02-pagehero" data-reveal>
-        <p class="eyebrow">{kind==='helper'?practice.eyebrow:k.eyebrow} · {t.label}</p>
+      <section class:list={['v02-pagehero',page==='articles'&&'v02-pagehero--archive']} data-reveal>
+        {page!=='articles'&&<p class="eyebrow">{kind==='helper'?practice.eyebrow:k.eyebrow} · {t.label}</p>}
         <h1>{kind==='helper' && page==='services' ? practice.serviceTitle : pageTitle[page]}</h1>
-        <p>{kind==='helper' && page==='about' ? practice.about : kind==='helper' && page==='services' ? practice.intro : kind==='helper' && page==='first-visit' ? practice.visitIntro : kind==='helper' && page==='faq' ? '常見問題依專業類別說明服務形式、限制與你的選擇權。' : kind==='helper' && page==='booking' ? practice.bookingDescription : page === 'about' ? '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。' :
-          page === 'articles' ? '把內容整理成可以探索、回訪與累積的入口，而不是把所有文章塞在首頁。' :
+        {page!=='articles'&&<p>{kind==='helper' && page==='about' ? practice.about : kind==='helper' && page==='services' ? practice.intro : kind==='helper' && page==='first-visit' ? practice.visitIntro : kind==='helper' && page==='faq' ? '常見問題依專業類別說明服務形式、限制與你的選擇權。' : kind==='helper' && page==='booking' ? practice.bookingDescription : page === 'about' ? '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。' :
+          page === 'articles' ? '文章依列表、卡片或網格呈現，也可以按主題、日期與關鍵字篩選。' :
           page === 'services' ? '把「我可以怎麼幫你」說清楚，讓訪客可以先理解，再決定是否往下一步。' :
           page === 'first-visit' ? '把未知變成已知：流程、費用、方式、界線與第一次會發生什麼。' :
           page === 'booking' ? '低壓力的下一步：先確認適合度，再開始合作。' :
-          '這一頁從首頁拆出來，讓首頁只負責引導，而不是承擔所有資訊。'}</p>
+          '這一頁從首頁拆出來，讓首頁只負責引導，而不是承擔所有資訊。'}</p>}
       </section>
 
-      {page === 'articles' && <section class="v02-content" data-reveal>
-        <div class="v02-filter"><a href={root+'explore/'}>全部文章</a>{Array.from(new Set(articlesV2.map(article=>article.category))).map(category=><a href={root+'explore/?q='+encodeURIComponent(category)}>{category}</a>)}</div>
-        <ArticleViewSwitcher items={articlesV2} articleBase={root+'articles/'} exploreBase={root+'explore/'} defaultView="list" />
-        <p style="margin-top:32px"><a class="button primary" href={root+'explore/'}>使用搜尋、標籤與日曆篩選 →</a></p>
+      {page === 'articles' && <section class="v02-content v02-archive-page" data-reveal>
+        <ArticleArchive root={root}/>
+        <p class="practical-caption">目前六篇為工作坊示範內容，並非正式發布紀錄。</p>
       </section>}
 
       {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>

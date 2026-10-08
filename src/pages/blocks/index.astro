@@ -62,7 +62,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
-    <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a>
+    <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a> <a class="ab-gallery-back" href={base+'effects/'} style="margin-left:16px">動態特效庫 ↗</a>
     <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
@@ -87,6 +87,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
       <SiteSearchDialog kind="knowledge" theme="paper" />
     </div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>BackToTop</strong><span>長頁通用的「返回頁首」浮動按鈕</span></div><p>這一頁右下角已經實際使用：往下捲動超過 420px 就會出現向上箭頭。點擊後返回頁首，系統選擇「減少動態」時不使用平滑捲動。四套主題、桌機與手機都共用。</p><p class="practical-caption">由共用 DemoLayout 自動加入，不需在每一頁重複放按鈕；可指定顯示門檻、無障礙名稱與位置。</p></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>MobileMenu</strong><span>手機用可展開導覽（請縮小視窗測試）</span></div><p>八款完整網站的手機導覽列已改用此元件；支援開關、Esc 及鍵盤焦點。</p><div class="practical-gallery-mobile"><MobileMenu links={[{label:'知識首頁',href:base+'knowledge/paper/'},{label:'文章探索',href:base+'knowledge/paper/explore/'},{label:'聯絡與預約',href:base+'helper/paper/booking/'}]}/></div></div>
     <div class="ab-demo">
       <div class="ab-demo-label"><strong>SocialLinks</strong><span>社群圖示／圖示＋名稱連結</span></div>
@@ -166,7 +167,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
     </div>
   </section>
-  <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md</footer>
+  <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md · 特效請至獨立特效庫</footer>
 </main>
 <script is:inline>
   document.querySelectorAll('[data-block-theme]').forEach(button=>button.addEventListener('click',()=>{

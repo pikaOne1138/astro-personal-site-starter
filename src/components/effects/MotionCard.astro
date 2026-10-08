@@ -1,0 +1,30 @@
+---
+interface Props {tilt?:boolean;spotlight?:boolean;tiltMax?:number;className?:string;}
+const {tilt=false,spotlight=false,tiltMax=3,className=''}=Astro.props;
+const limit=Math.max(1,Math.min(8,tiltMax));
+---
+<div class:list={['motion-card-demo',className]} data-motion-card data-tilt={String(tilt)} data-spotlight={String(spotlight)} data-limit={limit}><slot/></div>
+<script>
+  const fine=window.matchMedia('(hover:hover) and (pointer:fine)');
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)');
+  document.querySelectorAll<HTMLElement>('[data-motion-card]:not([data-motion-installed])').forEach(card=>{
+    card.dataset.motionInstalled='true';
+    let raf=0;let last:PointerEvent|undefined;
+    const reset=()=>{cancelAnimationFrame(raf);raf=0;last=undefined;card.style.removeProperty('--tilt-x');card.style.removeProperty('--tilt-y');card.style.removeProperty('--spot-x');card.style.removeProperty('--spot-y');card.classList.remove('is-tilting')};
+    card.addEventListener('pointermove',event=>{
+      if(!fine.matches||(reduce.matches && document.documentElement.dataset.allowMotionDemo!=='true')||event.pointerType==='touch')return;
+      last=event;if(raf)return;
+      raf=requestAnimationFrame(()=>{
+        raf=0;if(!last)return;
+        const rect=card.getBoundingClientRect();if(!rect.width||!rect.height)return;
+        const x=Math.max(0,Math.min(1,(last.clientX-rect.left)/rect.width));
+        const y=Math.max(0,Math.min(1,(last.clientY-rect.top)/rect.height));
+        const angle=Math.min(8,Math.max(1,Number(card.dataset.limit)||3));
+        if(card.dataset.tilt==='true'){card.style.setProperty('--tilt-x',((x-.5)*angle*2).toFixed(2)+'deg');card.style.setProperty('--tilt-y',((.5-y)*angle*2).toFixed(2)+'deg');card.classList.add('is-tilting');}
+        if(card.dataset.spotlight==='true'){card.style.setProperty('--spot-x',(x*100).toFixed(1)+'%');card.style.setProperty('--spot-y',(y*100).toFixed(1)+'%');}
+      });
+    },{passive:true});
+    card.addEventListener('pointerleave',reset);card.addEventListener('pointercancel',reset);
+    reduce.addEventListener('change',reset);fine.addEventListener('change',reset);
+  });
+</script>

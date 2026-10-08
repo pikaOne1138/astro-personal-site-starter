@@ -1,0 +1,241 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro';
+import Reveal from '../../components/effects/Reveal.astro';
+import StaggerGroup from '../../components/effects/StaggerGroup.astro';
+import MotionCard from '../../components/effects/MotionCard.astro';
+import ZoomImage from '../../components/effects/ZoomImage.astro';
+import MagneticButton from '../../components/effects/MagneticButton.astro';
+import UnderlineLink from '../../components/effects/UnderlineLink.astro';
+import MotionFAQ from '../../components/effects/MotionFAQ.astro';
+const base=import.meta.env.BASE_URL;
+const intro=[{name:'淡入上移',variant:'fade-up'},{name:'柔和縮放',variant:'soft-zoom'},{name:'模糊淡入',variant:'blur-up'},{name:'向左進場',variant:'slide-left'},{name:'遮罩揭露',variant:'clip-up'}] as const;
+const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組示範以原生 Astro、CSS 與少量 JavaScript 製作，手機與觸控會停用不必要的指標追蹤效果。仍應依實際裝置測試。'},{question:'訪客設定「減少動態」會怎樣？',answer:'Reveal 不會隱藏內容，傾斜、磁吸與平移會被停用，閱讀與鍵盤操作保持正常。'},{question:'可以換成我自己的品牌顏色嗎？',answer:'可以。示範沿用紙墨、晨光、靜室與植感的既有 CSS 變數，AI 可依 Motion Skill 調整強度和使用區域。'}];
+---
+<DemoLayout title="Astro Motion · 特效參考庫" description="可操作的 Astro 微互動效果示範：Reveal、Stagger、Tilt、Spotlight、Zoom、Pan、Magnetic、連結底線與 FAQ。">
+  <link rel="stylesheet" href={base+'effects.css'}/>
+  <main class="fx-page" id="top" data-intensity="subtle">
+    <nav class="fx-topline" aria-label="展示庫導覽">
+      <span class="fx-kicker">ASTRO WORKSHOP · MOTION LIBRARY</span>
+      <div><a href={base+'blocks/'}>元件庫 ↗</a>　 <a href={base}>八款網站 ↗</a></div>
+    </nav>
+    <header class="fx-hero">
+      <p class="fx-kicker">DESIGN SYSTEM / INTERACTIONS</p>
+      <h1>讓細節有感，<br/>而不喧賓奪主。</h1>
+      <p>這裡是可實際操作的 Astro 特效庫。移動滑鼠、點擊切換、向下捲動，感受不同互動的節奏；同一組效果能套用四套主題，並尊重手機觸控與減少動態設定。</p>
+    </header>
+    <div class="fx-controls" aria-label="特效示範控制">
+      <div class="fx-control-group" role="group" aria-label="切換示範主題"><span>預覽風格</span>
+        <button type="button" data-fx-theme="paper" aria-pressed="true">紙墨</button>
+        <button type="button" data-fx-theme="morning" aria-pressed="false">晨光</button>
+        <button type="button" data-fx-theme="studio" aria-pressed="false">靜室</button>
+        <button type="button" data-fx-theme="botanical" aria-pressed="false">植感</button>
+      </div>
+      <div class="fx-control-group" role="group" aria-label="調整動效強度"><span>動效強度</span>
+        <button type="button" data-fx-intensity="off" aria-pressed="false">關閉</button>
+        <button type="button" data-fx-intensity="subtle" aria-pressed="true">輕柔</button>
+        <button type="button" data-fx-intensity="expressive" aria-pressed="false">鮮明</button>
+      </div>
+    </div>
+    <div class="fx-diagnostics" aria-label="動效環境檢查">
+      <p class="fx-motion-status" role="status" aria-live="polite" data-motion-status>正在檢查動效是否載入…</p>
+      <div class="fx-diagnostics__actions">
+        <button class="fx-replay" type="button" data-motion-consent hidden aria-pressed="false">仍要在此頁試玩動畫</button>
+        <button class="fx-replay" type="button" data-motion-diagnose>重新檢查</button>
+      </div>
+      <p class="fx-diagnostics__detail" data-motion-diagnostics>檢查中…</p>
+    </div>
+    <section class="fx-system-guide" aria-labelledby="motion-system-title">
+      <details class="fx-system-guide__details">
+        <summary><span><strong id="motion-system-title">看不到動畫？查看裝置設定</strong><small>點擊展開 Windows、macOS、iOS 與 Android 設定教學</small></span><span aria-hidden="true">＋</span></summary>
+        <div class="fx-system-guide__body">
+          <p>這個網站會遵守裝置或瀏覽器回報的 <code>prefers-reduced-motion</code> 設定。如果系統關閉動畫或啟用「減少動態」，進場、圖片 Zoom、動態底線等效果可能會被停用。這不是網頁載入失敗；你可以保持原有的無障礙偏好，改用上方的「仍要在此頁試玩動畫」進行暫時預覽。</p>
+          <div class="fx-system-guide__grid">
+            <div><h3>Windows 11</h3><p><strong>設定 → 協助工具 → 視覺效果 → 動畫效果：開啟</strong></p><p>你截圖中的就是這個開關。與旁邊的「透明效果」不同，不必為了動畫打開透明效果。</p></div>
+            <div><h3>Windows 10</h3><p><strong>設定 → 輕鬆存取 → 顯示 → 在 Windows 中顯示動畫：開啟</strong></p><p>也可以在 Windows 設定中搜尋「動畫」。</p></div>
+            <div><h3>macOS</h3><p><strong>蘋果選單 → 系統設定 → 輔助使用 → 動態效果／顯示 → 減少動態：關閉</strong></p><p>不同 macOS 版本可能在「動態效果」或「顯示」中。<a href="https://support.apple.com/guide/mac-help/change-motion-settings-for-accessibility-mchla3c4f1da/mac" target="_blank" rel="noopener noreferrer">Apple 設定說明 ↗</a></p></div>
+            <div><h3>iPhone／iPad</h3><p><strong>設定 → 輔助使用 → 動態效果 → 減少動態效果：關閉</strong></p><p>即使開啟動畫，手機沒有滑鼠懸停，3D Tilt、Spotlight、Pan、磁吸仍可能不啟用。<a href="https://support.apple.com/en-us/111781" target="_blank" rel="noopener noreferrer">Apple 設定說明 ↗</a></p></div>
+            <div><h3>Android</h3><p><strong>設定 → 無障礙／協助工具 → 色彩與動態 → 移除動畫：關閉</strong></p><p>各品牌名稱可能不同，建議在設定中搜尋「移除動畫」。<a href="https://support.google.com/accessibility/answer/11183305?hl=zh-TW" target="_blank" rel="noopener noreferrer">Google 設定說明 ↗</a></p></div>
+          </div>
+          <p class="fx-system-guide__footer">調整後請重新整理此頁並按「重新檢查」。如果系統已允許動畫、診斷也顯示 CSS 和 JS 已載入，但仍沒有任何效果，才需要繼續檢查瀏覽器的開發者工具動態模擬、擴充功能或網站程式。</p>
+        </div>
+      </details>
+    </section>
+    <nav class="fx-jump" aria-label="特效分類">
+      <a href="#reveal">01 進場</a><a href="#stagger">02 群組</a><a href="#cards">03 互動卡片</a><a href="#images">04 圖片</a><a href="#actions">05 按鈕與連結</a><a href="#faq">06 FAQ</a>
+    </nav>
+
+    <section class="fx-section" id="reveal">
+      <div class="fx-section-heading"><div><span class="fx-kicker">01 · ENTRANCE</span><h2>Reveal · 進場效果</h2></div><p>用輕量的方向、縮放與透明度提示內容層次；不讓每一行文字都飛進來。</p></div>
+      <div class="fx-stage" data-motion-demo>
+        <div class="fx-grid">
+          {intro.map((item,i)=><Reveal variant={item.variant} delay={i*70} once={false}>
+            <div class="fx-demo-article"><span class="fx-mini-label">{item.variant}</span><b>{item.name}</b><small>移到畫面中，或點「重播效果」</small></div>
+          </Reveal>)}
+        </div>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播進場（慢速）</button><span class="fx-hint">按一次後觀察卡片由淡入、位移到清晰的變化。</span></div>
+      </div>
+      <p class="fx-source">元件：<code>Reveal.astro</code>　變體：fade-up / fade / soft-zoom / blur-up / slide-left / slide-right / clip-up</p>
+    </section>
+
+    <section class="fx-section" id="stagger">
+      <div class="fx-section-heading"><div><span class="fx-kicker">02 · RHYTHM</span><h2>Stagger · 依序出場</h2></div><p>文章卡或服務流程用有節制的時差引導視線；單組控制，不製造整頁動畫瀑布。</p></div>
+      <div class="fx-stage fx-stage--paper" data-motion-demo>
+        <StaggerGroup step={120} start={0} className="fx-three">
+          <Reveal variant="fade-up" once={false}><article class="fx-demo-article"><span class="fx-mini-label">01 / DISCOVER</span><b>發現方向</b><small>先知道從哪裡開始</small></article></Reveal>
+          <Reveal variant="fade-up" once={false}><article class="fx-demo-article"><span class="fx-mini-label">02 / EXPLORE</span><b>深入理解</b><small>每一次多知道一點</small></article></Reveal>
+          <Reveal variant="fade-up" once={false}><article class="fx-demo-article"><span class="fx-mini-label">03 / GROW</span><b>累積實踐</b><small>慢慢長出自己的步調</small></article></Reveal>
+        </StaggerGroup>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-motion-replay>↺ 重播群組（慢速）</button><span class="fx-hint">三張卡片會從左至右依序進入。</span></div>
+      </div>
+      <p class="fx-source">元件：<code>StaggerGroup.astro</code> + <code>Reveal.astro</code>　參數：step / start</p>
+    </section>
+
+    <section class="fx-section" id="cards">
+      <div class="fx-section-heading"><div><span class="fx-kicker">03 · POINTER</span><h2>Tilt 與 Spotlight · 卡片互動</h2></div><p>桌面上移動滑鼠試試。觸控與減少動態會自動降級，不讓卡片搖晃影響閱讀。</p></div>
+      <div class="fx-grid">
+        <MotionCard tilt={true} tiltMax={3}><span class="fx-mini-label">3D TILT / MAX 3°</span><h3>適度的立體感</h3><p>輕微旋轉回應滑鼠方向，適合少量品牌展示卡片。</p></MotionCard>
+        <MotionCard spotlight={true}><span class="fx-mini-label">SPOTLIGHT / POINTER</span><h3>隨指標移動的柔光</h3><p>聚焦視線而不遮蔽文字或增加戲劇性的光暈。</p></MotionCard>
+      </div>
+      <p class="fx-source">元件：<code>MotionCard.astro</code>　參數：tilt / spotlight / tiltMax</p>
+    </section>
+
+    <section class="fx-section" id="images">
+      <div class="fx-section-heading"><div><span class="fx-kicker">04 · IMAGERY</span><h2>Zoom 與 Pan · 圖片動態</h2></div><p>同一張本地示範素材，呈現平滑縮放與少量滑鼠視差；文章圖表不建議使用 Pan。</p></div>
+      <div class="fx-grid">
+        <ZoomImage src={base+'effects-sample.svg'} alt="自製植物綠地與淺色天空的編輯式風景插畫" effect="zoom" caption="Zoom · 滑過圖片時輕微放大"/>
+        <ZoomImage src={base+'effects-sample.svg'} alt="自製植物綠地與淺色天空的編輯式風景插畫" effect="pan" caption="Pan · 使用精準滑鼠時輕微位移"/>
+      </div>
+      <p class="fx-source">元件：<code>ZoomImage.astro</code>　參數：effect = zoom / pan / none</p>
+    </section>
+
+    <section class="fx-section" id="actions">
+      <div class="fx-section-heading"><div><span class="fx-kicker">05 · MICRO FEEDBACK</span><h2>磁吸按鈕與動態連結</h2></div><p>只有必要時才讓主要 CTA 有更強的操作感；連結不只靠 Hover 才能辨識。</p></div>
+      <div class="fx-stage">
+        <span class="fx-mini-label">MAGNETIC BUTTON</span>
+        <MagneticButton href="#faq" label="探索更多互動"/>
+        <div style="height:36px"></div>
+        <span class="fx-mini-label">UNDERLINE LINK · 3 STYLES</span>
+        <div class="fx-grid fx-underline-gallery" data-underline-demo>
+          <div><UnderlineLink href="#faq" variant="grow">Grow · 從左到右 →</UnderlineLink></div>
+          <div><UnderlineLink href="#faq" variant="center">Center · 從中心展開 →</UnderlineLink></div>
+          <div><UnderlineLink href="#faq" variant="marker">Marker · 柔和底色標記 →</UnderlineLink></div>
+        </div>
+        <div class="fx-toolbar"><button type="button" class="fx-replay" data-underline-replay>↺ 慢速展示三種底線</button><span class="fx-hint">按下後不必把滑鼠移到文字上，也能完整觀察從無到有的過程。</span></div>
+      </div>
+      <p class="fx-source">元件：<code>MagneticButton.astro</code> / <code>UnderlineLink.astro</code></p>
+    </section>
+
+    <section class="fx-section" id="faq">
+      <div class="fx-section-heading"><div><span class="fx-kicker">06 · CONTENT</span><h2>FAQ · 可調式展開</h2></div><p>以原生 details / summary 製作，鍵盤可以操作，沒有 JavaScript 也可以開合。</p></div>
+      <div class="fx-stage">
+        <div class="fx-control-group fx-toolbar" role="group" aria-label="FAQ 排版樣式">
+          <span>呈現方式</span>
+          <button type="button" data-faq-style="line" aria-pressed="true">細線</button>
+          <button type="button" data-faq-style="soft" aria-pressed="false">柔和</button>
+          <button type="button" data-faq-style="cards" aria-pressed="false">卡片</button>
+        </div>
+        <div data-faq-preview><MotionFAQ items={faqItems} variant="line" openFirst /></div>
+      </div>
+      <p class="fx-source">元件：<code>MotionFAQ.astro</code>　參數：variant = line / soft / cards</p>
+    </section>
+
+    <footer class="fx-bottom">
+      <p>這些 Demo 供模板組裝與動效研究使用；正式網站不必全部啟用。使用 <strong>Motion Skill</strong> 選擇場景與強度，預設尊重裝置設定與四套視覺主題。</p>
+      <p><a href={base+'blocks/'}>返回元件庫 ↗</a>　<a href={base}>探索八款完整網站 ↗</a></p>
+    </footer>
+  </main>
+  <script>
+    const page=document.querySelector<HTMLElement>('.fx-page');
+    const themeButtons=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-fx-theme]'));
+    const intensityButtons=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-fx-intensity]'));
+    themeButtons.forEach(button=>button.addEventListener('click',()=>{
+      document.documentElement.dataset.theme=button.dataset.fxTheme;
+      themeButtons.forEach(item=>item.setAttribute('aria-pressed',String(button===item)));
+    }));
+    intensityButtons.forEach(button=>button.addEventListener('click',()=>{
+      if(!page)return;
+      page.dataset.intensity=button.dataset.fxIntensity;
+      intensityButtons.forEach(item=>item.setAttribute('aria-pressed',String(button===item)));
+    }));
+    const motionStatus=document.querySelector<HTMLElement>('[data-motion-status]');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+    const fine=window.matchMedia('(hover: hover) and (pointer: fine)');
+    const consentButton=document.querySelector<HTMLButtonElement>('[data-motion-consent]');
+    const diagnosticButton=document.querySelector<HTMLButtonElement>('[data-motion-diagnose]');
+    const detail=document.querySelector<HTMLElement>('[data-motion-diagnostics]');
+    const optedIn=()=>document.documentElement.dataset.allowMotionDemo==='true';
+    const motionDisabled=()=>reduced.matches&&!optedIn();
+    const showStatus=()=>{
+      const effectsOff=page?.dataset.intensity==='off';
+      const sheet=Array.from(document.styleSheets).find(s=>s.href?.includes('/effects.css'));
+      let stylesLoaded=false;
+      try{stylesLoaded=Boolean(sheet&&sheet.cssRules.length>0)}catch{stylesLoaded=Boolean(sheet)}
+      const reveal=document.querySelector<HTMLElement>('[data-motion-reveal]');
+      const compiledScripts=Boolean(reveal?.hasAttribute('data-motion-ready'));
+      const underline=document.querySelector<HTMLElement>('.motion-underline--grow');
+      const underlineStyle=underline?getComputedStyle(underline):null;
+      const hasUnderline=Boolean(underlineStyle&&underlineStyle.backgroundImage!=='none');
+      if(!stylesLoaded){const panel=document.querySelector<HTMLElement>('.fx-page');stylesLoaded=Boolean(hasUnderline&&panel&&getComputedStyle(panel).paddingTop==='30px');}
+      if(detail)detail.textContent=
+        '特效樣式：'+(stylesLoaded?'已載入':'未載入')+
+        '｜特效腳本：'+(compiledScripts?'已執行':'尚未執行')+
+        '｜底線 CSS：'+(hasUnderline?'已套用':'未套用')+
+        '｜減少動態：'+(reduced.matches?'開啟':'關閉')+
+        '｜滑鼠模式：'+(fine.matches?'精準指標':'觸控／非精準指標');
+      if(consentButton){consentButton.hidden=!reduced.matches;consentButton.setAttribute('aria-pressed',String(optedIn()));consentButton.textContent=optedIn()?'恢復尊重系統減少動態':'仍要在此頁試玩動畫';}
+      if(!motionStatus)return;
+      motionStatus.textContent=!stylesLoaded
+        ? '特效 CSS 沒有載入，這不是動畫設定問題。請回報這行狀態。'
+        : !compiledScripts
+          ? '特效 JavaScript 沒有執行，請回報這行狀態。'
+          : reduced.matches&&!optedIn()
+            ? '已確認：目前瀏覽器要求「減少動態」，所以 Reveal、圖片、底線與重播動畫都被關閉。可按下方按鈕，僅在此展示頁暫時試玩。'
+            : effectsOff
+              ? '目前選擇「關閉」動效。請切到「輕柔」或「鮮明」。'
+              : fine.matches
+                ? '特效已啟用：試著按「重播效果」或移動滑鼠至圖片與連結。'
+                : '可播放 Reveal、圖片 Zoom 和底線；3D、Pan、磁吸需要精準滑鼠。';
+    };
+    consentButton?.addEventListener('click',()=>{
+      document.documentElement.dataset.allowMotionDemo=optedIn()?'false':'true';
+      showStatus();
+    });
+    diagnosticButton?.addEventListener('click',showStatus);
+    reduced.addEventListener('change',showStatus);
+    fine.addEventListener('change',showStatus);
+    intensityButtons.forEach(button=>button.addEventListener('click',showStatus));
+    window.setTimeout(showStatus,150);
+    document.querySelectorAll<HTMLButtonElement>('[data-motion-replay]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const group=button.closest('[data-motion-demo]');
+        const elements=Array.from(group?.querySelectorAll<HTMLElement>('[data-motion-reveal]')||[]);
+        if(!elements.length)return;
+        if(motionDisabled()||page?.dataset.intensity==='off'){showStatus();return;}
+        elements.forEach(el=>{
+          el.classList.remove('motion-replaying');
+          void el.offsetWidth;
+          el.classList.add('motion-replaying');
+          el.addEventListener('animationend',()=>el.classList.remove('motion-replaying'),{once:true});
+        });
+      });
+    });
+    const underlineReplay=document.querySelector<HTMLButtonElement>('[data-underline-replay]');
+    const underlineGroup=document.querySelector<HTMLElement>('[data-underline-demo]');
+    underlineReplay?.addEventListener('click',()=>{
+      if(!underlineGroup||motionDisabled()||page?.dataset.intensity==='off'){showStatus();return;}
+      underlineGroup.classList.remove('fx-underline-playing');
+      void underlineGroup.offsetWidth;
+      underlineGroup.classList.add('fx-underline-playing');
+      underlineReplay.disabled=true;
+      window.setTimeout(()=>{underlineGroup.classList.remove('fx-underline-playing');underlineReplay.disabled=false;},2100);
+    });
+    const faqPreview=document.querySelector<HTMLElement>('[data-faq-preview] .motion-faq');
+    const faqButtons=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-faq-style]'));
+    faqButtons.forEach(button=>button.addEventListener('click',()=>{
+      if(!faqPreview)return;
+      faqPreview.classList.remove('motion-faq--line','motion-faq--soft','motion-faq--cards');
+      faqPreview.classList.add('motion-faq--'+button.dataset.faqStyle);
+      faqButtons.forEach(item=>item.setAttribute('aria-pressed',String(button===item)));
+    }));
+  </script>
+</DemoLayout>
