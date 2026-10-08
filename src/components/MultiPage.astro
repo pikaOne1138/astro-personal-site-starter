@@ -18,7 +18,7 @@ import ServiceFit from './blocks/ServiceFit.astro';
 import ArticleViewSwitcher from './blocks/ArticleViewSwitcher.astro';
 import ArticleArchive from './ArticleArchive.astro';
 import { helperPractice } from '../data/helper-content';
-import { knowledgeDemoTopics } from '../data/knowledge-demo-topics';
+import { knowledgePractice } from '../data/knowledge-demo-topics';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
 const { kind, theme, page } = Astro.props;
@@ -41,16 +41,17 @@ const pageTitle: Record<string,string> = {
 
 const articleMeta=articlesV2;
 const practice=helperPractice[theme];
+const journal=knowledgePractice[theme];
 ---
-<DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:k.intro} theme={theme} kind={kind}>
+<DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:journal.intro} theme={theme} kind={kind}>
   {page==='articles'&&<link rel="stylesheet" href={base+"blocks-v2.css"}/>}
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current={page} />
     <main class="v02-page">
       <section class:list={['v02-pagehero',page==='articles'&&'v02-pagehero--archive']} data-reveal>
-        {page!=='articles'&&<p class="eyebrow">{kind==='helper'?practice.eyebrow:k.eyebrow} · {t.label}</p>}
+        {page!=='articles'&&<p class="eyebrow">{kind==='helper'?practice.eyebrow:journal.eyebrow} · {t.label}</p>}
         <h1>{kind==='helper' && page==='services' ? practice.serviceTitle : pageTitle[page]}</h1>
-        {page!=='articles'&&<p>{kind==='helper' && page==='about' ? practice.about : kind==='helper' && page==='services' ? practice.intro : kind==='helper' && page==='first-visit' ? practice.visitIntro : kind==='helper' && page==='faq' ? '常見問題依專業類別說明服務形式、限制與你的選擇權。' : kind==='helper' && page==='booking' ? practice.bookingDescription : page === 'about' ? (kind === 'knowledge' ? '關於這個記錄資訊、宅文化、心理與旅遊觀察的地方，以及寫下這些故事的人。' : '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。') :
+        {page!=='articles'&&<p>{kind==='helper' && page==='about' ? practice.about : kind==='helper' && page==='services' ? practice.intro : kind==='helper' && page==='first-visit' ? practice.visitIntro : kind==='helper' && page==='faq' ? '常見問題依專業類別說明服務形式、限制與你的選擇權。' : kind==='helper' && page==='booking' ? practice.bookingDescription : page === 'about' ? (kind === 'knowledge' ? journal.about : '不是把履歷全部貼上來，而是讓第一次來的人知道：你在意什麼、怎麼工作、為什麼值得繼續認識。') :
           page === 'articles' ? '文章依列表、卡片或網格呈現，也可以按主題、日期與關鍵字篩選。' :
           page === 'services' ? '把「我可以怎麼幫你」說清楚，讓訪客可以先理解，再決定是否往下一步。' :
           page === 'first-visit' ? '把未知變成已知：流程、費用、方式、界線與第一次會發生什麼。' :
@@ -64,20 +65,18 @@ const practice=helperPractice[theme];
       </section>}
 
       {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>
-        {knowledgeDemoTopics.map((topic,i)=><article><span>0{i+1}</span><div><h2>{topic.title}</h2><p>{topic.description}</p></div><b>主題示範</b></article>)}
+        {journal.topics.map((topic,i)=><article><span>0{i+1}</span><div><h2>{topic.title}</h2><p>{topic.description}</p></div><b>主題示範</b></article>)}
       </section>}
 
       {page === 'start-here' && <section class="v02-content v02-reading-path" data-reveal>
-        <article><span>01</span><h2>如果你第一次來</h2><p>先讀三篇最能代表這個網站的文章，而不是從最新文章倒著翻。</p></article>
-        <article><span>02</span><h2>依喜歡的主題探索</h2><p>從資訊、宅文化、心理或旅遊選一個方向，慢慢發現感興趣的故事。</p></article>
-        <article><span>03</span><h2>如果你只是想逛逛</h2><p>先看看主題介紹，再到文章列表挑一篇感興趣的內容。</p></article>
+        {journal.startHere.map((item,i)=><article><span>{String(i+1).padStart(2,'0')}</span><h2>{item.title}</h2><p>{item.description}</p></article>)}
       </section>}
 
       {page === 'resources' && <div class="v02-content"><MediaEmbed type="youtube" url="https://www.youtube.com/watch?v=jfKfPfyJRdk" title="YouTube 影音嵌入操作示範" caption="工作坊影片元件示範：請替換為有權使用的影片。" /></div>}
       {page === 'resources' && <section class="v02-content" data-reveal>
-        <ResourceLibrary title="可以探索的資源" items={[{kind:'link',title:'閱讀首頁資訊架構',description:'網站結構與導覽入門',href:root+'articles/'+articlesV2[0].slug+'/'},{kind:'video',title:'YouTube 媒體嵌入示範',description:'開啟影音來源',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk'},{kind:'tool',title:'Astro 工作坊範例原始碼',description:'公開 GitHub 範例',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/>
+        <ResourceLibrary title={kind==='knowledge' ? journal.resourceTitle : "可以探索的資源"} items={[{kind:'link',title:'閱讀首頁資訊架構',description:'網站結構與導覽入門',href:root+'articles/'+articlesV2[0].slug+'/'},{kind:'video',title:'YouTube 媒體嵌入示範',description:'開啟影音來源',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk'},{kind:'tool',title:'Astro 工作坊範例原始碼',description:'公開 GitHub 範例',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/>
         <LeadMagnetCard title="取得網站範例原始碼" description="可閱讀的免費程式碼素材，無須填寫個資。" href="https://github.com/pikaOne1138/astro-personal-site-starter" format="公開免費資源"/>
-        <NewsletterSignup title="訂閱文章更新" description="這份示範網站尚未串接電子報服務，正式網站可指定自己選用的平台。"/>
+        <NewsletterSignup title={journal.newsletterTitle} description={journal.newsletterIntro}/>
       </section>}
       {page === 'resources' && <section class="v02-content v02-resource" data-reveal>
         <div><p class="eyebrow">FREE RESOURCE</p><h2>把網站需求整理清楚的 20 個問題</h2><p>示範「低壓 CTA」：免費資源可以承接還不想購買或預約的人。</p><a class="button primary" href="https://github.com/pikaOne1138/astro-personal-site-starter" target="_blank" rel="noopener noreferrer">開啟公開範例資源 <span>→</span></a></div>
@@ -99,7 +98,7 @@ const practice=helperPractice[theme];
       {page === 'about' && kind === 'helper' && <div class="v02-content"><PractitionerCard name="示範專業者" role={practice.practiceLabel} bio={practice.about} specialties={practice.concepts} profileHref={root+'services/'} /><TrustInfo format={practice.specialty} policy={practice.terms} notice="本站為模板示範；正式服務請核實資格、地區、聯絡方式及相關政策。" /></div>}
       {page === 'about' && <section class="v02-content about-split" data-reveal>
         <div class="portrait-placeholder"><span>自然光人像 / 作者照</span></div>
-        <div><p class="eyebrow">WHY I DO THIS</p><h2>{kind === 'knowledge' ? '喜歡的事很多，於是把日常裡的發現記錄下來。' : practice.aboutTitle}</h2><p>{kind==='helper'?practice.about:'這裡是一個分享資訊、宅文化、心理與旅遊觀察的示範空間。正式使用時，再換成你自己的故事和介紹。'}</p><div class="credentials"><span>工作方法</span><span>經歷時間軸</span><span>專業背景</span></div></div>
+        <div><p class="eyebrow">WHY I DO THIS</p><h2>{kind === 'knowledge' ? journal.aboutTitle : practice.aboutTitle}</h2><p>{kind==='helper'?practice.about:journal.about}</p><div class="credentials"><span>工作方法</span><span>經歷時間軸</span><span>專業背景</span></div></div>
       </section>}
 
       {page === 'faq' && <section class="v02-content faq" data-reveal>
