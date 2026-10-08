@@ -91,3 +91,7 @@ Components are configurable Astro blocks, no heavy frontend framework dependency
 
 ## Practical component batch feat/v2-5-resources-newsletter
 Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
+
+
+## Helper content examples
+`src/data/helper-content.ts` defines distinct demos for bodywork, counseling psychology, coaching and Reiki. These are content profiles, not restrictions on design themes. Never invent credentials or medical claims. `PractitionerCard` and `ServiceFit` are registered reusable blocks.
