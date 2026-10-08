@@ -1,0 +1,30 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='companion')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[6];
+const next=directions[8];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="companion">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-letter-head"><span>A LETTER TO YOU</span><span>一個可以慢慢說話的地方</span></header>
+<section class="lay-letter-hero"><div class="lay-letter-text"><p>親愛的你：</p><h1>這裡有一段時間，<br/><em>留給你慢慢說。</em></h1><p>也許你已經努力很久，也許你還不知道從哪裡開始。你可以先看看這裡的故事、工作方式與約定，再決定是否靠近。</p><a href="#section-a">慢慢了解這個空間 ↓</a></div><img src={image} alt="溫暖午後的空間與茶杯" loading="eager"/></section>
+<section id="section-a" class="lay-letter-story"><span>01 / A QUIET BEGINNING</span><h2>不急著給答案，<br/>先有一個能停下來的地方。</h2><p>真正的陪伴，不是用漂亮的句子替別人決定方向，而是讓選擇與界線被尊重。</p></section>
+<section class="lay-letter-invite"><small>WHEN YOU FEEL READY</small><h2>如果這樣的節奏適合你，<br/>我們再談下一步。</h2><p>此站為示範版型，尚未啟用真實預約服務。</p><a href={all}>看更多網站版型 ↗</a></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
