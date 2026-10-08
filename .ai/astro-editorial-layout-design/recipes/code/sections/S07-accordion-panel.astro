@@ -1,0 +1,34 @@
+---
+/**
+ * S07 accordion-panel — 面板底色 + 左標題 / 右折疊流程（衍生自 06 .cl-process）。
+ * 原生 <details>：鍵盤與螢幕閱讀器可用，＋ 展開時旋轉 45° 成 ×；第一項預設展開。
+ */
+interface Props { label?: string; title?: string; sub?: string; steps?: { t: string; d: string }[] }
+const {
+  label = '02 / WHAT HAPPENS NEXT', title = '合作流程', sub = '用三個清楚步驟取代模糊的「立即開始」。',
+  steps = [{ t: '一般聯絡', d: '先詢問服務、費用與可約時間；不必提供病歷或敏感資訊。' }, { t: '初次會談', d: '說明目前狀況與期待，一起確認服務是否符合需求。' }, { t: '共同決定', d: '討論後續安排，或轉介到更適合的資源。' }],
+} = Astro.props;
+---
+<section class="s07">
+  <div class="inner">
+    <div><p class="label">{label}</p><h2>{title}</h2><p class="sub">{sub}</p></div>
+    <ol>{steps.map((s, i) => (
+      <li><details open={i === 0}><summary><span>{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3><b aria-hidden="true">＋</b></summary><p>{s.d}</p></details></li>
+    ))}</ol>
+  </div>
+</section>
+<style>
+  .s07 { padding-inline: var(--ed-gutter, 4vw); }
+  .inner { max-width: var(--ed-wide, 1260px); margin-inline: auto; background: var(--ed-panel, #e7eeeb); padding: clamp(1.4rem, 4vw, 3rem); display: grid; grid-template-columns: .7fr 1.3fr; gap: 7vw; color: var(--ed-ink, #18313a); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #3d5b68); margin: 0; }
+  h2 { font: 700 clamp(2.2rem, 4.6vw, 4.2rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .6rem 0; }
+  .sub { font-size: .9rem; color: var(--ed-ink-2, #4a5d62); line-height: 1.7; }
+  ol { list-style: none; margin: 0; padding: 0; } li { border-bottom: 1px solid #bfcfca; }
+  summary { display: grid; grid-template-columns: 3rem 1fr 1.5rem; gap: 1rem; align-items: center; min-height: 56px; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; } summary::marker { content: ""; }
+  summary span { font: .8rem var(--ed-mono, monospace); color: var(--ed-accent, #3d5b68); } h3 { margin: 0; font-size: 1.1rem; }
+  summary b { font-weight: 400; color: var(--ed-accent, #3d5b68); transition: transform .2s; } details[open] summary b { transform: rotate(45deg); }
+  details p { margin: 0 0 1rem 4rem; font-size: .95rem; line-height: 1.75; color: var(--ed-ink-2, #435c60); }
+  @media (max-width: 850px) { .inner { grid-template-columns: 1fr; gap: 1.5rem; } }
+  @media (max-width: 480px) { details p { margin-left: 0; } }
+</style>
