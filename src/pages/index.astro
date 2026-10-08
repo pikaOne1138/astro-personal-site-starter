@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL;
       {kinds.map((kind)=><section class="matrix-group">
         <div class="matrix-heading">
           <span>{kind === 'knowledge' ? 'A' : 'B'}</span>
-          <div><h2>{kindMeta[kind].label}</h2><p>{kindMeta[kind].intro}</p></div>
+          <div><h2>{kindMeta[kind].label}</h2><p>{kindMeta[kind].intro}</p>{kind === 'knowledge' && <p class="matrix-interaction-note">四種風格不只有外觀差異，也能進入網站體驗文章搜尋、主題標籤、月份與日期篩選，以及完整文章閱讀。</p>}</div>
         </div>
         <div class="demo-grid">
           {themes.map((theme)=><a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
@@ -99,20 +99,6 @@ const base = import.meta.env.BASE_URL;
         </a>
       </div>
       <p class="microcopy">目前使用六篇教材文章；放大鏡採用建置時產生的全文索引，可搜尋各類靜態頁面的實際內容。文章列表另提供標籤、月份與日期篩選。</p>
-    </section>
-    <section class="matrix-group blocks-entry" aria-labelledby="v2-demo-title">
-      <div class="matrix-heading">
-        <span>E</span>
-        <div><h2 id="v2-demo-title">互動功能 Demo</h2><p>不只有元件展示：直接操作文章搜尋、標籤雲、月份列表和日曆，點選日期找到真實存在的示範文章。</p></div>
-      </div>
-      <div class="demo-grid">
-        <a class="demo-card theme-paper" href={base+'knowledge/paper/articles/'}>
-          <small>KNOWLEDGE / PAPER</small><h3>文章索引站</h3><p>試著搜尋文章關鍵字、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗文章探索 →</b>
-        </a>
-        <a class="demo-card theme-botanical" href={base+'helper/botanical/articles/'}>
-          <small>HELPER / BOTANICAL</small><h3>助人者文章探索</h3><p>使用植感配色與同一套探索功能；文章內頁可操作折疊、Grid、比較表與輪播。</p><b>體驗文章探索 →</b>
-        </a>
-      </div>
     </section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   </main>
