@@ -39,6 +39,20 @@ const base = import.meta.env.BASE_URL;
         <b>進入元件展示站 →</b>
       </a>
     </section>
+    <section class="matrix-group blocks-entry" aria-labelledby="v2-demo-title">
+      <div class="matrix-heading">
+        <span>D</span>
+        <div><h2 id="v2-demo-title">V2 · 互動功能 Demo</h2><p>不只有元件展示：直接操作文章搜尋、標籤雲、月份列表和日曆，點選日期找到真實存在的示範文章。</p></div>
+      </div>
+      <div class="demo-grid">
+        <a class="demo-card theme-paper" href={base+'knowledge/paper/explore/'}>
+          <small>KNOWLEDGE / PAPER</small><h3>文章探索站</h3><p>試著搜尋 Astro、點擊月份與日曆，再打開紙墨風格的文章詳情頁。</p><b>體驗 V2 文章探索 →</b>
+        </a>
+        <a class="demo-card theme-botanical" href={base+'helper/botanical/explore/'}>
+          <small>HELPER / BOTANICAL</small><h3>助人者文章探索</h3><p>使用植感配色與同一套探索功能；文章內頁可操作折疊、Grid、比較表與輪播。</p><b>體驗 V2 跨風格 →</b>
+        </a>
+      </div>
+    </section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   </main>
 </DemoLayout>
