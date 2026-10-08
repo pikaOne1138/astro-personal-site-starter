@@ -16,6 +16,9 @@ Use when the student wants to choose their site design, logo/brand colors, archi
 6. AI developer reads Site Brief and existing registry, writes actual pages/sections using Layout, Editorial composition and Blocks. Keep original layout distinctions; don't only swap colors. Check `astro-ui-craft` and `astro-content-publishing` skills.
 7. Branch + PR, build and preview, verify links, four responsive widths, CSS tokens and keyboard access. User explicitly approves before merge.
 
+## 下一步：匯出獨立 Starter
+當學員已下載 Site Brief JSON，請改讀 `.ai/astro-site-assembly/SKILL.md` 並執行 `node scripts/export-starter.mjs <plan.json> <empty-output-directory>`。它只建立可執行的獨立 Astro 骨架，尚須依 Layout Library 真正移植構圖、補文章與服務內容並通過視覺 QA；不能宣稱選好 12 款之一就已完工。
+
 ## Honest scope
 The planner is a working selection and JSON export UI, **not** a complete Starter export tool. It does not create GitHub repos, deploy a site, auto-apply brand tokens to production pages, or guarantee all 12 homepages have completed inner pages. Those are separate subsequent engineering tasks. The research showcase's demo routes must remain untouched.
 
