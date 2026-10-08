@@ -78,6 +78,7 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 - Existing legacy values in styles are not blanket permission to invent more. A cleanup to full tokenization should be separate from an unrelated UI edit.
 
 ## V2 article exploration and rich-content blocks
+- Version identifiers (V1.5/V2/V3) belong in developer docs, code comments, changelog and Skill references. On public-facing demo pages, describe actual capabilities without exposing internal implementation version numbers.
 - Read `references/article-exploration-v2.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
 - Use the shared `src/data/articles-v2.ts` schema and `src/site-map.ts` routes. Counts, dates, links and matches must derive from real article data.
 - `SiteSearchDialog` provides magnifying-glass full-site **navigation index** popup (site pages, articles, services) with Ctrl+K/⌘K and Esc. It must preserve site kind/theme and display real targets; it is not full-body search.
