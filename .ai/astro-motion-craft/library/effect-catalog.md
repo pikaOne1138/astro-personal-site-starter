@@ -32,3 +32,10 @@
 - PointerMove 僅讀取必要 rect、透過 requestAnimationFrame 合併寫入 CSS vars；pointerleave / cancel 回復。
 - CSS 先用 transform 和 opacity，避免 width/top/left 連續重排。
 - 以一頁中的**單一主要效果**做精緻重點，請勿連續讓所有元件「同一種浮動」。
+
+
+## PR #19：實作狀態補充（即時狀態以程式檔案為準）
+
+獨立 `src/components/effects/` 提供七個可試用的 effect blocks，`src/pages/effects/index.astro` 提供六類實際互動展示。原本標示「待移植」的 Reveal 變體、Stagger、Tilt／Spotlight、Zoom／Pan、Magnetic、UnderlineLink、FAQ 三版型，已有初步可運作的本地 Astro 實現；使用的 CSS 是 `public/effects.css`，**不是直接載入 Manus 原始 CSS**。
+
+`src/data/effects.registry.json` 是效果索引，與 `src/data/blocks.registry.json` 的網站元件總數分離。若後續要融合原有 `FAQ.astro` 或 `Button.astro` 的 API，應比較目前 behavior 與真實頁面的 style，避免重複打包與 CSS 衝突。
