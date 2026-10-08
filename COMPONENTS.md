@@ -156,3 +156,8 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## Editorial design composition recipes
 
 Use `/layouts/recipes/` to explore original Claude recipe IDs H01–H12, S01–S08, L01–L06, R01–R06 and C01–C08. Exact editable Astro component source is in `.ai/astro-editorial-layout-design/recipes/code/`. Do not count these 40 visual compositions as extra functional Blocks or effects. Read the Editorial Skill for context and the visual QA requirements before creating a new layout.
+
+
+## Editorial Composition Recipes（另外 40 款，不是功能 blocks）
+
+專屬入口：`/layouts/recipes/`。元件：`src/components/editorial-recipes/`，分 12 Hero、8 Sections、6 Lists、6 Rhythm、8 CTA/Trust。Claude 原始研究與實例：`.ai/astro-editorial-layout-design/`。先從設計配方決定構圖，再選網站功能 blocks（原本 54 個）、微互動 effects（原本 7 個）。不能把 40 個配方計入既有 54+7 之內，避免學員混淆元件、構圖、版型三個層次。
