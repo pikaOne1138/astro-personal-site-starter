@@ -8,6 +8,10 @@
 - V2 已加入：文章 metadata 搜尋、標籤雲、月份列表、文章日曆、輪播與進階文章元件；完整文章內文全文檢索尚未實作
 - V3 未納入：AI 自動選元件的搜尋/推薦引擎；V1.5 僅提供供 AI 閱讀的 registry 和簡單組裝指引
 
+## 元件展示分類原則
+
+公開 `/blocks/` 以使用情境分類，而非開發版本：導覽與共用、首頁主視覺、內容呈現、文章探索與清單、文章閱讀與排版、服務與信任、完整範例。`SiteSearchDialog` 屬於導覽與共用；`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar` 屬於文章探索；`TableOfContents`、`AuthorBox` 與文章排版元件屬於文章閱讀。元件版本只保留在 registry、文件或註解。
+
 ## 元件名錄
 - **common**：`Button`、`SectionHeading`、`SiteHeader`、`SiteFooter`
 - **hero**：`HeroSplit`、`HeroCentered`、`HeroImage`
