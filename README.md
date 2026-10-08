@@ -152,3 +152,15 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 返回頁首共用元件
 
 `BackToTop.astro` 已加入 `DemoLayout`，適用八款示範網站、文章與展示頁。捲動 420px 後右下角出現箭頭，單擊回到頂端；手機安全邊距、鍵盤可操作，系統減少動態時停用平滑捲動。這是可重用網站元件，登錄在 54 個 blocks 內，不重複計入動效庫。
+
+
+## 第三座展示庫：網站版型庫（Layout Library）
+
+**[/layouts/](https://pikaOne1138.github.io/astro-personal-site-starter/layouts/)** 與 `/blocks/`、`/effects/` 並列，但有不同職責。版型庫是 12 種真正不同的整頁資訊架構、內容順序與閱讀動線，不是舊有四套紙墨／晨光／靜室／植感的換色範例。
+
+- 知識內容 6 款：田野筆記、長文書房、學習實驗室、收藏者目錄、聲音通信、閱讀年鑑。
+- 助人專業 6 款：清晰臨床、溫柔陪伴、身體與節律、實作型教練、共好工作室、信任路徑。
+- 前 10 款由使用者上傳 `astro-ten-site-directions.zip` 的十款 Astro 原型做結構性改寫；後兩款依 Claude 研究與三種風格規格的構想另行設計，不是 Claude 原始碼。
+- 檔案：`src/data/layout-directions.json`（全部資料）、`src/pages/layouts/index.astro`（比較）、`src/pages/layouts/[slug].astro`（12 款各自的首頁 DOM）、`public/layout-gallery.css`、`public/layout-library.css`。新增 AI Skill：`.ai/astro-layout-craft/SKILL.md`。
+- **內容原型非完整正式網站**：實際文章資料庫、預約服務、團隊成員與影音節目需後續設定。方向範例的展示圖片暫以使用者已上架的 Manus 圖片網址提供；未來發給學員的獨立模板應先確定授權並改為自託管。
+- 版型是一個不同層級的概念，**不計入**網站 blocks 與 motion effects 登錄元件數量。
