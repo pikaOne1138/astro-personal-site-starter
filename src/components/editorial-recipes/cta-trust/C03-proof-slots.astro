@@ -1,0 +1,29 @@
+---
+/**
+ * C03 proof-slots — 信任證據的「欄位」：作品／方法／範圍／紀錄，沒有就顯示空槽，不編造。
+ * 每格標明證據類型與狀態（已提供／待提供），畫面上可見。禁止：偽造見證、虛構人數、未驗證的療效數字。
+ * 結構刻意不是等寬卡片：用一條 2px 粗線 + 4 個以 1px 線分隔的欄（同 co 的 .co-how-row 手法）。
+ */
+interface Props { title?: string; slots?: { type: string; v?: string; need: string }[] }
+const {
+  title = '你可以先核對這些',
+  slots = [{ type: '作品', v: '《年度書單》2023–2025 全文公開', need: '連結' }, { type: '方法', v: '每本書的評分標準寫在「如何選書」一文', need: '連結' }, { type: '範圍', v: '', need: '站長填入「我會評／不會評」' }, { type: '紀錄', v: '', need: '更正紀錄頁網址' }],
+} = Astro.props;
+---
+<section class="c03">
+  <h2>{title}</h2>
+  <ul>{slots.map((s) => (
+    <li class:list={{ todo: !s.v }}><span class="k">{s.type}</span><p>{s.v || '尚未提供'}</p>{!s.v && <small>待填：{s.need}</small>}</li>
+  ))}</ul>
+</section>
+<style>
+  .c03 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 1.2rem var(--ed-gutter, 4vw) 0; border-top: 2px solid var(--ed-ink, #222018); color: var(--ed-ink, #222018); }
+  h2 { font: 700 1.3rem/1.4 var(--ed-sans, sans-serif); margin: 0 0 1rem; }
+  /* gap:1px + 背景色 = 線格（避免 li + li 邊框在 scoped CSS 下難以被媒體查詢覆寫） */
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ed-line, #cfc8b8); border-top: 1px solid var(--ed-line, #cfc8b8); }
+  li { background: var(--ed-paper, #f5f1e8); padding: 1rem 1rem 1rem 1.2rem; } li:nth-child(4n+1) { padding-left: 0; }
+  .k { font: .75rem var(--ed-mono, monospace); letter-spacing: .1em; color: var(--ed-accent, #9a3b24); }
+  p { margin: .5rem 0 0; font-size: .95rem; line-height: 1.7; } .todo p { color: var(--ed-ink-2, #57534a); } small { display: block; margin-top: .3rem; font: .75rem var(--ed-mono, monospace); color: var(--ed-accent, #9a3b24); }
+  @media (max-width: 900px) { ul { grid-template-columns: 1fr 1fr; } li:nth-child(2n+1) { padding-left: 0; } li:nth-child(2n) { padding-left: 1.2rem; } }
+  @media (max-width: 520px) { ul { grid-template-columns: 1fr; } li, li:nth-child(2n) { padding-left: 0; } }
+</style>
