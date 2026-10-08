@@ -1,0 +1,47 @@
+---
+/** A shared article index with three genuinely distinct editorial layouts. */
+interface Article {slug:string;title:string;excerpt:string;category:string;tags:string[];publishedAt:string;readingMinutes:number;}
+interface Props {items:Article[];articleBase:string;exploreBase?:string;defaultView?:'list'|'cards'|'grid';controls?:boolean;label?:string;filterable?:boolean;}
+const {items,articleBase,exploreBase=articleBase,defaultView='list',controls=true,label='文章列表',filterable=false}=Astro.props;
+const formats:{id:'list'|'cards'|'grid';label:string;description:string}[]=[
+ {id:'list',label:'列表',description:'依序閱讀文章摘要'},
+ {id:'cards',label:'卡片',description:'較大的摘要卡片'},
+ {id:'grid',label:'網格',description:'密集瀏覽多篇文章'}
+];
+---
+<section class="article-views" data-article-views data-default-view={defaultView} aria-label={label}>
+  {controls&&<div class="article-views__toolbar">
+    <div class="article-views__switch" role="group" aria-label="切換文章排列方式">
+      {formats.map((mode)=><button type="button" class:list={['article-views__button',defaultView===mode.id&&'is-active']} data-article-view={mode.id} aria-pressed={defaultView===mode.id} title={mode.description}>
+        {mode.id==='list'?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6h2M3 12h2M3 18h2"/></svg>:mode.id==='cards'?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 12h18M10 12v8"/></svg>:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>}
+        <span>{mode.label}</span>
+      </button>)}
+    </div>
+  </div>}
+  <div class:list={['article-views__items','article-views__items--'+defaultView]} data-article-items data-view={defaultView}>
+    {items.map((article,i)=><article class="article-views__item" data-article={filterable?true:undefined} data-title={filterable?article.title:undefined} data-excerpt={filterable?article.excerpt:undefined} data-category={filterable?article.category:undefined} data-tags={filterable?article.tags.join('|'):undefined} data-date={filterable?article.publishedAt:undefined}>
+      <span class="article-views__index" aria-hidden="true">{String(i+1).padStart(2,'0')}</span>
+      <div class="article-views__content">
+        <p class="article-views__meta"><span>{article.category}</span><span aria-hidden="true">·</span><time datetime={article.publishedAt}>{article.publishedAt}</time><span aria-hidden="true">·</span><span>{article.readingMinutes} 分鐘</span></p>
+        <h3><a href={articleBase+encodeURIComponent(article.slug)+'/'}>{article.title}</a></h3>
+        <p class="article-views__excerpt">{article.excerpt}</p>
+        <div class="article-views__tags">{article.tags.map(tag=><a href={exploreBase+'?tag='+encodeURIComponent(tag)}>#{tag}</a>)}</div>
+      </div>
+      <a class="article-views__read" href={articleBase+encodeURIComponent(article.slug)+'/'} aria-label={'閱讀文章：'+article.title}>閱讀 <span aria-hidden="true">↗</span></a>
+    </article>)}
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-article-views]').forEach(group=>{
+    const results=group.querySelector<HTMLElement>('[data-article-items]');
+    const buttons=Array.from(group.querySelectorAll<HTMLButtonElement>('[data-article-view]'));
+    if(!results||!buttons.length)return;
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      const mode=button.dataset.articleView;
+      if(!['list','cards','grid'].includes(mode||''))return;
+      results.dataset.view=mode;
+      results.className='article-views__items article-views__items--'+mode;
+      buttons.forEach(b=>{const active=b===button;b.setAttribute('aria-pressed',String(active));b.classList.toggle('is-active',active)});
+    }));
+  });
+</script>
