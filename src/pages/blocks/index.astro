@@ -58,17 +58,17 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     </div>
   </header>
   <section id="common" class="ab-category">
-    <h2 class="ab-category-title">01 / 共用架構</h2><p class="ab-category-intro">任何個人網站都能使用的入口、導覽與頁尾。</p>
+    <h2 class="ab-category-title">01 / 導覽與共用元件</h2><p class="ab-category-intro">適用：所有網站的導覽、全站搜尋、共用按鈕、區塊標題與頁尾。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SiteHeader</strong><span>頁首導覽</span></div><SiteHeader brand="個人的文字宇宙" cta={{label:'聯絡我',href:'#professional'}} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Button</strong><span>主要按鈕 / 外框按鈕</span></div><div style="display:flex;gap:12px;flex-wrap:wrap"><Button href="#hero">主要行動 →</Button><Button href="#hero" variant="outline">次要行動</Button></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SectionHeading</strong><span>單元標題</span></div><SectionHeading eyebrow="DISCOVER" title="從這裡，開始探索。" description="讓訪客快速認識主題、找到值得閱讀的內容。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SiteFooter</strong><span>頁尾導覽</span></div><SiteFooter brand="個人的文字宇宙" links={[{label:'關於',href:'#professional'},{label:'文章',href:'#blog'}]} /></div>
     <div class="ab-demo">
-          <div class="ab-demo-label"><strong>SiteSearchDialog</strong><span>放大鏡／全站搜尋／Ctrl+K 或 ⌘K</span></div>
-          <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
-          <SiteSearchDialog kind="knowledge" theme="paper" />
-        </div>
-      </section>
+      <div class="ab-demo-label"><strong>SiteSearchDialog</strong><span>放大鏡／全站搜尋／Ctrl+K 或 ⌘K</span></div>
+      <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
+      <SiteSearchDialog kind="knowledge" theme="paper" />
+    </div>
+  </section>
   <section id="hero" class="ab-category">
     <h2 class="ab-category-title">02 / 首頁主視覺</h2><p class="ab-category-intro">可選左右圖文、置中標題或滿版色塊主視覺。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>HeroSplit</strong><span>左右圖文，支援反轉</span></div><HeroSplit title="讓專業與故事，有個自己的家。" description="建立一個清楚、溫柔，也真正屬於你的個人網站。" href="#professional" /></div>
@@ -76,7 +76,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>HeroImage</strong><span>滿版主視覺</span></div><HeroImage title="每一次理解，都從好奇開始。" description="把日常觀察化為可以重訪的故事。" href="#blog" /></div>
   </section>
   <section id="content" class="ab-category">
-    <h2 class="ab-category-title">03 / 內容區塊</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
+    <h2 class="ab-category-title">03 / 內容呈現與引導</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ImageText</strong><span>圖片與文字</span></div><ImageText title="設計不是裝飾，而是讓內容被理解。" description="透過留白、字體與一致的視覺語言，讓讀者更容易找到下一步。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>FeatureGrid</strong><span>兩欄／三欄</span></div><FeatureGrid items={[{title:'清楚的資訊',description:'讀者一眼就知道這裡提供什麼。'},{title:'舒服的閱讀',description:'字體、對比與行距讓閱讀輕鬆。'},{title:'自然的行動',description:'不催促，卻讓下一步很容易。'}]} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Stats</strong><span>成果數字</span></div><Stats items={[{value:'12+',label:'內容分類'},{value:'80+',label:'篇閱讀筆記'},{value:'4',label:'種配色選擇'}]} /></div>
