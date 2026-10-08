@@ -104,3 +104,8 @@ npm run build
 ### 社群圖示與連結
 
 `SocialLinks.astro` 可放在頁尾、個人介紹、聯絡頁或社群入口。支援 Instagram、Facebook、Threads、YouTube、LINE、GitHub、LinkedIn、X、TikTok、Pinterest、Discord、Telegram、Spotify、Email、電話、網站與 RSS。圖示由 Simple Icons 固定 v16 版本的 SVG CDN 提供；通用信封／電話／網站使用內嵌 SVG。未填連結不顯示，無須帳號或 JS 追蹤。正式上線時確認外部 CDN 可用性和各品牌商標政策；可改為自託管 SVG。
+
+
+### 元件補完：Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress
+
+文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 此分支元件庫總數 46 個，新增的積木均在功能分類展示，實際網站亦有示範入口；正式部署需依真正內容配置第三方服務。

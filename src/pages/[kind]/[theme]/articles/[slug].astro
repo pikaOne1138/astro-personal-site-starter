@@ -12,6 +12,10 @@ import ArticleGrid from '../../../../components/blocks/ArticleGrid.astro';
 import ArticleComparison from '../../../../components/blocks/ArticleComparison.astro';
 import ContentCarousel from '../../../../components/blocks/ContentCarousel.astro';
 import MediaEmbed from '../../../../components/blocks/MediaEmbed.astro';
+import Breadcrumbs from '../../../../components/blocks/Breadcrumbs.astro';
+import ArticleNavigation from '../../../../components/blocks/ArticleNavigation.astro';
+import ArticleShare from '../../../../components/blocks/ArticleShare.astro';
+import ReadingProgress from '../../../../components/blocks/ReadingProgress.astro';
 
 export function getStaticPaths() { return allArticlePaths(); }
 interface Props { kind: Kind; theme: Theme; article: {slug:string; title:string}; }
@@ -20,16 +24,23 @@ const k = kindMeta[kind]; const t = themeMeta[theme];
 const base = import.meta.env.BASE_URL;
 const root = `${base}${kind}/${theme}/`;
 const meta=articlesV2.find(a=>a.slug===article.slug);
+const position=articlesV2.findIndex(item=>item.slug===article.slug);
+const previous=position>=0&&position<articlesV2.length-1?articlesV2[position+1]:undefined;
+const next=position>0?articlesV2[position-1]:undefined;
+const articleHref=(slug:string)=>root+'articles/'+slug+'/';
+const articleUrl=new URL(articleHref(article.slug),Astro.site??Astro.url).href;
 const related=articlesV2.filter(a=>a.slug!==article.slug && a.tags.some(t=>meta?.tags.includes(t))).slice(0,3).map(a=>({title:a.title,excerpt:a.excerpt,href:root+'articles/'+a.slug+'/'}));
 ---
 <DemoLayout title={`${article.title} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
   <link rel="stylesheet" href={base+"blocks-v2.css"}/>
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current="articles" />
+    <ReadingProgress />
     <main class="v02-article">
+      <Breadcrumbs items={[{label:"首頁",href:root},{label:"文章",href:root+"articles/"},{label:article.title}]} />
       <header data-reveal><p class="eyebrow">{meta?.category ?? "文章"} · {meta?.readingMinutes ?? 7} MIN READ</p><h1>{article.title}</h1><p class="v02-deck">文章頁的工作不是炫技，而是讓讀者願意一直讀下去，並且知道讀完可以往哪裡走。</p><div class="v02-byline">工作坊示範文章 · 發布日期 {meta?.publishedAt ?? "未設定"} · One Studio</div></header>
       {meta && <div class="v2-article-meta-links"><a href={root+'explore/?date='+meta.publishedAt}>查看同日文章 · {meta.publishedAt}</a>{meta.tags.map(tag=><a href={root+'explore/?tag='+encodeURIComponent(tag)}>#{tag}</a>)}</div>}
-      <article data-reveal>
+      <article data-reading-body data-reveal>
         <p class="v02-lead">首頁是大廳，不是整棟房子。這句話同時也是 v0.2 從 Landing Page 原型走向真正網站架構的核心。</p>
         <h2>首頁只負責讓人知道下一步</h2>
         <p>當文章、About、服務、FAQ 全部塞在首頁時，網站很容易看起來像一張很長的銷售頁。把詳細資訊拆成真正的頁面後，首頁反而可以更有呼吸感。</p>
@@ -58,6 +69,8 @@ const related=articlesV2.filter(a=>a.slug!==article.slug && a.tags.some(t=>meta?
         {articlesV2.filter(a=>a.slug!==article.slug).slice(0,4).map(item=><article><h4><a href={root+'articles/'+item.slug+'/'}>{item.title}</a></h4><p>{item.excerpt}</p><p><a href={root+'explore/?tag='+encodeURIComponent(item.tags[0])}>#{item.tags[0]} →</a></p></article>)}
       </ContentCarousel>
       <RelatedArticles articles={related}/>
+      <ArticleShare url={articleUrl} title={article.title}/>
+      <ArticleNavigation previous={previous?{title:previous.title,href:articleHref(previous.slug)}:undefined} next={next?{title:next.title,href:articleHref(next.slug)}:undefined} indexHref={root+"articles/"}/>
       <nav class="v02-postnav"><a href={root+"explore/"}>← 搜尋與探索文章</a><a href={`${root}about/`}>認識作者 →</a></nav>
     </main>
   </div>

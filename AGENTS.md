@@ -30,3 +30,7 @@ Use `src/data/blocks.registry.json` (41 blocks), `COMPONENTS.md`, and `.ai/astro
 
 ## Shared social icons
 `SocialLinks.astro` is the canonical icon + platform link component (Registry 42), also used by `ContactActions`. The component gallery uses preview-only icons with no fake profile URLs. Real site footers use verified project GitHub and project website links, not fabricated social accounts. Never replace configured profile URLs with brand home pages, and preserve link labels, social platform trademark guidelines and theme tokens.
+
+
+### feat/v2-5-reading-sharing
+Added Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress. 文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 Docs, registry and gallery must stay aligned; do not merge without user approval.

@@ -866,5 +866,85 @@
       "botanical"
     ],
     "version": "V2.5"
+  },
+  {
+    "id": "breadcrumbs",
+    "name": "Breadcrumbs",
+    "category": "common",
+    "path": "src/components/blocks/Breadcrumbs.astro",
+    "keywords": [
+      "Breadcrumbs"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "article-navigation",
+    "name": "ArticleNavigation",
+    "category": "article",
+    "path": "src/components/blocks/ArticleNavigation.astro",
+    "keywords": [
+      "ArticleNavigation"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "article-share",
+    "name": "ArticleShare",
+    "category": "article",
+    "path": "src/components/blocks/ArticleShare.astro",
+    "keywords": [
+      "ArticleShare"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
+  },
+  {
+    "id": "reading-progress",
+    "name": "ReadingProgress",
+    "category": "article",
+    "path": "src/components/blocks/ReadingProgress.astro",
+    "keywords": [
+      "ReadingProgress"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2.5"
   }
 ]
