@@ -137,3 +137,7 @@
 @media(max-width:1050px){.v02-nav__inner{gap:16px}.v02-links{gap:14px}.v02-links a{font-size:14px}}
 @media(max-width:850px){.v02-nav__social{display:none}.v02-nav__utilities{gap:4px}}
 @media(max-width:430px){.v02-nav__inner{gap:6px}.v02-actions{gap:5px}.v02-actions .v02-cta{padding-inline:10px}}
+
+/* Single-color brand silhouettes follow each design system's text/accent tone. */
+.social-links__brand-icon{display:block;flex:none;width:20px;height:20px;background:currentColor;-webkit-mask-image:var(--social-mask);mask-image:var(--social-mask);-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.social-links--sm .social-links__brand-icon{width:18px;height:18px}
