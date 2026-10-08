@@ -1,0 +1,30 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='clinician')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[5];
+const next=directions[7];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="clinician">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-clin-head"><strong>CLEAR PRACTICE</strong><nav><a href="#section-a">服務方式</a><a href="#section-b">常見疑問</a></nav><span>PROFESSIONAL PRACTICE</span></header>
+<section class="lay-clin-hero"><div><small>INFORMATION BEFORE COMMITMENT</small><h1>先清楚了解，<br/>再決定是否開始。</h1><p>我們把服務內容、範圍、專業資格與諮詢程序都說清楚，讓每個選擇有充分資訊。</p><a href="#section-a">了解服務方式 ↗</a></div><img src={image} alt="明亮的專業會談空間" loading="eager"/></section>
+<section class="lay-clin-facts" id="section-a"><h2>服務的基本資訊</h2><dl><div><dt>服務類型</dt><dd>個別諮詢／示範</dd></div><div><dt>正式資格</dt><dd>需由服務者核實並公開</dd></div><div><dt>收費與時長</dt><dd>應在預約前確認</dd></div><div><dt>服務界線</dt><dd>不取代緊急醫療協助</dd></div></dl></section>
+<section class="lay-clin-fit" id="section-b"><h2>這項服務可能適合誰？</h2><div><article><h3>可能適合</h3><p>想了解服務方式、合作目標及專業界線的人。</p></article><article><h3>需要其他資源</h3><p>處於立即危機或需要緊急救援者，應優先尋求適當的專業支援。</p></article></div></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
