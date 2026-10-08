@@ -14,7 +14,7 @@
 - `ArticleAccordion` — native accessible `details/summary` foldout with slot.
 - `ArticleList` — numbered or bulleted list based on items.
 - `ArticleGrid` — two-/three-column layouts for side-by-side explanations, using slots.
-- `ArticleCallout` — note / tip / warning, communicates meaning in text and border not color alone.
+- `ArticleCallout` — note / tip / warning in an **editorial footnote/sidenote** treatment: subtle top/bottom rules, clear hierarchy, no generic gray filled rounded card or thick colored left rail. Meaning must be conveyed in text, not color alone.
 - `ArticleComparison` — captioned comparison tables using headers and rows.
 - `RelatedArticles` — genuine internal related-post links.
 - `ContentCarousel` — horizontal scroll-snap cards with actual next/previous controls, keyboard scrolling and reduced-motion handling.
