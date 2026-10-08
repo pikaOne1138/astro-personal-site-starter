@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist --root-selector main && node scripts/verify-v2-8-output.mjs",
+    "build": "astro build && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/verify-v2-8-output.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
