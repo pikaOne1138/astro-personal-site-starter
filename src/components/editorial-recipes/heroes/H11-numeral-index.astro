@@ -1,0 +1,43 @@
+---
+/**
+ * H11 numeral-index — [NEW] 以「巨大數字／年份」當主視覺，下接一排可掃讀的計數索引；無圖。
+ * 適用：年鑑、年度回顧、紀錄型網站（資料本身就是視覺）。十款原始碼中沒有此構圖。
+ * 數字用 font-variant-numeric: tabular-nums；數字是裝飾性大形，aria-hidden，真實標題用 h1。
+ */
+interface Props { label?: string; numeral?: string; title?: string; deck?: string; stats?: { n: string; k: string }[]; cta?: string; href?: string }
+const {
+  label = 'THE READING ALMANAC', numeral = '2026', title = '這一年，我讀完了這些書。',
+  deck = '一年的閱讀按月份排列：每個月一個主題、一本最想留下來的書，以及一句讀完後的判斷。',
+  stats = [{ n: '112', k: '本讀完' }, { n: '12', k: '個月主題' }, { n: '9', k: '本重讀' }, { n: '3', k: '本放棄' }],
+  cta = '從一月開始翻', href = '#months',
+} = Astro.props;
+---
+<section class="h11">
+  <p class="label">{label}</p>
+  <div class="num" aria-hidden="true">{numeral}</div>
+  <div class="row">
+    <h1>{title}</h1>
+    <div class="side">
+      <p>{deck}</p>
+      <a href={href}>{cta} <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+  <dl class="stats">{stats.map((s) => <div><dt>{s.k}</dt><dd>{s.n}</dd></div>)}</dl>
+</section>
+<style>
+  .h11 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(2rem, 5vw, 3.5rem) var(--ed-gutter, 4vw) 0; color: var(--ed-ink, #222018); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .14em; color: var(--ed-accent, #9a3b24); margin: 0; }
+  .num { font: 400 clamp(7rem, 30vw, 28rem)/.82 var(--ed-serif, Georgia, serif); letter-spacing: -.04em; font-variant-numeric: tabular-nums; margin: .3rem 0 0 -.04em; color: transparent; -webkit-text-stroke: 2px var(--ed-ink, #222018); user-select: none; }
+  .row { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1.5rem, 5vw, 5rem); align-items: end; border-top: 2px solid var(--ed-ink, #222018); padding-top: 1.5rem; }
+  h1 { font: 400 clamp(2.2rem, 4.6vw, 4.2rem)/1.2 var(--ed-serif, Georgia, serif); margin: 0; text-wrap: balance; }
+  .side p { margin: 0 0 1rem; line-height: 1.85; color: var(--ed-ink-2, #57534a); max-width: 30em; }
+  .side a { display: inline-flex; align-items: center; min-height: 44px; font: .75rem var(--ed-mono, monospace); color: var(--ed-accent, #9a3b24); border-bottom: 1px solid currentColor; text-decoration: none; }
+  .side a span { margin-left: .6rem; }
+  /* gap:1px + 背景色 = 線格；任何欄數都自動有分隔線，不必用 `div + div` 的邊框（Astro scoped 後 `+` 會多一個屬性選擇器、特異性更高，媒體查詢很難覆寫） */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ed-line, #cfc8b8); margin: clamp(2rem, 5vw, 3.5rem) 0 0; border-top: 1px solid var(--ed-line, #cfc8b8); }
+  .stats div { background: var(--ed-paper, #f5f1e8); padding: 1rem 1rem 1.2rem 1.2rem; display: flex; flex-direction: column-reverse; gap: .2rem; }
+  .stats div:nth-child(4n+1) { padding-left: 0; }
+  dt { font: .75rem var(--ed-mono, monospace); color: var(--ed-ink-2, #57534a); }
+  dd { margin: 0; font: 400 clamp(2rem, 4vw, 3.4rem)/1 var(--ed-serif, Georgia, serif); font-variant-numeric: tabular-nums; }
+  @media (max-width: 760px) { .row { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } .stats div:nth-child(2n+1) { padding-left: 0; } .stats div:nth-child(2n) { padding-left: 1.2rem; } }
+</style>
