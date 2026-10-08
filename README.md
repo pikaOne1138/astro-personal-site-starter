@@ -2,38 +2,74 @@
 
 工作坊研究成果的可執行原型：**2 種內容架構 × 3 種視覺人格 = 6 個 Demo**。
 
-## Demo routes
+## Live demo
 
-- `/knowledge/paper/`
-- `/knowledge/morning/`
-- `/knowledge/studio/`
-- `/helper/paper/`
-- `/helper/morning/`
-- `/helper/studio/`
+首頁：
+- https://pikaOne1138.github.io/astro-personal-site-starter/
 
-首頁 `/` 是六種 Demo 的比較入口。
+### A｜知識／部落格
 
-## Design system
+- Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/paper/
+- Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/morning/
+- Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/studio/
 
-- **Paper & Ink 紙墨**：編輯感、襯線、細線、紙張感
-- **Morning Light 晨光**：暖奶油、大圓角、柔光、有機感
-- **Quiet Studio 靜室**：大量留白、精準格線、單一深綠強調
+### B｜助人者／個人專業服務
 
-## AI instructions
+- Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/helper/paper/
+- Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/helper/morning/
+- Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/helper/studio/
+
+## Architecture
+
+這不是 6 套互不相干的網站，而是：
+
+- **2 種內容架構**
+  - Knowledge / Blog：內容探索、閱讀、分類、訂閱
+  - Helper / Professional：信任、服務、流程、FAQ、預約 CTA
+- **3 種視覺人格**
+  - **Paper & Ink 紙墨**：編輯感、襯線、細線、紙張感
+  - **Morning Light 晨光**：暖奶油、大圓角、柔光、有機感
+  - **Quiet Studio 靜室**：大量留白、精準格線、單一深綠強調
+
+6 個公開網址由同一個 Astro 元件與資料層產生，方便工作坊示範「結構 × 視覺系統」的組合，而不是維護 6 份獨立程式碼。
+
+## AI design brain
+
+Repo 內建：
 
 - `AGENTS.md`
 - `.ai/astro-ui-craft/SKILL.md`
 - `.ai/astro-ui-craft/references/`
+- `.ai/astro-ui-craft/references/raw-research/`
 
-Skill references 保留本次多模型研究與收斂紀錄，讓後續 AI 修改網站時能追溯設計依據。
+Skill 的任務是把 UI 生成限制在研究過的資訊架構、design tokens、CTA、微動畫、RWD、Accessibility 與 Astro 實作邊界內，避免產生典型 AI landing page。
+
+## Workshop flow
+
+1. 選網站任務：Knowledge 或 Helper
+2. 選視覺人格：Paper / Morning / Studio
+3. 改品牌資料、文案與 CTA
+4. AI 依 Skill 精修 UI，不任意擴大功能範圍
+5. 本地預覽 / build
+6. push main
+7. GitHub Actions 自動發布 GitHub Pages
 
 ## Local
 
 ```bash
 npm install
 npm run dev
+npm run build
 ```
 
 ## Deploy
 
-推到 `main` 後由 `.github/workflows/deploy-pages.yml` 發布到 GitHub Pages。
+推到 `main` 後，由 `.github/workflows/deploy-pages.yml` 自動 build 並發布到 GitHub Pages。
+
+目前 GitHub Pages workflow 已成功完成部署。
+
+## Project goal
+
+這個 repo 的目標不是做 SaaS、CRM 或完整商業後台，而是提供零程式背景學員一個：
+
+**可理解、可改、可部署、UI 有設計品質的 Astro 個人網站起點。**
