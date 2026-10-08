@@ -43,7 +43,8 @@
 | **NewsletterSignup** | Manus James Clear/Benedict/ONE、§4.1；Arena A 06；Claude/Mistral | 現有假表單及 CTA 示範 | **P1** | 外部可用訂閱服務或明確外連；成功／錯誤狀態由服務提供；未配置時不顯示假送出 |
 | **CredentialList / ProfessionalProfile** | Manus Orka/Beachfront/Wyatt；Arena B 06 | `AboutProfile` 偏故事，無標準資格欄 | **P1** | 可放姓名、專長、專業資格／有效地區、工作方式與真實證照；不承諾療效 |
 | **ServiceFit / ServiceFacts** | Manus §3.2／§4.2 適配、費用、遠距；Arena B 服務詳頁 | 部分敘述散落在頁面 | **P1** | 清楚區隔適合／不適合、線上／實體、費用與流程；不以空見證補位 |
-| **MediaEmbed** | Manus PanSci/ONE/Deem、§4.1；Arena 媒體元件模式 | 無共用安全影音嵌入 | **P1** | YouTube no-cookie／外部影片清楚標示、比例 RWD、lazy loading、可存取標題 |
+| **MediaEmbed** | Manus PanSci/ONE/Deem、§4.1；Arena 媒體元件模式 | 無共用安全影音嵌入 | **P1 / V2.5 必做** | YouTube no-cookie／外部影片清楚標示、比例 RWD、lazy loading、可存取標題 |
+| **TrustInfo / TrustFooter** | Manus Orka/Wyatt/Beachfront、§3.2 與 §4.2 信任、證照、服務界線、非緊急聲明；Arena B 06 專業信任區 | 現有 Testimonial/AboutProfile 不能取代可驗證的信任資訊 | **P0 / V2.5 必做** | 展示真實可配置的資格、專業身份、執業／服務地區、服務方式、費用政策、聯絡與隱私連結；內容未設定不虛構；危機／求助資訊須依地區與專業情境設定，不硬編美國號碼 |
 | **ShareBar** | Manus A Cup of Jo／PanSci、§3.6；Arena 文章頁 | 無可用分享元件 | **P1** | 複製網址後有成功提示；社群分享使用正確 URL 編碼，鍵盤可達 |
 | **TopicCollection / Pagination** | Manus PanSci／StackBlitz；Arena A Content Collections／主題頁 | 類別資料模型仍示範化 | **P1/基礎設施** | 真實分類 slug 頁、分頁導航與 404；大量文章無須一次全載 |
 | **ReadingProgress / SeriesNavigation** | Manus §3.6；Arena 05、06 文章頁 | 缺通用元件 | **P2** | 進度依文章內容計算、無跳動；系列文可上下導覽，只有相關內容才出現 |
@@ -51,13 +52,31 @@
 | **TherapistFilter / MiniMatchQuiz** | Manus Orka，Arena Mel Noakes | 單人網站暫不需要 | **P3／延後** | 只有多專業者／真實媒合需求才做；不採集敏感個資 |
 | **評論、會員／金流、假即時預約** | Manus §4 不建議；Arena 明確排除 | 不應納入基本工作坊 | **不做** | 一律用可替換外部系統，不自建需要管理後端的服務 |
 
-## 4. 建議 V2.5 實作範圍（**限 8 組，不盲目膨脹**）
+## 4. 建議 V2.5 實作範圍（**10 組核心能力、分批實作**）
 
-**第一批四組（P0）**：`MobileMenu`、`BookingLink/Embed`、`ContactActions`、`PricingDetails`。優先解決目前 Demo 中明顯無法使用的「導覽、預約、聯絡、費用」。
+V2.5 的完整範圍與單批開發量必須區分。**媒體嵌入、可信任的資訊呈現都是核心功能，不能因為縮減第一批施工量而被排出版本。**
 
-**第二批四組（P1）**：`Breadcrumbs + PostNavigation`、`NewsletterSignup`、`ProfessionalProfile/CredentialList`、`ShareBar`。若時間不足，先用真實功能的四組完成驗收，不為衝元件數量硬加。
+**第一批（P0：6 組）**：
+1. `MobileMenu` — 真正可使用的手機選單。
+2. `BookingLink/Embed` — 明確的外部預約／報名入口。
+3. `ContactActions` — LINE、Email、電話及未配置隱藏。
+4. `PricingDetails` — 費用、時長、形式與細則。
+5. `TrustInfo / TrustFooter` — 專業身分、真實資格、服務界線、隱私／非緊急聲明；不得以假見證替代。與 CredentialList 結合，避免重複造輪子。
+6. `MediaEmbed` — 響應式 YouTube／音訊／Podcast 嵌入，外部來源、隱私與可及性可設定。至少先提供可運作的 YouTube 與音訊基本方案，其他平台採明確 fallback。
 
-其餘 `MediaEmbed`、`TopicCollection/Pagination` 列下一輪；`ReadingProgress`、`ImageGallery` 可選。新增元件請同步 registry、`COMPONENTS.md`、Skill 的 `references`、元件庫展示，以及兩類實站真正能操作的 demo。
+**第二批（P1：4 組）**：
+7. `Breadcrumbs + PostNavigation` — 文章索引與上下篇。
+8. `NewsletterSignup` — 真正可用的外部訂閱串接／替代連結。
+9. `ProfessionalProfile/CredentialList` — 具備可核實資格、專長與所在地的個人／團隊元件（與 TrustInfo 共享資料定義）。
+10. `ShareBar` — 複製網址與分享入口。
+
+**下階段（非本批核心）**：`TopicCollection/Pagination` 併入 V2.8 內容架構；`ReadingProgress`、`ImageGallery` 可依需求選配；複雜媒體 feed／自動播放、第三方會員／金流不做。
+
+**兩項不可忽略的驗收**：
+- `MediaEmbed` 必須在**知識／部落格文章**與**助人者服務或資源頁**各有一個可播放／可開啟的實際 Demo；影片 16:9 RWD、`title`、lazy loading、隱私保護模式或明確外連 fallback，無法嵌入時不顯示假播放器。
+- `TrustInfo / TrustFooter` 必須在助人者 Demo 真正呈現資格來源、服務地區、服務方式、費用／取消政策與隱私／非緊急聯絡界線的資料欄位；未知內容明確不發布，避免虛構證照、數字、合作夥伴、個案見證或求助電話。
+
+新增元件同步 registry、`COMPONENTS.md`、Skill 的 `references`、元件庫的功能分類，以及至少一個真正能操作的完整站 Demo；維持四種既有 design tokens，不使用開發版本號作訪客文案。
 
 ## 5. 工程底座是 V2.8，不只是「元件數」
 
@@ -86,13 +105,13 @@
 - 助人者案例的證照、費用、療效、個資與緊急求助資訊需依實際專業與所在地驗證；不要照貼美國 911／988 到台灣站，亦不要把台灣號碼寫成所有助人者通用。
 - 研究案例本身的圖片、商業字體、品牌字樣與原文需尊重授權。
 
-## 8. 下一個 PR 的驗收清單
+## 8. 下一個實作 PR 的驗收清單
 
-- [ ] PR 的範圍先限 MobileMenu、BookingLink/Embed、ContactActions、PricingDetails 四組
+- [ ] V2.5 第一批包含 MobileMenu、BookingLink/Embed、ContactActions、PricingDetails、TrustInfo/TrustFooter、MediaEmbed 六組，可在同一 PR 分 commit 驗證，不得省略後兩組
 - [ ] 每組在 `/blocks/` 可找到**依功能分類**的展示
 - [ ] 兩類實站都有真實入口，至少紙墨知識＋植感助人者做完整手機驗收
 - [ ] 手機 375/390px 選單不遮內容，背景不透字，焦點與 Esc 正常
-- [ ] 外部表單／LINE／電話提供明確網址配置與空值退場策略
+- [ ] 外部表單／LINE／電話提供明確網址配置與空值退場策略；MediaEmbed 在兩類 Demo 實際可使用；TrustInfo 不虛構證照、見證或地區求助資訊
 - [ ] 延續既有 theme tokens、`prefers-reduced-motion`、BASE_URL
 - [ ] 檢查 `npm run build` 與 GitHub Pages PR Preview Live URL
 - [ ] 更新 `AGENTS.md`／`SKILL.md`／`references`、registry、`COMPONENTS.md`
