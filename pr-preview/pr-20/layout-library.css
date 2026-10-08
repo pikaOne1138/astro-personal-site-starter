@@ -116,3 +116,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .lay-coach-art{min-height:300px}.lay-coach-hero>div:first-child{padding:34px 0}.lay-community-hero img{max-width:480px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Astro conditional variants use a real wrapper rather than JSX fragments. Keep each layout's direct CSS grid/flex children unaffected. */
+.lay-variant{display:contents}
