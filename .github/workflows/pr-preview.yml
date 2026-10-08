@@ -1,0 +1,65 @@
+name: PR Preview (GitHub Pages)
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Existing pull request number to preview (manual rerun)'
+        required: true
+        type: number
+
+# Serialise writes to the same gh-pages branch, including production publishes.
+concurrency:
+  group: github-pages-content
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  preview:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR source
+        if: github.event.action != 'closed'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/pull/{0}/head', inputs.pr_number) || github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Setup Node
+        if: github.event.action != 'closed'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: npm install --no-audit --no-fund
+      - name: Build with PR-specific Astro base
+        if: github.event.action != 'closed'
+        env:
+          PR_NUMBER: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
+        run: |
+          export ASTRO_BASE_PATH="/${{ github.event.repository.name }}/pr-preview/pr-${PR_NUMBER}"
+          echo "Building with ASTRO_BASE_PATH=${ASTRO_BASE_PATH}"
+          npm run build
+      - name: Deploy or remove PR preview
+        id: deploy
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./dist/
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pr-number: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
+          action: ${{ github.event.action == 'closed' && 'remove' || 'deploy' }}
+          wait-for-pages-deployment: false
+          comment: true
+          qr-code: false
+      - name: Preview link in workflow summary
+        if: github.event.action != 'closed'
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview-url }}
+        run: echo "Preview URL: ${PREVIEW_URL}" >> "$GITHUB_STEP_SUMMARY"
