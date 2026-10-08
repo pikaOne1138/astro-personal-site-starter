@@ -152,3 +152,7 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 學生參考 `/layouts/`：十二種版型原型，六種知識內容及六種助人專業。資料 `src/data/layout-directions.json`；預覽頁 `src/pages/layouts/[slug].astro`；樣式 `public/layout-library.css`，不依賴原本四套主題切換。新增構圖 Skill `.ai/astro-layout-craft/SKILL.md`；先挑資訊結構，再由 `/blocks/` 挑功能區塊、`/effects/` 挑互動效果。
 
 注意：Manus 十款版型按照原 ZIP 各自讀取架構後**重新整合**，不宣稱和原 Astro 7+Tailwind 專案逐行相同。Claude 二款為根據研究的延伸設計。12 款的首頁原型不等於 12 個完整多頁網站，也不在 Block Registry 另計元件。
+
+## Editorial design composition recipes
+
+Use `/layouts/recipes/` to explore original Claude recipe IDs H01–H12, S01–S08, L01–L06, R01–R06 and C01–C08. Exact editable Astro component source is in `.ai/astro-editorial-layout-design/recipes/code/`. Do not count these 40 visual compositions as extra functional Blocks or effects. Read the Editorial Skill for context and the visual QA requirements before creating a new layout.
