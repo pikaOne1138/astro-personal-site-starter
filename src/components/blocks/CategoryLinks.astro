@@ -1,0 +1,5 @@
+---
+interface Props {items:{label:string;href:string}[];active?:string;}
+const {items,active}=Astro.props;
+---
+<nav class="ab-categories" aria-label="文章分類">{items.map(x=><a aria-current={active===x.label?'page':undefined} href={x.href}>{x.label}</a>)}</nav>
