@@ -147,3 +147,8 @@ New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. 
 ### 獨立特效庫（可操作 Demo）
 
 `/effects/` 是元件庫 `/blocks/` 旁的特效展示站。七個可重複運用的 Astro effects，涵蓋七種 Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、Magnetic Button、三種動態底線及可調 FAQ；依六類 Demo 排列。能切換紙墨／晨光／靜室／植感，及關閉／輕柔／鮮明動態，進場與群組有重播按鈕。效果和網站內容元件**分開計數**：網站元件仍由 `blocks.registry.json` 決定，特效使用 `effects.registry.json`，源碼 `src/components/effects/`，CSS `public/effects.css`。Motion Skill 已加入這套元件與 Manus 參考庫的整合指引，預覽建置與實際操作須分別驗收。
+
+
+### 返回頁首共用元件
+
+`BackToTop.astro` 已加入 `DemoLayout`，適用八款示範網站、文章與展示頁。捲動 420px 後右下角出現箭頭，單擊回到頂端；手機安全邊距、鍵盤可操作，系統減少動態時停用平滑捲動。這是可重用網站元件，登錄在 54 個 blocks 內，不重複計入動效庫。
