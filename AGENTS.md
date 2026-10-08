@@ -2,6 +2,8 @@
 
 Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and use its references as the design authority.
 
+For GitHub PRs, previews, deployment, visual verification, or merging: **read `.ai/astro-pr-preview/SKILL.md` first**. Never claim a preview is deployed or merge a website PR without confirming the workflow and explicit user approval.
+
 Project goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
