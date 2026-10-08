@@ -190,3 +190,17 @@
 .fx-system-guide summary:focus-visible,.fx-system-guide a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:700px){.fx-system-guide__grid{grid-template-columns:1fr}.fx-system-guide__details>summary,.fx-system-guide__body{padding-inline:16px}}
 @media(prefers-reduced-motion:reduce){.fx-system-guide__details>summary>span:last-child{transition:none}}
+
+
+/* Compact OS help accordion: only a single row while collapsed. Expanded guidance remains two columns. */
+.fx-system-guide{margin:0 0 20px}
+.fx-system-guide__details>summary{min-height:52px;padding:11px 18px}
+.fx-system-guide__details>summary strong{font-size:15px}
+.fx-system-guide__details>summary small{font-size:11px;margin-top:1px}
+.fx-system-guide__body{padding:12px 18px 16px}
+.fx-system-guide__body>p{margin-bottom:12px;font-size:13px}
+.fx-system-guide__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.fx-system-guide__grid>div{padding:10px 0 12px}
+.fx-system-guide__grid h3{font-size:16px;margin-bottom:4px}
+.fx-system-guide__grid p{font-size:12px;line-height:1.65;margin-bottom:5px}
+@media(max-width:650px){.fx-system-guide__grid{grid-template-columns:1fr}.fx-system-guide__details>summary{padding:11px 14px}.fx-system-guide__body{padding:12px 14px 16px}}
