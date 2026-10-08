@@ -38,3 +38,16 @@
 .recipe-entry>a:hover{background:#45594c}
 @media(max-width:1400px){.recipe-entry{margin-inline:clamp(20px,5vw,80px)}}
 @media(max-width:700px){.recipe-entry{grid-template-columns:1fr;margin:16px 20px 44px;padding:26px 23px}.recipe-entry>a{width:100%}}
+
+
+/* Original CSS typographic thumbnails for Claude's two newly implemented designs.
+   Avoid showing unrelated Manus photographs in the layout-selection gallery. */
+.gallery-card-illustration{height:100%;min-height:315px;width:100%;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,3vw,38px);overflow:hidden;position:relative}
+.gallery-card-illustration small{font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.12em}
+.gallery-card-illustration--almanac{background:#f3efe6;color:#1c1b18;border-block:15px solid #d9d1c3}
+.gallery-card-illustration--almanac strong{font:400 clamp(66px,9vw,150px)/1 Georgia,serif;letter-spacing:-.1em;color:transparent;-webkit-text-stroke:2px #1c1b18;transform:translateX(-.04em)}
+.gallery-card-illustration--almanac span{font:14px Georgia,serif;border-top:1px solid #1c1b18;padding-top:10px}
+.gallery-card-illustration--trust{background:#2c1e19;color:#f3ddd2}
+.gallery-card-illustration--trust strong{font:400 clamp(38px,4.5vw,70px)/1.17 Georgia,"Noto Serif TC",serif;letter-spacing:-.03em}
+.gallery-card-illustration--trust span{font-size:13px;color:#eca985;white-space:nowrap;letter-spacing:.2em}
+@media(max-width:570px){.gallery-card-illustration{min-height:220px}.gallery-card-illustration--almanac strong{font-size:78px}.gallery-card-illustration--trust strong{font-size:43px}}
