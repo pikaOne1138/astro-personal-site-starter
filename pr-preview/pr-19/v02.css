@@ -222,3 +222,12 @@
 .v02-archive-page .v2-results-heading{margin-top:28px}
 .v02-archive-page .v2-explorer-layout{padding-top:18px}
 @media(max-width:640px){.v02-pagehero--archive{padding-top:40px}}
+
+
+/* Shared back-to-top: quiet circular utility, visible only after scrolling. */
+.back-to-top{position:fixed;z-index:90;right:max(var(--back-to-top-right,24px),env(safe-area-inset-right));bottom:max(var(--back-to-top-bottom,24px),env(safe-area-inset-bottom));width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--text);box-shadow:0 6px 24px rgb(0 0 0 / 9%);cursor:pointer;transition:transform 220ms ease,background-color 220ms ease,border-color 220ms ease;isolation:isolate}
+.back-to-top[hidden]{display:none!important}
+.back-to-top:hover{transform:translateY(-3px);background:var(--bg);border-color:var(--accent);color:var(--accent)}
+.back-to-top:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:640px){.back-to-top{width:44px;height:44px;right:16px;bottom:max(18px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.back-to-top:hover{transform:none}}
