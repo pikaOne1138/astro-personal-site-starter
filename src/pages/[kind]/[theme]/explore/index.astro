@@ -1,23 +1,29 @@
 ---
-import DemoLayout from '../../layouts/DemoLayout.astro';
-import ArticleSearch from '../../components/blocks/ArticleSearch.astro';
-import TagCloud from '../../components/blocks/TagCloud.astro';
-import ArchiveMonths from '../../components/blocks/ArchiveMonths.astro';
-import PostCalendar from '../../components/blocks/PostCalendar.astro';
-import { articlesV2, articleTags, articleMonths } from '../../data/articles-v2';
+import DemoLayout from '../../../../layouts/DemoLayout.astro';
+import SiteNav from '../../../../components/SiteNav.astro';
+import { kinds, themes, kindMeta, themeMeta, type Kind, type Theme } from '../../../../data';
+import ArticleSearch from '../../../../components/blocks/ArticleSearch.astro';
+import TagCloud from '../../../../components/blocks/TagCloud.astro';
+import ArchiveMonths from '../../../../components/blocks/ArchiveMonths.astro';
+import PostCalendar from '../../../../components/blocks/PostCalendar.astro';
+import { articlesV2, articleTags, articleMonths } from '../../../../data/articles-v2';
 const base=import.meta.env.BASE_URL;
-const root=base+'explore/';
-const articleRoot=base+'knowledge/paper/articles/';
+export function getStaticPaths() {return kinds.flatMap(kind=>themes.map(theme=>({params:{kind,theme},props:{kind,theme}})));}
+interface Props {kind:Kind;theme:Theme;}
+const {kind,theme}=Astro.props;
+const root=base+kind+'/'+theme+'/explore/';
+const articleRoot=base+kind+'/'+theme+'/articles/';
 ---
-<DemoLayout title="文章探索 · Astro Blocks" description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆">
+<DemoLayout title={"文章探索 · "+kindMeta[kind].label+" · "+themeMeta[theme].zh} description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆" kind={kind} theme={theme}>
   <link rel="stylesheet" href={base+'blocks.css'} />
   <link rel="stylesheet" href={base+'blocks-v2.css'} />
+  <SiteNav kind={kind} theme={theme} current="explore"/>
   <main class="ab-gallery v2-explorer">
     <header class="ab-gallery-header">
-      <a class="ab-gallery-back" href={base+'blocks/'}>← 返回元件庫</a>
-      <p class="ab-eyebrow" style="margin-top:32px">ASTRO BLOCKS · ARTICLE DISCOVERY</p>
+      <a class="ab-gallery-back" href={base+kind+'/'+theme+'/articles/'}>← 返回文章列表</a>
+      <p class="ab-eyebrow" style="margin-top:32px">ARTICLE DISCOVERY · {themeMeta[theme].label}</p>
       <h1>用搜尋、標籤與日期，重新找到文章。</h1>
-      <p>這是可操作的文章探索示範：搜尋標題／摘要／分類／標籤，或點擊月份和日曆上有文章的日期。下方六篇文章均為工作坊示範資料，不是真實發布紀錄。</p>
+      <p>搜尋標題、摘要、分類與標籤，點擊月份或日曆上有文章的日期。這裡的六篇文章都是工作坊示範資料，非實際發布紀錄。</p>
       <a class="ab-chip" href={root}>清除條件，顯示全部</a>
     </header>
     <div class="v2-explorer-layout">

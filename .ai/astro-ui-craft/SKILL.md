@@ -77,9 +77,16 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 - If a new value is genuinely necessary, explain why, centralize it as a token, and request approval before introducing it; do not silently modify the design system.
 - Existing legacy values in styles are not blanket permission to invent more. A cleanup to full tokenization should be separate from an unrelated UI edit.
 
+## Gallery and component discovery by purpose
+- On `/blocks/`, organize components by **what visitors need to build** (shared navigation/search; homepage hero; general content; article discovery/lists; article reading/formatting; professional services/trust; complete site examples), never by release numbers.
+- Versions belong in developer documentation and registry metadata only. For AI selection, search the registry by intended use and actual compatible page, rather than relying on which version introduced a block.
+- Reuse live interactive examples in the appropriate section. Global search belongs under shared navigation; article tags/month/calendar belong under article discovery; table of contents and rich-text blocks belong under reading/formatting.
+
 ## V2 article exploration and rich-content blocks
+- Version identifiers (V1.5/V2/V3) belong in developer docs, code comments, changelog and Skill references. On public-facing demo pages, describe actual capabilities without exposing internal implementation version numbers.
 - Read `references/article-exploration-v2.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
 - Use the shared `src/data/articles-v2.ts` schema and `src/site-map.ts` routes. Counts, dates, links and matches must derive from real article data.
+- `SiteSearchDialog` provides magnifying-glass full-site **navigation index** popup (site pages, articles, services) with Ctrl+K/⌘K and Esc. It must preserve site kind/theme and display real targets; it is not full-body search.
 - Current V2 `/explore/` supports metadata search, **not full-body search**. Never misrepresent its scope.
 - Maintain existing typography, spacing and motion tokens in V2 components; do not introduce arbitrary design values.
 

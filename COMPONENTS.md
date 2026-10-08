@@ -8,6 +8,10 @@
 - V2 已加入：文章 metadata 搜尋、標籤雲、月份列表、文章日曆、輪播與進階文章元件；完整文章內文全文檢索尚未實作
 - V3 未納入：AI 自動選元件的搜尋/推薦引擎；V1.5 僅提供供 AI 閱讀的 registry 和簡單組裝指引
 
+## 元件展示分類原則
+
+公開 `/blocks/` 以使用情境分類，而非開發版本：導覽與共用、首頁主視覺、內容呈現、文章探索與清單、文章閱讀與排版、服務與信任、完整範例。`SiteSearchDialog` 屬於導覽與共用；`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar` 屬於文章探索；`TableOfContents`、`AuthorBox` 與文章排版元件屬於文章閱讀。元件版本只保留在 registry、文件或註解。
+
 ## 元件名錄
 - **common**：`Button`、`SectionHeading`、`SiteHeader`、`SiteFooter`
 - **hero**：`HeroSplit`、`HeroCentered`、`HeroImage`
@@ -19,11 +23,13 @@
 - 元件介面以本文件、元件索引與 `src/components/blocks/*.astro` 實作為準。
 - 設計規格請參考 `.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library-v1.5.md`；不得任意新增不在既有字級與間距系統中的數值。
 
-## V2：文章探索（4 個）與進階文章（7 個）
+## V2：文章探索（4 個）、進階文章（7 個）與全站搜尋（1 個）
 
 - 文章探索：`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar`
+- 全站搜尋：`SiteSearchDialog`，可在導覽列使用放大鏡開啟、`Ctrl+K`／`⌘K` 呼叫、`Esc` 關閉；依當前 Demo 架構索引頁面、文章、助人者服務，搜尋頁面標題／摘要／分類／關鍵詞，不等同全文檢索。
 - 進階文章：`ArticleAccordion`、`ArticleList`、`ArticleGrid`、`ArticleCallout`、`ArticleComparison`、`RelatedArticles`、`ContentCarousel`
 - 範例：`/explore/`，可以搜尋標題、摘要、分類、標籤，並按月份與指定日期找文章。
+- 完整網站整合：`/knowledge/{theme}/explore/` 與 `/helper/{theme}/explore/`，八款 Demo 導覽列都有「找文章」，並連到該風格的文章頁；文章內文示範 Accordion／List／Grid／Callout／Comparison／Carousel／RelatedArticles。
 - 統一示範資料：`src/data/articles-v2.ts`，包括 slug、標題、摘要、分類、標籤、發文日期、閱讀時間。
 - 所有月份、日曆日期、標籤數量和結果頁都以相同的文章資料產生；不存在的發文日期不可點。
 - V2 示範文章與日期都是教材，不代表真實發文記錄。正式網站應接 Astro Content Collections 或匯入文章資料。

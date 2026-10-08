@@ -2,16 +2,13 @@
 import DemoLayout from '../layouts/DemoLayout.astro';
 import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import SiteNav from './SiteNav.astro';
+import { articlesV2 } from '../data/articles-v2';
 interface Props { kind: Kind; theme: Theme; }
 const { kind, theme } = Astro.props;
 const k = kindMeta[kind];
 const t = themeMeta[theme];
 const base = import.meta.env.BASE_URL;
-const articles = [
-  ['把複雜的事，寫成你自己也願意重讀的文字','寫作方法','7 min'],
-  ['一個好網站，不需要把所有東西都放首頁','網站思考','5 min'],
-  ['知識不是收集越多越好，而是能不能找到','個人知識','9 min'],
-];
+const articles=articlesV2.slice(0,3);
 const services = [
   ['第一次對談','先把現在卡住的地方說清楚，再一起判斷適合的方向。','50 分鐘'],
   ['深度陪伴','給需要一段時間整理議題的人，一個穩定而有結構的空間。','4–8 次'],
@@ -48,11 +45,12 @@ const services = [
         </section>
 
         <section class="section editorial" id="latest" data-reveal>
-          <div class="section-heading row"><div><p class="eyebrow">FEATURED</p><h2>最近值得讀的東西。</h2></div><a class="quiet-link" href="#">所有文章 →</a></div>
+          <div class="section-heading row"><div><p class="eyebrow">FEATURED</p><h2>最近值得讀的東西。</h2></div><a class="quiet-link" href={`${base}${kind}/${theme}/articles/`}>所有文章 →</a></div>
           <div class="feature-grid">
             <article class="feature-card"><div class="visual-placeholder"><span>01</span></div><p class="meta">網站思考 · 8 min</p><h3>不是做一個「很完整」的網站，而是先做一個願意持續更新的地方。</h3><p>從首頁、文章、About 到 CTA，只留下真的會用到的東西。</p></article>
-            <div class="article-list">{articles.map(([title,cat,time],i)=><a href="#" class="article-row"><span class="num">0{i+2}</span><span class="article-main"><small>{cat} · {time}</small><strong>{title}</strong></span><span class="arrow">↗</span></a>)}</div>
+            <div class="article-list">{articles.map((article,i)=><a href={`${base}${kind}/${theme}/articles/${article.slug}/`} class="article-row"><span class="num">0{i+2}</span><span class="article-main"><small>{article.category} · {article.readingMinutes} min</small><strong>{article.title}</strong></span><span class="arrow">↗</span></a>)}</div>
           </div>
+          <p style="margin-top:32px"><a class="button primary" href={`${base}${kind}/${theme}/explore/`}>文章搜尋・標籤・日期日曆 →</a></p>
         </section>
 
         <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder"><span>作者照片</span></div><div><p class="eyebrow">ABOUT</p><h2>我喜歡把複雜的東西拆開，再重新拼成可以用的樣子。</h2><p>這裡記錄我怎麼理解 AI、網站、知識工具，以及那些還沒有答案但值得繼續想的問題。</p><a class="quiet-link" href="#">更多關於我 →</a></div></section>

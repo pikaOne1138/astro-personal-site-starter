@@ -30,6 +30,7 @@ import ArticleComparison from '../../components/blocks/ArticleComparison.astro';
 import ArticleList from '../../components/blocks/ArticleList.astro';
 import RelatedArticles from '../../components/blocks/RelatedArticles.astro';
 import ContentCarousel from '../../components/blocks/ContentCarousel.astro';
+import SiteSearchDialog from '../../components/blocks/SiteSearchDialog.astro';
 import { articlesV2 } from '../../data/articles-v2';
 const base=import.meta.env.BASE_URL;
 const posts=[{title:'把生活寫成自己的知識地圖',category:'個人寫作',excerpt:'從一個小小的觀察開始，整理值得長期留下的想法。',href:'#posts'},{title:'一篇值得重讀的閱讀筆記',category:'閱讀',excerpt:'不求寫得很多，只求每次回來，都能找到一點啟發。',href:'#posts'},{title:'建立自己的內容基地',category:'方法',excerpt:'用簡單的架構，讓每篇內容都有清楚的去處。',href:'#posts'}];
@@ -37,19 +38,17 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫 V2" description="可讓 AI 自由組裝的 Astro 元件庫：34 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：35 個元件、四套配色、兩類網站範例">
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
     <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a>
-    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY V2</p>
+    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
-    <p><strong>V1.5</strong>｜23 個核心元件、四套配色與微動畫。</p>
-    <p><strong>V2</strong>｜新增 11 個元件：文章搜尋、標籤雲、月份封存、文章日曆與進階文章排版。累計 34 個元件。</p>
-    <p>AI 自動選元件仍屬 V3。</p>
-    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#v2">V2 文章探索與排版</a><a href="#examples">完整範例</a></div>
+    <p>依網站使用情境探索 35 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換四套配色，直接體驗互動效果。</p>
+    <div class="ab-gallery-links"><a href="#common">導覽與共用</a><a href="#hero">首頁主視覺</a><a href="#content">內容呈現</a><a href="#blog">文章探索與清單</a><a href="#reading">文章閱讀與排版</a><a href="#professional">服務與信任</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
       <span>預覽配色：</span>
       <button data-block-theme="paper" aria-pressed="true">紙墨</button>
@@ -59,11 +58,16 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     </div>
   </header>
   <section id="common" class="ab-category">
-    <h2 class="ab-category-title">01 / 共用架構</h2><p class="ab-category-intro">任何個人網站都能使用的入口、導覽與頁尾。</p>
+    <h2 class="ab-category-title">01 / 導覽與共用元件</h2><p class="ab-category-intro">適用：所有網站的導覽、全站搜尋、共用按鈕、區塊標題與頁尾。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SiteHeader</strong><span>頁首導覽</span></div><SiteHeader brand="個人的文字宇宙" cta={{label:'聯絡我',href:'#professional'}} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Button</strong><span>主要按鈕 / 外框按鈕</span></div><div style="display:flex;gap:12px;flex-wrap:wrap"><Button href="#hero">主要行動 →</Button><Button href="#hero" variant="outline">次要行動</Button></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SectionHeading</strong><span>單元標題</span></div><SectionHeading eyebrow="DISCOVER" title="從這裡，開始探索。" description="讓訪客快速認識主題、找到值得閱讀的內容。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SiteFooter</strong><span>頁尾導覽</span></div><SiteFooter brand="個人的文字宇宙" links={[{label:'關於',href:'#professional'},{label:'文章',href:'#blog'}]} /></div>
+    <div class="ab-demo">
+      <div class="ab-demo-label"><strong>SiteSearchDialog</strong><span>放大鏡／全站搜尋／Ctrl+K 或 ⌘K</span></div>
+      <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
+      <SiteSearchDialog kind="knowledge" theme="paper" />
+    </div>
   </section>
   <section id="hero" class="ab-category">
     <h2 class="ab-category-title">02 / 首頁主視覺</h2><p class="ab-category-intro">可選左右圖文、置中標題或滿版色塊主視覺。</p>
@@ -72,40 +76,29 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>HeroImage</strong><span>滿版主視覺</span></div><HeroImage title="每一次理解，都從好奇開始。" description="把日常觀察化為可以重訪的故事。" href="#blog" /></div>
   </section>
   <section id="content" class="ab-category">
-    <h2 class="ab-category-title">03 / 內容區塊</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
+    <h2 class="ab-category-title">03 / 內容呈現與引導</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ImageText</strong><span>圖片與文字</span></div><ImageText title="設計不是裝飾，而是讓內容被理解。" description="透過留白、字體與一致的視覺語言，讓讀者更容易找到下一步。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>FeatureGrid</strong><span>兩欄／三欄</span></div><FeatureGrid items={[{title:'清楚的資訊',description:'讀者一眼就知道這裡提供什麼。'},{title:'舒服的閱讀',description:'字體、對比與行距讓閱讀輕鬆。'},{title:'自然的行動',description:'不催促，卻讓下一步很容易。'}]} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Stats</strong><span>成果數字</span></div><Stats items={[{value:'12+',label:'內容分類'},{value:'80+',label:'篇閱讀筆記'},{value:'4',label:'種配色選擇'}]} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>CTASection</strong><span>行動呼籲</span></div><CTASection title="準備好寫下你的第一頁了嗎？" description="選一種舒服的起點，把自己的網站慢慢建起來。" action="看看完整範例" href="#examples" /></div>
   </section>
   <section id="blog" class="ab-category">
-    <h2 class="ab-category-title">04 / 知識與部落格</h2><p class="ab-category-intro">用於文章探索、分類、精選文章、內文導覽與作者介紹。</p>
+    <h2 class="ab-category-title">04 / 文章探索與清單</h2><p class="ab-category-intro">從文章列表、精選文章、分類、標籤，到搜尋、月份與日期封存。適合內容型網站，也可用於助人者的文章專區。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostCard</strong><span>單張文章卡</span></div><div style="max-width:330px"><PostCard {...posts[0]} /></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostGrid</strong><span>三欄文章清單</span></div><PostGrid posts={posts} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>FeaturedPost</strong><span>精選文章</span></div><FeaturedPost title="我們為什麼需要一個自己的網站？" excerpt="從社群貼文走向可累積的個人知識基地。" href="#blog" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>CategoryLinks</strong><span>文章分類連結</span></div><CategoryLinks active="全部" items={[{label:'全部',href:'#blog'},{label:'寫作',href:'#blog'},{label:'閱讀',href:'#blog'},{label:'生活',href:'#blog'}]} /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>TableOfContents</strong><span>文章目錄（錨點連結）</span></div><TableOfContents items={[{label:'為何要經營自己的網站',href:'#blog'},{label:'先找到想說的事',href:'#blog'},{label:'建立長期的內容基地',href:'#blog'}]} /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>AuthorBox</strong><span>作者介紹</span></div><AuthorBox name="一位持續寫作的人" bio="喜歡整理觀察、分享筆記，也相信每個人都能有自己的文字空間。" /></div>
-  </section>
-  <section id="professional" class="ab-category">
-    <h2 class="ab-category-title">05 / 助人者與個人專業</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>ServiceCard</strong><span>服務介紹卡</span></div><div class="ab-grid ab-cols-3">{services.map(service=><ServiceCard {...service} />)}</div></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>AboutProfile</strong><span>個人故事／專業介紹</span></div><AboutProfile name="你好，我是小安。" role="ABOUT ME" bio="我相信每個人的節奏都不同。比起急著給答案，我更在意一起找到讓你安心探索的方式。" /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>ProcessSteps</strong><span>三步驟合作流程</span></div><ProcessSteps items={steps} /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>Testimonial</strong><span>客戶回饋（內容為示例）</span></div><Testimonial quote="這段介紹應放入已獲同意公開的真實回饋，不要把示例當成實際見證。" name="示範文字" /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>FAQ</strong><span>原生 HTML 可展開項目</span></div><FAQ items={faq} /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>ContactSection</strong><span>聯絡與預約入口</span></div><ContactSection title="可以先從聊聊開始。" description="了解服務是否符合你的需求，再決定是否預約。" href="#examples" label="觀看網站範例" /></div>
-  </section>
-
-  <section id="v2" class="ab-category">
-    <h2 class="ab-category-title">06 / V2 文章探索</h2>
     <p class="ab-category-intro">ArticleSearch、TagCloud、ArchiveMonths、PostCalendar：四個元件共用文章日期、標籤與分類索引。能搜尋、按月份篩選、點日曆上的日期找到對應文章。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleSearch · TagCloud · ArchiveMonths · PostCalendar</strong><span>可實際操作的文章探索</span></div>
       <p>直接進入互動 Demo：搜尋關鍵字「Astro」，點選「資訊架構」標籤，或點 2026 年 10 月 8 日，即可檢視相符文章。</p>
       <a class="ab-button primary" href={base+'explore/'}>開啟文章搜尋、標籤與日曆 →</a>
     </div>
-    <h2 class="ab-category-title">07 / V2 進階文章元件</h2>
-    <p class="ab-category-intro">不是把文章變成複雜的編輯器，而是為需要的段落提供有設計規範的內容區塊。</p>
+  </section>
+  <section id="reading" class="ab-category">
+    <h2 class="ab-category-title">05 / 文章閱讀與內容排版</h2>
+    <p class="ab-category-intro">文章內頁適用：目錄、作者介紹、折疊補充、條列、圖文格線、編輯註記、比較表、延伸閱讀與橫向捲動。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>TableOfContents</strong><span>文章目錄（錨點連結）</span></div><TableOfContents items={[{label:'為何要經營自己的網站',href:'#blog'},{label:'先找到想說的事',href:'#blog'},{label:'建立長期的內容基地',href:'#blog'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>AuthorBox</strong><span>作者介紹</span></div><AuthorBox name="一位持續寫作的人" bio="喜歡整理觀察、分享筆記，也相信每個人都能有自己的文字空間。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleAccordion</strong><span>可展開／收合的延伸內容</span></div><ArticleAccordion title="想看進一步解釋嗎？"><p>適合術語補充、長篇案例或不影響主要閱讀流程的背景說明。</p></ArticleAccordion></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleList</strong><span>數字列表與項目條列</span></div><ArticleList ordered items={['先確認文章主題與讀者需求','依照內容決定標題與段落結構','在文末補上延伸閱讀或下一步']} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleGrid</strong><span>二欄、三欄說明卡</span></div><ArticleGrid columns={2}><div><h3>文章大綱</h3><p>先整理要說的內容，再安排閱讀順序。</p></div><div><h3>補充資料</h3><p>將延伸資訊放在不干擾主要內容的位置。</p></div></ArticleGrid></div>
@@ -114,8 +107,18 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>RelatedArticles</strong><span>延伸閱讀</span></div><RelatedArticles articles={articlesV2.slice(0,2).map(a=>({title:a.title,excerpt:a.excerpt,href:base+'knowledge/paper/articles/'+a.slug+'/'}))} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ContentCarousel</strong><span>水平捲動、箭頭導覽</span></div><ContentCarousel title="推薦探索的主題"><article><h4>文章寫作</h4><p>讓文字清楚、耐讀。</p></article><article><h4>網站架構</h4><p>幫新讀者找到入口。</p></article><article><h4>知識整理</h4><p>累積日後找得到的內容。</p></article><article><h4>日常紀錄</h4><p>慢慢寫下自己的觀察。</p></article></ContentCarousel></div>
   </section>
+  <section id="professional" class="ab-category">
+    <h2 class="ab-category-title">06 / 專業服務與建立信任</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ServiceCard</strong><span>服務介紹卡</span></div><div class="ab-grid ab-cols-3">{services.map(service=><ServiceCard {...service} />)}</div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>AboutProfile</strong><span>個人故事／專業介紹</span></div><AboutProfile name="你好，我是小安。" role="ABOUT ME" bio="我相信每個人的節奏都不同。比起急著給答案，我更在意一起找到讓你安心探索的方式。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ProcessSteps</strong><span>三步驟合作流程</span></div><ProcessSteps items={steps} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>Testimonial</strong><span>客戶回饋（內容為示例）</span></div><Testimonial quote="這段介紹應放入已獲同意公開的真實回饋，不要把示例當成實際見證。" name="示範文字" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>FAQ</strong><span>原生 HTML 可展開項目</span></div><FAQ items={faq} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ContactSection</strong><span>聯絡與預約入口</span></div><ContactSection title="可以先從聊聊開始。" description="了解服務是否符合你的需求，再決定是否預約。" href="#examples" label="觀看網站範例" /></div>
+  </section>
+
   <section id="examples" class="ab-category">
-    <h2 class="ab-category-title">08 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。八個完整網站 Demo 均保留。</p>
+    <h2 class="ab-category-title">07 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。八個完整網站 Demo 均保留。</p>
     <div class="ab-grid ab-cols-2">
       <div class="ab-feature"><p class="ab-eyebrow">A / KNOWLEDGE</p><h3>知識／部落格</h3><p>文章、分類、閱讀與作者介紹的完整入口。</p><a class="ab-text-link" href={`${base}knowledge/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}knowledge/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}knowledge/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}knowledge/botanical/`}>植感 →</a></div>
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
