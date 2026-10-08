@@ -1,0 +1,10 @@
+---
+import MultiPage from '../../../components/MultiPage.astro';
+import { allTopLevelPaths, type PageId } from '../../../site-map';
+import type { Kind, Theme } from '../../../data';
+
+export function getStaticPaths() { return allTopLevelPaths(); }
+interface Props { kind: Kind; theme: Theme; page: PageId; }
+const { kind, theme, page } = Astro.props;
+---
+<MultiPage kind={kind} theme={theme} page={page} />
