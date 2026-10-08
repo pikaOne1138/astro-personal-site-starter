@@ -33,8 +33,8 @@ const base = import.meta.env.BASE_URL;
       <div class="matrix-heading">
         <span>C</span>
         <div>
-          <h2 id="libraries-title">元件庫與特效庫 · 自由組裝你的網站</h2>
-          <p>從 {blockRegistry.length} 個網站內容元件選擇需要的區塊，再搭配七組可重複使用的動態特效。兩套資料庫互相配合，也都可以獨立使用。</p>
+          <h2 id="libraries-title">元件、特效、版型 · 三座網站靈感庫</h2>
+          <p>先從 12 種不同的頁面結構找方向，再挑選 {blockRegistry.length} 個內容元件與 7 組互動特效。版型庫比較的是整體編排，不是替四種舊主題換顏色。</p>
         </div>
       </div>
       <div class="library-entry-grid">
@@ -49,6 +49,12 @@ const base = import.meta.env.BASE_URL;
           <h3>特效庫 · 網站怎麼互動</h3>
           <p>Reveal、Stagger、Tilt／Spotlight、Zoom／Pan、磁吸按鈕、動態底線與 FAQ。實際播放與調整動效強度。</p>
           <b>進入互動特效庫 →</b>
+        </a>
+        <a class="demo-card library-entry-card" href={base+'layouts/'}>
+          <p class="eyebrow">ASTRO LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
+          <h3>版型庫 · 網站怎麼說故事</h3>
+          <p>12 種獨立的網站結構與內容閱讀動線：六款知識內容、六款助人專業。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
+          <b>進入 12 種版型庫 →</b>
         </a>
       </div>
     </section>
@@ -113,10 +119,10 @@ const base = import.meta.env.BASE_URL;
 </DemoLayout>
 
 <style>
-  .library-entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch}
+  .library-entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
   .library-entry-card{min-width:0;max-width:none!important;display:flex!important;flex-direction:column;gap:12px;min-height:250px}
   .library-entry-card h3{margin:0}
   .library-entry-card p{margin:0}
   .library-entry-card b{display:block;margin-top:auto;padding-top:26px}
-  @media(max-width:720px){.library-entry-grid{grid-template-columns:1fr}.library-entry-card{min-height:220px}}
+  @media(max-width:940px){.library-entry-grid{grid-template-columns:1fr}.library-entry-card{min-height:220px}}
 </style>
