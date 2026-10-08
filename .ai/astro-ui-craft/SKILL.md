@@ -167,3 +167,6 @@ Branch `feat/v2-5-reading-sharing` adds Breadcrumbs、ArticleNavigation、Articl
 
 ## Practical component batch feat/v2-5-resources-newsletter
 Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
+
+## Practitioner-specific helper demo copy
+Do not reuse generic vague 'companionship, exploration, talk it through' filler for all helper sites. Four **sample content identities** live at `src/data/helper-content.ts`: paper=bodywork, morning=counseling psychology, studio=coaching, botanical=Reiki. Cover distinct method, informed consent and scope, service cards, fit/not-fit, first visit, FAQ and booking. They illustrate varied real-world use cases, **not a hard link between theme and profession**. Never invent qualifications or treatment efficacy; Reiki must be presented as non-medical wellness practice, counseling requires legally appropriate license, bodywork requires explicit physical-contact consent, and coaching does not replace therapy.

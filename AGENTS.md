@@ -37,3 +37,6 @@ Added Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress. 文章�
 
 ## Practical component batch feat/v2-5-resources-newsletter
 Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
+
+## Four distinct helper-site content demos
+Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`. It demonstrates four distinct applications across paper/bodywork, morning/counseling, studio/coaching and botanical/Reiki. Layout components stay theme-agnostic; do not reinsert vague generic filler. Maintain clear scope, informed consent, no unverified licenses/medical claims and no false booking flows.

@@ -113,3 +113,11 @@ npm run build
 
 ## V2.5 B resources
 New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. No fake subscription submissions. Align Registry and Gallery, and configure actual external endpoints.
+
+## 功能元件：PractitionerCard、ServiceFit
+讓專業者呈現服務資格、地區、合作方式與適合度；不虛構證照、資格、見證或危機資訊。 此分支登錄元件共 44 個，正式部署仍需設定真實內容。
+
+
+### 助人者示範文案（四種實務情境）
+
+四款助人者示範網站分別採用：紙墨＝身體工作、晨光＝諮商心理、靜室＝教練、植感＝靈氣。內容統一存於 `src/data/helper-content.ts`，分別配置首頁介紹、適合對象、服務卡、初訪流程、服務頁與 FAQ。這是**內容示範情境**，不是把職業與樣式綁死；正式客製可在任何視覺主題使用任何專業的資料。示範不聲稱持有心理師資格、不能保證身體或靈氣療效，沒有接通真實預約。

@@ -1,0 +1,5 @@
+---
+interface Props {suitable:string[];notSuitable?:string[];notice?:string;title?:string}
+const {suitable,notSuitable=[],notice,title='這項服務適合誰？'}=Astro.props;
+---
+<section class="practical-service-fit" aria-label={title}><h2>{title}</h2><div class="practical-service-fit__cols"><div><h3>可能適合你</h3><ul>{suitable.map(item=><li>{item}</li>)}</ul></div>{notSuitable.length>0&&<div><h3>可能需要其他資源</h3><ul>{notSuitable.map(item=><li>{item}</li>)}</ul></div>}</div>{notice&&<p class="practical-service-fit__note">{notice}</p>}</section>

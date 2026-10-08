@@ -4,8 +4,10 @@ import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import SiteNav from './SiteNav.astro';
 import BookingLink from './blocks/BookingLink.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
-import NewsletterSignup from './blocks/NewsletterSignup.astro';
+import ServiceFit from './blocks/ServiceFit.astro';
+import { helperPractice } from '../data/helper-content';
 import SocialLinks from './blocks/SocialLinks.astro';
+import NewsletterSignup from './blocks/NewsletterSignup.astro';
 import { articlesV2 } from '../data/articles-v2';
 interface Props { kind: Kind; theme: Theme; }
 const { kind, theme } = Astro.props;
@@ -13,11 +15,8 @@ const k = kindMeta[kind];
 const t = themeMeta[theme];
 const base = import.meta.env.BASE_URL;
 const articles=articlesV2.slice(0,3);
-const services = [
-  ['第一次對談','先把現在卡住的地方說清楚，再一起判斷適合的方向。','50 分鐘'],
-  ['深度陪伴','給需要一段時間整理議題的人，一個穩定而有結構的空間。','4–8 次'],
-  ['主題工作坊','把複雜的概念拆成可以體驗、理解、帶回生活的練習。','小團體'],
-];
+const practice=helperPractice[theme];
+const services = practice.services;
 ---
 <DemoLayout title={`${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
   <div class="page-shell">
@@ -26,14 +25,14 @@ const services = [
     <main>
       <section class="hero section">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">{k.eyebrow} · {t.label}</p>
-          <h1>{k.title}</h1>
-          <p class="lede">{k.intro}</p>
+          <p class="eyebrow">{kind === 'helper' ? practice.eyebrow : k.eyebrow} · {t.label}</p>
+          <h1>{kind === 'helper' ? practice.hero : k.title}</h1>
+          <p class="lede">{kind === 'helper' ? practice.intro : k.intro}</p>
           <div class="hero-actions">
-            <a class="button primary" href={kind === 'knowledge' ? '#latest' : '#booking'}>{kind === 'knowledge' ? '從精選文章開始' : '預約第一次聊聊'} <span>→</span></a>
+            <a class="button primary" href={kind === 'knowledge' ? '#latest' : '#booking'}>{kind === 'knowledge' ? '從精選文章開始' : '了解服務與預約方式'} <span>→</span></a>
             <a class="button text" href={kind === 'knowledge' ? '#topics' : '#process'}>{kind === 'knowledge' ? '瀏覽主題' : '先看看合作方式'}</a>
           </div>
-          <p class="microcopy">{theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : theme === 'botanical' ? '讓自然的節奏與清楚的內容，陪伴每一次閱讀。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
+          <p class="microcopy">{kind === 'helper' ? practice.promise : theme === 'paper' ? '內容是主角，設計只負責讓它更耐讀。' : theme === 'morning' ? '不催促，先讓人知道這裡是安全的。' : theme === 'botanical' ? '讓自然的節奏與清楚的內容，陪伴每一次閱讀。' : '清楚、克制、可靠，讓每個資訊都有位置。'}</p>
         </div>
         <div class="hero-art" aria-hidden="true" data-reveal style="--i:1"><div class="art-frame"><div class="art-orb"></div><div class="art-line"></div><div class="art-note">{t.zh}</div></div></div>
       </section>
@@ -61,18 +60,19 @@ const services = [
 
         <section class="section newsletter" id="newsletter" data-reveal><p class="eyebrow">LETTER</p><h2>偶爾寄一封，讀完會想一想的信。</h2><p>不追新聞、不塞滿工具清單，只整理真正值得留下的東西。</p><NewsletterSignup title="訂閱來信" description="此示範尚未連接訂閱平台，正式站需提供安全的外部服務網址。" /><a class="button text" href={`${base}${kind}/${theme}/resources/`}>查看內容資源 →</a></section>
       </> : <>
-        <section class="section empathy" data-reveal><p class="eyebrow">YOU MAY BE HERE BECAUSE...</p><h2>有些時候，你不是不知道該怎麼辦，只是已經撐得太久了。</h2><div class="feeling-grid"><div><span>01</span><p>腦袋知道很多方法，情緒卻還是一直繞回原點。</p></div><div><span>02</span><p>關係裡總是在照顧別人，卻很難知道自己真正需要什麼。</p></div><div><span>03</span><p>生活看起來沒有大問題，但你知道自己其實不太快樂。</p></div><div><span>04</span><p>想改變，卻不知道第一步要從哪裡開始。</p></div></div></section>
+        <section class="section empathy" data-reveal><p class="eyebrow">WHO THIS IS FOR · {practice.specialty}</p><h2>{practice.reasonsTitle}</h2><div class="feeling-grid">{practice.reasons.map((reason,i)=><div><span>{String(i+1).padStart(2,'0')}</span><p>{reason}</p></div>)}</div></section>
 
-        <section class="section services" id="services" data-reveal><div class="section-heading"><p class="eyebrow">HOW I CAN HELP</p><h2>我們可以從適合你的節奏開始。</h2></div><div class="service-grid">{services.map(([title,desc,meta],i)=><article class="service-card"><span class="num">0{i+1}</span><h3>{title}</h3><p>{desc}</p><small>{meta}</small><a href={`${base}${kind}/${theme}/services/`}>了解這項服務 →</a></article>)}</div></section>
+        <section class="section services" id="services" data-reveal><div class="section-heading"><p class="eyebrow">HOW I CAN HELP</p><h2>{practice.serviceTitle}</h2></div><div class="service-grid">{services.map(({title,description,meta},i)=><article class="service-card"><span class="num">0{i+1}</span><h3>{title}</h3><p>{description}</p><small>{meta}</small><a href={`${base}${kind}/${theme}/services/`}>了解這項服務 →</a></article>)}</div></section>
 
-        <section class="section process" id="process" data-reveal><div class="section-heading"><p class="eyebrow">FIRST VISIT</p><h2>第一次來，不需要先準備好答案。</h2></div><ol class="steps"><li><span>1</span><div><h3>留下需求</h3><p>用表單或 LINE 簡單告訴我你目前想談的事情。</p></div></li><li><span>2</span><div><h3>第一次對談</h3><p>我們先理解狀況，也看看彼此的工作方式是否合適。</p></div></li><li><span>3</span><div><h3>一起決定下一步</h3><p>不預設一定要長期合作，而是找到現在真正需要的形式。</p></div></li></ol></section>
+        <section class="section process" id="process" data-reveal><div class="section-heading"><p class="eyebrow">FIRST VISIT</p><h2>{practice.processTitle}</h2></div><ol class="steps">{practice.process.map((item,i)=><li><span>{i+1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></li>)}</ol></section>
 
-        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder warm"><span>自然光人像</span></div><div><p class="eyebrow">ABOUT ME</p><h2>專業不是站得離你很遠，而是能陪你把眼前的事情看清楚。</h2><p>我是林安，一名以關係與情緒工作為核心的陪伴者。我的方式不急著給答案，更重視理解你怎麼走到今天，以及什麼改變對你才真的有意義。</p><div class="credentials"><span>專業訓練</span><span>持續督導</span><span>線上／實體</span></div></div></section>
+        <section class="section about-split" id="about" data-reveal><div class="portrait-placeholder warm"><span>{practice.specialty}示範照片位置</span></div><div><p class="eyebrow">ABOUT THIS PRACTICE</p><h2>{practice.aboutTitle}</h2><p>{practice.about}</p><div class="credentials">{practice.concepts.map(item=><span>{item}</span>)}</div></div></section>
 
         <section class="section" aria-label="專業與服務界線"><TrustInfo notice="此為架站模板示範，未提供實際專業服務或預約。請由正式網站持有人填寫資格、所在地與政策。" /></section>
-        <section class="section faq" id="faq" data-reveal><p class="eyebrow">FAQ</p><h2>你可能想先知道。</h2><details open><summary>第一次談話會發生什麼？</summary><p>先了解你現在最想處理的事情，也會說明合作方式、頻率與界線，不需要先把自己整理好。</p></details><details><summary>我不確定自己的問題算不算嚴重，可以來嗎？</summary><p>可以。初談本來就是用來判斷需求與適合度，不需要先替自己下結論。</p></details><details><summary>可以先用 LINE 問問題嗎？</summary><p>可以先確認服務形式與時段；需要深入討論的內容會留到正式會談中。</p></details></section>
+        <section class="section" aria-label="服務是否適合"><ServiceFit suitable={practice.suitable} notSuitable={practice.notSuitable} notice={practice.fitNotice} /></section>
+        <section class="section faq" id="faq" data-reveal><p class="eyebrow">FAQ · {practice.specialty}</p><h2>開始前，你可能會想知道。</h2>{practice.faqs.map((item,i)=><details open={i===0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
 
-        <section class="section booking" id="booking" data-reveal><div><p class="eyebrow">WHEN YOU'RE READY</p><h2>不用急著做很大的決定，先聊一次就好。</h2><p>預約 20 分鐘初談，看看這是不是適合你的下一步。</p></div><div class="booking-actions"><a class="button primary" href={`${base}${kind}/${theme}/booking/`}>查看預約方式 →</a></div></section>
+        <section class="section booking" id="booking" data-reveal><div><p class="eyebrow">WHEN YOU'RE READY</p><h2>{practice.bookingTitle}</h2><p>{practice.bookingDescription}</p></div><div class="booking-actions"><a class="button primary" href={`${base}${kind}/${theme}/booking/`}>查看預約方式 →</a></div></section>
       </>}
     </main>
 

@@ -2,6 +2,7 @@
 import DemoLayout from '../layouts/DemoLayout.astro';
 import blockRegistry from '../data/blocks.registry.json';
 import { kindMeta, themeMeta, kinds, themes } from '../data';
+import { helperPractice } from '../data/helper-content';
 const base = import.meta.env.BASE_URL;
 ---
 <DemoLayout title="Astro Workshop · 8 UI Demos + Blocks" description="Astro 工作坊 2 種網站架構 × 4 種視覺人格">
@@ -21,8 +22,8 @@ const base = import.meta.env.BASE_URL;
           {themes.map((theme)=><a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
             <div class="demo-swatch"><span></span><span></span><span></span></div>
             <small>{themeMeta[theme].label}</small>
-            <h3>{themeMeta[theme].zh}</h3>
-            <p>{themeMeta[theme].mood}</p>
+            <h3>{themeMeta[theme].zh}{kind==='helper' ? ' · '+helperPractice[theme].specialty : ''}</h3>
+            <p>{kind==='helper' ? helperPractice[theme].intro : themeMeta[theme].mood}</p>
             <b>開啟 Demo →</b>
           </a>)}
         </div>

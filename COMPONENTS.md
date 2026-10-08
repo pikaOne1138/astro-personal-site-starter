@@ -103,3 +103,12 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup
 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。
 皆已在 /blocks/ 功能分類展示、同步 registry，並接入 Demo 站。須以 GitHub PR Preview 測試手機與鍵盤。
+
+## PractitionerCard、ServiceFit
+讓專業者呈現服務資格、地區、合作方式與適合度；不虛構證照、資格、見證或危機資訊。
+皆已在 /blocks/ 功能分類展示、同步 registry，並接入 Demo 站。須以 GitHub PR Preview 測試手機與鍵盤。
+
+
+### 助人者四種示範內容（與主題解耦）
+
+`src/data/helper-content.ts` 定義 `helperPractice[theme]` 示範資料：paper 身體工作、morning 諮商心理、studio 教練、botanical 靈氣。各自有首頁定位、專業服務卡、三步驟流程、FAQ、服務適配與界線、預約文案。元件依 Props 自由引用，不應把這四種專業固化成只能用某個設計主題。所有名稱、資格、費用、實際治療與預約需由網站持有人核實與設定。
