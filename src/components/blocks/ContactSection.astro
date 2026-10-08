@@ -1,0 +1,6 @@
+---
+import Button from './Button.astro';
+interface Props {title:string;description:string;label?:string;href:string;}
+const {title,description,label='聯絡我',href}=Astro.props;
+---
+<section class="ab-contact"><div><p class="ab-eyebrow">GET IN TOUCH</p><h2>{title}</h2><p>{description}</p></div><Button href={href}>{label} →</Button></section>
