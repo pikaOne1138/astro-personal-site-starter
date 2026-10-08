@@ -12,12 +12,13 @@ Two content architectures:
 - Knowledge / Blog
 - Helper / Professional Service
 
-Three visual personalities:
+Four visual personalities:
 - Paper & Ink
 - Morning Light
 - Quiet Studio
+- Botanical Calm
 
-Treat this as **2 architectures × 3 visual directions**, not six unrelated codebases.
+Treat this as **2 architectures × 4 visual directions = 8 demos**, not eight unrelated codebases.
 
 ## Scope guardrail
 Default scope is a polished front-end site. Prefer external forms, LINE, booking and newsletter services. Do not silently expand into CRM, auth, member systems, custom booking engines, payments, databases or SaaS administration.
@@ -63,6 +64,26 @@ Cream, clay/rose/sage accents, soft serif + readable sans, generous radii, natur
 
 ### Quiet Studio
 Near-white warm gray, precise grid, sans-forward type, one strong accent, thin borders, structured service/content metadata.
+
+### Botanical Calm
+Soft botanical greens, restrained natural contrast, generous whitespace, and quiet organic warmth. Reuse existing tokens in `public/demo.css`; do not independently invent palette values.
+
+## Typography and spacing contract (mandatory)
+**優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。**
+- Before changing typography or spacing, inspect the project's actual CSS tokens, the three-style design research, and `references/component-library-v1.5.md`.
+- Reuse existing font sizes, spacing steps, font weights, line heights, radii, and transitions for the applicable component/style.
+- The established spacing steps are `4, 8, 12, 16, 24, 32, 48, 64, 96, 128px`; apply them where appropriate rather than introducing arbitrary one-off values.
+- Typography sizes are a separate scale from spacing. For the current v0.2 navbar use 16px standard links/CTA and 14px for Paper's editorial links; do not invent intermediary 15px without an explicit design decision.
+- If a new value is genuinely necessary, explain why, centralize it as a token, and request approval before introducing it; do not silently modify the design system.
+- Existing legacy values in styles are not blanket permission to invent more. A cleanup to full tokenization should be separate from an unrelated UI edit.
+
+## Component library (mandatory before page assembly)
+- Read `references/component-library-v1.5.md` first for the catalog, scope, variants, and design integration rules.
+- Read `COMPONENTS.md` and `src/data/blocks.registry.json` for the maintained component names, use cases and registry.
+- Read the actual `src/components/blocks/*.astro` Props/source before importing or changing components. These files are the implementation source of truth; this reference is a guide, not a duplicate registry.
+- Use `public/demo.css`, `public/blocks.css`, and `public/v02.css` as applicable, maintaining the same 4 design personalities. Preserve the original six routes and the two Botanical routes.
+- Prioritize reusing existing Astro blocks and components. Add a new block only when existing Props and variants cannot satisfy a real requirement.
+- Do not include V2 search/carousels or V3 auto-composition engine by default.
 
 ## Refined UI rules
 - Structure before decoration.
