@@ -92,3 +92,10 @@ npm run build
 這個 repo 的目標不是做 SaaS、CRM 或完整商業後台，而是提供零程式背景學員一個：
 
 **可理解、可改、可部署、UI 有設計品質的 Astro 個人網站起點。**
+
+
+### 可操作的導覽／服務／媒體共用元件
+
+元件庫目前 41 個 Astro blocks。新增手機導覽 `MobileMenu`、預約串接 `BookingLink`、LINE/Email/電話 `ContactActions`、服務資訊 `PricingDetails`、專業／政策 `TrustInfo`、影片與音訊 `MediaEmbed`。
+
+目前 Demo 是**教材示範資料**，尚未設定使用者自己的預約平台、訂閱系統、專業資格與隱私政策。未配置的元件應呈現明確的未設定狀態，不得假裝成功送出、預約或提供專業服務。真實連結請由網站擁有者自行設定。
