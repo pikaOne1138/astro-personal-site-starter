@@ -12,16 +12,18 @@
 - Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/paper/
 - Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/morning/
 - Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/studio/
+- Botanical Calm：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/botanical/
 
 ### B｜助人者／個人專業服務
 
 - Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/helper/paper/
 - Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/helper/morning/
 - Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/helper/studio/
+- Botanical Calm：https://pikaOne1138.github.io/astro-personal-site-starter/helper/botanical/
 
-- Botanical Calm：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/botanical/
-- Botanical Calm（助人者）：https://pikaOne1138.github.io/astro-personal-site-starter/helper/botanical/
-- 元件展示庫：https://pikaOne1138.github.io/astro-personal-site-starter/blocks/
+### 元件庫
+
+- Astro Blocks V1.5：https://pikaOne1138.github.io/astro-personal-site-starter/blocks/
 
 ## Architecture
 
@@ -46,6 +48,8 @@ Repo 內建：
 - `.ai/astro-ui-craft/SKILL.md`
 - `.ai/astro-ui-craft/references/`
 - `.ai/astro-ui-craft/references/raw-research/`
+- `.ai/astro-ui-craft/references/component-library-v1.5.md`
+- `COMPONENTS.md`、`src/data/blocks.registry.json`（元件名稱、用法與索引）
 
 Skill 的任務是把 UI 生成限制在研究過的資訊架構、design tokens、CTA、微動畫、RWD、Accessibility 與 Astro 實作邊界內，避免產生典型 AI landing page。
 
