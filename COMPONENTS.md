@@ -119,3 +119,14 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 `ArticleViewSwitcher.astro` 是可重複使用的文章索引元件（本分支 Registry 53 個）。必填 `items`、`articleBase`；選配 `exploreBase`、`defaultView='list'|'cards'|'grid'`、`controls`、`filterable`。列表為細線編輯式清單；卡片為寬鬆兩欄；網格為三欄密集索引。三種共享同樣資料與文章 URL，手機降為單欄；搜尋／標籤／日期篩選在 explore 頁以 `data-article` 作用於同一組文章，切換排版不破壞篩選。頁面 JS 僅控制展開的視覺模式，不讀取後端。元件展示在 /blocks/ 的「文章探索與清單」。
 
 導航列在手機寬度僅呈現漢堡圖示與全站搜尋放大鏡（含可存取名稱），「文章」作為主要導覽項目；進階篩選另列「文章探索」。原本額外的「找文章」文字控制已移除，CTA 留在手機選單內；社群連結保留於彈出選單最下方。
+
+
+## 單一文章入口與真正的全站搜尋
+
+全站放大鏡 `SiteSearchDialog` 改由 Pagefind 在 build 後對公開靜態 HTML 建全文索引；閱讀到的所有頁面文字可被搜尋，而不只搜尋資料陣列的 `title/excerpt`。`npm run build` 會生成 `dist/pagefind/`；正式站與 PR preview 以 `BASE_URL` 設定正確的搜尋資源與結果網址。若未 build index（如 `astro dev`）會給出明確說明，不應假裝搜尋成功。
+
+`ArticleArchive` 是頁級組合（不另計 Registry block），將 `ArticleViewSwitcher`、`ArticleSearch`、`TagCloud`、`ArchiveMonths` 和 `PostCalendar` 結合至 `/articles/`。舊 `/explore/` 保留相容跳轉，不維護另一套重複文章頁。
+
+## 可配置動態
+
+動態設計規則由 `.ai/astro-motion-craft/SKILL.md` 維護。Manus v2 動態目前是參考候選（Reveal variants、Stagger、MotionCard tilt/spotlight、ZoomImage、UnderlineLink、Button magnetic、FAQ variants），不能宣稱已全數加入本 Registry；請按 Skill 的設計目的、減少動態、觸控與鍵盤測試要求實作。
