@@ -214,3 +214,11 @@
 /* Compact mobile navigation — only hamburger and search icon in top row. CTA is inside menu. */
 @media(max-width:850px){.practical-menu-toggle{width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:transparent}.practical-menu-toggle:hover{background:var(--surface);color:var(--accent)}.practical-menu-toggle svg{flex:none}.v02-nav__inner{gap:8px}.v02-actions{gap:4px}.v02-actions>.v02-cta{display:none}.v02-nav__utilities{gap:0}.v02-actions .v02-explore-link{display:none}.v02-nav--paper .v02-nav__inner:before{content:none;display:none}}
 @media(max-width:420px){.practical-menu-toggle{padding:0}}
+
+/* Canonical articles archive: the search/filter layout is now the default article listing. */
+.v02-pagehero--archive{padding:clamp(36px,5vw,72px) 0 16px;border-bottom:0;max-width:none}
+.v02-pagehero--archive h1{font-size:clamp(38px,5vw,62px);margin:0}
+.v02-archive-page{padding-top:8px}
+.v02-archive-page .v2-results-heading{margin-top:28px}
+.v02-archive-page .v2-explorer-layout{padding-top:18px}
+@media(max-width:640px){.v02-pagehero--archive{padding-top:40px}}
