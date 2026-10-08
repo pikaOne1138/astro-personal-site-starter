@@ -1,0 +1,29 @@
+---
+import directions from '../../../data/layout-directions.json';
+const item=directions.find(d=>d.slug==='field-notes')!;
+const base=import.meta.env.BASE_URL;
+const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
+const all=base+'layouts/';
+const previous=directions[11];
+const next=directions[1];
+---
+<!doctype html>
+<html lang="zh-Hant" data-layout="field-notes">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content={item.description}/>
+<title>{item.title+'｜網站版型庫'}</title>
+<link rel="stylesheet" href={base+'layout-library.css'}/>
+</head>
+<body>
+<a class="lay-skip" href="#layout-main">跳到網站內容</a>
+<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
+
+<header class="lay-field-header"><strong>FIELD<br/>NOTES</strong><span>VOL. 06 — 2026 / 秋季採集</span><a href="#section-a">觀察索引 ↘</a></header>
+<div class="lay-field-columns"><aside class="lay-field-rail">01—05 <span>FIELD INDEX</span><span>24°48′N</span></aside><section class="lay-field-hero"><small>一種慢慢觀看世界的方法 / OBSERVATION 001</small><h1>先把世界<br/>記錄下來，<br/><em>再慢慢理解。</em></h1><p>寫下沿途遇見的細節、反覆出現的模式，以及暫時還沒有答案的問題。</p><figure><img src={image} alt="田野筆記網站風格示範圖" loading="eager"/><figcaption>FIG. 06 — 一頁尚未完成的觀察記錄</figcaption></figure></section><aside class="lay-field-aside">MARGIN NOTE<blockquote>有時候，一個準確的問題，比一個快速的答案更值得留下。</blockquote>— 研究手記</aside></div>
+<section id="section-a" class="lay-field-ledger"><h2>最近，我在留意這些事。</h2><ol><li>06.18　 一座城市如何留下安靜的空間 <b>觀察</b></li><li>06.11　 閱讀札記裡反覆出現的三個詞 <b>閱讀</b></li><li>05.29　 記錄，不等於急著下結論 <b>方法</b></li></ol></section>
+</main>
+<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
+</body>
+</html>
