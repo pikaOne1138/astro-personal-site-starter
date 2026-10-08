@@ -112,3 +112,25 @@
 .fx-page[data-intensity=expressive] .motion-reveal{--motion-duration:840ms}
 @media(prefers-reduced-motion:reduce){.motion-reveal.motion-replaying{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}}
 .fx-page[data-intensity=off] .motion-reveal.motion-replaying{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+
+
+/* Make subtle interactions legible in a teaching/demo environment. */
+.fx-hint{font-size:12px;line-height:1.6;color:var(--muted)}
+.fx-underline-gallery{align-items:center;gap:24px}
+.fx-underline-gallery>div{min-height:58px;display:flex;align-items:center}
+.fx-underline-gallery .motion-underline{padding-bottom:8px}
+.motion-underline--grow{transition-duration:1050ms;background-size:0 2px}
+.motion-underline--grow:hover,.motion-underline--grow:focus-visible{background-size:100% 2px}
+.motion-underline--center:after{height:2px;transition-duration:1050ms}
+.motion-underline--marker{transition-duration:1050ms;background-image:linear-gradient(transparent 70%,color-mix(in srgb,var(--accent) 29%,transparent) 0)}
+@keyframes fx-underline-grow{0%{background-size:0 2px}15%{background-size:0 2px}85%,100%{background-size:100% 2px}}
+@keyframes fx-underline-center{0%,15%{left:50%;right:50%}85%,100%{left:0;right:0}}
+@keyframes fx-underline-marker{0%,15%{background-size:100% 0}85%,100%{background-size:100% 100%}}
+.fx-underline-playing .motion-underline--grow{animation:fx-underline-grow 1700ms ease-in-out both}
+.fx-underline-playing .motion-underline--center:after{animation:fx-underline-center 1700ms ease-in-out both}
+.fx-underline-playing .motion-underline--marker{animation:fx-underline-marker 1700ms ease-in-out both}
+.fx-replay:disabled{cursor:wait;opacity:.7}
+.motion-reveal.motion-replaying{animation-duration:1100ms;animation-delay:calc(var(--motion-delay,0ms) * 1.35)}
+.fx-page[data-intensity=expressive] .motion-reveal.motion-replaying{animation-duration:1300ms}
+@media(prefers-reduced-motion:reduce){.fx-underline-playing .motion-underline,.fx-underline-playing .motion-underline:after{animation:none!important}}
+.fx-page[data-intensity=off] .fx-underline-playing .motion-underline,.fx-page[data-intensity=off] .fx-underline-playing .motion-underline:after{animation:none!important}
