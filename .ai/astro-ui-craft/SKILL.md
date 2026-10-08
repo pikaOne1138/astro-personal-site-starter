@@ -186,3 +186,7 @@ The reusable motion research + integration library lives in `.ai/astro-motion-cr
 
 ## Common long-page navigation: BackToTop
 For long landing pages, article archives and document views reuse `BackToTop` through the shared DemoLayout. It belongs to the common blocks registry, not the effects registry. Ensure the right-bottom control appears only after meaningful scrolling, stays clear of safe areas and overlays, has a keyboard accessible name, and returns to the page top instantly if the visitor prefers reduced motion. Avoid duplicating event listeners in child pages.
+
+
+## Layout selection (a third gallery)
+Use `.ai/astro-layout-craft/SKILL.md` for whole-page reading flow and structural layouts. `/layouts/` offers 12 independent homepage compositions, deliberately different from the 2×4 theme palette previews. When composing a new real client site, select layout first, then reuse blocks and relevant Motion Skill effects, and only then tune colors and brand assets. Do not claim the 12 static prototypes are complete CMS-backed websites.
