@@ -119,3 +119,71 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 
 /* Astro conditional variants use a real wrapper rather than JSX fragments. Keep each layout's direct CSS grid/flex children unaffected. */
 .lay-variant{display:contents}
+
+
+/* DESIGN REVIEW: keep a deliberate reading canvas, rather than stretching content
+   to every viewport edge. Distinct layout directions retain their own grids. */
+.lay-site:not(.lay--somatic):not(.lay--learning-lab){
+  width:min(calc(100% - 2 * clamp(16px,3vw,70px)),1360px);
+  margin-inline:auto;
+}
+.lay--field-notes,.lay--essayist,.lay--curator,.lay--reading-atlas{padding-inline:clamp(20px,5vw,90px)}
+.lay--clinician,.lay--companion,.lay--coach,.lay--collective,.lay--trust-path,.lay--radio-letter{padding-inline:clamp(22px,5vw,90px)}
+/* Learning Lab: manuscript-like centered canvas; coherent typography and nested
+   rhythm. The design remains independent of the four existing themes. */
+.lay--learning-lab{--lab-blue:#142b68;--lab-accent:#234cc5;--lab-yellow:#ffcf36;background:#f6f5ef;color:var(--lab-blue);font-family:Arial,"Noto Sans TC",sans-serif}
+.lay--learning-lab>.lay-lab-head,
+.lay--learning-lab>.lay-lab-hero,
+.lay--learning-lab>.lay-lab-path,
+.lay--learning-lab>.lay-lab-modules{
+  width:min(calc(100% - 2 * clamp(24px,8vw,165px)),1120px);
+  margin-inline:auto;
+}
+.lay--learning-lab>.lay-lab-head{min-height:74px;padding:16px 0;border-bottom:2px solid var(--lab-blue);gap:20px}
+.lay-lab-logo{display:flex;align-items:center;gap:9px;font:800 12px/1.06 Arial,sans-serif;letter-spacing:.04em}
+.lay-lab-logo>span:first-child{display:grid;place-items:center;width:33px;height:33px;border-radius:50%;background:var(--lab-yellow);color:var(--lab-blue);font:800 19px Arial}
+.lay-lab-head nav{gap:27px;font:700 12px Arial,"Noto Sans TC",sans-serif}
+.lay-lab-head nav a:hover{color:var(--lab-accent)}
+.lay-lab-dot{font-size:10px;letter-spacing:.13em}
+.lay--learning-lab>.lay-lab-hero{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,5vw,78px);align-items:center;padding:75px 0 95px}
+.lay-lab-hero-copy{min-width:0}
+.lay-lab-hero-copy>small{display:block;color:var(--lab-accent);font:700 11px ui-monospace,monospace;letter-spacing:.2em}
+.lay-lab-hero h1{font:900 clamp(55px,6.6vw,103px)/.96 Arial,"Noto Sans TC",sans-serif;letter-spacing:-.07em;margin:22px 0 20px}
+.lay-lab-hero h1 em{display:inline;background:var(--lab-yellow);box-decoration-break:clone;-webkit-box-decoration-break:clone;color:var(--lab-blue);padding:0 .1em .02em;font-style:normal}
+.lay-lab-hero-copy>p{max-width:420px;font:15px/1.85 "Noto Sans TC",sans-serif;margin:26px 0 22px}
+.lay-lab-hero-action{display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.lay-lab-hero-action>a{margin:0;display:flex;gap:24px;align-items:center;background:var(--lab-accent);box-shadow:3px 3px 0 var(--lab-yellow);padding:14px 21px;font-size:13px}
+.lay-lab-hero-action>small{color:#69718a;font-size:11px}
+.lay-lab-hero-figure{position:relative;margin:0;min-width:0}
+.lay-lab-hero-figure img{width:100%;aspect-ratio:1.35;transform:none;box-shadow:8px 8px 0 var(--lab-yellow);border:1px solid var(--lab-blue);object-fit:cover}
+.lay-lab-hero-figure figcaption{font:10px ui-monospace,monospace;letter-spacing:.05em;padding-top:11px}
+.lay--learning-lab>.lay-lab-path{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(25px,5vw,75px);background:transparent;padding:48px 0 105px;border-top:2px solid var(--lab-blue);align-items:start}
+.lay-lab-path-intro>small,.lay-lab-modules-intro>small{font:700 11px ui-monospace,monospace;color:var(--lab-accent);letter-spacing:.1em}
+.lay-lab-path h2{font:900 clamp(43px,5vw,74px)/1.1 Arial,"Noto Sans TC",sans-serif;letter-spacing:-.07em;margin:17px 0 23px}
+.lay-lab-path-intro>p{font:14px/1.85 "Noto Sans TC",sans-serif;max-width:380px}
+.lay-lab-progress-meta{display:flex;justify-content:space-between;gap:10px;color:#758096;font:10px ui-monospace,monospace;margin-top:30px}
+.lay-lab-path progress{margin-top:12px;width:100%;max-width:350px;height:6px;accent-color:var(--lab-accent)}
+.lay-lab-path .lay-lab-count{font:inherit;margin:0}
+.lay-lab-steps{position:relative;list-style:none;margin:0;padding:0 0 0 40px}
+.lay-lab-steps:before{content:"";position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--lab-accent)}
+.lay-lab-steps>li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;position:relative;padding:19px 0;background:transparent!important;border:0!important;border-bottom:1px solid #cfd4dd!important;min-height:96px}
+.lay-lab-steps>li:last-child{border-bottom:0!important}
+.lay-lab-step-no{position:absolute;left:-40px;top:21px;display:grid;place-items:center;width:39px;height:39px;border-radius:50%;border:2px solid var(--lab-blue);background:var(--lab-yellow);font:bold 12px Arial;z-index:2}
+.lay-lab-steps>li:nth-child(2) .lay-lab-step-no{background:#b5c6fa}
+.lay-lab-steps>li:nth-child(3) .lay-lab-step-no{background:#f1a18e}
+.lay-lab-step-text>small{display:block;font:700 9px ui-monospace,monospace;color:#7282bd;letter-spacing:.08em}
+.lay-lab-step-text>strong{display:block;font:800 20px "Noto Sans TC",sans-serif;margin:5px 0}
+.lay-lab-step-text>p{font-size:12px;line-height:1.6;color:#6a7483;margin:0}
+.lay-lab-steps label{font-size:12px;display:flex;gap:7px;align-items:center}
+.lay-lab-steps label input{accent-color:var(--lab-accent)}
+.lay--learning-lab>.lay-lab-modules{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,55px);padding:54px clamp(24px,3vw,45px) 62px;background:#e3e7f4;margin-bottom:95px}
+.lay-lab-modules h2{font:900 clamp(37px,4.4vw,63px)/1.1 Arial,"Noto Sans TC",sans-serif;letter-spacing:-.065em;margin:20px 0 25px}
+.lay-lab-modules h2 em{font-weight:400}
+.lay-lab-modules-intro>a{display:inline-block;border-bottom:1px solid var(--lab-accent);font-size:12px;color:var(--lab-accent);padding-bottom:5px}
+.lay-lab-modules-list{list-style:none;padding:0;margin:0}
+.lay-lab-modules-list>li{border-top:1px solid #bfc8df;display:grid;grid-template-columns:28px 1fr 20px;gap:15px;align-items:center;padding:21px 0}
+.lay-lab-modules-list>li>span:first-child,.lay-lab-modules-list>li>span:last-child{font:700 12px ui-monospace,monospace;color:var(--lab-accent)}
+.lay-lab-modules-list li small{display:block;color:#7a849b;font:10px ui-monospace,monospace}
+.lay-lab-modules-list li strong{display:block;font-size:15px;margin-top:6px;line-height:1.55}
+@media(max-width:980px){.lay--learning-lab>.lay-lab-head,.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{width:min(calc(100% - 48px),900px)}.lay--learning-lab>.lay-lab-hero{gap:25px;padding-block:50px}.lay-lab-hero h1{font-size:clamp(47px,6.7vw,75px)}}
+@media(max-width:680px){.lay--learning-lab>.lay-lab-head,.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{width:calc(100% - 36px)}.lay-lab-head nav{order:3;width:100%;justify-content:flex-start}.lay--learning-lab>.lay-lab-hero,.lay--learning-lab>.lay-lab-path,.lay--learning-lab>.lay-lab-modules{grid-template-columns:1fr}.lay--learning-lab>.lay-lab-hero{padding:45px 0 65px}.lay-lab-hero h1{font-size:clamp(46px,10vw,70px)}.lay-lab-hero-figure{margin-top:14px}.lay--learning-lab>.lay-lab-path{padding:35px 0 65px}.lay--learning-lab>.lay-lab-modules{padding:30px 22px;margin-bottom:45px}.lay-lab-modules h2{font-size:38px}.lay-lab-steps{padding-left:40px}}
