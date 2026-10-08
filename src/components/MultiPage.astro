@@ -3,6 +3,7 @@ import DemoLayout from '../layouts/DemoLayout.astro';
 import SiteNav from './SiteNav.astro';
 import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import { detailPages, type PageId } from '../site-map';
+import { articlesV2 } from '../data/articles-v2';
 
 interface Props { kind: Kind; theme: Theme; page: PageId; }
 const { kind, theme, page } = Astro.props;
@@ -23,11 +24,7 @@ const pageTitle: Record<string,string> = {
   booking: '預約與聯絡',
 };
 
-const articleMeta = [
-  ['網站思考','首頁是大廳，不是整棟房子','5 min','homepage-is-a-lobby'],
-  ['寫作方法','把複雜的事，寫成願意重讀的文字','7 min','make-complex-things-clear'],
-  ['個人知識','知識不是收集越多越好，而是能不能重新找到','9 min','make-complex-things-clear'],
-];
+const articleMeta=articlesV2;
 ---
 <DemoLayout title={`${pageTitle[page]} · ${k.label} · ${t.zh}`} description={k.intro} theme={theme} kind={kind}>
   <div class="page-shell">
@@ -47,10 +44,11 @@ const articleMeta = [
       {page === 'articles' && <section class="v02-content" data-reveal>
         <div class="v02-filter"><span>全部</span><span>網站思考</span><span>AI 工作方法</span><span>個人知識</span></div>
         <div class="v02-article-grid">
-          {articleMeta.map(([cat,title,time,slug],i)=><a class="v02-article-card" href={`${root}articles/${slug}/`}>
-            <span class="num">0{i+1}</span><small>{cat} · {time}</small><h2>{title}</h2><p>這是一篇範例文章，用來示範文章總覽與文章內頁不是同一種資訊密度。</p><b>閱讀文章 →</b>
+          {articleMeta.map(({category,title,readingMinutes,slug},i)=><a class="v02-article-card" href={`${root}articles/${slug}/`}>
+            <span class="num">0{i+1}</span><small>{category} · {readingMinutes} min</small><h2>{title}</h2><p>這是一篇範例文章，用來示範文章總覽與文章內頁不是同一種資訊密度。</p><b>閱讀文章 →</b>
           </a>)}
         </div>
+        <p style="margin-top:32px"><a class="button primary" href={base+'explore/'}>搜尋文章／標籤／日曆 →</a></p>
       </section>}
 
       {page === 'topics' && <section class="v02-content v02-topic-list" data-reveal>
@@ -95,6 +93,6 @@ const articleMeta = [
         <form class="v02-form"><label>你的名字<input placeholder="怎麼稱呼你？" /></label><label>Email<input type="email" placeholder="you@example.com" /></label><label>想先聊什麼？<textarea rows="5" placeholder="簡單說就好"></textarea></label><button type="button">送出需求 →</button></form>
       </section>}
     </main>
-    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={root}>回首頁</a><a href={base}>六種 Demo</a></div><small>v0.2 Multipage Architecture · Astro Workshop</small></footer>
+    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><div class="footer-links"><a href={root}>回首頁</a><a href={base}>八種 Demo</a></div><small>v0.2 Multipage Architecture · Astro Workshop</small></footer>
   </div>
 </DemoLayout>
