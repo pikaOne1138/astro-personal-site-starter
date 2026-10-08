@@ -9,8 +9,8 @@ const base = import.meta.env.BASE_URL;
   <main class="demo-index">
     <header class="index-hero">
       <p class="eyebrow">PERSONAL WEBSITE · DESIGN STUDIO</p>
-      <h1>從喜歡的設計開始，打造自己的網站。</h1>
-      <p>不需要先懂程式或設計。看看不同網站怎麼呈現內容，挑選喜歡的版型、風格和功能，讓 AI 協助你逐步完成自己的網站。</p>
+      <h1>從喜歡的設計開始<span class="hero-line">打造自己的網站</span></h1>
+      <p>不需要先懂程式或設計，看看不同網站怎麼呈現內容<span class="hero-line">挑選喜歡的版型、風格和功能，讓 AI 協助你逐步完成自己的網站</span></p>
     </header>
     <section class="matrix-group showcase-examples" aria-labelledby="examples-title">
       <div class="matrix-heading">
@@ -111,6 +111,8 @@ const base = import.meta.env.BASE_URL;
 </DemoLayout>
 
 <style>
+  .index-hero .hero-line{display:block}
+  @media(max-width:600px){.index-hero .hero-line{display:block}}
   .showcase-example-groups{display:grid;gap:64px}
   .showcase-example-intro{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:26px}
   .showcase-example-intro .eyebrow{margin:0 0 8px}
