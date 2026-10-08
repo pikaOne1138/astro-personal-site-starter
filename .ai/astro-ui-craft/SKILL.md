@@ -170,3 +170,7 @@ Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設�
 
 ## Practitioner-specific helper demo copy
 Do not reuse generic vague 'companionship, exploration, talk it through' filler for all helper sites. Four **sample content identities** live at `src/data/helper-content.ts`: paper=bodywork, morning=counseling psychology, studio=coaching, botanical=Reiki. Cover distinct method, informed consent and scope, service cards, fit/not-fit, first visit, FAQ and booking. They illustrate varied real-world use cases, **not a hard link between theme and profession**. Never invent qualifications or treatment efficacy; Reiki must be presented as non-medical wellness practice, counseling requires legally appropriate license, bodywork requires explicit physical-contact consent, and coaching does not replace therapy.
+
+
+## Article index layout and mobile navigation
+For article archives use the shared `ArticleViewSwitcher.astro` with list/cards/grid layouts rather than implementing new duplicated archives. List is editorial ruled rows, cards are spacious two-column blocks, grid is a dense three-column typography-led index. Four visual themes reuse existing tokens; on small screens they collapse to one column. Keep articles, search, tags, calendar and month browsing connected to real routes. In mobile site navigation, use a 44px hamburger SVG-only button with an accessible name, alongside the existing search icon; keep full links and social icons inside the dialog. Do not repeat 'find articles' when an Articles nav link exists.
