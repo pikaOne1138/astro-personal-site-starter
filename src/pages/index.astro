@@ -1,37 +1,43 @@
 ---
 import DemoLayout from '../layouts/DemoLayout.astro';
 import blockRegistry from '../data/blocks.registry.json';
-import { kindMeta, themeMeta, kinds, themes } from '../data';
-import { helperPractice } from '../data/helper-content';
+import { kindMeta, kinds } from '../data';
+import ShowcaseDemoGrid from '../components/ShowcaseDemoGrid.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<DemoLayout title="網站設計工作坊 · 八款網站示範" description="網站工作坊：兩種網站架構與四種視覺風格">
+<DemoLayout title="網站設計展示總覽｜從喜歡的設計開始" description="從網站版型、視覺風格、功能元件與互動細節開始，探索自己的個人網站。">
   <main class="demo-index">
     <header class="index-hero">
       <p class="eyebrow">PERSONAL WEBSITE · DESIGN STUDIO</p>
-      <h1>兩種網站任務，四種視覺人格。</h1>
-      <p>這不是八套互不相干的網站，而是 <strong>2 種內容架構 × 4 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
+      <h1>從喜歡的設計開始<span class="hero-line">打造自己的網站</span></h1>
+      <p>不需要先懂程式或設計，看看不同網站怎麼呈現內容<span class="hero-line">挑選喜歡的版型、風格和功能，讓 AI 協助你逐步完成自己的網站</span></p>
     </header>
-    <div class="matrix">
-      {kinds.map((kind)=><section class="matrix-group">
-        <div class="matrix-heading">
-          <span>{kind === 'knowledge' ? 'A' : 'B'}</span>
-          <div><h2>{kindMeta[kind].label}</h2><p>{kindMeta[kind].intro}</p>{kind === 'knowledge' && <p class="matrix-interaction-note">四種風格不只有外觀差異，也能進入網站體驗文章搜尋、主題標籤、月份與日期篩選，以及完整文章閱讀。</p>}</div>
+    <section class="matrix-group showcase-examples" aria-labelledby="examples-title">
+      <div class="matrix-heading">
+        <span>A</span>
+        <div>
+          <h2 id="examples-title">選一個適合你的網站起點</h2>
+          <p>先看看你想做哪一種網站，再比較不同的視覺風格。每個範例都可以打開實際體驗，不只是看首頁圖片。</p>
         </div>
-        <div class="demo-grid">
-          {themes.map((theme)=><a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
-            <div class="demo-swatch"><span></span><span></span><span></span></div>
-            <small>{themeMeta[theme].label}</small>
-            <h3>{themeMeta[theme].zh}{kind==='helper' ? ' · '+helperPractice[theme].specialty : ''}</h3>
-            <p>{kind==='helper' ? helperPractice[theme].intro : themeMeta[theme].mood}</p>
-            <b>開啟 Demo →</b>
-          </a>)}
-        </div>
-      </section>)}
-    </div>
+      </div>
+      <div class="showcase-example-groups">
+        {kinds.map((kind)=><div class="showcase-example-group">
+          <div class="showcase-example-intro">
+            <div>
+              <p class="eyebrow">{kind === 'knowledge' ? 'KNOWLEDGE / BLOG' : 'HELPER / PROFESSIONAL'}</p>
+              <h3>{kindMeta[kind].label}</h3>
+            </div>
+            <p>{kind === 'knowledge'
+              ? '適合記錄生活、分享觀點、整理知識與長期累積文章。可體驗搜尋、標籤、文章分類與閱讀功能。'
+              : '適合心理師、療癒師、教練與顧問。可體驗服務介紹、合作流程、常見問題與預約入口。'}</p>
+          </div>
+          <ShowcaseDemoGrid kind={kind} />
+        </div>)}
+      </div>
+    </section>
     <section class="matrix-group blocks-entry" aria-labelledby="libraries-title">
       <div class="matrix-heading">
-        <span>C</span>
+        <span>B</span>
         <div>
           <h2 id="libraries-title">元件、特效、版型 · 三座網站靈感庫</h2>
           <p>先從 12 種不同的頁面結構找方向，再挑選 {blockRegistry.length} 個內容元件與 7 組互動特效。版型庫比較的是整體編排，不是替四種舊主題換顏色。</p>
@@ -60,7 +66,7 @@ const base = import.meta.env.BASE_URL;
     </section>
     <section class="matrix-group blocks-entry" aria-labelledby="search-features-title">
       <div class="matrix-heading">
-        <span>D</span>
+        <span>C</span>
         <div>
           <h2 id="search-features-title">全站搜尋與文章瀏覽 · 五種找內容的方法</h2>
           <p>搜尋不只有一個輸入框。依照訪客記得的是關鍵字、主題或日期，選擇最適合的入口。這五個元件可以各自使用，也能組合在同一個網站。</p>
@@ -98,14 +104,20 @@ const base = import.meta.env.BASE_URL;
           <b>查看 10 月 8 日文章 →</b>
         </a>
       </div>
-      <p class="microcopy">目前使用六篇教材文章；放大鏡採用建置時產生的全文索引，可搜尋各類靜態頁面的實際內容。文章列表另提供標籤、月份與日期篩選。</p>
     </section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   </main>
 </DemoLayout>
 
 <style>
-  .matrix-interaction-note{margin-top:12px;font-size:15px;line-height:1.75;color:var(--muted)}
+  .index-hero .hero-line{display:block}
+  @media(max-width:600px){.index-hero .hero-line{display:block}}
+  .showcase-example-groups{display:grid;gap:64px}
+  .showcase-example-intro{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:26px}
+  .showcase-example-intro .eyebrow{margin:0 0 8px}
+  .showcase-example-intro h3{margin:0;font:600 clamp(24px,3vw,32px)/1.3 var(--heading)}
+  .showcase-example-intro>p{max-width:56ch;margin:0;color:var(--muted);font-size:15px;line-height:1.8}
+  @media(max-width:720px){.showcase-example-groups{gap:48px}.showcase-example-intro{display:block}.showcase-example-intro>p{margin-top:12px}}
   .library-entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
   .library-entry-card{min-width:0;max-width:none!important;display:flex!important;flex-direction:column;gap:12px;min-height:250px}
   .library-entry-card h3{margin:0}
