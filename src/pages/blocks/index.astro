@@ -1,5 +1,6 @@
 ---
 import DemoLayout from '../../layouts/DemoLayout.astro';
+import blockRegistry from '../../data/blocks.registry.json';
 import Button from '../../components/blocks/Button.astro';
 import SectionHeading from '../../components/blocks/SectionHeading.astro';
 import SiteHeader from '../../components/blocks/SiteHeader.astro';
@@ -49,7 +50,7 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫" description="可讓 AI 自由組裝的 Astro 元件庫：46 個元件、四套配色、兩類網站範例">
+<DemoLayout title="Astro Blocks · 元件展示庫" description={`可讓 AI 自由組裝的 Astro 元件庫：${blockRegistry.length} 個元件、四套配色、兩類網站範例`}>
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
@@ -58,7 +59,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
-    <p>依網站使用情境探索 35 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換四套配色，直接體驗互動效果。</p>
+    <p>依網站使用情境探索 {blockRegistry.length} 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換四套配色，直接體驗互動效果。</p>
     <div class="ab-gallery-links"><a href="#common">導覽與共用</a><a href="#hero">首頁主視覺</a><a href="#content">內容呈現</a><a href="#blog">文章探索與清單</a><a href="#reading">文章閱讀與排版</a><a href="#professional">服務與信任</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
       <span>預覽配色：</span>
