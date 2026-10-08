@@ -8,6 +8,8 @@ For articles, Content Collections, SEO, Pagefind, RSS, sitemap, draft/publicatio
 
 For the interactive student planner at `/starter/`, read `src/data/starter-config.ts`, `src/pages/starter/index.astro`, and `.ai/astro-starter-onboarding/SKILL.md`. Layout selection, brand visual tokens and navigation plans must remain distinct. The planner exports a Site Brief, **not** a deployed or fully assembled independent site.
 
+For student-owned GitHub Pages or optional Cloudflare deployment, read `.ai/astro-starter-deploy/SKILL.md`. For safe updates, backups or recovery, read `.ai/astro-site-maintenance/SKILL.md`. These skills must not silently alter the research showcase deployment.
+
 Project goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
