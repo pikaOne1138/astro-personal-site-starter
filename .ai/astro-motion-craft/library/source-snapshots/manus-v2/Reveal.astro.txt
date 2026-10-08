@@ -1,0 +1,14 @@
+---
+type Variant = 'fade-up' | 'fade' | 'soft-zoom' | 'blur-up' | 'slide-left' | 'slide-right' | 'clip-up';
+interface Props { variant?: Variant; delay?: number; duration?: number; once?: boolean; className?: string; }
+const { variant = 'fade-up', delay = 0, duration = 760, once = true, className = '' } = Astro.props;
+const safeDelay = Math.max(0, Math.min(delay, 1400));
+const safeDuration = Math.max(350, Math.min(duration, 1400));
+---
+<div class:list={['reveal', `reveal--${variant}`, className]} data-reveal data-reveal-variant={variant} data-reveal-once={once ? 'true' : 'false'} style={`--reveal-delay:${safeDelay}ms;--reveal-duration:${safeDuration}ms`}>
+  <slot />
+</div>
+<script>
+  import { initializeReveals } from '../../scripts/reveal';
+  initializeReveals();
+</script>
