@@ -28,6 +28,7 @@
 ## V2 文章探索與內容元件
 
 - 文章探索 Demo： https://pikaOne1138.github.io/astro-personal-site-starter/explore/
+- 八款完整網站各自提供 `/{kind}/{theme}/explore/`：可從網站導覽列的「找文章」直接進入；結果連向各自風格的文章內頁
 - 共 34 個元件：V1.5 的 23 個 + V2 的 11 個
 - 搜尋標題、摘要、分類、標籤；按月份或日期瀏覽文章
 - 折疊、條列、Grid、提示框、比較表、延伸閱讀和輪播
