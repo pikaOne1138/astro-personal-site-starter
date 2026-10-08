@@ -190,3 +190,8 @@ For long landing pages, article archives and document views reuse `BackToTop` th
 
 ## Layout selection (a third gallery)
 Use `.ai/astro-layout-craft/SKILL.md` for whole-page reading flow and structural layouts. `/layouts/` offers 12 independent homepage compositions, deliberately different from the 2×4 theme palette previews. When composing a new real client site, select layout first, then reuse blocks and relevant Motion Skill effects, and only then tune colors and brand assets. Do not claim the 12 static prototypes are complete CMS-backed websites.
+
+
+## Claude 構圖配方不是功能元件
+
+`src/components/editorial-recipes/` 為 40 個純構圖配方（H01–H12、S01–S08、L01–L06、R01–R06、C01–C08），配方展示在 `/layouts/recipes/`。這與 `/blocks/` 登錄的功能 blocks 不同：先依 `astro-layout-craft`／`astro-editorial-layout-design` 選版型／構圖，再以 UI blocks 補真正的文章、預約、搜尋、表單等功能。配方若只有視覺 placeholder 不得宣稱功能已接上。
