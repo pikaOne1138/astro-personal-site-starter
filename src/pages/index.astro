@@ -3,12 +3,12 @@ import DemoLayout from '../layouts/DemoLayout.astro';
 import { kindMeta, themeMeta, kinds, themes } from '../data';
 const base = import.meta.env.BASE_URL;
 ---
-<DemoLayout title="Astro Workshop · 6 UI Demos" description="Astro 工作坊 2 種網站架構 × 3 種視覺人格">
+<DemoLayout title="Astro Workshop · 8 UI Demos + Blocks" description="Astro 工作坊 2 種網站架構 × 4 種視覺人格">
   <main class="demo-index">
     <header class="index-hero">
       <p class="eyebrow">ASTRO WORKSHOP · UI CRAFT LAB</p>
-      <h1>兩種網站任務，三種視覺人格。</h1>
-      <p>這不是六套互不相干的網站，而是 <strong>2 種內容架構 × 3 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
+      <h1>兩種網站任務，四種視覺人格。</h1>
+      <p>這不是八套互不相干的網站，而是 <strong>2 種內容架構 × 4 種 Design System</strong>。點進去比較同一套設計語言如何因「網站任務」而改變。</p>
     </header>
     <div class="matrix">
       {kinds.map((kind)=><section class="matrix-group">
@@ -27,6 +27,18 @@ const base = import.meta.env.BASE_URL;
         </div>
       </section>)}
     </div>
+    <section class="matrix-group blocks-entry" aria-labelledby="blocks-title">
+      <div class="matrix-heading">
+        <span>C</span>
+        <div><h2 id="blocks-title">元件庫 · 自由組裝你的網站</h2><p>不只能選完整網站，也能挑選喜歡的首頁、文章與服務區塊。探索 23 個核心元件、四套配色與微動畫，記下元件名稱交給 AI 組裝。</p></div>
+      </div>
+      <a class="demo-card" href={`${base}blocks/`} style="display:block;max-width:750px">
+        <p class="eyebrow">ASTRO BLOCKS · V1.5</p>
+        <h3>元件庫 + 展示站 + 完整網站範例</h3>
+        <p>可直接預覽每個元件的效果、切換風格，也能開啟兩種完整網站範例。</p>
+        <b>進入元件展示站 →</b>
+      </a>
+    </section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   </main>
 </DemoLayout>

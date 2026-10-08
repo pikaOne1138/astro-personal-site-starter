@@ -1,0 +1,5 @@
+---
+interface Props {title:string;category?:string;excerpt:string;href?:string;image?:string;}
+const {title,category='觀點文章',excerpt,href='#',image}=Astro.props;
+---
+<article class="ab-post-card">{image ? <img src={image} alt="" loading="lazy" /> : <div class="ab-post-cover">01 / READ</div>}<div><span class="ab-eyebrow">{category}</span><h3><a href={href}>{title}</a></h3><p>{excerpt}</p><a class="ab-text-link" href={href}>閱讀文章 ↗</a></div></article>

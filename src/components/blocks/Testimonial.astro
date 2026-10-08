@@ -1,0 +1,5 @@
+---
+interface Props {quote:string;name:string;description?:string;}
+const {quote,name,description}=Astro.props;
+---
+<figure class="ab-quote"><blockquote>「{quote}」</blockquote><figcaption>— {name}{description && <span> · {description}</span>}</figcaption></figure>

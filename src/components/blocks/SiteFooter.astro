@@ -1,0 +1,5 @@
+---
+interface Props { brand?: string; description?:string; links?:{label:string;href:string}[]; }
+const {brand='Your Studio',description='把重要的故事留在自己的網站。',links=[]}=Astro.props;
+---
+<footer class="ab-footer"><div><strong>{brand}</strong><p>{description}</p></div><nav aria-label="頁尾導覽">{links.map(x=><a href={x.href}>{x.label}</a>)}</nav></footer>

@@ -1,0 +1,5 @@
+---
+interface Props {title:string;description:string;meta?:string;href?:string;}
+const {title,description,meta='個人服務',href='#contact'}=Astro.props;
+---
+<article class="ab-service"><span class="ab-eyebrow">{meta}</span><h3>{title}</h3><p>{description}</p><a class="ab-text-link" href={href}>了解服務 ↗</a></article>

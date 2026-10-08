@@ -1,0 +1,6 @@
+---
+import PostCard from './PostCard.astro';
+interface Props {posts:{title:string;category?:string;excerpt:string;href?:string;image?:string}[];}
+const {posts}=Astro.props;
+---
+<div class="ab-grid ab-cols-3">{posts.map(post=><PostCard {...post}/>)}</div>

@@ -1,0 +1,104 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro';
+import Button from '../../components/blocks/Button.astro';
+import SectionHeading from '../../components/blocks/SectionHeading.astro';
+import SiteHeader from '../../components/blocks/SiteHeader.astro';
+import SiteFooter from '../../components/blocks/SiteFooter.astro';
+import HeroSplit from '../../components/blocks/HeroSplit.astro';
+import HeroCentered from '../../components/blocks/HeroCentered.astro';
+import HeroImage from '../../components/blocks/HeroImage.astro';
+import ImageText from '../../components/blocks/ImageText.astro';
+import FeatureGrid from '../../components/blocks/FeatureGrid.astro';
+import Stats from '../../components/blocks/Stats.astro';
+import CTASection from '../../components/blocks/CTASection.astro';
+import PostCard from '../../components/blocks/PostCard.astro';
+import PostGrid from '../../components/blocks/PostGrid.astro';
+import FeaturedPost from '../../components/blocks/FeaturedPost.astro';
+import CategoryLinks from '../../components/blocks/CategoryLinks.astro';
+import TableOfContents from '../../components/blocks/TableOfContents.astro';
+import AuthorBox from '../../components/blocks/AuthorBox.astro';
+import ServiceCard from '../../components/blocks/ServiceCard.astro';
+import AboutProfile from '../../components/blocks/AboutProfile.astro';
+import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
+import Testimonial from '../../components/blocks/Testimonial.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
+import ContactSection from '../../components/blocks/ContactSection.astro';
+const base=import.meta.env.BASE_URL;
+const posts=[{title:'把生活寫成自己的知識地圖',category:'個人寫作',excerpt:'從一個小小的觀察開始，整理值得長期留下的想法。',href:'#posts'},{title:'一篇值得重讀的閱讀筆記',category:'閱讀',excerpt:'不求寫得很多，只求每次回來，都能找到一點啟發。',href:'#posts'},{title:'建立自己的內容基地',category:'方法',excerpt:'用簡單的架構，讓每篇內容都有清楚的去處。',href:'#posts'}];
+const services=[{title:'一對一陪伴',description:'從你目前的困擾與期待出發，找到可以安心探索的方向。'},{title:'主題工作坊',description:'用清晰易懂的練習，讓新的覺察落在日常生活裡。'},{title:'線上諮詢',description:'以有彈性的方式進行，適合無法到場的合作需求。'}];
+const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
+const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
+---
+<DemoLayout title="Astro Blocks · 元件展示庫 V1.5" description="可讓 AI 自由組裝的 Astro 元件庫：23 個核心元件、四套配色、兩類網站範例">
+<link rel="stylesheet" href={`${base}blocks.css`} />
+<main class="ab-gallery" id="top">
+  <header class="ab-gallery-header">
+    <a class="ab-gallery-back" href={base}>← 返回六款網站 Demo 首頁</a>
+    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY V1.5</p>
+    <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
+    <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。V1.5 提供 23 個核心元件、四套配色及微動畫；進階搜尋、輪播與自動選元件留待後續版本。</p>
+    <div class="ab-gallery-links"><a href="#common">共用</a><a href="#hero">主視覺</a><a href="#content">內容</a><a href="#blog">知識／部落格</a><a href="#professional">助人者</a><a href="#examples">完整範例</a></div>
+    <div class="ab-gallery-theme" aria-label="元件配色預覽">
+      <span>預覽配色：</span>
+      <button data-block-theme="paper" aria-pressed="true">紙墨</button>
+      <button data-block-theme="morning" aria-pressed="false">晨光</button>
+      <button data-block-theme="studio" aria-pressed="false">靜室</button>
+      <button data-block-theme="botanical" aria-pressed="false">植感</button>
+    </div>
+  </header>
+  <section id="common" class="ab-category">
+    <h2 class="ab-category-title">01 / 共用架構</h2><p class="ab-category-intro">任何個人網站都能使用的入口、導覽與頁尾。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>SiteHeader</strong><span>頁首導覽</span></div><SiteHeader brand="個人的文字宇宙" cta={{label:'聯絡我',href:'#professional'}} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>Button</strong><span>主要按鈕 / 外框按鈕</span></div><div style="display:flex;gap:12px;flex-wrap:wrap"><Button href="#hero">主要行動 →</Button><Button href="#hero" variant="outline">次要行動</Button></div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>SectionHeading</strong><span>單元標題</span></div><SectionHeading eyebrow="DISCOVER" title="從這裡，開始探索。" description="讓訪客快速認識主題、找到值得閱讀的內容。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>SiteFooter</strong><span>頁尾導覽</span></div><SiteFooter brand="個人的文字宇宙" links={[{label:'關於',href:'#professional'},{label:'文章',href:'#blog'}]} /></div>
+  </section>
+  <section id="hero" class="ab-category">
+    <h2 class="ab-category-title">02 / 首頁主視覺</h2><p class="ab-category-intro">可選左右圖文、置中標題或滿版色塊主視覺。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>HeroSplit</strong><span>左右圖文，支援反轉</span></div><HeroSplit title="讓專業與故事，有個自己的家。" description="建立一個清楚、溫柔，也真正屬於你的個人網站。" href="#professional" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>HeroCentered</strong><span>文字置中</span></div><HeroCentered title="用自己的步調，留下值得分享的事。" description="讓文章、觀點與靈感，在同一個地方慢慢累積。" href="#blog" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>HeroImage</strong><span>滿版主視覺</span></div><HeroImage title="每一次理解，都從好奇開始。" description="把日常觀察化為可以重訪的故事。" href="#blog" /></div>
+  </section>
+  <section id="content" class="ab-category">
+    <h2 class="ab-category-title">03 / 內容區塊</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ImageText</strong><span>圖片與文字</span></div><ImageText title="設計不是裝飾，而是讓內容被理解。" description="透過留白、字體與一致的視覺語言，讓讀者更容易找到下一步。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>FeatureGrid</strong><span>兩欄／三欄</span></div><FeatureGrid items={[{title:'清楚的資訊',description:'讀者一眼就知道這裡提供什麼。'},{title:'舒服的閱讀',description:'字體、對比與行距讓閱讀輕鬆。'},{title:'自然的行動',description:'不催促，卻讓下一步很容易。'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>Stats</strong><span>成果數字</span></div><Stats items={[{value:'12+',label:'內容分類'},{value:'80+',label:'篇閱讀筆記'},{value:'4',label:'種配色選擇'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>CTASection</strong><span>行動呼籲</span></div><CTASection title="準備好寫下你的第一頁了嗎？" description="選一種舒服的起點，把自己的網站慢慢建起來。" action="看看完整範例" href="#examples" /></div>
+  </section>
+  <section id="blog" class="ab-category">
+    <h2 class="ab-category-title">04 / 知識與部落格</h2><p class="ab-category-intro">用於文章探索、分類、精選文章、內文導覽與作者介紹。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>PostCard</strong><span>單張文章卡</span></div><div style="max-width:330px"><PostCard {...posts[0]} /></div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>PostGrid</strong><span>三欄文章清單</span></div><PostGrid posts={posts} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>FeaturedPost</strong><span>精選文章</span></div><FeaturedPost title="我們為什麼需要一個自己的網站？" excerpt="從社群貼文走向可累積的個人知識基地。" href="#blog" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>CategoryLinks</strong><span>文章分類連結</span></div><CategoryLinks active="全部" items={[{label:'全部',href:'#blog'},{label:'寫作',href:'#blog'},{label:'閱讀',href:'#blog'},{label:'生活',href:'#blog'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>TableOfContents</strong><span>文章目錄（錨點連結）</span></div><TableOfContents items={[{label:'為何要經營自己的網站',href:'#blog'},{label:'先找到想說的事',href:'#blog'},{label:'建立長期的內容基地',href:'#blog'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>AuthorBox</strong><span>作者介紹</span></div><AuthorBox name="一位持續寫作的人" bio="喜歡整理觀察、分享筆記，也相信每個人都能有自己的文字空間。" /></div>
+  </section>
+  <section id="professional" class="ab-category">
+    <h2 class="ab-category-title">05 / 助人者與個人專業</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ServiceCard</strong><span>服務介紹卡</span></div><div class="ab-grid ab-cols-3">{services.map(service=><ServiceCard {...service} />)}</div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>AboutProfile</strong><span>個人故事／專業介紹</span></div><AboutProfile name="你好，我是小安。" role="ABOUT ME" bio="我相信每個人的節奏都不同。比起急著給答案，我更在意一起找到讓你安心探索的方式。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ProcessSteps</strong><span>三步驟合作流程</span></div><ProcessSteps items={steps} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>Testimonial</strong><span>客戶回饋（內容為示例）</span></div><Testimonial quote="這段介紹應放入已獲同意公開的真實回饋，不要把示例當成實際見證。" name="示範文字" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>FAQ</strong><span>原生 HTML 可展開項目</span></div><FAQ items={faq} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ContactSection</strong><span>聯絡與預約入口</span></div><ContactSection title="可以先從聊聊開始。" description="了解服務是否符合你的需求，再決定是否預約。" href="#examples" label="觀看網站範例" /></div>
+  </section>
+  <section id="examples" class="ab-category">
+    <h2 class="ab-category-title">06 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。原有六個 Demo 仍保留。</p>
+    <div class="ab-grid ab-cols-2">
+      <div class="ab-feature"><p class="ab-eyebrow">A / KNOWLEDGE</p><h3>知識／部落格</h3><p>文章、分類、閱讀與作者介紹的完整入口。</p><a class="ab-text-link" href={`${base}knowledge/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}knowledge/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}knowledge/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}knowledge/botanical/`}>植感 →</a></div>
+      <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
+    </div>
+  </section>
+  <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md</footer>
+</main>
+<script is:inline>
+  document.querySelectorAll('[data-block-theme]').forEach(button=>button.addEventListener('click',()=>{
+    const theme=button.getAttribute('data-block-theme');
+    if(!['paper','morning','studio','botanical'].includes(theme)) return;
+    document.documentElement.dataset.theme=theme;
+    document.querySelectorAll('[data-block-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  }));
+</script>
+</DemoLayout>

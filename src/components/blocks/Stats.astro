@@ -1,0 +1,5 @@
+---
+interface Props {items:{value:string;label:string}[];}
+const {items}=Astro.props;
+---
+<div class="ab-stats">{items.map(x=><div><strong>{x.value}</strong><span>{x.label}</span></div>)}</div>
