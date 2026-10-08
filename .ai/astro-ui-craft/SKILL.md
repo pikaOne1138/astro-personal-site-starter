@@ -149,3 +149,6 @@ Before handoff:
 - motion is subtle and optional;
 - build succeeds;
 - no accidental backend scope creep.
+
+## Practical interactive blocks and real services
+Use `.ai/astro-ui-craft/references/article-exploration-v2.md` practical-block guidance for MobileMenu, BookingLink, ContactActions, PricingDetails, TrustInfo, MediaEmbed. Do not create fake form submissions, invented third-party appointments, testimonials or credentials. Keep GitHub Actions PR previews, and obtain user consent before merge.
