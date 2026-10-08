@@ -19,7 +19,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是**規劃工具**，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
 
 <form id="starter-form">
-<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>版型決定資訊怎麼排列，不等於配色。</p></div></div>
+<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先選最接近你想要的設計就好，不必一次決定所有細節。後續可以參考八款 Demo、12 款版型與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
 <fieldset class="kind-choice"><legend>我想建立的是</legend><label><input type="radio" name="kind" value="knowledge" checked/> 知識／部落格</label><label><input type="radio" name="kind" value="helper"/> 助人者／專業服務</label></fieldset>
 <div class="layout-grid" id="layout-grid">
 {directions.map((item,i)=><label class="layout-option" data-kind={item.kind}><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
