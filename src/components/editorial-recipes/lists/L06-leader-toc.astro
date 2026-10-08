@@ -1,0 +1,35 @@
+---
+/**
+ * L06 leader-toc — [NEW] 書籍目錄式：標題 ········ 頁碼／月份／數量，點線 leader 連接。
+ * 十款原始碼中沒有此列表隱喻。做法：flex + 一個 flex:1 的 ::after 點線填滿中間；
+ * 手機不隱藏點線，只讓標題換行（標題 flex:0 1 auto，右側數字 flex:none）。
+ * 可兩層：group（章）+ item（節）。
+ */
+interface Props { label?: string; groups?: { g: string; items: { t: string; n: string; href?: string }[] }[] }
+const {
+  label = 'CONTENTS',
+  groups = [
+    { g: '第一部　學會慢', items: [{ t: '為什麼我開始寫讀書筆記', n: '03' }, { t: '一本書讀兩次的理由', n: '11' }, { t: '放棄閱讀不是失敗', n: '19' }] },
+    { g: '第二部　找到問題', items: [{ t: '從句子到問題', n: '27' }, { t: '讓筆記彼此對話', n: '35' }] },
+  ],
+} = Astro.props;
+---
+<section class="l06">
+  <p class="label">{label}</p>
+  {groups.map((g) => (
+    <div class="grp">
+      <h3>{g.g}</h3>
+      <ol>{g.items.map((i) => <li><a href={i.href ?? '#'}><span class="t">{i.t}</span><span class="lead" aria-hidden="true"></span><span class="n">{i.n}</span></a></li>)}</ol>
+    </div>
+  ))}
+</section>
+<style>
+  .l06 { max-width: var(--ed-mid, 760px); margin-inline: auto; padding: 0 var(--ed-gutter, 4vw); color: var(--ed-ink, #222018); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .14em; color: var(--ed-accent, #9a3b24); margin: 0 0 1rem; }
+  .grp { margin-bottom: 2rem; } h3 { font: 700 1rem/1.4 var(--ed-serif, Georgia, serif); margin: 0 0 .4rem; letter-spacing: .04em; }
+  ol { list-style: none; margin: 0; padding: 0; }
+  a { display: flex; align-items: baseline; gap: .6rem; min-height: 44px; padding: .5rem 0; color: inherit; text-decoration: none; font: 1rem/1.5 var(--ed-serif, Georgia, serif); }
+  a:hover .t { color: var(--ed-accent, #9a3b24); }
+  .lead { flex: 1 1 1rem; min-width: 1rem; border-bottom: 2px dotted var(--ed-accent-deco, #9b958a); transform: translateY(-.3em); }
+  .n { flex: none; font: 1rem var(--ed-mono, monospace); font-variant-numeric: tabular-nums; color: var(--ed-ink-2, #57534a); }
+</style>
