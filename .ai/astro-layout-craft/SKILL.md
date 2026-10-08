@@ -66,3 +66,7 @@ PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路
 - 每款的全頁背景與實際內容畫布是兩個不同層級；避免讓背景也被 max-width 裁成窄島，亦不能以滿版背景替代應有的閱讀留白。
 - 合併前檢查 `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` 的「是否已完整對照原稿」欄位；對照未完成的款式不能當作「12 款已復刻完成」。
 - 使用者已多次指出「Learning Lab 步驟圓點壓字」「Companion 背景被裁窄島」。這些屬原始碼可避免的問題；先讀源碼，不准再靠猜測調 CSS。
+
+## Claude Editorial Layout Design Skill
+
+Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-design/SKILL.md`. Its references contain ten original-site source analyses; recipes/code contains 40 exact Astro compositions. Preserve [OBS], [MEAS], [INF], [NEW] and [DEFECT] evidence levels. For novel designs, first select whole-page content structure here, then follow the editorial design composition recipes, then choose the existing UI and motion blocks. The visual lab `/layouts/recipes/` exposes five categories of live designs. Two Claude-authored examples replace the previous simplified reading-atlas and trust-path layouts; both still require visual browser QA.
