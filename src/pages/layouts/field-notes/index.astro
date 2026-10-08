@@ -1,29 +1,19 @@
 ---
-import directions from '../../../data/layout-directions.json';
-const item=directions.find(d=>d.slug==='field-notes')!;
-const base=import.meta.env.BASE_URL;
-const image='https://tenwebs-6qkx6x5p.manus.space/images/directions/'+item.image;
-const all=base+'layouts/';
-const previous=directions[11];
-const next=directions[1];
+import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 ---
-<!doctype html>
-<html lang="zh-Hant" data-layout="field-notes">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="description" content={item.description}/>
-<title>{item.title+'｜網站版型庫'}</title>
-<link rel="stylesheet" href={base+'layout-library.css'}/>
-</head>
-<body>
-<a class="lay-skip" href="#layout-main">跳到網站內容</a>
-<main id="layout-main" class:list={['lay-site','lay--'+item.slug]}>
-
-<header class="lay-field-header"><strong>FIELD<br/>NOTES</strong><span>VOL. 06 — 2026 / 秋季採集</span><a href="#section-a">觀察索引 ↘</a></header>
-<div class="lay-field-columns"><aside class="lay-field-rail">01—05 <span>FIELD INDEX</span><span>24°48′N</span></aside><section class="lay-field-hero"><small>一種慢慢觀看世界的方法 / OBSERVATION 001</small><h1>先把世界<br/>記錄下來，<br/><em>再慢慢理解。</em></h1><p>寫下沿途遇見的細節、反覆出現的模式，以及暫時還沒有答案的問題。</p><figure><img src={image} alt="田野筆記網站風格示範圖" loading="eager"/><figcaption>FIG. 06 — 一頁尚未完成的觀察記錄</figcaption></figure></section><aside class="lay-field-aside">MARGIN NOTE<blockquote>有時候，一個準確的問題，比一個快速的答案更值得留下。</blockquote>— 研究手記</aside></div>
-<section id="section-a" class="lay-field-ledger"><h2>最近，我在留意這些事。</h2><ol><li>06.18　 一座城市如何留下安靜的空間 <b>觀察</b></li><li>06.11　 閱讀札記裡反覆出現的三個詞 <b>閱讀</b></li><li>05.29　 記錄，不等於急著下結論 <b>方法</b></li></ol></section>
-</main>
-<footer class="lay-preview-footer"><a href={all+previous.slug+'/'}>← 上一款</a><a href={all}>← 返回版型庫</a><a href={all+next.slug+'/'}>下一款 →</a></footer>
-</body>
-</html>
+<DirectionLayout title="田野筆記｜知識網站方向 01" description="適合研究者、觀察者與慢速記錄者的田野筆記型知識首頁。">
+  <main id="main" class="fn-site">
+    <header class="fn-header"><a class="fn-mark" href={import.meta.env.BASE_URL + 'layouts/'}>FIELD<br /><b>NOTES</b><small>VOL. 06</small></a><nav><a href="#observations">觀察紀錄</a><a href="#questions">正在追問</a><a href={import.meta.env.BASE_URL + 'layouts/'}>12 種方向</a></nav><span class="fn-date">2026 / 秋季採集</span></header>
+    <div class="fn-layout">
+      <aside class="fn-rail"><span class="fn-rail-no">01—05</span><span>INDEX</span><a href="#observations">筆記索引</a><a href="#questions">研究問題</a><span class="fn-rail-stem"></span><span>24° 48′ N</span></aside>
+      <section class="fn-hero"><p class="fn-kicker">一種慢慢觀看世界的方法</p><h1>先把世界<br />記錄下來，<br /><i>再慢慢理解。</i></h1><p class="fn-deck">寫下沿途遇見的細節、反覆出現的模式，以及暫時還沒有答案的問題。</p><div class="fn-tags"><span>田野紀錄</span><span>閱讀札記</span><span>待解問題</span></div><figure class="fn-image"><img src="https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp" alt="空白田野筆記、植物標本與放大鏡" /><figcaption><span>FIG. 06</span>一頁尚未完成的觀察記錄</figcaption></figure></section>
+      <aside class="fn-margin"><p class="fn-margin-label">MARGIN NOTE / 06</p><p>「有時候，一個準確的問題，比一個快速的答案更值得留下。」</p><span>— 研究手記</span></aside>
+    </div>
+    <section class="fn-ledger" id="observations"><header><p class="fn-kicker">FIELD LEDGER / 近期紀錄</p><h2>最近，我在留意這些事。</h2><a href="#questions">看全部筆記 ↗</a></header><ol><li><span>06.18</span><a href="#questions"><b>一座城市如何留下安靜的空間</b><small>街道觀察 · 8 分鐘</small></a><span class="fn-ledger-type">觀察</span></li><li><span>06.11</span><a href="#questions"><b>讀書筆記裡反覆出現的三個詞</b><small>閱讀札記 · 6 分鐘</small></a><span class="fn-ledger-type">閱讀</span></li><li><span>05.29</span><a href="#questions"><b>記錄，不等於急著下結論</b><small>方法備忘 · 4 分鐘</small></a><span class="fn-ledger-type">方法</span></li></ol></section>
+    <section class="fn-question" id="questions"><span class="fn-question-no">OPEN QUESTION / 01</span><div><h2>最近的研究問題</h2><p>當我們願意多停留一會兒，哪些被忽略的細節會慢慢浮現？</p></div><a href={import.meta.env.BASE_URL + 'layouts/'}>回到十二款站型比較 ↗</a></section>
+    <footer class="fn-footer"><span>FIELD NOTES / 個人觀察與研究札記</span><span>不是答案的倉庫，是問題的生長處。</span></footer>
+  </main>
+</DirectionLayout>
+<style>
+.fn-site{--fn-paper:#f1eee4;--fn-ink:#222a20;--fn-moss:#59664a;background:var(--fn-paper);color:var(--fn-ink);min-height:100vh;padding:0 clamp(1rem,4vw,4rem) 2rem;font-family:Georgia,"Noto Serif TC",serif}.fn-header{display:flex;align-items:center;justify-content:space-between;min-height:92px;border-bottom:1px solid #c8c6b7;font-family:ui-monospace,monospace;font-size:.71rem;letter-spacing:.1em}.fn-mark{font-size:.8rem;line-height:.9;text-decoration:none;color:var(--fn-moss)}.fn-mark b{font-weight:700}.fn-mark small{display:block;font-size:.53rem;margin-top:.5rem}.fn-header nav{display:flex;gap:1.5rem}.fn-header nav a,.fn-ledger a,.fn-question a{color:inherit;text-decoration:none}.fn-header nav a:hover,.fn-ledger a:hover{text-decoration:underline;text-decoration-color:var(--fn-moss);text-underline-offset:4px}.fn-date{color:#55574b}.fn-layout{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:78px minmax(0,1fr) 180px;gap:clamp(1.2rem,4vw,4rem);padding:3rem 0 5rem}.fn-rail{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;font-family:ui-monospace,monospace;font-size:.63rem;color:#55564a;letter-spacing:.08em}.fn-rail a{writing-mode:vertical-rl;text-decoration:none;color:var(--fn-ink);margin-left:.15rem}.fn-rail-stem{height:110px;width:1px;background:#a9ad98;margin-left:.25rem}.fn-hero{max-width:920px}.fn-kicker,.fn-margin-label,.fn-question-no{font: .67rem ui-monospace,monospace;letter-spacing:.14em;color:var(--fn-moss);text-transform:uppercase}.fn-hero h1{font-size:clamp(4.1rem,9vw,9.8rem);line-height:.93;letter-spacing:-.085em;font-weight:400;margin:1rem 0 1.5rem}.fn-hero h1 i{font-weight:400;color:var(--fn-moss)}.fn-deck{font-size:1.15rem;line-height:1.85;max-width:530px;color:#515548;margin:0 0 1.5rem}.fn-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}.fn-tags span{border:1px solid #9ca18e;border-radius:99px;padding:.35rem .75rem;font-size:.72rem}.fn-image{margin:0 0 0 auto;width:min(76%,680px)}.fn-image img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.78);border-radius:48% 48% 4px 4px}.fn-image figcaption{display:flex;justify-content:space-between;gap:1rem;font: .62rem ui-monospace,monospace;color:#50564b;padding:.55rem 0;border-bottom:1px solid #b6b9aa}.fn-image figcaption span{color:var(--fn-moss)}.fn-margin{align-self:center;border-left:1px solid #a9ad98;padding:0 0 0 1rem;margin-top:5rem}.fn-margin p:not(.fn-margin-label){font-size:1rem;line-height:1.8}.fn-margin span{font: .62rem ui-monospace,monospace;color:#55564a}.fn-ledger{max-width:1150px;margin:0 auto 5rem;border-top:2px solid var(--fn-ink);border-bottom:1px solid #b8b8a8;display:grid;grid-template-columns:.7fr 1.3fr;gap:3rem;padding:1.4rem 0 2rem}.fn-ledger header h2{font-size:2rem;font-weight:400;line-height:1.15;margin:.4rem 0 1rem}.fn-ledger header>a{font: .7rem ui-monospace,monospace;border-bottom:1px solid;padding-bottom:.2rem}.fn-ledger ol{list-style:none;padding:0;margin:0}.fn-ledger li{display:grid;grid-template-columns:58px 1fr auto;align-items:start;gap:.8rem;border-bottom:1px solid #cfcec2;padding:.8rem 0}.fn-ledger li>span{font: .67rem ui-monospace,monospace;color:#55564a}.fn-ledger li a{display:flex;flex-direction:column;gap:.25rem}.fn-ledger li b{font-size:1.02rem;font-weight:400}.fn-ledger li small{font: .66rem ui-monospace,monospace;color:#55564a}.fn-ledger-type{border:1px solid #aeb2a2;padding:.12rem .4rem}.fn-question{max-width:1150px;margin:0 auto 3rem;display:grid;grid-template-columns:.7fr 1.3fr auto;gap:2rem;align-items:start;padding:1.5rem 0}.fn-question h2{font-size:1.7rem;font-weight:400;margin:0 0 .5rem}.fn-question p{font-size:1.1rem;line-height:1.7;max-width:570px;margin:0}.fn-question>a{font: .68rem ui-monospace,monospace;border-bottom:1px solid;text-decoration:none;padding-bottom:.3rem}.fn-footer{border-top:1px solid #c8c6b7;padding-top:1rem;display:flex;justify-content:space-between;font: .61rem ui-monospace,monospace;letter-spacing:.04em;color:#4f5246}@media(max-width:850px){.fn-layout{grid-template-columns:50px 1fr}.fn-margin{grid-column:2;margin:0;max-width:480px}.fn-ledger{grid-template-columns:1fr;gap:1rem}.fn-question{grid-template-columns:1fr 2fr;gap:1rem}.fn-question>a{grid-column:2}}@media(max-width:580px){.fn-header{align-items:flex-start;padding:1rem 0;gap:1rem;flex-wrap:wrap}.fn-header nav{order:3;width:100%;gap:1rem}.fn-date{font-size:.58rem}.fn-layout{grid-template-columns:28px 1fr;gap:1rem;padding-top:2rem}.fn-rail{font-size:.52rem}.fn-hero h1{font-size:clamp(3.5rem,17vw,5.2rem)}.fn-deck{font-size:1rem}.fn-image{width:100%}.fn-margin{margin-top:1rem}.fn-ledger li{grid-template-columns:46px 1fr}.fn-ledger-type{display:none}.fn-question{grid-template-columns:1fr;gap:.7rem}.fn-question>a{grid-column:auto}.fn-footer{flex-direction:column;gap:.5rem}}
+</style>
