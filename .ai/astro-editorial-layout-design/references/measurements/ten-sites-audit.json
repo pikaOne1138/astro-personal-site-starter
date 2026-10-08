@@ -1,0 +1,1000 @@
+[
+  {
+    "path": "/directions/knowledge/field-notes/",
+    "width": 1440,
+    "fail": [],
+    "warn": [
+      "<11px 文字 25 處"
+    ],
+    "metrics": {
+      "vw": 1440,
+      "hScroll": 0,
+      "pageHeight": 1915,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 46,
+      "minFont": 8.48,
+      "smallText": {
+        "lt11": 25,
+        "lt12": 33,
+        "lt14": 35
+      },
+      "smallTextSamples": [
+        "small 8.5px",
+        "span.fn-rail-no 10.1px",
+        "span 10.1px",
+        "a 10.1px"
+      ],
+      "distinctFontSizes": [
+        8.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        13,
+        16,
+        16.5,
+        17.5,
+        18.5,
+        27,
+        32,
+        129.5
+      ],
+      "contrastFail": 0,
+      "contrastSamples": [],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 129.6,
+        "lineHeightRatio": 0.93,
+        "letterSpacingEm": -0.085,
+        "width": 920,
+        "height": 362,
+        "lines": 3,
+        "vwRatio": 0.09,
+        "family": "Georgia"
+      },
+      "body": null,
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.33,
+          "rendered": 1.33,
+          "fit": "cover",
+          "distort": false,
+          "w": 680
+        }
+      ],
+      "touch": {
+        "total": 12,
+        "lt24": 6,
+        "lt44": 10,
+        "samples": [
+          "a.fn-mark 46x39",
+          "a 53x17",
+          "a 53x17",
+          "a 61x17",
+          "a 15x44"
+        ]
+      },
+      "textOverlap": 0,
+      "textOverlapSamples": [],
+      "sections": [
+        {
+          "s": "header.fn-header",
+          "left": 58,
+          "width": 1325,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "div.fn-layout",
+          "left": 58,
+          "width": 1325,
+          "bg": "",
+          "py": "48/80"
+        },
+        {
+          "s": "section#observations.fn-ledger",
+          "left": 145,
+          "width": 1150,
+          "bg": "",
+          "py": "22.4/32"
+        },
+        {
+          "s": "section#questions.fn-question",
+          "left": 145,
+          "width": 1150,
+          "bg": "",
+          "py": "24/24"
+        },
+        {
+          "s": "footer.fn-footer",
+          "left": 58,
+          "width": 1325,
+          "bg": "",
+          "py": "16/0"
+        }
+      ],
+      "rightEdgeElement": "main#main.fn-site",
+      "gaps": [
+        0,
+        0,
+        80,
+        48
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/field-notes/",
+    "width": 1280,
+    "fail": [],
+    "warn": [
+      "<11px 文字 25 處"
+    ],
+    "metrics": {
+      "vw": 1280,
+      "hScroll": 0,
+      "pageHeight": 1830,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 46,
+      "minFont": 8.48,
+      "smallText": {
+        "lt11": 25,
+        "lt12": 33,
+        "lt14": 35
+      },
+      "smallTextSamples": [
+        "small 8.5px",
+        "span.fn-rail-no 10.1px",
+        "span 10.1px",
+        "a 10.1px"
+      ],
+      "distinctFontSizes": [
+        8.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        13,
+        16,
+        16.5,
+        17.5,
+        18.5,
+        27,
+        32,
+        115
+      ],
+      "contrastFail": 0,
+      "contrastSamples": [],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 115.2,
+        "lineHeightRatio": 0.93,
+        "letterSpacingEm": -0.085,
+        "width": 817,
+        "height": 321,
+        "lines": 3,
+        "vwRatio": 0.09,
+        "family": "Georgia"
+      },
+      "body": null,
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.33,
+          "rendered": 1.33,
+          "fit": "cover",
+          "distort": false,
+          "w": 621
+        }
+      ],
+      "touch": {
+        "total": 12,
+        "lt24": 6,
+        "lt44": 10,
+        "samples": [
+          "a.fn-mark 46x39",
+          "a 53x17",
+          "a 53x17",
+          "a 61x17",
+          "a 15x44"
+        ]
+      },
+      "textOverlap": 0,
+      "textOverlapSamples": [],
+      "sections": [
+        {
+          "s": "header.fn-header",
+          "left": 51,
+          "width": 1178,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "div.fn-layout",
+          "left": 51,
+          "width": 1178,
+          "bg": "",
+          "py": "48/80"
+        },
+        {
+          "s": "section#observations.fn-ledger",
+          "left": 65,
+          "width": 1150,
+          "bg": "",
+          "py": "22.4/32"
+        },
+        {
+          "s": "section#questions.fn-question",
+          "left": 65,
+          "width": 1150,
+          "bg": "",
+          "py": "24/24"
+        },
+        {
+          "s": "footer.fn-footer",
+          "left": 51,
+          "width": 1178,
+          "bg": "",
+          "py": "16/0"
+        }
+      ],
+      "rightEdgeElement": "main#main.fn-site",
+      "gaps": [
+        0,
+        0,
+        80,
+        48
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/field-notes/",
+    "width": 768,
+    "fail": [
+      "觸控目標 <24px：6"
+    ],
+    "warn": [
+      "<11px 文字 25 處",
+      "11–12px 文字 8 處"
+    ],
+    "metrics": {
+      "vw": 768,
+      "hScroll": 0,
+      "pageHeight": 1894,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 46,
+      "minFont": 8.48,
+      "smallText": {
+        "lt11": 25,
+        "lt12": 33,
+        "lt14": 35
+      },
+      "smallTextSamples": [
+        "small 8.5px",
+        "span.fn-rail-no 10.1px",
+        "span 10.1px",
+        "a 10.1px"
+      ],
+      "distinctFontSizes": [
+        8.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        13,
+        16,
+        16.5,
+        17.5,
+        18.5,
+        27,
+        32,
+        69
+      ],
+      "contrastFail": 0,
+      "contrastSamples": [],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 69.1,
+        "lineHeightRatio": 0.93,
+        "letterSpacingEm": -0.085,
+        "width": 626,
+        "height": 193,
+        "lines": 3,
+        "vwRatio": 0.09,
+        "family": "Georgia"
+      },
+      "body": null,
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.33,
+          "rendered": 1.33,
+          "fit": "cover",
+          "distort": false,
+          "w": 476
+        }
+      ],
+      "touch": {
+        "total": 12,
+        "lt24": 6,
+        "lt44": 10,
+        "samples": [
+          "a.fn-mark 46x39",
+          "a 53x17",
+          "a 53x17",
+          "a 61x17",
+          "a 15x44"
+        ]
+      },
+      "textOverlap": 0,
+      "textOverlapSamples": [],
+      "sections": [
+        {
+          "s": "header.fn-header",
+          "left": 31,
+          "width": 707,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "div.fn-layout",
+          "left": 31,
+          "width": 707,
+          "bg": "",
+          "py": "48/80"
+        },
+        {
+          "s": "section#observations.fn-ledger",
+          "left": 31,
+          "width": 707,
+          "bg": "",
+          "py": "22.4/32"
+        },
+        {
+          "s": "section#questions.fn-question",
+          "left": 31,
+          "width": 707,
+          "bg": "",
+          "py": "24/24"
+        },
+        {
+          "s": "footer.fn-footer",
+          "left": 31,
+          "width": 707,
+          "bg": "",
+          "py": "16/0"
+        }
+      ],
+      "rightEdgeElement": "main#main.fn-site",
+      "gaps": [
+        0,
+        0,
+        80,
+        48
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/field-notes/",
+    "width": 390,
+    "fail": [
+      "觸控目標 <24px：6"
+    ],
+    "warn": [
+      "<11px 文字 23 處",
+      "11–12px 文字 7 處"
+    ],
+    "metrics": {
+      "vw": 390,
+      "hScroll": 0,
+      "pageHeight": 1914,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 43,
+      "minFont": 8.32,
+      "smallText": {
+        "lt11": 23,
+        "lt12": 30,
+        "lt14": 32
+      },
+      "smallTextSamples": [
+        "small 8.5px",
+        "span.fn-date 9.3px",
+        "span.fn-rail-no 8.3px",
+        "span 8.3px"
+      ],
+      "distinctFontSizes": [
+        8.5,
+        9.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        13,
+        16,
+        16.5,
+        17.5,
+        27,
+        32,
+        66.5
+      ],
+      "contrastFail": 0,
+      "contrastSamples": [],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 66.3,
+        "lineHeightRatio": 0.93,
+        "letterSpacingEm": -0.085,
+        "width": 314,
+        "height": 247,
+        "lines": 4,
+        "vwRatio": 0.17,
+        "family": "Georgia"
+      },
+      "body": null,
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.33,
+          "rendered": 1.33,
+          "fit": "cover",
+          "distort": false,
+          "w": 314
+        }
+      ],
+      "touch": {
+        "total": 12,
+        "lt24": 6,
+        "lt44": 10,
+        "samples": [
+          "a.fn-mark 46x39",
+          "a 53x17",
+          "a 53x17",
+          "a 61x17",
+          "a 12x36"
+        ]
+      },
+      "textOverlap": 0,
+      "textOverlapSamples": [],
+      "sections": [
+        {
+          "s": "header.fn-header",
+          "left": 16,
+          "width": 358,
+          "bg": "",
+          "py": "16/16"
+        },
+        {
+          "s": "div.fn-layout",
+          "left": 16,
+          "width": 358,
+          "bg": "",
+          "py": "32/80"
+        },
+        {
+          "s": "section#observations.fn-ledger",
+          "left": 16,
+          "width": 358,
+          "bg": "",
+          "py": "22.4/32"
+        },
+        {
+          "s": "section#questions.fn-question",
+          "left": 16,
+          "width": 358,
+          "bg": "",
+          "py": "24/24"
+        },
+        {
+          "s": "footer.fn-footer",
+          "left": 16,
+          "width": 358,
+          "bg": "",
+          "py": "16/0"
+        }
+      ],
+      "rightEdgeElement": "main#main.fn-site",
+      "gaps": [
+        0,
+        0,
+        80,
+        48
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/field-notes/",
+    "width": "reduced-motion",
+    "infiniteAnimationsRunning": 0
+  },
+  {
+    "path": "/directions/knowledge/essayist/",
+    "width": 1440,
+    "fail": [],
+    "warn": [
+      "對比不足 1（例 p.es-label:4.48）",
+      "<11px 文字 16 處"
+    ],
+    "metrics": {
+      "vw": 1440,
+      "hScroll": 0,
+      "pageHeight": 1892,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 35,
+      "minFont": 9.6,
+      "smallText": {
+        "lt11": 16,
+        "lt12": 19,
+        "lt14": 19
+      },
+      "smallTextSamples": [
+        "span 9.9px",
+        "a 10.9px",
+        "a 10.9px",
+        "a 10.9px"
+      ],
+      "distinctFontSizes": [
+        9.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        14.5,
+        16,
+        17,
+        19,
+        20,
+        27,
+        57.5,
+        80,
+        201.5
+      ],
+      "contrastFail": 1,
+      "contrastSamples": [
+        {
+          "s": "p.es-label",
+          "cr": 4.48,
+          "need": 4.5,
+          "fs": 10.4,
+          "t": "FROM THE NOTEB"
+        }
+      ],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 201.6,
+        "lineHeightRatio": 0.82,
+        "letterSpacingEm": -0.1,
+        "width": 940,
+        "height": 331,
+        "lines": 2,
+        "vwRatio": 0.14,
+        "family": "Georgia"
+      },
+      "body": {
+        "s": "p.es-dropcap",
+        "len": 73,
+        "widthPx": 507,
+        "fs": 17,
+        "lh": 2.05,
+        "approxCharsPerLine": 30
+      },
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.5,
+          "rendered": 1.46,
+          "fit": "cover",
+          "distort": false,
+          "w": 440
+        }
+      ],
+      "touch": {
+        "total": 11,
+        "lt24": 5,
+        "lt44": 9,
+        "samples": [
+          "a.es-wordmark 94x30",
+          "a 48x13",
+          "a 48x13",
+          "a 78x13",
+          "a.es-read 86x22"
+        ]
+      },
+      "textOverlap": 0,
+      "textOverlapSamples": [],
+      "sections": [
+        {
+          "s": "header.es-header",
+          "left": 72,
+          "width": 1296,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "section#current.es-cover",
+          "left": 80,
+          "width": 1280,
+          "bg": "",
+          "py": "115.2/80"
+        },
+        {
+          "s": "article#essay.es-article",
+          "left": 180,
+          "width": 1080,
+          "bg": "",
+          "py": "32/0"
+        },
+        {
+          "s": "section#notebook.es-notebook",
+          "left": 179,
+          "width": 1082,
+          "bg": "rgb(236, 229, 216)",
+          "py": "36.8/36.8"
+        },
+        {
+          "s": "footer.es-footer",
+          "left": 72,
+          "width": 1296,
+          "bg": "",
+          "py": "16/32"
+        }
+      ],
+      "rightEdgeElement": "main#main.es-site",
+      "gaps": [
+        0,
+        0,
+        107,
+        91
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/essayist/",
+    "width": 1280,
+    "fail": [],
+    "warn": [
+      "文字疊壓 1：h1 × figcaption",
+      "對比不足 1（例 p.es-label:4.48）",
+      "<11px 文字 16 處"
+    ],
+    "metrics": {
+      "vw": 1280,
+      "hScroll": 0,
+      "pageHeight": 1833,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 35,
+      "minFont": 9.6,
+      "smallText": {
+        "lt11": 16,
+        "lt12": 19,
+        "lt14": 19
+      },
+      "smallTextSamples": [
+        "span 9.9px",
+        "a 10.9px",
+        "a 10.9px",
+        "a 10.9px"
+      ],
+      "distinctFontSizes": [
+        9.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        14.5,
+        16,
+        17,
+        19,
+        20,
+        27,
+        51,
+        77,
+        179
+      ],
+      "contrastFail": 1,
+      "contrastSamples": [
+        {
+          "s": "p.es-label",
+          "cr": 4.48,
+          "need": 4.5,
+          "fs": 10.4,
+          "t": "FROM THE NOTEB"
+        }
+      ],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 179.2,
+        "lineHeightRatio": 0.82,
+        "letterSpacingEm": -0.1,
+        "width": 940,
+        "height": 294,
+        "lines": 2,
+        "vwRatio": 0.14,
+        "family": "Georgia"
+      },
+      "body": {
+        "s": "p.es-dropcap",
+        "len": 73,
+        "widthPx": 513,
+        "fs": 17,
+        "lh": 2.05,
+        "approxCharsPerLine": 30
+      },
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.5,
+          "rendered": 1.46,
+          "fit": "cover",
+          "distort": false,
+          "w": 412
+        }
+      ],
+      "touch": {
+        "total": 11,
+        "lt24": 5,
+        "lt44": 9,
+        "samples": [
+          "a.es-wordmark 94x30",
+          "a 48x13",
+          "a 48x13",
+          "a 78x13",
+          "a.es-read 86x22"
+        ]
+      },
+      "textOverlap": 1,
+      "textOverlapSamples": [
+        "h1 × figcaption"
+      ],
+      "sections": [
+        {
+          "s": "header.es-header",
+          "left": 64,
+          "width": 1152,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "section#current.es-cover",
+          "left": 64,
+          "width": 1152,
+          "bg": "",
+          "py": "102.4/80"
+        },
+        {
+          "s": "article#essay.es-article",
+          "left": 100,
+          "width": 1080,
+          "bg": "",
+          "py": "32/0"
+        },
+        {
+          "s": "section#notebook.es-notebook",
+          "left": 99,
+          "width": 1082,
+          "bg": "rgb(236, 229, 216)",
+          "py": "36.8/36.8"
+        },
+        {
+          "s": "footer.es-footer",
+          "left": 64,
+          "width": 1152,
+          "bg": "",
+          "py": "16/32"
+        }
+      ],
+      "rightEdgeElement": "main#main.es-site",
+      "gaps": [
+        0,
+        0,
+        107,
+        91
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/essayist/",
+    "width": 768,
+    "fail": [
+      "觸控目標 <24px：7"
+    ],
+    "warn": [
+      "文字疊壓 1：h1 × figcaption",
+      "對比不足 1（例 p.es-label:4.48）",
+      "<11px 文字 16 處",
+      "11–12px 文字 3 處"
+    ],
+    "metrics": {
+      "vw": 768,
+      "hScroll": 0,
+      "pageHeight": 2065,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 35,
+      "minFont": 9.6,
+      "smallText": {
+        "lt11": 16,
+        "lt12": 19,
+        "lt14": 19
+      },
+      "smallTextSamples": [
+        "span 9.9px",
+        "a 10.9px",
+        "a 10.9px",
+        "a 10.9px"
+      ],
+      "distinctFontSizes": [
+        9.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        14.5,
+        16,
+        17,
+        19,
+        20,
+        27,
+        32,
+        46,
+        107.5
+      ],
+      "contrastFail": 1,
+      "contrastSamples": [
+        {
+          "s": "p.es-label",
+          "cr": 4.48,
+          "need": 4.5,
+          "fs": 10.4,
+          "t": "FROM THE NOTEB"
+        }
+      ],
+      "contrastSkippedImageBg": 0,
+      "h1": {
+        "fontSize": 107.5,
+        "lineHeightRatio": 0.82,
+        "letterSpacingEm": -0.1,
+        "width": 691,
+        "height": 176,
+        "lines": 2,
+        "vwRatio": 0.14,
+        "family": "Georgia"
+      },
+      "body": {
+        "s": "p.es-dropcap",
+        "len": 73,
+        "widthPx": 331,
+        "fs": 17,
+        "lh": 2.05,
+        "approxCharsPerLine": 19
+      },
+      "images": [
+        {
+          "s": "img",
+          "nat": 1.5,
+          "rendered": 1.46,
+          "fit": "cover",
+          "distort": false,
+          "w": 247
+        }
+      ],
+      "touch": {
+        "total": 11,
+        "lt24": 7,
+        "lt44": 8,
+        "samples": [
+          "a.es-wordmark 94x30",
+          "a 48x13",
+          "a 48x13",
+          "a 78x13",
+          "a.es-read 86x22"
+        ]
+      },
+      "textOverlap": 1,
+      "textOverlapSamples": [
+        "h1 × figcaption"
+      ],
+      "sections": [
+        {
+          "s": "header.es-header",
+          "left": 38,
+          "width": 691,
+          "bg": "",
+          "py": "0/0"
+        },
+        {
+          "s": "section#current.es-cover",
+          "left": 38,
+          "width": 691,
+          "bg": "",
+          "py": "61.44/80"
+        },
+        {
+          "s": "article#essay.es-article",
+          "left": 38,
+          "width": 691,
+          "bg": "",
+          "py": "32/0"
+        },
+        {
+          "s": "section#notebook.es-notebook",
+          "left": 37,
+          "width": 693,
+          "bg": "rgb(236, 229, 216)",
+          "py": "36.8/36.8"
+        },
+        {
+          "s": "footer.es-footer",
+          "left": 38,
+          "width": 691,
+          "bg": "",
+          "py": "16/32"
+        }
+      ],
+      "rightEdgeElement": "main#main.es-site",
+      "gaps": [
+        0,
+        0,
+        109,
+        93
+      ]
+    }
+  },
+  {
+    "path": "/directions/knowledge/essayist/",
+    "width": 390,
+    "fail": [
+      "觸控目標 <24px：5"
+    ],
+    "warn": [
+      "對比不足 1（例 p.es-label:4.48）",
+      "<11px 文字 16 處",
+      "11–12px 文字 3 處"
+    ],
+    "metrics": {
+      "vw": 390,
+      "hScroll": 0,
+      "pageHeight": 2371,
+      "spill": [],
+      "spillCount": 0,
+      "textElCount": 35,
+      "minFont": 9.6,
+      "smallText": {
+        "lt11": 16,
+        "lt12": 19,
+        "lt14": 19
+      },
+      "smallTextSamples": [
+        "span 9.9px",
+        "a 10.9px",
+        "a 10.9px",
+        "a 10.9px"
+      ],
+      "distinctFontSizes": [
+        9.5,
+        10,
+        10.5,
+        11,
+        11.5,
+        14.5,
+        16,
+        17,
+        19,
+        20,
+        27,
+        32,
+        43,
+        66.5
+      ],
+      "contrastFail": 1,
+      "contrastSamples": [
+        {
+          "s": "p.es-label",
+          "cr": 4.48,
+          "need": 4.5,
+          "fs": 10.4,

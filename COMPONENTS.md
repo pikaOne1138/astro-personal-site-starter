@@ -145,3 +145,19 @@ Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
 ## BackToTop｜返回頁首（共用元件）
 
 `src/components/blocks/BackToTop.astro`：`threshold=420`（捲動超過多少 px 後顯示）、`label='返回頁首'`、`bottom='24px'`、`right='24px'`、`className`。已放進共用 `DemoLayout.astro`，因此所有使用此 Layout 的網站與元件／特效展示頁都會自動出現，不需要每一頁重複實例化。右下角懸浮、手機 safe-area、鍵盤可聚焦；遵守 `prefers-reduced-motion`，必要時以非平滑捲動返回頁首。Registry 新增 BackToTop 後為 54 個網站內容元件（特效庫 7 個 effects 分開計數）。
+
+
+## Layout Library｜獨立版型與閱讀動線
+
+學生參考 `/layouts/`：十二種版型原型，六種知識內容及六種助人專業。資料 `src/data/layout-directions.json`；預覽頁 `src/pages/layouts/[slug].astro`；樣式 `public/layout-library.css`，不依賴原本四套主題切換。新增構圖 Skill `.ai/astro-layout-craft/SKILL.md`；先挑資訊結構，再由 `/blocks/` 挑功能區塊、`/effects/` 挑互動效果。
+
+注意：Manus 十款版型按照原 ZIP 各自讀取架構後**重新整合**，不宣稱和原 Astro 7+Tailwind 專案逐行相同。Claude 二款為根據研究的延伸設計。12 款的首頁原型不等於 12 個完整多頁網站，也不在 Block Registry 另計元件。
+
+## Editorial design composition recipes
+
+Use `/layouts/recipes/` to explore original Claude recipe IDs H01–H12, S01–S08, L01–L06, R01–R06 and C01–C08. Exact editable Astro component source is in `.ai/astro-editorial-layout-design/recipes/code/`. Do not count these 40 visual compositions as extra functional Blocks or effects. Read the Editorial Skill for context and the visual QA requirements before creating a new layout.
+
+
+## Editorial Composition Recipes（另外 40 款，不是功能 blocks）
+
+專屬入口：`/layouts/recipes/`。元件：`src/components/editorial-recipes/`，分 12 Hero、8 Sections、6 Lists、6 Rhythm、8 CTA/Trust。Claude 原始研究與實例：`.ai/astro-editorial-layout-design/`。先從設計配方決定構圖，再選網站功能 blocks（原本 54 個）、微互動 effects（原本 7 個）。不能把 40 個配方計入既有 54+7 之內，避免學員混淆元件、構圖、版型三個層次。

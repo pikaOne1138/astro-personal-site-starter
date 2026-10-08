@@ -57,15 +57,15 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="Astro Blocks · 元件展示庫" description={`可讓 AI 自由組裝的 Astro 元件庫：${blockRegistry.length} 個元件、四套配色、兩類網站範例`}>
+<DemoLayout title="網站元件展示庫" description={`可讓 AI 自由組裝的網站元件庫：${blockRegistry.length} 個元件、四套配色、兩類網站範例`}>
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
-    <a class="ab-gallery-back" href={base}>← 返回八款網站 Demo 首頁</a> <a class="ab-gallery-back" href={base+'effects/'} style="margin-left:16px">動態特效庫 ↗</a>
-    <p class="ab-eyebrow" style="margin-top:32px">ASTRO WORKSHOP · COMPONENT LIBRARY</p>
+    <nav class="ab-library-nav" aria-label="展示庫導覽"><a href={base}>← 八款網站 Demo</a><a href={base+'blocks/'} aria-current="page">元件庫</a><a href={base+'effects/'}>特效庫 ↗</a><a href={base+'layouts/'}>版型庫 ↗</a></nav>
+    <p class="ab-eyebrow" style="margin-top:32px">WEBSITE DESIGN · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
-    <p>這裡展示真正可重用的 Astro 元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
+    <p>這裡展示真正可重用的網站元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
     <p>依網站使用情境探索 {blockRegistry.length} 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換四套配色，直接體驗互動效果。</p>
     <div class="ab-gallery-links"><a href="#common">導覽與共用</a><a href="#hero">首頁主視覺</a><a href="#content">內容呈現</a><a href="#blog">文章探索與清單</a><a href="#reading">文章閱讀與排版</a><a href="#professional">服務與信任</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
@@ -119,7 +119,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>CategoryLinks</strong><span>文章分類連結</span></div><CategoryLinks active="全部" items={[{label:'全部',href:'#blog'},{label:'寫作',href:'#blog'},{label:'閱讀',href:'#blog'},{label:'生活',href:'#blog'}]} /></div>
     <p class="ab-category-intro">ArticleSearch、TagCloud、ArchiveMonths、PostCalendar：四個元件共用文章日期、標籤與分類索引。能搜尋、按月份篩選、點日曆上的日期找到對應文章。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleSearch · TagCloud · ArchiveMonths · PostCalendar</strong><span>可實際操作的文章探索</span></div>
-      <p>直接進入互動 Demo：搜尋關鍵字「Astro」，點選「資訊架構」標籤，或點 2026 年 10 月 8 日，即可檢視相符文章。</p>
+      <p>直接進入互動 Demo：搜尋文章關鍵字，點選「資訊架構」標籤，或點 2026 年 10 月 8 日，即可檢視相符文章。</p>
       <a class="ab-button primary" href={base+'explore/'}>開啟文章搜尋、標籤與日曆 →</a>
     </div>
   </section>
@@ -142,7 +142,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleShare</strong><span>LINE、Facebook、Email、複製網址</span></div><ArticleShare url={'https://pikaOne1138.github.io'+base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'} title={articlesV2[0].title}/></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ReadingProgress</strong><span>閱讀文章時頂部顯示的進度</span></div><p>進度線可於完整文章頁實際滾動體驗，不在元件清單頁額外啟動。</p><a class="ab-text-link" href={base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'}>體驗閱讀進度 →</a></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ResourceCard</strong><span>影片、書籍、文章與資源卡</span></div><ResourceCard kind="link" title="網站架構入門" description="介紹網站主要頁面、架構與閱讀路徑。" href={base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'} /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>ResourceLibrary</strong><span>不同媒體類型共用的資源索引</span></div><ResourceLibrary items={[{kind:'video',title:'網站影音示範',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk',description:'外部影片來源示範'},{kind:'link',title:'閱讀網站架構文章',href:base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'},{kind:'tool',title:'查看 Astro 範例程式',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ResourceLibrary</strong><span>不同媒體類型共用的資源索引</span></div><ResourceLibrary items={[{kind:'video',title:'網站影音示範',href:'https://www.youtube.com/watch?v=jfKfPfyJRdk',description:'外部影片來源示範'},{kind:'link',title:'閱讀網站架構文章',href:base+'knowledge/paper/articles/'+articlesV2[0].slug+'/'},{kind:'tool',title:'查看網站範例程式',href:'https://github.com/pikaOne1138/astro-personal-site-starter'}]}/></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>LeadMagnetCard</strong><span>免費資源／下載卡</span></div><LeadMagnetCard title="架站範例原始碼" description="開啟公開範例專案，研究網站結構與元件。" href="https://github.com/pikaOne1138/astro-personal-site-starter" format="公開免費資源"/></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>NewsletterSignup</strong><span>可串接訂閱服務的外部入口</span></div><NewsletterSignup description="未配置真實訂閱平台之前，不顯示假送出按鈕。"/></div>
   </section>

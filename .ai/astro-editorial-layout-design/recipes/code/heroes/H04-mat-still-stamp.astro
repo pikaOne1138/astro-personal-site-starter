@@ -1,0 +1,45 @@
+---
+/**
+ * H04 mat-still-stamp — 左文 + 白框相片（下緣加厚）+ 印章（衍生自 04 收藏者目錄）
+ * 修正 04 的缺陷：印章放進 figure 內，以 figure 為定位基準，不隨視窗漂移。
+ */
+interface Props { kicker?: string; first?: string; voice?: string; body?: string; cta?: string; href?: string; stamp?: string[]; src?: string; alt?: string; cap?: string }
+const {
+  kicker = '一份不追求收盡一切的目錄', first = '我替你', voice = '先選過一輪。',
+  body = '書、文章、工具和偶然發現的好想法。每一項都有被放進來的理由，也有一條可以繼續探索的線索。',
+  cta = '進入收藏目錄', href = '#collection', stamp = ['CABINET', 'OF CURIOSITIES'],
+  src, alt = '', cap = 'OBJECTS / IDEAS / 2026',
+} = Astro.props;
+---
+<section class="h04">
+  <div class="copy">
+    <p class="label">{kicker}</p>
+    <h1><span class="ph">{first}</span> <em class="ph">{voice}</em></h1>
+    <p class="body">{body}</p>
+    <a class="go" href={href}>{cta} <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure>
+    <div class="mat">
+      {src ? <img src={src} alt={alt} width="1200" height="800" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+      <figcaption>{cap}</figcaption>
+    </div>
+    <span class="stamp" aria-hidden="true">{stamp[0]}<br />{stamp[1]}</span>
+  </figure>
+</section>
+<style>
+  .h04 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(3rem, 7vw, 5rem) var(--ed-gutter, 4vw); display: grid; grid-template-columns: 1fr .85fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; color: var(--ed-ink, #30252f); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #5b4055); margin: 0; }
+  h1 { font: 400 clamp(3.2rem, 9vw, 8rem)/1.02 var(--ed-serif, Georgia, serif); letter-spacing: -.03em; margin: .8rem 0 1.3rem; text-wrap: balance; }
+  .ph { display: inline-block; }
+  h1 em { font-style: italic; color: var(--ed-accent, #5b4055); }
+  .body { max-width: 28em; line-height: 1.85; color: var(--ed-ink-2, #655a60); }
+  .go { display: inline-flex; align-items: center; min-height: 44px; margin-top: .8rem; font: .8rem var(--ed-mono, monospace); color: var(--ed-accent, #5b4055); text-decoration: none; border-bottom: 1px solid var(--ed-gold, #76572c); }
+  .go span { margin-left: .8rem; color: var(--ed-gold, #76572c); }
+  figure { position: relative; margin: 0; }
+  .mat { background: #fff; padding: .7rem .7rem 2.2rem; transform: rotate(1.8deg); box-shadow: 0 18px 50px #30252f19; position: relative; }
+  .mat img, .art { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .art { background: radial-gradient(circle at 30% 70%, #5b4055 0 14%, #0000 15%), radial-gradient(circle at 70% 40%, #d6c3a3 0 22%, #0000 23%), linear-gradient(135deg, #e9e2d8, #cbbfb0); }
+  figcaption { font: .75rem var(--ed-mono, monospace); color: var(--ed-ink-2, #575757); position: absolute; left: 1rem; bottom: .55rem; }
+  .stamp { position: absolute; left: -2.5rem; bottom: 3.6rem; display: grid; place-items: center; width: 7.6rem; height: 7.6rem; border: 1px solid var(--ed-gold, #76572c); border-radius: 50%; background: var(--ed-paper, #efebe6); font: .75rem/1.5 var(--ed-mono, monospace); color: var(--ed-gold, #76572c); text-align: center; transform: rotate(-13deg); }
+  @media (max-width: 760px) { .h04 { grid-template-columns: 1fr; } figure { width: 88%; margin-left: auto; } .stamp { left: -1rem; bottom: 3rem; width: 6.6rem; height: 6.6rem; } }
+</style>

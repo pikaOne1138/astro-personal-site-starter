@@ -1,0 +1,32 @@
+---
+/**
+ * L05 date-disc-rows — 日期圓 | 主題 + 備註 | 行動連結（衍生自 10 .cg-calendar）。
+ * 日期未確認時顯示「--／TBD」並在備註寫明「待確認」，不編造日期與名額。
+ */
+interface Props { label?: string; title?: string; voice?: string; sub?: string; items?: { m: string; d: string; tag: string; t: string; note: string; cta?: string }[] }
+const {
+  label = 'OPEN TABLE / UPCOMING', title = '留一張椅子，', voice = '一起練習。',
+  sub = '以下主題與日期均是版型示意，不代表真實活動；正式內容需由團隊確認後更新。',
+  items = [{ m: 'TBD', d: '--', tag: '示意主題 / 開放對話', t: '如何在助人工作裡練習說不？', note: '日期、形式與名額待團隊確認' }, { m: 'TBD', d: '--', tag: '示意主題 / 共同備課', t: '把一個服務流程畫給彼此看', note: '日期、時間與名額待團隊確認' }],
+} = Astro.props;
+---
+<section class="l05">
+  <div class="head"><p class="label">{label}</p><h2><span class="ph">{title}</span> <em class="ph">{voice}</em></h2><p class="sub">{sub}</p></div>
+  <ol>{items.map((i) => (
+    <li><span class="disc"><b>{i.d}</b>{i.m}</span><div><p class="tag">{i.tag}</p><h3>{i.t}</h3><span class="note">{i.note}</span></div><a href="#">{i.cta ?? '活動資訊'} ↗</a></li>
+  ))}</ol>
+</section>
+<style>
+  .l05 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 1.5rem var(--ed-gutter, 4vw) 0; border-top: 1px solid var(--ed-line, #d2cec3); display: grid; grid-template-columns: .8fr 1.2fr; gap: 5vw; color: var(--ed-ink, #203d68); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #2d55cf); margin: 0; }
+  h2 { font: 800 clamp(2.2rem, 4.6vw, 4.4rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .5rem 0; text-wrap: balance; }
+  .ph { display: inline-block; } em { font: 400 italic 1em var(--ed-serif, Georgia, serif); color: var(--ed-accent, #2d55cf); }
+  .sub { max-width: 26em; font-size: .9rem; line-height: 1.8; color: var(--ed-ink-2, #4c5c78); }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 4.6rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--ed-line, #d2cec3); }
+  .disc { width: 4rem; height: 4rem; border-radius: 50%; background: var(--ed-hi, #f5cb47); display: grid; place-content: center; text-align: center; font: .75rem var(--ed-mono, monospace); } .disc b { font-size: 1.35rem; line-height: 1; }
+  .tag { font: .75rem var(--ed-mono, monospace); color: var(--ed-accent, #2d55cf); margin: 0; } h3 { font-size: 1.05rem; margin: .3rem 0; } .note { font-size: .8rem; color: var(--ed-ink-2, #4c5c78); }
+  li > a { display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; color: var(--ed-accent, #2d55cf); }
+  @media (max-width: 900px) { .l05 { grid-template-columns: 1fr; gap: 1rem; } }
+  @media (max-width: 580px) { li { grid-template-columns: 3.4rem 1fr; } li > a { grid-column: 2; } .disc { width: 3.2rem; height: 3.2rem; } }
+</style>

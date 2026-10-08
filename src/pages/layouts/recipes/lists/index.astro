@@ -1,0 +1,15 @@
+---
+import Base from '../../../../layouts/EditorialBase.astro';
+import L01 from '../../../../components/editorial-recipes/lists/L01-ledger-rows.astro';
+import L02 from '../../../../components/editorial-recipes/lists/L02-node-track.astro';
+import L03 from '../../../../components/editorial-recipes/lists/L03-archive-table.astro';
+import L04 from '../../../../components/editorial-recipes/lists/L04-stair-details.astro';
+import L05 from '../../../../components/editorial-recipes/lists/L05-date-disc-rows.astro';
+import L06 from '../../../../components/editorial-recipes/lists/L06-leader-toc.astro';
+---
+<Base title="列表與目錄｜網站構圖配方庫" description="6 種列表／目錄配方的實際渲染">
+  <main id="main" style="display:grid;gap:var(--ed-section);padding-block:var(--ed-section)">
+    <header class="editorial-recipe-header"><a href={import.meta.env.BASE_URL+'layouts/recipes/'}>← 返回構圖配方庫</a><div><p>EDITORIAL DESIGN / COMPOSITION RECIPES</p><h1>列表與目錄</h1><p>6 種資訊編排：帳簿、時間軸、日期、索引與摺疊。</p></div></header>
+    <L01 /><L02 /><L03 /><L04 /><L05 /><L06 />
+  </main>
+</Base>

@@ -60,3 +60,15 @@ For motion-related requests, first read `.ai/astro-motion-craft/SKILL.md` and `.
 
 ## BackToTop / return to top
 Use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astro`; do not copy/paste separate scroll handlers into each page. The shared control is hidden near the top, appears after its threshold, respects `prefers-reduced-motion`, has an accessible button label, 44+ px touch target, and uses existing four-theme tokens. When adding a new top-level layout, reuse this component. Do not count BackToTop as an effects-library item.
+
+
+## Distinct layout library (not theme permutations)
+`/layouts/` contains 12 structurally different native Astro homepage previews, driven by `src/data/layout-directions.json`; six knowledge/editorial and six professional care. Follow `.ai/astro-layout-craft/SKILL.md` for information architecture, section order, hero proportion and structural compositions. **Do not replace all 12 with the same template plus color variants.** These layouts are distinct from 54 functional blocks and 7 effects and are not registered as blocks. Ten concepts are adapted from the user's `astro-ten-site-directions.zip`; two are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
+
+## New editorial design source of truth
+
+For layout-related AI tasks, consult `.ai/astro-layout-craft/SKILL.md` AND `.ai/astro-editorial-layout-design/SKILL.md`; never invent a generic hero/cards grid if original recipes exist. Forty exact reusable Astro compositions (12 Hero, 8 Sections, 6 Lists, 6 Rhythm, 8 CTA/Trust) are stored in the editorial skill recipes/code and rendered at `/layouts/recipes/`. Evidence and QA rules are supplied in references and checklists. Inspect 1440,1280,768,390 screenshots; green CI only proves build. Reading Atlas and Trust Path now use the source Claude examples, with explicitly fictional demonstration details.
+
+
+## Claude editorial design integration (PR #20)
+Before new layouts or refactors, read `.ai/astro-editorial-layout-design/SKILL.md` together with `.ai/astro-layout-craft/SKILL.md`. Claude's 40 numbered composition recipes live in `src/components/editorial-recipes/{heroes,sections,lists,rhythm,cta-trust}/` and are demoed at `/layouts/recipes/`; they are distinct from existing block and motion inventories. The original evidence / measurements / sample sources are preserved under `.ai/astro-editorial-layout-design/`. The two Claude pages are `src/pages/layouts/reading-atlas/index.astro` and `src/pages/layouts/trust-path/index.astro`. Visual acceptance requires actual 1440/1280/768/390 screenshots in addition to Astro build; do not claim this verification unless performed. Always distinguish [OBS]/[MEAS] source facts from [INF]/[NEW] advice.

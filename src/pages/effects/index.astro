@@ -9,19 +9,19 @@ import UnderlineLink from '../../components/effects/UnderlineLink.astro';
 import MotionFAQ from '../../components/effects/MotionFAQ.astro';
 const base=import.meta.env.BASE_URL;
 const intro=[{name:'淡入上移',variant:'fade-up'},{name:'柔和縮放',variant:'soft-zoom'},{name:'模糊淡入',variant:'blur-up'},{name:'向左進場',variant:'slide-left'},{name:'遮罩揭露',variant:'clip-up'}] as const;
-const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組示範以原生 Astro、CSS 與少量 JavaScript 製作，手機與觸控會停用不必要的指標追蹤效果。仍應依實際裝置測試。'},{question:'訪客設定「減少動態」會怎樣？',answer:'Reveal 不會隱藏內容，傾斜、磁吸與平移會被停用，閱讀與鍵盤操作保持正常。'},{question:'可以換成我自己的品牌顏色嗎？',answer:'可以。示範沿用紙墨、晨光、靜室與植感的既有 CSS 變數，AI 可依 Motion Skill 調整強度和使用區域。'}];
+const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組示範以輕量網頁技術與少量 JavaScript 製作，手機與觸控會停用不必要的指標追蹤效果。仍應依實際裝置測試。'},{question:'訪客設定「減少動態」會怎樣？',answer:'Reveal 不會隱藏內容，傾斜、磁吸與平移會被停用，閱讀與鍵盤操作保持正常。'},{question:'可以換成我自己的品牌顏色嗎？',answer:'可以。示範沿用紙墨、晨光、靜室與植感的既有 CSS 變數，AI 可依 Motion Skill 調整強度和使用區域。'}];
 ---
-<DemoLayout title="Astro Motion · 特效參考庫" description="可操作的 Astro 微互動效果示範：Reveal、Stagger、Tilt、Spotlight、Zoom、Pan、Magnetic、連結底線與 FAQ。">
+<DemoLayout title="網站特效參考庫" description="可操作的網站微互動效果示範：Reveal、Stagger、Tilt、Spotlight、Zoom、Pan、Magnetic、連結底線與 FAQ。">
   <link rel="stylesheet" href={base+'effects.css'}/>
   <main class="fx-page" id="top" data-intensity="subtle">
     <nav class="fx-topline" aria-label="展示庫導覽">
-      <span class="fx-kicker">ASTRO WORKSHOP · MOTION LIBRARY</span>
-      <div><a href={base+'blocks/'}>元件庫 ↗</a>　 <a href={base}>八款網站 ↗</a></div>
+      <span class="fx-kicker">WEB DESIGN · MOTION LIBRARY</span>
+      <div class="fx-library-links"><a href={base}>八款網站 ↗</a><a href={base+'blocks/'}>元件庫 ↗</a><a href={base+'effects/'} aria-current="page">特效庫</a><a href={base+'layouts/'}>版型庫 ↗</a></div>
     </nav>
     <header class="fx-hero">
       <p class="fx-kicker">DESIGN SYSTEM / INTERACTIONS</p>
       <h1>讓細節有感，<br/>而不喧賓奪主。</h1>
-      <p>這裡是可實際操作的 Astro 特效庫。移動滑鼠、點擊切換、向下捲動，感受不同互動的節奏；同一組效果能套用四套主題，並尊重手機觸控與減少動態設定。</p>
+      <p>這裡是可實際操作的 網站特效庫。移動滑鼠、點擊切換、向下捲動，感受不同互動的節奏；同一組效果能套用四套主題，並尊重手機觸控與減少動態設定。</p>
     </header>
     <div class="fx-controls" aria-label="特效示範控制">
       <div class="fx-control-group" role="group" aria-label="切換示範主題"><span>預覽風格</span>

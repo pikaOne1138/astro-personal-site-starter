@@ -1,0 +1,196 @@
+---
+/**
+ * 閱讀年鑑 — 驗證站 1。構圖：無圖（巨大年份）＋ 12 月線格（純 CSS 篩選）＋ 深色「年度之書」帶 ＋ 書籍目錄。
+ * 所有書目、作者、頁數、判斷、統計皆為版型示意資料（頁面上有可見標示）。
+ * 設計決策見 examples/reading-almanac/DECISIONS.md；旋鈕見 direction.md。
+ */
+import Base from '../layouts/Base.astro';
+import H11 from '../../../recipes/code/heroes/H11-numeral-index.astro';
+import R02 from '../../../recipes/code/rhythm/R02-band-alternation.astro';
+import R05 from '../../../recipes/code/rhythm/R05-voice-heading.astro';
+import L06 from '../../../recipes/code/lists/L06-leader-toc.astro';
+import C07 from '../../../recipes/code/cta-trust/C07-subscribe-cadence.astro';
+import C08 from '../../../recipes/code/cta-trust/C08-provenance-note.astro';
+
+type Kind = 'fic' | 'nf';
+const months: { m: string; name: string; theme: string; title: string; verdict: string; pages: number; kind: Kind; re?: boolean }[] = [
+  { m: '01', name: '一月', theme: '慢下來', title: '《海邊的算術》', verdict: '讀完才發現，數字也可以寫得很慢。', pages: 312, kind: 'nf' },
+  { m: '02', name: '二月', theme: '口音', title: '《隔壁的口音》', verdict: '短篇的節制，讓每一個停頓都有重量。', pages: 248, kind: 'fic' },
+  { m: '03', name: '三月', theme: '地圖', title: '《沒有座標的城市》', verdict: '它不教你認路，而是教你注意迷路的方式。', pages: 336, kind: 'nf' },
+  { m: '04', name: '四月', theme: '第二次翻開', title: '《第二次翻開》', verdict: '重讀後，我删掉了去年筆記裡的兩個結論。', pages: 280, kind: 'fic', re: true },
+  { m: '05', name: '五月', theme: '手工', title: '《一把椅子的時間》', verdict: '作者承認做不好的部分，這讓其餘部分可信。', pages: 224, kind: 'nf' },
+  { m: '06', name: '六月', theme: '夏夜', title: '《最後一班渡輪》', verdict: '情節很小，但每個人物都有未說完的話。', pages: 296, kind: 'fic' },
+  { m: '07', name: '七月', theme: '水', title: '《看不見的河》', verdict: '資料多，但作者始終分得清哪些是推測。', pages: 360, kind: 'nf' },
+  { m: '08', name: '八月', theme: '移動', title: '《行李裡的鄰居》', verdict: '結尾有點急，前三分之二值得慢讀。', pages: 264, kind: 'fic' },
+  { m: '09', name: '九月', theme: '開學', title: '《如何讀一本難書》', verdict: '重讀第三章，讀書法立刻有了具體步驟。', pages: 188, kind: 'nf', re: true },
+  { m: '10', name: '十月', theme: '落葉', title: '《落葉的簿記》', verdict: '全年唯一讓我把筆記重寫一遍的書。', pages: 320, kind: 'fic' },
+  { m: '11', name: '十一月', theme: '記憶', title: '《舊照片的註腳》', verdict: '註腳比正文更誠實，這是它的缺點，也是優點。', pages: 272, kind: 'nf' },
+  { m: '12', name: '十二月', theme: '年末', title: '《十二月的算式》', verdict: '用一年的結尾，回頭改寫了一月的那本。', pages: 240, kind: 'fic' },
+];
+const count = {
+  all: months.length,
+  fic: months.filter((x) => x.kind === 'fic').length,
+  nf: months.filter((x) => x.kind === 'nf').length,
+  re: months.filter((x) => x.re).length,
+};
+const filters = [
+  { id: 'all', t: '全部', n: count.all }, { id: 'fic', t: '小說', n: count.fic },
+  { id: 'nf', t: '非虛構', n: count.nf }, { id: 're', t: '重讀', n: count.re },
+];
+const kindLabel = { fic: '小說', nf: '非虛構' };
+const seasons = [
+  { g: '春夏　一月至六月', from: 0, to: 6 }, { g: '秋冬　七月至十二月', from: 6, to: 12 },
+].map((s) => ({ g: s.g, items: months.slice(s.from, s.to).map((x) => ({ t: x.title, n: `${x.m} 月`, href: `#m${x.m}` })) }));
+const theme = '--ed-paper:#f3efe6;--ed-ink:#1c1b18;--ed-ink-2:#55524a;--ed-accent:#0f5a5a;--ed-accent-deco:#2f8a84;--ed-line:#d3ccbd;--ed-panel:#e8e1d2;--ed-dark:#10201f;--ed-on-dark:#eaeee9;--ed-on-dark-2:#a9b9b6;--ed-gold:#855a14';
+---
+<Base title="閱讀年鑑 2026｜示意版型" description="一年一本年鑑：十二個月、十二本書、一句判斷。示意資料版型。" theme={theme} themeColor="#f3efe6">
+  <header class="al-head">
+    <a class="al-mark" href="#main">年鑑 <span>ALMANAC</span></a>
+    <nav aria-label="主選單"><a href="#months">月曆</a><a href="#book">年度之書</a><a href="#index">書單索引</a><a href="#subscribe">訂閱</a></nav>
+    <span class="al-year">2026</span>
+  </header>
+  <main id="main">
+    <H11 label="THE READING ALMANAC" numeral="2026" title="這一年，我讀完了這些書。"
+      deck="一年的閱讀按月份排列：每個月一個主題、一本最想留下來的書，以及一句讀完後的判斷。放棄的書也算進去。"
+      stats={[{ n: '112', k: '本讀完' }, { n: '12', k: '個月主題' }, { n: '9', k: '本重讀' }, { n: '3', k: '本放棄' }]} />
+    <p class="al-demo">▲ 示意資料：書名、作者、頁數、判斷與四個計數皆為虛構，真實站請替換為可核對的紀錄。</p>
+
+    <section class="al-cal" id="months" aria-labelledby="cal-h">
+      <header>
+        <div><p class="lab">CALENDAR / 12 MONTHS</p><h2 id="cal-h">十二個月，<em>十二個主題。</em></h2></div>
+        <fieldset class="filter"><legend>以類型篩選</legend>
+          {filters.map((f, i) => (
+            <label class="chip"><input type="radio" name="k" id={`k-${f.id}`} value={f.id} checked={i === 0} /><span>{f.t}</span><b>{f.n}</b></label>
+          ))}
+        </fieldset>
+      </header>
+      <ol class="grid">
+        {months.map((x) => (
+          <li class="cell" id={`m${x.m}`} data-kind={`${x.kind}${x.re ? ' re' : ''}`}>
+            <div class="in">
+              <div class="top"><span class="num">{x.m}</span><span class="mon">{x.name}</span></div>
+              <p class="theme">{x.theme}</p>
+              <h3>{x.title}</h3>
+              <p class="verdict">{x.verdict}</p>
+              <p class="meta">{x.pages} 頁 · {kindLabel[x.kind]}{x.re ? ' · 重讀' : ''}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <R02 tone="dark" wide="1320px">
+      <div class="al-book" id="book">
+        <div class="spine" aria-hidden="true"><b>落葉的簿記</b><i>示意</i></div>
+        <div class="txt">
+          <p class="lab">THE BOOK OF THE YEAR · 十月</p>
+          <R05 level={2} phrases={['如果只能留一本，']} voice="是這一本。" serif />
+          <p class="lead">《落葉的簿記》是全年唯一讓我把筆記重寫一遍的書。判斷的依據不是「好看」，而是它改變了我接下來三週提問的方式。</p>
+          <ol class="crit">
+            <li><b>01</b><span>讀完後能改變下一個問題</span></li>
+            <li><b>02</b><span>三週後仍然想引用其中一句</span></li>
+            <li><b>03</b><span>作者分得清事實與推測</span></li>
+            <li><b>04</b><span>值得再讀一次</span></li>
+          </ol>
+        </div>
+        <div class="prov">
+          <C08 title="這份判斷怎麼來的（示意）" rows={[
+            { k: '做法', v: '讀完全書後寫；引用處標頁碼。', href: '#' },
+            { k: '最後更新', v: '2026-10-08' },
+            { k: '更正', v: '發現錯誤請來信，更正會列在文末並註明日期。', href: '#' },
+          ]} />
+        </div>
+      </div>
+    </R02>
+
+    <section class="al-index" id="index" aria-labelledby="idx-h">
+      <div class="side"><p class="lab">INDEX</p><h2 id="idx-h">書單索引</h2><p>按季節排好，點書名回到月曆。</p></div>
+      <div class="cols">{seasons.map((s) => <L06 label={s.g} groups={[{ g: '', items: s.items }]} />)}</div>
+    </section>
+
+    <div id="subscribe"><C07 label="THE ANNUAL LIST" title="每月一封，不催促閱讀。" cadence="每月第一個週日寄出：本月的書、一句判斷、一個還沒想清楚的問題。約 5 分鐘讀完。" sample="看一封樣本（示意）→" /></div>
+  </main>
+  <footer class="al-foot"><span>閱讀年鑑 · 版型示意</span><span>書目與數字皆為虛構資料</span></footer>
+</Base>
+<style>
+  main { display: block; }
+  .al-head { max-width: var(--ed-wide); margin-inline: auto; min-height: 72px; padding: 0 var(--ed-gutter); display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--ed-line); }
+  .al-mark { display: inline-flex; align-items: center; min-height: 44px; font: 700 1.25rem var(--ed-serif); text-decoration: none; letter-spacing: .02em; }
+  .al-mark span { margin-left: .5rem; font: .75rem var(--ed-mono); letter-spacing: .14em; color: var(--ed-ink-2); }
+  .al-head nav { display: flex; gap: .25rem 1.4rem; font: .75rem var(--ed-mono); }
+  .al-head nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding-inline: .4rem; text-decoration: none; }
+  .al-head nav a:hover { color: var(--ed-accent); text-decoration: underline; text-underline-offset: 6px; }
+  .al-year { font: .75rem var(--ed-mono); color: var(--ed-ink-2); }
+  .al-demo { max-width: var(--ed-wide); margin: 1rem auto 0; padding: 0 var(--ed-gutter); font: .75rem/1.6 var(--ed-mono); color: var(--ed-ink-2); }
+  .lab { font: .75rem var(--ed-mono); letter-spacing: .14em; color: var(--ed-accent); margin: 0; }
+
+  /* 月曆：gap:1px + 背景色 = 線格，任何欄數都自動成線 */
+  .al-cal { max-width: var(--ed-wide); margin: var(--ed-section) auto 0; padding: 0 var(--ed-gutter); }
+  .al-cal > header { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 2rem; flex-wrap: wrap; border-top: 2px solid var(--ed-ink); padding-top: 1.2rem; margin-bottom: 1.2rem; }
+  .al-cal h2 { font: 400 clamp(2.2rem, 4.6vw, 4rem)/1.12 var(--ed-serif); letter-spacing: -.02em; margin: .5rem 0 0; text-wrap: balance; }
+  .al-cal h2 em { font-style: italic; color: var(--ed-accent); }
+  .filter { border: 0; margin: 0; padding: 0; display: none; gap: .5rem; flex-wrap: wrap; }
+  @supports selector(:has(*)) { .filter { display: flex; } }
+  .filter legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .chip { position: relative; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 1rem; border: 1px solid var(--ed-ink-2); font: .875rem var(--ed-sans); cursor: pointer; }
+  .chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .chip b { font: .75rem var(--ed-mono); color: var(--ed-ink-2); }
+  .chip:has(input:checked) { background: var(--ed-ink); color: var(--ed-paper); border-color: var(--ed-ink); }
+  .chip:has(input:checked) b { color: #c9d4d2; }
+  .chip:has(input:focus-visible) { outline: 3px solid var(--ed-accent); outline-offset: 3px; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--ed-line); border: 1px solid var(--ed-line); }
+  .cell { background: var(--ed-paper); }
+  .in { height: 100%; min-height: 15.5rem; padding: 1.2rem 1.2rem 1rem; display: flex; flex-direction: column; transition: opacity .25s; }
+  .top { display: flex; align-items: baseline; justify-content: space-between; }
+  .num { font: 400 2.8rem/1 var(--ed-serif); font-variant-numeric: tabular-nums; color: var(--ed-gold); }
+  .mon { font: .75rem var(--ed-mono); letter-spacing: .1em; color: var(--ed-ink-2); }
+  .theme { font: italic 1rem var(--ed-serif); color: var(--ed-accent); margin: .6rem 0 .2rem; }
+  .in h3 { font: 400 1.25rem/1.35 var(--ed-serif); margin: 0 0 .5rem; }
+  .verdict { font-size: .875rem; line-height: 1.75; color: var(--ed-ink-2); margin: 0 0 1rem; }
+  .meta { margin: auto 0 0; font: .75rem var(--ed-mono); color: var(--ed-ink-2); }
+  .al-cal:has(#k-fic:checked) .cell:not([data-kind~="fic"]) .in,
+  .al-cal:has(#k-nf:checked) .cell:not([data-kind~="nf"]) .in,
+  .al-cal:has(#k-re:checked) .cell:not([data-kind~="re"]) .in { opacity: .18; }
+
+  /* 年度之書 */
+  .al-book { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 20rem); gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
+  .spine { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: center; width: 7.5rem; min-height: 22rem; padding: 1.2rem .5rem; background: #1d6b66; color: #fff; border-left: 6px solid #0b3a3a; box-shadow: 10px 10px 0 #ffffff1f; }
+  .spine b { writing-mode: vertical-rl; font: 700 1.5rem/1 var(--ed-serif); letter-spacing: .12em; }
+  .spine i { font: normal .75rem var(--ed-mono); letter-spacing: .14em; }
+  .txt { max-width: 40rem; }
+  .prov { align-self: end; }
+  .prov :global(.c08) { max-width: none; }
+  .txt :global(h2) { margin: .6rem 0 1rem; }
+  .lead { font: 1rem/1.95 var(--ed-serif); color: var(--ed-on-dark-2); margin: 0 0 1.5rem; max-width: 34em; }
+  .crit { list-style: none; margin: 0 0 2rem; padding: 0; border-top: 1px solid #ffffff33; }
+  .crit li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid #ffffff33; font-size: 1rem; }
+  .crit b { font: 400 .75rem var(--ed-mono); color: var(--ed-accent); padding-top: .15rem; }
+
+  /* 索引 */
+  .al-index { max-width: var(--ed-wide); margin: var(--ed-section) auto 0; padding: 0 var(--ed-gutter); display: grid; grid-template-columns: .6fr 1.4fr; gap: clamp(1.5rem, 6vw, 5rem); --ed-gutter: 0px; }
+  .al-index { padding-inline: clamp(1rem, 4vw, 4rem); }
+  .al-index .side { border-top: 2px solid var(--ed-ink); padding-top: 1.2rem; }
+  .al-index h2 { font: 400 clamp(2.2rem, 4vw, 3.4rem)/1.12 var(--ed-serif); margin: .5rem 0 1rem; }
+  .al-index .side p:last-child { font-size: .875rem; line-height: 1.8; color: var(--ed-ink-2); max-width: 18em; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); border-top: 2px solid var(--ed-ink); padding-top: 1.2rem; --ed-mid: none; }
+  .cols :global(.l06) { max-width: none; }
+  #subscribe { margin-top: var(--ed-section); --ed-mid: var(--ed-wide); }
+  .al-foot { max-width: var(--ed-wide); margin: var(--ed-section) auto 0; padding: 1.2rem var(--ed-gutter) 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 2rem; border-top: 1px solid var(--ed-line); font: .75rem var(--ed-mono); color: var(--ed-ink-2); }
+
+  @media (max-width: 1100px) { .al-book { grid-template-columns: auto minmax(0, 1fr); } .prov { grid-column: 2; align-self: start; } .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 860px) { .al-index { grid-template-columns: 1fr; } .cols { grid-template-columns: 1fr; } }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .al-book { grid-template-columns: 1fr; } .prov { grid-column: auto; }
+    .spine { flex-direction: row; width: auto; min-height: 0; padding: .9rem 1.2rem; border-left: 0; border-top: 6px solid #0b3a3a; box-shadow: 6px 6px 0 #ffffff1f; align-items: center; }
+    .spine b { writing-mode: horizontal-tb; font-size: 1.5rem; letter-spacing: .06em; }
+  }
+  @media (max-width: 520px) {
+    .al-head { flex-wrap: wrap; padding-block: .5rem; } .al-head nav { order: 3; width: 100%; justify-content: space-between; gap: 0; }
+    .grid { grid-template-columns: 1fr; }
+    .in { min-height: 0; display: grid; grid-template-columns: 3.4rem 1fr; column-gap: 1rem; padding: 1rem; }
+    .top { display: block; grid-row: 1 / 5; } .mon { display: block; margin-top: .3rem; }
+    .num { font-size: 2.2rem; }
+    .meta { margin-top: 0; }
+  }
+</style>

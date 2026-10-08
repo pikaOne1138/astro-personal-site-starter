@@ -1,0 +1,69 @@
+---
+/**
+ * H12 route-diagram — [NEW] 以「路線圖」（SVG 路徑 + 站點）當主視覺，站名與說明寫在 HTML（可選取、可翻譯）。
+ * 適用：流程即信任的服務（先說範圍、再說步驟、最後才邀請）。十款原始碼中沒有此構圖。
+ *
+ * 幾何（為何路線會精準穿過每個節點）：
+ *   每站高度固定 = STEP（8.5rem = 136 單位）；節點 3rem = 48 單位；奇偶站水平錯開 SHIFT（3.2rem ≈ 51 單位）。
+ *   SVG 寬高以 rem 指定（width: 7rem；height: n × 8.5rem），viewBox 用同比例的單位（112 × n·136），
+ *   因此 1 單位 = 1/16 rem，節點中心 (24 + shift, 24 + i·136) 在任何字級縮放下都對得上。
+ * 標題的 voice 以陣列表示，作者自行在語意邊界斷開，避免詞組被硬拆。
+ */
+interface Props { label?: string; phrases?: string[]; voices?: string[]; deck?: string; stations?: { t: string; d: string }[]; cta?: string; href?: string; hint?: string }
+const {
+  label = 'A CLEAR ROUTE', phrases = ['先看路線，'], voices = ['再決定', '要不要出發。'],
+  deck = '從第一封詢問到共同決定，每一站會發生什麼、需要你準備什麼，都先寫在這裡。',
+  stations = [
+    { t: '一般詢問', d: '只問服務與時間，不需提供任何敏感資訊。' },
+    { t: '初次會談', d: '談期待與界線，確認是否合適。' },
+    { t: '共同決定', d: '繼續、暫停，或轉介到更合適的資源。' },
+  ],
+  cta = '先問一個一般問題', href = '#contact', hint = '不必先承諾預約。',
+} = Astro.props;
+const STEP = 136, R = 24, SHIFT = 51;
+const xs = stations.map((_, i) => R + (i % 2 ? SHIFT : 0));
+const ys = stations.map((_, i) => R + i * STEP);
+let d = `M${xs[0]} ${ys[0]}`;
+for (let i = 1; i < stations.length; i++) d += ` C${xs[i - 1]} ${ys[i - 1] + STEP / 2} ${xs[i]} ${ys[i] - STEP / 2} ${xs[i]} ${ys[i]}`;
+const vbW = R * 2 + SHIFT + 14, vbH = stations.length * STEP;
+---
+<section class="h12">
+  <div class="copy">
+    <p class="label">{label}</p>
+    <h1>{phrases.map((p) => <span class="ph">{p}</span>)}{voices.map((v) => <em class="ph">{v}</em>)}</h1>
+    <p class="deck">{deck}</p>
+    <div class="act"><a class="btn" href={href}>{cta}</a><span>{hint}</span></div>
+  </div>
+  <div class="route" style={`--n:${stations.length}`}>
+    <svg class="line" viewBox={`0 0 ${vbW} ${vbH}`} aria-hidden="true" focusable="false"><path d={d} /></svg>
+    <ol>
+      {stations.map((s, i) => (
+        <li class:list={{ shift: i % 2 === 1 }}>
+          <span class="dot" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div><h2>{s.t}</h2><p>{s.d}</p></div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+<style>
+  .h12 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(2.5rem, 6vw, 4.5rem) var(--ed-gutter, 4vw); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; color: var(--ed-ink, #18313a); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #3d5b68); margin: 0; }
+  h1 { font: 700 clamp(2.8rem, 6vw, 5.4rem)/1.12 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .8rem 0 1.2rem; }
+  .ph { display: block; }
+  h1 em { font: 400 italic 1em var(--ed-serif, Georgia, serif); color: var(--ed-accent, #3d5b68); }
+  .deck { max-width: 30em; line-height: 1.9; color: var(--ed-ink-2, #4a5d62); text-wrap: pretty; }
+  .act { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1.6rem; }
+  .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.2rem; background: var(--ed-ink, #18313a); color: var(--ed-paper, #fff); text-decoration: none; font-size: .9rem; }
+  .act span { font-size: .875rem; color: var(--ed-ink-2, #4a5d62); }
+  .route { position: relative; --step: 8.5rem; }
+  .line { position: absolute; left: 0; top: 0; width: 7rem; height: calc(var(--n) * var(--step)); overflow: visible; }
+  .line path { fill: none; stroke: var(--ed-accent-deco, #6f9a9c); stroke-width: 2px; stroke-dasharray: 2 7; stroke-linecap: round; }
+  ol { position: relative; list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; height: var(--step); }
+  li.shift { margin-left: 3.2rem; }
+  .dot { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: var(--ed-paper, #f4f7f5); border: 2px solid var(--ed-ink, #18313a); font: .8rem var(--ed-mono, monospace); }
+  h2 { font: 700 1.3rem/1.3 var(--ed-sans, sans-serif); margin: .5rem 0 .3rem; }
+  li p { margin: 0; font-size: .95rem; line-height: 1.75; color: var(--ed-ink-2, #4a5d62); max-width: 24em; }
+  @media (max-width: 860px) { .h12 { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,16 @@
+---
+/**
+ * R03 rule-weights — 線寬階層：2px 墨色＝章節開始、1px 淡色＝列表分隔、虛線＝附註/摺痕。
+ * 十款 [OBS]：fn-ledger / ll / ma 用 2px 起章節；cl / co 用 1px。此元件把階層固定成三級，
+ * 並避免「所有分隔線一樣粗」造成沒有層次。
+ */
+interface Props { level?: 'chapter' | 'item' | 'aside'; label?: string }
+const { level = 'chapter', label } = Astro.props;
+---
+<div class={`r03 ${level}`}>{label && <span>{label}</span>}<slot /></div>
+<style>
+  .r03 { padding-block: 1rem; font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--ed-ink-2, #57534a); }
+  .chapter { border-top: 2px solid var(--ed-ink, #222018); }
+  .item { border-top: 1px solid var(--ed-line, #cfc8b8); }
+  .aside { border-top: 1px dashed var(--ed-line, #cfc8b8); }
+</style>

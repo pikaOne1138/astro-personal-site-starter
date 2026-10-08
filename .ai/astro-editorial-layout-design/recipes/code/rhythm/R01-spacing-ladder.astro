@@ -1,0 +1,15 @@
+---
+/**
+ * R01 spacing-ladder — 章節間距階：桌機 96px / 手機 64px，章節內 24–32px，標題與內文 16–24px。
+ * 用法：<SpacingLadder><SectionA /><SectionB /></SpacingLadder>；子元素之間自動套 --ed-section。
+ * 十款 [OBS] 的 margin-bottom 5rem/6rem（80/96px）寫在各區塊；此元件把它集中成一個變數。
+ * 手機降到 4rem：十款手機仍保持 96px，使 390px 頁高達 3000+px [MEAS]。
+ */
+interface Props { gap?: string; as?: string }
+const { gap = 'var(--ed-section, clamp(4rem, 8vw, 6rem))' } = Astro.props;
+---
+<div class="r01" style={`--gap:${gap}`}><slot /></div>
+<style>
+  .r01 { display: flow-root; }
+  .r01 > :global(* + *) { margin-top: var(--gap); }
+</style>

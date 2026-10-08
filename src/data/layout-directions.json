@@ -1,0 +1,220 @@
+[
+  {
+    "slug": "field-notes",
+    "kind": "knowledge",
+    "title": "田野筆記",
+    "en": "FIELD NOTES",
+    "structure": "邊注索引 × 觀察日誌",
+    "audience": "研究者、觀察者、慢速記錄者",
+    "description": "欄位筆記、側邊編號目錄與標本式圖片",
+    "palette": "moss",
+    "image": "k-field-notes.webp",
+    "headline": "先把世界記錄下來，再慢慢理解。",
+    "modules": [
+      "田野觀察",
+      "閱讀札記",
+      "研究問題"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "essayist",
+    "kind": "knowledge",
+    "title": "長文書房",
+    "en": "THE ESSAYIST",
+    "structure": "超大字體 × 單篇長讀",
+    "audience": "長文作者、評論者、專業專欄",
+    "description": "刊物式大標題、精選長文與閱讀目錄",
+    "palette": "ink",
+    "image": "k-essayist.webp",
+    "headline": "寫下那些值得花時間想清楚的事。",
+    "modules": [
+      "長篇觀點",
+      "編輯選文",
+      "文章目錄"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "learning-lab",
+    "kind": "knowledge",
+    "title": "學習實驗室",
+    "en": "LEARNING LAB",
+    "structure": "學習地圖 × 進度軌跡",
+    "audience": "教師、課程設計者、知識整理者",
+    "description": "學習路線圖、可勾選步驟與進度回饋",
+    "palette": "blue",
+    "image": "k-learning-lab.webp",
+    "headline": "把好奇心變成一條路。",
+    "modules": [
+      "路徑進度",
+      "學習單元",
+      "可操作清單"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "curator",
+    "kind": "knowledge",
+    "title": "收藏者目錄",
+    "en": "THE CURATOR",
+    "structure": "展牆拼貼 × 檔案索引",
+    "audience": "編輯、選書人、收藏家、策展者",
+    "description": "不對稱展牆、可展開藏品索引與編目",
+    "palette": "plum",
+    "image": "k-curator.webp",
+    "headline": "把喜歡的事物，整理成有意義的收藏。",
+    "modules": [
+      "主題收藏",
+      "編輯標籤",
+      "圖像展牆"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "radio-letter",
+    "kind": "knowledge",
+    "title": "聲音通信",
+    "en": "RADIO LETTER",
+    "structure": "深色廣播台 × 節目時間軸",
+    "audience": "Podcast 主持人、聲音創作者",
+    "description": "深色播放舞台、集數列表與節目說明",
+    "palette": "night",
+    "image": "k-radio-letter.webp",
+    "headline": "把思考，寄成一封聽得見的信。",
+    "modules": [
+      "音訊節目",
+      "播放控制",
+      "播出紀錄"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "reading-atlas",
+    "kind": "knowledge",
+    "title": "閱讀年鑑",
+    "en": "THE READING ALMANAC",
+    "structure": "巨型年份封面 × 十二個月線格 × 年度之書",
+    "audience": "讀書筆記、知識整理者、長期寫作者",
+    "description": "Claude 實作：無圖片巨大年份封面、月份分類、年度選書與編輯式目錄",
+    "palette": "atlas",
+    "image": "k-essayist.webp",
+    "headline": "每一年讀過的書，都值得留下一張地圖。",
+    "modules": [
+      "年度大字封面",
+      "月份書單篩選",
+      "年度之書",
+      "書目索引"
+    ],
+    "source": "Claude Editorial Skill · 完整首頁示範"
+  },
+  {
+    "slug": "clinician",
+    "kind": "helper",
+    "title": "清晰臨床",
+    "en": "CLEAR PRACTICE",
+    "structure": "專業服務說明書 × 適配清單",
+    "audience": "諮商心理與重視服務界線的專業者",
+    "description": "條理分明的專業資訊、資格核對區、服務適配",
+    "palette": "clinical",
+    "image": "c-clinician.webp",
+    "headline": "先清楚了解，再決定是否開始。",
+    "modules": [
+      "服務界線",
+      "預約流程",
+      "資格說明"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "companion",
+    "kind": "helper",
+    "title": "溫柔陪伴",
+    "en": "A LETTER TO YOU",
+    "structure": "一封信 × 故事式入口",
+    "audience": "關係導向、善於傾聽的陪伴者",
+    "description": "邀請信開頭、敘事章節、低壓 CTA",
+    "palette": "warm",
+    "image": "c-companion.webp",
+    "headline": "這裡有一段時間，留給你慢慢說。",
+    "modules": [
+      "開場書信",
+      "陪伴理念",
+      "溫柔邀請"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "somatic",
+    "kind": "helper",
+    "title": "身體與節律",
+    "en": "BODY / RHYTHM",
+    "structure": "滿版空間 × 感官時間線",
+    "audience": "身體工作、呼吸、自然取向工作者",
+    "description": "沉浸式攝影、慢速流程、身體同意與界線",
+    "palette": "earth",
+    "image": "c-somatic.webp",
+    "headline": "讓身體重新有一點可以呼吸的空間。",
+    "modules": [
+      "大幅視覺",
+      "身體感受",
+      "時間線"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "coach",
+    "kind": "helper",
+    "title": "實作型教練",
+    "en": "MAKE A MOVE",
+    "structure": "報紙式封面 × 方法步驟",
+    "audience": "教練、顧問、行動導向創作者",
+    "description": "高對比報紙封面、行動清單、實作步驟",
+    "palette": "cobalt",
+    "image": "c-coach.webp",
+    "headline": "不只想明白，也真的往前一步。",
+    "modules": [
+      "行動路線",
+      "目標清單",
+      "進度標記"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "collective",
+    "kind": "helper",
+    "title": "共好工作室",
+    "en": "COMMON GROUND",
+    "structure": "團隊拼貼 × 共學活動時間軸",
+    "audience": "多專業團隊、社群與共同工作者",
+    "description": "多人介紹牆、團隊節點與活動時間線",
+    "palette": "collective",
+    "image": "c-collective.webp",
+    "headline": "不同專業一起，讓陪伴有更多種可能。",
+    "modules": [
+      "多位服務者",
+      "社群日程",
+      "合作入口"
+    ],
+    "source": "Manus 原始 Astro 站型"
+  },
+  {
+    "slug": "trust-path",
+    "kind": "helper",
+    "title": "信任路徑",
+    "en": "THE TRUST PATH",
+    "structure": "訪客提問 × 五站路線 × 透明服務資訊",
+    "audience": "心理師、教練、需要明確合作資訊的助人者",
+    "description": "Claude 實作：深色編輯封面、五個服務節點、第一次會談資訊與清晰界線",
+    "palette": "trust",
+    "image": "c-clinician.webp",
+    "headline": "讓每個第一次來的人，都知道下一步會發生什麼。",
+    "modules": [
+      "五站服務路徑",
+      "服務適配",
+      "透明流程",
+      "界線與費用"
+    ],
+    "source": "Claude Editorial Skill · 完整首頁示範"
+  }
+]

@@ -1,0 +1,46 @@
+---
+/**
+ * L02 node-track — 節點軸：節點占獨立 grid 欄，軸線 left = 欄寬/2（衍生自 03 .ll-track）。
+ * 改良 03：用 --node 變數同步圓點尺寸與軸線位置（03 手機手動把 27px 改 20px，差 1px）。
+ * 勾選與進度（原生 <progress> + checkbox + aria-live）；整列是 <label>，點擊面積 ≥ 56px。
+ * 無 JS 仍可閱讀；JS 只負責更新進度。
+ */
+interface Props { label?: string; title?: string; sub?: string; steps?: { t: string; d: string; type: string }[] }
+const {
+  label = 'THE LEARNING PATH / 03 STEPS', title = '走一遍，就知道怎麼繼續。', sub = '每個主題都拆成可完成的小步驟；勾選完成項目，看看自己走到哪裡。',
+  steps = [{ type: 'START HERE', t: '看見問題', d: '先分辨現象、問題與你真正想理解的事。' }, { type: 'FIELD NOTE', t: '整理線索', d: '把零散資訊放進一張看得懂的地圖。' }, { type: 'TRY IT', t: '動手練習', d: '把概念帶進生活，測試它是否真的有用。' }],
+} = Astro.props;
+---
+<section class="l02" data-track>
+  <header>
+    <p class="label">{label}</p><h2>{title}</h2><p class="sub">{sub}</p>
+    <div class="prog"><div><label for="l02-p">目前路徑</label><span data-label aria-live="polite">0 / {steps.length} 個步驟</span></div><progress id="l02-p" max={steps.length} value="0">0</progress></div>
+  </header>
+  <ol>{steps.map((s, i) => (
+    <li><label class="row"><span class="node" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><span class="txt"><small>{s.type}</small><b>{s.t}</b><em>{s.d}</em></span><span class="chk"><input type="checkbox" /><span>完成</span></span></label></li>
+  ))}</ol>
+</section>
+<script is:inline>
+  document.querySelectorAll('[data-track]').forEach((root) => {
+    const boxes = [...root.querySelectorAll('input[type=checkbox]')], bar = root.querySelector('progress'), lab = root.querySelector('[data-label]');
+    const update = () => { const n = boxes.filter((b) => b.checked).length; bar.value = n; lab.textContent = n + ' / ' + boxes.length + ' 個步驟'; boxes.forEach((b) => b.closest('li').classList.toggle('done', b.checked)); };
+    boxes.forEach((b) => b.addEventListener('change', update)); update();
+  });
+</script>
+<style>
+  .l02 { --node: 3.4rem; max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 2rem var(--ed-gutter, 4vw) 0; border-top: 2px solid var(--ed-ink, #101f52); display: grid; grid-template-columns: .7fr 1.3fr; gap: 6vw; color: var(--ed-ink, #101f52); }
+  .label { font: 700 .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #2449d8); margin: 0; }
+  h2 { font: 800 clamp(2.2rem, 4.6vw, 4.4rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .5rem 0 1rem; text-wrap: balance; }
+  .sub { max-width: 24em; line-height: 1.8; color: var(--ed-ink-2, #4c5875); }
+  .prog { margin-top: 1.4rem; max-width: 22rem; } .prog > div { display: flex; justify-content: space-between; font: .8rem var(--ed-mono, monospace); margin-bottom: .4rem; }
+  progress { width: 100%; height: 10px; accent-color: var(--ed-accent, #2449d8); }
+  ol { position: relative; list-style: none; margin: 0; padding: 0; }
+  ol::before { content: ""; position: absolute; left: calc(var(--node) / 2 - 1px); top: calc(var(--node) / 2); bottom: calc(var(--node) / 2); width: 2px; background: var(--ed-accent, #2449d8); }
+  li { border-bottom: 1px solid #cbd0db; transition: background .2s; } li.done { background: #e9f0df; }
+  .row { display: grid; grid-template-columns: var(--node) 1fr 5.5rem; gap: 1rem; align-items: center; padding: 1rem 0; min-height: 56px; cursor: pointer; }
+  .node { position: relative; z-index: 1; width: var(--node); height: var(--node); border-radius: 50%; border: 2px solid var(--ed-ink, #101f52); background: var(--ed-hi, #ffd23e); display: grid; place-items: center; font: .8rem var(--ed-mono, monospace); }
+  .txt small { display: block; font: .75rem var(--ed-mono, monospace); letter-spacing: .1em; color: var(--ed-accent, #2449d8); } .txt b { display: block; font-size: 1.4rem; margin: .1rem 0; } .txt em { font-style: normal; font-size: .9rem; color: var(--ed-ink-2, #505c78); }
+  .chk { display: flex; align-items: center; gap: .4rem; font: .8rem var(--ed-mono, monospace); } .chk input { width: 22px; height: 22px; accent-color: var(--ed-accent, #2449d8); }
+  @media (max-width: 900px) { .l02 { grid-template-columns: 1fr; gap: 1.5rem; } }
+  @media (max-width: 600px) { .l02 { --node: 2.8rem; } .row { grid-template-columns: var(--node) 1fr 4.6rem; gap: .7rem; } .txt b { font-size: 1.2rem; } }
+</style>

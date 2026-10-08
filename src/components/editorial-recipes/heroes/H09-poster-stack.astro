@@ -1,0 +1,45 @@
+---
+/**
+ * H09 poster-stack — 海報式：頂部期號列 + 整欄巨大粗體標題（獨占一整排）+ 下排「文案 | 傾斜圖」（衍生自 09 實作型教練）。
+ * 修正 09：(1) CJK 粗體大標 line-height ≥ 1.04、letter-spacing −.03em，兩行字形不接觸；
+ *          (2) 圖片不再用絕對定位壓在標題上，改為下排的 grid 欄，因此任何寬度都不會與標題重疊。
+ * 規則：每個 phrase 的寬度 ≤ 標題欄寬 → 字數 × 字級(px) ≤ 欄寬(px)；390px 下 3.4rem(54px) × 6 字 = 326px ≤ 358px。
+ */
+interface Props { labelL?: string; labelR?: string; phrases?: string[]; voice?: string; body?: string; cta?: string; href?: string; src?: string; alt?: string; cap?: string }
+const {
+  labelL = 'FIELD GUIDE FOR YOUR NEXT MOVE', labelR = 'NO. 09 / 2026', phrases = ['卡住的事，'], voice = '拆成下一步。',
+  body = '給有很多想法，卻還不知道從哪裡動手的人。先看清問題，再一起挑一個可以開始的動作。',
+  cta = '看方法如何運作', href = '#method', src, alt = '', cap = 'VISUAL STUDY',
+} = Astro.props;
+---
+<section class="h09">
+  <div class="top"><span>{labelL}</span><span>{labelR}</span></div>
+  <h1>{phrases.map((p) => <span class="ph">{p}</span>)}<em class="ph">{voice}</em></h1>
+  <div class="row">
+    <div class="copy">
+      <p>{body}</p>
+      <a href={href}>{cta} <b aria-hidden="true">↓</b></a>
+    </div>
+    <figure>
+      {src ? <img src={src} alt={alt} width="900" height="600" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+      <figcaption>{cap}</figcaption>
+    </figure>
+  </div>
+</section>
+<style>
+  .h09 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 2rem var(--ed-gutter, 4vw) 5rem; color: var(--ed-ink, #151d38); }
+  .top { display: flex; justify-content: space-between; gap: 1rem; font: .75rem var(--ed-mono, monospace); letter-spacing: .1em; color: var(--ed-ink-2, #4a5570); }
+  h1 { font: 900 clamp(3.4rem, 12vw, 10.5rem)/1.06 var(--ed-sans, sans-serif); letter-spacing: -.03em; margin: 3rem 0 1.5rem; }
+  .ph { display: block; }
+  h1 em { font-style: normal; color: var(--ed-accent, #2148d8); }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); gap: 2rem clamp(2rem, 6vw, 5rem); align-items: end; }
+  .copy { margin-left: 8vw; }
+  .copy p { max-width: 24em; font-size: 1rem; line-height: 1.8; margin: 0 0 1rem; text-wrap: pretty; }
+  .copy a { display: inline-flex; align-items: center; min-height: 44px; font: .8rem var(--ed-mono, monospace); color: var(--ed-accent, #2148d8); border-bottom: 2px solid var(--ed-pop, #ee6846); text-decoration: none; }
+  .copy b { margin-left: .8rem; }
+  figure { margin: 0; transform: rotate(3deg); }
+  figure img, .art { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 3px solid var(--ed-ink, #151d38); box-shadow: 12px 12px 0 var(--ed-pop, #ee6846); }
+  .art { background: linear-gradient(135deg, #2148d8 0 45%, #f1eadb 45% 70%, #ee6846 70%); }
+  figcaption { font: .75rem var(--ed-mono, monospace); margin-top: .8rem; }
+  @media (max-width: 760px) { .row { grid-template-columns: 1fr; } .copy { margin-left: 0; } figure { width: 82%; margin-left: auto; } .h09 { padding-bottom: 3rem; } }
+</style>

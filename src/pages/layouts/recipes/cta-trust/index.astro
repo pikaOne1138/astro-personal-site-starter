@@ -1,0 +1,19 @@
+---
+import Base from '../../../../layouts/EditorialBase.astro';
+import C01 from '../../../../components/editorial-recipes/cta-trust/C01-low-pressure-invite.astro';
+import C02 from '../../../../components/editorial-recipes/cta-trust/C02-boundary-strip.astro';
+import C03 from '../../../../components/editorial-recipes/cta-trust/C03-proof-slots.astro';
+import C04 from '../../../../components/editorial-recipes/cta-trust/C04-process-then-contact.astro';
+import C05 from '../../../../components/editorial-recipes/cta-trust/C05-closing-band.astro';
+import C06 from '../../../../components/editorial-recipes/cta-trust/C06-team-initials.astro';
+import C07 from '../../../../components/editorial-recipes/cta-trust/C07-subscribe-cadence.astro';
+import C08 from '../../../../components/editorial-recipes/cta-trust/C08-provenance-note.astro';
+---
+<Base title="CTA 與信任資訊｜網站構圖配方庫" description="8 種 CTA／信任資訊配方的實際渲染">
+  <main id="main" style="display:grid;gap:var(--ed-section);padding-block:var(--ed-section)">
+    <header class="editorial-recipe-header"><a href={import.meta.env.BASE_URL+'layouts/recipes/'}>← 返回構圖配方庫</a><div><p>EDITORIAL DESIGN / COMPOSITION RECIPES</p><h1>CTA 與信任資訊</h1><p>8 種信任與行動區塊：保留證據空欄，不偽造資格或見證。</p></div></header>
+    <div style="padding-inline:var(--ed-gutter)"><C01 /></div>
+    <C02 /><C03 /><C04 /><C05 /><C06 /><C07 />
+    <div style="padding-inline:var(--ed-gutter)"><C08 /></div>
+  </main>
+</Base>

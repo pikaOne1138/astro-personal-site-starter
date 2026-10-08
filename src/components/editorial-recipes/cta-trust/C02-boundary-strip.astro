@@ -1,0 +1,23 @@
+---
+/**
+ * C02 boundary-strip — 「服務界線與緊急資源」窄條，放在 CTA 附近。
+ * 內容必須由站長填入真實、當地、可驗證的資源；此處預設文字是**佔位**，並在畫面上顯示「待填」旗標。
+ * 不使用警示紅色大塊；用 1px 邊框 + 小標籤，維持低壓力語氣。
+ */
+interface Props { title?: string; body?: string; resources?: { k: string; v?: string }[] }
+const {
+  title = '這個服務不處理緊急狀況', body = '如果你或身邊的人正處於立即危險，請先聯絡所在地的緊急服務。',
+  resources = [{ k: '當地緊急電話', v: '' }, { k: '可轉介的專業資源', v: '' }],
+} = Astro.props;
+---
+<aside class="c02" aria-label="服務界線">
+  <div><h3>{title}</h3><p>{body}</p></div>
+  <ul>{resources.map((r) => <li><span>{r.k}</span><b class:list={{ todo: !r.v }}>{r.v || '待填：由站長提供可查證資訊'}</b></li>)}</ul>
+</aside>
+<style>
+  .c02 { max-width: var(--ed-wide, 1260px); margin-inline: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem 2rem; padding: 1.2rem 1.5rem; border: 1px solid var(--ed-line, #cdd8d5); background: var(--ed-panel, #eaf0ed); color: var(--ed-ink, #18313a); }
+  h3 { margin: 0 0 .3rem; font-size: 1rem; } p { margin: 0; font-size: .875rem; line-height: 1.7; color: var(--ed-ink-2, #4a5d62); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; } li { display: grid; gap: .1rem; font-size: .875rem; }
+  li span { color: var(--ed-ink-2, #4a5d62); } .todo { font: 400 .75rem var(--ed-mono, monospace); color: var(--ed-accent, #9a3b24); }
+  @media (max-width: 700px) { .c02 { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; } }
+</style>

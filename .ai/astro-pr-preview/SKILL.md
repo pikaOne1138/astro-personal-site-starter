@@ -32,12 +32,16 @@ This project uses **GitHub Pages → Source: GitHub Actions**. Do not switch to 
 - `scripts/apply-pr-preview.mjs`: restricted overlay/remove operation.
 - `astro.config.mjs`: build-time `ASTRO_BASE_PATH` override.
 - `docs/github-pr-preview-setup.md`: maintainer-facing activation and rollback.
+- `.ai/astro-pr-preview/references/deployment-recovery.md`: error classification, safe recovery, new-run procedure and verification.
 
 ## Preview URL
 Example format (only usable after successful deployment):
 `https://pikaOne1138.github.io/astro-personal-site-starter/pr-preview/pr-2/`
 
 ## Failure policy
+
+**Before any Actions retry or redeployment, read `references/deployment-recovery.md`.** Diagnose Run ID, Job steps, artifact names/IDs and PR head SHA. A re-run of the old deployment Job is **not** a new workflow run; it may upload another `github-pages` artifact into the same Run. For a fresh PR preview, trigger a new `pull_request: synchronize` from the PR branch, then wait for the new trusted `workflow_run` and verify live HTML. Do not assume `workflow_dispatch` alone refreshes the latest PR artifact.
+
 - PR build failed: fix build errors; no merge.
 - Pages publish failed: inspect deployment log and token permissions; no merge.
 - No PR comment: inspect workflow_run trigger and Actions job, not merely PR checks.

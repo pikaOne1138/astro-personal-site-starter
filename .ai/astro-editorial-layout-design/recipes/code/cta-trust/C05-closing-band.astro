@@ -1,0 +1,28 @@
+---
+/**
+ * C05 closing-band — 頁尾收尾：一句主張 + 一個主動作 + 一條次要連結；深色滿版色帶。
+ * 衍生自 06 .cl-contact（深色帶 + 文字連結）與 09 .ma-bottom（超大字作為視覺終點）。
+ * 色帶用 padding-inline: max(gutter,(100%-wide)/2+gutter)。
+ */
+interface Props { kicker?: string; lines?: string[]; primary?: { t: string; href: string }; secondary?: { t: string; href: string }; fine?: string }
+const {
+  kicker = 'A CLEAR FIRST STEP', lines = ['先問一個', '一般問題也可以。'],
+  primary = { t: '寄一封簡短的信', href: '#contact' }, secondary = { t: '回到合作流程', href: '#process' },
+  fine = '這是設計原型；正式上線請換成安全且合規的聯絡方式，不要在一般表單收集敏感資料。',
+} = Astro.props;
+---
+<section class="c05">
+  <div class="t"><p class="kicker">{kicker}</p><h2>{lines.map((l) => <span class="ph">{l}</span>)}</h2></div>
+  <div class="a"><a class="main" href={primary.href}>{primary.t}</a><a class="sec" href={secondary.href}>{secondary.t}</a></div>
+  <p class="fine">{fine}</p>
+</section>
+<style>
+  .c05 { background: var(--ed-dark, #18313a); color: var(--ed-on-dark, #fff); padding: clamp(2rem, 5vw, 3.5rem) max(var(--ed-gutter, 4vw), calc((100% - var(--ed-wide, 1260px)) / 2 + var(--ed-gutter, 4vw))); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 1.5rem 2rem; }
+  .kicker { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: #a6c7c3; margin: 0; }
+  h2 { font: 700 clamp(2rem, 4.4vw, 3.8rem)/1.15 var(--ed-sans, sans-serif); margin: .4rem 0 0; letter-spacing: -.02em; text-wrap: balance; } .ph { display: inline-block; margin-right: .25em; }
+  .a { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+  .main { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.3rem; background: #fff; color: var(--ed-dark, #18313a); text-decoration: none; font-weight: 700; }
+  .sec { display: inline-flex; align-items: center; min-height: 44px; color: #fff; border-bottom: 1px solid #a6c7c3; text-decoration: none; font-size: .875rem; }
+  .fine { grid-column: 1 / -1; margin: 0; font-size: .75rem; line-height: 1.7; color: #c3d3d1; }
+  @media (max-width: 700px) { .c05 { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,29 @@
+---
+/**
+ * S04 dark-band — 滿版深色色帶 + 標題欄 + 編號列（衍生自 08 .so-practice、09 .ma-work）。
+ * 色帶用 padding-inline: max(gutter, (100% - wide)/2 + gutter) 限寬 → 背景永遠滿版、內容永遠限寬。
+ * 修正 08：kicker 用 #e9bcb3 級的淺色，對深底 ≥ 4.5:1（08 原值約 1.4:1）。
+ */
+interface Props { label?: string; first?: string; voice?: string; rows?: { n: string; t: string; d: string }[] }
+const {
+  label = 'THREE SMALL ANCHORS', first = '一段練習，', voice = '可以很簡單。',
+  rows = [{ n: '01 / ARRIVE', t: '找到支撐', d: '留意腳下的地面、椅子的重量，或任何讓你感覺較穩定的接觸點。' }, { n: '02 / NOTICE', t: '觀察呼吸', d: '不需要刻意改變，只注意呼吸此刻的速度與所在的位置。' }, { n: '03 / CHOOSE', t: '選一個下一步', d: '可以繼續、稍作休息，或把注意力帶回眼前的環境。' }],
+} = Astro.props;
+---
+<section class="s04">
+  <div class="head"><p class="label">{label}</p><h2><span class="ph">{first}</span> <em class="ph">{voice}</em></h2></div>
+  <ol>{rows.map((r) => <li><span>{r.n}</span><div><h3>{r.t}</h3><p>{r.d}</p></div></li>)}</ol>
+</section>
+<style>
+  .s04 { background: var(--ed-dark, #3e4b37); color: var(--ed-on-dark, #ece9dc); padding: clamp(2.5rem, 6vw, 5rem) max(var(--ed-gutter, 4vw), calc((100% - var(--ed-mid, 1120px)) / 2 + var(--ed-gutter, 4vw))); display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .16em; color: #e9bf9f; margin: 0; }
+  h2 { font: 400 clamp(2.4rem, 5.4vw, 5rem)/1.12 var(--ed-serif, Georgia, serif); letter-spacing: -.02em; margin: .8rem 0; text-wrap: balance; }
+  .ph { display: inline-block; } em { font-style: italic; color: #e9bf9f; }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 1.3rem 0; border-top: 1px solid #ffffff3c; }
+  li span { font: .75rem var(--ed-mono, monospace); color: #e9bf9f; padding-top: .4rem; }
+  h3 { font: 400 1.4rem/1.3 var(--ed-serif, Georgia, serif); margin: 0 0 .4rem; }
+  p { font-size: .95rem; line-height: 1.8; color: #d0d5c4; margin: 0; }
+  @media (max-width: 850px) { .s04 { grid-template-columns: 1fr; gap: 1rem; } }
+  @media (max-width: 560px) { li { grid-template-columns: 1fr; gap: .2rem; } }
+</style>

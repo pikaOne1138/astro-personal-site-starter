@@ -1,0 +1,233 @@
+---
+/**
+ * 信任路徑 — 驗證站 2。構圖：深色 hero 內的橫向路線帶 → 淺色脊線五站 → 深色收尾。
+ * 資格、費用、時段、緊急資源皆為「待填」欄位，頁面上可見地標示。
+ * 設計決策見 examples/trust-path/DECISIONS.md；旋鈕見 direction.md。
+ */
+import Base from '../layouts/Base.astro';
+import R05 from '../../../recipes/code/rhythm/R05-voice-heading.astro';
+import C02 from '../../../recipes/code/cta-trust/C02-boundary-strip.astro';
+import C05 from '../../../recipes/code/cta-trust/C05-closing-band.astro';
+
+const stations = [
+  { id: 'scope', t: '範圍', q: '我的情況，在這裡談得了嗎？' }, { id: 'method', t: '方法', q: '你會要我做什麼？我需要先準備什麼？' },
+  { id: 'fees', t: '費用與時間', q: '要花多少時間與費用？可以取消嗎？' },
+  { id: 'first', t: '第一次見面', q: '那 50 分鐘裡，到底會發生什麼？' }, { id: 'refer', t: '若不適合', q: '如果不適合，我會被丟下嗎？' },
+];
+const q = (id: string) => stations.find((x) => x.id === id)!.q;
+// 路線帶：5 個點的 x（%）固定為 10/30/50/70/90，y 奇偶錯開；曲線以 frontmatter 產生，與 HTML 站點使用同一組座標。
+const W = 1000, H = 120, YS = [80, 40, 80, 40, 80];
+const XS = stations.map((_, i) => (i * 2 + 1) * (W / 10));
+let d = `M0 ${YS[0]} L${XS[0]} ${YS[0]}`;
+for (let i = 1; i < XS.length; i++) d += ` C${XS[i - 1] + 100} ${YS[i - 1]} ${XS[i] - 100} ${YS[i]} ${XS[i]} ${YS[i]}`;
+d += ` L${W} ${YS[4]}`;
+
+const can = ['職涯轉換與工作選擇的整理', '面談前的準備與界線練習', '把「說不清楚的卡住」整理成可討論的問題'];
+const cannot = ['醫療、診斷或藥物相關的判斷', '法律與財務的具體建議', '正處於危機、需要即時協助的情況'];
+const method = [
+  { k: 'A', t: '先說清楚你想帶走什麼', you: '你只需要：用一句話寫下想談的事', d: '我們先把問題縮到一個可以在一次面談裡處理的大小，其餘留到之後。' },
+  { k: 'B', t: '一起看選項，不替你選', you: '你只需要：說出你不想失去的兩件事', d: '把限制、資源與可行路徑攤開，標出每條路的代價；選擇仍由你做。' },
+  { k: 'C', t: '帶一個小行動回去', you: '你只需要：選一個這週做得到的動作', d: '行動要小到可以檢查；下次見面先看它發生了什麼，而不是看你有沒有做到。' },
+];
+const info = [
+  { k: '單次時間', v: '', src: '站長填入' }, { k: '費用', v: '', src: '站長填入，含取消規則' },
+  { k: '服務方式', v: '實體／遠距（示意）', src: '站長確認' }, { k: '資格／證照', v: '', src: '站長提供可查證資料' },
+];
+const segs = [
+  { min: 10, t: '範圍與界線', d: '先確認我能與不能談的，並說明保密與例外。', c: 'a' },
+  { min: 20, t: '你說', d: '你描述現況；我只問釐清的問題，不下判斷。', c: 'b' },
+  { min: 15, t: '一起整理', d: '把你說的整理成幾個可以選擇的方向。', c: 'c' },
+  { min: 5, t: '決定', d: '決定是否繼續，或轉介。', c: 'd' },
+];
+const total = segs.reduce((a, s) => a + s.min, 0);
+const theme = '--ed-paper:#f6f0e6;--ed-ink:#2a2118;--ed-ink-2:#5c4f42;--ed-accent:#8a3d1c;--ed-accent-deco:#c9773f;--ed-line:#dccfbd;--ed-panel:#ece1cf;--ed-dark:#261b13;--ed-on-dark:#f3ead9;--ed-on-dark-2:#c3b6a2';
+---
+<Base title="路徑｜先把路看清楚（示意版型）" description="聯絡之前，先把範圍、方法、費用與第一次見面寫清楚。示意版型。" theme={theme} themeColor="#261b13">
+  <div class="tp-hero">
+    <header class="tp-head">
+      <a class="mark" href="#main">路徑 <span>PATH</span></a>
+      <nav aria-label="主選單">{stations.map((s) => <a href={`#${s.id}`}>{s.t}</a>)}</nav>
+    </header>
+    <section class="tp-intro" aria-labelledby="h1">
+      <p class="lab">A PLAN BEFORE YOU CALL</p>
+      <div id="h1"><R05 level={1} phrases={['走近之前，']} voice="先把路看清楚。" /></div>
+      <p class="deck">聯絡之前，先知道範圍、方法、費用，以及第一次見面的 50 分鐘怎麼過。看完再決定，不需要先承諾任何事。</p>
+      <div class="act"><a class="btn" href="#refer-cta">先問一個一般問題</a><span>不必先承諾預約。</span></div>
+    </section>
+    <div class="ribbon" aria-label="五站路線">
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d={d} vector-effect="non-scaling-stroke" /></svg>
+      <ol>
+        {stations.map((s, i) => (
+          <li style={`--y:${YS[i]}px`}><a href={`#${s.id}`}><span class="dot" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><span class="nm">{s.t}</span></a></li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <main id="main">
+    <div class="tp-wrap">
+      <section class="st" id="scope" aria-labelledby="scope-h">
+        <span class="node" aria-hidden="true">1</span>
+        <div class="body">
+          <p class="lab">01 / 範圍</p>
+          <div id="scope-h"><R05 level={2} phrases={['我能談的，']} voice="和我不談的。" /></div>
+          <div class="pair">
+            <div class="in"><h3>可以談</h3><ul>{can.map((x) => <li>{x}</li>)}</ul></div>
+            <div class="out"><h3>不在這裡處理</h3><ul>{cannot.map((x) => <li>{x}</li>)}</ul><p>這些情況我會說明原因，並協助你找到更合適的資源。</p></div>
+          </div>
+          <C02 title="這個服務不處理緊急狀況" />
+        </div>
+        <aside class="q"><p class="lab">THIS STOP ANSWERS</p><p>{q('scope')}</p></aside>
+      </section>
+
+      <section class="st" id="method" aria-labelledby="method-h">
+        <span class="node" aria-hidden="true">2</span>
+        <div class="body">
+          <p class="lab">02 / 方法</p>
+          <div id="method-h"><R05 level={2} phrases={['三個動作，']} voice="每個你只需要做一件事。" /></div>
+          <div class="steps">{method.map((m, i) => (
+            <details open={i === 0}><summary><b>{m.k}</b><span><strong>{m.t}</strong><em>{m.you}</em></span><i aria-hidden="true">＋</i></summary><p>{m.d}</p></details>
+          ))}</div>
+        </div>
+        <aside class="q"><p class="lab">THIS STOP ANSWERS</p><p>{q('method')}</p></aside>
+      </section>
+
+      <section class="st" id="fees" aria-labelledby="fees-h">
+        <span class="node" aria-hidden="true">3</span>
+        <div class="body">
+          <p class="lab">03 / 費用與時間</p>
+          <div id="fees-h"><R05 level={2} phrases={['這些資訊，']} voice="聯絡之前就寫好。" /></div>
+          <dl class="info">{info.map((r) => (
+            <div class:list={{ todo: !r.v }}><dt>{r.k}</dt><dd>{r.v || '—'}</dd><dd class="flag">{r.v ? '已填' : '待填'} · {r.src}</dd></div>
+          ))}</dl>
+        </div>
+        <aside class="q"><p class="lab">THIS STOP ANSWERS</p><p>{q('fees')}</p></aside>
+      </section>
+
+      <section class="st" id="first" aria-labelledby="first-h">
+        <span class="node" aria-hidden="true">4</span>
+        <div class="body">
+          <p class="lab">04 / 第一次見面（時間分配為示意）</p>
+          <div id="first-h"><R05 level={2} phrases={['50 分鐘，']} voice="這樣分配。" /></div>
+          <div class="ruler" role="img" aria-label={`時間尺：${segs.map((s) => `${s.t} ${s.min} 分`).join('、')}`}>
+            {segs.map((s) => <span class={`seg ${s.c}`} style={`flex:${s.min}`}><b>{s.min}′</b></span>)}
+          </div>
+          <ol class="timeline">{segs.map((s) => <li class={s.c}><span class="m">{s.min} 分</span><h3>{s.t}</h3><p>{s.d}</p></li>)}</ol>
+          <p class="note">全長 {total} 分鐘；每段長度與條的寬度成比例。</p>
+        </div>
+        <aside class="q"><p class="lab">THIS STOP ANSWERS</p><p>{q('first')}</p></aside>
+      </section>
+
+      <section class="st" id="refer" aria-labelledby="refer-h">
+        <span class="node" aria-hidden="true">5</span>
+        <div class="body">
+          <p class="lab">05 / 若不適合</p>
+          <div id="refer-h"><R05 level={2} phrases={['不適合，']} voice="也是一個好結果。" /></div>
+          <p class="lead">如果談完發現這裡不是最合適的地方，我會直接說，並提供可以去的方向。轉介名單由站長填入，並確認對方仍在服務。</p>
+          <ul class="refer"><li><span>轉介資源 1</span><b>待填</b></li><li><span>轉介資源 2</span><b>待填</b></li></ul>
+        </div>
+        <aside class="q"><p class="lab">THIS STOP ANSWERS</p><p>{q('refer')}</p></aside>
+      </section>
+    </div>
+  </main>
+  <div id="refer-cta"><C05 kicker="A CLEAR FIRST STEP" lines={['先問一個', '一般問題也可以。']} primary={{ t: '寄一封簡短的信', href: '#' }} secondary={{ t: '回到第一站', href: '#scope' }} fine="這是設計原型；正式上線請換成安全且合規的聯絡方式，不要在一般表單收集病歷或敏感資料。" /></div>
+</Base>
+<style>
+  .lab { font: .75rem var(--ed-mono); letter-spacing: .14em; color: var(--ed-accent); margin: 0 0 .6rem; }
+
+  /* Hero：深色滿版（內容以 padding-inline 限寬） */
+  .tp-hero { background: var(--ed-dark); color: var(--ed-on-dark); padding-bottom: clamp(2rem, 5vw, 3.5rem); --ed-ink: var(--ed-on-dark); --ed-ink-2: var(--ed-on-dark-2); --ed-accent: #f0b27a; }
+  .tp-head, .tp-intro, .ribbon { max-width: 1180px; margin-inline: auto; padding-inline: var(--ed-gutter); }
+  .tp-head { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+  .mark { display: inline-flex; align-items: center; min-height: 44px; font: 800 1.25rem var(--ed-sans); text-decoration: none; }
+  .mark span { margin-left: .5rem; font: .75rem var(--ed-mono); letter-spacing: .14em; color: var(--ed-on-dark-2); }
+  .tp-head nav { display: flex; gap: .2rem .8rem; font-size: .875rem; }
+  .tp-head nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding-inline: .5rem; text-decoration: none; }
+  .tp-head nav a:hover { color: #f0b27a; text-decoration: underline; text-underline-offset: 6px; }
+  .tp-intro { padding-top: clamp(2rem, 5vw, 4rem); }
+  .tp-intro .lab { color: #f0b27a; }
+  .deck { max-width: 32em; font-size: 1rem; line-height: 1.9; color: var(--ed-on-dark-2); margin: 1.2rem 0 0; }
+  .act { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; margin-top: 1.6rem; }
+  .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem; background: #f0b27a; color: #261b13; font-weight: 700; text-decoration: none; }
+  .btn:hover { background: #f6c79b; }
+  .act span { font-size: .875rem; color: var(--ed-on-dark-2); }
+
+  /* 橫向路線帶：SVG 只畫線，站點與文字在 HTML；5 欄等寬 → 站點中心 = 10/30/50/70/90% */
+  .ribbon { position: relative; margin-top: clamp(2rem, 5vw, 3.5rem); }
+  .ribbon svg { position: absolute; left: var(--ed-gutter); right: var(--ed-gutter); top: 0; width: calc(100% - 2 * var(--ed-gutter)); height: 120px; overflow: visible; }
+  .ribbon path { fill: none; stroke: #c9773f; stroke-width: 2px; stroke-dasharray: 2 8; stroke-linecap: round; }
+  .ribbon ol { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .ribbon li { padding-top: calc(var(--y) - 22px); text-align: center; }
+  .ribbon li a { display: inline-flex; flex-direction: column; align-items: center; gap: .6rem; text-decoration: none; min-height: 44px; }
+  .dot { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--ed-dark); border: 2px solid #f0b27a; font: .75rem var(--ed-mono); color: #f0b27a; }
+  .nm { font-size: 1rem; padding-top: 0; }
+  .ribbon li a:hover .dot { background: #f0b27a; color: #261b13; }
+  .ribbon ol { min-height: 120px; }
+
+  /* 五站：左側脊線 + 節點 */
+  .tp-wrap { position: relative; max-width: 1180px; margin: 0 auto; padding: var(--ed-section) var(--ed-gutter) 0; }
+  .tp-wrap::before { content: ""; position: absolute; left: calc(var(--ed-gutter) + 21px); top: var(--ed-section); bottom: 0; border-left: 2px dotted var(--ed-accent-deco); }
+  .st { position: relative; display: grid; grid-template-columns: 4.5rem minmax(0, 46rem) minmax(0, 15rem); column-gap: clamp(1.5rem, 4vw, 4rem); padding-bottom: var(--ed-section); scroll-margin-top: 1rem; }
+  .node { position: relative; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--ed-ink); color: var(--ed-paper); font: 700 1rem var(--ed-sans); }
+  .body { min-width: 0; }
+  .q { align-self: start; margin-top: .3rem; padding-left: 1.2rem; border-left: 2px solid var(--ed-accent-deco); }
+  .q p:last-child { font: italic 1.25rem/1.6 var(--ed-serif); margin: 0; color: var(--ed-ink); }
+  .st :global(h2) { margin-bottom: 1.4rem; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ed-ink); margin-bottom: 1.5rem; }
+  .pair h3 { font: 800 1.5rem/1.2 var(--ed-sans); margin: 0 0 .8rem; }
+  .pair ul { margin: 0; padding-left: 1.1rem; font-size: 1rem; line-height: 1.95; }
+  .in, .out { padding: 1.5rem; }
+  .out { border-left: 1px solid var(--ed-ink); background: repeating-linear-gradient(135deg, #0000 0 9px, #8a3d1c14 9px 10px), var(--ed-panel); }
+  .out p { margin: .8rem 0 0; font-size: .875rem; line-height: 1.7; color: var(--ed-ink-2); }
+
+  .steps { display: grid; border-top: 2px solid var(--ed-ink); }
+  details { border-bottom: 1px solid var(--ed-line); }
+  summary { display: grid; grid-template-columns: 3rem 1fr 1.5rem; gap: 1rem; align-items: center; min-height: 72px; padding: .6rem 0; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; } summary::marker { content: ""; }
+  summary b { font: 400 2.4rem/1 var(--ed-serif); color: var(--ed-accent); }
+  summary strong { display: block; font-size: 1.25rem; }
+  summary em { display: block; font: normal .875rem var(--ed-sans); color: var(--ed-ink-2); margin-top: .2rem; }
+  summary i { font-style: normal; color: var(--ed-accent); transition: transform .2s; } details[open] summary i { transform: rotate(45deg); }
+  details p { margin: 0 0 1.2rem 4rem; max-width: 34em; line-height: 1.85; color: var(--ed-ink-2); }
+
+  .info { margin: 0; border-top: 2px solid var(--ed-ink); }
+  .info > div { display: grid; grid-template-columns: 9rem 1fr; gap: .15rem 1rem; padding: .9rem 0; border-bottom: 1px solid var(--ed-line); }
+  .info dt { color: var(--ed-ink-2); font-size: 1rem; } .info dd { margin: 0; } .info .flag { grid-column: 2; font: .75rem var(--ed-mono); color: var(--ed-ink-2); }
+  .info .todo .flag { color: var(--ed-accent); }
+
+  .ruler { display: flex; height: 3.2rem; margin: 0 0 1.2rem; gap: 2px; }
+  .seg { display: flex; align-items: center; justify-content: center; min-width: 0; color: var(--ed-ink); font: 700 .75rem var(--ed-mono); }
+  .seg.a { background: #e6d3b8; } .seg.b { background: #d9b48a; } .seg.c { background: #c98f5f; } .seg.d { background: #8a3d1c; color: #fff; }
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ed-line); border-block: 1px solid var(--ed-line); }
+  .timeline li { background: var(--ed-paper); padding: 1rem 1rem 1rem 0; } .timeline li:not(:first-child) { padding-left: 1rem; }
+  .timeline .m { font: .75rem var(--ed-mono); color: var(--ed-accent); letter-spacing: .08em; }
+  .timeline h3 { font-size: 1rem; margin: .3rem 0; } .timeline p { margin: 0; font-size: .875rem; line-height: 1.75; color: var(--ed-ink-2); }
+  .note { font: .75rem var(--ed-mono); color: var(--ed-ink-2); margin: .8rem 0 0; }
+
+  .lead { max-width: 34em; line-height: 1.9; color: var(--ed-ink-2); }
+  .refer { list-style: none; margin: 1.2rem 0 0; padding: 0; border-top: 2px solid var(--ed-ink); }
+  .refer li { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--ed-line); }
+  .refer b { font: 400 .75rem var(--ed-mono); color: var(--ed-accent); }
+
+  @media (max-width: 1100px) { .st { grid-template-columns: 4.5rem minmax(0, 1fr); } .q { grid-column: 2; grid-row: 2; margin: 1.5rem 0 0; } }
+  @media (max-width: 900px) { .timeline { grid-template-columns: 1fr 1fr; } .timeline li:nth-child(2n+1) { padding-left: 0; } .timeline li:nth-child(2n) { padding-left: 1rem; } }
+  @media (max-width: 760px) {
+    .tp-head { flex-wrap: wrap; padding-block: .25rem; } .tp-head nav { order: 3; width: 100%; justify-content: space-between; gap: 0; } .tp-head nav a { white-space: nowrap; padding-inline: .25rem; font-size: .875rem; }
+    /* 路線帶轉垂直 */
+    .ribbon svg { display: none; }
+    .ribbon ol { grid-template-columns: 1fr; min-height: 0; position: relative; gap: .9rem; }
+    .ribbon ol::before { content: ""; position: absolute; left: 21px; top: 22px; bottom: 22px; border-left: 2px dotted #c9773f; }
+    .ribbon li { padding-top: 0; text-align: left; } .ribbon li a { flex-direction: row; gap: 1rem; width: 100%; }
+    .dot { position: relative; z-index: 1; flex: none; }
+  }
+  @media (max-width: 640px) {
+    .st { grid-template-columns: 3.4rem minmax(0, 1fr); }
+    .pair { grid-template-columns: 1fr; } .out { border-left: 0; border-top: 1px solid var(--ed-ink); }
+    summary { grid-template-columns: 2.4rem 1fr 1.2rem; gap: .6rem; } summary b { font-size: 2rem; } details p { margin-left: 0; }
+    .info > div { grid-template-columns: 1fr; } .info .flag { grid-column: 1; }
+    /* 手機隱藏比例尺（每段說明已有「N 分」徽章） */
+    .ruler { display: none; }
+    .timeline { grid-template-columns: 1fr; } .timeline li, .timeline li:nth-child(2n), .timeline li:not(:first-child) { padding-left: 0; }
+  }
+</style>

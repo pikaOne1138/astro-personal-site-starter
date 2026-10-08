@@ -1,0 +1,44 @@
+---
+import Base from '../../../../layouts/EditorialBase.astro';
+import R01 from '../../../../components/editorial-recipes/rhythm/R01-spacing-ladder.astro';
+import R02 from '../../../../components/editorial-recipes/rhythm/R02-band-alternation.astro';
+import R03 from '../../../../components/editorial-recipes/rhythm/R03-rule-weights.astro';
+import R04 from '../../../../components/editorial-recipes/rhythm/R04-fr-mirror.astro';
+import R05 from '../../../../components/editorial-recipes/rhythm/R05-voice-heading.astro';
+import R06 from '../../../../components/editorial-recipes/rhythm/R06-media-accent.astro';
+---
+<Base title="視覺節奏｜網站構圖配方庫" description="6 種視覺節奏配方的實際渲染">
+  <main id="main">
+    <header class="editorial-recipe-header"><a href={import.meta.env.BASE_URL+'layouts/recipes/'}>← 返回構圖配方庫</a><div><p>EDITORIAL DESIGN / COMPOSITION RECIPES</p><h1>視覺節奏</h1><p>6 種排版節奏：留白、交替底色、線條、鏡像與影像。</p></div></header>
+    <R01>
+      <R02 tone="paper">
+        <R05 level={1} phrases={['節奏不是', '裝飾，']} voice="是秩序。" />
+        <R03 level="chapter" label="chapter rule 2px" />
+        <R03 level="item" label="item rule 1px" />
+        <R03 level="aside" label="aside rule dashed" />
+      </R02>
+      <R02 tone="panel">
+        <R04>
+          <div slot="head"><R05 level={2} phrases={['左小右大']} voice="再鏡像。" serif /></div>
+          <p>第一個區塊：標題 .7fr、內容 1.3fr。手機一律標題在上。</p>
+        </R04>
+        <div style="height:var(--ed-section)"></div>
+        <R04 flip>
+          <div slot="head"><R05 level={2} phrases={['鏡像']} voice="一次。" serif /></div>
+          <p>第二個區塊：內容在左、標題在右，避免整頁重量都壓在右側。</p>
+        </R04>
+      </R02>
+      <R02 tone="dark">
+        <R04>
+          <div slot="head"><R05 level={2} phrases={['媒體']} voice="的識別處理。" /></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:2.5rem">
+            <R06 treatment="arch" caption="arch" />
+            <R06 treatment="mat" tilt={2} caption="mat + tilt 2deg" />
+            <R06 treatment="hard" caption="hard shadow" />
+            <R06 treatment="plain" tilt={0} ratio="3 / 2" caption="plain" />
+          </div>
+        </R04>
+      </R02>
+    </R01>
+  </main>
+</Base>

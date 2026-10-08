@@ -1,0 +1,27 @@
+---
+/**
+ * L03 archive-table — 編號/日期 | 標題 | 時長 的存檔表（衍生自 05 .ra-archive）。
+ * 標題用襯線、其餘用 mono，形成「資料欄」與「內容欄」的聲音差。
+ * 修正：mono 欄 ≥ 12px；手機欄寬 5rem 1fr 3.5rem 並保留時長欄。
+ */
+interface Props { label?: string; title?: string; hint?: string; items?: { id: string; t: string; len: string; href?: string }[] }
+const {
+  label = 'ARCHIVE / RECENT LETTERS', title = '往期信號', hint = '依播出時間排列',
+  items = [{ id: '017 / 09.18', t: '在忙碌裡留一段可以呼吸的空白', len: '16:08' }, { id: '016 / 09.04', t: '一本書如何陪我們走過轉彎', len: '21:30' }, { id: '015 / 08.20', t: '先記錄，再決定它的名字', len: '13:52' }],
+} = Astro.props;
+---
+<section class="l03">
+  <div class="head"><div><p class="label">{label}</p><h2>{title}</h2></div><span>{hint}</span></div>
+  <ol>{items.map((i) => <li><span class="id">{i.id}</span><a href={i.href ?? '#'}>{i.t}</a><span class="len">{i.len}</span></li>)}</ol>
+</section>
+<style>
+  .l03 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 1.2rem var(--ed-gutter, 4vw) 0; border-top: 1px solid var(--ed-line, #46535e); color: var(--ed-ink, #222); }
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .14em; color: var(--ed-accent, #9a3b24); margin: 0; }
+  h2 { font: 700 2rem/1.2 var(--ed-sans, sans-serif); margin: .3rem 0 0; } .head > span { font: .8rem var(--ed-mono, monospace); color: var(--ed-ink-2, #57534a); }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 8.5rem 1fr 4rem; gap: 1rem; align-items: center; border-top: 1px solid var(--ed-line, #cfc8b8); font: .8rem var(--ed-mono, monospace); color: var(--ed-ink-2, #57534a); }
+  li a { display: flex; align-items: center; min-height: 56px; font: 1.05rem/1.5 var(--ed-serif, Georgia, serif); color: var(--ed-ink, #222); text-decoration: none; }
+  li a:hover { color: var(--ed-accent, #9a3b24); } .len { text-align: right; }
+  @media (max-width: 480px) { li { grid-template-columns: 5.2rem 1fr 3.2rem; gap: .5rem; } li a { font-size: .95rem; } }
+</style>

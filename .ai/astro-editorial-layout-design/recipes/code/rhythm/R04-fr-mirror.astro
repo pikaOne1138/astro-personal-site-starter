@@ -1,0 +1,20 @@
+---
+/**
+ * R04 fr-mirror — 連續區塊左右鏡像：區塊 A「.7fr 標題 | 1.3fr 內容」，區塊 B「1.3fr 內容 | .7fr 標題」。
+ * 十款 [OBS] 的欄比幾乎都是「左小右大」；[NEW] 建議在 3 個以上連續區塊時至少鏡像 1 次，避免整頁的視覺重量都在右邊。
+ * 用 slot：<FrMirror flip><h2 slot="head">…</h2><div>…</div></FrMirror>；手機一律「標題在上」。
+ */
+interface Props { flip?: boolean; ratio?: string }
+const { flip = false, ratio = '.7fr 1.3fr' } = Astro.props;
+const [a, b] = ratio.split(' ');
+---
+<section class:list={['r04', { flip }]} style={`--a:${a};--b:${b}`}>
+  <div class="head"><slot name="head" /></div>
+  <div class="body"><slot /></div>
+</section>
+<style>
+  .r04 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding-inline: var(--ed-gutter, 4vw); display: grid; grid-template-columns: var(--a) var(--b); gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
+  .r04.flip { grid-template-columns: var(--b) var(--a); }
+  .r04.flip .head { order: 2; }
+  @media (max-width: 860px) { .r04, .r04.flip { grid-template-columns: 1fr; gap: 1.5rem; } .r04.flip .head { order: 0; } }
+</style>

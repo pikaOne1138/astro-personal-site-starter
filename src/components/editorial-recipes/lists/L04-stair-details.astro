@@ -1,0 +1,37 @@
+---
+/**
+ * L04 stair-details — 三張階梯式 <details> 卡片（0 / 2rem / 4rem 下沉）（衍生自 09 .ma-steps）。
+ * 修正 09：未展開時 min-height 為 0（原版保留 260px 造成空盒子）；浮水印數字放在不與標題相交的角落。
+ * 手機：階梯歸零、單欄。
+ */
+interface Props { label?: string; title?: string; steps?: { tag: string; t: string; d: string }[] }
+const {
+  label = 'THE 3-MOVE METHOD', title = '把「不知道」變成可以做的事。',
+  steps = [{ tag: 'MOVE / 01', t: '說清楚', d: '把模糊的卡點變成一個可以共同工作的問題。' }, { tag: 'MOVE / 02', t: '看選項', d: '整理限制、資源與可行路徑，不急著替你選。' }, { tag: 'MOVE / 03', t: '試一步', d: '選一個可檢視的小行動，帶著觀察回到下一次。' }],
+} = Astro.props;
+---
+<section class="l04">
+  <div class="head"><p class="label">{label}</p><h2>{title}</h2></div>
+  <div class="steps">{steps.map((s, i) => (
+    <details class={`step s${i}`} open={i === 0}>
+      <summary><span class="tag">{s.tag}</span><h3>{s.t}</h3><b aria-hidden="true">{String(i + 1).padStart(2, '0')}</b></summary>
+      <p>{s.d}</p>
+    </details>
+  ))}</div>
+</section>
+<style>
+  .l04 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: 0 var(--ed-gutter, 4vw); display: grid; grid-template-columns: .72fr 1.28fr; gap: 5vw; color: var(--ed-ink, #151d38); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #2148d8); margin: 0; }
+  h2 { font: 900 clamp(2.2rem, 4.4vw, 4.4rem)/1.1 var(--ed-sans, sans-serif); letter-spacing: -.02em; margin: .7rem 0; text-wrap: balance; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; align-items: start; }
+  .step { position: relative; padding: 1rem; background: #d8deee; border-top: 8px solid var(--ed-accent, #2148d8); }
+  .s1 { margin-top: 2rem; background: #f7c7a6; border-color: var(--ed-pop, #ee6846); } .s2 { margin-top: 4rem; background: #d7dfb9; border-color: #7f923b; }
+  summary { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; cursor: pointer; list-style: none; min-height: 44px; padding-right: 1.5rem; }
+  summary::-webkit-details-marker { display: none; } summary::marker { content: ""; }
+  summary::after { content: "＋"; position: absolute; right: 0; top: 0; font: 1rem var(--ed-mono, monospace); } .step[open] summary::after { content: "−"; }
+  .tag { font: .75rem var(--ed-mono, monospace); } h3 { font-size: 1.6rem; letter-spacing: -.02em; margin: 1.2rem 0 .3rem; }
+  summary .tag { grid-column: 1 / -1; } summary h3 { grid-column: 1; } summary b { grid-column: 2; align-self: end; font-size: 2.6rem; opacity: .22; line-height: 1; }
+  .step p { margin: .6rem 0 0; font-size: .9rem; line-height: 1.7; max-width: 16em; }
+  @media (max-width: 900px) { .l04 { grid-template-columns: 1fr; gap: 1.5rem; } }
+  @media (max-width: 640px) { .steps { grid-template-columns: 1fr; } .s1, .s2 { margin-top: 0; } }
+</style>

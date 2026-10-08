@@ -1,0 +1,42 @@
+---
+/**
+ * H08 veil-fullbleed — 全幅影像 + 單向漸層遮罩，文字放在最暗側（衍生自 08 身體與節律）
+ * 規則：遮罩在文字位置不透明度 ≥ 48%；底部另加一道保護小字的漸層；100svh；動態 ≤ 1 個（24s / scale ≤ 1.06）。
+ * 沒有 src 時以漸層代替影像（示範用）；實際使用請提供 alt 與真實影像。
+ */
+interface Props { kicker?: string; first?: string; voice?: string; body?: string; cta?: string; href?: string; src?: string; alt?: string; foot?: string }
+const {
+  kicker = 'A PRACTICE OF RETURNING', first = '先回到', voice = '身體裡。',
+  body = '在說明之前，先感受呼吸、重量與此刻的空間。練習不是表現得更好，而是多一點機會注意自己。',
+  cta = '看看練習如何開始', href = '#practice', src, alt = '', foot = 'SPACE FOR PRACTICE — 01',
+} = Astro.props;
+---
+<section class="h08">
+  {src ? <img class="bg" src={src} alt={alt} width="1920" height="1080" fetchpriority="high" /> : <div class="bg art" aria-hidden="true"></div>}
+  <div class="veil" aria-hidden="true"></div>
+  <div class="copy">
+    <p class="label">{kicker}</p>
+    <h1><span class="ph">{first}</span> <em class="ph">{voice}</em></h1>
+    <p class="body">{body}</p>
+    <a href={href}>{cta} <span aria-hidden="true">↓</span></a>
+  </div>
+  <span class="foot">{foot}</span>
+</section>
+<style>
+  .h08 { position: relative; overflow: hidden; min-height: min(52rem, 100svh); display: flex; align-items: center; padding: 6rem clamp(1rem, 9vw, 9rem) 5rem; background: #394938; color: #ece9dc; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: breathe 24s ease-in-out infinite alternate; }
+  .art { background: radial-gradient(ellipse at 80% 20%, #f0d9a8aa, #0000 40%), repeating-linear-gradient(100deg, #0000 0 60px, #ffffff12 60px 64px), linear-gradient(120deg, #4a3f2e, #8c6a45 60%, #b8935f); }
+  @keyframes breathe { to { transform: scale(1.06); } }
+  @media (prefers-reduced-motion: reduce) { .bg { animation: none; } }
+  .veil { position: absolute; inset: 0; background: linear-gradient(90deg, #1c291fd0 0%, #27332d7a 47%, #25302c14 100%), linear-gradient(0deg, #0000008c, #0000 40%); }
+  .copy { position: relative; z-index: 1; max-width: 42rem; }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .16em; color: #e9bf9f; margin: 0; }
+  h1 { font: 400 clamp(3.4rem, 11vw, 9rem)/1.02 var(--ed-serif, Georgia, serif); letter-spacing: -.03em; margin: 1rem 0; text-wrap: balance; }
+  .ph { display: inline-block; }
+  h1 em { font-style: italic; color: #e9bf9f; }
+  .body { max-width: 28em; line-height: 1.9; color: #e8e8dc; }
+  .copy a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1rem; font: .8rem var(--ed-mono, monospace); color: #fff; text-decoration: none; border-bottom: 1px solid #d7aa8b; }
+  .copy a span { margin-left: .8rem; }
+  .foot { position: absolute; z-index: 1; left: clamp(1rem, 4vw, 4rem); bottom: 1.3rem; font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: #fff; opacity: .85; }
+  @media (max-width: 560px) { .h08 { min-height: 95svh; padding: 5rem 1.2rem 4rem; } }
+</style>

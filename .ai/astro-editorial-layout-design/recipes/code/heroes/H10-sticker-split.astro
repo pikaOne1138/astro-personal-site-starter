@@ -1,0 +1,43 @@
+---
+/**
+ * H10 sticker-split — 左文 + 實心行動塊 + 拱形圖 + 貼紙（衍生自 10 共好工作室）
+ * 貼紙放進 figure，定位基準是圖片，手機不漂移。
+ */
+interface Props { kicker?: string; first?: string; voice?: string; body?: string; cta?: string; href?: string; sticker?: string[]; src?: string; alt?: string; cap?: string }
+const {
+  kicker = 'MORE THAN ONE WAY TO HELP', first = '一起工作，', voice = '不用把答案交給一個人。',
+  body = '我們由不同背景的助人工作者組成，分享練習、彼此轉介，也一起討論服務的邊界。',
+  cta = '認識工作室成員', href = '#people', sticker = ['LISTEN', 'LEARN', 'SHARE'],
+  src, alt = '', cap = '共學工作坊 / 團隊示意',
+} = Astro.props;
+---
+<section class="h10">
+  <div class="copy">
+    <p class="label">{kicker}</p>
+    <h1><span class="ph">{first}</span> <em class="ph">{voice}</em></h1>
+    <p class="body">{body}</p>
+    <a class="block" href={href}>{cta} <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure>
+    {src ? <img src={src} alt={alt} width="1200" height="900" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
+    <figcaption>{cap}</figcaption>
+    <div class="sticker" aria-hidden="true">{sticker.map((s) => <span>{s}</span>)}</div>
+  </figure>
+</section>
+<style>
+  .h10 { max-width: var(--ed-wide, 1320px); margin-inline: auto; padding: clamp(2.5rem, 6vw, 4rem) var(--ed-gutter, 4vw) clamp(3rem, 7vw, 5rem); display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; color: var(--ed-ink, #203d68); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .13em; color: var(--ed-accent, #2d55cf); margin: 0; }
+  h1 { font: 800 clamp(3rem, 7vw, 6.5rem)/1.08 var(--ed-sans, sans-serif); letter-spacing: -.03em; margin: 1rem 0; text-wrap: balance; }
+  .ph { display: inline-block; }
+  h1 em { font: 400 italic 1em var(--ed-serif, Georgia, serif); color: var(--ed-accent, #2d55cf); }
+  .body { max-width: 28em; line-height: 1.9; color: var(--ed-ink-2, #4c5c78); }
+  .block { display: inline-flex; align-items: center; min-height: 48px; margin-top: 1.3rem; padding: 0 1.1rem; background: var(--ed-hi, #f5cb47); color: var(--ed-ink, #203d68); text-decoration: none; font-weight: 700; font-size: .9rem; }
+  .block span { margin-left: 1.2rem; }
+  figure { position: relative; margin: 0; }
+  figure img, .art { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 46% 46% 3px 3px; }
+  .art { background: radial-gradient(circle at 30% 65%, #e9bcb3 0 18%, #0000 19%), radial-gradient(circle at 65% 45%, #f5cb47 0 16%, #0000 17%), radial-gradient(circle at 50% 75%, #2d55cf 0 12%, #0000 13%), #e9ebf5; }
+  figcaption { font: .75rem var(--ed-mono, monospace); color: var(--ed-ink-2, #4a5870); text-align: right; margin-top: .5rem; }
+  .sticker { position: absolute; left: -2rem; bottom: 2.2rem; width: 6rem; height: 6rem; background: var(--ed-hi, #f5cb47); border-radius: 50%; display: grid; place-content: center; text-align: center; font: .75rem/1.45 var(--ed-mono, monospace); transform: rotate(9deg); box-shadow: 4px 4px 0 var(--ed-accent, #2d55cf); }
+  .sticker span { display: block; }
+  @media (max-width: 760px) { .h10 { grid-template-columns: 1fr; gap: 2rem; } figure { width: 90%; margin-left: auto; } .sticker { left: -1rem; } }
+</style>

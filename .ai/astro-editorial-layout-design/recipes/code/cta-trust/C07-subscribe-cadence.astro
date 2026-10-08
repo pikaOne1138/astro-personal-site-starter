@@ -1,0 +1,33 @@
+---
+/**
+ * C07 subscribe-cadence — 知識型網站的訂閱：先承諾「頻率與內容長相」，再給欄位。
+ * 規則：label 可見（不只 placeholder）、輸入框 ≥ 48px、隱私一句話、取消方式一句話；
+ * 不放「已有 N 位讀者」之類未經驗證的數字。此元件只示範前端，**不送出資料**（action 需自行串接）。
+ */
+interface Props { label?: string; title?: string; cadence?: string; sample?: string; action?: string; fine?: string }
+const {
+  label = 'THE MONTHLY LETTER', title = '每月一封，不催促閱讀。',
+  cadence = '每月第一個週日寄出，一封信約 8 分鐘讀完：一篇長文、三本讀過的書、一個未解的問題。',
+  sample = '看上一期 →', action = '#', fine = '只用於寄送這封信，不轉給第三方；每封信底部都有一鍵取消。',
+} = Astro.props;
+---
+<section class="c07">
+  <div class="l"><p class="label">{label}</p><h2>{title}</h2><p class="cad">{cadence}</p><a class="sample" href="#">{sample}</a></div>
+  <form action={action} method="post" onsubmit="return false">
+    <label for="c07-mail">Email</label>
+    <div class="f"><input id="c07-mail" type="email" required autocomplete="email" placeholder="you@example.com" /><button type="submit">訂閱</button></div>
+    <p class="fine">{fine}</p>
+  </form>
+</section>
+<style>
+  .c07 { max-width: var(--ed-mid, 1120px); margin-inline: auto; padding: 2rem var(--ed-gutter, 4vw); border-block: 1px solid var(--ed-line, #cfc8b8); display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; color: var(--ed-ink, #222018); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .14em; color: var(--ed-accent, #9a3b24); margin: 0; }
+  h2 { font: 400 clamp(1.8rem, 3.4vw, 2.8rem)/1.25 var(--ed-serif, Georgia, serif); margin: .5rem 0; text-wrap: balance; }
+  .cad { max-width: 30em; font-size: 1rem; line-height: 1.8; color: var(--ed-ink-2, #57534a); margin: 0 0 .5rem; }
+  .sample { display: inline-flex; align-items: center; min-height: 44px; color: var(--ed-accent, #9a3b24); font-size: .875rem; }
+  label { display: block; font: .75rem var(--ed-mono, monospace); margin-bottom: .4rem; }
+  .f { display: flex; gap: .5rem; } input { flex: 1; min-width: 0; min-height: 48px; padding: 0 .9rem; font-size: 1rem; border: 1px solid var(--ed-ink-2, #57534a); background: #fff; color: inherit; border-radius: 2px; }
+  button { min-height: 48px; padding: 0 1.3rem; border: 0; background: var(--ed-ink, #222018); color: var(--ed-paper, #f5f1e8); font-size: 1rem; cursor: pointer; border-radius: 2px; }
+  .fine { margin: .6rem 0 0; font-size: .75rem; line-height: 1.6; color: var(--ed-ink-2, #57534a); }
+  @media (max-width: 760px) { .c07 { grid-template-columns: 1fr; } }
+</style>

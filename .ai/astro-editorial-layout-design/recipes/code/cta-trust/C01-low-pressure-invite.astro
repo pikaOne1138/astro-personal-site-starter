@@ -1,0 +1,26 @@
+---
+/**
+ * C01 low-pressure-invite — 一個主動作 + 一行「不必承諾」微文案 + 一條次要文字連結。
+ * 規則：不使用「限時／立即／名額有限」；按鈕文字寫「會發生什麼」（先問一個一般問題），不寫「立即預約」。
+ * 觸控：按鈕 min-height 48px；次要連結 min-height 44px。
+ */
+interface Props { label?: string; primary?: { t: string; href: string }; hint?: string; secondary?: { t: string; href: string } }
+const {
+  label = 'A QUIET WAY TO BEGIN', primary = { t: '先問一個一般問題', href: '#contact' },
+  hint = '不需要先說明原因，也不需要先決定要不要繼續。', secondary = { t: '先看合作流程', href: '#process' },
+} = Astro.props;
+---
+<div class="c01">
+  <p class="label">{label}</p>
+  <div class="row"><a class="main" href={primary.href}>{primary.t}</a><a class="sec" href={secondary.href}>{secondary.t} →</a></div>
+  <p class="hint">{hint}</p>
+</div>
+<style>
+  .c01 { max-width: 36rem; color: var(--ed-ink, #4b312d); }
+  .label { font: .75rem var(--ed-mono, monospace); letter-spacing: .12em; color: var(--ed-accent, #7c4d43); margin: 0 0 1rem; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+  .main { display: inline-flex; align-items: center; min-height: 48px; padding: 0 1.4rem; border: 1px solid var(--ed-accent, #8f554a); border-radius: 40px; color: var(--ed-accent, #8f554a); text-decoration: none; font-size: .95rem; }
+  .main:hover { background: var(--ed-accent, #8f554a); color: var(--ed-paper, #fbf5ed); }
+  .sec { display: inline-flex; align-items: center; min-height: 44px; color: var(--ed-ink-2, #624843); font-size: .9rem; }
+  .hint { margin: .8rem 0 0; font-size: .875rem; line-height: 1.7; color: var(--ed-ink-2, #624843); }
+</style>
