@@ -166,3 +166,27 @@
  html[data-allow-motion-demo=true] .fx-page .motion-card-demo{transition:transform 440ms cubic-bezier(.22,1,.36,1)!important}
  html[data-allow-motion-demo=true] .fx-page .motion-magnetic{translate:var(--magnetic-x) var(--magnetic-y)!important;transition:translate 280ms ease,transform 280ms!important}
 }
+
+
+/* Always available troubleshooting guide for OS-wide motion preference. */
+.fx-system-guide{margin:0 0 28px}
+.fx-system-guide__details{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+.fx-system-guide__details>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 22px;cursor:pointer;min-height:70px}
+.fx-system-guide__details>summary::-webkit-details-marker{display:none}
+.fx-system-guide__details>summary strong{display:block;font:600 17px/1.5 var(--heading);color:var(--text)}
+.fx-system-guide__details>summary small{display:block;font:400 12px/1.7 var(--body);color:var(--muted);margin-top:3px}
+.fx-system-guide__details>summary>span:last-child{font-size:23px;line-height:1;color:var(--accent);transition:transform 200ms}
+.fx-system-guide__details[open]>summary>span:last-child{transform:rotate(45deg)}
+.fx-system-guide__body{border-top:1px solid var(--line);padding:18px 22px 24px}
+.fx-system-guide__body>p{font-size:14px;line-height:1.85;color:var(--muted);margin:0 0 20px}
+.fx-system-guide__body code{font-size:.92em;color:var(--accent)}
+.fx-system-guide__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+.fx-system-guide__grid>div{border-top:1px solid var(--line);padding:14px 0 18px;min-width:0}
+.fx-system-guide__grid h3{font:600 18px/1.5 var(--heading);margin:0 0 8px}
+.fx-system-guide__grid p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 8px}
+.fx-system-guide__grid p strong{font-weight:600;color:var(--text)}
+.fx-system-guide__grid a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.fx-system-guide__footer{margin-top:12px!important;margin-bottom:0!important;padding-top:12px;border-top:1px solid var(--line)}
+.fx-system-guide summary:focus-visible,.fx-system-guide a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:700px){.fx-system-guide__grid{grid-template-columns:1fr}.fx-system-guide__details>summary,.fx-system-guide__body{padding-inline:16px}}
+@media(prefers-reduced-motion:reduce){.fx-system-guide__details>summary>span:last-child{transition:none}}
