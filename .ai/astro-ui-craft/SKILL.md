@@ -155,3 +155,6 @@ Use `.ai/astro-ui-craft/references/article-exploration-v2.md` practical-block gu
 
 ## Social identity links
 Use reusable `SocialLinks.astro` for social platforms and contact identity, rather than hardcoding text links or inventing brand URLs. Accept only configured HTTPS destinations or explicitly validated mailto/tel. Include aria labels and visible keyboard focus; preserve current four themes and do not show missing profiles. `ContactActions` wraps `SocialLinks` with LINE/Email/phone when data exists. Keep icon-brand trademark/individual license considerations in component docs; avoid user-facing release numbers.
+
+### Refined social icons in site headers
+Compose `SiteSearchDialog` + narrow divider + `SocialLinks size="sm"` on the desktop navbar via `SiteNav`'s optional `socialLinks` list. Do not duplicate nav links or crowd narrow screens; social icons are hidden below 850px. Use single-color CSS mask icons that inherit theme foreground/accent, subtle focus, consistent spacing, and no invented account links. Header can opt out with `socialLinks={[]}`. Demo defaults show verified GitHub repo + deployed demo site only.
