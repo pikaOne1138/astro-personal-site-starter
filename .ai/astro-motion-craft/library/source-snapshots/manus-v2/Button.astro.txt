@@ -1,0 +1,30 @@
+---
+interface Props { href?: string; variant?: 'primary' | 'secondary' | 'text' | 'small'; type?: 'button' | 'submit' | 'reset'; className?: string; magnetic?: boolean; arrow?: boolean; }
+const { href, variant = 'primary', type = 'button', className = '', magnetic = false, arrow = true } = Astro.props;
+---
+{href ? (
+  <a class:list={['button', `button--${variant}`, magnetic && 'magnetic-button', className]} href={href} data-magnetic={magnetic ? 'true' : undefined}><slot />{arrow && <span class="button-arrow" aria-hidden="true">↗</span>}</a>
+) : (
+  <button class:list={['button', `button--${variant}`, magnetic && 'magnetic-button', className]} type={type} data-magnetic={magnetic ? 'true' : undefined}><slot />{arrow && <span class="button-arrow" aria-hidden="true">↗</span>}</button>
+)}
+<script>
+  const buttons = [...document.querySelectorAll<HTMLElement>('[data-magnetic="true"]')];
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (finePointer && !reduced) {
+    buttons.forEach((button) => {
+      button.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        const rect = button.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        button.style.setProperty('--magnetic-x', `${(x * 8).toFixed(1)}px`);
+        button.style.setProperty('--magnetic-y', `${(y * 6).toFixed(1)}px`);
+      }, { passive: true });
+      button.addEventListener('pointerleave', () => {
+        button.style.setProperty('--magnetic-x', '0px');
+        button.style.setProperty('--magnetic-y', '0px');
+      });
+    });
+  }
+</script>
