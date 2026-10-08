@@ -1,65 +1,60 @@
-name: PR Preview (GitHub Pages)
+name: PR Preview Build
 
 on:
   pull_request:
     types: [opened, reopened, synchronize, closed]
-  workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'Existing pull request number to preview (manual rerun)'
-        required: true
-        type: number
 
-# Serialise writes to the same gh-pages branch, including production publishes.
-concurrency:
-  group: github-pages-content
-  cancel-in-progress: false
-
+# PR code can build and upload artifacts, but cannot deploy Pages or write repo content.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: pr-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
-  preview:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+  preview-build:
+    # For safety, this preview pipeline handles only branches inside this repository.
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR source
+      - name: Write preview event metadata
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_ACTION: ${{ github.event.action }}
+        run: |
+          mkdir -p .preview-meta
+          printf '{"number":%s,"action":"%s"}\n' "$PR_NUMBER" "$PR_ACTION" > .preview-meta/event.json
+      - name: Upload preview event metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-event
+          path: .preview-meta/event.json
+          retention-days: 7
+      - name: Checkout PR
         if: github.event.action != 'closed'
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/pull/{0}/head', inputs.pr_number) || github.event.pull_request.head.sha }}
           persist-credentials: false
-      - name: Setup Node
+      - name: Set up Node
         if: github.event.action != 'closed'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install dependencies
+      - name: Install
         if: github.event.action != 'closed'
         run: npm install --no-audit --no-fund
-      - name: Build with PR-specific Astro base
+      - name: Build PR under its preview URL prefix
         if: github.event.action != 'closed'
         env:
-          PR_NUMBER: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          export ASTRO_BASE_PATH="/${{ github.event.repository.name }}/pr-preview/pr-${PR_NUMBER}"
-          echo "Building with ASTRO_BASE_PATH=${ASTRO_BASE_PATH}"
-          npm run build
-      - name: Deploy or remove PR preview
-        id: deploy
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./dist/
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
-          pr-number: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
-          action: ${{ github.event.action == 'closed' && 'remove' || 'deploy' }}
-          wait-for-pages-deployment: false
-          comment: true
-          qr-code: false
-      - name: Preview link in workflow summary
+          ASTRO_BASE_PATH="/${{ github.event.repository.name }}/pr-preview/pr-${PR_NUMBER}" npm run build
+      - name: Upload built site
         if: github.event.action != 'closed'
-        env:
-          PREVIEW_URL: ${{ steps.deploy.outputs.preview-url }}
-        run: echo "Preview URL: ${PREVIEW_URL}" >> "$GITHUB_STEP_SUMMARY"
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-site
+          path: dist/
+          retention-days: 7
+          if-no-files-found: error
