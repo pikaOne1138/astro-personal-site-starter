@@ -1,0 +1,6 @@
+---
+interface Props {title:string;description:string;href?:string;format?:string;actionLabel?:string}
+const {title,description,href,format='免費資源',actionLabel='查看資源'}=Astro.props;
+const valid=href&&(href.startsWith('https://')||href.startsWith('/')||href.startsWith('./'));
+---
+<aside class="practical-lead-magnet"><span class="practical-resource-kicker">{format}</span><h3>{title}</h3><p>{description}</p>{valid?<a href={href} target={href.startsWith('https://')?'_blank':undefined} rel={href.startsWith('https://')?'noopener noreferrer':undefined}>{actionLabel} →</a>:<small class="practical-notice">這份資源尚未提供下載或報名連結。</small>}</aside>
