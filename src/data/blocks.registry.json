@@ -677,5 +677,30 @@
       "botanical"
     ],
     "version": "V2"
+  },
+  {
+    "id": "site-search-dialog",
+    "name": "SiteSearchDialog",
+    "category": "common",
+    "path": "src/components/blocks/SiteSearchDialog.astro",
+    "keywords": [
+      "全站搜尋",
+      "放大鏡",
+      "搜尋彈窗",
+      "Ctrl+K",
+      "Command+K",
+      "modal search"
+    ],
+    "compatibleWith": [
+      "knowledge",
+      "helper"
+    ],
+    "themes": [
+      "paper",
+      "morning",
+      "studio",
+      "botanical"
+    ],
+    "version": "V2"
   }
 ]
