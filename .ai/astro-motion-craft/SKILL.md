@@ -108,3 +108,7 @@ version: 1
 
 ## 返回頁首效果
 已有 `src/components/blocks/BackToTop.astro` 可重複使用；捲動顯示和返回頁首預設依照系統減少動態偏好降級。它是導航控制而非純視覺效果，應放在共用 Layout，勿在特效庫重複造一個同義的元件。
+
+
+## Layout composition is a separate layer
+Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layout-craft/SKILL.md`. Do not use motion to compensate for a weak layout; choose the content reading flow first. A subtle reveal fits only selected sections and never makes distinct website layouts identical.
