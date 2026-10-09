@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 const esc = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const GET: APIRoute = async ({ site }) => {
   const origin = site?.origin ?? 'https://pikaone1138.github.io';
-  const root = new URL('/astro-personal-site-starter/', origin);
+  const root = new URL(import.meta.env.BASE_URL, origin);
   const posts = (await getCollection('articles', ({ data }) => !data.draft))
     .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
   const items = posts.map(({ id, data }) => {
