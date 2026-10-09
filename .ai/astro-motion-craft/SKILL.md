@@ -117,3 +117,14 @@ Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layo
 ## 與 Claude 編輯式構圖的使用順序
 
 先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的 40 款構圖配方，最後才由本 Motion Skill 加入必要的動效。即使元件可用 Tilt/Spotlight/Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。
+
+
+## 外部動效資源評估（特效庫底部）
+
+使用 `src/data/external-motion-resources.json` 與 `/effects/#external-motion` 作為**參考清單**，包含 Animista、Uiverse、Motion、GSAP、AOS、CSS Loaders。清單不是安裝清單，也不代表已完成元件安全與授權驗收。
+
+- 先盤點本專案 `src/components/effects/` 的 Reveal／Stagger／Card／ZoomImage／MagneticButton／UnderlineLink／MotionFAQ；如果已滿足需求，不要另裝 AOS 等重疊方案。
+- 原生 CSS 動效優先；需要複雜捲動敘事才考慮 Motion 或 GSAP。外部網站與原始碼的授權、依賴、維護、性能要個別確認。
+- 任何動效都必須支援 `prefers-reduced-motion`；手機沒有 Hover 時功能仍要完整，鍵盤與觸控操作要合理，JS 失敗時內容仍可閱讀。
+- 動效服務於閱讀和回饋；靜態文章站不應為了好看加入假的載入動畫或全頁過度動效。
+- 請先給學員能理解的比較與建議，取得同意後才在 Branch + PR 引入外部程式；Build 通過仍須四個視口實際 QA。
