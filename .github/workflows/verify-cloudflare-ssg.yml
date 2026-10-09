@@ -32,6 +32,19 @@ jobs:
         env:
           FULL_STUDENT_PACK_BUILD: '1'
         run: node scripts/verify-student-pack.mjs
+      - name: Install Chromium for 12-layout visual QA
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Capture 12 layouts at four widths
+        run: node scripts/qa-layout-screenshots.mjs
+      - name: Upload 48 screenshots and audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: layout-visual-qa
+          path: qa-artifacts/layouts/
+          retention-days: 14
       - name: Check complete static output and deploy configuration
         run: |
           test -s dist/index.html
