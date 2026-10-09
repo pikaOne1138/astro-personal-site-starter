@@ -24,22 +24,26 @@ try {
   const { mkdtempSync: temp }=await import('node:fs');
   const output=temp(join(tmpdir(),'student-export-'));
   try {
-    for(const kind of ['knowledge','helper']){
-      const layouts=JSON.parse(readFileSync(join(root,'src/data/layout-directions.json'),'utf8'));
-      const plan={version:1,kind,layoutSlug:layouts.find(x=>x.kind===kind).slug,
+    const layouts=JSON.parse(readFileSync(join(root,'src/data/layout-directions.json'),'utf8'));
+    if(layouts.length!==12)throw Error('Expected 12 directions, got '+layouts.length);
+    for(const layout of layouts){
+      const {kind}=layout;
+      const plan={version:1,kind,layoutSlug:layout.slug,
         visualTheme:'paper',brand:{name:'學員測試站',primaryColor:'#245E50',tagline:'驗收'},
         navigation:(kind==='knowledge'?['articles','about']:['services','about']).map(id=>({id,label:id,enabled:true})),
         primaryCta:{label:'進入',pageId:kind==='knowledge'?'articles':'services'},sectionPatterns:[]};
-      const planFile=join(output,kind+'.json'),site=join(output,kind);
+      const planFile=join(output,layout.slug+'.json'),site=join(output,layout.slug);
       const { writeFileSync }=await import('node:fs');
       writeFileSync(planFile,JSON.stringify(plan));
       execFileSync(process.execPath,[join(root,'scripts/export-starter.mjs'),planFile,site],{cwd:root,stdio:'inherit'});
-      if(!existsSync(join(site,'src/pages/index.astro')))throw Error('Missing exported website for '+kind);
-      if(process.env.FULL_STUDENT_PACK_BUILD==='1'){
+      if(!existsSync(join(site,'src/pages/index.astro')))throw Error('Missing exported website for '+layout.slug);
+      const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
+      if(config.kind!==kind||config.layoutSlug!==layout.slug)throw Error('Layout selection lost: '+layout.slug);
+      if(process.env.FULL_STUDENT_PACK_BUILD==='1' && (layout===layouts.find(x=>x.kind==='knowledge')||layout===layouts.find(x=>x.kind==='helper'))){
         execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       }
     }
   } finally { rmSync(output,{recursive:true,force:true}); }
-  console.log('Student ZIP extracted and standalone knowledge/helper export passed');
+  console.log('Student ZIP extracted: all 12 layout selections export; knowledge/helper Astro builds passed');
 } finally { rmSync(root,{recursive:true,force:true}); }
