@@ -9,7 +9,7 @@ import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計�
 const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const pages=[
-{title:'GitHub 是什麼？',id:'account',desc:'GitHub 是存放網站原始碼的地方；Repository（倉庫）就是每一個網站專案的資料夾。'},
+{title:'GitHub 是什麼？',id:'account',desc:'GitHub 是保存網站的地方；Repository（倉庫）可以想成你的網站專屬資料夾。'},
 {title:'建立自己的倉庫',id:'repo',desc:'第一次先建一個自己的空白倉庫。之後 AI 才知道要把網站放在哪裡。'},
 {title:'讓 AI 存取倉庫',id:'access',desc:'AI 能聊天，不代表它已經取得 GitHub 存取權。'},
 {title:'網站內容訪談',id:'intake',desc:'沒有 About、文章、服務文案也可以先從 AI 訪談開始。'},
@@ -23,19 +23,19 @@ const pages=[
 <header class="top"><strong>ASTRO WORKSHOP · 教學手冊</strong><nav aria-label="教學章節"><a href={base+'guide/prepare/'} aria-current="page">前置準備</a><a href={base+'guide/'}>開始建置</a></nav></header>
 <main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">不懂 GitHub、不知道怎麼建立倉庫，甚至還沒有網站名稱、Logo 或文章，都可以從這裡開始。先讓 AI 陪你操作與討論，不必一次把所有問題做完。</p>
 <div class="steps">{pages.map(x=><a href={'#'+x.id}><strong>{x.title} ↓</strong><small>{x.desc}</small></a>)}</div>
-<section id="account"><h2>01｜認識 GitHub：不用先學會寫程式</h2><p>GitHub 是保存網站程式與版本的服務。你會用到自己的帳號和一個 Repository（倉庫）。你的倉庫與工作坊展示站是<strong>不同的專案</strong>，不要讓 AI 直接修改展示站。</p>
+<section id="account"><h2>01｜認識 GitHub：不用先學會寫程式</h2><p>GitHub 幫你保存網站。你只要有自己的帳號和一個網站倉庫即可；其他事情可以請 AI 處理。</p>
 <ol><li>開啟 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊 ↗</a>；若已有帳號，就直接登入。</li><li>登入後，確認右上角頭像選單能看到自己的帳號名稱。</li><li>把帳號名稱記下來；後續你的 Repo 全名會是 <code>帳號名稱/倉庫名稱</code>。</li></ol><aside>任何畫面找不到按鈕時，不需要亂猜。<strong>先截圖給 AI，讓 AI 依你眼前的介面一步一步指引。</strong> 截圖前遮住電子郵件、私人 Repo 名稱及敏感資訊；永遠不要傳密碼或 Token。</aside></section>
-<section id="repo"><h2>02｜建立第一個 Repository</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇 Public 或 Private（Public 原始碼公開；不確定時先問 AI 兩者差異）。</li><li>勾選 Add a README file，其他進階選項可以先保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
+<section id="repo"><h2>02｜建立第一個 Repository</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇 Public（公開）或 Private（私人）。如果你還不清楚差別，先截圖問 AI；之後想走免費 GitHub Pages，公開倉庫較容易使用。</li><li>勾選 Add a README file，其他進階選項可以先保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
 <p><strong>不會操作時，請把下方提示詞貼給 AI，照它的一個步驟一個步驟做。</strong></p><div class="card"><button type="button" class="button secondary" id="copy-github">複製 GitHub 截圖陪跑提示詞</button><div class="prompt" id="github-prompt">我完全不懂 GitHub，請當我的 GitHub 操作教練，陪我從登入到建立自己的網站 Repository。請一次只教我一個步驟，說明要點哪個按鈕、畫面上應該看到什麼，以及完成後如何驗證。如果我的畫面與你說的不一樣，請先叫我截圖上傳，你要根據這張截圖的真實介面重新引導，不要憑空猜位置。必要時在每個階段幫我整理一段可保存的《GitHub 操作紀錄》，寫下已完成步驟、Repo 名稱、還沒完成的事項。請幫我避開工作坊展示 Repo，不要要求我貼密碼、Token、驗證碼，也不要未經同意改權限或公開私人資料。第一步請只問我是否已登入 GitHub。</div></div></section>
 <section id="access"><h2>03｜讓 AI 真正有權限讀寫你的倉庫</h2><p>GitHub 帳號建立好，不代表 AI 自動有權限。先在你選用的 AI 工具啟用 GitHub 連接，再開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">Installed GitHub Apps 管理頁 ↗</a>。</p>
-<ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>若你之後建立了另一個 Repo，可能需要回到這裡重新加入；如果看不到 App，先回到 AI 工具執行 Connect GitHub。不應用公開 Repo 或貼 API Token 來繞過正常授權。</aside></section>
+<ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>若你之後建立了另一個 Repo，可能需要回到這裡重新加入；如果看不到 App，先回到 AI 工具執行 Connect GitHub。不要傳送密碼或 API 金鑰給 AI。</aside></section>
 <section id="intake"><h2>04｜讓 AI 訪談你，寫出網站所需內容</h2><p>還沒有 About、文章或服務文案都沒關係。教學會提供「建站前 AI 訪談包」，AI 會一次問一個問題，協助整理網站名稱、讀者、主要行動、個人介紹和文章／服務內容。訪談稿不會自動發布。</p>
 <div class="card"><h3>一鍵下載訪談包</h3><p>這裡直接取得七份 Markdown 文件，不必到 GitHub 找 Raw 或下載原始碼。解壓縮後，把文件上傳給 AI。</p><button type="button" class="button" id="download-intake-zip">下載完整 AI 訪談包 ZIP ↓</button><p class="fine">包含內容訪談、About、文章與服務、品牌圖像共創及 Logo 研究。</p></div>
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>AI 先從你的網站定位提出三種<strong>不同的 Logo 概念</strong>，再陪你選擇文字標誌、字母標誌、簡單符號或組合標誌。選定概念後生成 Logo 候選、精簡的 favicon，再製作需要的 Hero、文章封面或服務情境替代圖。</p>
 <ol><li>先選概念，不是只換顏色；黑白版也要清楚。</li><li>中文字形必須人工校對。若 AI 產圖文字錯誤，就先生成純圖形，再用真正字體排版。</li><li>favicon 檢查 16、32、48px。不要把整張橫式 Logo 硬縮小。</li><li>AI 生成的照片不可以冒充真實執業者、客戶、諮商空間或事件，正式使用還需檢查平台條款及與既有商標的相似性。</li></ol><p class="fine">訪談 ZIP 內含「AI 品牌識別與圖片共創」與 Logo 設計研究文件。</p></section>
 <section id="cloudflare"><h2>06｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
-<p><strong>不使用 Cloudflare 也能完成網站：</strong>可以選 GitHub Pages。若使用 GitHub Free 且想保留私有 Repository，並希望 PR 自動提供線上預覽、日後擴充更多管理功能，可以考慮 <strong>Cloudflare Pages</strong>。</p>
+<p><strong>這一步可以跳過：</strong>不使用 Cloudflare 也能完成網站，可以選 GitHub Pages。若使用 GitHub Free 且想保留私有 Repository，並希望 PR 自動提供線上預覽、日後擴充更多管理功能，可以考慮 <strong>Cloudflare Pages</strong>。</p>
 <div class="card"><h3>先分清楚：「私有倉庫」不是「私人網站」</h3><p>Cloudflare Pages 能連接 <strong>Private GitHub Repository</strong>，因此學員的網站原始碼不必公開，正式網站卻仍然能讓大眾瀏覽。<strong>不會因為 Repo 私有，部署出來的網站就自動需要登入。</strong> 同樣也不能把密碼、API Token、個案資料放進網站原始碼或公開的前端檔案。</p><p class="fine">私有原始碼降低不必要的公開曝光，但不代表資料絕對安全，也不等於限制網站瀏覽權限。</p></div>
 <h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>兩者都能讓 Astro 靜態網站上線。以下用<strong>一般學員常用的 GitHub Free 方案</strong>比較；更高方案與額外服務可能有不同權限。</p>
