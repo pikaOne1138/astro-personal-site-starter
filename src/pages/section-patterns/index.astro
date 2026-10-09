@@ -1,4 +1,5 @@
 ---
+import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import registry from '../../data/section-patterns.registry.json';
 import FeaturedWorkSection from '../../components/patterns/FeaturedWorkSection.astro';
@@ -8,6 +9,7 @@ const base=import.meta.env.BASE_URL;
 ---
 <DemoLayout title="區段組合樣板庫｜Section Patterns" description="學員不用理解每個功能元件，也能先看到已組合好的作品展示與服務信任區段。">
  <main class="sp-gallery">
+  <DesignLibraryNav current="section-patterns" />
   <header class="sp-intro"><p class="sp-kicker">SECTION PATTERN LIBRARY / V1</p><h1>不知道元件怎麼搭？<br/>先看完整的一段設計。</h1><p>這裡不是整套網站，也不是單顆按鈕。每個組合樣板都示範「一個區段」如何安排內容、信任與下一步。選接近需求的，再交給 AI 更換文字、順序、品牌色與元件。</p><a href={base+'layouts/'}>先看看整頁 Layout →</a></header>
   <nav class="sp-jump" aria-label="組合樣板目錄">{registry.map((x,i)=><a href={'#'+x.id}>{String(i+1).padStart(2,'0')} {x.title}</a>)}</nav>
   <section class="sp-example" id="featured-work"><div class="sp-meta"><span>01 / FEATURED WORK</span><h2>{registry[0].title}</h2><p>{registry[0].purpose}</p><small>適合：{registry[0].bestFor.join('／')}</small></div>
