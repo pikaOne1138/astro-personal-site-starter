@@ -12,12 +12,11 @@ const {
 } = Astro.props;
 ---
 <section class="c07">
-  <div class="l"><p class="label">{label}</p><h2>{title}</h2><p class="cad">{cadence}</p><a class="sample" href="#">{sample}</a></div>
-  <form action={action} method="post" onsubmit="return false">
-    <label for="c07-mail">Email</label>
-    <div class="f"><input id="c07-mail" type="email" required autocomplete="email" placeholder="you@example.com" /><button type="submit">訂閱</button></div>
-    <p class="fine">{fine}</p>
-  </form>
+  <div class="l"><p class="label">{label}</p><h2>{title}</h2><p class="cad">{cadence}</p><span class="sample">{sample}（示意）</span></div>
+  <div class="c07-demo" role="group" aria-label="電子報功能尚未設定">
+    <p class="fine"><strong>電子報展示功能，尚未串接。</strong> 目前不會收集或寄送 Email。</p>
+    <button type="button" onclick="window.alert('這是電子報版型示範，尚未串接訂閱服務，也不會儲存您的電子郵件。正式使用前請先配置表單與訂閱確認流程。')">了解訂閱設定</button>
+  </div>
 </section>
 <style>
   .c07 { max-width: var(--ed-mid, 1120px); margin-inline: auto; padding: 2rem var(--ed-gutter, 4vw); border-block: 1px solid var(--ed-line, #cfc8b8); display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; color: var(--ed-ink, #222018); }
