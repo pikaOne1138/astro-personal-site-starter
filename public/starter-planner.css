@@ -98,3 +98,6 @@
 .palette-resource-grid span{font-size:14px;line-height:1.65;color:var(--muted)}
 .palette-resource-links .palette-resource-credit{font-size:13px;margin-top:14px}
 @media(max-width:720px){.palette-resource-grid{grid-template-columns:1fr}}
+
+/* The legacy primary-color input is synchronized with the palette but not part of the student UI. */
+.color-row[hidden]{display:none!important}
