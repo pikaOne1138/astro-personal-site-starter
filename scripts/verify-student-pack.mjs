@@ -45,5 +45,5 @@ try {
       }
     }
   } finally { rmSync(output,{recursive:true,force:true}); }
-  console.log('Student ZIP extracted: all 12 layout selections export; knowledge/helper Astro builds passed');
+  console.log('Student ZIP extracted: all 12 layout selections export; knowledge/helper Astro builds '+(process.env.FULL_STUDENT_PACK_BUILD==='1'?'passed':'SKIPPED (set FULL_STUDENT_PACK_BUILD=1)'));
 } finally { rmSync(root,{recursive:true,force:true}); }
