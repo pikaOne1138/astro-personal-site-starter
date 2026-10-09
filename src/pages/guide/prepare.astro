@@ -1,4 +1,12 @@
 ---
+import intakeReadme from '../../../docs/student-intake/README.md?raw';
+import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
+import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
+import intakeContent from '../../../docs/student-intake/03-內容準備-二選一.md?raw';
+import intakeAssets from '../../../docs/student-intake/04-圖片與發布準備.md?raw';
+import intakeVisual from '../../../docs/student-intake/05-AI-品牌識別與圖片共創.md?raw';
+import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計研究.md?raw';
+const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const pages=[
 {title:'GitHub 是什麼？',id:'account',desc:'GitHub 是存放網站原始碼的地方；Repository（倉庫）就是每一個網站專案的資料夾。'},
@@ -22,12 +30,35 @@ const pages=[
 <section id="access"><h2>03｜讓 AI 真正有權限讀寫你的倉庫</h2><p>GitHub 帳號建立好，不代表 AI 自動有權限。先在你選用的 AI 工具啟用 GitHub 連接，再開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">Installed GitHub Apps 管理頁 ↗</a>。</p>
 <ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>若你之後建立了另一個 Repo，可能需要回到這裡重新加入；如果看不到 App，先回到 AI 工具執行 Connect GitHub。不應用公開 Repo 或貼 API Token 來繞過正常授權。</aside></section>
 <section id="intake"><h2>04｜讓 AI 訪談你，寫出網站所需內容</h2><p>還沒有 About、文章或服務文案都沒關係。教學會提供「建站前 AI 訪談包」，AI 會一次問一個問題，協助整理網站名稱、讀者、主要行動、個人介紹和文章／服務內容。訪談稿不會自動發布。</p>
-<p><a href={base+'guide/'}>回到建置頁下載完整訪談包 ZIP ↗</a></p>
+<div class="card"><h3>一鍵下載訪談包</h3><p>這裡直接取得七份 Markdown 文件，不必到 GitHub 找 Raw 或下載原始碼。解壓縮後，把文件上傳給 AI。</p><button type="button" class="button" id="download-intake-zip">下載完整 AI 訪談包 ZIP ↓</button><p class="fine">包含內容訪談、About、文章與服務、品牌圖像共創及 Logo 研究。</p></div>
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>AI 先從你的網站定位提出三種<strong>不同的 Logo 概念</strong>，再陪你選擇文字標誌、字母標誌、簡單符號或組合標誌。選定概念後生成 Logo 候選、精簡的 favicon，再製作需要的 Hero、文章封面或服務情境替代圖。</p>
 <ol><li>先選概念，不是只換顏色；黑白版也要清楚。</li><li>中文字形必須人工校對。若 AI 產圖文字錯誤，就先生成純圖形，再用真正字體排版。</li><li>favicon 檢查 16、32、48px。不要把整張橫式 Logo 硬縮小。</li><li>AI 生成的照片不可以冒充真實執業者、客戶、諮商空間或事件，正式使用還需檢查平台條款及與既有商標的相似性。</li></ol><p class="fine">訪談 ZIP 內含「AI 品牌識別與圖片共創」與 Logo 設計研究文件。</p></section>
 <section id="cloudflare"><h2>06｜準備 Cloudflare 帳號</h2><p>建立或登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard ↗</a>。初次製作靜態個人網站，無須先購買網域或開 D1 / R2 / 金流。<strong>連接 Repo、設定 Pages 專案、檢查部署，放在「開始建置」的流程中操作。</strong></p></section>
 <p><a class="button" style="display:inline-block;text-decoration:none" href={base+'guide/'}>前置完成，開始建置網站 →</a></p>
 </main><footer>Astro 架站工作坊 · 前置準備 ｜ <a href={base+'guide/'}>開始建置</a></footer>
-<script>document.getElementById('copy-github')?.addEventListener('click',async()=>{const b=document.getElementById('copy-github');try{await navigator.clipboard.writeText(document.getElementById('github-prompt')?.textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製 GitHub 截圖陪跑提示詞',1800)});</script>
+<script is:inline define:vars={{intakeFiles}}>
+// Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
+function makeZip(files){
+ const enc=new TextEncoder(), parts=[], central=[];let offset=0;
+ const u16=n=>new Uint8Array([n&255,n>>>8&255]);
+ const u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);
+ const cat=(...a)=>{let size=a.reduce((s,x)=>s+x.length,0),out=new Uint8Array(size),i=0;for(let x of a){out.set(x,i);i+=x.length}return out};
+ const crc32=data=>{let c=-1;for(let b of data){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return(c^-1)>>>0};
+ for(const [name,content] of Object.entries(files)){
+   let fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x0800;
+   let local=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);
+   parts.push(local);
+   central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));
+   offset+=local.length;
+ }
+ const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
+ return new Blob([body,dir,end],{type:'application/zip'});
+}
+document.getElementById('download-intake-zip')?.addEventListener('click',()=>{
+ const a=document.createElement('a'),blob=makeZip(intakeFiles),url=URL.createObjectURL(blob);
+ a.href=url;a.download='Astro-建站前AI訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+
+document.getElementById('copy-github')?.addEventListener('click',async()=>{const b=document.getElementById('copy-github');try{await navigator.clipboard.writeText(document.getElementById('github-prompt')?.textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製 GitHub 截圖陪跑提示詞',1800)});</script>
 </body></html>
