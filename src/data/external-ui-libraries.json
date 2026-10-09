@@ -1,0 +1,86 @@
+[
+  {
+    "id": "starwind",
+    "name": "Starwind UI",
+    "url": "https://starwind.dev/",
+    "type": "Astro 原生／Tailwind",
+    "fit": "優先研究互動基礎元件",
+    "usage": "Dropdown、Dialog、Sheet、Tabs、表單；也有可供 AI 參照的 Skill／CLI",
+    "integration": "Tailwind CSS；採 CLI 取得元件原始碼，留意版本與 Runtime／Adapter 依賴",
+    "license": "公開核心專案為 MIT；付費資源另看條款",
+    "priority": "high",
+    "note": "適合挑選互動元件，但不能假設所有原始元件都免 JS。"
+  },
+  {
+    "id": "webcore",
+    "name": "WebcoreUI",
+    "url": "https://webcoreui.dev/",
+    "type": "Astro 專用 UI ＋ Blocks",
+    "fit": "優先研究成熟的網站 Blocks",
+    "usage": "Footer、Mega Menu、Dropdown Navigation、Hero、文章卡、FAQ",
+    "integration": "提供套件與 CLI；評估是否導入其樣式和 JS 系統",
+    "license": "有免費與付費內容；須依個別元件／區塊條款確認",
+    "priority": "high",
+    "note": "Astro 官方展示頁也指向此專案，不是第八套不同的套件。"
+  },
+  {
+    "id": "fulldev",
+    "name": "Fulldev UI",
+    "url": "https://ui.full.dev/",
+    "type": "Astro 原生／shadcn-compatible",
+    "fit": "適合內容網站與可維護原始碼",
+    "usage": "內容區段、Hero、排版、文章呈現與 Blocks",
+    "integration": "以 Registry 安裝原始碼；注意 Tailwind CSS 與容器查詢設定",
+    "license": "原始碼倉庫 MIT，實際引用時仍需保留授權聲明",
+    "priority": "high",
+    "note": "特別適合用來比較現有 Section Patterns 是否已有類似構圖。"
+  },
+  {
+    "id": "accessible",
+    "name": "Accessible Astro Components",
+    "url": "https://github.com/incluud/accessible-astro-components",
+    "type": "原生 Astro／無額外依賴",
+    "fit": "無障礙與互動行為參考",
+    "usage": "Accordion、Tabs、Breadcrumbs、Button、Avatar、Card",
+    "integration": "可使用 npm 套件；仍需測試特定組件的鍵盤與螢幕閱讀器行為",
+    "license": "MIT",
+    "priority": "high",
+    "note": "宣稱依 WCAG 與 ARIA 實作，不代表整站無須 QA。"
+  },
+  {
+    "id": "daisyui",
+    "name": "daisyUI",
+    "url": "https://daisyui.com/astro-component-library/",
+    "type": "Tailwind CSS class-based",
+    "fit": "快速建立基礎介面",
+    "usage": "Button、Card、Alert、Tabs、Accordion、Theme",
+    "integration": "需要 Tailwind／daisyUI 設定；多數靜態元件不需 Hydration",
+    "license": "開源；安裝前核對專案最新條款",
+    "priority": "reference",
+    "note": "簡單 UI 很便利，但全面導入可能與現有品牌 Tokens 產生雙系統。"
+  },
+  {
+    "id": "flowbite",
+    "name": "Flowbite",
+    "url": "https://flowbite.com/docs/getting-started/introduction/",
+    "type": "Tailwind CSS ＋ JavaScript",
+    "fit": "複雜互動元件備選",
+    "usage": "Dropdown、Mega Menu、Modal、Popover、日期選擇",
+    "integration": "需要 Tailwind；互動元件可能載入額外 JavaScript",
+    "license": "免費程式碼 MIT；Pro 元件另有條款",
+    "priority": "reference",
+    "note": "更偏通用 UI／Web App，只有確定需要時才評估導入。"
+  },
+  {
+    "id": "bejamas",
+    "name": "Bejamas UI",
+    "url": "https://bejamas.com/insights/design-systems/introducing-bejamas-ui-an-astro-native-component-library",
+    "type": "Astro Native／Tailwind v4",
+    "fit": "研究可長期維護的 Design System",
+    "usage": "Copy-and-own 元件、品牌 Tokens、原始碼可控及 AI 維護流程",
+    "integration": "CLI 複製元件；可能涉及 Tailwind v4 與特定工具鏈",
+    "license": "文章確認開源，具體版本授權應再查官方倉庫",
+    "priority": "high",
+    "note": "來源連結是產品介紹文章，不等同完整元件文件。"
+  }
+]
