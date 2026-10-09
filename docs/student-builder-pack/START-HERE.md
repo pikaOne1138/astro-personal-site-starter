@@ -9,6 +9,11 @@
 
 **不必先把 JSON 上傳 GitHub**。如果開發需要持久設定檔，AI 再依獨立網站專案建立、提交與說明。
 
+## 技術與架構約定（AI 自行遵守）
+- 使用 **Astro 靜態網站**，依學生的 Site Brief 產生獨立網站。預設不引入其他網站框架、不新增資料庫或後端服務。
+- 使用本包內 Skills 與 Registry 作為設計、內容與功能規範；同時核對最新 GitHub 原始碼。學員不需在提示詞指定 Astro、Layout、Blocks 或指令。
+- 本包提供開發規範與參考資料，**不包含完整 Astro Starter 程式碼**；不能只靠 ZIP 就宣稱網站已完成。
+
 ## AI 工作要求
 - 這個資料包包含建站指引、目前的相關 Skills 與 Registry 快照，但**不是完整 Astro Starter 網站原始碼**。請用 GitHub 授權從 `pikaOne1138/astro-personal-site-starter` 的**最新狀態**核對布局原型、Skills、Registry 與實際程式碼；不要根據舊聊天記憶猜測版本。
 - 先確認 AI 網頁環境能遠端建立/修改 Repo、建立 Branch 和 PR，且有雲端建置與預覽路徑。單純具備聊天能力或唯讀 GitHub 連接**不足以完成建站**。
