@@ -6,7 +6,7 @@ import directions from '../data/layout-directions.json';
 
 const escapeXML = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const GET: APIRoute = ({ site }) => {
-  const base = new URL('/astro-personal-site-starter/', site?.origin ?? 'https://pikaone1138.github.io');
+  const base = new URL(import.meta.env.BASE_URL, site?.origin ?? 'https://pikaone1138.github.io');
   const routes = new Set<string>([
     '', 'blocks/', 'effects/', 'layouts/', 'layouts/recipes/', 'explore/',
     ...['heroes', 'sections', 'lists', 'rhythm', 'cta-trust'].map(s => 'layouts/recipes/' + s + '/'),
