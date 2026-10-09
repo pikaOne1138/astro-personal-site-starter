@@ -35,19 +35,24 @@ const pages=[
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>AI 先從你的網站定位提出三種<strong>不同的 Logo 概念</strong>，再陪你選擇文字標誌、字母標誌、簡單符號或組合標誌。選定概念後生成 Logo 候選、精簡的 favicon，再製作需要的 Hero、文章封面或服務情境替代圖。</p>
 <ol><li>先選概念，不是只換顏色；黑白版也要清楚。</li><li>中文字形必須人工校對。若 AI 產圖文字錯誤，就先生成純圖形，再用真正字體排版。</li><li>favicon 檢查 16、32、48px。不要把整張橫式 Logo 硬縮小。</li><li>AI 生成的照片不可以冒充真實執業者、客戶、諮商空間或事件，正式使用還需檢查平台條款及與既有商標的相似性。</li></ol><p class="fine">訪談 ZIP 內含「AI 品牌識別與圖片共創」與 Logo 設計研究文件。</p></section>
 <section id="cloudflare"><h2>06｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
-<p><strong>不使用 Cloudflare 也能完成網站：</strong>可以選 GitHub Pages。若想讓原始碼留在私有 GitHub Repo、改版有方便的線上預覽、之後也能逐步增加網站管理功能，推薦使用 <strong>Cloudflare Pages</strong>。</p>
+<p><strong>不使用 Cloudflare 也能完成網站：</strong>可以選 GitHub Pages。若使用 GitHub Free 且想保留私有 Repository，並希望 PR 自動提供線上預覽、日後擴充更多管理功能，可以考慮 <strong>Cloudflare Pages</strong>。</p>
 <div class="card"><h3>先分清楚：「私有倉庫」不是「私人網站」</h3><p>Cloudflare Pages 能連接 <strong>Private GitHub Repository</strong>，因此學員的網站原始碼不必公開，正式網站卻仍然能讓大眾瀏覽。<strong>不會因為 Repo 私有，部署出來的網站就自動需要登入。</strong> 同樣也不能把密碼、API Token、個案資料放進網站原始碼或公開的前端檔案。</p><p class="fine">私有原始碼降低不必要的公開曝光，但不代表資料絕對安全，也不等於限制網站瀏覽權限。</p></div>
-<h3>使用 Cloudflare 的好處</h3>
-<table><thead><tr><th>功能</th><th>對學員有什麼幫助？</th><th>需要注意</th></tr></thead><tbody>
-<tr><td>私有 Repo 部署</td><td>GitHub 倉庫維持 Private，正式網站照常對外公開。</td><td>需在 Cloudflare GitHub App 授權正確的 Repository。</td></tr>
-<tr><td>自動更新</td><td>在 GitHub 的主要分支發布後，Cloudflare 自動建置網站。</td><td>仍須確認部署成功，不能只看 GitHub Commit。</td></tr>
-<tr><td>PR／分支預覽</td><td>修改文案、配色與排版前，先讓自己或老師查看測試版。</td><td>預覽網址<strong>預設公開</strong>；不能將尚未公開的秘密放在預覽頁。</td></tr>
-<tr><td>限制預覽存取</td><td>可啟用 Cloudflare Access 的 Preview access policy，要求指定人員驗證後才可看。</td><td>此設定<strong>只保護預覽</strong>，不會順便鎖住正式網站。</td></tr>
-<tr><td>自訂網域與 HTTPS</td><td>先用 pages.dev 網址上線，日後再綁個人網域。</td><td>自訂網域與 DNS 需另行設定；有些網域本身需要付費。</td></tr>
-<tr><td>Web Analytics</td><td>查看訪客與頁面瀏覽、基本使用情況。</td><td>到專案的 Metrics 啟用，並確認資料與隱私告知。</td></tr>
-<tr><td>轉址／標頭</td><td>更換文章網址時設定重新導向；調整部分安全與搜尋規則。</td><td>靜態站可用 <code>_redirects</code> 與 <code>_headers</code>，由 AI 協助、測試後才使用。</td></tr>
-<tr><td>進一步的頁面控管</td><td>必要時可使用 Cloudflare Access，限制特定網域或路徑誰能開啟。</td><td>這是選修進階設定，不是會員系統；正式站的保護需另外配置與測試。</td></tr>
+<h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
+<p>兩者都能讓 Astro 靜態網站上線。以下用<strong>一般學員常用的 GitHub Free 方案</strong>比較；更高方案與額外服務可能有不同權限。</p>
+<table><thead><tr><th>功能</th><th>Cloudflare Pages</th><th>GitHub Pages 也有嗎？</th></tr></thead><tbody>
+<tr><td>私有 Repo 部署公開網站</td><td>支援，原始碼可維持 Private。</td><td><strong>免費個人方案不支援私有 Repo 發布 Pages</strong>；公開 Repo 可用。Pro／Team 等適用方案另有支援。</td></tr>
+<tr><td>自動更新網站</td><td>Git 整合推送後自動部署。</td><td><strong>有。</strong>使用 GitHub Actions 或 GitHub Pages 發布來源。</td></tr>
+<tr><td>PR／分支預覽</td><td>Git 整合提供獨立預覽網址。</td><td><strong>可做到，但通常要自行配置</strong>預覽 Workflow 或其他服務，並非一般 Pages 預設功能。</td></tr>
+<tr><td>自訂網域與 HTTPS</td><td>支援 pages.dev 預設網址、HTTPS 和自訂網域。</td><td><strong>有。</strong>提供 github.io 預設網址、HTTPS 和自訂網域；兩者網域購買費用另計。</td></tr>
+<tr><td>限制預覽觀看</td><td>可另啟用 Cloudflare Access 保護 Preview。</td><td><strong>一般 Pages 無同等一鍵功能。</strong>企業方案有特定私有發布能力，但不等於一般 PR 預覽保護。</td></tr>
+<tr><td>網站流量分析</td><td>可選用 Web Analytics。</td><td><strong>可另行加入</strong> Google Analytics 或其他分析工具；GitHub Pages 無同等內建訪客分析面板。</td></tr>
+<tr><td>網址轉址／HTTP 標頭</td><td>可用 Pages 的 <code>_redirects</code> 與 <code>_headers</code> 規則。</td><td><strong>部分可做到。</strong>Astro 可生成跳轉頁、設定其他服務，但 GitHub Pages 不直接提供等同的伺服器端規則功能。</td></tr>
+<tr><td>指定頁面／路徑存取控制</td><td>可另外配置 Cloudflare Access 或規則；不是自動的。</td><td><strong>一般免費 Pages 不提供</strong>按路徑的登入控管。企業私有 Pages 為不同使用場景。</td></tr>
 </tbody></table>
+<div class="card"><h3>給第一次架站的人：怎麼選？</h3>
+<p><strong>只想公開一個簡單個人網站、程式碼也能公開：</strong>GitHub Pages 就很夠用，不需要 Cloudflare。</p>
+<p><strong>想免費保留私有 Repo、方便看 PR 預覽，或之後想擴充存取控管：</strong>可以優先選 Cloudflare Pages。這些功能不代表全部開通即用，仍需要獨立設定。</p>
+<p class="fine">不論選哪一種，網站對外公開的 HTML、圖片與前端 JavaScript 仍能由訪客取得；不要把密碼、個案資料或秘密放進前端程式碼。</p></div>
 <aside><strong>初學者現在只需要：</strong>註冊 Cloudflare 帳號就好。先不用設定 Zero Trust、D1、R2、Workers 程式或額外金流。等獨立 Astro 網站已經完成，再到「開始建置」頁一步步連接 GitHub 與 Cloudflare Pages。若不想使用 Cloudflare，選 GitHub Pages 路線即可。</aside>
 <p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">開啟 Cloudflare Dashboard ↗</a></p>
 <p class="fine">官方延伸閱讀：<a href="https://developers.cloudflare.com/pages/configuration/git-integration/" target="_blank" rel="noopener noreferrer">Git 自動部署</a>、<a href="https://developers.cloudflare.com/pages/configuration/preview-deployments/" target="_blank" rel="noopener noreferrer">PR 預覽與存取控制</a>、<a href="https://developers.cloudflare.com/pages/configuration/custom-domains/" target="_blank" rel="noopener noreferrer">自訂網域</a>、<a href="https://developers.cloudflare.com/web-analytics/get-started/" target="_blank" rel="noopener noreferrer">Web Analytics</a>、<a href="https://developers.cloudflare.com/pages/configuration/redirects/" target="_blank" rel="noopener noreferrer">轉址</a>。</p>
