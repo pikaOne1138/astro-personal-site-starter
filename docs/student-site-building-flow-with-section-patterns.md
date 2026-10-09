@@ -39,7 +39,7 @@
 }
 ```
 
-**注意：** 此清單是目前交給 AI 組站的補充資料，不是 `StarterPlan v1` 已正式支援的欄位。`/starter/` 的 JSON 和 `scripts/export-starter.mjs` 尚不會自動套用 Patterns。這是後續正式程式功能的待辦事項。
+**注意：** `sectionPatterns` 已是 `StarterPlan v1` 的選填欄位，規劃器可輸出並由匯出器呈現待完善的區段，AI 必須完成實際內容與高保真設計適配。
 
 ## Skill 分工
 
