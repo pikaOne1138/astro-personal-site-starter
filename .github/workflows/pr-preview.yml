@@ -48,6 +48,7 @@ jobs:
         if: github.event.action != 'closed'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          ASTRO_SITE_URL: https://pikaone1138.github.io
         run: |
           ASTRO_BASE_PATH="/${{ github.event.repository.name }}/pr-preview/pr-${PR_NUMBER}" npm run build
       - name: Upload built site
