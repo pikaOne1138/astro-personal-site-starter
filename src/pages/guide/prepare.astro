@@ -50,6 +50,19 @@ const pages=[
 </section>
 <section id="cloudflare"><h2>07｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
 <p><strong>非必要：</strong>不使用 Cloudflare，也能用 GitHub Pages 發布網站。</p>
+<div class="card"><h3>Cloudflare Pages 連接 GitHub：照著操作</h3>
+<ol>
+<li>登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>，左側選 <strong>Workers 和 Pages</strong>，點右上角 <strong>建立應用程式</strong>。</li>
+<li>在「建立新項目」頁面，<strong>不要選「從 Hello World 開始」</strong>。點畫面下方的 <strong>「前往 Pages」</strong>，切換到 Pages 建站流程。</li>
+<li>在 Pages 選 <strong>連接至 Git／Connect to Git</strong>，再選 <strong>Continue with GitHub</strong>。</li>
+<li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。</li>
+<li>打開 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub Applications</a>，找到 <strong>Cloudflare Workers and Pages → Configure</strong>。在 <strong>Repository access</strong> 選 <strong>Only select repositories</strong>，加入你的網站倉庫並按 <strong>Save</strong>。</li>
+<li>回到 Cloudflare，從清單選<strong>自己的網站倉庫</strong>，進入「設定組建和部署」。</li>
+<li>專案名稱可自訂；生產分支選 <strong>main</strong>；Framework preset 選 <strong>Astro</strong>，組建命令 <code>npm run build</code>、輸出目錄 <code>dist</code>。這兩個欄位是網頁設定值，<strong>直接確認或填入，不需要在電腦執行指令</strong>。</li>
+<li>點 <strong>儲存並部署／Save and Deploy</strong>，等待完成，再點產生的 <strong>pages.dev 網址</strong>檢查首頁與內頁。</li>
+</ol>
+<p><strong>完成確認：</strong>Cloudflare 顯示部署成功，且 pages.dev 網站能正常開啟。</p>
+<p class="fine">畫面若出現「部署命令 npx wrangler deploy／預覽命令 npx wrangler preview」等 Workers 設定，表示可能進到 Workers 流程。請返回選 Pages，不要照 Workers 欄位繼續設定。若選不到倉庫，回 GitHub App 的 Repository access 檢查授權。</p></div>
 <h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
 <table><thead><tr><th>功能</th><th>Cloudflare Pages</th><th>GitHub Pages 也有嗎？</th></tr></thead><tbody>
