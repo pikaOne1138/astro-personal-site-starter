@@ -21,6 +21,8 @@ description: Discover, select and customize ready-to-use Astro section patterns 
 - `featured-work`：有代表性文章、作品、專題的精選展示；可放首頁自介後。需要真實項目資料。
 - `trust-service-path`：服務適合度、資訊透明與低壓下一步；適合助人者。只有確認的服務/聯絡網址才能顯示 CTA。
 
+- `footer-minimal`／`footer-editorial`／`footer-professional`：同一 `SiteFooter` 底層元件的三種完整頁腳排版，能設定品牌說明、多組選單、社群、RSS、版權與真實法律頁面連結。法律連結未設定時不顯示，不可用假的 `#` 連結交付正式站。
+
 ## 與其他 Skills 分工
 `astro-layout-craft` 負責全頁；`astro-editorial-layout-design` 負責構圖；`astro-ui-craft` 和 Block Registry 負責元件；`astro-motion-craft` 負責微動畫；`astro-site-assembly` 負責由 Site Brief 實際組站；`astro-pr-preview` 負責預覽與發布。
 
