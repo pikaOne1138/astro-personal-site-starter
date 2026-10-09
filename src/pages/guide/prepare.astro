@@ -9,7 +9,7 @@ import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計�
 const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const pages=[
-{title:'GitHub 是什麼？',id:'account',desc:'註冊並登入 GitHub。'},
+{title:'註冊 GitHub 帳號',id:'account',desc:'註冊並登入 GitHub。'},
 {title:'建立自己的倉庫',id:'repo',desc:'建立網站倉庫。'},
 {title:'讓 AI 存取倉庫',id:'access',desc:'授權 AI 存取你的倉庫。'},
 {title:'網站內容訪談',id:'intake',desc:'下載訪談包，與 AI 討論內容。'},
@@ -44,9 +44,9 @@ const pages=[
 <header class="top"><strong>個人網站建置指南</strong><nav aria-label="教學章節"><a href={base+'guide/prepare/'} aria-current="page">前置準備</a><a href={base+'guide/'}>開始建置</a></nav></header>
 <main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI、準備網站內容與品牌圖片。</p>
 <div class="steps">{pages.map(x=><a href={'#'+x.id}><strong>{x.title} ↓</strong><small>{x.desc}</small></a>)}</div>
-<section id="account"><h2>01｜認識 GitHub：不用先學會寫程式</h2>
+<section id="account"><h2>01｜註冊並登入 GitHub</h2>
 <ol><li>開啟 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊 ↗</a>；若已有帳號，就直接登入。</li><li>登入後，確認右上角頭像選單能看到自己的帳號名稱。</li><li>記下自己的 GitHub 帳號名稱。</li></ol><aside>找不到按鈕？截圖給 AI，請它教下一步。截圖前遮住敏感資訊。</aside></section>
-<section id="repo"><h2>02｜建立第一個 Repository</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇 Public（公開）或 Private（私人）。<strong>第一次建站，想簡單免費：建議選 Public，網站原始碼也會公開。</strong>想保留 Private，可使用符合資格的 GitHub 付費方案搭配 GitHub Pages，或改選 Cloudflare Pages 等支援私人倉庫的託管平台。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
+<section id="repo"><h2>02｜建立網站倉庫</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇倉庫公開方式：<strong>建議初學者選 Public（公開），設定最簡單，但原始碼也會公開。</strong> 若選 Private（私人），後續建議使用 Cloudflare Pages；其他方案詳見 <a href="#hosting">第 06 步｜選擇網站發布方式</a>。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
 <p><strong>不會操作？複製提示詞給 AI。</strong></p><div class="card"><button type="button" class="button secondary" id="copy-github">複製 GitHub 截圖陪跑提示詞</button><div class="prompt" id="github-prompt">請一步一步教我在 GitHub 建立個人網站倉庫。每次只給一個步驟，告訴我要按哪裡、成功後會看到什麼。如果介面不同，請我截圖給你確認。不要要求密碼或驗證碼。</div></div></section>
 <section id="access"><h2>03｜讓 AI 真正有權限讀寫你的倉庫</h2><p>先在 AI 網頁連接 GitHub，再開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">Installed GitHub Apps 管理頁 ↗</a>。</p>
 <ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>找不到 App？回 AI 工具重新連接 GitHub。新倉庫也需要加入授權清單。</aside></section>
