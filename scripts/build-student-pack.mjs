@@ -48,7 +48,7 @@ add('docs/student-builder-pack/README.md', 'README.md');
    The portable kit intentionally retains source examples and skill references,
    but does not publish unrelated project notes as student-facing instructions. */
 for (const name of [...entries.keys()]) {
-  if (name.startsWith('docs/') && !name.startsWith('docs/student-builder-pack/')) entries.delete(name);
+  if (name.startsWith('docs/') && !name.startsWith('docs/student-builder-pack/') && !name.startsWith('docs/student-intake/')) entries.delete(name);
   if (name.startsWith('.ai/') && /(?:^|\/)(?:\.DS_Store|\.env|node_modules)(?:\/|$)/.test(name)) entries.delete(name);
 }
 
