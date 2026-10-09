@@ -8,6 +8,8 @@ For articles, Content Collections, SEO, Pagefind, RSS, sitemap, draft/publicatio
 
 For the interactive student planner at `/starter/`, read `src/data/starter-config.ts`, `src/pages/starter/index.astro`, and `.ai/astro-starter-onboarding/SKILL.md`. Layout selection, brand visual tokens and navigation plans must remain distinct. The planner exports a Site Brief, **not** a deployed or fully assembled independent site.
 
+For student quality gates, use three focused Skills **in addition to** the existing workflow: `.ai/astro-content-readiness/SKILL.md` after choosing pages/Section Patterns, `.ai/astro-navigation-tree-test/SKILL.md` after planning menu labels and hierarchy, and `.ai/astro-launch-health-check/SKILL.md` after actual independent site deployment. These are procedural checks, not implemented UI features. Never fake content-readiness evidence, a human tree-test result or Google indexing status.
+
 For student-owned GitHub Pages or optional Cloudflare deployment, read `.ai/astro-starter-deploy/SKILL.md`. For safe updates, backups or recovery, read `.ai/astro-site-maintenance/SKILL.md`. These skills must not silently alter the research showcase deployment.
 
 For work involving ready-made multi-block page sections or the `/section-patterns/` gallery, read `.ai/astro-section-pattern-craft/SKILL.md` and `src/data/section-patterns.registry.json`. Section Patterns are neither full-site Layouts nor single Blocks; do not count them in the Blocks Registry.\n\nProject goal: a beginner-editable Astro starter for two architectures:
