@@ -63,10 +63,10 @@ const pages=[
 <li>點選上方 <strong>Settings</strong>。</li>
 <li>從左側選單點 <strong>Pages</strong>。</li>
 <li>找到 <strong>Build and deployment → Source</strong>，選擇 <strong>GitHub Actions</strong>。</li>
-<li>請 AI 設定網站的自動建置與部署；等程式完成後，在 <strong>Actions</strong> 查看結果。</li>
-<li>部署成功後，回到 <strong>Settings → Pages</strong>，點 <strong>Visit site</strong> 打開自己的網站。</li>
+<li>請 AI 在你自己的 PR 執行唯讀建置檢查。<strong>Build 成功、下載 Artifact 都不是可直接打開的網站預覽。</strong>請 AI 先安排獨立 Preview（例如另一個僅供驗收的 Cloudflare Pages 專案／分支），提供真正可打開的測試 URL 並確認 Commit SHA。</li><li>看到測試網址後先檢查首頁、內頁、圖片與手機版，確認內容無誤才允許 AI Merge。完成確認後，再由你本人或經你授權的 AI 在 GitHub <strong>Actions</strong> 手動執行正式發布 workflow；不要把 Build 綠燈當成已發布。</li>
+<li>正式發布 workflow 成功後，才到 <strong>Settings → Pages</strong> 按 <strong>Visit site</strong> 檢查正式網站；首次發布前可能尚無此按鈕。</li>
 </ol>
-<p><strong>完成確認：</strong>頁面出現 <strong>Your site is live at ...</strong>，而且 <strong>Visit site</strong> 能正常開啟。</p>
+<p><strong>分開確認：</strong>驗收階段需有真正可打開、與正式站隔離且對應當次 Commit 的 Preview；經你明確同意後，才確認正式站顯示 <strong>Your site is live at ...</strong>。GitHub Pages 不會憑 PR Build 自動提供獨立預覽網址。</p>
 <p class="fine">如果畫面與教學不同，截圖給 AI，請它依畫面指引。</p></div>
 </section>
 <section id="cloudflare"><div id="cloudflare-instructions" class="hosting-instructions" hidden><h2>B｜Cloudflare Pages：設定步驟</h2>
@@ -78,10 +78,10 @@ const pages=[
 <li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。</li>
 <li>打開 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub Applications</a>，找到 <strong>Cloudflare Workers and Pages → Configure</strong>。在 <strong>Repository access</strong> 選 <strong>Only select repositories</strong>，加入你的網站倉庫並按 <strong>Save</strong>。</li>
 <li>回到 Cloudflare，從清單選<strong>自己的網站倉庫</strong>，進入「設定組建和部署」。</li>
-<li>部署前核對以下設定。<div class="deploy-check"><strong>確認與下列設定一致，再按部署</strong><dl><div><dt>生產分支</dt><dd><code>main</code></dd></div><div><dt>Framework preset</dt><dd><code>Astro</code></dd></div><div><dt>組建命令</dt><dd><code>npm run build</code></dd></div><div><dt>組建輸出目錄</dt><dd><code>dist</code></dd></div></dl><p>通常會自動帶入。若顯示不同，先請 AI 協助確認；專案名稱可自行決定。</p></div></li>
-<li>點 <strong>儲存並部署／Save and Deploy</strong>，等待完成，再點產生的 <strong>pages.dev 網址</strong>檢查首頁與內頁。</li>
+<li><strong>先確認首次公開行為：</strong>Cloudflare 的 <strong>Save and Deploy</strong> 會進行首次正式部署，即使網址暫時只是 pages.dev。若還未確認內容，請 AI 先建立不含個人資料的測試站／測試分支，使用獨立的 preview 專案及 Git Preview Deployments 取得測試 URL；不可直接把未確認的 main 當正式站發布。</li><li>部署前核對以下設定。<div class="deploy-check"><strong>確認與下列設定一致，再按部署</strong><dl><div><dt>生產分支</dt><dd><code>main</code></dd></div><div><dt>Framework preset</dt><dd><code>Astro</code></dd></div><div><dt>組建命令</dt><dd><code>npm run build</code></dd></div><div><dt>組建輸出目錄</dt><dd><code>dist</code></dd></div></dl><p>通常會自動帶入。若顯示不同，先請 AI 協助確認；專案名稱可自行決定。</p></div></li>
+<li>只有在你理解這是<strong>首次公開部署</strong>、已檢查測試 Preview 並明確允許時，才點 <strong>儲存並部署／Save and Deploy</strong>。請 AI 核對測試分支 Preview URL、Commit SHA、資產與導航。正式 main 公開前再次徵求你同意。</li>
 </ol>
-<p><strong>完成確認：</strong>Cloudflare 顯示部署成功，且 pages.dev 網站能正常開啟。</p>
+<p><strong>分開確認：</strong>Preview Deployment 是驗收環境；Production（包含首次 Save and Deploy）是公開環境。兩者均應顯示實際對應 Commit。缺少 Preview 或無法隔離正式站時，不要宣稱學員已完成安全的「先預覽後發布」。</p>
 <p class="fine">畫面若出現「部署命令 npx wrangler deploy／預覽命令 npx wrangler preview」等 Workers 設定，表示可能進到 Workers 流程。請返回選 Pages，不要照 Workers 欄位繼續設定。若選不到倉庫，回 GitHub App 的 Repository access 檢查授權。</p></div>
 </div><h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
