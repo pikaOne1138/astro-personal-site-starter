@@ -1,0 +1,68 @@
+[
+  {
+    "id": "animista",
+    "name": "Animista",
+    "url": "https://animista.net/",
+    "title": "想讓文字或圖片自然出現",
+    "description": "可以直接播放淡入、滑入、縮放等效果，挑喜歡的速度和方向。",
+    "examples": "文字淡入、圖片滑入、標題進場",
+    "caution": "適合小幅度 CSS 動效；複雜動畫先不要加入。",
+    "tech": "CSS keyframes; check browser support; reduced motion, animation repetition and initial visibility.",
+    "category": "簡單動效"
+  },
+  {
+    "id": "uiverse",
+    "name": "Uiverse",
+    "url": "https://uiverse.io/",
+    "title": "想找有回饋感的按鈕與卡片",
+    "description": "有很多人分享按鈕、卡片和滑鼠移過去的小效果，可以打開直接看。",
+    "examples": "按鈕按下回饋、連結底線、卡片 Hover",
+    "caution": "範例品質不同，請 AI 選簡單、易閱讀的，不要滿頁閃動。",
+    "tech": "Community contributed CSS/Tailwind UI; inspect each example and license/attribution, accessibility and touch fallback.",
+    "category": "互動細節"
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://motion.dev/docs",
+    "title": "想讓捲動與畫面切換更順暢",
+    "description": "適合需要文字依序出現、捲動時顯示閱讀進度等比較細緻的互動。",
+    "examples": "依序出現、閱讀進度、捲動揭露",
+    "caution": "進階做法需要程式，先檢查我們特效庫能不能完成。",
+    "tech": "Vanilla JS available; distinguish scroll-triggered/linked; limit JS and preserve visible content without JS.",
+    "category": "進階互動"
+  },
+  {
+    "id": "gsap",
+    "name": "GSAP",
+    "url": "https://gsap.com/scroll/",
+    "title": "想做有故事節奏的捲動動畫",
+    "description": "適合文章敘事、長頁面需要精準控制的段落動畫。",
+    "examples": "捲動觸發、分段進場、視差敘事",
+    "caution": "容易做得太花；只有有清楚閱讀目的才考慮。",
+    "tech": "GSAP ScrollTrigger; check license, JS weight, reduced motion and performance; not default Starter dependency.",
+    "category": "進階捲動"
+  },
+  {
+    "id": "aos",
+    "name": "AOS",
+    "url": "https://michalsnik.github.io/aos/",
+    "title": "想讓區段捲到眼前才出現",
+    "description": "常見的向上浮現、淡入效果，可以快速比較不同節奏。",
+    "examples": "卡片逐段出現、文字浮現、列表淡入",
+    "caution": "我們已經有 Reveal／Stagger，通常不必為同樣功能再裝一套。",
+    "tech": "JavaScript + CSS; assess maintenance, user reduced-motion and no-JS fallback; avoid duplicate Reveal behavior.",
+    "category": "捲動出現"
+  },
+  {
+    "id": "cssloaders",
+    "name": "CSS Loaders",
+    "url": "https://css-loaders.com/",
+    "title": "真的需要等候提示時再來看",
+    "description": "提供很多載入中的小動畫，適合按下送出後真的需要等待的功能。",
+    "examples": "載入提示、等待進度",
+    "caution": "一般靜態個人網站不需要載入動畫，更不能放假的送出成功畫面。",
+    "tech": "CSS loaders; show only for real loading state, avoid fake async actions and perpetual animation.",
+    "category": "載入提示"
+  }
+]
