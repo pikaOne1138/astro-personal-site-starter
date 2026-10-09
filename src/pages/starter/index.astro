@@ -117,7 +117,7 @@ function shiftItem(id:string,delta:number){
 }
 function indentItem(id:string){
  const ordered=orderedNav(),i=ordered.findIndex(x=>x.id===id),item=ordered[i];
- if(!item||item.parentId||!item.enabled||ordered.some(x=>x.parentId===id))return;
+ if(!item||item.parentId||ordered.some(x=>x.parentId===id))return;
  const parent=ordered.slice(0,i).reverse().find(x=>!x.parentId&&x.enabled);
  if(!parent||ordered.filter(x=>x.parentId===parent.id).length>=10)return;
  item.parentId=parent.id;syncNav();
@@ -187,7 +187,7 @@ function renderNav(){
   };
   action('↑','上移',()=>shiftItem(n.id,-1));
   action('↓','下移',()=>shiftItem(n.id,1));
-  action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||!n.enabled||i===0);
+  action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||i===0);
   action('←','提升至第一層',()=>outdentItem(n.id),!n.parentId);
   action('×','刪除頁面',()=>removeCustom(n.id));
   row.append(handle,check,label,tools);
