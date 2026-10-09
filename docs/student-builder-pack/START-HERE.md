@@ -30,3 +30,6 @@
 - 內容缺口與真實未串接服務清單
 - PR 網址、Build 結果與手機/桌面視覺 QA
 - 學員確認後的正式網址與更新 SOP
+
+## ZIP 內的路徑
+AI 請先讀 `reference/AGENTS.md` 與 `reference/UPSTREAM-SOURCES.md`。本包 Skill 在 `skills/`，不是研究站 `.ai/`；若參照未收錄的程式、附件或 Workflow，必須先確認取得來源，不可假裝已存在於學員 Repo。
