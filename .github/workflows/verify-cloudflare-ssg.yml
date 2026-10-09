@@ -28,6 +28,10 @@ jobs:
         env:
           CF_PAGES_URL: https://example.com
         run: npm run build
+      - name: Extract student kit and build knowledge/helper independently
+        env:
+          FULL_STUDENT_PACK_BUILD: '1'
+        run: node scripts/verify-student-pack.mjs
       - name: Check complete static output and deploy configuration
         run: |
           test -s dist/index.html
