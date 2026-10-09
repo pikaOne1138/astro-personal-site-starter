@@ -25,8 +25,9 @@ try {
    const consoleErrors=[],pageErrors=[];
    page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text())});
    page.on('pageerror',e=>pageErrors.push(e.message));
-   const resp=await page.goto(base+'/layouts/'+slug+'/',{waitUntil:'networkidle',timeout:30000});
-   await page.screenshot({path:dir+'/'+slug+'-'+width+'.png',fullPage:true});
+   const resp=await page.goto(base+'/layouts/'+slug+'/',{waitUntil:'domcontentloaded',timeout:12000});
+   await page.waitForTimeout(250);
+   await page.screenshot({path:dir+'/'+slug+'-'+width+'.png',fullPage:true,timeout:12000,animations:'disabled'});
    const result=await page.evaluate(()=>({
      overflow:document.documentElement.scrollWidth>window.innerWidth+2,
      images:[...document.images].map(i=>({src:i.currentSrc||i.src,loaded:i.complete&&i.naturalWidth>0})).filter(i=>!i.loaded)
