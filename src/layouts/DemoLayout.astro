@@ -21,7 +21,7 @@ const socialImage = image ? new URL(image, origin).href : undefined;
     <meta name="description" content={description} />
     {preview && <meta name="robots" content="noindex, nofollow, noarchive" />}
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="application/rss+xml" title="文章訂閱" href={new URL("/astro-personal-site-starter/rss.xml", origin).href} />
+    <link rel="alternate" type="application/rss+xml" title="文章訂閱" href={new URL(`${import.meta.env.BASE_URL}rss.xml`, origin).href} />
     <meta property="og:type" content={articlePublishedAt ? 'article' : 'website'} />
     <meta property="og:locale" content="zh_TW" />
     <meta property="og:title" content={title} />

@@ -7,7 +7,8 @@ const defaultBase = '/astro-personal-site-starter';
 const base = process.env.ASTRO_BASE_PATH || defaultBase;
 
 export default defineConfig({
-  site: 'https://pikaOne1138.github.io',
+  // Override only for independent root-domain deployments such as Cloudflare Workers.
+  site: process.env.ASTRO_SITE_URL || 'https://pikaOne1138.github.io',
   base,
   output: 'static',
   trailingSlash: 'always',

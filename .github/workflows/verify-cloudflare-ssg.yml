@@ -1,0 +1,44 @@
+name: Verify Cloudflare Static Assets
+
+on:
+  pull_request:
+    paths:
+      - 'astro.config.mjs'
+      - 'package.json'
+      - 'src/**'
+      - 'scripts/**'
+      - 'wrangler.jsonc'
+      - '.github/workflows/verify-cloudflare-ssg.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build static site for Cloudflare root domain
+        env:
+          ASTRO_BASE_PATH: /
+          ASTRO_SITE_URL: https://example.com
+        run: npm run build
+      - name: Check complete static output and deploy configuration
+        run: |
+          test -s dist/index.html
+          test -s dist/rss.xml
+          test -s dist/sitemap.xml
+          test -s dist/robots.txt
+          test -s dist/pagefind/pagefind.js
+          test ! -e dist/_worker.js
+          node --input-type=module -e "import { readFileSync } from 'node:fs'; const c=JSON.parse(readFileSync('wrangler.jsonc','utf8')); if(c.assets?.directory!=='./dist'||'main' in c) process.exit(1);"
+          grep -q 'https://example.com/sitemap.xml' dist/robots.txt
+          grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/rss.xml
+          grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/sitemap.xml
+          if grep -q 'pikaone1138.github.io/astro-personal-site-starter/' dist/rss.xml dist/sitemap.xml; then exit 1; fi
