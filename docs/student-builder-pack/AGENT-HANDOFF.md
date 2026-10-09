@@ -2,7 +2,8 @@
 
 此文件給 AI 閱讀，不是學員操作指令。
 
-1. 學員在對話上傳 Site Brief JSON。不要要求他們先把 JSON 提交到 GitHub。
+1. 先讀此 ZIP 的 `reference/AGENTS.md` 與 `reference/UPSTREAM-SOURCES.md`。本包 Skills 位於 `skills/`，不在研究站的 `.ai/`；不能假設學員自己的 Repo 有研究站的程式、scripts 或 workflow。
+2. 學員在對話上傳 Site Brief JSON。不要要求他們先把 JSON 提交到 GitHub。
 2. 確認雲端 AI 是否真的有 GitHub 寫入、開 PR、遠端建置能力。不能做就停止，清楚說明缺少哪些能力。
 3. 查閱公開展示 Repo pikaOne1138/astro-personal-site-starter 的最新 AGENTS.md 和 astro-site-assembly、astro-starter-onboarding、astro-layout-craft、astro-editorial-layout-design、astro-ui-craft、astro-section-pattern-craft、astro-starter-deploy、astro-pr-preview Skills，以及 Registry 與實際版型原型。以最新 GitHub 為準。
 4. 使用學員自己的 Repo 建立獨立 Astro 網站；不要改展示 Repo。依選定 Layout 完成真實構圖、啟用頁面、導航、品牌視覺、圖片及內容。不編造專業資格、證言或表單成功。
