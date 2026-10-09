@@ -39,6 +39,7 @@ const pages=[
 }
 .hosting-choices .hosting-choice{display:block;width:100%;text-align:left;padding:20px;border:1px solid var(--line);border-radius:10px;background:transparent;cursor:pointer;font:inherit;color:var(--ink);line-height:1.5}.hosting-choices .hosting-choice strong{display:block;color:var(--green);font-weight:700}.hosting-choices .hosting-choice small{display:block;color:#60665d;margin-top:7px}.hosting-choices .hosting-choice[aria-pressed="true"]{border:2px solid var(--green);padding:19px;background:#fffefa;box-shadow:0 0 0 2px rgba(37,77,63,.07)}.hosting-choices .hosting-choice:focus-visible{outline:3px solid #bb7748;outline-offset:3px}.hosting-instructions[hidden]{display:none!important}
 .hosting-hint{margin:20px auto 16px;padding:19px 20px;max-width:560px;text-align:center;background:#e8efe7;border:1px solid #bed0bf;border-radius:10px}.hosting-hint strong,.hosting-hint span{display:block}.hosting-hint strong{font-size:19px;color:#193e30}.hosting-hint span{font-size:14px;color:#3b5549}.hosting-hint[hidden]{display:none!important}
+.deploy-check{margin:14px 0 17px;padding:18px 20px;border:1px solid #a9c2ad;border-radius:10px;background:#edf3e9}.deploy-check>strong{display:block;color:#214b34;font-size:17px}.deploy-check dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}.deploy-check dl>div{background:#fffefa;border:1px solid #d4e0d1;padding:10px 13px;border-radius:7px}.deploy-check dt{font-size:13px;color:#53665a}.deploy-check dd{margin:3px 0 0;font-weight:700}.deploy-check p{margin:7px 0 0;font-size:14px;color:#415a49}@media(max-width:520px){.deploy-check dl{grid-template-columns:1fr}}
 </style></head><body>
 <header class="top"><strong>個人網站建置指南</strong><nav aria-label="教學章節"><a href={base+'guide/prepare/'} aria-current="page">前置準備</a><a href={base+'guide/'}>開始建置</a></nav></header>
 <main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI、準備網站內容與品牌圖片。</p>
@@ -77,7 +78,7 @@ const pages=[
 <li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。</li>
 <li>打開 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub Applications</a>，找到 <strong>Cloudflare Workers and Pages → Configure</strong>。在 <strong>Repository access</strong> 選 <strong>Only select repositories</strong>，加入你的網站倉庫並按 <strong>Save</strong>。</li>
 <li>回到 Cloudflare，從清單選<strong>自己的網站倉庫</strong>，進入「設定組建和部署」。</li>
-<li>專案名稱可自訂；生產分支選 <strong>main</strong>；Framework preset 選 <strong>Astro</strong>，組建命令 <code>npm run build</code>、輸出目錄 <code>dist</code>。這兩個欄位是網頁設定值，<strong>直接確認或填入，不需要在電腦執行指令</strong>。</li>
+<li>部署前核對以下設定。<div class="deploy-check"><strong>確認與下列設定一致，再按部署</strong><dl><div><dt>生產分支</dt><dd><code>main</code></dd></div><div><dt>Framework preset</dt><dd><code>Astro</code></dd></div><div><dt>組建命令</dt><dd><code>npm run build</code></dd></div><div><dt>組建輸出目錄</dt><dd><code>dist</code></dd></div></dl><p>通常會自動帶入。若顯示不同，先請 AI 協助確認；專案名稱可自行決定。</p></div></li>
 <li>點 <strong>儲存並部署／Save and Deploy</strong>，等待完成，再點產生的 <strong>pages.dev 網址</strong>檢查首頁與內頁。</li>
 </ol>
 <p><strong>完成確認：</strong>Cloudflare 顯示部署成功，且 pages.dev 網站能正常開啟。</p>
