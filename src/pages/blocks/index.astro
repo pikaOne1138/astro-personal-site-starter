@@ -2,6 +2,7 @@
 import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import blockRegistry from '../../data/blocks.registry.json';
+import externalLibraries from '../../data/external-ui-libraries.json';
 import Button from '../../components/blocks/Button.astro';
 import SectionHeading from '../../components/blocks/SectionHeading.astro';
 import SiteHeader from '../../components/blocks/SiteHeader.astro';
@@ -182,6 +183,41 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
     </div>
   </section>
+  <section id="external-ui-libraries" class="ab-category" aria-labelledby="external-library-title">
+    <h2 class="ab-category-title" id="external-library-title">08 / 外部 Astro 元件資源庫</h2>
+    <p class="ab-category-intro">不必每個按鈕、下拉選單與彈窗都從零製作。以下是已存在的開源或可取得元件資源，提供學員和 AI 參考。這些是外部網站連結，<strong>並未預設安裝進本專案</strong>。</p>
+    <div class="external-ui-intro">
+      <div><strong>先選現有的</strong><p>本站 Blocks／Section Patterns 已能完成的功能，先直接使用。</p></div>
+      <div><strong>再看外部資源</strong><p>例如雙層導航、Mega Menu、Dialog、Tabs，先評估成熟元件。</p></div>
+      <div><strong>最後才客製</strong><p>核對授權、套件依賴、無障礙、品牌色和手機操作，再由 AI 整合。</p></div>
+    </div>
+    <div class="external-ui-grid">
+      {externalLibraries.map(item=><article class="external-ui-card">
+        <div class="external-ui-card-head"><p class="ab-eyebrow">{item.type}</p><h3>{item.name}</h3></div>
+        <p class="external-ui-fit">{item.fit}</p><p><strong>可參考：</strong>{item.usage}</p>
+        <p><strong>整合注意：</strong>{item.integration}</p>
+        <p><strong>授權：</strong>{item.license}</p>
+        <p class="external-ui-note">{item.note}</p>
+        <a class="ab-text-link" href={item.url} target="_blank" rel="noopener noreferrer">查看官方資源 ↗</a>
+      </article>)}
+    </div>
+    <p class="external-ui-disclaimer">外部專案的版本、條款、免費範圍與依賴可能變動。它們是候選資源，不等於本網站已安裝、通過安全審核或完成真實裝置驗收。來源按功能分類，不計入本站 Blocks 數量。</p>
+  </section>
+  <style>
+    .external-ui-intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 28px}
+    .external-ui-intro>div,.external-ui-card{min-width:0;border:1px solid var(--line,#d7d2c9);border-radius:14px;background:var(--surface,#fffdfa);padding:22px}
+    .external-ui-intro>div>strong{font-size:16px}.external-ui-intro p{color:var(--muted,#676058);margin:8px 0 0}
+    .external-ui-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .external-ui-card{display:flex;flex-direction:column;gap:12px}
+    .external-ui-card h3{font-size:clamp(20px,2vw,26px);margin:6px 0 0}
+    .external-ui-card p{margin:0;line-height:1.65;overflow-wrap:anywhere}
+    .external-ui-card .ab-eyebrow{font-size:11px;letter-spacing:.08em}
+    .external-ui-fit{font-size:16px;font-weight:600}
+    .external-ui-card .external-ui-note{color:var(--muted,#676058);font-size:14px}
+    .external-ui-card a{margin-top:auto;padding-top:6px}
+    .external-ui-disclaimer{font-size:14px;color:var(--muted,#676058);margin-top:22px;max-width:90ch}
+    @media(max-width:760px){.external-ui-intro{grid-template-columns:1fr}.external-ui-grid{grid-template-columns:1fr}.external-ui-intro>div,.external-ui-card{padding:18px}}
+  </style>
   <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md · 特效請至獨立特效庫</footer>
 </main>
 <script is:inline>
