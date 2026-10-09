@@ -1,8 +1,26 @@
 # Astro Personal Site Starter
 
-工作坊研究成果的可執行原型：**2 種內容架構 × 4 種視覺人格 = 8 個 Demo**。
+這個 Repository 是 Astro 架站工作坊的**設計研究展示站與獨立網站 Starter 開發來源**，不是學員應直接 Fork 後發布的個人網站。
 
-## Live demo
+## 部署與 PR 預覽現況（2026-10-10 核對）
+
+- **GitHub Pages（既有）**：`.github/workflows/deploy-pages.yml` 仍會在 `main` 更新時發布展示站；`.github/workflows/pr-preview.yml` 建置同一 Repo 內的 PR，並由 Pages 部署 Workflow 合併到 `/pr-preview/pr-N/`。只有成功部署並驗證實際 HTML 後，才會在 PR 留預覽連結。
+- **Cloudflare（已具備靜態資產設定）**：`wrangler.jsonc` 宣告 `assets.directory: "./dist"`；`astro.config.mjs` 預設 `base: /`，適合以根路徑託管。此 Repo 未內建 Cloudflare Git 部署 GitHub Actions Workflow；由 Cloudflare 端連接 GitHub 的專案設定、部署紀錄及 Preview 網址須在 Cloudflare Dashboard 查證。
+- **Cloudflare Preview**：若 Git 整合已啟用分支／PR 預覽，請以 Cloudflare 在該 Commit／PR 回報的真實 Preview URL 驗收；不要套用 GitHub Pages 的 `/pr-preview/pr-N/` 路徑，也不要在沒有部署證據時宣稱可預覽。
+- **兩條流程並存**：目前不能把 GitHub Pages Workflow 當成 Cloudflare 發布流程，也不能把 Cloudflare 原生 Preview 當成 `astro-pr-preview` Skill 已經支援的功能。要停用 GitHub Pages，需另行調整 Pages 設定／Workflow；修改 README 本身不會停用部署。
+- **`.ai/astro-pr-preview/SKILL.md`**：目前仍明文指定 GitHub Pages + GitHub Actions，未更新為 Cloudflare Preview Skill。它的 Branch → PR → build → 實際預覽 → 使用者批准 → Merge 安全原則可沿用，但 GitHub Pages 特定步驟不得用於 Cloudflare。
+
+`npm run build` 會執行 Astro、robots、Pagefind、額外搜尋及輸出驗證；部署的實際站點狀態以平台部署紀錄及可開啟網址為準，不能只憑本地設定判定成功。
+
+## 研究展示與學生交付分離
+
+展示站包含 **2 種內容架構 × 4 種 Visual Themes**、12 個首頁 Layout 方向、40 個 Editorial Composition Recipes，以及分開維護的 Blocks／Effects。Layout 原型不等於完整多頁網站。
+
+學員建議流程：`/starter/` 規劃 → 匯出 Site Brief JSON → 依 `.ai/astro-starter-onboarding/SKILL.md`、`.ai/astro-site-assembly/SKILL.md` 產生獨立 Astro 網站 → 建立**自己的** GitHub Repository（不必 Fork 此研究 Repo）→ GitHub Pages 或 Cloudflare 部署 → 依 `.ai/astro-starter-deploy/SKILL.md` 驗收。匯出腳本產生可運作骨架後，仍需針對所選 Layout 完成真實內容與視覺適配；不能宣稱一次匯出就得到完整 12 款網站。
+
+## Live demo（既有 GitHub Pages 路徑）
+
+以下是 Repo 記錄的 GitHub Pages 網址。若 Pages 停用或展示正式切換到 Cloudflare，須再以實際部署成功的 Cloudflare URL 更新此區，**不可直接假定 Cloudflare 公開網域**。
 
 首頁：
 - https://pikaOne1138.github.io/astro-personal-site-starter/
@@ -25,15 +43,12 @@
 
 - Astro Blocks V1.5：https://pikaOne1138.github.io/astro-personal-site-starter/blocks/
 
-## V2 文章探索與內容元件
+## 文章與搜尋系統
 
-- 文章探索 Demo： https://pikaOne1138.github.io/astro-personal-site-starter/explore/
-- 八款完整網站各自提供 `/{kind}/{theme}/explore/`：可從網站導覽列的「找文章」直接進入；結果連向各自風格的文章內頁
-- 共 35 個元件：V1.5 的 23 個 + V2 的 12 個
-- 搜尋標題、摘要、分類、標籤；按月份或日期瀏覽文章
-- 導覽列新增放大鏡全站搜尋彈窗（`SiteSearchDialog`），支援 Ctrl+K／⌘K、Esc；搜尋頁面／文章／服務的中繼資料並可直接跳轉
-- 折疊、條列、Grid、提示框、比較表、延伸閱讀和輪播
-- 範例文章日期是工作坊教材，並非真實發文紀錄；完整內文檢索尚未實作
+- 文章主要入口：`/[kind]/[theme]/articles/`；文章索引支援列表、卡片、網格與標籤、日期、月份瀏覽。
+- 全站全文搜尋以 Pagefind 對實際輸出的靜態 HTML 建立索引；`npm run build` 才會產生索引，本機 `astro dev` 不等同正式搜尋環境。
+- `/explore/` 為早期研究／相容路由，不能當成唯一正式文章入口。
+- 文章資料、RSS、Sitemap、SEO 與發布狀態請遵循 `.ai/astro-content-publishing/SKILL.md`。
 
 ## Architecture
 
@@ -65,13 +80,12 @@ Skill 的任務是把 UI 生成限制在研究過的資訊架構、design tokens
 
 ## Workshop flow
 
-1. 選網站任務：Knowledge 或 Helper
-2. 選視覺人格：Paper / Morning / Studio / Botanical
-3. 改品牌資料、文案與 CTA
-4. AI 依 Skill 精修 UI，不任意擴大功能範圍
-5. AI 建立 Pull Request，GitHub Actions 產生線上預覽
-6. 學員確認畫面後才合併 PR
-7. GitHub Actions 自動發布 GitHub Pages
+1. 在 `/starter/` 選擇知識／部落格或助人者網站、Layout、Theme、導覽與真實內容需求。
+2. 匯出 Site Brief JSON；依 `astro-site-assembly` 產生獨立網站骨架並以所選 Layout 做必要的設計移植。
+3. 學員建立自己的 GitHub Repository，**不需要 Fork 本研究 Repo**。
+4. 選擇 GitHub Pages 或 Cloudflare 作為自己的發布平台；確認 Astro site/base、網域及資產網址。
+5. 在學員 Repo 建立 Branch + PR，先經過 Build 及該部署平台**實際存在**的 Preview。
+6. 學員確認桌機／手機畫面及功能後才 Merge，並驗證正式部署；後續更新遵循 `astro-site-maintenance`。
 
 ## Local
 
@@ -83,9 +97,17 @@ npm run build
 
 ## Deploy
 
-推到 `main` 後，由 `.github/workflows/deploy-pages.yml` 自動 build 並發布到 GitHub Pages。
+```bash
+npm install
+npm run build
+# 靜態輸出：dist/
+```
 
-目前 GitHub Pages workflow 已成功完成部署。
+- **GitHub Pages 展示**：`.github/workflows/deploy-pages.yml` 用 GitHub Actions 發布，設定 `ASTRO_BASE_PATH=/astro-personal-site-starter` 與 `ASTRO_SITE_URL=https://pikaone1138.github.io`。
+- **GitHub Pages PR Preview**：`.github/workflows/pr-preview.yml` 建置 PR；可信任的 Pages 部署 Workflow 發布後才在 PR 註明實際預覽網址。詳見 `.ai/astro-pr-preview/SKILL.md`。
+- **Cloudflare**：`wrangler.jsonc` 設定 Workers static assets 的 `dist/` 路徑；若採 Cloudflare Pages Git 整合，請按 Pages 的建置輸出設定部署。兩種 Cloudflare 產品的 Preview URL 和 Git 整合行為須依實際專案核對，不能混用。
+- **正式環境設定**：`astro.config.mjs` 支援 `ASTRO_SITE_URL`、`CF_PAGES_URL` 與 `ASTRO_BASE_PATH`；自訂網域、canonical、robots、Pagefind、RSS、Sitemap 和資產 BASE_URL 必須在正式網址驗證。
+- **安全護欄**：修改部署 Workflow、停用站點、變更 DNS 或合併 PR，都需要另外核准；本文僅描述現況，不代表已調整任何託管設定。
 
 ## Project goal
 
