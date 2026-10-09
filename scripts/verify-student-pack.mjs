@@ -42,6 +42,9 @@ try {
       if(process.env.FULL_STUDENT_PACK_BUILD==='1' && (layout===layouts.find(x=>x.kind==='knowledge')||layout===layouts.find(x=>x.kind==='helper'))){
         execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+        for(const file of ['rss.xml','sitemap.xml','robots.txt'])if(!existsSync(join(site,'dist',file)))throw Error('Missing generated SEO endpoint '+file+' for '+kind);
+        const sitemap=readFileSync(join(site,'dist/sitemap.xml'),'utf8');
+        if(!sitemap.includes('https://example.com'))throw Error('Unexpected sitemap site URL');
       }
     }
   } finally { rmSync(output,{recursive:true,force:true}); }
