@@ -2,6 +2,7 @@
 import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import blockRegistry from '../../data/blocks.registry.json';
+import externalLibraries from '../../data/external-ui-libraries.json';
 import Button from '../../components/blocks/Button.astro';
 import SectionHeading from '../../components/blocks/SectionHeading.astro';
 import SiteHeader from '../../components/blocks/SiteHeader.astro';
@@ -182,6 +183,55 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>
     </div>
   </section>
+  <section id="external-ui-libraries" class="ab-category" aria-labelledby="external-library-title">
+    <h2 class="ab-category-title" id="external-library-title">08 / 更多現成網站工具</h2>
+    <p class="ab-category-intro">網站想加上新功能，不必什麼都自己做。下面七個網站有別人已做好的設計與互動功能。你可以先點進去找喜歡的效果，再把網址交給 AI，請它判斷能不能加進你的網站。</p>
+    <div class="external-ui-intro">
+      <div><strong>① 先看本站有沒有</strong><p>元件庫和組合樣板庫可能已經有你要的功能。</p></div>
+      <div><strong>② 再找喜歡的範例</strong><p>看外部網站的實際畫面，不必先研究程式。</p></div>
+      <div><strong>③ 請 AI 評估後使用</strong><p>貼上連結，讓 AI 檢查能否使用、手機是否好操作，再幫你修改。</p></div>
+    </div>
+    <div class="external-ui-grid">
+      {externalLibraries.map(item=><article class="external-ui-card">
+        <h3>{item.name}</h3>
+        <p class="external-ui-fit">{item.studentTitle}</p>
+        <p>{item.studentDescription}</p>
+        <p class="external-ui-example"><strong>可以找：</strong>{item.studentExamples}</p>
+        <div class="external-ui-actions"><a class="ab-text-link" href={item.url} target="_blank" rel="noopener noreferrer">去看看範例 ↗</a><button type="button" class="external-ui-copy" data-copy-ui={item.id} aria-label={'複製 '+item.name+' 的 AI 提問'}>複製給 AI 的提問</button></div>
+        <p class="external-ui-copy-status" data-copy-status={item.id} aria-live="polite"></p>
+      </article>)}
+    </div>
+    <p class="external-ui-disclaimer">這些是外部網站，並沒有自動安裝到你的網站。部分功能或範例可能要付費；正式使用前，請 AI 先確認授權、相容性和手機操作。</p>
+  </section>
+  <style>
+    .external-ui-intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 28px}
+    .external-ui-intro>div,.external-ui-card{min-width:0;border:1px solid var(--line,#d7d2c9);border-radius:14px;background:var(--surface,#fffdfa);padding:22px}
+    .external-ui-intro>div>strong{font-size:16px}.external-ui-intro p{color:var(--muted,#676058);margin:8px 0 0}
+    .external-ui-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .external-ui-card{display:flex;flex-direction:column;gap:12px}
+    .external-ui-card h3{font-size:clamp(20px,2vw,26px);margin:0}
+    .external-ui-card p{margin:0;line-height:1.65;overflow-wrap:anywhere}
+    .external-ui-fit{font-size:16px;font-weight:700}
+    .external-ui-example{color:var(--muted,#676058)}
+    .external-ui-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:auto;padding-top:6px}
+    .external-ui-actions a{margin:0}
+    .external-ui-copy{padding:9px 12px;border:1px solid var(--line,#d7d2c9);border-radius:8px;background:transparent;font:inherit;font-size:14px;cursor:pointer;color:inherit}
+    .external-ui-copy:hover{border-color:currentColor}
+    .external-ui-copy:focus-visible{outline:3px solid currentColor;outline-offset:2px}
+    .external-ui-copy-status{font-size:13px;color:var(--muted,#676058);min-height:0}
+    .external-ui-disclaimer{font-size:14px;color:var(--muted,#676058);margin-top:22px;max-width:90ch}
+    @media(max-width:760px){.external-ui-intro{grid-template-columns:1fr}.external-ui-grid{grid-template-columns:1fr}.external-ui-intro>div,.external-ui-card{padding:18px}}
+  </style>
+  <script>
+    import externalLibraries from '../../data/external-ui-libraries.json';
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-ui]').forEach(button=>button.addEventListener('click',async()=>{
+      const item=externalLibraries.find(entry=>entry.id===button.dataset.copyUi);
+      if(!item)return;
+      const message='我在製作自己的個人網站，看到 '+item.name+'（'+item.url+'）有現成設計。請先看這個網站的實際範例，幫我找適合「'+item.studentExamples+'」的做法。先檢查我現有的 Astro Blocks / Section Patterns 有沒有類似功能；若沒有，再確認授權、免費範圍、依賴、手機與鍵盤操作，說明你建議直接使用、參考改寫或不採用，以及原因。沒有我的同意，先不要安裝或修改程式。';
+      const status=document.querySelector<HTMLElement>('[data-copy-status="'+item.id+'"]');
+      try{await navigator.clipboard.writeText(message);if(status)status.textContent='已複製，可貼給 AI';}catch{if(status)status.textContent='瀏覽器無法複製，請直接將上方網站網址貼給 AI';}
+    }));
+  </script>
   <footer class="index-footer"><a href={base}>← 返回網站首頁</a>　·　元件 ID 及 Props 請參考 GitHub 的 COMPONENTS.md · 特效請至獨立特效庫</footer>
 </main>
 <script is:inline>
