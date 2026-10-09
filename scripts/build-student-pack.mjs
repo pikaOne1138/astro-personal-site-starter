@@ -31,7 +31,12 @@ for (const path of [
   'public/layout-library.css',
   'public/editorial-recipes.css',
   'public/effects.css',
+  'public/v02.css',
+  'public/effects-sample.svg',
+  'public/robots.txt',
+  'scripts/verify-v2-8-output.mjs',
   'scripts/export-starter.mjs',
+  'scripts/verify-starter-export.mjs',
   'COMPONENTS.md'
 ]) add(path);
 add('docs/student-builder-pack/STUDENT-AGENTS.md', 'AGENTS.md');
