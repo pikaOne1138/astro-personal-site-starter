@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pikaone1138.github.io/astro-personal-site-starter/pr-preview/pr-37/sitemap.xml
