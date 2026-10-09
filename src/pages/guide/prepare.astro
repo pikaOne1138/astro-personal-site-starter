@@ -83,14 +83,14 @@ const pages=[
 <h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
 <table class="hosting-comparison"><colgroup><col/><col/><col/></colgroup><thead><tr><th scope="col">比較項目</th><th scope="col">Cloudflare Pages</th><th scope="col">GitHub Pages</th></tr></thead><tbody>
-<tr><th scope="row">私有 Repo 部署公開網站</th><td data-label="Cloudflare Pages">支援，原始碼可維持 Private。</th><td data-label="Cloudflare Pages"><strong>免費個人方案不支援私有 Repo 發布 Pages</strong>；公開 Repo 可用。Pro／Team 等適用方案另有支援。</td></tr>
-<tr><th scope="row">自動更新網站</th><td data-label="Cloudflare Pages">Git 整合推送後自動部署。</th><td data-label="Cloudflare Pages"><strong>有。</strong>使用 GitHub Actions 或 GitHub Pages 發布來源。</td></tr>
-<tr><th scope="row">PR／分支預覽</th><td data-label="Cloudflare Pages">Git 整合提供獨立預覽網址。</th><td data-label="Cloudflare Pages"><strong>可做到，但通常要自行配置</strong>預覽 Workflow 或其他服務，並非一般 Pages 預設功能。</td></tr>
-<tr><th scope="row">自訂網域與 HTTPS</th><td data-label="Cloudflare Pages">支援 pages.dev 預設網址、HTTPS 和自訂網域。</th><td data-label="Cloudflare Pages"><strong>有。</strong>提供 github.io 預設網址、HTTPS 和自訂網域；兩者網域購買費用另計。</td></tr>
-<tr><th scope="row">限制預覽觀看</th><td data-label="Cloudflare Pages">可另啟用 Cloudflare Access 保護 Preview。</th><td data-label="Cloudflare Pages"><strong>一般 Pages 無同等一鍵功能。</strong>企業方案有特定私有發布能力，但不等於一般 PR 預覽保護。</td></tr>
-<tr><th scope="row">網站流量分析</th><td data-label="Cloudflare Pages">可選用 Web Analytics。</th><td data-label="Cloudflare Pages"><strong>可另行加入</strong> Google Analytics 或其他分析工具；GitHub Pages 無同等內建訪客分析面板。</td></tr>
-<tr><th scope="row">網址轉址／HTTP 標頭</th><td data-label="Cloudflare Pages">可用 Pages 的 <code>_redirects</code> 與 <code>_headers</code> 規則。</th><td data-label="Cloudflare Pages"><strong>部分可做到。</strong>Astro 可生成跳轉頁、設定其他服務，但 GitHub Pages 不直接提供等同的伺服器端規則功能。</td></tr>
-<tr><th scope="row">指定頁面／路徑存取控制</th><td data-label="Cloudflare Pages">可另外配置 Cloudflare Access 或規則；不是自動的。</th><td data-label="Cloudflare Pages"><strong>一般免費 Pages 不提供</strong>按路徑的登入控管。企業私有 Pages 為不同使用場景。</td></tr>
+<tr><th scope="row">私有 Repo 部署公開網站</th><td data-label="Cloudflare Pages">支援，原始碼可維持 Private。</td><td data-label="GitHub Pages"><strong>免費個人方案不支援私有 Repo 發布 Pages</strong>；公開 Repo 可用。Pro／Team 等適用方案另有支援。</td></tr>
+<tr><th scope="row">自動更新網站</th><td data-label="Cloudflare Pages">Git 整合推送後自動部署。</td><td data-label="GitHub Pages"><strong>有。</strong>使用 GitHub Actions 或 GitHub Pages 發布來源。</td></tr>
+<tr><th scope="row">PR／分支預覽</th><td data-label="Cloudflare Pages">Git 整合提供獨立預覽網址。</td><td data-label="GitHub Pages"><strong>可做到，但通常要自行配置</strong>預覽 Workflow 或其他服務，並非一般 Pages 預設功能。</td></tr>
+<tr><th scope="row">自訂網域與 HTTPS</th><td data-label="Cloudflare Pages">支援 pages.dev 預設網址、HTTPS 和自訂網域。</td><td data-label="GitHub Pages"><strong>有。</strong>提供 github.io 預設網址、HTTPS 和自訂網域；兩者網域購買費用另計。</td></tr>
+<tr><th scope="row">限制預覽觀看</th><td data-label="Cloudflare Pages">可另啟用 Cloudflare Access 保護 Preview。</td><td data-label="GitHub Pages"><strong>一般 Pages 無同等一鍵功能。</strong>企業方案有特定私有發布能力，但不等於一般 PR 預覽保護。</td></tr>
+<tr><th scope="row">網站流量分析</th><td data-label="Cloudflare Pages">可選用 Web Analytics。</td><td data-label="GitHub Pages"><strong>可另行加入</strong> Google Analytics 或其他分析工具；GitHub Pages 無同等內建訪客分析面板。</td></tr>
+<tr><th scope="row">網址轉址／HTTP 標頭</th><td data-label="Cloudflare Pages">可用 Pages 的 <code>_redirects</code> 與 <code>_headers</code> 規則。</td><td data-label="GitHub Pages"><strong>部分可做到。</strong>Astro 可生成跳轉頁、設定其他服務，但 GitHub Pages 不直接提供等同的伺服器端規則功能。</td></tr>
+<tr><th scope="row">指定頁面／路徑存取控制</th><td data-label="Cloudflare Pages">可另外配置 Cloudflare Access 或規則；不是自動的。</td><td data-label="GitHub Pages"><strong>一般免費 Pages 不提供</strong>按路徑的登入控管。企業私有 Pages 為不同使用場景。</td></tr>
 </tbody></table>
 <p><strong>選擇建議：</strong>公開原始碼可用 GitHub Pages；希望原始碼保留私人，選 Cloudflare Pages。私人倉庫不代表網站不公開。</p>
 <p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">開啟 Cloudflare Dashboard ↗</a></p>
