@@ -3,14 +3,14 @@
 本資料包供 **AI 建站代理** 閱讀；學員不需要看懂程式、不需輸入終端機指令。
 
 ## 學員提供
-1. 在 AI 網頁對話上傳 `Site Brief JSON`。
+1. 在 AI 網頁對話上傳 `Site Brief JSON`（不必先放到 GitHub）。
 2. 上傳本 ZIP；若 AI 平台不能直接讀 ZIP，請在瀏覽器下載並解壓縮後上傳內部文件，或用支援 ZIP 讀取的 AI 工具。
 3. 貼一句話：「我已上傳 Site Brief JSON 與 AI 建站指引包，請幫我建立獨立網站，先確認你有 GitHub 寫入與 PR 能力。」
 
 **不必先把 JSON 上傳 GitHub**。如果開發需要持久設定檔，AI 再依獨立網站專案建立、提交與說明。
 
 ## AI 工作要求
-- 這個資料包是**導航索引和驗收規約**，不是整份 Astro Starter 原始碼，也不是將 Repo 中所有 Skills/Blocks 複製進 ZIP。請用 GitHub 授權從 `pikaOne1138/astro-personal-site-starter` 的**最新狀態**讀取實際 Skill、布局原型、registry 與相關內容；不要根據舊聊天記憶猜測版本。
+- 這個資料包包含建站指引、目前的相關 Skills 與 Registry 快照，但**不是完整 Astro Starter 網站原始碼**。請用 GitHub 授權從 `pikaOne1138/astro-personal-site-starter` 的**最新狀態**核對布局原型、Skills、Registry 與實際程式碼；不要根據舊聊天記憶猜測版本。
 - 先確認 AI 網頁環境能遠端建立/修改 Repo、建立 Branch 和 PR，且有雲端建置與預覽路徑。單純具備聊天能力或唯讀 GitHub 連接**不足以完成建站**。
 - 先讀 `AGENT-HANDOFF.md`，其餘資料由 AI 自行檢索。不要讓學員逐一貼 Skill 路徑或執行命令。
 - 獨立個人站不可覆蓋教學展示站；首頁 Prototype 不等於完整多頁網站。
