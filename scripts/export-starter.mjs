@@ -78,7 +78,7 @@ assets['.github/workflows/pr-check.yml']=[
 '        with:',
 '          name: student-pr-build',
 '          path: dist'
-].join('\\n')+'\\n';
+].join('\n')+'\n';
 assets['src/pages/index.astro']=assets['src/pages/index.astro'].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page="/" /></SiteLayout>');
 assets['src/pages/[page].astro']=assets['src/pages/[page].astro'].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page={item.id} /></SiteLayout>');
 assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro'].replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page="articles" /></SiteLayout>');
