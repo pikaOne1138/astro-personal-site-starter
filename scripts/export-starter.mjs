@@ -16,6 +16,7 @@ if(selections.some(x=>{
  return !definition||!definition.kind.includes(plan.kind)||!x.insertAfter?.trim()||x.insertAfter.length>180||
  (x.patternId.startsWith('footer-')?x.targetPage!=='site-wide':!(x.targetPage==='/'||nav.some(n=>n.id===x.targetPage)));
 })||new Set(selections.map(x=>x.patternId+'@'+x.targetPage)).size!==selections.length)throw Error('Invalid pattern selection or target route');
+if(plan.brand?.palette){const colors=plan.brand.palette;if(['primary','secondary','accent','background','text'].some(key=>!/^#[0-9a-fA-F]{6}$/.test(colors[key]||''))||colors.primary.toUpperCase()!==plan.brand.primaryColor.toUpperCase())throw Error('Invalid five-color brand palette');}
 const root=resolve(dest);
 if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty');
 const settings={version:1,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,site:'https://example.com',base:'/'};
@@ -66,6 +67,11 @@ assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro']
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
+  if(path==='public/site.css'&&settings.brand.palette){
+    const colors=settings.brand.palette;
+    actual=actual.replace('--ink:#28231f','--ink:'+colors.text).replace('--bg:#f7f5f0','--bg:'+colors.background).replace('--line:#dad4c9','--line:color-mix(in srgb, '+colors.text+' 20%, '+colors.background+')');
+    actual+='\n:root{--brand-primary:'+colors.primary+';--brand-secondary:'+colors.secondary+';--brand-accent:'+colors.accent+';--brand-background:'+colors.background+';--brand-text:'+colors.text+';}\n';
+  }
   if(path==='src/pages/articles/index.astro')actual=actual.replace(/export function getStaticPaths\(\)\{return config\.navigation\.some\(x=>x\.id==='articles'\)\?\[\{params:\{\}\}\]:\[\]\}\n/,'');
   put(path,actual);
 }
