@@ -64,6 +64,42 @@ assets['src/components/SelectedPatterns.astro']="---\nimport settings from '../.
 assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro']
  .replace("import config from '../../site.config.json';","import config from '../../site.config.json';\nimport StudentNavigation from '../components/StudentNavigation.astro';")
  .replace(/<nav aria-label="主要導覽">\{config\.navigation\.map\(x=><a href=\{base\+x\.id\+'\/'\}>\{x\.label\}<\/a>\)\}<\/nav>/,'<StudentNavigation />');
+// Generated SEO endpoints belong to the learner website, not the research demo.
+assets['src/pages/rss.xml.js'] = `import {getCollection} from 'astro:content';
+import config from '../../site.config.json';
+const esc=(value)=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[ch]));
+export async function GET({site}) {
+ const origin=site||new URL(config.site||'https://example.com');
+ const base=import.meta.env.BASE_URL;
+ const items=config.navigation.some(x=>x.id==='articles')?(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt):[];
+ const url=(path)=>new URL(base+path,origin).href;
+ const body='<?xml version="1.0" encoding="UTF-8"?>'+'<rss version="2.0"><channel><title>'+esc(config.brand.name)+'</title><link>'+esc(url(''))+'</link><description>'+esc(config.brand.tagline)+'</description>'+items.map(x=>'<item><title>'+esc(x.data.title)+'</title><link>'+esc(url('articles/'+x.id+'/'))+'</link><guid>'+esc(url('articles/'+x.id+'/'))+'</guid><pubDate>'+x.data.publishedAt.toUTCString()+'</pubDate><description>'+esc(x.data.description)+'</description></item>').join('')+'</channel></rss>';
+ return new Response(body,{headers:{'Content-Type':'application/rss+xml; charset=utf-8'}});
+}
+`;
+assets['src/pages/sitemap.xml.js'] = `import {getCollection} from 'astro:content';
+import config from '../../site.config.json';
+const esc=(value)=>String(value??'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+export async function GET({site}) {
+ const origin=site||new URL(config.site||'https://example.com');
+ const base=import.meta.env.BASE_URL;
+ const paths=['',...config.navigation.map(x=>x.id+'/')];
+ if(config.navigation.some(x=>x.id==='articles')) {
+  const entries=await getCollection('articles',({data})=>!data.draft);
+  for(const x of entries)paths.push('articles/'+x.id+'/');
+ }
+ const urls=[...new Set(paths)].map(path=>'<url><loc>'+esc(new URL(base+path,origin).href)+'</loc></url>').join('');
+ return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls+'</urlset>',{headers:{'Content-Type':'application/xml; charset=utf-8'}});
+}
+`;
+assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
+ const origin=site||new URL('https://example.com');
+ const base=import.meta.env.BASE_URL;
+ const demo=origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');
+ const body='User-agent: *\\n'+(demo?'Disallow: /':'Allow: /')+'\\nSitemap: '+new URL(base+'sitemap.xml',origin).href+'\\n';
+ return new Response(body,{headers:{'Content-Type':'text/plain; charset=utf-8'}});
+}
+`;
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
