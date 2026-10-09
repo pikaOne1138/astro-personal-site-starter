@@ -83,3 +83,16 @@
 .brand-palette-preview__actions em{font-style:normal;border-bottom:3px solid var(--palette-accent);padding:8px 4px}
 @media(max-width:1050px){.brand-palette-fields{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.brand-palette-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Optional external color tools - links only, no bundled dependency. */
+.palette-resource-links{margin-top:24px;padding:24px 0 6px;border-top:1px solid var(--line)}
+.palette-resource-links h3{font-size:18px;margin:0 0 8px}
+.palette-resource-links>p{color:var(--muted);margin:0 0 15px;max-width:72ch}
+.palette-resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.palette-resource-grid a{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--white);text-decoration:none;color:var(--ink);min-width:0}
+.palette-resource-grid a:hover{border-color:var(--accent)}
+.palette-resource-grid strong{font-size:17px}
+.palette-resource-grid span{font-size:14px;line-height:1.65;color:var(--muted)}
+.palette-resource-links .palette-resource-credit{font-size:13px;margin-top:14px}
+@media(max-width:720px){.palette-resource-grid{grid-template-columns:1fr}}
