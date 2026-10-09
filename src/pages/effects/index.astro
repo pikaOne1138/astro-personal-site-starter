@@ -1,5 +1,6 @@
 ---
 import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
+import externalMotionResources from '../../data/external-motion-resources.json';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import Reveal from '../../components/effects/Reveal.astro';
 import StaggerGroup from '../../components/effects/StaggerGroup.astro';
@@ -137,6 +138,76 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       <p class="fx-source">元件：<code>MotionFAQ.astro</code>　參數：variant = line / soft / cards</p>
     </section>
 
+    <section class="fx-section" id="motion-decision" aria-labelledby="motion-decision-title">
+      <div class="fx-section-heading"><div><span class="fx-kicker">BEFORE YOU ADD MOTION</span><h2 id="motion-decision-title">什麼時候該動？什麼時候保持安靜？</h2></div><p>動效不是越多越精緻。好的動效讓訪客看懂操作、注意重點；不需要動的地方，保持穩定反而比較舒服。</p></div>
+      <div class="fx-decision-grid">
+        <div class="fx-decision-panel"><h3>適合加一點動效</h3><ul><li><strong>操作有回應：</strong>按鈕被點擊、選單展開、FAQ 開合。</li><li><strong>幫助理解：</strong>分組內容輕微依序出現，提示閱讀順序。</li><li><strong>清楚的狀態：</strong>真正送出資料時顯示等待或完成結果。</li></ul></div>
+        <div class="fx-decision-panel"><h3>通常保持安靜更好</h3><ul><li><strong>長篇文章：</strong>內文不必一段段延遲顯示。</li><li><strong>重要資訊：</strong>服務內容、價格、聯絡方式直接看得到。</li><li><strong>手機與輔助操作：</strong>不可只靠滑鼠 Hover 才能看到資訊。</li><li><strong>純裝飾：</strong>沒有用途的漂浮、閃爍、持續旋轉先不要加。</li></ul></div>
+      </div>
+      <p class="fx-decision-rule"><strong>挑選原則：</strong>先說出「這個動效幫訪客完成什麼」，再挑效果；說不出目的就先不用。每頁以少量、輕微的互動為起點，並尊重「減少動態」設定。</p>
+    </section>
+    <style>
+      .fx-decision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+      .fx-decision-panel{min-width:0;padding:clamp(20px,3vw,30px);border:1px solid var(--line,#d9d4c8);border-radius:14px;background:var(--surface,#fffdfa)}
+      .fx-decision-panel h3{font-size:clamp(19px,2vw,23px);margin:0 0 16px}
+      .fx-decision-panel ul{margin:0;padding-left:21px;display:grid;gap:12px;line-height:1.75}
+      .fx-decision-panel li{padding-left:4px}
+      .fx-decision-rule{max-width:85ch;line-height:1.75;color:var(--muted,#625e56)}
+      @media(max-width:760px){.fx-decision-grid{grid-template-columns:1fr}}
+    </style>
+
+    <section class="fx-section" id="external-motion" aria-labelledby="external-motion-title">
+      <div class="fx-section-heading"><div><span class="fx-kicker">07 · MORE IDEAS</span><h2 id="external-motion-title">更多現成動效靈感</h2></div><p>找不到想要的效果？可以到這些網站看看別人做好的範例，將連結交給 AI 協助評估。這些工具不會自動安裝進你的網站。</p></div>
+      <div class="fx-external-steps">
+        <div><strong>① 先看本站特效</strong><p>淡入、按鈕回饋、卡片與圖片互動，可能已經夠用了。</p></div>
+        <div><strong>② 到外部網站試玩</strong><p>挑喜歡的速度、方向和感覺，不必先懂程式。</p></div>
+        <div><strong>③ 請 AI 檢查再使用</strong><p>優先讓內容好讀，確認手機、鍵盤和減少動態設定。</p></div>
+      </div>
+      <div class="fx-external-grid">
+        {externalMotionResources.map(item=><article class="fx-external-card">
+          <p class="fx-external-category">{item.category}</p>
+          <h3>{item.name}</h3>
+          <strong>{item.title}</strong>
+          <p>{item.description}</p>
+          <p class="fx-external-examples"><b>可以找：</b>{item.examples}</p>
+          <p class="fx-external-caution">{item.caution}</p>
+          <div class="fx-external-actions">
+            <a href={item.url} target="_blank" rel="noopener noreferrer">去看看範例 ↗</a>
+            <button type="button" class="fx-external-copy" data-motion-copy-id={item.id} data-motion-copy-url={item.url} data-motion-copy-name={item.name} data-motion-copy-example={item.examples}>複製給 AI 的提問</button>
+          </div>
+          <p class="fx-external-status" aria-live="polite" data-motion-copy-status={item.id}></p>
+        </article>)}
+      </div>
+      <p class="fx-external-disclaimer">部分範例可能需要額外程式或付費授權。先挑真正有用的效果，正式採用前請 AI 檢查相容性、授權及使用者是否能選擇減少動畫。</p>
+    </section>
+    <style>
+      .fx-external-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0}
+      .fx-external-steps>div,.fx-external-card{min-width:0;border:1px solid var(--line,#ded6ca);border-radius:14px;padding:22px;background:var(--surface,#fffefa)}
+      .fx-external-steps p{margin:8px 0 0;color:var(--muted,#676058);line-height:1.65}
+      .fx-external-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+      .fx-external-card{display:flex;flex-direction:column;gap:10px}
+      .fx-external-card h3{margin:0;font-size:clamp(22px,2vw,28px)}
+      .fx-external-card>strong{font-size:17px}
+      .fx-external-card p{margin:0;line-height:1.65}
+      .fx-external-category{font-size:12px;letter-spacing:.08em;color:var(--muted,#676058)}
+      .fx-external-examples,.fx-external-caution{font-size:14px;color:var(--muted,#676058)}
+      .fx-external-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:auto;padding-top:12px}
+      .fx-external-actions a{color:inherit;text-underline-offset:4px}
+      .fx-external-copy{font:inherit;font-size:14px;color:inherit;border:1px solid var(--line,#ded6ca);background:transparent;padding:10px 12px;border-radius:8px;cursor:pointer}
+      .fx-external-copy:hover{border-color:currentColor}
+      .fx-external-copy:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+      .fx-external-status{font-size:13px;color:var(--muted,#676058)}
+      .fx-external-disclaimer{font-size:14px;color:var(--muted,#676058);margin-top:22px;line-height:1.65}
+      @media(max-width:760px){.fx-external-steps,.fx-external-grid{grid-template-columns:1fr}.fx-external-steps>div,.fx-external-card{padding:18px}}
+    </style>
+    <script>
+      document.querySelectorAll<HTMLButtonElement>('[data-motion-copy-id]').forEach(button=>button.addEventListener('click',async()=>{
+        const name=button.dataset.motionCopyName||'',url=button.dataset.motionCopyUrl||'',examples=button.dataset.motionCopyExample||'';
+        const prompt='我正在用 Astro 製作個人網站。我在 '+name+'（'+url+'）看到動效範例，想參考「'+examples+'」。請先查現有 astro-motion-craft Skill 與 /effects/ 的效果是否足夠，不要重複安裝。若確實需要外部功能，請確認授權、相容性、性能、手機觸控、鍵盤及 prefers-reduced-motion，並確保沒有 JavaScript 時內容仍可閱讀。請先提方案，不要直接安裝或修改。';
+        const status=document.querySelector<HTMLElement>('[data-motion-copy-status="'+button.dataset.motionCopyId+'"]');
+        try{await navigator.clipboard.writeText(prompt);if(status)status.textContent='已複製，可貼給 AI';}catch{if(status)status.textContent='無法自動複製；請將資源網址貼給 AI';}
+      }));
+    </script>
     <footer class="fx-bottom">
       <p>這些 Demo 供模板組裝與動效研究使用；正式網站不必全部啟用。使用 <strong>Motion Skill</strong> 選擇場景與強度，預設尊重裝置設定與四套視覺主題。</p>
       <p><a href={base+'blocks/'}>返回元件庫 ↗</a>　<a href={base}>探索八款完整網站 ↗</a></p>

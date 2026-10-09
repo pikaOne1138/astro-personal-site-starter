@@ -1,0 +1,112 @@
+[
+  {
+    "id": "astroanimate",
+    "name": "AstroAnimate",
+    "url": "https://www.astroanimate.com/",
+    "title": "想找專門給 Astro 網站的現成動畫",
+    "description": "能參考按鈕、卡片、文字出現等完整範例；先看看哪個效果真的有幫助。",
+    "examples": "按鈕回饋、卡片輕微浮起、文字淡入",
+    "caution": "許多功能與我們現有 Reveal、MotionCard 重疊；這是較新的專案，先比對版本及實際效果，不要預設安裝。",
+    "tech": "Astro-native MIT core, CSS-first with opt-in JS; verify actual package exports/version, maintenance and reduced-motion before adoption; GlassCard not a default design direction.",
+    "category": "Astro 專用"
+  },
+  {
+    "id": "astrowebtools",
+    "name": "astro-webtools",
+    "url": "https://pascal-brand38.github.io/astro-dev/packages/astro-webtools/",
+    "title": "想找拍立得或便利貼等特殊畫面",
+    "description": "可以看看照片像拍立得、文字霓虹、手寫便利貼等裝飾效果。",
+    "examples": "拍立得圖片、便利貼、SVG 文字效果",
+    "caution": "這些屬於特殊視覺裝飾，不建議全站使用；其導航元件也不是新的 Motion Effect。",
+    "tech": "Astro component package; MIT repository checked, review component APIs and sources, image/text contrast, mobile layout; decoration ≠ motion.",
+    "category": "特色視覺"
+  },
+  {
+    "id": "animista",
+    "name": "Animista",
+    "url": "https://animista.net/",
+    "title": "想讓文字或圖片自然出現",
+    "description": "可以直接播放淡入、滑入、縮放等效果，挑喜歡的速度和方向。",
+    "examples": "文字淡入、圖片滑入、標題進場",
+    "caution": "適合小幅度 CSS 動效；複雜動畫先不要加入。",
+    "tech": "CSS keyframes; check browser support; reduced motion, animation repetition and initial visibility.",
+    "category": "簡單動效"
+  },
+  {
+    "id": "animatecss",
+    "name": "Animate.css",
+    "url": "https://animate.style/",
+    "title": "想快速試試標題和圖片進場",
+    "description": "挑選文字淡入、滑入、柔和縮放的效果，先看看適合哪個段落。",
+    "examples": "標題淡入、區段進場、圖片輕微縮放",
+    "caution": "現有 Reveal 通常已能完成類似效果。官方採 Hippocratic License 2.1，正式複製或商業使用前須核對授權。",
+    "tech": "CSS-only animation classes; license Hippocratic-2.1; use selective imports, avoid bounce/infinite motion, prefers-reduced-motion support; not automatically install.",
+    "category": "簡單動效"
+  },
+  {
+    "id": "hovercss",
+    "name": "Hover.css",
+    "url": "https://ianlunn.github.io/Hover/",
+    "title": "想讓按鈕和連結有細緻回饋",
+    "description": "提供滑鼠移到按鈕、文字連結或圖片上的細微變化，可以比較不同手感。",
+    "examples": "按鈕輕微放大、底線、邊框與陰影",
+    "caution": "手機通常沒有滑鼠懸停，效果必須降級。商業網站及可供學員再散布的 Starter 有額外授權條件；先評估，不直接複製。",
+    "tech": "CSS hover/focus effects; restrictive commercial/OEM licensing on recent versions; keyboard focus and touch alternatives; prefer local original CSS or existing effects.",
+    "category": "滑鼠與鍵盤回饋"
+  },
+  {
+    "id": "uiverse",
+    "name": "Uiverse",
+    "url": "https://uiverse.io/",
+    "title": "想找有回饋感的按鈕與卡片",
+    "description": "有很多人分享按鈕、卡片和滑鼠移過去的小效果，可以打開直接看。",
+    "examples": "按鈕按下回饋、連結底線、卡片 Hover",
+    "caution": "範例品質不同，請 AI 選簡單、易閱讀的，不要滿頁閃動。",
+    "tech": "Community contributed CSS/Tailwind UI; inspect each example and license/attribution, accessibility and touch fallback.",
+    "category": "互動細節"
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://motion.dev/docs",
+    "title": "想讓捲動與畫面切換更順暢",
+    "description": "適合需要文字依序出現、捲動時顯示閱讀進度等比較細緻的互動。",
+    "examples": "依序出現、閱讀進度、捲動揭露",
+    "caution": "進階做法需要程式，先檢查我們特效庫能不能完成。",
+    "tech": "Vanilla JS available; distinguish scroll-triggered/linked; limit JS and preserve visible content without JS.",
+    "category": "進階互動"
+  },
+  {
+    "id": "gsap",
+    "name": "GSAP",
+    "url": "https://gsap.com/scroll/",
+    "title": "想做有故事節奏的捲動動畫",
+    "description": "適合文章敘事、長頁面需要精準控制的段落動畫。",
+    "examples": "捲動觸發、分段進場、視差敘事",
+    "caution": "容易做得太花；只有有清楚閱讀目的才考慮。",
+    "tech": "GSAP ScrollTrigger; check license, JS weight, reduced motion and performance; not default Starter dependency.",
+    "category": "進階捲動"
+  },
+  {
+    "id": "aos",
+    "name": "AOS",
+    "url": "https://michalsnik.github.io/aos/",
+    "title": "想讓區段捲到眼前才出現",
+    "description": "常見的向上浮現、淡入效果，可以快速比較不同節奏。",
+    "examples": "卡片逐段出現、文字浮現、列表淡入",
+    "caution": "我們已經有 Reveal／Stagger，通常不必為同樣功能再裝一套。",
+    "tech": "JavaScript + CSS; assess maintenance, user reduced-motion and no-JS fallback; avoid duplicate Reveal behavior.",
+    "category": "捲動出現"
+  },
+  {
+    "id": "cssloaders",
+    "name": "CSS Loaders",
+    "url": "https://css-loaders.com/",
+    "title": "真的需要等候提示時再來看",
+    "description": "提供很多載入中的小動畫，適合按下送出後真的需要等待的功能。",
+    "examples": "載入提示、等待進度",
+    "caution": "一般靜態個人網站不需要載入動畫，更不能放假的送出成功畫面。",
+    "tech": "CSS loaders; show only for real loading state, avoid fake async actions and perpetual animation.",
+    "category": "載入提示"
+  }
+]

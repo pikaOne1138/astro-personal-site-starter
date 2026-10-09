@@ -117,3 +117,43 @@ Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layo
 ## 與 Claude 編輯式構圖的使用順序
 
 先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的 40 款構圖配方，最後才由本 Motion Skill 加入必要的動效。即使元件可用 Tilt/Spotlight/Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。
+
+
+
+## 動效選用決策（先問目的，再選效果）
+
+動效不以數量當成完成度。每新增一個效果，AI 先回答「訪客在哪個操作或閱讀節點需要它？若沒有動畫，資訊會不會更清楚？」
+
+| 需要協助的情境 | 優先處理 | 不建議 |
+|---|---|---|
+| 按鈕、選單、FAQ 的操作狀態 | 短暫且可辨識的狀態回饋 | 所有按鈕磁吸、每張卡都傾斜 |
+| 內容區段層級與閱讀順序 | 少量 Reveal／Stagger，內容原本可見 | 長文逐段等待動畫才能閱讀 |
+| 真正非同步操作 | 有實際狀態的 loading / success / error | 假的成功訊息、無原因的 loading |
+| 專業服務、聯絡、價格、信任資訊 | 明確、靜態、隨時可閱讀 | 反覆閃爍、視差干擾、用 Hover 才看得到 |
+| 手機、鍵盤、偏好減少動態者 | 不依賴 Hover、可關閉動效、功能不損失 | 只對滑鼠運作或無法跳過的動畫 |
+
+### 動效設計的四問
+1. **目的**：回饋操作、引導閱讀，還是只有裝飾？只為裝飾時預設不要加。
+2. **必要性**：不動時是否仍清楚易用？若清楚，選較輕的效果或不用。
+3. **代價**：會不會延遲內文、造成暈眩、增加載入、影響觸控或鍵盤？
+4. **一致性**：是否沿用現有 Effects 和 subtle 強度，不重複安裝新套件？
+
+輸出網站設計建議時，每個動效附上 `target`、`purpose`、`effect`、`fallback`、`qa`；允許 `effect: none`。預設特效強度為 **subtle**，避免讓網站變成動畫展示場。
+
+## 外部動效資源評估（特效庫底部）
+
+使用 `src/data/external-motion-resources.json` 與 `/effects/#external-motion` 作為**參考清單**，包含 AstroAnimate、astro-webtools、Animista、Animate.css、Hover.css、Uiverse、Motion、GSAP、AOS、CSS Loaders。清單不是安裝清單，也不代表已完成元件安全與授權驗收。
+
+- 先盤點本專案 `src/components/effects/` 的 Reveal／Stagger／Card／ZoomImage／MagneticButton／UnderlineLink／MotionFAQ；如果已滿足需求，不要另裝 AOS 等重疊方案。
+- 原生 CSS 動效優先；需要複雜捲動敘事才考慮 Motion 或 GSAP。外部網站與原始碼的授權、依賴、維護、性能要個別確認。
+- 任何動效都必須支援 `prefers-reduced-motion`；手機沒有 Hover 時功能仍要完整，鍵盤與觸控操作要合理，JS 失敗時內容仍可閱讀。
+- 動效服務於閱讀和回饋；靜態文章站不應為了好看加入假的載入動畫或全頁過度動效。
+- 請先給學員能理解的比較與建議，取得同意後才在 Branch + PR 引入外部程式；Build 通過仍須四個視口實際 QA。
+
+- Animate.css 現行官方標示 Hippocratic License 2.1；Hover.css 對商業及再散布用途有不同授權條件。外部範例只作連結與研究，**不得把其 CSS 原碼直接編入會分發給學員的 Starter**，除非逐項完成適用授權確認。
+- Splide 屬於可操作的輪播元件候選，應歸 Blocks／UI Craft 的評估流程，**不是 Motion Effect 計數項目**。靜態內容優先列表或 CSS scroll-snap；非必要不要加自動輪播，自動輪播時要提供暫停控制、鍵盤與減少動態支援。
+- AOS 是 scroll-triggered reveal，不等於完整 parallax；我們已有 Reveal／Stagger，先檢查重疊。
+
+- AstroAnimate 原生核心提供 CSS-first 的按鈕、卡片與文字效果，與現有 MotionCard／Reveal 重疊；先查當前版本及範例，避免因套件名稱有 Astro 就當作必裝。astro-webtools 的 Polaroid／PostIt／Neon 是特殊視覺裝飾，不是全站預設 Motion。
+- Tailwind 與 UnoCSS 是樣式工具，不是特效庫；不要只為了單一動畫加入另一套 Utility CSS 設定。先用現有 CSS Tokens 與原生 CSS transitions/keyframes。
+- 頁面切換先評估 Astro 官方 `astro:transitions` 的 `ClientRouter`、`transition:animate`；啟用後需驗證 client-side navigation 下既有 script 的初始化時機、返回鍵、焦點與 reduced motion，並非只加一段 CSS 就完成。
