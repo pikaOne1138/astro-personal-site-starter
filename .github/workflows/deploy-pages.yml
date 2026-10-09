@@ -82,6 +82,15 @@ jobs:
             test -s "dist/pr-preview/pr-$PR_NUMBER/demo.css"
             find "dist/pr-preview/pr-$PR_NUMBER" -maxdepth 2 -type f | head -35
           fi
+      - name: Reconcile all open PR previews with their latest successful head builds
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/reconcile-pr-previews.mjs
+      - name: Verify every published PR preview matches its recorded head
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node -e "const fs=require('fs');for(const n of fs.readdirSync('dist/pr-preview')){if(!/^pr-[0-9]+$/.test(n))continue;const p='dist/pr-preview/'+n+'/.preview-head.json';if(!fs.existsSync(p))process.exit(1);const m=JSON.parse(fs.readFileSync(p));if(!/^[0-9a-f]{40}$/.test(m.sha)||!Number.isSafeInteger(m.runId))process.exit(1)}"
       - name: Keep deployment snapshot in gh-pages branch
         # gh-pages is only a snapshot store here. Pages publishing stays set to GitHub Actions.
         uses: JamesIves/github-pages-deploy-action@v4
