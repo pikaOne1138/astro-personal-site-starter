@@ -1,4 +1,5 @@
 ---
+import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import blockRegistry from '../../data/blocks.registry.json';
 import Button from '../../components/blocks/Button.astro';
@@ -62,7 +63,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
 <link rel="stylesheet" href={`${base}blocks-v2.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
-    <nav class="ab-library-nav" aria-label="展示庫導覽"><a href={base}>← 八款網站 Demo</a><a href={base+'blocks/'} aria-current="page">元件庫</a><a href={base+'effects/'}>特效庫 ↗</a><a href={base+'layouts/'}>版型庫 ↗</a></nav>
+    <DesignLibraryNav current="blocks" />
     <p class="ab-eyebrow" style="margin-top:32px">WEBSITE DESIGN · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的網站元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
@@ -81,7 +82,21 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>SiteHeader</strong><span>頁首導覽</span></div><SiteHeader brand="個人的文字宇宙" cta={{label:'聯絡我',href:'#professional'}} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Button</strong><span>主要按鈕 / 外框按鈕</span></div><div style="display:flex;gap:12px;flex-wrap:wrap"><Button href="#hero">主要行動 →</Button><Button href="#hero" variant="outline">次要行動</Button></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SectionHeading</strong><span>單元標題</span></div><SectionHeading eyebrow="DISCOVER" title="從這裡，開始探索。" description="讓訪客快速認識主題、找到值得閱讀的內容。" /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>SiteFooter</strong><span>頁尾導覽</span></div><SiteFooter brand="個人的文字宇宙" links={[{label:'關於',href:'#professional'},{label:'文章',href:'#blog'}]} /></div>
+    <div class="ab-demo">
+      <div class="ab-demo-label"><strong>SiteFooter · Editorial</strong><span>完整資訊頁腳：說明、多欄選單、社群、RSS、隱私權與版權</span></div>
+      <p>這是可直接看完整排版的元件示範。選單和法律連結都只是示範目的地，正式站必須換成真實頁面。</p>
+      <SiteFooter brand="個人的文字宇宙" eyebrow="A PERSONAL PUBLICATION" description="記下閱讀、生活觀察與想法，讓每篇文章都能被長期找到。"
+        variant="editorial" groups={[{title:'探索內容',links:[{label:'文章',href:'#blog'},{label:'閱讀主題',href:'#blog'},{label:'精選作品',href:'#hero'}]},{title:'認識作者',links:[{label:'關於我',href:'#professional'},{label:'聯絡入口',href:'#professional'}]}]}
+        socialLinks={[{platform:'github',href:'https://github.com/pikaOne1138/astro-personal-site-starter',label:'範例原始碼'}]}
+        rssHref={base+'rss.xml'} legalLinks={[{label:'隱私權說明（範例）',href:'#site-footer-legal-note'}]} copyright="© 2026 個人的文字宇宙 · 網站示範"/>
+      <p id="site-footer-legal-note" class="practical-caption">隱私權連結在此僅連到說明文字；正式網站必須提供真實、可閱讀的隱私權頁面。</p>
+    </div>
+    <div class="ab-demo">
+      <div class="ab-demo-label"><strong>SiteFooter · Professional</strong><span>專業服務站：三欄導覽＋品牌定位＋底部法律資訊</span></div>
+      <SiteFooter brand="共好專業工作室" description="讓需要的人看得懂服務內容、適合度與聯絡方式。此區為版面展示，不代表真實營運機構。" variant="professional"
+        groups={[{title:'了解服務',links:[{label:'服務說明',href:'#professional'},{label:'合作流程',href:'#professional'}]},{title:'關於工作室',links:[{label:'團隊介紹',href:'#professional'},{label:'文章資源',href:'#blog'}]},{title:'訪客資訊',links:[{label:'常見問題',href:'#professional'},{label:'聯絡方式',href:'#professional'}]}]}
+        legalLinks={[{label:'隱私權（示範）',href:'#site-footer-legal-note'},{label:'使用條款（示範）',href:'#site-footer-legal-note'}]} copyright="© 2026 共好專業工作室 · DEMO"/>
+    </div>
     <div class="ab-demo">
       <div class="ab-demo-label"><strong>SiteSearchDialog</strong><span>放大鏡／全站搜尋／Ctrl+K 或 ⌘K</span></div>
       <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>

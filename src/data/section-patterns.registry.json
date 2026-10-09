@@ -1,0 +1,169 @@
+[
+  {
+    "id": "featured-work",
+    "title": "作品與成果展示",
+    "subtitle": "讓代表作品自己說話",
+    "kind": [
+      "knowledge",
+      "helper"
+    ],
+    "purpose": "用精選作品、文章或專題，讓訪客理解你實際做過什麼。",
+    "bestFor": [
+      "創作者作品集",
+      "顧問專案展示",
+      "知識型精選文章"
+    ],
+    "composition": [
+      "區段前言",
+      "精選項目列表",
+      "清楚的下一步"
+    ],
+    "blocks": [
+      "FeatureGrid",
+      "Button"
+    ],
+    "required": [
+      "真實作品名稱",
+      "作品簡介"
+    ],
+    "optional": [
+      "可公開的作品網址",
+      "已授權圖片"
+    ],
+    "safety": "沒有真實作品時標示展示範例，不捏造客戶或成果。"
+  },
+  {
+    "id": "trust-service-path",
+    "title": "專業信任與服務入口",
+    "subtitle": "先理解如何合作，再決定下一步",
+    "kind": [
+      "helper"
+    ],
+    "purpose": "讓訪客先了解合作範圍、服務適合度與實際聯絡方式，而非只看到預約按鈕。",
+    "bestFor": [
+      "心理／諮商",
+      "身體工作",
+      "教練與顧問"
+    ],
+    "composition": [
+      "專業服務定位",
+      "服務適合度",
+      "可核實信任資訊",
+      "低壓下一步"
+    ],
+    "blocks": [
+      "ServiceFit",
+      "TrustInfo",
+      "CTASection"
+    ],
+    "required": [
+      "真實的服務說明",
+      "適合／不適合情況"
+    ],
+    "optional": [
+      "專業資格",
+      "服務政策",
+      "經確認的聯絡連結"
+    ],
+    "safety": "證照、預約與服務數據不得虛構；未配置 CTA 不顯示假動作。"
+  },
+  {
+    "id": "footer-minimal",
+    "title": "簡約品牌頁腳",
+    "subtitle": "完整網站頁腳組合",
+    "kind": [
+      "knowledge",
+      "helper"
+    ],
+    "purpose": "精簡品牌介紹、少量導覽與底部版權。",
+    "bestFor": [
+      "個人網站",
+      "長期營運網站"
+    ],
+    "composition": [
+      "品牌定位與說明",
+      "分組導覽",
+      "底部版權及法律入口"
+    ],
+    "blocks": [
+      "SiteFooter",
+      "SocialLinks"
+    ],
+    "required": [
+      "真實品牌名稱",
+      "有效的網站路由"
+    ],
+    "optional": [
+      "RSS",
+      "社群網址",
+      "隱私權／使用條款的真實頁面"
+    ],
+    "safety": "所有連結與法律頁面必須實際存在，示範連結不得直接作為正式網站交付。"
+  },
+  {
+    "id": "footer-editorial",
+    "title": "內容型多欄頁腳",
+    "subtitle": "完整網站頁腳組合",
+    "kind": [
+      "knowledge",
+      "helper"
+    ],
+    "purpose": "文章主題、作者資訊、社群、RSS 與隱私權入口。",
+    "bestFor": [
+      "個人網站",
+      "長期營運網站"
+    ],
+    "composition": [
+      "品牌定位與說明",
+      "分組導覽",
+      "底部版權及法律入口"
+    ],
+    "blocks": [
+      "SiteFooter",
+      "SocialLinks"
+    ],
+    "required": [
+      "真實品牌名稱",
+      "有效的網站路由"
+    ],
+    "optional": [
+      "RSS",
+      "社群網址",
+      "隱私權／使用條款的真實頁面"
+    ],
+    "safety": "所有連結與法律頁面必須實際存在，示範連結不得直接作為正式網站交付。"
+  },
+  {
+    "id": "footer-professional",
+    "title": "專業服務多欄頁腳",
+    "subtitle": "完整網站頁腳組合",
+    "kind": [
+      "knowledge",
+      "helper"
+    ],
+    "purpose": "服務、關於、聯絡資訊以不同選單群組整理，底部呈現法律資訊。",
+    "bestFor": [
+      "個人網站",
+      "長期營運網站"
+    ],
+    "composition": [
+      "品牌定位與說明",
+      "分組導覽",
+      "底部版權及法律入口"
+    ],
+    "blocks": [
+      "SiteFooter",
+      "SocialLinks"
+    ],
+    "required": [
+      "真實品牌名稱",
+      "有效的網站路由"
+    ],
+    "optional": [
+      "RSS",
+      "社群網址",
+      "隱私權／使用條款的真實頁面"
+    ],
+    "safety": "所有連結與法律頁面必須實際存在，示範連結不得直接作為正式網站交付。"
+  }
+]

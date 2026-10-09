@@ -1,0 +1,38 @@
+---
+import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
+import DemoLayout from '../../layouts/DemoLayout.astro';
+import registry from '../../data/section-patterns.registry.json';
+import FeaturedWorkSection from '../../components/patterns/FeaturedWorkSection.astro';
+import TrustServiceSection from '../../components/patterns/TrustServiceSection.astro';
+import FooterPattern from '../../components/patterns/FooterPattern.astro';
+const base=import.meta.env.BASE_URL;
+---
+<DemoLayout title="區段組合樣板庫｜Section Patterns" description="學員不用理解每個功能元件，也能先看到已組合好的作品展示與服務信任區段。">
+ <main class="sp-gallery">
+  <DesignLibraryNav current="section-patterns" />
+  <header class="sp-intro"><p class="sp-kicker">SECTION PATTERN LIBRARY / V1</p><h1>不知道元件怎麼搭？<br/>先看完整的一段設計。</h1><p>這裡不是整套網站，也不是單顆按鈕。每個組合樣板都示範「一個區段」如何安排內容、信任與下一步。選接近需求的，再交給 AI 更換文字、順序、品牌色與元件。</p><a href={base+'layouts/'}>先看看整頁 Layout →</a></header>
+  <nav class="sp-jump" aria-label="組合樣板目錄">{registry.map((x,i)=><a href={'#'+x.id}>{String(i+1).padStart(2,'0')} {x.title}</a>)}</nav>
+  <section class="sp-example" id="featured-work"><div class="sp-meta"><span>01 / FEATURED WORK</span><h2>{registry[0].title}</h2><p>{registry[0].purpose}</p><small>適合：{registry[0].bestFor.join('／')}</small></div>
+   <div class="sp-preview"><FeaturedWorkSection title="最近整理的作品與專題" description="由讀者最容易理解的三項代表內容開始，逐步認識作者的興趣與方法。" items={[{title:'專題文章展示',description:'示範如何介紹一篇具代表性的長文或系列內容。'},{title:'創作計畫展示',description:'示範作品緣起、採用方法與最終呈現方式。'},{title:'工具與資源整理',description:'示範可持續維護、方便訪客探索的內容集合。'}]} demo/></div>
+   <div class="sp-guidance"><h3>這段設計適合放在哪裡？</h3><p>首頁第一段自我介紹之後，或專業介紹與文章列表之間。可以改成兩欄或三欄，不必擁有客戶專案才能使用。</p><h3>要準備什麼？</h3><p>真實作品名稱、簡短說明；作品網址和授權圖片為選填。沒有資料時請保持示範註記。</p><p><strong>組成元件：</strong>{registry[0].blocks.join(' + ')}</p></div>
+  </section>
+  <section class="sp-example" id="trust-service-path"><div class="sp-meta"><span>02 / TRUST & SERVICE</span><h2>{registry[1].title}</h2><p>{registry[1].purpose}</p><small>適合：{registry[1].bestFor.join('／')}</small></div>
+   <div class="sp-preview"><TrustServiceSection title="先了解服務，再決定要不要聯繫" description="清楚說明適合的需求、服務方式和個人的選擇權，比迫切催促預約更重要。" suitable={['希望先理解合作方式與內容的人','願意確認自己的期待與服務界線的人']} notSuitable={['需要緊急或立即專業介入的人','期待以一般介紹取代醫療診斷的人']} notice="此處僅示範資訊架構；正式網站請依服務領域確認限制與適用規範。" format="服務形式待設定" demo/></div>
+   <div class="sp-guidance"><h3>這段設計適合放在哪裡？</h3><p>服務介紹之後、聯絡入口之前。沒有實際資格與預約資訊時，先呈現服務界線，不建立假的送出按鈕。</p><h3>要準備什麼？</h3><p>服務介紹、適合與不適合情況；專業資格、政策和聯絡方式必須來自本人真實資料。</p><p><strong>組成元件：</strong>{registry[1].blocks.join(' + ')}</p></div>
+  </section>
+  <section class="sp-example" aria-labelledby="footer-patterns-title">
+   <div class="sp-meta"><span>03–05 / FOOTER PATTERNS</span><h2 id="footer-patterns-title">完整頁腳的三種組合方式</h2><p>頁腳不是只放網站名稱。你可以安排品牌說明、兩到三欄選單、社群與 RSS，再在最底部放版權、隱私權和條款連結。</p><small>示範連結不是已設置的正式服務，請交由 AI 替換成真實路由。</small></div>
+   {([{id:'footer-minimal',variant:'minimal',description:'適合內容精簡的個人品牌網站：品牌介紹、少量導覽、底部法律資訊。'},{id:'footer-editorial',variant:'editorial',description:'適合部落格與內容創作者：按內容主題分組、多欄連結、社群、RSS 與隱私權。'},{id:'footer-professional',variant:'professional',description:'適合個人專業服務：服務、關於、聯絡三大類，加上底部版權與條款。'}] as const).map((item,i)=><div class="sp-footer-example" id={item.id}>
+    <header><p class="sp-kicker">FOOTER PATTERN / 0{i+3}</p><h3>{registry[i+2].title}</h3><p>{item.description}</p></header>
+    <div class="sp-preview"><FooterPattern variant={item.variant}/></div>
+   </div>)}
+   <p id="footer-legal-demo" class="sp-legal-disclaimer">頁腳範例中的「隱私權」與「使用條款」是展示標籤，正式網站必須連到已撰寫、可閱讀的真實頁面。</p>
+   <div class="sp-guidance"><h3>要準備哪些資料？</h3><p>網站／品牌名稱、簡短定位、各欄選單與有效網址、社群連結，以及適合自身網站的隱私權或法律說明。沒有資料的欄位可以直接隱藏。</p><p><strong>底層元件：</strong>SiteFooter + SocialLinks</p></div>
+  </section>
+  <section class="sp-outro"><h2>看到喜歡的區段後，可以怎麼告訴 AI？</h2><p>「我選的是＿＿ Layout，請在首頁的＿＿位置加入『＿＿組合樣板』。保留我的品牌色與文章／服務結構，替換成我的真實內容。先做 PR 預覽，等我確認再合併。」</p><a href={base+'starter/'}>回到網站規劃器 →</a></section>
+ </main>
+</DemoLayout>
+<style>
+.sp-gallery{max-width:1260px;margin:auto;padding:36px clamp(18px,4vw,52px) 100px}.sp-intro{padding:50px 0 60px;max-width:850px}.sp-intro h1{font-size:clamp(34px,5vw,64px);line-height:1.17;margin:15px 0 24px}.sp-intro>p{max-width:75ch;color:var(--muted,#615c54)}.sp-kicker,.sp-meta>span{font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--accent,#9a3b2e)}.sp-jump{display:flex;gap:14px;flex-wrap:wrap;padding:18px 0 32px;border-top:1px solid var(--line,#ddd6c8)}.sp-jump a{padding:10px 16px;border:1px solid var(--line,#ddd6c8);border-radius:6px;text-decoration:none}.sp-example{margin:30px 0 75px}.sp-meta{padding:0 0 24px}.sp-meta h2{margin:12px 0 8px;font-size:clamp(24px,3.5vw,38px)}.sp-meta p{max-width:70ch}.sp-meta small{color:var(--muted,#615c54)}.sp-preview{border:1px solid var(--line,#ddd6c8);border-radius:16px;background:var(--surface,#fffdf8);overflow:hidden}.sp-guidance{padding:26px 8px;max-width:800px}.sp-guidance h3{margin:18px 0 3px;font-size:18px}.sp-guidance p{margin:3px 0}.sp-outro{border-top:1px solid var(--line,#ddd6c8);padding:45px 0}.sp-outro>p{max-width:780px}.sp-gallery a:focus-visible{outline:3px solid var(--accent,#9a3b2e);outline-offset:3px}
+.sp-footer-example{margin:38px 0 52px;scroll-margin-top:22px}.sp-footer-example header{margin-bottom:16px}.sp-footer-example h3{font-size:clamp(22px,2.8vw,30px);margin:6px 0}.sp-footer-example header p:last-child{margin:0;color:var(--muted,#615c54)}.sp-legal-disclaimer{font-size:14px;color:var(--muted,#615c54)}
+</style>

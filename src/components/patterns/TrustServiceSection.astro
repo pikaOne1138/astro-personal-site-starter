@@ -1,0 +1,30 @@
+---
+import ServiceFit from '../blocks/ServiceFit.astro';
+import TrustInfo from '../blocks/TrustInfo.astro';
+import CTASection from '../blocks/CTASection.astro';
+interface Props {
+ eyebrow?:string;title:string;description:string;
+ suitable:string[];notSuitable?:string[];notice?:string;
+ professionalName?:string;credentials?:string[];areas?:string[];format?:string;policy?:string;
+ action?:{label:string;href:string};demo?:boolean;
+}
+const {eyebrow='HOW WE WORK',title,description,suitable,notSuitable=[],notice,professionalName,credentials=[],areas=[],format,policy,action,demo=false}=Astro.props;
+const safe=(href?:string)=>href&&(/^(https:\/\/|\/|#)/.test(href))?href:undefined;
+---
+<section class="sp-trust" aria-label={title}>
+ <header class="sp-trust__heading"><p class="sp-trust__eyebrow">{eyebrow}</p><h2>{title}</h2><p>{description}</p></header>
+ {demo&&<p class="sp-trust__note">示範內容｜正式站請填入真實服務、資格與聯絡方式</p>}
+ <div class="sp-trust__grid">
+  <ServiceFit suitable={suitable} notSuitable={notSuitable} notice={notice} title="這樣的合作適合誰？"/>
+  <TrustInfo professionalName={professionalName} credentials={credentials} areas={areas} format={format} policy={policy} notice={demo?'這是網站組合樣板，並未提供真實服務或預約。':undefined}/>
+ </div>
+ {action&&safe(action.href)&&<CTASection title="下一步，先了解合作方式" description="確認適合度與服務資訊後，再決定是否聯繫。" action={action.label} href={action.href}/>}
+</section>
+<style>
+.sp-trust{width:min(100%,1120px);margin:auto;padding:clamp(28px,6vw,80px) clamp(18px,3vw,36px);color:var(--text,#1f1d1a)}
+.sp-trust__heading{max-width:710px;margin-bottom:30px}.sp-trust__heading h2{font-size:clamp(28px,4vw,48px);line-height:1.22;margin:8px 0}.sp-trust__heading>p:last-child{color:var(--muted,#605c55)}
+.sp-trust__eyebrow{font-size:12px;letter-spacing:.13em;font-weight:700;color:var(--accent,#9a3b2e)}.sp-trust__note{font-size:13px;color:var(--muted,#605c55)}
+.sp-trust__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:start}
+.sp-trust__grid>*{min-width:0}
+@media(max-width:760px){.sp-trust__grid{grid-template-columns:1fr}}
+</style>
