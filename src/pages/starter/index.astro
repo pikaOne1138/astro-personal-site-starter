@@ -34,7 +34,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 
 <section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>勾選要保留的頁面，改名稱與順序。未啟用的頁面不會出現在建議選單。</p></div></div>
 <div class="navigation-builder">
-  <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。自訂頁面可刪除，預設頁面可取消勾選。</p></div>
+  <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
   <aside class="navigation-preview"><p class="eyebrow">NAVIGATION PREVIEW</p><strong id="preview-name">我的個人網站</strong><div id="preview-menu"></div><div class="cta-field"><label for="cta-target">主要按鈕前往</label><select id="cta-target" name="ctaTarget"></select><label for="cta-label">按鈕文字</label><input name="ctaLabel" id="cta-label" maxlength="24" value="閱讀文章"/></div></aside>
 </div>
 </section>
@@ -102,14 +102,18 @@ function syncNav(){
  nav=orderedNav();renderNav();
 }
 function shiftItem(id:string,delta:number){
- const ordered=orderedNav(),current=ordered.find(x=>x.id===id);
- if(!current)return;
- const siblings=ordered.filter(x=>(x.parentId||'')===(current.parentId||''));
- const index=siblings.findIndex(x=>x.id===id),next=siblings[index+delta];
- if(!next)return;
- const a=ordered.findIndex(x=>x.id===id),b=ordered.findIndex(x=>x.id===next.id);
- [ordered[a],ordered[b]]=[ordered[b],ordered[a]];
- nav=ordered;syncNav();
+ const current=nav.find(x=>x.id===id);if(!current)return;
+ const siblings=nav.filter(x=>(x.parentId||'')===(current.parentId||''));
+ const index=siblings.findIndex(x=>x.id===id),other=siblings[index+delta];if(!other)return;
+ // Move the entire parent subtree instead of swapping two isolated rows.
+ const ordered=orderedNav();
+ const block=(item:typeof current)=>[item,...ordered.filter(x=>x.parentId===item.id)];
+ const first=block(current),second=block(other);
+ const remaining=ordered.filter(x=>!first.includes(x)&&!second.includes(x));
+ const a=ordered.findIndex(x=>x.id===current.id),b=ordered.findIndex(x=>x.id===other.id);
+ const firstPosition=Math.min(a,b);
+ remaining.splice(firstPosition,0,...(delta>0?second:first),...(delta>0?first:second));
+ nav=remaining;syncNav();
 }
 function indentItem(id:string){
  const ordered=orderedNav(),i=ordered.findIndex(x=>x.id===id),item=ordered[i];
@@ -149,10 +153,10 @@ function moveItem(id:string,targetId:string){
 }
 function removeCustom(id:string){
  const item=nav.find(x=>x.id===id);
- if(!item||!id.startsWith('page-custom-'))return;
+ if(!item)return;
  const children=nav.filter(x=>x.parentId===id);
  const usedByPattern=Array.from(document.querySelectorAll<HTMLElement>('.pattern-option')).some(box=>box.querySelector<HTMLInputElement>('.pattern-choice')?.checked&&box.querySelector<HTMLSelectElement>('.pattern-page')?.value===id);
- if((children.length||usedByPattern)&&!window.confirm('刪除這個頁面會讓其子選單回到第一層，並清除以它為目標的組合樣板選擇。確定刪除嗎？'))return;
+ if(!window.confirm('要刪除「'+item.label+'」嗎？其子選單會移到第一層，引用此頁的組合樣板會取消。'))return;
  for(const child of children)child.parentId=undefined;
  for(const box of document.querySelectorAll<HTMLElement>('.pattern-option')){
   if(box.querySelector<HTMLSelectElement>('.pattern-page')?.value===id)box.querySelector<HTMLInputElement>('.pattern-choice')!.checked=false;
@@ -160,7 +164,7 @@ function removeCustom(id:string){
  nav=nav.filter(x=>x.id!==id);
  if(target.value===id)target.value='';
  syncNav();
- status.textContent='已刪除自訂頁面，請確認導航與主要按鈕目標。';
+ status.textContent='已刪除頁面，請確認導航與主要按鈕目標。';
 }
 function renderNav(){
  rows.replaceChildren();nav=orderedNav();
@@ -185,7 +189,7 @@ function renderNav(){
   action('↓','下移',()=>shiftItem(n.id,1));
   action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||!n.enabled||i===0);
   action('←','提升至第一層',()=>outdentItem(n.id),!n.parentId);
-  if(n.id.startsWith('page-custom-'))action('×','刪除自訂頁面',()=>removeCustom(n.id));
+  action('×','刪除頁面',()=>removeCustom(n.id));
   row.append(handle,check,label,tools);
   row.addEventListener('dragstart',event=>{event.dataTransfer?.setData('text/plain',n.id);row.classList.add('is-dragging')});
   row.addEventListener('dragend',()=>row.classList.remove('is-dragging'));
