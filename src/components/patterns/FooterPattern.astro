@@ -1,0 +1,28 @@
+---
+import SiteFooter from '../blocks/SiteFooter.astro';
+interface Props {variant:'minimal'|'editorial'|'professional'}
+const {variant}=Astro.props;
+const demoLinks=[{label:'網站介紹',href:'#footer-pattern-demo'},{label:'文章探索',href:'#footer-pattern-demo'}];
+---
+<div class="footer-pattern" id={variant==='minimal'?'footer-pattern-demo':undefined}>
+ {variant==='minimal'&&<SiteFooter variant="minimal" eyebrow="INDEPENDENT CREATOR" brand="留白筆記"
+ description="一個整理閱讀、日常與創作思考的小地方。" links={demoLinks}
+ copyright="© 2026 留白筆記 · DEMO"
+ legalLinks={[{label:'隱私權說明（示範）',href:'#footer-legal-demo'}]}/>}
+ {variant==='editorial'&&<SiteFooter variant="editorial" eyebrow="READ / EXPLORE / CONNECT" brand="讀者通信"
+ description="不只分享最新文章，也讓第一次到訪的人找到主題、精選內容與作者。"
+ groups={[{title:'閱讀',links:[{label:'最新文章',href:'#footer-pattern-demo'},{label:'主題分類',href:'#footer-pattern-demo'},{label:'年度回顧',href:'#footer-pattern-demo'}]},
+ {title:'認識',links:[{label:'關於作者',href:'#footer-pattern-demo'},{label:'合作方式',href:'#footer-pattern-demo'}]},
+ {title:'追蹤',links:[{label:'文章訂閱',href:'#footer-pattern-demo'},{label:'聯絡入口',href:'#footer-pattern-demo'}]}]}
+ socialLinks={[{platform:'github',href:'https://github.com/pikaOne1138/astro-personal-site-starter',label:'範例專案'}]}
+ rssHref={import.meta.env.BASE_URL+'rss.xml'} copyright="© 2026 讀者通信 · DEMO"
+ legalLinks={[{label:'隱私權說明（示範）',href:'#footer-legal-demo'}]}/>}
+ {variant==='professional'&&<SiteFooter variant="professional" eyebrow="WORK WITH CLARITY" brand="清晰工作室"
+ description="清楚介紹可以提供的專業協助、合作流程與資訊界線。這裡並非實際服務或預約入口。"
+ groups={[{title:'專業服務',links:[{label:'服務概覽',href:'#footer-pattern-demo'},{label:'適合度說明',href:'#footer-pattern-demo'},{label:'合作流程',href:'#footer-pattern-demo'}]},
+ {title:'關於我們',links:[{label:'團隊介紹',href:'#footer-pattern-demo'},{label:'專業文章',href:'#footer-pattern-demo'}]},
+ {title:'聯絡與資訊',links:[{label:'聯絡說明',href:'#footer-pattern-demo'},{label:'常見問題',href:'#footer-pattern-demo'}]}]}
+ legalLinks={[{label:'隱私權說明（示範）',href:'#footer-legal-demo'},{label:'使用條款（示範）',href:'#footer-legal-demo'}]}
+ copyright="© 2026 清晰工作室 · 網站排版展示"/>}
+</div>
+<style>.footer-pattern{width:100%;overflow:hidden}.footer-pattern :global(.site-footer){min-height:270px}</style>
