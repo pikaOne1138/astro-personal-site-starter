@@ -19,7 +19,8 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 ## Required design adaptation — phase 2
 1. Review selected `src/pages/layouts/[slug].astro` actual direction, DOM and `public/layout-library.css`.
 2. Preserve its hierarchy, Hero proportions, content order, imagery treatment and mobile restacking; do not replace all 12 with the same hero and cards.
-3. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
+3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。既有 StarterPlan v1 和 `scripts/export-starter.mjs` 尚未原生支援 Pattern 清單，須在 AI 組裝階段明確處理，不能聲稱匯出器已自動套用。
+4. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
 4. Map brand primary/accent/background/text/focus tokens while maintaining contrast (especially on buttons). Don't blindly recolor supplied prototype.
 5. Link all selected pages; 404, RSS and sitemap should use actual site URLs. No fake submit/booking confirmation or invented testimonials.
 6. Build and visually QA widths 1440,1280,768,390; compare reference layout screenshot against output, not just CI.
