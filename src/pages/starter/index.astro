@@ -57,12 +57,12 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 {patternRegistry.filter(x=>x.id.startsWith('footer-')).map(x=><label><input type="radio" name="footerPattern" value={x.id}/><span><strong>{x.title}</strong><small>{x.purpose}</small></span></label>)}
 </fieldset>
 <div class="footer-picker__visual">
-<p class="eyebrow">FOOTER PREVIEW / 示意預覽</p>
+<p class="eyebrow">FOOTER PREVIEW / 排版結構示意</p>
 <div class="footer-picker__stage" id="footer-preview">
 <div class="footer-mock"><div class="footer-mock__identity"><span class="footer-mock__eyebrow">YOUR PERSONAL SITE</span><strong id="footer-preview-brand">我的個人網站</strong><p id="footer-preview-tagline">一個可以慢慢整理內容的地方。</p></div><div class="footer-mock__columns" id="footer-preview-columns"><div><b>網站導覽</b><span>文章</span><span>關於我</span></div></div></div>
 <div class="footer-mock__bottom"><small id="footer-preview-copyright">© 2026 我的個人網站</small><span id="footer-preview-legal">隱私權／法律頁面未設定，正式網站不顯示假連結</span></div>
 </div>
-<p class="footer-picker__caption" id="footer-preview-caption">展示的是頁腳內容結構，品牌文字會依上方設定更新；正式站仍需填入真實網址。</p>
+<p class="footer-picker__caption" id="footer-preview-caption">展示頁腳的欄位與結構，不代表固定配色；顏色會依上方品牌主色與後續 Theme Tokens 調整。正式站仍需填入真實網址。</p>
 <a href={base+'section-patterns/#footer-minimal'} target="_blank" rel="noopener noreferrer">查看三種頁腳完整展示 ↗</a>
 </div>
 </div>
@@ -112,6 +112,7 @@ function renderFooterPreview(){
  const choice=form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value||'';
  const stage=document.querySelector<HTMLElement>('#footer-preview')!;
  stage.dataset.variant=choice||'default';
+ stage.style.setProperty('--preview-brand',form.querySelector<HTMLInputElement>('#brand-color')?.value||'#9A3B2E');
  const brand=form.querySelector<HTMLInputElement>('[name="siteName"]')!.value.trim()||'我的個人網站';
  document.querySelector<HTMLElement>('#footer-preview-brand')!.textContent=brand;
  document.querySelector<HTMLElement>('#footer-preview-tagline')!.textContent=form.querySelector<HTMLInputElement>('[name="tagline"]')!.value.trim()||'這是我的網站';
@@ -122,7 +123,7 @@ function renderFooterPreview(){
  choice==='footer-editorial'?[{title:'閱讀',items:['最新文章','主題分類']},{title:'認識',items:['關於作者','聯絡']},{title:'追蹤',items:['RSS 訂閱','社群']}]:
  [{title:'網站導覽',items:nav.filter(x=>x.enabled).slice(0,3).map(x=>x.label)}];
  for(const group of groupData){const div=document.createElement('div'),title=document.createElement('b');title.textContent=group.title;div.append(title);for(const text of group.items){const span=document.createElement('span');span.textContent=text;div.append(span)}columns.append(div)}
- document.querySelector<HTMLElement>('#footer-preview-caption')!.textContent=choice?'此為'+(choice==='footer-professional'?'專業服務':choice==='footer-editorial'?'內容型':'簡約型')+'頁腳的版面示意，尚未連結真實法律頁面與社群。':'尚未選擇頁腳樣式；右側先顯示基本頁腳結構。';
+ document.querySelector<HTMLElement>('#footer-preview-caption')!.textContent=choice?'此為'+(choice==='footer-professional'?'專業服務':choice==='footer-editorial'?'內容型':'簡約型')+'頁腳的排版結構示意，非固定配色；正式站仍須設定真實法律頁面與社群連結。':'尚未選擇頁腳樣式；右側先顯示基本頁腳結構。';
 }
 document.querySelectorAll<HTMLInputElement>('input[name="footerPattern"]').forEach(input=>input.addEventListener('change',()=>{renderFooterPreview();showPlan()}));
 const value=(name:string)=> (form.querySelector<HTMLInputElement>(`[name="${name}"]:checked`)?.value||'');
