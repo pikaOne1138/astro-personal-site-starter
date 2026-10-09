@@ -36,7 +36,7 @@ try {
    await page.close();
   }
  }
- const summary={total:rows.length,expected:routes.length*widths,failedHttp:rows.filter(x=>x.status!==200),overflow:rows.filter(x=>x.overflow),imageFailures:rows.filter(x=>x.images.length),runtimeErrors:rows.filter(x=>x.pageErrors.length)};
+ const summary={total:rows.length,expected:routes.length*widths.length,failedHttp:rows.filter(x=>x.status!==200),overflow:rows.filter(x=>x.overflow),imageFailures:rows.filter(x=>x.images.length),runtimeErrors:rows.filter(x=>x.pageErrors.length)};
  writeFileSync(dir+'/results.json',JSON.stringify({summary,rows},null,2));
  console.log('Layout screenshot audit:',JSON.stringify(Object.fromEntries(Object.entries(summary).map(([k,v])=>[k,Array.isArray(v)?v.length:v]))));
  if(rows.length!==48||summary.failedHttp.length||summary.overflow.length||summary.runtimeErrors.length)process.exitCode=1;

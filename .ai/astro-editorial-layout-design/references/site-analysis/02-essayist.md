@@ -1,6 +1,6 @@
 # 02 長文書房 `es-`（知識／作家）
 
-來源：`src/pages/directions/knowledge/essayist.astro`
+來源：`src/pages/layouts/essayist/index.astro`
 
 ## [OBS] 原始碼事實
 

@@ -1,6 +1,6 @@
 # 08 身體與節律 `so-`（助人／身體工作）
 
-來源：`src/pages/directions/care/somatic.astro`
+來源：`src/pages/layouts/somatic/index.astro`
 
 ## [OBS] 原始碼事實
 

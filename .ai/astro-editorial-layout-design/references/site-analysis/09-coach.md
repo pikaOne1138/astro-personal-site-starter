@@ -1,6 +1,6 @@
 # 09 實作型教練 `ma-`（助人／行動教練）
 
-來源：`src/pages/directions/care/coach.astro`
+來源：`src/pages/layouts/coach/index.astro`
 
 ## [OBS] 原始碼事實
 

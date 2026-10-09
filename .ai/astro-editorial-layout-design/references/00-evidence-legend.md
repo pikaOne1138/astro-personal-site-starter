@@ -4,7 +4,7 @@
 
 | 標記 | 意義 | 可信度 |
 |---|---|---|
-| **[OBS]** | 直接讀自十款原始碼（`src/pages/directions/**.astro`、`src/layouts/DirectionLayout.astro`）。會附 class、CSS 屬性與數值。 | 事實 |
+| **[OBS]** | 直接讀自十款原始碼（`src/pages/layouts/*/index.astro`、`src/layouts/DirectionLayout.astro`）。會附 class、CSS 屬性與數值。 | 事實 |
 | **[MEAS]** | 用 `scripts/audit.mjs`（Playwright + Chromium 1200）在 `astro preview` 上於 1440／1280／768／390 實測的渲染結果。 | 事實（量測當下） |
 | **[INF]** | 從 [OBS]/[MEAS] 歸納出的規律或設計原則。有可能是巧合，已標註支持它的案例數。 | 推論 |
 | **[NEW]** | 本 Skill 額外提出的建議（含閾值、配方、驗收標準）。**十款原始碼中不存在或不遵守。** | 建議 |
@@ -14,16 +14,16 @@
 
 | # | 名稱 | class 前綴 | 檔案 |
 |---|---|---|---|
-| 01 | 田野筆記 | `fn-` | `src/pages/directions/knowledge/field-notes.astro` |
-| 02 | 長文書房 | `es-` | `.../knowledge/essayist.astro` |
-| 03 | 學習實驗室 | `ll-` | `.../knowledge/learning-lab.astro` |
-| 04 | 收藏者目錄 | `cu-` | `.../knowledge/curator.astro` |
-| 05 | 聲音通信 | `ra-` | `.../knowledge/radio-letter.astro` |
-| 06 | 清晰臨床 | `cl-` | `.../care/clinician.astro` |
-| 07 | 溫柔陪伴 | `co-` | `.../care/companion.astro` |
-| 08 | 身體與節律 | `so-` | `.../care/somatic.astro` |
-| 09 | 實作型教練 | `ma-` | `.../care/coach.astro` |
-| 10 | 共好工作室 | `cg-` | `.../care/collective.astro` |
+| 01 | 田野筆記 | `fn-` | `src/pages/layouts/field-notes/index.astro` |
+| 02 | 長文書房 | `es-` | `src/pages/layouts/essayist/index.astro` |
+| 03 | 學習實驗室 | `ll-` | `src/pages/layouts/learning-lab/index.astro` |
+| 04 | 收藏者目錄 | `cu-` | `src/pages/layouts/curator/index.astro` |
+| 05 | 聲音通信 | `ra-` | `src/pages/layouts/radio-letter/index.astro` |
+| 06 | 清晰臨床 | `cl-` | `src/pages/layouts/clinician/index.astro` |
+| 07 | 溫柔陪伴 | `co-` | `src/pages/layouts/companion/index.astro` |
+| 08 | 身體與節律 | `so-` | `src/pages/layouts/somatic/index.astro` |
+| 09 | 實作型教練 | `ma-` | `src/pages/layouts/coach/index.astro` |
+| 10 | 共好工作室 | `cg-` | `src/pages/layouts/collective/index.astro` |
 
 共用層 [OBS]：`src/layouts/DirectionLayout.astro` 只提供 reset（`box-sizing:border-box`、`img{display:block;max-width:100%}`）、
 `body{min-width:320px;line-height:1.5}`、`:focus-visible{outline:3px solid #d34f38;outline-offset:4px}`、skip link、
@@ -53,7 +53,7 @@
 - 390px 下可操作元素 <44px 者每頁 7–13 個，<24px 者每頁 4–11 個 [DEFECT]。
 - reduced-motion 下仍在跑的無限動畫：0（`so-breathe`、`ra-pulse` 被 layout 的全域規則壓成 0.01ms）。
 
-量測重現：`node scripts/audit.mjs --base http://localhost:4321 --paths /directions/care/coach/`。
+量測重現：`node scripts/audit.mjs --base http://localhost:4321 --paths /layouts/coach/`。
 閾值如何對應扣分，見 `checklists/scoring.md`。
 
 ## 讀法

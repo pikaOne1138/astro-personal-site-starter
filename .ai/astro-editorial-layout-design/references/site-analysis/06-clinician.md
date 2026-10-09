@@ -1,6 +1,6 @@
 # 06 清晰臨床 `cl-`（助人／專業說明書）
 
-來源：`src/pages/directions/care/clinician.astro`
+來源：`src/pages/layouts/clinician/index.astro`
 
 ## [OBS] 原始碼事實
 

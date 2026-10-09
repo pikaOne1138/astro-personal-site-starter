@@ -42,11 +42,20 @@ try {
       const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
       if(config.kind!==kind||config.layoutSlug!==layout.slug)throw Error('Layout selection lost: '+layout.slug);
       if(process.env.FULL_STUDENT_PACK_BUILD==='1' && (layout===layouts.find(x=>x.kind==='knowledge')||layout===layouts.find(x=>x.kind==='helper'))){
+        writeFileSync(join(site,'src/content/articles/qa-public.md'),'---\ntitle: QA public\ndescription: Public regression fixture\npublishedAt: 2026-10-09\ndraft: false\n---\nPublic regression content.');
+        writeFileSync(join(site,'src/content/articles/qa-draft.md'),'---\ntitle: QA draft\ndescription: Draft regression fixture\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft regression content.');
         execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
         for(const file of ['rss.xml','sitemap.xml','robots.txt'])if(!existsSync(join(site,'dist',file)))throw Error('Missing generated SEO endpoint '+file+' for '+kind);
         const sitemap=readFileSync(join(site,'dist/sitemap.xml'),'utf8');
         if(!sitemap.includes('https://example.com'))throw Error('Unexpected sitemap site URL');
+        const rss=readFileSync(join(site,'dist/rss.xml'),'utf8');
+        const robots=readFileSync(join(site,'dist/robots.txt'),'utf8');
+        if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid robots lines');
+        if(rss.includes('qa-draft')||sitemap.includes('qa-draft')||existsSync(join(site,'dist/articles/qa-draft/index.html')))throw Error('Draft leaked');
+        if(kind==='knowledge'&&(!rss.includes('qa-public')||!sitemap.includes('qa-public')||!existsSync(join(site,'dist/articles/qa-public/index.html'))))throw Error('Public article missing');
+        execFileSync(process.execPath,[join(root,'scripts/verify-v2-8-output.mjs'),'--student-site',site],{stdio:'inherit'});
+
       }
     }
   } finally { rmSync(output,{recursive:true,force:true}); }

@@ -1,6 +1,6 @@
 # 10 共好工作室 `cg-`（助人／團體）
 
-來源：`src/pages/directions/care/collective.astro`
+來源：`src/pages/layouts/collective/index.astro`
 
 ## [OBS] 原始碼事實
 

@@ -1,6 +1,22 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+const studentArg=process.argv.indexOf('--student-site');
+if(studentArg!==-1){
+ const root=process.argv[studentArg+1];
+ if(!root)throw Error('Usage: --student-site /absolute/path/to/generated-site');
+ const config=JSON.parse(readFileSync(join(root,'site.config.json'),'utf8'));
+ const output=join(root,'dist');
+ for(const path of ['index.html','404.html','rss.xml','sitemap.xml','robots.txt',...config.navigation.map(x=>x.id+'/index.html')])
+  if(!existsSync(join(output,path)))throw Error('Student build missing: '+path);
+ const read=path=>readFileSync(join(output,path),'utf8');
+ const robots=read('robots.txt');
+ if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid student robots.txt lines');
+ if(!read('rss.xml').includes('<rss version="2.0">')||!read('sitemap.xml').includes('<urlset'))throw Error('Invalid student feed/sitemap');
+ console.log('Independent student output checks passed: routes, RSS, sitemap, robots lines. Visual/hosting verification remains required.');
+ process.exit(0);
+}
+
 const dist = new URL('../dist/', import.meta.url);
 const content = path => readFileSync(new URL(path, dist), 'utf8');
 const required = ['index.html', 'robots.txt', 'rss.xml', 'sitemap.xml', '404.html', 'knowledge/paper/articles/homepage-is-a-lobby/index.html'];

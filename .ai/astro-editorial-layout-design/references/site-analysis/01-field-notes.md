@@ -1,6 +1,6 @@
 # 01 田野筆記 `fn-`（知識／研究者）
 
-來源：`src/pages/directions/knowledge/field-notes.astro`
+來源：`src/pages/layouts/field-notes/index.astro`
 
 ## [OBS] 原始碼事實
 
