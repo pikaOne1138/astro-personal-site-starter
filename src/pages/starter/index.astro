@@ -1,7 +1,7 @@
 ---
 import directions from '../../data/layout-directions.json';
 import patternRegistry from '../../data/section-patterns.registry.json';
-import { starterPages, starterThemeSeeds } from '../../data/starter-config';
+import { starterPages, starterThemeSeeds, starterThemePalettes } from '../../data/starter-config';
 const base=import.meta.env.BASE_URL;
 const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'},{id:'morning',title:'晨光',description:'溫暖與柔和留白'},{id:'studio',title:'靜室',description:'清晰且精準的格線'},{id:'botanical',title:'植感',description:'自然與舒緩的色彩'}];
 ---
@@ -29,7 +29,11 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先挑一個視覺起點，再調整自己的主色。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
-<div class="color-row"><label for="brand-color">品牌主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output><span class="muted">這裡示範主色；正式組裝仍需檢查背景、文字與 CTA 的對比。</span></div>
+<div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><output id="palette-primary-hex">#9A3B2E</output></label>
+<label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><output id="palette-secondary-hex">#806A54</output></label>
+<label class="palette-field" for="palette-accent"><span>強調色</span><input id="palette-accent" data-palette="accent" type="color" value="#C58D63"/><output id="palette-accent-hex">#C58D63</output></label>
+<label class="palette-field" for="palette-background"><span>背景色</span><input id="palette-background" data-palette="background" type="color" value="#F8F5EF"/><output id="palette-background-hex">#F8F5EF</output></label>
+<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><output id="palette-text-hex">#28231F</output></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
 <section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
@@ -75,10 +79,23 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </form>
 </main>
 <script>
-import { starterPages, starterThemeSeeds, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
+import { starterPages, starterThemeSeeds, starterThemePalettes, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
 import directions from '../../data/layout-directions.json';
 import patternRegistry from '../../data/section-patterns.registry.json';
 const form=document.querySelector<HTMLFormElement>('#starter-form')!;
+const paletteKeys=['primary','secondary','accent','background','text'] as const;
+function currentPalette(){return Object.fromEntries(paletteKeys.map(key=>[key,document.querySelector<HTMLInputElement>('#palette-'+key)!.value.toUpperCase()])) as {primary:string;secondary:string;accent:string;background:string;text:string}}
+function paintPalette(){
+ const palette=currentPalette();
+ const legacy=document.querySelector<HTMLInputElement>('#brand-color')!;
+ legacy.value=palette.primary;
+ document.querySelector<HTMLElement>('#brand-hex')!.textContent=palette.primary;
+ const box=document.querySelector<HTMLElement>('#palette-live-preview')!;
+ for(const [key,val] of Object.entries(palette))box.style.setProperty('--palette-'+key,val);
+ for(const key of paletteKeys)document.querySelector<HTMLElement>('#palette-'+key+'-hex')!.textContent=palette[key];
+}
+document.querySelectorAll<HTMLInputElement>('[data-palette]').forEach(input=>input.addEventListener('input',()=>{paintPalette();renderFooterPreview();showPlan()}));
+
 const layoutOptions=Array.from(document.querySelectorAll<HTMLElement>('.layout-option'));
 const rows=document.querySelector<HTMLElement>('#nav-items')!;
 const menu=document.querySelector<HTMLElement>('#preview-menu')!;
@@ -112,7 +129,7 @@ function renderFooterPreview(){
  const choice=form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value||'';
  const stage=document.querySelector<HTMLElement>('#footer-preview')!;
  stage.dataset.variant=choice||'default';
- stage.style.setProperty('--preview-brand',form.querySelector<HTMLInputElement>('#brand-color')?.value||'#9A3B2E');
+ stage.style.setProperty('--preview-brand',currentPalette().primary);
  const brand=form.querySelector<HTMLInputElement>('[name="siteName"]')!.value.trim()||'我的個人網站';
  document.querySelector<HTMLElement>('#footer-preview-brand')!.textContent=brand;
  document.querySelector<HTMLElement>('#footer-preview-tagline')!.textContent=form.querySelector<HTMLInputElement>('[name="tagline"]')!.value.trim()||'這是我的網站';
@@ -264,14 +281,16 @@ function update(){
  const checked=form.querySelector<HTMLInputElement>('input[name="layout"]:checked');
  if(!checked||!eligible.some(e=>e.contains(checked))){const first=eligible[0]?.querySelector<HTMLInputElement>('input');if(first)first.checked=true}
  renderPatterns();
- color.value=starterThemeSeeds[value('theme') as StarterTheme];
+ const preset=starterThemePalettes[value('theme') as StarterTheme];
+ for(const key of paletteKeys)document.querySelector<HTMLInputElement>('#palette-'+key)!.value=preset[key];
+ paintPalette();
  document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();
  renderMenu();showPlan();
 }
 function plan():StarterPlan {
  const kind=value('kind') as StarterKind;
  return {version:1,kind,layoutSlug:value('layout'),visualTheme:value('theme') as StarterTheme,
- brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:color.value.toUpperCase(),tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value},
+ brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:currentPalette().primary,tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value,palette:currentPalette()},
  navigation:nav.map(x=>({...x})),
  sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
@@ -280,7 +299,7 @@ function plan():StarterPlan {
 function showPlan(){const p=plan();output.textContent=JSON.stringify(p,null,2)}
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
-color.addEventListener('input',()=>{document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();showPlan()});
+color.addEventListener('input',()=>{document.querySelector<HTMLInputElement>('#palette-primary')!.value=color.value;paintPalette();showPlan()});
 form.addEventListener('input',()=>{renderMenu();showPlan()});
 target.addEventListener('change',showPlan);
 document.querySelector<HTMLButtonElement>('#copy-plan')!.addEventListener('click',async()=>{
