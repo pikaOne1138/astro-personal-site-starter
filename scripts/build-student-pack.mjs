@@ -31,6 +31,7 @@ for (const path of [
   'public/layout-library.css',
   'public/editorial-recipes.css',
   'public/effects.css',
+  'public/layout-media-placeholder.svg',
   'public/v02.css',
   'public/effects-sample.svg',
   'public/robots.txt',
