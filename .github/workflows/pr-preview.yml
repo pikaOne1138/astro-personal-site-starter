@@ -44,6 +44,22 @@ jobs:
       - name: Install
         if: github.event.action != 'closed'
         run: npm install --no-audit --no-fund
+      - name: Build root-path visual audit source
+        if: github.event.action != 'closed'
+        env:
+          CF_PAGES_URL: https://example.com
+        run: npm run build
+      - name: Prepare Chromium for public QA gallery
+        if: github.event.action != 'closed'
+        run: |
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: Capture QA gallery from local build
+        if: github.event.action != 'closed'
+        env:
+          LAYOUT_QA_PUBLIC: '1'
+          LAYOUT_QA_OUT: .preview-qa/layouts
+        run: node scripts/qa-layout-screenshots.mjs
       - name: Build PR under its preview URL prefix
         if: github.event.action != 'closed'
         env:
@@ -51,6 +67,13 @@ jobs:
           ASTRO_SITE_URL: https://pikaone1138.github.io
         run: |
           ASTRO_BASE_PATH="/${{ github.event.repository.name }}/pr-preview/pr-${PR_NUMBER}" npm run build
+      - name: Include public layout QA gallery in PR artifact
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p dist/qa-layouts
+          cp -R .preview-qa/layouts/. dist/qa-layouts/
+          test -s dist/qa-layouts/index.html
+          test -s dist/qa-layouts/results.json
       - name: Upload built site
         if: github.event.action != 'closed'
         uses: actions/upload-artifact@v4
