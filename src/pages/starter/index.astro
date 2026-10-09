@@ -33,7 +33,17 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><output id="palette-secondary-hex">#806A54</output></label>
 <label class="palette-field" for="palette-accent"><span>強調色</span><input id="palette-accent" data-palette="accent" type="color" value="#C58D63"/><output id="palette-accent-hex">#C58D63</output></label>
 <label class="palette-field" for="palette-background"><span>背景色</span><input id="palette-background" data-palette="background" type="color" value="#F8F5EF"/><output id="palette-background-hex">#F8F5EF</output></label>
-<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><output id="palette-text-hex">#28231F</output></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
+<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><output id="palette-text-hex">#28231F</output></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><aside class="palette-resource-links" aria-labelledby="palette-resource-title">
+<h3 id="palette-resource-title">不知道怎麼配色？先到這三個工具看看</h3>
+<p>找到喜歡的色彩後，把 HEX 色碼帶回上方色盤，再確認背景、文字和按鈕是否清楚易讀。</p>
+<div class="palette-resource-grid">
+<a href="https://coolors.co/" target="_blank" rel="noopener noreferrer"><strong>Coolors ↗</strong><span>快速產生五色組合，可鎖定喜歡的顏色再重新搭配。</span></a>
+<a href="https://www.happyhues.co/" target="_blank" rel="noopener noreferrer"><strong>Happy Hues ↗</strong><span>不只看色票，還能看背景、標題、按鈕在真實版面中的搭配。</span></a>
+<a href="https://color.adobe.com/" target="_blank" rel="noopener noreferrer"><strong>Adobe Color ↗</strong><span>用色輪、照片建立配色，並檢查文字與背景對比。</span></a>
+</div>
+<p class="palette-resource-credit">參考整理：<a href="https://frankknow.com/color-palettes-generator/" target="_blank" rel="noopener noreferrer">犬哥網站〈21 個配色網站〉↗</a>。外部工具僅供靈感參考，不會自動讀取或套用配色。</p>
+</aside>
+<div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
 <section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
