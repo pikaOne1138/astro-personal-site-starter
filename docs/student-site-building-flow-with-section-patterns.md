@@ -1,4 +1,4 @@
-# 學員架站流程｜Section Patterns 納入版（2026-10-09）
+# 學員架站流程｜完整建站與測試流程（2026-10-09）
 
 ## 給學員看的說明
 
@@ -13,30 +13,13 @@
 7. **建立與驗收**：下載 Site Brief JSON（包含選取的 `sectionPatterns`、兩層 `navigation`、五色 `brand.palette` 等），交給 AI 依 `astro-site-assembly` 組裝獨立網站；Pattern 匯出屬待完成的組站起點，不代表已完成精緻內頁。透過 GitHub PR 預覽，並實際檢查 1440／1280／768／390。
 8. **發布與維護**：本人確認後才合併與部署。依 `astro-content-readiness` 檢查真實內容，依 `astro-navigation-tree-test` 安排真人尋找資訊測試；正式發布後，再使用 `astro-launch-health-check` 檢查上線健康狀態。接下來新增文章、修改區段和還原版本走內容發布、部署、維護 Skills。
 
-## 從犬哥網站研究借用的兩個教學重點（已轉譯為 Astro 流程）
+## 發布前後要確認的事
 
-### 一、先定網站目標，再決定技術與頁面
-
-犬哥網站的〈如何架設網站〉先要求釐清目標，再介紹網域、主機及平台。工作坊只借鑑**「需求先於工具」的順序**，不照搬 WordPress 或主機採購教學。
-
-學員在 Step 01 至少回答：
-- 網站的主要讀者是誰？
-- 希望訪客先閱讀、理解服務，還是前往聯絡？
-- 最少需要哪些真實內容，才能發布第一版？
-
-### 二、發布後還需要一張「搜尋與維護驗收表」
-
-犬哥網站的 Search Console 教學提醒：網站公開後還要處理搜尋引擎是否能找到與收錄。對本 Astro Starter，可在 `astro-starter-deploy`／`astro-content-publishing` 的發布驗收加入：
-
-- 確認網站網址、canonical、robots.txt、sitemap.xml 與 SSL 狀態；網址不是 `example.com`。
-- 文章型網站確認實際產生的文章列表、SEO 標題／描述及 Pagefind 索引，避免誤把 Demo 文章當正式內容。
-- 可選擇將正式網域新增至 Google Search Console、驗證網域所有權並送出 sitemap；**驗證／送出不代表保證收錄或排名**。
-- 記錄下次更新文章、檢查連結與備份的方式。
-
-來源：
-- https://frankknow.com/website-build-teach/
-- https://frankknow.com/wordpress-google-console/
-- 配色工具精選來源：https://frankknow.com/color-palettes-generator/
+- 網站要給誰看？希望訪客先閱讀、理解服務，還是聯絡你？正式發布前至少備好哪些真實內容？
+- 確認正式網址、HTTPS、canonical、robots.txt、sitemap.xml；不可沿用 `example.com`。
+- 文章型網站要檢查文章列表、標題與描述，以及 Pagefind 是否真的建立索引；勿將示範文章誤當正式內容。
+- 可以選擇設定 Google Search Console 並提交 sitemap，但這不代表保證被收錄或排名。
+- 記錄文章更新、連結檢查與備份方式；正式發布後使用上線健康檢查 Skill。
 
 ## 外部配色資源（放在規劃器 Step 02 底部）
 
