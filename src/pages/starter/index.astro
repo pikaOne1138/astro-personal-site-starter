@@ -1,8 +1,9 @@
 ---
 import directions from '../../data/layout-directions.json';
-import { starterPages, starterThemeSeeds } from '../../data/starter-config';
+import patternRegistry from '../../data/section-patterns.registry.json';
+import { starterPages, starterThemeSeeds, starterThemePalettes } from '../../data/starter-config';
 const base=import.meta.env.BASE_URL;
-const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'},{id:'morning',title:'晨光',description:'溫暖與柔和留白'},{id:'studio',title:'靜室',description:'清晰且精準的格線'},{id:'botanical',title:'植感',description:'自然與舒緩的色彩'}];
+const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'},{id:'morning',title:'晨光',description:'溫暖與柔和留白'},{id:'studio',title:'靜室',description:'清晰且精準的格線'},{id:'botanical',title:'植感',description:'自然與舒緩的色彩'},{id:'ocean',title:'海岸',description:'藍綠與清爽留白'},{id:'sand',title:'暖沙',description:'暖土與柔和中性色'},{id:'slate',title:'石板',description:'冷靜灰藍與清晰閱讀'},{id:'lavender',title:'暮紫',description:'霧紫與柔和灰調'}];
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -16,7 +17,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <body>
 <header class="planner-nav"><a href={base}>← 回設計展示總覽</a><span>WEBSITE / STARTER PLANNER</span></header>
 <main class="planner-wrap" id="main">
-<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是**規劃工具**，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
+<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是<strong>規劃工具</strong>，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
 
 <form id="starter-form">
 <section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先選最接近你想要的設計就好，不必一次決定所有細節。後續可以參考八款 Demo、12 款版型與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
@@ -25,28 +26,97 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 {directions.map((item,i)=><label class="layout-option" data-kind={item.kind}><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
 </div></section>
 
-<section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先挑一個視覺起點，再調整自己的主色。</p></div></div>
+<section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
-<div class="color-row"><label for="brand-color">品牌主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output><span class="muted">這裡示範主色；正式組裝仍需檢查背景、文字與 CTA 的對比。</span></div>
+<div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
+<label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
+<label class="palette-field" for="palette-accent"><span>強調色</span><input id="palette-accent" data-palette="accent" type="color" value="#C58D63"/><input id="palette-accent-hex" class="palette-hex-input" data-hex-for="accent" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="accent HEX 色碼" value="#C58D63"/></label>
+<label class="palette-field" for="palette-background"><span>背景色</span><input id="palette-background" data-palette="background" type="color" value="#F8F5EF"/><input id="palette-background-hex" class="palette-hex-input" data-hex-for="background" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="background HEX 色碼" value="#F8F5EF"/></label>
+<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><input id="palette-text-hex" class="palette-hex-input" data-hex-for="text" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="text HEX 色碼" value="#28231F"/></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><aside class="palette-resource-links" aria-labelledby="palette-resource-title">
+<h3 id="palette-resource-title">不知道怎麼配色？先到這三個工具看看</h3>
+<p>找到喜歡的色彩後，把 HEX 色碼帶回上方色盤，再確認背景、文字和按鈕是否清楚易讀。</p>
+<div class="palette-resource-grid">
+<a href="https://coolors.co/" target="_blank" rel="noopener noreferrer"><strong>Coolors ↗</strong><span>快速產生五色組合，可鎖定喜歡的顏色再重新搭配。</span></a>
+<a href="https://www.happyhues.co/" target="_blank" rel="noopener noreferrer"><strong>Happy Hues ↗</strong><span>不只看色票，還能看背景、標題、按鈕在真實版面中的搭配。</span></a>
+<a href="https://color.adobe.com/" target="_blank" rel="noopener noreferrer"><strong>Adobe Color ↗</strong><span>用色輪、照片建立配色，並檢查文字與背景對比。</span></a>
+</div>
+<p class="palette-resource-credit">外部工具僅供配色靈感參考，不會自動讀取或套用配色；仍請檢查實際文字與按鈕對比。</p>
+</aside>
+<div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
-<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>勾選要保留的頁面，改名稱與順序。未啟用的頁面不會出現在建議選單。</p></div></div>
+<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
 <div class="navigation-builder">
-  <div><h3>網站導覽</h3><div id="nav-items"></div><p class="muted">導覽通常保留 4–5 項。主要按鈕會指向其中一個已啟用頁面。</p></div>
+  <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
   <aside class="navigation-preview"><p class="eyebrow">NAVIGATION PREVIEW</p><strong id="preview-name">我的個人網站</strong><div id="preview-menu"></div><div class="cta-field"><label for="cta-target">主要按鈕前往</label><select id="cta-target" name="ctaTarget"></select><label for="cta-label">按鈕文字</label><input name="ctaLabel" id="cta-label" maxlength="24" value="閱讀文章"/></div></aside>
 </div>
 </section>
-<section class="step" aria-labelledby="step-output"><div class="step-head"><span>04</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="3" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea>
+<section class="step" aria-labelledby="step-patterns">
+<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
+<div class="pattern-options" id="pattern-options">
+{patternRegistry.filter(x=>!x.id.startsWith('footer-')).map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
+<label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.id==='featured-work'?'精選內容展示（文章／作品／專題）':x.title}</strong></label>
+<p>{x.id==='featured-work'?'適合首頁：先介紹這一區，再放 2–3 篇精選文章、作品或專題，最後提供「查看更多」入口。不是填數字或憑空聲稱成果。':x.purpose}</p>
+<p class="pattern-anatomy"><strong>這一段包含：</strong>{x.composition.join(' → ')}</p>
+<a class="pattern-example-link" href={base+'section-patterns/#'+x.id} target="_blank" rel="noopener noreferrer">查看完整區段與所需資料 ↗</a>
+<div class="pattern-config" hidden><label>放在哪頁<select class="pattern-page" aria-label={x.title+'要放在哪頁'}></select></label><label>放置位置<input class="pattern-position" maxlength="180" placeholder="例如：作者介紹之後" value="主要內容之後"/></label></div>
+</div>)}
+</div>
+<div class="footer-picker" aria-labelledby="footer-picker-title">
+<div class="footer-picker__intro"><h3 id="footer-picker-title">全站頁腳樣式</h3><p>頁腳會自動放在整站所有頁面的底部。只要選一種，不用選擇放哪頁；也可以選「不另外設定」，之後再調整。</p></div>
+<div class="footer-picker__layout">
+<fieldset class="footer-picker__choices"><legend>選擇頁腳</legend>
+<label><input type="radio" name="footerPattern" value="" checked/> 暫不選擇</label>
+{patternRegistry.filter(x=>x.id.startsWith('footer-')).map(x=><label><input type="radio" name="footerPattern" value={x.id}/><span><strong>{x.title}</strong><small>{x.purpose}</small></span></label>)}
+</fieldset>
+<div class="footer-picker__visual">
+<p class="eyebrow">FOOTER PREVIEW / 排版結構示意</p>
+<div class="footer-picker__stage" id="footer-preview">
+<div class="footer-mock"><div class="footer-mock__identity"><span class="footer-mock__eyebrow">YOUR PERSONAL SITE</span><strong id="footer-preview-brand">我的個人網站</strong><p id="footer-preview-tagline">一個可以慢慢整理內容的地方。</p></div><div class="footer-mock__columns" id="footer-preview-columns"><div><b>網站導覽</b><span>文章</span><span>關於我</span></div></div></div>
+<div class="footer-mock__bottom"><small id="footer-preview-copyright">© 2026 我的個人網站</small><span id="footer-preview-legal">隱私權／法律頁面未設定，正式網站不顯示假連結</span></div>
+</div>
+<p class="footer-picker__caption" id="footer-preview-caption">展示頁腳的欄位與結構，不代表固定配色；顏色會依上方品牌主色與後續 Theme Tokens 調整。正式站仍需填入真實網址。</p>
+<a href={base+'section-patterns/#footer-minimal'} target="_blank" rel="noopener noreferrer">查看三種頁腳完整展示 ↗</a>
+</div>
+</div>
+</div>
+</section>
+<section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
+<div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" aria-label="網站設定預覽"></pre></section>
 </form>
 </main>
 <script>
-import { starterPages, starterThemeSeeds, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
+import { starterPages, starterThemeSeeds, starterThemePalettes, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
 import directions from '../../data/layout-directions.json';
+import patternRegistry from '../../data/section-patterns.registry.json';
 const form=document.querySelector<HTMLFormElement>('#starter-form')!;
+const paletteKeys=['primary','secondary','accent','background','text'] as const;
+function currentPalette(){return Object.fromEntries(paletteKeys.map(key=>[key,document.querySelector<HTMLInputElement>('#palette-'+key)!.value.toUpperCase()])) as {primary:string;secondary:string;accent:string;background:string;text:string}}
+function paintPalette(){
+ const palette=currentPalette();
+ const legacy=document.querySelector<HTMLInputElement>('#brand-color')!;
+ legacy.value=palette.primary;
+ document.querySelector<HTMLElement>('#brand-hex')!.textContent=palette.primary;
+ const box=document.querySelector<HTMLElement>('#palette-live-preview')!;
+ for(const [key,val] of Object.entries(palette))box.style.setProperty('--palette-'+key,val);
+ for(const key of paletteKeys){const input=document.querySelector<HTMLInputElement>('#palette-'+key+'-hex')!;input.value=palette[key];input.removeAttribute('aria-invalid');}
+}
+document.querySelectorAll<HTMLInputElement>('[data-palette]').forEach(input=>input.addEventListener('input',()=>{paintPalette();renderFooterPreview();showPlan()}));
+document.querySelectorAll<HTMLInputElement>('[data-hex-for]').forEach(input=>{
+ const apply=()=>{
+  const value=input.value.trim().toUpperCase();
+  const normalized=value.startsWith('#')?value:'#'+value;
+  if(!/^#[0-9A-F]{6}$/.test(normalized)){input.setAttribute('aria-invalid','true');return false}
+  document.querySelector<HTMLInputElement>('#palette-'+input.dataset.hexFor)!.value=normalized;
+  paintPalette();renderFooterPreview();showPlan();return true;
+ };
+ input.addEventListener('change',()=>{if(!apply())input.title='請輸入 6 位 HEX，例如 #50775B';else input.title=''});
+ input.addEventListener('blur',()=>{if(!apply()){input.value=document.querySelector<HTMLInputElement>('#palette-'+input.dataset.hexFor)!.value.toUpperCase();input.removeAttribute('aria-invalid');input.title=''}});
+});
+
 const layoutOptions=Array.from(document.querySelectorAll<HTMLElement>('.layout-option'));
 const rows=document.querySelector<HTMLElement>('#nav-items')!;
 const menu=document.querySelector<HTMLElement>('#preview-menu')!;
@@ -56,27 +126,172 @@ const status=document.querySelector<HTMLElement>('#form-status')!;
 const output=document.querySelector<HTMLElement>('#plan-preview')!;
 let nav:Array<{id:string;label:string;enabled:boolean}>=[];
 let priorKind:StarterKind='knowledge';
+
+function renderPatterns(){
+ const kind=value('kind') as StarterKind;
+ const pages=nav.filter(x=>x.enabled);
+ document.querySelectorAll<HTMLElement>('.pattern-option').forEach(box=>{
+  const valid=(box.dataset.kind||'').split(',').includes(kind);
+  box.hidden=!valid;
+  const check=box.querySelector<HTMLInputElement>('.pattern-choice')!;
+  if(!valid)check.checked=false;
+  box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked;
+  const select=box.querySelector<HTMLSelectElement>('.pattern-page')!;
+  const old=select.value;select.replaceChildren();
+  for(const item of [{id:'/',label:'首頁'},...pages.map(x=>({id:x.id,label:x.label}))]){
+   const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.append(option);
+  }
+  if(Array.from(select.options).some(x=>x.value===old))select.value=old;
+ });
+ renderFooterPreview();
+}
+document.querySelectorAll<HTMLInputElement>('.pattern-choice').forEach(check=>check.addEventListener('change',()=>{renderPatterns();showPlan()}));
+function renderFooterPreview(){
+ const choice=form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value||'';
+ const stage=document.querySelector<HTMLElement>('#footer-preview')!;
+ stage.dataset.variant=choice||'default';
+ stage.style.setProperty('--preview-brand',currentPalette().primary);
+ const brand=form.querySelector<HTMLInputElement>('[name="siteName"]')!.value.trim()||'我的個人網站';
+ document.querySelector<HTMLElement>('#footer-preview-brand')!.textContent=brand;
+ document.querySelector<HTMLElement>('#footer-preview-tagline')!.textContent=form.querySelector<HTMLInputElement>('[name="tagline"]')!.value.trim()||'這是我的網站';
+ document.querySelector<HTMLElement>('#footer-preview-copyright')!.textContent='© '+new Date().getFullYear()+' '+brand;
+ const columns=document.querySelector<HTMLElement>('#footer-preview-columns')!;
+ columns.replaceChildren();
+ const groupData=choice==='footer-professional'?[{title:'服務',items:['服務項目','合作流程']},{title:'關於',items:['關於我','文章']},{title:'聯絡',items:['常見問題','聯絡方式']}]:
+ choice==='footer-editorial'?[{title:'閱讀',items:['最新文章','主題分類']},{title:'認識',items:['關於作者','聯絡']},{title:'追蹤',items:['RSS 訂閱','社群']}]:
+ [{title:'網站導覽',items:nav.filter(x=>x.enabled).slice(0,3).map(x=>x.label)}];
+ for(const group of groupData){const div=document.createElement('div'),title=document.createElement('b');title.textContent=group.title;div.append(title);for(const text of group.items){const span=document.createElement('span');span.textContent=text;div.append(span)}columns.append(div)}
+ document.querySelector<HTMLElement>('#footer-preview-caption')!.textContent=choice?'此為'+(choice==='footer-professional'?'專業服務':choice==='footer-editorial'?'內容型':'簡約型')+'頁腳的排版結構示意，非固定配色；正式站仍須設定真實法律頁面與社群連結。':'尚未選擇頁腳樣式；右側先顯示基本頁腳結構。';
+}
+document.querySelectorAll<HTMLInputElement>('input[name="footerPattern"]').forEach(input=>input.addEventListener('change',()=>{renderFooterPreview();showPlan()}));
 const value=(name:string)=> (form.querySelector<HTMLInputElement>(`[name="${name}"]:checked`)?.value||'');
+function orderedNav(){
+ const roots=nav.filter(x=>!x.parentId||!nav.some(p=>p.id===x.parentId));
+ return roots.flatMap(root=>[root,...nav.filter(x=>x.parentId===root.id)]);
+}
+function syncNav(){
+ nav=orderedNav();renderNav();
+}
+function shiftItem(id:string,delta:number){
+ const current=nav.find(x=>x.id===id);if(!current)return;
+ const siblings=nav.filter(x=>(x.parentId||'')===(current.parentId||''));
+ const index=siblings.findIndex(x=>x.id===id),other=siblings[index+delta];if(!other)return;
+ // Move the entire parent subtree instead of swapping two isolated rows.
+ const ordered=orderedNav();
+ const block=(item:typeof current)=>[item,...ordered.filter(x=>x.parentId===item.id)];
+ const first=block(current),second=block(other);
+ const remaining=ordered.filter(x=>!first.includes(x)&&!second.includes(x));
+ const a=ordered.findIndex(x=>x.id===current.id),b=ordered.findIndex(x=>x.id===other.id);
+ const firstPosition=Math.min(a,b);
+ remaining.splice(firstPosition,0,...(delta>0?second:first),...(delta>0?first:second));
+ nav=remaining;syncNav();
+}
+function indentItem(id:string){
+ const ordered=orderedNav(),i=ordered.findIndex(x=>x.id===id),item=ordered[i];
+ if(!item||item.parentId||ordered.some(x=>x.parentId===id))return;
+ const parent=ordered.slice(0,i).reverse().find(x=>!x.parentId&&x.enabled);
+ if(!parent||ordered.filter(x=>x.parentId===parent.id).length>=10)return;
+ item.parentId=parent.id;syncNav();
+}
+function outdentItem(id:string){
+ const item=nav.find(x=>x.id===id);
+ if(!item?.parentId)return;
+ const parentId=item.parentId;item.parentId=undefined;
+ nav=orderedNav();
+ const last=nav.findLastIndex(x=>x.id===parentId||x.parentId===parentId);
+ const index=nav.findIndex(x=>x.id===id);
+ const [moved]=nav.splice(index,1);
+ nav.splice(last>=index?last:last+1,0,moved);
+ syncNav();
+}
+function moveItem(id:string,targetId:string){
+ if(id===targetId)return;
+ const ordered=orderedNav(),item=ordered.find(x=>x.id===id),target=ordered.find(x=>x.id===targetId);
+ if(!item||!target)return;
+ if(target.parentId===id)return;
+ const subtree=[item,...ordered.filter(x=>x.parentId===id)];
+ const rest=ordered.filter(x=>!subtree.includes(x));
+ const pos=rest.findIndex(x=>x.id===targetId);
+ if(pos<0)return;
+ if(target.parentId){
+  if(item.parentId!==target.parentId&&rest.filter(x=>x.parentId===target.parentId).length>=10)return;
+  item.parentId=target.parentId;
+ }else{
+  item.parentId=undefined;
+ }
+ rest.splice(pos,0,...subtree);
+ nav=rest;syncNav();
+}
+function removeCustom(id:string){
+ const item=nav.find(x=>x.id===id);
+ if(!item)return;
+ const children=nav.filter(x=>x.parentId===id);
+ const usedByPattern=Array.from(document.querySelectorAll<HTMLElement>('.pattern-option')).some(box=>box.querySelector<HTMLInputElement>('.pattern-choice')?.checked&&box.querySelector<HTMLSelectElement>('.pattern-page')?.value===id);
+ if(!window.confirm('要刪除「'+item.label+'」嗎？其子選單會移到第一層，引用此頁的組合樣板會取消。'))return;
+ for(const child of children)child.parentId=undefined;
+ for(const box of document.querySelectorAll<HTMLElement>('.pattern-option')){
+  if(box.querySelector<HTMLSelectElement>('.pattern-page')?.value===id)box.querySelector<HTMLInputElement>('.pattern-choice')!.checked=false;
+ }
+ nav=nav.filter(x=>x.id!==id);
+ if(target.value===id)target.value='';
+ syncNav();
+ status.textContent='已刪除頁面，請確認導航與主要按鈕目標。';
+}
 function renderNav(){
-  rows.replaceChildren();
-  for(let i=0;i<nav.length;i++){
-    const n=nav[i],row=document.createElement('div');row.className='nav-row';
-    const check=document.createElement('input');check.type='checkbox';check.checked=n.enabled;check.setAttribute('aria-label','顯示'+n.label);check.addEventListener('change',()=>{n.enabled=check.checked;renderNav()});
-    const label=document.createElement('input');label.type='text';label.maxLength=24;label.value=n.label;label.setAttribute('aria-label',n.id+' 選單名稱');label.addEventListener('input',()=>{n.label=label.value;renderMenu()});
-    const up=document.createElement('button');up.type='button';up.textContent='↑';up.disabled=i===0;up.setAttribute('aria-label','上移'+n.label);up.addEventListener('click',()=>{[nav[i-1],nav[i]]=[nav[i],nav[i-1]];renderNav()});
-    const down=document.createElement('button');down.type='button';down.textContent='↓';down.disabled=i===nav.length-1;down.setAttribute('aria-label','下移'+n.label);down.addEventListener('click',()=>{[nav[i+1],nav[i]]=[nav[i],nav[i+1]];renderNav()});
-    row.append(check,label,up,down);rows.append(row);
-  }renderMenu();
+ rows.replaceChildren();nav=orderedNav();
+ for(let i=0;i<nav.length;i++){
+  const n=nav[i],row=document.createElement('div');row.className='nav-row';
+  row.dataset.navId=n.id;row.draggable=true;
+  if(n.parentId)row.classList.add('nav-row-child');
+  const handle=document.createElement('span');handle.className='nav-drag-handle';handle.textContent='⠿';handle.title='拖曳調整順序';handle.setAttribute('aria-hidden','true');
+  const check=document.createElement('input');check.type='checkbox';check.checked=n.enabled;check.setAttribute('aria-label','顯示'+n.label);
+  check.addEventListener('change',()=>{
+   n.enabled=check.checked;
+   if(!n.enabled)for(const child of nav.filter(x=>x.parentId===n.id))child.parentId=undefined;
+   renderNav();
+  });
+  const label=document.createElement('input');label.type='text';label.maxLength=24;label.value=n.label;label.setAttribute('aria-label',n.id+' 選單名稱');
+  label.addEventListener('input',()=>{n.label=label.value;renderMenu();showPlan()});
+  const tools=document.createElement('div');tools.className='nav-row-actions';
+  const action=(symbol:string,name:string,fn:()=>void,disabled=false)=>{
+   const btn=document.createElement('button');btn.type='button';btn.textContent=symbol;btn.title=name;btn.setAttribute('aria-label',name+'：'+n.label);btn.disabled=disabled;btn.addEventListener('click',fn);tools.append(btn);
+  };
+  action('↑','上移',()=>shiftItem(n.id,-1));
+  action('↓','下移',()=>shiftItem(n.id,1));
+  action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||i===0);
+  action('←','提升至第一層',()=>outdentItem(n.id),!n.parentId);
+  action('×','刪除頁面',()=>removeCustom(n.id));
+  row.append(handle,check,label,tools);
+  row.addEventListener('dragstart',event=>{event.dataTransfer?.setData('text/plain',n.id);row.classList.add('is-dragging')});
+  row.addEventListener('dragend',()=>row.classList.remove('is-dragging'));
+  row.addEventListener('dragover',event=>{event.preventDefault();row.classList.add('is-drag-over')});
+  row.addEventListener('dragleave',()=>row.classList.remove('is-drag-over'));
+  row.addEventListener('drop',event=>{event.preventDefault();row.classList.remove('is-drag-over');const moved=event.dataTransfer?.getData('text/plain');if(moved)moveItem(moved,n.id)});
+  rows.append(row);
+ }
+ renderMenu();renderPatterns();showPlan();
 }
 function renderMenu(){
   menu.replaceChildren();const enabled=nav.filter(x=>x.enabled);
-  for(const n of enabled){const span=document.createElement('span');span.textContent=n.label;menu.append(span)}
+  for(const n of enabled.filter(x=>!x.parentId)){
+    const group=document.createElement('div');group.className='nav-preview-group';
+    const heading=document.createElement('strong');heading.textContent=n.label;group.append(heading);
+    const children=enabled.filter(x=>x.parentId===n.id);
+    if(children.length){const sub=document.createElement('ul');for(const child of children){const li=document.createElement('li');li.textContent=child.label;sub.append(li)}group.append(sub)}
+    menu.append(group);
+  }
   const selected=target.value;target.replaceChildren();
   for(const n of enabled){const option=document.createElement('option');option.value=n.id;option.textContent=n.label;target.append(option)}
   if(enabled.some(x=>x.id===selected))target.value=selected;
   const name=form.querySelector<HTMLInputElement>('[name="siteName"]')!.value.trim();
   document.querySelector<HTMLElement>('#preview-name')!.textContent=name||'網站名稱';
 }
+document.querySelector<HTMLButtonElement>('#add-nav-page')!.addEventListener('click',()=>{
+  if(nav.length>=20){status.textContent='最多可建立 20 個網站頁面';return}
+  const used=new Set(nav.map(x=>x.id));let i=1;while(used.has('page-custom-'+i))i++;
+  nav.push({id:'page-custom-'+i,label:'自訂頁面 '+i,enabled:true});
+  renderNav();
+});
 function update(){
  const kind=value('kind') as StarterKind;
  if(kind!==priorKind || !nav.length){nav=starterPages[kind].map(p=>({...p}));priorKind=kind;renderNav();
@@ -86,22 +301,26 @@ function update(){
  layoutOptions.forEach(e=>e.hidden=e.dataset.kind!==kind);
  const checked=form.querySelector<HTMLInputElement>('input[name="layout"]:checked');
  if(!checked||!eligible.some(e=>e.contains(checked))){const first=eligible[0]?.querySelector<HTMLInputElement>('input');if(first)first.checked=true}
- color.value=starterThemeSeeds[value('theme') as StarterTheme];
+ renderPatterns();
+ const preset=starterThemePalettes[value('theme') as StarterTheme];
+ for(const key of paletteKeys)document.querySelector<HTMLInputElement>('#palette-'+key)!.value=preset[key];
+ paintPalette();
  document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();
  renderMenu();showPlan();
 }
 function plan():StarterPlan {
  const kind=value('kind') as StarterKind;
  return {version:1,kind,layoutSlug:value('layout'),visualTheme:value('theme') as StarterTheme,
- brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:color.value.toUpperCase(),tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value},
+ brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:currentPalette().primary,tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value,palette:currentPalette()},
  navigation:nav.map(x=>({...x})),
+ sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
  notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value};
 }
 function showPlan(){const p=plan();output.textContent=JSON.stringify(p,null,2)}
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
-color.addEventListener('input',()=>{document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();showPlan()});
+color.addEventListener('input',()=>{document.querySelector<HTMLInputElement>('#palette-primary')!.value=color.value;paintPalette();showPlan()});
 form.addEventListener('input',()=>{renderMenu();showPlan()});
 target.addEventListener('change',showPlan);
 document.querySelector<HTMLButtonElement>('#copy-plan')!.addEventListener('click',async()=>{
@@ -117,4 +336,20 @@ document.querySelector<HTMLButtonElement>('#save-plan')!.addEventListener('click
 });
 update();
 </script>
+<style>
+.pattern-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pattern-option{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+.pattern-option[hidden],.pattern-config[hidden]{display:none}
+.pattern-option>p{color:var(--muted);font-size:14px}
+.pattern-option>label{display:flex;align-items:center;gap:10px}
+.pattern-config{display:grid;gap:14px;margin-top:18px}
+.pattern-config label{display:grid;gap:6px;font-size:14px}
+.pattern-config input,.pattern-config select{width:100%;min-width:0;padding:10px;border:1px solid #bdb3a5;border-radius:8px;font:inherit;background:var(--white)}
+@media(max-width:650px){.pattern-options{grid-template-columns:1fr}}
+</style>
+<style>
+.notes-field{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;margin-top:12px}
+.notes-field label{display:block;font-weight:600}
+.notes-field textarea{display:block;width:100%;min-width:0;max-width:100%;min-height:150px;resize:vertical;box-sizing:border-box;line-height:1.65}
+</style>
 </body></html>

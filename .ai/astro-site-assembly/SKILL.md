@@ -19,10 +19,14 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 ## Required design adaptation — phase 2
 1. Review selected `src/pages/layouts/[slug].astro` actual direction, DOM and `public/layout-library.css`.
 2. Preserve its hierarchy, Hero proportions, content order, imagery treatment and mobile restacking; do not replace all 12 with the same hero and cards.
-3. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
+3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。
+4. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
 4. Map brand primary/accent/background/text/focus tokens while maintaining contrast (especially on buttons). Don't blindly recolor supplied prototype.
 5. Link all selected pages; 404, RSS and sitemap should use actual site URLs. No fake submit/booking confirmation or invented testimonials.
 6. Build and visually QA widths 1440,1280,768,390; compare reference layout screenshot against output, not just CI.
+
+## Advanced student navigation
+`StarterPlan.navigation` supports custom page IDs (`page-*`) and `parentId` for a second level. The exporter generates an accessible `<details>` based submenu; test desktop keyboard opening, phone tap, and parent/child routes. Do not treat the research site's flat `SiteNav` and `MobileMenu` as already upgraded. Large menus may need a distinct mega-menu pattern and separate visual QA; no third level by default.
 
 ## Delivery gates
 - Generate into a **different** directory or student's own new repository. Never overwrite the research showcase or existing student files by default.
