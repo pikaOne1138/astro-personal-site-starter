@@ -14,7 +14,9 @@ try {
     '.ai/astro-site-assembly/SKILL.md','.ai/astro-editorial-layout-design/SKILL.md',
     'src/data/layout-directions.json','src/data/blocks.registry.json',
     'src/data/section-patterns.registry.json','src/pages/layouts/index.astro',
-    'scripts/export-starter.mjs','src/components','public/layout-library.css'
+    'scripts/export-starter.mjs','src/components','public/layout-library.css',
+    'public/v02.css','public/effects-sample.svg','public/robots.txt',
+    'scripts/verify-v2-8-output.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
   const guide=readFileSync(join(root,'AGENTS.md'),'utf8');
