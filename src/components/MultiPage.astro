@@ -9,7 +9,7 @@ import ContactActions from './blocks/ContactActions.astro';
 import PricingDetails from './blocks/PricingDetails.astro';
 import TrustInfo from './blocks/TrustInfo.astro';
 import MediaEmbed from './blocks/MediaEmbed.astro';
-import SocialLinks from './blocks/SocialLinks.astro';
+import SiteFooter from './blocks/SiteFooter.astro';
 import ResourceLibrary from './blocks/ResourceLibrary.astro';
 import LeadMagnetCard from './blocks/LeadMagnetCard.astro';
 import NewsletterSignup from './blocks/NewsletterSignup.astro';
@@ -110,6 +110,14 @@ const journal=knowledgePractice[theme];
         <div class="practical-stack"><BookingLink description={practice.bookingDescription} /><ContactActions /></div>
       </section>}
     </main>
-    <footer class="footer"><div><strong>One Studio</strong><p>{t.mood}</p></div><SocialLinks size="sm" items={[{platform:"github",href:"https://github.com/pikaOne1138/astro-personal-site-starter",label:"模板原始碼"},{platform:"website",href:"https://pikaOne1138.github.io/astro-personal-site-starter/",label:"工作坊網站"}]}/><div class="footer-links"><a href={root}>回首頁</a><a href={base}>八種 Demo</a></div><small>Astro Workshop · 多頁式網站</small></footer>
+    <SiteFooter variant="editorial"
+  brand={kind==='knowledge'?'One Journal':'One Studio'}
+  description={kind==='knowledge'?journal.intro:practice.intro}
+  eyebrow={kind==='knowledge'?'KNOWLEDGE / BLOG':'HELPER / PROFESSIONAL'}
+  groups={[{title:'網站內容',links:[{label:'首頁',href:`${base}${kind}/${theme}/`},{label:kind==='knowledge'?'文章':'服務',href:`${base}${kind}/${theme}/${kind==='knowledge'?'articles':'services'}/`},{label:'關於',href:`${base}${kind}/${theme}/about/`}]},{title:'工作坊展示',links:[{label:'所有 Demo',href:base},{label:'組合樣板庫',href:base+'section-patterns/'}]}]}
+  socialLinks={[{platform:'github',href:'https://github.com/pikaOne1138/astro-personal-site-starter',label:'網站範例原始碼'}]}
+  rssHref={base+'rss.xml'}
+  copyright="© 2026 Astro Workshop · 網站展示資料"
+/>
   </div>
 </DemoLayout>
