@@ -11,6 +11,28 @@
     "category": "簡單動效"
   },
   {
+    "id": "animatecss",
+    "name": "Animate.css",
+    "url": "https://animate.style/",
+    "title": "想快速試試標題和圖片進場",
+    "description": "挑選文字淡入、滑入、柔和縮放的效果，先看看適合哪個段落。",
+    "examples": "標題淡入、區段進場、圖片輕微縮放",
+    "caution": "現有 Reveal 通常已能完成類似效果。官方採 Hippocratic License 2.1，正式複製或商業使用前須核對授權。",
+    "tech": "CSS-only animation classes; license Hippocratic-2.1; use selective imports, avoid bounce/infinite motion, prefers-reduced-motion support; not automatically install.",
+    "category": "簡單動效"
+  },
+  {
+    "id": "hovercss",
+    "name": "Hover.css",
+    "url": "https://ianlunn.github.io/Hover/",
+    "title": "想讓按鈕和連結有細緻回饋",
+    "description": "提供滑鼠移到按鈕、文字連結或圖片上的細微變化，可以比較不同手感。",
+    "examples": "按鈕輕微放大、底線、邊框與陰影",
+    "caution": "手機通常沒有滑鼠懸停，效果必須降級。商業網站及可供學員再散布的 Starter 有額外授權條件；先評估，不直接複製。",
+    "tech": "CSS hover/focus effects; restrictive commercial/OEM licensing on recent versions; keyboard focus and touch alternatives; prefer local original CSS or existing effects.",
+    "category": "滑鼠與鍵盤回饋"
+  },
+  {
     "id": "uiverse",
     "name": "Uiverse",
     "url": "https://uiverse.io/",
