@@ -46,6 +46,16 @@ const prompts=[
 <section class="chapter"><span class="chapter-number">先看整條路線</span><h2>你會經過哪些關卡？</h2>{steps.map(s=><div class="stage"><b>{s.n}</b><div><strong>{s.name}</strong><p>{s.desc}</p></div></div>)}<div class="card"><strong>完成定義</strong><p>你擁有獨立 Repository、真實可開的正式網站網址、可用的內頁與連結、可修改文章/內容、可看 PR 預覽並安全回復上一版；四尺寸 QA 與發布後健康檢查有實際紀錄。</p></div></section>
 <section class="chapter" id="step-00"><span class="chapter-number">00 / ORIENTATION</span><h2>區分展示站與你的網站</h2><p>工作坊公開的 <a href={link('layouts/')}>12 款 Layout</a> 是<strong>首頁構圖原型</strong>；<a href={link('layouts/recipes/')}>40 種 Recipes</a> 是局部構圖參考；<a href={link('section-patterns/')}>Section Patterns</a> 是多個 Blocks 組合成的整段；<a href={link('blocks/')}>Blocks</a> 是功能元件；<a href={link('effects/')}>Effects</a> 是微動畫。它們不是同一件事。</p><div class="warning">重要：<a href={link('starter/')}>/starter/ 規劃器</a> 目前只匯出 Site Brief JSON；匯出器能產生<strong>獨立 Astro 骨架</strong>，但選定版型的高保真移植、內頁補齊、圖片與正式服務串接仍需要 AI 開發與人工驗收。</div></section>
 <section class="chapter" id="step-01"><span class="chapter-number">01 / PREPARE</span><h2>前置準備與帳號授權</h2>
+<div class="card"><div class="kicker">先聊天，再填寫，再建站</div><h3>不會寫自我介紹？先讓 AI 採訪你</h3>
+<p>如果你還不知道「網站名稱、一句介紹、要寫什麼文章／服務、要放什麼照片」，<strong>不必先自己想完！</strong>我們準備了一套可以上傳到 AI 對話或專案的「建站前訪談包」。AI 會一次問你一個問題，整理出你真正想說的話，再交給你確認。</p>
+<div class="links">
+<a href="https://github.com/pikaOne1138/astro-personal-site-starter/tree/feat/student-website-sop-guide/docs/student-intake" target="_blank" rel="noopener noreferrer"><strong>先打開訪談包資料夾 ↗</strong><span>五份 Markdown 文件：使用說明、AI 訪談指令與三份填寫紙</span></a>
+<a href="https://github.com/pikaOne1138/astro-personal-site-starter/blob/feat/student-website-sop-guide/docs/student-intake/01-AI-%E8%A8%AA%E8%AB%87%E4%B8%BB%E6%8C%81%E4%BA%BA.md" target="_blank" rel="noopener noreferrer"><strong>AI 訪談主持人指令 ↗</strong><span>不知道怎麼開始，就先把這份給 AI 讀</span></a>
+</div>
+<p><strong>三個操作動作：</strong>① 開啟上面的資料夾，取得五份文件（GitHub 可開檔 → Raw → 另存；也可讓有 GitHub 讀取權的 AI 直接讀取）。② 一起上傳到 AI 對話／Project，或貼上 AI 訪談主持人指令。③ 要求 AI 一次只問一題，最後整理《網站內容準備稿 v1》，請你確認後才到 /starter/ 規劃網站。</p>
+<div class="prompt"><div class="prompt-top"><strong>建站前的第一句話（可直接複製）</strong><button type="button" class="btn ghost" id="copy-intake">複製開場提示詞</button></div><pre id="intake-prompt">我完全沒有網站開發背景。我已提供「建站前 AI 訪談包」，請先閱讀 01-AI-訪談主持人.md，並參考其他文件已填的內容。請像網站企劃採訪我，一次只問一個最重要的問題，允許我回答「不知道」，也請幫我把口語想法整理成能修改的文字。不要先做網站或要求我設定 GitHub。最後產出《網站內容準備稿 v1》，區分已確認、AI 草稿待確認、缺少資料和不公開的資訊，讓我逐項核對後再進入 /starter/。</pre></div>
+<div class="warning">這一步是<strong>內容討論</strong>，不需要先具備 GitHub 寫入權限。要 AI 實際建立 Repo、改程式、提交 PR 時，才必須完成下方的 GitHub App 授權關卡。</div>
+</div>
 <div class="card"><h3>先準備這些資料</h3>{['GitHub 帳號，知道自己是否已登入','能讀取與修改 GitHub Repository 的 AI 編程環境（ChatGPT Work、Claude Code、Codex 或其他具備檔案/終端機/GitHub 能力的工具；單純聊天視窗不一定能建站）','網站名稱、一句介紹、主要讀者與主要行動','至少一份真實的 About 內容；知識型準備 1–3 篇文章，服務型準備服務說明、聯絡方式與常見問題','自己有權使用的照片、Logo 或可合法使用的替代圖片','若走 Cloudflare：建立 Cloudflare 帳號。暫時不需購買網域'].map((t,i)=><label class="task"><input type="checkbox" data-task={'prep-'+i}/><span>{t}</span></label>)}</div>
 <div class="card"><h3>必經關卡：先讓 AI 取得你指定倉庫的存取權</h3>
 <p><strong>註冊 GitHub ≠ AI 已經連接 GitHub ≠ AI 能修改你的程式碼。</strong> 這三件事必須分開確認。下面用你提供的 GitHub 截圖路徑示範；不同 AI 工具可能要先在它自己的設定中連接 GitHub。</p>
@@ -102,6 +112,7 @@ const tasks=[...document.querySelectorAll('[data-task]')];
 function update(){let checked=0;tasks.forEach(t=>{if(t.checked)checked++});document.getElementById('progress').textContent='本機進度：'+checked+' / '+tasks.length+' 項完成。實際驗收仍需人工確認。'}
 tasks.forEach(t=>{try{t.checked=localStorage.getItem('astro-guide-'+t.dataset.task)==='1'}catch{}t.addEventListener('change',()=>{try{localStorage.setItem('astro-guide-'+t.dataset.task,t.checked?'1':'0')}catch{}update()})});update();
 document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{const index=Number(b.dataset.copy);try{await navigator.clipboard.writeText(prompts[index]);b.textContent='已複製'}catch{b.textContent='請手動選取提示詞'}setTimeout(()=>b.textContent='複製提示詞',2000)}));
+document.getElementById('copy-intake')?.addEventListener('click',async()=>{const b=document.getElementById('copy-intake');try{await navigator.clipboard.writeText(document.getElementById('intake-prompt').textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製開場提示詞',2000)});
 document.getElementById('clear-progress').addEventListener('click',()=>{if(!confirm('確定清除這台裝置儲存的勾選進度？'))return;tasks.forEach(t=>{t.checked=false;try{localStorage.removeItem('astro-guide-'+t.dataset.task)}catch{}});update()});
 </script>
 </body></html>
