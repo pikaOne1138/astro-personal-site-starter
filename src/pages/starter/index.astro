@@ -50,7 +50,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div></div>)}
 </div></section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="3" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea>
+<div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" aria-label="網站設定預覽"></pre></section>
 </form>
@@ -292,5 +292,10 @@ update();
 .nav-row.is-drag-over{outline:2px dashed var(--accent)}
 .nav-add{margin-top:14px}
 @media(max-width:650px){.nav-row{padding:10px;gap:6px}.nav-row-actions button{min-width:38px;min-height:38px}}
+</style>
+<style>
+.notes-field{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;margin-top:12px}
+.notes-field label{display:block;font-weight:600}
+.notes-field textarea{display:block;width:100%;min-width:0;max-width:100%;min-height:150px;resize:vertical;box-sizing:border-box;line-height:1.65}
 </style>
 </body></html>
