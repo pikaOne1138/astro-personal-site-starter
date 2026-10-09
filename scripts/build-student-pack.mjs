@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
-import { join, resolve, relative, sep } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 
 // Build-time student distribution. Deliberately excludes the research Git history,
 // showcase workflows, internal README and any credentials or environment files.
@@ -22,11 +22,8 @@ function add(from, to = from) {
 // and the generator can load ../src/data/*.json without access to the research repo.
 for (const path of [
   '.ai',
-  'src/components',
-  'src/pages/layouts',
-  'src/data',
-  'src/layouts',
-  'src/content',
+  'src',
+  'docs',
   'public/demo.css',
   'public/blocks.css',
   'public/blocks-v2.css',
