@@ -14,8 +14,7 @@ const pages=[
 {title:'讓 AI 存取倉庫',id:'access',desc:'授權 AI 存取你的倉庫。'},
 {title:'網站內容訪談',id:'intake',desc:'下載訪談包，與 AI 討論內容。'},
 {title:'Logo、Favicon 與網站圖片',id:'visual',desc:'用 AI 設計 Logo、favicon 和圖片。'},
-{title:'GitHub Pages 設定',id:'github-pages',desc:'選擇 GitHub Pages 時完成。'},
-{title:'Cloudflare 事前準備',id:'cloudflare',desc:'不使用 GitHub Pages 時可選。'}
+{title:'選擇發布方式',id:'hosting',desc:'A｜GitHub Pages 或 B｜Cloudflare Pages。'}
 ];
 ---
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>前置準備｜Astro 架站工作坊</title><style>
@@ -35,7 +34,8 @@ const pages=[
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>請 AI 提出三款 Logo 方向，選定後製作 favicon 和網站圖片。</p>
 <ol><li>從三款概念選一款。</li><li>確認 Logo 中文名稱正確。</li><li>請 AI 檢查 favicon 在小尺寸是否清楚。</li><li>確認圖片沒有冒充真實人物、客戶或場所。</li></ol></section>
-<section id="github-pages"><h2>06｜使用 GitHub Pages 發布網站（選用）</h2>
+<section id="hosting"><h2>06｜選擇網站發布方式</h2><p>選一種方式，照對應步驟操作。</p><div class="steps"><a href="#github-pages"><strong>A｜GitHub Pages</strong><small>想簡單免費，可以接受原始碼公開。</small></a><a href="#cloudflare"><strong>B｜Cloudflare Pages</strong><small>希望原始碼留在私人倉庫，並方便預覽修改。</small></a></div><p>Private 倉庫要使用 GitHub Pages，須符合付費方案資格。Cloudflare Pages 可連接 Private 倉庫。兩種方式都能發布公開網站。</p></section>
+<section id="github-pages"><h2>A｜GitHub Pages：設定步驟</h2>
 <p>選擇 GitHub Pages 的學員，先完成以下設定：</p>
 <ol>
 <li>開啟自己的網站倉庫。</li>
@@ -48,8 +48,7 @@ const pages=[
 <p><strong>完成確認：</strong>頁面出現 <strong>Your site is live at ...</strong>，而且 <strong>Visit site</strong> 能正常開啟。</p>
 <p>如果畫面與教學不同，截圖給 AI，請它依畫面指引。</p>
 </section>
-<section id="cloudflare"><h2>07｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
-<p><strong>非必要：</strong>不使用 Cloudflare，也能用 GitHub Pages 發布網站。</p>
+<section id="cloudflare"><h2>B｜Cloudflare Pages：設定步驟</h2>
 <div class="card"><h3>Cloudflare Pages 連接 GitHub：照著操作</h3>
 <ol>
 <li>登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>，左側選 <strong>Workers 和 Pages</strong>，點右上角 <strong>建立應用程式</strong>。</li>
