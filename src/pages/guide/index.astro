@@ -1,4 +1,12 @@
 ---
+import intakeReadme from '../../../docs/student-intake/README.md?raw';
+import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
+import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
+import intakeContent from '../../../docs/student-intake/03-內容準備-二選一.md?raw';
+import intakeAssets from '../../../docs/student-intake/04-圖片與發布準備.md?raw';
+import intakeVisual from '../../../docs/student-intake/05-AI-品牌識別與圖片共創.md?raw';
+import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計研究.md?raw';
+const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
@@ -48,12 +56,13 @@ const prompts=[
 <section class="chapter" id="step-01"><span class="chapter-number">01 / PREPARE</span><h2>前置準備與帳號授權</h2>
 <div class="card"><div class="kicker">先聊天，再填寫，再建站</div><h3>不會寫自我介紹？先讓 AI 採訪你</h3>
 <p>如果你還不知道「網站名稱、一句介紹、要寫什麼文章／服務、要放什麼照片」，<strong>不必先自己想完！</strong>我們準備了一套可以上傳到 AI 對話或專案的「建站前訪談包」。AI 會一次問你一個問題，整理出你真正想說的話，再交給你確認。</p>
+<p><button type="button" class="btn" id="download-intake-zip">下載整套 AI 建站訪談包 ZIP ↓</button></p><p class="small">包含七份 Markdown 文件。下載後解壓縮，再把文件一起上傳給 AI；不需要進 GitHub 或逐檔複製。</p>
 <div class="links">
-<a href="https://github.com/pikaOne1138/astro-personal-site-starter/tree/feat/student-website-sop-guide/docs/student-intake" target="_blank" rel="noopener noreferrer"><strong>先打開訪談包資料夾 ↗</strong><span>五份 Markdown 文件：使用說明、AI 訪談指令與三份填寫紙</span></a>
+<a href="https://github.com/pikaOne1138/astro-personal-site-starter/tree/feat/student-website-sop-guide/docs/student-intake" target="_blank" rel="noopener noreferrer"><strong>先打開訪談包資料夾 ↗</strong><span>七份 Markdown 文件：使用說明、訪談、內容與 Logo 圖片共創</span></a>
 <a href="https://github.com/pikaOne1138/astro-personal-site-starter/blob/feat/student-website-sop-guide/docs/student-intake/01-AI-%E8%A8%AA%E8%AB%87%E4%B8%BB%E6%8C%81%E4%BA%BA.md" target="_blank" rel="noopener noreferrer"><strong>AI 訪談主持人指令 ↗</strong><span>不知道怎麼開始，就先把這份給 AI 讀</span></a>
 </div>
-<p><strong>三個操作動作：</strong>① 開啟上面的資料夾，取得五份文件（GitHub 可開檔 → Raw → 另存；也可讓有 GitHub 讀取權的 AI 直接讀取）。② 一起上傳到 AI 對話／Project，或貼上 AI 訪談主持人指令。③ 要求 AI 一次只問一題，最後整理《網站內容準備稿 v1》，請你確認後才到 /starter/ 規劃網站。</p>
-<div class="prompt"><div class="prompt-top"><strong>建站前的第一句話（可直接複製）</strong><button type="button" class="btn ghost" id="copy-intake">複製開場提示詞</button></div><pre id="intake-prompt">我完全沒有網站開發背景。我已提供「建站前 AI 訪談包」，請先閱讀 01-AI-訪談主持人.md，並參考其他文件已填的內容。請像網站企劃採訪我，一次只問一個最重要的問題，允許我回答「不知道」，也請幫我把口語想法整理成能修改的文字。不要先做網站或要求我設定 GitHub。最後產出《網站內容準備稿 v1》，區分已確認、AI 草稿待確認、缺少資料和不公開的資訊，讓我逐項核對後再進入 /starter/。</pre></div>
+<p><strong>三個操作動作：</strong>① 按上方「下載 ZIP」，解壓縮後取得七份文件。② 一起上傳到 AI 對話／Project，或貼上 AI 訪談主持人指令。③ 要求 AI 一次只問一題，最後整理《網站內容準備稿 v1》，請你確認後才到 /starter/ 規劃網站。</p>
+<div class="prompt"><div class="prompt-top"><strong>建站前的第一句話（可直接複製）</strong><button type="button" class="btn ghost" id="copy-intake">複製開場提示詞</button></div><pre id="intake-prompt">我完全沒有網站開發背景。我已提供「建站前 AI 訪談包」，請先閱讀 01-AI-訪談主持人.md 和 05-AI-品牌識別與圖片共創.md，並參考其他文件已填的內容。請像網站企劃採訪我，一次只問一個最重要的問題，允許我回答「不知道」，也請幫我把口語想法整理成能修改的文字。不要先做網站或要求我設定 GitHub。最後產出《網站內容準備稿 v1》，區分已確認、AI 草稿待確認、缺少資料和不公開的資訊，讓我逐項核對後再進入 /starter/。</pre></div>
 <div class="warning">這一步是<strong>內容討論</strong>，不需要先具備 GitHub 寫入權限。要 AI 實際建立 Repo、改程式、提交 PR 時，才必須完成下方的 GitHub App 授權關卡。</div>
 </div>
 <div class="card"><h3>先準備這些資料</h3>{['GitHub 帳號，知道自己是否已登入','能讀取與修改 GitHub Repository 的 AI 編程環境（ChatGPT Work、Claude Code、Codex 或其他具備檔案/終端機/GitHub 能力的工具；單純聊天視窗不一定能建站）','網站名稱、一句介紹、主要讀者與主要行動','至少一份真實的 About 內容；知識型準備 1–3 篇文章，服務型準備服務說明、聯絡方式與常見問題','自己有權使用的照片、Logo 或可合法使用的替代圖片','若走 Cloudflare：建立 Cloudflare 帳號。暫時不需購買網域'].map((t,i)=><label class="task"><input type="checkbox" data-task={'prep-'+i}/><span>{t}</span></label>)}</div>
@@ -107,11 +116,32 @@ const prompts=[
 <section class="chapter"><h2>學員測試回報表</h2><p>每遇到一個卡住的地方，請記錄「章節號碼、正在看的網址、看到的錯誤、實際畫面截圖、AI 工具名稱、能否自行解決」。我們要用真實困難修訂 SOP，而不是預設每個人都成功。</p><div class="card"><strong>最後自我檢查</strong><p id="progress" aria-live="polite">請勾選上方測試項目以追蹤進度。</p><button id="clear-progress" class="btn ghost" type="button">清除本機勾選進度</button></div><p class="small">文件版本：2026-10-09 · 測試路徑：獨立 Astro 網站 / GitHub / Cloudflare Pages（首選）· 不代表外部帳號已連接或網站已實際部署。</p></section>
 </main></div>
 <footer>Astro 架站工作坊　·　Structure before decoration　·　<a href={base}>回到首頁</a></footer>
-<script is:inline define:vars={{prompts:prompts.map(p=>p.body)}}>
+<script is:inline define:vars={{prompts:prompts.map(p=>p.body),intakeFiles}}>
 const tasks=[...document.querySelectorAll('[data-task]')];
 function update(){let checked=0;tasks.forEach(t=>{if(t.checked)checked++});document.getElementById('progress').textContent='本機進度：'+checked+' / '+tasks.length+' 項完成。實際驗收仍需人工確認。'}
 tasks.forEach(t=>{try{t.checked=localStorage.getItem('astro-guide-'+t.dataset.task)==='1'}catch{}t.addEventListener('change',()=>{try{localStorage.setItem('astro-guide-'+t.dataset.task,t.checked?'1':'0')}catch{}update()})});update();
 document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{const index=Number(b.dataset.copy);try{await navigator.clipboard.writeText(prompts[index]);b.textContent='已複製'}catch{b.textContent='請手動選取提示詞'}setTimeout(()=>b.textContent='複製提示詞',2000)}));
+// Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
+function makeZip(files){
+ const enc=new TextEncoder(), parts=[], central=[];let offset=0;
+ const u16=n=>new Uint8Array([n&255,n>>>8&255]);
+ const u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);
+ const cat=(...a)=>{let size=a.reduce((s,x)=>s+x.length,0),out=new Uint8Array(size),i=0;for(let x of a){out.set(x,i);i+=x.length}return out};
+ const crc32=data=>{let c=-1;for(let b of data){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return(c^-1)>>>0};
+ for(const [name,content] of Object.entries(files)){
+   let fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x0800;
+   let local=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);
+   parts.push(local);
+   central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));
+   offset+=local.length;
+ }
+ const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
+ return new Blob([body,dir,end],{type:'application/zip'});
+}
+document.getElementById('download-intake-zip')?.addEventListener('click',()=>{
+ const a=document.createElement('a'),blob=makeZip(intakeFiles),url=URL.createObjectURL(blob);
+ a.href=url;a.download='Astro-建站前AI訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
 document.getElementById('copy-intake')?.addEventListener('click',async()=>{const b=document.getElementById('copy-intake');try{await navigator.clipboard.writeText(document.getElementById('intake-prompt').textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製開場提示詞',2000)});
 document.getElementById('clear-progress').addEventListener('click',()=>{if(!confirm('確定清除這台裝置儲存的勾選進度？'))return;tasks.forEach(t=>{t.checked=false;try{localStorage.removeItem('astro-guide-'+t.dataset.task)}catch{}});update()});
 </script>
