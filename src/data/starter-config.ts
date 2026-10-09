@@ -1,7 +1,7 @@
 import patterns from './section-patterns.registry.json';
 /** Student configuration contract. This file is intentionally independent of the workshop demo navigation. */
 export const starterKinds = ['knowledge','helper'] as const;
-export const starterThemes = ['paper','morning','studio','botanical'] as const;
+export const starterThemes = ['paper','morning','studio','botanical','ocean','sand','slate','lavender'] as const;
 export type StarterKind = typeof starterKinds[number];
 export type StarterTheme = typeof starterThemes[number];
 
@@ -38,12 +38,17 @@ export interface StarterPlan {
 }
 export const starterThemeSeeds:Record<StarterTheme,string> = {
   paper:'#9A3B2E',morning:'#C8775A',studio:'#2F5D50',botanical:'#50775B',
+ ocean:'#245D78',sand:'#9C603B',slate:'#475569',lavender:'#705A95',
 };
 export const starterThemePalettes:Record<StarterTheme,{primary:string;secondary:string;accent:string;background:string;text:string}> = {
  paper:{primary:'#9A3B2E',secondary:'#806A54',accent:'#C58D63',background:'#F8F5EF',text:'#28231F'},
  morning:{primary:'#C8775A',secondary:'#7F8F80',accent:'#B65B75',background:'#FFF8F3',text:'#362B29'},
  studio:{primary:'#2F5D50',secondary:'#708A7A',accent:'#B17C60',background:'#F6F7F3',text:'#23312D'},
  botanical:{primary:'#50775B',secondary:'#8D9B72',accent:'#B48569',background:'#F6F7EF',text:'#28392E'},
+ ocean:{primary:'#245D78',secondary:'#647E88',accent:'#B57949',background:'#F5F8FA',text:'#1E303A'},
+ sand:{primary:'#9C603B',secondary:'#877E69',accent:'#6B826C',background:'#FBF7EF',text:'#352A23'},
+ slate:{primary:'#475569',secondary:'#657784',accent:'#B38B53',background:'#F4F6F8',text:'#202C39'},
+ lavender:{primary:'#705A95',secondary:'#857F99',accent:'#A56D82',background:'#F8F6FB',text:'#30283C'},
 };
 export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:string;slug:string}>):string[] {
   const errors:string[]=[];
