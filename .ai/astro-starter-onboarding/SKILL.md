@@ -15,7 +15,7 @@ Use when the student wants to choose their site design, logo/brand colors, archi
 4. Ask which pages are really needed. Use the available `starterPages` list; permit changes to menu labels, order and enabled state. Require CTA to point to a selected page. Missing content should not become fake published pages or dead links.
 5. Download or copy Site Brief JSON. Its `StarterPlan` contract includes kind, layoutSlug, visualTheme, brand, navigation and primaryCta. Validate using `checkStarterPlan`; treat student text and URLs as unverified until reviewed.
 6. **組合樣板（新增必經的選擇關卡）**：先帶學員看 `/section-patterns/`，以「這一段想達成什麼」來挑 Pattern（例如 `featured-work`、`trust-service-path`、`footer-editorial`），或明確選擇不使用。記錄 Pattern ID、預計放置頁面與位置、要替換的真實資料；先對照 Layout 的資訊動線，不要求每頁都塞 Pattern。詳細依 `.ai/astro-section-pattern-craft/SKILL.md` 與 `src/data/section-patterns.registry.json`。
-7. AI developer reads Site Brief and existing registries, writes actual pages/sections using Layout → Section Patterns → Blocks → Effects. **目前 `/starter/` 的 StarterPlan JSON 尚未包含選定 Pattern**，要另以補充清單提供給 AI；不得假稱 JSON 已支援 Patterns。 Keep original layout distinctions; don't only swap colors. Check `astro-ui-craft` and `astro-content-publishing` skills.
+7. AI developer reads Site Brief and existing registries, writes actual pages/sections using Layout → Section Patterns → Blocks → Effects. **`/starter/` 已能將 `sectionPatterns` 包含在 JSON；請驗證 `patternId`、`targetPage` 與位置，並依真實資料完成最後的視覺適配。 Keep original layout distinctions; don't only swap colors. Check `astro-ui-craft` and `astro-content-publishing` skills.
 7. Branch + PR, build and preview, verify links, four responsive widths, CSS tokens and keyboard access. User explicitly approves before merge.
 
 ## 下一步：匯出獨立 Starter
