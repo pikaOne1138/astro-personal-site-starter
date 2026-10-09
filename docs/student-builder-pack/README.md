@@ -1,6 +1,6 @@
 # 學員操作說明：AI 建站指引包
 
-這份 ZIP 是給 AI 閱讀的簡短指引，不要求學員研究程式或 Skill 清單。
+這份 ZIP 是給 AI 閱讀的簡短指引，不要求學員研究程式或 Skill 清單。包內含 `skills/astro-pr-preview/SKILL.md`，讓 AI 依學員自己選用的 GitHub Pages 或 Cloudflare 平台確認真正的 PR Preview；並非 ZIP 上傳後兩種部署便自動配置完成。
 
 1. 在 /starter/ 規劃自己的網站並下載 Site Brief JSON。
 2. 在 AI 網頁的同一段對話中上傳 Site Brief JSON 與此 ZIP。
