@@ -55,6 +55,30 @@ assets['.github/workflows/deploy.yml']=[
 '      - id: deploy',
 '        uses: actions/deploy-pages@v4'
 ].join('\n')+'\n';
+// PR checks are intentionally read-only. A public Preview URL needs an actual
+// Cloudflare Pages branch deployment or a separately configured safe Pages workflow.
+assets['.github/workflows/pr-check.yml']=[
+'name: Student PR build verification',
+'on:',
+'  pull_request:',
+'  workflow_dispatch:',
+'permissions:',
+'  contents: read',
+'jobs:',
+'  verify:',
+'    runs-on: ubuntu-latest',
+'    steps:',
+'      - uses: actions/checkout@v4',
+'      - uses: actions/setup-node@v4',
+'        with:',
+'          node-version: "22"',
+'      - run: npm install --no-audit --no-fund',
+'      - run: npm run build',
+'      - uses: actions/upload-artifact@v4',
+'        with:',
+'          name: student-pr-build',
+'          path: dist'
+].join('\\n')+'\\n';
 assets['src/pages/index.astro']=assets['src/pages/index.astro'].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page="/" /></SiteLayout>');
 assets['src/pages/[page].astro']=assets['src/pages/[page].astro'].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page={item.id} /></SiteLayout>');
 assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro'].replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\nimport SelectedPatterns from '../../components/SelectedPatterns.astro';").replace('</SiteLayout>','<SelectedPatterns page="articles" /></SiteLayout>');
