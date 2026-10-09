@@ -138,6 +138,24 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       <p class="fx-source">元件：<code>MotionFAQ.astro</code>　參數：variant = line / soft / cards</p>
     </section>
 
+    <section class="fx-section" id="motion-decision" aria-labelledby="motion-decision-title">
+      <div class="fx-section-heading"><div><span class="fx-kicker">BEFORE YOU ADD MOTION</span><h2 id="motion-decision-title">什麼時候該動？什麼時候保持安靜？</h2></div><p>動效不是越多越精緻。好的動效讓訪客看懂操作、注意重點；不需要動的地方，保持穩定反而比較舒服。</p></div>
+      <div class="fx-decision-grid">
+        <div class="fx-decision-panel"><h3>適合加一點動效</h3><ul><li><strong>操作有回應：</strong>按鈕被點擊、選單展開、FAQ 開合。</li><li><strong>幫助理解：</strong>分組內容輕微依序出現，提示閱讀順序。</li><li><strong>清楚的狀態：</strong>真正送出資料時顯示等待或完成結果。</li></ul></div>
+        <div class="fx-decision-panel"><h3>通常保持安靜更好</h3><ul><li><strong>長篇文章：</strong>內文不必一段段延遲顯示。</li><li><strong>重要資訊：</strong>服務內容、價格、聯絡方式直接看得到。</li><li><strong>手機與輔助操作：</strong>不可只靠滑鼠 Hover 才能看到資訊。</li><li><strong>純裝飾：</strong>沒有用途的漂浮、閃爍、持續旋轉先不要加。</li></ul></div>
+      </div>
+      <p class="fx-decision-rule"><strong>挑選原則：</strong>先說出「這個動效幫訪客完成什麼」，再挑效果；說不出目的就先不用。每頁以少量、輕微的互動為起點，並尊重「減少動態」設定。</p>
+    </section>
+    <style>
+      .fx-decision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+      .fx-decision-panel{min-width:0;padding:clamp(20px,3vw,30px);border:1px solid var(--line,#d9d4c8);border-radius:14px;background:var(--surface,#fffdfa)}
+      .fx-decision-panel h3{font-size:clamp(19px,2vw,23px);margin:0 0 16px}
+      .fx-decision-panel ul{margin:0;padding-left:21px;display:grid;gap:12px;line-height:1.75}
+      .fx-decision-panel li{padding-left:4px}
+      .fx-decision-rule{max-width:85ch;line-height:1.75;color:var(--muted,#625e56)}
+      @media(max-width:760px){.fx-decision-grid{grid-template-columns:1fr}}
+    </style>
+
     <section class="fx-section" id="external-motion" aria-labelledby="external-motion-title">
       <div class="fx-section-heading"><div><span class="fx-kicker">07 · MORE IDEAS</span><h2 id="external-motion-title">更多現成動效靈感</h2></div><p>找不到想要的效果？可以到這些網站看看別人做好的範例，將連結交給 AI 協助評估。這些工具不會自動安裝進你的網站。</p></div>
       <div class="fx-external-steps">
