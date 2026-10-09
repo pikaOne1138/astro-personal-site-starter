@@ -29,6 +29,9 @@ description: Discover, select and customize ready-to-use Astro section patterns 
 - 按 Layout → Section Pattern → Blocks → Motion 的順序實作；主題品牌 Token 應一致作用於這些層級。
 - 對 `footer-*` Pattern，位置必須在頁尾、避免同頁出現兩個 footer，所有隱私權/條款連結都必須有效。
 
+## 導航與 Pattern 的差異
+`StarterPlan.navigation` 的雙層選單是站點資訊架構，由 Onboarding 與 Site Assembly 處理；`Section Patterns` 仍是內容組合樣板，不能誤把導覽列的子項目當作區段，也不能把 Footer 分組連結當成全站導覽結構。
+
 ## 與其他 Skills 分工
 `astro-layout-craft` 負責全頁；`astro-editorial-layout-design` 負責構圖；`astro-ui-craft` 和 Block Registry 負責元件；`astro-motion-craft` 負責微動畫；`astro-site-assembly` 負責由 Site Brief 實際組站；`astro-pr-preview` 負責預覽與發布。
 
