@@ -29,11 +29,11 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
-<div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><output id="palette-primary-hex">#9A3B2E</output></label>
-<label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><output id="palette-secondary-hex">#806A54</output></label>
-<label class="palette-field" for="palette-accent"><span>強調色</span><input id="palette-accent" data-palette="accent" type="color" value="#C58D63"/><output id="palette-accent-hex">#C58D63</output></label>
-<label class="palette-field" for="palette-background"><span>背景色</span><input id="palette-background" data-palette="background" type="color" value="#F8F5EF"/><output id="palette-background-hex">#F8F5EF</output></label>
-<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><output id="palette-text-hex">#28231F</output></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><aside class="palette-resource-links" aria-labelledby="palette-resource-title">
+<div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
+<label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
+<label class="palette-field" for="palette-accent"><span>強調色</span><input id="palette-accent" data-palette="accent" type="color" value="#C58D63"/><input id="palette-accent-hex" class="palette-hex-input" data-hex-for="accent" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="accent HEX 色碼" value="#C58D63"/></label>
+<label class="palette-field" for="palette-background"><span>背景色</span><input id="palette-background" data-palette="background" type="color" value="#F8F5EF"/><input id="palette-background-hex" class="palette-hex-input" data-hex-for="background" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="background HEX 色碼" value="#F8F5EF"/></label>
+<label class="palette-field" for="palette-text"><span>文字色</span><input id="palette-text" data-palette="text" type="color" value="#28231F"/><input id="palette-text-hex" class="palette-hex-input" data-hex-for="text" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="text HEX 色碼" value="#28231F"/></label></div><div id="palette-live-preview" class="brand-palette-preview"><span>BRAND PALETTE PREVIEW</span><strong>讓內容清楚，也讓品牌有自己的樣子。</strong><p>這段文字展示背景與文字色，按鈕展示主色與強調色。</p><span class="brand-palette-preview__actions"><b>主要按鈕</b><em>輔助元素</em></span></div><p class="muted">正式網站仍需要檢查對比：一般文字與背景至少 4.5:1，大字至少 3:1；AI 不能直接假定所有配色都合格。</p><aside class="palette-resource-links" aria-labelledby="palette-resource-title">
 <h3 id="palette-resource-title">不知道怎麼配色？先到這三個工具看看</h3>
 <p>找到喜歡的色彩後，把 HEX 色碼帶回上方色盤，再確認背景、文字和按鈕是否清楚易讀。</p>
 <div class="palette-resource-grid">
@@ -102,9 +102,20 @@ function paintPalette(){
  document.querySelector<HTMLElement>('#brand-hex')!.textContent=palette.primary;
  const box=document.querySelector<HTMLElement>('#palette-live-preview')!;
  for(const [key,val] of Object.entries(palette))box.style.setProperty('--palette-'+key,val);
- for(const key of paletteKeys)document.querySelector<HTMLElement>('#palette-'+key+'-hex')!.textContent=palette[key];
+ for(const key of paletteKeys){const input=document.querySelector<HTMLInputElement>('#palette-'+key+'-hex')!;input.value=palette[key];input.removeAttribute('aria-invalid');}
 }
 document.querySelectorAll<HTMLInputElement>('[data-palette]').forEach(input=>input.addEventListener('input',()=>{paintPalette();renderFooterPreview();showPlan()}));
+document.querySelectorAll<HTMLInputElement>('[data-hex-for]').forEach(input=>{
+ const apply=()=>{
+  const value=input.value.trim().toUpperCase();
+  const normalized=value.startsWith('#')?value:'#'+value;
+  if(!/^#[0-9A-F]{6}$/.test(normalized)){input.setAttribute('aria-invalid','true');return false}
+  document.querySelector<HTMLInputElement>('#palette-'+input.dataset.hexFor)!.value=normalized;
+  paintPalette();renderFooterPreview();showPlan();return true;
+ };
+ input.addEventListener('change',()=>{if(!apply())input.title='請輸入 6 位 HEX，例如 #50775B';else input.title=''});
+ input.addEventListener('blur',()=>{if(!apply()){input.value=document.querySelector<HTMLInputElement>('#palette-'+input.dataset.hexFor)!.value.toUpperCase();input.removeAttribute('aria-invalid');input.title=''}});
+});
 
 const layoutOptions=Array.from(document.querySelectorAll<HTMLElement>('.layout-option'));
 const rows=document.querySelector<HTMLElement>('#nav-items')!;
