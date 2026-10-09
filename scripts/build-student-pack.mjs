@@ -39,6 +39,14 @@ add('docs/student-builder-pack/UPSTREAM-SOURCES.md', 'REFERENCE-NOTES.md');
 add('docs/student-builder-pack/START-HERE.md', 'START-HERE.md');
 add('docs/student-builder-pack/AGENT-HANDOFF.md', 'AGENT-HANDOFF.md');
 add('docs/student-builder-pack/README.md', 'README.md');
+/* Exclude internal project research prose and non-distribution artifacts.
+   The portable kit intentionally retains source examples and skill references,
+   but does not publish unrelated project notes as student-facing instructions. */
+for (const name of [...entries.keys()]) {
+  if (name.startsWith('docs/') && !name.startsWith('docs/student-builder-pack/')) entries.delete(name);
+  if (name.startsWith('.ai/') && /(?:^|\/)(?:\.DS_Store|\.env|node_modules)(?:\/|$)/.test(name)) entries.delete(name);
+}
+
 // ZIP files must also contain the actual reference roots declared in the Skills;
 // absent optional research files are documented rather than fabricated.
 
