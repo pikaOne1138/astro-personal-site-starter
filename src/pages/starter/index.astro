@@ -39,7 +39,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-patterns">
-<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>選擇喜歡的完整區段與放置頁面。三種頁腳擇一，不一定每個網站都需要額外區段。</p><a href={base+'section-patterns/'} target="_blank" rel="noopener noreferrer">看看組合樣板的完整預覽 ↗</a></div></div>
+<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>選擇想加入的區段與頁面位置。頁腳是整站共用的，只要挑一款樣式，就會自動放在每個頁面底部。</p><a href={base+'section-patterns/'} target="_blank" rel="noopener noreferrer">看看組合樣板的完整預覽 ↗</a></div></div>
 <div class="pattern-options" id="pattern-options">
 {patternRegistry.map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
 <label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.title}</strong></label>
@@ -79,7 +79,7 @@ function renderPatterns(){
   box.hidden=!valid;
   const check=box.querySelector<HTMLInputElement>('.pattern-choice')!;
   if(!valid)check.checked=false;
-  box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked;
+  box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked||isFooter;
   const select=box.querySelector<HTMLSelectElement>('.pattern-page')!;
   const old=select.value;
   select.replaceChildren();
@@ -236,7 +236,7 @@ function plan():StarterPlan {
  return {version:1,kind,layoutSlug:value('layout'),visualTheme:value('theme') as StarterTheme,
  brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:color.value.toUpperCase(),tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value},
  navigation:nav.map(x=>({...x})),
- sectionPatterns:Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),
+ sectionPatterns:Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:check.value.startsWith('footer-')?'site-wide':box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:check.value.startsWith('footer-')?'每頁主要內容之後':box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
  notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value};
 }
@@ -269,29 +269,6 @@ update();
 .pattern-config label{display:grid;gap:6px;font-size:14px}
 .pattern-config input,.pattern-config select{width:100%;min-width:0;padding:10px;border:1px solid #bdb3a5;border-radius:8px;font:inherit;background:var(--white)}
 @media(max-width:650px){.pattern-options{grid-template-columns:1fr}}
-</style>
-<style>
-.nav-row{grid-template-columns:24px minmax(0,1fr) minmax(110px,.8fr) 38px 38px}
-.nav-row-child{padding-left:12px;border-left:2px solid var(--accent)}
-.nav-row select{min-width:0;padding:9px 4px;border:1px solid var(--line);border-radius:8px;background:var(--white);font:inherit;font-size:13px}
-.nav-add{margin-top:12px;background:var(--white);border:1px solid var(--line);padding:10px 16px;border-radius:8px;font:inherit;cursor:pointer}
-.nav-preview-group{padding:4px 0;min-width:100px}.nav-preview-group strong{font-size:14px}
-.nav-preview-group ul{padding-left:20px;margin:6px 0 0;font-size:13px}
-@media(max-width:600px){.nav-row{grid-template-columns:24px minmax(0,1fr) 34px 34px}.nav-row select{grid-column:2 / -1;grid-row:2;width:100%}}
-</style>
-<style>
-#nav-items{display:grid;gap:10px}
-.nav-row{display:grid;grid-template-columns:26px 22px minmax(0,1fr);align-items:center;gap:8px 10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--white);min-width:0}
-.nav-row-child{margin-left:clamp(18px,4vw,36px);border-left:4px solid var(--accent);background:#faf5ed}
-.nav-row input[type=text]{width:100%;min-width:0}
-.nav-drag-handle{font-size:24px;cursor:grab;line-height:1;text-align:center;color:var(--muted)}
-.nav-row-actions{grid-column:3;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-start}
-.nav-row-actions button{display:grid;place-items:center;width:39px;height:39px;border-radius:8px;border:1px solid var(--line);background:var(--white);font:inherit;cursor:pointer}
-.nav-row-actions button:disabled{opacity:.35;cursor:default}
-.nav-row-actions button:hover:not(:disabled){border-color:var(--accent)}
-.nav-row.is-drag-over{outline:2px dashed var(--accent)}
-.nav-add{margin-top:14px}
-@media(max-width:650px){.nav-row{padding:10px;gap:6px}.nav-row-actions button{min-width:38px;min-height:38px}}
 </style>
 <style>
 .notes-field{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;margin-top:12px}
