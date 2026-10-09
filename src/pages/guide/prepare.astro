@@ -34,7 +34,24 @@ const pages=[
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>AI 先從你的網站定位提出三種<strong>不同的 Logo 概念</strong>，再陪你選擇文字標誌、字母標誌、簡單符號或組合標誌。選定概念後生成 Logo 候選、精簡的 favicon，再製作需要的 Hero、文章封面或服務情境替代圖。</p>
 <ol><li>先選概念，不是只換顏色；黑白版也要清楚。</li><li>中文字形必須人工校對。若 AI 產圖文字錯誤，就先生成純圖形，再用真正字體排版。</li><li>favicon 檢查 16、32、48px。不要把整張橫式 Logo 硬縮小。</li><li>AI 生成的照片不可以冒充真實執業者、客戶、諮商空間或事件，正式使用還需檢查平台條款及與既有商標的相似性。</li></ol><p class="fine">訪談 ZIP 內含「AI 品牌識別與圖片共創」與 Logo 設計研究文件。</p></section>
-<section id="cloudflare"><h2>06｜準備 Cloudflare 帳號</h2><p>建立或登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard ↗</a>。初次製作靜態個人網站，無須先購買網域或開 D1 / R2 / 金流。<strong>連接 Repo、設定 Pages 專案、檢查部署，放在「開始建置」的流程中操作。</strong></p></section>
+<section id="cloudflare"><h2>06｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
+<p><strong>不使用 Cloudflare 也能完成網站：</strong>可以選 GitHub Pages。若想讓原始碼留在私有 GitHub Repo、改版有方便的線上預覽、之後也能逐步增加網站管理功能，推薦使用 <strong>Cloudflare Pages</strong>。</p>
+<div class="card"><h3>先分清楚：「私有倉庫」不是「私人網站」</h3><p>Cloudflare Pages 能連接 <strong>Private GitHub Repository</strong>，因此學員的網站原始碼不必公開，正式網站卻仍然能讓大眾瀏覽。<strong>不會因為 Repo 私有，部署出來的網站就自動需要登入。</strong> 同樣也不能把密碼、API Token、個案資料放進網站原始碼或公開的前端檔案。</p><p class="fine">私有原始碼降低不必要的公開曝光，但不代表資料絕對安全，也不等於限制網站瀏覽權限。</p></div>
+<h3>使用 Cloudflare 的好處</h3>
+<table><thead><tr><th>功能</th><th>對學員有什麼幫助？</th><th>需要注意</th></tr></thead><tbody>
+<tr><td>私有 Repo 部署</td><td>GitHub 倉庫維持 Private，正式網站照常對外公開。</td><td>需在 Cloudflare GitHub App 授權正確的 Repository。</td></tr>
+<tr><td>自動更新</td><td>在 GitHub 的主要分支發布後，Cloudflare 自動建置網站。</td><td>仍須確認部署成功，不能只看 GitHub Commit。</td></tr>
+<tr><td>PR／分支預覽</td><td>修改文案、配色與排版前，先讓自己或老師查看測試版。</td><td>預覽網址<strong>預設公開</strong>；不能將尚未公開的秘密放在預覽頁。</td></tr>
+<tr><td>限制預覽存取</td><td>可啟用 Cloudflare Access 的 Preview access policy，要求指定人員驗證後才可看。</td><td>此設定<strong>只保護預覽</strong>，不會順便鎖住正式網站。</td></tr>
+<tr><td>自訂網域與 HTTPS</td><td>先用 pages.dev 網址上線，日後再綁個人網域。</td><td>自訂網域與 DNS 需另行設定；有些網域本身需要付費。</td></tr>
+<tr><td>Web Analytics</td><td>查看訪客與頁面瀏覽、基本使用情況。</td><td>到專案的 Metrics 啟用，並確認資料與隱私告知。</td></tr>
+<tr><td>轉址／標頭</td><td>更換文章網址時設定重新導向；調整部分安全與搜尋規則。</td><td>靜態站可用 <code>_redirects</code> 與 <code>_headers</code>，由 AI 協助、測試後才使用。</td></tr>
+<tr><td>進一步的頁面控管</td><td>必要時可使用 Cloudflare Access，限制特定網域或路徑誰能開啟。</td><td>這是選修進階設定，不是會員系統；正式站的保護需另外配置與測試。</td></tr>
+</tbody></table>
+<aside><strong>初學者現在只需要：</strong>註冊 Cloudflare 帳號就好。先不用設定 Zero Trust、D1、R2、Workers 程式或額外金流。等獨立 Astro 網站已經完成，再到「開始建置」頁一步步連接 GitHub 與 Cloudflare Pages。若不想使用 Cloudflare，選 GitHub Pages 路線即可。</aside>
+<p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">開啟 Cloudflare Dashboard ↗</a></p>
+<p class="fine">官方延伸閱讀：<a href="https://developers.cloudflare.com/pages/configuration/git-integration/" target="_blank" rel="noopener noreferrer">Git 自動部署</a>、<a href="https://developers.cloudflare.com/pages/configuration/preview-deployments/" target="_blank" rel="noopener noreferrer">PR 預覽與存取控制</a>、<a href="https://developers.cloudflare.com/pages/configuration/custom-domains/" target="_blank" rel="noopener noreferrer">自訂網域</a>、<a href="https://developers.cloudflare.com/web-analytics/get-started/" target="_blank" rel="noopener noreferrer">Web Analytics</a>、<a href="https://developers.cloudflare.com/pages/configuration/redirects/" target="_blank" rel="noopener noreferrer">轉址</a>。</p>
+</section>
 <p><a class="button" style="display:inline-block;text-decoration:none" href={base+'guide/'}>前置完成，開始建置網站 →</a></p>
 </main><footer>Astro 架站工作坊 · 前置準備 ｜ <a href={base+'guide/'}>開始建置</a></footer>
 <script is:inline define:vars={{intakeFiles}}>
