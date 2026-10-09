@@ -14,7 +14,8 @@ const pages=[
 {title:'讓 AI 存取倉庫',id:'access',desc:'授權 AI 存取你的倉庫。'},
 {title:'網站內容訪談',id:'intake',desc:'下載訪談包，與 AI 討論內容。'},
 {title:'Logo、Favicon 與網站圖片',id:'visual',desc:'用 AI 設計 Logo、favicon 和圖片。'},
-{title:'Cloudflare 事前準備',id:'cloudflare',desc:'選用 Cloudflare Pages。'}
+{title:'GitHub Pages 設定',id:'github-pages',desc:'選擇 GitHub Pages 時完成。'},
+{title:'Cloudflare 事前準備',id:'cloudflare',desc:'不使用 GitHub Pages 時可選。'}
 ];
 ---
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>前置準備｜Astro 架站工作坊</title><style>
@@ -25,7 +26,7 @@ const pages=[
 <div class="steps">{pages.map(x=><a href={'#'+x.id}><strong>{x.title} ↓</strong><small>{x.desc}</small></a>)}</div>
 <section id="account"><h2>01｜認識 GitHub：不用先學會寫程式</h2>
 <ol><li>開啟 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊 ↗</a>；若已有帳號，就直接登入。</li><li>登入後，確認右上角頭像選單能看到自己的帳號名稱。</li><li>記下自己的 GitHub 帳號名稱。</li></ol><aside>找不到按鈕？截圖給 AI，請它教下一步。截圖前遮住敏感資訊。</aside></section>
-<section id="repo"><h2>02｜建立第一個 Repository</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇 Public（公開）或 Private（私人）。使用免費 GitHub Pages 需公開倉庫；Cloudflare Pages 可連接私人倉庫。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
+<section id="repo"><h2>02｜建立第一個 Repository</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇 Public（公開）或 Private（私人）。<strong>第一次建站，想簡單免費：建議選 Public，網站原始碼也會公開。</strong>想保留 Private，可使用符合資格的 GitHub 付費方案搭配 GitHub Pages，或改選 Cloudflare Pages 等支援私人倉庫的託管平台。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
 <p><strong>不會操作？複製提示詞給 AI。</strong></p><div class="card"><button type="button" class="button secondary" id="copy-github">複製 GitHub 截圖陪跑提示詞</button><div class="prompt" id="github-prompt">請一步一步教我在 GitHub 建立個人網站倉庫。每次只給一個步驟，告訴我要按哪裡、成功後會看到什麼。如果介面不同，請我截圖給你確認。不要要求密碼或驗證碼。</div></div></section>
 <section id="access"><h2>03｜讓 AI 真正有權限讀寫你的倉庫</h2><p>先在 AI 網頁連接 GitHub，再開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">Installed GitHub Apps 管理頁 ↗</a>。</p>
 <ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>找不到 App？回 AI 工具重新連接 GitHub。新倉庫也需要加入授權清單。</aside></section>
@@ -34,7 +35,20 @@ const pages=[
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
 <section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>請 AI 提出三款 Logo 方向，選定後製作 favicon 和網站圖片。</p>
 <ol><li>從三款概念選一款。</li><li>確認 Logo 中文名稱正確。</li><li>請 AI 檢查 favicon 在小尺寸是否清楚。</li><li>確認圖片沒有冒充真實人物、客戶或場所。</li></ol></section>
-<section id="cloudflare"><h2>06｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
+<section id="github-pages"><h2>06｜使用 GitHub Pages 發布網站（選用）</h2>
+<p>選擇 GitHub Pages 的學員，先完成以下設定：</p>
+<ol>
+<li>開啟自己的網站倉庫。</li>
+<li>點選上方 <strong>Settings</strong>。</li>
+<li>從左側選單點 <strong>Pages</strong>。</li>
+<li>找到 <strong>Build and deployment → Source</strong>，選擇 <strong>GitHub Actions</strong>。</li>
+<li>請 AI 設定網站的自動建置與部署；等程式完成後，在 <strong>Actions</strong> 查看結果。</li>
+<li>部署成功後，回到 <strong>Settings → Pages</strong>，點 <strong>Visit site</strong> 打開自己的網站。</li>
+</ol>
+<p><strong>完成確認：</strong>頁面出現 <strong>Your site is live at ...</strong>，而且 <strong>Visit site</strong> 能正常開啟。</p>
+<p>如果畫面與教學不同，截圖給 AI，請它依畫面指引。</p>
+</section>
+<section id="cloudflare"><h2>07｜準備 Cloudflare 帳號（非必要，但推薦）</h2>
 <p><strong>非必要：</strong>不使用 Cloudflare，也能用 GitHub Pages 發布網站。</p>
 <h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
