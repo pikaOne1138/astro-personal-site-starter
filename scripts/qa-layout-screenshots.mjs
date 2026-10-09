@@ -27,7 +27,9 @@ try {
    page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text())});
    page.on('pageerror',e=>pageErrors.push(e.message));
    const resp=await page.goto(base+'/layouts/'+slug+'/',{waitUntil:'domcontentloaded',timeout:12000});
-   await page.waitForTimeout(250);
+   // Wait briefly for remote demo images, without hanging indefinitely on broken hosts.
+   await page.waitForFunction(() => [...document.images].every(img=>img.complete),null,{timeout:6500}).catch(()=>{});
+   await page.waitForTimeout(200);
    await page.screenshot({path:dir+'/'+slug+'-'+width+(publicMode?'.jpg':'.png'),type:publicMode?'jpeg':'png',quality:publicMode?62:undefined,fullPage:true,timeout:12000,animations:'disabled'});
    const result=await page.evaluate(()=>({
      overflow:document.documentElement.scrollWidth>window.innerWidth+2,
@@ -47,6 +49,7 @@ try {
  }
 
  console.log('Layout screenshot audit:',JSON.stringify(Object.fromEntries(Object.entries(summary).map(([k,v])=>[k,Array.isArray(v)?v.length:v]))));
+ for(const row of summary.imageFailures)console.log('LAYOUT_IMAGE_FAILURE',JSON.stringify({slug:row.slug,width:row.width,images:row.images}));
  if(rows.length!==48||summary.failedHttp.length||summary.overflow.length||summary.runtimeErrors.length)process.exitCode=1;
  // Missing remote demo imagery is recorded as a warning until media rights and local fallbacks are addressed.
 } finally {
