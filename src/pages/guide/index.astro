@@ -1,4 +1,19 @@
 ---
+import builderStart from '../../../docs/student-builder-pack/START-HERE.md?raw';
+import builderHandoff from '../../../docs/student-builder-pack/AGENT-HANDOFF.md?raw';
+import builderReadme from '../../../docs/student-builder-pack/README.md?raw';
+import builderAgents from '../../../AGENTS.md?raw';
+import builderOnboarding from '../../../.ai/astro-starter-onboarding/SKILL.md?raw';
+import builderAssembly from '../../../.ai/astro-site-assembly/SKILL.md?raw';
+import builderLayout from '../../../.ai/astro-layout-craft/SKILL.md?raw';
+import builderEditorial from '../../../.ai/astro-editorial-layout-design/SKILL.md?raw';
+import builderUI from '../../../.ai/astro-ui-craft/SKILL.md?raw';
+import builderPatterns from '../../../.ai/astro-section-pattern-craft/SKILL.md?raw';
+import builderDeploy from '../../../.ai/astro-starter-deploy/SKILL.md?raw';
+import builderBlockRegistry from '../../../src/data/blocks.registry.json?raw';
+import builderPatternRegistry from '../../../src/data/section-patterns.registry.json?raw';
+import builderLayouts from '../../../src/data/layout-directions.json?raw';
+const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
 import intakeReadme from '../../../docs/student-intake/README.md?raw';
 import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
 import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
@@ -58,7 +73,7 @@ const prompts=[
 <section class="chapter" id="step-03"><span class="chapter-number">03 / PLAN</span><h2>填寫規劃器 → 下載 Site Brief</h2>
 <div class="card"><h3>照著畫面完成</h3>{['開啟 /starter/，選知識／部落格或助人者／專業服務','選一款首頁 Layout，打開實際預覽；不要只選配色','選八款配色起點之一，調整五色盤並檢查可讀性','輸入真實網站名稱與介紹；啟用必要頁面，測試兩層選單與 CTA','到 Section Patterns 選需要的整段（也可以不選）；記下放哪頁','下載 Site Brief JSON，另存一份；確定檔案不是截圖'].map((t,i)=><label class="task"><input type="checkbox" data-task={'plan-'+i}/><span>{t}</span></label>)}<p><a class="btn" href={link('starter/')}>打開網站規劃器 ↗</a></p></div>
 <div class="prompt"><div class="prompt-top"><strong>{prompts[1].title}</strong><button class="btn ghost copy" data-copy="1">複製提示詞</button></div><pre>{prompts[1].body}</pre></div></section>
-<section class="chapter" id="step-04"><span class="chapter-number">04 / ASSEMBLE</span><h2>AI 建立獨立網站，不只生成首頁</h2><p><strong>一般學員（網頁版操作）：</strong>下載 Site Brief JSON → 在 AI 對話直接上傳 JSON 與「AI 建站指引包 ZIP」→ 複製下方簡短提示詞。學員不用把 JSON 放進 GitHub Repo，若 AI 建站時需要保存設定，由 AI 自己處理。讓 AI 先確認它具有實際操作 Repository 與建置網站的能力，接著由 AI 建立獨立網站、補齊頁面並提出 PR。<strong>學員不需要輸入任何終端機指令。</strong> 如果目前 AI 只有聊天功能，不能修改檔案或提交 PR，請改用支援 GitHub 操作的 AI 工具；只貼提示詞並不能自動建站。</p><div class="card"><h3>第二階段一定要完成</h3>{['對照原始 Layout，保留 Hero 比例、欄位、節奏與手機重排','選中的 Section Patterns 實際移植、避免與頁腳/Block 重複','把需要的 About、文章、服務、FAQ、聯絡頁面做完','用真實資料取代示範內容，表單與預約未連接就不能冒充成功','確認 AI 已執行網站建置檢查，並提供實際成功或失敗的紀錄（不用自己輸入指令）','檢查 1440 / 1280 / 768 / 390 四視口，以及鍵盤導航'].map((t,i)=><label class="task"><input type="checkbox" data-task={'assembly-'+i}/><span>{t}</span></label>)}</div><div class="prompt"><div class="prompt-top"><strong>{prompts[2].title}</strong><button class="btn ghost copy" data-copy="2">複製提示詞</button></div><pre>{prompts[2].body}</pre></div></section>
+<section class="chapter" id="step-04"><span class="chapter-number">04 / ASSEMBLE</span><h2>AI 建立獨立網站，不只生成首頁</h2><p><strong>一般學員（網頁版操作）：</strong>下載 Site Brief JSON → 在 AI 對話直接上傳 JSON 與「AI 建站指引包 ZIP」→ 複製下方簡短提示詞。學員不用把 JSON 放進 GitHub Repo，若 AI 建站時需要保存設定，由 AI 自己處理。讓 AI 先確認它具有實際操作 Repository 與建置網站的能力，接著由 AI 建立獨立網站、補齊頁面並提出 PR。<strong>學員不需要輸入任何終端機指令。</strong> 如果目前 AI 只有聊天功能，不能修改檔案或提交 PR，請改用支援 GitHub 操作的 AI 工具；只貼提示詞並不能自動建站。</p><div class="card"><h3>給 AI 的建站資料包</h3><p>學員只需按下載，取得含必要 Skills、Registry、Layout 清單與 AI 指引的 ZIP，再和 Site Brief JSON 一起上傳同一段 AI 對話。<strong>不需要自己閱讀技術文件，也不需要把 JSON 先放入 Repo。</strong></p><p><button type="button" class="btn" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button></p><p class="small">資料包是此次教學版本的參考快照，不包含整份 Astro 網站原始碼；AI 建站前仍須核對最新 Repo，以免版本過期。若 AI 平台無法讀取 ZIP，先解壓縮再上傳檔案。</p></div><div class="card"><h3>第二階段一定要完成</h3>{['對照原始 Layout，保留 Hero 比例、欄位、節奏與手機重排','選中的 Section Patterns 實際移植、避免與頁腳/Block 重複','把需要的 About、文章、服務、FAQ、聯絡頁面做完','用真實資料取代示範內容，表單與預約未連接就不能冒充成功','確認 AI 已執行網站建置檢查，並提供實際成功或失敗的紀錄（不用自己輸入指令）','檢查 1440 / 1280 / 768 / 390 四視口，以及鍵盤導航'].map((t,i)=><label class="task"><input type="checkbox" data-task={'assembly-'+i}/><span>{t}</span></label>)}</div><div class="prompt"><div class="prompt-top"><strong>{prompts[2].title}</strong><button class="btn ghost copy" data-copy="2">複製提示詞</button></div><pre>{prompts[2].body}</pre></div></section>
 <div class="card"><h3>本工作坊只走瀏覽器：學員不用安裝任何開發工具</h3><p>整套教學限定在<strong>AI 網頁、網站規劃器、GitHub 網頁與 Cloudflare Dashboard</strong> 完成。學員不用下載程式碼到電腦、不用打開終端機，也不必自己執行 Node.js。AI 必須使用已授權的雲端程式碼執行或 GitHub 修改能力，在遠端完成建立網站、驗證與提出 PR。<strong>只有聊天或只讀 GitHub 的 AI 連接器無法保證做到這件事</strong>；在開始前必須先確認所選網頁版工具能實際寫入 Repository、進行建置並開 PR。不能做到時應明確停下並說明缺少的功能，而不是叫學員改用 CLI。</p></div>
 <section class="chapter" id="step-05"><span class="chapter-number">05 / REPOSITORY</span><h2>建立自己網站的 GitHub Repo</h2><p>使用 <a href="https://github.com/new" target="_blank" rel="noopener">GitHub → New repository</a>。建議用與品牌有關的英文名稱，例如 <code>my-personal-site</code>；新網站推到自己的 Repo。<strong>不要 Fork 後直接讓研究展示站的 CI 當作你的正式發布系統</strong>，要先確認獨立站的建置設定、網址與 Workflow。</p><div class="card"><h3>驗收點</h3>{['能在自己的 Repo → Code 看見 package.json、src/、public/','正式網站的 Astro site/base 不再指向工作坊的 GitHub Pages 子路徑','AI 清楚說明它推送了哪個分支與 Commit','沒有 API Key、密碼、客戶私密資料或不授權圖片'].map((t,i)=><label class="task"><input type="checkbox" data-task={'repo-'+i}/><span>{t}</span></label>)}</div><div class="prompt"><div class="prompt-top"><strong>{prompts[3].title}</strong><button class="btn ghost copy" data-copy="3">複製提示詞</button></div><pre>{prompts[3].body}</pre></div></section>
 <section class="chapter" id="step-06"><span class="chapter-number">06 / HOSTING</span><h2>連接 Cloudflare，讓 GitHub 自動部署</h2>
@@ -71,7 +86,7 @@ const prompts=[
 <section class="chapter"><h2>學員測試回報表</h2><p>每遇到一個卡住的地方，請記錄「章節號碼、正在看的網址、看到的錯誤、實際畫面截圖、AI 工具名稱、能否自行解決」。我們要用真實困難修訂 SOP，而不是預設每個人都成功。</p><div class="card"><strong>最後自我檢查</strong><p id="progress" aria-live="polite">請勾選上方測試項目以追蹤進度。</p><button id="clear-progress" class="btn ghost" type="button">清除本機勾選進度</button></div><p class="small">文件版本：2026-10-09 · 測試路徑：獨立 Astro 網站 / GitHub / Cloudflare Pages（首選）· 不代表外部帳號已連接或網站已實際部署。</p></section>
 </main></div>
 <footer>Astro 架站工作坊　·　Structure before decoration　·　<a href={base}>回到首頁</a></footer>
-<script is:inline define:vars={{prompts:prompts.map(p=>p.body),intakeFiles}}>
+<script is:inline define:vars={{prompts:prompts.map(p=>p.body),intakeFiles,builderFiles}}>
 const tasks=[...document.querySelectorAll('[data-task]')];
 function update(){let checked=0;tasks.forEach(t=>{if(t.checked)checked++});document.getElementById('progress').textContent='本機進度：'+checked+' / '+tasks.length+' 項完成。實際驗收仍需人工確認。'}
 tasks.forEach(t=>{try{t.checked=localStorage.getItem('astro-guide-'+t.dataset.task)==='1'}catch{}t.addEventListener('change',()=>{try{localStorage.setItem('astro-guide-'+t.dataset.task,t.checked?'1':'0')}catch{}update()})});update();
@@ -93,6 +108,7 @@ function makeZip(files){
  const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
  return new Blob([body,dir,end],{type:'application/zip'});
 }
+document.getElementById('download-builder-zip')?.addEventListener('click',()=>{const blob=makeZip(builderFiles),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Astro-AI-建站資料包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
 document.getElementById('download-intake-zip')?.addEventListener('click',()=>{
  const a=document.createElement('a'),blob=makeZip(intakeFiles),url=URL.createObjectURL(blob);
  a.href=url;a.download='Astro-建站前AI訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
