@@ -1,0 +1,80 @@
+---
+import builderStart from '../../../docs/student-builder-pack/START-HERE.md?raw';
+import builderHandoff from '../../../docs/student-builder-pack/AGENT-HANDOFF.md?raw';
+import builderReadme from '../../../docs/student-builder-pack/README.md?raw';
+import builderAgents from '../../../AGENTS.md?raw';
+import builderOnboarding from '../../../.ai/astro-starter-onboarding/SKILL.md?raw';
+import builderAssembly from '../../../.ai/astro-site-assembly/SKILL.md?raw';
+import builderLayout from '../../../.ai/astro-layout-craft/SKILL.md?raw';
+import builderEditorial from '../../../.ai/astro-editorial-layout-design/SKILL.md?raw';
+import builderUI from '../../../.ai/astro-ui-craft/SKILL.md?raw';
+import builderPatterns from '../../../.ai/astro-section-pattern-craft/SKILL.md?raw';
+import builderDeploy from '../../../.ai/astro-starter-deploy/SKILL.md?raw';
+import builderBlockRegistry from '../../../src/data/blocks.registry.json?raw';
+import builderPatternRegistry from '../../../src/data/section-patterns.registry.json?raw';
+import builderLayouts from '../../../src/data/layout-directions.json?raw';
+const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
+const base=import.meta.env.BASE_URL;
+const link=(path:string)=>base+path.replace(/^\//,'');
+const steps=[
+{n:'01',name:'選擇網站設計',intro:'到規劃器選網站類型、Layout、品牌色、頁面與選單，下載 Site Brief JSON。',you:['開啟網站規劃器，完成選擇','點下載，確認電腦裡有一份 JSON 檔案'],ai:''},
+{n:'02',name:'把檔案交給 AI',intro:'上傳規劃檔與建站資料包，傳送提示詞。',you:['上傳剛下載的 Site Brief JSON','點下方按鈕下載 AI 建站資料包 ZIP，一起上傳','貼上「開始建站」提示詞'],ai:''},
+{n:'03',name:'AI 製作網站',intro:'AI 建立網站後，打開預覽連結查看。',you:['請 AI 告訴你下一步要確認什麼','收到網站預覽連結後，實際打開看首頁、About 與文章／服務頁'],ai:''},
+{n:'04',name:'讓網站可以預覽',intro:'沿用前置準備選定的發布方式，取得網站預覽網址。',you:['依 AI 提示在託管平台完成必要的連接與授權','打開 AI 提供的網址，看圖文與連結是否正常'],ai:''},
+{n:'05',name:'提出修改意見',intro:'截圖告訴 AI 需要修改的地方。',you:['用手機和電腦看實際頁面','截圖圈出問題、說明希望改成什麼','重開更新後的預覽連結確認'],ai:''},
+{n:'06',name:'確認後正式發布',intro:'確認內容、圖片與連結後再發布。',you:['檢查網站資訊、主要按鈕、文章／服務與手機畫面','確認沒有不願公開的資料','滿意後再明確同意發布'],ai:''},
+{n:'07',name:'上線後更新網站',intro:'更新內容時，先預覽再發布。',you:['收藏自己的正式網址與 GitHub 倉庫網址','下次修改時先請 AI 提供預覽，不直接覆蓋正式站'],ai:''}
+];
+const prompts=[
+{title:'開始建站',text:'我已上傳網站規劃檔與建站資料包。請依照資料包幫我建立網站，一次只問我一個需要確認的問題。完成後提供預覽網址，等我同意再正式發布。'},
+{title:'請 AI 引導連接網站託管',text:'我想把這個網站放上網路，使用【Cloudflare Pages／GitHub Pages】。請依我眼前的網站畫面，一次教我按一個步驟。碰到畫面不一樣就請我截圖，不要猜測按鈕位置。程式設定由你處理；每一步請告訴我完成後應看到什麼。先取得可打開的測試網址，不要擅自發布正式版本。'},
+{title:'請 AI 幫我修正畫面',text:'這是我的網站預覽連結：【貼網址】。這是我想修改的地方：【用自己的話描述，也可以附截圖】。請只修改這次提到的問題，保留原本選擇的設計風格。修好後給我新的預覽連結，並用白話告訴我改了什麼。先不要合併或發布。'},
+{title:'請 AI 進行上線前檢查',text:'我正在確認網站能不能正式公開。請替我檢查頁面、圖片、連結、搜尋、手機畫面與不應公開的資料。請用「正常／有問題／需要我親自看」三類白話回報，並提供預覽網址。我還沒有同意合併或發布，請先等我確認。'},
+{title:'請 AI 幫我日後更新',text:'我想修改自己已上線的網站：【說明想改什麼】。請先製作一份不影響目前正式網站的預覽版本，提供網址讓我查看。確認沒問題再問我是否同意發布。'}
+];
+---
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><meta name="generator" content="Astro Workshop Guide"/><title>開始建置｜Astro 工作坊</title>
+<style>
+:root{--bg:#f7f5f0;--ink:#272822;--green:#254e3d;--line:#d8ded4;--muted:#59635b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,"Noto Sans TC",sans-serif}h1,h2{line-height:1.3}h1{font:600 clamp(35px,5vw,58px)/1.25 Georgia,serif}h2{font-size:27px}a{color:var(--green)}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #b47848;outline-offset:3px}.top{background:#fffefa;border-bottom:1px solid var(--line);padding:17px max(24px,calc((100vw - 1050px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.tabs{display:flex;gap:9px}.tabs a{border:1px solid var(--line);border-radius:7px;padding:6px 14px;text-decoration:none}.tabs [aria-current=page]{background:var(--green);color:white}.wrap{max-width:1050px;margin:auto;padding:45px 24px 80px}.lead{font-size:19px;max-width:740px}.section{padding:32px 0;border-top:1px solid var(--line);scroll-margin-top:16px}.section-head{display:flex;gap:20px;align-items:baseline}.number{font:24px Georgia,serif;color:var(--green)}.card{background:#fffefa;border:1px solid var(--line);border-radius:11px;padding:20px 24px;margin:20px 0}.you{font-weight:700;margin-bottom:10px}.todo{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #edf0e9}.todo input{margin-top:9px;width:17px;height:17px;accent-color:var(--green)}.button{background:var(--green);color:white;border:0;border-radius:7px;padding:9px 16px;text-decoration:none;display:inline-block}.button.alt{background:white;color:var(--green);border:1px solid var(--green)}.prompt{background:#ecf1ea;border:1px solid #d1ddce;border-radius:10px;padding:17px 19px;margin:20px 0;white-space:pre-wrap;overflow-wrap:anywhere}.prompt-head{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:8px}.prompt p{margin:0}.small{color:var(--muted);font-size:14px}.note{border-left:4px solid #ad7955;background:#fff4e9;padding:15px 20px}.quick{display:flex;flex-wrap:wrap;gap:12px;padding:15px 0 38px}.quick a{border:1px solid var(--line);padding:7px 12px;border-radius:7px;background:white;text-decoration:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.two>div{background:#fffefa;border:1px solid var(--line);border-radius:10px;padding:18px}.last{padding:30px 0}footer{padding:32px;text-align:center;border-top:1px solid var(--line)}@media(max-width:650px){.two{grid-template-columns:1fr}.wrap{padding:24px 19px 65px}.top{padding:14px 19px}.prompt-head{align-items:flex-start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<header class="top"><strong>ASTRO WORKSHOP / 操作指南</strong><nav class="tabs" aria-label="教學頁面"><a href={link('guide/prepare/')}>前置準備</a><a href={link('guide/')} aria-current="page">開始建置</a></nav></header>
+<main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">選版型、上傳檔案、請 AI 建站、預覽並發布。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
+<nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
+{steps.map((st,i)=><section class="section" id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>
+{i===0 && <Fragment><p><a class="button" href={link('starter/')}>開啟網站規劃器 →</a></p></Fragment>}
+{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>下載後與 Site Brief JSON 一起上傳給 AI。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">無法上傳 ZIP 時，解壓縮後上傳文件。</p></div></Fragment>}
+<div class="card"><div class="you">你要做的事</div>{st.you.map((x,j)=><label class="todo"><input type="checkbox" data-task={st.n+'-'+j}/><span>{x}</span></label>)}</div>
+{i===1 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[0].title}</strong><button class="button alt copy" type="button" data-prompt="0">複製提示詞</button></div><p>{prompts[0].text}</p></div></Fragment>}
+{i===3 && <Fragment><div class="two"><div><strong>Cloudflare Pages</strong><p>B 路線：保留私人原始碼、方便預覽。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>A 路線：簡單免費，原始碼公開。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><p><a href={link("guide/prepare/#hosting")}>查看 A／B 發布方式設定步驟 →</a></p><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div></Fragment>}
+{i===4 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div></Fragment>}
+{i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div></Fragment>}
+{i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
+</section>)}
+<section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
+<section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
+</main><footer>Astro 架站工作坊 · <a href={link('guide/prepare/')}>前置準備</a></footer>
+<script is:inline define:vars={{prompts:prompts.map(x=>x.text),builderFiles}}>
+const tasks=[...document.querySelectorAll('[data-task]')];
+function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='完成 '+n+' / '+tasks.length+' 項'}
+tasks.forEach(x=>{try{x.checked=localStorage.getItem('workshop-guide-v2-'+x.dataset.task)==='1'}catch{}x.addEventListener('change',()=>{try{localStorage.setItem('workshop-guide-v2-'+x.dataset.task,x.checked?'1':'0')}catch{}refresh()})});refresh();
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompts[Number(b.dataset.prompt)]);b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製提示詞',1500)}));
+// Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
+function makeZip(files){
+ const enc=new TextEncoder(), parts=[], central=[];let offset=0;
+ const u16=n=>new Uint8Array([n&255,n>>>8&255]);
+ const u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);
+ const cat=(...a)=>{let size=a.reduce((s,x)=>s+x.length,0),out=new Uint8Array(size),i=0;for(let x of a){out.set(x,i);i+=x.length}return out};
+ const crc32=data=>{let c=-1;for(let b of data){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return(c^-1)>>>0};
+ for(const [name,content] of Object.entries(files)){
+   let fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x0800;
+   let local=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);
+   parts.push(local);
+   central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));
+   offset+=local.length;
+ }
+ const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
+ return new Blob([body,dir,end],{type:'application/zip'});
+}
+document.getElementById('download-builder-zip')?.addEventListener('click',()=>{const blob=makeZip(builderFiles),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Astro-AI-建站資料包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+
+</script></body></html>
