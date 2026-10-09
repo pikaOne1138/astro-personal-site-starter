@@ -24,10 +24,9 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-      - name: Build static site for Cloudflare root domain
+      - name: Build with Cloudflare Pages automatic URL and default root path
         env:
-          ASTRO_BASE_PATH: /
-          ASTRO_SITE_URL: https://example.com
+          CF_PAGES_URL: https://example.com
         run: npm run build
       - name: Check complete static output and deploy configuration
         run: |
