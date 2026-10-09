@@ -2,7 +2,7 @@
 
 Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and use its references as the design authority.
 
-For GitHub PRs, previews, deployment, visual verification, or merging: **read `.ai/astro-pr-preview/SKILL.md` first**. Never claim a preview is deployed or merge a website PR without confirming the workflow and explicit user approval.
+For GitHub PRs, previews, deployment, visual verification, or merging: **read `.ai/astro-pr-preview/SKILL.md` first**. This is a student-reusable **dual-platform** Skill: detect GitHub Pages, Cloudflare Pages, or Cloudflare Workers hosting from the student's own repository and actual deployment records before choosing Preview steps. The showcase's GitHub Pages preview workflow is repository-specific, not a universal student requirement. Never claim a preview is deployed or merge a website PR without confirming the real Preview URL, its commit, and explicit user approval.
 
 For articles, Content Collections, SEO, Pagefind, RSS, sitemap, draft/publication rules or content updates: **read `.ai/astro-content-publishing/SKILL.md` first** and follow its references. `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
 

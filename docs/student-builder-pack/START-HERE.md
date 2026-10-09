@@ -21,7 +21,7 @@
 - 獨立個人站不可覆蓋教學展示站；首頁 Prototype 不等於完整多頁網站。
 - 實際網站需依 Layout → Section Patterns → Blocks → Effects → Brand tokens 的分層，填入學員核准的真實內容；空白服務、假表單、虛構證照/見證不得正式公開。
 - AI 必須真的驗證編譯、四視口和預覽；不能只宣稱「已完成」。
-- **Branch → PR → 雲端 Build/Preview → 學員同意 → Merge/Deploy**。沒有學員明確同意不可 Merge、部署、修改 DNS。
+- **Branch → PR → 雲端 Build/Preview → 學員同意 → Merge/Deploy**。先讀本包 `skills/astro-pr-preview/SKILL.md` 判斷學員使用 GitHub Pages 或 Cloudflare Pages／Workers；兩平台預覽機制不同，不能用研究 Repo 的網址替代。沒有學員明確同意不可 Merge、部署、修改 DNS。
 - 所有學員操作都在瀏覽器；AI 可以在自己的遠端運算環境使用必要程式，但不得要求學員安裝 Node/CLI/桌面工具。
 
 ## 學員應該拿到的成果
