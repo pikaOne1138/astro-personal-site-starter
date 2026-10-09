@@ -2,7 +2,8 @@
 import builderStart from '../../../docs/student-builder-pack/START-HERE.md?raw';
 import builderHandoff from '../../../docs/student-builder-pack/AGENT-HANDOFF.md?raw';
 import builderReadme from '../../../docs/student-builder-pack/README.md?raw';
-import builderAgents from '../../../AGENTS.md?raw';
+import builderAgents from '../../../docs/student-builder-pack/STUDENT-AGENTS.md?raw';
+import builderUpstream from '../../../docs/student-builder-pack/UPSTREAM-SOURCES.md?raw';
 import builderOnboarding from '../../../.ai/astro-starter-onboarding/SKILL.md?raw';
 import builderAssembly from '../../../.ai/astro-site-assembly/SKILL.md?raw';
 import builderLayout from '../../../.ai/astro-layout-craft/SKILL.md?raw';
@@ -14,7 +15,21 @@ import builderPreview from '../../../.ai/astro-pr-preview/SKILL.md?raw';
 import builderBlockRegistry from '../../../src/data/blocks.registry.json?raw';
 import builderPatternRegistry from '../../../src/data/section-patterns.registry.json?raw';
 import builderLayouts from '../../../src/data/layout-directions.json?raw';
-const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'skills/astro-pr-preview/SKILL.md':builderPreview,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
+const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'reference/UPSTREAM-SOURCES.md':builderUpstream,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'skills/astro-pr-preview/SKILL.md':builderPreview,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
+// Package-only path normalization: keep research Skills untouched, but never tell
+// learners to read .ai/ directories that this ZIP does not contain.
+const packagedSkills = new Set(Object.keys(builderFiles)
+  .filter(path => /^skills\\/astro-[a-z0-9-]+\\/SKILL\\.md$/.test(path))
+  .map(path => path.split('/')[1]));
+function portableStudentReference(text) {
+  return text
+    .replace(/\\.ai\\/(astro-[a-z0-9-]+)\\/SKILL\\.md/g, (match, name) =>
+      packagedSkills.has(name) ? `skills/${name}/SKILL.md` : `[研究站外部 Skill：${name}，未收錄本 ZIP；詳見 reference/UPSTREAM-SOURCES.md]`)
+    .replace(/src\\/data\\/(blocks\\.registry\\.json|section-patterns\\.registry\\.json|layout-directions\\.json)/g, (match, file) =>
+      `reference/${file}`);
+}
+const learnerFiles = Object.fromEntries(Object.entries(builderFiles).map(([path, content]) =>
+  [path, typeof content === 'string' ? portableStudentReference(content) : content]));
 const base=import.meta.env.BASE_URL;
 const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
@@ -54,7 +69,7 @@ const prompts=[
 <section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
 <section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
 </main><footer>個人網站建置指南 · <a href={link('guide/prepare/')}>前置準備</a></footer>
-<script is:inline define:vars={{prompts:prompts.map(x=>x.text),builderFiles}}>
+<script is:inline define:vars={{prompts:prompts.map(x=>x.text),builderFiles:learnerFiles}}>
 const tasks=[...document.querySelectorAll('[data-task]')];
 function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='完成 '+n+' / '+tasks.length+' 項'}
 tasks.forEach(x=>{try{x.checked=localStorage.getItem('workshop-guide-v2-'+x.dataset.task)==='1'}catch{}x.addEventListener('change',()=>{try{localStorage.setItem('workshop-guide-v2-'+x.dataset.task,x.checked?'1':'0')}catch{}refresh()})});refresh();
