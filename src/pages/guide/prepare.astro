@@ -19,6 +19,24 @@ const pages=[
 ---
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>前置準備｜Astro 架站工作坊</title><style>
 :root{--bg:#f6f3ed;--ink:#242620;--green:#254d3f;--line:#d7dcd2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 system-ui,"Noto Sans TC",sans-serif}a{color:var(--green)}a:focus-visible,button:focus-visible{outline:3px solid #bb7748;outline-offset:3px}.top{background:#fffefa;border-bottom:1px solid var(--line);padding:18px max(24px,calc((100vw - 1040px)/2));display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}.top nav{display:flex;gap:12px}.top nav a{border:1px solid var(--line);padding:7px 16px;border-radius:6px;text-decoration:none}.top nav a[aria-current=page]{background:var(--green);color:white}main{max-width:1040px;padding:48px 24px 96px;margin:auto}h1{font:600 clamp(36px,5vw,62px)/1.3 Georgia,"Noto Serif TC",serif}h2{font-size:27px;line-height:1.4}h3{font-size:20px}section{padding:32px 0;border-top:1px solid var(--line)}.lead{font-size:19px;max-width:800px}.card{padding:20px 24px;background:#fffefa;border:1px solid var(--line);border-radius:12px;margin:18px 0}.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.steps a{display:block;padding:20px;border:1px solid var(--line);border-radius:10px;background:white;text-decoration:none}.steps small{display:block;color:#6b6d67}.button{border:0;border-radius:7px;background:var(--green);color:white;padding:11px 17px;cursor:pointer;font:inherit}.button.secondary{background:white;color:var(--green);border:1px solid var(--green)}.prompt{background:#eef1eb;padding:20px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere}ol li{margin-bottom:9px}aside{border-left:4px solid #a86946;padding:12px 18px;background:#fff3e8}.fine{font-size:14px;color:#60665d}footer{border-top:1px solid var(--line);text-align:center;padding:35px}@media(max-width:650px){.steps{grid-template-columns:1fr}main{padding:32px 20px 70px}.top{padding:12px 20px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}html{scroll-behavior:smooth}
+
+/* Hosting comparison: readable desktop columns and stacked mobile rows. */
+.hosting-comparison{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;background:#fffefa;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:20px 0 25px;font-size:15px;line-height:1.7}
+.hosting-comparison col:first-child{width:24%}.hosting-comparison col:nth-child(2){width:36%}.hosting-comparison col:nth-child(3){width:40%}
+.hosting-comparison th,.hosting-comparison td{padding:18px 20px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.hosting-comparison thead th{background:#e9eee7;font-weight:700;color:#213f33}
+.hosting-comparison tbody tr:not(:last-child)>*{border-bottom:1px solid var(--line)}
+.hosting-comparison tbody th{background:#f6f7f2;font-weight:650}
+.hosting-comparison tbody tr:nth-child(even) td{background:#fafbf8}
+@media(max-width:700px){
+.hosting-comparison,.hosting-comparison tbody,.hosting-comparison tr,.hosting-comparison th,.hosting-comparison td{display:block;width:100%}
+.hosting-comparison colgroup,.hosting-comparison thead{display:none}
+.hosting-comparison tbody tr{padding:15px 18px;border-bottom:1px solid var(--line)}
+.hosting-comparison tbody tr:last-child{border-bottom:0}
+.hosting-comparison tbody th{border:0!important;background:transparent;padding:0 0 9px;font-size:17px;color:#234b3d}
+.hosting-comparison tbody td{background:transparent!important;border:0!important;padding:9px 0}
+.hosting-comparison tbody td::before{content:attr(data-label);display:block;font-size:13px;font-weight:700;color:#486253;margin-bottom:2px}
+}
 </style></head><body>
 <header class="top"><strong>ASTRO WORKSHOP · 教學手冊</strong><nav aria-label="教學章節"><a href={base+'guide/prepare/'} aria-current="page">前置準備</a><a href={base+'guide/'}>開始建置</a></nav></header>
 <main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI、準備網站內容與品牌圖片。</p>
@@ -64,15 +82,15 @@ const pages=[
 <p class="fine">畫面若出現「部署命令 npx wrangler deploy／預覽命令 npx wrangler preview」等 Workers 設定，表示可能進到 Workers 流程。請返回選 Pages，不要照 Workers 欄位繼續設定。若選不到倉庫，回 GitHub App 的 Repository access 檢查授權。</p></div>
 <h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
-<table><thead><tr><th>功能</th><th>Cloudflare Pages</th><th>GitHub Pages 也有嗎？</th></tr></thead><tbody>
-<tr><td>私有 Repo 部署公開網站</td><td>支援，原始碼可維持 Private。</td><td><strong>免費個人方案不支援私有 Repo 發布 Pages</strong>；公開 Repo 可用。Pro／Team 等適用方案另有支援。</td></tr>
-<tr><td>自動更新網站</td><td>Git 整合推送後自動部署。</td><td><strong>有。</strong>使用 GitHub Actions 或 GitHub Pages 發布來源。</td></tr>
-<tr><td>PR／分支預覽</td><td>Git 整合提供獨立預覽網址。</td><td><strong>可做到，但通常要自行配置</strong>預覽 Workflow 或其他服務，並非一般 Pages 預設功能。</td></tr>
-<tr><td>自訂網域與 HTTPS</td><td>支援 pages.dev 預設網址、HTTPS 和自訂網域。</td><td><strong>有。</strong>提供 github.io 預設網址、HTTPS 和自訂網域；兩者網域購買費用另計。</td></tr>
-<tr><td>限制預覽觀看</td><td>可另啟用 Cloudflare Access 保護 Preview。</td><td><strong>一般 Pages 無同等一鍵功能。</strong>企業方案有特定私有發布能力，但不等於一般 PR 預覽保護。</td></tr>
-<tr><td>網站流量分析</td><td>可選用 Web Analytics。</td><td><strong>可另行加入</strong> Google Analytics 或其他分析工具；GitHub Pages 無同等內建訪客分析面板。</td></tr>
-<tr><td>網址轉址／HTTP 標頭</td><td>可用 Pages 的 <code>_redirects</code> 與 <code>_headers</code> 規則。</td><td><strong>部分可做到。</strong>Astro 可生成跳轉頁、設定其他服務，但 GitHub Pages 不直接提供等同的伺服器端規則功能。</td></tr>
-<tr><td>指定頁面／路徑存取控制</td><td>可另外配置 Cloudflare Access 或規則；不是自動的。</td><td><strong>一般免費 Pages 不提供</strong>按路徑的登入控管。企業私有 Pages 為不同使用場景。</td></tr>
+<table class="hosting-comparison"><colgroup><col/><col/><col/></colgroup><thead><tr><th scope="col">比較項目</th><th scope="col">Cloudflare Pages</th><th scope="col">GitHub Pages</th></tr></thead><tbody>
+<tr><th scope="row">私有 Repo 部署公開網站</th><td data-label="Cloudflare Pages">支援，原始碼可維持 Private。</th><td data-label="Cloudflare Pages"><strong>免費個人方案不支援私有 Repo 發布 Pages</strong>；公開 Repo 可用。Pro／Team 等適用方案另有支援。</td></tr>
+<tr><th scope="row">自動更新網站</th><td data-label="Cloudflare Pages">Git 整合推送後自動部署。</th><td data-label="Cloudflare Pages"><strong>有。</strong>使用 GitHub Actions 或 GitHub Pages 發布來源。</td></tr>
+<tr><th scope="row">PR／分支預覽</th><td data-label="Cloudflare Pages">Git 整合提供獨立預覽網址。</th><td data-label="Cloudflare Pages"><strong>可做到，但通常要自行配置</strong>預覽 Workflow 或其他服務，並非一般 Pages 預設功能。</td></tr>
+<tr><th scope="row">自訂網域與 HTTPS</th><td data-label="Cloudflare Pages">支援 pages.dev 預設網址、HTTPS 和自訂網域。</th><td data-label="Cloudflare Pages"><strong>有。</strong>提供 github.io 預設網址、HTTPS 和自訂網域；兩者網域購買費用另計。</td></tr>
+<tr><th scope="row">限制預覽觀看</th><td data-label="Cloudflare Pages">可另啟用 Cloudflare Access 保護 Preview。</th><td data-label="Cloudflare Pages"><strong>一般 Pages 無同等一鍵功能。</strong>企業方案有特定私有發布能力，但不等於一般 PR 預覽保護。</td></tr>
+<tr><th scope="row">網站流量分析</th><td data-label="Cloudflare Pages">可選用 Web Analytics。</th><td data-label="Cloudflare Pages"><strong>可另行加入</strong> Google Analytics 或其他分析工具；GitHub Pages 無同等內建訪客分析面板。</td></tr>
+<tr><th scope="row">網址轉址／HTTP 標頭</th><td data-label="Cloudflare Pages">可用 Pages 的 <code>_redirects</code> 與 <code>_headers</code> 規則。</th><td data-label="Cloudflare Pages"><strong>部分可做到。</strong>Astro 可生成跳轉頁、設定其他服務，但 GitHub Pages 不直接提供等同的伺服器端規則功能。</td></tr>
+<tr><th scope="row">指定頁面／路徑存取控制</th><td data-label="Cloudflare Pages">可另外配置 Cloudflare Access 或規則；不是自動的。</th><td data-label="Cloudflare Pages"><strong>一般免費 Pages 不提供</strong>按路徑的登入控管。企業私有 Pages 為不同使用場景。</td></tr>
 </tbody></table>
 <p><strong>選擇建議：</strong>公開原始碼可用 GitHub Pages；希望原始碼保留私人，選 Cloudflare Pages。私人倉庫不代表網站不公開。</p>
 <p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">開啟 Cloudflare Dashboard ↗</a></p>
