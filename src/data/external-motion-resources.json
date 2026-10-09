@@ -1,5 +1,27 @@
 [
   {
+    "id": "astroanimate",
+    "name": "AstroAnimate",
+    "url": "https://www.astroanimate.com/",
+    "title": "想找專門給 Astro 網站的現成動畫",
+    "description": "能參考按鈕、卡片、文字出現等完整範例；先看看哪個效果真的有幫助。",
+    "examples": "按鈕回饋、卡片輕微浮起、文字淡入",
+    "caution": "許多功能與我們現有 Reveal、MotionCard 重疊；這是較新的專案，先比對版本及實際效果，不要預設安裝。",
+    "tech": "Astro-native MIT core, CSS-first with opt-in JS; verify actual package exports/version, maintenance and reduced-motion before adoption; GlassCard not a default design direction.",
+    "category": "Astro 專用"
+  },
+  {
+    "id": "astrowebtools",
+    "name": "astro-webtools",
+    "url": "https://pascal-brand38.github.io/astro-dev/packages/astro-webtools/",
+    "title": "想找拍立得或便利貼等特殊畫面",
+    "description": "可以看看照片像拍立得、文字霓虹、手寫便利貼等裝飾效果。",
+    "examples": "拍立得圖片、便利貼、SVG 文字效果",
+    "caution": "這些屬於特殊視覺裝飾，不建議全站使用；其導航元件也不是新的 Motion Effect。",
+    "tech": "Astro component package; MIT repository checked, review component APIs and sources, image/text contrast, mobile layout; decoration ≠ motion.",
+    "category": "特色視覺"
+  },
+  {
     "id": "animista",
     "name": "Animista",
     "url": "https://animista.net/",
