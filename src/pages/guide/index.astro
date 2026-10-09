@@ -19,13 +19,13 @@ const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHando
 // Package-only path normalization: keep research Skills untouched, but never tell
 // learners to read .ai/ directories that this ZIP does not contain.
 const packagedSkills = new Set(Object.keys(builderFiles)
-  .filter(path => /^skills\\/astro-[a-z0-9-]+\\/SKILL\\.md$/.test(path))
+  .filter(path => /^skills\/astro-[a-z0-9-]+\/SKILL\.md$/.test(path))
   .map(path => path.split('/')[1]));
 function portableStudentReference(text) {
   return text
-    .replace(/\\.ai\\/(astro-[a-z0-9-]+)\\/SKILL\\.md/g, (match, name) =>
+    .replace(/\.ai\/(astro-[a-z0-9-]+)\/SKILL\.md/g, (match, name) =>
       packagedSkills.has(name) ? `skills/${name}/SKILL.md` : `[研究站外部 Skill：${name}，未收錄本 ZIP；詳見 reference/UPSTREAM-SOURCES.md]`)
-    .replace(/src\\/data\\/(blocks\\.registry\\.json|section-patterns\\.registry\\.json|layout-directions\\.json)/g, (match, file) =>
+    .replace(/src\/data\/(blocks\.registry\.json|section-patterns\.registry\.json|layout-directions\.json)/g, (match, file) =>
       `reference/${file}`);
 }
 const learnerFiles = Object.fromEntries(Object.entries(builderFiles).map(([path, content]) =>
