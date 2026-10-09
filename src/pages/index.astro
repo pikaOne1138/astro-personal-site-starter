@@ -43,22 +43,22 @@ const base = import.meta.env.BASE_URL;
       <div class="matrix-heading">
         <span>B</span>
         <div>
-          <h2 id="libraries-title">組合樣板、元件、特效、版型 · 四座網站靈感庫</h2>
-          <p>先看組合好的區段，理解它能完成什麼，再深入探索 {blockRegistry.length} 個 Blocks、7 組互動特效與 12 種整頁版型。</p>
+          <h2 id="libraries-title">版型、組合、特效、元件 · 四座網站設計庫</h2>
+          <p>先選 12 種整頁版型，再加入區段組合；依需求添加 7 組互動特效，最後探索 {blockRegistry.length} 個可調整的功能元件。</p>
         </div>
       </div>
       <div class="library-entry-grid">
+        <a class="demo-card library-entry-card" href={base+'layouts/'}>
+          <p class="eyebrow">LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
+          <h3>版型庫 · 網站怎麼說故事</h3>
+          <p>12 種獨立的網站結構與內容閱讀動線：六款知識內容、六款助人專業。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
+          <b>進入 12 種版型庫 →</b>
+        </a>
         <a class="demo-card library-entry-card" href={base+'section-patterns/'}>
           <p class="eyebrow">SECTION PATTERNS · COMPOSED SECTIONS</p>
           <h3>組合樣板庫 · 整段直接參考</h3>
           <p>不用先懂每個元件。先看「作品展示」與「服務信任入口」兩段完整設計，再讓 AI 幫你改內容、順序與品牌風格。</p>
           <b>探索區段組合樣板 →</b>
-        </a>
-        <a class="demo-card library-entry-card" href={`${base}blocks/`}>
-          <p class="eyebrow">WEBSITE BLOCKS · COMPONENT LIBRARY</p>
-          <h3>元件庫 · 網站怎麼組成</h3>
-          <p>文章、首頁、服務、導覽、搜尋與各種內容排版。探索 {blockRegistry.length} 個元件，切換四套風格，直接比較實際網站。</p>
-          <b>進入元件展示站 →</b>
         </a>
         <a class="demo-card library-entry-card" href={base+'effects/'}>
           <p class="eyebrow">MOTION · EFFECTS LIBRARY</p>
@@ -66,11 +66,11 @@ const base = import.meta.env.BASE_URL;
           <p>Reveal、Stagger、Tilt／Spotlight、Zoom／Pan、磁吸按鈕、動態底線與 FAQ。實際播放與調整動效強度。</p>
           <b>進入互動特效庫 →</b>
         </a>
-        <a class="demo-card library-entry-card" href={base+'layouts/'}>
-          <p class="eyebrow">LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
-          <h3>版型庫 · 網站怎麼說故事</h3>
-          <p>12 種獨立的網站結構與內容閱讀動線：六款知識內容、六款助人專業。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
-          <b>進入 12 種版型庫 →</b>
+        <a class="demo-card library-entry-card" href={`${base}blocks/`}>
+          <p class="eyebrow">WEBSITE BLOCKS · COMPONENT LIBRARY</p>
+          <h3>元件庫 · 網站怎麼組成</h3>
+          <p>文章、首頁、服務、導覽、搜尋與各種內容排版。探索 {blockRegistry.length} 個元件，切換四套風格，直接比較實際網站。</p>
+          <b>進入元件展示站 →</b>
         </a>
       </div>
     </section>
