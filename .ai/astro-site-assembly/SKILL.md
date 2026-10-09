@@ -25,6 +25,9 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 5. Link all selected pages; 404, RSS and sitemap should use actual site URLs. No fake submit/booking confirmation or invented testimonials.
 6. Build and visually QA widths 1440,1280,768,390; compare reference layout screenshot against output, not just CI.
 
+## Advanced student navigation
+`StarterPlan.navigation` supports custom page IDs (`page-*`) and `parentId` for a second level. The exporter generates an accessible `<details>` based submenu; test desktop keyboard opening, phone tap, and parent/child routes. Do not treat the research site's flat `SiteNav` and `MobileMenu` as already upgraded. Large menus may need a distinct mega-menu pattern and separate visual QA; no third level by default.
+
 ## Delivery gates
 - Generate into a **different** directory or student's own new repository. Never overwrite the research showcase or existing student files by default.
 - Build standalone output and check correct canonical, URL base, internal links, selected menus and honest content placeholders.
