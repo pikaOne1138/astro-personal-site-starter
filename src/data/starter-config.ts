@@ -30,7 +30,7 @@ export interface StarterPlan {
   kind: StarterKind;
   layoutSlug: string;
   visualTheme: StarterTheme;
-  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string };
+  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
   navigation: StarterNavigationItem[];
   primaryCta: { label: string; pageId: string };
   sectionPatterns?: StarterPatternChoice[];
@@ -39,6 +39,12 @@ export interface StarterPlan {
 export const starterThemeSeeds:Record<StarterTheme,string> = {
   paper:'#9A3B2E',morning:'#C8775A',studio:'#2F5D50',botanical:'#50775B',
 };
+export const starterThemePalettes:Record<StarterTheme,{primary:string;secondary:string;accent:string;background:string;text:string}> = {
+ paper:{primary:'#9A3B2E',secondary:'#806A54',accent:'#C58D63',background:'#F8F5EF',text:'#28231F'},
+ morning:{primary:'#C8775A',secondary:'#7F8F80',accent:'#B65B75',background:'#FFF8F3',text:'#362B29'},
+ studio:{primary:'#2F5D50',secondary:'#708A7A',accent:'#B17C60',background:'#F6F7F3',text:'#23312D'},
+ botanical:{primary:'#50775B',secondary:'#8D9B72',accent:'#B48569',background:'#F6F7EF',text:'#28392E'},
+};
 export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:string;slug:string}>):string[] {
   const errors:string[]=[];
   if(!starterKinds.includes(plan.kind))errors.push('網站用途不正確');
@@ -46,6 +52,11 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(!starterThemes.includes(plan.visualTheme))errors.push('視覺主題不正確');
   if(!/^#[0-9a-fA-F]{6}$/.test(plan.brand.primaryColor))errors.push('品牌主色必須是 HEX');
   if(!plan.brand.name.trim())errors.push('網站名稱不能留空');
+  if(plan.brand.palette){
+    const colors=plan.brand.palette;
+    if(['primary','secondary','accent','background','text'].some(k=>!/^#[0-9a-fA-F]{6}$/.test(colors[k as keyof typeof colors]||'')))errors.push('品牌色盤必須提供五個有效 HEX 色碼');
+    if(colors.primary.toUpperCase()!==plan.brand.primaryColor.toUpperCase())errors.push('主色需與色盤一致');
+  }
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
