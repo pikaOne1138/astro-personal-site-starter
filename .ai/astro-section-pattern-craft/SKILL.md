@@ -23,6 +23,12 @@ description: Discover, select and customize ready-to-use Astro section patterns 
 
 - `footer-minimal`／`footer-editorial`／`footer-professional`：同一 `SiteFooter` 底層元件的三種完整頁腳排版，能設定品牌說明、多組選單、社群、RSS、版權與真實法律頁面連結。法律連結未設定時不顯示，不可用假的 `#` 連結交付正式站。
 
+## 學員流程的交接契約
+- 在學員選定 Layout、規劃頁面/導航後，提供 `/section-patterns/` 給學員比較，不強迫選。
+- 每個採用的 Pattern 記錄：`patternId`、`targetPage`、`insertAfter`（或其他有意義的位置）、`contentNeeded`、`notes`。這是建議交接格式，**目前不是 StarterPlan v1 正式欄位**。
+- 按 Layout → Section Pattern → Blocks → Motion 的順序實作；主題品牌 Token 應一致作用於這些層級。
+- 對 `footer-*` Pattern，位置必須在頁尾、避免同頁出現兩個 footer，所有隱私權/條款連結都必須有效。
+
 ## 與其他 Skills 分工
 `astro-layout-craft` 負責全頁；`astro-editorial-layout-design` 負責構圖；`astro-ui-craft` 和 Block Registry 負責元件；`astro-motion-craft` 負責微動畫；`astro-site-assembly` 負責由 Site Brief 實際組站；`astro-pr-preview` 負責預覽與發布。
 
