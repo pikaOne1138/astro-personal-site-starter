@@ -19,7 +19,7 @@ function content(html) {
   return decode(match[1].replace(/<(script|style|svg|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi,' ')
     .replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
 }
-const base=process.env.ASTRO_BASE_PATH || '/astro-personal-site-starter';
+const base=process.env.ASTRO_BASE_PATH || '/';
 const prefix=base.endsWith('/')?base:base+'/';
 const docs=files.map(path=>{
   const html=readFileSync(path,'utf8');

@@ -9,8 +9,8 @@ for (const path of required) {
 }
 const rss = content('rss.xml');
 const robots = content('robots.txt');
-const expectedOrigin = new URL(process.env.ASTRO_SITE_URL || 'https://pikaOne1138.github.io').origin;
-if (!robots.includes('Sitemap: ' + expectedOrigin + (process.env.ASTRO_BASE_PATH || '/astro-personal-site-starter').replace(/\/$/, '') + '/sitemap.xml')) throw new Error('robots.txt sitemap URL does not match build site/base');
+const expectedOrigin = new URL(process.env.ASTRO_SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:4321').origin;
+if (!robots.includes('Sitemap: ' + expectedOrigin + (process.env.ASTRO_BASE_PATH || '/').replace(/\/$/, '') + '/sitemap.xml')) throw new Error('robots.txt sitemap URL does not match build site/base');
 if (!rss.includes(expectedOrigin)) throw new Error('RSS origin does not match build site');
 if (!content('sitemap.xml').includes(expectedOrigin)) throw new Error('Sitemap origin does not match build site');
 const sitemap = content('sitemap.xml');

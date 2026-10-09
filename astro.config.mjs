@@ -1,14 +1,12 @@
 import { defineConfig } from 'astro/config';
 
-// Production: /astro-personal-site-starter/
-// PR preview: /astro-personal-site-starter/pr-preview/pr-N/
-// A single source tree builds for both; only the URL prefix differs.
-const defaultBase = '/astro-personal-site-starter';
-const base = process.env.ASTRO_BASE_PATH || defaultBase;
+// Root-path static hosting is the default (Cloudflare Pages / custom domains).
+// GitHub Pages workflows explicitly supply their repository subpath.
+const base = process.env.ASTRO_BASE_PATH || '/';
+const site = process.env.ASTRO_SITE_URL || process.env.CF_PAGES_URL || 'http://localhost:4321';
 
 export default defineConfig({
-  // Override only for independent root-domain deployments such as Cloudflare Workers.
-  site: process.env.ASTRO_SITE_URL || 'https://pikaOne1138.github.io',
+    site,
   base,
   output: 'static',
   trailingSlash: 'always',
