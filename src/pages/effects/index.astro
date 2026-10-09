@@ -1,4 +1,5 @@
 ---
+import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import Reveal from '../../components/effects/Reveal.astro';
 import StaggerGroup from '../../components/effects/StaggerGroup.astro';
@@ -14,10 +15,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
 <DemoLayout title="網站特效參考庫" description="可操作的網站微互動效果示範：Reveal、Stagger、Tilt、Spotlight、Zoom、Pan、Magnetic、連結底線與 FAQ。">
   <link rel="stylesheet" href={base+'effects.css'}/>
   <main class="fx-page" id="top" data-intensity="subtle">
-    <nav class="fx-topline" aria-label="展示庫導覽">
-      <span class="fx-kicker">WEB DESIGN · MOTION LIBRARY</span>
-      <div class="fx-library-links"><a href={base}>八款網站 ↗</a><a href={base+'blocks/'}>元件庫 ↗</a><a href={base+'effects/'} aria-current="page">特效庫</a><a href={base+'layouts/'}>版型庫 ↗</a></div>
-    </nav>
+    <DesignLibraryNav current="effects" />
     <header class="fx-hero">
       <p class="fx-kicker">DESIGN SYSTEM / INTERACTIONS</p>
       <h1>讓細節有感，<br/>而不喧賓奪主。</h1>
