@@ -1,25 +1,26 @@
-# ZIP 與研究原始碼的邊界（給 AI）
+# 學員離線資料包的內容與界線
 
-這份 ZIP 是提供學員 AI 的「操作／設計指引包」，**不是完整 Astro 網站源碼、完整 Skill 引用附件或一鍵建站程式**。學員不需 Fork 研究 Repo，也不會因此擁有研究 Repo 的資料夾。
-
-## ZIP 內真正存在
+## 這份 ZIP 已經包含的資料
+- `AGENTS.md`：學員專用規範
 - `START-HERE.md`、`AGENT-HANDOFF.md`、`README.md`
-- `reference/AGENTS.md`：學員專用規範，**不是**研究站原始 AGENTS
-- `skills/<name>/SKILL.md`：ZIP 所列 8 個 Skill 的主文件快照；路徑以 ZIP 根目錄為基準
-- `reference/blocks.registry.json`、`reference/section-patterns.registry.json`、`reference/layout-directions.json`
+- `.ai/`：設計、內容、動效、Layout、PR Preview、部署等 Skills，包含其參考文件／配方（打包時與來源專案相同的相對路徑）
+- `src/components/`：可重用元件與 Editorial Recipes
+- `src/pages/layouts/`：Layout Library 原始頁面
+- `src/data/`：Blocks／Effects／Layout／Section Pattern 等資料與規劃器設定
+- `src/layouts/`、`src/content/`：相關版型與示範內容
+- `public/` 中的必要 CSS
+- `scripts/export-starter.mjs`：Site Brief JSON → 獨立 Astro 骨架的工具
+- `COMPONENTS.md`：元件使用資訊
 
-## ZIP 沒有、不得假裝位於學員 Repo
-- 研究站的 `.ai/astro-*/references/`、`recipes/`、`library/`、`checklists/`，以及未打包的 Skills（例如 maintenance、motion、content publishing）。
-- `src/` 下的真實 Astro Layout / Components / CSS、`scripts/export-starter.mjs` 與檢查腳本。
-- `.github/workflows/`、`docs/github-pr-preview-setup.md` 等研究站專用 GitHub Pages Preview 流程。
+## 獨立使用方式
+1. 只要學員上傳這份 ZIP 和自己產生的 Site Brief JSON，**有遠端檔案操作、Node 建置、GitHub 寫入與雲端瀏覽能力的 AI** 就可從包內的生成器與設計素材建立其獨立網站；不需要讀老師的研究 Repo。
+2. ZIP 的根目錄與 Skill 引用相對路徑保持一致；不要錯誤尋找 `skills/`，Skill 主要位於 `.ai/astro-*/SKILL.md`。
+3. 先產生骨架，再把所選 Layout 的原始構圖與實際所需 Blocks 移植成學員自己的站，最後編譯及預覽。
 
-這些出現在 Skill 主文件裡時，**是研究站資料來源提示，不是本 ZIP 或學員 Repo 內可直接使用的路徑**。請先檢查有沒有檔案；只有具備存取權限時，才可從 https://github.com/pikaOne1138/astro-personal-site-starter 取得最新來源，並判斷授權、版本和適用性。若該 Repo 已設為 Private、連接器無權讀取或附件缺失，必須明確回報，不能假裝已讀取、也不能把不存在的 `node scripts/export-starter.mjs` 當成可執行命令。
+## 尚需學員決定或配置的事項
+- 真實品牌、文章、服務資料、圖片授權、連結與正式網域
+- GitHub Repository 與 Pages/Cloudflare 平台授權、Preview 設定及生效確認
+- 原型中可能使用外部圖片或示範內容；不能直接承諾所有品牌素材均可商業使用
+- 部分研究 Repo 特有的 `.github/workflows/` 與研究展示 CI 不在包內，學員部署應依雙平台 Skills 建立**適合自己 Repo** 的設定，不能照搬老師 Repo 的整套安全工作流
 
-## 路徑轉換規則
-- 研究 Repo 的 `.ai/astro-X/SKILL.md` 若已收錄 ZIP，應讀 `skills/astro-X/SKILL.md`。
-- 研究 Repo 的 `src/data/blocks.registry.json` → ZIP 的 `reference/blocks.registry.json`；其他兩份 registry 同理。
-- 沒有收錄 ZIP 的研究檔案，必須先取得來源；無法取得時記錄缺口，協助學員選擇可行替代流程。
-- 任何引用 GitHub Pages `/astro-personal-site-starter/` 路徑或研究站專用 preview workflow，不能直接套用到學員站。
-
-## 交付真實性
-學員自己的 Astro Repo 可由 AI 在授權遠端環境建立；檔案包本身不等於自動完成建站。要交付可部署網站，必須有真正的程式、通過 Build，並確認學員選擇平台的真實 Preview／Production URL。
+ZIP 包含可用的程式來源與配方，但自動產生的 Phase 1 仍是網站骨架。真正的完整網站需 AI 後續適配、填內容、編譯、驗證及學員確認。 
