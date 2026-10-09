@@ -121,10 +121,14 @@ Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layo
 
 ## 外部動效資源評估（特效庫底部）
 
-使用 `src/data/external-motion-resources.json` 與 `/effects/#external-motion` 作為**參考清單**，包含 Animista、Uiverse、Motion、GSAP、AOS、CSS Loaders。清單不是安裝清單，也不代表已完成元件安全與授權驗收。
+使用 `src/data/external-motion-resources.json` 與 `/effects/#external-motion` 作為**參考清單**，包含 Animista、Animate.css、Hover.css、Uiverse、Motion、GSAP、AOS、CSS Loaders。清單不是安裝清單，也不代表已完成元件安全與授權驗收。
 
 - 先盤點本專案 `src/components/effects/` 的 Reveal／Stagger／Card／ZoomImage／MagneticButton／UnderlineLink／MotionFAQ；如果已滿足需求，不要另裝 AOS 等重疊方案。
 - 原生 CSS 動效優先；需要複雜捲動敘事才考慮 Motion 或 GSAP。外部網站與原始碼的授權、依賴、維護、性能要個別確認。
 - 任何動效都必須支援 `prefers-reduced-motion`；手機沒有 Hover 時功能仍要完整，鍵盤與觸控操作要合理，JS 失敗時內容仍可閱讀。
 - 動效服務於閱讀和回饋；靜態文章站不應為了好看加入假的載入動畫或全頁過度動效。
 - 請先給學員能理解的比較與建議，取得同意後才在 Branch + PR 引入外部程式；Build 通過仍須四個視口實際 QA。
+
+- Animate.css 現行官方標示 Hippocratic License 2.1；Hover.css 對商業及再散布用途有不同授權條件。外部範例只作連結與研究，**不得把其 CSS 原碼直接編入會分發給學員的 Starter**，除非逐項完成適用授權確認。
+- Splide 屬於可操作的輪播元件候選，應歸 Blocks／UI Craft 的評估流程，**不是 Motion Effect 計數項目**。靜態內容優先列表或 CSS scroll-snap；非必要不要加自動輪播，自動輪播時要提供暫停控制、鍵盤與減少動態支援。
+- AOS 是 scroll-triggered reveal，不等於完整 parallax；我們已有 Reveal／Stagger，先檢查重疊。
