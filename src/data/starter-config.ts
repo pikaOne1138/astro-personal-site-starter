@@ -23,7 +23,7 @@ export const starterPages = {
   ],
 } as const;
 export type StarterPageId = typeof starterPages[StarterKind][number]['id'];
-export interface StarterNavigationItem {id:string;label:string;enabled:boolean;}
+export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;}
 export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;}
 export interface StarterPlan {
   version: 1;
@@ -48,9 +48,12 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(!plan.brand.name.trim())errors.push('網站名稱不能留空');
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
-  if(selected.length<2||selected.length>6)errors.push('請啟用 2 至 6 個導覽項目');
+  if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
+  if(selected.filter(x=>!x.parentId).length>12)errors.push('最多 12 個第一層項目；更多內容請放到第二層');
   const ids=plan.navigation.map(x=>x.id);
-  if(ids.some(id=>!available.includes(id))||new Set(ids).size!==ids.length)errors.push('導覽頁面有重複或不存在的路由');
+  if(ids.some(id=>!available.includes(id)&&!/^page-[a-z0-9-]{1,32}$/.test(id))||new Set(ids).size!==ids.length)errors.push('導覽頁面有重複或無效的路由');
+  if(selected.some(x=>x.parentId&&(!selected.some(p=>p.id===x.parentId&&!p.parentId)||x.parentId===x.id)))errors.push('子選單必須有已啟用的第一層父項目，不支援第三層');
+  if(selected.some(x=>x.parentId&&selected.filter(y=>y.parentId===x.parentId).length>10))errors.push('單組子選單最多 10 項');
   if(selected.some(x=>!x.label.trim()))errors.push('已啟用的導覽名稱不能留空');
   if(!selected.some(x=>x.id===plan.primaryCta.pageId))errors.push('主要行動入口必須指向已啟用的頁面');
   const patternsChosen=plan.sectionPatterns||[];
