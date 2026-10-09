@@ -4,149 +4,9 @@
     "expected": 48,
     "failedHttp": [],
     "overflow": [],
-    "imageFailures": [
-      {
-        "slug": "field-notes",
-        "width": 1440,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "field-notes",
-        "width": 1280,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "field-notes",
-        "width": 768,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "learning-lab",
-        "width": 1440,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-learning-lab.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "learning-lab",
-        "width": 390,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-learning-lab.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "clinician",
-        "width": 768,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-clinician.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "clinician",
-        "width": 390,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-clinician.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "somatic",
-        "width": 1440,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-somatic.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "somatic",
-        "width": 768,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-somatic.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      },
-      {
-        "slug": "coach",
-        "width": 390,
-        "status": 200,
-        "overflow": false,
-        "images": [
-          {
-            "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-coach.webp",
-            "loaded": false
-          }
-        ],
-        "consoleErrors": [],
-        "pageErrors": []
-      }
-    ],
-    "runtimeErrors": []
+    "imageFailures": [],
+    "runtimeErrors": [],
+    "fallbacks": []
   },
   "rows": [
     {
@@ -154,12 +14,8 @@
       "width": 1440,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -168,12 +24,8 @@
       "width": 1280,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -182,12 +34,8 @@
       "width": 768,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-field-notes.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -197,6 +45,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -206,6 +55,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -215,6 +65,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -224,6 +75,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -233,6 +85,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -241,12 +94,8 @@
       "width": 1440,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-learning-lab.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -256,6 +105,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -265,6 +115,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -273,12 +124,8 @@
       "width": 390,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-learning-lab.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -288,6 +135,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -297,6 +145,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -306,6 +155,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -315,6 +165,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -324,6 +175,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -333,6 +185,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -342,6 +195,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -351,6 +205,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -360,6 +215,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -369,6 +225,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -378,6 +235,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -387,6 +245,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -396,6 +255,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -405,6 +265,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -413,12 +274,8 @@
       "width": 768,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-clinician.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -427,12 +284,8 @@
       "width": 390,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-clinician.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -442,6 +295,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -451,6 +305,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -460,6 +315,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -469,6 +325,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -477,12 +334,8 @@
       "width": 1440,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-somatic.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -492,6 +345,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -500,12 +354,8 @@
       "width": 768,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-somatic.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -515,6 +365,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -524,6 +375,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -533,6 +385,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -542,6 +395,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -550,12 +404,8 @@
       "width": 390,
       "status": 200,
       "overflow": false,
-      "images": [
-        {
-          "src": "https://tenwebs-6qkx6x5p.manus.space/images/directions/c-coach.webp",
-          "loaded": false
-        }
-      ],
+      "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -565,6 +415,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -574,6 +425,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -583,6 +435,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -592,6 +445,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -601,6 +455,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -610,6 +465,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -619,6 +475,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     },
@@ -628,6 +485,7 @@
       "status": 200,
       "overflow": false,
       "images": [],
+      "fallbacks": [],
       "consoleErrors": [],
       "pageErrors": []
     }
