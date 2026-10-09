@@ -3,7 +3,7 @@ import directions from '../../data/layout-directions.json';
 import patternRegistry from '../../data/section-patterns.registry.json';
 import { starterPages, starterThemeSeeds, starterThemePalettes } from '../../data/starter-config';
 const base=import.meta.env.BASE_URL;
-const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'},{id:'morning',title:'晨光',description:'溫暖與柔和留白'},{id:'studio',title:'靜室',description:'清晰且精準的格線'},{id:'botanical',title:'植感',description:'自然與舒緩的色彩'}];
+const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'},{id:'morning',title:'晨光',description:'溫暖與柔和留白'},{id:'studio',title:'靜室',description:'清晰且精準的格線'},{id:'botanical',title:'植感',description:'自然與舒緩的色彩'},{id:'ocean',title:'海岸',description:'藍綠與清爽留白'},{id:'sand',title:'暖沙',description:'暖土與柔和中性色'},{id:'slate',title:'石板',description:'冷靜灰藍與清晰閱讀'},{id:'lavender',title:'暮紫',description:'霧紫與柔和灰調'}];
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -26,7 +26,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 {directions.map((item,i)=><label class="layout-option" data-kind={item.kind}><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
 </div></section>
 
-<section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先挑一個視覺起點，再調整自己的主色。</p></div></div>
+<section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
 <div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><output id="palette-primary-hex">#9A3B2E</output></label>
@@ -41,7 +41,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <a href="https://www.happyhues.co/" target="_blank" rel="noopener noreferrer"><strong>Happy Hues ↗</strong><span>不只看色票，還能看背景、標題、按鈕在真實版面中的搭配。</span></a>
 <a href="https://color.adobe.com/" target="_blank" rel="noopener noreferrer"><strong>Adobe Color ↗</strong><span>用色輪、照片建立配色，並檢查文字與背景對比。</span></a>
 </div>
-<p class="palette-resource-credit">參考整理：<a href="https://frankknow.com/color-palettes-generator/" target="_blank" rel="noopener noreferrer">犬哥網站〈21 個配色網站〉↗</a>。外部工具僅供靈感參考，不會自動讀取或套用配色。</p>
+<p class="palette-resource-credit">外部工具僅供配色靈感參考，不會自動讀取或套用配色；仍請檢查實際文字與按鈕對比。</p>
 </aside>
 <div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
