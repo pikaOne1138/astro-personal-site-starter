@@ -195,3 +195,16 @@ Use `.ai/astro-layout-craft/SKILL.md` for whole-page reading flow and structural
 ## Claude 構圖配方不是功能元件
 
 `src/components/editorial-recipes/` 為 40 個純構圖配方（H01–H12、S01–S08、L01–L06、R01–R06、C01–C08），配方展示在 `/layouts/recipes/`。這與 `/blocks/` 登錄的功能 blocks 不同：先依 `astro-layout-craft`／`astro-editorial-layout-design` 選版型／構圖，再以 UI blocks 補真正的文章、預約、搜尋、表單等功能。配方若只有視覺 placeholder 不得宣稱功能已接上。
+
+
+## External library assessment — avoid rebuilding solved UI primitives
+
+Before implementing a **generic interface behavior** (Dialog, Dropdown, Mega Menu, Tabs, Accordion, Sheet, Tooltip, Focus management):
+1. Search the existing `src/data/blocks.registry.json`, `src/components/blocks/`, and `src/components/patterns/`. Reuse the current system when functionally suitable.
+2. Check the research directory `src/data/external-ui-libraries.json` (presented below `/blocks/`) for established native-Astro and CSS-first alternatives.
+3. Prefer minimal, auditable components that preserve static HTML by default, accessible keyboard behavior, reduced-motion preferences, tokens, and phone layout.
+4. Check **actual upstream license**, package versions, maintenance, security, styles and JavaScript/hydration cost before importing code. The directory is research only: listing a library does not authorize installation.
+5. Record why a library was adopted, adapted, or rejected, including new dependencies and migration impact. Don't mix several competing theming systems into the student Starter without a strong reason.
+6. Use Branch + PR; test 1440/1280/768/390 and keyboard/touch behavior. A passed Astro build is not visual QA.
+
+Our Blocks and Section Patterns still represent **site-specific tasks and content structure**. The external UI libraries primarily provide general-purpose visual and interaction primitives, not workshop-specific trust/SEO/content requirements.
