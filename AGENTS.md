@@ -10,7 +10,7 @@ For the interactive student planner at `/starter/`, read `src/data/starter-confi
 
 For student-owned GitHub Pages or optional Cloudflare deployment, read `.ai/astro-starter-deploy/SKILL.md`. For safe updates, backups or recovery, read `.ai/astro-site-maintenance/SKILL.md`. These skills must not silently alter the research showcase deployment.
 
-Project goal: a beginner-editable Astro starter for two architectures:
+For work involving ready-made multi-block page sections or the `/section-patterns/` gallery, read `.ai/astro-section-pattern-craft/SKILL.md` and `src/data/section-patterns.registry.json`. Section Patterns are neither full-site Layouts nor single Blocks; do not count them in the Blocks Registry.\n\nProject goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
 
