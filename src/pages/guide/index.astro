@@ -14,24 +14,16 @@ import builderBlockRegistry from '../../../src/data/blocks.registry.json?raw';
 import builderPatternRegistry from '../../../src/data/section-patterns.registry.json?raw';
 import builderLayouts from '../../../src/data/layout-directions.json?raw';
 const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
-import intakeReadme from '../../../docs/student-intake/README.md?raw';
-import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
-import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
-import intakeContent from '../../../docs/student-intake/03-內容準備-二選一.md?raw';
-import intakeAssets from '../../../docs/student-intake/04-圖片與發布準備.md?raw';
-import intakeVisual from '../../../docs/student-intake/05-AI-品牌識別與圖片共創.md?raw';
-import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計研究.md?raw';
-const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
-{n:'01',name:'選擇網站設計',intro:'到規劃器選網站類型、Layout、品牌色、頁面與選單，下載 Site Brief JSON。',you:['開啟網站規劃器，完成選擇','點下載，確認電腦裡有一份 JSON 檔案'],ai:'這一步不需要 AI 操作程式。'},
-{n:'02',name:'把檔案交給 AI',intro:'在同一段 AI 網頁對話上傳兩個檔案，再貼一句話讓 AI 開始。',you:['上傳剛下載的 Site Brief JSON','點下方按鈕下載 AI 建站資料包 ZIP，一起上傳','貼上「開始建站」提示詞'],ai:'AI 應自己閱讀附件、檢查資料，無須你理解 Skill 或程式。'},
-{n:'03',name:'AI 製作網站',intro:'AI 在你的 GitHub 倉庫製作網站，提供你可以點開查看的連結。',you:['請 AI 告訴你下一步要確認什麼','收到網站預覽連結後，實際打開看首頁、About 與文章／服務頁'],ai:'AI 負責檔案、設計適配、建置、安全與程式檢查；如果無法實際操作，須如實告知。'},
-{n:'04',name:'讓網站可以預覽',intro:'選擇 Cloudflare Pages 或 GitHub Pages，讓你能在網頁看到成品。',you:['依 AI 提示在託管平台完成必要的連接與授權','打開 AI 提供的網址，看圖文與連結是否正常'],ai:'AI 負責判斷部署設定及成功狀態，不得捏造預覽網址。'},
-{n:'05',name:'提出修改意見',intro:'看到哪裡不對，就截圖給 AI，讓它修改同一個 PR。',you:['用手機和電腦看實際頁面','截圖圈出問題、說明希望改成什麼','重開更新後的預覽連結確認'],ai:'AI 在原 PR 修正，進行四種寬度、鍵盤與基本功能測試。'},
-{n:'06',name:'確認後正式發布',intro:'等文字、圖片與按鈕都沒問題，再明確告訴 AI 可以合併。',you:['檢查網站資訊、主要按鈕、文章／服務與手機畫面','確認沒有不願公開的資料','滿意後再明確同意發布'],ai:'AI 先報告技術檢查；未得到同意不能合併或發布。'},
-{n:'07',name:'上線後更新網站',intro:'以後要改字、加文章或修圖片，繼續用同樣的 AI 對話與預覽流程。',you:['收藏自己的正式網址與 GitHub 倉庫網址','下次修改時先請 AI 提供預覽，不直接覆蓋正式站'],ai:'AI 負責記錄改動、備份提示與還原建議。'}
+{n:'01',name:'選擇網站設計',intro:'到規劃器選網站類型、Layout、品牌色、頁面與選單，下載 Site Brief JSON。',you:['開啟網站規劃器，完成選擇','點下載，確認電腦裡有一份 JSON 檔案'],ai:''},
+{n:'02',name:'把檔案交給 AI',intro:'上傳規劃檔與建站資料包，傳送提示詞。',you:['上傳剛下載的 Site Brief JSON','點下方按鈕下載 AI 建站資料包 ZIP，一起上傳','貼上「開始建站」提示詞'],ai:''},
+{n:'03',name:'AI 製作網站',intro:'AI 建立網站後，打開預覽連結查看。',you:['請 AI 告訴你下一步要確認什麼','收到網站預覽連結後，實際打開看首頁、About 與文章／服務頁'],ai:''},
+{n:'04',name:'讓網站可以預覽',intro:'選擇發布平台，取得網站預覽網址。',you:['依 AI 提示在託管平台完成必要的連接與授權','打開 AI 提供的網址，看圖文與連結是否正常'],ai:''},
+{n:'05',name:'提出修改意見',intro:'截圖告訴 AI 需要修改的地方。',you:['用手機和電腦看實際頁面','截圖圈出問題、說明希望改成什麼','重開更新後的預覽連結確認'],ai:''},
+{n:'06',name:'確認後正式發布',intro:'確認內容、圖片與連結後再發布。',you:['檢查網站資訊、主要按鈕、文章／服務與手機畫面','確認沒有不願公開的資料','滿意後再明確同意發布'],ai:''},
+{n:'07',name:'上線後更新網站',intro:'更新內容時，先預覽再發布。',you:['收藏自己的正式網址與 GitHub 倉庫網址','下次修改時先請 AI 提供預覽，不直接覆蓋正式站'],ai:''}
 ];
 const prompts=[
 {title:'開始建站',text:'我已經在這個對話上傳 Site Brief JSON 和 Astro AI 建站資料包。請照資料包協助我建立自己的獨立 Astro 網站。所有程式工作由你負責，我只透過網頁操作。請先確認你能修改我授權的 GitHub 倉庫；需要我決定的事一次問一題。請在網站完成後提供真正可以開啟的預覽網址。沒有得到我的同意，不要合併或正式發布。'},
@@ -46,24 +38,24 @@ const prompts=[
 :root{--bg:#f7f5f0;--ink:#272822;--green:#254e3d;--line:#d8ded4;--muted:#59635b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,"Noto Sans TC",sans-serif}h1,h2{line-height:1.3}h1{font:600 clamp(35px,5vw,58px)/1.25 Georgia,serif}h2{font-size:27px}a{color:var(--green)}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #b47848;outline-offset:3px}.top{background:#fffefa;border-bottom:1px solid var(--line);padding:17px max(24px,calc((100vw - 1050px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.tabs{display:flex;gap:9px}.tabs a{border:1px solid var(--line);border-radius:7px;padding:6px 14px;text-decoration:none}.tabs [aria-current=page]{background:var(--green);color:white}.wrap{max-width:1050px;margin:auto;padding:45px 24px 80px}.lead{font-size:19px;max-width:740px}.section{padding:32px 0;border-top:1px solid var(--line);scroll-margin-top:16px}.section-head{display:flex;gap:20px;align-items:baseline}.number{font:24px Georgia,serif;color:var(--green)}.card{background:#fffefa;border:1px solid var(--line);border-radius:11px;padding:20px 24px;margin:20px 0}.you{font-weight:700;margin-bottom:10px}.todo{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #edf0e9}.todo input{margin-top:9px;width:17px;height:17px;accent-color:var(--green)}.button{background:var(--green);color:white;border:0;border-radius:7px;padding:9px 16px;text-decoration:none;display:inline-block}.button.alt{background:white;color:var(--green);border:1px solid var(--green)}.prompt{background:#ecf1ea;border:1px solid #d1ddce;border-radius:10px;padding:17px 19px;margin:20px 0;white-space:pre-wrap;overflow-wrap:anywhere}.prompt-head{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:8px}.prompt p{margin:0}.small{color:var(--muted);font-size:14px}.note{border-left:4px solid #ad7955;background:#fff4e9;padding:15px 20px}.quick{display:flex;flex-wrap:wrap;gap:12px;padding:15px 0 38px}.quick a{border:1px solid var(--line);padding:7px 12px;border-radius:7px;background:white;text-decoration:none}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.two>div{background:#fffefa;border:1px solid var(--line);border-radius:10px;padding:18px}.last{padding:30px 0}footer{padding:32px;text-align:center;border-top:1px solid var(--line)}@media(max-width:650px){.two{grid-template-columns:1fr}.wrap{padding:24px 19px 65px}.top{padding:14px 19px}.prompt-head{align-items:flex-start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head><body>
 <header class="top"><strong>ASTRO WORKSHOP / 操作指南</strong><nav class="tabs" aria-label="教學頁面"><a href={link('guide/prepare/')}>前置準備</a><a href={link('guide/')} aria-current="page">開始建置</a></nav></header>
-<main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">你只需要操作網頁、上傳檔案、貼上提示詞，然後檢查網站畫面。AI 負責程式與檢查。還沒建立 GitHub 帳號、網站內容或 Logo？先到前置準備。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
+<main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">選版型、上傳檔案、請 AI 建站、預覽並發布。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
 <nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
 {steps.map((st,i)=><section class="section" id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>
 {i===0 && <Fragment><p><a class="button" href={link('starter/')}>開啟網站規劃器 →</a></p></Fragment>}
-{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>這份資料包收好 AI 所需的設計規則與參考文件，不需要自己讀。下載後和 Site Brief JSON 一起上傳 AI 對話。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">若 AI 不支援 ZIP，可以先解壓縮再上傳文件。技術資料由 AI 自行處理。</p></div></Fragment>}
+{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>下載後與 Site Brief JSON 一起上傳給 AI。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">無法上傳 ZIP 時，解壓縮後上傳文件。</p></div></Fragment>}
 <div class="card"><div class="you">你要做的事</div>{st.you.map((x,j)=><label class="todo"><input type="checkbox" data-task={st.n+'-'+j}/><span>{x}</span></label>)}</div>
 {i===1 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[0].title}</strong><button class="button alt copy" type="button" data-prompt="0">複製提示詞</button></div><p>{prompts[0].text}</p></div></Fragment>}
 {i===3 && <Fragment><div class="two"><div><strong>Cloudflare Pages</strong><p>建議希望使用私有 GitHub 倉庫、方便預覽的學員選擇。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>不想使用 Cloudflare、願意公開原始碼時也可以選。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div></Fragment>}
 {i===4 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div></Fragment>}
 {i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div></Fragment>}
 {i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
-<p class="small"><strong>AI 負責：</strong>{st.ai}</p></section>)}
-<section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">不要傳密碼、驗證碼、API 金鑰或不願公開的私人資料。沒有真正收到預覽網址，不代表網站已經完成。</div></section>
-<section class="last"><h2>GitHub 常用頁面</h2><p>只要記得：<strong>Pull requests</strong> 看修改、<strong>Actions</strong> 看網站建置狀態。真的看不懂可以截圖問 AI。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">這裡是工作坊的示範頁面。請讓 AI 提供你自己的網站相對應連結。</p><p id="progress" aria-live="polite"></p></section>
+</section>)}
+<section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
+<section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
 </main><footer>Astro 架站工作坊 · <a href={link('guide/prepare/')}>前置準備</a></footer>
 <script is:inline define:vars={{prompts:prompts.map(x=>x.text),builderFiles}}>
 const tasks=[...document.querySelectorAll('[data-task]')];
-function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='本機操作進度：'+n+' / '+tasks.length+' 項；勾選不等於網站已正式驗收。'}
+function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='完成 '+n+' / '+tasks.length+' 項'}
 tasks.forEach(x=>{try{x.checked=localStorage.getItem('workshop-guide-v2-'+x.dataset.task)==='1'}catch{}x.addEventListener('change',()=>{try{localStorage.setItem('workshop-guide-v2-'+x.dataset.task,x.checked?'1':'0')}catch{}refresh()})});refresh();
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompts[Number(b.dataset.prompt)]);b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製提示詞',1500)}));
 // Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
