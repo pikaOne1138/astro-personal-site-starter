@@ -47,7 +47,28 @@ const prompts=[
 <section class="chapter" id="step-00"><span class="chapter-number">00 / ORIENTATION</span><h2>區分展示站與你的網站</h2><p>工作坊公開的 <a href={link('layouts/')}>12 款 Layout</a> 是<strong>首頁構圖原型</strong>；<a href={link('layouts/recipes/')}>40 種 Recipes</a> 是局部構圖參考；<a href={link('section-patterns/')}>Section Patterns</a> 是多個 Blocks 組合成的整段；<a href={link('blocks/')}>Blocks</a> 是功能元件；<a href={link('effects/')}>Effects</a> 是微動畫。它們不是同一件事。</p><div class="warning">重要：<a href={link('starter/')}>/starter/ 規劃器</a> 目前只匯出 Site Brief JSON；匯出器能產生<strong>獨立 Astro 骨架</strong>，但選定版型的高保真移植、內頁補齊、圖片與正式服務串接仍需要 AI 開發與人工驗收。</div></section>
 <section class="chapter" id="step-01"><span class="chapter-number">01 / PREPARE</span><h2>前置準備與帳號授權</h2>
 <div class="card"><h3>先準備這些資料</h3>{['GitHub 帳號，知道自己是否已登入','能讀取與修改 GitHub Repository 的 AI 編程環境（ChatGPT Work、Claude Code、Codex 或其他具備檔案/終端機/GitHub 能力的工具；單純聊天視窗不一定能建站）','網站名稱、一句介紹、主要讀者與主要行動','至少一份真實的 About 內容；知識型準備 1–3 篇文章，服務型準備服務說明、聯絡方式與常見問題','自己有權使用的照片、Logo 或可合法使用的替代圖片','若走 Cloudflare：建立 Cloudflare 帳號。暫時不需購買網域'].map((t,i)=><label class="task"><input type="checkbox" data-task={'prep-'+i}/><span>{t}</span></label>)}</div>
-<div class="card"><h3>GitHub 與 AI 工具怎麼連接？</h3><p>在你選用的 AI 開發工具中，尋找 <strong>Connect GitHub / GitHub App / 授權 Repository</strong> 一類功能；按平台授權畫面選取帳號與授權範圍。不同 AI 工具的入口不同：若工具只有聊天功能，就需要搭配能實際執行終端機、修改檔案與提交 Git 的開發環境。</p><p>請先讓 AI 列出它<strong>實際能讀寫的 Repo</strong>，不要把「能看網頁」當成「已取得寫入授權」。密碼、Personal Access Token、Cloudflare API Token 不要貼給 AI，也不要寫進網站。</p></div>
+<div class="card"><h3>必經關卡：先讓 AI 取得你指定倉庫的存取權</h3>
+<p><strong>註冊 GitHub ≠ AI 已經連接 GitHub ≠ AI 能修改你的程式碼。</strong> 這三件事必須分開確認。下面用你提供的 GitHub 截圖路徑示範；不同 AI 工具可能要先在它自己的設定中連接 GitHub。</p>
+<div class="warning"><strong>先做再往下：</strong>如果你還沒有自己的網站 Repository，先到 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub → New repository ↗</a> 建立一個（例如 <code>my-personal-site</code>），或請有權限的 AI 幫你建立。<strong>建立新 Repo 後，若 App 只允許特定倉庫，必須回來把新 Repo 加到授權清單。</strong> 不要誤把工作坊展示倉庫當作自己的網站倉庫。</div>
+<div class="stage"><b>1</b><div><strong>先在你使用的 AI 工具啟用 GitHub 連接</strong><p>在 ChatGPT/Codex、Claude、Google AI Studio 或其他實際使用的平台，找到 GitHub 連接、Connect、Install 或 Authorize，依該工具流程登入 GitHub。<strong>不是所有 AI 聊天工具都能直接讀寫程式碼</strong>；需要支援 GitHub 操作或有終端機的編程代理。</p></div></div>
+<div class="stage"><b>2</b><div><strong>打開 GitHub 的安裝 App 管理頁</strong><p><a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">https://github.com/settings/installations ↗</a>。確認目前登入的是正確的 GitHub 帳號。你應該看到 <strong>Applications → Installed GitHub Apps</strong>，可能包含「ChatGPT Codex Connector」、「Claude」、「Cloudflare Workers and Pages」、「Google AI Studio」等。<strong>這些只代表你的帳號實際安裝的 App，學員不一定全部都有。</strong></p></div></div>
+<div class="stage"><b>3</b><div><strong>找到這次要使用的 AI App，按 Configure</strong><p>例如正在使用 ChatGPT/Codex，就找 <strong>ChatGPT Codex Connector → Configure</strong>。若 App 沒出現，回到該 AI 工具重新執行 Connect/Install；不要隨便選 Cloudflare 的 App 代替 AI。若顯示 <strong>Permission updates requested / Review request</strong>，先閱讀新權限內容再決定是否核准。</p></div></div>
+<div class="stage"><b>4</b><div><strong>找到 Repository access</strong><p>你提供的畫面中有兩個選項：<strong>All repositories</strong>（允許存取帳號旗下所有適用 Repo）與 <strong>Only select repositories</strong>（只開放特定 Repo）。初學者建議先選 <strong>Only select repositories</strong>，降低不必要的授權範圍。</p></div></div>
+<div class="stage"><b>5</b><div><strong>按 Select repositories，勾選自己的網站倉庫</strong><p>在選單中選擇你剛建立的 <code>my-personal-site</code>（以自己實際名稱為準）。清單上至少要出現<strong>這次要修改的 Repo</strong>。確認後按畫面底部的 <strong>Save</strong>。如果 Save 無法按，檢查是否真的有變更；若是組織 Repo，可能還需要管理者核准。</p></div></div>
+<div class="stage"><b>6</b><div><strong>回到 AI 工具，做一次真實的讀取測試</strong><p>請 AI 說出可存取的 Repository 全名（例如 <code>你的帳號/my-personal-site</code>），並讀取這個 Repo 的 <code>README.md</code> 或 <code>package.json</code>。<strong>能列出名字不等於能讀，能讀也不等於能寫。</strong> 若下一步需要 AI 幫忙 Commit/開 PR，再確認它確實有寫入能力；避免直接在 <code>main</code> 做測試寫入。</p></div></div>
+<div class="card"><h3>畫面對照：你應該看到什麼？</h3>
+<table><thead><tr><th>畫面位置</th><th>正確特徵</th></tr></thead><tbody>
+<tr><td>GitHub Settings → Applications</td><td>上方選中 <strong>Installed GitHub Apps</strong>；每個 App 右方有 <strong>Configure</strong></td></tr>
+<tr><td>App 的 Permissions 區</td><td>列出這個 App 要求的讀取／寫入權限。<strong>仔細核對</strong>，不能因為看見「Read and write access」就直接認定當前 AI 對所有 Repo 都可寫</td></tr>
+<tr><td>Repository access 區</td><td>選中 <strong>Only select repositories</strong>，並在下方看到自己的網站 Repo</td></tr>
+<tr><td>頁面底部</td><td>變更後按 <strong>Save</strong>；回到 AI 後再做實際存取測試</td></tr>
+</tbody></table></div>
+<div class="card"><h3>這個關卡完成後才能勾選</h3>
+{['已在 GitHub 建立自己的網站 Repo，知道完整 owner/repo 名稱','已在使用中的 AI 工具完成 GitHub Connect / 授權','已開啟 github.com/settings/installations，找到正確的 AI App','已在 Configure → Repository access 選 Only select repositories 並加入自己的 Repo','已儲存，AI 確實能讀取這個 Repo 的實際檔案','如需 AI 幫忙提交程式，已確認它具備對此 Repo 的寫入方式'].map((t,i)=><label class="task"><input type="checkbox" data-task={'auth-'+i}/><span>{t}</span></label>)}
+</div>
+<div class="warning"><strong>常見卡關：</strong>找不到 App → 回 AI 工具啟動連接；看不到新 Repo → 先確認 GitHub 帳號/Repo 所屬帳號，再到 Configure 重新選；App 顯示已安裝但 AI 說沒有權限 → 重新檢查所選 Repo、AI 當前使用的 GitHub 帳號及連線狀態；無法 Save／組織 Repo → 檢查管理員審核。<strong>不要用公開 Repo 或貼 API Token 到聊天來繞過授權。</strong></div>
+</div>
+<div class="card"><h3>GitHub 與 AI 工具怎麼連接？</h3><p>完成上面的六步授權與讀取測試後，如果 AI 仍無法操作，請它列出缺少的是「帳號授權、指定 Repo、讀取權限、寫入權限」中的哪一項。不同 AI 工具的入口不同：若工具只有聊天功能，就需要搭配能實際執行終端機、修改檔案與提交 Git 的開發環境。</p><p>請先讓 AI 列出它<strong>實際能讀寫的 Repo</strong>，不要把「能看網頁」當成「已取得寫入授權」。密碼、Personal Access Token、Cloudflare API Token 不要貼給 AI，也不要寫進網站。</p></div>
 <div class="links"><a href="https://github.com/signup" target="_blank" rel="noopener">建立 GitHub 帳號 ↗<span>官方註冊入口</span></a><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Dashboard ↗<span>登入或建立帳號</span></a></div>
 <div class="prompt"><div class="prompt-top"><strong>{prompts[0].title}</strong><button class="btn ghost copy" data-copy="0">複製提示詞</button></div><pre>{prompts[0].body}</pre></div>
 </section>
