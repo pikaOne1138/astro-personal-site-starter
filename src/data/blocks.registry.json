@@ -65,7 +65,13 @@
     "category": "common",
     "path": "src/components/blocks/SiteFooter.astro",
     "keywords": [
-      "頁尾"
+      "頁腳",
+      "頁尾導覽",
+      "作者定位",
+      "社群連結",
+      "RSS",
+      "版權資訊",
+      "品牌識別"
     ],
     "compatibleWith": [
       "knowledge",
