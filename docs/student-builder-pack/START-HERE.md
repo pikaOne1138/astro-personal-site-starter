@@ -1,0 +1,27 @@
+# Astro AI 建站指引包｜START HERE
+
+本資料包供 **AI 建站代理** 閱讀；學員不需要看懂程式、不需輸入終端機指令。
+
+## 學員提供
+1. 在 AI 網頁對話上傳 `Site Brief JSON`。
+2. 上傳本 ZIP；若 AI 平台不能直接讀 ZIP，請在瀏覽器下載並解壓縮後上傳內部文件，或用支援 ZIP 讀取的 AI 工具。
+3. 貼一句話：「我已上傳 Site Brief JSON 與 AI 建站指引包，請幫我建立獨立網站，先確認你有 GitHub 寫入與 PR 能力。」
+
+**不必先把 JSON 上傳 GitHub**。如果開發需要持久設定檔，AI 再依獨立網站專案建立、提交與說明。
+
+## AI 工作要求
+- 這個資料包是**導航索引和驗收規約**，不是整份 Astro Starter 原始碼，也不是將 Repo 中所有 Skills/Blocks 複製進 ZIP。請用 GitHub 授權從 `pikaOne1138/astro-personal-site-starter` 的**最新狀態**讀取實際 Skill、布局原型、registry 與相關內容；不要根據舊聊天記憶猜測版本。
+- 先確認 AI 網頁環境能遠端建立/修改 Repo、建立 Branch 和 PR，且有雲端建置與預覽路徑。單純具備聊天能力或唯讀 GitHub 連接**不足以完成建站**。
+- 先讀 `AGENT-HANDOFF.md`，其餘資料由 AI 自行檢索。不要讓學員逐一貼 Skill 路徑或執行命令。
+- 獨立個人站不可覆蓋教學展示站；首頁 Prototype 不等於完整多頁網站。
+- 實際網站需依 Layout → Section Patterns → Blocks → Effects → Brand tokens 的分層，填入學員核准的真實內容；空白服務、假表單、虛構證照/見證不得正式公開。
+- AI 必須真的驗證編譯、四視口和預覽；不能只宣稱「已完成」。
+- **Branch → PR → 雲端 Build/Preview → 學員同意 → Merge/Deploy**。沒有學員明確同意不可 Merge、部署、修改 DNS。
+- 所有學員操作都在瀏覽器；AI 可以在自己的遠端運算環境使用必要程式，但不得要求學員安裝 Node/CLI/桌面工具。
+
+## 學員應該拿到的成果
+- 自己的 GitHub Repo 網址
+- 主要與內頁的預覽網址（實際可開啟，不造假）
+- 內容缺口與真實未串接服務清單
+- PR 網址、Build 結果與手機/桌面視覺 QA
+- 學員確認後的正式網址與更新 SOP
