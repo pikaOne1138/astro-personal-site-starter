@@ -4,7 +4,7 @@
 /* Navigation rows are inserted by the planner script: styles must be global, not Astro-scoped. */
 #nav-items{display:grid;gap:10px;min-width:0}
 .nav-row{display:grid;grid-template-columns:28px 22px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;gap:8px 12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--white);min-width:0}
-.nav-row-child{margin-left:clamp(16px,3vw,32px);border-left:4px solid var(--accent);background:#faf5ed}
+.nav-row-child{margin-left:clamp(16px,3vw,32px);border-left:1px solid var(--line);background:var(--white)}
 .nav-row input[type="text"]{width:100%;min-width:0;max-width:none;grid-column:3;padding:11px 12px}
 .nav-drag-handle{grid-column:1;grid-row:1;font-size:23px;cursor:grab;line-height:1;color:var(--muted);text-align:center}
 .nav-row input[type="checkbox"]{grid-column:2;grid-row:1;width:18px;height:18px}
