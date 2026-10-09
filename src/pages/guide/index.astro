@@ -49,14 +49,14 @@ const prompts=[
 <main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">你只需要操作網頁、上傳檔案、貼上提示詞，然後檢查網站畫面。AI 負責程式與檢查。還沒建立 GitHub 帳號、網站內容或 Logo？先到前置準備。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
 <nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
 {steps.map((st,i)=><section class="section" id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>
-{#if i===0}<p><a class="button" href={link('starter/')}>開啟網站規劃器 →</a></p>{/if}
-{#if i===1}<div class="card"><h3>下載給 AI 的建站資料包</h3><p>這份資料包收好 AI 所需的設計規則與參考文件，不需要自己讀。下載後和 Site Brief JSON 一起上傳 AI 對話。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">若 AI 不支援 ZIP，可以先解壓縮再上傳文件。技術資料由 AI 自行處理。</p></div>{/if}
+{i===0 && <Fragment><p><a class="button" href={link('starter/')}>開啟網站規劃器 →</a></p></Fragment>}
+{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>這份資料包收好 AI 所需的設計規則與參考文件，不需要自己讀。下載後和 Site Brief JSON 一起上傳 AI 對話。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">若 AI 不支援 ZIP，可以先解壓縮再上傳文件。技術資料由 AI 自行處理。</p></div></Fragment>}
 <div class="card"><div class="you">你要做的事</div>{st.you.map((x,j)=><label class="todo"><input type="checkbox" data-task={st.n+'-'+j}/><span>{x}</span></label>)}</div>
-{#if i===1}<div class="prompt"><div class="prompt-head"><strong>{prompts[0].title}</strong><button class="button alt copy" type="button" data-prompt="0">複製提示詞</button></div><p>{prompts[0].text}</p></div>{/if}
-{#if i===3}<div class="two"><div><strong>Cloudflare Pages</strong><p>建議希望使用私有 GitHub 倉庫、方便預覽的學員選擇。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>不想使用 Cloudflare、願意公開原始碼時也可以選。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div>{/if}
-{#if i===4}<div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div>{/if}
-{#if i===5}<div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div>{/if}
-{#if i===6}<div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div>{/if}
+{i===1 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[0].title}</strong><button class="button alt copy" type="button" data-prompt="0">複製提示詞</button></div><p>{prompts[0].text}</p></div></Fragment>}
+{i===3 && <Fragment><div class="two"><div><strong>Cloudflare Pages</strong><p>建議希望使用私有 GitHub 倉庫、方便預覽的學員選擇。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>不想使用 Cloudflare、願意公開原始碼時也可以選。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div></Fragment>}
+{i===4 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div></Fragment>}
+{i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div></Fragment>}
+{i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
 <p class="small"><strong>AI 負責：</strong>{st.ai}</p></section>)}
 <section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">不要傳密碼、驗證碼、API 金鑰或不願公開的私人資料。沒有真正收到預覽網址，不代表網站已經完成。</div></section>
 <section class="last"><h2>GitHub 常用頁面</h2><p>只要記得：<strong>Pull requests</strong> 看修改、<strong>Actions</strong> 看網站建置狀態。真的看不懂可以截圖問 AI。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">這裡是工作坊的示範頁面。請讓 AI 提供你自己的網站相對應連結。</p><p id="progress" aria-live="polite"></p></section>
@@ -84,9 +84,5 @@ function makeZip(files){
  return new Blob([body,dir,end],{type:'application/zip'});
 }
 document.getElementById('download-builder-zip')?.addEventListener('click',()=>{const blob=makeZip(builderFiles),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Astro-AI-建站資料包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
-document.getElementById('download-intake-zip')?.addEventListener('click',()=>{
- const a=document.createElement('a'),blob=makeZip(intakeFiles),url=URL.createObjectURL(blob);
- a.href=url;a.download='Astro-建站前AI訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-});
 
 </script></body></html>
