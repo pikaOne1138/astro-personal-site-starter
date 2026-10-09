@@ -39,16 +39,35 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-patterns">
-<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>選擇想加入的區段與頁面位置。頁腳是整站共用的，只要挑一款樣式，就會自動放在每個頁面底部。</p><a href={base+'section-patterns/'} target="_blank" rel="noopener noreferrer">看看組合樣板的完整預覽 ↗</a></div></div>
+<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
 <div class="pattern-options" id="pattern-options">
-{patternRegistry.map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
-<label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.title}</strong></label>
-<p>{x.purpose}</p>
-<div class="pattern-config" hidden>
-<label>放在哪頁<select class="pattern-page" aria-label={x.title+'要放在哪頁'}></select></label>
-<label>放置位置<input class="pattern-position" maxlength="180" placeholder="例如：作者介紹之後" value={x.id.startsWith('footer-')?'每頁內容之後':'主要內容之後'}/></label>
-</div></div>)}
-</div></section>
+{patternRegistry.filter(x=>!x.id.startsWith('footer-')).map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
+<label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.id==='featured-work'?'精選內容展示（文章／作品／專題）':x.title}</strong></label>
+<p>{x.id==='featured-work'?'適合首頁：先介紹這一區，再放 2–3 篇精選文章、作品或專題，最後提供「查看更多」入口。不是填數字或憑空聲稱成果。':x.purpose}</p>
+<p class="pattern-anatomy"><strong>這一段包含：</strong>{x.composition.join(' → ')}</p>
+<a class="pattern-example-link" href={base+'section-patterns/#'+x.id} target="_blank" rel="noopener noreferrer">查看完整區段與所需資料 ↗</a>
+<div class="pattern-config" hidden><label>放在哪頁<select class="pattern-page" aria-label={x.title+'要放在哪頁'}></select></label><label>放置位置<input class="pattern-position" maxlength="180" placeholder="例如：作者介紹之後" value="主要內容之後"/></label></div>
+</div>)}
+</div>
+<div class="footer-picker" aria-labelledby="footer-picker-title">
+<div class="footer-picker__intro"><h3 id="footer-picker-title">全站頁腳樣式</h3><p>頁腳會自動放在整站所有頁面的底部。只要選一種，不用選擇放哪頁；也可以選「不另外設定」，之後再調整。</p></div>
+<div class="footer-picker__layout">
+<fieldset class="footer-picker__choices"><legend>選擇頁腳</legend>
+<label><input type="radio" name="footerPattern" value="" checked/> 暫不選擇</label>
+{patternRegistry.filter(x=>x.id.startsWith('footer-')).map(x=><label><input type="radio" name="footerPattern" value={x.id}/><span><strong>{x.title}</strong><small>{x.purpose}</small></span></label>)}
+</fieldset>
+<div class="footer-picker__visual">
+<p class="eyebrow">FOOTER PREVIEW / 示意預覽</p>
+<div class="footer-picker__stage" id="footer-preview">
+<div class="footer-mock"><div class="footer-mock__identity"><span class="footer-mock__eyebrow">YOUR PERSONAL SITE</span><strong id="footer-preview-brand">我的個人網站</strong><p id="footer-preview-tagline">一個可以慢慢整理內容的地方。</p></div><div class="footer-mock__columns" id="footer-preview-columns"><div><b>網站導覽</b><span>文章</span><span>關於我</span></div></div></div>
+<div class="footer-mock__bottom"><small id="footer-preview-copyright">© 2026 我的個人網站</small><span id="footer-preview-legal">隱私權／法律頁面未設定，正式網站不顯示假連結</span></div>
+</div>
+<p class="footer-picker__caption" id="footer-preview-caption">展示的是頁腳內容結構，品牌文字會依上方設定更新；正式站仍需填入真實網址。</p>
+<a href={base+'section-patterns/#footer-minimal'} target="_blank" rel="noopener noreferrer">查看三種頁腳完整展示 ↗</a>
+</div>
+</div>
+</div>
+</section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
@@ -74,25 +93,38 @@ function renderPatterns(){
  const kind=value('kind') as StarterKind;
  const pages=nav.filter(x=>x.enabled);
  document.querySelectorAll<HTMLElement>('.pattern-option').forEach(box=>{
-  const isFooter=(box.dataset.patternId||'').startsWith('footer-');
   const valid=(box.dataset.kind||'').split(',').includes(kind);
   box.hidden=!valid;
   const check=box.querySelector<HTMLInputElement>('.pattern-choice')!;
   if(!valid)check.checked=false;
-  box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked||isFooter;
+  box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked;
   const select=box.querySelector<HTMLSelectElement>('.pattern-page')!;
-  const old=select.value;
-  select.replaceChildren();
-  const choices=isFooter?[{id:'site-wide',label:'整站所有頁面'}]:[{id:'/',label:'首頁'},...pages.map(x=>({id:x.id,label:x.label}))];
-  for(const x of choices){const option=document.createElement('option');option.value=x.id;option.textContent=x.label;select.append(option)}
-  if(choices.some(x=>x.id===old))select.value=old;
+  const old=select.value;select.replaceChildren();
+  for(const item of [{id:'/',label:'首頁'},...pages.map(x=>({id:x.id,label:x.label}))]){
+   const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.append(option);
+  }
+  if(Array.from(select.options).some(x=>x.value===old))select.value=old;
  });
+ renderFooterPreview();
 }
-document.querySelectorAll<HTMLInputElement>('.pattern-choice').forEach(check=>check.addEventListener('change',()=>{
- if(check.checked&&check.value.startsWith('footer-'))document.querySelectorAll<HTMLInputElement>('.pattern-choice').forEach(other=>{if(other!==check&&other.value.startsWith('footer-'))other.checked=false});
- renderPatterns();showPlan();
-}));
-
+document.querySelectorAll<HTMLInputElement>('.pattern-choice').forEach(check=>check.addEventListener('change',()=>{renderPatterns();showPlan()}));
+function renderFooterPreview(){
+ const choice=form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value||'';
+ const stage=document.querySelector<HTMLElement>('#footer-preview')!;
+ stage.dataset.variant=choice||'default';
+ const brand=form.querySelector<HTMLInputElement>('[name="siteName"]')!.value.trim()||'我的個人網站';
+ document.querySelector<HTMLElement>('#footer-preview-brand')!.textContent=brand;
+ document.querySelector<HTMLElement>('#footer-preview-tagline')!.textContent=form.querySelector<HTMLInputElement>('[name="tagline"]')!.value.trim()||'這是我的網站';
+ document.querySelector<HTMLElement>('#footer-preview-copyright')!.textContent='© '+new Date().getFullYear()+' '+brand;
+ const columns=document.querySelector<HTMLElement>('#footer-preview-columns')!;
+ columns.replaceChildren();
+ const groupData=choice==='footer-professional'?[{title:'服務',items:['服務項目','合作流程']},{title:'關於',items:['關於我','文章']},{title:'聯絡',items:['常見問題','聯絡方式']}]:
+ choice==='footer-editorial'?[{title:'閱讀',items:['最新文章','主題分類']},{title:'認識',items:['關於作者','聯絡']},{title:'追蹤',items:['RSS 訂閱','社群']}]:
+ [{title:'網站導覽',items:nav.filter(x=>x.enabled).slice(0,3).map(x=>x.label)}];
+ for(const group of groupData){const div=document.createElement('div'),title=document.createElement('b');title.textContent=group.title;div.append(title);for(const text of group.items){const span=document.createElement('span');span.textContent=text;div.append(span)}columns.append(div)}
+ document.querySelector<HTMLElement>('#footer-preview-caption')!.textContent=choice?'此為'+(choice==='footer-professional'?'專業服務':choice==='footer-editorial'?'內容型':'簡約型')+'頁腳的版面示意，尚未連結真實法律頁面與社群。':'尚未選擇頁腳樣式；右側先顯示基本頁腳結構。';
+}
+document.querySelectorAll<HTMLInputElement>('input[name="footerPattern"]').forEach(input=>input.addEventListener('change',()=>{renderFooterPreview();showPlan()}));
 const value=(name:string)=> (form.querySelector<HTMLInputElement>(`[name="${name}"]:checked`)?.value||'');
 function orderedNav(){
  const roots=nav.filter(x=>!x.parentId||!nav.some(p=>p.id===x.parentId));
@@ -240,7 +272,7 @@ function plan():StarterPlan {
  return {version:1,kind,layoutSlug:value('layout'),visualTheme:value('theme') as StarterTheme,
  brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:color.value.toUpperCase(),tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value},
  navigation:nav.map(x=>({...x})),
- sectionPatterns:Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:check.value.startsWith('footer-')?'site-wide':box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:check.value.startsWith('footer-')?'每頁主要內容之後':box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),
+ sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
  notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value};
 }
