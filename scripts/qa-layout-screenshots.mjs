@@ -36,7 +36,13 @@ try {
      images:[...document.images].map(i=>({src:i.currentSrc||i.src,loaded:i.complete&&i.naturalWidth>0})).filter(i=>!i.loaded),
      fallbacks:[...document.images].filter(i=>i.dataset.demoFallback).map(i=>({source:i.dataset.originalSrc||'',placeholder:i.currentSrc||i.src}))
    }));
-   rows.push({slug,width,status:resp?.status()??null,...result,consoleErrors,pageErrors});
+   const radioTypography=slug==='radio-letter'?await page.evaluate(()=>({
+     nav:[...document.querySelectorAll('.ra-header nav a')].map(el=>({label:el.textContent,font:parseFloat(getComputedStyle(el).fontSize),height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width})),
+     caption:parseFloat(getComputedStyle(document.querySelector('.ra-cover figcaption')).fontSize),
+     status:parseFloat(getComputedStyle(document.querySelector('.ra-player-note')).fontSize)
+   })):undefined;
+   if(radioTypography && (radioTypography.nav.some(x=>x.height<44||x.width<44||x.font<12)||radioTypography.caption<12||radioTypography.status<16))throw Error('QA15 typography/touch regression at '+width);
+   rows.push({slug,width,status:resp?.status()??null,...result,radioTypography,consoleErrors,pageErrors});
    await page.close();
   }
  }
