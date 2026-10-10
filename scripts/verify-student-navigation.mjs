@@ -7,7 +7,7 @@ const root=arg('--url'),raw=arg('--paths'),expected=arg('--expect-links');
 if(!root||!raw||!expected)throw Error('Required: --url BASE --paths /,/about/,/new-page/ --expect-links /,/about/,/new-page/ (expected primary nav destinations)');
 const base=new URL(root);const pathOf=v=>{const url=new URL(v.replace(/^\//,''),base.href.endsWith('/')?base.href:base.href+'/');if(url.origin!==base.origin)throw Error('External route not permitted: '+v);return url.pathname.replace(/\/+$/,'/')+url.search};
 const paths=[...new Set(raw.split(',').map(x=>x.trim()).filter(Boolean).map(pathOf))];
-if(paths.length<3)throw Error('At least three DISTINCT routes required');
+if(paths.length<3){const error='At least three DISTINCT routes required';mkdirSync('qa-artifacts/navigation',{recursive:true});writeFileSync('qa-artifacts/navigation/results.json',JSON.stringify({rawPaths:raw,normalizedPaths:paths,distinctCount:paths.length,fail:[error]},null,2));throw Error(error+'; normalized '+JSON.stringify(paths)+' from '+JSON.stringify(raw));}
 const wanted=[...new Set(expected.split(',').map(x=>x.trim()).filter(Boolean).map(pathOf))];
 if(!wanted.length)throw Error('Expected primary nav links required');
 const widths=[1440,390],rows=[],fail=[],browser=await chromium.launch({headless:true});
@@ -18,8 +18,29 @@ try{
   try{
    const response=await page.goto(new URL(route,base.origin).href,{waitUntil:'domcontentloaded',timeout:20000});
    if(width===390){
-    const toggle=page.locator('header button[aria-controls],header button[aria-expanded],header summary').filter({visible:true}).first();
-    if(await toggle.count())await toggle.click();
+    // Do not close a menu which is already open.
+    const hasVisiblePrimary=()=>page.evaluate(()=>{
+     const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'};
+     return [...document.querySelectorAll('header nav,header [role="navigation"]')].some(n=>visible(n)&&!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||''));
+    });
+    if(!await hasVisiblePrimary()){
+     const controls=page.locator('header button[aria-controls],header button[aria-expanded],header summary');
+     const exact=[],fallback=[];
+     for(let i=0;i<await controls.count();i++){
+      const control=controls.nth(i);if(!await control.isVisible())continue;
+      const match=await control.evaluate(e=>{
+       const targets=(e.getAttribute('aria-controls')||'').split(/\s+/).filter(Boolean).map(id=>document.getElementById(id)).filter(Boolean);
+       if(e.tagName==='SUMMARY'&&e.closest('details'))targets.push(e.closest('details'));
+       const isPrimary=n=>n.matches('nav,[role="navigation"]')&&!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||'');
+       return {exact:targets.some(t=>isPrimary(t)||[...t.querySelectorAll('nav,[role="navigation"]')].some(isPrimary)),fallback:!targets.length&&/menu|navigation|選單|導覽/i.test(e.getAttribute('aria-label')||e.textContent||'')};
+      });
+      if(match.exact)exact.push(i);else if(match.fallback)fallback.push(i);
+     }
+     const eligible=exact.length?exact:fallback;
+     if(eligible.length!==1)throw Error('mobile primary nav toggle: expected one matching control, found '+eligible.length);
+     await controls.nth(eligible[0]).click();
+     await page.waitForFunction(()=>[...document.querySelectorAll('header nav,header [role="navigation"]')].some(n=>n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden'&&!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||'')),null,{timeout:3000});
+    }
    }
    const extracted=await page.evaluate(()=>{
     const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'};
@@ -58,7 +79,7 @@ try{
   try{
    const page=await browser.newPage();const response=await page.goto(new URL(dest,base.origin).href,{waitUntil:'domcontentloaded',timeout:20000});
    const status=response?.status()??0;checked.push({path:dest,status});
-   if(status<200||status>=400)fail.push('nav destination '+dest+': HTTP '+status);
+   if(status<200||status>=400){const owners=rows.filter(r=>r.links?.some(l=>l.origin===base.origin&&l.url===dest)).map(r=>r.width+' '+r.route);fail.push('nav destination '+dest+': HTTP '+status+'; linked from '+owners.join(', '));}
    await page.close();
   }catch(e){checked.push({path:dest,error:e.message});fail.push('nav destination '+dest+': '+e.message)}
  }
