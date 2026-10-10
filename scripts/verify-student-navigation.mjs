@@ -16,7 +16,7 @@ try{
   const page=await browser.newPage({viewport:{width,height:850}});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   try{
-   const response=await page.goto(new URL(route,base.origin),{waitUntil:'domcontentloaded',timeout:20000});
+   const response=await page.goto(new URL(route,base.origin).href,{waitUntil:'domcontentloaded',timeout:20000});
    if(width===390){
     const toggle=page.locator('header button[aria-controls],header button[aria-expanded],header summary').filter({visible:true}).first();
     if(await toggle.count())await toggle.click();
@@ -56,7 +56,7 @@ try{
  const checked=[];
  for(const dest of destinations){
   try{
-   const page=await browser.newPage();const response=await page.goto(new URL(dest,base.origin),{waitUntil:'domcontentloaded',timeout:20000});
+   const page=await browser.newPage();const response=await page.goto(new URL(dest,base.origin).href,{waitUntil:'domcontentloaded',timeout:20000});
    const status=response?.status()??0;checked.push({path:dest,status});
    if(status<200||status>=400)fail.push('nav destination '+dest+': HTTP '+status);
    await page.close();
