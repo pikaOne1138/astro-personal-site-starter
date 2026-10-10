@@ -6,7 +6,47 @@
     "overflow": [],
     "imageFailures": [],
     "runtimeErrors": [],
-    "fallbacks": []
+    "fallbacks": [
+      {
+        "slug": "radio-letter",
+        "width": 1440,
+        "status": 200,
+        "overflow": false,
+        "images": [],
+        "fallbacks": [
+          {
+            "source": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-radio-letter.webp",
+            "placeholder": "http://127.0.0.1:4328/layout-media-placeholder.svg"
+          }
+        ],
+        "radioTypography": {
+          "nav": [
+            {
+              "label": "正在播放",
+              "font": 14,
+              "height": 44,
+              "width": 72
+            },
+            {
+              "label": "節目索引",
+              "font": 14,
+              "height": 44,
+              "width": 72
+            },
+            {
+              "label": "比較站型 ↗",
+              "font": 14,
+              "height": 44,
+              "width": 94.40625
+            }
+          ],
+          "caption": 12,
+          "status": 16
+        },
+        "consoleErrors": [],
+        "pageErrors": []
+      }
+    ]
   },
   "rows": [
     {
@@ -175,7 +215,12 @@
       "status": 200,
       "overflow": false,
       "images": [],
-      "fallbacks": [],
+      "fallbacks": [
+        {
+          "source": "https://tenwebs-6qkx6x5p.manus.space/images/directions/k-radio-letter.webp",
+          "placeholder": "http://127.0.0.1:4328/layout-media-placeholder.svg"
+        }
+      ],
       "radioTypography": {
         "nav": [
           {
