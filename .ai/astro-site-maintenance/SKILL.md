@@ -48,3 +48,10 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 ## 維護任務路由與跨頁一致性
 學員提需求時先讀學員**自己的** Repo（不要把老師研究展示路徑當成學員實際結構）。新增/移動/刪除頁面選 `astro-page-management`；局部版面變更選 `astro-layout-craft` + `astro-editorial-layout-design`；元件新增/修改選 `astro-ui-craft` 並查 Block Registry；文章增修、草稿、發布或撤回選 `astro-content-publishing`。任何修改仍共用 Branch → Build → 真實 PR Preview → QA → 明確核准 → Merge 流程。
 **特殊關卡：**新增頁面到選單、變更 Header/Footer、調整主/子導航時，必須跑 Navigation Consistency Gate，抽測首頁、既有內頁、新頁與文章/服務頁的桌機與手機主選單一致性，不得只看新頁面成功就結案。
+
+## Agent 自我驗證與交付證據（所有維護必經）
+1. 先寫出「修改前預期行為、修改後預期行為、不能受影響的舊行為」；將需求轉為可執行測試，而非僅靠 LLM 自行宣布成功。
+2. 建立故障注入／反例驗證：測試必須抓得到已知的錯誤（例如導航 404、手機漏項、草稿外洩、原本頁面被改壞）；若驗證器無法抓到，先修驗證器，不能發布。
+3. 執行 Build、單元與整合測試、真實 Chromium 互動，以及需要時的 1440／1280／768／390 視覺檢查；由真實已部署 Preview 再測一次，核對 Head SHA。測試未跑、出錯或取不到證據，一律標 BLOCKED／NOT TESTED。
+4. 原本已存在的功能必須回歸：頁面與主導航、文章列表、RSS／Sitemap／robots、既有可操作元件、鍵盤／觸控與替代文字。不可只看本次新功能。
+5. 向學員回報逐項 PASS／FAIL／BLOCKED／NOT TESTED，附實際驗證證據與剩餘問題；**有已知高影響缺陷或驗證器漏報時不得宣稱完成交付**，也不能自動 Merge。
