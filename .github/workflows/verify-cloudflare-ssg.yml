@@ -24,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Validate learner navigation audit script syntax
+        run: node --check scripts/verify-student-navigation.mjs
       - name: Build with Cloudflare Pages automatic URL and default root path
         env:
           CF_PAGES_URL: https://example.com
@@ -36,6 +38,8 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Fault-injection navigation regression suite
+        run: node scripts/test-student-navigation-regressions.mjs
       - name: Verify first-time onboarding guide at four widths
         run: node scripts/qa-preparation-guide.mjs
       - name: Upload guide screenshots and results

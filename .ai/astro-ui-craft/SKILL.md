@@ -208,3 +208,7 @@ Before implementing a **generic interface behavior** (Dialog, Dropdown, Mega Men
 6. Use Branch + PR; test 1440/1280/768/390 and keyboard/touch behavior. A passed Astro build is not visual QA.
 
 Our Blocks and Section Patterns still represent **site-specific tasks and content structure**. The external UI libraries primarily provide general-purpose visual and interaction primitives, not workshop-specific trust/SEO/content requirements.
+
+
+## 既有學員網站：元件增修模式
+收到「新增卡片、替換 FAQ、修改按鈕」時先確認學生 Repo 和使用位置，搜尋該網站現有 components/Registry 與 ZIP 的 `src/data/blocks.registry.json`、`COMPONENTS.md`：優先調整 props 與既有 Blocks，確定缺少能力才新建可重用元件。不得只在某個頁面另寫功能一模一樣的區塊。變更共用元件須列出所有引用頁面、檢查現有 Props/相容性、避免破壞 CSS Tokens、鍵盤、手機與 reduced-motion；真正送出表單、預約、電子報必須有已配置的後端，否則明確示範/待設定。若涉及 Header/Nav 要依 `astro-page-management` 驗證所有頁面一致。建立 PR 並提供有對應 Head SHA 的 Preview，未經確認不發布。
