@@ -91,11 +91,12 @@ const pages=[
 </section>
 <section id="cloudflare"><div id="cloudflare-instructions" class="hosting-instructions" hidden><h2>B｜Cloudflare Pages：設定步驟</h2>
 <div class="card"><h3>Cloudflare Pages 連接 GitHub：照著操作</h3>
+<p class="fine"><strong>首次使用提示：</strong>若是第一次使用 Cloudflare，可以先在右上角帳號選單尋找語言設定，將介面切換成自己容易閱讀的語言；不同帳號介面可能不同，找不到可略過。</p>
 <ol>
 <li>登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>，左側選 <strong>Workers 和 Pages</strong>，點右上角 <strong>建立應用程式</strong>。</li>
 <li>在「建立新項目」頁面，<strong>不要選「從 Hello World 開始」</strong>。點畫面下方的 <strong>「前往 Pages」</strong>，切換到 Pages 建站流程。</li>
 <li>在 Pages 選 <strong>連接至 Git／Connect to Git</strong>，再選 <strong>Continue with GitHub</strong>。</li>
-<li>若是第一次使用 Cloudflare，可以先在右上角帳號選單尋找語言設定，將介面切換成自己容易閱讀的語言；不同帳號介面可能不同，找不到可略過。</li>
+
 <li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。<strong>這是 Cloudflare 與 GitHub 的另一段授權，和第 03 步 AI／Codex 的 GitHub 授權不同。</strong> AI 能看到倉庫，不代表 Cloudflare 一定能看到。</li>
 <li>打開 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub Applications</a>，找到 <strong>Cloudflare Workers and Pages → Configure</strong>。在 <strong>Repository access</strong> 選 <strong>Only select repositories</strong>，加入你的網站倉庫並按 <strong>Save</strong>。</li>
 <li>回到 Cloudflare 的 GitHub 倉庫選擇畫面，重新整理或重新開啟連線，確認<strong>自己的新 Repo 確實出現在清單</strong>；沒有出現就先別猜 Repo 名稱或改用老師的倉庫。</li>
