@@ -11,7 +11,7 @@ const base=import.meta.env.BASE_URL;
 const pages=[
 {title:'註冊 GitHub 帳號',id:'account',desc:'註冊並登入 GitHub。'},
 {title:'建立自己的倉庫',id:'repo',desc:'建立網站倉庫。'},
-{title:'讓 AI 存取倉庫',id:'access',desc:'授權 AI 存取你的倉庫。'},
+{title:'連接 AI 與 GitHub',id:'access',desc:'新帳號首次授權，分清唯讀與寫入。'},
 {title:'網站內容訪談',id:'intake',desc:'下載訪談包，與 AI 討論內容。'},
 {title:'Logo、Favicon 與網站圖片',id:'visual',desc:'用 AI 設計 Logo、favicon 和圖片。'},
 {title:'選擇發布方式',id:'hosting',desc:'A｜GitHub Pages 或 B｜Cloudflare Pages。'}
@@ -48,8 +48,23 @@ const pages=[
 <ol><li>開啟 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊 ↗</a>；若已有帳號，就直接登入。</li><li>登入後，確認右上角頭像選單能看到自己的帳號名稱。</li><li>記下自己的 GitHub 帳號名稱。</li></ol><aside>找不到按鈕？截圖給 AI，請它教下一步。截圖前遮住敏感資訊。</aside></section>
 <section id="repo"><h2>02｜建立網站倉庫</h2><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇倉庫公開方式：<strong>建議初學者選 Public（公開），設定最簡單，但原始碼也會公開。</strong> 若選 Private（私人），後續建議使用 Cloudflare Pages；其他方案詳見 <a href="#hosting">第 06 步｜選擇網站發布方式</a>。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li></ol>
 <p><strong>不會操作？複製提示詞給 AI。</strong></p><div class="card"><button type="button" class="button secondary" id="copy-github">複製 GitHub 截圖陪跑提示詞</button><div class="prompt" id="github-prompt">請一步一步教我在 GitHub 建立個人網站倉庫。每次只給一個步驟，告訴我要按哪裡、成功後會看到什麼。如果介面不同，請我截圖給你確認。不要要求密碼或驗證碼。</div></div></section>
-<section id="access"><h2>03｜讓 AI 真正有權限讀寫你的倉庫</h2><p>先在 AI 網頁連接 GitHub，再開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">Installed GitHub Apps 管理頁 ↗</a>。</p>
-<ol><li>找到這次使用的 AI App，例如 ChatGPT Codex Connector 或 Claude；按 <strong>Configure</strong>。</li><li>向下找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>。</li><li>按 <strong>Select repositories</strong>，把剛剛建立的網站 Repo 加入清單，再按 <strong>Save</strong>。</li><li>回到 AI 對話，要求它讀取該倉庫的 README.md，並確認是否能對指定 Repo 建 Branch/PR。</li></ol><aside>找不到 App？回 AI 工具重新連接 GitHub。新倉庫也需要加入授權清單。</aside></section>
+<section id="access"><h2>03｜第一次連接 AI 與 GitHub：要能讀，也要能修改</h2>
+<p>這一步是讓 AI 能在<strong>你自己的 GitHub 倉庫</strong>建立網站。第一次使用全新帳號時，單純「連接成功」不等於 AI 已有寫入權限。以下以 ChatGPT Codex Connector 為例，其他 AI 的介面與權限名稱可能不同。</p>
+<div class="card"><h3>第一關｜在 AI 端連接 GitHub</h3>
+<ol><li>登入你準備用來建站的 AI 工具，找到<strong>設定／連接應用程式</strong>（Connections／Plugins 或同等項目），連接 GitHub；依服務介面完成 GitHub 授權。</li>
+<li>確認目前使用的 AI 模式<strong>具備編輯專案、寫入 GitHub 和建立 PR 的能力</strong>。只有「搜尋檔案／讀取倉庫」的連線，可能無法完成建站。</li>
+<li>若授權畫面將 <strong>Read-only（唯讀）</strong>與 <strong>Write／Edit（可寫）</strong>分開顯示，不要只看「已連線」；由 AI 回報它目前實際能使用的操作。</li></ol>
+<p class="fine">安全原則：不要貼密碼、Token 或驗證碼到聊天視窗；不要因為找不到寫入功能就直接開放所有 Repository。</p></div>
+<div class="card"><h3>第二關｜在 GitHub 限定可存取的倉庫</h3>
+<ol><li>開啟 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub 已安裝的應用程式 ↗</a>，找到這次使用的 App（例如 ChatGPT Codex Connector），按 <strong>Configure</strong>。</li>
+<li>找到 <strong>Repository access</strong>，建議選 <strong>Only select repositories</strong>（僅指定倉庫），不要選 All repositories。</li>
+<li>在 <strong>Select repositories</strong> 選剛剛建立的網站 Repo，按 <strong>Save</strong>。<strong>新建的倉庫不一定會自動加入原本的選取清單。</strong></li>
+<li>若畫面顯示 App 的權限是唯讀、而 AI 需要修改 Repo，請先回 AI 工具檢查可寫入的連線／工作模式；僅變更 Repository access 清單<strong>不能</strong>把唯讀 App 升級成寫入 App。</li></ol></div>
+<div class="card"><h3>第三關｜請 AI 做能力確認（先不要正式修改）</h3>
+<p>將這段話貼給 AI，再依它的實際結果決定下一步：</p>
+<div class="prompt">請透過我已授權的 GitHub 連線，確認你能否讀取我的網站倉庫 README、建立 Feature Branch、提交新檔案、建立 Pull Request 與讀取 Actions 結果。請分別回答「能做到／只有唯讀／需要進一步授權／目前無法確認」，不要因為看得到 README 就說已經能寫入。先不要修改 main、Merge 或部署。</div>
+<p class="fine">第一次操作真的建立 Branch／PR 時，AI 應先使用明確的測試分支，並得到你對該倉庫的授權。</p></div>
+<aside><strong>排錯：</strong>AI 看得到 Repository 卻不能寫，先查工具模式和 App 權限；AI 找不到新 Repo，先回 GitHub Installed Apps 檢查 Only select repositories 是否已加入並儲存。若授權按鈕與教學不同，請截圖給 AI，不要猜。</aside></section>
 <section id="intake"><h2>04｜讓 AI 訪談你，寫出網站所需內容</h2><p>用訪談包讓 AI 協助整理網站名稱、介紹、文章或服務內容。</p>
 <div class="card"><h3>一鍵下載訪談包</h3><p>下載後解壓縮，將文件上傳給 AI。</p><button type="button" class="button" id="download-intake-zip">下載完整 AI 訪談包 ZIP ↓</button></div>
 <div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
@@ -75,14 +90,16 @@ const pages=[
 <li>登入 <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">Cloudflare</a>，左側選 <strong>Workers 和 Pages</strong>，點右上角 <strong>建立應用程式</strong>。</li>
 <li>在「建立新項目」頁面，<strong>不要選「從 Hello World 開始」</strong>。點畫面下方的 <strong>「前往 Pages」</strong>，切換到 Pages 建站流程。</li>
 <li>在 Pages 選 <strong>連接至 Git／Connect to Git</strong>，再選 <strong>Continue with GitHub</strong>。</li>
-<li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。</li>
+<li>若是第一次使用 Cloudflare，可以先在右上角帳號選單尋找語言設定，將介面切換成自己容易閱讀的語言；不同帳號介面可能不同，找不到可略過。</li>
+<li>若跳出 GitHub 授權畫面，依指示連接 <strong>Cloudflare Workers and Pages</strong> App。<strong>這是 Cloudflare 與 GitHub 的另一段授權，和第 03 步 AI／Codex 的 GitHub 授權不同。</strong> AI 能看到倉庫，不代表 Cloudflare 一定能看到。</li>
 <li>打開 <a href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer">GitHub Applications</a>，找到 <strong>Cloudflare Workers and Pages → Configure</strong>。在 <strong>Repository access</strong> 選 <strong>Only select repositories</strong>，加入你的網站倉庫並按 <strong>Save</strong>。</li>
+<li>回到 Cloudflare 的 GitHub 倉庫選擇畫面，重新整理或重新開啟連線，確認<strong>自己的新 Repo 確實出現在清單</strong>；沒有出現就先別猜 Repo 名稱或改用老師的倉庫。</li>
 <li>回到 Cloudflare，從清單選<strong>自己的網站倉庫</strong>，進入「設定組建和部署」。</li>
 <li><strong>先確認首次公開行為：</strong>Cloudflare 的 <strong>Save and Deploy</strong> 會進行首次正式部署，即使網址暫時只是 pages.dev。若還未確認內容，請 AI 先建立不含個人資料的測試站／測試分支，使用獨立的 preview 專案及 Git Preview Deployments 取得測試 URL；不可直接把未確認的 main 當正式站發布。</li><li>部署前核對以下設定。<div class="deploy-check"><strong>確認與下列設定一致，再按部署</strong><dl><div><dt>生產分支</dt><dd><code>main</code></dd></div><div><dt>Framework preset</dt><dd><code>Astro</code></dd></div><div><dt>組建命令</dt><dd><code>npm run build</code></dd></div><div><dt>組建輸出目錄</dt><dd><code>dist</code></dd></div></dl><p>通常會自動帶入。若顯示不同，先請 AI 協助確認；專案名稱可自行決定。</p></div></li>
 <li>只有在你理解這是<strong>首次公開部署</strong>、已檢查測試 Preview 並明確允許時，才點 <strong>儲存並部署／Save and Deploy</strong>。請 AI 核對測試分支 Preview URL、Commit SHA、資產與導航。正式 main 公開前再次徵求你同意。</li>
 </ol>
 <p><strong>分開確認：</strong>Preview Deployment 是驗收環境；Production（包含首次 Save and Deploy）是公開環境。兩者均應顯示實際對應 Commit。缺少 Preview 或無法隔離正式站時，不要宣稱學員已完成安全的「先預覽後發布」。</p>
-<p class="fine">畫面若出現「部署命令 npx wrangler deploy／預覽命令 npx wrangler preview」等 Workers 設定，表示可能進到 Workers 流程。請返回選 Pages，不要照 Workers 欄位繼續設定。若選不到倉庫，回 GitHub App 的 Repository access 檢查授權。</p></div>
+<p class="fine">畫面若出現「部署命令 npx wrangler deploy／預覽命令 npx wrangler preview」等 Workers 設定，表示可能進到 Workers 流程。請返回選 Pages，不要照 Workers 欄位繼續設定。若選不到倉庫，回 GitHub 的 <strong>Cloudflare Workers and Pages App</strong>（不是 Codex Connector）檢查 Repository access，加入後再重新整理 Cloudflare。</p></div>
 </div><h3>Cloudflare Pages 有什麼好處？哪些 GitHub Pages 也做得到？</h3>
 <p>GitHub Pages 與 Cloudflare Pages 都能發布網站。</p>
 <table class="hosting-comparison"><colgroup><col/><col/><col/></colgroup><thead><tr><th scope="col">比較項目</th><th scope="col">Cloudflare Pages</th><th scope="col">GitHub Pages</th></tr></thead><tbody>
