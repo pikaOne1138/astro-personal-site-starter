@@ -43,3 +43,8 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 
 ## 完成標準
 學員在 AI 協助下知道如何「修改 → 預覽 → 確認 → 發布 → 驗證」，以及如何找到上次正常版本並以審核過的 PR 恢復；不把 GitHub 視為外部服務的萬能備份。
+
+
+## 維護任務路由與跨頁一致性
+學員提需求時先讀學員**自己的** Repo（不要把老師研究展示路徑當成學員實際結構）。新增/移動/刪除頁面選 `astro-page-management`；局部版面變更選 `astro-layout-craft` + `astro-editorial-layout-design`；元件新增/修改選 `astro-ui-craft` 並查 Block Registry；文章增修、草稿、發布或撤回選 `astro-content-publishing`。任何修改仍共用 Branch → Build → 真實 PR Preview → QA → 明確核准 → Merge 流程。
+**特殊關卡：**新增頁面到選單、變更 Header/Footer、調整主/子導航時，必須跑 Navigation Consistency Gate，抽測首頁、既有內頁、新頁與文章/服務頁的桌機與手機主選單一致性，不得只看新頁面成功就結案。
