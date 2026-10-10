@@ -10,6 +10,14 @@ if(studentArg!==-1){
  for(const path of ['index.html','404.html','rss.xml','sitemap.xml','robots.txt',...config.navigation.map(x=>x.id+'/index.html')])
   if(!existsSync(join(output,path)))throw Error('Student build missing: '+path);
  const read=path=>readFileSync(join(output,path),'utf8');
+ const htmlPaths=[];
+ const collect=dir=>{for(const entry of readdirSync(dir,{withFileTypes:true})){const p=join(dir,entry.name);if(entry.isDirectory())collect(p);else if(entry.name.endsWith('.html'))htmlPaths.push(p)}};
+ collect(output);
+ for(const path of htmlPaths){
+  const html=readFileSync(path,'utf8');
+  const head=html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1]||'';
+  if(!/<title>[^<]+<\/title>/.test(head)||!head.includes('name="description"')||!head.includes('rel="canonical"'))throw Error('Student metadata escaped head: '+path);
+ }
  const robots=read('robots.txt');
  if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid student robots.txt lines');
  if(!read('rss.xml').includes('<rss version="2.0">')||!read('sitemap.xml').includes('<urlset'))throw Error('Invalid student feed/sitemap');
