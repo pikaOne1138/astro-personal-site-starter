@@ -34,6 +34,9 @@ description: Add, revise, hide, move or retire pages in an existing independent 
 - **更改 slug／移動路徑：** 先列出舊→新 URL 表，確認外部連結、SEO、RSS、Sitemap、社群分享影響；如託管平台支援，設真正可測的 301/308 轉址。GitHub Pages 與 Cloudflare Pages 的轉址能力不同，不能假稱伺服器轉址已生效。
 - **刪除頁面／取消公開：** 刪除任何真實內容前需使用者明確同意，保留可復原版本；清理導航、Sitemap、內鏈、相關文章和舊網址處理。私人/機密內容不得單靠 robots 或 noindex 保護。
 
+## 自動化輔助（仍需人工瀏覽器驗收）
+若從最新版工作坊 ZIP 取得 `scripts/verify-student-navigation.mjs`，AI 可在已具備 Playwright/Chromium 的工作環境啟動學員自己的 Astro Preview，執行 `node <ZIP_DIR>/scripts/verify-student-navigation.mjs --url http://127.0.0.1:4321/ --paths /,/about/,/new-page/`。它會比較指定路由在 1440/390px 下主導覽可見項目的順序、名稱、href，並輸出 `qa-artifacts/navigation/results.json`。**先根據學員真實路由和 NAV DOM 調整測試選擇器；未涵蓋的下拉子選單、平板、交互與視覺仍必須另測，不能把執行成功當成全部導航驗收完成。**
+
 ## 強制 QA｜Navigation Consistency Gate
 1. `npm run build` 成功，沒有新破圖、404、孤兒頁或失效的選單連結。
 2. 實際瀏覽器對照多頁的**主選單**（label、href、排序、父子關係）、手機選單的相同資料，以及點擊後真實可達的目的地；記錄路由×視口矩陣與失敗明細。
