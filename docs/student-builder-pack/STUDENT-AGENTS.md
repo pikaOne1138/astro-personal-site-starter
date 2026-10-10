@@ -20,3 +20,13 @@
 - 不把研究站特定的 owner、路徑、GitHub Actions Preview、Pages 網址或公開 Demo 圖片 URL 當成學員正式站設定。
 - 不把未建置的程式、未做的視覺 QA、未驗證的 Preview 描述為成功。
 - 不默默添加帳號、資料庫、金流或未授權的第三方服務。
+
+
+## 學員日後維護：請自動選擇 Skill
+學員只需說「改首頁」「加一段」「新增一個頁面」「寫一篇文章」等自然語言；AI 應先檢查**目前學員 Repo**與現有元件，再讀合適 Skill：
+- 頁面新增、選單連結、移動/隱藏/改網址：`.ai/astro-page-management/SKILL.md`，強制檢查所有頁面共用導航與桌機/手機選單同步。
+- 已完成網站的局部 Layout 調整：`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`，不得重跑生成器覆蓋網站。
+- 增修 Blocks/Components：`.ai/astro-ui-craft/SKILL.md`，先讀 Registry 避免重複造。
+- 文章新增/修改/草稿/發布/撤回：`.ai/astro-content-publishing/SKILL.md`。
+- 通用安全、備份、故障修復：`.ai/astro-site-maintenance/SKILL.md`。
+所有任務必須建立獨立 Branch、PR、檢查可開啟且對應 Commit 的 Preview、手機與鍵盤，等學員明確同意才 Merge／Production。ZIP 包內文件只是參考，**不得在更新 Skill 時覆蓋學員已完成的網站或直接 Fork 老師研究 Repo**。
