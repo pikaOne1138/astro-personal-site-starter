@@ -36,6 +36,15 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Verify first-time onboarding guide at four widths
+        run: node scripts/qa-preparation-guide.mjs
+      - name: Upload guide screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preparation-guide-visual-qa
+          path: qa-artifacts/prepare/
+          retention-days: 14
       - name: Capture 12 layouts at four widths
         run: node scripts/qa-layout-screenshots.mjs
       - name: Upload 48 screenshots and audit
