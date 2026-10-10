@@ -7,9 +7,7 @@ Use the latest `src/content.config.ts` as the schema authority. Example (demonst
 title: "我的第一篇文章"
 description: "介紹這篇文章要回答的問題"
 publishedAt: 2026-10-08
-category: "生活筆記"
 tags: ["日常", "觀察"]
-readingMinutes: 4
 draft: true
 ---
 
@@ -21,8 +19,8 @@ draft: true
 ```
 
 - File path: `src/content/articles/my-first-post.md`. Keep the ID/slug stable.
-- For edits to an already published article, preserve `publishedAt`, update `updatedAt` when appropriate.
-- For cover images, configure `cover` and a descriptive `coverAlt` together.
-- Existing starter demos reuse six teaching articles across eight presentations; they are examples, not a full production content catalog.
-- `src/data/articles-v2.ts` derives its compatibility list from the collection. Do not add a duplicate literal list of articles.
+- For edits to a published article, preserve `publishedAt`. Add `updatedAt` **only if the learner site's actual schema supports it**; the basic export does not require this field.
+- For cover images, add `cover` with descriptive `coverAlt` **only after extending the learner site's content schema** and providing a licensed image.
+- Research-site demo articles are examples, not a learner production catalog. The standalone learner export has its own minimal article schema: `title`, `description`, `publishedAt`, `draft`, and `tags`.
+- Only the research showcase uses `src/data/articles-v2.ts`; it is **not** a required file or compatibility adapter in a generated learner project. Do not create duplicate literal article catalogs.
 - On a new learner site, do not retain generic Demo article component showcases unless explicitly requested.

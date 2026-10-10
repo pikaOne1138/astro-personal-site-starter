@@ -1,6 +1,6 @@
 # 04 收藏者目錄 `cu-`（知識／策展）
 
-來源：`src/pages/directions/knowledge/curator.astro`
+來源：`src/pages/layouts/curator/index.astro`
 
 ## [OBS] 原始碼事實
 

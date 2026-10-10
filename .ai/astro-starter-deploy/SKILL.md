@@ -5,13 +5,14 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 # Astro Starter Deploy｜獨立網站部署
 
 ## 目的與界線
-學員的獨立網站，不是研究展示站部署。提供兩條平行、均可供學員選擇的路線：GitHub + GitHub Pages，以及 GitHub + Cloudflare Pages／Workers 靜態託管。選擇 Cloudflare 不代表一定要 Workers、D1、R2、金流或後端。這是操作 Skill 與交付驗收契約，**不表示本 Repository 已有完成的「一鍵匯出 Starter」或 Cloudflare Workflow**。
+學員的獨立網站，不是研究展示站部署。提供兩條平行、均可供學員選擇的路線：GitHub + GitHub Pages，以及 GitHub + Cloudflare Pages／Workers 靜態託管。選擇 Cloudflare 不代表一定要 Workers、D1、R2、金流或後端。這是操作 Skill 與交付驗收契約，**不表示生成骨架已有線上Preview或完成版型適配**。
 
 ## 開始前必讀
-`AGENTS.md`、`astro.config.mjs`、`.github/workflows/deploy-pages.yml`、`.github/workflows/pr-preview.yml`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`。先問使用哪個託管環境與自己的 Repository／網域；不要沿用研究站的 `pikaOne1138.github.io`、`/astro-personal-site-starter/`、`pr-preview` 到學員的正式站。
+讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。
+
 
 ## A｜GitHub Pages（學員可選）
-1. 幫學員建立或複製**獨立** Repository；先明確說明現有 Repo 包含研究與八個 Demo，不等於已裁切好的學員 Starter。不可在展示 Repo 的 main 上直接修改學員資料。
+1. 在學員自己的新Repository使用ZIP匯出的獨立專案；不Fork/Clone老師Repo。不可在展示 Repo 的 main 上直接修改學員資料。
 2. 確認 GitHub Pages 的 Repository 站、使用者站或自訂網域；據此設定 Astro `site` 與 `base`。Repository 子路徑應匹配倉庫名稱，自訂網域通常不需要原 Repo 子路徑；以 GitHub Pages 實際設定為準。
 3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。
 4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。
@@ -26,7 +27,7 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 5. Cloudflare API Token、GitHub OAuth 或部署授權只在平台授權流程處理，不存入程式碼、聊天訊息、Commit 或公用設定。
 
 ## QA／交付
-- `npm run build` 成功，含 Pagefind 與 V2.8 檢查；不同部署 base 下再次測試。
+- `npm run build` 成功，再從離線包執行學員模式驗證器；Pagefind只有實際加入才測，不宣稱骨架已包含。不同部署base下再次測試。
 - 首頁、文章內頁、標籤、全文搜尋、RSS、Sitemap、404，均用正式域名實測。
 - 檢查 1440／1280／768／390 RWD，手機選單、鍵盤與連結可操作。
 - 建立一篇文章、預覽、經核准合併、確認正式公開。

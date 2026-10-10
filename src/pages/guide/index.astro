@@ -1,20 +1,4 @@
 ---
-import builderStart from '../../../docs/student-builder-pack/START-HERE.md?raw';
-import builderHandoff from '../../../docs/student-builder-pack/AGENT-HANDOFF.md?raw';
-import builderReadme from '../../../docs/student-builder-pack/README.md?raw';
-import builderAgents from '../../../AGENTS.md?raw';
-import builderOnboarding from '../../../.ai/astro-starter-onboarding/SKILL.md?raw';
-import builderAssembly from '../../../.ai/astro-site-assembly/SKILL.md?raw';
-import builderLayout from '../../../.ai/astro-layout-craft/SKILL.md?raw';
-import builderEditorial from '../../../.ai/astro-editorial-layout-design/SKILL.md?raw';
-import builderUI from '../../../.ai/astro-ui-craft/SKILL.md?raw';
-import builderPatterns from '../../../.ai/astro-section-pattern-craft/SKILL.md?raw';
-import builderDeploy from '../../../.ai/astro-starter-deploy/SKILL.md?raw';
-import builderPreview from '../../../.ai/astro-pr-preview/SKILL.md?raw';
-import builderBlockRegistry from '../../../src/data/blocks.registry.json?raw';
-import builderPatternRegistry from '../../../src/data/section-patterns.registry.json?raw';
-import builderLayouts from '../../../src/data/layout-directions.json?raw';
-const builderFiles={'START-HERE.md':builderStart,'AGENT-HANDOFF.md':builderHandoff,'README.md':builderReadme,'reference/AGENTS.md':builderAgents,'skills/astro-starter-onboarding/SKILL.md':builderOnboarding,'skills/astro-site-assembly/SKILL.md':builderAssembly,'skills/astro-layout-craft/SKILL.md':builderLayout,'skills/astro-editorial-layout-design/SKILL.md':builderEditorial,'skills/astro-ui-craft/SKILL.md':builderUI,'skills/astro-section-pattern-craft/SKILL.md':builderPatterns,'skills/astro-starter-deploy/SKILL.md':builderDeploy,'skills/astro-pr-preview/SKILL.md':builderPreview,'reference/blocks.registry.json':builderBlockRegistry,'reference/section-patterns.registry.json':builderPatternRegistry,'reference/layout-directions.json':builderLayouts};
 const base=import.meta.env.BASE_URL;
 const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
@@ -43,7 +27,7 @@ const prompts=[
 <nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
 {steps.map((st,i)=><section class="section" id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>
 {i===0 && <Fragment><p><a class="button" href={link('starter/')}>開啟網站規劃器 →</a></p></Fragment>}
-{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>下載後與 Site Brief JSON 一起上傳給 AI。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">無法上傳 ZIP 時，解壓縮後上傳文件。</p></div></Fragment>}
+{i===1 && <Fragment><div class="card"><h3>下載給 AI 的建站資料包</h3><p>完整離線建站資料包（包含網站生成器、版型、元件、設計 Skills 與相關原始碼），下載後與 Site Brief JSON 一起交給 AI。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small">無法上傳 ZIP 時，解壓縮後上傳文件。</p></div></Fragment>}
 <div class="card"><div class="you">你要做的事</div>{st.you.map((x,j)=><label class="todo"><input type="checkbox" data-task={st.n+'-'+j}/><span>{x}</span></label>)}</div>
 {i===1 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[0].title}</strong><button class="button alt copy" type="button" data-prompt="0">複製提示詞</button></div><p>{prompts[0].text}</p></div></Fragment>}
 {i===3 && <Fragment><div class="two"><div><strong>Cloudflare Pages</strong><p>B 路線：保留私人原始碼、方便預覽。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>A 路線：簡單免費，原始碼公開。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><p><a href={link("guide/prepare/#hosting")}>查看 A／B 發布方式設定步驟 →</a></p><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div></Fragment>}
@@ -52,30 +36,13 @@ const prompts=[
 {i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
 </section>)}
 <section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
-<section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p><a href="https://github.com/pikaOne1138/astro-personal-site-starter/pulls" target="_blank" rel="noopener noreferrer">PR 範例 ↗</a>　·　<a href="https://github.com/pikaOne1138/astro-personal-site-starter/actions" target="_blank" rel="noopener noreferrer">Actions 範例 ↗</a></p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
+<section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p>請 AI 提供你自己網站的 GitHub Repository 網址，進入該 Repo 的 <strong>Pull requests</strong> 和 <strong>Actions</strong>。不需要進入老師的研究 Repo。</p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
 </main><footer>個人網站建置指南 · <a href={link('guide/prepare/')}>前置準備</a></footer>
-<script is:inline define:vars={{prompts:prompts.map(x=>x.text),builderFiles}}>
+<script is:inline define:vars={{prompts:prompts.map(x=>x.text),siteBase:base}}>
 const tasks=[...document.querySelectorAll('[data-task]')];
 function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='完成 '+n+' / '+tasks.length+' 項'}
 tasks.forEach(x=>{try{x.checked=localStorage.getItem('workshop-guide-v2-'+x.dataset.task)==='1'}catch{}x.addEventListener('change',()=>{try{localStorage.setItem('workshop-guide-v2-'+x.dataset.task,x.checked?'1':'0')}catch{}refresh()})});refresh();
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompts[Number(b.dataset.prompt)]);b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製提示詞',1500)}));
-// Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
-function makeZip(files){
- const enc=new TextEncoder(), parts=[], central=[];let offset=0;
- const u16=n=>new Uint8Array([n&255,n>>>8&255]);
- const u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);
- const cat=(...a)=>{let size=a.reduce((s,x)=>s+x.length,0),out=new Uint8Array(size),i=0;for(let x of a){out.set(x,i);i+=x.length}return out};
- const crc32=data=>{let c=-1;for(let b of data){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return(c^-1)>>>0};
- for(const [name,content] of Object.entries(files)){
-   let fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x0800;
-   let local=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);
-   parts.push(local);
-   central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));
-   offset+=local.length;
- }
- const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
- return new Blob([body,dir,end],{type:'application/zip'});
-}
-document.getElementById('download-builder-zip')?.addEventListener('click',()=>{const blob=makeZip(builderFiles),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AI-建站資料包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+document.getElementById('download-builder-zip')?.addEventListener('click',()=>{const a=document.createElement('a');a.href=siteBase+'AI-建站資料包.zip';a.download='AI-建站資料包.zip';document.body.appendChild(a);a.click();a.remove()});
 
 </script></body></html>

@@ -1,6 +1,6 @@
 # 05 聲音通信 `ra-`（知識／聲音）
 
-來源：`src/pages/directions/knowledge/radio-letter.astro`
+來源：`src/pages/layouts/radio-letter/index.astro`
 
 ## [OBS] 原始碼事實
 

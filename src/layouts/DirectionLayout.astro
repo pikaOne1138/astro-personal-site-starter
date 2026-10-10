@@ -14,6 +14,21 @@ const { title, description, theme = '' } = Astro.props;
   <body class={theme}>
     <a class="direction-skip" href="#main">跳到主要內容</a>
     <slot />
+    <script is:inline define:vars={{fallbackUrl:import.meta.env.BASE_URL+'layout-media-placeholder.svg'}}>
+      (() => {
+        const apply = (img) => {
+          if (!/^https?:\/\//.test(img.currentSrc || img.src) || img.dataset.demoFallback) return;
+          img.dataset.demoFallback = 'unavailable-original';
+          img.dataset.originalSrc = img.currentSrc || img.src;
+          img.src = fallbackUrl;
+          img.title = '原始展示圖片暫時無法載入，使用示意圖代替';
+        };
+        document.querySelectorAll('main img, body img').forEach((img) => {
+          img.addEventListener('error', () => apply(img));
+          if (img.complete && img.naturalWidth === 0) apply(img);
+        });
+      })();
+    </script>
   </body>
 </html>
 <style is:global>

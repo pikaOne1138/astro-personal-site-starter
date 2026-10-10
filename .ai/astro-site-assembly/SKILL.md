@@ -17,7 +17,7 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 `node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses a safe lightweight layout-specific treatment, and **a subsequent actual design-adaptation pass is mandatory** before claiming layout fidelity.
 
 ## Required design adaptation — phase 2
-1. Review selected `src/pages/layouts/[slug].astro` actual direction, DOM and `public/layout-library.css`.
+1. Review selected `src/pages/layouts/<slug>/index.astro` actual direction, DOM and `public/layout-library.css`.
 2. Preserve its hierarchy, Hero proportions, content order, imagery treatment and mobile restacking; do not replace all 12 with the same hero and cards.
 3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。
 4. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
@@ -32,7 +32,7 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 - Generate into a **different** directory or student's own new repository. Never overwrite the research showcase or existing student files by default.
 - Build standalone output and check correct canonical, URL base, internal links, selected menus and honest content placeholders.
 - Preview then ask student for explicit confirmation before merging or publishing.
-- For GitHub-only deployment follow `astro-starter-deploy`; Cloudflare is optional and requires verifying the provider configuration.
+- For GitHub Pages and Cloudflare deployment, follow `astro-starter-deploy` and `astro-pr-preview`; verify each provider's real preview configuration.
 - Report what is actually automatic vs what still requires editorial/UI adaptation, with screenshots and an outstanding-items list.
 
 ## Beginner prompt

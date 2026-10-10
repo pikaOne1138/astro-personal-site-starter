@@ -1,6 +1,6 @@
 # 07 溫柔陪伴 `co-`（助人／關係）
 
-來源：`src/pages/directions/care/companion.astro`
+來源：`src/pages/layouts/companion/index.astro`
 
 ## [OBS] 原始碼事實
 

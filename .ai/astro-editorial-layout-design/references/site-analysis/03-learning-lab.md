@@ -1,6 +1,6 @@
 # 03 學習實驗室 `ll-`（知識／教學）
 
-來源：`src/pages/directions/knowledge/learning-lab.astro`
+來源：`src/pages/layouts/learning-lab/index.astro`
 
 ## [OBS] 原始碼事實
 

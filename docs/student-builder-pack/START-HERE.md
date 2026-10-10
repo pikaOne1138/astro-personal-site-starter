@@ -1,32 +1,26 @@
-# Astro AI 建站指引包｜START HERE
+# 個人網站 AI 建站包｜START HERE
 
-本資料包供 **AI 建站代理** 閱讀；學員不需要看懂程式、不需輸入終端機指令。
+本包給 AI 讀取；學員不用安裝 Node、CLI，也不需要老師的 GitHub Repository 權限。
 
-## 學員提供
-1. 在 AI 網頁對話上傳 `Site Brief JSON`（不必先放到 GitHub）。
-2. 上傳本 ZIP；若 AI 平台不能直接讀 ZIP，請在瀏覽器下載並解壓縮後上傳內部文件，或用支援 ZIP 讀取的 AI 工具。
-3. 貼一句話：「我已上傳 Site Brief JSON 與 AI 建站指引包，請幫我建立獨立網站，先確認你有 GitHub 寫入與 PR 能力。」
+## 學員只需要準備
+1. 在網站規劃器 `/starter/` 選擇網站方向、Layout、內容與品牌設定，下載 Site Brief JSON。
+2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
+3. 告訴 AI：「請閱讀本資料包的 AGENTS.md 與 AGENT-HANDOFF.md，依 Site Brief 建立**我自己的** Astro 網站。先檢查你有沒有 GitHub 寫入、遠端運算、建置及 Preview 能力，一次只向我確認一個必要問題。先讓我看預覽，取得我的同意才正式發布。」
 
-**不必先把 JSON 上傳 GitHub**。如果開發需要持久設定檔，AI 再依獨立網站專案建立、提交與說明。
+## AI 要做的事
+- ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
+- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；注意 12 Layout 原始展示為首頁 Prototype，生成器第一階段僅產生骨架。
+- 以 `.ai/astro-pr-preview/SKILL.md` 分流 GitHub Pages 或 Cloudflare 的預覽與發布。配置、金鑰、網域須使用學員自己的帳號和 Repo。
+- 檢查 Build、實際 Preview、桌機/手機、圖片、文章、導航及搜尋。沒有實測不得稱成功。
+- 未經學員明確允許，不 Merge PR、不切換 DNS、不發布正式環境。
 
-## 技術與架構約定（AI 自行遵守）
-- 使用 **Astro 靜態網站**，依學生的 Site Brief 產生獨立網站。預設不引入其他網站框架、不新增資料庫或後端服務。
-- 使用本包內 Skills 與 Registry 作為設計、內容與功能規範；同時核對最新 GitHub 原始碼。學員不需在提示詞指定 Astro、Layout、Blocks 或指令。
-- 本包提供開發規範與參考資料，**不包含完整 Astro Starter 程式碼**；不能只靠 ZIP 就宣稱網站已完成。
+## 預期交付
+學員自己擁有的 Repo、真實 Preview 網址、待補內容清單、部署驗證紀錄與安全更新方式。
 
-## AI 工作要求
-- 這個資料包包含建站指引、目前的相關 Skills 與 Registry 快照，但**不是完整 Astro Starter 網站原始碼**。請用 GitHub 授權從 `pikaOne1138/astro-personal-site-starter` 的**最新狀態**核對布局原型、Skills、Registry 與實際程式碼；不要根據舊聊天記憶猜測版本。
-- 先確認 AI 網頁環境能遠端建立/修改 Repo、建立 Branch 和 PR，且有雲端建置與預覽路徑。單純具備聊天能力或唯讀 GitHub 連接**不足以完成建站**。
-- 先讀 `AGENT-HANDOFF.md`，其餘資料由 AI 自行檢索。不要讓學員逐一貼 Skill 路徑或執行命令。
-- 獨立個人站不可覆蓋教學展示站；首頁 Prototype 不等於完整多頁網站。
-- 實際網站需依 Layout → Section Patterns → Blocks → Effects → Brand tokens 的分層，填入學員核准的真實內容；空白服務、假表單、虛構證照/見證不得正式公開。
-- AI 必須真的驗證編譯、四視口和預覽；不能只宣稱「已完成」。
-- **Branch → PR → 雲端 Build/Preview → 學員同意 → Merge/Deploy**。先讀本包 `skills/astro-pr-preview/SKILL.md` 判斷學員使用 GitHub Pages 或 Cloudflare Pages／Workers；兩平台預覽機制不同，不能用研究 Repo 的網址替代。沒有學員明確同意不可 Merge、部署、修改 DNS。
-- 所有學員操作都在瀏覽器；AI 可以在自己的遠端運算環境使用必要程式，但不得要求學員安裝 Node/CLI/桌面工具。
+## 給完全不會程式學員的 AI 能力確認
 
-## 學員應該拿到的成果
-- 自己的 GitHub Repo 網址
-- 主要與內頁的預覽網址（實際可開啟，不造假）
-- 內容缺口與真實未串接服務清單
-- PR 網址、Build 結果與手機/桌面視覺 QA
-- 學員確認後的正式網址與更新 SOP
+將下方文字複製貼給你的 AI，即可先確認能不能代你完成工作；你不必安裝程式：
+
+> 請先確認：你能讀取我上傳的 ZIP 與 JSON 嗎？能在你的執行環境建立、修改檔案並執行 Astro Build 嗎？能經我授權寫入**我自己的** GitHub Repository、建立 Branch／Pull Request 嗎？能提供我真的打得開的測試網址，並檢查手機與電腦畫面嗎？請用「可以／需要我授權／無法做到」逐項回答，不能用猜的，也不要直接發布。
+
+若 AI 缺少這些能力，請改用支援專案檔案、GitHub 連接、雲端建置與瀏覽器的工作模式，或請老師協助選擇工具。**不要因為模型說會寫程式，就認定它真的能部署網站。**
