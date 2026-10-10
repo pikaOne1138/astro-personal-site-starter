@@ -25,7 +25,7 @@ description: Discover, select and customize ready-to-use Astro section patterns 
 
 ## 學員流程的交接契約
 - 在學員選定 Layout、規劃頁面/導航後，提供 `/section-patterns/` 給學員比較，不強迫選。
-- 每個採用的 Pattern 記錄：`patternId`、`targetPage`、`insertAfter`（或其他有意義的位置）、`contentNeeded`、`notes`。這是建議交接格式，**目前不是 StarterPlan v1 正式欄位**。
+- 每個採用的 Pattern 記錄：`patternId`、`targetPage`、`insertAfter`（或其他有意義的位置）、`contentNeeded`、`notes`。此為 `StarterPlan v1` 的 `sectionPatterns` 正式欄位；請以規劃器實際匯出的 JSON、Schema 與生成器驗證為準。不要因為舊版文件而忽略學員已選取的 Patterns。
 - 按 Layout → Section Pattern → Blocks → Motion 的順序實作；主題品牌 Token 應一致作用於這些層級。
 - 對 `footer-*` Pattern，位置必須在頁尾、避免同頁出現兩個 footer，所有隱私權/條款連結都必須有效。
 
