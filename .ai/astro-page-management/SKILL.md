@@ -35,7 +35,12 @@ description: Add, revise, hide, move or retire pages in an existing independent 
 - **刪除頁面／取消公開：** 刪除任何真實內容前需使用者明確同意，保留可復原版本；清理導航、Sitemap、內鏈、相關文章和舊網址處理。私人/機密內容不得單靠 robots 或 noindex 保護。
 
 ## 自動化輔助（仍需人工瀏覽器驗收）
-若從最新版工作坊 ZIP 取得 `scripts/verify-student-navigation.mjs`，AI 可在已具備 Playwright/Chromium 的工作環境啟動學員自己的 Astro Preview，執行 `node <ZIP_DIR>/scripts/verify-student-navigation.mjs --url http://127.0.0.1:4321/ --paths /,/about/,/new-page/`。它會比較指定路由在 1440/390px 下主導覽可見項目的順序、名稱、href，並輸出 `qa-artifacts/navigation/results.json`。**先根據學員真實路由和 NAV DOM 調整測試選擇器；未涵蓋的下拉子選單、平板、交互與視覺仍必須另測，不能把執行成功當成全部導航驗收完成。**
+若從最新版工作坊 ZIP 取得 `scripts/verify-student-navigation.mjs`，AI 可在已具備 Playwright/Chromium 的工作環境啟動學員自己的 Astro Preview，執行 `node <ZIP_DIR>/scripts/verify-student-navigation.mjs --url http://127.0.0.1:4321/ --paths /,/about/,/new-page/`。它需要明確傳入 `--expect-links /,/about/,/new-page/`（必須來自網站的預期導航設定，不能直接抄測試結果），在 1440/390px 比對各頁主導覽和桌機／手機差異、實際打開所有同站導航目的地確認非 404，並輸出 `qa-artifacts/navigation/results.json`。**先根據學員真實路由和 NAV DOM 調整測試選擇器；未涵蓋的下拉子選單、平板、交互與視覺仍必須另測，不能把執行成功當成全部導航驗收完成。**
+
+## 交付前自我驗證：不接受推定 PASS
+- 對應的自動化驗證必須包含正向案例和故障注入案例：較長文章目錄不得誤判成主選單；所有手機頁面同步缺項必須 FAIL；選單目的地 404 必須 FAIL；重複路由輸入必須 FAIL。驗證器本身未通過回歸測試則禁止交付。
+- 以實際網站導航設定當作預期值；每一個新增頁面要驗證主導航、網址、Sitemap、內鏈、麵包屑及手機操作。任何不能驗證的部分標 `NOT TESTED` 或 `BLOCKED`，不能寫 `PASS`。
+- 每次修正後重新執行受影響範圍與既有頁面的回歸；保留命令、執行結果、Commit SHA 與遠端 Preview URL。只證明程式編譯成功不代表功能驗收完成。
 
 ## 強制 QA｜Navigation Consistency Gate
 1. `npm run build` 成功，沒有新破圖、404、孤兒頁或失效的選單連結。
