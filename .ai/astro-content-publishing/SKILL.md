@@ -60,3 +60,12 @@ See `references/seo-and-release-checklist.md`.
 An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.
 
 If changes to an article's public URL, legal/medical content or data ownership are required, surface the tradeoff before implementation rather than silently choosing for the user.
+
+
+## 學員日常文章修改｜一次一句話也能操作
+- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。
+- **編輯舊文章**：「修改＿＿文章中的＿＿，網址不要改。」保留既有 slug／publishedAt，若 schema 有 updatedAt 且內容真的變更才更新；提供原文與改動差異。
+- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。
+- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。
+- **撤回／隱藏**：「這篇暫時不要公開。」請先辨明僅從列表隱藏、標記 draft、或取消公開 URL；這幾者不同。若須刪除/轉址應列出 SEO 與外部連結影響並等待同意。避免直接刪除原稿，優先保留可恢復的 Git 歷史。
+- 新文章在桌機和手機的共用導航、文章列表、相關文章連結一致。網站新增**一般頁面**則使用 `astro-page-management`，而非把所有頁面塞進文章集合。
