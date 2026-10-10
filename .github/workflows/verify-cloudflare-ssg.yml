@@ -38,6 +38,8 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Fault-injection navigation regression suite
+        run: node scripts/test-student-navigation-regressions.mjs
       - name: Verify first-time onboarding guide at four widths
         run: node scripts/qa-preparation-guide.mjs
       - name: Upload guide screenshots and results
