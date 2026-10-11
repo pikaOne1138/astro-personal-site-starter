@@ -43,7 +43,8 @@ if(studentArg!==-1){
    if(explicitSlug&&explicitSlug[1].trim()!==slug)throw Error('Draft audit requires route mapping for custom slug: '+draftFile);
    const titleLine=fm[1].match(/^title:\\s*(.+)\\s*$/mi);
    const title=titleLine?.[1]?.replace(/\\s+#.*$/,'').trim().replace(/^['"]|['"]$/g,'');
-   const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug.replace(/[.*+?^${}()|[\\]\\]/g,'\\ console.log('Independent student output checks passed: routes, RSS, sitemap, robots lines. Visual/hosting verification remains required.');')+'(?:/|%2[fF]|["?&#<])','i');
+   if(!/^[a-zA-Z0-9_-]+$/.test(slug))throw Error('Draft audit requires safe filename slug: '+draftFile);
+   const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
    const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=8&&x.body.includes(title)));
