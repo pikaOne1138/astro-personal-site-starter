@@ -47,6 +47,12 @@ Example frontmatter and body: see `references/article-authoring.md`.
 
 See `references/seo-and-release-checklist.md`.
 
+## Mandatory draft leakage gate
+
+When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.
+
+A prior public deployment, public PR preview, Git history, or immutable deployment artifact may continue exposing a withdrawn draft. Noindex and draft flags do not protect secrets. Always report this limitation.
+
 ## Workflow C — quality gate and release
 
 1. Build the production configuration and the actual PR-specific `ASTRO_BASE_PATH` when possible. 先讀package.json確認 `npm run build` 的實際工作；不要假定它已執行Pagefind或額外smoke checks。Inspect any failures, don't bypass checks to make CI green.
