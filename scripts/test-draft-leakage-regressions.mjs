@@ -1,0 +1,32 @@
+import {mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {spawnSync} from 'node:child_process';
+const root=mkdtempSync(join(tmpdir(),'draft-negative-gate-'));
+const put=(p,text)=>{const full=join(root,p);mkdirSync(join(full,'..'),{recursive:true});writeFileSync(full,text)};
+const html=(body='')=>'<html><head><title>Test page</title><meta name="description" content="fixture"><link rel="canonical" href="https://example.com/"></head><body>'+body+'</body></html>';
+const draft='qa-secret-draft',title='Never Publish This Example Draft';
+const article='---\ntitle: '+title+'\ndescription: For private draft QA only\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft text';
+try{
+ put('site.config.json',JSON.stringify({navigation:[]}));
+ put('src/content/articles/'+draft+'.md',article);
+ put('dist/index.html',html('Public home'));
+ put('dist/404.html',html('Not Found'));
+ put('dist/rss.xml','<rss version="2.0"></rss>');
+ put('dist/sitemap.xml','<urlset></urlset>');
+ put('dist/robots.txt','User-agent: *\nSitemap: https://example.com/sitemap.xml\n');
+ const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
+ const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
+ expect('clean draft',true);
+ put('dist/index.html',html('<a href="/articles/'+draft+'/">'+title+'</a>'));
+ expect('draft in homepage',false);
+ put('dist/index.html',html());
+ put('dist/rss.xml','<rss version="2.0"><item><link>https://example.com/articles/'+draft+'/</link></item></rss>');
+ expect('draft in RSS',false);
+ put('dist/rss.xml','<rss version="2.0"></rss>');
+ put('dist/sitemap.xml','<urlset><url><loc>https://example.com/articles/'+draft+'/</loc></url></urlset>');
+ expect('draft in sitemap',false);
+ put('dist/sitemap.xml','<urlset></urlset>');
+ put('dist/articles/'+draft+'/index.html',html(title));
+ expect('draft HTML route',false);
+}finally{rmSync(root,{force:true,recursive:true})}
