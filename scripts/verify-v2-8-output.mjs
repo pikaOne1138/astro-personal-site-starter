@@ -21,29 +21,28 @@ if(studentArg!==-1){
  const robots=read('robots.txt');
  if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid student robots.txt lines');
  if(!read('rss.xml').includes('<rss version="2.0">')||!read('sitemap.xml').includes('<urlset'))throw Error('Invalid student feed/sitemap');
- // Draft leakage gate: inspect emitted URLs and discovery surfaces, not only a hard-coded QA article.
+ // Draft leakage gate for flat Markdown articles generated in the learner Starter.
  const articlesDir=join(root,'src','content','articles');
  if(existsSync(articlesDir)){
   const files=[];
-  const visit=d=>{for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name);if(e.isDirectory())visit(p);else if(/\\.(md|mdx)$/i.test(e.name))files.push(p)}};
+  const visit=d=>{for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name);if(e.isDirectory())visit(p);else if(/\.(md|mdx)$/i.test(e.name))files.push(p)}};
   visit(articlesDir);
   const exposed=htmlPaths.map(p=>({path:p,body:readFileSync(p,'utf8')}));
   for(const name of ['rss.xml','sitemap.xml'])exposed.push({path:join(output,name),body:read(name)});
   for(const draftFile of files){
    const source=readFileSync(draftFile,'utf8');
-   const fm=source.match(/^---\\s*\\r?\\n([\\s\\S]*?)\\r?\\n---(?:\\r?\\n|$)/);
+   const fm=source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
    if(!fm)throw Error('Cannot audit article frontmatter: '+draftFile);
-   const state=fm[1].match(/^draft:\\s*(true|false)(?:\\s+#.*)?\\s*$/mi);
+   const state=fm[1].match(/^draft:\s*(true|false)(?:\s+#.*)?\s*$/mi);
    if(!state||state[1]!=='true')continue;
-   const slug=draftFile.split(/[/\\\\]/).at(-1).replace(/\\.(md|mdx)$/i,'');
-   // This lightweight checker only guarantees flat filename slugs; complex routing needs an adapter.
-   const relative=draftFile.slice(articlesDir.length+1).replace(/\\\\/g,'/');
+   const slug=draftFile.split(/[/\\]/).at(-1).replace(/\.(md|mdx)$/i,'');
+   const relative=draftFile.slice(articlesDir.length+1).replace(/\\/g,'/');
    if(relative.includes('/'))throw Error('Draft audit requires explicit route mapping for nested article: '+relative);
-   const explicitSlug=fm[1].match(/^slug:\\s*['"]?([^\\r\\n'"#]+)['"]?\\s*$/mi);
-   if(explicitSlug&&explicitSlug[1].trim()!==slug)throw Error('Draft audit requires route mapping for custom slug: '+draftFile);
-   const titleLine=fm[1].match(/^title:\\s*(.+)\\s*$/mi);
-   const title=titleLine?.[1]?.replace(/\\s+#.*$/,'').trim().replace(/^['"]|['"]$/g,'');
+   const customSlug=fm[1].match(/^slug:\s*['"]?([^\r\n'"#]+)['"]?\s*$/mi);
+   if(customSlug&&customSlug[1].trim()!==slug)throw Error('Draft audit requires route mapping for custom slug: '+draftFile);
    if(!/^[a-zA-Z0-9_-]+$/.test(slug))throw Error('Draft audit requires safe filename slug: '+draftFile);
+   const titleLine=fm[1].match(/^title:\s*(.+)\s*$/mi);
+   const title=titleLine?.[1]?.replace(/\s+#.*$/,'').trim().replace(/^['"]|['"]$/g,'');
    const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
