@@ -57,8 +57,12 @@ try {
       await toggle.click();
       if(await toggle.getAttribute('aria-expanded')!=='true')failures.push('W9/'+width+': menu did not expand');
       await page.keyboard.press('Escape');
-      if(await toggle.getAttribute('aria-expanded')!=='false')failures.push('F10b/'+width+': Escape did not close mobile menu');
-      if(!await toggle.evaluate(el=>el===document.activeElement))failures.push('W9/'+width+': focus did not return to menu trigger');
+      const closed=await page.waitForFunction(() => document.querySelector('.practical-gallery-mobile [data-menu-open]')?.getAttribute('aria-expanded')==='false',null,{timeout:2500}).then(()=>true).catch(()=>false);
+      if(!closed)failures.push('F10b/'+width+': Escape did not close mobile menu');
+      if(closed){
+        const restored=await page.waitForFunction(() => document.querySelector('.practical-gallery-mobile [data-menu-open]')===document.activeElement,null,{timeout:1500}).then(()=>true).catch(()=>false);
+        if(!restored)failures.push('W9/'+width+': focus did not return to menu trigger');
+      }
       recorded.mobileMenuInteracted=true;
     } else {
       recorded.mobileMenuInteracted=false;
