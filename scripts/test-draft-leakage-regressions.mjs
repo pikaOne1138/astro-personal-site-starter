@@ -24,6 +24,11 @@ try{
  expect('F09 preview missing noindex',false);
  put('dist/index.html',html('Public home'));
  expect('F09 restored preview noindex',true);
+ put('dist/index.html',html('Public home').replace('content="noindex, nofollow, noarchive"','content="index, follow"'));
+ const approved=spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8',env:{...process.env,SITE_INDEXABLE:'true'}});
+ if(approved.status!==0)throw Error('F09 approved indexable production must PASS: '+approved.stdout+' '+approved.stderr);
+ console.log('F09 explicitly approved production indexing: PASS');
+ put('dist/index.html',html('Public home'));
  put('dist/index.html',html('這裡尚未填入個人的正式內容'));
  const notice=run();if(notice.status!==0||!notice.stderr.includes('NOTICE:'))throw Error('Placeholder content must be NOTICE, not blocking FAIL');
  put('dist/index.html',html('Public home'));
