@@ -132,6 +132,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           QA_REMOTE_BLACKBOX: ${{ github.event.pull_request.head.repo.full_name == github.repository && '1' || '0' }}
         run: node scripts/qa-cloudflare-preview.mjs
+      - name: Fault-inject dashboard false PASS for untested contracts and Preview
+        run: node scripts/test-quality-dashboard-regressions.mjs
       - name: Finalize five-gate quality dashboard
         if: always()
         env:
