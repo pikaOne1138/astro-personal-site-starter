@@ -7,7 +7,8 @@ const scan=d=>{for(const item of readdirSync(d,{withFileTypes:true})){const path
 scan(root);files.sort();
 const registered=JSON.parse(readFileSync('src/data/blocks.registry.json','utf8'));
 const registeredPaths=new Set(registered.map(x=>x.path));
-const expectedGroups={blocks:54,effects:7,patterns:3,editorialRecipes:40,shared:6};
+const manifest=JSON.parse(readFileSync('docs/quality/COMPONENT-COVERAGE.json','utf8'));
+const required=['syntax','props','behavior','accessibility','responsive','integration'];
 const groups={blocks:[],effects:[],patterns:[],editorialRecipes:[],shared:[]},errors=[],results=[];
 for(const path of files){
  const group=path.startsWith('src/components/blocks/')?'blocks':path.startsWith('src/components/effects/')?'effects':path.startsWith('src/components/patterns/')?'patterns':path.startsWith('src/components/editorial-recipes/')?'editorialRecipes':'shared';
@@ -20,7 +21,18 @@ for(const path of files){
  results.push(entry);
 }
 for(const block of registered){if(!files.includes(block.path))errors.push('Registry path not found: '+block.path);}
-for(const [group,number] of Object.entries(expectedGroups))if(groups[group].length!==number)errors.push(group+': '+groups[group].length+' found, baseline '+number+' changed; update documented inventory after reviewing added or removed components');
+for(const path of files){
+ const row=manifest.components?.[path];
+ if(!row){errors.push(path+': component missing QA responsibility declaration');continue}
+ const group=path.startsWith('src/components/blocks/')?'blocks':path.startsWith('src/components/effects/')?'effects':path.startsWith('src/components/patterns/')?'patterns':path.startsWith('src/components/editorial-recipes/')?'editorialRecipes':'shared';
+ if(row.group!==group)errors.push(path+': group mismatch');
+ for(const type of required){
+  const value=row[type];
+  if(!value||!['PASS','FAIL','NOTICE','BLOCKED','NOT TESTED'].includes(value.status)||typeof value.evidence!=='string')errors.push(path+': missing/invalid '+type+' responsibility');
+  else if(value.status==='PASS')errors.push(path+': source declaration must not claim PASS without run-specific evidence');
+ }
+}
+for(const path of Object.keys(manifest.components||{}))if(!files.includes(path))errors.push(path+': stale QA declaration
 if(files.length!==new Set(files).size)errors.push('Duplicate components');
 const report={schemaVersion:1,headSha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',total:files.length,groupCounts:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),individualResults:results,errors,notes:'PASS here means Astro syntax and frontmatter; individual Props, behavior, accessibility, responsive and integration remain NOT TESTED'};
 mkdirSync('qa-artifacts/quality',{recursive:true});writeFileSync('qa-artifacts/quality/all-astro-components.json',JSON.stringify(report,null,2)+'\n');
