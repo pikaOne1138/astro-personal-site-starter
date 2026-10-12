@@ -46,7 +46,7 @@ try {
         writeFileSync(join(site,'src/content/articles/qa-draft.md'),'---\ntitle: QA draft\ndescription: Draft regression fixture\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft regression content.');
         execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
-        for(const file of ['rss.xml','sitemap.xml','robots.txt'])if(!existsSync(join(site,'dist',file)))throw Error('Missing generated SEO endpoint '+file+' for '+kind);
+        for(const file of ['rss.xml','sitemap.xml','robots.txt','pagefind/pagefind.js','search/exact-zh.json'])if(!existsSync(join(site,'dist',file)))throw Error('Missing generated SEO endpoint '+file+' for '+kind);
         const sitemap=readFileSync(join(site,'dist/sitemap.xml'),'utf8');
         if(!sitemap.includes('https://example.com'))throw Error('Unexpected sitemap site URL');
         const rss=readFileSync(join(site,'dist/rss.xml'),'utf8');
