@@ -59,13 +59,20 @@ if(studentArg!==-1){
   }
  }
  }
+ const pagefind=join(output,'pagefind','pagefind.js');
+ const exactIndex=join(output,'search','exact-zh.json');
+ if(!existsSync(pagefind)||!readFileSync(pagefind).length)throw Error('Student Pagefind search index missing; run the complete build');
+ if(!existsSync(exactIndex))throw Error('Student Chinese exact-match search index missing; run the companion index builder');
+ let index;
+ try{index=JSON.parse(readFileSync(exactIndex,'utf8'))}catch{throw Error('Student Chinese search index is invalid JSON')}
+ if(index?.version!==1||!Array.isArray(index.docs))throw Error('Student Chinese search index contract invalid: version/docs');
  const placeholderSamples=[];
  for(const path of htmlPaths){
   const html=readFileSync(path,'utf8');
   if(/這裡尚未填入個人的正式內容|尚未設定作品內容|示範內容｜請以自己的真實|example\\.com/i.test(html))placeholderSamples.push(path);
  }
  if(placeholderSamples.length)console.warn('NOTICE: '+placeholderSamples.length+' generated pages may still contain example/placeholder content. This is informational only; testing or empty sites are allowed. Examples: '+placeholderSamples.slice(0,3).join(', '));
- console.log('Independent student technical output checks passed: routes, RSS, sitemap, robots, draft audit. This does NOT mean personal content is ready or approved for publication.');
+ console.log('Independent student technical output checks passed: routes, RSS, sitemap, robots, draft audit, Pagefind and Chinese search indexes. This does NOT mean personal content is ready or approved for publication.');
  process.exit(0);
 }
 
