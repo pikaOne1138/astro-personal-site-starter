@@ -28,7 +28,7 @@ try{
  await page.addStyleTag({content:'.showcase-example-groups { min-width:520px !important }'});
  const broken=await measure(page);
  const mutationDetected=broken.overflow;
- checks.push({name:'fault injection: unexpected 520px page-wide minimum must trigger outer overflow',pass:mutationDetected,measurement:broken});
+ checks.push({name:'F07 fault injection: unexpected 520px page-wide minimum must trigger outer overflow',pass:mutationDetected,measurement:broken});
  if(!mutationDetected||!baselinePass)process.exitCode=1;
  await page.close();
 }finally{await browser?.close();server.kill('SIGTERM');}
