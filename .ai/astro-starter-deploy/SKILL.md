@@ -27,7 +27,9 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 5. Cloudflare API Token、GitHub OAuth 或部署授權只在平台授權流程處理，不存入程式碼、聊天訊息、Commit 或公用設定。
 
 ## QA／交付
-- `npm run build` 成功，再從離線包執行學員模式驗證器；Pagefind只有實際加入才測，不宣稱骨架已包含。不同部署base下再次測試。
+- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。
+- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 需確認變數確實傳入正式 Build。
+- 不得為了讓 CI 通過而移除 `noindex`，也不得在尚未核准時把 Demo／草稿對搜尋引擎開放。
 - 首頁、文章內頁、標籤、全文搜尋、RSS、Sitemap、404，均用正式域名實測。
 - 檢查 1440／1280／768／390 RWD，手機選單、鍵盤與連結可操作。
 - 建立一篇文章、預覽、經核准合併、確認正式公開。
