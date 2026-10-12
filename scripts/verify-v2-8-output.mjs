@@ -54,7 +54,13 @@ if(studentArg!==-1){
   }
  }
  }
- console.log('Independent student output checks passed: routes, RSS, sitemap, robots lines. Visual/hosting verification remains required.');
+ const placeholderSamples=[];
+ for(const path of htmlPaths){
+  const html=readFileSync(path,'utf8');
+  if(/這裡尚未填入個人的正式內容|尚未設定作品內容|示範內容｜請以自己的真實|example\\.com/i.test(html))placeholderSamples.push(path);
+ }
+ if(placeholderSamples.length)console.warn('NOTICE: '+placeholderSamples.length+' generated pages may still contain example/placeholder content. This is informational only; testing or empty sites are allowed. Examples: '+placeholderSamples.slice(0,3).join(', '));
+ console.log('Independent student technical output checks passed: routes, RSS, sitemap, robots, draft audit. This does NOT mean personal content is ready or approved for publication.');
  process.exit(0);
 }
 
