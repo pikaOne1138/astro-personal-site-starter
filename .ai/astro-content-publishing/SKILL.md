@@ -23,6 +23,10 @@ This skill does **not** implement WordPress migration, a CMS, a database, subscr
 
 驗證生成專案：先在生成目錄跑 `npm run build`，再從本ZIP執行 `node scripts/verify-v2-8-output.mjs --student-site /absolute/path/to/generated-site`。無flag的模式只供完整研究站使用。發布前讀 `.ai/astro-pr-preview/SKILL.md`。
 
+## Public vs draft source folders (student Starter)
+
+Use `src/content/articles/` as the **only public article Collection source** and `src/content/drafts/` as an excluded unpublished workspace. New drafts go in `drafts/`, not `articles/`. Publication moves approved Markdown into `articles/`; withdrawal moves it back and rebuilds from a clean output directory. Never change URLs silently. Preserve existing legacy `draft: true` filtering for older student websites, but migrate only after examining site-specific routing. The separation is a release boundary, **not a confidentiality boundary**: public GitHub histories and older deployments may reveal drafts. After every change run the actual output draft-leakage gate; no gate, no PASS. Confirm the public article loader is scoped to `src/content/articles/`; do not glob all content directories.
+
 ## Workflow A — create or edit an article
 
 1. Ask for the content/goal only when it cannot be derived; do not invent an author's story. Confirm the intended slug and public/draft status when publishing details are uncertain.
