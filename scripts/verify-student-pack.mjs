@@ -16,7 +16,7 @@ try {
     'src/data/section-patterns.registry.json','src/pages/layouts/index.astro',
     'scripts/export-starter.mjs','scripts/verify-student-navigation.mjs','src/components','public/layout-library.css',
     'public/v02.css','public/effects-sample.svg','public/robots.txt',
-    'scripts/verify-v2-8-output.mjs','scripts/build-student-search-index.mjs','docs/student-intake/01-AI-訪談主持人.md'
+    'scripts/verify-v2-8-output.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
   const guide=readFileSync(join(root,'AGENTS.md'),'utf8');
@@ -45,6 +45,7 @@ try {
         writeFileSync(join(site,'src/content/articles/qa-public.md'),'---\ntitle: QA public\ndescription: Public regression fixture\npublishedAt: 2026-10-09\ndraft: false\n---\nPublic regression content.');
         writeFileSync(join(site,'src/content/articles/qa-draft.md'),'---\ntitle: QA draft\ndescription: Draft regression fixture\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft regression content.');
         execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
+        execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
         execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
         for(const file of ['rss.xml','sitemap.xml','robots.txt','pagefind/pagefind.js','search/exact-zh.json'])if(!existsSync(join(site,'dist',file)))throw Error('Missing generated SEO endpoint '+file+' for '+kind);
