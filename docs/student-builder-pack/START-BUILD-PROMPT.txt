@@ -1,0 +1,5 @@
+我已上傳 Site Brief JSON 與「AI 建站資料包」ZIP。請先閱讀資料包中的 AGENTS.md、AGENT-HANDOFF.md、START-HERE.md 與適用的 AI Skills，依照我的規劃檔在我自己的 GitHub Repository 建立 Astro 個人網站，不要 Fork 老師的 Repository。
+
+開始前，先確認你是否能讀取檔案、建立與修改網站、執行 Astro Build、經我授權連接 GitHub 並建立 Branch／Pull Request；做不到的部分請明確告訴我，不能假裝完成。一次只向我確認一個必要問題。
+
+網站完成後，請先提供實際可開啟、對應最新 Commit 的預覽網址，讓我確認桌機與手機的內容、連結和互動。沒有我明確同意，請不要 Merge PR、修改正式網站或發布 Production。
