@@ -23,6 +23,7 @@ const named={
  W9:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
  W11:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
  N17:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
+ N18:['scripts/qa-all-editorial-recipes.mjs','QA_ALL_RECIPES'],
  F00:['scripts/test-draft-leakage-regressions.mjs','QA_DRAFTS'],
  F03:['scripts/test-draft-leakage-regressions.mjs','QA_DRAFTS'],
  F04:['scripts/test-draft-leakage-regressions.mjs','QA_DRAFTS'],
