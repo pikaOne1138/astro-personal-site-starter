@@ -237,6 +237,7 @@ jobs:
           QA_REGISTRY: ${{ steps.registry.outcome }}
           QA_COMPILE: ${{ steps.compile.outcome }}
           QA_ALL_COMPONENTS: ${{ steps.allcomponents.outcome }}
+          QA_SHARED_COMPONENTS: ${{ steps.sharedcomponents.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
           QA_ALL_PATTERNS: ${{ steps.allpatterns.outcome }}
           QA_COVERAGE: ${{ steps.coverage.outcome }}
