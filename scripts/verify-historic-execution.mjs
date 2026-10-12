@@ -1,6 +1,12 @@
 import {existsSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 const ledger=JSON.parse(readFileSync('docs/quality/HISTORIC-REGRESSIONS.json','utf8'));
 const named={
+ W1:['scripts/test-learner-document-safety.mjs','QA_DOCUMENT_SAFETY'],
+ W2:['scripts/test-learner-document-safety.mjs','QA_DOCUMENT_SAFETY'],
+ W13:['scripts/test-learner-document-safety.mjs','QA_DOCUMENT_SAFETY'],
+ W14:['scripts/test-learner-document-safety.mjs','QA_DOCUMENT_SAFETY'],
+ W5:['scripts/test-theme-contrast-roles.mjs','QA_THEME_CONTRAST'],
+ N15:['scripts/test-theme-contrast-roles.mjs','QA_THEME_CONTRAST'],
  W4:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
  N1:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
  N14:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
