@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/export-starter.mjs'
       - 'scripts/verify-starter-export.mjs'
+      - 'scripts/audit-generated-links.mjs'
+      - 'scripts/test-generated-link-audit.mjs'
       - 'src/data/layout-directions.json'
       - '.github/workflows/starter-export.yml'
   workflow_dispatch:
@@ -17,5 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify link checker catches deliberate broken links
+        run: node scripts/test-generated-link-audit.mjs
       - name: Check generated knowledge and helper sites
         run: FULL_STARTER_BUILD=1 node scripts/verify-starter-export.mjs
