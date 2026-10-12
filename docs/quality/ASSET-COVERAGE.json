@@ -1,0 +1,1320 @@
+{
+  "schemaVersion": 1,
+  "notes": "Every registered asset declares QA responsibilities. PASS means an existing source test is assigned; comprehensive behavior, accessibility, visual and delivered-site acceptance remain NOT TESTED until evidenced.",
+  "blocks": {
+    "button": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "section-heading": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-header": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-footer": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-split": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-centered": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-image": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "image-text": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "feature-grid": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "stats": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "c-t-a-section": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-grid": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "featured-post": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "category-links": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "table-of-contents": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "author-box": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "service-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "about-profile": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "process-steps": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "testimonial": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "f-a-q": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "contact-section": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-search": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "tag-cloud": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "archive-months": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-calendar": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-accordion": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-callout": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-grid": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-comparison": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "related-articles": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-list": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "content-carousel": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-search-dialog": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "mobile-menu": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "booking-link": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "contact-actions": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "pricing-details": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-info": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "media-embed": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "social-links": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "breadcrumbs": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-navigation": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-share": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "reading-progress": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "resource-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "resource-library": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "lead-magnet-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "newsletter-signup": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "practitioner-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "service-fit": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-view-switcher": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "back-to-top": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "effects": {
+    "reveal": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "stagger-group": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "motion-card": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "zoom-image": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "magnetic-button": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "underline-link": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "motion-faq": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "layouts": {
+    "field-notes": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "essayist": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "learning-lab": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "curator": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "radio-letter": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "reading-atlas": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "clinician": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "companion": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "somatic": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "coach": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "collective": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-path": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "patterns": {
+    "featured-work": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-service-path": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-minimal": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-editorial": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-professional": {
+      "contract": {
+        "status": "PASS",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  }
+}
