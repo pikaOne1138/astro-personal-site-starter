@@ -117,7 +117,7 @@ function measure() {
   };
   const spill = [];
   document.querySelectorAll('body *').forEach((el) => {
-    if (!visible(el)) return;
+    if (!visible(el) || (el.matches('a.skip,a[href="#main"]') && !el.matches(':focus'))) return;
     const r = el.getBoundingClientRect();
     if ((r.right > vw + 1 || r.left < -1) && !clipped(el)) spill.push(`${sel(el)} L${Math.round(r.left)} R${Math.round(r.right)}`);
   });
@@ -210,6 +210,7 @@ function measure() {
   // 目標：連結、按鈕、summary、表單控制項；label 只在包住控制項時才算（避免 <label for> 小標籤誤報）；
   // 被 label 包住的 checkbox/radio 以 label 的面積為準。
   const targets = [...document.querySelectorAll('a[href],button,summary,input,select,textarea,label')].filter(visible).filter((el) => {
+    if (el.matches('a.skip,a[href="#main"]') && !el.matches(':focus')) return false;
     if (el.tagName === 'LABEL') return !!el.querySelector('input,select,textarea');
     if (el.tagName === 'INPUT' && /checkbox|radio/.test(el.type) && el.closest('label')) return false;
     return true;
@@ -281,11 +282,11 @@ function grade(m, w) {
   if (m.hScroll > 0) f.push(`水平捲動 +${m.hScroll}px`);
   if (m.spillCount > 0) f.push(`${m.spillCount} 個元素超出視窗：${m.spill.slice(0, 2).join('; ')}`);
   if (m.textOverlap > 0) (m.textOverlap > 2 ? f : wn).push(`文字疊壓 ${m.textOverlap}：${m.textOverlapSamples.slice(0, 2).join('; ')}`);
-  if (m.contrastFail > 0) wn.push(`對比不足 ${m.contrastFail}（例 ${m.contrastSamples.slice(0, 2).map((c) => `${c.s}:${c.cr}`).join(', ')}）`);
+  if (m.contrastFail > 0) f.push(`對比不足 ${m.contrastFail}（例 ${m.contrastSamples.slice(0, 2).map((c) => `${c.s}:${c.cr}`).join(', ')}）`);
   if (m.smallText.lt11 > 0) wn.push(`<11px 文字 ${m.smallText.lt11} 處`);
   if (m.smallText.lt12 > 0 && w <= 768 && m.smallText.lt12 - m.smallText.lt11 > 0) wn.push(`11–12px 文字 ${m.smallText.lt12 - m.smallText.lt11} 處`);
   if (m.images.some((i) => i.distort)) f.push('圖片被拉伸（object-fit: fill 且比例不符）');
-  if (m.h1 && w <= 480 && m.h1.lines > 5) wn.push(`手機 h1 ${m.h1.lines} 行`);
+  if (m.h1 && m.h1.lines > 4) wn.push(`h1 ${m.h1.lines} 行（建議不超過 4 行）`);
   if (m.h1 && m.h1.width > w) f.push('h1 比視窗寬');
   if (m.touch.lt24 > 0 && w <= 768) f.push(`觸控目標 <24px：${m.touch.lt24}`);
   else if (m.touch.lt44 > 0 && w <= 768) wn.push(`觸控目標 <44px：${m.touch.lt44}`);
@@ -302,10 +303,21 @@ for (const p of paths) {
     await page.goto(base + p, { waitUntil: 'networkidle' });
     await page.addStyleTag({ content: 'html{scroll-behavior:auto!important}' });
     await page.waitForTimeout(400);
+    // Scroll through the document so IntersectionObserver-based effects enter their visible state.
+    await page.evaluate(async () => {
+      for(let y=0;y<document.documentElement.scrollHeight;y+=Math.max(320,innerHeight*0.75)){
+        window.scrollTo(0,y);
+        await new Promise(resolve=>setTimeout(resolve,90));
+      }
+      window.scrollTo(0,0);
+    });
+    await page.waitForTimeout(750);
+    const stuck=await page.evaluate(()=>[...document.querySelectorAll('[data-motion-reveal]')].filter(el=>getComputedStyle(el).opacity==='0'||(+getComputedStyle(el).opacity<0.05)).length);
     const slug = (p.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home') + '-' + w;
     await page.screenshot({ path: join(out, slug + '.png'), fullPage: true });
     const m = await page.evaluate(measure);
     const g = grade(m, w);
+    if(stuck)g.fail.push(`${stuck} Reveal 區段捲動後仍不可見`);
     if (g.fail.length) anyFail = true;
     report.push({ path: p, width: w, ...g, metrics: m });
     await ctx.close();
