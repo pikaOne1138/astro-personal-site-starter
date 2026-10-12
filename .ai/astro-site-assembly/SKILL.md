@@ -37,3 +37,6 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 
 ## Beginner prompt
 「這是我從網站規劃器下載的 JSON。請用 astro-site-assembly Skill 幫我建立獨立 Astro 網站，先生成可運作的 Starter，再參考我選的 Layout 原型調整首頁，保留品牌色和選單。建立 PR 並提供預覽，我確認才發布。」
+
+## Search component integration
+When adding `SiteSearchDialog`, inspect its actual data contract before use. The learner ZIP ships `scripts/build-student-search-index.mjs`; generated independent sites copy it as `scripts/build-exact-search.mjs` and run it after `astro build`, generating `dist/search/exact-zh.json`. Pagefind remains the primary full-text index when configured; do not replace it with a hardcoded metadata search. Confirm the endpoint, search interaction and draft exclusion on the actual built site. Consult up-to-date Astro/Pagefind official documentation when interfaces differ.
