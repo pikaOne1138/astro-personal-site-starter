@@ -19,7 +19,7 @@ try{
  put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
  const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
  const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
- expect('clean draft',true);
+ expect('F00 clean draft',true);
  put('dist/index.html',html('Public home').replace('<meta name="description" content="fixture">',''));
  expect('F12 public page missing meta description',false);
  put('dist/index.html',html('Public home'));
@@ -34,13 +34,14 @@ try{
  console.log('F09 explicitly approved production indexing: PASS');
  put('dist/index.html',html('Public home'));
  put('dist/index.html',html('這裡尚未填入個人的正式內容'));
- const notice=run();if(notice.status!==0||!notice.stderr.includes('NOTICE:'))throw Error('Placeholder content must be NOTICE, not blocking FAIL');
+ const notice=run();if(notice.status!==0||!notice.stderr.includes('NOTICE:'))throw Error('W6 Placeholder content must be NOTICE, not blocking FAIL');
+ console.log('W6 placeholder content NOTICE rather than FAIL: PASS');
  put('dist/index.html',html('Public home'));
  put('dist/index.html',html('<a href="/articles/'+draft+'/">'+title+'</a>'));
  expect('draft in homepage',false);
  put('dist/index.html',html());
  put('dist/rss.xml','<rss version="2.0"><item><link>https://example.com/articles/'+draft+'/</link></item></rss>');
- expect('draft in RSS',false);
+ expect('F13 draft in RSS',false);
  put('dist/rss.xml','<rss version="2.0"></rss>');
  put('dist/sitemap.xml','<urlset><url><loc>https://example.com/articles/'+draft+'/</loc></url></urlset>');
  expect('draft in sitemap',false);
@@ -52,18 +53,18 @@ try{
  const {unlinkSync}=await import('node:fs');
  unlinkSync(join(root,'dist/articles/'+draft+'/index.html'));
  put('src/content/drafts/folder-only.md',article.replace('qa-secret-draft','folder-only'));
- expect('isolated draft clean output',true);
+ expect('F05 isolated draft clean output',true);
  put('dist/index.html',html('<a href="/articles/folder-only/">Never Publish This Example Draft</a>'));
  expect('isolated draft leaked in homepage',false);
  put('dist/index.html',html());
  // A draft title under eight Chinese characters must still be considered sensitive.
  put('src/content/drafts/short-secret.md',article.replace('Never Publish This Example Draft','小秘密草稿'));
  put('dist/index.html',html('小秘密草稿'));
- expect('short Chinese draft title leaked',false);
+ expect('F04 short Chinese draft title leaked',false);
  put('dist/index.html',html());
  // Search JSON is a public endpoint and must be audited like public HTML.
  put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[{title:'小秘密草稿',url:'/articles/short-secret/'}]}));
- expect('draft in public JSON search',false);
+ expect('F03 N6 draft in public JSON search',false);
  put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
  expect('clean public JSON',true);
  // F11: the validator must reject missing Pagefind or Chinese companion indexes.
