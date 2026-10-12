@@ -15,6 +15,8 @@ try{
  put('dist/rss.xml','<rss version="2.0"></rss>');
  put('dist/sitemap.xml','<urlset></urlset>');
  put('dist/robots.txt','User-agent: *\nSitemap: https://example.com/sitemap.xml\n');
+ put('dist/pagefind/pagefind.js','/* QA Pagefind fixture */');
+ put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
  const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
  const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
  expect('clean draft',true);
@@ -47,8 +49,18 @@ try{
  expect('short Chinese draft title leaked',false);
  put('dist/index.html',html());
  // Search JSON is a public endpoint and must be audited like public HTML.
- put('dist/search/exact-zh.json',JSON.stringify({docs:[{title:'小秘密草稿',url:'/articles/short-secret/'}]}));
+ put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[{title:'小秘密草稿',url:'/articles/short-secret/'}]}));
  expect('draft in public JSON search',false);
- put('dist/search/exact-zh.json',JSON.stringify({docs:[]}));
+ put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
  expect('clean public JSON',true);
+ // F11: the validator must reject missing Pagefind or Chinese companion indexes.
+ unlinkSync(join(root,'dist/pagefind/pagefind.js'));
+ expect('F11 missing Pagefind index',false);
+ put('dist/pagefind/pagefind.js','/* QA Pagefind fixture */');
+ unlinkSync(join(root,'dist/search/exact-zh.json'));
+ expect('F11 missing Chinese index',false);
+ put('dist/search/exact-zh.json','{invalid json');
+ expect('F11 malformed Chinese index',false);
+ put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
+ expect('F11 restored search baseline',true);
 }finally{rmSync(root,{force:true,recursive:true})}
