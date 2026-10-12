@@ -271,7 +271,16 @@ function renderNav(){
   action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||i===0);
   action('←','提升至第一層',()=>outdentItem(n.id),!n.parentId);
   action('×','刪除頁面',()=>removeCustom(n.id));
-  row.append(handle,check,label,tools);
+  const names=document.createElement('div');names.className='nav-name-fields';names.append(label);
+  if(n.id.startsWith('page-')){
+    const pathInput=document.createElement('input');
+    pathInput.type='text';pathInput.value=n.path??'';
+    pathInput.placeholder='自訂網址：start-here/tools/';
+    pathInput.setAttribute('aria-label',n.label+' 網址（留空採預設路徑）');
+    pathInput.addEventListener('input',()=>{n.path=pathInput.value.trim()||undefined;showPlan()});
+    names.append(pathInput);
+  }
+  row.append(handle,check,names,tools);
   row.addEventListener('dragstart',event=>{event.dataTransfer?.setData('text/plain',n.id);row.classList.add('is-dragging')});
   row.addEventListener('dragend',()=>row.classList.remove('is-dragging'));
   row.addEventListener('dragover',event=>{event.preventDefault();row.classList.add('is-drag-over')});
