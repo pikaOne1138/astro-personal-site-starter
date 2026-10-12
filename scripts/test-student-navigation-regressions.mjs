@@ -26,7 +26,7 @@ try{
   scenario=name;
   const result=await run();
   if((result.code===0)!==shouldPass)throw Error(name+' expected '+(shouldPass?'PASS':'FAIL')+' got '+result.code+'\n'+result.logs);
-  console.log('Navigation regression '+name+': '+(shouldPass?'PASS':'caught intentionally'));
+  console.log('Navigation regression '+name+': '+(shouldPass?'PASS':'caught intentionally')+(name==='decorative-glyph'?' [W7]':name==='mobile-missing'?' [F02]':name==='broken'?' [F01]':''));
  }
  scenario='healthy';
  const duplicate=await run('/,/about/,/about/');
