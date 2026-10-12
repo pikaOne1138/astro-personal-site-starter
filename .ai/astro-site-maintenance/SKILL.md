@@ -55,3 +55,6 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 3. 執行 Build、單元與整合測試、真實 Chromium 互動，以及需要時的 1440／1280／768／390 視覺檢查；由真實已部署 Preview 再測一次，核對 Head SHA。測試未跑、出錯或取不到證據，一律標 BLOCKED／NOT TESTED。
 4. 原本已存在的功能必須回歸：頁面與主導航、文章列表、RSS／Sitemap／robots、既有可操作元件、鍵盤／觸控與替代文字。不可只看本次新功能。
 5. 向學員回報逐項 PASS／FAIL／BLOCKED／NOT TESTED，附實際驗證證據與剩餘問題；**有已知高影響缺陷或驗證器漏報時不得宣稱完成交付**，也不能自動 Merge。
+
+## 草稿隔離與發布
+學生 Starter 新網站：`src/content/drafts/` 為草稿工作區，`src/content/articles/` 為公開來源；文章發布／撤回需確認檔案移動和真實路由，清空輸出重建，再執行 `verify-v2-8-output.mjs --student-site` 的外洩 Gate。舊站若不同內容來源，先分析 schema／路由並提供等效驗證；不能直接假設符合新規格。
