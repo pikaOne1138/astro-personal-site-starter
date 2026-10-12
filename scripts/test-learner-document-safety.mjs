@@ -4,9 +4,9 @@ const base=Object.fromEntries(Object.entries(paths).map(([name,path])=>[name,rea
 const assertions=[
  ['W1','pr',["舊的 \`/pr-preview/pr-N/\`","Checks／Deployment","核對 SHA","不要寫死"]],
  ['W2','guide',["github.com","api.github.com","registry.npmjs.org","pages.dev","無法連線時的替代方案","離線整理","不等於網站已完成驗證"]],
- ['W13','pr',["已公開","GitHub Commit","刪除舊部署","不保證"]],
+ ['W13','pr',["GitHub Commit","刪除舊部署","刪除舊部署","不保證"]],
  ['W13','guide',["Cloudflare 舊 Preview","fork","敏感資料"]],
- ['W14','deploy',["缺乏 Pages 專案寫入","Cloudflare Dashboard","截圖一步一步","不代表"]],
+ ['W14','deploy',["不代表它擁有 Pages 專案寫入","Cloudflare Dashboard","截圖一步一步","不代表"]],
 ];
 function check(sources){
  const rows=assertions.map(([id,file,terms])=>({id,file,terms,missing:terms.filter(term=>!sources[file]?.includes(term)),status:terms.every(term=>sources[file]?.includes(term))?'PASS':'FAIL'}));
