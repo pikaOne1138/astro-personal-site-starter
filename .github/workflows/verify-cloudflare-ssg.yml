@@ -80,6 +80,9 @@ jobs:
       - name: Prove student custom path and reserved article-route contracts
         id: starterroutes
         run: node scripts/test-starter-route-contracts.mjs
+      - name: N5 F06 detect broken student links and footer routes
+        id: linkaudit
+        run: node scripts/test-generated-link-audit.mjs
       - name: Install Chromium for 12-layout visual QA
         run: |
           npm install --no-save --no-package-lock playwright
@@ -196,6 +199,7 @@ jobs:
           QA_EDITORIAL: ${{ steps.editorial.outcome }}
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
+          QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
         run: node scripts/verify-historic-execution.mjs
       - name: Reconcile all 110 components with source and browser evidence
