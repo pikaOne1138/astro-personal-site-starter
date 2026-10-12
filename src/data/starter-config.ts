@@ -23,7 +23,7 @@ export const starterPages = {
   ],
 } as const;
 export type StarterPageId = typeof starterPages[StarterKind][number]['id'];
-export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;}
+export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;path?:string;}
 export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;}
 export interface StarterPlan {
   version: 1;
@@ -67,6 +67,8 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
   if(selected.filter(x=>!x.parentId).length>12)errors.push('最多 12 個第一層項目；更多內容請放到第二層');
   const ids=plan.navigation.map(x=>x.id);
+  const paths=plan.navigation.map(x=>x.path??x.id+'/');
+  if(paths.some(p=>!/^([a-z0-9-]+\/)+$/.test(p)||p.startsWith('articles/')&&p!=='articles/'||p.includes('//'))||new Set(paths).size!==paths.length)errors.push('頁面網址無效或重複；請使用相對路徑，例如 start-here/tools/');
   if(ids.some(id=>!available.includes(id)&&!/^page-[a-z0-9-]{1,32}$/.test(id))||new Set(ids).size!==ids.length)errors.push('導覽頁面有重複或無效的路由');
   if(selected.some(x=>x.parentId&&(!selected.some(p=>p.id===x.parentId&&!p.parentId)||x.parentId===x.id)))errors.push('子選單必須有已啟用的第一層父項目，不支援第三層');
   if(selected.some(x=>x.parentId&&selected.filter(y=>y.parentId===x.parentId).length>10))errors.push('單組子選單最多 10 項');
