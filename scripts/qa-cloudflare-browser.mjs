@@ -21,7 +21,11 @@ try{
      await page.waitForTimeout(250);
      const state=await page.evaluate(()=>{
       const h=document.querySelector('h1'),main=document.querySelector('main');
-      return{overflow:document.documentElement.scrollWidth>innerWidth+2,hasMain:!!main,hasHeadline:!!h?.textContent?.trim(),
+      const offenders=[...document.querySelectorAll('body *')].map(el=>({el,rect:el.getBoundingClientRect()}))
+        .filter(({el,rect})=>getComputedStyle(el).display!=='none'&&rect.width>0&&(rect.right>innerWidth+3||rect.left< -3))
+        .sort((a,b)=>b.rect.right-a.rect.right).slice(0,12)
+        .map(({el,rect})=>({tag:el.tagName.toLowerCase(),selector:el.id?'#'+el.id:String(el.className||'').slice(0,95),left:Math.round(rect.left),right:Math.round(rect.right),width:Math.round(rect.width),text:(el.textContent||'').trim().slice(0,60)}));
+      return{overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,offenders,hasMain:!!main,hasHeadline:!!h?.textContent?.trim(),
        hiddenHeadline:!h||getComputedStyle(h).visibility==='hidden'||Number(getComputedStyle(h).opacity)<0.95};
      });
      const filename=(route?route.replaceAll('/','-'):'home')+'-'+width+'.jpg';
