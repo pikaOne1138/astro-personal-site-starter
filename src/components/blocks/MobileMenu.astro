@@ -1,9 +1,11 @@
 ---
 import SocialLinks from './SocialLinks.astro';
 type SocialLink = {platform:'instagram'|'facebook'|'threads'|'youtube'|'line'|'github'|'linkedin'|'x'|'tiktok'|'pinterest'|'discord'|'telegram'|'spotify'|'email'|'phone'|'website'|'rss';href:string;label?:string};
-interface Props {links:{label:string;href:string;level?:number;parentId?:string}[];label?:string;socialLinks?:SocialLink[];}
+interface Props {links:{label:string;href:string;level?:number;parentId?:string}[];label?:string;socialLinks?:SocialLink[];id?:string;}
 const {links,label='選單',socialLinks=[]}=Astro.props;
-const menuId='mobile-menu-'+(Astro.props.label??'navigation').replace(/[^a-zA-Z0-9-]/g,'').toLowerCase();
+const identity=Astro.props.id??[label,...links.map(x=>x.href)].join('|');
+const hash=[...identity].reduce((h,ch)=>(Math.imul(h,31)+ch.codePointAt(0))>>>0,2166136261);
+const menuId='mobile-menu-'+hash.toString(36);
 ---
 <div class="practical-menu" data-mobile-menu>
   <button class="practical-menu-toggle" type="button" aria-label={'開啟'+label} aria-expanded="false" aria-controls={menuId} data-menu-open><svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -25,3 +27,6 @@ document.querySelectorAll<HTMLElement>('[data-mobile-menu]').forEach(host=>{
   dialog.addEventListener('close',()=>{trigger.setAttribute('aria-expanded','false');trigger.focus()});
 });
 </script>
+<style>
+.practical-menu-subitem.is-nested{padding-inline-start:clamp(24px,5vw,42px);border-inline-start:2px solid currentColor}
+</style>
