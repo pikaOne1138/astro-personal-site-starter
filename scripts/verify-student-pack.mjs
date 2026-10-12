@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const archive='public/AI-建站資料包.zip';
+const archive=process.env.STUDENT_PACK_ARCHIVE||'public/AI-建站資料包.zip';
 const root=mkdtempSync(join(tmpdir(),'student-pack-audit-'));
 try {
   if (!existsSync(archive)) throw Error('Missing built student ZIP');
