@@ -32,6 +32,16 @@ jobs:
         run: node scripts/verify-registry-contract.mjs
       - name: Compile registered Blocks, Effects and Editorial recipes
         run: node scripts/verify-astro-components.mjs
+      - name: Enforce registered asset QA ownership and write quality dashboard
+        if: always()
+        run: node scripts/verify-quality-coverage.mjs
+      - name: Upload machine-readable quality coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-asset-coverage
+          path: qa-artifacts/quality/
+          retention-days: 30
       - name: Validate learner navigation audit script syntax
         run: node --check scripts/verify-student-navigation.mjs
       - name: Build with Cloudflare Pages automatic URL and default root path
