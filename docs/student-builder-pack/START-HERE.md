@@ -5,7 +5,7 @@
 ## 學員只需要準備
 1. 在網站規劃器 `/starter/` 選擇網站方向、Layout、內容與品牌設定，下載 Site Brief JSON。
 2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
-3. 告訴 AI：「請閱讀本資料包的 AGENTS.md 與 AGENT-HANDOFF.md，依 Site Brief 建立**我自己的** Astro 網站。先檢查你有沒有 GitHub 寫入、遠端運算、建置及 Preview 能力，一次只向我確認一個必要問題。先讓我看預覽，取得我的同意才正式發布。」
+3. 到工作坊網站 `/guide/` 按「開始建站」提示詞的複製按鈕，或打開本 ZIP 中的 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，把**原文**貼給 AI。這是唯一正式起始提示詞；不需要自己在不同 README 中拼湊或改寫。
 
 ## AI 要做的事
 - ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
