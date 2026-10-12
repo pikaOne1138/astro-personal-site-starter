@@ -128,7 +128,8 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
 // Supply the same search data contract as the optional SiteSearchDialog Block.
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 const pkg=JSON.parse(assets['package.json']);
-pkg.scripts.build='astro build && node scripts/build-exact-search.mjs';
+pkg.scripts.build='astro build && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs';
+pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};
 assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
