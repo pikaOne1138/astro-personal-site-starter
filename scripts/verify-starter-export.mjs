@@ -18,6 +18,8 @@ try{
     const filename=join(root,kind+'.json'),site=join(root,kind);
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    const releaseWorkflow=readFileSync(join(site,'.github/workflows/deploy.yml'),'utf8');
+    if(!releaseWorkflow.includes("SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}"))throw Error('Approved production indexing variable is not forwarded into GitHub Pages build');
     const learnerPkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
     if(!learnerPkg.scripts?.['test:regressions'])throw Error('Learner ZIP exporter omitted cumulative validator regressions');
     execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
