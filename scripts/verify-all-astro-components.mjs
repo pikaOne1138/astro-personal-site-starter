@@ -7,7 +7,7 @@ const scan=d=>{for(const item of readdirSync(d,{withFileTypes:true})){const path
 scan(root);files.sort();
 const registered=JSON.parse(readFileSync('src/data/blocks.registry.json','utf8'));
 const registeredPaths=new Set(registered.map(x=>x.path));
-const manifest=JSON.parse(readFileSync('docs/quality/COMPONENT-COVERAGE.json','utf8'));
+const manifest=JSON.parse(readFileSync(process.env.QA_COMPONENT_MANIFEST||'docs/quality/COMPONENT-COVERAGE.json','utf8'));
 const required=['syntax','props','behavior','accessibility','responsive','integration'];
 const groups={blocks:[],effects:[],patterns:[],editorialRecipes:[],shared:[]},errors=[],results=[];
 for(const path of files){
@@ -32,7 +32,7 @@ for(const path of files){
   else if(value.status==='PASS')errors.push(path+': source declaration must not claim PASS without run-specific evidence');
  }
 }
-for(const path of Object.keys(manifest.components||{}))if(!files.includes(path))errors.push(path+': stale QA declaration
+for(const path of Object.keys(manifest.components||{}))if(!files.includes(path))errors.push(path+': stale QA declaration');
 if(files.length!==new Set(files).size)errors.push('Duplicate components');
 const report={schemaVersion:1,headSha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',total:files.length,groupCounts:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),individualResults:results,errors,notes:'PASS here means Astro syntax and frontmatter; individual Props, behavior, accessibility, responsive and integration remain NOT TESTED'};
 mkdirSync('qa-artifacts/quality',{recursive:true});writeFileSync('qa-artifacts/quality/all-astro-components.json',JSON.stringify(report,null,2)+'\n');
