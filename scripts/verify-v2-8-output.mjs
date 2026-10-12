@@ -23,7 +23,9 @@ if(studentArg!==-1){
  if(!read('rss.xml').includes('<rss version="2.0">')||!read('sitemap.xml').includes('<urlset'))throw Error('Invalid student feed/sitemap');
  // Draft leakage gate for flat Markdown articles generated in the learner Starter.
  const articlesDir=join(root,'src','content','articles');
- if(existsSync(articlesDir)){
+ const draftsDir=join(root,'src','content','drafts');
+ for(const sourceDir of [articlesDir,draftsDir]){
+ if(existsSync(sourceDir)){
   const files=[];
   const visit=d=>{for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name);if(e.isDirectory())visit(p);else if(/\.(md|mdx)$/i.test(e.name))files.push(p)}};
   visit(articlesDir);
@@ -34,9 +36,10 @@ if(studentArg!==-1){
    const fm=source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
    if(!fm)throw Error('Cannot audit article frontmatter: '+draftFile);
    const state=fm[1].match(/^draft:\s*(true|false)(?:\s+#.*)?\s*$/mi);
-   if(!state||state[1]!=='true')continue;
+   if(sourceDir===articlesDir && (!state||state[1]!=='true'))continue;
+   if(sourceDir===draftsDir && state?.[1]==='false')throw Error('Unpublished draft folder contains published marker: '+draftFile);
    const slug=draftFile.split(/[/\\]/).at(-1).replace(/\.(md|mdx)$/i,'');
-   const relative=draftFile.slice(articlesDir.length+1).replace(/\\/g,'/');
+   const relative=draftFile.slice(sourceDir.length+1).replace(/\\/g,'/');
    if(relative.includes('/'))throw Error('Draft audit requires explicit route mapping for nested article: '+relative);
    const customSlug=fm[1].match(/^slug:\s*['"]?([^\r\n'"#]+)['"]?\s*$/mi);
    if(customSlug&&customSlug[1].trim()!==slug)throw Error('Draft audit requires route mapping for custom slug: '+draftFile);
@@ -49,6 +52,7 @@ if(studentArg!==-1){
    const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=8&&x.body.includes(title)));
    if(suspects.length)throw Error('Draft leaked into public discovery/output: '+relative+'; files: '+suspects.map(x=>x.path).join(', '));
   }
+ }
  }
  console.log('Independent student output checks passed: routes, RSS, sitemap, robots lines. Visual/hosting verification remains required.');
  process.exit(0);
