@@ -20,6 +20,10 @@ try{
  const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
  const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
  expect('clean draft',true);
+ put('dist/index.html',html('Public home').replace('<meta name="description" content="fixture">',''));
+ expect('F12 public page missing meta description',false);
+ put('dist/index.html',html('Public home'));
+ expect('F12 restored metadata',true);
  put('dist/index.html',html('Public home').replace('<meta name="robots" content="noindex, nofollow, noarchive">',''));
  expect('F09 preview missing noindex',false);
  put('dist/index.html',html('Public home'));
