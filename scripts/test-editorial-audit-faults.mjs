@@ -23,6 +23,6 @@ try{
   let out='';child.stdout.on('data',x=>out+=x);child.stderr.on('data',x=>out+=x);
   const code=await new Promise((done,reject)=>{child.once('error',reject);child.once('close',done)});
   if((code===0)!==good)throw Error(name+': expected '+(good?'PASS':'FAIL')+' got '+code+'\n'+out.slice(-2600));
-  console.log('Editorial audit '+name+': '+(good?'valid page passed':'injected fault rejected'));
+  console.log('Editorial audit '+name+': '+(good?'valid page passed':'injected fault rejected')+(name==='good'?' [N7]':name==='low'?' [N8 F08]':' [N9 F14]'));
  }
 }finally{server.close();rmSync(root,{recursive:true,force:true})}
