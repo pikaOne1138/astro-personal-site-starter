@@ -15,7 +15,16 @@ for(const [path,declaration] of Object.entries(inventory.components)){
  const name=path.split('/').pop().replace(/\.astro$/,'');
  if(declaration.group==='blocks'&&usable(blocks)){
   const registered=blocks.blockGalleryCoverage?.find(x=>x.name===name);
-  if(registered?.galleryLabelSeen){row.demo='GALLERY LABEL OBSERVED';row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Block name appears in built gallery; not necessarily individualized browser behavior'})}
+  if(registered?.galleryLabelSeen){
+   const contract=blocks.individualBlockCoverage?.find(x=>x.name===name);
+   if(contract?.renderContractPass===true&&contract.byWidth?.length===4&&contract.noJSVisible===true){
+    row.demo='PASS';row.responsive='PASS';
+    row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Individual Block visible at 1440/1280/768/390 and no-JS 390; Props/keyboard/negative tests not covered'});
+   }else{
+    row.demo='GALLERY LABEL OBSERVED';
+    row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Block name found but independent rendering not established'});
+   }
+  }
  }
  if(declaration.group==='effects'&&usable(blocks)){
   const pass=(blocks.rows||[]).filter(x=>x.kind==='effects'&&[1440,1280,768,390].includes(x.width));
