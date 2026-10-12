@@ -35,6 +35,11 @@ jobs:
       - name: Compile registered Blocks, Effects and Editorial recipes
         id: compile
         run: node scripts/verify-astro-components.mjs
+      - name: Fault-inject malformed Skill source and broken references
+        run: node scripts/test-skill-contract-regressions.mjs
+      - name: Verify 15 Skill frontmatter and references
+        id: skillsource
+        run: node scripts/verify-skill-contracts.mjs
       - name: Fault-inject missing asset QA declarations
         run: node scripts/test-quality-coverage-regressions.mjs
       - name: Enforce registered asset QA ownership and write quality dashboard
@@ -142,6 +147,7 @@ jobs:
           QA_COMPILE: ${{ steps.compile.outcome }}
           QA_COVERAGE: ${{ steps.coverage.outcome }}
           QA_HISTORY: ${{ steps.history.outcome }}
+          QA_SKILL_SOURCE: ${{ steps.skillsource.outcome }}
           QA_BUILD: ${{ steps.buildsite.outcome }}
           QA_STARTER: ${{ steps.studentkit.outcome }}
           QA_DRAFTS: ${{ steps.drafts.outcome }}
