@@ -36,7 +36,7 @@ try{
   await custom.fill('start-here/tools/');
   const json=JSON.parse(await page.locator('#plan-preview').innerText());
   if(!json.navigation.some(x=>x.path==='start-here/tools/'))throw Error('Custom path not exported '+w);
-  console.log('Planner interactive QA PASS at '+w+'px');
+  console.log('W4 N1 N14 N16 planner interaction PASS at '+w+'px: live accessible labels, focus after reordering, custom path, keyboard-readable preview');
   await page.close();
  }
 }finally{if(browser)await browser.close();server.close()}
