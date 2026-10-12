@@ -103,6 +103,7 @@ jobs:
         id: editorial
         run: node scripts/test-editorial-audit-faults.mjs
       - name: Verify editorial inline-wrap overlap regression
+        id: editorialoverlap
         run: node scripts/test-editorial-overlap-regressions.mjs
       - name: W8 browser-verify real Chinese Pagefind search across themes
         id: livesearch
@@ -207,6 +208,7 @@ jobs:
           QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
           QA_CANONICAL_PROMPT: ${{ steps.canonicalprompt.outcome }}
           QA_ONBOARDING_STRUCTURE: ${{ steps.onboardingstructure.outcome }}
+          QA_EDITORIAL_OVERLAP: ${{ steps.editorialoverlap.outcome }}
           QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
         run: node scripts/verify-historic-execution.mjs
