@@ -18,6 +18,9 @@ try{
  const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
  const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
  expect('clean draft',true);
+ put('dist/index.html',html('這裡尚未填入個人的正式內容'));
+ const notice=run();if(notice.status!==0||!notice.stderr.includes('NOTICE:'))throw Error('Placeholder content must be NOTICE, not blocking FAIL');
+ put('dist/index.html',html('Public home'));
  put('dist/index.html',html('<a href="/articles/'+draft+'/">'+title+'</a>'));
  expect('draft in homepage',false);
  put('dist/index.html',html());
