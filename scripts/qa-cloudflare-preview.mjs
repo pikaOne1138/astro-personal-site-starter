@@ -1,4 +1,7 @@
-import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,existsSync,mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 
 const dir='qa-artifacts/quality';mkdirSync(dir,{recursive:true});
@@ -43,13 +46,29 @@ try {
   const ok=res.status===200&&bytes.length>100000&&bytes.subarray(0,2).toString()==='PK';
   report.download={status:res.status,validZip:ok,bytes:bytes.length,sha256:digest(bytes)};
   if(!ok)report.errors.push('Public student package unavailable or not a valid ZIP');
+  if(ok && process.env.QA_REMOTE_BLACKBOX==='1'){
+   const work=mkdtempSync(join(tmpdir(),'remote-student-zip-'));
+   try {
+    const archive=join(work,'downloaded-student.zip');writeFileSync(archive,bytes);
+    const child=spawnSync(process.execPath,['scripts/verify-student-pack.mjs'],{
+     env:{...process.env,STUDENT_PACK_ARCHIVE:archive,FULL_STUDENT_PACK_BUILD:'1'},
+     encoding:'utf8',timeout:240000,maxBuffer:20*1024*1024
+    });
+    report.download.blackBox={status:child.status===0?'PASS':'FAIL',exitCode:child.status,
+     verification:'Downloaded Cloudflare ZIP extracted independently; all 12 layout plans exported; knowledge/helper sites installed, built and verified with their bundled scripts',
+     logTail:(child.stdout||'').slice(-2500),errorTail:(child.stderr||'').slice(-1200)};
+    console.log('Remote student ZIP black-box: '+report.download.blackBox.status);
+    if(child.status!==0)report.errors.push('Remote ZIP independent student generation/build/verify failed: '+(child.error?.message||child.stderr||'exit '+child.status).slice(-450));
+   }finally{rmSync(work,{recursive:true,force:true})}
+  }else report.download.blackBox={status:'NOT TESTED',reason:'Release black-box disabled, or ZIP was not downloadable'};
+
   if(report.checkoutSha===sha&&existsSync('dist/AI-建站資料包.zip')){
    report.download.localChecksumMatches=report.download.sha256===digest(readFileSync('dist/AI-建站資料包.zip'));
    if(!report.download.localChecksumMatches)report.errors.push('External package does not match build at the same SHA');
   }else report.download.localChecksumMatches='NOT TESTED: PR checkout may be synthetic merge SHA';
  }catch(err){report.download={ok:false,error:String(err)};report.errors.push('ZIP: '+String(err))}
  report.status=report.errors.length?'FAIL':'PASS';
- report.notes.push('HTTP/assets and ZIP availability only; student-owned E2E, screenshots, visual, production and release authorization remain NOT TESTED');
+ report.notes.push('Remote HTTP, actual ZIP availability and optional extracted ZIP build; student-owned GitHub PR/browser E2E, visual review, production and release authorization remain NOT TESTED');
  save();
  console.log('Cloudflare immutable Preview '+report.status+': '+report.previewUrl+'; routes '+report.routes.filter(x=>x.ok).length+'/'+report.routes.length+'; ZIP '+(report.download?.bytes||0)+' bytes');
  for(const e of report.errors)console.error('FAIL '+e);
