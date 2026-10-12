@@ -27,6 +27,16 @@ try{
      reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches
     };
    },{prefix,count});
+
+   if(group==='heroes'){
+    const rail=page.locator('#H01 .rail .rail-item');
+    const validLinks=(await rail.count())===2
+      &&(await page.locator('#H01 a.rail-item[href="#H02"]').count())===1
+      &&(await page.locator('#H01 span.rail-item').count())===1
+      &&(await page.locator('#H01 a[href="#"]').count())===0;
+    const caption=await page.locator('#H01 figcaption').innerText();
+    if(!validLinks||!caption.includes('版型示範圖'))errors.push('N18 H01 '+width+': fictitious link exposed or adjustable caption missing');
+   }
    const entry={group,width,http:result?.status(),...checked,jsErrors};
    entries.push(entry);
    if(entry.http!==200||entry.overflow||jsErrors.length||!checked.reducedMotion)errors.push(group+'/'+width+': HTTP, overflow, JS or reduced-motion error');
