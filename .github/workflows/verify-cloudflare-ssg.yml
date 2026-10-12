@@ -93,6 +93,9 @@ jobs:
           name: preparation-guide-visual-qa
           path: qa-artifacts/prepare/
           retention-days: 14
+      - name: Audit Blocks and Effects gallery at four widths
+        id: blockeffects
+        run: node scripts/qa-blocks-effects.mjs
       - name: Capture 12 layouts at four widths
         id: layouts
         run: node scripts/qa-layout-screenshots.mjs
@@ -132,6 +135,7 @@ jobs:
           QA_PLANNER: ${{ steps.planner.outcome }}
           QA_EDITORIAL: ${{ steps.editorial.outcome }}
           QA_LAYOUTS: ${{ steps.layouts.outcome }}
+          QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
           QA_GUIDE: ${{ steps.guide.outcome }}
           QA_DEPLOYMENT: not-run
         run: node scripts/finalize-quality-dashboard.mjs
