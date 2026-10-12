@@ -34,6 +34,17 @@ try{
   if(!src.includes('.path')&&!src.includes('path??'))throw Error('W10 '+name+' did not honor custom path field');
  }
  console.log('W10 N2 N3 custom path propagated to hero/header/footer/nav/dynamic pages');
+ const pkg=JSON.parse(readFileSync(join(dir,'package.json'),'utf8'));
+ const page404=readFileSync(join(dir,'src/pages/404.astro'),'utf8');
+ if(!pkg.scripts?.build?.includes('[data-pagefind-body]')||!page404.includes('searchable={false}'))throw Error('N12 Pagefind build includes unsearchable 404 content');
+ console.log('N12 Pagefind selector excludes 404/nonsearchable pages: PASS');
+ const tokens=readFileSync(join(dir,'public/site.css'),'utf8');
+ if(!['--ed-ink:var(--heading)','--ed-ink-2:var(--muted)','--ed-accent:var(--accent)','--ed-line:var(--line)'].every(x=>tokens.includes(x)))throw Error('N13 Block/Editorial shared token bridge missing');
+ console.log('N13 learner token aliases are mapped to brand theme: PASS');
+ const workflow=readFileSync(join(dir,'.github/workflows/pr-check.yml'),'utf8');
+ if(!workflow.includes('npm run test:regressions')||!workflow.includes('npm run build')||!workflow.includes('npm run verify')||!workflow.includes('  contents: read')||workflow.includes('  pages: write'))throw Error('N19 student PR workflow missing core tests or has write permissions');
+ console.log('N19 read-only learner PR CI checks failure injection, build and site output: PASS');
+
  const reserved=structuredClone(plan);reserved.navigation[0].path='all-stories/';
  run('N4 article archive reserved path',reserved,false);
  const unsafe=structuredClone(plan);unsafe.navigation[2].path='../secrets/';
