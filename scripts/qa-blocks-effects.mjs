@@ -67,6 +67,16 @@ try {
 
    } else {
     recorded.renderedLabels=await page.locator('.ab-demo-label strong').allTextContents();
+    recorded.N11=await page.evaluate(()=>{
+      const footer=[...document.querySelectorAll('.ab-demo')].find(x=>x.querySelector('.ab-demo-label strong')?.textContent?.trim()==='SiteFooter')?.querySelector('.site-footer');
+      if(!footer)return {ok:false,reason:'No SiteFooter demo'};
+      const links=[...footer.querySelectorAll('.site-footer__group a,.site-footer__legal a')].map(a=>({text:a.textContent?.trim(),height:a.getBoundingClientRect().height}));
+      const copyright=footer.querySelector('.site-footer__bottom small');
+      const font=copyright?Number.parseFloat(getComputedStyle(copyright).fontSize):0;
+      return {ok:links.length>0&&links.every(a=>a.height>=43.5)&&font>=12,links,font};
+    });
+    if(!recorded.N11.ok)failures.push('N11/'+width+': footer small text or link touch-target contract failed '+JSON.stringify(recorded.N11));
+
     recorded.galleryComponents=await page.evaluate(()=>{
       return [...document.querySelectorAll('.ab-demo')].map(demo=>{
         const title=demo.querySelector('.ab-demo-label strong')?.textContent?.trim()||'';
