@@ -5,6 +5,11 @@ const root='src/components';
 const files=[];
 const scan=d=>{for(const item of readdirSync(d,{withFileTypes:true})){const path=join(d,item.name);if(item.isDirectory())scan(path);else if(item.isFile()&&path.endsWith('.astro'))files.push(path.replaceAll('\\','/'));}};
 scan(root);files.sort();
+const secondary=[];
+const scanSecondary=d=>{for(const item of readdirSync(d,{withFileTypes:true})){const path=join(d,item.name);if(item.isDirectory())scanSecondary(path);else if(item.isFile()&&path.endsWith('.astro'))secondary.push(path.replaceAll('\\','/'));}};
+for(const dir of ['src/pages','src/layouts','.ai'])scanSecondary(dir);
+secondary.sort();
+
 const registered=JSON.parse(readFileSync('src/data/blocks.registry.json','utf8'));
 const registeredPaths=new Set(registered.map(x=>x.path));
 const manifest=JSON.parse(readFileSync(process.env.QA_COMPONENT_MANIFEST||'docs/quality/COMPONENT-COVERAGE.json','utf8'));
@@ -34,8 +39,19 @@ for(const path of files){
 }
 for(const path of Object.keys(manifest.components||{}))if(!files.includes(path))errors.push(path+': stale QA declaration');
 if(files.length!==new Set(files).size)errors.push('Duplicate components');
-const report={schemaVersion:1,headSha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',total:files.length,groupCounts:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),individualResults:results,errors,notes:'PASS here means Astro syntax and frontmatter; individual Props, behavior, accessibility, responsive and integration remain NOT TESTED'};
+const secondaryResults=[];
+for(const path of secondary){
+ try{
+  await transform(readFileSync(path,'utf8'),{filename:resolve(path)});
+  secondaryResults.push({path,syntax:'PASS',category:path.startsWith('.ai/')?'AI reference source':'Astro page/layout'});
+ }catch(error){
+  errors.push(path+': supplemental Astro syntax error '+String(error?.message||error).slice(0,260));
+  secondaryResults.push({path,syntax:'FAIL'});
+ }
+}
+
+const report={schemaVersion:1,headSha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',total:files.length,groupCounts:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),individualResults:results,otherAstroSources:secondaryResults,otherAstroSourceCount:secondaryResults.length,totalAstroSources:results.length+secondaryResults.length,errors,notes:'PASS here means Astro syntax and frontmatter; individual Props, behavior, accessibility, responsive and integration remain NOT TESTED'};
 mkdirSync('qa-artifacts/quality',{recursive:true});writeFileSync('qa-artifacts/quality/all-astro-components.json',JSON.stringify(report,null,2)+'\n');
-console.log('All Astro components: '+report.total+'; groups '+JSON.stringify(report.groupCounts)+'; syntax errors '+errors.length);
+console.log('All Astro components: '+report.total+'; supplemental Astro pages/layouts/reference examples '+report.otherAstroSourceCount+'; total source files '+report.totalAstroSources+'; groups '+JSON.stringify(report.groupCounts)+'; syntax errors '+errors.length);
 for(const e of errors)console.error('FAIL '+e);
 if(errors.length)process.exitCode=1;
