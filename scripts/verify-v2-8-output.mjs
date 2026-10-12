@@ -7,7 +7,7 @@ if(studentArg!==-1){
  if(!root)throw Error('Usage: --student-site /absolute/path/to/generated-site');
  const config=JSON.parse(readFileSync(join(root,'site.config.json'),'utf8'));
  const output=join(root,'dist');
- for(const path of ['index.html','404.html','rss.xml','sitemap.xml','robots.txt',...config.navigation.map(x=>x.id+'/index.html')])
+ for(const path of ['index.html','404.html','rss.xml','sitemap.xml','robots.txt',...config.navigation.map(x=>(x.path??x.id+'/')+'index.html')])
   if(!existsSync(join(output,path)))throw Error('Student build missing: '+path);
  const read=path=>readFileSync(join(output,path),'utf8');
  const htmlPaths=[];
