@@ -52,6 +52,7 @@ try {
  const labels=rows.find(r=>r.kind==='blocks')?.renderedLabels||[];
  const importable=new Set(labels.map(s=>s.trim().toLowerCase()));
  const coverage=blocks.map(block=>({id:block.id,name:block.name,galleryLabelSeen:importable.has(block.name.toLowerCase()),browserBehavior:'NOT TESTED'}));
+ if(coverage.some(c=>!c.galleryLabelSeen))failures.push('Blocks absent from gallery: '+coverage.filter(c=>!c.galleryLabelSeen).map(c=>c.name).join(', '));
  const report={sha:process.env.GITHUB_SHA||null,checks:rows.length,failed:failures.length,failures,rows,blockGalleryCoverage:coverage,counts:{registeredBlocks:blocks.length,visibleGalleryLabels:coverage.filter(c=>c.galleryLabelSeen).length,effectsRegistered:effects.length},scope:'Browser interaction and overflow of component gallery; individual Block semantics and Effect integration remain NOT TESTED'};
  writeFileSync(dir+'/block-effect-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Blocks/Effects gallery QA: '+rows.length+' viewports, '+failures.length+' failures; '+report.counts.visibleGalleryLabels+'/'+blocks.length+' registry names visible in demo labels');
