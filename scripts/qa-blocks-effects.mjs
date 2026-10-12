@@ -41,6 +41,24 @@ try {
     recorded.reducedMotion=await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
    } else {
     recorded.renderedLabels=await page.locator('.ab-demo-label strong').allTextContents();
+    const searchTrigger=page.locator('[data-search-open]').first();
+    await searchTrigger.click();
+    const searchDialog=page.locator('[data-site-search]').first();
+    if(!await searchDialog.evaluate(el=>el.open))failures.push('N17/'+width+': search dialog did not open');
+    await searchDialog.locator('[data-site-query]').fill('搜尋測試');
+    await searchDialog.locator('[data-site-query]').press('Escape');
+    if(await searchDialog.evaluate(el=>el.open))failures.push('N17/'+width+': first Escape did not close populated search');
+    const menu=page.locator('.practical-gallery-mobile [data-mobile-menu]').first();
+    const toggle=menu.locator('[data-menu-open]');
+    const controlled=await toggle.getAttribute('aria-controls');
+    recorded.mobileMenuId=controlled;
+    if(!controlled || !controlled.startsWith('mobile-menu-'))failures.push('W9/'+width+': missing deterministic menu ID');
+    await toggle.click();
+    if(await toggle.getAttribute('aria-expanded')!=='true')failures.push('W9/'+width+': menu did not expand');
+    await page.keyboard.press('Escape');
+    if(await toggle.getAttribute('aria-expanded')!=='false')failures.push('F10b/'+width+': Escape did not close mobile menu');
+    if(!await toggle.evaluate(el=>el===document.activeElement))failures.push('W9/'+width+': focus did not return to menu trigger');
+
     const featureDemo=page.locator('.ab-demo').filter({has:page.locator('.ab-demo-label strong', {hasText:'FeatureGrid'})}).first();
     const linked=featureDemo.locator('a.ab-feature-link');
     const unlinked=featureDemo.locator('article.ab-feature');
