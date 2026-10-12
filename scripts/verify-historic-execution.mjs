@@ -1,6 +1,19 @@
 import {existsSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 const ledger=JSON.parse(readFileSync('docs/quality/HISTORIC-REGRESSIONS.json','utf8'));
 const named={
+ W4:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
+ N1:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
+ N14:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
+ N16:['scripts/qa-starter-planner.mjs','QA_PLANNER'],
+ W7:['scripts/test-student-navigation-regressions.mjs','QA_NAV'],
+ F01:['scripts/test-student-navigation-regressions.mjs','QA_NAV'],
+ F02:['scripts/test-student-navigation-regressions.mjs','QA_NAV'],
+ N7:['scripts/test-editorial-audit-faults.mjs','QA_EDITORIAL'],
+ N8:['scripts/test-editorial-audit-faults.mjs','QA_EDITORIAL'],
+ N9:['scripts/test-editorial-audit-faults.mjs','QA_EDITORIAL'],
+ F08:['scripts/test-editorial-audit-faults.mjs','QA_EDITORIAL'],
+ F14:['scripts/test-editorial-audit-faults.mjs','QA_EDITORIAL'],
+ F07:['scripts/test-home-mobile-overflow.mjs','QA_HOME_OVERFLOW'],
  W3:['scripts/qa-interview-download.mjs','QA_INTERVIEW_ZIP'],
  W8:['scripts/qa-live-chinese-search.mjs','QA_LIVE_SEARCH'],
  W9:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
