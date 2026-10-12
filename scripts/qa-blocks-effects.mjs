@@ -86,6 +86,19 @@ try {
       });
     });
     for(const row of recorded.galleryComponents)if(!row.rendered||row.contentNodes<1)failures.push('Block gallery rendered '+row.title+'/'+width+': missing visible content');
+    recorded.individualBlockVisibility=await page.evaluate(names=>{
+      const demos=[...document.querySelectorAll('.ab-demo')];
+      return names.map(name=>{
+        const matches=demos.filter(node=>node.querySelector('.ab-demo-label strong')?.textContent?.trim()===name);
+        const instances=matches.map(node=>{
+          const content=[...node.children].filter(x=>!x.classList.contains('ab-demo-label')&&!['STYLE','SCRIPT'].includes(x.tagName));
+          const displayed=content.filter(el=>{const r=el.getBoundingClientRect(),css=getComputedStyle(el);return r.height>1&&r.width>1&&css.display!=='none'&&css.visibility!=='hidden'&&Number(css.opacity)>0});
+          return {contentNodes:content.length,visibleNodes:displayed.length,hasReadableText:!!node.textContent?.trim()};
+        });
+        return {name,examples:matches.length,instances,visible:instances.length>0&&instances.some(x=>x.visibleNodes>0&&x.hasReadableText)};
+      });
+    },blocks.map(x=>x.name));
+    for(const item of recorded.individualBlockVisibility)if(!item.visible)failures.push('Block '+item.name+'/'+width+': no visible component example');
 
     const searchTrigger=page.locator('[data-search-open]').first();
     await searchTrigger.click();
@@ -165,6 +178,19 @@ try {
       revealCount:nodes.length,hiddenReveals:nodes.filter(el=>getComputedStyle(el).visibility==='hidden'||Number(getComputedStyle(el).opacity)<0.95).length,
       overflow:document.documentElement.scrollWidth>window.innerWidth+2};
    });
+   if(kind==='blocks'){
+    result.individualBlockVisibility=await page.evaluate(names=>{
+      const demos=[...document.querySelectorAll('.ab-demo')];
+      return names.map(name=>{
+       const matches=demos.filter(x=>x.querySelector('.ab-demo-label strong')?.textContent?.trim()===name);
+       return {name,examples:matches.length,visible:matches.some(node=>{
+        const r=node.getBoundingClientRect(),style=getComputedStyle(node);
+        return r.height>1&&r.width>1&&style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>0&&[...node.children].some(el=>!el.classList.contains('ab-demo-label')&&el.getBoundingClientRect().height>0);
+       })};
+      });
+    },blocks.map(x=>x.name));
+    for(const item of result.individualBlockVisibility)if(!item.visible)failures.push('Block no-js '+item.name+': no independently readable demo');
+   }
    rows.push({kind:kind+'-nojs',width:390,http:response?.status(),...result});
    if(response?.status()!==200||!result.readable||result.hiddenReveals||result.overflow)failures.push(kind+'/no-js: content inaccessible, overflow or Reveal stuck hidden');
    await page.close();
@@ -174,7 +200,16 @@ try {
  const importable=new Set(labels.map(s=>s.trim().toLowerCase()));
  const coverage=blocks.map(block=>({id:block.id,name:block.name,galleryLabelSeen:importable.has(block.name.toLowerCase()),browserBehavior:'NOT TESTED'}));
  if(coverage.some(c=>!c.galleryLabelSeen))failures.push('Blocks absent from gallery: '+coverage.filter(c=>!c.galleryLabelSeen).map(c=>c.name).join(', '));
- const report={sha:process.env.GITHUB_SHA||null,checks:rows.length,failed:failures.length,failures,rows,blockGalleryCoverage:coverage,counts:{registeredBlocks:blocks.length,visibleGalleryLabels:coverage.filter(c=>c.galleryLabelSeen).length,effectsRegistered:effects.length},scope:'Browser interaction and overflow of component gallery; individual Block semantics and Effect integration remain NOT TESTED'};
+ const desktopResults=rows.filter(r=>r.kind==='blocks');
+ const noJSResults=rows.find(r=>r.kind==='blocks-nojs')?.individualBlockVisibility||[];
+ const individualBlockCoverage=blocks.map(block=>{
+  const byWidth=desktopResults.map(r=>({width:r.width,visible:r.individualBlockVisibility?.find(x=>x.name===block.name)?.visible===true}));
+  const noJSVisible=noJSResults.find(x=>x.name===block.name)?.visible===true;
+  return {name:block.name,path:block.path,byWidth,noJSVisible,renderContractPass:byWidth.length===4&&byWidth.every(x=>x.visible)&&noJSVisible,
+    props:'NOT TESTED',keyboard:'NOT TESTED',negativeProps:'NOT TESTED'};
+ });
+ for(const item of individualBlockCoverage)if(!item.renderContractPass)failures.push('Block '+item.name+': per-component four-width/no-JS render contract missing');
+ const report={sha:process.env.GITHUB_SHA||null,checks:rows.length,failed:failures.length,failures,rows,blockGalleryCoverage:coverage,individualBlockCoverage,counts:{registeredBlocks:blocks.length,visibleGalleryLabels:coverage.filter(c=>c.galleryLabelSeen).length,effectsRegistered:effects.length},scope:'All Blocks independently require visible demo at four widths and without JS; Props variants, negative input, keyboard and cross-component integration remain NOT TESTED'};
  writeFileSync(dir+'/block-effect-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Blocks/Effects gallery QA: '+rows.length+' viewports, '+failures.length+' failures; '+report.counts.visibleGalleryLabels+'/'+blocks.length+' registry names visible in demo labels');
  if(failures.length){failures.forEach(f=>console.error('FAIL '+f));process.exitCode=1;}
