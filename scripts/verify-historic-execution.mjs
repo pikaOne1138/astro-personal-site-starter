@@ -18,6 +18,8 @@ const named={
  N2:['scripts/test-starter-route-contracts.mjs','QA_STARTER_ROUTES'],
  N3:['scripts/test-starter-route-contracts.mjs','QA_STARTER_ROUTES'],
  N4:['scripts/test-starter-route-contracts.mjs','QA_STARTER_ROUTES'],
+ N5:['scripts/test-generated-link-audit.mjs','QA_LINK_AUDIT'],
+ F06:['scripts/test-generated-link-audit.mjs','QA_LINK_AUDIT'],
  W3:['scripts/qa-interview-download.mjs','QA_INTERVIEW_ZIP'],
  W8:['scripts/qa-live-chinese-search.mjs','QA_LIVE_SEARCH'],
  W9:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
