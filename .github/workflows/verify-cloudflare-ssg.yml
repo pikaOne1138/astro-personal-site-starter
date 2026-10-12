@@ -72,6 +72,9 @@ jobs:
         env:
           CF_PAGES_URL: https://example.com
         run: npm run build
+      - name: N20 enforce single-source learner prompt in guide and built ZIP
+        id: canonicalprompt
+        run: node scripts/test-canonical-student-prompt.mjs
       - name: Extract student kit and build knowledge/helper independently
         id: studentkit
         env:
@@ -199,6 +202,7 @@ jobs:
           QA_EDITORIAL: ${{ steps.editorial.outcome }}
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
+          QA_CANONICAL_PROMPT: ${{ steps.canonicalprompt.outcome }}
           QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
         run: node scripts/verify-historic-execution.mjs
