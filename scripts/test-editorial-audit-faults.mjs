@@ -1,0 +1,28 @@
+import {createServer} from 'node:http';
+import {spawn} from 'node:child_process';
+import {mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join,resolve} from 'node:path';
+const root=mkdtempSync(join(tmpdir(),'editorial-audit-faults-'));
+const html=(body)=>`<!doctype html><html><head><meta charset="utf-8"><title>QA</title><style>
+body{margin:0;background:white;color:#111;font:16px/1.6 sans-serif}
+main{padding:32px;max-width:760px}h1{font:700 30px/1.2 sans-serif}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px}
+</style></head><body><a class="skip" href="#main">Skip to content</a><main id="main">${body}</main></body></html>`;
+const pages={
+ '/good':html('<h1>Accessible article</h1><p>Visible content in a simple page.</p>'),
+ '/low':html('<h1>Accessible article</h1><p style="color:#dddddd">Unreadably pale paragraph.</p>'),
+ '/stuck':html('<h1>Accessible article</h1><div data-motion-reveal style="opacity:0">Content permanently hidden by a broken reveal.</div>')
+};
+const server=createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(pages[req.url]||pages['/good'])});
+try{
+ await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
+ const url='http://127.0.0.1:'+server.address().port;
+ for(const [name,good] of [['good',true],['low',false],['stuck',false]]){
+  const child=spawn(process.execPath,['.ai/astro-editorial-layout-design/scripts/audit.mjs','--base',url,'--paths','/'+name,'--widths','390','--out',join(root,name)],{cwd:resolve('.'),stdio:['ignore','pipe','pipe']});
+  let out='';child.stdout.on('data',x=>out+=x);child.stderr.on('data',x=>out+=x);
+  const code=await new Promise((done,reject)=>{child.once('error',reject);child.once('close',done)});
+  if((code===0)!==good)throw Error(name+': expected '+(good?'PASS':'FAIL')+' got '+code+'\n'+out.slice(-2600));
+  console.log('Editorial audit '+name+': '+(good?'valid page passed':'injected fault rejected'));
+ }
+}finally{server.close();rmSync(root,{recursive:true,force:true})}
