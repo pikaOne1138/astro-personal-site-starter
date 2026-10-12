@@ -68,6 +68,27 @@ try {
       recorded.mobileMenuInteracted=false;
     }
 
+    // Individual rendered contracts: assess actual built markup, not Astro source syntax.
+    const componentChecks=await page.evaluate(()=>{
+      const demo=name=>[...document.querySelectorAll('.ab-demo')].find(el=>el.querySelector('.ab-demo-label strong')?.textContent?.trim()===name);
+      const form=demo('ArticleSearch')?.querySelector('form[role="search"]');
+      const tags=[...(demo('TagCloud')?.querySelectorAll('nav[aria-label] a')||[])];
+      const months=[...(demo('ArchiveMonths')?.querySelectorAll('nav[aria-label] a')||[])];
+      const dates=[...(demo('PostCalendar')?.querySelectorAll('a.v2-calendar-day')||[])];
+      const practitioner=demo('PractitionerCard');
+      const fit=demo('ServiceFit');
+      return {
+        articleSearch:!!form&&form.getAttribute('action')?.endsWith('/explore/')&&!!form.querySelector('input[name="q"][type="search"]'),
+        tagCloud:tags.length>=1&&tags.every(a=>a.href.includes('?tag=')),
+        archiveMonths:months.length>=1&&months.every(a=>a.href.includes('?month=')),
+        postCalendar:dates.length>=1&&dates.every(a=>a.href.includes('?date=')&&a.hasAttribute('aria-label')),
+        practitionerDemoNoFalseClaims:!!practitioner?.querySelector('.practical-practitioner')&&!practitioner.querySelector('.practical-practitioner__actions a')&&!practitioner.textContent?.includes('證照：'),
+        serviceFit:!!fit?.querySelector('[aria-label="這項服務適合誰？"]')&&!!fit?.textContent?.includes('可能需要其他資源')
+      };
+    });
+    recorded.componentChecks=componentChecks;
+    for(const [name,passed] of Object.entries(componentChecks))if(!passed)failures.push('Block contract '+name+'/'+width+': invalid rendered semantics');
+
     const featureDemo=page.locator('.ab-demo').filter({has:page.locator('.ab-demo-label strong', {hasText:'FeatureGrid'})}).first();
     const linked=featureDemo.locator('a.ab-feature-link');
     const unlinked=featureDemo.locator('article.ab-feature');
