@@ -67,6 +67,16 @@ try {
 
    } else {
     recorded.renderedLabels=await page.locator('.ab-demo-label strong').allTextContents();
+    recorded.galleryComponents=await page.evaluate(()=>{
+      return [...document.querySelectorAll('.ab-demo')].map(demo=>{
+        const title=demo.querySelector('.ab-demo-label strong')?.textContent?.trim()||'';
+        const rect=demo.getBoundingClientRect(),style=getComputedStyle(demo);
+        const content=[...demo.children].filter(x=>!x.classList.contains('ab-demo-label')&&!['STYLE','SCRIPT'].includes(x.tagName));
+        return {title,present:!!title,rendered:rect.width>0&&rect.height>0&&style.display!=='none'&&style.visibility!=='hidden',contentNodes:content.length};
+      });
+    });
+    for(const row of recorded.galleryComponents)if(!row.rendered||row.contentNodes<1)failures.push('Block gallery rendered '+row.title+'/'+width+': missing visible content');
+
     const searchTrigger=page.locator('[data-search-open]').first();
     await searchTrigger.click();
     const searchDialog=page.locator('[data-site-search]').first();
