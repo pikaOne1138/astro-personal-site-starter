@@ -30,3 +30,9 @@
 - 文章新增/修改/草稿/發布/撤回：`.ai/astro-content-publishing/SKILL.md`。
 - 通用安全、備份、故障修復：`.ai/astro-site-maintenance/SKILL.md`。
 所有任務必須建立獨立 Branch、PR、檢查可開啟且對應 Commit 的 Preview、手機與鍵盤，等學員明確同意才 Merge／Production。ZIP 包內文件只是參考，**不得在更新 Skill 時覆蓋學員已完成的網站或直接 Fork 老師研究 Repo**。
+
+## AI 自主性與文件時效
+這些 Skills 定義**目的、架構、禁止事項、可驗證完成標準**，不是必須逐字照抄的唯一做法。先閱讀學員 Repo 的實際程式、版本與 Registry；遇到版本變動、未涵蓋的 Astro／GitHub／Cloudflare 問題，優先查官方最新文件或當前專案已安裝套件的 API，再提出最小改動方案。不得以舊範例覆蓋學員已完成的網站。變更後以 Build、真實路由、負向測試、Preview 與視覺 QA 驗證，不得因「AI 懂」就跳過安全護欄。對未確認資訊標記 NOT TESTED；正式發布、合併、歷史重寫、刪除遠端部署一律先問學員。
+
+## 倉庫隱私與可撤回的限制
+優先建議 Private GitHub Repo：它不會公開原始碼與 Git 歷史；Cloudflare 公開網站仍可獨立部署。Private 不是機密保護的完整替代，Git 會保留歷史，公開過的頁面、不可變 Preview、fork／快取也可能持續存在。AI 可協助評估清理舊部署或 Git 歷史，但這是可能破壞協作與備份的高風險操作，不得未經明確授權執行，也不得承諾能全面清除網路痕跡。
