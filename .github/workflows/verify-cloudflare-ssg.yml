@@ -176,6 +176,16 @@ jobs:
         run: node scripts/build-quality-trend.mjs
       - name: Fault-inject dashboard false PASS for untested contracts and Preview
         run: node scripts/test-quality-dashboard-regressions.mjs
+      - name: Trace W N F named test cases to this workflow run
+        id: historicexecution
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
+          QA_LIVE_SEARCH: ${{ steps.livesearch.outcome }}
+          QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
+          QA_DRAFTS: ${{ steps.drafts.outcome }}
+        run: node scripts/verify-historic-execution.mjs
       - name: Finalize five-gate quality dashboard
         if: always()
         env:
