@@ -125,6 +125,11 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
  return new Response(body,{headers:{'Content-Type':'text/plain; charset=utf-8'}});
 }
 `;
+// Supply the same search data contract as the optional SiteSearchDialog Block.
+assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
+const pkg=JSON.parse(assets['package.json']);
+pkg.scripts.build='astro build && node scripts/build-exact-search.mjs';
+assets['package.json']=JSON.stringify(pkg,null,2)+'\\n';
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
