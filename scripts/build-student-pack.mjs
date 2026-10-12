@@ -41,6 +41,7 @@ for (const path of [
   'scripts/verify-student-navigation.mjs',
   'scripts/test-student-navigation-regressions.mjs',
   'scripts/test-draft-leakage-regressions.mjs',
+  'scripts/test-generated-link-audit.mjs',
   'scripts/build-student-search-index.mjs',
   'scripts/audit-generated-links.mjs',
   'COMPONENTS.md'
