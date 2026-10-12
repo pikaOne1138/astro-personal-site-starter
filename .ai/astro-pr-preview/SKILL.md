@@ -60,3 +60,6 @@ description: Safely build, verify, preview, and release student-owned Astro site
 
 ## 不可變 Preview 與資料生命週期
 在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。
+
+## 工作坊內部測試預覽入口
+舊的 `/pr-preview/pr-N/` 研究 Repo 靜態路徑可能回 404；這不證明分支 Cloudflare Preview 本身失效。請到 GitHub PR 的實際 Checks／Deployment 取得目前有效的 Branch/Deployment URL、核對 SHA 與 HTTP，再告知學員。不要寫死或憑規律拼接 URL。正式學員指南請使用工作坊最新確認的入口，避免給已失效的版本網址。
