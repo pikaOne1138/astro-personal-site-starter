@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "notes": "Every registered asset declares QA responsibilities. PASS means an existing source test is assigned; comprehensive behavior, accessibility, visual and delivered-site acceptance remain NOT TESTED until evidenced.",
+  "notes": "Every registered asset must declare QA ownership. The evidence field identifies a candidate test source, not proof that it ran at this SHA. All assertions begin NOT TESTED; only verified execution reports may set PASS.",
   "blocks": {
     "button": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -22,7 +22,7 @@
     },
     "section-heading": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -40,7 +40,7 @@
     },
     "site-header": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -58,7 +58,7 @@
     },
     "site-footer": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -76,7 +76,7 @@
     },
     "hero-split": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -94,7 +94,7 @@
     },
     "hero-centered": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -112,7 +112,7 @@
     },
     "hero-image": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -130,7 +130,7 @@
     },
     "image-text": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -148,7 +148,7 @@
     },
     "feature-grid": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -166,7 +166,7 @@
     },
     "stats": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -184,7 +184,7 @@
     },
     "c-t-a-section": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -202,7 +202,7 @@
     },
     "post-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -220,7 +220,7 @@
     },
     "post-grid": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -238,7 +238,7 @@
     },
     "featured-post": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -256,7 +256,7 @@
     },
     "category-links": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -274,7 +274,7 @@
     },
     "table-of-contents": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -292,7 +292,7 @@
     },
     "author-box": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -310,7 +310,7 @@
     },
     "service-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -328,7 +328,7 @@
     },
     "about-profile": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -346,7 +346,7 @@
     },
     "process-steps": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -364,7 +364,7 @@
     },
     "testimonial": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -382,7 +382,7 @@
     },
     "f-a-q": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -400,7 +400,7 @@
     },
     "contact-section": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -418,7 +418,7 @@
     },
     "article-search": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -436,7 +436,7 @@
     },
     "tag-cloud": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -454,7 +454,7 @@
     },
     "archive-months": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -472,7 +472,7 @@
     },
     "post-calendar": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -490,7 +490,7 @@
     },
     "article-accordion": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -508,7 +508,7 @@
     },
     "article-callout": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -526,7 +526,7 @@
     },
     "article-grid": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -544,7 +544,7 @@
     },
     "article-comparison": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -562,7 +562,7 @@
     },
     "related-articles": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -580,7 +580,7 @@
     },
     "article-list": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -598,7 +598,7 @@
     },
     "content-carousel": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -616,7 +616,7 @@
     },
     "site-search-dialog": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -634,7 +634,7 @@
     },
     "mobile-menu": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -652,7 +652,7 @@
     },
     "booking-link": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -670,7 +670,7 @@
     },
     "contact-actions": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -688,7 +688,7 @@
     },
     "pricing-details": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -706,7 +706,7 @@
     },
     "trust-info": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -724,7 +724,7 @@
     },
     "media-embed": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -742,7 +742,7 @@
     },
     "social-links": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -760,7 +760,7 @@
     },
     "breadcrumbs": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -778,7 +778,7 @@
     },
     "article-navigation": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -796,7 +796,7 @@
     },
     "article-share": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -814,7 +814,7 @@
     },
     "reading-progress": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -832,7 +832,7 @@
     },
     "resource-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -850,7 +850,7 @@
     },
     "resource-library": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -868,7 +868,7 @@
     },
     "lead-magnet-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -886,7 +886,7 @@
     },
     "newsletter-signup": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -904,7 +904,7 @@
     },
     "practitioner-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -922,7 +922,7 @@
     },
     "service-fit": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -940,7 +940,7 @@
     },
     "article-view-switcher": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -958,7 +958,7 @@
     },
     "back-to-top": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -978,7 +978,7 @@
   "effects": {
     "reveal": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -992,7 +992,7 @@
     },
     "stagger-group": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1006,7 +1006,7 @@
     },
     "motion-card": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1020,7 +1020,7 @@
     },
     "zoom-image": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1034,7 +1034,7 @@
     },
     "magnetic-button": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1048,7 +1048,7 @@
     },
     "underline-link": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1062,7 +1062,7 @@
     },
     "motion-faq": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-astro-components.mjs"
       },
       "integration": {
@@ -1078,7 +1078,7 @@
   "layouts": {
     "field-notes": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1092,7 +1092,7 @@
     },
     "essayist": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1106,7 +1106,7 @@
     },
     "learning-lab": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1120,7 +1120,7 @@
     },
     "curator": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1134,7 +1134,7 @@
     },
     "radio-letter": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1148,7 +1148,7 @@
     },
     "reading-atlas": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1162,7 +1162,7 @@
     },
     "clinician": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1176,7 +1176,7 @@
     },
     "companion": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1190,7 +1190,7 @@
     },
     "somatic": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1204,7 +1204,7 @@
     },
     "coach": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1218,7 +1218,7 @@
     },
     "collective": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1232,7 +1232,7 @@
     },
     "trust-path": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "responsive": {
@@ -1248,7 +1248,7 @@
   "patterns": {
     "featured-work": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -1262,7 +1262,7 @@
     },
     "trust-service-path": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -1276,7 +1276,7 @@
     },
     "footer-minimal": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -1290,7 +1290,7 @@
     },
     "footer-editorial": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
@@ -1304,7 +1304,7 @@
     },
     "footer-professional": {
       "contract": {
-        "status": "PASS",
+        "status": "NOT TESTED",
         "evidence": "scripts/verify-registry-contract.mjs"
       },
       "integration": {
