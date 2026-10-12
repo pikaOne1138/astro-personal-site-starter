@@ -39,6 +39,22 @@ try {
     recorded.motionOff=await off.getAttribute('aria-pressed')==='true';
     if(!recorded.motionOff)failures.push('effects/'+width+': motion off control failed');
     recorded.reducedMotion=await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
+    recorded.allEffects=await page.evaluate(()=>({
+      Reveal:document.querySelectorAll('#reveal [data-motion-reveal]').length>=5,
+      StaggerGroup:!!document.querySelector('#stagger [data-motion-stagger]'),
+      MotionCard:document.querySelectorAll('#cards [data-motion-card]').length===2,
+      ZoomImage:document.querySelectorAll('#images [data-motion-image] img[alt]').length===2,
+      MagneticButton:!!document.querySelector('#actions [data-motion-magnetic][href]'),
+      UnderlineLink:document.querySelectorAll('#actions a.motion-underline[href]').length===3,
+      MotionFAQ:document.querySelectorAll('#faq .motion-faq details').length===3
+    }));
+    for(const [name,ok] of Object.entries(recorded.allEffects))if(!ok)failures.push('Effects '+name+'/'+width+': expected rendered component missing');
+    const secondFAQ=page.locator('#faq .motion-faq details').nth(1);
+    await secondFAQ.locator('summary').click();
+    const faqOpened=await secondFAQ.evaluate(el=>el.open);
+    recorded.faqKeyboardIndependent=faqOpened;
+    if(!faqOpened)failures.push('MotionFAQ/'+width+': native details did not open');
+
     recorded.revealVisibility=await page.evaluate(()=>{
       const nodes=[...document.querySelectorAll('[data-motion-reveal]')];
       const blocked=nodes.filter(el=>{
