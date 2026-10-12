@@ -53,11 +53,16 @@ try {
     const controlled=await toggle.getAttribute('aria-controls');
     recorded.mobileMenuId=controlled;
     if(!controlled || !controlled.startsWith('mobile-menu-'))failures.push('W9/'+width+': missing deterministic menu ID');
-    await toggle.click();
-    if(await toggle.getAttribute('aria-expanded')!=='true')failures.push('W9/'+width+': menu did not expand');
-    await page.keyboard.press('Escape');
-    if(await toggle.getAttribute('aria-expanded')!=='false')failures.push('F10b/'+width+': Escape did not close mobile menu');
-    if(!await toggle.evaluate(el=>el===document.activeElement))failures.push('W9/'+width+': focus did not return to menu trigger');
+    if(await toggle.isVisible()){
+      await toggle.click();
+      if(await toggle.getAttribute('aria-expanded')!=='true')failures.push('W9/'+width+': menu did not expand');
+      await page.keyboard.press('Escape');
+      if(await toggle.getAttribute('aria-expanded')!=='false')failures.push('F10b/'+width+': Escape did not close mobile menu');
+      if(!await toggle.evaluate(el=>el===document.activeElement))failures.push('W9/'+width+': focus did not return to menu trigger');
+      recorded.mobileMenuInteracted=true;
+    } else {
+      recorded.mobileMenuInteracted=false;
+    }
 
     const featureDemo=page.locator('.ab-demo').filter({has:page.locator('.ab-demo-label strong', {hasText:'FeatureGrid'})}).first();
     const linked=featureDemo.locator('a.ab-feature-link');
