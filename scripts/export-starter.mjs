@@ -76,6 +76,8 @@ assets['.github/workflows/pr-check.yml']=[
 '          node-version: "22"',
 '      - run: npm install --no-audit --no-fund',
 '      - run: npm run build',
+'      - name: Verify site output and draft isolation',
+'        run: npm run verify',
 '      - uses: actions/upload-artifact@v4',
 '        with:',
 '          name: student-pr-build',
@@ -129,8 +131,10 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
 // Supply the same search data contract as the optional SiteSearchDialog Block.
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
+assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-v2-8-output.mjs',import.meta.url),'utf8');
 const pkg=JSON.parse(assets['package.json']);
 pkg.scripts.build='astro build && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
+pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
 pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};
 assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
 for(const [path,body] of Object.entries(assets)){
