@@ -138,6 +138,9 @@ jobs:
       - name: Audit Blocks and Effects gallery at four widths
         id: blockeffects
         run: node scripts/qa-blocks-effects.mjs
+      - name: Validate all six shared Astro components at four widths
+        id: sharedcomponents
+        run: node scripts/qa-all-shared-components.mjs
       - name: Browser-render every Editorial Recipe at four widths
         id: allrecipes
         run: node scripts/qa-all-editorial-recipes.mjs
