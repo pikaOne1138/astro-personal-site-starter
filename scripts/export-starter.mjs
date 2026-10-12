@@ -75,6 +75,8 @@ assets['.github/workflows/pr-check.yml']=[
 '        with:',
 '          node-version: "22"',
 '      - run: npm install --no-audit --no-fund',
+'      - name: Prove learner validators reject known-bad output',
+'        run: npm run test:regressions',
 '      - run: npm run build',
 '      - name: Verify site output and draft isolation',
 '        run: npm run verify',
@@ -132,9 +134,12 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
 assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-v2-8-output.mjs',import.meta.url),'utf8');
+assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
+assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-v2-8-output.mjs','verify-site-output.mjs');
 const pkg=JSON.parse(assets['package.json']);
 pkg.scripts.build='astro build && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
 pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
+pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs';
 pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};
 assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
 for(const [path,body] of Object.entries(assets)){
