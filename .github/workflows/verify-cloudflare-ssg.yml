@@ -18,6 +18,7 @@ on:
 permissions:
   contents: read
   checks: read
+  actions: read
 
 jobs:
   static-build:
@@ -140,6 +141,12 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           QA_REMOTE_BLACKBOX: ${{ github.event.pull_request.head.repo.full_name == github.repository && '1' || '0' }}
         run: node scripts/qa-cloudflare-preview.mjs
+      - name: Collect historical CI runs without guessing defect trends
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/build-quality-trend.mjs
       - name: Fault-inject dashboard false PASS for untested contracts and Preview
         run: node scripts/test-quality-dashboard-regressions.mjs
       - name: Finalize five-gate quality dashboard
