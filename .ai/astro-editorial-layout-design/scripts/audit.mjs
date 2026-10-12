@@ -229,24 +229,35 @@ function measure() {
   });
   res.touch = { total: targets.length, lt24: small.length, lt44: under44.length, samples: under44.slice(0, 5).map((e) => `${sel(e)} ${Math.round(e.getBoundingClientRect().width)}x${Math.round(e.getBoundingClientRect().height)}`) };
 
-  // 7. 文字疊壓（啟發式：兩個不互為祖孫的文字元素外框交集 > 30% 較小者）
-  const rects = textEls.map((el) => ({ el, r: el.getBoundingClientRect() })).filter((o) => o.r.width > 4 && o.r.height > 4);
-  const overlaps = [];
-  for (let i = 0; i < rects.length; i++) {
-    for (let j = i + 1; j < rects.length; j++) {
-      const a = rects[i], b = rects[j];
-      if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
-      const ix = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
-      const iy = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
-      if (ix > 2 && iy > 2) {
-        const inter = ix * iy;
-        const small = Math.min(a.r.width * a.r.height, b.r.width * b.r.height);
-        if (inter / small > 0.3) overlaps.push(`${sel(a.el)} × ${sel(b.el)}`);
+  // 7. 文字疊壓：以 DOM 的實際文字 Range 片段比較，避免跨行 inline 元素總外框誤報。
+  const textFragments = (el) => {
+    const parts = [];
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (walk.nextNode()) {
+      const node = walk.currentNode;
+      if (!node.textContent?.trim()) continue;
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      for (const rect of range.getClientRects()) {
+        if (rect.width > 1 && rect.height > 1) parts.push(rect);
       }
     }
+    return parts;
+  };
+  const intersects = (a,b) => {
+    const ix = Math.min(a.right,b.right) - Math.max(a.left,b.left);
+    const iy = Math.min(a.bottom,b.bottom) - Math.max(a.top,b.top);
+    return ix > 2 && iy > 2 && ix*iy / Math.min(a.width*a.height,b.width*b.height) > 0.3;
+  };
+  const rects = textEls.map(el => ({el, parts:textFragments(el)})).filter(x=>x.parts.length);
+  const overlaps = [];
+  for (let i=0;i<rects.length;i++) for(let j=i+1;j<rects.length;j++){
+    const a=rects[i],b=rects[j];
+    if(a.el.contains(b.el)||b.el.contains(a.el))continue;
+    if(a.parts.some(x=>b.parts.some(y=>intersects(x,y)))) overlaps.push(sel(a.el)+' × '+sel(b.el));
   }
   res.textOverlap = overlaps.length;
-  res.textOverlapSamples = overlaps.slice(0, 4);
+  res.textOverlapSamples = overlaps.slice(0,4);
 
   // 8. 主要區塊的左右邊界（背景被 max-width 裁切檢查：有背景色的區塊寬度應 == 視窗或明確為卡片）
   const main = document.querySelector('main') || document.body;
