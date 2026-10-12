@@ -28,7 +28,7 @@ if(studentArg!==-1){
  if(existsSync(sourceDir)){
   const files=[];
   const visit=d=>{for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name);if(e.isDirectory())visit(p);else if(/\.(md|mdx)$/i.test(e.name))files.push(p)}};
-  visit(articlesDir);
+  visit(sourceDir);
   const exposed=htmlPaths.map(p=>({path:p,body:readFileSync(p,'utf8')}));
   for(const name of ['rss.xml','sitemap.xml'])exposed.push({path:join(output,name),body:read(name)});
   for(const draftFile of files){
