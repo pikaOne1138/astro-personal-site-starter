@@ -22,6 +22,7 @@ const named={
  N13:['scripts/test-starter-route-contracts.mjs','QA_STARTER_ROUTES'],
  N19:['scripts/test-starter-route-contracts.mjs','QA_STARTER_ROUTES'],
  N20:['scripts/test-canonical-student-prompt.mjs','QA_CANONICAL_PROMPT'],
+ W12:['scripts/test-onboarding-skill-structure.mjs','QA_ONBOARDING_STRUCTURE'],
  N5:['scripts/test-generated-link-audit.mjs','QA_LINK_AUDIT'],
  F06:['scripts/test-generated-link-audit.mjs','QA_LINK_AUDIT'],
  W3:['scripts/qa-interview-download.mjs','QA_INTERVIEW_ZIP'],
