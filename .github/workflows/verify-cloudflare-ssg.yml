@@ -243,6 +243,8 @@ jobs:
           QA_COVERAGE: ${{ steps.coverage.outcome }}
           QA_HISTORY: ${{ steps.history.outcome }}
           QA_SKILL_SOURCE: ${{ steps.skillsource.outcome }}
+          QA_DOCUMENT_SAFETY: ${{ steps.documentSafety.outcome }}
+          QA_THEME_CONTRAST: ${{ steps.themeContrast.outcome }}
           QA_BUILD: ${{ steps.buildsite.outcome }}
           QA_STARTER: ${{ steps.studentkit.outcome }}
           QA_DRAFTS: ${{ steps.drafts.outcome }}
