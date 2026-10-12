@@ -28,3 +28,6 @@ Every visible non-demo claim is backed by content the student provided; no fake 
 
 ## Ready-to-copy student prompt
 > 請讀我的 Site Brief、現有文章／服務資料及 `astro-content-readiness`。逐頁列出我已具備、缺少及可以省略的內容，對照 Section Pattern Registry 的 required／optional。不要補造作品、價格、證照或連結。請提出一份「現在可上線的最小版本」與尚需我提供的資料，再交給組站 Skill。
+
+## 非內容審查的界線
+工作坊**不判定學員寫得好不好、是否一定有作品、是否已填滿每一欄**。學員可能只是在實驗一個空網站或展示骨架：允許留空／顯示明確示範標記，不要因內容少就阻止 Build。自動驗證只提示可辨識的預設文案、未設定網址、佔位資料與明顯虛構風險；內容真實性需由本人決定。技術輸出 PASS 與「內容已確認可以正式公開」必須分開呈現，不得把示範內容存在當成系統錯誤。
