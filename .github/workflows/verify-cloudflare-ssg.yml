@@ -41,6 +41,9 @@ jobs:
       - name: Compile every Astro source component and verify six QA responsibilities
         id: allcomponents
         run: node scripts/verify-all-astro-components.mjs
+      - name: W12 verify onboarding Skill numbering and Markdown guardrail
+        id: onboardingstructure
+        run: node scripts/test-onboarding-skill-structure.mjs
       - name: Fault-inject malformed Skill source and broken references
         run: node scripts/test-skill-contract-regressions.mjs
       - name: Verify 15 Skill frontmatter and references
@@ -203,6 +206,7 @@ jobs:
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
           QA_CANONICAL_PROMPT: ${{ steps.canonicalprompt.outcome }}
+          QA_ONBOARDING_STRUCTURE: ${{ steps.onboardingstructure.outcome }}
           QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
         run: node scripts/verify-historic-execution.mjs
