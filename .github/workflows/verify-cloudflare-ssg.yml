@@ -37,6 +37,11 @@ jobs:
       - name: Enforce registered asset QA ownership and write quality dashboard
         if: always()
         run: node scripts/verify-quality-coverage.mjs
+      - name: Fault-inject invalid W N F historical regression entries
+        run: node scripts/test-historic-regression-ledger.mjs
+      - name: Verify historical W N F coverage ledger
+        if: always()
+        run: node scripts/verify-historic-regressions.mjs
       - name: Upload machine-readable quality coverage
         if: always()
         uses: actions/upload-artifact@v4
