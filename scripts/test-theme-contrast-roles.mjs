@@ -1,6 +1,6 @@
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 const source=readFileSync('src/data/starter-config.ts','utf8'),css=readFileSync('public/demo.css','utf8');
-const paletteBlock=source.match(/export const starterThemePalettes:[^{]+\{([\s\S]*?)\n\};/)?.[1];
+const paletteBlock=source.split('export const starterThemePalettes')[1]?.split('= {')[1]?.split('\n};')[0];
 if(!paletteBlock)throw Error('Starter theme palette source not found');
 const palettes={};
 for(const match of paletteBlock.matchAll(/^\s*(\w+):\{([^}]+)\},?/gm)){
