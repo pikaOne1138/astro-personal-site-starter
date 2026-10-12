@@ -3,6 +3,7 @@ const dir='qa-artifacts/quality';mkdirSync(dir,{recursive:true});
 const read=x=>existsSync(dir+'/'+x)?JSON.parse(readFileSync(dir+'/'+x,'utf8')):null;
 const inventory=JSON.parse(readFileSync('docs/quality/COMPONENT-COVERAGE.json','utf8'));
 const syntax=read('all-astro-components.json'),blocks=read('block-effect-browser.json'),recipes=read('editorial-recipes-browser.json'),patterns=read('section-patterns-browser.json');
+const shared=read('shared-components-browser.json');
 const sha=process.env.GITHUB_SHA||null;
 const usable=(doc)=>doc&&doc.sha===sha&&(doc.status==='PASS'||(doc.failed===0&&Array.isArray(doc.rows)));
 const syntaxOk=syntax?.status==='PASS'&&syntax?.headSha===sha;
@@ -24,6 +25,13 @@ for(const [path,declaration] of Object.entries(inventory.components)){
   const id=name.slice(0,3);
   const matched=(recipes.entries||[]).flatMap(e=>(e.recipes||[]).filter(x=>x.id===id).map(x=>({...x,width:e.width})));
   if(matched.length===4&&matched.every(x=>x.present&&x.hasContent&&x.height>=8&&x.display!=='none')){row.demo='PASS';row.responsive='PASS';row.evidence.push({source:'editorial-recipes-browser.json',checkoutSha:sha,scope:'All four responsive rendered recipe instances'})}
+ }
+ if(declaration.group==='shared'&&usable(shared)){
+  const records=(shared.rows||[]).filter(x=>x.component===name);
+  if(records.length===4&&records.every(x=>x.pass&&[1440,1280,768,390].includes(x.width))){
+   row.demo='PASS';row.responsive='PASS';
+   row.evidence.push({source:'shared-components-browser.json',checkoutSha:sha,scope:'Rendered shared component in actual website routes at all four responsive widths; Props variations remain NOT TESTED'});
+  }
  }
  if(declaration.group==='patterns'&&usable(patterns)){
   const associated=name==='FeaturedWorkSection'?['featured-work']:name==='TrustServiceSection'?['trust-service-path']:name==='FooterPattern'?['footer-minimal','footer-editorial','footer-professional']:[];
