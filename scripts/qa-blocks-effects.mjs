@@ -39,6 +39,16 @@ try {
     recorded.motionOff=await off.getAttribute('aria-pressed')==='true';
     if(!recorded.motionOff)failures.push('effects/'+width+': motion off control failed');
     recorded.reducedMotion=await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
+    recorded.revealVisibility=await page.evaluate(()=>{
+      const nodes=[...document.querySelectorAll('[data-motion-reveal]')];
+      const blocked=nodes.filter(el=>{
+        const css=getComputedStyle(el);
+        return css.visibility==='hidden'||Number(css.opacity)<0.98;
+      });
+      return {sampled:nodes.length,blocked:blocked.length};
+    });
+    if(!recorded.reducedMotion||recorded.revealVisibility.blocked)failures.push('Effects reduced-motion content hidden at '+width+': '+recorded.revealVisibility.blocked+' elements');
+
    } else {
     recorded.renderedLabels=await page.locator('.ab-demo-label strong').allTextContents();
     const searchTrigger=page.locator('[data-search-open]').first();
