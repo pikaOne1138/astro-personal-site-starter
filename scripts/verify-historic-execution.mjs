@@ -29,6 +29,7 @@ const named={
  W8:['scripts/qa-live-chinese-search.mjs','QA_LIVE_SEARCH'],
  W9:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
  W11:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
+ N10:['scripts/test-editorial-overlap-regressions.mjs','QA_EDITORIAL_OVERLAP'],
  N11:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
  N17:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT'],
  N18:['scripts/qa-all-editorial-recipes.mjs','QA_ALL_RECIPES'],
