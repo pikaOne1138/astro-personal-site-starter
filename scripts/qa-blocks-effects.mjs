@@ -41,6 +41,13 @@ try {
     recorded.reducedMotion=await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
    } else {
     recorded.renderedLabels=await page.locator('.ab-demo-label strong').allTextContents();
+    const featureDemo=page.locator('.ab-demo').filter({has:page.locator('.ab-demo-label strong', {hasText:'FeatureGrid'})}).first();
+    const linked=featureDemo.locator('a.ab-feature-link');
+    const unlinked=featureDemo.locator('article.ab-feature');
+    recorded.featureGrid={linked:await linked.count(),unlinked:await unlinked.count()};
+    if(recorded.featureGrid.linked!==1||recorded.featureGrid.unlinked!==2)failures.push('W11/'+width+': linked and unlinked FeatureGrid tiles changed');
+    if(await linked.first().getAttribute('href')!=='#hero')failures.push('W11/'+width+': entire feature tile lacks correct navigation href');
+
    }
    if(recorded.http!==200)failures.push(kind+'/'+width+': HTTP '+recorded.http);
    if(recorded.overflow)failures.push(kind+'/'+width+': horizontal overflow');
