@@ -145,6 +145,7 @@ for(const [path,body] of Object.entries(assets)){
     actual=actual.replace('--ink:#28231f','--ink:'+colors.text).replace('--bg:#f7f5f0','--bg:'+colors.background).replace('--line:#dad4c9','--line:color-mix(in srgb, '+colors.text+' 20%, '+colors.background+')');
     actual+='\n:root{--brand-primary:'+colors.primary+';--brand-secondary:'+colors.secondary+';--brand-accent:'+colors.accent+';--brand-background:'+colors.background+';--brand-text:'+colors.text+';}\n';
   }
+  if(path==='public/site.css')actual+='\n:root{--accent:var(--brand-primary,var(--brand));--heading:var(--ink);--text:var(--ink);--surface:var(--bg);--muted:color-mix(in srgb,var(--ink) 75%,var(--bg));--radius:8px;}\n';
   if(path==='src/pages/articles/index.astro')actual=actual.replace(/export function getStaticPaths\(\)\{return config\.navigation\.some\(x=>x\.id==='articles'\)\?\[\{params:\{\}\}\]:\[\]\}\n/,'');
   put(path,actual);
 }
