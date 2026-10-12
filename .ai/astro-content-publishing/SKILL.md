@@ -17,7 +17,7 @@ This skill does **not** implement WordPress migration, a CMS, a database, subscr
 
 先分辨工作區：ZIP是離線參考包，生成目錄才是學員網站。學員不需要Clone老師Repo。
 
-**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；預設骨架沒有Pagefind、分類／月份搜尋或OG／結構化資料，不得宣稱已完成。需使用這些功能時，從ZIP移植相應元件與依賴後另行測試。
+**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；最新生成骨架的 `npm run build` 已包含 Pagefind 索引和 `search/exact-zh.json`；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。
 
 **離線參考來源**：ZIP的 `src/data/articles-v2.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。
 
@@ -45,7 +45,7 @@ Example frontmatter and body: see `references/article-authoring.md`.
 2. Check canonical on **production** and **PR preview**. The workshop's shared Demo article canonical currently resolves to the knowledge/paper article; a student's real site must select its own canonical root.
 3. Ensure Open Graph and Twitter text are relevant; add an OG image only if an image has actually been configured. Do not invent social image files or author metadata. If structured data is used, its claims must reflect visible real content.
 4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.
-5. 若已選用Pagefind，保留其HTML-based build index (`astro build && pagefind --site dist --root-selector main`)；生成骨架預設只跑Astro Build，不包含搜尋。 Do **not** add another hardcoded metadata-only full-site search.
+5. 若已選用Pagefind，保留其HTML-based build index (`astro build && pagefind --site dist --root-selector main`)；目前生成骨架已在 build 自動產生 Pagefind 與 exact-zh 搜尋索引，但搜尋 UI 需明確組裝並實測。 Do **not** add another hardcoded metadata-only full-site search.
 6. Maintain correct `import.meta.env.BASE_URL` for site links/assets and `ASTRO_BASE_PATH` for PR builds. Prevent PR preview pages from being indexed; don't assume robots.txt alone can isolate a preview subpath.
 7. For each student deployment, check `astro.config.mjs` site/base and all absolute feed, sitemap and canonical links. The repository's `pikaOne1138.github.io` URLs are **not** universal defaults.
 
