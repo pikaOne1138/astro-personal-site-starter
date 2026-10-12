@@ -9,6 +9,14 @@ for(const [key,inputs] of Object.entries(map)){
  const values=Object.values(checks).map(x=>x.status);
  gates[key]={status:values.includes('FAIL')?'FAIL':'NOT TESTED',observedChecks:values.filter(x=>x==='PASS').length,declaredChecks:values.length,checks,coverageNote:'CI subset is not complete v2.0 gate acceptance'};
 }
+const externalPreview=read('external-preview.json');
+if(externalPreview&&gates.G5?.checks.deployment){
+ const value=['PASS','FAIL','BLOCKED','NOT TESTED'].includes(externalPreview.status)?externalPreview.status:'NOT TESTED';
+ gates.G5.checks.deployment.status=value;
+ gates.G5.checks.deployment.detail='Actual HTTP checks: '+(externalPreview.previewUrl||'no matched deployment');
+ gates.G5.observedChecks=Object.values(gates.G5.checks).filter(x=>x.status==='PASS').length;
+ gates.G5.status=Object.values(gates.G5.checks).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED';
+}
 const assetCoverage=read('quality-results.json');
 const requiredSteps={blocks:['registry','compile'],effects:['compile'],layouts:['registry'],patterns:['registry','compile'],skills:['coverage'],recipes:['compile']};
 if(assetCoverage && gates.G1){
@@ -24,7 +32,7 @@ if(assetCoverage && gates.G1){
  assetCoverage.assertions['NOT TESTED']=(assetCoverage.items||[]).filter(x=>x.status==='NOT TESTED').length;
  assetCoverage.evidenceNote='Only executed structural/compile contract checks were upgraded to PASS; behavior and visual checks remain NOT TESTED.';
 }
-const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),historicalRegressions:read('historic-regressions.json'),notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Student ZIP black-box downloaded from deployed /guide/','Student-owned PR CI for both kinds','Independent Cloudflare Preview SHA/HTTP verification','Full visual and accessibility acceptance']};
+const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),externalPreview,historicalRegressions:read('historic-regressions.json'),notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Student ZIP black-box downloaded from deployed /guide/','Student-owned PR CI for both kinds','Independent Cloudflare Preview SHA/HTTP verification','Full visual and accessibility acceptance']};
 writeFileSync(dir+'/quality-results.json',JSON.stringify(report,null,2)+'\n');
 const lines=['# Astro Workshop v2.0 CI Quality Dashboard','',`**Release: ${report.releaseStatus}; NOT APPROVED**`,'',`PR head: ${report.prHeadSha||'unknown'}; CI checkout: ${report.checkoutSha||'unknown'}`,'','Pull-request checkout may be a synthetic merge commit; this is not deployment SHA verification.','','| Gate | Observed PASS | Declared checks | Gate status |','|---|---:|---:|---|',...Object.entries(gates).map(([k,v])=>`| ${k} | ${v.observedChecks} | ${v.declaredChecks} | ${v.status} |`),'','## Checks'];
 for(const [gate,v] of Object.entries(gates))lines.push('### '+gate,...Object.entries(v.checks).map(([k,x])=>`- ${k}: ${x.status} (${x.githubOutcome})`));
