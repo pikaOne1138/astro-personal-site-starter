@@ -6,6 +6,8 @@ const root=mkdtempSync(join(tmpdir(),'qa-coverage-fixture-'));
 const copy=p=>{const dst=join(root,p);mkdirSync(dirname(dst),{recursive:true});cpSync(p,dst)};
 try {
  for(const p of ['scripts/verify-quality-coverage.mjs','docs/quality/ASSET-COVERAGE.json','src/data/blocks.registry.json','src/data/effects.registry.json','src/data/layout-directions.json','src/data/section-patterns.registry.json'])copy(p);
+ const registered=JSON.parse(readFileSync(join(root,'docs/quality/ASSET-COVERAGE.json'),'utf8'));
+ for(const p of [...Object.keys(registered.skills),...Object.keys(registered.recipes)])copy(p);
  const run=()=>spawnSync(process.execPath,['scripts/verify-quality-coverage.mjs'],{cwd:root,encoding:'utf8'});
  const expect=(label,shouldPass)=>{const result=run();if((result.status===0)!==shouldPass)throw Error(label+': expected '+(shouldPass?'PASS':'FAIL')+'; exit '+result.status+'; stdout '+result.stdout+'; stderr '+result.stderr);console.log(label+': '+(shouldPass?'PASS':'rejected'));};
  const blocksPath=join(root,'src/data/blocks.registry.json');
