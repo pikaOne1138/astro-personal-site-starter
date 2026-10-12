@@ -4,7 +4,7 @@ import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 const root=mkdtempSync(join(tmpdir(),'draft-negative-gate-'));
 const put=(p,text)=>{const full=join(root,p);mkdirSync(join(full,'..'),{recursive:true});writeFileSync(full,text)};
-const html=(body='')=>'<html><head><title>Test page</title><meta name="description" content="fixture"><link rel="canonical" href="https://example.com/"></head><body>'+body+'</body></html>';
+const html=(body='')=>'<html><head><title>Test page</title><meta name="description" content="fixture"><link rel="canonical" href="https://example.com/"><meta name="robots" content="noindex, nofollow, noarchive"></head><body>'+body+'</body></html>';
 const draft='qa-secret-draft',title='Never Publish This Example Draft';
 const article='---\ntitle: '+title+'\ndescription: For private draft QA only\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft text';
 try{
@@ -20,6 +20,10 @@ try{
  const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
  const expect=(name,ok)=>{const p=run();if((p.status===0)!==ok)throw Error(name+': expected '+(ok?'PASS':'FAIL')+'; got '+p.status+'\n'+p.stdout+'\n'+p.stderr);console.log(name+': '+(ok?'PASS':'correctly rejected'))};
  expect('clean draft',true);
+ put('dist/index.html',html('Public home').replace('<meta name="robots" content="noindex, nofollow, noarchive">',''));
+ expect('F09 preview missing noindex',false);
+ put('dist/index.html',html('Public home'));
+ expect('F09 restored preview noindex',true);
  put('dist/index.html',html('這裡尚未填入個人的正式內容'));
  const notice=run();if(notice.status!==0||!notice.stderr.includes('NOTICE:'))throw Error('Placeholder content must be NOTICE, not blocking FAIL');
  put('dist/index.html',html('Public home'));
