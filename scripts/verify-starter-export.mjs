@@ -35,6 +35,7 @@ try{
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+      if(!existsSync(join(site,'dist/pagefind/pagefind.js')))throw Error('Pagefind static index was not generated');
       if(!existsSync(join(site,'dist/search/exact-zh.json')))throw Error('Search companion index was not generated');
       const search=JSON.parse(readFileSync(join(site,'dist/search/exact-zh.json'),'utf8'));
       if(search.version!==1||!Array.isArray(search.docs)||!search.docs.some(x=>x.url==='/'))throw Error('Search companion index is invalid');
