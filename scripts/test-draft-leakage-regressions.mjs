@@ -41,4 +41,14 @@ try{
  put('dist/index.html',html('<a href="/articles/folder-only/">Never Publish This Example Draft</a>'));
  expect('isolated draft leaked in homepage',false);
  put('dist/index.html',html());
+ // A draft title under eight Chinese characters must still be considered sensitive.
+ put('src/content/drafts/short-secret.md',article.replace('Never Publish This Example Draft','小秘密草稿'));
+ put('dist/index.html',html('小秘密草稿'));
+ expect('short Chinese draft title leaked',false);
+ put('dist/index.html',html());
+ // Search JSON is a public endpoint and must be audited like public HTML.
+ put('dist/search/exact-zh.json',JSON.stringify({docs:[{title:'小秘密草稿',url:'/articles/short-secret/'}]}));
+ expect('draft in public JSON search',false);
+ put('dist/search/exact-zh.json',JSON.stringify({docs:[]}));
+ expect('clean public JSON',true);
 }finally{rmSync(root,{force:true,recursive:true})}
