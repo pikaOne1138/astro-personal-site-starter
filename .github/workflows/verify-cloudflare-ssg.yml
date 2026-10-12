@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  checks: read
 
 jobs:
   static-build:
@@ -123,6 +124,13 @@ jobs:
           grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/sitemap.xml
           if grep -q 'pikaone1138.github.io/astro-personal-site-starter/' dist/rss.xml dist/sitemap.xml; then exit 1; fi
 
+      - name: Independently verify Cloudflare Preview HTTP and student ZIP at PR head
+        id: externalpreview
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/qa-cloudflare-preview.mjs
       - name: Finalize five-gate quality dashboard
         if: always()
         env:
@@ -141,7 +149,7 @@ jobs:
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
           QA_GUIDE: ${{ steps.guide.outcome }}
           QA_GUIDE_ZIP: ${{ steps.guidezip.outcome }}
-          QA_DEPLOYMENT: not-run
+          QA_DEPLOYMENT: ${{ steps.externalpreview.outcome }}
         run: node scripts/finalize-quality-dashboard.mjs
       - name: Upload final five-gate quality report
         if: always()
