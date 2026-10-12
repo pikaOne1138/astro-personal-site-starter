@@ -36,6 +36,11 @@ jobs:
       - name: Compile registered Blocks, Effects and Editorial recipes
         id: compile
         run: node scripts/verify-astro-components.mjs
+      - name: Fault-inject missing component QA declarations
+        run: node scripts/test-all-component-coverage-regressions.mjs
+      - name: Compile every Astro source component and verify six QA responsibilities
+        id: allcomponents
+        run: node scripts/verify-all-astro-components.mjs
       - name: Fault-inject malformed Skill source and broken references
         run: node scripts/test-skill-contract-regressions.mjs
       - name: Verify 15 Skill frontmatter and references
@@ -174,6 +179,7 @@ jobs:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           QA_REGISTRY: ${{ steps.registry.outcome }}
           QA_COMPILE: ${{ steps.compile.outcome }}
+          QA_ALL_COMPONENTS: ${{ steps.allcomponents.outcome }}
           QA_COVERAGE: ${{ steps.coverage.outcome }}
           QA_HISTORY: ${{ steps.history.outcome }}
           QA_SKILL_SOURCE: ${{ steps.skillsource.outcome }}
