@@ -20,7 +20,7 @@ try{
    if(width===390){
     // Do not close a menu which is already open.
     const hasVisiblePrimary=()=>page.evaluate(()=>{
-     const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'};
+     const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden], [inert], [aria-hidden="true"]')&&(!e.closest('details:not([open])')||!!e.closest('summary'))};
      return [...document.querySelectorAll('header nav,header [role="navigation"]')].some(n=>visible(n)&&!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||''));
     });
     if(!await hasVisiblePrimary()){
@@ -42,12 +42,13 @@ try{
      await page.waitForFunction(()=>[...document.querySelectorAll('header nav,header [role="navigation"]')].some(n=>n.getClientRects().length&&getComputedStyle(n).visibility!=='hidden'&&!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||'')),null,{timeout:3000});
     }
    }
+   await page.evaluate(()=>{document.querySelectorAll('header nav details').forEach(d=>{d.open=true})});
    const extracted=await page.evaluate(()=>{
-    const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'};
+    const visible=e=>{const s=getComputedStyle(e);return e.getClientRects().length>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden], [inert], [aria-hidden="true"]')&&(!e.closest('details:not([open])')||!!e.closest('summary'))};
     // Restrict to SITE HEADER primary nav; never select article TOC by number of links.
     const nodes=[...document.querySelectorAll('header nav, header [role="navigation"]')].filter(visible);
     const primary=nodes.find(n=>/primary|main|主選單|主導覽|主要|網站導覽/i.test(n.getAttribute('aria-label')||''))||nodes.find(n=>!/(breadcrumb|麵包屑|toc|目錄|文章|footer|頁尾)/i.test(n.getAttribute('aria-label')||''))||null;
-    const links=primary?[...primary.querySelectorAll('a[href]')].filter(visible).map(a=>({label:(a.getAttribute('aria-label')||[...a.childNodes].map(n=>n.nodeType===3?n.textContent:(n.nodeType===1&&n.getAttribute('aria-hidden')==='true'?'':n.textContent)).join('')||'').trim().replace(/\s+/g,' '),url:new URL(a.href).pathname.replace(/\/+$/,'/')+new URL(a.href).search,origin:new URL(a.href).origin})):[];
+    const links=primary?[...primary.querySelectorAll('a[href]')].filter(visible).map(a=>({label:(a.getAttribute('aria-label')||(()=>{let result='';const walk=document.createTreeWalker(a,NodeFilter.SHOW_TEXT);while(walk.nextNode()){const n=walk.currentNode;if(!n.parentElement?.closest('[aria-hidden="true"],[hidden]'))result+=n.textContent}return result})()||'').trim().replace(/\s+/g,' '),url:new URL(a.href).pathname.replace(/\/+$/,'/')+new URL(a.href).search,origin:new URL(a.href).origin})):[];
     return {links,navFound:!!primary,navLabel:primary?.getAttribute('aria-label')||'',overflow:document.documentElement.scrollWidth>innerWidth+2};
    });
    rows.push({width,route,http:response?.status()??0,...extracted,errors});
