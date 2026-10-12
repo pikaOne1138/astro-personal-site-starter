@@ -42,6 +42,7 @@ for (const path of [
   'scripts/test-student-navigation-regressions.mjs',
   'scripts/test-draft-leakage-regressions.mjs',
   'scripts/build-student-search-index.mjs',
+  'scripts/audit-generated-links.mjs',
   'COMPONENTS.md'
 ]) add(path);
 add('docs/student-builder-pack/STUDENT-AGENTS.md', 'AGENTS.md');
