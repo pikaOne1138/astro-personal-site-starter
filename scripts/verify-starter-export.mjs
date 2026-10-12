@@ -18,6 +18,9 @@ try{
     const filename=join(root,kind+'.json'),site=join(root,kind);
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    const learnerPkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
+    if(!learnerPkg.scripts?.['test:regressions'])throw Error('Learner ZIP exporter omitted cumulative validator regressions');
+    execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
     const out=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
     if(out.layoutSlug!==plan.layoutSlug||out.brand.primaryColor!=='#245E50'||out.navigation.length!==(kind==='knowledge'?3:2)||out.sectionPatterns.length!==2)throw Error('Config mismatch '+kind);
     const generatedCss=readFileSync(join(site,'public/site.css'),'utf8');
