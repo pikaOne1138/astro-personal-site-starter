@@ -41,6 +41,8 @@ assets['.github/workflows/deploy.yml']=[
 '  deploy:',
 '    if: github.ref == \'refs/heads/main\'',
 '    runs-on: ubuntu-latest',
+'    env:',
+'      SITE_INDEXABLE: \u0024{{ vars.SITE_INDEXABLE || \'false\' }}',
 '    environment:',
 '      name: github-pages',
 '      url: \u0024{{ steps.deploy.outputs.page_url }}',
