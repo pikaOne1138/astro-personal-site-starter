@@ -8,9 +8,11 @@
 - **Cloudflare（已具備靜態資產設定）**：`wrangler.jsonc` 宣告 `assets.directory: "./dist"`；`astro.config.mjs` 預設 `base: /`，適合以根路徑託管。此 Repo 未內建 Cloudflare Git 部署 GitHub Actions Workflow；由 Cloudflare 端連接 GitHub 的專案設定、部署紀錄及 Preview 網址須在 Cloudflare Dashboard 查證。
 - **Cloudflare Preview**：若 Git 整合已啟用分支／PR 預覽，請以 Cloudflare 在該 Commit／PR 回報的真實 Preview URL 驗收；不要套用 GitHub Pages 的 `/pr-preview/pr-N/` 路徑，也不要在沒有部署證據時宣稱可預覽。
 - **兩條流程並存**：目前不能把 GitHub Pages Workflow 當成 Cloudflare 發布流程，也不能把 Cloudflare 原生 Preview 當成 `astro-pr-preview` Skill 已經支援的功能。要停用 GitHub Pages，需另行調整 Pages 設定／Workflow；修改 README 本身不會停用部署。
-- **`.ai/astro-pr-preview/SKILL.md`**：目前仍明文指定 GitHub Pages + GitHub Actions，未更新為 Cloudflare Preview Skill。它的 Branch → PR → build → 實際預覽 → 使用者批准 → Merge 安全原則可沿用，但 GitHub Pages 特定步驟不得用於 Cloudflare。
+- **`.ai/astro-pr-preview/SKILL.md`**：已分別說明 GitHub Pages、Cloudflare Pages Git 預覽與 Workers Static Assets 的驗證流程。依學員實際使用的平台查證部署 Check、URL 和 SHA；不得套用研究站的特殊 Preview 路徑，未經明確同意不可 Merge。
 
 `npm run build` 會執行 Astro、robots、Pagefind、額外搜尋及輸出驗證；部署的實際站點狀態以平台部署紀錄及可開啟網址為準，不能只憑本地設定判定成功。
+
+學員第一次請 AI 建站的**唯一正式提示詞**位於 `docs/student-builder-pack/START-BUILD-PROMPT.txt`；網站 `/guide/` 的「開始建站」按鈕直接讀取此檔，ZIP 的 `START-HERE.md` 亦引用它，避免出現不同版本。
 
 ## 研究展示與學生交付分離
 
