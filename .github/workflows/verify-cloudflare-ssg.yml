@@ -185,6 +185,10 @@ jobs:
           QA_LIVE_SEARCH: ${{ steps.livesearch.outcome }}
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
           QA_DRAFTS: ${{ steps.drafts.outcome }}
+          QA_PLANNER: ${{ steps.planner.outcome }}
+          QA_NAV: ${{ steps.navigation.outcome }}
+          QA_EDITORIAL: ${{ steps.editorial.outcome }}
+          QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
         run: node scripts/verify-historic-execution.mjs
       - name: Finalize five-gate quality dashboard
         if: always()
