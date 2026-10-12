@@ -23,7 +23,7 @@ try{
      scrollWidth:document.documentElement.scrollWidth,
      viewport:innerWidth,
      overflow:document.documentElement.scrollWidth>innerWidth+2,
-     recipes:ids.map(id=>{const el=document.getElementById(id);if(!el)return{id,present:false};const box=el.getBoundingClientRect();return{id,present:true,hasContent:!!el.textContent?.trim(),width:Math.round(box.width),height:Math.round(box.height),display:getComputedStyle(el).display}}),
+     recipes:ids.map(id=>{const el=document.getElementById(id)||document.querySelector('.'+id.toLowerCase());if(!el)return{id,present:false};const box=el.getBoundingClientRect();return{id,present:true,hasContent:!!el.textContent?.trim(),width:Math.round(box.width),height:Math.round(box.height),display:getComputedStyle(el).display}}),
      reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches
     };
    },{prefix,count});
