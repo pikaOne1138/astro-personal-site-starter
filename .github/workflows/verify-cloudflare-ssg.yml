@@ -32,6 +32,8 @@ jobs:
         run: node scripts/verify-registry-contract.mjs
       - name: Compile registered Blocks, Effects and Editorial recipes
         run: node scripts/verify-astro-components.mjs
+      - name: Fault-inject missing asset QA declarations
+        run: node scripts/test-quality-coverage-regressions.mjs
       - name: Enforce registered asset QA ownership and write quality dashboard
         if: always()
         run: node scripts/verify-quality-coverage.mjs
