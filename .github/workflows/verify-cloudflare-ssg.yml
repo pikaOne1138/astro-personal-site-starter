@@ -144,6 +144,19 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           QA_REMOTE_BLACKBOX: ${{ github.event.pull_request.head.repo.full_name == github.repository && '1' || '0' }}
         run: node scripts/qa-cloudflare-preview.mjs
+      - name: Browser-review actual Cloudflare Preview at mobile and desktop widths
+        id: remotebrowser
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/qa-cloudflare-browser.mjs
+      - name: Upload deployed Preview screenshots and objective browser audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-real-preview-browser
+          path: qa-artifacts/preview/
+          retention-days: 14
       - name: Collect historical CI runs without guessing defect trends
         if: always()
         env:
@@ -174,6 +187,7 @@ jobs:
           QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
           QA_GUIDE_ZIP: ${{ steps.guidezip.outcome }}
           QA_DEPLOYMENT: ${{ steps.externalpreview.outcome }}
+          QA_REMOTE_BROWSER: ${{ steps.remotebrowser.outcome }}
         run: node scripts/finalize-quality-dashboard.mjs
       - name: Upload final five-gate quality report
         if: always()
