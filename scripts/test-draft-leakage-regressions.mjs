@@ -29,4 +29,13 @@ try{
  put('dist/sitemap.xml','<urlset></urlset>');
  put('dist/articles/'+draft+'/index.html',html(title));
  expect('draft HTML route',false);
+ // The new public-source isolation rule: drafts live outside the articles Collection.
+ put('dist/articles/'+draft+'/index.html','');
+ const {unlinkSync}=await import('node:fs');
+ unlinkSync(join(root,'dist/articles/'+draft+'/index.html'));
+ put('src/content/drafts/folder-only.md',article.replace('qa-secret-draft','folder-only'));
+ expect('isolated draft clean output',true);
+ put('dist/index.html',html('<a href="/articles/folder-only/">Never Publish This Example Draft</a>'));
+ expect('isolated draft leaked in homepage',false);
+ put('dist/index.html',html());
 }finally{rmSync(root,{force:true,recursive:true})}
