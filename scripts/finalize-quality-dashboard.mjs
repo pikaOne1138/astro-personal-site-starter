@@ -32,7 +32,28 @@ if(assetCoverage && gates.G1){
  assetCoverage.assertions['NOT TESTED']=(assetCoverage.items||[]).filter(x=>x.status==='NOT TESTED').length;
  assetCoverage.evidenceNote='Only executed structural/compile contract checks were upgraded to PASS; behavior and visual checks remain NOT TESTED.';
 }
-const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),externalPreview,historicalRegressions:read('historic-regressions.json'),notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Student ZIP black-box downloaded from deployed /guide/','Student-owned PR CI for both kinds','Independent Cloudflare Preview SHA/HTTP verification','Full visual and accessibility acceptance']};
+// Execution evidence is a narrower claim than historically VERIFIED. Preserve the source
+// ledger's NOT TESTED until pre-fix and post-fix evidence are all independently linked.
+const historic=read('historic-regressions.json');
+const observedHistory={};
+const evidenceRules={
+ W9:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').some(r=>r.mobileMenuInteracted)},
+ W11:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').every(r=>r.featureGrid?.linked===1&&r.featureGrid?.unlinked===2)},
+ N17:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').length===4},
+ F10b:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').some(r=>r.mobileMenuInteracted)},
+ F09:{step:'starter',file:'external-preview.json',predicate:x=>x?.download?.blackBox?.status==='PASS'},
+ F11:{step:'starter',file:'external-preview.json',predicate:x=>x?.download?.blackBox?.status==='PASS'}
+};
+for(const [id,rule] of Object.entries(evidenceRules)){
+ const gate=rule.step==='blockEffects'?'G4':'G2';
+ const check=gates[gate]?.checks?.[rule.step];
+ const artifact=read(rule.file);
+ observedHistory[id]={status:check?.status==='PASS'&&rule.predicate(artifact)?'OBSERVED PASS':'NOT TESTED',
+  evidence:{sha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,file:rule.file,step:rule.step},
+  limitation:'Partial latest-run assertion; this does not satisfy all historical VERIFIED requirements'};
+}
+if(historic)historic.latestRunObservations=observedHistory;
+const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),externalPreview,historicalRegressions:historic,notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Historical defects requiring pre-fix and post-fix evidence per row','Student-owned GitHub PR CI for both kinds','Full human visual and accessibility acceptance']};
 writeFileSync(dir+'/quality-results.json',JSON.stringify(report,null,2)+'\n');
 const lines=['# Astro Workshop v2.0 CI Quality Dashboard','',`**Release: ${report.releaseStatus}; NOT APPROVED**`,'',`PR head: ${report.prHeadSha||'unknown'}; CI checkout: ${report.checkoutSha||'unknown'}`,'','Pull-request checkout may be a synthetic merge commit; this is not deployment SHA verification.','','| Gate | Observed PASS | Declared checks | Gate status |','|---|---:|---:|---|',...Object.entries(gates).map(([k,v])=>`| ${k} | ${v.observedChecks} | ${v.declaredChecks} | ${v.status} |`),'','## Checks'];
 for(const [gate,v] of Object.entries(gates))lines.push('### '+gate,...Object.entries(v.checks).map(([k,x])=>`- ${k}: ${x.status} (${x.githubOutcome})`));
