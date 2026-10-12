@@ -85,7 +85,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
-<p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" aria-label="網站設定預覽"></pre></section>
+<p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
 </form>
 </main>
 <script>
@@ -170,7 +170,17 @@ function orderedNav(){
  return roots.flatMap(root=>[root,...nav.filter(x=>x.parentId===root.id)]);
 }
 function syncNav(){
+ const active=document.activeElement as HTMLElement|null;
+ const row=active?.closest<HTMLElement>('.nav-row');
+ const activeId=row?.dataset.navId;
+ const action=active?.getAttribute('aria-label')?.split('：')[0];
  nav=orderedNav();renderNav();
+ if(activeId&&action){
+  const next=[...rows.querySelectorAll<HTMLElement>('.nav-row')].find(x=>x.dataset.navId===activeId);
+  const button=[...(next?.querySelectorAll<HTMLButtonElement>('button')??[])].find(x=>x.getAttribute('aria-label')?.startsWith(action+'：'));
+  if(button&&!button.disabled)button.focus();
+  else next?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus();
+ }
 }
 function shiftItem(id:string,delta:number){
  const current=nav.find(x=>x.id===id);if(!current)return;
