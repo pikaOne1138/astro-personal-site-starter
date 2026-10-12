@@ -332,7 +332,7 @@ for (const p of paths) {
     return t && (t.iterations === Infinity) && t.duration > 50;
   }).length);
   report.push({ path: p, width: 'reduced-motion', infiniteAnimationsRunning: anim });
-  if (anim > 0) console.log(`  ! ${p} reduced-motion 下仍有 ${anim} 個無限動畫`);
+  if (anim > 0) { anyFail = true; report.at(-1).fail = [`reduced-motion 下仍有 ${anim} 個無限動畫`]; console.error(`  FAIL ${p} reduced-motion 下仍有 ${anim} 個無限動畫`); }
   await ctx.close();
 }
 await browser.close();
