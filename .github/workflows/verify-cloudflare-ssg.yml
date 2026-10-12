@@ -130,6 +130,7 @@ jobs:
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           GITHUB_TOKEN: ${{ github.token }}
+          QA_REMOTE_BLACKBOX: ${{ github.event.pull_request.head.repo.full_name == github.repository && '1' || '0' }}
         run: node scripts/qa-cloudflare-preview.mjs
       - name: Finalize five-gate quality dashboard
         if: always()
