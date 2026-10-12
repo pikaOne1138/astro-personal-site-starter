@@ -18,19 +18,18 @@ if(externalPreview&&gates.G5?.checks.deployment){
  gates.G5.status=Object.values(gates.G5.checks).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED';
 }
 const assetCoverage=read('quality-results.json');
-const requiredSteps={blocks:['registry','compile'],effects:['compile'],layouts:['registry'],patterns:['registry','compile'],skills:['coverage'],recipes:['compile']};
+const structuralSteps={blocks:['registry','compile'],effects:['compile'],layouts:['registry'],patterns:['registry','compile'],skills:['coverage'],recipes:['compile']};
 if(assetCoverage && gates.G1){
- let promoted=0;
+ const structural=[];
  for(const item of assetCoverage.items||[]){
-  const needs=requiredSteps[item.group]||[];
-  if(item.type!=='contract'||!needs.length||!needs.every(name=>gates.G1.checks[name]?.status==='PASS'))continue;
-  item.status='PASS';
-  item.executedEvidence={workflowRunId:process.env.GITHUB_RUN_ID||null,checkoutSha:process.env.GITHUB_SHA||null,steps:needs};
-  promoted++;
+  if(item.type!=='contract')continue;
+  const needs=structuralSteps[item.group]||[];
+  structural.push({group:item.group,id:item.id,status:needs.length&&needs.every(name=>gates.G1.checks[name]?.status==='PASS')?'PASS':'NOT TESTED',
+   scope:'Registry presence / Astro syntax only; Props, behavior and integration not covered',steps:needs,sha:process.env.GITHUB_SHA||null});
  }
- assetCoverage.assertions.PASS=promoted;
- assetCoverage.assertions['NOT TESTED']=(assetCoverage.items||[]).filter(x=>x.status==='NOT TESTED').length;
- assetCoverage.evidenceNote='Only executed structural/compile contract checks were upgraded to PASS; behavior and visual checks remain NOT TESTED.';
+ assetCoverage.structuralRegistrationAndSyntax=structural;
+ assetCoverage.evidenceNote='Structural checks have separate PASS evidence. Functional contract, behavior, integration and visual assertions remain NOT TESTED until their own tests execute.';
+ assetCoverage.assertions=Object.fromEntries(['PASS','FAIL','NOTICE','BLOCKED','NOT TESTED'].map(status=>[status,(assetCoverage.items||[]).filter(x=>x.status===status).length]));
 }
 // Execution evidence is a narrower claim than historically VERIFIED. Preserve the source
 // ledger's NOT TESTED until pre-fix and post-fix evidence are all independently linked.
