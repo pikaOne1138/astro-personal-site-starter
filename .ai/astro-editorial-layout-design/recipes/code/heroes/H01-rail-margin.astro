@@ -5,7 +5,7 @@
  */
 interface Props {
   kicker?: string; phrases?: string[]; voice?: string; deck?: string;
-  rail?: string[]; note?: string; noteBy?: string; src?: string; alt?: string;
+  rail?: Array<string|{label:string;href?:string}>; note?: string; noteBy?: string; src?: string; alt?: string; caption?: string;
 }
 const {
   kicker = '一種慢慢觀看的方法',
@@ -15,13 +15,13 @@ const {
   rail = ['筆記索引', '研究問題'],
   note = '有時候，一個準確的問題，比一個快速的答案更值得留下。',
   noteBy = '— 研究手記',
-  src, alt = '',
+  src, alt = '', caption = '示意圖說',
 } = Astro.props;
 ---
 <section class="h01">
   <aside class="rail" aria-label="索引">
     <span class="no">01—05</span>
-    {rail.map((r) => <a href="#">{r}</a>)}
+    {rail.map((r) => typeof r === 'string' ? <span>{r}</span> : (r.href && r.href !== '#' ? <a href={r.href}>{r.label}</a> : <span>{r.label}</span>))}
     <span class="stem" aria-hidden="true"></span>
   </aside>
   <div class="main">
@@ -30,7 +30,7 @@ const {
     <p class="deck">{deck}</p>
     <figure class="fig">
       {src ? <img src={src} alt={alt} width="1200" height="900" /> : <div class="art" role="img" aria-label={alt || '示意圖'}></div>}
-      <figcaption><span>FIG. 01</span>示意圖說</figcaption>
+      <figcaption><span>FIG. 01</span>{caption}</figcaption>
     </figure>
   </div>
   <aside class="margin">
@@ -44,7 +44,7 @@ const {
     display: grid; grid-template-columns: 4.75rem minmax(0, 1fr) 11rem; gap: clamp(1.2rem, 4vw, 4rem); color: var(--ed-ink, #222); }
   .label { font: .75rem/1.4 var(--ed-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--ed-accent, #9a3b24); margin: 0; }
   .rail { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; font: .75rem/1.4 var(--ed-mono, monospace); letter-spacing: .08em; color: var(--ed-ink-2, #57534a); }
-  .rail a { writing-mode: vertical-rl; color: var(--ed-ink, #222); text-decoration: none; min-height: 44px; padding: .5rem .9rem; }
+  .rail a, .rail > span:not(.no):not(.stem) { writing-mode: vertical-rl; color: var(--ed-ink, #222); text-decoration: none; min-height: 44px; padding: .5rem .9rem; }
   .stem { width: 1px; height: 110px; background: var(--ed-line, #cfc8b8); margin-left: .35rem; }
   .main { max-width: 920px; }
   h1 { font: 400 clamp(3rem, 9vw, 8.5rem)/1.04 var(--ed-serif, Georgia, serif); letter-spacing: -.03em; margin: 1rem 0 1.5rem; text-wrap: balance; }
