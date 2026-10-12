@@ -99,6 +99,9 @@ jobs:
           name: preparation-guide-visual-qa
           path: qa-artifacts/prepare/
           retention-days: 14
+      - name: W3 browser-download seven interview files with byte equality
+        id: interviewzip
+        run: node scripts/qa-interview-download.mjs
       - name: Download actual guide ZIP through browser and check package bytes
         id: guidezip
         run: node scripts/qa-guide-zip-download.mjs
@@ -157,6 +160,7 @@ jobs:
           QA_LAYOUTS: ${{ steps.layouts.outcome }}
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
           QA_GUIDE: ${{ steps.guide.outcome }}
+          QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
           QA_GUIDE_ZIP: ${{ steps.guidezip.outcome }}
           QA_DEPLOYMENT: ${{ steps.externalpreview.outcome }}
         run: node scripts/finalize-quality-dashboard.mjs
