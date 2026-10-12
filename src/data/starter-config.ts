@@ -44,7 +44,7 @@ export const starterThemePalettes:Record<StarterTheme,{primary:string;secondary:
  paper:{primary:'#9A3B2E',secondary:'#806A54',accent:'#C58D63',background:'#F8F5EF',text:'#28231F'},
  morning:{primary:'#C8775A',secondary:'#7F8F80',accent:'#B65B75',background:'#FFF8F3',text:'#362B29'},
  studio:{primary:'#2F5D50',secondary:'#708A7A',accent:'#B17C60',background:'#F6F7F3',text:'#23312D'},
- botanical:{primary:'#50775B',secondary:'#8D9B72',accent:'#B48569',background:'#F6F7EF',text:'#28392E'},
+ botanical:{primary:'#50775B',secondary:'#8D9B72',accent:'#8A5A3E',background:'#F6F7EF',text:'#28392E'},
  ocean:{primary:'#245D78',secondary:'#647E88',accent:'#B57949',background:'#F5F8FA',text:'#1E303A'},
  sand:{primary:'#9C603B',secondary:'#877E69',accent:'#6B826C',background:'#FBF7EF',text:'#352A23'},
  slate:{primary:'#475569',secondary:'#657784',accent:'#B38B53',background:'#F4F6F8',text:'#202C39'},
