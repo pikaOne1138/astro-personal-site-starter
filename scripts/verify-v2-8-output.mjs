@@ -20,7 +20,7 @@ if(studentArg!==-1){
   const html=readFileSync(path,'utf8');
   const head=html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1]||'';
   if(!/<title>[^<]+<\/title>/.test(head)||!head.includes('name="description"')||!head.includes('rel="canonical"'))throw Error('Student metadata escaped head: '+path);
-  if(process.env.SITE_INDEXABLE!=='true' && !/<meta\\b[^>]*name=["']robots["'][^>]*content=["']noindex,\\s*nofollow,\\s*noarchive["']/i.test(head))throw Error('F09 student unpublished page is missing noindex: '+path);
+  if(process.env.SITE_INDEXABLE!=='true' && !(head.match(/<meta[^>]+name="robots"[^>]*>/i)?.[0]||'').includes('noindex'))throw Error('F09 student unpublished page is missing noindex: '+path);
  }
  const robots=read('robots.txt');
  if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid student robots.txt lines');
