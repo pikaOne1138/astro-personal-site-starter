@@ -15,7 +15,7 @@ function check(sources){
 const normal=check(base);if(normal.errors.length)throw Error('Source documentation contracts failed: '+JSON.stringify(normal.errors));
 const falsePass=[];
 for(const [id,file,terms] of assertions){
- const mutated={...base,[file]:base[file].replace(terms[0],'[QA FAULT DELETED]')};
+ const mutated={...base,[file]:base[file].replaceAll(terms[0],'[QA FAULT DELETED]')};
  const result=check(mutated);const catches=result.errors.some(e=>e.id===id&&e.file===file);
  falsePass.push({id,file,catches});
  if(!catches)throw Error(id+'/'+file+': deliberate removal was not detected');
