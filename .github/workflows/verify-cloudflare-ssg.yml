@@ -196,6 +196,7 @@ jobs:
           QA_EDITORIAL: ${{ steps.editorial.outcome }}
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
+          QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
         run: node scripts/verify-historic-execution.mjs
       - name: Reconcile all 110 components with source and browser evidence
         if: always()
