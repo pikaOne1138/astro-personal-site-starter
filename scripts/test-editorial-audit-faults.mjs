@@ -4,7 +4,7 @@ import {mkdtempSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 const root=mkdtempSync(join(tmpdir(),'editorial-audit-faults-'));
-const html=(body)=>`<!doctype html><html><head><meta charset="utf-8"><title>QA</title><style>
+const html=(body)=>`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QA</title><style>
 body{margin:0;background:white;color:#111;font:16px/1.6 sans-serif}
 main{padding:32px;max-width:760px}h1{font:700 30px/1.2 sans-serif}
 .skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px}
