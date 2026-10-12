@@ -44,6 +44,12 @@ jobs:
       - name: W12 verify onboarding Skill numbering and Markdown guardrail
         id: onboardingstructure
         run: node scripts/test-onboarding-skill-structure.mjs
+      - name: Verify learner Preview, offline fallback and security documents with fault injection
+        id: documentSafety
+        run: node scripts/test-learner-document-safety.mjs
+      - name: Test eight brand theme foreground and decorative contrast roles
+        id: themeContrast
+        run: node scripts/test-theme-contrast-roles.mjs
       - name: Fault-inject malformed Skill source and broken references
         run: node scripts/test-skill-contract-regressions.mjs
       - name: Verify 15 Skill frontmatter and references
@@ -211,6 +217,8 @@ jobs:
           QA_EDITORIAL_OVERLAP: ${{ steps.editorialoverlap.outcome }}
           QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
           QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
+          QA_DOCUMENT_SAFETY: ${{ steps.documentSafety.outcome }}
+          QA_THEME_CONTRAST: ${{ steps.themeContrast.outcome }}
         run: node scripts/verify-historic-execution.mjs
       - name: Reconcile all 110 components with source and browser evidence
         if: always()
