@@ -7,7 +7,7 @@ const links=[['首頁','/'],['關於','/about/'],['工具箱','/toolbox/']];
 const server=createServer((req,res)=>{
  const path=new URL(req.url,'http://localhost').pathname;
  if(!['/','/about/','/toolbox/'].includes(path)){res.writeHead(404);res.end('Not Found');return}
- const nav=(mobile)=>links.filter(x=>!(scenario==='mobile-missing'&&mobile&&x[1]==='/toolbox/')).map(([label,href])=>'<a href="'+(scenario==='broken'&&href==='/toolbox/'?'/missing/':href)+'">'+label+'</a>').join('');
+ const nav=(mobile)=>links.filter(x=>!(scenario==='mobile-missing'&&mobile&&x[1]==='/toolbox/')).map(([label,href])=>'<a href="'+(scenario==='broken'&&href==='/toolbox/'?'/missing/':href)+'">'+label+(scenario==='decorative-glyph'&&mobile?' <span aria-hidden="true">↗</span>':'')+'</a>').join('');
  const toc='<nav aria-label="文章目錄">'+Array.from({length:20},(_,i)=>'<a href="#part'+i+'">目錄 '+i+'</a>').join('')+'</nav>';
  res.setHeader('Content-Type','text/html; charset=utf-8');
  const open=scenario==='already-open';
@@ -22,7 +22,7 @@ const run=async(paths='/,/about/,/toolbox/')=>new Promise(resolve=>{
  child.on('close',code=>resolve({code,logs}));
 });
 try{
- for(const [name,shouldPass] of [['healthy',true],['mobile-missing',false],['broken',false],['already-open',true],['unrelated-control',true]]){
+ for(const [name,shouldPass] of [['healthy',true],['mobile-missing',false],['broken',false],['already-open',true],['unrelated-control',true],['decorative-glyph',true]]){
   scenario=name;
   const result=await run();
   if((result.code===0)!==shouldPass)throw Error(name+' expected '+(shouldPass?'PASS':'FAIL')+' got '+result.code+'\n'+result.logs);
