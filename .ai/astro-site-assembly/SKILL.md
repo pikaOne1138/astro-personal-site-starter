@@ -40,3 +40,6 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 
 ## Search component integration
 When adding `SiteSearchDialog`, inspect its actual data contract before use. The learner ZIP ships `scripts/build-student-search-index.mjs`; generated independent sites copy it as `scripts/build-exact-search.mjs` and run it after `astro build`, generating `dist/search/exact-zh.json`. Pagefind remains the primary full-text index when configured; do not replace it with a hardcoded metadata search. Confirm the endpoint, search interaction and draft exclusion on the actual built site. Consult up-to-date Astro/Pagefind official documentation when interfaces differ.
+
+## 自訂頁面網址
+導航條目的 `id` 是穩定識別符；選填的 `path` 是人能閱讀的相對 URL（例如 `start-here/tools/`），不代表另建 CMS／後台。若有 `path`，頁面生成、共用導覽、麵包屑、Sitemap、輸出檢查應使用同一個網址；沒有則以 `id + '/'` 作預設。確認實際 HTML 與 Preview 路由一致，勿改動既有已發布網址而不考慮 redirect。
