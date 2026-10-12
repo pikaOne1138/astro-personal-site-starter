@@ -1,7 +1,7 @@
 import {existsSync,readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 const dir='qa-artifacts/quality';mkdirSync(dir,{recursive:true});
 const read=file=>existsSync(dir+'/'+file)?JSON.parse(readFileSync(dir+'/'+file,'utf8')):null;
-const map={G1:{registry:'QA_REGISTRY',compile:'QA_COMPILE',coverage:'QA_COVERAGE',historic:'QA_HISTORY',skillSource:'QA_SKILL_SOURCE'},G2:{build:'QA_BUILD',starter:'QA_STARTER',drafts:'QA_DRAFTS'},G3:{navigation:'QA_NAV',planner:'QA_PLANNER'},G4:{editorial:'QA_EDITORIAL',layouts:'QA_LAYOUTS',guide:'QA_GUIDE',blockEffects:'QA_BLOCK_EFFECT'},G5:{guideZip:'QA_GUIDE_ZIP',interviewZip:'QA_INTERVIEW_ZIP',deployment:'QA_DEPLOYMENT'}};
+const map={G1:{registry:'QA_REGISTRY',compile:'QA_COMPILE',coverage:'QA_COVERAGE',historic:'QA_HISTORY',skillSource:'QA_SKILL_SOURCE'},G2:{build:'QA_BUILD',starter:'QA_STARTER',drafts:'QA_DRAFTS'},G3:{navigation:'QA_NAV',planner:'QA_PLANNER',liveSearch:'QA_LIVE_SEARCH'},G4:{editorial:'QA_EDITORIAL',layouts:'QA_LAYOUTS',guide:'QA_GUIDE',blockEffects:'QA_BLOCK_EFFECT'},G5:{guideZip:'QA_GUIDE_ZIP',interviewZip:'QA_INTERVIEW_ZIP',deployment:'QA_DEPLOYMENT'}};
 const state=v=>v==='success'?'PASS':v==='failure'?'FAIL':v==='cancelled'?'BLOCKED':'NOT TESTED';
 const gates={};
 for(const [key,inputs] of Object.entries(map)){
@@ -36,6 +36,7 @@ if(assetCoverage && gates.G1){
 const historic=read('historic-regressions.json');
 const observedHistory={};
 const evidenceRules={
+ W8:{step:'liveSearch',file:'live-chinese-search.json',predicate:x=>x?.status==='PASS'&&x?.rows?.length===4&&x.rows.every(r=>r.count>0)},
  W3:{step:'interviewZip',file:'interview-zip-consistency.json',predicate:x=>x?.status==='PASS'&&x?.files?.length===7&&x.files.every(y=>y.exact)},
  W9:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').some(r=>r.mobileMenuInteracted)},
  W11:{step:'blockEffects',file:'block-effect-browser.json',predicate:x=>x?.failed===0&&x?.rows?.filter(r=>r.kind==='blocks').every(r=>r.featureGrid?.linked===1&&r.featureGrid?.unlinked===2)},
@@ -45,7 +46,7 @@ const evidenceRules={
  F11:{step:'drafts',file:null,predicate:()=>true}
 };
 for(const [id,rule] of Object.entries(evidenceRules)){
- const gate=rule.step==='blockEffects'?'G4':rule.step==='interviewZip'?'G5':'G2';
+ const gate=rule.step==='blockEffects'?'G4':rule.step==='interviewZip'?'G5':rule.step==='liveSearch'?'G3':'G2';
  const check=gates[gate]?.checks?.[rule.step];
  const artifact=rule.file?read(rule.file):null;
  observedHistory[id]={status:check?.status==='PASS'&&rule.predicate(artifact)?'OBSERVED PASS':'NOT TESTED',
@@ -53,7 +54,7 @@ for(const [id,rule] of Object.entries(evidenceRules)){
   limitation:'Partial latest-run assertion; this does not satisfy all historical VERIFIED requirements'};
 }
 if(historic)historic.latestRunObservations=observedHistory;
-const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),interviewZipDownload:read('interview-zip-consistency.json'),externalPreview,historicalRegressions:historic,skillSourceContracts:read('skill-contracts.json'),qualityTrend:read('quality-trend.json'),notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Historical defects requiring pre-fix and post-fix evidence per row','Student-owned GitHub PR CI for both kinds','Full human visual and accessibility acceptance']};
+const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:process.env.GITHUB_SHA||null,workflowRunId:process.env.GITHUB_RUN_ID||null,releaseReady:false,releaseStatus:Object.values(gates).some(x=>x.status==='FAIL')?'FAIL':'NOT TESTED',gates,assetCoverage,blockEffectBrowser:read('block-effect-browser.json'),guideZipDownload:read('guide-zip-download.json'),interviewZipDownload:read('interview-zip-consistency.json'),externalPreview,historicalRegressions:historic,skillSourceContracts:read('skill-contracts.json'),liveChineseSearch:read('live-chinese-search.json'),qualityTrend:read('quality-trend.json'),notTested:['Complete Block behavior/Props/render tests','Cross-theme and cross-Layout integration','Historical defects requiring pre-fix and post-fix evidence per row','Student-owned GitHub PR CI for both kinds','Full human visual and accessibility acceptance']};
 writeFileSync(dir+'/quality-results.json',JSON.stringify(report,null,2)+'\n');
 const lines=['# Astro Workshop v2.0 CI Quality Dashboard','',`**Release: ${report.releaseStatus}; NOT APPROVED**`,'',`PR head: ${report.prHeadSha||'unknown'}; CI checkout: ${report.checkoutSha||'unknown'}`,'','Pull-request checkout may be a synthetic merge commit; this is not deployment SHA verification.','','| Gate | Observed PASS | Declared checks | Gate status |','|---|---:|---:|---|',...Object.entries(gates).map(([k,v])=>`| ${k} | ${v.observedChecks} | ${v.declaredChecks} | ${v.status} |`),'','## Checks'];
 for(const [gate,v] of Object.entries(gates))lines.push('### '+gate,...Object.entries(v.checks).map(([k,x])=>`- ${k}: ${x.status} (${x.githubOutcome})`));
