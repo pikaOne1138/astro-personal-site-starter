@@ -48,6 +48,8 @@ jobs:
         run: node scripts/test-editorial-audit-faults.mjs
       - name: Verify editorial inline-wrap overlap regression
         run: node scripts/test-editorial-overlap-regressions.mjs
+      - name: Verify starter planner keyboard, labels and custom path in real browser
+        run: node scripts/qa-starter-planner.mjs
       - name: Verify first-time onboarding guide at four widths
         run: node scripts/qa-preparation-guide.mjs
       - name: Upload guide screenshots and results
