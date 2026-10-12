@@ -251,7 +251,7 @@ function renderNav(){
    renderNav();
   });
   const label=document.createElement('input');label.type='text';label.maxLength=24;label.value=n.label;label.setAttribute('aria-label',n.id+' 選單名稱');
-  label.addEventListener('input',()=>{n.label=label.value;renderNav();renderMenu();showPlan()});
+  label.addEventListener('input',()=>{n.label=label.value;check.setAttribute('aria-label','顯示'+n.label);tools.querySelectorAll('button').forEach(btn=>{const actionName=(btn.getAttribute('aria-label')||'').split('：')[0];btn.setAttribute('aria-label',actionName+'：'+n.label)});renderMenu();showPlan()});
   const tools=document.createElement('div');tools.className='nav-row-actions';
   const action=(symbol:string,name:string,fn:()=>void,disabled=false)=>{
    const btn=document.createElement('button');btn.type='button';btn.textContent=symbol;btn.title=name;btn.setAttribute('aria-label',name+'：'+n.label);btn.disabled=disabled;btn.addEventListener('click',fn);tools.append(btn);
