@@ -12,7 +12,7 @@ const sources={
  recipes:[null,'path',['contract','integration','visual']]
 };
 const recursiveFiles=(base,predicate)=>readdirSync(base,{recursive:true,withFileTypes:true}).filter(x=>x.isFile()).map(x=>join(x.parentPath,x.name).replaceAll('\\','/')).filter(predicate).sort();
-const discover=group=>group==='skills'?recursiveFiles('.ai',p=>/^\\.ai\\/[^/]+\\/SKILL\\.md$/.test(p)):recursiveFiles('.ai/astro-editorial-layout-design/recipes/code',p=>p.endsWith('.astro'));
+const discover=group=>group==='skills'?recursiveFiles('.ai',p=>p.startsWith('.ai/')&&p.endsWith('/SKILL.md')&&p.split('/').length===3):recursiveFiles('.ai/astro-editorial-layout-design/recipes/code',p=>p.endsWith('.astro'));
 const idsFor=(group,file,key)=>file?read(file).map(x=>x[key]):discover(group);
 const allowed=new Set(['PASS','FAIL','NOTICE','BLOCKED','NOT TESTED']);
 const errors=[],items=[],totals={PASS:0,FAIL:0,NOTICE:0,BLOCKED:0,'NOT TESTED':0};
