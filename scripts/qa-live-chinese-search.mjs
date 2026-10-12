@@ -31,8 +31,8 @@ try{
   if(!matched||!count||/索引尚未載入|找不到符合/.test(status)||pageErrors.length)errors.push(theme+': failed real Chinese Pagefind/exact search: '+status+'; '+pageErrors.join('; '));
   if(theme==='paper'){
    await input.fill('');
-   const clean=await dialog.locator('[data-search-status]').innerText();
-   if(!clean.includes('輸入關鍵字'))errors.push('Search clear did not return empty-query instructions');
+   const clearReady=await page.waitForFunction(() => document.querySelector('[data-site-search] [data-search-status]')?.textContent?.includes('輸入關鍵字'),null,{timeout:2500}).then(()=>true).catch(()=>false);
+   if(!clearReady)errors.push('Search clear did not return empty-query instructions after debounce');
    await input.press('Escape');
    if(await dialog.evaluate(el=>el.open))errors.push('N17 first Escape did not close search');
   }
