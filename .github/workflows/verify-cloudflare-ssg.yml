@@ -117,6 +117,9 @@ jobs:
       - name: Audit Blocks and Effects gallery at four widths
         id: blockeffects
         run: node scripts/qa-blocks-effects.mjs
+      - name: Browser-render every Editorial Recipe at four widths
+        id: allrecipes
+        run: node scripts/qa-all-editorial-recipes.mjs
       - name: Prevent homepage mobile overflow regression and verify fault detection
         id: homeoverflow
         run: node scripts/test-home-mobile-overflow.mjs
@@ -180,6 +183,7 @@ jobs:
           QA_REGISTRY: ${{ steps.registry.outcome }}
           QA_COMPILE: ${{ steps.compile.outcome }}
           QA_ALL_COMPONENTS: ${{ steps.allcomponents.outcome }}
+          QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
           QA_COVERAGE: ${{ steps.coverage.outcome }}
           QA_HISTORY: ${{ steps.history.outcome }}
           QA_SKILL_SOURCE: ${{ steps.skillsource.outcome }}
