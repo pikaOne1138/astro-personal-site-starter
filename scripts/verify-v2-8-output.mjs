@@ -1,5 +1,6 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import {auditLinks} from './audit-generated-links.mjs';
 
 const studentArg=process.argv.indexOf('--student-site');
 if(studentArg!==-1){
@@ -13,6 +14,8 @@ if(studentArg!==-1){
  const htmlPaths=[];
  const collect=dir=>{for(const entry of readdirSync(dir,{withFileTypes:true})){const p=join(dir,entry.name);if(entry.isDirectory())collect(p);else if(entry.name.endsWith('.html'))htmlPaths.push(p)}};
  collect(output);
+ const linkAudit=auditLinks(output,config.base||'/');
+ if(linkAudit.failures.length)throw Error('Student internal links failed: '+linkAudit.failures.join('; '));
  for(const path of htmlPaths){
   const html=readFileSync(path,'utf8');
   const head=html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1]||'';
@@ -31,6 +34,8 @@ if(studentArg!==-1){
   visit(sourceDir);
   const exposed=htmlPaths.map(p=>({path:p,body:readFileSync(p,'utf8')}));
   for(const name of ['rss.xml','sitemap.xml'])exposed.push({path:join(output,name),body:read(name)});
+  const scanJson=d=>{for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name);if(e.isDirectory())scanJson(p);else if(e.name.endsWith('.json'))exposed.push({path:p,body:readFileSync(p,'utf8')})}};
+  scanJson(output);
   for(const draftFile of files){
    const source=readFileSync(draftFile,'utf8');
    const fm=source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
@@ -49,7 +54,7 @@ if(studentArg!==-1){
    const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
-   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=8&&x.body.includes(title)));
+   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)));
    if(suspects.length)throw Error('Draft leaked into public discovery/output: '+relative+'; files: '+suspects.map(x=>x.path).join(', '));
   }
  }
