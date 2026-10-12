@@ -40,6 +40,7 @@ try{
       const search=JSON.parse(readFileSync(join(site,'dist/search/exact-zh.json'),'utf8'));
       if(search.version!==1||!Array.isArray(search.docs)||!search.docs.some(x=>x.url==='/'))throw Error('Search companion index is invalid');
       if(kind==='knowledge'&&!existsSync(join(site,'dist/start-here/tools/index.html')))throw Error('Custom nested page was not generated');
+      execFileSync(process.execPath,[new URL('./audit-generated-links.mjs',import.meta.url).pathname,join(site,'dist')],{stdio:'inherit'});
     }
   }
   console.log('Starter exporter checks passed for knowledge/helper');
