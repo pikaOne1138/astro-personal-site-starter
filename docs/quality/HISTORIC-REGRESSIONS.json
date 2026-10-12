@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "source": "Claude independent learner QA: W1–W14; N1–N20; valid F00–F14 variants",
+  "excludedFaults": {
+    "F10": "Invalid injection: Chromium restores dialog focus without trigger.focus()"
+  },
+  "notes": "These rows are requirements, not unverified claims of PASS. A defect is VERIFIED only with pre-fix failure, normal PASS, negative FAIL, student export where relevant, and matching SHA evidence.",
+  "defects": {
+    "W1": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W2": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W3": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W4": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W5": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W6": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W7": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W8": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W9": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W10": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W11": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W12": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W13": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "W14": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N1": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N2": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N3": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N4": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N5": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N6": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N7": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N8": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N9": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N10": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N11": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N12": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N13": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N14": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N15": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N16": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N17": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N18": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N19": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "N20": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Verify baseline behavior and preserve cumulative regression"
+    },
+    "F00": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Clean baseline must PASS"
+    },
+    "F01": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F02": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F03": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F04": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F05": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F06": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F07": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F08": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F09": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F10b": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F11": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F12": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F13": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    },
+    "F14": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Effective fault injection must cause the designated verifier to FAIL"
+    }
+  }
+}
