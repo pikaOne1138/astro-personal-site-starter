@@ -26,6 +26,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Validate registered Blocks, Layouts and Pattern references
         run: node scripts/verify-registry-contract.mjs
+      - name: Compile registered Blocks, Effects and Editorial recipes
+        run: node scripts/verify-astro-components.mjs
       - name: Validate learner navigation audit script syntax
         run: node --check scripts/verify-student-navigation.mjs
       - name: Build with Cloudflare Pages automatic URL and default root path
