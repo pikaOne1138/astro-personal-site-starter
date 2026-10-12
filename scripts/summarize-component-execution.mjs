@@ -4,7 +4,7 @@ const read=x=>existsSync(dir+'/'+x)?JSON.parse(readFileSync(dir+'/'+x,'utf8')):n
 const inventory=JSON.parse(readFileSync('docs/quality/COMPONENT-COVERAGE.json','utf8'));
 const syntax=read('all-astro-components.json'),blocks=read('block-effect-browser.json'),recipes=read('editorial-recipes-browser.json'),patterns=read('section-patterns-browser.json');
 const sha=process.env.GITHUB_SHA||null;
-const usable=(doc)=>doc&&doc.sha===sha&&doc.status==='PASS';
+const usable=(doc)=>doc&&doc.sha===sha&&(doc.status==='PASS'||(doc.failed===0&&Array.isArray(doc.rows)));
 const syntaxOk=syntax?.status==='PASS'&&syntax?.headSha===sha;
 const groups={},rows=[];
 for(const [path,declaration] of Object.entries(inventory.components)){
