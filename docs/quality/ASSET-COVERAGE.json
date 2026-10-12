@@ -1316,5 +1316,719 @@
         "evidence": ""
       }
     }
+  },
+  "skills": {
+    ".ai/astro-content-publishing/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-content-publishing/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-content-readiness/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-content-readiness/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-launch-health-check/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-launch-health-check/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-layout-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-layout-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-motion-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-motion-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-navigation-tree-test/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-navigation-tree-test/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-page-management/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-page-management/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-pr-preview/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-pr-preview/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-section-pattern-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-section-pattern-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-site-assembly/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-assembly/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-site-maintenance/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-maintenance/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-starter-deploy/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-starter-deploy/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-starter-onboarding/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-starter-onboarding/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-ui-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-ui-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "recipes": {
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C01-low-pressure-invite.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C01-low-pressure-invite.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C02-boundary-strip.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C02-boundary-strip.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C03-proof-slots.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C03-proof-slots.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C04-process-then-contact.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C04-process-then-contact.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C05-closing-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C05-closing-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C06-team-initials.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C06-team-initials.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C07-subscribe-cadence.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C07-subscribe-cadence.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C08-provenance-note.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C08-provenance-note.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H01-rail-margin.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H01-rail-margin.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H02-offset-stagger.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H02-offset-stagger.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H03-hard-shadow-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H03-hard-shadow-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H04-mat-still-stamp.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H04-mat-still-stamp.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H05-signal-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H05-signal-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H06-spec-sheet.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H06-spec-sheet.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H07-letter-arch.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H07-letter-arch.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H08-veil-fullbleed.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H08-veil-fullbleed.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H09-poster-stack.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H09-poster-stack.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H10-sticker-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H10-sticker-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H11-numeral-index.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H11-numeral-index.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H12-route-diagram.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H12-route-diagram.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L01-ledger-rows.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L01-ledger-rows.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L02-node-track.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L02-node-track.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L03-archive-table.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L03-archive-table.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L04-stair-details.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L04-stair-details.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L05-date-disc-rows.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L05-date-disc-rows.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L06-leader-toc.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L06-leader-toc.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R01-spacing-ladder.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R01-spacing-ladder.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R02-band-alternation.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R02-band-alternation.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R03-rule-weights.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R03-rule-weights.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R04-fr-mirror.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R04-fr-mirror.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R05-voice-heading.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R05-voice-heading.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R06-media-accent.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R06-media-accent.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S01-manifesto-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S01-manifesto-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S02-fit-pair.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S02-fit-pair.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S03-letter-fold.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S03-letter-fold.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S04-dark-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S04-dark-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S05-article-lead.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S05-article-lead.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S06-index-shelf.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S06-index-shelf.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S07-accordion-panel.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S07-accordion-panel.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S08-evidence-table.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S08-evidence-table.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
   }
 }
