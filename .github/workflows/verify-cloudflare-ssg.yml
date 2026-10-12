@@ -29,17 +29,21 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Validate registered Blocks, Layouts and Pattern references
+        id: registry
         run: node scripts/verify-registry-contract.mjs
       - name: Compile registered Blocks, Effects and Editorial recipes
+        id: compile
         run: node scripts/verify-astro-components.mjs
       - name: Fault-inject missing asset QA declarations
         run: node scripts/test-quality-coverage-regressions.mjs
       - name: Enforce registered asset QA ownership and write quality dashboard
+        id: coverage
         if: always()
         run: node scripts/verify-quality-coverage.mjs
       - name: Fault-inject invalid W N F historical regression entries
         run: node scripts/test-historic-regression-ledger.mjs
       - name: Verify historical W N F coverage ledger
+        id: history
         if: always()
         run: node scripts/verify-historic-regressions.mjs
       - name: Upload machine-readable quality coverage
@@ -52,10 +56,12 @@ jobs:
       - name: Validate learner navigation audit script syntax
         run: node --check scripts/verify-student-navigation.mjs
       - name: Build with Cloudflare Pages automatic URL and default root path
+        id: buildsite
         env:
           CF_PAGES_URL: https://example.com
         run: npm run build
       - name: Extract student kit and build knowledge/helper independently
+        id: studentkit
         env:
           FULL_STUDENT_PACK_BUILD: '1'
         run: node scripts/verify-student-pack.mjs
@@ -64,16 +70,21 @@ jobs:
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
       - name: Draft leak negative regression suite
+        id: drafts
         run: node scripts/test-draft-leakage-regressions.mjs
       - name: Fault-injection navigation regression suite
+        id: navigation
         run: node scripts/test-student-navigation-regressions.mjs
       - name: Fault-inject skip links, low contrast and stalled Reveal into editorial audit
+        id: editorial
         run: node scripts/test-editorial-audit-faults.mjs
       - name: Verify editorial inline-wrap overlap regression
         run: node scripts/test-editorial-overlap-regressions.mjs
       - name: Verify starter planner keyboard, labels and custom path in real browser
+        id: planner
         run: node scripts/qa-starter-planner.mjs
       - name: Verify first-time onboarding guide at four widths
+        id: guide
         run: node scripts/qa-preparation-guide.mjs
       - name: Upload guide screenshots and results
         if: always()
@@ -83,6 +94,7 @@ jobs:
           path: qa-artifacts/prepare/
           retention-days: 14
       - name: Capture 12 layouts at four widths
+        id: layouts
         run: node scripts/qa-layout-screenshots.mjs
       - name: Upload 48 screenshots and audit
         if: always()
@@ -104,3 +116,29 @@ jobs:
           grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/rss.xml
           grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/sitemap.xml
           if grep -q 'pikaone1138.github.io/astro-personal-site-starter/' dist/rss.xml dist/sitemap.xml; then exit 1; fi
+
+      - name: Finalize five-gate quality dashboard
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          QA_REGISTRY: ${{ steps.registry.outcome }}
+          QA_COMPILE: ${{ steps.compile.outcome }}
+          QA_COVERAGE: ${{ steps.coverage.outcome }}
+          QA_HISTORY: ${{ steps.history.outcome }}
+          QA_BUILD: ${{ steps.buildsite.outcome }}
+          QA_STARTER: ${{ steps.studentkit.outcome }}
+          QA_DRAFTS: ${{ steps.drafts.outcome }}
+          QA_NAV: ${{ steps.navigation.outcome }}
+          QA_PLANNER: ${{ steps.planner.outcome }}
+          QA_EDITORIAL: ${{ steps.editorial.outcome }}
+          QA_LAYOUTS: ${{ steps.layouts.outcome }}
+          QA_GUIDE: ${{ steps.guide.outcome }}
+          QA_DEPLOYMENT: not-run
+        run: node scripts/finalize-quality-dashboard.mjs
+      - name: Upload final five-gate quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-five-gates
+          path: qa-artifacts/quality/
+          retention-days: 30
