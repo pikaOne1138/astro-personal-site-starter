@@ -36,3 +36,6 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 
 ## 和現有展示站的差異
 `astro-pr-preview` 是**學員共用的雙平台 PR／Preview／安全發布 Skill**：先辨識自己的部署平台，再走 GitHub Pages、Cloudflare Pages 或 Workers 對應流程。本研究展示 Repo 的 GitHub Pages Artifacts + `workflow_run` 預覽機制是特例，不代表學員 Repo 已具備相同 Workflow。Cloudflare Pages 的 Git Preview 也須先核對專案連線與真實部署記錄。不得悄悄更改研究站既有的成功部署工作流程。
+
+## 工具權限與首次連接
+AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。
