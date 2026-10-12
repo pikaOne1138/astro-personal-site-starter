@@ -138,6 +138,9 @@ jobs:
       - name: Audit Blocks and Effects gallery at four widths
         id: blockeffects
         run: node scripts/qa-blocks-effects.mjs
+      - name: Fault-inject missing Block viewport and no-JS audit evidence
+        id: blockevidence
+        run: node scripts/test-block-render-evidence.mjs
       - name: Validate all six shared Astro components at four widths
         id: sharedcomponents
         run: node scripts/qa-all-shared-components.mjs
@@ -211,6 +214,7 @@ jobs:
           QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
           QA_LIVE_SEARCH: ${{ steps.livesearch.outcome }}
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
+          QA_BLOCK_EVIDENCE: ${{ steps.blockevidence.outcome }}
           QA_DRAFTS: ${{ steps.drafts.outcome }}
           QA_PLANNER: ${{ steps.planner.outcome }}
           QA_NAV: ${{ steps.navigation.outcome }}
