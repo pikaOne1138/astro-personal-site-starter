@@ -114,6 +114,26 @@ try {
    await page.close();
   }
  }
+ // Progressive enhancement: students must still be able to read the gallery without JavaScript.
+ const noJS=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:850},reducedMotion:'reduce'});
+ try{
+  for(const kind of ['blocks','effects']){
+   const page=await noJS.newPage();
+   const response=await page.goto(base+'/'+kind+'/',{waitUntil:'domcontentloaded',timeout:20000});
+   const result=await page.evaluate(()=>{
+    const main=document.querySelector('main');
+    const headline=main?.querySelector('h1');
+    const css=headline?getComputedStyle(headline):null;
+    const nodes=[...document.querySelectorAll('[data-motion-reveal]')];
+    return {readable:!!headline?.textContent?.trim()&&!!css&&css.visibility!=='hidden'&&Number(css.opacity)>0.95,
+      revealCount:nodes.length,hiddenReveals:nodes.filter(el=>getComputedStyle(el).visibility==='hidden'||Number(getComputedStyle(el).opacity)<0.95).length,
+      overflow:document.documentElement.scrollWidth>window.innerWidth+2};
+   });
+   rows.push({kind:kind+'-nojs',width:390,http:response?.status(),...result});
+   if(response?.status()!==200||!result.readable||result.hiddenReveals||result.overflow)failures.push(kind+'/no-js: content inaccessible, overflow or Reveal stuck hidden');
+   await page.close();
+  }
+ }finally{await noJS.close()}
  const labels=rows.find(r=>r.kind==='blocks')?.renderedLabels||[];
  const importable=new Set(labels.map(s=>s.trim().toLowerCase()));
  const coverage=blocks.map(block=>({id:block.id,name:block.name,galleryLabelSeen:importable.has(block.name.toLowerCase()),browserBehavior:'NOT TESTED'}));
