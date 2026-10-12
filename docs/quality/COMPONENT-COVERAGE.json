@@ -1,0 +1,2976 @@
+{
+  "schemaVersion": 1,
+  "notes": "Inventory of every source Astro component. Declared check responsibilities are not execution results; none of these are marked PASS until executed with matching SHA evidence.",
+  "components": {
+    "src/components/ArticleArchive.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/DemoPage.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/DesignLibraryNav.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/MultiPage.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/ShowcaseDemoGrid.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/SiteNav.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/AboutProfile.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArchiveMonths.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleAccordion.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleCallout.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleComparison.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleGrid.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleList.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleNavigation.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleSearch.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleShare.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ArticleViewSwitcher.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/AuthorBox.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/BackToTop.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/BookingLink.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/Breadcrumbs.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/Button.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/CTASection.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/CategoryLinks.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ContactActions.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ContactSection.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ContentCarousel.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/FAQ.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/FeatureGrid.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/FeaturedPost.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/HeroCentered.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/HeroImage.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/HeroSplit.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ImageText.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/LeadMagnetCard.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/MediaEmbed.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/MobileMenu.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/NewsletterSignup.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/PostCalendar.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/PostCard.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/PostGrid.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/PractitionerCard.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/PricingDetails.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ProcessSteps.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ReadingProgress.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/RelatedArticles.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ResourceCard.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ResourceLibrary.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/SectionHeading.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ServiceCard.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/ServiceFit.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/SiteFooter.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/SiteHeader.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/SiteSearchDialog.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/SocialLinks.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/Stats.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/TableOfContents.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/TagCloud.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/Testimonial.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/blocks/TrustInfo.astro": {
+      "group": "blocks",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C01-low-pressure-invite.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C02-boundary-strip.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C03-proof-slots.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C04-process-then-contact.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C05-closing-band.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C06-team-initials.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C07-subscribe-cadence.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/cta-trust/C08-provenance-note.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H01-rail-margin.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H02-offset-stagger.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H03-hard-shadow-split.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H04-mat-still-stamp.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H05-signal-band.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H06-spec-sheet.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H07-letter-arch.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H08-veil-fullbleed.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H09-poster-stack.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H10-sticker-split.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H11-numeral-index.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/heroes/H12-route-diagram.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L01-ledger-rows.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L02-node-track.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L03-archive-table.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L04-stair-details.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L05-date-disc-rows.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/lists/L06-leader-toc.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R01-spacing-ladder.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R02-band-alternation.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R03-rule-weights.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R04-fr-mirror.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R05-voice-heading.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/rhythm/R06-media-accent.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S01-manifesto-split.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S02-fit-pair.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S03-letter-fold.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S04-dark-band.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S05-article-lead.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S06-index-shelf.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S07-accordion-panel.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/editorial-recipes/sections/S08-evidence-table.astro": {
+      "group": "editorialRecipes",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/MagneticButton.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/MotionCard.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/MotionFAQ.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/Reveal.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/StaggerGroup.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/UnderlineLink.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/effects/ZoomImage.astro": {
+      "group": "effects",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/patterns/FeaturedWorkSection.astro": {
+      "group": "patterns",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/patterns/FooterPattern.astro": {
+      "group": "patterns",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "src/components/patterns/TrustServiceSection.astro": {
+      "group": "patterns",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  }
+}
