@@ -8,6 +8,7 @@ const patterns=JSON.parse(readFileSync(new URL('../src/data/section-patterns.reg
 const allowed={knowledge:['articles','topics','start-here','about','resources'],helper:['services','first-visit','about','faq','articles','booking']};
 const nav=(plan.navigation||[]).filter(x=>x.enabled);
 if(plan.version!==1||!allowed[plan.kind]||!layouts.some(l=>l.kind===plan.kind&&l.slug===plan.layoutSlug)||!['paper','morning','studio','botanical','ocean','sand','slate','lavender'].includes(plan.visualTheme)||!/^#[0-9a-fA-F]{6}$/.test(plan.brand?.primaryColor||'')||!plan.brand?.name?.trim()||nav.length<2||nav.length>20||nav.filter(x=>!x.parentId).length>12||nav.some(x=>(!allowed[plan.kind].includes(x.id)&&!/^page-[a-z0-9-]{1,32}$/.test(x.id))||!x.label?.trim())||nav.some(x=>x.parentId&&(!nav.some(parent=>parent.id===x.parentId&&!parent.parentId)||x.parentId===x.id))||nav.some(x=>x.parentId&&nav.filter(y=>y.parentId===x.parentId).length>10)||new Set(nav.map(x=>x.id)).size!==nav.length||!nav.some(x=>x.id===plan.primaryCta?.pageId))throw Error('Invalid StarterPlan');
+if(nav.some(x=>x.id==='articles'&&x.path&&x.path!=='articles/'))throw Error('Article archive path is fixed at articles/');
 const paths=nav.map(x=>x.path??x.id+'/');
 if(paths.some(p=>!/^([a-z0-9-]+\/)+$/.test(p)||(p.startsWith('articles/')&&p!=='articles/')||p.includes('//'))||new Set(paths).size!==paths.length)throw Error('Invalid custom navigation route');
 const selections=plan.sectionPatterns||[];
