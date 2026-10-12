@@ -96,6 +96,8 @@ jobs:
         id: linkaudit
         run: node scripts/test-generated-link-audit.mjs
       - name: Install Chromium for 12-layout visual QA
+        id: chromium
+        if: always()
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
@@ -179,7 +181,7 @@ jobs:
         run: node scripts/qa-cloudflare-preview.mjs
       - name: Browser-review actual Cloudflare Preview at mobile and desktop widths
         id: remotebrowser
-        if: always()
+        if: always() && steps.chromium.outcome == 'success'
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: node scripts/qa-cloudflare-browser.mjs
