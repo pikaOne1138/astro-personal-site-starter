@@ -1,6 +1,7 @@
 import {createServer} from 'node:http';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
+import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 const port=4339;
 let scenario='healthy';
 const links=[['首頁','/'],['關於','/about/'],['工具箱','/toolbox/']];
@@ -21,15 +22,26 @@ const run=async(paths='/,/about/,/toolbox/')=>new Promise(resolve=>{
  let logs='';child.stdout.on('data',v=>logs+=v);child.stderr.on('data',v=>logs+=v);
  child.on('close',code=>resolve({code,logs}));
 });
+const cases=[];
 try{
  for(const [name,shouldPass] of [['healthy',true],['mobile-missing',false],['broken',false],['already-open',true],['unrelated-control',true],['decorative-glyph',true]]){
   scenario=name;
   const result=await run();
   if((result.code===0)!==shouldPass)throw Error(name+' expected '+(shouldPass?'PASS':'FAIL')+' got '+result.code+'\n'+result.logs);
+  const proof=JSON.parse(readFileSync('qa-artifacts/navigation/results.json','utf8'));
+  const messages=proof.fail||[];
+  const expectedFailure=name==='mobile-missing'?messages.some(v=>/desktop\/mobile nav mismatch|expected link absent \/toolbox\//.test(v)):
+    name==='broken'?messages.some(v=>/nav destination \/missing\/.*HTTP 404/.test(v)):true;
+  if(!expectedFailure)throw Error(name+' failed without the expected navigation-specific diagnostic: '+JSON.stringify(messages));
+  const ids=name==='mobile-missing'?['F02']:name==='broken'?['F01']:name==='decorative-glyph'?['W7']:[];
+  for(const id of ids)cases.push({id,name,expected:shouldPass?'PASS':'REJECT',exitCode:result.code,diagnostic:messages,passed:true});
+
   console.log('Navigation regression '+name+': '+(shouldPass?'PASS':'caught intentionally')+(name==='decorative-glyph'?' [W7]':name==='mobile-missing'?' [F02]':name==='broken'?' [F01]':''));
  }
  scenario='healthy';
  const duplicate=await run('/,/about/,/about/');
  if(duplicate.code===0)throw Error('Duplicate route list was accepted');
  console.log('Navigation regression duplicate-route: caught intentionally');
+ mkdirSync('qa-artifacts/quality',{recursive:true});
+ writeFileSync('qa-artifacts/quality/navigation-regression-cases.json',JSON.stringify({schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:'PASS',cases,scope:'Current-SHA navigation faults and decorative glyph normal case; historical pre-fix proof remains separate.'},null,2)+'\n');
 }finally{server.close()}

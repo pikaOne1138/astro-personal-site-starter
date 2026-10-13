@@ -60,6 +60,11 @@ const linkProofAtCurrentSha=linkProof?.status==='PASS'&&linkProof?.sha===process
 const routeProofPath='qa-artifacts/quality/starter-route-regression-cases.json';
 const routeProof=existsSync(routeProofPath)?JSON.parse(readFileSync(routeProofPath,'utf8')):null;
 const routeProofAtCurrentSha=routeProof?.status==='PASS'&&routeProof?.sha===process.env.GITHUB_SHA;
+const additionalProofs=[
+ {path:'qa-artifacts/quality/navigation-regression-cases.json',cases:['W7','F01','F02']},
+ {path:'qa-artifacts/quality/editorial-fault-cases.json',cases:['N7','N8','N9','F08','F14']}
+].map(p=>({...p,data:existsSync(p.path)?JSON.parse(readFileSync(p.path,'utf8')):null}));
+
 const problems=[],rows={};
 for(const [id,requirement] of Object.entries(ledger.defects)){
  const match=named[id];
@@ -86,6 +91,12 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
  if(routeProofAtCurrentSha&&evidence?.outcome==='success'){
   const direct=routeProof.cases.filter(c=>c.passed===true&&(c.id===id||new RegExp('\\b'+id+'\\b').test(c.name)));
   if(direct.length)evidence.directCurrentShaChecks=direct.map(c=>({name:c.name,expected:c.expected,exitCode:c.exitCode??null,diagnostic:c.diagnostic||null}));
+ }
+ for(const proof of additionalProofs){
+  if(proof.cases.includes(id)&&proof.data?.sha===process.env.GITHUB_SHA&&proof.data?.status==='PASS'&&evidence?.outcome==='success'){
+    const direct=proof.data.cases.filter(c=>c.id===id&&c.passed===true);
+    if(direct.length)evidence.directCurrentShaChecks=direct.map(c=>({name:c.name,expected:c.expected,exitCode:c.exitCode,diagnostic:c.diagnostic,metrics:c.metrics||null}));
+  }
  }
  rows[id]={requirement:requirement.note,ledgerStatus:requirement.status,observed,evidence};
 }
