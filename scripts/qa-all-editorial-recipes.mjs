@@ -45,7 +45,24 @@ try{
    await page.close();
   }
  }
- const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registeredRecipes:40,viewportChecks:entries.length,individualRecipeChecks:entries.reduce((n,x)=>n+x.recipes.length,0),h01Checks,errors,entries,scope:'40 distinct live Editorial Recipe components at 1440/1280/768/390. Behavior beyond rendered visibility, keyboard sequences, human visual judgment remain NOT TESTED'};
+
+ // True JavaScript-disabled browser, not merely prefers-reduced-motion.
+ const noJSChecks=[];
+ for(const [group,[prefix,count]] of Object.entries(groups)){
+  const page=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:false,reducedMotion:'reduce'});
+  try{
+   const response=await page.goto(base+'/layouts/recipes/'+group+'/',{waitUntil:'domcontentloaded',timeout:20000});
+   const result=await page.evaluate(({prefix,count})=>{
+    const ids=Array.from({length:count},(_,i)=>prefix+String(i+1).padStart(2,'0'));
+    return {recipes:ids.map(id=>{const el=document.getElementById(id)||document.querySelector('.'+id.toLowerCase());if(!el)return{id,visible:false};const rect=el.getBoundingClientRect();const style=getComputedStyle(el);return{id,visible:rect.height>=8&&style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>0&&Boolean(el.textContent?.trim())}}),overflow:document.documentElement.scrollWidth>innerWidth+2};
+   },{prefix,count});
+   const passed=response?.status()===200&&!result.overflow&&result.recipes.length===count&&result.recipes.every(x=>x.visible);
+   noJSChecks.push({group,width:390,componentCount:count,http:response?.status(),...result,passed});
+   if(!passed)errors.push('Editorial Recipe no-JS '+group+': failed visible static content contract');
+  }finally{await page.close()}
+ }
+
+ const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registeredRecipes:40,noJSChecks,individualNoJSChecks:noJSChecks.reduce((n,x)=>n+x.recipes.length,0),viewportChecks:entries.length,individualRecipeChecks:entries.reduce((n,x)=>n+x.recipes.length,0),h01Checks,errors,entries,scope:'40 distinct live Editorial Recipe components at 1440/1280/768/390. Behavior beyond rendered visibility, keyboard sequences, human visual judgment remain NOT TESTED'};
  writeFileSync('qa-artifacts/quality/editorial-recipes-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Editorial recipes browser: '+report.status+'; '+report.individualRecipeChecks+' individual render checks; '+errors.length+' errors');
  errors.forEach(e=>console.error('FAIL '+e));if(errors.length)process.exitCode=1;
