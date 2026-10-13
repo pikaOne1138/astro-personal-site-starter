@@ -12,7 +12,7 @@ function findFailures(rows){
  return rows.flatMap(row=>row.controls.flatMap(c=>{
   const problems=[];
   if(!c.name)problems.push('no accessible-name candidate');
-  if(!c.focusOk)problems.push('not programmatically focusable');
+  if(c.focusOk===false)problems.push('not programmatically focusable');
   if(c.ariaControlsResolved===false)problems.push('aria-controls points to missing node');
   return problems.map(problem=>row.name+'/'+row.width+' '+c.tag+'['+c.index+']: '+problem);
  }));
@@ -38,7 +38,7 @@ try{
      if(labelText)return labelText;
      const wrapped=el.closest('label')?.textContent?.trim();
      if(wrapped)return wrapped;
-     const content=el.textContent?.trim();
+     const content=['INPUT','SELECT','TEXTAREA'].includes(el.tagName)?'':el.textContent?.trim();
      if(content)return content;
      const img=el.querySelector('img[alt]');
      if(img?.alt?.trim())return img.alt.trim();
@@ -46,6 +46,12 @@ try{
      if(value&&['submit','button','reset'].includes(el.getAttribute('type')))return value;
      return el.getAttribute('title')?.trim()||'';
     }
+    const unlabeledSelect=document.createElement('select');
+    unlabeledSelect.appendChild(new Option('選項不是欄位名稱'));
+    if(label(unlabeledSelect))throw Error('QA semantic false PASS: unlabeled select took its option text as accessible name');
+    const placeholderInput=document.createElement('input');
+    placeholderInput.setAttribute('placeholder','提示不是欄位標籤');
+    if(label(placeholderInput))throw Error('QA semantic false PASS: placeholder accepted as an accessible name');
     return names.map(name=>{
      const matches=demos.filter(d=>d.querySelector('.ab-demo-label strong')?.textContent?.trim()===name);
      let index=0;
@@ -55,11 +61,12 @@ try{
      }).map(el=>{
        const name=label(el);
        const before=document.activeElement;
-       if(el.tabIndex>=0)el.focus({preventScroll:true});
-       const focusOk=el.tabIndex<0||document.activeElement===el;
+       const focusTested=el.tabIndex>=0;
+       if(focusTested)el.focus({preventScroll:true});
+       const focusOk=focusTested?document.activeElement===el:null;
        if(before instanceof HTMLElement)before.focus({preventScroll:true});
        const controls=el.getAttribute('aria-controls');
-       return {index:index++,tag:el.tagName.toLowerCase(),name,focusOk,
+       return {index:index++,tag:el.tagName.toLowerCase(),name,focusTested,focusOk,
         ariaControlsResolved:controls?controls.split(/\s+/).every(id=>!!document.getElementById(id)):null};
      });
      return {name,examples:matches.length,controls};
@@ -80,7 +87,7 @@ try{
  if(!findFailures(failFocus).some(x=>x.includes('not programmatically focusable')))throw Error('Non-focusable mutation was not rejected');
  const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:violations.length?'FAIL':'PASS',
    registered:blocks.length,widths:viewports,measurements:rows.length,controlsObserved:rows.reduce((n,x)=>n+x.controls.length,0),
-   violations,negativeMutations:['missing accessible name rejected','not focusable rejected'],rows,
+   violations,focusSkipped:rows.reduce((n,x)=>n+x.controls.filter(c=>!c.focusTested).length,0),negativeMutations:['missing accessible name rejected','not focusable rejected','unlabeled select option text rejected','input placeholder rejected'],rows,
    limitations:'Accessible-name DOM heuristic and programmatic focus, not full accessibility tree, actual Tab order or WCAG audit. No control in a static Block is valid.'};
  writeFileSync('qa-artifacts/quality/block-control-semantics.json',JSON.stringify(report,null,2)+'\n');
  console.log('Block control semantics '+report.status+': '+report.measurements+' per-Block viewports; '+report.controlsObserved+' controls; '+violations.length+' issues; two mutations rejected');
