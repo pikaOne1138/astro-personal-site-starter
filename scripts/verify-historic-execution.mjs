@@ -51,6 +51,9 @@ const named={
  F12:['scripts/test-draft-leakage-regressions.mjs','QA_DRAFTS'],
  F10b:['scripts/qa-blocks-effects.mjs','QA_BLOCK_EFFECT']
 };
+const draftProofPath='qa-artifacts/quality/draft-regression-cases.json';
+const draftProof=existsSync(draftProofPath)?JSON.parse(readFileSync(draftProofPath,'utf8')):null;
+const proofAtCurrentSha=draftProof?.status==='PASS'&&draftProof?.sha===process.env.GITHUB_SHA;
 const problems=[],rows={};
 for(const [id,requirement] of Object.entries(ledger.defects)){
  const match=named[id];
@@ -66,11 +69,15 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
     limitation:'The named test suite executed. Per-case negative/positive evidence and independent previous SHA remain required for full VERIFIED.'};
   }
  }
+ if(proofAtCurrentSha&&evidence?.outcome==='success'){
+  const direct=draftProof.cases.filter(x=>x.pass&&new RegExp('\\\\b'+id+'\\\\b').test(x.name));
+  if(direct.length)evidence.directCurrentShaChecks=direct.map(x=>({name:x.name,expected:x.expected,exitCode:x.exitCode,signature:x.signature,diagnosticMatched:x.signatureMatches}));
+ }
  rows[id]={requirement:requirement.note,ledgerStatus:requirement.status,observed,evidence};
 }
 for(const id of Object.keys(named))if(!ledger.defects[id])problems.push('Named evidence map references missing case '+id);
 const namedExecuted=Object.values(rows).filter(x=>x.observed==='NAMED TEST EXECUTED').length;
-const result={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,executionSha:process.env.GITHUB_SHA||null,tracked:Object.keys(rows).length,namedSourceCases:Object.keys(named).length,namedExecuted,notCaseProven:Object.keys(rows).length-namedExecuted,verificationComplete:false,problems,rows,invalidExcluded:ledger.excludedFaults};
+const result={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,executionSha:process.env.GITHUB_SHA||null,tracked:Object.keys(rows).length,namedSourceCases:Object.keys(named).length,namedExecuted,notCaseProven:Object.keys(rows).length-namedExecuted,directCaseEvidence:Object.values(rows).filter(x=>x.evidence?.directCurrentShaChecks?.length).length,verificationComplete:false,problems,rows,invalidExcluded:ledger.excludedFaults};
 mkdirSync('qa-artifacts/quality',{recursive:true});
 writeFileSync('qa-artifacts/quality/historic-execution-evidence.json',JSON.stringify(result,null,2)+'\n');
 const md=['# Historical W/N/F evidence reconciliation','',
@@ -79,5 +86,5 @@ const md=['# Historical W/N/F evidence reconciliation','',
  ...Object.entries(rows).map(([id,x])=>'- '+id+': '+x.observed+(x.evidence?' ('+x.evidence.path+')':'')),...problems.map(x=>'FAIL '+x)].join('\n')+'\n';
 writeFileSync('qa-artifacts/quality/historic-execution-evidence.md',md);
 if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,md,{flag:'a'});
-console.log('Historical source-to-run evidence: '+namedExecuted+'/'+result.tracked+' named checks observed; '+problems.length+' invalid mappings');
+console.log('Historical source-to-run evidence: '+namedExecuted+'/'+result.tracked+' named checks observed; '+result.directCaseEvidence+' direct case-level output proofs; '+problems.length+' invalid mappings');
 if(problems.length){problems.forEach(x=>console.error('FAIL '+x));process.exitCode=1;}
