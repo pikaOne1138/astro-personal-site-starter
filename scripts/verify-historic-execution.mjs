@@ -109,6 +109,60 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
    }
   }
  }
+
+ if(evidence?.outcome==='success'){
+  const readProof=(filename)=>{const path='qa-artifacts/quality/'+filename;return existsSync(path)?JSON.parse(readFileSync(path,'utf8')):null};
+  const current=p=>p?.status==='PASS'&&(p.sha===process.env.GITHUB_SHA||p.headSha===process.env.GITHUB_SHA||p.checkoutSha===process.env.GITHUB_SHA);
+  let direct=null;
+  if(['W1','W2','W13','W14'].includes(id)){
+   const p=readProof('learner-document-safety.json');
+   const assertions=p?.assertions?.filter(x=>x.id===id&&x.status==='PASS')||[];
+   const faults=p?.faults?.filter(x=>x.id===id&&x.catches===true)||[];
+   if(current(p)&&assertions.length&&faults.length&&assertions.length===faults.length)direct={name:id+' documentation safety contract',assertions:assertions.length,destructiveFixturesCaught:faults.length,limitation:'This proves document content, not old Preview URL HTTP or Cloudflare permission state'};
+  }
+  if(['W5','N15'].includes(id)){
+   const p=readProof('theme-contrast-roles.json');
+   if(current(p)&&p.checks?.length===8&&p.checks.every(x=>x.pass)&&p.botanicalChecks?.length===3&&p.botanicalChecks.every(x=>x.pass)&&p.negativeTest?.detected===true)
+    direct={name:id+' foreground theme role ratios and negative pale-text fixture',themeCount:8,botanicalChecks:p.botanicalChecks,mutationDetected:true,limitation:'Token pairs are not all computed DOM color states'};
+  }
+  if(id==='W3'){
+   const p=readProof('interview-zip-consistency.json');
+   if(current(p)&&p.files?.length===7&&p.files.every(x=>x.exact===true)&&p.errors?.length===0)
+    direct={name:'W3 seven browser-downloaded interview files byte-identical',files:p.files.length,limitation:'Byte equality is not AI answer correctness'};
+  }
+  if(id==='W8'){
+   const p=readProof('live-chinese-search.json');
+   if(current(p)&&p.rows?.length===4&&p.rows.every(x=>x.matched&&x.count>0&&!x.pageErrors.length))
+    direct={name:'W8 four theme Chinese live search result checks',queries:p.rows.map(x=>({theme:x.theme,term:x.term,count:x.count})),limitation:'Not full indexing/exclusion ranking approval'};
+  }
+  if(['W4','N1','N14','N16'].includes(id)){
+   const p=readProof('planner-interaction-cases.json');
+   const field={W4:['editFocused','labelUpdated'],N1:['reorderFocus'],N14:['customPathPresent'],N16:['previewFocusable']}[id];
+   if(current(p)&&p.records?.length===2&&p.records.every(x=>[1440,390].includes(x.width)&&field.every(key=>x[key]===true)))
+    direct={name:id+' real planner browser interaction',measurements:p.records.map(x=>({width:x.width,verified:Object.fromEntries(field.map(k=>[k,x[k]]))}))};
+  }
+  if(id==='W12'){
+   const p=readProof('onboarding-structure.json');
+   if(current(p)&&p.checks?.length===3&&p.checks[0].status==='PASS'&&p.checks.slice(1).every(x=>x.status==='EXPECTED FAIL'&&x.errors?.length))
+    direct={name:'W12 nine-step onboarding numbering plus two malformed fixtures',checks:p.checks.map(x=>({name:x.name,status:x.status}))};
+  }
+  if(id==='N18'){
+   const p=readProof('editorial-recipes-browser.json');
+   if(current(p)&&p.h01Checks?.length===4&&p.h01Checks.every(x=>x.passed&&x.links===1&&x.inert===1&&x.noFakeHref&&x.customCaption))
+    direct={name:'N18 H01 actual link, inert rail and configurable image caption at four widths',checks:p.h01Checks};
+  }
+  if(id==='N20'){
+   const p=readProof('canonical-student-prompt.json');
+   if(current(p)&&p.sourceContract==='PASS'&&p.bundledZip==='PASS'&&p.errors?.length===0)
+    direct={name:'N20 guide, START-HERE, README canonical text and actual bundled ZIP',zip:p.bundledZip};
+  }
+  if(id==='F07'){
+   const p=readProof('home-mobile-overflow-regression.json');
+   if(current(p)&&p.checks?.length===2&&p.checks.every(x=>x.pass)&&p.checks[1].measurement.overflow)
+    direct={name:'F07 390px normal width fits and injected 520px width overflows',checks:p.checks};
+  }
+  if(direct)evidence.directCurrentShaChecks=[direct];
+ }
  rows[id]={requirement:requirement.note,ledgerStatus:requirement.status,observed,evidence};
 }
 for(const id of Object.keys(named))if(!ledger.defects[id])problems.push('Named evidence map references missing case '+id);

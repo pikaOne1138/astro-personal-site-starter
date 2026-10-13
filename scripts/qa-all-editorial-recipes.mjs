@@ -4,7 +4,7 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {mkdirSync,writeFileSync} from 'node:fs';
 const port=4347,base='http://127.0.0.1:'+port;
 const groups={heroes:['H',12],sections:['S',8],lists:['L',6],rhythm:['R',6],'cta-trust':['C',8]};
-const viewports=[1440,1280,768,390],entries=[],errors=[];
+const viewports=[1440,1280,768,390],entries=[],errors=[],h01Checks=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
 const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});let browser;
 try{
@@ -35,6 +35,7 @@ try{
       &&(await page.locator('#H01 span.rail-item').count())===1
       &&(await page.locator('#H01 a[href="#"]').count())===0;
     const caption=await page.locator('#H01 figcaption').innerText();
+    h01Checks.push({width,links:await page.locator('#H01 a.rail-item[href="#H02"]').count(),inert:await page.locator('#H01 span.rail-item').count(),noFakeHref:await page.locator('#H01 a[href="#"]').count()===0,customCaption:caption.includes('版型示範圖'),passed:validLinks&&caption.includes('版型示範圖')});
     if(!validLinks||!caption.includes('版型示範圖'))errors.push('N18 H01 '+width+': fictitious link exposed or adjustable caption missing');
    }
    const entry={group,width,http:result?.status(),...checked,jsErrors};
@@ -44,7 +45,7 @@ try{
    await page.close();
   }
  }
- const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registeredRecipes:40,viewportChecks:entries.length,individualRecipeChecks:entries.reduce((n,x)=>n+x.recipes.length,0),errors,entries,scope:'40 distinct live Editorial Recipe components at 1440/1280/768/390. Behavior beyond rendered visibility, keyboard sequences, human visual judgment remain NOT TESTED'};
+ const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registeredRecipes:40,viewportChecks:entries.length,individualRecipeChecks:entries.reduce((n,x)=>n+x.recipes.length,0),h01Checks,errors,entries,scope:'40 distinct live Editorial Recipe components at 1440/1280/768/390. Behavior beyond rendered visibility, keyboard sequences, human visual judgment remain NOT TESTED'};
  writeFileSync('qa-artifacts/quality/editorial-recipes-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Editorial recipes browser: '+report.status+'; '+report.individualRecipeChecks+' individual render checks; '+errors.length+' errors');
  errors.forEach(e=>console.error('FAIL '+e));if(errors.length)process.exitCode=1;
