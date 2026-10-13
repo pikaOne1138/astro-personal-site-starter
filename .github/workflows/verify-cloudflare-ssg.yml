@@ -23,6 +23,8 @@ permissions:
 jobs:
   static-build:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: '--import=data:text/javascript,process.env.GITHUB_SHA%3Dprocess.env.QA_CHECKOUT_SHA%7C%7Cprocess.env.GITHUB_SHA'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,7 +39,7 @@ jobs:
           echo "QA checkout: $ACTUAL / PR head: $EXPECTED"
           test "$ACTUAL" = "$EXPECTED"
       - name: Stamp Node QA artifacts with real checkout SHA
-        run: echo "NODE_OPTIONS=--import=$(pwd)/scripts/qa-real-checkout-sha.mjs" >> "$GITHUB_ENV"
+        run: echo "QA_CHECKOUT_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Assert Node QA execution SHA equals PR Head
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
