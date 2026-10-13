@@ -141,6 +141,9 @@ jobs:
       - name: Fault-inject missing Block viewport and no-JS audit evidence
         id: blockevidence
         run: node scripts/test-block-render-evidence.mjs
+      - name: Verify all 54 Block keyboard focus and accessible control names
+        id: blocksemantics
+        run: node scripts/qa-block-control-semantics.mjs
       - name: Validate all six shared Astro components at four widths
         id: sharedcomponents
         run: node scripts/qa-all-shared-components.mjs
@@ -259,6 +262,7 @@ jobs:
           QA_LAYOUTS: ${{ steps.layouts.outcome }}
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
           QA_BLOCK_EVIDENCE: ${{ steps.blockevidence.outcome }}
+          QA_BLOCK_SEMANTICS: ${{ steps.blocksemantics.outcome }}
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_GUIDE: ${{ steps.guide.outcome }}
           QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
