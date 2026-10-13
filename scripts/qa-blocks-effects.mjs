@@ -197,6 +197,22 @@ try {
     },blocks.map(x=>x.name));
     for(const item of result.individualBlockVisibility)if(!item.visible)failures.push('Block no-js '+item.name+': no independently readable demo');
    }
+   if(kind==='effects'){
+    result.individualEffectVisibility=await page.evaluate(()=>({
+     Reveal:document.querySelectorAll('#reveal [data-motion-reveal]').length>=5,
+     StaggerGroup:!!document.querySelector('#stagger [data-motion-stagger]'),
+     MotionCard:document.querySelectorAll('#cards [data-motion-card]').length===2,
+     ZoomImage:document.querySelectorAll('#images [data-motion-image] img[alt]').length===2,
+     MagneticButton:!!document.querySelector('#actions [data-motion-magnetic][href]'),
+     UnderlineLink:document.querySelectorAll('#actions a.motion-underline[href]').length===3,
+     MotionFAQ:document.querySelectorAll('#faq .motion-faq details').length===3
+    }));
+    for(const [name,visible] of Object.entries(result.individualEffectVisibility))if(!visible)failures.push('Effect no-js '+name+': semantic component missing');
+    const faq=page.locator('#faq .motion-faq details').first();
+    await faq.locator('summary').click();
+    result.nativeFAQWorksWithoutJS=await faq.evaluate(el=>el.open);
+    if(!result.nativeFAQWorksWithoutJS)failures.push('MotionFAQ no-js native details did not open');
+   }
    rows.push({kind:kind+'-nojs',width:390,http:response?.status(),...result});
    if(response?.status()!==200||!result.readable||result.hiddenReveals||result.overflow)failures.push(kind+'/no-js: content inaccessible, overflow or Reveal stuck hidden');
    await page.close();
