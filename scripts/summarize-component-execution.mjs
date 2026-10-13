@@ -30,6 +30,12 @@ for(const [path,declaration] of Object.entries(inventory.components)){
   const pass=(blocks.rows||[]).filter(x=>x.kind==='effects'&&[1440,1280,768,390].includes(x.width));
   if(pass.length===4&&pass.every(x=>x.allEffects?.[name]===true)){row.demo='PASS';row.responsive='PASS';row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Four responsive rendered DOM samples and reduced-motion page fixture'})}
  }
+ if(declaration.group==='effects'&&usable(blocks)){
+  const noJS=blocks.rows?.find(x=>x.kind==='effects-nojs'&&x.width===390);
+  if(noJS?.individualEffectVisibility?.[name]===true&&noJS.readable===true&&noJS.hiddenReveals===0){
+   row.noJavaScript='PASS';row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Actual no-JavaScript Chromium effect DOM visible at 390px'});
+  }
+ }
  if(declaration.group==='editorialRecipes'&&usable(recipes)){
   const id=name.slice(0,3);
   const matched=(recipes.entries||[]).flatMap(e=>(e.recipes||[]).filter(x=>x.id===id).map(x=>({...x,width:e.width})));
