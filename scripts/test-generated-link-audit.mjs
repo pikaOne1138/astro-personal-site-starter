@@ -34,6 +34,12 @@ try{
   const result=auditLinks(root);
   record('N5',label+' rejected by URL policy',result.failures.some(x=>x.includes('unsafe a URL')),result.failures);
  }
+ writeFileSync(join(root,'index.html'),'<a href="/bad%ZZ/">Malformed percent escape</a>');
+ const malformed=auditLinks(root);
+ record('N5','invalid percent-encoded link rejected without audit crash',malformed.failures.some(x=>x.includes('malformed percent-encoded URL')),malformed.failures);
+ writeFileSync(join(root,'index.html'),'<a href="/start-here/tools/">Valid link</a>');
+ const afterMalformed=auditLinks(root);
+ record('N5','valid link still accepted after malformed URL fixture',afterMalformed.failures.length===0,afterMalformed.failures);
  console.log('N5 F06 source HTML link and footer link positive/negative regression PASS');
  console.log('PASS generated link auditor positive and negative regression');
  mkdirSync('qa-artifacts/quality',{recursive:true});
