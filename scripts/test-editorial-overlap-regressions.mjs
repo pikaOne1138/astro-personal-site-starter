@@ -1,7 +1,7 @@
 import {createServer} from 'node:http';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
-import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,rmSync,mkdirSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 const out=mkdtempSync(join(tmpdir(),'editorial-overlap-'));
@@ -24,4 +24,6 @@ try{
  const collision=JSON.parse(readFileSync(join(out,'report.json'),'utf8')).find(x=>x.width===390);
  if(collision.metrics.textOverlap<1)throw Error('Failed to detect real CSS overlap: '+b.logs);
  console.log('N10 long CJK H1 and normal inline wrap PASS; injected CSS collision detected '+collision.metrics.textOverlap);
+ mkdirSync('qa-artifacts/quality',{recursive:true});
+ writeFileSync('qa-artifacts/quality/editorial-overlap-case.json',JSON.stringify({schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:'PASS',cases:[{id:'N10',name:'CJK long title/inline wrap accepted and deliberate CSS collision detected',passed:true,expected:'normal=0 overlap; collision>=1',observations:{normal:normal.metrics.textOverlap,collision:collision.metrics.textOverlap}}]},null,2)+'\n');
 }finally{server.close();rmSync(out,{recursive:true,force:true})}

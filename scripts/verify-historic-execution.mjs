@@ -61,6 +61,7 @@ const routeProofPath='qa-artifacts/quality/starter-route-regression-cases.json';
 const routeProof=existsSync(routeProofPath)?JSON.parse(readFileSync(routeProofPath,'utf8')):null;
 const routeProofAtCurrentSha=routeProof?.status==='PASS'&&routeProof?.sha===process.env.GITHUB_SHA;
 const additionalProofs=[
+ {path:'qa-artifacts/quality/editorial-overlap-case.json',cases:['N10']},
  {path:'qa-artifacts/quality/navigation-regression-cases.json',cases:['W7','F01','F02']},
  {path:'qa-artifacts/quality/editorial-fault-cases.json',cases:['N7','N8','N9','F08','F14']}
 ].map(p=>({...p,data:existsSync(p.path)?JSON.parse(readFileSync(p.path,'utf8')):null}));
@@ -96,6 +97,16 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
   if(proof.cases.includes(id)&&proof.data?.sha===process.env.GITHUB_SHA&&proof.data?.status==='PASS'&&evidence?.outcome==='success'){
     const direct=proof.data.cases.filter(c=>c.id===id&&c.passed===true);
     if(direct.length)evidence.directCurrentShaChecks=direct.map(c=>({name:c.name,expected:c.expected,exitCode:c.exitCode,diagnostic:c.diagnostic,metrics:c.metrics||null}));
+  }
+ }
+ if(['W9','W11','N11','N17','F10b'].includes(id)&&evidence?.outcome==='success'){
+  const path='qa-artifacts/quality/block-effect-browser.json';
+  if(existsSync(path)){
+   const result=JSON.parse(readFileSync(path,'utf8'));
+   if(result.sha===process.env.GITHUB_SHA&&result.failed===0){
+    const direct=result.historicalCases?.find(x=>x.id===id&&x.passed===true);
+    if(direct)evidence.directCurrentShaChecks=[{name:direct.name,expected:'PASS',observations:direct.observations}];
+   }
   }
  }
  rows[id]={requirement:requirement.note,ledgerStatus:requirement.status,observed,evidence};

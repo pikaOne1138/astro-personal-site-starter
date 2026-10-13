@@ -103,10 +103,12 @@ try {
     const searchTrigger=page.locator('[data-search-open]').first();
     await searchTrigger.click();
     const searchDialog=page.locator('[data-site-search]').first();
-    if(!await searchDialog.evaluate(el=>el.open))failures.push('N17/'+width+': search dialog did not open');
+    recorded.searchDialogOpened=await searchDialog.evaluate(el=>el.open);
+    if(!recorded.searchDialogOpened)failures.push('N17/'+width+': search dialog did not open');
     await searchDialog.locator('[data-site-query]').fill('搜尋測試');
     await searchDialog.locator('[data-site-query]').press('Escape');
-    if(await searchDialog.evaluate(el=>el.open))failures.push('N17/'+width+': first Escape did not close populated search');
+    recorded.searchDialogClosed=!(await searchDialog.evaluate(el=>el.open));
+    if(!recorded.searchDialogClosed)failures.push('N17/'+width+': first Escape did not close populated search');
     const menu=page.locator('.practical-gallery-mobile [data-mobile-menu]').first();
     const toggle=menu.locator('[data-menu-open]');
     const controlled=await toggle.getAttribute('aria-controls');
@@ -114,12 +116,15 @@ try {
     if(!controlled || !controlled.startsWith('mobile-menu-'))failures.push('W9/'+width+': missing deterministic menu ID');
     if(await toggle.isVisible()){
       await toggle.click();
-      if(await toggle.getAttribute('aria-expanded')!=='true')failures.push('W9/'+width+': menu did not expand');
+      recorded.mobileMenuExpanded=await toggle.getAttribute('aria-expanded')==='true';
+      if(!recorded.mobileMenuExpanded)failures.push('W9/'+width+': menu did not expand');
       await page.keyboard.press('Escape');
       const closed=await page.waitForFunction(() => document.querySelector('.practical-gallery-mobile [data-menu-open]')?.getAttribute('aria-expanded')==='false',null,{timeout:2500}).then(()=>true).catch(()=>false);
+      recorded.mobileMenuClosed=closed;
       if(!closed)failures.push('F10b/'+width+': Escape did not close mobile menu');
       if(closed){
         const restored=await page.waitForFunction(() => document.querySelector('.practical-gallery-mobile [data-menu-open]')===document.activeElement,null,{timeout:1500}).then(()=>true).catch(()=>false);
+        recorded.mobileMenuFocusRestored=restored;
         if(!restored)failures.push('W9/'+width+': focus did not return to menu trigger');
       }
       recorded.mobileMenuInteracted=true;
@@ -153,7 +158,8 @@ try {
     const unlinked=featureDemo.locator('article.ab-feature');
     recorded.featureGrid={linked:await linked.count(),unlinked:await unlinked.count()};
     if(recorded.featureGrid.linked!==1||recorded.featureGrid.unlinked!==2)failures.push('W11/'+width+': linked and unlinked FeatureGrid tiles changed');
-    if(await linked.first().getAttribute('href')!=='#hero')failures.push('W11/'+width+': entire feature tile lacks correct navigation href');
+    recorded.featureGrid.href=await linked.first().getAttribute('href');
+    if(recorded.featureGrid.href!=='#hero')failures.push('W11/'+width+': entire feature tile lacks correct navigation href');
 
    }
    if(recorded.http!==200)failures.push(kind+'/'+width+': HTTP '+recorded.http);
@@ -209,7 +215,18 @@ try {
     props:'NOT TESTED',keyboard:'NOT TESTED',negativeProps:'NOT TESTED'};
  });
  for(const item of individualBlockCoverage)if(!item.renderContractPass)failures.push('Block '+item.name+': per-component four-width/no-JS render contract missing');
- const report={sha:process.env.GITHUB_SHA||null,checks:rows.length,failed:failures.length,failures,rows,blockGalleryCoverage:coverage,individualBlockCoverage,counts:{registeredBlocks:blocks.length,visibleGalleryLabels:coverage.filter(c=>c.galleryLabelSeen).length,effectsRegistered:effects.length},scope:'All Blocks independently require visible demo at four widths and without JS; Props variants, negative input, keyboard and cross-component integration remain NOT TESTED'};
+ const blockRows=rows.filter(x=>x.kind==='blocks'&&[1440,1280,768,390].includes(x.width));
+ const mobile=blockRows.find(x=>x.width===390);
+ const fullFourWidths=blockRows.length===4;
+ const historicalCases=[
+  {id:'N11',name:'SiteFooter touch/text contracts across four widths',passed:fullFourWidths&&blockRows.every(x=>x.N11?.ok===true),observations:blockRows.map(x=>({width:x.width,N11:x.N11}))},
+  {id:'N17',name:'SearchDialog opens and populated Escape closes on first press',passed:fullFourWidths&&blockRows.every(x=>x.searchDialogOpened===true&&x.searchDialogClosed===true),observations:blockRows.map(x=>({width:x.width,opened:x.searchDialogOpened,closed:x.searchDialogClosed}))},
+  {id:'W11',name:'FeatureGrid clickable and inert tiles work at all widths',passed:fullFourWidths&&blockRows.every(x=>x.featureGrid?.linked===1&&x.featureGrid?.unlinked===2&&x.featureGrid?.href==='#hero'),observations:blockRows.map(x=>({width:x.width,featureGrid:x.featureGrid}))},
+  {id:'W9',name:'MobileMenu stable aria-controls ID, opens, closes and returns focus',passed:!!mobile?.mobileMenuId&&mobile.mobileMenuId.startsWith('mobile-menu-')&&mobile.mobileMenuExpanded===true&&mobile.mobileMenuClosed===true&&mobile.mobileMenuFocusRestored===true,observations:[{width:390,id:mobile?.mobileMenuId,expanded:mobile?.mobileMenuExpanded,closed:mobile?.mobileMenuClosed,focusRestored:mobile?.mobileMenuFocusRestored}]},
+  {id:'F10b',name:'MobileMenu Escape closes native mobile menu',passed:mobile?.mobileMenuClosed===true,observations:[{width:390,closed:mobile?.mobileMenuClosed}]}
+ ];
+ for(const item of historicalCases)if(!item.passed)failures.push('Historical Block browser case '+item.id+': failed explicit expected controls');
+ const report={sha:process.env.GITHUB_SHA||null,checks:rows.length,failed:failures.length,failures,rows,blockGalleryCoverage:coverage,individualBlockCoverage,historicalCases,counts:{registeredBlocks:blocks.length,visibleGalleryLabels:coverage.filter(c=>c.galleryLabelSeen).length,effectsRegistered:effects.length},scope:'All Blocks independently require visible demo at four widths and without JS; Props variants, negative input, keyboard and cross-component integration remain NOT TESTED'};
  writeFileSync(dir+'/block-effect-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Blocks/Effects gallery QA: '+rows.length+' viewports, '+failures.length+' failures; '+report.counts.visibleGalleryLabels+'/'+blocks.length+' registry names visible in demo labels');
  if(failures.length){failures.forEach(f=>console.error('FAIL '+f));process.exitCode=1;}
