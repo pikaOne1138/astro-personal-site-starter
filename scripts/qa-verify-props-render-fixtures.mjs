@@ -7,7 +7,7 @@ function verify(){
  for(const item of plan.rows){
   const path=resolve(dir,'__qa_props__',item.id,'index.html');
   if(!existsSync(path)){errors.push(item.id+': missing built Astro fixture HTML');rows.push({...item,status:'FAIL',reason:'missing built HTML'});continue}
-  const html=readFileSync(path,'utf8'),match=html.match(/<main\b[^>]*data-props-fixture="([^"]+)"[^>]*>([\s\\S]*?)<\/main>/i);
+  const html=readFileSync(path,'utf8'),match=html.match(/<main\b[^>]*data-props-fixture="([^"]+)"[^>]*>([\s\S]*?)<\/main>/i);
   const content=(match?.[2]||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
   const passed=match?.[1]===item.id&&content.length>0;
   if(!passed)errors.push(item.id+': missing component-rendered content or fixture ID');
