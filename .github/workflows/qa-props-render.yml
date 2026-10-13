@@ -51,4 +51,4 @@ jobs:
           retention-days: 30
       - name: Remove temporary fixture pages
         if: always()
-        run: rm -rf src/pages/__qa_props__ qa-dist
+        run: rm -rf src/pages/qa-props-fixtures qa-dist
