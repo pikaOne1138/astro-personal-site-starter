@@ -52,7 +52,7 @@ try{
  console.log('W6 placeholder content NOTICE rather than FAIL: PASS');
  cases.push({name:'W6 placeholder NOTICE',caseId:'W6',expected:'NOTICE',exitCode:notice.status,signature:'NOTICE:',statusMatches:true,signatureMatches:true,pass:true});
  put('dist/index.html',html('Public home'));
- put('dist/index.html',html('<a href="/articles/'+draft+'/">'+title+'</a>'));
+ put('dist/index.html',html('Publicly exposed private title: '+title));
  expect('draft in homepage',false,'Draft leaked into public discovery/output:');
  put('dist/index.html',html());
  put('dist/rss.xml','<rss version="2.0"><item><link>https://example.com/articles/'+draft+'/</link></item></rss>');
@@ -69,7 +69,7 @@ try{
  unlinkSync(join(root,'dist/articles/'+draft+'/index.html'));
  put('src/content/drafts/folder-only.md',article.replace('qa-secret-draft','folder-only'));
  expect('F05 isolated draft clean output',true);
- put('dist/index.html',html('<a href="/articles/folder-only/">Never Publish This Example Draft</a>'));
+ put('dist/index.html',html('Publicly exposed isolated draft title: Never Publish This Example Draft'));
  expect('isolated draft leaked in homepage',false,'Draft leaked into public discovery/output:');
  put('dist/index.html',html());
  // A draft title under eight Chinese characters must still be considered sensitive.
