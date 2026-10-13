@@ -28,7 +28,13 @@ export function auditLinks(dist,base='/'){
    try{dest=new URL(raw,'https://site.invalid'+from).pathname}catch{failures.push(from+' invalid URL '+raw);continue}
    if(base!=='/'&&dest.startsWith(base))dest=dest.slice(base.length-1);
    if(!dest.startsWith('/'))dest='/'+dest;
-   const clean=decodeURIComponent(dest);
+   let clean;
+   try{clean=decodeURIComponent(dest)}catch{
+    failures.push(from+' malformed percent-encoded URL '+raw.slice(0,120));continue;
+   }
+   if(/[\\u0000-\\u001f\\u007f]/.test(clean)){
+    failures.push(from+' unsafe control characters in URL '+raw.slice(0,120));continue;
+   }
    const target=resolve(root,'.'+clean);
    if(target!==root&&!target.startsWith(root+'/')){failures.push(from+' unsafe URL '+raw);continue}
    const candidates=extname(clean)?[target]:[join(target,'index.html'),target+'.html',target];
