@@ -1,0 +1,54 @@
+name: Independent Component Props Render QA
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/qa-generate-props-render-fixtures.mjs'
+      - 'scripts/qa-verify-props-render-fixtures.mjs'
+      - 'scripts/inventory-all-component-props.mjs'
+      - 'docs/quality/COMPONENT-COVERAGE.json'
+      - '.github/workflows/qa-props-render.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  props-render:
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: '--import=data:text/javascript,process.env.GITHUB_SHA%3Dprocess.env.QA_CHECKOUT_SHA%7C%7Cprocess.env.GITHUB_SHA'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert actual checkout equals PR Head
+        run: |
+          EXPECTED="${{ github.event.pull_request.head.sha || github.sha }}"
+          ACTUAL="$(git rev-parse HEAD)"
+          test "$ACTUAL" = "$EXPECTED"
+          echo "QA_CHECKOUT_SHA=$ACTUAL" >> "$GITHUB_ENV"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Inventory all component Props declarations
+        run: node scripts/inventory-all-component-props.mjs
+      - name: Generate 110 independent nominal Props fixtures
+        run: node scripts/qa-generate-props-render-fixtures.mjs
+      - name: Build isolated Astro Props fixtures
+        run: npx astro build --outDir qa-dist
+      - name: Verify nominal component renders and intended missing-fixture diagnostic
+        run: node scripts/qa-verify-props-render-fixtures.mjs
+      - name: Publish Props render evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-props-render-evidence
+          path: qa-artifacts/quality/
+          retention-days: 30
+      - name: Remove temporary fixture pages
+        if: always()
+        run: rm -rf src/pages/__qa_props__ qa-dist
