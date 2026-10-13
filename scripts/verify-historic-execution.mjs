@@ -91,11 +91,16 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
 }
 for(const id of Object.keys(named))if(!ledger.defects[id])problems.push('Named evidence map references missing case '+id);
 const namedExecuted=Object.values(rows).filter(x=>x.observed==='NAMED TEST EXECUTED').length;
-const result={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,executionSha:process.env.GITHUB_SHA||null,tracked:Object.keys(rows).length,namedSourceCases:Object.keys(named).length,namedExecuted,notCaseProven:Object.keys(rows).length-namedExecuted,directCaseEvidence:Object.values(rows).filter(x=>x.evidence?.directCurrentShaChecks?.length).length,verificationComplete:false,problems,rows,invalidExcluded:ledger.excludedFaults};
+const directCaseEvidence=Object.values(rows).filter(x=>x.evidence?.directCurrentShaChecks?.length).length;
+const result={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,executionSha:process.env.GITHUB_SHA||null,
+ tracked:Object.keys(rows).length,namedSourceCases:Object.keys(named).length,namedExecuted,
+ notExecuted:Object.keys(rows).length-namedExecuted,withoutDirectCaseEvidence:Object.keys(rows).length-directCaseEvidence,
+ directCaseEvidence,fullyHistoricallyVerified:0,verificationComplete:false,problems,rows,invalidExcluded:ledger.excludedFaults,
+ countingRules:'Named execution means workflow step success; direct proof means a case-level current SHA assertion; neither establishes historical before-fix evidence or full verification.'};
 mkdirSync('qa-artifacts/quality',{recursive:true});
 writeFileSync('qa-artifacts/quality/historic-execution-evidence.json',JSON.stringify(result,null,2)+'\n');
 const md=['# Historical W/N/F evidence reconciliation','',
- 'Total '+result.tracked+'; named source cases '+result.namedSourceCases+'; executed this run '+namedExecuted+'; not individually proven '+result.notCaseProven,
+ 'Total '+result.tracked+'; named source cases '+result.namedSourceCases+'; executed this run '+namedExecuted+'; direct case proofs '+directCaseEvidence+'; still without direct case evidence '+result.withoutDirectCaseEvidence,
  '','**EXECUTED is not historical VERIFIED, and must not promote source ledger entries to PASS.**','',
  ...Object.entries(rows).map(([id,x])=>'- '+id+': '+x.observed+(x.evidence?' ('+x.evidence.path+')':'')),...problems.map(x=>'FAIL '+x)].join('\n')+'\n';
 writeFileSync('qa-artifacts/quality/historic-execution-evidence.md',md);
