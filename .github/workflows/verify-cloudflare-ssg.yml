@@ -44,6 +44,8 @@ jobs:
       - name: Inventory declared Props across all Astro components
         id: propsinventory
         run: node scripts/inventory-all-component-props.mjs
+      - name: Fault-inject missing component Props inventory entry
+        run: node scripts/test-all-component-props-inventory.mjs
       - name: W12 verify onboarding Skill numbering and Markdown guardrail
         id: onboardingstructure
         run: node scripts/test-onboarding-skill-structure.mjs
