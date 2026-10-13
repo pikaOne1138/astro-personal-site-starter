@@ -16,11 +16,12 @@ const plan={
 };
 const cases=[];
 try{
- const run=(name,input,pass)=>{
+ const run=(name,input,pass,signature=null)=>{
   const folder=join(root,name),file=join(root,name+'.json');writeFileSync(file,JSON.stringify(input));
   const result=spawnSync(process.execPath,['scripts/export-starter.mjs',file,folder],{encoding:'utf8',timeout:20000});
   if((result.status===0)!==pass)throw Error(name+': expected '+(pass?'PASS':'FAIL')+', got '+result.status+'\n'+result.stderr.slice(-800));
-  cases.push({id:name.match(/\b(?:W\d+|N\d+)\b/)?.[0]||null,name,expected:pass?'PASS':'REJECT',exitCode:result.status,passed:true,diagnostic:(result.stderr||'').slice(0,550)});
+  if(!pass&&(!signature||!(result.stderr||'').includes(signature)))throw Error(name+': rejected for wrong contract or missing expected error '+signature+'\n'+result.stderr.slice(-800));
+  cases.push({id:name.match(/\b(?:W\d+|N\d+)\b/)?.[0]||null,name,expected:pass?'PASS':'REJECT',exitCode:result.status,passed:true,diagnostic:(result.stderr||'').slice(0,550),expectedDiagnostic:signature,diagnosticMatched:pass||!!signature&&result.stderr.includes(signature)});
   console.log((pass?'PASS ':'CORRECTLY REJECTED ')+name);
   return folder;
  };
@@ -52,11 +53,11 @@ try{
  cases.push({id:'N19',name:'Read-only learner PR CI controls',expected:'PASS',passed:true});
 
  const reserved=structuredClone(plan);reserved.navigation[0].path='all-stories/';
- run('N4 article archive reserved path',reserved,false);
+ run('N4 article archive reserved path',reserved,false,'Article archive path is fixed at articles/');
  const unsafe=structuredClone(plan);unsafe.navigation[2].path='../secrets/';
- run('W10 unsafe path traversal',unsafe,false);
+ run('W10 unsafe path traversal',unsafe,false,'Invalid custom navigation route');
  const duplicate=structuredClone(plan);duplicate.navigation[2].path='about/';
- run('W10 conflicting route',duplicate,false);
+ run('W10 conflicting route',duplicate,false,'Invalid custom navigation route');
  console.log('W10 N2 N3 N4 normal and negative route fixtures passed');
  mkdirSync('qa-artifacts/quality',{recursive:true});
  writeFileSync('qa-artifacts/quality/starter-route-regression-cases.json',JSON.stringify({schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:'PASS',cases,scope:'Current-SHA site generator positive/negative fixtures and source contracts. Independent built web output remains separately audited.'},null,2)+'\n');
