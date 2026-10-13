@@ -9,7 +9,7 @@ const usable=(doc)=>doc&&doc.sha===sha&&(doc.status==='PASS'||(doc.failed===0&&A
 const syntaxOk=syntax?.status==='PASS'&&syntax?.headSha===sha;
 const groups={},rows=[];
 for(const [path,declaration] of Object.entries(inventory.components)){
- const row={path,group:declaration.group,syntax:'NOT TESTED',demo:'NOT TESTED',responsive:'NOT TESTED',props:'NOT TESTED',behavior:'NOT TESTED',accessibility:'NOT TESTED',integration:'NOT TESTED',evidence:[]};
+ const row={path,group:declaration.group,syntax:'NOT TESTED',demo:'NOT TESTED',responsive:'NOT TESTED',noJavaScript:'NOT TESTED',props:'NOT TESTED',behavior:'NOT TESTED',accessibility:'NOT TESTED',integration:'NOT TESTED',evidence:[]};
  const st=syntax?.individualResults?.find(x=>x.path===path);
  if(syntaxOk&&st?.syntax==='PASS'){row.syntax='PASS';row.evidence.push({source:'all-astro-components.json',checkoutSha:sha,scope:'Astro source parses'})}
  const name=path.split('/').pop().replace(/\.astro$/,'');
@@ -47,9 +47,28 @@ for(const [path,declaration] of Object.entries(inventory.components)){
   const ok=associated.every(id=>(patterns.rows||[]).filter(x=>[1440,1280,768,390].includes(x.width)).every(x=>x.patterns?.some(p=>p.id===id&&p.present&&p.visible&&p.hasContent)));
   if(associated.length&&patterns.rows?.length===4&&ok){row.demo='PASS';row.responsive='PASS';row.evidence.push({source:'section-patterns-browser.json',checkoutSha:sha,scope:'Actual pattern gallery component at four viewport widths'})}
  }
- rows.push(row);groups[row.group]??={total:0,syntax:0,observed:0};groups[row.group].total++;
+
+ // Record JS-disabled browser proof separately from ordinary responsive rendering.
+ // Never use a gallery or a reduced-motion result as substitute evidence.
+ if(declaration.group==='blocks'&&usable(blocks)){
+  const evidence=blocks.individualBlockCoverage?.find(x=>x.name===name);
+  if(evidence?.renderContractPass===true&&evidence.noJSVisible===true){row.noJavaScript='PASS';row.evidence.push({source:'block-effect-browser.json',checkoutSha:sha,scope:'Individual Block visible with JavaScript disabled at 390px'});}
+ }
+ if(declaration.group==='editorialRecipes'&&usable(recipes)){
+  const id=name.slice(0,3);
+  if(recipes.noJSChecks?.some(check=>check.passed&&check.recipes?.some(x=>x.id===id&&x.visible))){row.noJavaScript='PASS';row.evidence.push({source:'editorial-recipes-browser.json',checkoutSha:sha,scope:'Actual no-JavaScript Chromium render at 390px'});}
+ }
+ if(declaration.group==='shared'&&usable(shared)){
+  if(shared.noJSRows?.some(x=>x.component===name&&x.pass===true)){row.noJavaScript='PASS';row.evidence.push({source:'shared-components-browser.json',checkoutSha:sha,scope:'Actual no-JavaScript Chromium render at 390px'});}
+ }
+ if(declaration.group==='patterns'&&usable(patterns)){
+  const associated=name==='FeaturedWorkSection'?['featured-work']:name==='TrustServiceSection'?['trust-service-path']:name==='FooterPattern'?['footer-minimal','footer-editorial','footer-professional']:[];
+  if(associated.length&&patterns.noJS?.passed&&associated.every(id=>patterns.noJS.samples?.some(x=>x.id===id&&x.visible))){row.noJavaScript='PASS';row.evidence.push({source:'section-patterns-browser.json',checkoutSha:sha,scope:'Actual no-JavaScript Chromium render at 390px'});}
+ }
+ rows.push(row);groups[row.group]??={total:0,syntax:0,observed:0,noJS:0};groups[row.group].total++;
  if(row.syntax==='PASS')groups[row.group].syntax++;
  if(row.demo!=='NOT TESTED')groups[row.group].observed++;
+ if(row.noJavaScript==='PASS')groups[row.group].noJS++;
 }
 const report={schemaVersion:1,prHeadSha:process.env.PR_HEAD_SHA||null,checkoutSha:sha,sourceAssetCount:rows.length,groups,rows,releaseAcceptance:'NOT TESTED',limitations:['Gallery name is not equivalent to independently verified Props/behavior','All source components compile, not every configuration or combination','Shared components require own functional and integration proofs','No human visual approval']};
 writeFileSync(dir+'/component-execution-coverage.json',JSON.stringify(report,null,2)+'\n');
