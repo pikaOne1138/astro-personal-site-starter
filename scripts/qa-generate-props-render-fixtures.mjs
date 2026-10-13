@@ -2,7 +2,7 @@ import {readFileSync,mkdirSync,writeFileSync,readdirSync,rmSync} from 'node:fs';
 import {join,relative} from 'node:path';
 const inventory=JSON.parse(readFileSync('qa-artifacts/quality/all-component-props-inventory.json','utf8'));
 if(inventory.status!=='PASS'||inventory.componentCount!==110||inventory.items.length!==110)throw Error('Props fixture generator requires complete current-source inventory');
-const dir='src/pages/__qa_props__';
+const dir='src/pages/qa-props-fixtures';
 rmSync(dir,{recursive:true,force:true});mkdirSync(dir,{recursive:true});
 const sample={id:'sample',slug:'sample',title:'QA 中文標題',label:'測試選項',name:'範例名稱',description:'測試敘述',excerpt:'測試摘要',answer:'常見問題答案',question:'這是問題嗎？',href:'#main',url:'https://example.org/sample',src:'/effects-sample.svg',image:'/effects-sample.svg',alt:'示意圖片',date:'2026-10-13',month:'2026-10',count:1,meta:'測試資料',value:'測試數值',role:'專業服務',bio:'真實測試範例，不代表正式資格',price:'待設定',duration:'60 分鐘',format:'線上',note:'Demo fixture',category:'知識',publishedAt:'2026-10-13',tags:['示範'],items:[],posts:[],articles:[],links:[],columns:2,rows:[['甲','乙']],headers:['欄位甲','欄位乙'],text:'QA 測試',init:'QA',k:'測試',v:'值',t:'QA title',d:'QA description',you:'示範對象',need:'來源待設定'};
 function value(prop){
@@ -53,7 +53,7 @@ const props=${JSON.stringify(props)};
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Component QA fixture</title></head><body><main id="main" data-props-fixture="${id}"><Component {...props}>QA Slot 可讀內容</Component></main></body></html>
 `;
  writeFileSync(join(dir,id+'.astro'),page);
- rows.push({id,path:entry.path,sourcePropCount:entry.props.length,props:Object.keys(props),route:'/__qa_props__/'+id+'/',expectedFile:'qa-dist/__qa_props__/'+id+'/index.html',status:'NOT TESTED'});
+ rows.push({id,path:entry.path,sourcePropCount:entry.props.length,props:Object.keys(props),route:'/qa-props-fixtures/'+id+'/',expectedFile:'qa-dist/qa-props-fixtures/'+id+'/index.html',status:'NOT TESTED'});
 }
 mkdirSync('qa-artifacts/quality',{recursive:true});
 writeFileSync('qa-artifacts/quality/props-render-fixture-plan.json',JSON.stringify({schemaVersion:1,checkoutSha:process.env.GITHUB_SHA||null,components:rows.length,props:rows.reduce((n,x)=>n+x.sourcePropCount,0),rows,scope:'One generated nominal Props value per declared Prop; no invalid Props or integrated theme acceptance'},null,2)+'\n');
