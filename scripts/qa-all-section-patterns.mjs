@@ -25,7 +25,17 @@ try{
   for(const v of state.patterns)if(!v.present||!v.visible||!v.hasContent)errors.push('Pattern '+v.id+'/'+width+': missing live render');
   await page.close();
  }
- const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registryCount:ids.length,componentCount:3,checks:rows.length*ids.length,rows,errors,scope:'All five pattern directions from three composed Astro components render at 1440/1280/768/390; interaction specifics and human design quality require separate acceptance'};
+
+ const noJSPage=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:false,reducedMotion:'reduce'});
+ let noJS;
+ try{
+  const response=await noJSPage.goto(base+'/section-patterns/',{waitUntil:'domcontentloaded'});
+  const samples=await noJSPage.evaluate(ids=>ids.map(id=>{const el=document.getElementById(id);if(!el)return{id,visible:false};const rect=el.getBoundingClientRect();const style=getComputedStyle(el);return{id,visible:rect.height>10&&style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>0&&Boolean(el.textContent?.trim())}}),ids);
+  noJS={width:390,http:response?.status(),samples,passed:response?.status()===200&&samples.length===ids.length&&samples.every(x=>x.visible)};
+  if(!noJS.passed)errors.push('Section pattern no-JS visibility: missing content');
+ }finally{await noJSPage.close()}
+
+ const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',registryCount:ids.length,componentCount:3,noJS,checks:rows.length*ids.length,rows,errors,scope:'All five pattern directions from three composed Astro components render at 1440/1280/768/390; interaction specifics and human design quality require separate acceptance'};
  writeFileSync('qa-artifacts/quality/section-patterns-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Section patterns browser: '+report.status+'; '+report.checks+' samples; '+errors.length+' errors');
  errors.forEach(x=>console.error('FAIL '+x));if(errors.length)process.exitCode=1;
