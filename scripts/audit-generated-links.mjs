@@ -32,7 +32,7 @@ export function auditLinks(dist,base='/'){
    try{clean=decodeURIComponent(dest)}catch{
     failures.push(from+' malformed percent-encoded URL '+raw.slice(0,120));continue;
    }
-   if(/[\\u0000-\\u001f\\u007f]/.test(clean)){
+   if(/[\u0000-\u001f\u007f]/.test(clean)){
     failures.push(from+' unsafe control characters in URL '+raw.slice(0,120));continue;
    }
    const target=resolve(root,'.'+clean);
