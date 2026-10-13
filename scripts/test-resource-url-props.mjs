@@ -5,16 +5,16 @@ import {transform} from '@astrojs/compiler';
 const cases=[];
 const check=(name,condition)=>{cases.push({name,passed:Boolean(condition)});if(!condition)throw Error('resource-url-props: '+name)};
 const files=['src/components/blocks/LeadMagnetCard.astro','src/components/blocks/ResourceCard.astro'];
-const valid=(href)=>href&&(/^(?:https:\/\/[^\s/#?]+(?:[/?#]|$)|\/(?!\/)[^\u0000-\u001f\u007f]*|\.\/(?!\/)[^\u0000-\u001f\u007f]*)/i.test(href)&&!/[\\"'<>]/.test(href));
+const valid=(href)=>{if(typeof href!=='string'||!href)return false;try{if(href.startsWith('/')&&!href.startsWith('//')||href.startsWith('./')&&!href.startsWith('.//')){if(/[\\"'<>\\s\\u0000-\\u001f\\u007f]/.test(href))return false;const decoded=decodeURIComponent(href);return !decoded.startsWith('//')&&!/[\\u0000-\\u001f\\u007f]/.test(decoded)}const u=new URL(href);return u.protocol==='https:'&&Boolean(u.hostname)&&!/[\\"'<>\\s]/.test(href)}catch{return false}};
 for(const path of files){
  const src=readFileSync(path,'utf8');
  await transform(src,{filename:path});
- check(path+' contains tested URL guard',src.includes('const valid=href&&(')&&src.includes('/(?!/)'));
+ check(path+' contains tested URL guard',src.includes('const valid=(()=>')&&src.includes('decodeURIComponent(href)'));
 }
 for(const href of ['https://example.org/resource','/guide/','./downloads/guide.pdf']){
  check('allow '+href,Boolean(valid(href)));
 }
-for(const href of ['//evil.example/a','javascript:alert(1)','data:text/html,evil','http://example.org','/bad" onclick="alert(1)','/bad\nlink']){
+for(const href of ['//evil.example/a','javascript:alert(1)','data:text/html,evil','http://example.org','/bad" onclick="alert(1)','/bad\nlink','/%ZZ/','/%2F%2Fevil.example/']){
  check('reject '+JSON.stringify(href),!valid(href));
 }
 mkdirSync('qa-artifacts/quality',{recursive:true});
