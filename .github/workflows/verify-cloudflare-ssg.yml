@@ -41,6 +41,9 @@ jobs:
       - name: Compile every Astro source component and verify six QA responsibilities
         id: allcomponents
         run: node scripts/verify-all-astro-components.mjs
+      - name: Inventory declared Props across all Astro components
+        id: propsinventory
+        run: node scripts/inventory-all-component-props.mjs
       - name: W12 verify onboarding Skill numbering and Markdown guardrail
         id: onboardingstructure
         run: node scripts/test-onboarding-skill-structure.mjs
