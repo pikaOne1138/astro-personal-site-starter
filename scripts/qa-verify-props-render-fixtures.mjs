@@ -5,7 +5,7 @@ const dir=process.env.QA_PROPS_DIST||'qa-dist';
 function verify(){
  const errors=[],rows=[];
  for(const item of plan.rows){
-  const path=resolve(dir,'__qa_props__',item.id,'index.html');
+  const path=resolve(dir,'qa-props-fixtures',item.id,'index.html');
   if(!existsSync(path)){errors.push(item.id+': missing built Astro fixture HTML');rows.push({...item,status:'FAIL',reason:'missing built HTML'});continue}
   const html=readFileSync(path,'utf8'),match=html.match(/<main\b[^>]*data-props-fixture="([^"]+)"[^>]*>([\s\S]*?)<\/main>/i);
   const content=(match?.[2]||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
@@ -18,7 +18,7 @@ function verify(){
 if(plan.components!==110||plan.props<400)throw Error('Props fixture plan is unexpectedly incomplete');
 const normal=verify();
 if(normal.errors.length)throw Error('Nominal Astro Props fixture failure:\n'+normal.errors.slice(0,15).join('\n'));
-const first=resolve(dir,'__qa_props__',plan.rows[0].id,'index.html'),missing=first+'.fault';
+const first=resolve(dir,'qa-props-fixtures',plan.rows[0].id,'index.html'),missing=first+'.fault';
 renameSync(first,missing);let negative;
 try{negative=verify();if(negative.errors.length!==1||!negative.errors[0].includes(plan.rows[0].id+': missing built Astro fixture HTML'))throw Error('Wrong validator rejected missing fixture: '+negative.errors.join('; '))}
 finally{renameSync(missing,first)}
