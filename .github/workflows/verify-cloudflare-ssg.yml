@@ -38,6 +38,10 @@ jobs:
           test "$ACTUAL" = "$EXPECTED"
       - name: Stamp Node QA artifacts with real checkout SHA
         run: echo "NODE_OPTIONS=--import=$(pwd)/scripts/qa-real-checkout-sha.mjs" >> "$GITHUB_ENV"
+      - name: Assert Node QA execution SHA equals PR Head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node -e "if(process.env.GITHUB_SHA!==process.env.EXPECTED_HEAD) process.exit(1);console.log('QA source SHA PASS',process.env.GITHUB_SHA)"
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Validate registered Blocks, Layouts and Pattern references
