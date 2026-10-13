@@ -70,7 +70,7 @@ for(const [id,requirement] of Object.entries(ledger.defects)){
   }
  }
  if(proofAtCurrentSha&&evidence?.outcome==='success'){
-  const direct=draftProof.cases.filter(x=>x.pass&&new RegExp('\\\\b'+id+'\\\\b').test(x.name));
+  const direct=draftProof.cases.filter(x=>x.pass&&new RegExp('\\b'+id+'\\b').test(x.name));
   if(direct.length)evidence.directCurrentShaChecks=direct.map(x=>({name:x.name,expected:x.expected,exitCode:x.exitCode,signature:x.signature,diagnosticMatched:x.signatureMatches}));
  }
  rows[id]={requirement:requirement.note,ledgerStatus:requirement.status,observed,evidence};
