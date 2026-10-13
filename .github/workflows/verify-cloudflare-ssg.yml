@@ -25,9 +25,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assert PR Head is the actual QA checkout
+        run: |
+          EXPECTED="${{ github.event.pull_request.head.sha || github.sha }}"
+          ACTUAL="$(git rev-parse HEAD)"
+          echo "QA checkout: $ACTUAL / PR head: $EXPECTED"
+          test "$ACTUAL" = "$EXPECTED"
+      - name: Stamp Node QA artifacts with real checkout SHA
+        run: echo "NODE_OPTIONS=--import=$(pwd)/scripts/qa-real-checkout-sha.mjs" >> "$GITHUB_ENV"
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Validate registered Blocks, Layouts and Pattern references
