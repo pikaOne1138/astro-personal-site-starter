@@ -33,7 +33,20 @@ try{
    await page.close();
   }
  }
- const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',components:cases.length,measurements:rows.length,rows,errors,scope:'Six shared Astro components each exercised by a real rendered route in four responsive widths; this checks their demonstration, basic structural contracts, JS exceptions and page overflow, not every Props variant.'};
+
+ const noJSRows=[];
+ for(const testcase of cases){
+  const page=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:false,reducedMotion:'reduce'});
+  try{
+   const response=await page.goto(base+testcase.route,{waitUntil:'domcontentloaded',timeout:20000});
+   const elements=await page.evaluate(arg=>[...document.querySelectorAll(arg.selector)].map(el=>{const r=el.getBoundingClientRect();const cs=getComputedStyle(el);return {visible:r.height>8&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0&&Boolean(el.textContent?.trim())}}),testcase);
+   const pass=response?.status()===200&&elements.length===testcase.count&&elements.every(x=>x.visible);
+   noJSRows.push({component:testcase.component,width:390,http:response?.status(),elements,pass});
+   if(!pass)errors.push(testcase.component+'/no-JS 390: hidden or missing content');
+  }finally{await page.close()}
+ }
+
+ const report={schemaVersion:1,sha:process.env.GITHUB_SHA||null,status:errors.length?'FAIL':'PASS',components:cases.length,noJSRows,noJSCount:noJSRows.length,measurements:rows.length,rows,errors,scope:'Six shared Astro components each exercised by a real rendered route in four responsive widths; this checks their demonstration, basic structural contracts, JS exceptions and page overflow, not every Props variant.'};
  writeFileSync('qa-artifacts/quality/shared-components-browser.json',JSON.stringify(report,null,2)+'\n');
  console.log('Shared Astro components browser '+report.status+': '+rows.length+' cases / '+errors.length+' errors');
  errors.forEach(e=>console.error('FAIL '+e));if(errors.length)process.exitCode=1;
