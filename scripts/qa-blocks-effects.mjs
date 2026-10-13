@@ -209,9 +209,13 @@ try {
     }));
     for(const [name,visible] of Object.entries(result.individualEffectVisibility))if(!visible)failures.push('Effect no-js '+name+': semantic component missing');
     const faq=page.locator('#faq .motion-faq details').first();
+    const initiallyOpen=await faq.evaluate(el=>el.open);
     await faq.locator('summary').click();
-    result.nativeFAQWorksWithoutJS=await faq.evaluate(el=>el.open);
-    if(!result.nativeFAQWorksWithoutJS)failures.push('MotionFAQ no-js native details did not open');
+    const afterClick=await faq.evaluate(el=>el.open);
+    result.nativeFAQWorksWithoutJS=afterClick!==initiallyOpen;
+    result.nativeFAQInitialState=initiallyOpen;
+    result.nativeFAQAfterClick=afterClick;
+    if(!result.nativeFAQWorksWithoutJS)failures.push('MotionFAQ no-js native details did not toggle when clicked');
    }
    rows.push({kind:kind+'-nojs',width:390,http:response?.status(),...result});
    if(response?.status()!==200||!result.readable||result.hiddenReveals||result.overflow)failures.push(kind+'/no-js: content inaccessible, overflow or Reveal stuck hidden');
