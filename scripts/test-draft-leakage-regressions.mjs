@@ -25,7 +25,7 @@ try{
   const combined=(execution.stdout||'')+'\\n'+(execution.stderr||'');
   const statusMatches=(execution.status===0)===ok;
   const signatureMatches=ok||combined.includes(signature);
-  const item={name,caseId:name.match(/\\b(?:W\\d+|N\\d+|F\\d+b?)\\b/)?.[0]||null,
+  const item={name,caseId:name.match(/\b(?:W\d+|N\d+|F\d+b?)\b/)?.[0]||null,
     expected:ok?'PASS':'REJECT',exitCode:execution.status,signature:signature||null,
     statusMatches,signatureMatches,pass:statusMatches&&signatureMatches};
   cases.push(item);
