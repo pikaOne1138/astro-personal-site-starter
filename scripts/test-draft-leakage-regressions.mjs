@@ -22,7 +22,7 @@ try{
  const expect=(name,ok,signature)=>{
   if(!ok&&!signature)throw Error('Negative test must identify the actual violated contract: '+name);
   const execution=run();
-  const combined=(execution.stdout||'')+'\\n'+(execution.stderr||'');
+  const combined=(execution.stdout||'')+'\n'+(execution.stderr||'');
   const statusMatches=(execution.status===0)===ok;
   const signatureMatches=ok||combined.includes(signature);
   const item={name,caseId:name.match(/\b(?:W\d+|N\d+|F\d+b?)\b/)?.[0]||null,
@@ -97,7 +97,7 @@ try{
   status:'PASS',cases,positiveCount:cases.filter(x=>x.expected==='PASS').length,
   negativeCount:cases.filter(x=>x.expected==='REJECT').length,noticeCount:cases.filter(x=>x.expected==='NOTICE').length,
   limitations:'A known issue is proven detected at this SHA, but its historical pre-fix SHA evidence and production authorisation are not implied.'};
- writeFileSync('qa-artifacts/quality/draft-regression-cases.json',JSON.stringify(report,null,2)+'\\n');
+ writeFileSync('qa-artifacts/quality/draft-regression-cases.json',JSON.stringify(report,null,2)+'\n');
  console.log('Draft regression proof: '+report.negativeCount+' faults rejected with contract-specific diagnostics; '+report.positiveCount+' positive controls; '+report.noticeCount+' NOTICE');
 
 }finally{rmSync(root,{force:true,recursive:true})}
