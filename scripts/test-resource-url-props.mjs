@@ -5,7 +5,7 @@ import {transform} from '@astrojs/compiler';
 const cases=[];
 const check=(name,condition)=>{cases.push({name,passed:Boolean(condition)});if(!condition)throw Error('resource-url-props: '+name)};
 const files=['src/components/blocks/LeadMagnetCard.astro','src/components/blocks/ResourceCard.astro'];
-const valid=(href)=>{if(typeof href!=='string'||!href)return false;try{if(href.startsWith('/')&&!href.startsWith('//')||href.startsWith('./')&&!href.startsWith('.//')){if(/[\\"'<>\\s\\u0000-\\u001f\\u007f]/.test(href))return false;const decoded=decodeURIComponent(href);return !decoded.startsWith('//')&&!/[\\u0000-\\u001f\\u007f]/.test(decoded)}const u=new URL(href);return u.protocol==='https:'&&Boolean(u.hostname)&&!/[\\"'<>\\s]/.test(href)}catch{return false}};
+const valid=(href)=>{if(typeof href!=='string'||!href)return false;try{if(href.startsWith('/')&&!href.startsWith('//')||href.startsWith('./')&&!href.startsWith('.//')){if(/[\"'<>\s\u0000-\u001f\u007f]/.test(href))return false;const decoded=decodeURIComponent(href);return !decoded.startsWith('//')&&!/[\u0000-\u001f\u007f]/.test(decoded)}const u=new URL(href);return u.protocol==='https:'&&Boolean(u.hostname)&&!/[\\"'<>\\s]/.test(href)}catch{return false}};
 for(const path of files){
  const src=readFileSync(path,'utf8');
  await transform(src,{filename:path});
