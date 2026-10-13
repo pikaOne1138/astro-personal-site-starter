@@ -258,6 +258,7 @@ jobs:
           QA_EDITORIAL: ${{ steps.editorial.outcome }}
           QA_LAYOUTS: ${{ steps.layouts.outcome }}
           QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
+          QA_BLOCK_EVIDENCE: ${{ steps.blockevidence.outcome }}
           QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
           QA_GUIDE: ${{ steps.guide.outcome }}
           QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
