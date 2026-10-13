@@ -11,8 +11,18 @@ export function auditLinks(dist,base='/'){
   const html=readFileSync(page,'utf8');
   const re=/<(?:a|link|script|img|source)\b[^>]*?\b(?:href|src)\s*=\s*["']([^"']+)["']/gi;
   for(const match of html.matchAll(re)){
-   const raw=match[1].replace(/&amp;/g,'&');
-   if(!raw||raw.startsWith('#')||/^(?:https?:|mailto:|tel:|data:|blob:|javascript:|\/\/)/i.test(raw))continue;
+   const tag=match[0].match(/^<([a-z]+)/i)?.[1]?.toLowerCase()||'';
+   const raw=match[1].replace(/&(?:#x([0-9a-f]+)|#([0-9]+)|amp|colon|tab|newline);?/gi,(entity,hex,dec)=>{
+    if(hex||dec){const n=parseInt(hex||dec,hex?16:10);return n>0&&n<=0x10ffff?String.fromCodePoint(n):entity}
+    const key=entity.replace(/^&|;$/g,'').toLowerCase();
+    return ({amp:'&',colon:':',tab:'\t',newline:'\n'})[key]??entity;
+   }).trim();
+   const schemeProbe=raw.replace(/[\u0000-\u0020]/g,'');
+   if(/^(?:javascript|vbscript|file):/i.test(schemeProbe)
+    ||(tag==='a'&&(/^(?:data|blob):/i.test(schemeProbe)||raw.startsWith('//')))){
+    failures.push('/'+relative(root,page).replaceAll('\\','/')+' unsafe '+tag+' URL '+raw.slice(0,120));continue;
+   }
+   if(!raw||raw.startsWith('#')||/^(?:https?:|mailto:|tel:|data:|blob:|\/\/)/i.test(raw))continue;
    const from='/' + relative(root,page).replaceAll('\\','/');
    let dest;
    try{dest=new URL(raw,'https://site.invalid'+from).pathname}catch{failures.push(from+' invalid URL '+raw);continue}

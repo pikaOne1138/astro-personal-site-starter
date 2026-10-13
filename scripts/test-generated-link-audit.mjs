@@ -20,6 +20,20 @@ try{
  writeFileSync(join(root,'index.html'),'<footer><a href="/wrong-footer-route/">已損壞頁尾導覽</a></footer>');
  const footerBroken=auditLinks(root);
  record('F06','broken footer route rejected',footerBroken.failures.some(x=>x.includes('/wrong-footer-route/')),footerBroken.failures);
+ writeFileSync(join(root,'index.html'),'<a href="https://example.org/safe">External secure link</a><a href="mailto:hello@example.org">Email</a><img src="data:image/png;base64,AA==">');
+ const allowed=auditLinks(root);
+ record('N5','allowed HTTPS, mailto and image data URL',allowed.failures.length===0,allowed.failures);
+ const attacks=[
+  ['javascript scheme','<a href="javascript:alert(1)">Unsafe</a>'],
+  ['entity-escaped javascript scheme','<a href="java&#x73;cript:alert(1)">Unsafe</a>'],
+  ['protocol-relative external link','<a href="//malicious.example/offer">Unsafe</a>'],
+  ['data HTML anchor','<a href="data:text/html,attack">Unsafe</a>']
+ ];
+ for(const [label,html] of attacks){
+  writeFileSync(join(root,'index.html'),html);
+  const result=auditLinks(root);
+  record('N5',label+' rejected by URL policy',result.failures.some(x=>x.includes('unsafe a URL')),result.failures);
+ }
  console.log('N5 F06 source HTML link and footer link positive/negative regression PASS');
  console.log('PASS generated link auditor positive and negative regression');
  mkdirSync('qa-artifacts/quality',{recursive:true});
