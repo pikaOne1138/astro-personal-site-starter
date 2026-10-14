@@ -40,3 +40,25 @@ body[data-site-family="collective"]>header .brand{font-family:system-ui,sans-ser
 body[data-site-family="trust-path"]{--chrome-panel:#eef1e8;--chrome-text:#233d39;--chrome-accent:#815938}
 body[data-site-family="trust-path"]>header{border-top:3px solid var(--chrome-accent)}
 @media(max-width:650px){body[data-site-family]>header{gap:.7rem;padding:1rem}body[data-site-family]>header nav{width:100%;display:flex;flex-wrap:wrap;gap:.8rem}body[data-site-family]>header .button{max-width:100%}}
+
+/* Shared responsive content safety: preserves a chosen design family, never substitutes a layout. */
+body[data-site-family]{overflow-wrap:break-word}
+body[data-site-family] :is(main,article,section,aside,nav,header,footer){min-width:0}
+body[data-site-family] :is(h1,h2,h3,h4,p,blockquote,dt,dd,figcaption,a,strong){overflow-wrap:anywhere}
+body[data-site-family] :is(img,video,iframe,svg){max-width:100%}
+body[data-site-family] :is(img,video){height:auto}
+body[data-site-family] :is(pre,table){max-width:100%;overflow-x:auto}
+body[data-site-family] pre{white-space:pre;overflow-x:auto;tab-size:2}
+body[data-site-family] :is(code,kbd,samp){overflow-wrap:anywhere}
+body[data-site-family] :is(table,figure){max-width:100%}
+body[data-site-family] table{display:block;overflow-x:auto;border-collapse:collapse}
+body[data-site-family] :focus-visible{outline:3px solid var(--chrome-accent);outline-offset:3px}
+body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition) :is(h1,h2,h3){text-wrap:balance}
+body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition) p{text-wrap:pretty}
+@media(max-width:390px){
+ body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition){max-width:100%;min-width:0}
+ body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition) :is(h1,h2){font-size:clamp(1.8rem,9vw,3.5rem);line-height:1.15}
+}
+@media(prefers-reduced-motion:reduce){
+ body[data-site-family] *,body[data-site-family] *::before,body[data-site-family] *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
