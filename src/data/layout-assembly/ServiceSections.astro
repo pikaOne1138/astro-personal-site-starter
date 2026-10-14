@@ -1,0 +1,48 @@
+---
+import config from '../../../../site.config.json';
+const family=config.layoutSlug;
+const facts=config.serviceFacts??{};
+const has=(key)=>typeof facts[key]==='string'&&facts[key].trim();
+const items=[
+ {id:'scope',label:'服務範圍',detail:has('scope')?facts.scope:'待站長提供真實服務項目與適合對象'},
+ {id:'exclusions',label:'服務界線',detail:has('exclusions')?facts.exclusions:'待站長確認哪些問題不在服務範圍內'},
+ {id:'method',label:'合作方式',detail:has('method')?facts.method:'待站長說明實際合作或面談方式'},
+ {id:'duration',label:'時間',detail:has('duration')?facts.duration:'尚未提供'},
+ {id:'price',label:'費用',detail:has('price')?facts.price:'尚未提供'},
+ {id:'cancellation',label:'取消方式',detail:has('cancellation')?facts.cancellation:'尚未提供'},
+ {id:'firstVisit',label:'第一次聯絡',detail:has('firstVisit')?facts.firstVisit:'待站長說明第一次接觸流程'},
+ {id:'qualification',label:'專業資格',detail:has('qualification')?facts.qualification:'待站長提供可查證資訊'}
+];
+---
+<div class="service-composition" data-service-family={family}>
+  <p class="service-preface">SERVICES / FACTS BEFORE DECISIONS</p>
+  <div class="service-header"><h2>在聯絡之前，先了解服務。</h2><p>這一頁只呈現站長提供並確認的資料。尚未設定的欄位明確標示，不代表提供未列出的服務。</p></div>
+  <dl class="service-details">{items.map((item,i)=><div class="service-detail" data-filled={String(Boolean(has(item.id)))}><dt><span>{String(i+1).padStart(2,'0')}</span>{item.label}</dt><dd>{item.detail}</dd></div>)}</dl>
+  {has('contact')?<div class="service-contact"><h2>一般聯絡方式</h2><p>{facts.contact}</p><small>此處只提供聯絡資訊，並未建立或確認預約。</small></div>:<p class="service-pending">聯絡資訊尚未設定；正式發布前請站長確認。</p>}
+</div>
+<style>
+.service-composition{margin:2rem 0 0;--line:color-mix(in srgb,currentColor 28%,transparent)}
+.service-preface{font:.73rem/1.6 ui-monospace,monospace;letter-spacing:.14em}
+.service-header{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(1rem,3vw,3rem);border-top:2px solid currentColor;margin-top:1.2rem;padding-top:1.5rem}
+.service-header h2{margin:0;font:500 clamp(1.6rem,3vw,3rem)/1.24 var(--brand-heading-font,Georgia,serif)}
+.service-header p{margin:0;font-size:.95rem;line-height:1.9}
+.service-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(1.4rem,3vw,3rem);margin:2rem 0 3rem}
+.service-detail{border-top:1px solid var(--line);padding:1.2rem 0 2rem;min-width:0}
+.service-detail dt{display:flex;gap:1.2rem;align-items:baseline;font-weight:600}
+.service-detail dt span{font:.75rem ui-monospace,monospace;opacity:.7}
+.service-detail dd{margin:.7rem 0 0 2.5rem;line-height:1.9;overflow-wrap:anywhere}
+.service-detail[data-filled="false"] dd{opacity:.7}
+.service-contact{border-top:4px solid currentColor;padding:1.2rem 0 2rem}.service-contact h2{font-size:clamp(1.4rem,2.5vw,2.3rem)}
+.service-pending{border-top:1px solid var(--line);padding:1rem 0;font-size:.9rem}
+.service-composition[data-service-family="trust-path"] .service-details{grid-template-columns:1fr}
+.service-composition[data-service-family="trust-path"] .service-detail{display:grid;grid-template-columns:30% 1fr;gap:1.5rem;align-items:baseline;padding:2rem 0}
+.service-composition[data-service-family="trust-path"] .service-detail dd{margin:0}
+.service-composition[data-service-family="clinician"] .service-detail{border-top-width:2px}
+.service-composition[data-service-family="companion"] .service-details{grid-template-columns:1fr;max-width:700px}
+.service-composition[data-service-family="companion"] .service-detail dt{font-family:var(--brand-heading-font,Georgia,serif);font-size:1.4rem;font-weight:400}
+.service-composition[data-service-family="somatic"] .service-details{grid-template-columns:1fr 1fr}
+.service-composition[data-service-family="somatic"] .service-header{grid-template-columns:1fr;max-width:690px}
+.service-composition[data-service-family="coach"] .service-detail dt{font-family:system-ui,sans-serif;text-transform:uppercase;letter-spacing:-.04em;font-size:1.2rem;font-weight:900}
+.service-composition[data-service-family="collective"] .service-details{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:700px){.service-header,.service-details,.service-composition[data-service-family="somatic"] .service-details,.service-composition[data-service-family="collective"] .service-details{grid-template-columns:1fr}.service-composition[data-service-family="trust-path"] .service-detail{grid-template-columns:1fr;gap:.5rem}}
+</style>
