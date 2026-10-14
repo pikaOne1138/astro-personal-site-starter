@@ -30,7 +30,7 @@ export interface StarterPlan {
   kind: StarterKind;
   layoutSlug: string;
   visualTheme: StarterTheme;
-  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
+  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; typography?: 'editorial-serif'|'clear-sans'|'balanced'; imageStyle?: 'natural'|'documentary'|'minimal'; heroImagePath?: string; heroImageAlt?: string; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
   navigation: StarterNavigationItem[];
   primaryCta: { label: string; pageId: string };
   sectionPatterns?: StarterPatternChoice[];
@@ -62,6 +62,11 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
     if(['primary','secondary','accent','background','text'].some(k=>!/^#[0-9a-fA-F]{6}$/.test(colors[k as keyof typeof colors]||'')))errors.push('品牌色盤必須提供五個有效 HEX 色碼');
     if(colors.primary.toUpperCase()!==plan.brand.primaryColor.toUpperCase())errors.push('主色需與色盤一致');
   }
+  const brand=plan.brand;
+  if(brand.typography && !['editorial-serif','clear-sans','balanced'].includes(brand.typography))errors.push('字體組合無效');
+  if(brand.imageStyle && !['natural','documentary','minimal'].includes(brand.imageStyle))errors.push('圖片風格無效');
+  if(brand.heroImagePath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.heroImagePath))errors.push('主視覺圖片需使用網站自己的 /images/ 檔案路徑');
+  if(brand.heroImageAlt && (brand.heroImageAlt.length>180 || !brand.heroImagePath))errors.push('主視覺替代文字需要有效的圖片路徑');
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
