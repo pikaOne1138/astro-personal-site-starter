@@ -22,6 +22,11 @@ const normalizedTopics=topics.map(t=>({slug:t.slug,title:text(t.title,'topic tit
 const facts={};for(const k of ['scope','credentials','format','duration','price','cancellation'])facts[k]=text(data.serviceFacts?.[k]||'',k);
 const faq=data.faq||[];if(!Array.isArray(faq)||faq.length>50)throw Error('Invalid faq');
 const questions=faq.map(q=>({question:text(q.question,'question',300),answer:text(q.answer,'answer')}));
+const rawVisitorIntents=data.visitorIntents??[];
+if(!Array.isArray(rawVisitorIntents)||rawVisitorIntents.length>6)throw Error('Invalid visitorIntents: expected up to six visitor reading entries');
+const allowedIntentTargets=new Set(['fit','services','faq']);
+const visitorIntents=rawVisitorIntents.map((intent,i)=>{if(!intent||!allowedIntentTargets.has(intent.target))throw Error('Invalid visitorIntent target '+i);return {title:text(intent.title,'visitorIntent title',140),detail:text(intent.detail,'visitorIntent detail',500),target:intent.target}});
+
 const email=data.contact?.email||'';if(email&&(!/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)||email.length>254))throw Error('Invalid contact email');
 const contact={email,url:https(data.contact?.url,'contact URL'),bookingUrl:https(data.contact?.bookingUrl,'booking URL')};
 const pageContent=Object.create(null);for(const [key,value] of Object.entries(plan.pageContent||{}))pageContent[key]=list(value,'page paragraphs');
@@ -42,7 +47,7 @@ try{
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
  settings.content=content;settings.pageContent=pageContent;
- settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,contact,explicitPageIds:plan.kind==='knowledge'?['articles','topics','page-search']:['services','faq','page-contact','page-privacy','page-search']};
+ settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['articles','topics','page-search']:['services','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.
  if(plan.contentDirectory){
