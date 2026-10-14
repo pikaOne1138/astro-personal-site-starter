@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='articles');
+const action=base+(nav?.path??'articles/');
+---
+<div class="catalog-shell" data-assembled-layout="curator">
+  <section class="catalog-hero" aria-labelledby="catalog-title">
+    <div class="catalog-hero-copy"><p class="catalog-kicker">THE CURATOR'S CABINET / COLLECTION</p><h1 id="catalog-title">把值得留下的，整理成目錄。</h1><p class="catalog-brand">{config.brand.name} · {config.brand.tagline}</p><p class="catalog-intro">書、文章與工具，不是排行榜，而是一份附有選入理由的收藏。</p><a class="catalog-cta" href="#collection">進入目錄 ↓</a></div>
+    <figure class="catalog-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="catalog-art" role="img" aria-label="抽象書籍和物件展牆"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="catalog-section-list"><section class="catalog-section" id="collection"><p class="catalog-section-tag">01 / COLLECTION</p><h2>策展目錄</h2><p>01 值得一讀／02 思考工具／03 最近發現</p></section>
+<section class="catalog-section" id="shelf"><p class="catalog-section-tag">02 / SHELF</p><h2>本月選集</h2><p>收藏項目有自己的分類、摘要和後續閱讀線索。</p></section>
+<section class="catalog-section" id="notes"><p class="catalog-section-tag">03 / NOTES</p><h2>策展札記</h2><p>記錄每件收藏物為何被留下，而不是單純羅列連結。</p><a href={action}>閱讀文章 ↗</a></section></div>
+  <footer class="catalog-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
+</div>
+<style>
+.catalog-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.catalog-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. catalog-hero-copy{min-width:0}
+.catalog-kicker,.catalog-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.catalog-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.catalog-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.catalog-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.catalog-figure{margin:0;min-width:0}. catalog-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.catalog-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.catalog-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.catalog-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.catalog-section-list{max-width:1250px;margin:0 auto 4rem}
+.catalog-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.catalog-section p{max-width:65ch;line-height:1.85}. catalog-section a{color:inherit}
+.catalog-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.catalog-hero{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}.catalog-hero h1{font-size:clamp(3rem,7vw,7rem)}.catalog-section-list{display:grid;grid-template-columns:.7fr 1.3fr;gap:1rem}.catalog-section:first-child{grid-row:span 2}.catalog-section{border:1px solid currentColor;padding:2rem}.catalog-art{background:linear-gradient(90deg,#c8bfae 0 32%,#747263 32% 38%,#dacbc3 38% 65%,#b5a38a 65%)}
+@media(max-width:800px){.catalog-hero,.catalog-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.catalog-hero{min-height:0}.catalog-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.catalog-hero figure,.catalog-art{position:static;width:100%;height:auto;min-height:180px}.catalog-section,.catalog-section:nth-child(1),.catalog-section:nth-child(2),.catalog-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.catalog-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.catalog-shell{padding:1rem}.catalog-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.catalog-close{display:block}}
+</style>
