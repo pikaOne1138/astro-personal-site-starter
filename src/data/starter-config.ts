@@ -39,6 +39,7 @@ export interface StarterPlan {
   reading?: {records:Array<{month:string;title:string;note:string}>;annualBook?:{title:string;note:string}};
   media?: {episodeAudioPath?:string;episodeTranscript?:Array<{time:string;text:string}>};
   serviceFacts?: Partial<Record<'duration'|'price'|'cancellation'|'qualification'|'contact',string>>;
+}
 
 export const starterThemeSeeds:Record<StarterTheme,string> = {
   paper:'#9A3B2E',morning:'#C8775A',studio:'#2F5D50',botanical:'#50775B',
