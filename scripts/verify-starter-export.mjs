@@ -82,7 +82,7 @@ try{
   }
   // Narrow assembly integration extension: build each second-direction renderer with
   // the same verified navigation/FAQ/article infrastructure, without new QA tooling.
-  for(const [slug,kind] of [['essayist','knowledge'],['companion','helper']]){
+  for(const [slug,kind] of [['essayist','knowledge'],['companion','helper'],['learning-lab','knowledge'],['curator','knowledge'],['radio-letter','knowledge'],['reading-atlas','knowledge'],['somatic','helper'],['coach','helper'],['collective','helper'],['trust-path','helper']]){
     const secondary={
       version:1,kind,layoutSlug:slug,visualTheme:'morning',
       brand:{name:'組裝測試網站',primaryColor:'#8A5A42',tagline:'版型獨立測試',typography:'balanced',imageStyle:'minimal'},
@@ -103,5 +103,5 @@ try{
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
     }
   }
-  console.log('Starter exporter checks passed for knowledge/helper and essayist/companion');
+  console.log('Starter exporter checks passed for twelve distinct layout assemblies');
 }finally{rmSync(root,{recursive:true,force:true})}
