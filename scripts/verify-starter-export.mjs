@@ -337,6 +337,22 @@ try{
       }
     }
   }
+  if(process.env.FULL_STARTER_BUILD==='1'){
+    // Preserve the planner's existing optional Articles entry for helper sites.
+    const plan=JSON.parse(readFileSync(join(root,'helper.json'),'utf8'));
+    plan.navigation.push({id:'articles',label:'文章',enabled:true});
+    const filename=join(root,'helper-articles.json'),site=join(root,'helper-articles');
+    writeFileSync(filename,JSON.stringify(plan));
+    execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    writeFileSync(join(site,'src/content/articles/qa-helper-note.md'),['---','title: QA 服務者公開文章','description: 文章系統驗證資料，不代表專業建議。','publishedAt: 2026-10-14','draft: false','---','這是知識與服務網站共用文章功能的驗證。'].join('\n'));
+    writeFileSync(join(site,'src/content/articles/qa-helper-draft.md'),['---','title: QA 未公開草稿','description: 不得公開','publishedAt: 2026-10-14','draft: true','---','不可公開。'].join('\n'));
+    execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+    const html=readFileSync(join(site,'dist/articles/index.html'),'utf8');
+    if(!html.includes('QA 服務者公開文章')||html.includes('QA 未公開草稿')||!html.includes('data-article-count="1"'))throw Error('Optional helper article archive lost actual published content');
+    await captureStudentSite('clinician','helper',site,{variant:'optional-articles',routes:['articles/','articles/qa-helper-note/']});
+  }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
 }finally{
  if(visualEnabled){

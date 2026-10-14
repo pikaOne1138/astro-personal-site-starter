@@ -82,3 +82,22 @@
 3. 特別看 Curator 的主次物件、Somatic 的色帶重排、四款手機字級、合法 Radio 音訊；完成之前不宣稱十二款「最終視覺全部完成」。
 4. 未測真機／Safari／Firefox／螢幕閱讀器；不把 Chromium 與 fixture 成功擴張成所有未來內容保證。
 5. 仍保持 Draft，不 Merge、不部署 Production。
+
+
+## 最新已確認的程式驗收：10a510e0
+此節更新前面的「最新 CI 待確認」狀態：
+- 四項 Check Runs 均 PASS：Cloudflare Pages、preview-build、standalone-build、static-build。
+- Standalone run `38605031762`、job `115993608446`，實際 log：
+  `{"total":576,"failedHttp":0,"overflow":0,"errors":0,"noFamily":0,"heading":0,"articleCounts":0,"keyboard":0,"invisibleMasthead":0}`
+- `articleCounts=0` 表示沒有文章數量失敗；empty 實測必須 0、single 必須 1。撤回舊文章的六個輸出面向均通過。
+- 合法一秒靜音 WAV 的 metadata／muted play/pause 檢查沒有錯誤。
+- Static run `38605031559` 與 PR Preview run `38605031726` 均成功；原 Builder Pack 的解壓／匯出／完整 Build／Guide 版本 gate 同時通過。
+
+[最新已確認 576 張（10a510e0）](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38605031762/artifacts/11914384379)
+
+**这些新圖尚未目視**：環境離線，不能把 log 的 PASS 說成最終 Art Direction 全部通過。上一輪舊圖的空文章 FAIL 已被修正且回歸通過，但仍應看最新 empty JPG。
+
+## 既有助人者「文章」選項的相容性
+最後檢查發現：planner/exporter 原本允許 helper 啟用 articles，但專屬 Archive 元件只有六款 knowledge 分支，會讓 helper 的文章列表空白。已在同一 ArticleArchive 補回實際公開文章列表／空內容狀態，沿用目前 Design Family，沒有新建 Block、搜尋或產生器。
+
+既有驗證增加一個 helper＋articles 的實際匯出／Build，確認公開文章、草稿排除、Archive Count=1，並捕捉列表和詳情的四尺寸，共新增 8 張；因此下一個有效 Head 預期 **584 張**。此新 Head 必須再核對 CI，不借用 10a510e0 的綠燈。
