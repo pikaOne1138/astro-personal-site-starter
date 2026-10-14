@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "source": "Claude independent learner QA: W1–W14; N1–N20; valid F00–F14 variants",
+  "excludedFaults": {
+    "F10": "Invalid injection: Chromium restores dialog focus without trigger.focus()"
+  },
+  "notes": "These rows are requirements, not unverified claims of PASS. A defect is VERIFIED only with pre-fix failure, normal PASS, negative FAIL, student export where relevant, and matching SHA evidence.",
+  "defects": {
+    "W1": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Old /pr-preview/pr-45/ route is 404; show verified Cloudflare preview entrance instead."
+    },
+    "W2": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "AI cloud onboarding should list required network destinations and offline alternative."
+    },
+    "W3": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Interview text and ZIP must match byte for byte; literal escaped newline sequences must not appear."
+    },
+    "W4": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Planner rename/reorder must update aria-label and preserve focus."
+    },
+    "W5": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Botanical palette accent contrast risk; distinguish decorative versus text use."
+    },
+    "W6": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Placeholder/demo content gets NOTICE, not a blocking technical FAIL."
+    },
+    "W7": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Hidden decorative ↗ in MobileMenu must not create a false navigation mismatch."
+    },
+    "W8": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "SiteSearchDialog requires generated search/exact-zh.json."
+    },
+    "W9": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "MobileMenu IDs deterministic; nested labels and focus must remain accessible."
+    },
+    "W10": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Custom navigation path applied consistently to links, footer, hero and verifier."
+    },
+    "W11": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "FeaturedWorkSection cards with URLs clickable as entire card; without URLs remain noninteractive."
+    },
+    "W12": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Starter-onboarding Skill numbering and document outline valid."
+    },
+    "W13": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Docs warn that historical immutable Cloudflare Previews retain withdrawn content."
+    },
+    "W14": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Cloudflare connector may lack Pages write rights; documented Dashboard fallback required."
+    },
+    "N1": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Planner keyboard move/reorder preserves same button focus."
+    },
+    "N2": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "SelectedPatterns editorial footer must honor nav.path instead of nav.id."
+    },
+    "N3": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Home Hero primary CTA must honor nav.path instead of nav.id."
+    },
+    "N4": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Reserved articles route cannot be customized unless all generated articles move accordingly."
+    },
+    "N5": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Standalone Starter exporter must reject generated broken internal links."
+    },
+    "N6": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Student output checker must catch broken links, JSON/draft leaks, short CJK titles, and search/index omissions."
+    },
+    "N7": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Editorial audit must not falsely fail valid keyboard skip-link patterns."
+    },
+    "N8": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Editorial audit must fail real low-contrast body text instead of returning 0/WARN."
+    },
+    "N9": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Editorial Reveal must not leave permanently invisible content; audit scroll and inspect it."
+    },
+    "N10": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Long multi-line H1 audited consistently with visual checklist."
+    },
+    "N11": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Generated footer text and touch targets comply with readable minimums."
+    },
+    "N12": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Skill reflects Pagefind build reality; 404/noindex pages excluded from index."
+    },
+    "N13": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Starter brand, Block and Editorial design tokens are bridged consistently."
+    },
+    "N14": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Planner provides editable friendly custom page path and validates it."
+    },
+    "N15": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Low-contrast alternate palettes handled for foreground use."
+    },
+    "N16": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Scrollable #plan-preview is keyboard focusable with accessible name."
+    },
+    "N17": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "SiteSearchDialog closes on first Escape even with typed query."
+    },
+    "N18": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "H01 recipe has no placeholder href=# and uses customizable caption."
+    },
+    "N19": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Student PR CI runs core output verification, not Astro build only."
+    },
+    "N20": {
+      "gate": "G1",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Canonical entry prompt consistent across /guide/, START-HERE and README."
+    },
+    "F00": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Unmodified clean student site baseline must pass all applicable validators."
+    },
+    "F01": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Broken nested navigation link must FAIL."
+    },
+    "F02": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Missing mobile menu entry must FAIL."
+    },
+    "F03": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Draft leaked to public JSON search must FAIL."
+    },
+    "F04": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Short Chinese draft title publicly visible must FAIL."
+    },
+    "F05": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Drafts folder mistakenly included in public article collection must FAIL."
+    },
+    "F06": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Footer custom path 404 must FAIL."
+    },
+    "F07": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "390px horizontal overflow from min-width:520px must FAIL."
+    },
+    "F08": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "1.8:1 low-contrast metadata text must FAIL."
+    },
+    "F09": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Preview with noindex removed must FAIL under preview-specific policy."
+    },
+    "F10b": {
+      "gate": "G3",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Mobile menu Escape blocked by intercepted cancel event must FAIL."
+    },
+    "F11": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Missing search/exact-zh.json or Pagefind must FAIL."
+    },
+    "F12": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Missing page meta description must FAIL."
+    },
+    "F13": {
+      "gate": "G2",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Draft item in public RSS must FAIL."
+    },
+    "F14": {
+      "gate": "G4",
+      "status": "NOT TESTED",
+      "evidence": "",
+      "note": "Reveal content permanently opacity 0 must FAIL."
+    }
+  }
+}

@@ -17,11 +17,15 @@ This skill does **not** implement WordPress migration, a CMS, a database, subscr
 
 先分辨工作區：ZIP是離線參考包，生成目錄才是學員網站。學員不需要Clone老師Repo。
 
-**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；預設骨架沒有Pagefind、分類／月份搜尋或OG／結構化資料，不得宣稱已完成。需使用這些功能時，從ZIP移植相應元件與依賴後另行測試。
+**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；最新生成骨架的 `npm run build` 已包含 Pagefind 索引和 `search/exact-zh.json`；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。
 
 **離線參考來源**：ZIP的 `src/data/articles-v2.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。
 
 驗證生成專案：先在生成目錄跑 `npm run build`，再從本ZIP執行 `node scripts/verify-v2-8-output.mjs --student-site /absolute/path/to/generated-site`。無flag的模式只供完整研究站使用。發布前讀 `.ai/astro-pr-preview/SKILL.md`。
+
+## Public vs draft source folders (student Starter)
+
+Use `src/content/articles/` as the **only public article Collection source** and `src/content/drafts/` as an excluded unpublished workspace. New drafts go in `drafts/`, not `articles/`. Publication moves approved Markdown into `articles/` **and changes any legacy `draft: true` to `draft: false`**; withdrawal moves it back, sets `draft: true`, and rebuilds from a clean output directory. Check actual public route visibility after each transition. Never change URLs silently. Preserve existing legacy `draft: true` filtering for older student websites, but migrate only after examining site-specific routing. The separation is a release boundary, **not a confidentiality boundary**: public GitHub histories and older deployments may reveal drafts. After every change run the actual output draft-leakage gate; no gate, no PASS. Confirm the public article loader is scoped to `src/content/articles/`; do not glob all content directories.
 
 ## Workflow A — create or edit an article
 
@@ -41,11 +45,17 @@ Example frontmatter and body: see `references/article-authoring.md`.
 2. Check canonical on **production** and **PR preview**. The workshop's shared Demo article canonical currently resolves to the knowledge/paper article; a student's real site must select its own canonical root.
 3. Ensure Open Graph and Twitter text are relevant; add an OG image only if an image has actually been configured. Do not invent social image files or author metadata. If structured data is used, its claims must reflect visible real content.
 4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.
-5. 若已選用Pagefind，保留其HTML-based build index (`astro build && pagefind --site dist --root-selector main`)；生成骨架預設只跑Astro Build，不包含搜尋。 Do **not** add another hardcoded metadata-only full-site search.
+5. 若已選用Pagefind，保留其HTML-based build index (`astro build && pagefind --site dist --root-selector main`)；目前生成骨架已在 build 自動產生 Pagefind 與 exact-zh 搜尋索引，但搜尋 UI 需明確組裝並實測。 Do **not** add another hardcoded metadata-only full-site search.
 6. Maintain correct `import.meta.env.BASE_URL` for site links/assets and `ASTRO_BASE_PATH` for PR builds. Prevent PR preview pages from being indexed; don't assume robots.txt alone can isolate a preview subpath.
 7. For each student deployment, check `astro.config.mjs` site/base and all absolute feed, sitemap and canonical links. The repository's `pikaOne1138.github.io` URLs are **not** universal defaults.
 
 See `references/seo-and-release-checklist.md`.
+
+## Mandatory draft leakage gate
+
+When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.
+
+A prior public deployment, public PR preview, Git history, or immutable deployment artifact may continue exposing a withdrawn draft. Noindex and draft flags do not protect secrets. Always report this limitation.
 
 ## Workflow C — quality gate and release
 
@@ -60,3 +70,12 @@ See `references/seo-and-release-checklist.md`.
 An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.
 
 If changes to an article's public URL, legal/medical content or data ownership are required, surface the tradeoff before implementation rather than silently choosing for the user.
+
+
+## 學員日常文章修改｜一次一句話也能操作
+- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。
+- **編輯舊文章**：「修改＿＿文章中的＿＿，網址不要改。」保留既有 slug／publishedAt，若 schema 有 updatedAt 且內容真的變更才更新；提供原文與改動差異。
+- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。
+- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。
+- **撤回／隱藏**：「這篇暫時不要公開。」請先辨明僅從列表隱藏、標記 draft、或取消公開 URL；這幾者不同。若須刪除/轉址應列出 SEO 與外部連結影響並等待同意。避免直接刪除原稿，優先保留可恢復的 Git 歷史。
+- 新文章在桌機和手機的共用導航、文章列表、相關文章連結一致。網站新增**一般頁面**則使用 `astro-page-management`，而非把所有頁面塞進文章集合。

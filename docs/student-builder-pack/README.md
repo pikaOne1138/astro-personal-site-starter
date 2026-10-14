@@ -17,3 +17,6 @@
 - 學員生成 Repo 的 `.github/workflows/pr-check.yml` 僅負責安全 Build 驗證和產生 Artifact，**不是**可以瀏覽的網站預覽。
 - GitHub Pages 的 `.github/workflows/deploy.yml` 預設只能由授權者手動在 main 觸發，不能將未經學員核准的內容自動公開；若要 GH Pages PR URL，需要另外配置安全隔離的 Preview 流程。
 - Cloudflare Pages 可使用其 Git 連線的 Preview Deployments，但必須由 AI 核對學員自己的 PR SHA 與真實 URL，不能猜測。
+
+## 最新工作坊網址與預覽
+請從老師提供的**實際可開啟**工作坊首頁進入 `/guide/`、`/guide/prepare/` 與 `/starter/`，下載該版本資料包。工作坊內部 GitHub Pages `/pr-preview/pr-N/` 路徑可能因部署調整失效，**不是學員必須知道或手動拼出的穩定網址**。若提供測試版分支網址，應先核對 HTTP 與版本標記；若失效，回到老師提供的最新入口，不要默默切成另一版本。

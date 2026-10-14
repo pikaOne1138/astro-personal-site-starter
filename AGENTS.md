@@ -80,3 +80,14 @@ For layout-related AI tasks, consult `.ai/astro-layout-craft/SKILL.md` AND `.ai/
 
 ## Claude editorial design integration (PR #20)
 Before new layouts or refactors, read `.ai/astro-editorial-layout-design/SKILL.md` together with `.ai/astro-layout-craft/SKILL.md`. Claude's 40 numbered composition recipes live in `src/components/editorial-recipes/{heroes,sections,lists,rhythm,cta-trust}/` and are demoed at `/layouts/recipes/`; they are distinct from existing block and motion inventories. The original evidence / measurements / sample sources are preserved under `.ai/astro-editorial-layout-design/`. The two Claude pages are `src/pages/layouts/reading-atlas/index.astro` and `src/pages/layouts/trust-path/index.astro`. Visual acceptance requires actual 1440/1280/768/390 screenshots in addition to Astro build; do not claim this verification unless performed. Always distinguish [OBS]/[MEAS] source facts from [INF]/[NEW] advice.
+
+
+
+## Learner maintenance task router (AI-facing)
+When the user modifies an **existing student website**, inspect the student's actual repo and choose Skills by intent rather than rerunning the starter generator:
+- Add/change/hide/remove a page or navigation: `.ai/astro-page-management/SKILL.md` (mandatory whole-site desktop/mobile navigation consistency and destination checks).
+- Local layout/section adjustment: `.ai/astro-layout-craft/SKILL.md`, `.ai/astro-editorial-layout-design/SKILL.md`.
+- Add/revise a Block or component: `.ai/astro-ui-craft/SKILL.md` and the existing Blocks Registry before inventing code.
+- Add/edit/draft/publish/unpublish articles: `.ai/astro-content-publishing/SKILL.md`.
+- General maintenance/recovery: `.ai/astro-site-maintenance/SKILL.md`.
+Always preserve existing URL/content and use Feature Branch → Build → real PR Preview → relevant page×viewport QA → learner approval → Merge/deploy. A single new page looking correct does not prove navigation was updated everywhere. Do not overwrite the student site with newly exported scaffold; this research repository is not the student's codebase.

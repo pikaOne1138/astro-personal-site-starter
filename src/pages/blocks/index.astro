@@ -4,6 +4,10 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 import blockRegistry from '../../data/blocks.registry.json';
 import externalLibraries from '../../data/external-ui-libraries.json';
 import Button from '../../components/blocks/Button.astro';
+import ArticleSearch from '../../components/blocks/ArticleSearch.astro';
+import TagCloud from '../../components/blocks/TagCloud.astro';
+import ArchiveMonths from '../../components/blocks/ArchiveMonths.astro';
+import PostCalendar from '../../components/blocks/PostCalendar.astro';
 import SectionHeading from '../../components/blocks/SectionHeading.astro';
 import SiteHeader from '../../components/blocks/SiteHeader.astro';
 import SiteFooter from '../../components/blocks/SiteFooter.astro';
@@ -84,7 +88,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <div class="ab-demo"><div class="ab-demo-label"><strong>Button</strong><span>主要按鈕 / 外框按鈕</span></div><div style="display:flex;gap:12px;flex-wrap:wrap"><Button href="#hero">主要行動 →</Button><Button href="#hero" variant="outline">次要行動</Button></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>SectionHeading</strong><span>單元標題</span></div><SectionHeading eyebrow="DISCOVER" title="從這裡，開始探索。" description="讓訪客快速認識主題、找到值得閱讀的內容。" /></div>
     <div class="ab-demo">
-      <div class="ab-demo-label"><strong>SiteFooter · Editorial</strong><span>完整資訊頁腳：說明、多欄選單、社群、RSS、隱私權與版權</span></div>
+      <div class="ab-demo-label"><strong>SiteFooter</strong><span>完整資訊頁腳：說明、多欄選單、社群、RSS、隱私權與版權</span></div>
       <p>這是可直接看完整排版的元件示範。選單和法律連結都只是示範目的地，正式站必須換成真實頁面。</p>
       <SiteFooter brand="個人的文字宇宙" eyebrow="A PERSONAL PUBLICATION" description="記下閱讀、生活觀察與想法，讓每篇文章都能被長期找到。"
         variant="editorial" groups={[{title:'探索內容',links:[{label:'文章',href:'#blog'},{label:'閱讀主題',href:'#blog'},{label:'精選作品',href:'#hero'}]},{title:'認識作者',links:[{label:'關於我',href:'#professional'},{label:'聯絡入口',href:'#professional'}]}]}
@@ -122,12 +126,16 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
   <section id="content" class="ab-category">
     <h2 class="ab-category-title">03 / 內容呈現與引導</h2><p class="ab-category-intro">適合介紹理念、服務特色、成果數字與下一步行動。</p>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ImageText</strong><span>圖片與文字</span></div><ImageText title="設計不是裝飾，而是讓內容被理解。" description="透過留白、字體與一致的視覺語言，讓讀者更容易找到下一步。" /></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>FeatureGrid</strong><span>兩欄／三欄</span></div><FeatureGrid items={[{title:'清楚的資訊',description:'讀者一眼就知道這裡提供什麼。'},{title:'舒服的閱讀',description:'字體、對比與行距讓閱讀輕鬆。'},{title:'自然的行動',description:'不催促，卻讓下一步很容易。'}]} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>FeatureGrid</strong><span>兩欄／三欄</span></div><FeatureGrid items={[{title:'清楚的資訊',description:'讀者一眼就知道這裡提供什麼。',href:'#hero'},{title:'舒服的閱讀',description:'字體、對比與行距讓閱讀輕鬆。'},{title:'自然的行動',description:'不催促，卻讓下一步很容易。'}]} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>Stats</strong><span>成果數字</span></div><Stats items={[{value:'12+',label:'內容分類'},{value:'80+',label:'篇閱讀筆記'},{value:'4',label:'種配色選擇'}]} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>CTASection</strong><span>行動呼籲</span></div><CTASection title="準備好寫下你的第一頁了嗎？" description="選一種舒服的起點，把自己的網站慢慢建起來。" action="看看完整範例" href="#examples" /></div>
   </section>
   <section id="blog" class="ab-category">
     <h2 class="ab-category-title">04 / 文章探索與清單</h2><p class="ab-category-intro">從文章列表、精選文章、分類、標籤，到搜尋、月份與日期封存。適合內容型網站，也可用於助人者的文章專區。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleSearch</strong><span>文章查詢欄；可前往實際探索頁</span></div><ArticleSearch action={base+'explore/'} placeholder="輸入搜尋關鍵字…" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>TagCloud</strong><span>標籤導航 Demo（結果依目前網站文章而定）</span></div><TagCloud tags={[{name:'資訊架構',count:2},{name:'設計',count:3}]} baseHref={base+'explore/'} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ArchiveMonths</strong><span>月份導覽 Demo（筆數為示例）</span></div><ArchiveMonths months={[{month:'2026-10',count:3},{month:'2026-09',count:2}]} baseHref={base+'explore/'} /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>PostCalendar</strong><span>文章日期導覽 Demo（日期為示例）</span></div><PostCalendar month="2026-10" dates={['2026-10-08','2026-10-12']} baseHref={base+'explore/'} /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostCard</strong><span>單張文章卡</span></div><div style="max-width:330px"><PostCard {...posts[0]} /></div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ArticleViewSwitcher</strong><span>互動切換：列表／卡片／網格，三種真正不同的文章排版</span></div><ArticleViewSwitcher items={articlesV2.slice(0,6)} articleBase={base+'knowledge/paper/articles/'} exploreBase={base+'knowledge/paper/explore/'} defaultView="list" /><p class="practical-caption">點選三個排列按鈕切換；同一批文章資料即可重複用在知識網站與助人者的文章專區。</p></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>PostGrid</strong><span>三欄文章清單</span></div><PostGrid posts={posts} /></div>
@@ -164,6 +172,8 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
   </section>
   <section id="professional" class="ab-category">
     <h2 class="ab-category-title">06 / 專業服務與建立信任</h2><p class="ab-category-intro">用服務、流程、信任與清楚的聯絡方式建立專業網站。</p>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>PractitionerCard</strong><span>虛構角色示範，無真實證照、預約或成效宣稱</span></div><PractitionerCard name="示範服務者" role="Demo Profile" bio="這是用於說明服務者簡介欄位的示範角色，並非真實提供服務的個人。" /></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>ServiceFit</strong><span>服務適合度與界線的示範文案</span></div><ServiceFit suitable={['希望先了解合作流程的人','願意先討論需求與界線的人']} notSuitable={['需要緊急醫療或危機協助的人']} notice="僅為元件示範；實際服務界線、緊急資源與專業說明需由服務提供者確認。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ServiceCard</strong><span>服務介紹卡</span></div><div class="ab-grid ab-cols-3">{services.map(service=><ServiceCard {...service} />)}</div></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>AboutProfile</strong><span>個人故事／專業介紹</span></div><AboutProfile name="你好，我是小安。" role="ABOUT ME" bio="我相信每個人的節奏都不同。比起急著給答案，我更在意一起找到讓你安心探索的方式。" /></div>
     <div class="ab-demo"><div class="ab-demo-label"><strong>ProcessSteps</strong><span>三步驟合作流程</span></div><ProcessSteps items={steps} /></div>

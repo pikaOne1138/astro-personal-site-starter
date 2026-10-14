@@ -77,3 +77,7 @@ Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-desi
 本 Skill 管整站結構／內容動線；當需要從零設計成熟的編輯式版面，**必須讀 `../astro-editorial-layout-design/SKILL.md`** 再決定 Hero、內容區塊、列表與節奏。Claude 原始研究、十站分析、40 個配方與四寬度驗收位於 `.ai/astro-editorial-layout-design/`，程式化可用的 40 個元件位於 `src/components/editorial-recipes/`；五個視覺實驗頁入口：`/layouts/recipes/`。
 
 分工：`astro-layout-craft` 管整頁 wireframe 與 twelve layouts；`astro-editorial-layout-design` 管構圖配方選擇和視覺驗收（[OBS]/[MEAS]/[INF]/[NEW]/[DEFECT] 必須忠實標明）；`astro-ui-craft` 管功能 blocks；`astro-motion-craft` 管動效。配方不是 54 個網站 blocks 的自動加總，也不是 7 個 motion effects。Claude 的閱讀年鑑與信任路徑已移植為 `src/pages/layouts/reading-atlas/index.astro`、`trust-path/index.astro`，如要更動需要先保留其原始設計決策。Build 以外仍須完成 1440／1280／768／390 的真實畫面檢查。
+
+
+## 已上線網站：局部版面修改模式（不是重新建站）
+當學員說「調整首頁第二段」「移動圖片」「改手機排列」時，先讀**學員自己的現況**、對應頁面與 Layout，再量測/截圖原始版，列出需變更的區段、受影響共用元件、手機重排；以最小 diff 修改，不重跑 Site Brief 生成器覆蓋已完成內容。保留原有品牌、頁面結構及 URL，不讓局部需求演變成全站換版。共用 Header/Nav 的變動需要同步查每個頁面，新增/移動頁面交 `astro-page-management`。至少 1440、1280、768、390px 比較 before/after，檢查長中文標題、焦點、版心寬度與溢出。修改完必須 Branch → PR → 真實 Preview → 學員確認 → 才合併。

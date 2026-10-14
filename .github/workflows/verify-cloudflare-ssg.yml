@@ -6,6 +6,10 @@ on:
       - 'astro.config.mjs'
       - 'package.json'
       - 'src/**'
+      - '.ai/**'
+      - 'docs/student-builder-pack/**'
+      - 'docs/student-intake/**'
+      - 'docs/quality/**'
       - 'scripts/**'
       - 'wrangler.jsonc'
       - '.github/workflows/verify-cloudflare-ssg.yml'
@@ -13,30 +17,134 @@ on:
 
 permissions:
   contents: read
+  checks: read
+  actions: read
 
 jobs:
   static-build:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: '--import=data:text/javascript,process.env.GITHUB_SHA%3Dprocess.env.QA_CHECKOUT_SHA%7C%7Cprocess.env.GITHUB_SHA'
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assert PR Head is the actual QA checkout
+        run: |
+          EXPECTED="${{ github.event.pull_request.head.sha || github.sha }}"
+          ACTUAL="$(git rev-parse HEAD)"
+          echo "QA checkout: $ACTUAL / PR head: $EXPECTED"
+          test "$ACTUAL" = "$EXPECTED"
+      - name: Stamp Node QA artifacts with real checkout SHA
+        run: echo "QA_CHECKOUT_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+      - name: Assert Node QA execution SHA equals PR Head
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node -e "if(process.env.GITHUB_SHA!==process.env.EXPECTED_HEAD) process.exit(1);console.log('QA source SHA PASS',process.env.GITHUB_SHA)"
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Validate registered Blocks, Layouts and Pattern references
+        id: registry
+        run: node scripts/verify-registry-contract.mjs
+      - name: Compile registered Blocks, Effects and Editorial recipes
+        id: compile
+        run: node scripts/verify-astro-components.mjs
+      - name: Fault-inject missing component QA declarations
+        run: node scripts/test-all-component-coverage-regressions.mjs
+      - name: Compile every Astro source component and verify six QA responsibilities
+        id: allcomponents
+        run: node scripts/verify-all-astro-components.mjs
+      - name: Inventory declared Props across all Astro components
+        id: propsinventory
+        run: node scripts/inventory-all-component-props.mjs
+      - name: Fault-inject missing component Props inventory entry
+        run: node scripts/test-all-component-props-inventory.mjs
+      - name: W12 verify onboarding Skill numbering and Markdown guardrail
+        id: onboardingstructure
+        run: node scripts/test-onboarding-skill-structure.mjs
+      - name: Verify learner Preview, offline fallback and security documents with fault injection
+        id: documentSafety
+        run: node scripts/test-learner-document-safety.mjs
+      - name: Test eight brand theme foreground and decorative contrast roles
+        id: themeContrast
+        run: node scripts/test-theme-contrast-roles.mjs
+      - name: Fault-inject malformed Skill source and broken references
+        run: node scripts/test-skill-contract-regressions.mjs
+      - name: Verify 15 Skill frontmatter and references
+        id: skillsource
+        run: node scripts/verify-skill-contracts.mjs
+      - name: Fault-inject missing asset QA declarations
+        run: node scripts/test-quality-coverage-regressions.mjs
+      - name: Enforce registered asset QA ownership and write quality dashboard
+        id: coverage
+        if: always()
+        run: node scripts/verify-quality-coverage.mjs
+      - name: Fault-inject invalid W N F historical regression entries
+        run: node scripts/test-historic-regression-ledger.mjs
+      - name: Verify historical W N F coverage ledger
+        id: history
+        if: always()
+        run: node scripts/verify-historic-regressions.mjs
+      - name: Upload machine-readable quality coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-asset-coverage
+          path: qa-artifacts/quality/
+          retention-days: 30
+      - name: Validate learner navigation audit script syntax
+        run: node --check scripts/verify-student-navigation.mjs
       - name: Build with Cloudflare Pages automatic URL and default root path
+        id: buildsite
         env:
           CF_PAGES_URL: https://example.com
         run: npm run build
+      - name: N20 enforce single-source learner prompt in guide and built ZIP
+        id: canonicalprompt
+        run: node scripts/test-canonical-student-prompt.mjs
       - name: Extract student kit and build knowledge/helper independently
+        id: studentkit
         env:
           FULL_STUDENT_PACK_BUILD: '1'
         run: node scripts/verify-student-pack.mjs
+      - name: Prove student custom path and reserved article-route contracts
+        id: starterroutes
+        run: node scripts/test-starter-route-contracts.mjs
+      - name: N5 F06 detect broken student links and footer routes
+        id: linkaudit
+        run: node scripts/test-generated-link-audit.mjs
+      - name: Verify resource URL Props security fixtures
+        id: resourceprops
+        run: node scripts/test-resource-url-props.mjs
       - name: Install Chromium for 12-layout visual QA
+        id: chromium
+        if: always()
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Draft leak negative regression suite
+        id: drafts
+        run: node scripts/test-draft-leakage-regressions.mjs
+      - name: Fault-injection navigation regression suite
+        id: navigation
+        run: node scripts/test-student-navigation-regressions.mjs
+      - name: Fault-inject skip links, low contrast and stalled Reveal into editorial audit
+        id: editorial
+        run: node scripts/test-editorial-audit-faults.mjs
+      - name: Verify editorial inline-wrap overlap regression
+        id: editorialoverlap
+        run: node scripts/test-editorial-overlap-regressions.mjs
+      - name: W8 browser-verify real Chinese Pagefind search across themes
+        id: livesearch
+        run: node scripts/qa-live-chinese-search.mjs
+      - name: Verify starter planner keyboard, labels and custom path in real browser
+        id: planner
+        run: node scripts/qa-starter-planner.mjs
       - name: Verify first-time onboarding guide at four widths
+        id: guide
         run: node scripts/qa-preparation-guide.mjs
       - name: Upload guide screenshots and results
         if: always()
@@ -45,7 +153,38 @@ jobs:
           name: preparation-guide-visual-qa
           path: qa-artifacts/prepare/
           retention-days: 14
+      - name: W3 browser-download seven interview files with byte equality
+        id: interviewzip
+        run: node scripts/qa-interview-download.mjs
+      - name: Download actual guide ZIP through browser and check package bytes
+        id: guidezip
+        run: node scripts/qa-guide-zip-download.mjs
+      - name: Audit Blocks and Effects gallery at four widths
+        id: blockeffects
+        run: node scripts/qa-blocks-effects.mjs
+      - name: Fault-inject missing Block viewport and no-JS audit evidence
+        id: blockevidence
+        run: node scripts/test-block-render-evidence.mjs
+      - name: Verify all 54 Block keyboard focus and accessible control names
+        id: blocksemantics
+        run: node scripts/qa-block-control-semantics.mjs
+      - name: Verify native keyboard Tab reachability of visible Block controls
+        id: blocktab
+        run: node scripts/qa-block-tab-reachability.mjs
+      - name: Validate all six shared Astro components at four widths
+        id: sharedcomponents
+        run: node scripts/qa-all-shared-components.mjs
+      - name: Browser-render every Editorial Recipe at four widths
+        id: allrecipes
+        run: node scripts/qa-all-editorial-recipes.mjs
+      - name: Render all Section Patterns in five configurations at four widths
+        id: allpatterns
+        run: node scripts/qa-all-section-patterns.mjs
+      - name: Prevent homepage mobile overflow regression and verify fault detection
+        id: homeoverflow
+        run: node scripts/test-home-mobile-overflow.mjs
       - name: Capture 12 layouts at four widths
+        id: layouts
         run: node scripts/qa-layout-screenshots.mjs
       - name: Upload 48 screenshots and audit
         if: always()
@@ -67,3 +206,102 @@ jobs:
           grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/rss.xml
           grep -q 'https://example.com/knowledge/paper/articles/homepage-is-a-lobby/' dist/sitemap.xml
           if grep -q 'pikaone1138.github.io/astro-personal-site-starter/' dist/rss.xml dist/sitemap.xml; then exit 1; fi
+
+      - name: Independently verify Cloudflare Preview HTTP and student ZIP at PR head
+        id: externalpreview
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          QA_REMOTE_BLACKBOX: ${{ github.event.pull_request.head.repo.full_name == github.repository && '1' || '0' }}
+        run: node scripts/qa-cloudflare-preview.mjs
+      - name: Browser-review actual Cloudflare Preview at mobile and desktop widths
+        id: remotebrowser
+        if: always() && steps.chromium.outcome == 'success'
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/qa-cloudflare-browser.mjs
+      - name: Upload deployed Preview screenshots and objective browser audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-real-preview-browser
+          path: qa-artifacts/preview/
+          retention-days: 14
+      - name: Collect historical CI runs without guessing defect trends
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/build-quality-trend.mjs
+      - name: Fault-inject dashboard false PASS for untested contracts and Preview
+        run: node scripts/test-quality-dashboard-regressions.mjs
+      - name: Trace W N F named test cases to this workflow run
+        id: historicexecution
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
+          QA_LIVE_SEARCH: ${{ steps.livesearch.outcome }}
+          QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
+          QA_BLOCK_EVIDENCE: ${{ steps.blockevidence.outcome }}
+          QA_DRAFTS: ${{ steps.drafts.outcome }}
+          QA_PLANNER: ${{ steps.planner.outcome }}
+          QA_NAV: ${{ steps.navigation.outcome }}
+          QA_EDITORIAL: ${{ steps.editorial.outcome }}
+          QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
+          QA_STARTER_ROUTES: ${{ steps.starterroutes.outcome }}
+          QA_CANONICAL_PROMPT: ${{ steps.canonicalprompt.outcome }}
+          QA_ONBOARDING_STRUCTURE: ${{ steps.onboardingstructure.outcome }}
+          QA_EDITORIAL_OVERLAP: ${{ steps.editorialoverlap.outcome }}
+          QA_LINK_AUDIT: ${{ steps.linkaudit.outcome }}
+          QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
+          QA_DOCUMENT_SAFETY: ${{ steps.documentSafety.outcome }}
+          QA_THEME_CONTRAST: ${{ steps.themeContrast.outcome }}
+        run: node scripts/verify-historic-execution.mjs
+      - name: Reconcile all 110 components with source and browser evidence
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/summarize-component-execution.mjs
+      - name: Finalize five-gate quality dashboard
+        if: always()
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          QA_REGISTRY: ${{ steps.registry.outcome }}
+          QA_COMPILE: ${{ steps.compile.outcome }}
+          QA_ALL_COMPONENTS: ${{ steps.allcomponents.outcome }}
+          QA_SHARED_COMPONENTS: ${{ steps.sharedcomponents.outcome }}
+          QA_ALL_RECIPES: ${{ steps.allrecipes.outcome }}
+          QA_ALL_PATTERNS: ${{ steps.allpatterns.outcome }}
+          QA_COVERAGE: ${{ steps.coverage.outcome }}
+          QA_HISTORY: ${{ steps.history.outcome }}
+          QA_SKILL_SOURCE: ${{ steps.skillsource.outcome }}
+          QA_DOCUMENT_SAFETY: ${{ steps.documentSafety.outcome }}
+          QA_THEME_CONTRAST: ${{ steps.themeContrast.outcome }}
+          QA_BUILD: ${{ steps.buildsite.outcome }}
+          QA_STARTER: ${{ steps.studentkit.outcome }}
+          QA_DRAFTS: ${{ steps.drafts.outcome }}
+          QA_NAV: ${{ steps.navigation.outcome }}
+          QA_LIVE_SEARCH: ${{ steps.livesearch.outcome }}
+          QA_PLANNER: ${{ steps.planner.outcome }}
+          QA_EDITORIAL: ${{ steps.editorial.outcome }}
+          QA_LAYOUTS: ${{ steps.layouts.outcome }}
+          QA_BLOCK_EFFECT: ${{ steps.blockeffects.outcome }}
+          QA_BLOCK_EVIDENCE: ${{ steps.blockevidence.outcome }}
+          QA_BLOCK_SEMANTICS: ${{ steps.blocksemantics.outcome }}
+          QA_BLOCK_TAB: ${{ steps.blocktab.outcome }}
+          QA_HOME_OVERFLOW: ${{ steps.homeoverflow.outcome }}
+          QA_GUIDE: ${{ steps.guide.outcome }}
+          QA_INTERVIEW_ZIP: ${{ steps.interviewzip.outcome }}
+          QA_GUIDE_ZIP: ${{ steps.guidezip.outcome }}
+          QA_DEPLOYMENT: ${{ steps.externalpreview.outcome }}
+          QA_REMOTE_BROWSER: ${{ steps.remotebrowser.outcome }}
+        run: node scripts/finalize-quality-dashboard.mjs
+      - name: Upload final five-gate quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-five-gates
+          path: qa-artifacts/quality/
+          retention-days: 30

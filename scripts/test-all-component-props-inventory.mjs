@@ -1,0 +1,13 @@
+import {spawnSync} from 'node:child_process';
+import {readFileSync} from 'node:fs';
+const script='scripts/inventory-all-component-props.mjs';
+const run=(fixture)=>spawnSync(process.execPath,[script],{encoding:'utf8',env:{...process.env,QA_PROPS_INVENTORY_FIXTURE:fixture||''}});
+const normal=run('');
+if(normal.status!==0)throw Error('Normal component inventory failed: '+normal.stderr+' '+normal.stdout);
+const data=JSON.parse(readFileSync('qa-artifacts/quality/all-component-props-inventory.json','utf8'));
+if(data.status!=='PASS'||data.componentCount!==Object.keys(JSON.parse(readFileSync('docs/quality/COMPONENT-COVERAGE.json','utf8')).components).length)throw Error('Missing exact component manifest match');
+const negative=run('omit-last');
+if(negative.status===0||!(negative.stderr+negative.stdout).includes('Props inventory missing component entries'))throw Error('Fault injection did not fail for the intended missing-component diagnostic: '+negative.stderr);
+const restored=run('');
+if(restored.status!==0)throw Error('Post-injection inventory restore failed: '+restored.stderr);
+console.log('PASS inventory normal, deliberate omission caught with expected diagnostic, restored');

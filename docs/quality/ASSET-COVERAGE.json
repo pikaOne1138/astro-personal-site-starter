@@ -1,0 +1,2034 @@
+{
+  "schemaVersion": 1,
+  "notes": "Every registered asset must declare QA ownership. The evidence field identifies a candidate test source, not proof that it ran at this SHA. All assertions begin NOT TESTED; only verified execution reports may set PASS.",
+  "blocks": {
+    "button": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "section-heading": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-header": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-footer": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-split": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-centered": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "hero-image": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "image-text": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "feature-grid": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "stats": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "c-t-a-section": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-grid": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "featured-post": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "category-links": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "table-of-contents": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "author-box": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "service-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "about-profile": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "process-steps": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "testimonial": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "f-a-q": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "contact-section": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-search": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "tag-cloud": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "archive-months": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "post-calendar": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-accordion": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-callout": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-grid": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-comparison": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "related-articles": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-list": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "content-carousel": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "site-search-dialog": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "mobile-menu": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "booking-link": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "contact-actions": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "pricing-details": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-info": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "media-embed": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "social-links": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "breadcrumbs": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-navigation": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-share": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "reading-progress": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "resource-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "resource-library": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "lead-magnet-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "newsletter-signup": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "practitioner-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "service-fit": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "article-view-switcher": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "back-to-top": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "browser": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "effects": {
+    "reveal": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "stagger-group": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "motion-card": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "zoom-image": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "magnetic-button": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "underline-link": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "motion-faq": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-astro-components.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "reducedMotion": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "layouts": {
+    "field-notes": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "essayist": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "learning-lab": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "curator": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "radio-letter": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "reading-atlas": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "clinician": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "companion": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "somatic": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "coach": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "collective": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-path": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "patterns": {
+    "featured-work": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "trust-service-path": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-minimal": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-editorial": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    "footer-professional": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-registry-contract.mjs"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "skills": {
+    ".ai/astro-content-publishing/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-content-publishing/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-content-readiness/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-content-readiness/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-launch-health-check/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-launch-health-check/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-layout-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-layout-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-motion-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-motion-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-navigation-tree-test/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-navigation-tree-test/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-page-management/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-page-management/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-pr-preview/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-pr-preview/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-section-pattern-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-section-pattern-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-site-assembly/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-assembly/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-site-maintenance/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-maintenance/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-starter-deploy/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-starter-deploy/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-starter-onboarding/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-starter-onboarding/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-ui-craft/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-ui-craft/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  },
+  "recipes": {
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C01-low-pressure-invite.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C01-low-pressure-invite.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C02-boundary-strip.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C02-boundary-strip.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C03-proof-slots.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C03-proof-slots.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C04-process-then-contact.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C04-process-then-contact.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C05-closing-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C05-closing-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C06-team-initials.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C06-team-initials.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C07-subscribe-cadence.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C07-subscribe-cadence.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C08-provenance-note.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/cta-trust/C08-provenance-note.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H01-rail-margin.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H01-rail-margin.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H02-offset-stagger.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H02-offset-stagger.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H03-hard-shadow-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H03-hard-shadow-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H04-mat-still-stamp.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H04-mat-still-stamp.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H05-signal-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H05-signal-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H06-spec-sheet.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H06-spec-sheet.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H07-letter-arch.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H07-letter-arch.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H08-veil-fullbleed.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H08-veil-fullbleed.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H09-poster-stack.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H09-poster-stack.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H10-sticker-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H10-sticker-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H11-numeral-index.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H11-numeral-index.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/heroes/H12-route-diagram.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/heroes/H12-route-diagram.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L01-ledger-rows.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L01-ledger-rows.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L02-node-track.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L02-node-track.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L03-archive-table.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L03-archive-table.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L04-stair-details.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L04-stair-details.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L05-date-disc-rows.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L05-date-disc-rows.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/lists/L06-leader-toc.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/lists/L06-leader-toc.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R01-spacing-ladder.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R01-spacing-ladder.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R02-band-alternation.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R02-band-alternation.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R03-rule-weights.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R03-rule-weights.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R04-fr-mirror.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R04-fr-mirror.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R05-voice-heading.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R05-voice-heading.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/rhythm/R06-media-accent.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/rhythm/R06-media-accent.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S01-manifesto-split.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S01-manifesto-split.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S02-fit-pair.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S02-fit-pair.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S03-letter-fold.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S03-letter-fold.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S04-dark-band.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S04-dark-band.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S05-article-lead.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S05-article-lead.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S06-index-shelf.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S06-index-shelf.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S07-accordion-panel.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S07-accordion-panel.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-editorial-layout-design/recipes/code/sections/S08-evidence-table.astro": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-editorial-layout-design/recipes/code/sections/S08-evidence-table.astro"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "visual": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    }
+  }
+}

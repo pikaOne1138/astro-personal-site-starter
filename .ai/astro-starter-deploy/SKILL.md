@@ -27,7 +27,9 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 5. Cloudflare API Token、GitHub OAuth 或部署授權只在平台授權流程處理，不存入程式碼、聊天訊息、Commit 或公用設定。
 
 ## QA／交付
-- `npm run build` 成功，再從離線包執行學員模式驗證器；Pagefind只有實際加入才測，不宣稱骨架已包含。不同部署base下再次測試。
+- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。
+- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。
+- 不得為了讓 CI 通過而移除 `noindex`，也不得在尚未核准時把 Demo／草稿對搜尋引擎開放。
 - 首頁、文章內頁、標籤、全文搜尋、RSS、Sitemap、404，均用正式域名實測。
 - 檢查 1440／1280／768／390 RWD，手機選單、鍵盤與連結可操作。
 - 建立一篇文章、預覽、經核准合併、確認正式公開。
@@ -36,3 +38,6 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 
 ## 和現有展示站的差異
 `astro-pr-preview` 是**學員共用的雙平台 PR／Preview／安全發布 Skill**：先辨識自己的部署平台，再走 GitHub Pages、Cloudflare Pages 或 Workers 對應流程。本研究展示 Repo 的 GitHub Pages Artifacts + `workflow_run` 預覽機制是特例，不代表學員 Repo 已具備相同 Workflow。Cloudflare Pages 的 Git Preview 也須先核對專案連線與真實部署記錄。不得悄悄更改研究站既有的成功部署工作流程。
+
+## 工具權限與首次連接
+AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。

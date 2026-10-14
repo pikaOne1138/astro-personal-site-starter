@@ -23,7 +23,7 @@ export const starterPages = {
   ],
 } as const;
 export type StarterPageId = typeof starterPages[StarterKind][number]['id'];
-export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;}
+export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;path?:string;}
 export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;}
 export interface StarterPlan {
   version: 1;
@@ -41,13 +41,13 @@ export const starterThemeSeeds:Record<StarterTheme,string> = {
  ocean:'#245D78',sand:'#9C603B',slate:'#475569',lavender:'#705A95',
 };
 export const starterThemePalettes:Record<StarterTheme,{primary:string;secondary:string;accent:string;background:string;text:string}> = {
- paper:{primary:'#9A3B2E',secondary:'#806A54',accent:'#C58D63',background:'#F8F5EF',text:'#28231F'},
+ paper:{primary:'#9A3B2E',secondary:'#806A54',accent:'#895432',background:'#F8F5EF',text:'#28231F'},
  morning:{primary:'#C8775A',secondary:'#7F8F80',accent:'#B65B75',background:'#FFF8F3',text:'#362B29'},
  studio:{primary:'#2F5D50',secondary:'#708A7A',accent:'#B17C60',background:'#F6F7F3',text:'#23312D'},
- botanical:{primary:'#50775B',secondary:'#8D9B72',accent:'#B48569',background:'#F6F7EF',text:'#28392E'},
+ botanical:{primary:'#50775B',secondary:'#596A45',accent:'#8A5A3E',background:'#F6F7EF',text:'#28392E'},
  ocean:{primary:'#245D78',secondary:'#647E88',accent:'#B57949',background:'#F5F8FA',text:'#1E303A'},
  sand:{primary:'#9C603B',secondary:'#877E69',accent:'#6B826C',background:'#FBF7EF',text:'#352A23'},
- slate:{primary:'#475569',secondary:'#657784',accent:'#B38B53',background:'#F4F6F8',text:'#202C39'},
+ slate:{primary:'#475569',secondary:'#657784',accent:'#7A5530',background:'#F4F6F8',text:'#202C39'},
  lavender:{primary:'#705A95',secondary:'#857F99',accent:'#A56D82',background:'#F8F6FB',text:'#30283C'},
 };
 export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:string;slug:string}>):string[] {
@@ -67,6 +67,9 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
   if(selected.filter(x=>!x.parentId).length>12)errors.push('最多 12 個第一層項目；更多內容請放到第二層');
   const ids=plan.navigation.map(x=>x.id);
+  if(plan.navigation.some(x=>x.id==='articles'&&x.path&&x.path!=='articles/'))errors.push('文章封存入口固定為 articles/，目前不支援更改');
+  const paths=plan.navigation.map(x=>x.path??x.id+'/');
+  if(paths.some(p=>!/^([a-z0-9-]+\/)+$/.test(p)||p.startsWith('articles/')&&p!=='articles/'||p.includes('//'))||new Set(paths).size!==paths.length)errors.push('頁面網址無效或重複；請使用相對路徑，例如 start-here/tools/');
   if(ids.some(id=>!available.includes(id)&&!/^page-[a-z0-9-]{1,32}$/.test(id))||new Set(ids).size!==ids.length)errors.push('導覽頁面有重複或無效的路由');
   if(selected.some(x=>x.parentId&&(!selected.some(p=>p.id===x.parentId&&!p.parentId)||x.parentId===x.id)))errors.push('子選單必須有已啟用的第一層父項目，不支援第三層');
   if(selected.some(x=>x.parentId&&selected.filter(y=>y.parentId===x.parentId).length>10))errors.push('單組子選單最多 10 項');

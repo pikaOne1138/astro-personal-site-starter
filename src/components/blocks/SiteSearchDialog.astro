@@ -102,6 +102,7 @@ const base=import.meta.env.BASE_URL.endsWith('/')?import.meta.env.BASE_URL:impor
       dialog.showModal();field.value='';resultList.replaceChildren();status.textContent='輸入關鍵字，可搜尋頁面內文與標題';
       field.focus();void initialize().catch(()=>{pagefindPromise=null});
     };
+    field?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();dialog.close()}});
     trigger?.addEventListener('click',open);
     dialog.querySelector('[data-search-close]')?.addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});

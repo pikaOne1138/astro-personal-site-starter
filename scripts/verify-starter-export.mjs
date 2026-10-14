@@ -14,10 +14,15 @@ try{
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'了解服務',pageId:'services'},
       sectionPatterns:kind==='knowledge'?[{patternId:'featured-work',targetPage:'/',insertAfter:'首頁介紹後'},{patternId:'footer-editorial',targetPage:'site-wide',insertAfter:'所有頁面底部'}]:[{patternId:'trust-service-path',targetPage:'services',insertAfter:'服務介紹後'},{patternId:'footer-professional',targetPage:'site-wide',insertAfter:'所有頁面底部'}],notes:''
     };
-    if(kind==='knowledge')plan.navigation.push({id:'page-custom-guide',label:'閱讀指南',enabled:true,parentId:'articles'});
+    if(kind==='knowledge')plan.navigation.push({id:'page-custom-guide',label:'閱讀指南',enabled:true,parentId:'articles',path:'start-here/tools/'});
     const filename=join(root,kind+'.json'),site=join(root,kind);
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    const releaseWorkflow=readFileSync(join(site,'.github/workflows/deploy.yml'),'utf8');
+    if(!releaseWorkflow.includes("SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}"))throw Error('Approved production indexing variable is not forwarded into GitHub Pages build');
+    const learnerPkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
+    if(!learnerPkg.scripts?.['test:regressions'])throw Error('Learner ZIP exporter omitted cumulative validator regressions');
+    execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
     const out=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
     if(out.layoutSlug!==plan.layoutSlug||out.brand.primaryColor!=='#245E50'||out.navigation.length!==(kind==='knowledge'?3:2)||out.sectionPatterns.length!==2)throw Error('Config mismatch '+kind);
     const generatedCss=readFileSync(join(site,'public/site.css'),'utf8');
@@ -26,6 +31,7 @@ try{
     const navigation=readFileSync(join(site,'src/components/StudentNavigation.astro'),'utf8');
     if(!navigation.includes('student-navigation__submenu'))throw Error('Missing nested navigation');
     if(kind==='knowledge'&&!out.navigation.some(x=>x.parentId==='articles'))throw Error('Nested navigation lost');
+    if(kind==='knowledge'&&(!out.navigation.some(x=>x.path==='start-here/tools/')||!navigation.includes('child.path??child.id')))throw Error('Custom nested path was not preserved');
     const selected=readFileSync(join(site,'src/components/SelectedPatterns.astro'),'utf8');
     const pageLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
@@ -34,6 +40,13 @@ try{
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+      execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      if(!existsSync(join(site,'dist/pagefind/pagefind.js')))throw Error('Pagefind static index was not generated');
+      if(!existsSync(join(site,'dist/search/exact-zh.json')))throw Error('Search companion index was not generated');
+      const search=JSON.parse(readFileSync(join(site,'dist/search/exact-zh.json'),'utf8'));
+      if(search.version!==1||!Array.isArray(search.docs)||!search.docs.some(x=>x.url==='/'))throw Error('Search companion index is invalid');
+      if(kind==='knowledge'&&!existsSync(join(site,'dist/start-here/tools/index.html')))throw Error('Custom nested page was not generated');
+      execFileSync(process.execPath,[new URL('./audit-generated-links.mjs',import.meta.url).pathname,join(site,'dist')],{stdio:'inherit'});
     }
   }
   console.log('Starter exporter checks passed for knowledge/helper');

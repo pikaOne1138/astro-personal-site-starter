@@ -38,6 +38,12 @@ for (const path of [
   'scripts/verify-v2-8-output.mjs',
   'scripts/export-starter.mjs',
   'scripts/verify-starter-export.mjs',
+  'scripts/verify-student-navigation.mjs',
+  'scripts/test-student-navigation-regressions.mjs',
+  'scripts/test-draft-leakage-regressions.mjs',
+  'scripts/test-generated-link-audit.mjs',
+  'scripts/build-student-search-index.mjs',
+  'scripts/audit-generated-links.mjs',
   'COMPONENTS.md'
 ]) add(path);
 add('docs/student-builder-pack/STUDENT-AGENTS.md', 'AGENTS.md');

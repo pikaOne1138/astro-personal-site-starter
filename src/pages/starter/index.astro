@@ -85,7 +85,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
-<p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" aria-label="網站設定預覽"></pre></section>
+<p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
 </form>
 </main>
 <script>
@@ -170,7 +170,17 @@ function orderedNav(){
  return roots.flatMap(root=>[root,...nav.filter(x=>x.parentId===root.id)]);
 }
 function syncNav(){
+ const active=document.activeElement as HTMLElement|null;
+ const row=active?.closest<HTMLElement>('.nav-row');
+ const activeId=row?.dataset.navId;
+ const action=active?.getAttribute('aria-label')?.split('：')[0];
  nav=orderedNav();renderNav();
+ if(activeId&&action){
+  const next=[...rows.querySelectorAll<HTMLElement>('.nav-row')].find(x=>x.dataset.navId===activeId);
+  const button=[...(next?.querySelectorAll<HTMLButtonElement>('button')??[])].find(x=>x.getAttribute('aria-label')?.startsWith(action+'：'));
+  if(button&&!button.disabled)button.focus();
+  else next?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus();
+ }
 }
 function shiftItem(id:string,delta:number){
  const current=nav.find(x=>x.id===id);if(!current)return;
@@ -251,7 +261,7 @@ function renderNav(){
    renderNav();
   });
   const label=document.createElement('input');label.type='text';label.maxLength=24;label.value=n.label;label.setAttribute('aria-label',n.id+' 選單名稱');
-  label.addEventListener('input',()=>{n.label=label.value;renderMenu();showPlan()});
+  label.addEventListener('input',()=>{n.label=label.value;check.setAttribute('aria-label','顯示'+n.label);tools.querySelectorAll('button').forEach(btn=>{const actionName=(btn.getAttribute('aria-label')||'').split('：')[0];btn.setAttribute('aria-label',actionName+'：'+n.label)});renderMenu();showPlan()});
   const tools=document.createElement('div');tools.className='nav-row-actions';
   const action=(symbol:string,name:string,fn:()=>void,disabled=false)=>{
    const btn=document.createElement('button');btn.type='button';btn.textContent=symbol;btn.title=name;btn.setAttribute('aria-label',name+'：'+n.label);btn.disabled=disabled;btn.addEventListener('click',fn);tools.append(btn);
@@ -261,7 +271,16 @@ function renderNav(){
   action('→','縮排為子選單',()=>indentItem(n.id),Boolean(n.parentId)||i===0);
   action('←','提升至第一層',()=>outdentItem(n.id),!n.parentId);
   action('×','刪除頁面',()=>removeCustom(n.id));
-  row.append(handle,check,label,tools);
+  const names=document.createElement('div');names.className='nav-name-fields';names.append(label);
+  if(n.id.startsWith('page-')){
+    const pathInput=document.createElement('input');
+    pathInput.type='text';pathInput.value=n.path??'';
+    pathInput.placeholder='自訂網址：start-here/tools/';
+    pathInput.setAttribute('aria-label',n.label+' 網址（留空採預設路徑）');
+    pathInput.addEventListener('input',()=>{n.path=pathInput.value.trim()||undefined;showPlan()});
+    names.append(pathInput);
+  }
+  row.append(handle,check,names,tools);
   row.addEventListener('dragstart',event=>{event.dataTransfer?.setData('text/plain',n.id);row.classList.add('is-dragging')});
   row.addEventListener('dragend',()=>row.classList.remove('is-dragging'));
   row.addEventListener('dragover',event=>{event.preventDefault();row.classList.add('is-drag-over')});
