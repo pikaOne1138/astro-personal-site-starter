@@ -1318,6 +1318,16 @@
     }
   },
   "skills": {
+    ".ai/astro-design-consultation/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-design-consultation/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-design-consultation/references/scenario-tests.md"
+      }
+    },
     ".ai/astro-content-publishing/SKILL.md": {
       "contract": {
         "status": "NOT TESTED",
