@@ -94,6 +94,24 @@ try{
      if(!await drawers.first().evaluate(el=>el.open))errors.push('curator: catalog drawer is not operable');
     }
    }
+   if(item.slug==='trust-path'){
+    const alignment=await page.locator('.trust-section').evaluateAll(nodes=>nodes.map(el=>({left:el.getBoundingClientRect().left,edge:getComputedStyle(el).borderLeftWidth})));
+    if(alignment.length!==5||Math.max(...alignment.map(x=>x.left))-Math.min(...alignment.map(x=>x.left))>2)errors.push('trust-path '+width+': station timeline edges not aligned');
+   }
+   if(item.slug==='reading-atlas'){
+    const grid=await page.locator('.atlas-months button[data-atlas-month]:not([data-atlas-month="all"])').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {left:r.left,top:r.top,width:r.width}}));
+    if(grid.length!==12)errors.push('reading-atlas '+width+': expected 12 month controls');
+    else{
+     const rows=new Map();
+     for(const cell of grid){const key=Math.round(cell.top);if(!rows.has(key))rows.set(key,[]);rows.get(key).push(cell);}
+     for(const cells of rows.values()){
+      if(Math.max(...cells.map(x=>x.width))-Math.min(...cells.map(x=>x.width))>2)errors.push('reading-atlas '+width+': unequal month cell widths');
+      for(let i=1;i<cells.length;i++)if(cells[i].left<cells[i-1].left+cells[i-1].width-1)errors.push('reading-atlas '+width+': overlapping month borders');
+     }
+     const background=await page.locator('#calendar').evaluate(node=>getComputedStyle(node).backgroundImage);
+     if(background!=='none')errors.push('reading-atlas '+width+': decorative grid lines still cross month cells');
+    }
+   }
    const problems=[];
    if(!student.main||student.h1.length!==1)problems.push('Missing main or exactly one H1');
    if(student.bodyWidth>width+2)problems.push('Student horizontal overflow '+student.bodyWidth+'/'+width);
