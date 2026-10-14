@@ -8,7 +8,6 @@ const route=Astro.params.page ?? '';
 const base=import.meta.env.BASE_URL+'layouts/sidebar-journal/';
 const site=getDirectionContent('sidebar-journal','knowledge',base,'articles/first-note/');
 const articles=site.articles.map(a=>({...a, date:a.date.slice(5), summary:a.summary}));
-const pageContentIntro=site.headline;
 const title=route==='articles'?'文章索引':route==='about'?'關於作者':route?'從日常的小事開始記錄':'側欄日誌';
 ---
 <DirectionLayout title={title+'｜側欄日誌（原型）'} description="以長駐側欄、個人短箋與日期順序構成的知識型多頁設計原型">
