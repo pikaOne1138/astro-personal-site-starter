@@ -1,5 +1,14 @@
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
+## 批次 B／C 審查更新（2026-10-14）
+
+- 完整報告：`docs/art-direction/PR47-BATCH-BC-REVIEW.md`。
+- B 11 款 × 4 頁 × 4 尺寸＝176 組；C 其餘 14 首頁 × 4 尺寸＝56 組，合計 **232/232** 瀏覽器截圖與自動主要品質檢查成功（Run `38599421924`，先前 Run `38598844284` 失敗的 8 組已修正或分類）。
+- 新增 `scripts/qa-pr47-batch-bc.mjs` + `.github/workflows/pr47-batch-bc.yml`，包含 Header 幾何、H1、alt、links、overflow 及較小點擊區 warning 記錄。
+- 修正閱讀年鑑的 `href="#"` 假連結；信任路徑沒有正式聯絡設定時禁用假寄信 CTA；將 H1 驗證改為整份文件，避免 Hero H1 位於主內容前被誤判。
+- **沒有宣稱** 224 個小點擊目標觀察訊號已全部確認合規，也沒有宣稱完成逐張設計師人工簽核、真人讀屏、真實手機或獨立 Starter 截圖。PR47 Draft／不 Merge／不部署 Production，#46 負責正式 Generator 整合。
+
+
 ## 第三階段最新交付（2026-10-14）
 - 已新增 `docs/art-direction/pr47-layout-handoff-registry.json`：25 個 slug、客群、原型來源、路由、結構辨識、assemblyStatus、QA 證據分級；12 原始首頁／2 獨立 Adapter／11 可配置多頁原型分開計算，全部不得假標 Ready。
 - 已新增 `docs/art-direction/PR47-PHASE3-HANDOFF.md`：正式交接給 #46 的 Content Collections 映射、Renderer / legacy slug / Pagefind、低內容狀態與責任分工。#47 沒有改動 #46 Gallery／主 Generator／主 Adapter。
