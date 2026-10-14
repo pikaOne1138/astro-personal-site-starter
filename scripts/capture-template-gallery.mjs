@@ -1,4 +1,5 @@
 import {chromium} from 'playwright';
+import sharp from 'sharp';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {resolve,join} from 'node:path';
@@ -13,12 +14,15 @@ try{
   for(const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
    const url=origin.replace(/\/$/,'')+'/layouts/'+item.slug+'/';
-   const response=await page.goto(url,{waitUntil:'networkidle',timeout:45000});
+   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
+   await page.waitForLoadState('load',{timeout:15000}).catch(()=>{});
    if(!response?.ok())throw Error(item.slug+' '+mode+' HTTP '+response?.status());
-   await page.evaluate(async()=>{await document.fonts.ready;});
+   await Promise.race([page.evaluate(async()=>{await document.fonts.ready;}),new Promise(ok=>setTimeout(ok,8000))]);
    const filename=item.slug+'-'+mode+'.webp';
    const path=join(out,filename);
-   await page.screenshot({path,type:'webp',fullPage:true,animations:'disabled'});
+   const png=await page.screenshot({type:'png',fullPage:true,animations:'disabled'});
+   const webp=await sharp(png).webp({quality:80,effort:4}).toBuffer();
+   writeFileSync(path,webp);
    const bytes=readFileSync(path);
    records.push({slug:item.slug,mode,route:'/layouts/'+item.slug+'/',viewport:{width,height},filename:'template-gallery/'+filename,sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length});
    await page.close();
