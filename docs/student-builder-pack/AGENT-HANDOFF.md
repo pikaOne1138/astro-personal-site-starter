@@ -4,7 +4,7 @@
 
 1. 讀取本 ZIP 根目錄 `AGENTS.md` 和 `START-HERE.md`，以及學員的 Site Brief JSON。
 2. 檢查你是否有遠端檔案操作、Node 建置、GitHub 寫入與建立 PR 能力；缺少時如實指出，不要假裝已完成。
-3. 使用 ZIP 內的 `scripts/export-starter.mjs`、`src/data/`，及 `.ai/astro-site-assembly/SKILL.md` 建立**學員自己的 Astro 網站**。所有必需程式來源均由此包提供，不用連老師 Repo。
+3. 使用 ZIP 內的 `scripts/export-starter.mjs`、`src/data/layout-assembly/definitions.mjs`、`src/data/layout-assembly/<slug>/Home.astro` 及 `.ai/astro-site-assembly/SKILL.md` 建立**學員自己的 Astro 網站**。目前十二種 Layout 都有獨立首頁 Adapter；必須依 Site Brief 的 `layoutSlug` 選用對應原始碼，不得改回通用首頁。所有必需程式來源均由此包提供，不用連老師 Repo。
 4. 依選定 Layout 參考 `src/pages/layouts/`、`src/components/` 與 `.ai/` 的設計規範，將首頁 Prototype 適配為真實的網站頁面；不得拿骨架加配色當成完整設計移植。
 5. 使用學員真實品牌／文章／服務／連結，不得虛構證照、成效、客戶見證、預約或表單成功。
 6. 先辨識學員選擇 GitHub Pages 或 Cloudflare Pages／Workers，依 `.ai/astro-pr-preview/SKILL.md`、`.ai/astro-starter-deploy/SKILL.md` 建立正確部署方式。不要沿用研究 Repo 的 PR Preview URL。
