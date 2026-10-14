@@ -7,7 +7,6 @@ const root=import.meta.env.BASE_URL+'layouts/service-catalogue/';
 const site=getDirectionContent('service-catalogue','helper',root,'services/individual/');
 const service=site.primary??{name:'尚未設定服務',description:'請填入已核實的服務內容',fit:'待設定',format:'待設定',duration:'待設定',price:'待設定',scope:'待設定',href:undefined};
 const facts=[['適合對象',service.fit],['服務形式',service.format],['時間',service.duration],['費用',service.price],['界線',service.scope]];
-const pageContentIntro=site.headline;
 const title=route==='services'?'服務一覽':route==='services/individual'?'服務詳細資訊':route==='about'?'關於工作者':'服務目錄';
 ---
 <DirectionLayout title={title+'｜服務目錄設計原型'} description="以可比較的服務資料為視覺主角，完整延伸至服務詳細頁與關於頁。">
