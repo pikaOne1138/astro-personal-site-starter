@@ -1,0 +1,56 @@
+---
+import config from '../../../../site.config.json';
+const {articles=[]}=Astro.props;
+const family=config.layoutSlug;
+const base=import.meta.env.BASE_URL;
+const link=(article)=>base+'articles/'+article.id+'/';
+const date=(article)=>article.data.publishedAt.toLocaleDateString('zh-TW');
+---
+<section class="archive-composition" data-archive-family={family} aria-label="文章檔案">
+{family==='essayist'?(
+  <div class="issue-layout">
+    {articles.length>0?<><a class="issue-feature" href={link(articles[0])}><span>FEATURE STORY / VOL. 01</span><h2>{articles[0].data.title}</h2><p>{articles[0].data.description}</p><em>READ THE ESSAY →</em></a><ol class="issue-contents">{articles.slice(1).map((a,i)=><li><span>{String(i+2).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a><time>{date(a)}</time></li>)}</ol></>:<p>目前沒有已發布文章。</>}
+  </div>
+):family==='curator'?(
+  <div class="object-grid">
+    {articles.map((a,i)=><a href={link(a)} class="object-card"><span class="object-no">OBJECT / {String(i+1).padStart(3,'0')}</span><div class="object-paper" aria-hidden="true"><span>{String(i+1).padStart(2,'0')}</span></div><h2>{a.data.title}</h2><p>{a.data.description}</p><span class="object-foot">VIEW RECORD ↗ <time>{date(a)}</time></span></a>)}
+    {!articles.length&&<p>目前沒有已公開的收藏與文章。</p>}
+  </div>
+):family==='reading-atlas'?(
+  <div class="year-index"><div class="year-index-lead"><span>ALMANAC / ARTICLE INDEX</span><strong>{new Date().getFullYear()}</strong><p>依發布日期排列，讓閱讀有清楚的時間線。</p></div><ol>{articles.map((a,i)=><li><time>{date(a)}</time><span>{String(i+1).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a></li>)}</ol>{!articles.length&&<p>目前尚無公開紀錄。</p>}</div>
+):family==='radio-letter'?(
+  <ol class="broadcast-list">{articles.map((a,i)=><li><span class="broadcast-num">EP. {String(i+1).padStart(3,'0')}</span><a href={link(a)}><h2>{a.data.title}</h2><p>{a.data.description}</p></a><time>{date(a)}</time></li>)}{!articles.length&&<li>目前沒有已公開的文章或節目筆記。</li>}</ol>
+):family==='learning-lab'?(
+  <ol class="lab-index">{articles.map((a,i)=><li><span class="module-number">{String(i+1).padStart(2,'0')}</span><div><span class="module-type">LEARNING NOTE / {date(a)}</span><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的學習筆記。</li>}</ol>
+):(
+  <div class="field-index"><div class="field-index-note"><span>FIELD / ARCHIVE</span><p>按實際文章日期整理，不虛構田野來源或研究結果。</p></div><ol>{articles.map((a,i)=><li><span class="field-number">{String(i+1).padStart(2,'0')}</span><div><time>{date(a)}</time><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的文章。</li>}</ol></div>
+)}
+</section>
+<style>
+.archive-composition{width:100%;min-width:0}
+.archive-composition a{color:inherit;text-decoration:none}.archive-composition a:hover{text-decoration:underline;text-underline-offset:.2em}
+.issue-layout{display:grid;grid-template-columns:1.3fr .8fr;gap:clamp(2rem,5vw,6rem)}
+.issue-feature{display:block;border-top:4px double currentColor;padding-top:1.5rem}
+.issue-feature>span,.issue-feature em,.object-no,.object-foot,.year-index-lead>span,.broadcast-num,.module-type,.field-index-note>span{font:600 .72rem/1.7 ui-monospace,monospace;letter-spacing:.1em}
+.issue-feature h2{font:400 clamp(2.5rem,5vw,5.5rem)/1.1 Georgia,serif;letter-spacing:-.055em;margin:2rem 0 1rem}
+.issue-feature p{line-height:1.9}.issue-feature em{display:block;margin-top:2rem;font-style:normal}
+.issue-contents{list-style:none;margin:0;padding:0;border-top:1px solid currentColor}
+.issue-contents li{display:grid;grid-template-columns:30px 1fr;gap:.7rem;border-bottom:1px solid currentColor;padding:1.3rem 0}
+.issue-contents li span,.issue-contents time{font:.7rem ui-monospace,monospace}.issue-contents li a{font:400 1.4rem/1.3 Georgia,serif}.issue-contents time{grid-column:2}
+.object-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,3rem)}
+.object-card{display:flex;flex-direction:column;border:1px solid currentColor;padding:clamp(1rem,2vw,2rem);min-width:0;min-height:360px}
+.object-paper{height:140px;background:color-mix(in srgb,currentColor 8%,transparent);margin:1.3rem 0;display:grid;place-items:center;border:1px solid color-mix(in srgb,currentColor 25%,transparent)}
+.object-paper>span{font:400 5rem/1 Georgia,serif;opacity:.4}
+.object-card h2{font:400 clamp(1.5rem,3vw,2.7rem)/1.25 Georgia,serif;margin:.4rem 0}.object-card p{font-size:.9rem}.object-foot{display:flex;justify-content:space-between;gap:1rem;margin-top:auto;border-top:1px solid currentColor;padding-top:1rem}
+.year-index{display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(1rem,3vw,3rem)}
+.year-index-lead strong{display:block;font:400 clamp(3rem,6vw,6rem)/1 Georgia,serif;margin:1rem 0}.year-index-lead p{font-size:.9rem}
+.year-index ol,.field-index ol,.broadcast-list,.lab-index{list-style:none;padding:0;margin:0}
+.year-index li{display:grid;grid-template-columns:110px 35px minmax(0,1fr);gap:1rem;padding:1.4rem 0;border-bottom:1px solid currentColor;align-items:baseline}
+.year-index li a{font:400 clamp(1.4rem,2.5vw,2.5rem)/1.25 Georgia,serif}.year-index time,.year-index li span{font:.75rem ui-monospace,monospace}
+.broadcast-list li{display:grid;grid-template-columns:100px minmax(0,1fr) 100px;gap:1.5rem;align-items:baseline;border-top:1px dashed currentColor;padding:1.7rem 0}.broadcast-list h2{font:400 clamp(1.5rem,2.9vw,3rem)/1.2 Georgia,serif;margin:0}.broadcast-list time{font:.72rem ui-monospace,monospace}
+.lab-index li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:2rem;border-top:4px solid currentColor;padding:1.5rem 0}.module-number{font:900 clamp(2.5rem,5vw,5rem)/1 system-ui,sans-serif}.lab-index h2{font:800 clamp(1.5rem,3vw,3rem)/1.2 system-ui,sans-serif;letter-spacing:-.04em}.lab-index p{line-height:1.7}
+.field-index{display:grid;grid-template-columns:130px minmax(0,1fr);gap:3rem}
+.field-index-note{font-size:.8rem}.field-index li{display:grid;grid-template-columns:55px 1fr;gap:1rem;border-bottom:1px solid currentColor;padding:1.5rem 0}.field-number{font:400 2rem Georgia,serif}.field-index time{font:.72rem ui-monospace,monospace}.field-index h2{font:400 clamp(1.4rem,2.7vw,2.6rem)/1.25 Georgia,serif;margin:.7rem 0}
+@media(max-width:800px){.issue-layout,.field-index,.year-index{grid-template-columns:1fr}.broadcast-list li{grid-template-columns:1fr;gap:.4rem}.broadcast-list time{grid-column:1}.year-index li{grid-template-columns:100px minmax(0,1fr)}.year-index li span{display:none}}
+@media(max-width:550px){.object-grid{grid-template-columns:1fr}.lab-index li{grid-template-columns:60px 1fr;gap:1rem}.field-index li{grid-template-columns:40px 1fr}.issue-feature h2{font-size:2.4rem}}
+</style>
