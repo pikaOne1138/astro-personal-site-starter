@@ -6,7 +6,8 @@ import directions from '../layout-directions.json' with {type:'json'};
  * Prototype selection remains available in the planner; only ready adapters may be exported.
  */
 export const layoutDefinitions = directions.map(direction => {
-  const ready = direction.slug === 'field-notes' || direction.slug === 'clinician';
+  const adapterAvailable = direction.slug === 'field-notes' || direction.slug === 'clinician';
+  const ready = false;
   return {
     schemaVersion: 1,
     slug: direction.slug,
@@ -16,8 +17,8 @@ export const layoutDefinitions = directions.map(direction => {
     description: direction.description,
     structure: direction.structure,
     sourcePrototype: '/layouts/' + direction.slug + '/',
-    assemblyStatus: ready ? 'ready' : 'prototype',
-    adapter: ready ? {id: direction.slug, version: 1, renderer: 'src/components/layouts/' + direction.slug + '/Home.astro'} : null,
+    assemblyStatus: adapterAvailable ? 'in-progress' : 'prototype',
+    adapter: adapterAvailable ? {id: direction.slug, version: 1, renderer: 'src/components/layouts/' + direction.slug + '/Home.astro'} : null,
     screenshots: {
       desktop: '/template-gallery/' + direction.slug + '-desktop.webp',
       mobile: '/template-gallery/' + direction.slug + '-mobile.webp'
@@ -32,6 +33,6 @@ export const layoutDefinitions = directions.map(direction => {
 export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
 export const getReadyLayout = (slug,kind) => {
   const result=getLayoutDefinition(slug,kind);
-  if(!result || result.assemblyStatus!=='ready' || !result.adapter)throw Error('Layout '+slug+' is a prototype, not a Starter Ready design. Export the Site Brief, or select field-notes / clinician.');
+  if(!result || !result.adapter || !['ready','in-progress'].includes(result.assemblyStatus))throw Error('Layout '+slug+' has no independent assembly adapter yet. Export the Site Brief instead.');
   return result;
 };
