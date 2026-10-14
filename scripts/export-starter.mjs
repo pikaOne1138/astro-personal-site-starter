@@ -211,6 +211,23 @@ assets['README.md']+='\n## Prototype-only selection\n\nIMPORTANT: '+layoutDefini
 }
 // Typography and image treatment adjust presentation; the chosen layout DOM and section order are untouched.
 assets['README.md']+='\n## Brand typography and images\n\nThe brand typography preset and image style are configured in site.config.json. If heroImagePath is set, place that exact licensed image under public/images/ and provide meaningful heroImageAlt. The exporter does not fetch remote images or invent licenses.\n';
+
+if(hasAssemblyAdapter){
+ assets['src/components/layouts/selected/DesignInterior.astro']=readFileSync(new URL('../src/data/layout-assembly/DesignInterior.astro',import.meta.url),'utf8');
+ for(const page of ['src/pages/[...page].astro','src/pages/articles/index.astro','src/pages/articles/[slug].astro']){
+  assets[page]=assets[page].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\\nimport DesignInterior from '../components/layouts/selected/DesignInterior.astro';")
+   .replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\\nimport DesignInterior from '../../components/layouts/selected/DesignInterior.astro';");
+ }
+ assets['src/pages/[...page].astro']=assets['src/pages/[...page].astro'].replace(
+  '<section class="interior"><h1>{item.label}</h1><p>這裡尚未填入個人的正式內容，請先完成內容與設計驗收再公開。</p></section>',
+  '<DesignInterior title={item.label} kicker={item.id.toUpperCase()} mode="page"><div class="family-empty" data-content-state="unconfigured"><h2>{item.id==="services"?"服務與合作方式":item.id==="faq"?"常見問題":item.id==="about"?"關於這個網站":"頁面內容"}</h2><p>這個頁面尚未提供正式內容。請站長與 AI 確認資訊、圖片和連結後再公開。</p>{item.id==="services"&&<p>待確認：服務範圍、適合對象、合作流程、費用與聯絡方式。</p>}{item.id==="faq"&&<p>待確認：訪客真正關心的問題與有事實依據的回答。</p>}{item.id==="about"&&<p>待確認：個人介紹、工作方法與可以公開的真實經歷。</p>}</div></DesignInterior>');
+ assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro'].replace(
+  '<section class="interior"><h1>文章</h1>{articles.length?<div class="links">{articles.map(x=><a href={base+\'articles/\'+x.id+\'/\'}>{x.data.title} →</a>)}</div>:<p>目前沒有公開文章。</p>}</section>',
+  '<DesignInterior title="文章與觀點" kicker="ARCHIVE" mode="listing">{articles.length?<div class="family-articles">{articles.map((x,i)=><a class="family-article-link" href={base+\'articles/\'+x.id+\'/\'}><span class="family-article-index">{String(i+1).padStart(2,\'0\')}</span><span class="family-article-copy"><strong>{x.data.title}</strong><span>{x.data.description}</span></span><time datetime={x.data.publishedAt.toISOString()}>{x.data.publishedAt.toLocaleDateString(\'zh-TW\')}</time><span aria-hidden="true">↗</span></a>)}</div>:<p>目前沒有公開文章。新增經本人確認的文章後，這裡會自動顯示。</p>}</DesignInterior>');
+ assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace(
+  '<article class="interior prose"><h1>{entry.data.title}</h1><p>{entry.data.description}</p><Content/></article>',
+  '<DesignInterior title={entry.data.title} description={entry.data.description} kicker="ARTICLE" mode="article"><article class="family-prose"><Content/></article></DesignInterior>');
+}
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
