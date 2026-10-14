@@ -76,10 +76,10 @@ try{
         'publishedAt: 2026-10-12','draft: false','---',
         '## 第一個標題','這是學員撰寫的文章，包含中文、標點與一段比較長的文字。',
         '## 第二個標題','請保留正式文章內容，不要退回通用展示卡片。'
-      ].join('\\n'));
+      ].join('\n'));
       writeFileSync(join(articleDir,'qa-hidden.md'),[
         '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
-      ].join('\\n'));
+      ].join('\n'));
     }
     const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
     const aboutPage=readFileSync(join(site,'src/pages/[...page].astro'),'utf8');
