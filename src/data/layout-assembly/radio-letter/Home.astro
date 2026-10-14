@@ -10,7 +10,7 @@ const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.epi
 ---
 <div class="radio-shell" data-assembled-layout="radio-letter">
   <section class="radio-hero" aria-labelledby="radio-title">
-    <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">這封信，留給願意聽的人。</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
+    <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">{config.content?.headline || "這封信，留給願意聽的人。"}</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">{config.content?.intro || "聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。"}</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
     <figure class="radio-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="radio-art" role="img" aria-label="深色聲波抽象封面"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
   <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2>{hasAudio?<audio controls preload="metadata" aria-label="本期節目音訊"><source src={base+audio.replace(/^\//,'')}/>您的瀏覽器不支援音訊播放，請使用逐字稿。</audio>:<p role="status">尚未設定自有授權音檔，未顯示無法播放的音訊播放器。</p>}<p>請在 site.config.json 的 media.episodeAudioPath 設定本地 /audio/ 音檔，並提供有授權的逐字稿。</p></section>
