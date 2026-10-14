@@ -1,0 +1,1496 @@
+{
+  "version": 1,
+  "source": "80074509c632560a26b6aa18f18ee8ffc526160a",
+  "notes": "Original Astro prototype vs standalone export. Automated geometry only; human fidelity NOT reviewed.",
+  "records": [
+    {
+      "slug": "field-notes",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "field-notes-1440-prototype.jpg",
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": [
+          "先把世界記錄下來，再慢慢理解。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "field-notes-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "field-notes",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "field-notes-1280-prototype.jpg",
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": [
+          "先把世界記錄下來，再慢慢理解。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "field-notes-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "field-notes",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "field-notes-768-prototype.jpg",
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": [
+          "先把世界記錄下來，再慢慢理解。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "field-notes-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "field-notes",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "field-notes-390-prototype.jpg",
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": [
+          "先把世界記錄下來，再慢慢理解。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "field-notes-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "essayist",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "essayist-1440-prototype.jpg",
+        "title": "長文書房｜知識網站方向 02",
+        "h1": [
+          "把一個問題想完整。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "essayist-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "essayist",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "essayist-1280-prototype.jpg",
+        "title": "長文書房｜知識網站方向 02",
+        "h1": [
+          "把一個問題想完整。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "essayist-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "essayist",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "essayist-768-prototype.jpg",
+        "title": "長文書房｜知識網站方向 02",
+        "h1": [
+          "把一個問題想完整。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "essayist-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "essayist",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "essayist-390-prototype.jpg",
+        "title": "長文書房｜知識網站方向 02",
+        "h1": [
+          "把一個問題想完整。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "essayist-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "learning-lab",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "learning-lab-1440-prototype.jpg",
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": [
+          "把好奇心變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "learning-lab-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把好奇心，變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "learning-lab",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "learning-lab-1280-prototype.jpg",
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": [
+          "把好奇心變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "learning-lab-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把好奇心，變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "learning-lab",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "learning-lab-768-prototype.jpg",
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": [
+          "把好奇心變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "learning-lab-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把好奇心，變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "learning-lab",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "learning-lab-390-prototype.jpg",
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": [
+          "把好奇心變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "learning-lab-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把好奇心，變成一條路。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "curator",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "curator-1440-prototype.jpg",
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": [
+          "我替你先選過一輪。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "curator-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把值得留下的，整理成目錄。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "curator",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "curator-1280-prototype.jpg",
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": [
+          "我替你先選過一輪。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "curator-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把值得留下的，整理成目錄。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "curator",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "curator-768-prototype.jpg",
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": [
+          "我替你先選過一輪。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "curator-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把值得留下的，整理成目錄。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "curator",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "curator-390-prototype.jpg",
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": [
+          "我替你先選過一輪。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "curator-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "把值得留下的，整理成目錄。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "radio-letter",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "radio-letter-1440-prototype.jpg",
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": [
+          "按下播放，這封信說給你聽。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "radio-letter-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "這封信，留給願意聽的人。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "radio-letter",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "radio-letter-1280-prototype.jpg",
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": [
+          "按下播放，這封信說給你聽。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "radio-letter-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "這封信，留給願意聽的人。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "radio-letter",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "radio-letter-768-prototype.jpg",
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": [
+          "按下播放，這封信說給你聽。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "radio-letter-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "這封信，留給願意聽的人。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "radio-letter",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "radio-letter-390-prototype.jpg",
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": [
+          "按下播放，這封信說給你聽。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "radio-letter-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "這封信，留給願意聽的人。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "reading-atlas",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "reading-atlas-1440-prototype.jpg",
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": [
+          "這一年，我讀完了這些書。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "reading-atlas-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "閱讀年鑑"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "reading-atlas",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "reading-atlas-1280-prototype.jpg",
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": [
+          "這一年，我讀完了這些書。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "reading-atlas-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "閱讀年鑑"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "reading-atlas",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "reading-atlas-768-prototype.jpg",
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": [
+          "這一年，我讀完了這些書。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "reading-atlas-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "閱讀年鑑"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "reading-atlas",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "reading-atlas-390-prototype.jpg",
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": [
+          "這一年，我讀完了這些書。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "reading-atlas-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "閱讀年鑑"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "clinician",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "clinician-1440-prototype.jpg",
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": [
+          "讓你知道接下來會發生什麼。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "clinician-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "clinician",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "clinician-1280-prototype.jpg",
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": [
+          "讓你知道接下來會發生什麼。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "clinician-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "clinician",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "clinician-768-prototype.jpg",
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": [
+          "讓你知道接下來會發生什麼。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "clinician-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "clinician",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "clinician-390-prototype.jpg",
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": [
+          "讓你知道接下來會發生什麼。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "clinician-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "companion",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "companion-1440-prototype.jpg",
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": [
+          "你可以先從想說的那一小段開始。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "companion-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "companion",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "companion-1280-prototype.jpg",
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": [
+          "你可以先從想說的那一小段開始。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "companion-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "companion",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "companion-768-prototype.jpg",
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": [
+          "你可以先從想說的那一小段開始。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "companion-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "companion",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "companion-390-prototype.jpg",
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": [
+          "你可以先從想說的那一小段開始。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "companion-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "示範學員網站我的內容與服務"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "somatic",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "somatic-1440-prototype.jpg",
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": [
+          "先回到身體裡。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "somatic-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "先回到，身體與節律。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "somatic",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "somatic-1280-prototype.jpg",
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": [
+          "先回到身體裡。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "somatic-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "先回到，身體與節律。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "somatic",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "somatic-768-prototype.jpg",
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": [
+          "先回到身體裡。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "somatic-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "先回到，身體與節律。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "somatic",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "somatic-390-prototype.jpg",
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": [
+          "先回到身體裡。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "somatic-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "先回到，身體與節律。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "coach",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "coach-1440-prototype.jpg",
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "coach-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "coach",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "coach-1280-prototype.jpg",
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "coach-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "coach",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "coach-768-prototype.jpg",
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "coach-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "coach",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "coach-390-prototype.jpg",
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "coach-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "卡住的事，拆成下一步。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "collective",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "collective-1440-prototype.jpg",
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": [
+          "一起工作，不用把答案交給一個人。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "collective-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "一起工作，讓支持有很多形狀。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "collective",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "collective-1280-prototype.jpg",
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": [
+          "一起工作，不用把答案交給一個人。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "collective-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "一起工作，讓支持有很多形狀。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "collective",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "collective-768-prototype.jpg",
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": [
+          "一起工作，不用把答案交給一個人。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "collective-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "一起工作，讓支持有很多形狀。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "collective",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "collective-390-prototype.jpg",
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": [
+          "一起工作，不用把答案交給一個人。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "collective-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "一起工作，讓支持有很多形狀。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "trust-path",
+      "width": 1440,
+      "height": 900,
+      "prototype": {
+        "screenshot": "trust-path-1440-prototype.jpg",
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": [
+          "走近之前，先把路看清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "trust-path-1440-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "在開始之前，先把事情說清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 1440,
+        "viewportWidth": 1440,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "trust-path",
+      "width": 1280,
+      "height": 900,
+      "prototype": {
+        "screenshot": "trust-path-1280-prototype.jpg",
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": [
+          "走近之前，先把路看清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "trust-path-1280-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "在開始之前，先把事情說清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 1280,
+        "viewportWidth": 1280,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "trust-path",
+      "width": 768,
+      "height": 1024,
+      "prototype": {
+        "screenshot": "trust-path-768-prototype.jpg",
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": [
+          "走近之前，先把路看清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "trust-path-768-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "在開始之前，先把事情說清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 768,
+        "viewportWidth": 768,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    },
+    {
+      "slug": "trust-path",
+      "width": 390,
+      "height": 844,
+      "prototype": {
+        "screenshot": "trust-path-390-prototype.jpg",
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": [
+          "走近之前，先把路看清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "student": {
+        "screenshot": "trust-path-390-student.jpg",
+        "title": "示範學員網站",
+        "h1": [
+          "在開始之前，先把事情說清楚。"
+        ],
+        "main": true,
+        "bodyWidth": 390,
+        "viewportWidth": 390,
+        "brokenLocalImages": [],
+        "anchors": []
+      },
+      "problems": [],
+      "visualReview": "NOT REVIEWED"
+    }
+  ],
+  "errors": []
+}
