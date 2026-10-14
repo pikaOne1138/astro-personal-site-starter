@@ -73,7 +73,7 @@ const release={
   distribution:'AI-建站資料包.zip',
   releaseStage:'beta-assembly'
 };
-const provenance=Buffer.from(JSON.stringify(release,null,2)+'\\n');
+const provenance=Buffer.from(JSON.stringify(release,null,2)+String.fromCharCode(10));
 entries.set('BUILDER-PACK-VERSION.json',provenance);
 writeFileSync(resolve('public/builder-pack-version.json'),provenance);
 // ZIP files must also contain the actual reference roots declared in the Skills;
