@@ -58,3 +58,13 @@
 - `src/data/art-direction-adapters/subject-atlas/Home.astro`：對 topics 與 post.data.topics 進行防護，不要求每篇文章都一定有 topics 陣列。缺主題的使用者可讀到待設定聲明。
 - `src/pages/layouts/subject-atlas/index.astro`：先前已移除寫死的主題總數與示範文章筆數。
 - 沒有修改 PR46 Gallery、主要 Starter Exporter 或主 Adapter。這一批僅修改 PR47 自有的獨立 Adapter 和 exporter。
+
+## 五組定點 source 稽核與修正紀錄
+
+- Sidebar Journal / Field Notes：**確認缺陷並修正**。原先 sidebar-journal 仍有 96px 上距、128px 下距與 76px 巨幅首頁刊頭，且首頁文章有二次分欄；現改為短引言、文章直接進入單一主閱讀流，保留作者/分類側欄。尚未目視。
+- Clinician / Trust Path / Practice Compass：**確認優先性問題並局部修正**。Clinician 導覽與首屏 CTA 現優先引向 Practice Dossier，而非一般適配／五站旅程；實際獨立內頁仍未擴充，未通過全站差異驗收。
+- Subject Atlas / Curator：**目前 DOM 區別存在**，主題 rail、分類計數、文章關聯與 Curator 不對稱展牆不同；沒有新發現的可確證視覺問題，不為了改而改。待共享內容真實截圖。
+- Portrait Profile / Companion：**DOM 區別存在但無照片 fallback 高風險**，肖像分欄與書信長文結構不同。未取得真實瀏覽器截圖，暫不宣稱修復完成。
+- Question-led Practice / Trust Path：**DOM 區別存在**，前者 Q/A 3:8、後者五站連續旅程；尚缺同資料同色盲比與完整內頁驗證。
+
+稽核結論只對源碼結構成立，不等於四尺寸截圖 PASS。新一輪差異修正沒有修改 #46 管理的 Generator／Gallery。
