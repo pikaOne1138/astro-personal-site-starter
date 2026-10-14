@@ -51,7 +51,9 @@ const logoSource=plan.brand?.logoPath?resolve(dirname(resolve(input)),'public',p
 if(logoSource&&!existsSync(logoSource)&&!embedded.has(plan.brand.logoPath))throw Error('Missing local logo '+plan.brand.logoPath+'; place it in public/images/ beside your Site Brief.');
 const imageSource=plan.brand?.heroImagePath?resolve(dirname(resolve(input)),'public',plan.brand.heroImagePath.slice(1)):null;
 if(imageSource&&!existsSync(imageSource)&&!embedded.has(plan.brand.heroImagePath))throw Error('Missing licensed hero image '+plan.brand.heroImagePath+'; place the asset beside your Site Brief under public/images/ before generating.');
-// Optional content metadata is explicit; templates never invent books or verified services.
+const content=plan.content??{};
+if(typeof content!=='object'||(content.headline!==undefined&&(typeof content.headline!=='string'||content.headline.length>120))||(content.intro!==undefined&&(typeof content.intro!=='string'||content.intro.length>800)))throw Error('Invalid homepage copy');
+ // Optional content metadata is explicit; templates never invent books or verified services.
 const reading=plan.layoutSlug==='reading-atlas'?plan.reading:undefined;
 if(reading?.records&&(!Array.isArray(reading.records)||reading.records.length>180||reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.note!=='string'||x.note.length>1000)))throw Error('Reading records need month (01-12), title and note');
 if(reading?.annualBook&&(!reading.annualBook.title?.trim()||!reading.annualBook.note?.trim()))throw Error('Annual book must include an owned title and explanation');
@@ -65,7 +67,7 @@ const audioSource=media?.episodeAudioPath?resolve(dirname(resolve(input)),'publi
 if(audioSource&&!existsSync(audioSource))throw Error('Missing owned audio '+media.episodeAudioPath+'; put it beside your Site Brief in public/audio/');
 const root=resolve(dest);
 if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty');
-const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,media,reading,serviceFacts,site:'https://example.com',base:'/'};
+const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,content,media,reading,serviceFacts,site:'https://example.com',base:'/'};
 const put=(path,body)=>{const p=join(root,path);mkdirSync(join(p,'..'),{recursive:true});writeFileSync(p,body,'utf8')};
 put('site.config.json',JSON.stringify(settings,null,2)+'\n');
 if(imageSource&&!embedded.has(plan.brand.heroImagePath)){const p=join(root,'public',plan.brand.heroImagePath.slice(1));mkdirSync(dirname(p),{recursive:true});copyFileSync(imageSource,p);}
