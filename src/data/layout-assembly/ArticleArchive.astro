@@ -7,29 +7,23 @@ const link=(article)=>base+'articles/'+article.id+'/';
 const date=(article)=>article.data.publishedAt.toLocaleDateString('zh-TW');
 ---
 <section class="archive-composition" data-archive-family={family} aria-label="文章檔案">
-{family==='essayist'&&(
-  <div class="issue-layout">
-    {articles.length>0?<><a class="issue-feature" href={link(articles[0])}><span>FEATURE STORY / VOL. 01</span><h2>{articles[0].data.title}</h2><p>{articles[0].data.description}</p><em>READ THE ESSAY →</em></a><ol class="issue-contents">{articles.slice(1).map((a,i)=><li><span>{String(i+2).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a><time>{date(a)}</time></li>)}</ol></>:<p>目前沒有已發布文章。</>}
+{family==='essayist'&& <div class="issue-layout">
+    {articles.length>0&&<div class="issue-feature-group"><a class="issue-feature" href={link(articles[0])}><span>FEATURE STORY / VOL. 01</span><h2>{articles[0].data.title}</h2><p>{articles[0].data.description}</p><em>READ THE ESSAY →</em></a><ol class="issue-contents">{articles.slice(1).map((a,i)=><li><span>{String(i+2).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a><time>{date(a)}</time></li>)}</ol></>:<p>目前沒有已發布文章。</>}
   </div>
-)}
-{family==='curator'&&(
-  <div class="object-grid">
+}
+{family==='curator'&& <div class="object-grid">
     {articles.map((a,i)=><a href={link(a)} class="object-card"><span class="object-no">OBJECT / {String(i+1).padStart(3,'0')}</span><div class="object-paper" aria-hidden="true"><span>{String(i+1).padStart(2,'0')}</span></div><h2>{a.data.title}</h2><p>{a.data.description}</p><span class="object-foot">VIEW RECORD ↗ <time>{date(a)}</time></span></a>)}
     {!articles.length&&<p>目前沒有已公開的收藏與文章。</p>}
   </div>
-)}
-{family==='reading-atlas'&&(
-  <div class="year-index"><div class="year-index-lead"><span>ALMANAC / ARTICLE INDEX</span><strong>{new Date().getFullYear()}</strong><p>依發布日期排列，讓閱讀有清楚的時間線。</p></div><ol>{articles.map((a,i)=><li><time>{date(a)}</time><span>{String(i+1).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a></li>)}</ol>{!articles.length&&<p>目前尚無公開紀錄。</p>}</div>
-)}
-{family==='radio-letter'&&(
-  <ol class="broadcast-list">{articles.map((a,i)=><li><span class="broadcast-num">EP. {String(i+1).padStart(3,'0')}</span><a href={link(a)}><h2>{a.data.title}</h2><p>{a.data.description}</p></a><time>{date(a)}</time></li>)}{!articles.length&&<li>目前沒有已公開的文章或節目筆記。</li>}</ol>
-)}
-{family==='learning-lab'&&(
-  <ol class="lab-index">{articles.map((a,i)=><li><span class="module-number">{String(i+1).padStart(2,'0')}</span><div><span class="module-type">LEARNING NOTE / {date(a)}</span><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的學習筆記。</li>}</ol>
-)}
-{family==='field-notes'&&(
-  <div class="field-index"><div class="field-index-note"><span>FIELD / ARCHIVE</span><p>按實際文章日期整理，不虛構田野來源或研究結果。</p></div><ol>{articles.map((a,i)=><li><span class="field-number">{String(i+1).padStart(2,'0')}</span><div><time>{date(a)}</time><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的文章。</li>}</ol></div>
-)}
+}
+{family==='reading-atlas'&& <div class="year-index"><div class="year-index-lead"><span>ALMANAC / ARTICLE INDEX</span><strong>{new Date().getFullYear()}</strong><p>依發布日期排列，讓閱讀有清楚的時間線。</p></div><ol>{articles.map((a,i)=><li><time>{date(a)}</time><span>{String(i+1).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a></li>)}</ol>{!articles.length&&<p>目前尚無公開紀錄。</p>}</div>
+}
+{family==='radio-letter'&& <ol class="broadcast-list">{articles.map((a,i)=><li><span class="broadcast-num">EP. {String(i+1).padStart(3,'0')}</span><a href={link(a)}><h2>{a.data.title}</h2><p>{a.data.description}</p></a><time>{date(a)}</time></li>)}{!articles.length&&<li>目前沒有已公開的文章或節目筆記。</li>}</ol>
+}
+{family==='learning-lab'&& <ol class="lab-index">{articles.map((a,i)=><li><span class="module-number">{String(i+1).padStart(2,'0')}</span><div><span class="module-type">LEARNING NOTE / {date(a)}</span><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的學習筆記。</li>}</ol>
+}
+{family==='field-notes'&& <div class="field-index"><div class="field-index-note"><span>FIELD / ARCHIVE</span><p>按實際文章日期整理，不虛構田野來源或研究結果。</p></div><ol>{articles.map((a,i)=><li><span class="field-number">{String(i+1).padStart(2,'0')}</span><div><time>{date(a)}</time><h2><a href={link(a)}>{a.data.title}</a></h2><p>{a.data.description}</p></div></li>)}{!articles.length&&<li>目前沒有已公開的文章。</li>}</ol></div>
+}
 </section>
 <style>
 .archive-composition{width:100%;min-width:0}
