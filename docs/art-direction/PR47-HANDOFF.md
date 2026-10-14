@@ -1,5 +1,16 @@
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
+## 第二階段更新（2026-10-14）
+
+- 正常 11×3×4＝132 內頁截圖與基本 DOM／Tab／Overflow：PASS（Run 38577914500）。
+- 零內容、單篇／單項、長 CJK 三種情境：11×3×2×3＝198 組禁用 JS 真實內頁截圖及基礎檢查：PASS（Run 38579784078）。
+- WCAG 2 A/AA、2.1 AA axe-core：66 組桌機／手機內頁掃描，0 violations，PASS（Run 38580569498）。
+- 最新報告：`docs/art-direction/PR47-PHASE2-INTERIOR-QA.md`；原始 Artifact 在 GitHub Actions。
+- **未完成的人工驗收不標 PASS**：全面鍵盤完整工作流、真人螢幕閱讀器、精細全尺寸 Art Direction 人工逐頁、獨立 Starter／Adapter 截圖驗收（延期）。原型固定示範文章仍可能在空資料時顯示演示段落，不是學員真實內容頁。
+- 下一主線進入第三階段 Definition、狀態與交接，不改 #46 Generator／Gallery；PR 保持 Draft。
+
+
+
 ## 最新接手狀態：第一階段內容契約完成（2026-10-14）
 
 本段優先於文件下方所有過時的「候選未實作」、「P0 未完成」說法。最新 Source/CI 請以 GitHub PR Head 為準，不鎖定某個 SHA。
