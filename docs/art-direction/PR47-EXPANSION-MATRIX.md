@@ -42,6 +42,6 @@
 - 已提交 sidebar-journal 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 已提交 portrait-profile 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 這兩款仍屬「第一批實作中」，未接 #46 主 Adapter，也未完成獨立 Starter 驗收。
-- 其餘研究候選尚未實作，不得在 UI 或報告計為完成。
+- 第二批已開始：editorial-frontpage 已提交首頁、文章檔案、文章詳細頁與 About 靜態原型；同樣待 Build／視覺 QA，不視為 ready。\n- 其餘研究候選尚未實作，不得在 UI 或報告計為完成。
 - 獨立 Starter / Adapter 截圖驗收本輪延期；本地 prototype 的 1440／1280／768／390 實際目視 QA 仍待執行。
 - 不 Merge、不部署 Production、不改 #46 的程式。
