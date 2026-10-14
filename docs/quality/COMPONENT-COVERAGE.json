@@ -2971,6 +2971,33 @@
         "status": "NOT TESTED",
         "evidence": ""
       }
+    },
+    "src/components/art-direction/PrototypeNav.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/inventory-all-component-props.mjs"
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": "09.2 prototype navigation; verify page destinations and fragments"
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": "09.2 prototype navigation; verify focus, current page and 44px targets"
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": "09.2 four-viewport browser gate; pending Work Cloud Browser resize capability"
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": "09.2 all 14 prototype routes; built route and fragment checks"
+      }
     }
   }
 }
