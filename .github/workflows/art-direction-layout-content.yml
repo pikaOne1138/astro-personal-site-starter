@@ -1,0 +1,24 @@
+name: Art Direction Layout Content Contract
+on:
+  pull_request:
+    paths:
+      - 'src/data/art-direction-content.ts'
+      - 'src/data/art-direction-layout-content.json'
+      - 'src/pages/layouts/**'
+      - 'scripts/verify-art-direction-layout-content.mjs'
+      - '.github/workflows/art-direction-layout-content.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  content-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund --package-lock=false
+      - name: Build all 11 directions with default, empty and multiple published records
+        run: node scripts/verify-art-direction-layout-content.mjs
