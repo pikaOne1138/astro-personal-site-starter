@@ -3,6 +3,8 @@ import config from '../../../../site.config.json';
 const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='services');
 const action=base+(nav?.path??'services/');
+const facts=config.serviceFacts??{};
+const show=(key,placeholder)=>facts[key]?.trim()||placeholder;
 ---
 <div class="trust-shell" data-assembled-layout="trust-path">
   <section class="trust-hero" aria-labelledby="trust-title">
@@ -11,9 +13,9 @@ const action=base+(nav?.path??'services/');
   <nav class="trust-route" aria-label="五站服務說明路線"><svg viewBox="0 0 1000 120" role="img" aria-label="串起五個站點的折線" preserveAspectRatio="none"><path d="M0 80 L100 80 C200 80 200 40 300 40 C400 40 400 80 500 80 C600 80 600 40 700 40 C800 40 800 80 900 80 L1000 80" fill="none" stroke="currentColor" stroke-width="3"/></svg>{[['scope','範圍'],['method','方法'],['fees','費用與時間'],['first','第一次見面'],['refer','若不適合']].map(([id,label],i)=><a href={'#'+id}><span>{i+1}</span>{label}</a>)}</nav></section>
   <div class="trust-section-list"><section class="trust-section" id="scope"><p class="trust-section-tag">01 / SCOPE</p><h2>01 範圍</h2><p>可以協助什麼？不能處理什麼？需要其他資源時怎麼辦？</p></section>
 <section class="trust-section" id="method"><p class="trust-section-tag">02 / METHOD</p><h2>02 方法</h2><p>如何開始、需要準備什麼？合作的選擇始終屬於來訪者。</p></section>
-<section class="trust-section" id="fees"><p class="trust-section-tag">03 / FEES</p><h2>03 費用與時間</h2><dl class="trust-unverified"><div><dt>單次時間</dt><dd>待站長填寫</dd></div><div><dt>費用</dt><dd>待站長填寫</dd></div><div><dt>取消規則</dt><dd>待站長填寫</dd></div><div><dt>資格或證照</dt><dd>待提供可查證資料</dd></div></dl></section>
+<section class="trust-section" id="fees"><p class="trust-section-tag">03 / FEES</p><h2>03 費用與時間</h2><dl class="trust-unverified"><div><dt>單次時間</dt><dd>{show('duration','待站長填寫')}</dd></div><div><dt>費用</dt><dd>{show('price','待站長填寫')}</dd></div><div><dt>取消規則</dt><dd>{show('cancellation','待站長填寫')}</dd></div><div><dt>資格或證照</dt><dd>{show('qualification','待提供可查證資料')}</dd></div></dl></section>
 <section class="trust-section" id="first"><p class="trust-section-tag">04 / FIRST</p><h2>04 第一次見面</h2><p>說明初次接觸的步驟，不暗示已完成預約。</p></section>
-<section class="trust-section" id="refer"><p class="trust-section-tag">05 / REFER</p><h2>05 不適合時</h2><p>提供服務範圍說明與適當轉介方向，不虛構危機電話。</p><a href={action}>查看服務 ↗</a></section></div>
+<section class="trust-section" id="refer"><p class="trust-section-tag">05 / REFER</p><h2>05 不適合時</h2><p>提供服務範圍說明與適當轉介方向，不虛構危機電話。</p>{facts.contact?<p>一般聯絡方式：{facts.contact}</p>:<p>聯絡方式待站長確認。</p>}<a href={action}>查看服務 ↗</a></section></div>
   <footer class="trust-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
 </div>
 <style>
