@@ -41,7 +41,7 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
       `;document.head.append(style);
     },{data,kind});
     await page.screenshot({path:join(out,kind+'-'+slug+'-'+v.name+'.png'),fullPage:true,animations:'disabled'});
-    const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,h1Count:document.querySelectorAll('main h1').length,mainWidth:Math.round(document.querySelector('main').getBoundingClientRect().width)}));
+    const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,h1Count:document.querySelectorAll('main h1').length,mainWidth:Math.round(document.querySelector('main').getBoundingClientRect().width),sections:[...document.querySelectorAll('main section, main article')].slice(0,16).map(el=>{const r=el.getBoundingClientRect();return {x:Math.round(r.x),y:Math.round(r.y+scrollY),width:Math.round(r.width),height:Math.round(r.height)}})}));
     reports.push({kind,slug,viewport:v.name,status:'captured',...metrics,horizontalOverflow:metrics.scrollWidth>metrics.clientWidth+2});
    }catch(e){error=String(e);reports.push({kind,slug,viewport:v.name,status:'failed',error});}
    finally{await page.close();}
@@ -50,6 +50,9 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
 }
 }finally{await browser.close();}
 const summary={schemaVersion:1,method:'post-render same-audience text/style normalization (not renderer fixture injection, not visual human approval)',sourceFixture:'docs/art-direction/neutral-comparison-fixture.json',viewportCount:viewports.length,directions:25,captures:reports.filter(r=>r.status==='captured').length,failures:reports.filter(r=>r.status==='failed'||r.horizontalOverflow),records:reports};
+const byKey=new Map(reports.filter(r=>r.status==='captured').map(r=>[r.slug+'@'+r.viewport,r]));
+const collisionPairs=[['sidebar-journal','field-notes'],['clinician','trust-path'],['clinician','practice-compass'],['subject-atlas','curator'],['portrait-profile','companion'],['question-led-practice','trust-path']];
+summary.collisionGeometry=collisionPairs.flatMap(([a,b])=>viewports.map(v=>{const x=byKey.get(a+'@'+v.name),y=byKey.get(b+'@'+v.name);if(!x||!y)return {a,b,viewport:v.name,available:false};const size=Math.max(1,Math.min(x.sections.length,y.sections.length,6));let distance=0;for(let i=0;i<size;i++){const q=x.sections[i],z=y.sections[i];distance+=Math.abs(q.x-z.x)/v.width+Math.abs(q.width-z.width)/v.width+Math.abs(q.y-z.y)/Math.max(v.height,1)}return {a,b,viewport:v.name,available:true,firstSectionsCompared:size,averageGeometryDifference:Number((distance/size).toFixed(3))}}));
 writeFileSync(join(out,'manifest.json'),JSON.stringify(summary,null,2)+'\n');
 console.log('Neutral screenshot evidence',summary.captures+'/100','issues:',summary.failures.length);
 if(summary.failures.length)process.exitCode=1;
