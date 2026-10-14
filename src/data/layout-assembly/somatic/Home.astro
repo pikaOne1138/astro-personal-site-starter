@@ -9,6 +9,7 @@ const action=base+(nav?.path??'services/');
     <div class="body-hero-copy"><p class="body-kicker">BODY / RHYTHM / SPACE TO NOTICE</p><h1 id="body-title">{config.content?.headline || "先回到，身體與節律。"}</h1><p class="body-brand">{config.brand.name} · {config.brand.tagline}</p><p class="body-intro">{config.content?.intro || "以身體感受、溫柔留白和練習節奏，介紹真實的服務範圍。"}</p><a class="body-cta" href="#arrival">了解練習 ↓</a></div>
     <figure class="body-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="body-art" role="img" aria-label="自然光與空間示意"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
+  <div class="body-transition"><p>ARRIVE · NOTICE · CHOOSE</p><blockquote>「不用趕著變成別的樣子。我們先留意，現在自己在哪裡。」</blockquote><p>練習與陪伴不代表任何療效承諾；可依身體狀況調整或暫停。</p></div>
   <div class="body-section-list"><section class="body-section" id="arrival"><p class="body-section-tag">01 / ARRIVAL</p><h2>先抵達這裡</h2><p>不必急著改變，先注意環境、呼吸和身體接觸點。</p></section>
 <section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>三個練習錨點</h2><p>01 找到支撐／02 留意呼吸／03 自行選擇下一步</p></section>
 <section class="body-section" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section></div>
@@ -34,4 +35,30 @@ const action=base+(nav?.path??'services/');
 @media(max-width:480px){.body-shell{padding:1rem}.body-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.body-close{display:block}}
 .body-hero .body-art{aspect-ratio:auto;left:40%;right:0;width:60%;max-width:60%;min-width:0;height:100%;overflow:hidden}
 @media(max-width:800px){.body-hero .body-art{position:static;left:auto;right:auto;width:100%;max-width:100%;height:auto;min-height:180px;aspect-ratio:3/2}}
+
+/* Prototype fidelity repair: immersive dark field, strong typographic rhythm and a green practice band. */
+.body-shell{background:#e8e6dc;color:#283128;padding:0;font-family:var(--brand-body-font,Georgia,serif)}
+.body-hero{max-width:none;margin:0;min-height:min(790px,90svh);padding:clamp(5rem,9vw,10rem) clamp(1.5rem,9vw,9rem);background:#394938;color:#ece9dc;isolation:isolate;overflow:hidden}
+.body-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#1c291fed 0%,#27332d9b 48%,transparent 100%)}
+.body-hero-copy{max-width:710px}
+.body-hero h1{max-width:760px;font-size:clamp(4.2rem,10.3vw,10rem);font-weight:400;line-height:.92;letter-spacing:-.075em;color:#f0eadd}
+.body-kicker{color:#ddb295;letter-spacing:.2em}
+.body-brand{color:#e9c4a7}.body-intro{color:#e2e2d6;max-width:460px}
+.body-cta{color:#fff;border-color:#d8ac90}
+.body-hero .body-figure{position:absolute;inset:0;margin:0;z-index:-2;overflow:hidden}
+.body-hero .body-figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;filter:var(--brand-image-filter,none)}
+.body-hero .body-art{position:absolute;inset:0;width:100%;max-width:100%;height:100%;aspect-ratio:auto;opacity:1;background:linear-gradient(115deg,#223e30 0%,#3b543c 30%,#6c7256 68%,#394938 100%)}
+.body-hero .body-figure figcaption{position:absolute;bottom:1.2rem;right:2rem;font-size:.65rem;color:#eee}
+.body-transition{display:grid;grid-template-columns:.6fr 1.5fr .8fr;gap:4vw;padding:clamp(3rem,6vw,6rem) clamp(1rem,5vw,5rem);max-width:1300px;margin:0 auto;align-items:start}
+.body-transition>p:first-child{font:.7rem ui-monospace,monospace;letter-spacing:.14em}
+.body-transition blockquote{font:400 clamp(1.7rem,3.7vw,3.4rem)/1.35 var(--brand-heading-font,Georgia,serif);letter-spacing:-.035em;margin:0;color:#52604b}
+.body-transition>p:last-child{font-size:.9rem;line-height:1.85}
+.body-section-list{max-width:none;margin:0;background:#3e4b37;color:#ece9dc;padding:clamp(2rem,6vw,6rem) clamp(1rem,8vw,8rem);grid-template-columns:.75fr 1.25fr;gap:2vw 8vw}
+.body-section{border:0;padding:1.6rem 0;border-bottom:1px solid #eceddb54}
+.body-section:nth-child(1){grid-row:span 2}
+.body-section:nth-child(2){grid-column:auto;background:transparent}
+.body-section h2{color:#e8bda1;font-weight:400}
+.body-section a{color:#fff}
+.body-close{margin:0;max-width:none;padding:3rem 8vw;background:#e8e6dc}
+@media(max-width:800px){.body-hero{min-height:600px;display:flex;padding:6rem 1.5rem 3rem}.body-hero .body-figure{position:absolute;width:100%;height:100%;max-width:none}.body-hero .body-art{position:absolute;width:100%;height:100%;max-width:100%}.body-hero .body-figure img{height:100%}.body-transition{grid-template-columns:1fr;gap:1rem}.body-section-list{grid-template-columns:1fr}.body-section:nth-child(1),.body-section:nth-child(2){grid-column:auto;grid-row:auto}}
 </style>
