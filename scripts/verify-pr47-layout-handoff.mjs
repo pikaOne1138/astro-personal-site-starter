@@ -43,6 +43,17 @@ const widthContracts=[
  ['practice-compass',1250,'src/pages/layouts/practice-compass/services/index.astro','calc((100% - 1250px)/2)'],
  ['practice-compass',1250,'src/pages/layouts/practice-compass/about/index.astro','width:min(100% - 40px,1250px)']
 ];
+widthContracts.push(
+ ['subject-atlas',1320,'src/pages/layouts/subject-atlas/topics/[slug].astro','width:min(100% - 40px,1320px)'],
+ ['subject-atlas',1320,'src/pages/layouts/subject-atlas/articles/sample.astro','calc((100% - 1320px)/2)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/faq/index.astro','width:min(100% - 40px,1250px)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/contact/index.astro','width:min(100% - 40px,1250px)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/privacy/index.astro','width:min(100% - 40px,1250px)']
+);
+const nav=readFileSync('src/components/art-direction/PrototypeNav.astro','utf8');
+assert.ok(nav.includes('line-height:1.4'),'prototype nav must define its own line-height');
+assert.ok(nav.includes('font:12px/1.5'),'prototype nav brand subheading must define line-height');
+checks+=2;
 for (const [slug,width,path,rule] of widthContracts) {
  const body=readFileSync(path,'utf8');
  assert.ok(body.includes(rule),slug+' must keep a '+width+'px site canvas in '+path);
