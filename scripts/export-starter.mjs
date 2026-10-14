@@ -211,6 +211,27 @@ assets['README.md']+='\n## Prototype-only selection\n\nIMPORTANT: '+layoutDefini
 }
 // Typography and image treatment adjust presentation; the chosen layout DOM and section order are untouched.
 assets['README.md']+='\n## Brand typography and images\n\nThe brand typography preset and image style are configured in site.config.json. If heroImagePath is set, place that exact licensed image under public/images/ and provide meaningful heroImageAlt. The exporter does not fetch remote images or invent licenses.\n';
+assets['START-HERE.md']=[
+  '# 我的個人 Astro 網站：從這裡開始',
+  '',
+  '選擇的設計：'+layoutDefinition.title+'（'+layoutDefinition.slug+'）',
+  '設計狀態：'+layoutDefinition.assemblyStatus+'；這是第一版組裝成果，尚需和原型視覺比較，不代表 Starter Ready。',
+  '',
+  '## 學員操作',
+  '1. 開啟 site.config.json：修改真實的品牌名稱、圖片、首頁文字、服務或閱讀資料。',
+  '2. 若需要幫忙，將本資料夾與你的 Site Brief 交給 AI 程式助理；修改時保留所選 Layout 的 Hero 與區段構圖。',
+  '3. 想改首頁各區版面時，修改 src/components/layouts/selected/Home.astro；文章與服務內頁使用原有網站架構。',
+  '4. 在電腦執行 npm install、npm run dev，確認桌機與手機都能閱讀與操作。',
+  '5. 執行 npm run build 和 npm run verify；成功只代表程式建置，不等於視覺核准。',
+  '6. 替換示範文字，核實資格、價格、連絡、圖片及音檔權利；未配置的預約／表單不可宣稱成功。',
+  '7. 確認內容、網站網址、文章或服務入口、手機導航、搜尋和圖片後，依工作坊 GitHub／Cloudflare 步驟發布。',
+  '',
+  '## 視覺驗收',
+  '參考原始版型：'+layoutDefinition.sourcePrototype,
+  '請用 1440、1280、768、390 寬度對照原型與成品，確認資訊架構、字級、圖片比例與順序。',
+  '請勿把原型截圖當成目前匯出成品的截圖。',
+  ''
+].join(String.fromCharCode(10));
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
