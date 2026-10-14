@@ -11,13 +11,13 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 1. Get the student's JSON from `/starter/`: `version`, `kind`, `layoutSlug`, `visualTheme`, `brand`, `navigation`, `primaryCta`.
 2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.
 3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.
-4. Confirm which layout prototype will be faithfully adapted. Existing twelve directions are **homepage prototypes**, not twelve independent multi-page starters.
+4. Confirm which layout prototype will be faithfully adapted. The twelve original directions are **homepage prototypes**; each now has a first-pass independent homepage adapter under `src/data/layout-assembly/<slug>/Home.astro`, but not twelve fully completed multi-page websites.
 
 ## Generator — phase 1
-`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses a safe lightweight layout-specific treatment, and **a subsequent actual design-adaptation pass is mandatory** before claiming layout fidelity.
+`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.
 
 ## Required design adaptation — phase 2
-1. Review selected `src/pages/layouts/<slug>/index.astro` actual direction, DOM and `public/layout-library.css`.
+1. Inspect the existing independent `src/data/layout-assembly/<slug>/Home.astro` and its definition first, then review original `src/pages/layouts/<slug>/index.astro` and `public/layout-library.css` for design intent. The generator already copies the matching independent homepage into the student's site.
 2. Preserve its hierarchy, Hero proportions, content order, imagery treatment and mobile restacking; do not replace all 12 with the same hero and cards.
 3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。
 4. Map only needed Blocks from Registry into actual pages; navigation, article archive, contact/booking URLs must be real.
