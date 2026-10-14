@@ -57,6 +57,8 @@ if(typeof content!=='object'||(content.headline!==undefined&&(typeof content.hea
 const reading=plan.layoutSlug==='reading-atlas'?plan.reading:undefined;
 if(reading?.records&&(!Array.isArray(reading.records)||reading.records.length>180||reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.note!=='string'||x.note.length>1000)))throw Error('Reading records need month (01-12), title and note');
 if(reading?.annualBook&&(!reading.annualBook.title?.trim()||!reading.annualBook.note?.trim()))throw Error('Annual book must include an owned title and explanation');
+const about=plan.about??{};
+if(typeof about!=='object'||Array.isArray(about)||Object.entries(about).some(([key,value])=>!['bio','purpose','approach','background'].includes(key)||typeof value!=='string'||value.length>1200))throw Error('Invalid owned About content');
 const serviceFacts=plan.kind==='helper'?plan.serviceFacts:undefined;
 if(serviceFacts&&Object.entries(serviceFacts).some(([k,v])=>!['duration','price','cancellation','qualification','contact','scope','exclusions','method','firstVisit'].includes(k)||typeof v!=='string'||v.length>500))throw Error('Invalid verified service facts');
 // Audio is an explicit optional owned asset, never a borrowed playable demo.
@@ -67,7 +69,7 @@ const audioSource=media?.episodeAudioPath?resolve(dirname(resolve(input)),'publi
 if(audioSource&&!existsSync(audioSource))throw Error('Missing owned audio '+media.episodeAudioPath+'; put it beside your Site Brief in public/audio/');
 const root=resolve(dest);
 if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty');
-const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,content,media,reading,serviceFacts,site:'https://example.com',base:'/'};
+const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,content,about,media,reading,serviceFacts,site:'https://example.com',base:'/'};
 const put=(path,body)=>{const p=join(root,path);mkdirSync(join(p,'..'),{recursive:true});writeFileSync(p,body,'utf8')};
 put('site.config.json',JSON.stringify(settings,null,2)+'\n');
 if(imageSource&&!embedded.has(plan.brand.heroImagePath)){const p=join(root,'public',plan.brand.heroImagePath.slice(1));mkdirSync(dirname(p),{recursive:true});copyFileSync(imageSource,p);}
