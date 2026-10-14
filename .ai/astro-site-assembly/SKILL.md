@@ -16,6 +16,13 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 ## Generator — phase 1
 `node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.
 
+## Student-owned content is not decorative placeholder text
+
+- Site Brief `about.bio`, `about.purpose`, `about.approach`, and `about.background` now drive all twelve About page compositions. Prefer these over homepage tagline/intro. Never fabricate qualification, case history, testimonials or awards.
+- All six helper families accept `serviceFacts.scope`, `exclusions`, `method`, `firstVisit`, `duration`, `price`, `cancellation`, `qualification`, and `contact`; fields not supplied remain visibly unconfigured. A missing contact endpoint must not appear as a working booking form.
+- Long CJK copy, absent media and variable article counts are normal student inputs. Keep family composition while adjusting responsive constraints; don't replace it with a generic template.
+- The standalone export workflow's `student-visual-qa` artifact captures generated homepage/inner pages at 1440, 1280, 768, and 390. Review actual captures for art direction; passing a build or absence of overflow does not guarantee source-prototype fidelity.
+
 ## Existing full-site Design Family contract (PR #46)
 
 The student exporter now includes the selected independent homepage AND family-specific interior components. Do not replace them with a generic hero or universal interior page.
