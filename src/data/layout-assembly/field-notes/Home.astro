@@ -1,5 +1,5 @@
 ---
-import config from '../../../site.config.json';
+import config from '../../../../site.config.json';
 const base=import.meta.env.BASE_URL;
 const articles=config.navigation.find(n=>n.id==='articles');
 const cta=articles ? base+(articles.path??'articles/') : base+'about/';
