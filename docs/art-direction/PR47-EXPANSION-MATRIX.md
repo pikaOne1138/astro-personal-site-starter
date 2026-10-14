@@ -42,6 +42,7 @@
 - 已提交 sidebar-journal 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 已提交 portrait-profile 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 這兩款仍屬「第一批實作中」，未接 #46 主 Adapter，也未完成獨立 Starter 驗收。
-- 第二批已開始：editorial-frontpage 與 card-journal 各提交首頁、文章檔案、文章詳細頁與 About 靜態原型；同樣待 Build／視覺 QA，不視為 ready。\n- 其餘研究候選尚未實作，不得在 UI 或報告計為完成。
+- 第二批四款皆已有靜態多頁原型：editorial-frontpage、card-journal、service-catalogue、studio-chapters；各自設計首頁、索引、詳細頁與 About。仍待 Build 與實際視覺 QA，不視為 ready。\n- 第三批五款研究候選尚未實作，不得在 UI 或報告計為完成。
 - 獨立 Starter / Adapter 截圖驗收本輪延期；本地 prototype 的 1440／1280／768／390 實際目視 QA 仍待執行。
 - 不 Merge、不部署 Production、不改 #46 的程式。
+\n## 第二批結構驗收待辦\n- Personal Publication：7/12 大頭條＋5/12 次要文章，不等於 Essayist 的單篇長文；索引維持頭條／短列分級。\n- Card Journal：等權重文章卡，無圖以內嵌類別區補位，不等於 Curator 拼貼展牆。\n- Service Catalogue：服務資訊條目與規格表為首屏主角，僅一項服務仍成立，不等於 Coach 的行動計畫或 Practice Compass 的訪客問題分流。\n- Studio Chapters：章節式工作方法與服務詳細資訊，側邊章節目錄延伸到內頁，不等於 Somatic 的沉浸式氛圍頁。\n- 目前四款 prototype 尚未接真實 Content Collections／網站設定資料；真實資料注入與主 Adapter 整合由後續契約交接處理。不能把 Demo 硬編資料視為可交付 Starter。\n- 待實際 CI、1440／1280／768／390 目視比對；同色同字同內容差異目前僅作來源結構分析，非視覺 PASS。\n
