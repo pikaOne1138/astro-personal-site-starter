@@ -373,9 +373,10 @@ for(const [elementId,key,basename,pathId] of [['logo-upload','logo','brand-logo'
   reader.readAsDataURL(file);
  });
 }
+const field=(id:string)=>document.querySelector<HTMLInputElement|HTMLTextAreaElement>('#'+id)?.value.trim()||'';
 function contentExtension():Record<string,unknown>{
  const slug=value('layout');
- const field=(id:string)=>document.querySelector<HTMLInputElement|HTMLTextAreaElement>('#'+id)?.value.trim()||'';
+
  if(slug==='reading-atlas'){
   const title=field('reading-title'),note=field('reading-note'),annualTitle=field('annual-title'),annualNote=field('annual-note');
   return {reading:{records:title||note?[{month:field('reading-month'),title,note}]:[],...(annualTitle||annualNote?{annualBook:{title:annualTitle,note:annualNote}}:{})}};
