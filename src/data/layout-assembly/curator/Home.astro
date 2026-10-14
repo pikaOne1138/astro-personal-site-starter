@@ -1,15 +1,19 @@
 ---
 import config from '../../../../site.config.json';
+import {getCollection} from 'astro:content';
 const base=import.meta.env.BASE_URL;
+const entries=config.navigation.some(n=>n.id==='articles')?(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt):[];
+const articleHref=entry=>base+'articles/'+entry.id+'/';
 const headline=config.content?.headline||config.brand.name;
 const intro=config.content?.intro||'首頁介紹待站長提供。';
 const nav=config.navigation.find(n=>n.id===config.primaryCta.pageId);
 const action=base+(nav?.path??config.primaryCta.pageId+'/');
-const drawers=[{title:'值得一讀',note:'書籍與文章的選入理由待站長提供。'},{title:'思考工具',note:'工具與實際使用經驗待站長提供。'},{title:'最近發現',note:'收藏項目與來源待站長提供。'}];
+const pendingDrawers=[{title:'值得一讀',note:'書籍與文章的選入理由待站長提供。'},{title:'思考工具',note:'工具與實際使用經驗待站長提供。'},{title:'最近發現',note:'收藏項目與來源待站長提供。'}];
+const drawers=entries.length?entries.slice(0,3).map(entry=>({title:entry.data.title,note:entry.data.description,href:articleHref(entry)})):pendingDrawers;
 ---
-<div class="cu-site" data-assembled-layout="curator">
+<div class="cu-site" data-assembled-layout="curator" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
 <section class="cu-hero"><div class="cu-hero-copy"><p class="cu-kicker">THE COLLECTION / PERSONAL CABINET</p><h1>{headline}</h1><p>{intro}</p><a href="#collection" class="cu-enter">進入收藏目錄 ↓</a></div><figure class="cu-still">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請填入圖片描述'}/>:<div class="cu-owned-placeholder" aria-label="待設定收藏主視覺"><span>OBJECTS<br/>/ IDEAS</span><b>01</b></div>}<figcaption>{config.brand.heroImagePath?'站長提供的主視覺':'收藏展牆示意 · 可替換為自有圖片'}</figcaption></figure><span class="cu-stamp" aria-hidden="true">CABINET<br/>OF IDEAS</span></section>
-<section class="cu-catalog" id="collection"><aside class="cu-index"><p class="cu-kicker">INDEX / 03</p><h2>收藏目錄</h2><ol>{drawers.map((item,i)=><li><a href={'#drawer-'+i}>{String(i+1).padStart(2,'0')} / {item.title}</a></li>)}</ol><p class="cu-index-note">保存選擇的理由。以下為待填內容，不代表站長已推薦任何書籍或工具。</p></aside><div class="cu-shelves" id="shelf"><div class="cu-shelf-head"><p>COLLECTION / NOTES</p><span>{config.brand.name}</span></div>{drawers.map((item,i)=><details id={'drawer-'+i} class="cu-featured"><summary class="cu-featured-summary"><span class="cu-object-no">{String(i+1).padStart(2,'0')}</span><div><p class="cu-label">待設定 / COLLECTION</p><h3>{item.title}</h3><p>{item.note}</p></div><div class="cu-cover" aria-hidden="true"><span>NOTE<br/>{String(i+1).padStart(2,'0')}</span><b>待<br/>填</b></div></summary><div class="cu-drawer-body"><p>填入真實收藏、選入理由與來源後，可延伸為完整文章。</p><a href={action}>{config.primaryCta.label} ↗</a></div></details>)}</div></section>
+<section class="cu-catalog" id="collection"><aside class="cu-index"><p class="cu-kicker">INDEX / 03</p><h2>收藏目錄</h2><ol>{drawers.map((item,i)=><li><a href={'#drawer-'+i}>{String(i+1).padStart(2,'0')} / {item.title}</a></li>)}</ol><p class="cu-index-note">保存選擇的理由。以下為待填內容，不代表站長已推薦任何書籍或工具。</p></aside><div class="cu-shelves" id="shelf"><div class="cu-shelf-head"><p>COLLECTION / NOTES</p><span>{config.brand.name}</span></div>{drawers.map((item,i)=><details id={'drawer-'+i} class="cu-featured"><summary class="cu-featured-summary"><span class="cu-object-no">{String(i+1).padStart(2,'0')}</span><div><p class="cu-label">{item.href?'ARTICLE / COLLECTION':'待設定 / COLLECTION'}</p><h3>{item.title}</h3><p>{item.note}</p></div><div class="cu-cover" aria-hidden="true"><span>NOTE<br/>{String(i+1).padStart(2,'0')}</span><b>{item.href?'文':'待'}<br/>{item.href?'章':'填'}</b></div></summary><div class="cu-drawer-body"><p>{item.href?'閱讀作者提供的完整內容。':'填入真實收藏、選入理由與來源後，可延伸為完整文章。'}</p><a href={item.href||action}>{item.href?'閱讀完整文章':config.primaryCta.label} ↗</a></div></details>)}</div></section>
 </div>
 <style>
 

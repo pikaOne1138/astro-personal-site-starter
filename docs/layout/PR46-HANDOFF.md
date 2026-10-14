@@ -43,3 +43,11 @@ Local Chromium download returned a truncated ZIP from the Playwright CDN; use ex
 ## Remaining acceptance
 
 Compare current actual exported learner screenshots against source Prototype at 1440/1280/768/390, including all inner pages. Existing source prototypes contain deliberately fictional material and tiny annotations; preserve geometry, never fictional identities, dates, pricing, licenses, outcomes or image licenses. Empty and partial service data must remain honest. Whole-site fidelity and arbitrary data adaptability are not certified by automated checks alone. Verify existing Builder Pack manifest parity in the static workflow. Check no horizontal overflow, hidden masthead, extra main h1, or broken keyboard focus in updated results.json.
+
+## Iteration 1 evidence — commit 9709997f
+
+Four GitHub checks PASS. Standalone run 38595917416, artifact 11908788966: 240 real Chromium captures; zero HTTP failures, overflow, JS errors, wrong families, extra/missing h1 or keyboard failures. Downloaded and inspected desktop/mobile homepage and About contact sheets and mobile long-article/service sheets.
+
+Screenshot review found native dark-family chrome was unintentionally flattened to generic neutral chrome; fixed conditional explicit brand palette override. Fixed clinical About's empty fourth grid cell. Further source comparison removed six non-source decorative sections, bound actual published article entries to five knowledge Home adapters, and restored Atlas four-column monthly content cells. Current capture script also records neutral-color/font/copy structural comparisons and long homepage copy at all four widths; obtain updated artifact before accepting these changes.
+
+All twelve independent Build + technical-output validators PASS locally for second source-cleaning batch. Main build PASS. The final visual pass is still pending. This batch has not certified original prototype parity for all twelve designs.

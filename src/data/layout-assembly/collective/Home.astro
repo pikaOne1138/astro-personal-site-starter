@@ -4,7 +4,7 @@ const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='services');
 const action=base+(nav?.path??'services/');
 ---
-<div class="common-shell" data-assembled-layout="collective">
+<div class="common-shell" data-assembled-layout="collective" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="common-hero" aria-labelledby="common-title">
     <div class="common-hero-copy"><p class="common-kicker">COMMON GROUND / COLLECTIVE</p><h1 id="common-title">{config.content?.headline || "一起工作，讓支持有很多形狀。"}</h1><p class="common-brand">{config.brand.name} · {config.brand.tagline}</p><p class="common-intro">{config.content?.intro || "從共同理念、真實成員到活動資訊，清楚展示合作網絡。"}</p><a class="common-cta" href="#belief">認識合作 ↓</a></div>
     <figure class="common-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="common-art" role="img" aria-label="共同創作示意拼貼"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>

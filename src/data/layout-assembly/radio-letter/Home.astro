@@ -1,6 +1,9 @@
 ---
 import config from '../../../../site.config.json';
+import {getCollection} from 'astro:content';
 const base=import.meta.env.BASE_URL;
+const entries=config.navigation.some(n=>n.id==='articles')?(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt):[];
+const articleHref=entry=>base+'articles/'+entry.id+'/';
 const nav=config.navigation.find(n=>n.id==='articles');
 const action=base+(nav?.path??'articles/');
 const audio=config.media?.episodeAudioPath;
@@ -8,7 +11,7 @@ const hasAudio=typeof audio==='string'&&/^\/audio\/[a-z0-9/_-]+\.(mp3|ogg|wav|m4
 const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.episodeTranscript.filter(x=>typeof x.time==='string'&&typeof x.text==='string'):[];
 
 ---
-<div class="radio-shell" data-assembled-layout="radio-letter">
+<div class="radio-shell" data-assembled-layout="radio-letter" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="radio-hero" aria-labelledby="radio-title">
     <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">{config.content?.headline || "這封信，留給願意聽的人。"}</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">{config.content?.intro || "聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。"}</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
     <figure class="radio-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="radio-art" role="img" aria-label="深色聲波抽象封面"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
@@ -16,8 +19,8 @@ const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.epi
   <div class="radio-wave" role="img" aria-label="裝飾性聲波視覺，尚非真實聲音波形">{Array.from({length:46},(_,i)=><span aria-hidden="true" style={'--bar:'+(((i*17)%7)+2)}></span>)}</div>
   <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2>{hasAudio?<audio controls preload="metadata" aria-label="本期節目音訊"><source src={base+audio.replace(/^\//,'')}/>您的瀏覽器不支援音訊播放，請使用逐字稿。</audio>:<p role="status">尚未設定自有授權音檔，未顯示無法播放的音訊播放器。</p>}<p>請在 site.config.json 的 media.episodeAudioPath 設定本地 /audio/ 音檔，並提供有授權的逐字稿。</p></section>
 <section class="radio-section" id="transcript"><p class="radio-section-tag">02 / TRANSCRIPT</p><h2>逐字稿與筆記</h2>{transcript.length>0?<ol class="radio-transcript">{transcript.map(entry=><li><time>{entry.time}</time><p>{entry.text}</p></li>)}</ol>:<p>逐字稿尚未提供。設定 media.episodeTranscript 的 time / text 陣列即可顯示可搜尋文字；不虛構節目內容。</p>}</section>
-<section class="radio-signal" aria-label="聲音通信的內容路線"><div class="radio-signal-top"><span>LETTER FREQUENCY</span><span>LISTEN / READ / REFLECT</span></div><div class="radio-signal-middle"><div class="radio-disc" aria-hidden="true"><span>ON<br/>AIR</span></div><p>讓聲音留下來，<i>也讓文字繼續被閱讀。</i></p></div><div class="radio-signal-wave" aria-hidden="true">{Array.from({length:13},(_,i)=><span style={`--rise:${12+((i*7)%29)}px`}></span>)}</div></section>
-<section class="radio-section" id="archive"><p class="radio-section-tag">03 / ARCHIVE</p><h2>節目索引</h2><p>依主題與日期尋找過去的內容。</p><a href={action}>閱讀文章 ↗</a></section></div>
+
+<section class="radio-section" id="archive"><p class="radio-section-tag">03 / ARCHIVE</p><h2>節目索引</h2><ol class="radio-entry-list">{entries.slice(0,5).map(entry=><li><time>{entry.data.publishedAt.toLocaleDateString('zh-TW')}</time><a href={articleHref(entry)}>{entry.data.title} ↗</a></li>)}</ol>{!entries.length&&<p>目前沒有公開節目筆記。</p>}<a href={action}>閱讀文章 ↗</a></section></div>
   <footer class="radio-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
 </div>
 <style>
@@ -58,4 +61,5 @@ const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.epi
 .radio-hero{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);align-items:center;min-height:clamp(500px,68vh,820px);gap:clamp(2rem,5vw,7rem)}.radio-hero h1{font-size:clamp(4.6rem,8vw,9rem);line-height:1.02;max-width:11ch;letter-spacing:-.07em}.radio-hero .radio-figure{align-self:stretch;display:grid;place-content:center;transform:rotate(1deg)}.radio-hero .radio-figure img,.radio-hero .radio-art{min-height:clamp(230px,35vw,460px);height:100%;object-fit:cover}.radio-shell>.radio-wave{min-height:100px;max-width:1400px;margin:0 auto 4rem;display:flex;align-items:center;gap:3px}.radio-shell>.radio-wave span{height:calc(var(--bar)*8px)}@media(max-width:800px){.radio-hero{grid-template-columns:1fr;min-height:0}.radio-hero h1{font-size:clamp(3.1rem,11vw,6rem)}.radio-hero .radio-figure{max-width:700px;justify-self:center;width:100%}}.radio-hero{min-width:0}.radio-hero-copy,.radio-hero .radio-figure{min-width:0;max-width:100%}.radio-hero h1{font-size:clamp(3rem,6.2vw,7rem);max-width:100%;overflow-wrap:anywhere}.radio-shell{min-width:0;max-width:100%;overflow-x:clip}
 @media(min-width:801px){.radio-hero{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(1rem,3vw,3rem)}}
 .radio-hero h1{line-height:1.12;letter-spacing:-.04em}.radio-site :is(audio){width:100%;min-width:0}.radio-shell :is(audio){width:100%;min-width:0}
+.radio-entry-list{list-style:none;padding:0}.radio-entry-list li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:1rem;padding:1rem 0;border-top:1px solid currentColor}.radio-entry-list time{font:.75rem ui-monospace,monospace}@media(max-width:580px){.radio-entry-list li{grid-template-columns:1fr}}
 </style>

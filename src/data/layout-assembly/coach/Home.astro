@@ -4,7 +4,7 @@ const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='services');
 const action=base+(nav?.path??'services/');
 ---
-<div class="move-shell" data-assembled-layout="coach">
+<div class="move-shell" data-assembled-layout="coach" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="move-hero" aria-labelledby="move-title">
     <div class="move-hero-copy"><p class="move-kicker">MAKE A MOVE / NEXT STEP</p><h1 id="move-title">{config.content?.headline || "卡住的事，拆成下一步。"}</h1><p class="move-brand">{config.brand.name} · {config.brand.tagline}</p><p class="move-intro">{config.content?.intro || "先確認問題，釐清選項，再選擇實際可以開始的小行動。"}</p><a class="move-cta" href="#problem">了解方法 ↓</a></div>
     <figure class="move-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="move-art" role="img" aria-label="高對比幾何行動箭頭"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>

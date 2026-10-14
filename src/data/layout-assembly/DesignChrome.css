@@ -63,8 +63,8 @@ body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service
  body[data-site-family] *,body[data-site-family] *::before,body[data-site-family] *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
-/* Keep brand palette separate from family geometry. */
-body[data-site-family]{--chrome-panel:var(--brand-background,var(--bg));--chrome-text:var(--brand-text,var(--ink));--chrome-accent:var(--brand-primary,var(--brand))}
+/* Explicit palettes override native family colors, preserving geometry. */
+body[data-site-family][data-brand-palette="custom"]{--chrome-panel:var(--brand-background,var(--bg));--chrome-text:var(--brand-text,var(--ink));--chrome-accent:var(--brand-primary,var(--brand))}
 body[data-site-family]>header .brand{max-width:100%;text-wrap:balance}
 body[data-site-family]>header .button{background:var(--chrome-text);color:var(--chrome-panel);border-color:var(--chrome-text);display:inline-flex;align-items:center;min-height:44px}
 body[data-site-family]>header nav a{font-size:.875rem}
@@ -75,3 +75,9 @@ body[data-site-family] .story-frame{background:var(--chrome-panel);color:var(--c
 body[data-site-family] :is([data-assembled-layout],.about-composition,.story-frame,.service-composition) :is(h1,h2,h3){letter-spacing:-.04em}
 body[data-site-family] .skip:focus{z-index:100;left:8px;top:8px;color:#222;background:#fff;outline-color:#222}
 @media(max-width:740px){body[data-site-family]>header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem}body[data-site-family]>header .brand{font-size:1.25rem}body[data-site-family]>header .student-navigation{grid-column:1/-1;grid-row:2;width:100%;display:flex;flex-wrap:wrap}body[data-site-family]>header .student-navigation__group{flex:0 1 auto}body[data-site-family]>header .button{font-size:.875rem;padding:.5rem 1rem;max-width:12ch}body[data-site-family]>header .student-navigation__submenu{position:static}}
+
+/* Long student copy stays in flow; overlapping source covers are for concise titles. */
+body [data-assembled-layout][data-long-headline="true"] h1{font-size:clamp(2.5rem,5vw,5rem);line-height:1.15;max-width:100%;text-wrap:balance}
+body [data-long-headline="true"] .essayist-cover figure,body [data-long-headline="true"] .move-hero .move-figure{position:relative;top:auto;right:auto;width:min(50%,430px);margin:2rem 0 0 auto}
+body [data-long-headline="true"] .essayist-cover-bottom{margin-left:0}
+@media(max-width:760px){body [data-assembled-layout][data-long-headline="true"] h1{font-size:clamp(2.3rem,9vw,4rem)}body [data-long-headline="true"] .essayist-cover figure,body [data-long-headline="true"] .move-hero .move-figure{width:100%}}

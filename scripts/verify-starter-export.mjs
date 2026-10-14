@@ -72,6 +72,24 @@ async function captureStudentSite(slug,kind,site){
     const filename=slug+'-'+label+'-'+width+'.jpg';
     await page.screenshot({path:visualOutput+'/'+filename,type:'jpeg',quality:56,fullPage:true,animations:'disabled',timeout:15000});
     visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,keyboardFocus,escapeNavigation,errors,filename});
+    // Same colors/font/copy, preserving all geometric CSS and nested title markup.
+    // Captures are comparison evidence, never a second template/export pipeline.
+    if(!route){
+      const neutral=await page.addStyleTag({content:`body,body *,body *::before,body *::after{color:#222!important;background-color:transparent!important;background-image:none!important;border-color:#666!important;font-family:Arial,sans-serif!important;box-shadow:none!important}body{background:#f5f5f5!important}main img,main [role="img"],.ll-owned-placeholder,.cu-owned-placeholder{background:#ddd!important;filter:grayscale(1)!important}main img{visibility:hidden!important}main .atlas-year{-webkit-text-stroke-color:#222!important}`});
+      await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.firstChild?.nodeType===3){h.dataset.originalCopy=h.firstChild.textContent;h.firstChild.textContent='一個人的觀察與整理';}h?.querySelectorAll('em,i,span').forEach(el=>{el.dataset.originalCopy=el.textContent;el.textContent='持續留下值得理解的事';});});
+      const filename=slug+'-neutral-home-'+width+'.jpg';
+      const safety=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+      await page.screenshot({path:visualOutput+'/'+filename,type:'jpeg',quality:56,fullPage:true,animations:'disabled'});
+      visualRows.push({slug,route:'/',width,http:response?.status(),...check,...safety,keyboardFocus,escapeNavigation,errors,filename,variant:'neutral'});
+      await neutral.evaluate(el=>el.remove());
+      await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.dataset.originalCopy)h.firstChild.textContent=h.dataset.originalCopy;h?.querySelectorAll('[data-original-copy]').forEach(el=>el.textContent=el.dataset.originalCopy);});
+      // Long real-world CJK homepage title: mutate only the existing copy node.
+      await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.firstChild?.nodeType===3){h.closest('[data-assembled-layout]')?.setAttribute('data-long-headline','true');h.firstChild.textContent='把生活裡反覆出現的問題、閱讀線索與真實觀察整理成長期可以回看的個人網站，讓每一次思考與每一步實踐都有自己的位置';}});
+      const stressName=slug+'-long-home-'+width+'.jpg';
+      const stress=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+      await page.screenshot({path:visualOutput+'/'+stressName,type:'jpeg',quality:56,fullPage:true,animations:'disabled'});
+      visualRows.push({slug,route:'/',width,http:response?.status(),...check,...stress,keyboardFocus,escapeNavigation,errors,filename:stressName,variant:'long-home'});
+    }
     await page.close();
   }
 }

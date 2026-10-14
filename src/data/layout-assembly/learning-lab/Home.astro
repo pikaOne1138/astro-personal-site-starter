@@ -1,16 +1,19 @@
 ---
 import config from '../../../../site.config.json';
+import {getCollection} from 'astro:content';
 const base=import.meta.env.BASE_URL;
+const entries=config.navigation.some(n=>n.id==='articles')?(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt):[];
+const articleHref=entry=>base+'articles/'+entry.id+'/';
 const headline=config.content?.headline||config.brand.name;
 const intro=config.content?.intro||'首頁介紹待站長提供。';
 const nav=config.navigation.find(n=>n.id===config.primaryCta.pageId);
 const action=base+(nav?.path??config.primaryCta.pageId+'/');
 const lessons=[{n:'01',title:'看見問題',text:'先描述自己想理解什麼。',color:'yellow'},{n:'02',title:'整理線索',text:'整理資料並留下可核對的來源。',color:'blue'},{n:'03',title:'動手練習',text:'用實際練習記錄觀察與修正。',color:'coral'}];
 ---
-<div class="ll-site" data-assembled-layout="learning-lab">
+<div class="ll-site" data-assembled-layout="learning-lab" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
 <section class="ll-hero"><div class="ll-hero-copy"><p class="ll-overline">A CLEARER WAY TO LEARN</p><h1>{headline}</h1><p>{intro}</p><div class="ll-actions"><a class="ll-button" href="#path">看學習路徑 ↓</a><span>{config.brand.tagline}</span></div></div><figure class="ll-hero-art">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請填入圖片描述'}/>:<div class="ll-owned-placeholder" aria-label="待設定學習地圖"><span>LEARNING<br/>MAP</span><span>01 → 02 → 03</span></div>}<figcaption>{config.brand.heroImagePath?'站長提供的主視覺':'學習地圖示意 · 可替換為自有圖片'}</figcaption></figure><div class="ll-side-index" aria-hidden="true"><span>INTRO</span><span>01 / PATH</span><span>→</span></div></section>
 <section class="ll-path" id="path"><header><p class="ll-overline">THE LEARNING PATH / 03 STEPS</p><h2>走一遍，<br/>就知道怎麼繼續。</h2><p>以下為練習路徑示意。勾選只記錄本次操作，重新整理後不保留。</p><div class="ll-progress"><div><label for="ll-progress">本次練習</label><span id="ll-progress-label" aria-live="polite">0 / 3 個步驟</span></div><progress id="ll-progress" max="3" value="0" aria-label="本次練習進度">0 / 3</progress></div></header><ol class="ll-track">{lessons.map(lesson=><li class:list={['ll-unit','ll-unit--'+lesson.color]}><span class="ll-unit-no">{lesson.n}</span><div><p>DEMO / PRACTICE</p><h3>{lesson.title}</h3><span>{lesson.text}</span></div><label class="ll-complete"><input class="ll-check" type="checkbox"/><span>完成</span></label></li>)}</ol></section>
-<section class="ll-modules" id="units"><div class="ll-modules-heading"><p class="ll-overline">OPEN MODULES</p><h2>把線索，<i>接成學習路徑。</i></h2><p>單元內容待站長提供；正式文章由文章系統管理。</p><a href={action}>{config.primaryCta.label} ↗</a></div><div class="ll-module-list">{lessons.map(lesson=><article><span class="ll-module-num">{lesson.n}</span><div><p>練習示意 / 待設定</p><h3>{lesson.title}</h3><p>{lesson.text}</p></div><span class="ll-module-arrow" aria-hidden="true">↗</span></article>)}</div></section>
+<section class="ll-modules" id="units"><div class="ll-modules-heading"><p class="ll-overline">OPEN MODULES</p><h2>把線索，<i>接成學習路徑。</i></h2><p>單元內容待站長提供；正式文章由文章系統管理。</p><a href={action}>{config.primaryCta.label} ↗</a></div><div class="ll-module-list">{entries.length?entries.slice(0,3).map((entry,i)=><article><span class="ll-module-num">{String(i+1).padStart(2,'0')}</span><div><p>{entry.data.publishedAt.toLocaleDateString('zh-TW')}</p><h3><a href={articleHref(entry)}>{entry.data.title}</a></h3><p>{entry.data.description}</p></div><span class="ll-module-arrow" aria-hidden="true">↗</span></article>):<p>目前没有公開學習筆記。</p>}</div></section>
 </div>
 <script is:inline>
 (()=>{const root=document.querySelector('[data-assembled-layout="learning-lab"]');if(!root)return;const checks=[...root.querySelectorAll('.ll-check')];checks.forEach(box=>box.addEventListener('change',()=>{const done=checks.filter(x=>x.checked).length;root.querySelector('#ll-progress').value=done;root.querySelector('#ll-progress-label').textContent=done+' / '+checks.length+' 個步驟';checks.forEach(x=>x.closest('.ll-unit').classList.toggle('is-done',x.checked));}));})();

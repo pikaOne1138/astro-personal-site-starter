@@ -1,10 +1,13 @@
 ---
 import config from '../../../../site.config.json';
+import {getCollection} from 'astro:content';
 const base=import.meta.env.BASE_URL;
+const entries=config.navigation.some(n=>n.id==='articles')?(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt):[];
+const articleHref=entry=>base+'articles/'+entry.id+'/';
 const articles=config.navigation.find(n=>n.id==='articles');
 const next=base+(articles?.path??'articles/');
 ---
-<div class="essayist-site" data-assembled-layout="essayist">
+<div class="essayist-site" data-assembled-layout="essayist" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="essayist-cover" aria-labelledby="essayist-title">
     <p class="essayist-overline">ESSAYS / PERSONAL JOURNAL</p>
     <h1 id="essayist-title">{config.content?.headline || config.brand.name}<em>{config.brand.tagline}</em></h1>
@@ -12,8 +15,8 @@ const next=base+(articles?.path??'articles/');
     <figure>{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請填入圖片描述'}/>:<div class="essayist-art" role="img" aria-label="紙張與書寫工具的抽象示意插畫"><span>ESSAY<br/>018</span></div>}<figcaption>主視覺可替換為自己的授權照片</figcaption></figure>
     <small class="essayist-marginal">A SLOWER WAY TO THINK</small>
   </section>
-  <article class="essayist-feature" id="featured-essay"><header><p>FEATURED ESSAY / 首篇長文</p><h2>把想法慢慢寫完整。</h2><p class="essayist-standfirst">用文章留住值得反覆思考的問題。以下為示意文字，正式內容請由作者提供。</p></header><div class="essayist-prose"><p class="essayist-dropcap">有些問題不必急著回答。在文字裡，我們可以多留一些時間，記錄自己的觀察與理解。</p><blockquote>一本筆記，留給願意慢讀的自己。</blockquote><p>將這段更換成自己的文章導讀，並從下方按鈕開啟完整文章。</p><a href={next}>閱讀文章目錄 ↗</a></div></article>
-  <div class="essayist-interlude" aria-label="閱讀入口"><span class="essayist-issue">VOL. 01 / READING ROOM</span><p>閱讀，不一定是追逐更新。<em>有些文章需要慢慢展開。</em></p><a href={next}>打開完整文章檔案 ↗</a></div>
+  <article class="essayist-feature" id="featured-essay"><header><p>FEATURED ESSAY / 最新文章</p><h2>{entries[0]?.data.title||'第一篇長文，從這裡開始。'}</h2><p class="essayist-standfirst">{entries[0]?.data.description||'目前沒有公開文章。正式文章發布後，這裡會自動顯示標題與摘要。'}</p></header><div class="essayist-prose"><p class="essayist-dropcap">{config.about?.purpose||config.content?.intro||'寫作目的待作者提供。'}</p><p>{config.about?.approach||'文章與來源由作者提供，保留每一次思考的脈絡。'}</p><a href={entries[0]?articleHref(entries[0]):next}>{entries[0]?'閱讀完整文章':'閱讀文章目錄'} ↗</a></div></article>
+
   <section class="essayist-notebook"><div><p class="essayist-overline">FROM THE NOTEBOOK</p><h2>還在整理的，<i>一些念頭。</i></h2></div><ol>{['文章與觀察','閱讀筆記','寫給讀者'].map((label,i)=><li><span>{String(i+1).padStart(2,'0')}</span><a href={next}>{label} ↗</a></li>)}</ol></section>
 </div>
 <style>

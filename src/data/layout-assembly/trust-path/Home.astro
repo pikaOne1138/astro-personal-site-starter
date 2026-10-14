@@ -6,7 +6,7 @@ const action=base+(nav?.path??'services/');
 const facts=config.serviceFacts??{};
 const show=(key,placeholder)=>facts[key]?.trim()||placeholder;
 ---
-<div class="trust-shell" data-assembled-layout="trust-path">
+<div class="trust-shell" data-assembled-layout="trust-path" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="trust-hero" aria-labelledby="trust-title">
     <div class="trust-hero-copy"><p class="trust-kicker">TRUST PATH / A FIVE-STOP GUIDE</p><h1 id="trust-title">{config.content?.headline || "在開始之前，先把事情說清楚。"}</h1><p class="trust-brand">{config.brand.name} · {config.brand.tagline}</p><p class="trust-intro">{config.content?.intro || "讓第一次來訪的人沿著五個站點了解適用範圍、方法、費用與選擇。"}</p><a class="trust-cta" href="#scope">看完整路徑 ↓</a></div>
     <figure class="trust-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="trust-art" role="img" aria-label="五站折線導覽"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>

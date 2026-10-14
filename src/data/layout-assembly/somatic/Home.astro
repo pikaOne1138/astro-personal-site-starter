@@ -4,7 +4,7 @@ const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='services');
 const action=base+(nav?.path??'services/');
 ---
-<div class="body-shell" data-assembled-layout="somatic">
+<div class="body-shell" data-assembled-layout="somatic" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
   <section class="body-hero" aria-labelledby="body-title">
     <div class="body-hero-copy"><p class="body-kicker">BODY / RHYTHM / SPACE TO NOTICE</p><h1 id="body-title">{config.content?.headline || "先回到，身體與節律。"}</h1><p class="body-brand">{config.brand.name} · {config.brand.tagline}</p><p class="body-intro">{config.content?.intro || "以身體感受、溫柔留白和練習節奏，介紹真實的服務範圍。"}</p><a class="body-cta" href="#arrival">了解練習 ↓</a></div>
     <figure class="body-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="body-art" role="img" aria-label="自然光與空間示意"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
@@ -12,7 +12,7 @@ const action=base+(nav?.path??'services/');
   <div class="body-transition"><p>ARRIVE · NOTICE · CHOOSE</p><blockquote>「不用趕著變成別的樣子。我們先留意，現在自己在哪裡。」</blockquote><p>練習與陪伴不代表任何療效承諾；可依身體狀況調整或暫停。</p></div>
   <div class="body-section-list"><section class="body-section" id="arrival"><p class="body-section-tag">01 / ARRIVAL</p><h2>先抵達這裡</h2><p>不必急著改變，先注意環境、呼吸和身體接觸點。</p></section>
 <section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>三個練習錨點</h2><p>01 找到支撐／02 留意呼吸／03 自行選擇下一步</p></section>
-<section class="body-rest" aria-label="身體與節律中的留白"><div class="body-rest-mark" aria-hidden="true">◯</div><div><span>SLOW DOWN / LAND HERE</span><h2>讓身體的節奏，<em>有地方可以慢下來。</em></h2><p>這是留白與閱讀節奏，不是治療承諾。正式服務資訊請由站長如實說明。</p></div></section>
+
 <section class="body-section" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section></div>
   <footer class="body-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
 </div>
