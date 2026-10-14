@@ -21,7 +21,7 @@ async function captureStudentSite(slug,kind,site){
   const {resolve,sep}=await import('node:path');
   const dist=resolve(site,'dist');
   const widths=[1440,1280,768,390];
-  const pages=kind==='knowledge'?['','about/','articles/','articles/qa-long-title/']:['','about/','services/'];
+  const pages=kind==='knowledge'?['','about/','articles/','articles/qa-long-title/']:['','about/','services/','faq/','booking/','first-visit/'];
   const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.xml':'application/xml'};
   for(const route of pages)for(const width of widths){
     const page=await visualBrowser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
@@ -40,6 +40,22 @@ async function captureStudentSite(slug,kind,site){
       }catch(error){return request.fulfill({status:500,body:'Capture error'});}
     });
     const response=await page.goto(base+'/'+route,{waitUntil:'load',timeout:15000});
+    // Check actual keyboard focus and Escape, not only generated source strings.
+    const firstLink=page.locator('.student-navigation > a').first();
+    let keyboardFocus=true,escapeNavigation=true;
+    if(await firstLink.count()){
+      await firstLink.focus();
+      keyboardFocus=await firstLink.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&parseFloat(getComputedStyle(el).outlineWidth)>=2);
+    }
+    const group=page.locator('.student-navigation details').first();
+    if(await group.count()){
+      const summary=group.locator('summary');await summary.focus();await page.keyboard.press('Enter');
+      const opened=await group.evaluate(el=>el.open);
+      await page.keyboard.press('Tab');await page.keyboard.press('Escape');
+      escapeNavigation=opened&&await summary.evaluate(el=>!el.parentElement.open&&document.activeElement===el);
+    }
+    // Avoid screenshots of an incidental focus outline.
+    await page.evaluate(()=>document.activeElement?.blur());
     const check=await page.evaluate(()=>({
       overflow:document.documentElement.scrollWidth>innerWidth+2,
       scrollWidth:document.documentElement.scrollWidth,
@@ -55,7 +71,7 @@ async function captureStudentSite(slug,kind,site){
     const label=route?route.replaceAll('/','-').replace(/-$/,''):'home';
     const filename=slug+'-'+label+'-'+width+'.jpg';
     await page.screenshot({path:visualOutput+'/'+filename,type:'jpeg',quality:56,fullPage:true,animations:'disabled',timeout:15000});
-    visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,errors,filename});
+    visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,keyboardFocus,escapeNavigation,errors,filename});
     await page.close();
   }
 }
@@ -69,6 +85,7 @@ try{
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'了解服務',pageId:'services'},
       sectionPatterns:kind==='knowledge'?[{patternId:'featured-work',targetPage:'/',insertAfter:'首頁介紹後'},{patternId:'footer-editorial',targetPage:'site-wide',insertAfter:'所有頁面底部'}]:[{patternId:'trust-service-path',targetPage:'services',insertAfter:'服務介紹後'},{patternId:'footer-professional',targetPage:'site-wide',insertAfter:'所有頁面底部'}],notes:''
     };
+    if(kind==='helper')plan.navigation.push(...['faq','booking','first-visit'].map(id=>({id,label:({'faq':'常見問題','booking':'聯絡','first-visit':'初次聯絡'})[id],enabled:true})));
     if(kind==='knowledge')plan.navigation.push({id:'page-custom-guide',label:'閱讀指南',enabled:true,parentId:'articles',path:'start-here/tools/'});
     const filename=join(root,kind+'.json'),site=join(root,kind);
     writeFileSync(filename,JSON.stringify(plan));
@@ -79,7 +96,7 @@ try{
     if(!learnerPkg.scripts?.['test:regressions'])throw Error('Learner ZIP exporter omitted cumulative validator regressions');
     execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
     const out=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
-    if(out.layoutSlug!==plan.layoutSlug||out.brand.primaryColor!=='#245E50'||out.navigation.length!==(kind==='knowledge'?3:2)||out.sectionPatterns.length!==2)throw Error('Config mismatch '+kind);
+    if(out.layoutSlug!==plan.layoutSlug||out.brand.primaryColor!=='#245E50'||out.navigation.length!==(kind==='knowledge'?3:5)||out.sectionPatterns.length!==2)throw Error('Config mismatch '+kind);
     // The two independently generated sites must contain genuinely different renderers,
     // not the same generic DOM with only a layout class or brand palette swapped.
     const selectedHome=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
@@ -164,6 +181,7 @@ try{
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
       sectionPatterns:[],content:{headline:'個人化首頁主標題',intro:'個人化介紹'},about:{bio:'這是獨立的關於頁介紹，包含真實學員資訊。',purpose:'我希望用個人網站保存長期作品與觀察。',approach:'以可驗證來源整理內容與方法。',background:'作品與資格請以實際證據補充。'},notes:''
     };
+    if(kind==='helper')secondary.navigation.push(...['faq','booking','first-visit'].map(id=>({id,label:({'faq':'常見問題','booking':'聯絡','first-visit':'初次聯絡'})[id],enabled:true})));
     if(slug==='essayist'){
       secondary.brand.heroImagePath='/images/hero-image.png';
       secondary.brand.heroImageAlt='自帶圖片的測試示意';
@@ -204,8 +222,9 @@ try{
         '---','title: '+longTitle,'description: 這段文章摘要是實際內容測試，不是虛構的使用者見證。',
         'publishedAt: 2026-10-12','draft: false','---',
         '## 第一個標題','這是學員撰寫的文章，包含中文、標點與一段比較長的文字。',
-        '## 第二個標題','請保留正式文章內容，不要退回通用展示卡片。'
+        '## 第二個標題',...Array.from({length:12},(_,i)=>'測試段落 '+(i+1)+'：這是長篇中文內容與 English terms 的版型壓力測試，保留來源與閱讀脈絡，不虛構研究成果。'), '| 欄位 | 說明 |','| --- | --- |','| 資料來源 | 站長提供的實際內容 |','```text','https://example.com/'+ 'long-path-'.repeat(25),'```'
       ].join('\n'));
+      for(let i=1;i<=7;i++)writeFileSync(join(articleDir,'qa-note-'+i+'.md'),['---','title: 測試筆記 '+i+'：不同長度的中文標題與觀察','description: QA 測試資料，不代表作者真實作品。','publishedAt: 2026-10-11','draft: false','---','這是文章數量與相鄰導覽的測試資料。'].join('\n'));
       writeFileSync(join(articleDir,'qa-hidden.md'),[
         '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
       ].join('\n'));
@@ -230,6 +249,7 @@ try{
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
       await captureStudentSite(slug,kind,site);
+      if(kind==='helper')for(const route of ['faq','booking','first-visit']){const routeHtml=readFileSync(join(site,'dist',route,'index.html'),'utf8');if(!routeHtml.includes('data-service-family="'+slug+'"'))throw Error('Lost helper '+route+' family: '+slug);if(slug!=='trust-path'&&!routeHtml.includes(route==='faq'?'協助來訪者釐清實際工作與生活選擇':'先閱讀服務說明，再用公開聯絡方式詢問'))throw Error('Lost true facts in '+slug+' '+route);}
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
       if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
@@ -254,16 +274,16 @@ try{
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
 }finally{
  if(visualEnabled){
-  const summary={total:visualRows.length,failedHttp:visualRows.filter(x=>x.http!==200),overflow:visualRows.filter(x=>x.overflow),errors:visualRows.filter(x=>x.errors.length),noFamily:visualRows.filter(x=>x.family!==x.slug),invisibleMasthead:visualRows.filter(x=>x.yearVisible===false)};
+  const summary={total:visualRows.length,failedHttp:visualRows.filter(x=>x.http!==200),overflow:visualRows.filter(x=>x.overflow),errors:visualRows.filter(x=>x.errors.length),noFamily:visualRows.filter(x=>x.family!==x.slug),heading:visualRows.filter(x=>x.h1!==1),keyboard:visualRows.filter(x=>!x.keyboardFocus||!x.escapeNavigation),invisibleMasthead:visualRows.filter(x=>x.yearVisible===false)};
   writeFileSync(visualOutput+'/results.json',JSON.stringify({summary,rows:visualRows},null,2));
   const cards=visualRows.map(x=>'<article><h2>'+escapeHtml(x.slug)+' / '+escapeHtml(x.route)+' / '+x.width+'px</h2><p>HTTP '+x.http+' · overflow '+x.overflow+' · family '+escapeHtml(x.family)+'</p><a href="'+x.filename+'"><img loading="lazy" src="'+x.filename+'" alt="'+escapeHtml(x.slug+' '+x.route)+'"/></a></article>').join('');
   writeFileSync(visualOutput+'/index.html','<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Independent Student Site Visual QA</title><style>body{font:16px/1.6 system-ui;max-width:1320px;margin:auto;padding:20px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}article{border:1px solid #aaa;padding:12px;min-width:0}img{max-width:100%;height:auto}</style><h1>12 independent sites / responsive pages</h1><p>Rows '+summary.total+' · HTTP failures '+summary.failedHttp.length+' · overflow '+summary.overflow.length+' · browser errors '+summary.errors.length+' · wrong families '+summary.noFamily.length+'</p><a href="results.json">Full results</a><main>'+cards+'</main></html>');
   console.log('Student visual QA summary:',JSON.stringify(Object.fromEntries(Object.entries(summary).map(([key,val])=>[key,Array.isArray(val)?val.length:val]))));
-  for(const [type,issues] of [['OVERFLOW',summary.overflow],['HTTP',summary.failedHttp],['RUNTIME',summary.errors],['FAMILY',summary.noFamily],['MASTHEAD',summary.invisibleMasthead]]){
+  for(const [type,issues] of [['OVERFLOW',summary.overflow],['HTTP',summary.failedHttp],['RUNTIME',summary.errors],['FAMILY',summary.noFamily],['MASTHEAD',summary.invisibleMasthead],['HEADING',summary.heading],['KEYBOARD',summary.keyboard]]){
     for(const issue of issues.slice(0,20))console.log('STUDENT_VISUAL_'+type,JSON.stringify(issue));
   }
   await visualBrowser?.close();
-  if(summary.failedHttp.length||summary.overflow.length||summary.errors.length||summary.noFamily.length||summary.invisibleMasthead.length)process.exitCode=1;
+  if(summary.failedHttp.length||summary.overflow.length||summary.errors.length||summary.noFamily.length||summary.invisibleMasthead.length||summary.heading.length||summary.keyboard.length)process.exitCode=1;
  }
  rmSync(root,{recursive:true,force:true});
 }

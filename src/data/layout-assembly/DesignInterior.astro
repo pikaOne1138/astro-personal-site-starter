@@ -2,6 +2,7 @@
 import config from '../../../../site.config.json';
 const {title,kicker='INDEX',description='',mode='page'}=Astro.props;
 const family=config.layoutSlug;
+const composed=['ABOUT','SERVICES','FAQ','BOOKING','FIRST-VISIT'].includes(kicker)||mode==='listing';
 const ordinal=mode==='article'?'02':mode==='listing'?'01':'03';
 const families={
  'field-notes':['FIELD RECORD','觀察與索引'],essayist:['THE JOURNAL','長文與論述'],
@@ -13,10 +14,10 @@ const families={
 };
 const [masthead,subtitle]=families[family]??['THE SITE',''];
 ---
-<div class="family-page" data-design-family={family} data-page-mode={mode}>
+<div class="family-page" data-design-family={family} data-page-mode={mode} data-composed={composed}>
   <div class="family-topline"><span>{masthead}</span><span>{ordinal} / {kicker}</span></div>
   <div class="family-layout">
-    <aside class="family-rail" aria-hidden="true"><span class="rail-marker">{ordinal}</span><span class="rail-word">{subtitle}</span></aside>
+    {!composed&&<aside class="family-rail" aria-hidden="true"><span class="rail-marker">{ordinal}</span><span class="rail-word">{subtitle}</span></aside>}
     <div class="family-main">
       <header class="family-intro">
         <div class="family-overline"><span>{kicker}</span><span>{subtitle}</span></div>
@@ -25,7 +26,7 @@ const [masthead,subtitle]=families[family]??['THE SITE',''];
       </header>
       <div class="family-body"><slot /></div>
     </div>
-    <aside class="family-aside" aria-hidden="true"><span class="aside-index">{ordinal} — {masthead}</span><div class="aside-rule"></div><span>{subtitle}</span></aside>
+    {!composed&&<aside class="family-aside" aria-hidden="true"><span class="aside-index">{ordinal} — {masthead}</span><div class="aside-rule"></div><span>{subtitle}</span></aside>}
   </div>
   <div class="family-ending"><span>{masthead}</span><span>— {config.brand.name}</span></div>
 </div>
@@ -82,4 +83,5 @@ const [masthead,subtitle]=families[family]??['THE SITE',''];
  .family-body :global(.family-article-link>span:last-child){display:none}
  .family-page[data-design-family="curator"] .family-body :global(.family-articles){grid-template-columns:1fr}
 }
+.family-page[data-composed="true"] .family-layout{grid-template-columns:minmax(0,1fr);max-width:1320px}.family-page[data-composed="true"] .family-main{border:0;padding-left:0}.family-page[data-composed="true"] .family-body{max-width:none}.family-page[data-composed="true"] .family-intro{max-width:100%;margin-bottom:2rem;padding-bottom:2rem}.family-page[data-composed="true"] .family-intro h1{font-size:clamp(2.6rem,6vw,6rem);line-height:1.12;letter-spacing:-.04em}.family-page[data-design-family="companion"][data-composed="true"] .family-layout{max-width:1030px}.family-page[data-design-family="somatic"][data-composed="true"] .family-layout{max-width:1150px}.family-page[data-design-family="essayist"][data-composed="true"] .family-intro{border-bottom:3px double currentColor}
 </style>

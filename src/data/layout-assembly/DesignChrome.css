@@ -62,3 +62,16 @@ body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service
 @media(prefers-reduced-motion:reduce){
  body[data-site-family] *,body[data-site-family] *::before,body[data-site-family] *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Keep brand palette separate from family geometry. */
+body[data-site-family]{--chrome-panel:var(--brand-background,var(--bg));--chrome-text:var(--brand-text,var(--ink));--chrome-accent:var(--brand-primary,var(--brand))}
+body[data-site-family]>header .brand{max-width:100%;text-wrap:balance}
+body[data-site-family]>header .button{background:var(--chrome-text);color:var(--chrome-panel);border-color:var(--chrome-text);display:inline-flex;align-items:center;min-height:44px}
+body[data-site-family]>header nav a{font-size:.875rem}
+body[data-site-family]>header :is(a,summary):focus-visible{outline:3px solid currentColor;outline-offset:4px}
+body[data-site-family] .student-navigation__submenu{background:var(--chrome-panel);color:var(--chrome-text);border-color:currentColor;max-width:min(320px,90vw)}
+body[data-site-family] .student-navigation a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:2px}
+body[data-site-family] .story-frame{background:var(--chrome-panel);color:var(--chrome-text)}
+body[data-site-family] :is([data-assembled-layout],.about-composition,.story-frame,.service-composition) :is(h1,h2,h3){letter-spacing:-.04em}
+body[data-site-family] .skip:focus{z-index:100;left:8px;top:8px;color:#222;background:#fff;outline-color:#222}
+@media(max-width:740px){body[data-site-family]>header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem}body[data-site-family]>header .brand{font-size:1.25rem}body[data-site-family]>header .student-navigation{grid-column:1/-1;grid-row:2;width:100%;display:flex;flex-wrap:wrap}body[data-site-family]>header .student-navigation__group{flex:0 1 auto}body[data-site-family]>header .button{font-size:.875rem;padding:.5rem 1rem;max-width:12ch}body[data-site-family]>header .student-navigation__submenu{position:static}}

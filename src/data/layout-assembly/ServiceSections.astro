@@ -1,5 +1,7 @@
 ---
 import config from '../../../../site.config.json';
+import FAQ from '../../blocks/FAQ.astro';
+const {mode='services'}=Astro.props;
 const family=config.layoutSlug;
 const facts=config.serviceFacts??{};
 const has=(key)=>typeof facts[key]==='string'&&facts[key].trim();
@@ -13,8 +15,10 @@ const items=[
  {id:'firstVisit',label:'第一次聯絡',detail:has('firstVisit')?facts.firstVisit:'待站長說明第一次接觸流程'},
  {id:'qualification',label:'專業資格',detail:has('qualification')?facts.qualification:'待站長提供可查證資訊'}
 ];
+const questions=items.filter(x=>['scope','exclusions','duration','price','firstVisit','cancellation'].includes(x.id)).map(x=>({question:x.label,answer:x.detail}));
 ---
 <div class="service-composition" data-service-family={family}>
+  {mode==='services'?<Fragment>
   <p class="service-preface">SERVICES / FACTS BEFORE DECISIONS</p>
   <div class="service-header"><h2>在聯絡之前，先了解服務。</h2><p>這一頁只呈現站長提供並確認的資料。尚未設定的欄位明確標示，不代表提供未列出的服務。</p></div>
   {family==='clinician'&&<dl class="clinical-facts">{items.map((item,i)=><div><dt><b>{String(i+1).padStart(2,'0')}</b>{item.label}</dt><dd>{item.detail}</dd></div>)}</dl>}
@@ -23,6 +27,7 @@ const items=[
   {family==='coach'&&<ol class="coach-sprints">{items.map((item,i)=><li><span>MOVE {String(i+1).padStart(2,'0')}</span><div><h3>{item.label}</h3><p>{item.detail}</p></div></li>)}</ol>}
   {family==='collective'&&<div class="collective-protocol">{items.map((item,i)=><article><span>PROTOCOL / {String(i+1).padStart(2,'0')}</span><h3>{item.label}</h3><p>{item.detail}</p></article>)}</div>}
   {family==='trust-path'&&<ol class="trust-service-path">{items.map((item,i)=><li><div class="trust-path-node">{String(i+1).padStart(2,'0')}</div><div><h3>{item.label}</h3><p>{item.detail}</p></div></li>)}</ol>}
+  </Fragment>:mode==='faq'?<div class="service-questions"><p class="service-preface">BEFORE YOU DECIDE</p><p>回答沿用站長提供的服務資訊；缺少資料時標示待設定。</p><FAQ items={questions}/></div>:<div class="service-first-contact"><p class="service-preface">FIRST CONTACT / YOUR CHOICE</p><h2>先了解，再決定是否聯絡。</h2><div><h3>第一次聯絡</h3><p>{has('firstVisit')?facts.firstVisit:'初次聯絡流程尚未設定。'}</p></div><div><h3>合作方式與界線</h3><p>{has('method')?facts.method:'合作方式尚未設定。'}</p><p>{has('exclusions')?facts.exclusions:'服務界線尚未設定。'}</p></div></div>}
   {has('contact')?<div class="service-contact"><h2>一般聯絡方式</h2><p>{facts.contact}</p><small>此處只提供聯絡資訊，並未建立或確認預約。</small></div>:<p class="service-pending">聯絡資訊尚未設定；正式發布前請站長確認。</p>}
 </div>
 <style>
@@ -58,4 +63,5 @@ const items=[
 .collective-protocol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin:3rem 0}.collective-protocol article{min-height:220px;border:2px solid currentColor;padding:1.7rem;display:flex;flex-direction:column}.collective-protocol span{font:.73rem ui-monospace,monospace;letter-spacing:.12em}.collective-protocol h3{font:700 clamp(1.5rem,2.5vw,2.6rem)/1.15 system-ui,sans-serif}.collective-protocol p{margin-top:auto;line-height:1.8}
 .trust-service-path{list-style:none;margin:3rem 0;padding:0 0 0 2rem;border-left:2px solid currentColor}.trust-service-path li{display:grid;grid-template-columns:75px 1fr;gap:1rem;padding:0 0 clamp(1.8rem,4vw,4rem);position:relative}.trust-path-node{border:2px solid currentColor;border-radius:50%;width:55px;height:55px;display:grid;place-items:center;margin-left:-3.8rem;background:var(--fp-bg,var(--bg));font:.9rem ui-monospace,monospace}.trust-service-path h3{font:500 clamp(1.4rem,2.6vw,2.6rem)/1.3 Georgia,serif;margin:0 0 .6rem}.trust-service-path p{line-height:1.9}
 @media(max-width:700px){.clinical-facts,.collective-protocol{grid-template-columns:1fr}.companion-letters section,.somatic-sequences section,.coach-sprints li{grid-template-columns:1fr;gap:.4rem}.trust-service-path{padding-left:1rem}.trust-service-path li{grid-template-columns:40px 1fr}.trust-path-node{width:40px;height:40px;margin-left:-2.3rem}}
+.service-questions :global(.ab-faq details){border-top:1px solid var(--line);padding:1rem 0}.service-questions :global(.ab-faq summary){cursor:pointer;min-height:44px;font:500 clamp(1.1rem,2.5vw,2rem)/1.4 var(--brand-heading-font,Georgia,serif)}.service-questions :global(.ab-faq p){max-width:65ch;line-height:1.9}.service-questions :global(.ab-faq summary:focus-visible){outline:3px solid currentColor;outline-offset:4px}.service-composition[data-service-family="clinician"] .service-questions :global(details){border:1px solid currentColor;padding:1.5rem}.service-composition[data-service-family="companion"] .service-questions{max-width:720px;margin:auto}.service-composition[data-service-family="somatic"] .service-questions :global(details){padding-block:2rem}.service-composition[data-service-family="coach"] .service-questions :global(details){border-top-width:5px}.service-composition[data-service-family="coach"] .service-questions :global(summary){font-weight:800;font-family:var(--brand-body-font,system-ui)}.service-composition[data-service-family="collective"] .service-questions :global(.ab-faq){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.service-composition[data-service-family="collective"] .service-questions :global(details){border:2px solid currentColor;padding:1.5rem}.service-composition[data-service-family="trust-path"] .service-questions{border-left:3px solid currentColor;padding-left:2rem}.service-first-contact{max-width:850px;margin:auto}.service-first-contact>div{border-top:1px solid currentColor;padding:2rem 0}.service-composition :is(h2,h3){line-height:1.2;letter-spacing:-.04em}.service-composition small,.companion-letters section span{font-size:.75rem}.service-composition[data-service-family="trust-path"] .service-first-contact{border-left:3px solid currentColor;padding-left:2rem}@media(max-width:700px){.service-composition[data-service-family="collective"] .service-questions :global(.ab-faq){grid-template-columns:1fr}}
 </style>
