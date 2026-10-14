@@ -237,7 +237,7 @@ if(hasAssemblyAdapter){
  assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace("import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';","import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';\nimport ArticleDetail from '../../components/layouts/selected/ArticleDetail.astro';");
  assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace(
   '<article class="interior prose"><h1>{entry.data.title}</h1><p>{entry.data.description}</p><Content/></article>',
-  '<DesignInterior title={entry.data.title} description={entry.data.description} kicker="ARTICLE" mode="article"><ArticleDetail entry={entry}><Content/></ArticleDetail></DesignInterior>');
+  '<ArticleDetail entry={entry}><Content/></ArticleDetail>');
 }
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
