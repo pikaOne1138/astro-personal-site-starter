@@ -1,5 +1,13 @@
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
+## 第三階段最新交付（2026-10-14）
+- 已新增 `docs/art-direction/pr47-layout-handoff-registry.json`：25 個 slug、客群、原型來源、路由、結構辨識、assemblyStatus、QA 證據分級；12 原始首頁／2 獨立 Adapter／11 可配置多頁原型分開計算，全部不得假標 Ready。
+- 已新增 `docs/art-direction/PR47-PHASE3-HANDOFF.md`：正式交接給 #46 的 Content Collections 映射、Renderer / legacy slug / Pagefind、低內容狀態與責任分工。#47 沒有改動 #46 Gallery／主 Generator／主 Adapter。
+- 已新增 `scripts/verify-pr47-layout-handoff.mjs`、`.github/workflows/pr47-layout-handoff.yml`：CI 校驗 25 筆一致性及 readiness 護欄。最新 workflow 狀態必須獨立查核。
+- 第三階段文件與機器可讀契約已提交；PR47 仍 Draft，不 Merge，不 Production。保留真人讀屏、完整人工設計核可、獨立 Starter 截圖延期；主整合歸 #46。
+
+
+
 ## 第二階段更新（2026-10-14）
 
 - 正常 11×3×4＝132 內頁截圖與基本 DOM／Tab／Overflow：PASS（Run 38577914500）。
