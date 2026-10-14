@@ -3,14 +3,18 @@ import config from '../../../../site.config.json';
 const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='articles');
 const action=base+(nav?.path??'articles/');
+const audio=config.media?.episodeAudioPath;
+const hasAudio=typeof audio==='string'&&/^\/audio\/[a-z0-9/_-]+\.(mp3|ogg|wav|m4a)$/i.test(audio);
+const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.episodeTranscript.filter(x=>typeof x.time==='string'&&typeof x.text==='string'):[];
+
 ---
 <div class="radio-shell" data-assembled-layout="radio-letter">
   <section class="radio-hero" aria-labelledby="radio-title">
     <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">這封信，留給願意聽的人。</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
     <figure class="radio-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="radio-art" role="img" aria-label="深色聲波抽象封面"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
-  <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2><p>節目音檔尚未設定；先閱讀有內容的逐字稿示範。</p></section>
-<section class="radio-section" id="transcript"><p class="radio-section-tag">02 / TRANSCRIPT</p><h2>逐字稿與筆記</h2><p>以時間段落整理音訊內容，保留搜尋引擎可索引的文字。</p></section>
+  <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2>{hasAudio?<audio controls preload="metadata" aria-label="本期節目音訊"><source src={base+audio.replace(/^\//,'')}/>您的瀏覽器不支援音訊播放，請使用逐字稿。</audio>:<p role="status">尚未設定自有授權音檔，未顯示無法播放的音訊播放器。</p>}<p>請在 site.config.json 的 media.episodeAudioPath 設定本地 /audio/ 音檔，並提供有授權的逐字稿。</p></section>
+<section class="radio-section" id="transcript"><p class="radio-section-tag">02 / TRANSCRIPT</p><h2>逐字稿與筆記</h2>{transcript.length>0?<ol class="radio-transcript">{transcript.map(entry=><li><time>{entry.time}</time><p>{entry.text}</p></li>)}</ol>:<p>逐字稿尚未提供。設定 media.episodeTranscript 的 time / text 陣列即可顯示可搜尋文字；不虛構節目內容。</p>}</section>
 <section class="radio-section" id="archive"><p class="radio-section-tag">03 / ARCHIVE</p><h2>節目索引</h2><p>依主題與日期尋找過去的內容。</p><a href={action}>閱讀文章 ↗</a></section></div>
   <footer class="radio-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
 </div>
@@ -32,4 +36,4 @@ const action=base+(nav?.path??'articles/');
 .radio-shell{background:#14222a;color:#f5e5cf}.radio-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:4vw;align-items:center}.radio-hero h1{font-size:clamp(3rem,6vw,6rem)}.radio-section-list{display:grid;grid-template-columns:1fr 1.5fr;gap:2rem}.radio-section:first-child{grid-column:1/-1;border-bottom:1px solid #81939a}.radio-art{background:repeating-linear-gradient(90deg,#d69b67 0 3px,#283b47 3px 14px,#9fb4bd 14px 16px,#283b47 16px 23px)}
 @media(max-width:800px){.radio-hero,.radio-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.radio-hero{min-height:0}.radio-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.radio-hero figure,.radio-art{position:static;width:100%;height:auto;min-height:180px}.radio-section,.radio-section:nth-child(1),.radio-section:nth-child(2),.radio-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.radio-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
 @media(max-width:480px){.radio-shell{padding:1rem}.radio-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.radio-close{display:block}}
-</style>
+.radio-section audio{display:block;width:min(100%,680px);margin:1.5rem 0}.radio-transcript{list-style:none;padding:0;display:grid;gap:1rem}.radio-transcript li{display:grid;grid-template-columns:6rem 1fr;gap:1rem;border-top:1px solid #81939a;padding-top:1rem}.radio-transcript time{font: .85rem ui-monospace,monospace;color:#e2aa78}@media(max-width:520px){.radio-transcript li{grid-template-columns:1fr;gap:.25rem}}</style>
