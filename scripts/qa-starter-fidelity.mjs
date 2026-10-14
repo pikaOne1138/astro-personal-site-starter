@@ -74,6 +74,26 @@ try{
    const studentFile=item.slug+'-'+width+'-student.jpg';
    const prototype=await inspect(page,'http://127.0.0.1:4481/layouts/'+item.slug+'/',join(out,protoFile));
    const student=await inspect(page,'http://127.0.0.1:4482/',join(out,studentFile));
+   // Exercise authentic layout interactions on the generated student website.
+   if(item.slug==='learning-lab'&&width===390){
+    const tasks=page.locator('[data-lab-task]');
+    if(await tasks.count()!==3)errors.push('learning-lab: missing three meaningful student checkboxes');
+    else{
+     await tasks.first().check();
+     const val=await page.locator('#lab-check-progress').getAttribute('value');
+     if(val!=='1')errors.push('learning-lab: progress did not update to 1 of 3');
+     await page.reload({waitUntil:'domcontentloaded'});
+     if(await page.locator('#lab-check-progress').getAttribute('value')!=='0')errors.push('learning-lab: unintended persistent completion claim');
+    }
+   }
+   if(item.slug==='curator'&&width===390){
+    const drawers=page.locator('.catalog-drawers details');
+    if(await drawers.count()!==3)errors.push('curator: missing three catalog provenance drawers');
+    else{
+     await drawers.first().locator('summary').click();
+     if(!await drawers.first().evaluate(el=>el.open))errors.push('curator: catalog drawer is not operable');
+    }
+   }
    const problems=[];
    if(!student.main||student.h1.length!==1)problems.push('Missing main or exactly one H1');
    if(student.bodyWidth>width+2)problems.push('Student horizontal overflow '+student.bodyWidth+'/'+width);
