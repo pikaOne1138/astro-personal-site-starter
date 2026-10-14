@@ -9,7 +9,7 @@ const records=Array.isArray(config.reading?.records)&&config.reading.records.len
 ---
 <div class="atlas-shell" data-assembled-layout="reading-atlas">
   <section class="atlas-hero" aria-labelledby="atlas-title">
-    <div class="atlas-hero-copy"><p class="atlas-kicker">READING ALMANAC / YEAR IN REVIEW</p><h1 id="atlas-title">閱讀年鑑</h1><p class="atlas-brand">{config.brand.name} · {config.brand.tagline}</p><p class="atlas-intro">一整年的閱讀足跡，以月份、評註和年度選書串成索引。</p><a class="atlas-cta" href="#calendar">閱讀年鑑 ↓</a></div>
+    <div class="atlas-hero-copy"><p class="atlas-kicker">READING ALMANAC / YEAR IN REVIEW</p><h1 id="atlas-title">{config.content?.headline || "閱讀年鑑"}</h1><p class="atlas-brand">{config.brand.name} · {config.brand.tagline}</p><p class="atlas-intro">{config.content?.intro || "一整年的閱讀足跡，以月份、評註和年度選書串成索引。"}</p><a class="atlas-cta" href="#calendar">閱讀年鑑 ↓</a></div>
     <div class="atlas-art" role="img" aria-label="無圖片的年份字樣"></div>
   </section>
   <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{sampleMonths.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">顯示全年示範空白紀錄</p></section>
