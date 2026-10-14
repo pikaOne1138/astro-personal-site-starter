@@ -6,7 +6,7 @@ const action=base+(nav?.path??'services/');
 ---
 <div class="common-shell" data-assembled-layout="collective">
   <section class="common-hero" aria-labelledby="common-title">
-    <div class="common-hero-copy"><p class="common-kicker">COMMON GROUND / COLLECTIVE</p><h1 id="common-title">一起工作，讓支持有很多形狀。</h1><p class="common-brand">{config.brand.name} · {config.brand.tagline}</p><p class="common-intro">從共同理念、真實成員到活動資訊，清楚展示合作網絡。</p><a class="common-cta" href="#belief">認識合作 ↓</a></div>
+    <div class="common-hero-copy"><p class="common-kicker">COMMON GROUND / COLLECTIVE</p><h1 id="common-title">{config.content?.headline || "一起工作，讓支持有很多形狀。"}</h1><p class="common-brand">{config.brand.name} · {config.brand.tagline}</p><p class="common-intro">{config.content?.intro || "從共同理念、真實成員到活動資訊，清楚展示合作網絡。"}</p><a class="common-cta" href="#belief">認識合作 ↓</a></div>
     <figure class="common-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="common-art" role="img" aria-label="共同創作示意拼貼"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
   <div class="common-section-list"><section class="common-section" id="belief"><p class="common-section-tag">01 / BELIEF</p><h2>共同立場</h2><p>不同專長的人可以協作，也必須清楚說明自己的服務邊界。</p></section>
