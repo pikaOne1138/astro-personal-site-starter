@@ -1,0 +1,37 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+---
+<div class="trust-shell" data-assembled-layout="trust-path">
+  <section class="trust-hero" aria-labelledby="trust-title">
+    <div class="trust-hero-copy"><p class="trust-kicker">TRUST PATH / A FIVE-STOP GUIDE</p><h1 id="trust-title">在開始之前，先把事情說清楚。</h1><p class="trust-brand">{config.brand.name} · {config.brand.tagline}</p><p class="trust-intro">讓第一次來訪的人沿著五個站點了解適用範圍、方法、費用與選擇。</p><a class="trust-cta" href="#scope">看完整路徑 ↓</a></div>
+    <figure class="trust-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="trust-art" role="img" aria-label="五站折線導覽"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="trust-section-list"><section class="trust-section" id="scope"><p class="trust-section-tag">01 / SCOPE</p><h2>01 範圍</h2><p>可以協助什麼？不能處理什麼？需要其他資源時怎麼辦？</p></section>
+<section class="trust-section" id="method"><p class="trust-section-tag">02 / METHOD</p><h2>02 方法</h2><p>如何開始、需要準備什麼？合作的選擇始終屬於來訪者。</p></section>
+<section class="trust-section" id="fees"><p class="trust-section-tag">03 / FEES</p><h2>03 費用與時間</h2><p>尚未設定；必須填入真實價格、時段和取消規則。</p></section>
+<section class="trust-section" id="first"><p class="trust-section-tag">04 / FIRST</p><h2>04 第一次見面</h2><p>說明初次接觸的步驟，不暗示已完成預約。</p></section>
+<section class="trust-section" id="refer"><p class="trust-section-tag">05 / REFER</p><h2>05 不適合時</h2><p>提供服務範圍說明與適當轉介方向，不虛構危機電話。</p><a href={action}>查看服務 ↗</a></section></div>
+  <footer class="trust-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.trust-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.trust-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. trust-hero-copy{min-width:0}
+.trust-kicker,.trust-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.trust-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.trust-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.trust-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.trust-figure{margin:0;min-width:0}. trust-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.trust-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.trust-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.trust-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.trust-section-list{max-width:1250px;margin:0 auto 4rem}
+.trust-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.trust-section p{max-width:65ch;line-height:1.85}. trust-section a{color:inherit}
+.trust-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.trust-shell{background:#f5f4ee}.trust-hero{background:#213c3b;color:white;padding:4rem;display:grid;grid-template-columns:1.5fr .5fr;gap:2vw}.trust-hero h1{font-size:clamp(3rem,6vw,6rem)}.trust-art{background:repeating-linear-gradient(120deg,#516a63 0 18px,#d7c4a5 19px 21px,#213c3b 22px 90px)}.trust-section-list{display:grid;grid-template-columns:1fr;gap:0;position:relative}.trust-section{border-left:3px solid #71837b;border-bottom:1px solid #bdc5b9;padding:2rem 2rem 2rem 4rem;margin-left:2rem;max-width:990px}.trust-section:before{content:"●";position:absolute;margin-left:-4.85rem;color:#71837b}.trust-section:nth-child(odd){margin-left:15%}
+@media(max-width:800px){.trust-hero,.trust-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.trust-hero{min-height:0}.trust-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.trust-hero figure,.trust-art{position:static;width:100%;height:auto;min-height:180px}.trust-section,.trust-section:nth-child(1),.trust-section:nth-child(2),.trust-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.trust-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.trust-shell{padding:1rem}.trust-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.trust-close{display:block}}
+</style>
