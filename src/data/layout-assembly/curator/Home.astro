@@ -32,4 +32,23 @@ const action=base+(nav?.path??'articles/');
 .catalog-hero{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}.catalog-hero h1{font-size:clamp(3rem,7vw,7rem)}.catalog-section-list{display:grid;grid-template-columns:.7fr 1.3fr;gap:1rem}.catalog-section:first-child{grid-row:span 2}.catalog-section{border:1px solid currentColor;padding:2rem}.catalog-art{background:linear-gradient(90deg,#c8bfae 0 32%,#747263 32% 38%,#dacbc3 38% 65%,#b5a38a 65%)}
 @media(max-width:800px){.catalog-hero,.catalog-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.catalog-hero{min-height:0}.catalog-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.catalog-hero figure,.catalog-art{position:static;width:100%;height:auto;min-height:180px}.catalog-section,.catalog-section:nth-child(1),.catalog-section:nth-child(2),.catalog-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.catalog-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
 @media(max-width:480px){.catalog-shell{padding:1rem}.catalog-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.catalog-close{display:block}}
+
+/* Curator prototype: typographic museum index with vertical archive and right exhibition shelves. */
+.catalog-shell{background:#f6f1eb;color:#332e38;padding:0 clamp(1rem,4vw,4rem) 3rem}
+.catalog-hero{max-width:1320px;padding:4rem 0;min-height:570px;grid-template-columns:1.06fr .94fr;gap:5vw;border-bottom:1px solid #605261}
+.catalog-hero h1{font:500 clamp(3.8rem,8vw,7.4rem)/1.02 var(--brand-heading-font,Georgia,serif);letter-spacing:-.075em}
+.catalog-hero h1::first-line{text-decoration:underline;text-decoration-color:#9a748e;text-decoration-thickness:.08em;text-underline-offset:.08em}
+.catalog-kicker{color:#916c7d;letter-spacing:.15em}
+.catalog-cta{border-color:#8b6d85}
+.catalog-figure{transform:rotate(-1deg)}
+.catalog-figure img,.catalog-art{box-shadow:15px 15px 0 #e6e0dd;min-height:340px;aspect-ratio:4/3}
+.catalog-section-list{grid-template-columns:.45fr 1.55fr;gap:0 3rem;max-width:1300px;margin-top:3rem}
+.catalog-section{border:0;border-bottom:1px solid #aaa1a5;padding:2rem 0}
+.catalog-section:first-child{grid-row:span 2;border-top:1px solid #aaa1a5;position:relative}
+.catalog-section:first-child h2{font:400 clamp(3rem,5vw,5rem)/1.1 var(--brand-heading-font,Georgia,serif)}
+.catalog-section:nth-child(2){background:#eee7e8;padding:2rem;border-top:6px solid #9b718c}
+.catalog-section:nth-child(3){background:#fff;padding:2rem;border-top:6px solid #6f617a}
+.catalog-section h2{font:400 clamp(2rem,3.5vw,3.3rem)/1.12 var(--brand-heading-font,Georgia,serif)}
+.catalog-close{border-top:1px solid #aaa1a5}
+@media(max-width:800px){.catalog-hero{grid-template-columns:1fr;min-height:0}.catalog-section-list{grid-template-columns:1fr;gap:1rem}.catalog-section:first-child{grid-row:auto}.catalog-figure img,.catalog-art{min-height:180px}}
 </style>
