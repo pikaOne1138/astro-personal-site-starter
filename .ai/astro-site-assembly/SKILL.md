@@ -64,3 +64,10 @@ When adding `SiteSearchDialog`, inspect its actual data contract before use. The
 
 ## 自訂頁面網址
 導航條目的 `id` 是穩定識別符；選填的 `path` 是人能閱讀的相對 URL（例如 `start-here/tools/`），不代表另建 CMS／後台。若有 `path`，頁面生成、共用導覽、麵包屑、Sitemap、輸出檢查應使用同一個網址；沒有則以 `id + '/'` 作預設。確認實際 HTML 與 Preview 路由一致，勿改動既有已發布網址而不考慮 redirect。
+
+## Prototype-native optional owned content (PR #46)
+
+- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: "YYYY-MM-DD", url: "https://…"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.
+- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.
+- Five knowledge Home adapters use actual published Content Collection entries for recent/featured/learning/collection/program-note previews and exclude `draft: true`; Reading Atlas uses owner-supplied `reading.records` and `annualBook` in its month cells, book band and seasonal index.
+- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.

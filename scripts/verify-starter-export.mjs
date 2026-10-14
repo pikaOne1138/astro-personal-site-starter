@@ -15,13 +15,13 @@ if(visualEnabled){
   mkdirSync(visualOutput,{recursive:true});
 }
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-async function captureStudentSite(slug,kind,site){
+async function captureStudentSite(slug,kind,site,scenario={}){
   if(!visualBrowser)return;
   const base='https://student-static.example';
   const {resolve,sep}=await import('node:path');
   const dist=resolve(site,'dist');
   const widths=[1440,1280,768,390];
-  const pages=kind==='knowledge'?['','about/','articles/','articles/qa-long-title/']:['','about/','services/','faq/','booking/','first-visit/'];
+  const pages=scenario.routes??(kind==='knowledge'?['','about/','articles/','articles/qa-long-title/']:['','about/','services/','faq/','booking/','first-visit/']);
   const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.xml':'application/xml'};
   for(const route of pages)for(const width of widths){
     const page=await visualBrowser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
@@ -69,13 +69,13 @@ async function captureStudentSite(slug,kind,site){
         document.querySelector('[data-story-family]')?.getAttribute('data-story-family')
     }));
     const label=route?route.replaceAll('/','-').replace(/-$/,''):'home';
-    const filename=slug+'-'+label+'-'+width+'.jpg';
+    const filename=slug+'-'+(scenario.variant?scenario.variant+'-':'')+label+'-'+width+'.jpg';
     await page.screenshot({path:visualOutput+'/'+filename,type:'jpeg',quality:56,fullPage:true,animations:'disabled',timeout:15000});
-    visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,keyboardFocus,escapeNavigation,errors,filename});
+    visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,keyboardFocus,escapeNavigation,errors,filename,variant:scenario.variant||'standard'});
     // Same colors/font/copy, preserving all geometric CSS and nested title markup.
     // Captures are comparison evidence, never a second template/export pipeline.
-    if(!route){
-      const neutral=await page.addStyleTag({content:`body,body *,body *::before,body *::after{color:#222!important;background-color:transparent!important;background-image:none!important;border-color:#666!important;font-family:Arial,sans-serif!important;box-shadow:none!important}body{background:#f5f5f5!important}main img,main [role="img"],.ll-owned-placeholder,.cu-owned-placeholder{background:#ddd!important;filter:grayscale(1)!important}main img{visibility:hidden!important}main .atlas-year{-webkit-text-stroke-color:#222!important}`});
+    if(!route&&!scenario.variant){
+      const neutral=await page.addStyleTag({content:`body,body *,body *::before,body *::after{color:#222!important;background-color:transparent!important;background-image:none!important;border-color:#666!important;text-decoration-color:#666!important;font-family:Arial,sans-serif!important;box-shadow:none!important}body{background:#f5f5f5!important}main img,main [role="img"],.ll-owned-placeholder,.cu-owned-placeholder{background:#ddd!important;filter:grayscale(1)!important}main img{visibility:hidden!important}main .atlas-year{color:transparent!important;-webkit-text-stroke-color:#222!important}.student-pattern,.student-footer{display:none!important}`});
       await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.firstChild?.nodeType===3){h.dataset.originalCopy=h.firstChild.textContent;h.firstChild.textContent='一個人的觀察與整理';}h?.querySelectorAll('em,i,span').forEach(el=>{el.dataset.originalCopy=el.textContent;el.textContent='持續留下值得理解的事';});});
       const filename=slug+'-neutral-home-'+width+'.jpg';
       const safety=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
@@ -207,6 +207,8 @@ try{
     }
     if(slug==='reading-atlas')secondary.reading={records:[{month:'07',title:'自己讀過的一本書',note:'真實閱讀理由。'}],annualBook:{title:'自己選出的年度書',note:'具體選入原因。'}};
     if(kind==='helper')secondary.serviceFacts={scope:'協助來訪者釐清實際工作與生活選擇',exclusions:'不提供醫療診斷或藥物建議',method:'先討論需求，再說明合作流程',firstVisit:'先閱讀服務說明，再用公開聯絡方式詢問',duration:'依個別方案說明',price:'待站長確認',cancellation:'依站長公開政策',qualification:'尚未提供可查證資格',contact:'使用正式聯絡頁'};
+    if(slug==='collective'){secondary.team=Array.from({length:3},(_,i)=>({name:'QA 測試成員 '+(i+1),role:'QA 角色示意，非真實資格',bio:'只用於資料傳入與版型驗證，不代表真實團隊。'}));secondary.events=[{title:'QA 版型測試活動',description:'只用於活動日期與真實連結欄位驗證，不代表正式活動。',date:'2026-10-20',url:'https://example.com/owned-event'}];}
+    if(slug==='trust-path')secondary.serviceTiming=[{label:'QA 需求確認',minutes:10},{label:'QA 合作說明',minutes:20}];
     if(slug==='trust-path')secondary.serviceFacts={duration:'依實際方案而定',price:'請向服務者確認',cancellation:'依公布政策',qualification:'尚未提供可查證資格',contact:'請使用服務頁聯絡方式'};
     if(slug==='radio-letter'){
       secondary.media={episodeAudioPath:'/audio/owned-sample.mp3',episodeTranscript:[{time:'00:00',text:'此為測試者提供的逐字稿。'}]};
@@ -271,6 +273,8 @@ try{
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
       if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
+      if(slug==='collective'&&(!html.includes('QA 測試成員 3')||!html.includes('QA 版型測試活動')||!html.includes('2026-10-20')))throw Error('Lost owned collective content');
+      if(slug==='trust-path'&&(!html.includes('QA 需求確認')||!html.includes('QA 合作說明')||!html.includes('30 分鐘')))throw Error('Lost provided proportional timing');
       const aboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
       if(!aboutHtml.includes('data-about-family="'+slug+'"'))throw Error('Dedicated About did not render for '+slug);
       if(!aboutHtml.includes('這是獨立的關於頁介紹')||!aboutHtml.includes('我希望用個人網站保存長期作品與觀察'))throw Error('Owned About copy missing: '+slug);
@@ -287,6 +291,34 @@ try{
         if(slug!=='trust-path'&&!innerHtml.includes('協助來訪者釐清實際工作與生活選擇'))throw Error('Student-supplied service facts lost in '+slug);
       }
 
+    }
+  }
+  if(process.env.FULL_STARTER_BUILD==='1'){
+    for(const layout of layouts){
+      const site=join(root,layout.slug===layouts.find(x=>x.kind===layout.kind).slug?layout.kind:layout.slug);
+      if(layout.kind==='knowledge'){
+        const dir=join(site,'src/content/articles');
+        for(const name of (await import('node:fs')).readdirSync(dir))if(name.endsWith('.md')&&name!=='qa-long-title.md')rmSync(join(dir,name));
+        rmSync(join(site,'dist'),{recursive:true,force:true});
+        execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+        await captureStudentSite(layout.slug,layout.kind,site,{variant:'single',routes:['','articles/']});
+        rmSync(join(dir,'qa-long-title.md'),{force:true});
+        rmSync(join(site,'dist'),{recursive:true,force:true});
+        execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+        execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+        await captureStudentSite(layout.slug,layout.kind,site,{variant:'empty',routes:['','articles/']});
+        const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
+        if(!archive.includes('data-archive-family="'+layout.slug+'"'))throw Error('Empty archive lost family '+layout.slug);
+      }else{
+        const filename=join(site,'site.config.json');
+        const settings=JSON.parse(readFileSync(filename,'utf8'));
+        delete settings.serviceFacts;settings.team=[];settings.events=[];settings.serviceTiming=[];
+        writeFileSync(filename,JSON.stringify(settings));
+        rmSync(join(site,'dist'),{recursive:true,force:true});
+        execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+        execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+        await captureStudentSite(layout.slug,layout.kind,site,{variant:'empty-facts'});
+      }
     }
   }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');

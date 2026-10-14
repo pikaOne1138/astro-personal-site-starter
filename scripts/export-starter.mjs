@@ -61,6 +61,14 @@ const about=plan.about??{};
 if(typeof about!=='object'||Array.isArray(about)||Object.entries(about).some(([key,value])=>!['bio','purpose','approach','background'].includes(key)||typeof value!=='string'||value.length>1200))throw Error('Invalid owned About content');
 const serviceFacts=plan.kind==='helper'?plan.serviceFacts:undefined;
 if(serviceFacts&&Object.entries(serviceFacts).some(([k,v])=>!['duration','price','cancellation','qualification','contact','scope','exclusions','method','firstVisit'].includes(k)||typeof v!=='string'||v.length>500))throw Error('Invalid verified service facts');
+// Optional owned collective content and verified timing, never fabricated roster/events.
+const team=plan.layoutSlug==='collective'?(plan.team??[]):[];
+if(!Array.isArray(team)||team.length>12||team.some(x=>typeof x.name!=='string'||!x.name.trim()||x.name.length>80||typeof x.role!=='string'||x.role.length>200||typeof x.bio!=='string'||x.bio.length>800))throw Error('Invalid owned team content');
+const events=plan.layoutSlug==='collective'?(plan.events??[]):[];
+const eventURL=value=>{try{const u=new URL(value);return u.protocol==='https:'&&Boolean(u.hostname)}catch{return false}};
+if(!Array.isArray(events)||events.length>24||events.some(x=>typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.description!=='string'||x.description.length>800||!/^\d{4}-\d{2}-\d{2}$/.test(x.date)||!eventURL(x.url)))throw Error('Events require real title, date and HTTPS destination');
+const serviceTiming=plan.layoutSlug==='trust-path'?(plan.serviceTiming??[]):[];
+if(!Array.isArray(serviceTiming)||serviceTiming.length>8||serviceTiming.some(x=>typeof x.label!=='string'||!x.label.trim()||x.label.length>80||!Number.isInteger(x.minutes)||x.minutes<1||x.minutes>240))throw Error('Timing needs owned labels and positive minute counts');
 // Audio is an explicit optional owned asset, never a borrowed playable demo.
 const media=plan.layoutSlug==='radio-letter'?plan.media:undefined;
 if(media?.episodeAudioPath&&!/^\/audio\/[a-z0-9/_-]+\.(mp3|ogg|wav|m4a)$/i.test(media.episodeAudioPath))throw Error('Episode audio must be a local /audio/ file');
@@ -69,7 +77,7 @@ const audioSource=media?.episodeAudioPath?resolve(dirname(resolve(input)),'publi
 if(audioSource&&!existsSync(audioSource))throw Error('Missing owned audio '+media.episodeAudioPath+'; put it beside your Site Brief in public/audio/');
 const root=resolve(dest);
 if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty');
-const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,content,about,media,reading,serviceFacts,site:'https://example.com',base:'/'};
+const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,content,about,media,reading,serviceFacts,team,events,serviceTiming,site:'https://example.com',base:'/'};
 const put=(path,body)=>{const p=join(root,path);mkdirSync(join(p,'..'),{recursive:true});writeFileSync(p,body,'utf8')};
 put('site.config.json',JSON.stringify(settings,null,2)+'\n');
 if(imageSource&&!embedded.has(plan.brand.heroImagePath)){const p=join(root,'public',plan.brand.heroImagePath.slice(1));mkdirSync(dirname(p),{recursive:true});copyFileSync(imageSource,p);}
@@ -255,7 +263,7 @@ for(const [path,body] of Object.entries(assets)){
     actual=actual.replace('--ink:#28231f','--ink:'+colors.text).replace('--bg:#f7f5f0','--bg:'+colors.background).replace('--line:#dad4c9','--line:color-mix(in srgb, '+colors.text+' 20%, '+colors.background+')');
     actual+='\n:root{--brand-primary:'+colors.primary+';--brand-secondary:'+colors.secondary+';--brand-accent:'+colors.accent+';--brand-background:'+colors.background+';--brand-text:'+colors.text+';}\n';
   }
-  if(path==='public/site.css')actual+='\n:root{--accent:var(--brand-primary,var(--brand));--heading:var(--ink);--text:var(--ink);--surface:var(--bg);--muted:color-mix(in srgb,var(--ink) 75%,var(--bg));--radius:8px;--ed-ink:var(--heading);--ed-ink-2:var(--muted);--ed-accent:var(--accent);--ed-accent-deco:var(--brand-secondary,var(--accent));--ed-panel:var(--surface);--ed-line:var(--line);--ed-gutter:clamp(1rem,4vw,4rem);--ed-wide:1320px;}\n';
+  if(path==='public/site.css')actual+='\n:root{--brand-primary:'+settings.brand.primaryColor+';--accent:var(--brand-primary,var(--brand));--heading:var(--ink);--text:var(--ink);--surface:var(--bg);--muted:color-mix(in srgb,var(--ink) 75%,var(--bg));--radius:8px;--ed-ink:var(--heading);--ed-ink-2:var(--muted);--ed-accent:var(--accent);--ed-accent-deco:var(--brand-secondary,var(--accent));--ed-panel:var(--surface);--ed-line:var(--line);--ed-gutter:clamp(1rem,4vw,4rem);--ed-wide:1320px;}\n';
   if(path==='public/site.css'){
     const serif='"Noto Serif TC",Georgia,serif';
     const sans='"Noto Sans TC",system-ui,sans-serif';
