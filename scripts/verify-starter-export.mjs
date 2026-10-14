@@ -90,11 +90,24 @@ try{
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
       sectionPatterns:[],notes:''
     };
+    if(slug==='radio-letter'){
+      secondary.media={episodeAudioPath:'/audio/owned-sample.mp3',episodeTranscript:[{time:'00:00',text:'此為測試者提供的逐字稿。'}]};
+      mkdirSync(join(root,'public/audio'),{recursive:true});
+      writeFileSync(join(root,'public/audio/owned-sample.mp3'),Buffer.from('ID3\\u0003\\u0000\\u0000','utf8'));
+    }
     const filename=join(root,slug+'.json'),site=join(root,slug);
     writeFileSync(filename,JSON.stringify(secondary));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site,'--require-assembled'],{stdio:'inherit'});
     const home=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
     if(!home.includes('data-assembled-layout="'+slug+'"'))throw Error('Missing '+slug+' distinct Home renderer');
+    if(slug==='radio-letter'){
+      if(!existsSync(join(site,'public/audio/owned-sample.mp3')))throw Error('Missing copied licensed podcast audio');
+      const media=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8')).media;
+      if(media.episodeTranscript[0].text!=='此為測試者提供的逐字稿。')throw Error('Lost transcript text');
+      if(!home.includes('<audio controls')||!home.includes('radio-transcript'))throw Error('Missing accessible radio player or transcript');
+    }
+    if(slug==='reading-atlas'&&(!home.includes('data-atlas-month')||!home.includes('data-record-month')||!home.includes('aria-pressed')))throw Error('Reading atlas month filters incomplete');
+    if(slug==='trust-path'&&(!home.includes('trust-route')||!home.includes('href={\'#\'+id}')||!home.includes('trust-unverified')))throw Error('Trust path stations or unverified details missing');
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
