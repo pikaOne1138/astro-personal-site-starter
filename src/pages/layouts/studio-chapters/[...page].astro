@@ -8,7 +8,6 @@ const site=getDirectionContent('studio-chapters','helper',root,'services/individ
 const chapters=site.questions.length?site.questions.map((q,i)=>[String(i+1).padStart(2,'0'),q.question,q.answer]):[['01','工作空間','服務資訊尚未設定']];
 const service=site.primary;
 const info=[['服務名稱',service?.name??'尚未設定'],['服務形式',service?.format??'待設定'],['時長與費用',(service?.duration??'待設定')+'／'+(service?.price??'待設定')],['工作資格',service?.credential??'尚未核實'],['服務界線',service?.scope??'待設定']];
-const pageContentIntro=site.headline;
 const title=route==='services'?'服務與合作':route==='services/individual'?'服務詳細章節':route==='about'?'關於工作室':'工作室章節';
 ---
 <DirectionLayout title={title+'｜工作室章節（原型）'} description="章節目錄貫穿首頁、服務詳情與關於頁的助人者多頁構圖。">
