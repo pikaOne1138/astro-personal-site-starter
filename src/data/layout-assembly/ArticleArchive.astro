@@ -6,7 +6,7 @@ const base=import.meta.env.BASE_URL;
 const link=(article)=>base+'articles/'+article.id+'/';
 const date=(article)=>article.data.publishedAt.toLocaleDateString('zh-TW');
 ---
-<section class="archive-composition" data-archive-family={family} aria-label="文章檔案">
+<section class="archive-composition" data-archive-family={family} data-article-count={articles.length} aria-label="文章檔案">
 {family==='essayist'&& <div class="issue-layout">
     {articles.length>0&&<div class="issue-feature-group"><a class="issue-feature" href={link(articles[0])}><span>FEATURE STORY / VOL. 01</span><h2>{articles[0].data.title}</h2><p>{articles[0].data.description}</p><em>READ THE ESSAY →</em></a><ol class="issue-contents">{articles.slice(1).map((a,i)=><li><span>{String(i+2).padStart(2,'0')}</span><a href={link(a)}>{a.data.title}</a><time>{date(a)}</time></li>)}</ol></div>}{!articles.length&&<p>目前沒有已發布文章。</p>}
   </div>

@@ -65,10 +65,13 @@ if(serviceFacts&&Object.entries(serviceFacts).some(([k,v])=>!['duration','price'
 const team=plan.layoutSlug==='collective'?(plan.team??[]):[];
 if(!Array.isArray(team)||team.length>12||team.some(x=>typeof x.name!=='string'||!x.name.trim()||x.name.length>80||typeof x.role!=='string'||x.role.length>200||typeof x.bio!=='string'||x.bio.length>800))throw Error('Invalid owned team content');
 const events=plan.layoutSlug==='collective'?(plan.events??[]):[];
-const eventURL=value=>{try{const u=new URL(value);return u.protocol==='https:'&&Boolean(u.hostname)}catch{return false}};
-if(!Array.isArray(events)||events.length>24||events.some(x=>typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.description!=='string'||x.description.length>800||!/^\d{4}-\d{2}-\d{2}$/.test(x.date)||!eventURL(x.url)))throw Error('Events require real title, date and HTTPS destination');
+const eventURL=value=>{try{const u=new URL(value);return u.protocol==='https:'&&Boolean(u.hostname)&&!u.username&&!u.password}catch{return false}};
+const eventDate=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(new Date(value+'T00:00:00Z').getTime())&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;
+if(!Array.isArray(events)||events.length>24||events.some(x=>typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.description!=='string'||x.description.length>800||!eventDate(x.date)||!eventURL(x.url)))throw Error('Events require real title, date and HTTPS destination');
 const serviceTiming=plan.layoutSlug==='trust-path'?(plan.serviceTiming??[]):[];
 if(!Array.isArray(serviceTiming)||serviceTiming.length>8||serviceTiming.some(x=>typeof x.label!=='string'||!x.label.trim()||x.label.length>80||!Number.isInteger(x.minutes)||x.minutes<1||x.minutes>240))throw Error('Timing needs owned labels and positive minute counts');
+const exactDuration=serviceFacts?.duration?.trim().match(/^(\d+)\s*分鐘$/);
+if(serviceTiming.length&&exactDuration&&serviceTiming.reduce((sum,x)=>sum+x.minutes,0)!==Number(exactDuration[1]))throw Error('Provided timing total differs from service duration');
 // Audio is an explicit optional owned asset, never a borrowed playable demo.
 const media=plan.layoutSlug==='radio-letter'?plan.media:undefined;
 if(media?.episodeAudioPath&&!/^\/audio\/[a-z0-9/_-]+\.(mp3|ogg|wav|m4a)$/i.test(media.episodeAudioPath))throw Error('Episode audio must be a local /audio/ file');
@@ -211,7 +214,11 @@ assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-v2-8-out
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-v2-8-output.mjs','verify-site-output.mjs');
 const pkg=JSON.parse(assets['package.json']);
-pkg.scripts.build='astro build && pagefind --site dist --root-selector "[data-pagefind-body]" && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
+assets['scripts/clean-build.mjs']=`import {rmSync} from 'node:fs';
+// Empty Astro glob can retain the previous data store. Clear generated output/cache only.
+for(const directory of ['dist','.astro','node_modules/.astro'])rmSync(new URL('../'+directory+'/',import.meta.url),{recursive:true,force:true});
+`;
+pkg.scripts.build='node scripts/clean-build.mjs && astro build && pagefind --site dist --root-selector "[data-pagefind-body]" && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
 pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
 pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs';
 pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};

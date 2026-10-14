@@ -11,9 +11,9 @@ const action=base+(nav?.path??'services/');
   </section>
   <div class="body-transition"><p>ARRIVE · NOTICE · CHOOSE</p><blockquote>「不用趕著變成別的樣子。我們先留意，現在自己在哪裡。」</blockquote><p>練習與陪伴不代表任何療效承諾；可依身體狀況調整或暫停。</p></div>
   <div class="body-section-list"><section class="body-section" id="arrival"><p class="body-section-tag">01 / ARRIVAL</p><h2>先抵達這裡</h2><p>不必急著改變，先注意環境、呼吸和身體接觸點。</p></section>
-<section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>三個練習錨點</h2><p>01 找到支撐／02 留意呼吸／03 自行選擇下一步</p></section>
+<section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>先了解工作方式</h2><p>{config.serviceFacts?.method||'實際方法待站長提供；以下為閱讀流程示意。'}</p><ol class="body-source-anchors"><li><span>01</span><div><h3>了解範圍</h3><p>{config.serviceFacts?.scope||'服務範圍待設定。'}</p></div></li><li><span>02</span><div><h3>確認界線</h3><p>{config.serviceFacts?.exclusions||'工作界線待設定。'}</p></div></li><li><span>03</span><div><h3>自行選擇</h3><p>在了解資訊後，再決定自己的下一步。</p></div></li></ol></section>
 
-<section class="body-section" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section></div>
+</div><section class="body-section body-source-sessions" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section>
   <footer class="body-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
 </div>
 <style>
@@ -67,4 +67,5 @@ const action=base+(nav?.path??'services/');
 .body-shell{min-width:0;max-width:100%;overflow-x:clip}.body-hero{box-sizing:border-box;width:100%;max-width:100%;margin-left:auto;margin-right:auto}.body-hero-copy{min-width:0}.body-hero h1{overflow-wrap:anywhere;max-width:100%}.body-hero .body-figure{box-sizing:border-box;max-width:100%}
 @media(max-width:800px){.body-hero{width:100%;margin-inline:0}.body-hero-copy{max-width:100%}}
 .body-hero{min-height:min(790px,90svh);padding:clamp(5rem,9vw,10rem) clamp(1.5rem,9vw,9rem)}.body-hero h1{font-size:clamp(4.2rem,10.3vw,10rem);line-height:1.08;letter-spacing:-.04em;max-width:12ch}.body-hero-copy{max-width:710px}.body-transition{grid-template-columns:.6fr minmax(0,1.5fr) .8fr}@media(max-width:800px){.body-hero{min-height:600px;padding:6rem 1.5rem 3rem}.body-hero h1{font-size:clamp(3rem,11vw,6rem)}.body-transition{grid-template-columns:1fr}}
+.body-source-anchors{list-style:none;padding:0;margin:2rem 0}.body-source-anchors li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:1rem;border-top:1px solid currentColor;padding:1.5rem 0}.body-source-anchors li>span{font:.75rem ui-monospace,monospace}.body-source-anchors h3{font:400 1.25rem/1.4 var(--brand-heading-font,Georgia,serif);margin:0}.body-source-sessions{background:#f4f0e6;color:#283128;max-width:1300px;margin:auto;padding:clamp(3rem,6vw,6rem) clamp(1rem,5vw,5rem);display:grid;grid-template-columns:.75fr minmax(0,1.25fr);gap:1rem 8vw}.body-source-sessions h2{color:#283128;grid-column:1}.body-source-sessions .body-section-tag{grid-column:1/-1}.body-source-sessions>p:not(.body-section-tag),.body-source-sessions>a{grid-column:2;color:inherit}.body-section-list #arrival h2{font-size:clamp(2.5rem,5vw,5rem);max-width:12ch;line-height:1.15}@media(max-width:800px){.body-source-sessions{grid-template-columns:1fr}.body-source-sessions>p:not(.body-section-tag),.body-source-sessions>a{grid-column:1}}
 </style>
