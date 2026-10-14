@@ -5,6 +5,60 @@ import {execFileSync} from 'node:child_process';
 import layouts from '../src/data/layout-directions.json' with {type:'json'};
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 const kinds=['knowledge','helper'];
+const visualEnabled=process.env.STUDENT_VISUAL_CAPTURE==='1';
+const visualOutput=process.env.STUDENT_VISUAL_OUT||'.student-visual';
+const visualRows=[];
+let visualBrowser;
+if(visualEnabled){
+  const {chromium}=await import('playwright');
+  visualBrowser=await chromium.launch({headless:true});
+  mkdirSync(visualOutput,{recursive:true});
+}
+const escapeHtml=value=>String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+async function captureStudentSite(slug,kind,site){
+  if(!visualBrowser)return;
+  const base='https://student-static.example';
+  const {resolve,sep}=await import('node:path');
+  const dist=resolve(site,'dist');
+  const widths=[1440,1280,768,390];
+  const pages=kind==='knowledge'?['','about/','articles/','articles/qa-long-title/']:['','about/','services/'];
+  const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.xml':'application/xml'};
+  for(const route of pages)for(const width of widths){
+    const page=await visualBrowser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
+    const errors=[];
+    page.on('pageerror',e=>errors.push(e.message));
+    await page.route('**/*', async request=>{
+      try{
+        const url=new URL(request.request().url());
+        if(url.origin!==base)return request.abort();
+        const relative=decodeURIComponent(url.pathname).replace(/^\/+/, '');
+        const file=resolve(dist,relative.endsWith('/')?relative+'index.html':relative);
+        if(file!==dist&&!file.startsWith(dist+sep))return request.fulfill({status:403,body:'Forbidden'});
+        if(!existsSync(file))return request.fulfill({status:404,body:'Not found'});
+        const ext=file.slice(file.lastIndexOf('.'));
+        return request.fulfill({status:200,contentType:types[ext]||'application/octet-stream',body:readFileSync(file)});
+      }catch(error){return request.fulfill({status:500,body:'Capture error'});}
+    });
+    const response=await page.goto(base+'/'+route,{waitUntil:'load',timeout:15000});
+    const check=await page.evaluate(()=>({
+      overflow:document.documentElement.scrollWidth>innerWidth+2,
+      scrollWidth:document.documentElement.scrollWidth,
+      viewport:innerWidth,
+      h1:document.querySelectorAll('main h1').length,
+      family:document.querySelector('[data-assembled-layout]')?.getAttribute('data-assembled-layout')||
+        document.querySelector('[data-about-family]')?.getAttribute('data-about-family')||
+        document.querySelector('[data-archive-family]')?.getAttribute('data-archive-family')||
+        document.querySelector('[data-service-family]')?.getAttribute('data-service-family')||
+        document.querySelector('[data-story-family]')?.getAttribute('data-story-family')
+    }));
+    const label=route?route.replaceAll('/','-').replace(/-$/,''):'home';
+    const filename=slug+'-'+label+'-'+width+'.jpg';
+    await page.screenshot({path:visualOutput+'/'+filename,type:'jpeg',quality:56,fullPage:true,animations:'disabled',timeout:15000});
+    visualRows.push({slug,route:'/'+route,width,http:response?.status(),...check,errors,filename});
+    await page.close();
+  }
+}
+
 try{
   for(const kind of kinds){
     const plan={
@@ -74,6 +128,7 @@ try{
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      await captureStudentSite(kind==='knowledge'?'field-notes':'clinician',kind,site);
       const homepageHtml=readFileSync(join(site,'dist/index.html'),'utf8');
       const firstAboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
       if(!firstAboutHtml.includes('data-about-family="'+plan.layoutSlug+'"'))throw Error('Built first-direction About lost selected Design Family');
@@ -164,6 +219,7 @@ try{
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      await captureStudentSite(slug,kind,site);
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
       if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
@@ -185,4 +241,14 @@ try{
     }
   }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
-}finally{rmSync(root,{recursive:true,force:true})}
+}finally{
+ if(visualEnabled){
+  const summary={total:visualRows.length,failedHttp:visualRows.filter(x=>x.http!==200),overflow:visualRows.filter(x=>x.overflow),errors:visualRows.filter(x=>x.errors.length),noFamily:visualRows.filter(x=>x.family!==x.slug)};
+  writeFileSync(visualOutput+'/results.json',JSON.stringify({summary,rows:visualRows},null,2));
+  const cards=visualRows.map(x=>'<article><h2>'+escapeHtml(x.slug)+' / '+escapeHtml(x.route)+' / '+x.width+'px</h2><p>HTTP '+x.http+' · overflow '+x.overflow+' · family '+escapeHtml(x.family)+'</p><a href="'+x.filename+'"><img loading="lazy" src="'+x.filename+'" alt="'+escapeHtml(x.slug+' '+x.route)+'"/></a></article>').join('');
+  writeFileSync(visualOutput+'/index.html','<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Independent Student Site Visual QA</title><style>body{font:16px/1.6 system-ui;max-width:1320px;margin:auto;padding:20px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}article{border:1px solid #aaa;padding:12px;min-width:0}img{max-width:100%;height:auto}</style><h1>12 independent sites / responsive pages</h1><p>Rows '+summary.total+' · HTTP failures '+summary.failedHttp.length+' · overflow '+summary.overflow.length+' · browser errors '+summary.errors.length+' · wrong families '+summary.noFamily.length+'</p><a href="results.json">Full results</a><main>'+cards+'</main></html>');
+  await visualBrowser?.close();
+  if(summary.failedHttp.length||summary.overflow.length||summary.errors.length||summary.noFamily.length)process.exitCode=1;
+ }
+ rmSync(root,{recursive:true,force:true});
+}
