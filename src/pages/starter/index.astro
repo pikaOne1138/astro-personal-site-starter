@@ -30,7 +30,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
-<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label><label>Logo 圖片檔案路徑<input name="logoPath" placeholder="/images/my-logo.png" /></label><label>主視覺圖片檔案路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label><label>圖片替代文字<input name="heroImageAlt" maxlength="180" placeholder="描述圖片內容，非關鍵字堆疊"/></label></div><p class="muted">圖片須先放入匯出網站的 public/images/，不可填外部網址。未填時使用明確示意圖，不會自動抓取或宣稱圖片已上傳。</p>
+<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label><label>從電腦選擇 Logo（會一併放入下載的規劃檔）<input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>從電腦選擇主視覺（會一併放入下載的規劃檔）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>Logo 圖片檔案路徑<input name="logoPath" placeholder="/images/my-logo.png" /></label><label>主視覺圖片檔案路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label><label>圖片替代文字<input name="heroImageAlt" maxlength="180" placeholder="描述圖片內容，非關鍵字堆疊"/></label></div><p class="muted">優先使用上方選擇檔案：照片會留在瀏覽器內，不會上傳伺服器；下載的 JSON 會包含圖片資料，交給匯出器後才會寫入獨立網站。每張最多 4 MB。若直接填路徑，則需自行放置檔案。未提供時顯示示意圖。</p>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
 <div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
 <label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
@@ -335,6 +335,30 @@ function update(){
  document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();
  renderMenu();showPlan();
 }
+type EmbeddedImage={path:string;mime:string;base64:string};
+const embeddedImages=new Map<string,EmbeddedImage>();
+for(const [elementId,key,basename,pathId] of [['logo-upload','logo','brand-logo','logoPath'],['hero-upload','hero','hero-image','heroImagePath']]){
+ const picker=document.querySelector<HTMLInputElement>('#'+elementId)!;
+ picker.addEventListener('change',async()=>{
+  const file=picker.files?.[0];
+  if(!file){embeddedImages.delete(key);showPlan();return}
+  const extensions:Record<string,string>={'image/png':'png','image/jpeg':'jpg','image/webp':'webp','image/avif':'avif'};
+  if(!extensions[file.type]||file.size>4*1024*1024||file.size===0){status.textContent='請選擇 PNG、JPG、WebP 或 AVIF，每張不超過 4 MB';picker.value='';embeddedImages.delete(key);showPlan();return}
+  const reader=new FileReader();
+  reader.onerror=()=>{status.textContent='無法讀取圖片，請換一個檔案'};
+  reader.onload=()=>{
+   const result=String(reader.result);
+   const base64=result.split(',')[1];
+   if(!base64){status.textContent='圖片編碼失敗';return}
+   const path='/images/'+basename+'.'+extensions[file.type];
+   embeddedImages.set(key,{path,mime:file.type,base64});
+   form.querySelector<HTMLInputElement>('[name="'+pathId+'"]')!.value=path;
+   status.textContent='已包含 '+file.name+'，下載規劃 JSON 時會一併保存；尚未部署';
+   showPlan();
+  };
+  reader.readAsDataURL(file);
+ });
+}
 function contentExtension():Record<string,unknown>{
  const slug=value('layout');
  const field=(id:string)=>document.querySelector<HTMLInputElement|HTMLTextAreaElement>('#'+id)?.value.trim()||'';
@@ -359,12 +383,13 @@ function plan():StarterPlan {
  navigation:nav.map(x=>({...x})),
  sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
- notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value,...contentExtension()};
+ notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value,...contentExtension(),
+ assets:[...embeddedImages.values()].filter(asset=>asset.path===(asset.path.includes('brand-logo')?form.querySelector<HTMLInputElement>('[name="logoPath"]')!.value:form.querySelector<HTMLInputElement>('[name="heroImagePath"]')!.value))};
 }
 function showPlan(){
  const slug=value('layout');
  document.querySelectorAll<HTMLElement>('[data-content-layout]').forEach(group=>{group.hidden=group.dataset.contentLayout!==slug;});
- const p=plan();output.textContent=JSON.stringify(p,null,2);
+ const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
 }
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
