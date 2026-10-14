@@ -1,5 +1,5 @@
 ---
-import config from '../../../site.config.json';
+import config from '../../../../site.config.json';
 const {title,kicker='INDEX',description='',mode='page'}=Astro.props;
 const family=config.layoutSlug;
 const ordinal=mode==='article'?'02':mode==='listing'?'01':'03';
