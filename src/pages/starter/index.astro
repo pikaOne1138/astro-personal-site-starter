@@ -92,7 +92,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<details class="handoff-guide"><summary>下載後要做什麼？（第一次架站請看這裡）</summary><ol><li>按「下載 JSON 設定」，保留這份檔案；選過圖片時，圖片也已包含在檔案裡。</li><li>開啟你的 AI 程式助理，把規劃檔交給它，請它使用本專案的 Starter 匯出流程生成獨立 Astro 網站，先在電腦檢查。</li><li>替換所有示範內容，檢查桌機與手機、文章或服務、圖片版權與聯絡方式。</li><li>確認無誤後，再依工作坊教學透過 GitHub 與 Cloudflare 發布；這個按鈕不會替你公開網站。</li></ol><p>目前十二款仍在 Assembly in Progress。務必比對所選原型與實際產出的網站，不能僅憑 Build 成功認定設計驗收完成。</p></details>
+<aside class="handoff-guide"><strong>下一步：交給 AI 建立自己的網站</strong><p>先下載下方的 Site Brief JSON，然後前往<a href={base+'guide/'}>正式建站 Guide</a>，取得既有的 AI 建站資料包與唯一正式起始提示詞。學員不用 Fork 老師的 GitHub，也不用自己執行終端機。</p><a class="button secondary" href={base+'guide/'}>前往 AI 建站 Guide →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
