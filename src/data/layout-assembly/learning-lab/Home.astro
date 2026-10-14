@@ -9,11 +9,23 @@ const action=base+(nav?.path??'articles/');
     <div class="lab-hero-copy"><p class="lab-kicker">LEARNING LAB / OPEN CLASSROOM</p><h1 id="lab-title">{config.content?.headline || "把好奇心，變成一條路。"}</h1><p class="lab-brand">{config.brand.name} · {config.brand.tagline}</p><p class="lab-intro">{config.content?.intro || "從問題、線索到實作，以清楚的路徑整理你的知識。"}</p><a class="lab-cta" href="#path">學習路徑 ↓</a></div>
     <figure class="lab-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="lab-art" role="img" aria-label="學習路徑示意圖"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
-  <div class="lab-section-list"><section class="lab-section" id="path"><p class="lab-section-tag">01 / PATH</p><h2>學習路徑</h2><p>先找到問題、再整理線索，最後用練習理解概念。</p></section>
+  <div class="lab-section-list"><section class="lab-section" id="path"><p class="lab-section-tag">01 / PATH</p><h2>學習路徑</h2><p>先找到問題、再整理線索，最後用練習理解概念。</p><div class="lab-checklist" aria-label="示範學習進度"><p id="lab-check-status" role="status" aria-live="polite">本次練習進度：0 / 3；重新整理後不保留</p><progress id="lab-check-progress" value="0" max="3">0 / 3</progress>{[['01','看見問題'],['02','整理線索'],['03','動手練習']].map(([n,label])=><label class="lab-step"><span>{n}</span><input type="checkbox" data-lab-task/><strong>{label}</strong></label>)}</div></section>
 <section class="lab-section" id="modules"><p class="lab-section-tag">02 / MODULES</p><h2>課程單元</h2><p>01 看見問題／02 整理線索／03 動手練習</p></section>
 <section class="lab-section" id="resources"><p class="lab-section-tag">03 / RESOURCES</p><h2>繼續探索</h2><p>閱讀完整文章，找到下一個值得研究的主題。</p><a href={action}>閱讀文章 ↗</a></section></div>
   <footer class="lab-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
 </div>
+<script is:inline>
+document.querySelectorAll('[data-assembled-layout="learning-lab"]').forEach(root=>{
+ const tasks=[...root.querySelectorAll('[data-lab-task]')];
+ const progress=root.querySelector('#lab-check-progress');
+ const status=root.querySelector('#lab-check-status');
+ tasks.forEach(box=>box.addEventListener('change',()=>{
+  const done=tasks.filter(x=>x.checked).length;
+  progress.value=done;
+  status.textContent='本次練習進度：'+done+' / '+tasks.length+'；重新整理後不保留';
+ }));
+});
+</script>
 <style>
 .lab-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
 .lab-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. lab-hero-copy{min-width:0}
@@ -51,4 +63,4 @@ const action=base+(nav?.path??'articles/');
 .lab-section-tag{color:#2449d8;font-weight:700}
 .lab-close{border-top:2px solid #101f52}
 @media(max-width:800px){.lab-hero{grid-template-columns:1fr;min-height:0;gap:2rem}.lab-hero h1{font-size:clamp(2.8rem,9vw,5rem)}.lab-section-list{grid-template-columns:1fr;gap:1rem}.lab-section:first-child{grid-row:auto}.lab-figure{transform:none}.lab-figure img,.lab-art{min-height:180px}}
-</style>
+.lab-checklist{margin:1.5rem 0}.lab-checklist progress{width:100%;height:12px;accent-color:#2449d8;margin-bottom:1rem}.lab-check-status{font-size:.78rem}.lab-step{display:grid;grid-template-columns:3rem 1.5rem 1fr;gap:.5rem;align-items:center;padding:.8rem;border-bottom:1px solid #101f5255;cursor:pointer}.lab-step span{font:700 .75rem ui-monospace,monospace}.lab-step input{width:1.2rem;height:1.2rem;accent-color:#2449d8}.lab-step:has(input:checked){background:#fff4bd}.lab-step:focus-within{outline:2px solid #2449d8}</style>
