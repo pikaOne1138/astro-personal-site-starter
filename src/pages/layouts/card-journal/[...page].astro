@@ -5,7 +5,6 @@ export function getStaticPaths(){return [{params:{page:undefined}},{params:{page
 const page=Astro.params.page??'',root=import.meta.env.BASE_URL+'layouts/card-journal/';
 const site=getDirectionContent('card-journal','knowledge',root,'articles/sample/');
 const posts=site.posts;
-const pageContentIntro=site.headline;
 const name=page==='articles'?'文章總覽':page==='about'?'關於作者':page?'把每天的線索記成一篇':'卡片刊物';
 ---
 <DirectionLayout title={name+'｜卡片刊物（設計原型）'} description="等權重卡片文章流、卡片式分類與無圖片備案的個人內容網站">
