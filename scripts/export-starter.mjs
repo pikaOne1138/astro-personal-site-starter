@@ -215,8 +215,8 @@ assets['README.md']+='\n## Brand typography and images\n\nThe brand typography p
 if(hasAssemblyAdapter){
  assets['src/components/layouts/selected/DesignInterior.astro']=readFileSync(new URL('../src/data/layout-assembly/DesignInterior.astro',import.meta.url),'utf8');
  for(const page of ['src/pages/[...page].astro','src/pages/articles/index.astro','src/pages/articles/[slug].astro']){
-  assets[page]=assets[page].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\\nimport DesignInterior from '../components/layouts/selected/DesignInterior.astro';")
-   .replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\\nimport DesignInterior from '../../components/layouts/selected/DesignInterior.astro';");
+  assets[page]=assets[page].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport DesignInterior from '../components/layouts/selected/DesignInterior.astro';")
+   .replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\nimport DesignInterior from '../../components/layouts/selected/DesignInterior.astro';");
  }
  assets['src/pages/[...page].astro']=assets['src/pages/[...page].astro'].replace(
   '<section class="interior"><h1>{item.label}</h1><p>這裡尚未填入個人的正式內容，請先完成內容與設計驗收再公開。</p></section>',
