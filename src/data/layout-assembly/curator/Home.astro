@@ -6,7 +6,7 @@ const action=base+(nav?.path??'articles/');
 ---
 <div class="catalog-shell" data-assembled-layout="curator">
   <section class="catalog-hero" aria-labelledby="catalog-title">
-    <div class="catalog-hero-copy"><p class="catalog-kicker">THE CURATOR'S CABINET / COLLECTION</p><h1 id="catalog-title">把值得留下的，整理成目錄。</h1><p class="catalog-brand">{config.brand.name} · {config.brand.tagline}</p><p class="catalog-intro">書、文章與工具，不是排行榜，而是一份附有選入理由的收藏。</p><a class="catalog-cta" href="#collection">進入目錄 ↓</a></div>
+    <div class="catalog-hero-copy"><p class="catalog-kicker">THE CURATOR'S CABINET / COLLECTION</p><h1 id="catalog-title">{config.content?.headline || "把值得留下的，整理成目錄。"}</h1><p class="catalog-brand">{config.brand.name} · {config.brand.tagline}</p><p class="catalog-intro">{config.content?.intro || "書、文章與工具，不是排行榜，而是一份附有選入理由的收藏。"}</p><a class="catalog-cta" href="#collection">進入目錄 ↓</a></div>
     <figure class="catalog-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="catalog-art" role="img" aria-label="抽象書籍和物件展牆"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
   <div class="catalog-section-list"><section class="catalog-section" id="collection"><p class="catalog-section-tag">01 / COLLECTION</p><h2>策展目錄</h2><p>01 值得一讀／02 思考工具／03 最近發現</p></section>
