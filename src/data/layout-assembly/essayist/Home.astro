@@ -7,8 +7,8 @@ const next=base+(articles?.path??'articles/');
 <div class="essayist-site" data-assembled-layout="essayist">
   <section class="essayist-cover" aria-labelledby="essayist-title">
     <p class="essayist-overline">ESSAYS / PERSONAL JOURNAL</p>
-    <h1 id="essayist-title">{config.brand.name}<em>{config.brand.tagline}</em></h1>
-    <div class="essayist-cover-bottom"><p>長文、評論與觀察。這是為願意花時間閱讀的人保留的地方。</p><a href="#featured-essay">讀本期文章 ↓</a></div>
+    <h1 id="essayist-title">{config.content?.headline || config.brand.name}<em>{config.brand.tagline}</em></h1>
+    <div class="essayist-cover-bottom"><p>{config.content?.intro || "長文、評論與觀察。這是為願意花時間閱讀的人保留的地方。"}</p><a href="#featured-essay">讀本期文章 ↓</a></div>
     <figure>{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請填入圖片描述'}/>:<div class="essayist-art" role="img" aria-label="紙張與書寫工具的抽象示意插畫"><span>ESSAY<br/>018</span></div>}<figcaption>主視覺可替換為自己的授權照片</figcaption></figure>
     <small class="essayist-marginal">A SLOWER WAY TO THINK</small>
   </section>
