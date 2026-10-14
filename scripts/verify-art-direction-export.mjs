@@ -42,5 +42,8 @@ try{
  }
  const input=JSON.parse(readFileSync(join(fixtureDir,'subject-atlas.json')));input.artDirection.topics=[{slug:'../escape',title:'bad'}];rejects('topic traversal',input,['--allow-in-progress']);
  const empty=JSON.parse(readFileSync(join(fixtureDir,'subject-atlas.json')));delete empty.contentDirectory;empty.artDirection.topics=[];const p=join(workspace,'empty.json');writeFileSync(p,JSON.stringify(empty));const site=join(workspace,'empty');run(process.execPath,[exporter,p,site,'--allow-in-progress']);run('npm',['install','--no-audit','--no-fund','--package-lock=false'],site);run('npm',['run','build'],site);check('empty knowledge site has honest empty states',()=>{assert.ok(readFileSync(join(site,'dist/index.html'),'utf8').includes('尚未設定主題'));assert.ok(readFileSync(join(site,'dist/articles/index.html'),'utf8').includes('目前沒有公開文章'));});
+ run(process.execPath,['scripts/build-student-pack.mjs'],process.cwd());
+ const pack=join(workspace,'portable');run('unzip',['-q',resolve('public/AI-建站資料包.zip'),'-d',pack]);
+ for(const slug of ['subject-atlas','practice-compass']){run(process.execPath,[join(pack,'scripts/export-art-direction-starter.mjs'),join(pack,'docs/student-builder-pack/art-direction',slug+'.json'),join(workspace,'portable-'+slug),'--allow-in-progress'],pack);const config=JSON.parse(readFileSync(join(workspace,'portable-'+slug,'site.config.json')));assert.equal(config.layoutAdapter.id,slug);report.checks.push(slug+' portable ZIP exporter and owned sources');}
  mkdirSync('qa-artifacts/art-direction',{recursive:true});writeFileSync('qa-artifacts/art-direction/standalone.json',JSON.stringify(report,null,2)+'\n');console.log('All standalone adapter checks PASS:',report.checks.length);
 }finally{rmSync(workspace,{recursive:true,force:true})}

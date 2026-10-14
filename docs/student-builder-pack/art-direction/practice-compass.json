@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "kind": "helper",
+  "layoutSlug": "practice-compass",
+  "visualTheme": "paper",
+  "brand": {
+    "name": "我的服務網站",
+    "tagline": "請填寫你自己的網站介紹",
+    "primaryColor": "#355747"
+  },
+  "navigation": [
+    {
+      "id": "services",
+      "label": "服務",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    },
+    {
+      "id": "page-guide",
+      "label": "指南",
+      "path": "guides/first/",
+      "parentId": "about",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "services",
+    "label": "了解服務"
+  },
+  "content": {
+    "headline": "請填寫首頁標題",
+    "intro": "請填寫網站介紹"
+  },
+  "pageContent": {},
+  "artDirection": {
+    "topics": [],
+    "scope": {
+      "suitable": [],
+      "notSuitable": []
+    },
+    "serviceFacts": {},
+    "faq": [],
+    "contact": {}
+  }
+}

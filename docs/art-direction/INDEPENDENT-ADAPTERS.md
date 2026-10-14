@@ -53,3 +53,7 @@ npm run verify
 #46 接線時可使用 `scripts/art-direction-adapters.mjs` 的 `{slug,kind,version,compose,requiredAssets,requiredPages}` 介面及 Definition。`compose` 接收現有 Scaffold 目錄與已驗證 settings；不得先覆蓋修改過的學生網站。保留本兩套 renderer／核心頁結構，將 Gallery／主要 exporter 導入新 manifest 是後續明確的整合工作。
 
 注意：這兩套新增 source 在 `src/data/art-direction-adapters/`，是打包原始碼，不是展示站的 Blocks，不加入 Blocks Registry。
+
+## 離線資料包
+
+`AI-建站資料包.zip` 現在同時包含新 CLI、adapter module、兩套 source、填寫用的兩份 JSON 與 `ART-DIRECTION-STARTER.md`。離線解壓後可從包內匯出，不必存取研究 repo；套件仍從標準 npm 安裝。已實際從 ZIP 解壓並匯出兩套。`build-student-pack.mjs` 僅添加新入口檔案，不改舊 exporter 或 Gallery。

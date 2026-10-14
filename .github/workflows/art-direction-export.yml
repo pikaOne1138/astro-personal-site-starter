@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'scripts/art-direction-adapters.mjs'
+      - 'scripts/export-starter.mjs'
+      - 'scripts/build-student-pack.mjs'
+      - 'docs/student-builder-pack/art-direction/**'
       - 'scripts/export-art-direction-starter.mjs'
       - 'scripts/verify-art-direction-export.mjs'
       - 'src/data/art-direction-adapters/**'

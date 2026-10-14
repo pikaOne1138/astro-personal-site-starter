@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "kind": "knowledge",
+  "layoutSlug": "subject-atlas",
+  "visualTheme": "paper",
+  "brand": {
+    "name": "我的知識地圖",
+    "tagline": "請填寫你自己的網站介紹",
+    "primaryColor": "#355747"
+  },
+  "navigation": [
+    {
+      "id": "articles",
+      "label": "文章",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    },
+    {
+      "id": "page-guide",
+      "label": "指南",
+      "path": "guides/first/",
+      "parentId": "about",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "articles",
+    "label": "閱讀文章"
+  },
+  "content": {
+    "headline": "請填寫首頁標題",
+    "intro": "請填寫網站介紹"
+  },
+  "pageContent": {},
+  "artDirection": {
+    "topics": [],
+    "scope": {
+      "suitable": [],
+      "notSuitable": []
+    },
+    "serviceFacts": {},
+    "faq": [],
+    "contact": {}
+  }
+}
