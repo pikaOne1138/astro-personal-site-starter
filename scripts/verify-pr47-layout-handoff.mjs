@@ -34,4 +34,18 @@ for(const item of items){
   checks+=2;
  }
 }
+
+const widthContracts=[
+ ['subject-atlas',1320,'src/pages/layouts/subject-atlas/index.astro','width:min(100% - 40px,1320px)'],
+ ['subject-atlas',1320,'src/pages/layouts/subject-atlas/articles/index.astro','calc((100% - 1320px)/2)'],
+ ['subject-atlas',1320,'src/pages/layouts/subject-atlas/about/index.astro','width:min(100% - 40px,1320px)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/index.astro','width:min(100% - 40px,1250px)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/services/index.astro','calc((100% - 1250px)/2)'],
+ ['practice-compass',1250,'src/pages/layouts/practice-compass/about/index.astro','width:min(100% - 40px,1250px)']
+];
+for (const [slug,width,path,rule] of widthContracts) {
+ const body=readFileSync(path,'utf8');
+ assert.ok(body.includes(rule),slug+' must keep a '+width+'px site canvas in '+path);
+ checks++;
+}
 console.log('PR47 HANDOFF REGISTRY PASS',items.length,'directions,',checks,'checks');
