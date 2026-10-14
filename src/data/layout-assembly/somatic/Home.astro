@@ -12,6 +12,7 @@ const action=base+(nav?.path??'services/');
   <div class="body-transition"><p>ARRIVE · NOTICE · CHOOSE</p><blockquote>「不用趕著變成別的樣子。我們先留意，現在自己在哪裡。」</blockquote><p>練習與陪伴不代表任何療效承諾；可依身體狀況調整或暫停。</p></div>
   <div class="body-section-list"><section class="body-section" id="arrival"><p class="body-section-tag">01 / ARRIVAL</p><h2>先抵達這裡</h2><p>不必急著改變，先注意環境、呼吸和身體接觸點。</p></section>
 <section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>三個練習錨點</h2><p>01 找到支撐／02 留意呼吸／03 自行選擇下一步</p></section>
+<section class="body-rest" aria-label="身體與節律中的留白"><div class="body-rest-mark" aria-hidden="true">◯</div><div><span>SLOW DOWN / LAND HERE</span><h2>讓身體的節奏，<em>有地方可以慢下來。</em></h2><p>這是留白與閱讀節奏，不是治療承諾。正式服務資訊請由站長如實說明。</p></div></section>
 <section class="body-section" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section></div>
   <footer class="body-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
 </div>
@@ -61,4 +62,5 @@ const action=base+(nav?.path??'services/');
 .body-section a{color:#fff}
 .body-close{margin:0;max-width:none;padding:3rem 8vw;background:#e8e6dc}
 @media(max-width:800px){.body-hero{min-height:600px;display:flex;padding:6rem 1.5rem 3rem}.body-hero .body-figure{position:absolute;width:100%;height:100%;max-width:none}.body-hero .body-art{position:absolute;width:100%;height:100%;max-width:100%}.body-hero .body-figure img{height:100%}.body-transition{grid-template-columns:1fr;gap:1rem}.body-section-list{grid-template-columns:1fr}.body-section:nth-child(1),.body-section:nth-child(2){grid-column:auto;grid-row:auto}}
+.body-rest{grid-column:1/-1;min-height:440px;background:#263d32;color:#e7e5d1;display:grid;grid-template-columns:1fr 1.5fr;align-items:center;gap:clamp(2rem,7vw,7rem);padding:clamp(2rem,5vw,6rem);overflow:hidden}.body-rest-mark{font:200 clamp(8rem,24vw,23rem)/1 Georgia,serif;color:#b4aa83;opacity:.55;text-align:center}.body-rest span{font:.72rem ui-monospace,monospace;letter-spacing:.14em}.body-rest h2{font:400 clamp(2.5rem,5vw,5rem)/1.25 Georgia,serif!important;max-width:15ch}.body-rest h2 em{display:block;color:#b4aa83;font-weight:400}.body-rest p{max-width:45ch;line-height:2}@media(max-width:700px){.body-rest{grid-template-columns:1fr;min-height:0}.body-rest-mark{font-size:7rem;text-align:left}.body-rest h2{font-size:clamp(2rem,10vw,4rem)!important}}
 </style>
