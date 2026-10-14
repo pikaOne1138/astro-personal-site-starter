@@ -85,3 +85,14 @@
 3. 同客群同內容／同字體／同配色的視覺 A/B 對照尚未執行。原型仍有 demo-specific 文案，未建立完全統一測試 fixture。
 4. 全部 11 款目前只用原型展示資料，**尚無 Content Collections／真實專業服務資料的完整可編輯輸入契約**。
 5. PR #46 擁有的獨立 Starter／Adapter 截圖驗收本輪延後；PR #47 繼續 Draft，禁止 Merge／Production。
+
+## 第一階段完成紀錄（2026-10-14）
+
+此節為目前進度，優先於上方舊的「尚未接資料」歷史紀錄。
+
+- 新增的 11 款原型已各自保留原有 Layout DOM，但從統一 JSON 檔和正規化 helper 讀取首頁、文章／服務項目、詳細頁正文、About 資訊及缺值。
+- `src/data/art-direction-layout-content.json` 為 Demo / Layout 介面交接用。不能取代真正網站的 Astro Content Collections，也未替 #46 完成主 Adapter 實際映射。
+- 每種客群可以設定 0、1、數筆內容；公開條目有個別路由，未公開條目不提供無效文章／服務詳細連結。資料缺失顯示待設定，而不是假造照片、費用、資格、預約。
+- 新增內容契約 Build gate：`Art Direction Layout Content Contract`；正常、空內容、多內容三種輸入分別建置，77 項檢查通過（Run 38575077241，2026-10-14）。
+- **第一階段完成：原型可編輯內容契約與資料流。** 下一階段仍需 11 款完整多頁四尺寸視覺/功能 QA，並於第三階段完成 Definition / handoff。
+- 獨立 Starter/Adapter 截圖驗收持續延期，11 款不能標成學員 Ready。
