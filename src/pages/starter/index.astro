@@ -365,7 +365,7 @@ function contentExtension():Record<string,unknown>{
  const field=(id:string)=>document.querySelector<HTMLInputElement|HTMLTextAreaElement>('#'+id)?.value.trim()||'';
  if(slug==='reading-atlas'){
   const title=field('reading-title'),note=field('reading-note'),annualTitle=field('annual-title'),annualNote=field('annual-note');
-  return {reading:{records:title&&note?[{month:field('reading-month'),title,note}]:[],...(annualTitle&&annualNote?{annualBook:{title:annualTitle,note:annualNote}}:{})}};
+  return {reading:{records:title||note?[{month:field('reading-month'),title,note}]:[],...(annualTitle||annualNote?{annualBook:{title:annualTitle,note:annualNote}}:{})}};
  }
  if(slug==='radio-letter'){
   const path=field('episode-audio'),text=field('episode-text');
