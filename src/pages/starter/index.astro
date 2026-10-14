@@ -13,17 +13,17 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <title>規劃我的網站｜Astro 工作坊</title>
 <meta name="description" content="依序選擇 Astro 首頁版型、品牌視覺、頁面與導覽，產生可交給 AI 的網站規格。"/>
 <link rel="stylesheet" href={base+'starter-planner.css'}/>
-</head>
+<style>.layout-option{padding:0;overflow:hidden}.layout-option>img{display:block;width:100%;height:195px;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}.layout-option>label{display:flex;flex-direction:column;gap:6px;padding:18px 18px 6px;cursor:pointer;flex:1}.layout-option>a{margin:0 18px 18px}.layout-option:has(input:checked){outline:2px solid var(--accent);outline-offset:2px}.assembly-status{font-size:12px;font-weight:700;color:#765244}</style></head>
 <body>
 <header class="planner-nav"><a href={base}>← 回設計展示總覽</a><span>WEBSITE / STARTER PLANNER</span></header>
 <main class="planner-wrap" id="main">
 <div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是<strong>規劃工具</strong>，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
 
 <form id="starter-form">
-<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先選最接近你想要的設計就好，不必一次決定所有細節。後續可以參考八款 Demo、12 款版型與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
+<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。後續可以參考八款 Demo、12 款版型與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
 <fieldset class="kind-choice"><legend>我想建立的是</legend><label><input type="radio" name="kind" value="knowledge" checked/> 知識／部落格</label><label><input type="radio" name="kind" value="helper"/> 助人者／專業服務</label></fieldset>
-<div class="layout-grid" id="layout-grid">
-{directions.map((item,i)=><label class="layout-option" data-kind={item.kind}><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
+<p><a href={base+'templates/'}>開啟完整視覺模板圖鑑（桌機與手機） ↗</a></p><div class="layout-grid" id="layout-grid">
+{directions.map((item,i)=><div class="layout-option" data-kind={item.kind}><img src={base+'template-gallery/'+item.slug+'-desktop.webp'} alt={item.title+' Astro 首頁實際縮圖'} width="1440" height="900" loading="lazy"/><label><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><span class="assembly-status">{item.slug==='field-notes'||item.slug==='clinician'?'Starter Ready':'Prototype'}</span><small>{item.structure}</small><span>{item.description}</span></label><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">完整首頁預覽 ↗</a></div>)}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
 </div></section>
 
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
@@ -339,6 +339,15 @@ function plan():StarterPlan {
 function showPlan(){const p=plan();output.textContent=JSON.stringify(p,null,2)}
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
+const initialParams=new URLSearchParams(location.search);
+const requested=directions.find(x=>x.slug===initialParams.get('layout')&&x.kind===initialParams.get('kind'));
+if(requested){
+ const kindField=form.querySelector<HTMLInputElement>('input[name="kind"][value="'+requested.kind+'"]');
+ if(kindField){kindField.checked=true;update();}
+ const chosen=form.querySelector<HTMLInputElement>('input[name="layout"][value="'+requested.slug+'"]');
+ if(chosen){chosen.checked=true;showPlan();}
+}
+
 color.addEventListener('input',()=>{document.querySelector<HTMLInputElement>('#palette-primary')!.value=color.value;paintPalette();showPlan()});
 form.addEventListener('input',()=>{renderMenu();showPlan()});
 target.addEventListener('change',showPlan);
