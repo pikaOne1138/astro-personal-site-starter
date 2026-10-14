@@ -1,16 +1,22 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
-export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];}
+import contentSource from '../../../data/art-direction-layout-content.json';
+export function getStaticPaths() {
+  const fixed=[{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];
+  const additional=(contentSource.knowledge.articles??[]).slice(1).filter(entry=>entry.published===true && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.slug));
+  return [...fixed,...additional.map(entry=>({params:{page:'articles/'+entry.slug}}))];
+}
 const page=Astro.params.page??'',root=import.meta.env.BASE_URL+'layouts/card-journal/';
 const site=getDirectionContent('card-journal','knowledge',root,'articles/sample/');
+const detailRecord=site.articles.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const posts=site.posts;
 const name=page==='articles'?'文章總覽':page==='about'?'關於作者':page?'把每天的線索記成一篇':'卡片刊物';
 ---
 <DirectionLayout title={name+'｜卡片刊物（設計原型）'} description="等權重卡片文章流、卡片式分類與無圖片備案的個人內容網站">
 <main id="main" class="cards"><div class="shell"><div class="content-contract" data-layout-content="card-journal" aria-label="可編輯網站資料"><span>{site.siteName}</span><span>{site.intro}</span><a href={root+'about/'}>關於本站</a></div><header><a class="logo" href={root}>日常刊物 <small>THE CARD JOURNAL</small></a><nav aria-label="主要導覽"><a href={root}>首頁</a><a href={root+'articles/'}>文章</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
 {(page===''||page==='articles')&&<><section class="intro"><span class="label">{page===''?'NOTES / START HERE':'ALL POSTS / DEMO'}</span><h1>{page===''?'一篇一篇，把想法保存下來。':'文章總覽'}</h1><p>每一篇都是同等重要的記錄，不靠巨型頭條、拼貼展牆或品牌口號。僅有一篇實際示範全文。</p></section><section class="toolbar"><strong>全部文章 <span>{String(posts.length).padStart(2,'0')} / DEMO</span></strong><span>觀察　/　閱讀　/　生活</span></section><section class="grid" aria-label="文章卡片">{posts.map(post=><article class="post"><div class="cover"><span>RECORD / {post.id}</span><strong>{post.tag}</strong><small>無照片也能成立</small></div><div class="card-body"><span class="label">{post.tag} · 2026</span><h2>{post.href?<a href={post.href}>{post.title} ↗</a>:post.title}</h2><p>{post.text}</p>{!post.href&&<small>尚無文章全文</small>}</div></article>)}</section>{page===''&&<section class="ending"><h2>先寫第一篇，之後慢慢增加。</h2><p>作者與文章的連結，是這個簡單內容基地的起點。</p><a href={root+'about/'}>關於作者 →</a></section>}</>}
-{page==='articles/sample'&&<><div class="article-intro"><span class="label">觀察 · DEMO RECORD 01</span><h1>{site.primary?.title??'尚未有公開文章'}</h1><p>以下示範卡片文章進入詳細頁後如何以單欄閱讀，不代表作者真實經歷。</p></div><div class="article-cover">RECORD 01 / OBSERVATION</div><article class="prose"><div class="article-contract-body">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><h2>從問題開始</h2><p>一篇筆記不一定要提出完整理論。今天的一個小疑問，可能就是下一次閱讀的起點。</p><p>先寫下眼前的事，保留情境，將文章歸到能讓自己和讀者重新找到的分類。</p><h2>重新閱讀</h2><p>當幾篇文章累積起來，整齊的同權重卡片讓人自由挑選，而不必先判斷哪篇是最重要的。</p><a href={root+'articles/'}>← 返回文章列表</a></article><section class="related"><span class="label">OTHER DEMO TOPICS</span>{posts.slice(1).map(post=><article><h3>{post.title}</h3><small>目前尚無全文</small></article>)}</section></>}
+{(Astro.params.page??'').startsWith('articles/')&&<><div class="article-intro"><span class="label">觀察 · DEMO RECORD 01</span><h1>{detailRecord?.title??'目前沒有公開文章'}</h1><p>以下示範卡片文章進入詳細頁後如何以單欄閱讀，不代表作者真實經歷。</p></div><div class="article-cover">RECORD 01 / OBSERVATION</div><article class="prose"><div class="article-contract-body">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><h2>從問題開始</h2><p>一篇筆記不一定要提出完整理論。今天的一個小疑問，可能就是下一次閱讀的起點。</p><p>先寫下眼前的事，保留情境，將文章歸到能讓自己和讀者重新找到的分類。</p><h2>重新閱讀</h2><p>當幾篇文章累積起來，整齊的同權重卡片讓人自由挑選，而不必先判斷哪篇是最重要的。</p><a href={root+'articles/'}>← 返回文章列表</a></article><section class="related"><span class="label">OTHER DEMO TOPICS</span>{posts.slice(1).map(post=><article><h3>{post.title}</h3><small>目前尚無全文</small></article>)}</section></>}
 {page==='about'&&<><section class="intro"><span class="label">ABOUT / THE AUTHOR</span><h1>{site.about}</h1><p>這是一套可依實際作者身分填寫的版型，沒有虛構姓名、履歷或社群數據。</p></section><section class="about"><div class="avatar">照片<br/>選填</div><div><h2>寫下什麼？</h2><p>可以是知識整理、生活紀錄、文章練習或長期觀察。缺少照片時，以清楚的文字欄位代替。</p><h2>如何維護？</h2><p>正式資料應從既有 Astro Content Collections 取得，搜尋維持 Pagefind，不另建靜態假索引。</p><a href={root+'articles/'}>看全部文章 →</a></div></section></>}
 <footer><span>卡片刊物 / 編排原型</span><a href={root}>回首頁 ↑</a><span>示範內容非真實出版紀錄</span></footer></div></main>
 </DirectionLayout>
