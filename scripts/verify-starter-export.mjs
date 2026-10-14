@@ -80,5 +80,28 @@ try{
       execFileSync(process.execPath,[new URL('./audit-generated-links.mjs',import.meta.url).pathname,join(site,'dist')],{stdio:'inherit'});
     }
   }
-  console.log('Starter exporter checks passed for knowledge/helper');
+  // Narrow assembly integration extension: build each second-direction renderer with
+  // the same verified navigation/FAQ/article infrastructure, without new QA tooling.
+  for(const [slug,kind] of [['essayist','knowledge'],['companion','helper']]){
+    const secondary={
+      version:1,kind,layoutSlug:slug,visualTheme:'morning',
+      brand:{name:'組裝測試網站',primaryColor:'#8A5A42',tagline:'版型獨立測試',typography:'balanced',imageStyle:'minimal'},
+      navigation:(kind==='knowledge'?[{id:'articles',label:'文章',enabled:true},{id:'about',label:'關於',enabled:true}]:[{id:'services',label:'服務',enabled:true},{id:'about',label:'關於',enabled:true}]),
+      primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
+      sectionPatterns:[],notes:''
+    };
+    const filename=join(root,slug+'.json'),site=join(root,slug);
+    writeFileSync(filename,JSON.stringify(secondary));
+    execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site,'--require-assembled'],{stdio:'inherit'});
+    const home=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
+    if(!home.includes('data-assembled-layout="'+slug+'"'))throw Error('Missing '+slug+' distinct Home renderer');
+    if(process.env.FULL_STARTER_BUILD==='1'){
+      execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
+      execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+      execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      const html=readFileSync(join(site,'dist/index.html'),'utf8');
+      if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
+    }
+  }
+  console.log('Starter exporter checks passed for knowledge/helper and essayist/companion');
 }finally{rmSync(root,{recursive:true,force:true})}
