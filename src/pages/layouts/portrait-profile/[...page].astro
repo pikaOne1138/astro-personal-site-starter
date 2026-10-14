@@ -12,11 +12,11 @@ const root=import.meta.env.BASE_URL+'layouts/portrait-profile/';
 const title=page==='services'?'服務總覽':(Astro.params.page??'').startsWith('services/')?'個別服務詳情':page==='about'?'關於':'人物名片';
 const site=getDirectionContent('portrait-profile','helper',root,'services/individual/');
 const detailRecord=site.services.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
-const facts=[['服務對象',site.primary?.fit??'待設定'],['服務形式',site.primary?.format??'待設定'],['服務時間與費用',site.primary?.duration+'／'+site.primary?.price],['專業資格及可查證來源',site.primary?.credential??'尚未核實'],['聯絡與預約','尚未配置有效管道']];
+const facts=[['服務對象',site.primary?.fit??'待設定'],['服務形式',site.primary?.format??'待設定'],['服務時間與費用',(site.primary?.duration??'待設定')+'／'+(site.primary?.price??'待設定')],['專業資格及可查證來源',site.primary?.credential??'尚未核實'],['聯絡與預約','尚未配置有效管道']];
 ---
 <DirectionLayout title={title+'｜人物名片原型'} description="人物介紹為主角的個人專業服務網站，包含服務及About內頁">
 <main id="main" class="profile">
- <div class="content-contract" data-layout-content="portrait-profile" aria-label="可編輯網站資料"><span>{site.siteName}</span><span>{site.intro}</span><a href={root+'about/'}>關於本站</a></div><header class="header"><a class="brand" href={root}>人的專業空間 <small>PORTRAIT / PROTOTYPE</small></a><nav aria-label="主要導覽"><a href={root}>首頁</a><a href={root+'services/'}>服務說明</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
+ <div class="content-contract" data-layout-content="portrait-profile" aria-label="可編輯網站資料">{site.kind==='knowledge'&&site.articles.filter(item=>item.published).length===0&&<span>目前沒有公開文章。</span>}{site.kind==='helper'&&site.services.filter(item=>item.href).length===0&&<span>尚未提供正式服務。</span>}<span>{site.siteName}</span><span>{site.intro}</span><a href={root+'about/'}>關於本站</a></div><header class="header"><a class="brand" href={root}>人的專業空間 <small>PORTRAIT / PROTOTYPE</small></a><nav aria-label="主要導覽"><a href={root}>首頁</a><a href={root+'services/'}>服務說明</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
  {page===''&&<>
  <section class="hero"><div class="picture"><span>PORTRAIT</span><strong class="initial-mark" aria-hidden="true">人</strong><b>個人照片選填</b><small>明確示意，不是真實人物</small></div><div class="identity"><span class="label">PERSON FIRST / SERVICE SECOND</span><h1>先認識這個人，<em>再了解他的工作。</em></h1><p class="lead">人物、工作取向與服務界線是首頁重心。這裡不虛構姓名、證照、經驗、見證或預約成功。</p><a class="cta" href={root+'about/'}>先認識我 ↗</a><a class="textlink" href={root+'services/'}>了解服務方式 →</a></div></section>
  <section class="statement"><p class="label">01 / APPROACH</p><h2>專業如何被理解，從清楚的介紹開始。</h2><p>正式網站以本人真實專業經驗、能提供的服務與清楚界線填寫，不使用空泛療效承諾。</p></section>
