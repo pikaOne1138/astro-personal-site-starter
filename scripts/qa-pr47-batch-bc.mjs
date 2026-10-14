@@ -21,7 +21,7 @@ try {
      const root=document.documentElement, main=document.querySelector('main');
      if(!main)return null;
      const visible=el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'};
-     const h1=[...document.querySelectorAll('main h1')].filter(visible);
+     const h1=[...document.querySelectorAll('h1')].filter(visible);
      const nav=[...main.querySelectorAll('header,aside,nav')].find(x=>x.querySelector('nav a'))??document.querySelector('header');
      const nr=nav?.getBoundingClientRect();
      const links=[...main.querySelectorAll('a[href]')].filter(visible);
