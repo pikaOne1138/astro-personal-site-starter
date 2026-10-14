@@ -47,6 +47,14 @@
 ## P0 驗收區分
 - P0-1 Neutral fixture：**資料檔完成；跨 25 款 renderer 注入／截圖尚未完成**。
 - P0-2 25 款 source-level 相似風險清單：**完成首輪；同內容 screenshot / 人工對照尚未完成**。
-- P0-3 Subject Atlas / Practice Compass：**獨立 Adapter 層部份契約修復完成；在站點匯出與空內容測試取得最新證據前，不標 PASS**。
+- P0-3 Subject Atlas / Practice Compass：**已將 Compass visitorIntents 由 Site Brief 驗證並傳到獨立 Adapter，再由獨立 Home 使用；Atlas topic 條件與文章對應提供空值保護**。仍須匯出驗證、低內容量測試、主題文章 Collection 驗證及品牌字型一致性，故不標全部 PASS。
 - 用相同的兩份 fixture 測 1440、1280、768、390；導覽、focus、CJK、overflow、空資料及閱讀次序需全部獨立查驗。
 - Independent Starter/Adapter screenshot acceptance 仍延期；這與「原型」四尺寸視覺比較是兩個不同工作，不應混為一談。
+
+## 資料契約修復實作索引
+- `scripts/export-art-direction-starter.mjs`：新增 `artDirection.visitorIntents[]` 驗證（最多 6 筆，title/detail 必須為字串、target 僅限 fit/services/faq），並完整保留到 `site.config.json`。
+- `src/data/art-direction-adapters/practice-compass/Home.astro`：消除硬寫死的三個訪客決策，改以正規化後的 visitorIntents 作入口；未設定時只有帶有明確通用文案的安全 fallback，無表單、預約或外站任意轉址。
+- `docs/art-direction/fixtures/practice-compass.json`：加入不同於預設原型的三筆 QA 意圖，以便測試站點是否真的收到 Site Brief 資料。
+- `src/data/art-direction-adapters/subject-atlas/Home.astro`：對 topics 與 post.data.topics 進行防護，不要求每篇文章都一定有 topics 陣列。缺主題的使用者可讀到待設定聲明。
+- `src/pages/layouts/subject-atlas/index.astro`：先前已移除寫死的主題總數與示範文章筆數。
+- 沒有修改 PR46 Gallery、主要 Starter Exporter 或主 Adapter。這一批僅修改 PR47 自有的獨立 Adapter 和 exporter。
