@@ -7,7 +7,7 @@ import directions from '../layout-directions.json' with {type:'json'};
  * strict --require-assembled export accepts only adapters, and ready status requires manual visual QA.
  */
 export const layoutDefinitions = directions.map(direction => {
-  const adapterAvailable = ['field-notes','clinician','essayist','companion'].includes(direction.slug);
+  const adapterAvailable = true;
   return {
     schemaVersion: 1,
     slug: direction.slug,
@@ -31,7 +31,7 @@ export const layoutDefinitions = directions.map(direction => {
       ? {hero:'issue-cover-overlap',sectionOrder:['essay-cover','essay-feature','essay-notebook'],gridDesktop:'cover image absolute / feature .95fr 1.05fr',responsive390:'cover media after introduction; feature and notebook single-column'}
       : direction.slug === 'companion'
       ? {hero:'letter-soft-split',sectionOrder:['letter-hero','letter-body','letter-process','letter-contact'],gridDesktop:'1.1fr .9fr / letter .6fr 1.4fr',responsive390:'hero stacks; letter single-column; process cards stack'}
-      : null
+      : {hero:direction.structure,sectionOrder:[],gridDesktop:'defined by individual src/data/layout-assembly/<slug>/Home.astro',responsive390:'adapter-specific single-column'}
   };
 });
 export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
