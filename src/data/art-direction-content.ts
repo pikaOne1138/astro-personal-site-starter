@@ -14,9 +14,10 @@ export function getDirectionContent(slug: string, kind: 'knowledge' | 'helper', 
   };
   if (kind === 'knowledge') {
     const original: any[] = Array.isArray(raw.articles) ? raw.articles : [];
+    const validSlug = (value: unknown, index: number) => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) ? value : `note-${index+1}`;
     const articles = original.map((item, index) => ({
       id: String(index + 1).padStart(2, '0'),
-      slug: safe(item?.slug, 'note-' + (index + 1)),
+      slug: validSlug(item?.slug,index),
       title: safe(item?.title, '未命名文章'),
       summary: safe(item?.summary, '文章摘要待補'),
       text: safe(item?.summary, '文章摘要待補'),
@@ -26,16 +27,17 @@ export function getDirectionContent(slug: string, kind: 'knowledge' | 'helper', 
       date: safe(item?.date, '日期待設定'),
       image: typeof item?.image === 'string' && item.image.trim() ? item.image : null,
       body: Array.isArray(item?.body) ? item.body.filter((p: unknown) => typeof p === 'string' && !!p.trim()) : [],
-      published: item?.published === true && index === 0,
-      href: item?.published === true && index === 0 ? root + detailRoute : undefined,
+      published: item?.published === true,
+      href: item?.published === true ? root + (index === 0 ? detailRoute : 'articles/' + validSlug(item?.slug,index) + '/') : undefined,
       no: String(index + 1).padStart(2, '0'),
     }));
     return {...data, kind, articles, posts: articles, rows: articles, primary: articles.find(p=>p.published) ?? null, services: [], questions: []};
   }
   const original: any[] = Array.isArray(raw.services) ? raw.services : [];
+  const validSlug = (value: unknown, index: number) => typeof value === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) ? value : `service-${index+1}`;
   const services = original.map((item, index) => ({
     id: String(index + 1).padStart(2,'0'),
-    slug: safe(item?.slug,'service-' + (index + 1)),
+    slug: validSlug(item?.slug,index),
     name: safe(item?.title,'服務項目待設定'),
     title: safe(item?.title,'服務項目待設定'),
     description: safe(item?.summary,'服務說明待設定'),
@@ -48,7 +50,7 @@ export function getDirectionContent(slug: string, kind: 'knowledge' | 'helper', 
     scope: safe(item?.scope,'服務界線待核實'),
     credential: safe(item?.credential,'資格待核實'),
     image: typeof item?.image==='string' && item.image.trim() ? item.image : null,
-    href: index===0 && item?.published===true ? root + detailRoute : undefined,
+    href: item?.published===true ? root + (index === 0 ? detailRoute : 'services/' + validSlug(item?.slug,index) + '/') : undefined,
   }));
   const questions = (Array.isArray(raw.questions) ? raw.questions : [])
     .filter((q: any)=>q && (typeof q.question==='string'||typeof q.answer==='string'))
