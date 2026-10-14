@@ -17,13 +17,15 @@ const layouts={
   'question-led-practice':['services','services/individual','about'],
 };
 const sizes=[{name:'1440',width:1440,height:900},{name:'1280',width:1280,height:800},{name:'768',width:768,height:980},{name:'390',width:390,height:844}];
+const selectedSizes=process.env.QA_VIEWPORTS?process.env.QA_VIEWPORTS.split(','):null;
+const viewports=selectedSizes?sizes.filter(v=>selectedSizes.includes(v.name)):sizes;
 const artifact='qa-artifacts/art-direction/interior-qa/'+scenario;
 mkdirSync(artifact,{recursive:true});
 const rows=[],browser=await chromium.launch({headless:true});
 try {
 for(const [slug,routes] of Object.entries(layouts)){
  for(const route of routes){
-  for(const size of sizes){
+  for(const size of viewports){
    const page=await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:'reduce',deviceScaleFactor:1,javaScriptEnabled:false});
    const item={slug,route,width:size.width,status:'not-tested',issues:[]};
    try{
@@ -69,7 +71,7 @@ for(const [slug,routes] of Object.entries(layouts)){
 }
 }finally{await browser.close()}
 const failures=rows.filter(r=>r.status!=='pass');
-const summary={scenario,method:'Live local Astro preview with JS disabled; keyboard focus and DOM checks are automated, not a screen reader or human aesthetic/accessibility approval',expected:132,captured:rows.filter(r=>r.status!=='failed').length,passed:rows.filter(r=>r.status==='pass').length,failures,records:rows};
+const summary={scenario,method:'Live local Astro preview with JS disabled; keyboard focus and DOM checks are automated, not a screen reader or human aesthetic/accessibility approval',expected:Object.keys(layouts).length*3*viewports.length,captured:rows.filter(r=>r.status!=='failed').length,passed:rows.filter(r=>r.status==='pass').length,failures,records:rows};
 writeFileSync(join(artifact,'manifest.json'),JSON.stringify(summary,null,2)+'\n');
 console.log('INTERIOR-QA',scenario,summary.captured,'/ 132 captured;',summary.passed,'passes;',failures.length,'with issues');
 for(const f of failures.slice(0,30))console.log('ISSUE',f.slug,f.route,f.width,f.issues);
