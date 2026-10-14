@@ -7,7 +7,7 @@ import directions from '../layout-directions.json' with {type:'json'};
  * strict --require-assembled export accepts only adapters, and ready status requires manual visual QA.
  */
 export const layoutDefinitions = directions.map(direction => {
-  const adapterAvailable = direction.slug === 'field-notes' || direction.slug === 'clinician';
+  const adapterAvailable = ['field-notes','clinician','essayist','companion'].includes(direction.slug);
   return {
     schemaVersion: 1,
     slug: direction.slug,
@@ -27,6 +27,10 @@ export const layoutDefinitions = directions.map(direction => {
       ? {hero:'marginalia-ledger', sectionOrder:['field-hero','field-ledger','field-question'], gridDesktop:'78px minmax(0,1fr) 180px', responsive390:'rail shrinks; hero/media flow before ledger; single-column question'}
       : direction.slug === 'clinician'
       ? {hero:'clinical-split', sectionOrder:['clinical-hero','clinical-fit','clinical-process','clinical-credentials','clinical-contact'], gridDesktop:'1.05fr .95fr', responsive390:'hero text then room; fit cards stack; process and credentials single-column'}
+      : direction.slug === 'essayist'
+      ? {hero:'issue-cover-overlap',sectionOrder:['essay-cover','essay-feature','essay-notebook'],gridDesktop:'cover image absolute / feature .95fr 1.05fr',responsive390:'cover media after introduction; feature and notebook single-column'}
+      : direction.slug === 'companion'
+      ? {hero:'letter-soft-split',sectionOrder:['letter-hero','letter-body','letter-process','letter-contact'],gridDesktop:'1.1fr .9fr / letter .6fr 1.4fr',responsive390:'hero stacks; letter single-column; process cards stack'}
       : null
   };
 });
