@@ -28,7 +28,7 @@ const title=route==='articles'?'文章索引':route==='about'?'關於作者':rou
       <div class="rail-bottom"><strong>FIELD / 2026</strong><p>沒有社群、訂閱或外部連結的假設定。正式網站可依需求配置。</p><a href={import.meta.env.BASE_URL+'layouts/'}>← 返回版型庫</a></div>
     </aside>
     <div class="body">
-      <div class="content-contract" data-layout-content="sidebar-journal" aria-label="可編輯網站資料"><span>{site.siteName}</span><span>{site.intro}</span><a href={base+'about/'}>關於本站</a></div><header class="top"><span>PRIVATE PUBLICATION / DEMO</span><span>繁體中文 · 靜態內容原型</span></header>
+      <div class="content-contract" data-layout-content="sidebar-journal" aria-label="可編輯網站資料">{site.kind==='knowledge'&&site.articles.filter(item=>item.published).length===0&&<span>目前沒有公開文章。</span>}{site.kind==='helper'&&site.services.filter(item=>item.href).length===0&&<span>尚未提供正式服務。</span>}<span>{site.siteName}</span><span>{site.intro}</span><a href={base+'about/'}>關於本站</a></div><header class="top"><span>PRIVATE PUBLICATION / DEMO</span><span>繁體中文 · 靜態內容原型</span></header>
       {route==='' && <>
         <section class="intro"><p class="eyebrow">LATEST NOTES / HOME</p><h1>最近的文章與筆記。</h1><p class="lead">按日期閱讀內容，右側保留作者與分類導覽；沒有巨幅宣言或觀察邊註。</p><a class="line-link" href={base+'articles/'}>翻閱全部文章 ↗</a></section>
         <section class="desk"><div class="desk-label"><p class="eyebrow">ON THE DESK</p><h2>最近的三則</h2><p>可以先用一篇文章開始，未完成的項目保留明確提示。</p></div><div class="entries">{articles.map(a=><article class="entry"><div class="meta">{a.id} / {a.date} / {a.tag}</div><h3>{a.href?<a href={a.href}>{a.title}</a>:a.title}</h3><p>{a.summary}</p>{!a.href&&<small>僅為示範標題，尚無全文</small>}</article>)}</div></section>
