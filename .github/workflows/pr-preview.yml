@@ -54,6 +54,9 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Test first-time learner Starter Planner from browser to downloaded Site Brief
+        if: github.event.action != 'closed'
+        run: node scripts/qa-learner-planner.mjs
       - name: Capture QA gallery from local build
         if: github.event.action != 'closed'
         env:
@@ -86,6 +89,12 @@ jobs:
           cp -R .preview-qa/starter-fidelity/. dist/qa-starters/
           test -s dist/qa-starters/results.json
           test -s dist/qa-starters/index.html
+      - name: Include learner black-box QA evidence
+        if: github.event.action != 'closed'
+        run: |
+          mkdir -p dist/qa-learner
+          cp -R .preview-qa/learner-journey/. dist/qa-learner/
+          test -s dist/qa-learner/results.json
       - name: Upload built site
         if: github.event.action != 'closed'
         uses: actions/upload-artifact@v4
