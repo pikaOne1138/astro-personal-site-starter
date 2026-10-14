@@ -214,6 +214,8 @@ assets['README.md']+='\n## Brand typography and images\n\nThe brand typography p
 
 if(hasAssemblyAdapter){
  assets['src/components/layouts/selected/DesignInterior.astro']=readFileSync(new URL('../src/data/layout-assembly/DesignInterior.astro',import.meta.url),'utf8');
+ assets['public/design-family.css']=readFileSync(new URL('../src/data/layout-assembly/DesignChrome.css',import.meta.url),'utf8');
+ assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'design-family.css'}/>").replace('<body><a href=','<body data-site-family={config.layoutSlug}><a href=');
  for(const page of ['src/pages/[...page].astro','src/pages/articles/index.astro','src/pages/articles/[slug].astro']){
   assets[page]=assets[page].replace("import SiteLayout from '../layouts/SiteLayout.astro';","import SiteLayout from '../layouts/SiteLayout.astro';\nimport DesignInterior from '../components/layouts/selected/DesignInterior.astro';")
    .replace("import SiteLayout from '../../layouts/SiteLayout.astro';","import SiteLayout from '../../layouts/SiteLayout.astro';\nimport DesignInterior from '../../components/layouts/selected/DesignInterior.astro';");
