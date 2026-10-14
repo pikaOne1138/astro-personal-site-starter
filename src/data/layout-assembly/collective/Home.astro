@@ -11,6 +11,7 @@ const action=base+(nav?.path??'services/');
   </section>
   <div class="common-section-list"><section class="common-section" id="belief"><p class="common-section-tag">01 / BELIEF</p><h2>共同立場</h2><p>不同專長的人可以協作，也必須清楚說明自己的服務邊界。</p></section>
 <section class="common-section" id="people"><p class="common-section-tag">02 / PEOPLE</p><h2>認識成員</h2><p>成員簡介及專業資格尚未提供，正式網站需填入經同意的真實資料。</p></section>
+<section class="common-manifesto" aria-label="共好工作室共創原則"><div class="common-manifesto-top"><span>WORKING TOGETHER</span><span>NOT A SINGLE VOICE</span></div><h2>不同的人，<br/><em>一起做有意義的事。</em></h2><div class="common-values">{['保留每個人的專業邊界','清楚列出真實參與者','活動與合作資訊可以被查證'].map((v,i)=><div><span>{String(i+1).padStart(2,'0')}</span><p>{v}</p></div>)}</div></section>
 <section class="common-section" id="calendar"><p class="common-section-tag">03 / CALENDAR</p><h2>共學活動</h2><p>尚無已核實的活動日期；請連結實際活動頁或外部報名工具。</p><a href={action}>查看服務 ↗</a></section></div>
   <footer class="common-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
 </div>
@@ -49,4 +50,5 @@ const action=base+(nav?.path??'services/');
 .common-section h2{font-family:var(--brand-body-font,Arial,sans-serif);font-weight:800}
 .common-close{background:#2449d8;color:#fff;padding:2.5rem}
 @media(max-width:800px){.common-hero{grid-template-columns:1fr}.common-section-list{grid-template-columns:1fr}.common-section:first-child{grid-column:auto}}
+.common-manifesto{grid-column:1/-1;background:#20579b;color:#fff3cb;padding:clamp(1.5rem,5vw,5rem)}.common-manifesto-top{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #fff6;padding-bottom:1rem;font:.72rem ui-monospace,monospace;letter-spacing:.13em}.common-manifesto h2{font:850 clamp(3rem,7vw,7rem)/1.04 system-ui,sans-serif!important;max-width:13ch;letter-spacing:-.07em;margin:3rem 0}.common-manifesto h2 em{font-style:normal;color:#ffc46a}.common-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#fff6}.common-values>div{padding:1.5rem;background:#20579b}.common-values span{font:700 1.6rem ui-monospace,monospace}.common-values p{line-height:1.8}@media(max-width:700px){.common-values{grid-template-columns:1fr}.common-manifesto h2{font-size:clamp(2.3rem,9vw,5rem)!important}}
 </style>
