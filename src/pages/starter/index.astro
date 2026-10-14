@@ -409,6 +409,7 @@ target.addEventListener('change',showPlan);
 document.querySelector<HTMLButtonElement>('#copy-plan')!.addEventListener('click',async()=>{
  const p=plan(),errors=checkStarterPlan(p,directions);
  if(errors.length){status.textContent=errors.join('；');return}
+ if(p.assets?.length){status.textContent='已選擇圖片，請用「下載網站規劃檔」完整保存；單純複製文字不適合保存大型圖片資料。';return}
  try {await navigator.clipboard.writeText(JSON.stringify(p,null,2));status.textContent='已複製，可交給 AI 依 astro-starter-onboarding Skill 繼續。'} catch {status.textContent='無法使用剪貼簿，請選取下方 JSON 手動複製。'}
 });
 document.querySelector<HTMLButtonElement>('#save-plan')!.addEventListener('click',()=>{
