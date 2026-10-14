@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "slug": "subject-atlas",
+  "kind": "knowledge",
+  "name": "主題標本室",
+  "summary": "分類先於日期的研究檔案庫，獨立於品牌配色",
+  "audience": [
+    "研究者",
+    "筆記整理者",
+    "專業文章作者"
+  ],
+  "features": [
+    "主題索引",
+    "內容關係網",
+    "編號檔案",
+    "編輯式長文"
+  ],
+  "assemblyStatus": "prototype",
+  "sourcePrototype": "/layouts/subject-atlas/",
+  "adapter": null,
+  "composition": {
+    "hero": {
+      "id": "topical-library-manifesto",
+      "variant": "type-led-with-index-aside",
+      "gridDesktop": "3fr 1fr",
+      "mediaPosition": "none",
+      "primaryCTA": "#directory"
+    },
+    "sections": [
+      {
+        "id": "directory",
+        "role": "topic-directory",
+        "renderer": "SubjectAtlasDirectory",
+        "order": 1,
+        "required": true,
+        "contentKey": "topics"
+      },
+      {
+        "id": "latest",
+        "role": "latest-curated-note",
+        "renderer": "SubjectAtlasLatest",
+        "order": 2,
+        "required": true,
+        "contentKey": "latestNote"
+      },
+      {
+        "id": "archive",
+        "role": "archive-navigation",
+        "renderer": "SubjectAtlasArchiveLink",
+        "order": 3,
+        "required": true,
+        "contentKey": "archiveLink"
+      }
+    ],
+    "readingFlow": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+    "responsive": {
+      "breakpoints": [
+        390,
+        768,
+        1280,
+        1440
+      ],
+      "hero390": "stack-copy-before-index",
+      "sectionOrder390": [
+        "directory",
+        "latest",
+        "archive"
+      ],
+      "grid390": "1fr",
+      "mediaRules": [
+        "no required imagery",
+        "rail becomes in-flow links",
+        "visible focus and 44px controls"
+      ]
+    }
+  },
+  "content": {
+    "required": [
+      "siteName",
+      "tagline",
+      "topics",
+      "topicEntries"
+    ],
+    "optional": [
+      "latestNote"
+    ],
+    "fallback": "truthful-explicit-placeholder"
+  },
+  "pages": {
+    "required": [
+      "/",
+      "/about/",
+      "/articles/",
+      "/articles/[slug]/"
+    ],
+    "kindRequired": [
+      "/articles/",
+      "/search/",
+      "/rss.xml",
+      "/404/"
+    ]
+  },
+  "screenshots": {
+    "desktop": null,
+    "mobile": null
+  }
+}
