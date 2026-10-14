@@ -12,7 +12,7 @@ const records=Array.isArray(config.reading?.records)&&config.reading.records.len
     <div class="atlas-hero-copy"><p class="atlas-kicker">READING ALMANAC / YEAR IN REVIEW</p><h1 id="atlas-title">{config.content?.headline || "閱讀年鑑"}</h1><p class="atlas-brand">{config.brand.name} · {config.brand.tagline}</p><p class="atlas-intro">{config.content?.intro || "一整年的閱讀足跡，以月份、評註和年度選書串成索引。"}</p><a class="atlas-cta" href="#calendar">閱讀年鑑 ↓</a></div>
     <div class="atlas-art" role="img" aria-label="無圖片的年份字樣"></div>
   </section>
-  <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{sampleMonths.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">顯示全年示範空白紀錄</p></section>
+  <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{sampleMonths.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">顯示全年示範空白紀錄</p><ol class="atlas-calendar-grid" aria-label="十二個月年度閱讀索引">{sampleMonths.map(m=><li><a href="#catalog" data-atlas-jump={m.month}><span class="atlas-cal-number">{m.month}</span><span>{m.name}</span><strong>{records.filter(r=>r.month===m.month&&!r.title.includes('尚未提供')).length?records.filter(r=>r.month===m.month&&!r.title.includes('尚未提供')).length+' 筆紀錄':'待補閱讀紀錄'}</strong></a></li>)}</ol></section>
 <section class="atlas-section" id="year-book"><p class="atlas-section-tag">02 / YEAR-BOOK</p><h2>年度選讀</h2>{config.reading?.annualBook?<div><h3>{config.reading.annualBook.title}</h3><p>{config.reading.annualBook.note}</p></div>:<p>年度之書尚未設定。只有提供自己真實讀過的書及選擇理由才會顯示。</p>}</section>
 <section class="atlas-section" id="catalog"><p class="atlas-section-tag">03 / CATALOG</p><h2>讀書目錄</h2><p>以下是待填紀錄，不代表已讀書目。</p><div class="atlas-records">{records.map(m=><article data-record-month={m.month}><span>{m.month} / {m.name}</span><h3>{m.title}</h3><p>{m.note}</p></article>)}</div><a href={action}>閱讀文章 ↗</a></section></div>
   <footer class="atlas-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
@@ -20,6 +20,10 @@ const records=Array.isArray(config.reading?.records)&&config.reading.records.len
 <script is:inline>
 document.querySelectorAll('[data-assembled-layout="reading-atlas"]').forEach(root=>{
  const buttons=[...root.querySelectorAll('[data-atlas-month]')],items=[...root.querySelectorAll('[data-record-month]')];
+  root.querySelectorAll('[data-atlas-jump]').forEach(link=>link.addEventListener('click',()=>{
+    const target=buttons.find(button=>button.dataset.atlasMonth===link.dataset.atlasJump);
+    if(target)target.click();
+  }));
  buttons.forEach(b=>b.addEventListener('click',()=>{
   const value=b.dataset.atlasMonth;
   buttons.forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
@@ -59,4 +63,17 @@ document.querySelectorAll('[data-assembled-layout="reading-atlas"]').forEach(roo
 .atlas-months button:focus-visible{outline:3px solid #b27648;outline-offset:2px}
 @media(max-width:640px){.atlas-months{grid-template-columns:repeat(3,minmax(0,1fr))}.atlas-months button:first-child{grid-column:1/-1}}
 
+
+.atlas-calendar-grid{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));padding:0;margin:2rem 0 0;border-left:1px solid #84948a;border-top:1px solid #84948a}
+.atlas-calendar-grid li{min-width:0;border-right:1px solid #84948a;border-bottom:1px solid #84948a}
+.atlas-calendar-grid a{min-height:140px;padding:1rem;display:flex;flex-direction:column;gap:.25rem;text-decoration:none;background:#f2efe5;color:#25372f}
+.atlas-calendar-grid a:hover,.atlas-calendar-grid a:focus-visible{background:#e1ddce}
+.atlas-cal-number{font:500 clamp(2rem,4vw,4rem)/1 Georgia,serif;letter-spacing:-.08em}
+.atlas-calendar-grid strong{font-size:.75rem;font-weight:500;margin-top:auto;line-height:1.5}
+.atlas-section:nth-child(2){padding:clamp(2rem,5vw,5rem);margin-block:2rem}
+.atlas-section:nth-child(2) h2{font-size:clamp(2.5rem,5vw,5rem);max-width:14ch;line-height:1.12}
+.atlas-section:nth-child(2) h3{font:500 clamp(2rem,4vw,4.5rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.atlas-section:nth-child(2) p{line-height:1.9}
+@media(max-width:800px){.atlas-calendar-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:480px){.atlas-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.atlas-calendar-grid a{min-height:112px}.atlas-section:nth-child(2){padding:1.5rem}}
 </style>
