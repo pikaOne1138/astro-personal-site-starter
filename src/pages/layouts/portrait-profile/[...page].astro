@@ -4,7 +4,6 @@ import {getDirectionContent} from '../../../data/art-direction-content';
 export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'services'}},{params:{page:'services/individual'}},{params:{page:'about'}}];}
 const page=Astro.params.page??'';
 const root=import.meta.env.BASE_URL+'layouts/portrait-profile/';
-const pageContentIntro=site.headline;
 const title=page==='services'?'服務總覽':page==='services/individual'?'個別服務詳情':page==='about'?'關於':'人物名片';
 const site=getDirectionContent('portrait-profile','helper',root,'services/individual/');
 const facts=[['服務對象',site.primary?.fit??'待設定'],['服務形式',site.primary?.format??'待設定'],['服務時間與費用',site.primary?.duration+'／'+site.primary?.price],['專業資格及可查證來源',site.primary?.credential??'尚未核實'],['聯絡與預約','尚未配置有效管道']];
