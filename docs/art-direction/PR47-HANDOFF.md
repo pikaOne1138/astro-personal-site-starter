@@ -1,5 +1,19 @@
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
+## 最新接手狀態：第一階段內容契約完成（2026-10-14）
+
+本段優先於文件下方所有過時的「候選未實作」、「P0 未完成」說法。最新 Source/CI 請以 GitHub PR Head 為準，不鎖定某個 SHA。
+
+- 11 個新增版型已具多頁原型，且其首頁／索引／內頁／About 已接入 `src/data/art-direction-layout-content.json` 和 `src/data/art-direction-content.ts` 的共用欄位與各版型結構。
+- 已支援文章、服務資料的 `published` 狀態與追加公開條目的動態 Astro 路由；少內容時保留顯式空狀態。無圖片、資格、費用、預約時不虛構資料。
+- 新增 `docs/art-direction/PR47-CONTENT-CONTRACT-11.md` 詳細定義各客群輸入欄位、11 款角色、交接邊界。
+- `scripts/verify-art-direction-layout-content.mjs` + `.github/workflows/art-direction-layout-content.yml` 在 GitHub Actions 真實執行正常、空資料、第二篇文章／第二項服務三種完整建置；驗證 **77 項路由及內容檢查成功**（Workflow ID 38575077241，Head `cfd044dd`）。
+- **本輪完成的是 PR #47 原型資料契約，不代表 11 款正式獨立 Starter 已完成。** 現有正式文章來源仍然是 Astro Content Collections；主 Starter Generator、Gallery、Adapter 消費此契約由 #46 負責。
+- 下一步回到第二階段：索引、詳細頁、About 的多尺寸視覺/鍵盤/閱讀 QA，以及更多實際內容量的人工驗收；第三階段整理 25 款 Definition、Status 與交接文件。獨立 Starter 截圖驗收仍依使用者決定延期。
+- PR #47 保持 Draft，不 Merge、不 Production、不改 PR #46 程式。
+
+
+
 ## 最新增補：第四批推進（2026-10-14，取代上方「新候選沒有實作」的舊敘述）
 - 最新權威紀錄：`docs/art-direction/PR47-EXPANSION-MATRIX.md`。原先第一批建議與「未實作」為舊時點，不可再視為現況。
 - #47 新增的 11 個方向已有各四條 Astro 路由的多頁原型，合計 44 條定義：sidebar-journal、portrait-profile、editorial-frontpage、card-journal、service-catalogue、studio-chapters、visual-stories、compact-dispatch、split-reader、editorial-practice、question-led-practice。
