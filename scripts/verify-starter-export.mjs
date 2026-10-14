@@ -65,6 +65,34 @@ try{
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
     if(kind==='knowledge'&&!existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Knowledge articles missing');
     if(kind==='helper'&&existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Unexpected helper articles route');
+    // Exercise student-owned content rather than the default placeholder-only empty pages.
+    // A deliberately long CJK title catches broken template bindings and overflow regressions.
+    const longTitle='一篇談閱讀與實際生活中如何整理資訊的長文章標題——包含中文標點與不同長度的文字來驗證網站是否仍可閱讀';
+    if(kind==='knowledge'){
+      const articleDir=join(site,'src/content/articles');
+      mkdirSync(articleDir,{recursive:true});
+      writeFileSync(join(articleDir,'qa-long-title.md'),[
+        '---','title: '+longTitle,'description: 這段文章摘要是實際內容測試，不是虛構的使用者見證。',
+        'publishedAt: 2026-10-12','draft: false','---',
+        '## 第一個標題','這是學員撰寫的文章，包含中文、標點與一段比較長的文字。',
+        '## 第二個標題','請保留正式文章內容，不要退回通用展示卡片。'
+      ].join('\\n'));
+      writeFileSync(join(articleDir,'qa-hidden.md'),[
+        '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
+      ].join('\\n'));
+    }
+    const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
+    const aboutPage=readFileSync(join(site,'src/pages/[...page].astro'),'utf8');
+    if(!sourceDetail.includes('ArticleDetail')||!aboutPage.includes('AboutSections'))throw Error('Missing actual Design Family page composition in '+slug);
+    const aboutSource=readFileSync(join(site,'src/components/layouts/selected/AboutSections.astro'),'utf8');
+    if(!aboutSource.includes("family==='"+slug+"'"))throw Error('No dedicated About composition branch for '+slug);
+    if(kind==='knowledge'){
+      const archive=readFileSync(join(site,'src/components/layouts/selected/ArticleArchive.astro'),'utf8');
+      if(!archive.includes("family==='"+slug+"'"))throw Error('No dedicated knowledge archive DOM for '+slug);
+    }else{
+      const service=readFileSync(join(site,'src/components/layouts/selected/ServiceSections.astro'),'utf8');
+      if(!service.includes("family==='"+slug+"'"))throw Error('No dedicated helper service DOM for '+slug);
+    }
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
@@ -126,6 +154,18 @@ try{
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
       if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
+      const aboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
+      if(!aboutHtml.includes('data-about-family="'+slug+'"'))throw Error('Dedicated About did not render for '+slug);
+      const inner=kind==='knowledge'?'articles':'services';
+      const innerHtml=readFileSync(join(site,'dist',inner,'index.html'),'utf8');
+      if(kind==='knowledge'){
+        if(!innerHtml.includes('data-archive-family="'+slug+'"')||!innerHtml.includes(longTitle))throw Error('Published long article missing from '+slug+' unique archive');
+        if(innerHtml.includes('不應公開的草稿'))throw Error('Draft article visible in '+slug+' archive');
+        const articleHtml=readFileSync(join(site,'dist/articles/qa-long-title/index.html'),'utf8');
+        if(!articleHtml.includes('data-story-family="'+slug+'"')||!articleHtml.includes(longTitle)||!articleHtml.includes('第一個標題'))throw Error('Long article lost content or layout family: '+slug);
+        if(existsSync(join(site,'dist/articles/qa-hidden/index.html')))throw Error('Draft article rendered for '+slug);
+      }else if(!innerHtml.includes('data-service-family="'+slug+'"'))throw Error('Dedicated service composition missing: '+slug);
+
     }
   }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
