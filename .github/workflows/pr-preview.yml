@@ -68,6 +68,14 @@ jobs:
         env:
           STARTER_FIDELITY_OUT: .preview-qa/starter-fidelity
         run: node scripts/qa-starter-fidelity.mjs
+      - name: Preserve prototype-vs-student evidence even when a geometry test fails
+        if: always() && github.event.action != 'closed'
+        uses: actions/upload-artifact@v4
+        with:
+          name: starter-fidelity-comparison
+          path: .preview-qa/starter-fidelity/
+          retention-days: 7
+          if-no-files-found: warn
       - name: Build PR under its preview URL prefix
         if: github.event.action != 'closed'
         env:
