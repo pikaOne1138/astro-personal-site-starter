@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": [
+    "src/data/layout-directions.json",
+    "src/data/art-direction-definitions/subject-atlas.json",
+    "src/data/art-direction-definitions/practice-compass.json",
+    "docs/art-direction/PR47-EXPANSION-MATRIX.md"
+  ],
+  "scope": "art-direction inventory; not an input to PR46 gallery or generator",
+  "counts": {
+    "total": 25,
+    "knowledge": 13,
+    "helper": 12,
+    "originalHomepage": 12,
+    "existingAdapter": 2,
+    "newMultipagePrototype": 11
+  },
+  "statusLegend": {
+    "prototype-only": "homepage prototype or partial interior; no student Starter readiness",
+    "in-progress": "independent adapter verified but not ready",
+    "prototype-configurable": "editable prototype, not production Starter"
+  },
+  "evidence": {
+    "neutral": "docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md",
+    "content": "docs/art-direction/PR47-CONTENT-CONTRACT-11.md",
+    "interiors": "docs/art-direction/PR47-PHASE2-INTERIOR-QA.md"
+  },
+  "items": [
+    {
+      "slug": "field-notes",
+      "kind": "knowledge",
+      "name": "田野筆記",
+      "origin": "main-12",
+      "structuralIdentity": "邊注索引 × 觀察日誌",
+      "prototype": {
+        "home": "/layouts/field-notes/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "essayist",
+      "kind": "knowledge",
+      "name": "長文書房",
+      "origin": "main-12",
+      "structuralIdentity": "超大字體 × 單篇長讀",
+      "prototype": {
+        "home": "/layouts/essayist/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "learning-lab",
+      "kind": "knowledge",
+      "name": "學習實驗室",
+      "origin": "main-12",
+      "structuralIdentity": "學習地圖 × 進度軌跡",
+      "prototype": {
+        "home": "/layouts/learning-lab/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "curator",
+      "kind": "knowledge",
+      "name": "收藏者目錄",
+      "origin": "main-12",
+      "structuralIdentity": "展牆拼貼 × 檔案索引",
+      "prototype": {
+        "home": "/layouts/curator/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "radio-letter",
+      "kind": "knowledge",
+      "name": "聲音通信",
+      "origin": "main-12",
+      "structuralIdentity": "深色廣播台 × 節目時間軸",
+      "prototype": {
+        "home": "/layouts/radio-letter/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "reading-atlas",
+      "kind": "knowledge",
+      "name": "閱讀年鑑",
+      "origin": "main-12",
+      "structuralIdentity": "巨型年份封面 × 十二個月線格 × 年度之書",
+      "prototype": {
+        "home": "/layouts/reading-atlas/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "clinician",
+      "kind": "helper",
+      "name": "清晰臨床",
+      "origin": "main-12",
+      "structuralIdentity": "專業服務說明書 × 適配清單",
+      "prototype": {
+        "home": "/layouts/clinician/",
+        "interiors": [
+          "/layouts/clinician/services/",
+          "/layouts/clinician/services/individual/",
+          "/layouts/clinician/about/"
+        ]
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-in-11-layout-matrix",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "companion",
+      "kind": "helper",
+      "name": "溫柔陪伴",
+      "origin": "main-12",
+      "structuralIdentity": "一封信 × 故事式入口",
+      "prototype": {
+        "home": "/layouts/companion/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "somatic",
+      "kind": "helper",
+      "name": "身體與節律",
+      "origin": "main-12",
+      "structuralIdentity": "滿版空間 × 感官時間線",
+      "prototype": {
+        "home": "/layouts/somatic/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "coach",
+      "kind": "helper",
+      "name": "實作型教練",
+      "origin": "main-12",
+      "structuralIdentity": "報紙式封面 × 方法步驟",
+      "prototype": {
+        "home": "/layouts/coach/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "collective",
+      "kind": "helper",
+      "name": "共好工作室",
+      "origin": "main-12",
+      "structuralIdentity": "團隊拼貼 × 共學活動時間軸",
+      "prototype": {
+        "home": "/layouts/collective/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "trust-path",
+      "kind": "helper",
+      "name": "信任路徑",
+      "origin": "main-12",
+      "structuralIdentity": "訪客提問 × 五站路線 × 透明服務資訊",
+      "prototype": {
+        "home": "/layouts/trust-path/",
+        "interiors": []
+      },
+      "contentContract": "not-specified-by-pr47",
+      "assemblyStatus": "prototype-only",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors": "not-applicable",
+        "humanVisual": "pending"
+      },
+      "handoff": "do-not-assume-ready"
+    },
+    {
+      "slug": "subject-atlas",
+      "kind": "knowledge",
+      "name": "主題標本室",
+      "origin": "pr47-existing-2",
+      "structuralIdentity": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+      "prototype": {
+        "home": "/layouts/subject-atlas/",
+        "interiors": [
+          "/",
+          "/about/",
+          "/articles/",
+          "/topics/",
+          "/search/",
+          "/rss.xml"
+        ]
+      },
+      "contentContract": "independent-adapter-v1",
+      "assemblyStatus": "in-progress",
+      "qa": {
+        "homeNeutral": "covered",
+        "independentAdapter": "validated",
+        "independentScreenshots": "deferred",
+        "humanVisual": "pending"
+      },
+      "handoff": "independent-adapter-only; no main-generator promotion"
+    },
+    {
+      "slug": "practice-compass",
+      "kind": "helper",
+      "name": "服務羅盤",
+      "origin": "pr47-existing-2",
+      "structuralIdentity": "prologue → choose situation → verify fit → transparency → FAQ",
+      "prototype": {
+        "home": "/layouts/practice-compass/",
+        "interiors": [
+          "/",
+          "/services/",
+          "/about/",
+          "/faq/",
+          "/contact/",
+          "/privacy/",
+          "/search/"
+        ]
+      },
+      "contentContract": "independent-adapter-v1",
+      "assemblyStatus": "in-progress",
+      "qa": {
+        "homeNeutral": "covered",
+        "independentAdapter": "validated",
+        "independentScreenshots": "deferred",
+        "humanVisual": "pending"
+      },
+      "handoff": "independent-adapter-only; no main-generator promotion"
+    },
+    {
+      "slug": "sidebar-journal",
+      "kind": "knowledge",
+      "name": "側欄日誌",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "主文時間流＋作者右側欄",
+      "nearestLayout": "field-notes",
+      "prototype": {
+        "home": "/layouts/sidebar-journal/",
+        "archive": "/layouts/sidebar-journal/articles/",
+        "detail": "/layouts/sidebar-journal/articles/first-note/",
+        "about": "/layouts/sidebar-journal/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/sidebar-journal/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "editorial-frontpage",
+      "kind": "knowledge",
+      "name": "個人刊物",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "頭條 7:5＋次級文章",
+      "nearestLayout": "essayist",
+      "prototype": {
+        "home": "/layouts/editorial-frontpage/",
+        "archive": "/layouts/editorial-frontpage/articles/",
+        "detail": "/layouts/editorial-frontpage/articles/lead-story/",
+        "about": "/layouts/editorial-frontpage/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/editorial-frontpage/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "card-journal",
+      "kind": "knowledge",
+      "name": "卡片刊物",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "等權重文章格網",
+      "nearestLayout": "curator",
+      "prototype": {
+        "home": "/layouts/card-journal/",
+        "archive": "/layouts/card-journal/articles/",
+        "detail": "/layouts/card-journal/articles/sample/",
+        "about": "/layouts/card-journal/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/card-journal/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "visual-stories",
+      "kind": "knowledge",
+      "name": "影像故事",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "左右交替的圖片／圖說",
+      "nearestLayout": "curator",
+      "prototype": {
+        "home": "/layouts/visual-stories/",
+        "archive": "/layouts/visual-stories/articles/",
+        "detail": "/layouts/visual-stories/articles/sample/",
+        "about": "/layouts/visual-stories/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/visual-stories/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "compact-dispatch",
+      "kind": "knowledge",
+      "name": "極簡短箋",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "緊湊日期列表",
+      "nearestLayout": "reading-atlas",
+      "prototype": {
+        "home": "/layouts/compact-dispatch/",
+        "archive": "/layouts/compact-dispatch/articles/",
+        "detail": "/layouts/compact-dispatch/articles/sample/",
+        "about": "/layouts/compact-dispatch/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/compact-dispatch/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "split-reader",
+      "kind": "knowledge",
+      "name": "雙欄閱讀台",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "主文預告 5:7＋右側索引",
+      "nearestLayout": "essayist",
+      "prototype": {
+        "home": "/layouts/split-reader/",
+        "archive": "/layouts/split-reader/articles/",
+        "detail": "/layouts/split-reader/articles/sample/",
+        "about": "/layouts/split-reader/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/split-reader/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "portrait-profile",
+      "kind": "helper",
+      "name": "人物名片",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "肖像／身分 4:7＋服務",
+      "nearestLayout": "companion",
+      "prototype": {
+        "home": "/layouts/portrait-profile/",
+        "archive": "/layouts/portrait-profile/services/",
+        "detail": "/layouts/portrait-profile/services/individual/",
+        "about": "/layouts/portrait-profile/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/portrait-profile/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "service-catalogue",
+      "kind": "helper",
+      "name": "服務目錄",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "服務規格表＋可比較條目",
+      "nearestLayout": "coach",
+      "prototype": {
+        "home": "/layouts/service-catalogue/",
+        "archive": "/layouts/service-catalogue/services/",
+        "detail": "/layouts/service-catalogue/services/individual/",
+        "about": "/layouts/service-catalogue/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/service-catalogue/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "studio-chapters",
+      "kind": "helper",
+      "name": "工作室章節",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "章節目錄＋方法閱讀",
+      "nearestLayout": "somatic",
+      "prototype": {
+        "home": "/layouts/studio-chapters/",
+        "archive": "/layouts/studio-chapters/services/",
+        "detail": "/layouts/studio-chapters/services/individual/",
+        "about": "/layouts/studio-chapters/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/studio-chapters/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "editorial-practice",
+      "kind": "helper",
+      "name": "觀點服務誌",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "主張文章 7:4＋側記",
+      "nearestLayout": "coach",
+      "prototype": {
+        "home": "/layouts/editorial-practice/",
+        "archive": "/layouts/editorial-practice/services/",
+        "detail": "/layouts/editorial-practice/services/individual/",
+        "about": "/layouts/editorial-practice/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/editorial-practice/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    },
+    {
+      "slug": "question-led-practice",
+      "kind": "helper",
+      "name": "問答對話",
+      "origin": "pr47-new-11",
+      "structuralIdentity": "問答雙欄 3:8",
+      "nearestLayout": "trust-path",
+      "prototype": {
+        "home": "/layouts/question-led-practice/",
+        "archive": "/layouts/question-led-practice/services/",
+        "detail": "/layouts/question-led-practice/services/individual/",
+        "about": "/layouts/question-led-practice/about/"
+      },
+      "contentContract": "art-direction-layout-content-v1",
+      "contentSource": "src/data/art-direction-layout-content.json",
+      "renderer": "src/pages/layouts/question-led-practice/[...page].astro",
+      "assemblyStatus": "prototype-configurable",
+      "qa": {
+        "homeNeutral": "covered",
+        "interiors4Sizes": "132-cases-aggregate-pass",
+        "emptySingleLongCJK": "198-cases-aggregate-pass",
+        "a11yAxe": "66-scans-aggregate-zero-violations",
+        "humanVisual": "pending",
+        "independentScreenshots": "deferred"
+      },
+      "handoff": "content contract available; production integration owned by PR46"
+    }
+  ]
+}
