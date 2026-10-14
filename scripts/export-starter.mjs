@@ -225,6 +225,14 @@ for(const [path,body] of Object.entries(assets)){
     const photoFilter=imageStyle==='documentary'?'saturate(.68) contrast(1.07)':imageStyle==='minimal'?'saturate(.45)':'none';
     actual+='\\n:root{--brand-heading-font:'+font+';--brand-body-font:'+sans+';--brand-image-filter:'+photoFilter+';}\\n';
   }
+  if(path==='public/site.css'){
+    // Only the shared site chrome receives these rules. Never restyle editorial
+    // headers, footers or navigation that belong to an independent layout.
+    actual=actual.replace(/(^|})header\\{/g,'$1body>header{')
+      .replace(/header nav/g,'body>header nav')
+      .replace(/(^|})footer\\{/g,'$1body>footer{');
+    actual+='\\nbody{font-family:var(--brand-body-font,system-ui,sans-serif)}.interior h1,.interior h2,.interior h3{font-family:var(--brand-heading-font,Georgia,serif)}.interior{max-width:1060px;margin-inline:auto}\\n';
+  }
   if(path==='src/pages/articles/index.astro')actual=actual.replace(/export function getStaticPaths\(\)\{return config\.navigation\.some\(x=>x\.id==='articles'\)\?\[\{params:\{\}\}\]:\[\]\}\n/,'');
   put(path,actual);
 }
