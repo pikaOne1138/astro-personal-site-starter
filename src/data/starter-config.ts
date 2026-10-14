@@ -36,6 +36,7 @@ export interface StarterPlan {
   sectionPatterns?: StarterPatternChoice[];
   assets?: Array<{path:string;mime:string;base64:string}>;
   content?: {headline?:string;intro?:string};
+  about?: {bio?:string;purpose?:string;approach?:string;background?:string};
   notes: string;
   reading?: {records:Array<{month:string;title:string;note:string}>;annualBook?:{title:string;note:string}};
   media?: {episodeAudioPath?:string;episodeTranscript?:Array<{time:string;text:string}>};
@@ -79,6 +80,7 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(plan.media?.episodeAudioPath&&!/^\/audio\/[a-z0-9/_-]+\.(mp3|wav|ogg|m4a)$/i.test(plan.media.episodeAudioPath))errors.push('音檔請使用 /audio/ 本地音檔路徑');
   if(plan.serviceFacts && Object.values(plan.serviceFacts).some(x=>typeof x!=='string'||x.length>500))errors.push('服務資訊欄位太長');
   if(plan.content && ((plan.content.headline?.length??0)>120||(plan.content.intro?.length??0)>800))errors.push('首頁標題或介紹文字太長');
+  if(plan.about && Object.values(plan.about).some(x=>typeof x!=='string'||x.length>1200))errors.push('關於頁文字需為文字內容，單欄最多 1200 字');
   if(plan.assets?.some(x=>!/^\/images\/(brand-logo|hero-image)\.(png|jpg|webp|avif)$/.test(x.path)||!/^image\/(png|jpeg|webp|avif)$/.test(x.mime)||!x.base64||x.base64.length>6000000))errors.push('圖片格式或大小無效，最多約 4 MB');
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
