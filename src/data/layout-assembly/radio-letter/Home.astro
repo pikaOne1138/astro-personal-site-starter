@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='articles');
+const action=base+(nav?.path??'articles/');
+---
+<div class="radio-shell" data-assembled-layout="radio-letter">
+  <section class="radio-hero" aria-labelledby="radio-title">
+    <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">這封信，留給願意聽的人。</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
+    <figure class="radio-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="radio-art" role="img" aria-label="深色聲波抽象封面"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2><p>節目音檔尚未設定；先閱讀有內容的逐字稿示範。</p></section>
+<section class="radio-section" id="transcript"><p class="radio-section-tag">02 / TRANSCRIPT</p><h2>逐字稿與筆記</h2><p>以時間段落整理音訊內容，保留搜尋引擎可索引的文字。</p></section>
+<section class="radio-section" id="archive"><p class="radio-section-tag">03 / ARCHIVE</p><h2>節目索引</h2><p>依主題與日期尋找過去的內容。</p><a href={action}>閱讀文章 ↗</a></section></div>
+  <footer class="radio-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
+</div>
+<style>
+.radio-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.radio-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. radio-hero-copy{min-width:0}
+.radio-kicker,.radio-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.radio-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.radio-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.radio-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.radio-figure{margin:0;min-width:0}. radio-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.radio-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.radio-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.radio-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.radio-section-list{max-width:1250px;margin:0 auto 4rem}
+.radio-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.radio-section p{max-width:65ch;line-height:1.85}. radio-section a{color:inherit}
+.radio-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.radio-shell{background:#14222a;color:#f5e5cf}.radio-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:4vw;align-items:center}.radio-hero h1{font-size:clamp(3rem,6vw,6rem)}.radio-section-list{display:grid;grid-template-columns:1fr 1.5fr;gap:2rem}.radio-section:first-child{grid-column:1/-1;border-bottom:1px solid #81939a}.radio-art{background:repeating-linear-gradient(90deg,#d69b67 0 3px,#283b47 3px 14px,#9fb4bd 14px 16px,#283b47 16px 23px)}
+@media(max-width:800px){.radio-hero,.radio-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.radio-hero{min-height:0}.radio-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.radio-hero figure,.radio-art{position:static;width:100%;height:auto;min-height:180px}.radio-section,.radio-section:nth-child(1),.radio-section:nth-child(2),.radio-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.radio-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.radio-shell{padding:1rem}.radio-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.radio-close{display:block}}
+</style>
