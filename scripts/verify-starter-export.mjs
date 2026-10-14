@@ -1,4 +1,4 @@
-import {mkdtempSync,readFileSync,existsSync,writeFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,existsSync,writeFileSync,rmSync,mkdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
@@ -40,11 +40,14 @@ try{
       const themed=structuredClone(plan);
       themed.brand.typography='clear-sans';
       themed.brand.imageStyle='documentary';
-      themed.brand.heroImagePath='/images/my-field.webp';
+      themed.brand.heroImagePath='/images/my-field.png';
       themed.brand.heroImageAlt='我自己的授權觀察照片';
       const themedPlan=join(root,'brand-config.json'),themedSite=join(root,'brand-config');
       writeFileSync(themedPlan,JSON.stringify(themed));
+      mkdirSync(join(root,'public/images'),{recursive:true});
+      writeFileSync(join(root,'public/images/my-field.png'),Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLttAAAAABJRU5ErkJggg==','base64'));
       execFileSync(process.execPath,['scripts/export-starter.mjs',themedPlan,themedSite],{stdio:'inherit'});
+      if(!existsSync(join(themedSite,'public/images/my-field.png')))throw Error('Licensed image was not copied to independent starter');
       const themedHome=readFileSync(join(themedSite,'src/components/layouts/selected/Home.astro'),'utf8');
       const themedCss=readFileSync(join(themedSite,'public/site.css'),'utf8');
       if(!themedHome.includes('heroImagePath')||!themedCss.includes('--brand-image-filter:saturate(.68)')||!themedCss.includes('--brand-heading-font:"Noto Sans TC"'))
