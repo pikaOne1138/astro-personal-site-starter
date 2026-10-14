@@ -6,7 +6,7 @@ import layouts from '../src/data/layout-directions.json' with {type:'json'};
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 const kinds=['knowledge','helper'];
 const visualEnabled=process.env.STUDENT_VISUAL_CAPTURE==='1';
-const visualOutput=process.env.STUDENT_VISUAL_OUT||'.student-visual';
+const visualOutput=process.env.STUDENT_VISUAL_OUT||'student-visual';
 const visualRows=[];
 let visualBrowser;
 if(visualEnabled){
@@ -247,6 +247,10 @@ try{
   writeFileSync(visualOutput+'/results.json',JSON.stringify({summary,rows:visualRows},null,2));
   const cards=visualRows.map(x=>'<article><h2>'+escapeHtml(x.slug)+' / '+escapeHtml(x.route)+' / '+x.width+'px</h2><p>HTTP '+x.http+' · overflow '+x.overflow+' · family '+escapeHtml(x.family)+'</p><a href="'+x.filename+'"><img loading="lazy" src="'+x.filename+'" alt="'+escapeHtml(x.slug+' '+x.route)+'"/></a></article>').join('');
   writeFileSync(visualOutput+'/index.html','<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Independent Student Site Visual QA</title><style>body{font:16px/1.6 system-ui;max-width:1320px;margin:auto;padding:20px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}article{border:1px solid #aaa;padding:12px;min-width:0}img{max-width:100%;height:auto}</style><h1>12 independent sites / responsive pages</h1><p>Rows '+summary.total+' · HTTP failures '+summary.failedHttp.length+' · overflow '+summary.overflow.length+' · browser errors '+summary.errors.length+' · wrong families '+summary.noFamily.length+'</p><a href="results.json">Full results</a><main>'+cards+'</main></html>');
+  console.log('Student visual QA summary:',JSON.stringify(Object.fromEntries(Object.entries(summary).map(([key,val])=>[key,Array.isArray(val)?val.length:val]))));
+  for(const [type,issues] of [['OVERFLOW',summary.overflow],['HTTP',summary.failedHttp],['RUNTIME',summary.errors],['FAMILY',summary.noFamily]]){
+    for(const issue of issues.slice(0,20))console.log('STUDENT_VISUAL_'+type,JSON.stringify(issue));
+  }
   await visualBrowser?.close();
   if(summary.failedHttp.length||summary.overflow.length||summary.errors.length||summary.noFamily.length)process.exitCode=1;
  }
