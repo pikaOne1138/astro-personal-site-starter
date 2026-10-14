@@ -1,11 +1,17 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
-export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'services'}},{params:{page:'services/individual'}},{params:{page:'about'}}];}
+import contentSource from '../../../data/art-direction-layout-content.json';
+export function getStaticPaths(){
+ const fixed=[{params:{page:undefined}},{params:{page:'services'}},{params:{page:'services/individual'}},{params:{page:'about'}}];
+ const additional=(contentSource.helper.services??[]).slice(1).filter(item=>item.published===true&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug));
+ return [...fixed,...additional.map(item=>({params:{page:'services/'+item.slug}}))];
+}
 const page=Astro.params.page??'';
 const root=import.meta.env.BASE_URL+'layouts/question-led-practice/';
 const indexUrl=root+'services/',detailUrl=root+'services/individual/';
 const site=getDirectionContent('question-led-practice','helper',root,'services/individual/');
+const detailRecord=site.services.find(item=>item.href?.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const entries=site.questions;
 const items=entries.map(q=>q.question);
 const demo=site.primary?.description??site.intro;
@@ -15,7 +21,7 @@ const demo=site.primary?.description??site.intro;
 <header class="nav"><a class="brand" href={root}>問答對話<small>QUESTION-LED-PRACTICE</small></a><nav aria-label="網站導覽"><a href={root}>首頁</a><a href={indexUrl}>服務索引</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
 {page===''&&<><section class="intro"><span class="tiny">HELPER / QUESTIONS</span><h1>你可能想先問這些問題。</h1><p>此為助人者服務網站的設計原型。</p></section><div class="question-flow">{items.map((t,i)=><section class="question-row"><div class="question"><span>Q0{i+1}</span><h2>{t}</h2></div><div class="answer"><span class="tiny">ANSWER / 0{i+1}</span><p>{demo}</p><a href={site.primary?.href??indexUrl}>深入理解 →</a></div></section>)}</div></>}
 {page==='services'&&<><section class="intro"><span class="tiny">SERVICE QUESTIONS</span><h1>服務說明，從問題開始。</h1><p>這不是預約分流，而是可以連續閱讀的服務問答。</p></section><div class="question-flow">{site.questions.map(({question:q,answer:a},i)=><section class="question-row"><div class="question"><span>Q0{i+1}</span><h2>{q}</h2></div><div class="answer"><p>{a}</p><a href={site.primary?.href??indexUrl}>閱讀服務詳情 →</a></div></section>)}</div></>}
-{page==='services/individual'&&<><section class="intro"><span class="tiny">SERVICE DETAIL</span><h1>{site.primary?.title??'目前沒有已公開的內容'}</h1><p>{demo}</p></section><div class="question-flow">{items.map((t,i)=><section class="question-row"><div class="question"><span>Q0{i+1}</span><h2>{t}</h2></div><div class="answer"><p>{demo}</p></div></section>)}</div><div class="contract-body" aria-label="可編輯詳細內容">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
+{page.startsWith('services/')&&<><section class="intro"><span class="tiny">SERVICE DETAIL</span><h1>{detailRecord?.title??'尚未設定服務'}</h1><p>{demo}</p></section><div class="question-flow">{items.map((t,i)=><section class="question-row"><div class="question"><span>Q0{i+1}</span><h2>{t}</h2></div><div class="answer"><p>{demo}</p></div></section>)}</div><div class="contract-body" aria-label="可編輯詳細內容">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
 {page==='about'&&<><section class="intro"><span class="tiny">ABOUT / QUESTIONS</span><h1>{site.about}</h1></section><div class="question-flow"><section class="question-row"><div class="question"><span>Q01</span><h2>我提供什麼？</h2></div><div class="answer"><p>{demo}</p></div></section><section class="question-row"><div class="question"><span>Q02</span><h2>如何聯繫？</h2></div><div class="answer"><p>真實聯絡方式尚未設定，示範頁不具備收件功能。</p></div></section></div></>}
 <section class="content-contract" aria-label="本站實際可編輯資料"><strong>{site.siteName}</strong><p>{site.intro}</p><p>{site.primary?site.primary.title:'目前沒有已公開的文章或服務。'}</p></section><footer><span>question-led-practice / DEMO PROTOTYPE</span><a href={root}>回首頁 ↑</a><p>未提供正式預約、聯絡或虛構專業證照。</p></footer>
 </div></main></DirectionLayout>
