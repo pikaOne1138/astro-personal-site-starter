@@ -42,7 +42,46 @@
 - 已提交 sidebar-journal 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 已提交 portrait-profile 原型，四條靜態路由透過 Astro rest-page getStaticPaths 輸出；待 build 與視覺 QA。
 - 這兩款仍屬「第一批實作中」，未接 #46 主 Adapter，也未完成獨立 Starter 驗收。
-- 第二批四款皆已有靜態多頁原型：editorial-frontpage、card-journal、service-catalogue、studio-chapters；各自設計首頁、索引、詳細頁與 About。仍待 Build 與實際視覺 QA，不視為 ready。\n- 第三批五款研究候選尚未實作，不得在 UI 或報告計為完成。
+- 第二批四款皆已有靜態多頁原型：editorial-frontpage、card-journal、service-catalogue、studio-chapters；各自設計首頁、索引、詳細頁與 About。仍待 Build 與實際視覺 QA，不視為 ready。
+- 第三批五款已各提交 4 條 Astro rest-route 原型：visual-stories、compact-dispatch、split-reader、editorial-practice、question-led-practice；待 build／瀏覽器驗收，並非 Ready。
 - 獨立 Starter / Adapter 截圖驗收本輪延期；本地 prototype 的 1440／1280／768／390 實際目視 QA 仍待執行。
 - 不 Merge、不部署 Production、不改 #46 的程式。
-\n## 第二批結構驗收待辦\n- Personal Publication：7/12 大頭條＋5/12 次要文章，不等於 Essayist 的單篇長文；索引維持頭條／短列分級。\n- Card Journal：等權重文章卡，無圖以內嵌類別區補位，不等於 Curator 拼貼展牆。\n- Service Catalogue：服務資訊條目與規格表為首屏主角，僅一項服務仍成立，不等於 Coach 的行動計畫或 Practice Compass 的訪客問題分流。\n- Studio Chapters：章節式工作方法與服務詳細資訊，側邊章節目錄延伸到內頁，不等於 Somatic 的沉浸式氛圍頁。\n- 目前四款 prototype 尚未接真實 Content Collections／網站設定資料；真實資料注入與主 Adapter 整合由後續契約交接處理。不能把 Demo 硬編資料視為可交付 Starter。\n- 待實際 CI、1440／1280／768／390 目視比對；同色同字同內容差異目前僅作來源結構分析，非視覺 PASS。\n
+
+## 第二批結構驗收待辦
+- Personal Publication：7/12 大頭條＋5/12 次要文章，不等於 Essayist 的單篇長文；索引維持頭條／短列分級。
+- Card Journal：等權重文章卡，無圖以內嵌類別區補位，不等於 Curator 拼貼展牆。
+- Service Catalogue：服務資訊條目與規格表為首屏主角，僅一項服務仍成立，不等於 Coach 的行動計畫或 Practice Compass 的訪客問題分流。
+- Studio Chapters：章節式工作方法與服務詳細資訊，側邊章節目錄延伸到內頁，不等於 Somatic 的沉浸式氛圍頁。
+- 目前四款 prototype 尚未接真實 Content Collections／網站設定資料；真實資料注入與主 Adapter 整合由後續契約交接處理。不能把 Demo 硬編資料視為可交付 Starter。
+- 待實際 CI、1440／1280／768／390 目視比對；同色同字同內容差異目前僅作來源結構分析，非視覺 PASS。
+
+## 第三批與第四批施工更新（2026-10-14）
+- 第三批新增五組原型，每組首頁／索引／詳情／About，主閱讀結構分別為交錯圖文、極簡日期列、5:7 閱讀台、7:4 觀點加側記、3:8 問答對話。導覽與頁尾均包含真實原型路由；無圖時展示可讀佔位，禁止把示範資料當真實服務。
+- 四批規劃的 11 個新增方向，目前 **11/11 有多頁源碼原型**；不代表 11/11 通過 build、視覺、實際資料契約或獨立 Starter 驗收。第一／第二／第三批總計定義 44 條靜態原型路由。
+- 第四批已在既有 Clinician 首頁新增 Practice Dossier 條列：身份、證照核驗、範圍、費用取消、所在地及聯絡個資。這是強化原版，**不是新增第 26 款**。必須對照 Trust Path 五站旅程與 Practice Compass 三個決策入口，防止重新長成同一種頁面。
+- Subject Atlas 的首頁主題／條目數字已由 fixture 來源計算，不再寫死 04/8；其餘實際 Content Collection adapter 資料契約未完成。
+- Practice Compass 目前三個決策入口仍是原型固定文案，必須確認獨立 adapter 的 visitorIntents、scope、serviceInfo、faq 與正式 Site Brief 連接。不能把這個固定文案原型視為已完成的資料契約修復。
+- 本次不更動 #46 Gallery／Exporter／Starter／主 Adapter。新方向沒有自動註冊到 #46 的 12 款學生交付系統，整合屬後續跨 PR 工作。
+
+### 研究方向與既有版型差異（Source/DOM 審查；非視覺 PASS）
+| 原型 | 優先資訊物件 | 版面關鍵 | 避免重複 |
+|---|---|---|---|
+| sidebar-journal | 文章流＋作者分類側欄 | 主文＋右側欄 | Field Notes 邊註 |
+| portrait-profile | 本人資訊與肖像佔位 | 個人身分主角 | Companion 長信 |
+| editorial-frontpage | 頭條＋次要文章 | 不等權 7:5 | Essayist 單篇巨文 |
+| card-journal | 平等文章卡 | 規律同權卡片格網 | Curator 展物牆 |
+| service-catalogue | 可比較服務欄位 | 單一資料卡＋明細表 | Coach 方法步驟 |
+| studio-chapters | 章節與方法 | 章節目錄＋文章軸 | Somatic 氛圍首屏 |
+| visual-stories | 影像與圖說 | 交替圖文序列 | Curator 物件收藏 |
+| compact-dispatch | 日期與短文 | 緊湊時間列 | Reading Atlas 年月格 |
+| split-reader | 主文＋索引 | 5:7 固定角色 | Essayist 長文首頁 |
+| editorial-practice | 服務觀點長文 | 7:4 主張＋側記 | Coach 執行清單 |
+| question-led-practice | 問題／回答 | 3:8 問答同頁閱讀 | Trust Path 五站旅程 |
+| clinician 強化 | 可驗證揭露資料 | 單一條列資料冊 | Trust Path／Practice Compass |
+
+### 目前未完成的驗收
+1. 待最新 commit 完整 npm build / GitHub Actions；未通過前不能宣稱路由實際輸出。
+2. 1440／1280／768／390 真實瀏覽器截圖及目視 QA 尚未完成，不能以 CSS 閱讀或研究圖代替。
+3. 同客群同內容／同字體／同配色的視覺 A/B 對照尚未執行。原型仍有 demo-specific 文案，未建立完全統一測試 fixture。
+4. 全部 11 款目前只用原型展示資料，**尚無 Content Collections／真實專業服務資料的完整可編輯輸入契約**。
+5. PR #46 擁有的獨立 Starter／Adapter 截圖驗收本輪延後；PR #47 繼續 Draft，禁止 Merge／Production。
