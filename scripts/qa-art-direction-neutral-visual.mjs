@@ -35,7 +35,7 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
       const style=document.createElement('style');style.textContent=`
         *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;text-shadow:none!important}
         body,main,section,article,aside,header,footer,nav,div{--brand:#355747!important;--accent:#355747!important;--bg:#f4f1e8!important;--ink:#242a24!important}
-        main{background:#f4f1e8!important;color:#242a24!important}\n        main *{background-image:none!important;box-shadow:none!important;color:#242a24!important;border-color:#b5bdb1!important}\n        main :is(section,article,aside){background-color:transparent!important}\n        main :is(a,button){color:#355747!important}\n        main :is(.picture,.photo,.image-fallback,.image-space,.stage-art,.stage-art-title){background-color:#e7ece5!important}
+        main{background:#f4f1e8!important;color:#242a24!important}\n        main *,main *::before,main *::after{background-color:transparent!important;background-image:none!important;box-shadow:none!important;color:#242a24!important;border-color:#b5bdb1!important;font-family:Georgia,'Noto Sans TC',serif!important}\n        main :is(section,article,aside){background-color:transparent!important}\n        main :is(a,button){color:#355747!important}\n        main :is(.picture,.photo,.image-fallback,.image-space,.stage-art,.stage-art-title){background-color:#e7ece5!important}
         main :is(h1,h2,h3,h4,p,li,span,a,button,dt,dd){font-family:Georgia,'Noto Sans TC',serif!important}
         main :is(img,video,iframe){visibility:hidden!important}
       `;document.head.append(style);
