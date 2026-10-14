@@ -65,6 +65,7 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   const brand=plan.brand;
   if(brand.typography && !['editorial-serif','clear-sans','balanced'].includes(brand.typography))errors.push('字體組合無效');
   if(brand.imageStyle && !['natural','documentary','minimal'].includes(brand.imageStyle))errors.push('圖片風格無效');
+  if(brand.logoPath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.logoPath))errors.push('Logo 請使用網站本地的 PNG、WebP、JPG 或 AVIF');
   if(brand.heroImagePath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.heroImagePath))errors.push('主視覺圖片需使用網站自己的 /images/ 檔案路徑');
   if(brand.heroImageAlt && (brand.heroImageAlt.length>180 || !brand.heroImagePath))errors.push('主視覺替代文字需要有效的圖片路徑');
   const available=starterPages[plan.kind].map(p=>p.id as string);
