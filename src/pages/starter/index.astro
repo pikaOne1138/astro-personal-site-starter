@@ -206,6 +206,10 @@ function shiftItem(id:string,delta:number){
  const firstPosition=Math.min(a,b);
  remaining.splice(firstPosition,0,...(delta>0?second:first),...(delta>0?first:second));
  nav=remaining;syncNav();
+ // The clicked control is recreated by renderNav(); restore focus explicitly for keyboard users.
+ const movedRow=[...rows.querySelectorAll<HTMLElement>('.nav-row')].find(row=>row.dataset.navId===id);
+ const preferred=[...(movedRow?.querySelectorAll<HTMLButtonElement>('button')??[])].find(button=>button.getAttribute('aria-label')?.startsWith((delta>0?'下移':'上移')+'：')&&!button.disabled);
+ (preferred??movedRow?.querySelector<HTMLButtonElement>('button:not(:disabled)'))?.focus();
 }
 function indentItem(id:string){
  const ordered=orderedNav(),i=ordered.findIndex(x=>x.id===id),item=ordered[i];
