@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='articles');
+const action=base+(nav?.path??'articles/');
+---
+<div class="lab-shell" data-assembled-layout="learning-lab">
+  <section class="lab-hero" aria-labelledby="lab-title">
+    <div class="lab-hero-copy"><p class="lab-kicker">LEARNING LAB / OPEN CLASSROOM</p><h1 id="lab-title">把好奇心，變成一條路。</h1><p class="lab-brand">{config.brand.name} · {config.brand.tagline}</p><p class="lab-intro">從問題、線索到實作，以清楚的路徑整理你的知識。</p><a class="lab-cta" href="#path">學習路徑 ↓</a></div>
+    <figure class="lab-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="lab-art" role="img" aria-label="學習路徑示意圖"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="lab-section-list"><section class="lab-section" id="path"><p class="lab-section-tag">01 / PATH</p><h2>學習路徑</h2><p>先找到問題、再整理線索，最後用練習理解概念。</p></section>
+<section class="lab-section" id="modules"><p class="lab-section-tag">02 / MODULES</p><h2>課程單元</h2><p>01 看見問題／02 整理線索／03 動手練習</p></section>
+<section class="lab-section" id="resources"><p class="lab-section-tag">03 / RESOURCES</p><h2>繼續探索</h2><p>閱讀完整文章，找到下一個值得研究的主題。</p><a href={action}>閱讀文章 ↗</a></section></div>
+  <footer class="lab-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
+</div>
+<style>
+.lab-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.lab-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. lab-hero-copy{min-width:0}
+.lab-kicker,.lab-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.lab-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.lab-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.lab-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.lab-figure{margin:0;min-width:0}. lab-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.lab-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.lab-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.lab-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.lab-section-list{max-width:1250px;margin:0 auto 4rem}
+.lab-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.lab-section p{max-width:65ch;line-height:1.85}. lab-section a{color:inherit}
+.lab-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.lab-hero{display:grid;grid-template-columns:1fr .75fr;gap:5vw;align-items:center}.lab-hero h1{font-size:clamp(3rem,7vw,7rem)}.lab-section-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem}.lab-section{border-top:5px solid var(--brand,#e2b653);background:#fff;padding:1.6rem}.lab-art{background:repeating-linear-gradient(25deg,#f1d37b 0 12px,#bfd8e1 12px 22px,#e4ece5 22px 42px)}
+@media(max-width:800px){.lab-hero,.lab-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.lab-hero{min-height:0}.lab-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.lab-hero figure,.lab-art{position:static;width:100%;height:auto;min-height:180px}.lab-section,.lab-section:nth-child(1),.lab-section:nth-child(2),.lab-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.lab-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.lab-shell{padding:1rem}.lab-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.lab-close{display:block}}
+</style>
