@@ -1,12 +1,16 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
+import contentSource from '../../../data/art-direction-layout-content.json';
 export function getStaticPaths() {
-  return [{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/first-note'}},{params:{page:'about'}}];
+  const fixed=[{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/first-note'}},{params:{page:'about'}}];
+  const additional=(contentSource.knowledge.articles??[]).slice(1).filter(entry=>entry.published===true && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.slug));
+  return [...fixed,...additional.map(entry=>({params:{page:'articles/'+entry.slug}}))];
 }
 const route=Astro.params.page ?? '';
 const base=import.meta.env.BASE_URL+'layouts/sidebar-journal/';
 const site=getDirectionContent('sidebar-journal','knowledge',base,'articles/first-note/');
+const detailRecord=site.articles.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const articles=site.articles.map(a=>({...a, date:a.date.slice(5), summary:a.summary}));
 const title=route==='articles'?'文章索引':route==='about'?'關於作者':route?'從日常的小事開始記錄':'側欄日誌';
 ---
@@ -31,7 +35,7 @@ const title=route==='articles'?'文章索引':route==='about'?'關於作者':rou
         <section class="signature"><span class="eyebrow">A SMALL INTRODUCTION</span><p>文字不需要先成為宏大的作品，才值得被保存。</p><a href={base+'about/'}>關於這本手記 →</a></section>
       </>}
       {route==='articles' && <><section class="pagehead"><p class="eyebrow">ALL NOTES / 01–03</p><h1>文章索引</h1><p>以日期與主題排列的個人文章，不靠大量封面圖或複雜分類才能成立。</p></section><div class="archive">{articles.map(a=><article><span class="meta">{a.date}<br/>{a.tag}</span><div><h2>{a.href?<a href={a.href}>{a.title} ↗</a>:a.title}</h2><p>{a.summary}</p>{!a.href&&<small>尚未撰寫全文</small>}</div></article>)}</div></>}
-      {route==='articles/first-note' && <><article class="reading"><p class="eyebrow">01 / OBSERVATION · 2026-10-14</p><h1>{site.primary?.title??'尚未有公開文章'}</h1><p class="lead">示範文章：展示窄欄閱讀、側欄索引與正文節奏；內容並非作者的真實經歷。</p><div class="prose"><div class="article-contract-body">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p>有時候，一篇文章只是注意到一件過去沒有察覺的小事。與其急著提出結論，不如先記下當時看見的細節。</p><h2>留下線索</h2><p>把觀察放進自己的語言裡，加入日期與主題，往後就能從同一個問題再次出發。</p><blockquote>筆記的價值，不一定是答案；也可能是讓問題有地方生長。</blockquote><h2>下一次再讀</h2><p>這篇示範沒有留言後端、虛構閱讀數字或訂閱成功訊息。正式文章會由既有 Astro 內容系統提供。</p></div><a class="line-link" href={base+'articles/'}>← 回文章索引</a></article></>}
+      {(Astro.params.page??'').startsWith('articles/') && <><article class="reading"><p class="eyebrow">01 / OBSERVATION · 2026-10-14</p><h1>{detailRecord?.title??'目前沒有公開文章'}</h1><p class="lead">示範文章：展示窄欄閱讀、側欄索引與正文節奏；內容並非作者的真實經歷。</p><div class="prose"><div class="article-contract-body">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p>有時候，一篇文章只是注意到一件過去沒有察覺的小事。與其急著提出結論，不如先記下當時看見的細節。</p><h2>留下線索</h2><p>把觀察放進自己的語言裡，加入日期與主題，往後就能從同一個問題再次出發。</p><blockquote>筆記的價值，不一定是答案；也可能是讓問題有地方生長。</blockquote><h2>下一次再讀</h2><p>這篇示範沒有留言後端、虛構閱讀數字或訂閱成功訊息。正式文章會由既有 Astro 內容系統提供。</p></div><a class="line-link" href={base+'articles/'}>← 回文章索引</a></article></>}
       {route==='about' && <><section class="pagehead"><p class="eyebrow">AUTHOR / ABOUT</p><h1>{site.about}</h1><p>這是個人網站版型示範，不以不存在的人名、資歷或社群數字冒充真實人物。</p></section><section class="about-grid"><div class="initial" aria-label="尚未配置作者照片">照片<br/>選填</div><div><h2>寫作從哪裡開始？</h2><p>可以從生活記錄、專業心得或閱讀筆記開始，慢慢建立自己的文章分類。</p><h2>如何持續整理？</h2><p>把文章交給既有的 Astro Content Collections 管理；這套原型不建立重複的搜尋或內容資料庫。</p><a class="line-link" href={base+'articles/'}>看看筆記 →</a></div></section></>}
       <footer>側欄日誌 / 結構設計原型 <a href={base}>回首頁 ↑</a></footer>
     </div>
