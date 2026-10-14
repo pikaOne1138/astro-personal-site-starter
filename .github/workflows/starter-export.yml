@@ -7,6 +7,9 @@ on:
       - 'scripts/audit-generated-links.mjs'
       - 'scripts/test-generated-link-audit.mjs'
       - 'src/data/layout-directions.json'
+      - 'src/data/layout-assembly/**'
+      - 'src/data/starter-config.ts'
+      - 'src/pages/starter/index.astro'
       - '.github/workflows/starter-export.yml'
   workflow_dispatch:
 permissions:
