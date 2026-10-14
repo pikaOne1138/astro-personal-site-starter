@@ -7,7 +7,7 @@
 - 使用既有 Builder Pack／Starter Export，不建立第二套 ZIP 產生器或 QA 平台。
 
 ## 本輪完成的程式
-1. 十二款 Home 都保留各自的主要构圖、閱讀順序及 RWD。
+1. 十二款 Home 都保留各自的主要構圖、閱讀順序及 RWD。
 2. Learning Lab 原始垂直節點、互動勾選與單元 spread；Curator 主抽屜＋兩個次要物件列；Coach 錯位方法卡、深色合作區與底部大字 CTA；Collective 立場 spread、真實成員卡及活動 ledger。
 3. Radio Letter 節目說明雙欄、授權音訊／逐字稿、公開文章索引；Reading Atlas 年份外框、四欄月份、年度書 spread 及季度索引；Somatic 全幅 Hero、練習帶、淺色服務入口；Trust Path 五站脊線與真正提供的比例時間尺。
 4. 共用文章資料／路由／SEO／Pagefind；保留六種 Archive、十二種 ArticleDetail/About、六種服務／FAQ／初次聯絡的 Design Family。
@@ -34,7 +34,7 @@
 - 無效的舊 ID3 測試字串改為合法一秒靜音 WAV；CI 現在等待 metadata、驗證 duration，實際 muted play/pause，失敗不可說播放器正常。
 
 ## 四尺寸證據與其界線
-已取得且实际目視：
+已取得且實際目視：
 - Baseline `3a5dbb89`：168 張，十二款桌面／手機首頁與 About／文章或服務總覽。
 - `9709997f`：240 張，四尺寸首頁／About／內頁，以及六款 FAQ／聯絡／第一次聯絡。
 - `e1f7ab0f`：336 張，加 48 同色同字體同主標結構比較、48 長中文首頁。
@@ -95,9 +95,26 @@
 
 [最新已確認 576 張（10a510e0）](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38605031762/artifacts/11914384379)
 
-**这些新圖尚未目視**：環境離線，不能把 log 的 PASS 說成最終 Art Direction 全部通過。上一輪舊圖的空文章 FAIL 已被修正且回歸通過，但仍應看最新 empty JPG。
+**這些新圖尚未目視**：環境離線，不能把 log 的 PASS 說成最終 Art Direction 全部通過。上一輪舊圖的空文章 FAIL 已被修正且回歸通過，但仍應看最新 empty JPG。
 
 ## 既有助人者「文章」選項的相容性
 最後檢查發現：planner/exporter 原本允許 helper 啟用 articles，但專屬 Archive 元件只有六款 knowledge 分支，會讓 helper 的文章列表空白。已在同一 ArticleArchive 補回實際公開文章列表／空內容狀態，沿用目前 Design Family，沒有新建 Block、搜尋或產生器。
 
 既有驗證增加一個 helper＋articles 的實際匯出／Build，確認公開文章、草稿排除、Archive Count=1，並捕捉列表和詳情的四尺寸，共新增 8 張；因此下一個有效 Head 預期 **584 張**。此新 Head 必須再核對 CI，不借用 10a510e0 的綠燈。
+
+
+## 最新完整程式驗收：283a5a19（含 helper 文章）
+此節取代前面「584 張待確認」的技術狀態：
+- Commit：`283a5a19a0c075444a2c38ccd94a601e70268970`。
+- Cloudflare Pages、preview-build、standalone-build、static-build **四項 PASS**。
+- Standalone run `38606958973`、job `116000200096`，實際 log：
+  `{"total":584,"failedHttp":0,"overflow":0,"errors":0,"noFamily":0,"heading":0,"articleCounts":0,"keyboard":0,"invisibleMasthead":0}`
+- Helper 啟用文章的實際 Archive／Detail 已回歸通過；公开文章可見，草稿不公開。此新增 8 張為相同既有流程的額外測試，不是另一個匯出器。
+- Static run `38606958960`、job `116000197819`：Builder Pack 解壓、十二款選擇匯出、knowledge/helper 完整 Build、canonical prompt／ZIP gate、Guide ZIP 真實瀏覽器下載與遠端 ZIP black-box 均 PASS。
+- PR Preview run `38606959000` PASS。實際 Cloudflare immutable Preview：`https://fe8d858d.personal-site-starter.pages.dev/`，確認七個路由及 ZIP，對應此已驗收程式版本。
+
+[584 張完整學員四尺寸截圖](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38606958973/artifacts/11916106581)
+
+最後的歸檔 commit 只更新本交接記錄及驗證腳本的文件參照註解；網站、匯出器與測試行為同此已確認版本。仍以最新 GitHub Head／Checks 為準。
+
+**最後未完成：584 張最新版的目視 Art Direction 覆核。** 環境離線，不能再讀／看新圖片。十二款正常、長文與缺資料的瀏覽器技术 gates 均 PASS；但最後的原型忠實度與內頁視覺完整性不能冒充已收工。上一輪圖已目視，本輪最後修正依據原型／程式與 CI；重新取得最新 artifact 看圖即可延續，無須重做研究或重造功能。

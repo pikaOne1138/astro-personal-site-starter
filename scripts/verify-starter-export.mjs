@@ -1,3 +1,4 @@
+// Acceptance evidence and final visual limits: docs/layout/PR46-HANDOFF.md
 import {mkdtempSync,readFileSync,existsSync,writeFileSync,rmSync,mkdirSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
