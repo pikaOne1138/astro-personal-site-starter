@@ -216,6 +216,7 @@ if(hasAssemblyAdapter){
  assets['src/components/layouts/selected/DesignInterior.astro']=readFileSync(new URL('../src/data/layout-assembly/DesignInterior.astro',import.meta.url),'utf8');
  assets['src/components/layouts/selected/ServiceSections.astro']=readFileSync(new URL('../src/data/layout-assembly/ServiceSections.astro',import.meta.url),'utf8');
  assets['src/components/layouts/selected/AboutSections.astro']=readFileSync(new URL('../src/data/layout-assembly/AboutSections.astro',import.meta.url),'utf8');
+ assets['src/components/layouts/selected/ArticleArchive.astro']=readFileSync(new URL('../src/data/layout-assembly/ArticleArchive.astro',import.meta.url),'utf8');
  assets['public/design-family.css']=readFileSync(new URL('../src/data/layout-assembly/DesignChrome.css',import.meta.url),'utf8');
  assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'design-family.css'}/>").replace('<body><a href=','<body data-site-family={config.layoutSlug}><a href=');
  for(const page of ['src/pages/[...page].astro','src/pages/articles/index.astro','src/pages/articles/[slug].astro']){
@@ -229,6 +230,9 @@ if(hasAssemblyAdapter){
  assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro'].replace(
   '<section class="interior"><h1>文章</h1>{articles.length?<div class="links">{articles.map(x=><a href={base+\'articles/\'+x.id+\'/\'}>{x.data.title} →</a>)}</div>:<p>目前沒有公開文章。</p>}</section>',
   '<DesignInterior title="文章與觀點" kicker="ARCHIVE" mode="listing">{articles.length?<div class="family-articles">{articles.map((x,i)=><a class="family-article-link" href={base+\'articles/\'+x.id+\'/\'}><span class="family-article-index">{String(i+1).padStart(2,\'0\')}</span><span class="family-article-copy"><strong>{x.data.title}</strong><span>{x.data.description}</span></span><time datetime={x.data.publishedAt.toISOString()}>{x.data.publishedAt.toLocaleDateString(\'zh-TW\')}</time><span aria-hidden="true">↗</span></a>)}</div>:<p>目前沒有公開文章。新增經本人確認的文章後，這裡會自動顯示。</p>}</DesignInterior>');
+ assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro']
+  .replace("import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';","import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';\\nimport ArticleArchive from '../../components/layouts/selected/ArticleArchive.astro';")
+  .replace(/\{articles\.length\?<div class="family-articles">[\s\S]*?<\/DesignInterior>/,'<ArticleArchive articles={articles}/></DesignInterior>');
  assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace(
   '<article class="interior prose"><h1>{entry.data.title}</h1><p>{entry.data.description}</p><Content/></article>',
   '<DesignInterior title={entry.data.title} description={entry.data.description} kicker="ARTICLE" mode="article"><article class="family-prose"><Content/></article></DesignInterior>');
