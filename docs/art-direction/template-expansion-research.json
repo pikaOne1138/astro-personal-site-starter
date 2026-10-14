@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-14",
+  "status": "research-only",
+  "acceptance": "Same color, font and content; recognisable structural differences. No distinct-use-case requirement.",
+  "visualAcceptance": "deferred-not-tested",
+  "wpSources": [
+    {
+      "id": "WP01",
+      "name": "Herald 列表布局",
+      "url": "https://mekshq.com/docs/herald-post-layouts/",
+      "evidence": "官方文件",
+      "observation": "同一分類可混用首篇與後續文章布局，建立大小層級。",
+      "adaptation": "頭條＋次要列，不搬廣告／排行／會員。"
+    },
+    {
+      "id": "WP02",
+      "name": "Herald Demo／文章內頁",
+      "url": "https://demo.mekshq.com/herald/",
+      "evidence": "Demo 內容與導航",
+      "observation": "提供列表 A–L、文章 1–9、左右／無側欄入口；讀取一篇文章有正文、作者框與後續內容。",
+      "adaptation": "首頁與文章頁分別設計；此輪沒逐款渲染。"
+    },
+    {
+      "id": "WP03",
+      "name": "Typology",
+      "url": "https://demo.mekshq.com/typology/",
+      "evidence": "Demo 內容與導航",
+      "observation": "列表 A/B/C、帶圖版本、文章封面／無封面與分類頁選項，配色字體另外列出。",
+      "adaptation": "無圖文章流、日期軸、內頁封面組織；不搬字母裝飾。"
+    },
+    {
+      "id": "WP04",
+      "name": "Johannes 列表",
+      "url": "https://mekshq.com/docs/johannes-post-layouts/",
+      "evidence": "官方文件",
+      "observation": "精選布局與一般列表是不同群組，一般列表可用於首頁和 archive。",
+      "adaptation": "同一文章模型可配不同構圖，不需新網站用途。"
+    },
+    {
+      "id": "WP05",
+      "name": "Johannes 首頁",
+      "url": "https://mekshq.com/docs/johannes-home-page-setup/",
+      "evidence": "官方文件",
+      "observation": "Welcome、Featured、Latest 可開關與重排。",
+      "adaptation": "首頁人格與文章布局分開，但不讓每款只重排相同三卡。"
+    },
+    {
+      "id": "WP06",
+      "name": "Blocksy 分類布局",
+      "url": "https://creativethemes.com/blocksy/docs/post-types/categories/",
+      "evidence": "官方文件",
+      "observation": "Simple、Grid、Gutenberg、Classic、Enhanced Grid；卡片另分 Simple／Boxed／Cover。",
+      "adaptation": "整頁結構、卡片與風格是不同層，不把其五種名稱等同五套 ATP 成品。"
+    },
+    {
+      "id": "WP07",
+      "name": "Blocksy News",
+      "url": "https://creativethemes.com/blocksy/starter-site/news/",
+      "evidence": "官方描述",
+      "observation": "首頁文章索引、大圖與摘要，附 Single／About／Contact 頁。",
+      "adaptation": "經典文章流與完整內頁；Live Demo 本輪擷取失敗。"
+    },
+    {
+      "id": "WP08",
+      "name": "Blocksy Travel",
+      "url": "https://creativethemes.com/blocksy/starter-site/travel/",
+      "evidence": "官方描述",
+      "observation": "edge-to-edge Hero、Blog、About，另列 Single 頁。",
+      "adaptation": "全幅影像與圖文敘事；不是本輪目視結論。"
+    },
+    {
+      "id": "WP09",
+      "name": "Blocksy Tasty",
+      "url": "https://creativethemes.com/blocksy/starter-site/tasty/",
+      "evidence": "官方描述",
+      "observation": "食譜展示與 ingredients／directions，以及 About／Contact。",
+      "adaptation": "圖卡與結構化內頁；不為一般部落格新增食譜外掛。"
+    },
+    {
+      "id": "WP10",
+      "name": "Blocksy Consultant",
+      "url": "https://creativethemes.com/blocksy/starter-site/consultant/",
+      "evidence": "官方描述",
+      "observation": "Services／About／Blog／Contact 與 meeting 模組。",
+      "adaptation": "服務網站也是整組頁面；不移植 WP booking plugin。"
+    },
+    {
+      "id": "WP11",
+      "name": "Astra Life Coach",
+      "url": "https://wpastra.com/templates/life-coach-sara-john/",
+      "evidence": "官方描述",
+      "observation": "靜態圖片 header、標題及分區內容／服務。",
+      "adaptation": "以肖像／照片形成個人門面，不搬 WooCommerce。"
+    }
+  ],
+  "directions": [
+    {
+      "id": "K01",
+      "slug": "sidebar-journal",
+      "name": "側欄日誌",
+      "priority": "第一批",
+      "mode": "sidebar",
+      "home": "簡短站名 → 文章主欄 8/12 ＋ 右側作者／分類 3/12 → 分頁",
+      "archive": "保持主欄＋分類側欄，橫向縮圖文章列",
+      "detail": "文章標題與正文 680–720px；右欄作者／目錄，手機移到正文後",
+      "about": "作者照片與自述主欄，側欄保留分類／聯絡",
+      "mobile": "正文優先；側欄不插在每兩篇文章之間，整組移到底部",
+      "nearest": "Field Notes",
+      "difference": "移除窄編號 rail 與邊注三欄；文章串流佔主畫面，不用宣言 Hero；右側是作者資訊，不是觀察註解",
+      "refs": [
+        "WP07",
+        "WP06",
+        "GPT：Austin Kleon／Marginalian",
+        "Arena：電腦玩物"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "K02",
+      "slug": "editorial-frontpage",
+      "name": "個人刊物",
+      "priority": "第一批",
+      "mode": "magazine",
+      "home": "作者／刊名 → 第一篇大文 7/12 ＋ 兩篇短列 5/12 → 其餘文章 → 本人／RSS",
+      "archive": "首篇大卡＋後續緊湊圖文列，保持主次大小",
+      "detail": "寬標題＋寬封面 → 窄正文＋桌面目錄 → 相關文章列",
+      "about": "作者介紹、關注主題、寫作方式與代表文章；不需要編輯團隊",
+      "mobile": "主文先、兩篇次文後，再到一般列表；DOM 順序與視覺一致",
+      "nearest": "Essayist／Coach",
+      "difference": "首屏主角是多篇文章階層，不是作者口號或單篇全文；同屏同時呈現頭條與次條",
+      "refs": [
+        "WP01",
+        "WP02",
+        "Manus：Deem／PanSci",
+        "GPT：Casper／colocal",
+        "Arena：Lexington"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "1–2 篇只顯示主文與可用短列，不造頭條／熱門排行；不是新聞網站",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "K03",
+      "slug": "card-journal",
+      "name": "卡片刊物",
+      "priority": "第一批",
+      "mode": "grid",
+      "home": "小型作者條 → 分類列 → 等寬三欄文章卡，封面／摘要固定階層",
+      "archive": "同款卡片格網＋分頁；不另加巨型 Hero",
+      "detail": "分類／標題 → 有界封面 → 單欄正文 → 同比例相關卡",
+      "about": "肖像＋短介，再列代表文章卡",
+      "mobile": "三欄→兩欄→單欄；無封面時保留文字卡完整度，不出現破圖",
+      "nearest": "Curator／Subject Atlas",
+      "difference": "重複文章卡是主結構，非靜物展牆、編目抽屜或主題格；每篇同權重",
+      "refs": [
+        "WP06",
+        "WP09",
+        "GPT：Fuwari／Casper",
+        "Arena：Fuwari／Jules Acree"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "K04",
+      "slug": "visual-stories",
+      "name": "影像故事",
+      "priority": "第二批",
+      "mode": "visual",
+      "home": "寬幅第一篇 → 圖文左右交錯的文章預告；圖片不壓正文",
+      "archive": "寬幅圖文列，保持影像比例與圖說",
+      "detail": "寬封面 → 窄敘述 → 寬影像／caption 與段落交替",
+      "about": "工作／生活影像與自述交錯",
+      "mobile": "每篇圖片→標題摘要；文章頁影像可寬、正文保持閱讀邊距",
+      "nearest": "Somatic／Curator",
+      "difference": "多篇文章形成圖文節奏，不是單張氛圍背景；標題不覆在圖上，圖片屬於各文章",
+      "refs": [
+        "WP08",
+        "Manus：Meiwen See／ONE",
+        "GPT：キナリノ／colocal"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "K05",
+      "slug": "compact-dispatch",
+      "name": "極簡短箋",
+      "priority": "第二批",
+      "mode": "compact",
+      "home": "站名與一句話 → 日期窄欄＋文章標題／短摘要的連續索引，沒有巨大宣言",
+      "archive": "年月標示＋緊湊列表，可沿用靜態分頁",
+      "detail": "小型標題區 → 窄正文 → 前後篇／RSS；不強制封面與 sidebar",
+      "about": "短自介、Now／聯絡與代表文章，避免假履歷",
+      "mobile": "日期移到標題上方；維持 16–18px 正文而不是縮小字塞內容",
+      "nearest": "Essayist／Subject Atlas",
+      "difference": "首頁以多篇短列為主，沒有超大刊頭、首頁全文或分類格；無圖也有真實完整索引",
+      "refs": [
+        "WP03",
+        "Manus：Benedict Evans",
+        "GPT：Derek Sivers／Cactus",
+        "Arena：Bear Blog"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "K06",
+      "slug": "split-reader",
+      "name": "雙欄閱讀台",
+      "priority": "第二批",
+      "mode": "split",
+      "home": "左欄代表文章預告 5/12；右欄其他文章索引 7/12，兩者在同屏形成不同密度",
+      "archive": "左右欄各有清楚角色；不使用兩個獨立滾動容器",
+      "detail": "左側標題／摘要、右側正文；長文頁桌面可 sticky 短標題欄",
+      "about": "左姓名與定位、右自述／經驗段落",
+      "mobile": "兩欄合成單一文件流：代表文章在前、索引在後；不保留橫向滑動",
+      "nearest": "Essayist／Curator",
+      "difference": "不是一張疊圖大字封面；固定角色雙欄貫穿首頁與內頁，右欄持續文章流",
+      "refs": [
+        "WP04",
+        "WP05",
+        "Manus：Benedict Evans",
+        "GPT：Navfolio"
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
+    },
+    {
+      "id": "H01",
+      "slug": "portrait-profile",
+      "name": "人物名片",
+      "priority": "第一批",
+      "mode": "portrait",
+      "home": "肖像 4/12 ＋ 姓名／對象／聯絡 7/12 → 本人簡介 → 精簡服務列 → FAQ",
+      "archive": "服務總覽保持人物與簡介區，服務項目可比較但不強迫三欄",
+      "detail": "服務文字主欄＋形式／費用資訊側欄；CTA 說明下一步",
+      "about": "肖像與經驗分欄，資歷資料可核實，短段落沿同一對齊軸",
+      "mobile": "姓名定位→肖像→服務→聯絡；沒有固定滿屏高",
+      "nearest": "Companion／Clinician",
+      "difference": "以肖像和身份為首屏主角；移除書信開場、規格條與巨型宣言；正文是短名片欄而非長篇信",
+      "refs": [
+        "WP11",
+        "GPT：Kristin Heinrich／Minaa B.",
+        "Arena：Michelle Harwell／Therapi"
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
+    },
+    {
+      "id": "H02",
+      "slug": "service-catalogue",
+      "name": "服務目錄",
+      "priority": "第一批",
+      "mode": "catalogue",
+      "home": "短定位 → 服務卡 2–3 欄（相同欄位）→ 合作資訊帶 → 本人／FAQ → 聯絡",
+      "archive": "服務卡全覽與必要比較，只有一項時仍能完整排版",
+      "detail": "服務名與說明 → 形式／時間／費用固定資訊列 → 適用範圍 → 流程／FAQ",
+      "about": "本文與工作方式兩欄，再回服務目錄",
+      "mobile": "卡片單欄，同欄位順序；不橫滑要求比較",
+      "nearest": "Practice Compass／Coach",
+      "difference": "首頁服務條目是主要視覺物件，不是訪客三個一般問題或方法三步；構圖差異可使用相同服務資料驗證",
+      "refs": [
+        "WP10",
+        "GPT：Clove／Kristin",
+        "Arena：Kate Crocco／Pathwise",
+        "Manus：Orka"
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
+    },
+    {
+      "id": "H03",
+      "slug": "studio-chapters",
+      "name": "工作室章節",
+      "priority": "第一批",
+      "mode": "chapters",
+      "home": "寬幅工作照→短介紹→左章節索引＋右圖文工作方式→服務與聯絡",
+      "archive": "服務條目沿章節結構，方法與服務連結可快速到達",
+      "detail": "左側固定章節、右側內容，照片需真實／授權，手機章節變頁首連結",
+      "about": "工作方式與本人經驗以章節交錯，無圖仍保留兩欄身份",
+      "mobile": "圖片、章節導航、正文自然堆疊；sticky 索引撤掉",
+      "nearest": "Somatic／Field Notes",
+      "difference": "服務網站的章節索引貫穿正文；非全幅沉浸圖，也不是研究邊注",
+      "refs": [
+        "GPT：Clove／Guided Psychology",
+        "Arena：The Well",
+        "Manus：Meiwen See"
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
+    },
+    {
+      "id": "H04",
+      "slug": "practice-dossier",
+      "name": "專業資料冊",
+      "priority": "強化既有",
+      "mode": "dossier",
+      "home": "身份與範圍摘要 → 兩欄可查資料 → 工作方式 → 適配／FAQ → 聯絡",
+      "archive": "服務列表像資料目錄，欄位一致、不裝飾性三卡",
+      "detail": "服務內容、形式、費用、取消／界線以可掃讀資料章節呈現",
+      "about": "姓名、經驗、資格與來源連結；無未提供數字",
+      "mobile": "表列變定義清單，保留每項標籤與內容",
+      "nearest": "Clinician",
+      "difference": "先強化 Clinician 對照資訊語彙與內頁，不另算一個新方向；不是因用途相同刪除，而是現有幾何最接近",
+      "refs": [
+        "原十款：Clinician",
+        "WP10",
+        "Manus：Wyatt Okeefe／Orka"
+      ],
+      "kind": "helper",
+      "assemblyStatus": "existing-strengthening-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
+    },
+    {
+      "id": "H05",
+      "kind": "helper",
+      "slug": "editorial-practice",
+      "name": "觀點服務誌",
+      "priority": "第二批",
+      "mode": "editorial-practice",
+      "assemblyStatus": "not-implemented-research",
+      "home": "一篇服務觀點預告為主文 7/12 ＋ 本人／合作入口 4/12 → 服務列 → 方法／FAQ",
+      "archive": "文章與服務各有獨立索引，以版面角色區分而非混成相同卡片",
+      "detail": "觀點文章窄正文＋情境式服務連結；服務頁介紹該項安排，再接相關觀點",
+      "about": "本人簡介與工作立場分欄，代表文章與服務入口成對",
+      "mobile": "定位先、主文後，再呈現本人與服務；不把聯絡塞在文章中段",
+      "nearest": "Essayist／Coach",
+      "difference": "正文主角是可閱讀的服務觀點，側欄是本人與合作；不是海報口號與方法三步，也不是首頁直接放單篇全文",
+      "refs": [
+        "H-S02",
+        "H-S07",
+        "H-S08"
+      ],
+      "contentFallback": "沒有正式文章時改為站長已提供的工作理念；不生成假案例，沒有寫作意願者優先選其他方向",
+      "professionalAdaptation": "可用於教練／顧問／療癒／心理服務；服務詞彙與資格依本人，不預設醫療"
+    },
+    {
+      "id": "H06",
+      "kind": "helper",
+      "slug": "question-led-practice",
+      "name": "問答對話",
+      "priority": "第二批",
+      "mode": "question-led",
+      "assemblyStatus": "not-implemented-research",
+      "home": "一句定位 → 左側訪客提問索引 3/12 ＋ 右側連續回答 8/12（本人、服務、方法、流程）→ 聯絡",
+      "archive": "服務索引以問題與回答交錯，不只在頁尾放 FAQ",
+      "detail": "這項服務是什麼／如何進行／範圍與費用／下一步依同一對話軸呈現",
+      "about": "我是誰／如何工作／相關經驗的問答，答案仍為本人真實資料",
+      "mobile": "取消側索引；每個問題緊鄰答案，依序全文可讀；details 僅折疊次要補充",
+      "nearest": "Practice Compass／Trust Path",
+      "difference": "全頁以提問欄＋回答欄延續；沒有三個 PATH 分流、五站路線圖或關卡，FAQ 不是結尾孤立區塊",
+      "refs": [
+        "H-S01",
+        "H-S03",
+        "NEW：將已觀察的疑問回答模式擴為全頁對話軸，非原站復刻"
+      ],
+      "contentFallback": "至少本人／服務／流程三個真實回答即可成立；不硬湊十題或做診斷測驗",
+      "professionalAdaptation": "問題依服務類型改寫；不預設診斷、療程或危機處置能力"
+    }
+  ],
+  "audiences": [
+    {
+      "kind": "knowledge",
+      "target": "個人知識／內容創作者：知識整理、生活紀錄、觀點、專業文章與個人內容基地",
+      "boundary": "不以新聞媒體、多作者刊物、商城或會員營運為必要條件"
+    },
+    {
+      "kind": "helper",
+      "target": "助人者／個人專業服務者：心理／諮商、催眠、療癒、身心靈、身體工作、教練與顧問",
+      "boundary": "以單人服務為基礎；資格、界線、危機資訊依實際專業，不將所有人預設成心理師"
+    }
+  ],
+  "sourceReview": {
+    "providedScreenshotInspection": [
+      "GPT A01 Maggie Appleton",
+      "GPT A03 Austin Kleon",
+      "GPT A08 colocal",
+      "GPT A15 Astro Cactus",
+      "GPT B01 Guided Psychology",
+      "GPT B02 Minaa B.",
+      "GPT B06 Kristin Heinrich",
+      "GPT B07 Everbe",
+      "GPT B20 Clove"
+    ],
+    "boundary": "Nine supplied historic screenshots visually inspected, not newly captured; some contain loading, contrast or embed problems. Current primary-page retrieval is text evidence only. No PR47 screenshot acceptance."
+  },
+  "targetSources": [
+    {
+      "id": "H-S01",
+      "name": "Guided Psychology",
+      "url": "https://www.guidedpsychology.com.au/",
+      "observed": "附件首屏為左文／右拱形空間圖；本輪內容有本人、工作方法、FAQ。",
+      "take": "本人與方法可構成完整服務介紹；不把左右兩欄或拱形本身當新構圖。"
+    },
+    {
+      "id": "H-S02",
+      "name": "Minaa B.",
+      "url": "https://www.minaab.com/",
+      "observed": "附件首屏左肖像、右定位，現在內容同時有 Therapy／Speaking／Resource Hub。",
+      "take": "個人身份、觀點與服務可共存；不搬書／播客／媒體數字。"
+    },
+    {
+      "id": "H-S03",
+      "name": "Kristin Heinrich",
+      "url": "https://www.kristinheinrichpsychology.com.au/",
+      "observed": "附件首屏右方大片空白，原報告注明載入限制；可讀內容有對象／地點、本人與FAQ。",
+      "take": "FAQ 內容先回答疑問；空白不能當刻意設計或照片已實測正常。"
+    },
+    {
+      "id": "H-S04",
+      "name": "Everbe Therapy",
+      "url": "https://everbetherapy.com/",
+      "observed": "附件左照片右文案，色彩與字體識別強；本輪內容有本人取向與長敘事。",
+      "take": "去掉風格後仍是雙欄，不能僅學桃色與襯線；不搬療效承諾。"
+    },
+    {
+      "id": "H-S05",
+      "name": "Everroot 服務頁",
+      "url": "https://myeverroot.com/services",
+      "observed": "本輪內容逐項列服務、時長／費用、聯絡；圖片分散於服務段落。",
+      "take": "一位服務者可有單次／系列／伴侶等安排；抽取完整服務欄位，不搬實際價格。"
+    },
+    {
+      "id": "H-S06",
+      "name": "The Well",
+      "url": "https://www.thewellcounselingpractice.com/",
+      "observed": "本輪內容有工作空間、本人、個人／伴侶服務與聯絡。",
+      "take": "工作室章節可把空間與文字交替；此輪沒有取得完整新視覺截圖。"
+    },
+    {
+      "id": "H-S07",
+      "name": "Kelsey O’Halloran",
+      "url": "https://www.kelseyohalloran.com/services",
+      "observed": "本輪服務頁有本人、提供內容、時程、費用與下一步；Blog 有觀點／案例文章。",
+      "take": "非心理治療的個人專業服務參考；文章與服務建立回路，案例非必填。"
+    },
+    {
+      "id": "H-S08",
+      "name": "心理師阿綸",
+      "url": "https://www.lunpsy.com/",
+      "observed": "本輪首頁有多主題、文章、本人、一般聯絡；品牌流程舊路徑擷取失敗。",
+      "take": "繁中觀點與專業服務可以同站；不搬重複導覽／商店／課程流程。"
+    }
+  ]
+}

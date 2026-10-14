@@ -1,0 +1,7 @@
+---
+import config from '../../site.config.json';
+import SiteLayout from '../layouts/SiteLayout.astro';
+const facts=config.artDirection.serviceFacts;
+const rows=[['scope','服務範圍'],['credentials','資格與查核來源'],['format','服務形式'],['duration','時間'],['price','費用'],['cancellation','取消與退款規則']];const base=import.meta.env.BASE_URL;
+---
+<SiteLayout title="服務說明"><section class="interior"><p class="eyebrow">TRANSPARENT SERVICES / DISCLOSURE LEDGER</p><h1>先了解範圍，再討論可能性。</h1><p>未提供的服務資料不會以示範資格、價格或保證效果代替。</p><div class="reading-grid"><aside><a href="#information">必要資訊</a><a href="#process">聯絡流程</a><a href={base+'contact/'}>聯絡方式</a></aside><div><section id="information"><h2>公開需要確認的資訊。</h2><dl class="ledger">{rows.map(([key,label])=><div><dt>{label}</dt><dd>{facts[key]||'尚未設定：請由網站持有人提供並核實。'}</dd></div>)}</dl></section><section id="process"><h2>聯絡之前的三個步驟。</h2><ol class="service-steps">{['確認服務是否適合','確認形式、費用與必要規則','使用已配置的正式聯絡管道'].map((s,i)=><li><strong>{String(i+1).padStart(2,'0')}</strong><span>{s}</span></li>)}</ol><p class="notice">本站不提供即時危機處理。急迫需求請使用所在地可信任的緊急服務。</p><a class="action" href={base+'contact/'}>查看聯絡方式 ↗</a></section></div></div></section></SiteLayout>

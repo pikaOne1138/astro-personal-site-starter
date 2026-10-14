@@ -1,0 +1,8 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import config from '../../../site.config.json';
+import {getCollection} from 'astro:content';
+export function getStaticPaths(){return config.artDirection.topics.map(topic=>({params:{slug:topic.slug},props:{topic}}));}
+const {topic}=Astro.props;const posts=await getCollection('articles',({data})=>!data.draft&&data.topics.includes(topic.slug));const base=import.meta.env.BASE_URL;
+---
+<SiteLayout title={topic.title+'｜主題索引'} description={topic.description}><section class="interior"><p class="eyebrow">TOPIC / {topic.slug.toUpperCase()}</p><h1>{topic.title}｜主題索引</h1><p>{topic.description}</p><div class="topic-grid"><aside aria-label="主題導覽"><a href={base+'topics/'}>全部主題</a>{config.artDirection.topics.filter(t=>t.slug!==topic.slug).map(t=><a href={base+'topics/'+t.slug+'/'}>{t.title}</a>)}</aside><div><h2>閱讀路徑</h2>{posts.length?<ol>{posts.map(p=><li><a class="action" href={base+'articles/'+p.id+'/'}>{p.data.title} ↗</a><p>{p.data.description}</p></li>)}</ol>:<p>這個主題目前沒有公開文章。</p>}<a class="action" href={base+'articles/'}>回到文章檔案 ↗</a></div></div></section></SiteLayout>

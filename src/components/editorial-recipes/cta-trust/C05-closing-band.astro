@@ -13,7 +13,7 @@ const {
 ---
 <section class="c05">
   <div class="t"><p class="kicker">{kicker}</p><h2>{lines.map((l) => <span class="ph">{l}</span>)}</h2></div>
-  <div class="a"><a class="main" href={primary.href}>{primary.t}</a><a class="sec" href={secondary.href}>{secondary.t}</a></div>
+  <div class="a">{primary.href && primary.href !== "#" ? <a class="main" href={primary.href}>{primary.t}</a> : <span class="main" role="status">{primary.t}</span>}<a class="sec" href={secondary.href}>{secondary.t}</a></div>
   <p class="fine">{fine}</p>
 </section>
 <style>

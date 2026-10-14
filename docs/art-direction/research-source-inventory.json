@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-14",
+  "evidenceBoundary": "Document/source comparison and 11 primary-page text retrievals; no new visual QA or blanket claim of every embedded image reviewed.",
+  "files": [
+    {
+      "file": "01-Astro-.md",
+      "bytes": 34348,
+      "sha256": "8c6a5e723b2c9607a5cfa198f35fc886f39130816c5c10db55d55db66335d473",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "02-gpt-work-AstroTmplateResearch.html.html",
+      "bytes": 6686503,
+      "sha256": "1b0d0d74d2c4f99609349543e51914958c69c672702e87c9911876ed755e75e9",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "03-arenaAgent-00_-.md",
+      "bytes": 4794,
+      "sha256": "eab3f68638bc19b7d488193bb3d26f3004aee4333edba8f01b5e2a3f4f6c31d7",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "04-arenaAgent-01A_-_-_01-10.md",
+      "bytes": 23934,
+      "sha256": "059cb059b14f6f7567bbef742f13d826939c5f2ccecd91406f819e1ea8596f89",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "05-arenaAgent-01B_-_-_11-20.md",
+      "bytes": 22179,
+      "sha256": "b4a95c0905190fe0e4d23248d4009b1bde40cb6dee5c1d239db84ee63b5c7718",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "06-arenaAgent-02A_-_-_01-10.md",
+      "bytes": 21672,
+      "sha256": "498925dc42439a13040d8f560cfba392d69c9dbc2d06d37e8134a9330b3499ce",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "07-arenaAgent-02B_-_-_11-20.md",
+      "bytes": 25068,
+      "sha256": "370aec9142c018c11fcb71d2ac7b227dcebf50f1385442041f827a572f2e10a5",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "08-arenaAgent-03_Top10-.md",
+      "bytes": 3745,
+      "sha256": "728d51dfb0b6c9300a598d293f03ba66e569f43d51ae5375fbd35582938be100",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "09-arenaAgent-04_Pattern-_-.md",
+      "bytes": 10453,
+      "sha256": "37c4056a4c6e5b17d690cc72d2213e57f2fbe83f623a7150fa2be9b39870f2f2",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "10-arenaAgent-05_Pattern-_CSS-CTA-.md",
+      "bytes": 13686,
+      "sha256": "11b3fa876b91f5bf4aa31ffcefb60295c3d77e67f56e058a84534926c555a2d2",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "11-arenaAgent-06_-DesignBrief-.md",
+      "bytes": 10026,
+      "sha256": "e8b837f9d74346895b4a57e88970a6122168ad0ebe0ca8e62638001672eddc36",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "12-manus-AstroTmplateResearch.md",
+      "bytes": 82527,
+      "sha256": "67f5614d2190940d716c162810b8fe35d3aeb1dab6141e586782bee281011eda",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "13-manusCR-v2README.md",
+      "bytes": 6441,
+      "sha256": "4e8a6b36a6749bc966e48ee2602c14c98804ddb28e9a50ee897e0352eb112316",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "14-manusCR-v2COMPONENT_CATALOG.md",
+      "bytes": 13891,
+      "sha256": "debaef92d2416e973089189fa2464f4d3342a82f1fc35a0bc355a1475e3f3e1b",
+      "role": "supplied-source-not-new-validation"
+    },
+    {
+      "file": "15-manusCR-v2astro-editorial-care-tailwind-motion.zip",
+      "bytes": 1681284,
+      "sha256": "c741faa055a25e106cc3b1ad226e26cd9cafe3b76a9db43ad844dc08f957e973",
+      "role": "supplied-source-not-new-validation",
+      "entries": 83
+    },
+    {
+      "file": "16-astro-ten-site-directions.zip",
+      "bytes": 6160987,
+      "sha256": "bb7d8f0abdc3b1d659b03b60d5682d1e05b223dcedf07a28004a29a5dca4c93b",
+      "role": "supplied-source-not-new-validation",
+      "entries": 162
+    },
+    {
+      "file": "17-astro-editorial-layout-skill.zip",
+      "bytes": 2972481,
+      "sha256": "090d96109b250b4c335968dc8caaa59dfeaa206eec2f7afaa8bc5b0fe57fb503",
+      "role": "supplied-source-not-new-validation",
+      "entries": 105
+    }
+  ]
+}

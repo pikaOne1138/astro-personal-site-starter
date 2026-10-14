@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-14",
+  "status": "research-only",
+  "scope": "Operating coaching, counselling-related and spiritual sites with public traffic evidence; ATP helper audience",
+  "method": {
+    "traffic": "第三方模型估計，非 GA4 實測；Visits 非不重複人數，非社群粉絲。Similarweb 公開比較卡片置於所選月份頁面；未取得原始匯出，不做精確排名。",
+    "channels": "桌面比例；Semrush Traffic Journey 與 Similarweb channel 模型不同，不混合計算。",
+    "limitations": [
+      "未取得轉換率、收入或網站實際後台",
+      "文字／導覽查核，不是當前網站截圖或 RWD 視覺 QA",
+      "不能由流量推論版型造成成效",
+      "內容品牌樣本偏多，以台灣預約型站作補充但不宣稱有可驗證高流量"
+    ]
+  },
+  "cases": [
+    {
+      "name": "Tony Robbins",
+      "url": "https://www.tonyrobbins.com/",
+      "category": "教練／大型個人品牌",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "1M",
+        "sourceUrl": "https://www.similarweb.com/website/tonyrobbins.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Direct 44.8%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "活動、教練方案、免費內容並列，訪客可先選要參與活動或接受教練服務。",
+      "observedNavigationRoute": "人物品牌 → 方案目錄 → 教練／活動詳細頁",
+      "atpInference": "服務目錄可借用；大型活動、企業背書與多方案不是初學者必填。",
+      "directionCandidate": "service-catalogue",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Mel Robbins",
+      "url": "https://www.melrobbins.com/",
+      "category": "個人成長作者／節目品牌",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "457.3K",
+        "sourceUrl": "https://www.similarweb.com/website/melrobbins.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Direct 38.64%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "以主題、節目、書籍、下載與電子報建立內容入口；不等同一對一執業教練。",
+      "observedNavigationRoute": "問題主題 → 節目索引 → 單集 → 訂閱／相關內容",
+      "atpInference": "節目可換成文章；保留主題索引與內容主次，不要求學員做 Podcast。",
+      "directionCandidate": "editorial-practice",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Marie Forleo",
+      "url": "https://www.marieforleo.com/",
+      "category": "商業／人生教練教育品牌",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "76.3K",
+        "sourceUrl": "https://www.similarweb.com/website/marieforleo.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Direct 55.11%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "免費訓練與新訪客入口，連接個人介紹、節目內容與課程。",
+      "observedNavigationRoute": "初次來訪／免費工具 → 內容 → 課程介紹",
+      "atpInference": "可用清楚的新訪客路徑；促銷倒數與課程平台不納入模板核心。",
+      "directionCandidate": "portrait-profile",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Esther Perel",
+      "url": "https://www.estherperel.com/",
+      "category": "心理治療師的關係內容品牌",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "192.6K",
+        "sourceUrl": "https://www.similarweb.com/website/estherperel.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Organic Search 51.16%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "以關係主題、Podcast、活動、書籍連接專業人物；近期寫作入口連到 Substack。",
+      "observedNavigationRoute": "關係主題 → 節目／內容 → 活動／書籍／聯絡",
+      "atpInference": "觀點服務誌的內容主次可借用；Podcast 個案節目不能當一般預約諮商服務。",
+      "directionCandidate": "editorial-practice",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Therapy in a Nutshell",
+      "url": "https://therapyinanutshell.com/",
+      "category": "心理專業教育／Emma McAdam",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "315.6K",
+        "sourceUrl": "https://www.similarweb.com/website/therapyinanutshell.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Organic Search 46.46%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "首頁按焦慮、憂鬱、恐慌、創傷等問題找資源，接文章與教育會員。",
+      "observedNavigationRoute": "問題分類 → 文章／影片 → 免費資源／課程",
+      "atpInference": "問題分類值得借用；諮商頁目前不接新個案，教育產品與臨床預約必須分開。",
+      "directionCandidate": "question-led-practice",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Gabby Bernstein",
+      "url": "https://gabbybernstein.com/",
+      "category": "身心靈作者／教學品牌",
+      "traffic": {
+        "provider": "Semrush",
+        "period": "2026-09",
+        "displayedVisits": "116.55K",
+        "sourceUrl": "https://www.semrush.com/website/gabbybernstein.com/overview/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Traffic and Visitor Engagement: September visits",
+        "channel": "Google organic 70.15%（桌面 Traffic Journey）",
+        "channelScope": "desktop"
+      },
+      "observed": "免費冥想、電子報、Podcast、書籍與會員／App 入口並列。",
+      "observedNavigationRoute": "免費練習 → 內容／訂閱 → 課程／會員",
+      "atpInference": "免費練習可成為獨立頁；不把會員、App 或效果承諾做成所有學員必需品。",
+      "directionCandidate": "studio-chapters",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Tara Brach",
+      "url": "https://www.tarabrach.com/",
+      "category": "心理學背景／冥想教學者",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "228K",
+        "sourceUrl": "https://www.similarweb.com/website/tarabrach.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Direct 46.69%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "Teachings、Meditations、熱門主題與新手入口分開；內容列表提供日期／摘要／時長。",
+      "observedNavigationRoute": "新手入口／熱門主題 → 講座或冥想 → 單篇／音訊 → 課程／活動／捐款",
+      "atpInference": "可做資源資料庫與新手導讀；不要求每位服務者都有大量音訊。",
+      "directionCandidate": "editorial-practice",
+      "visualVerification": "not-performed"
+    },
+    {
+      "name": "Eckhart Tolle",
+      "url": "https://eckharttolle.com/",
+      "category": "身心靈作者／教學品牌",
+      "traffic": {
+        "provider": "Similarweb",
+        "period": "2026-09",
+        "displayedVisits": "300.6K",
+        "sourceUrl": "https://www.similarweb.com/website/eckharttolle.com/",
+        "evidenceType": "third-party-estimate",
+        "extractionLocation": "Compare domain card under selected month",
+        "channel": "Organic Search 20.55%（桌面）",
+        "channelScope": "desktop"
+      },
+      "observed": "教學、活動、課程與免費影片訂閱組成多入口首頁。",
+      "observedNavigationRoute": "教學／活動 → 詳細介紹 → 外部課程／會員",
+      "atpInference": "工作室章節可採跨區塊節奏；活動多、首頁長，不代表小型個人站也該堆滿促銷。",
+      "directionCandidate": "studio-chapters",
+      "visualVerification": "not-performed"
+    }
+  ],
+  "interiorChecks": [
+    {
+      "url": "https://therapyinanutshell.com/get-counseling/",
+      "observation": "明確說目前不接新個案；轉介與免費資源／會員入口，不是本站個案預約。"
+    },
+    {
+      "url": "https://therapyinanutshell.com/hypervigilance-and-trauma/",
+      "observation": "文章有作者、日期、問題式標題、分節正文與外部引用。此研究不評估文中的醫療主張。"
+    },
+    {
+      "url": "https://www.tarabrach.com/new-to-meditation/",
+      "observation": "新手說明、免費課程、FAQ／PDF，再區分新手講座與基礎冥想；列表有日期、摘要與時長。"
+    }
+  ],
+  "localContext": [
+    {
+      "name": "蛹之生",
+      "url": "https://www.morph.com.tw/",
+      "trafficEvidence": "unavailable",
+      "observation": "服務、團隊、據點、預約流程、收費、FAQ 與部落格。組織型，個人模板只取必要欄位。"
+    },
+    {
+      "name": "看見心理",
+      "url": "https://www.seeingcounseling.com/home",
+      "trafficEvidence": "unavailable",
+      "observation": "專業團隊、諮商主題、文章、FAQ、收費與 LINE 預約。此次 /home 讀取呈英文團隊內容，不視為完整中文首頁驗證。"
+    }
+  ]
+}

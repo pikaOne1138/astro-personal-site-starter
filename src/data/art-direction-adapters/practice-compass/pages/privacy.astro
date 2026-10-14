@@ -1,0 +1,6 @@
+---
+import config from '../../site.config.json';
+import SiteLayout from '../layouts/SiteLayout.astro';
+const paragraphs=config.pageContent['page-privacy']||[];
+---
+<SiteLayout title="隱私資訊"><section class="interior"><p class="eyebrow">PRIVACY / OWNER INFORMATION</p><h1>隱私資訊</h1>{paragraphs.length?paragraphs.map(p=><p>{p}</p>):<><p class="notice">正式隱私政策尚未設定，請由網站持有人依實際資料流程提供。</p><p>啟用外部表單或預約工具前，須確認資料控制者、資料用途、保留方式與權利聯絡管道；不能以模板文字冒充已完成的政策。</p></>}</section></SiteLayout>

@@ -1,0 +1,23 @@
+name: PR47 Layout Handoff Contract
+on:
+  pull_request:
+    paths:
+      - 'docs/art-direction/pr47-layout-handoff-registry.json'
+      - 'src/data/layout-directions.json'
+      - 'src/data/art-direction-definitions/**'
+      - 'src/pages/layouts/**'
+      - 'scripts/verify-pr47-layout-handoff.mjs'
+      - '.github/workflows/pr47-layout-handoff.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/verify-pr47-layout-handoff.mjs

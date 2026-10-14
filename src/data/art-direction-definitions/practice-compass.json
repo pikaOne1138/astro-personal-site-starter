@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "slug": "practice-compass",
+  "kind": "helper",
+  "name": "服務羅盤",
+  "summary": "以訪客問題分流和適配判斷為主的服務網站",
+  "audience": [
+    "顧問",
+    "教練",
+    "個人專業服務者"
+  ],
+  "features": [
+    "訪客決策分流",
+    "適配及界線",
+    "資訊揭露",
+    "原生 FAQ"
+  ],
+  "assemblyStatus": "in-progress",
+  "sourcePrototype": "/layouts/practice-compass/",
+  "adapter": {
+    "id": "practice-compass",
+    "version": 1,
+    "renderer": "src/components/layouts/practice-compass/Home.astro",
+    "supportedPages": [
+      "/",
+      "/services/",
+      "/about/",
+      "/faq/",
+      "/contact/",
+      "/privacy/",
+      "/search/",
+      "/404/"
+    ]
+  },
+  "composition": {
+    "hero": {
+      "id": "visitor-decision-prologue",
+      "variant": "type-led-with-disclosure-aside",
+      "gridDesktop": "2fr 1fr",
+      "mediaPosition": "none",
+      "primaryCTA": "#choose"
+    },
+    "sections": [
+      {
+        "id": "choose",
+        "role": "visitor-self-routing",
+        "renderer": "PracticeCompassDecisionRows",
+        "order": 1,
+        "required": true,
+        "contentKey": "visitorIntents"
+      },
+      {
+        "id": "fit",
+        "role": "service-scope",
+        "renderer": "PracticeCompassScopePair",
+        "order": 2,
+        "required": true,
+        "contentKey": "scope"
+      },
+      {
+        "id": "information",
+        "role": "service-process",
+        "renderer": "PracticeCompassProcessLink",
+        "order": 3,
+        "required": true,
+        "contentKey": "serviceInfo"
+      },
+      {
+        "id": "faq",
+        "role": "faq",
+        "renderer": "PracticeCompassNativeFAQ",
+        "order": 4,
+        "required": true,
+        "contentKey": "faq"
+      }
+    ],
+    "readingFlow": "prologue → choose situation → verify fit → transparency → FAQ",
+    "responsive": {
+      "breakpoints": [
+        390,
+        768,
+        1280,
+        1440
+      ],
+      "hero390": "stack-copy-before-disclosure",
+      "sectionOrder390": [
+        "choose",
+        "fit",
+        "information",
+        "faq"
+      ],
+      "grid390": "1fr",
+      "mediaRules": [
+        "decision rows retain numbering",
+        "no booking without real service",
+        "native details without JS"
+      ]
+    }
+  },
+  "content": {
+    "required": [
+      "siteName",
+      "tagline",
+      "scope",
+      "serviceInfo",
+      "visitorIntents"
+    ],
+    "optional": [
+      "faq",
+      "verifiedCredentials",
+      "bookingUrl"
+    ],
+    "fallback": "truthful-explicit-placeholder"
+  },
+  "pages": {
+    "required": [
+      "/",
+      "/services/",
+      "/about/",
+      "/faq/",
+      "/contact/",
+      "/privacy/"
+    ],
+    "kindRequired": [
+      "/services/",
+      "/faq/",
+      "/contact/",
+      "/404/"
+    ]
+  },
+  "screenshots": {
+    "desktop": null,
+    "mobile": null
+  }
+}
