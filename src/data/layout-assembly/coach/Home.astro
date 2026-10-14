@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+---
+<div class="move-shell" data-assembled-layout="coach">
+  <section class="move-hero" aria-labelledby="move-title">
+    <div class="move-hero-copy"><p class="move-kicker">MAKE A MOVE / NEXT STEP</p><h1 id="move-title">卡住的事，拆成下一步。</h1><p class="move-brand">{config.brand.name} · {config.brand.tagline}</p><p class="move-intro">先確認問題，釐清選項，再選擇實際可以開始的小行動。</p><a class="move-cta" href="#problem">了解方法 ↓</a></div>
+    <figure class="move-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="move-art" role="img" aria-label="高對比幾何行動箭頭"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="move-section-list"><section class="move-section" id="problem"><p class="move-section-tag">01 / PROBLEM</p><h2>先看真正的問題</h2><p>不假設努力不夠，也不保證教練合作能帶來特定結果。</p></section>
+<section class="move-section" id="method"><p class="move-section-tag">02 / METHOD</p><h2>三步驟方法</h2><p>MOVE 01 說清楚／MOVE 02 看選項／MOVE 03 試一步</p></section>
+<section class="move-section" id="work"><p class="move-section-tag">03 / WORK</p><h2>合作方式</h2><p>服務流程與聯絡方式須由站長確認，不虛構成功案例。</p><a href={action}>查看服務 ↗</a></section></div>
+  <footer class="move-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.move-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.move-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. move-hero-copy{min-width:0}
+.move-kicker,.move-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.move-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.move-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.move-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.move-figure{margin:0;min-width:0}. move-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.move-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.move-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.move-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.move-section-list{max-width:1250px;margin:0 auto 4rem}
+.move-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.move-section p{max-width:65ch;line-height:1.85}. move-section a{color:inherit}
+.move-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.move-hero{position:relative;min-height:530px}.move-hero h1{position:relative;z-index:2;font-weight:900;text-transform:uppercase;font-size:clamp(4rem,9vw,9rem);max-width:1000px;letter-spacing:-.07em}.move-art{position:absolute;right:0;top:10%;width:46%;height:75%;background:linear-gradient(130deg,#eed35f,#f37443 55%,#1e3c55)}.move-section-list{display:grid;grid-template-columns:1fr 2fr;gap:1.5rem}.move-section:nth-child(2){grid-column:2;background:#dae8e5}.move-section{border:3px solid currentColor;padding:2rem}
+@media(max-width:800px){.move-hero,.move-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.move-hero{min-height:0}.move-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.move-hero figure,.move-art{position:static;width:100%;height:auto;min-height:180px}.move-section,.move-section:nth-child(1),.move-section:nth-child(2),.move-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.move-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.move-shell{padding:1rem}.move-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.move-close{display:block}}
+</style>
