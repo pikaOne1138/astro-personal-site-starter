@@ -28,6 +28,17 @@ try {
   try {
     const layouts=JSON.parse(readFileSync(join(root,'src/data/layout-directions.json'),'utf8'));
     if(layouts.length!==12)throw Error('Expected 12 directions, got '+layouts.length);
+    // The existing AI Builder Pack—not a separate ZIP generator—must ship
+    // all independent layout adapters and their registry/source contracts.
+    const definitionsPath=join(root,'src/data/layout-assembly/definitions.mjs');
+    if(!existsSync(definitionsPath))throw Error('Student ZIP missing layout assembly registry');
+    const {getLayoutDefinition}=await import('file://'+definitionsPath);
+    for(const layout of layouts){
+      const definition=getLayoutDefinition(layout.slug,layout.kind);
+      if(!definition?.adapter)throw Error('Student ZIP missing adapter definition: '+layout.slug);
+      const source=join(root,'src/data/layout-assembly',layout.slug,'Home.astro');
+      if(!existsSync(source))throw Error('Student ZIP missing independent homepage source: '+layout.slug);
+    }
     for(const layout of layouts){
       const {kind}=layout;
       const plan={version:1,kind,layoutSlug:layout.slug,
@@ -41,6 +52,10 @@ try {
       if(!existsSync(join(site,'src/pages/index.astro')))throw Error('Missing exported website for '+layout.slug);
       const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
       if(config.kind!==kind||config.layoutSlug!==layout.slug)throw Error('Layout selection lost: '+layout.slug);
+      if(!config.layoutAdapter)throw Error('Layout adapter was not selected from student ZIP: '+layout.slug);
+      const homeSource=join(site,'src/components/layouts/selected/Home.astro');
+      if(!existsSync(homeSource)||!readFileSync(homeSource,'utf8').includes('data-assembled-layout="'+layout.slug+'"'))throw Error('Student ZIP exported wrong independent homepage: '+layout.slug);
+
       if(process.env.FULL_STUDENT_PACK_BUILD==='1' && (layout===layouts.find(x=>x.kind==='knowledge')||layout===layouts.find(x=>x.kind==='helper'))){
         writeFileSync(join(site,'src/content/articles/qa-public.md'),'---\ntitle: QA public\ndescription: Public regression fixture\npublishedAt: 2026-10-09\ndraft: false\n---\nPublic regression content.');
         writeFileSync(join(site,'src/content/articles/qa-draft.md'),'---\ntitle: QA draft\ndescription: Draft regression fixture\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft regression content.');
