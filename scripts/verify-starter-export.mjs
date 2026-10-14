@@ -161,7 +161,7 @@ try{
       brand:{name:'組裝測試網站',primaryColor:'#8A5A42',tagline:'版型獨立測試',typography:'balanced',imageStyle:'minimal'},
       navigation:(kind==='knowledge'?[{id:'articles',label:'文章',enabled:true},{id:'about',label:'關於',enabled:true}]:[{id:'services',label:'服務',enabled:true},{id:'about',label:'關於',enabled:true}]),
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
-      sectionPatterns:[],content:{headline:'個人化首頁主標題',intro:'個人化介紹'},notes:''
+      sectionPatterns:[],content:{headline:'個人化首頁主標題',intro:'個人化介紹'},about:{bio:'這是獨立的關於頁介紹，包含真實學員資訊。',purpose:'我希望用個人網站保存長期作品與觀察。',approach:'以可驗證來源整理內容與方法。',background:'作品與資格請以實際證據補充。'},notes:''
     };
     if(slug==='essayist'){
       secondary.brand.heroImagePath='/images/hero-image.png';
@@ -234,6 +234,7 @@ try{
       if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
       const aboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
       if(!aboutHtml.includes('data-about-family="'+slug+'"'))throw Error('Dedicated About did not render for '+slug);
+      if(!aboutHtml.includes('這是獨立的關於頁介紹')||!aboutHtml.includes('我希望用個人網站保存長期作品與觀察'))throw Error('Owned About copy missing: '+slug);
       const inner=kind==='knowledge'?'articles':'services';
       const innerHtml=readFileSync(join(site,'dist',inner,'index.html'),'utf8');
       if(kind==='knowledge'){
