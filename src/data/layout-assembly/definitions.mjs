@@ -1,0 +1,37 @@
+import directions from '../layout-directions.json' with {type:'json'};
+
+/**
+ * Version 1 layout assembly registry.
+ * The original research registry is read-only to avoid conflicts with parallel Art Direction.
+ * Prototype selection remains available in the planner; only ready adapters may be exported.
+ */
+export const layoutDefinitions = directions.map(direction => {
+  const ready = direction.slug === 'field-notes' || direction.slug === 'clinician';
+  return {
+    schemaVersion: 1,
+    slug: direction.slug,
+    kind: direction.kind,
+    title: direction.title,
+    audience: direction.audience,
+    description: direction.description,
+    structure: direction.structure,
+    sourcePrototype: '/layouts/' + direction.slug + '/',
+    assemblyStatus: ready ? 'ready' : 'prototype',
+    adapter: ready ? {id: direction.slug, version: 1, renderer: 'src/components/layouts/' + direction.slug + '/Home.astro'} : null,
+    screenshots: {
+      desktop: '/template-gallery/' + direction.slug + '-desktop.webp',
+      mobile: '/template-gallery/' + direction.slug + '-mobile.webp'
+    },
+    composition: direction.slug === 'field-notes'
+      ? {hero:'marginalia-ledger', sectionOrder:['field-hero','field-ledger','field-question'], gridDesktop:'78px minmax(0,1fr) 180px', responsive390:'rail shrinks; hero/media flow before ledger; single-column question'}
+      : direction.slug === 'clinician'
+      ? {hero:'clinical-split', sectionOrder:['clinical-hero','clinical-fit','clinical-process','clinical-credentials','clinical-contact'], gridDesktop:'1.05fr .95fr', responsive390:'hero text then room; fit cards stack; process and credentials single-column'}
+      : null
+  };
+});
+export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
+export const getReadyLayout = (slug,kind) => {
+  const result=getLayoutDefinition(slug,kind);
+  if(!result || result.assemblyStatus!=='ready' || !result.adapter)throw Error('Layout '+slug+' is a prototype, not a Starter Ready design. Export the Site Brief, or select field-notes / clinician.');
+  return result;
+};
