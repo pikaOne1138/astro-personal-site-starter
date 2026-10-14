@@ -25,6 +25,17 @@ try{
     execFileSync('npm',['run','test:regressions'],{cwd:site,stdio:'inherit'});
     const out=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
     if(out.layoutSlug!==plan.layoutSlug||out.brand.primaryColor!=='#245E50'||out.navigation.length!==(kind==='knowledge'?3:2)||out.sectionPatterns.length!==2)throw Error('Config mismatch '+kind);
+    // The two independently generated sites must contain genuinely different renderers,
+    // not the same generic DOM with only a layout class or brand palette swapped.
+    const selectedHome=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
+    const expectedMarker=kind==='knowledge'?'data-assembled-layout="field-notes"':'data-assembled-layout="clinician"';
+    const structuralTokens=kind==='knowledge'
+      ? ['field-frame','field-rail','field-ledger','field-question']
+      : ['clinical-hero','clinical-fit','clinical-process','clinical-credentials'];
+    if(!selectedHome.includes(expectedMarker)||structuralTokens.some(token=>!selectedHome.includes(token)))
+      throw Error('Selected Layout did not produce its unique homepage composition: '+kind);
+    if(kind==='knowledge'&&selectedHome.includes('clinical-fit')||kind==='helper'&&selectedHome.includes('field-rail'))
+      throw Error('Two Layouts accidentally share an assembly renderer');
     const generatedCss=readFileSync(join(site,'public/site.css'),'utf8');
     if(!generatedCss.includes('--brand-secondary:#58776C')||!generatedCss.includes('--brand-background:#F7F8F4'))throw Error('Generated palette tokens are missing');
     if(!existsSync(join(site,'src/pages/index.astro'))||!existsSync(join(site,'astro.config.mjs')))throw Error('Missing generated website');
@@ -41,6 +52,9 @@ try{
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      const homepageHtml=readFileSync(join(site,'dist/index.html'),'utf8');
+      if(!homepageHtml.includes(kind==='knowledge'?'data-assembled-layout="field-notes"':'data-assembled-layout="clinician"'))
+        throw Error('Built standalone homepage lost layout-specific DOM: '+kind);
       if(!existsSync(join(site,'dist/pagefind/pagefind.js')))throw Error('Pagefind static index was not generated');
       if(!existsSync(join(site,'dist/search/exact-zh.json')))throw Error('Search companion index was not generated');
       const search=JSON.parse(readFileSync(join(site,'dist/search/exact-zh.json'),'utf8'));
