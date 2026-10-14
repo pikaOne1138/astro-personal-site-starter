@@ -1,0 +1,296 @@
+{
+  "version": 1,
+  "sourceCommit": "2c3915c9342e28ee7e522f9bca85ea02aa1d902d",
+  "origin": "http://127.0.0.1:4321",
+  "generatedAt": "2026-10-14T02:55:57.159Z",
+  "records": [
+    {
+      "slug": "field-notes",
+      "mode": "desktop",
+      "route": "/layouts/field-notes/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/field-notes-desktop.webp",
+      "sha256": "e00fe75f93692af3af84f141617e2570fbb80357b52f7abd6108d68eec02543e",
+      "bytes": 96392
+    },
+    {
+      "slug": "field-notes",
+      "mode": "mobile",
+      "route": "/layouts/field-notes/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/field-notes-mobile.webp",
+      "sha256": "8ba1f5abd8bf71dabaacda8a62170bfbe68235836db0e391c00036625ac3607e",
+      "bytes": 56706
+    },
+    {
+      "slug": "essayist",
+      "mode": "desktop",
+      "route": "/layouts/essayist/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/essayist-desktop.webp",
+      "sha256": "c51df9789ad070bcad2e651940acc19a86acb60726cd46a2f7c1eb48aea8b3d3",
+      "bytes": 114514
+    },
+    {
+      "slug": "essayist",
+      "mode": "mobile",
+      "route": "/layouts/essayist/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/essayist-mobile.webp",
+      "sha256": "eb4b7e93187623f2168fbc21bf35624f7b3c96ba86bba02480f8dc0e6b90c32c",
+      "bytes": 89094
+    },
+    {
+      "slug": "learning-lab",
+      "mode": "desktop",
+      "route": "/layouts/learning-lab/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/learning-lab-desktop.webp",
+      "sha256": "f0a68c42a8bd3a948d335b807499293ebe837804a2141539e8d90dc954390795",
+      "bytes": 106272
+    },
+    {
+      "slug": "learning-lab",
+      "mode": "mobile",
+      "route": "/layouts/learning-lab/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/learning-lab-mobile.webp",
+      "sha256": "391a0b3085f78603b3d9f16c41c68de05099e7daeba8b733d442f7b56fc09bca",
+      "bytes": 75146
+    },
+    {
+      "slug": "curator",
+      "mode": "desktop",
+      "route": "/layouts/curator/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/curator-desktop.webp",
+      "sha256": "14e8460815177a68de6f1fed6dcd8d782dc2745ee317ff610275f1fd6acafaf9",
+      "bytes": 72194
+    },
+    {
+      "slug": "curator",
+      "mode": "mobile",
+      "route": "/layouts/curator/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/curator-mobile.webp",
+      "sha256": "7e29a6179f5cfc9e928337f0b5a2c9b67278d5169ce148f7fe412f10f8539df7",
+      "bytes": 49974
+    },
+    {
+      "slug": "radio-letter",
+      "mode": "desktop",
+      "route": "/layouts/radio-letter/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/radio-letter-desktop.webp",
+      "sha256": "9a9a8f7f58a9285fcc4209f019c7c72db3b4678cee8346c76e010725dab50430",
+      "bytes": 108714
+    },
+    {
+      "slug": "radio-letter",
+      "mode": "mobile",
+      "route": "/layouts/radio-letter/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/radio-letter-mobile.webp",
+      "sha256": "f12a6724cee874a4776a5db70f68b30801382a504c0866550287cc489f466476",
+      "bytes": 82372
+    },
+    {
+      "slug": "reading-atlas",
+      "mode": "desktop",
+      "route": "/layouts/reading-atlas/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/reading-atlas-desktop.webp",
+      "sha256": "f6f7480b69c6d4ef2ae0eb755cab46fde8897d75edd6e867ce8524bb49e59b13",
+      "bytes": 169616
+    },
+    {
+      "slug": "reading-atlas",
+      "mode": "mobile",
+      "route": "/layouts/reading-atlas/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/reading-atlas-mobile.webp",
+      "sha256": "9b26f7aaa6ae7fbebf883aa1fb883681bf866e58e1e851fe3faa90194e353dfd",
+      "bytes": 143224
+    },
+    {
+      "slug": "clinician",
+      "mode": "desktop",
+      "route": "/layouts/clinician/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/clinician-desktop.webp",
+      "sha256": "2f4450ca3504a93aa62b853581b4a56cf4977d75cbc9eadffa180018a82b9aa8",
+      "bytes": 130476
+    },
+    {
+      "slug": "clinician",
+      "mode": "mobile",
+      "route": "/layouts/clinician/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/clinician-mobile.webp",
+      "sha256": "b10085a8f69eccad9a0c5a73020f13e4bf4ab84f5cbcb18dc6d04c5907700e54",
+      "bytes": 87994
+    },
+    {
+      "slug": "companion",
+      "mode": "desktop",
+      "route": "/layouts/companion/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/companion-desktop.webp",
+      "sha256": "ee572146b216c884ccab2107a4e666a526dea4e8f155146308e041f2978d7fed",
+      "bytes": 126102
+    },
+    {
+      "slug": "companion",
+      "mode": "mobile",
+      "route": "/layouts/companion/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/companion-mobile.webp",
+      "sha256": "5d811148da928e0799cbbce8b80cdbadf9a8db27be92115e5243db1838f24939",
+      "bytes": 90042
+    },
+    {
+      "slug": "somatic",
+      "mode": "desktop",
+      "route": "/layouts/somatic/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/somatic-desktop.webp",
+      "sha256": "245a068a9963aae4c5523fc5a36722cf121aa7e0ef9d81eb0c9782fbeab4922f",
+      "bytes": 148098
+    },
+    {
+      "slug": "somatic",
+      "mode": "mobile",
+      "route": "/layouts/somatic/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/somatic-mobile.webp",
+      "sha256": "498c2ceb48bd3139825f25fdfcab4dd7c29a51ccf0283301be549c975f6326d7",
+      "bytes": 70862
+    },
+    {
+      "slug": "coach",
+      "mode": "desktop",
+      "route": "/layouts/coach/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/coach-desktop.webp",
+      "sha256": "387da3e282bb83e1b79b4b86b88d78b582f3c2f64dd993de7140b6557857552d",
+      "bytes": 126040
+    },
+    {
+      "slug": "coach",
+      "mode": "mobile",
+      "route": "/layouts/coach/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/coach-mobile.webp",
+      "sha256": "8006f264a8bfa8c82ed578f32be02ce1cb60b0ca51595c5a7a740111099bdd00",
+      "bytes": 80514
+    },
+    {
+      "slug": "collective",
+      "mode": "desktop",
+      "route": "/layouts/collective/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/collective-desktop.webp",
+      "sha256": "0c82b47754bf30c53660261bdc9ec67162874b4823ea93e15e172499e34ea558",
+      "bytes": 152390
+    },
+    {
+      "slug": "collective",
+      "mode": "mobile",
+      "route": "/layouts/collective/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/collective-mobile.webp",
+      "sha256": "869a317ff74674c4e2c2bd212be86a3018034af9b903b3ebf63bd7c849700ea8",
+      "bytes": 92518
+    },
+    {
+      "slug": "trust-path",
+      "mode": "desktop",
+      "route": "/layouts/trust-path/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "filename": "template-gallery/trust-path-desktop.webp",
+      "sha256": "78653d7058b6521c1c7d078a548798a2b94d3d0c42c1129a4f50371c05208d90",
+      "bytes": 215396
+    },
+    {
+      "slug": "trust-path",
+      "mode": "mobile",
+      "route": "/layouts/trust-path/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "filename": "template-gallery/trust-path-mobile.webp",
+      "sha256": "290209adedddd733cbbec97b1874aa57dc7d1ead1d19d130c21598774d554776",
+      "bytes": 166144
+    }
+  ]
+}
