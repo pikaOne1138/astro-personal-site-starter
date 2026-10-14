@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+---
+<div class="common-shell" data-assembled-layout="collective">
+  <section class="common-hero" aria-labelledby="common-title">
+    <div class="common-hero-copy"><p class="common-kicker">COMMON GROUND / COLLECTIVE</p><h1 id="common-title">一起工作，讓支持有很多形狀。</h1><p class="common-brand">{config.brand.name} · {config.brand.tagline}</p><p class="common-intro">從共同理念、真實成員到活動資訊，清楚展示合作網絡。</p><a class="common-cta" href="#belief">認識合作 ↓</a></div>
+    <figure class="common-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="common-art" role="img" aria-label="共同創作示意拼貼"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="common-section-list"><section class="common-section" id="belief"><p class="common-section-tag">01 / BELIEF</p><h2>共同立場</h2><p>不同專長的人可以協作，也必須清楚說明自己的服務邊界。</p></section>
+<section class="common-section" id="people"><p class="common-section-tag">02 / PEOPLE</p><h2>認識成員</h2><p>成員簡介及專業資格尚未提供，正式網站需填入經同意的真實資料。</p></section>
+<section class="common-section" id="calendar"><p class="common-section-tag">03 / CALENDAR</p><h2>共學活動</h2><p>尚無已核實的活動日期；請連結實際活動頁或外部報名工具。</p><a href={action}>查看服務 ↗</a></section></div>
+  <footer class="common-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.common-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.common-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. common-hero-copy{min-width:0}
+.common-kicker,.common-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.common-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.common-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.common-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.common-figure{margin:0;min-width:0}. common-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.common-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.common-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.common-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.common-section-list{max-width:1250px;margin:0 auto 4rem}
+.common-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.common-section p{max-width:65ch;line-height:1.85}. common-section a{color:inherit}
+.common-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.common-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center}.common-hero h1{font-size:clamp(3rem,6.5vw,7rem)}.common-art{background:linear-gradient(45deg,#dfb5a4 0 25%,#b8d4d0 25% 50%,#e4d08a 50% 75%,#7e9997 75%)}.common-section-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.common-section:nth-child(1){grid-column:1/-1}.common-section{border:1px solid currentColor;padding:2rem}.common-section:nth-child(2){background:#efdfd3}
+@media(max-width:800px){.common-hero,.common-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.common-hero{min-height:0}.common-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.common-hero figure,.common-art{position:static;width:100%;height:auto;min-height:180px}.common-section,.common-section:nth-child(1),.common-section:nth-child(2),.common-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.common-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.common-shell{padding:1rem}.common-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.common-close{display:block}}
+</style>
