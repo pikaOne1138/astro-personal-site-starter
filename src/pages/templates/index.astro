@@ -1,7 +1,9 @@
 ---
 import directions from '../../data/layout-directions.json';
+import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
+const statusBySlug=Object.fromEntries(layoutDefinitions.map(item=>[item.slug,item.assemblyStatus]));
 const base=import.meta.env.BASE_URL;
-const ready=new Set([]); const developing=new Set(['field-notes','clinician','essayist','companion']);
+const ready=new Set(layoutDefinitions.filter(x=>x.assemblyStatus==='ready').map(x=>x.slug)); const developing=new Set(layoutDefinitions.filter(x=>x.assemblyStatus==='in-progress').map(x=>x.slug));
 const selected=directions.filter(x=>x.kind==='knowledge'||x.kind==='helper');
 ---
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>網站設計圖鑑｜Astro 工作坊</title><meta name="description" content="依照實際 Astro 首頁原型，觀看桌機及手機設計，選擇自己喜歡的網站方向。"/>
