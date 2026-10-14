@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 // Build-time student distribution. Deliberately excludes the research Git history,
 // showcase workflows, internal README and any credentials or environment files.
@@ -59,6 +60,22 @@ for (const name of [...entries.keys()]) {
   if (name.startsWith('.ai/') && /(?:^|\/)(?:\.DS_Store|\.env|node_modules)(?:\/|$)/.test(name)) entries.delete(name);
 }
 
+// One provenance record for the website and the existing student ZIP.
+// Use the checked-out source SHA; do not claim that this is a deployed PR SHA.
+let sourceSha='unknown';
+try { sourceSha=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(); }
+catch { /* The learner pack can also be built without Git metadata. */ }
+const release={
+  schemaVersion:1,
+  sourceCommit:sourceSha,
+  layoutAdapterCount:12,
+  layoutSlugs:['field-notes','essayist','learning-lab','curator','radio-letter','reading-atlas','clinician','companion','somatic','coach','collective','trust-path'],
+  distribution:'AI-建站資料包.zip',
+  releaseStage:'beta-assembly'
+};
+const provenance=Buffer.from(JSON.stringify(release,null,2)+'\\n');
+entries.set('BUILDER-PACK-VERSION.json',provenance);
+writeFileSync(resolve('public/builder-pack-version.json'),provenance);
 // ZIP files must also contain the actual reference roots declared in the Skills;
 // absent optional research files are documented rather than fabricated.
 
