@@ -35,7 +35,10 @@ export interface StarterPlan {
   primaryCta: { label: string; pageId: string };
   sectionPatterns?: StarterPatternChoice[];
   notes: string;
-}
+  reading?: {records:Array<{month:string;title:string;note:string}>;annualBook?:{title:string;note:string}};
+  media?: {episodeAudioPath?:string;episodeTranscript?:Array<{time:string;text:string}>};
+  serviceFacts?: Partial<Record<'duration'|'price'|'cancellation'|'qualification'|'contact',string>>;
+
 export const starterThemeSeeds:Record<StarterTheme,string> = {
   paper:'#9A3B2E',morning:'#C8775A',studio:'#2F5D50',botanical:'#50775B',
  ocean:'#245D78',sand:'#9C603B',slate:'#475569',lavender:'#705A95',
@@ -68,6 +71,10 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(brand.logoPath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.logoPath))errors.push('Logo 請使用網站本地的 PNG、WebP、JPG 或 AVIF');
   if(brand.heroImagePath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.heroImagePath))errors.push('主視覺圖片需使用網站自己的 /images/ 檔案路徑');
   if(brand.heroImageAlt && (brand.heroImageAlt.length>180 || !brand.heroImagePath))errors.push('主視覺替代文字需要有效的圖片路徑');
+  if(plan.reading?.records && plan.reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||!x.title.trim()||!x.note.trim()))errors.push('閱讀紀錄需要月份、實際書名與真實評註');
+  if(plan.reading?.annualBook && (!plan.reading.annualBook.title.trim()||!plan.reading.annualBook.note.trim()))errors.push('年度選書請同時提供書名與理由');
+  if(plan.media?.episodeAudioPath&&!/^\/audio\/[a-z0-9/_-]+\.(mp3|wav|ogg|m4a)$/i.test(plan.media.episodeAudioPath))errors.push('音檔請使用 /audio/ 本地音檔路徑');
+  if(plan.serviceFacts && Object.values(plan.serviceFacts).some(x=>typeof x!=='string'||x.length>500))errors.push('服務資訊欄位太長');
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');
