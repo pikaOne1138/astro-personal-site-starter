@@ -88,7 +88,7 @@ try{
       brand:{name:'組裝測試網站',primaryColor:'#8A5A42',tagline:'版型獨立測試',typography:'balanced',imageStyle:'minimal'},
       navigation:(kind==='knowledge'?[{id:'articles',label:'文章',enabled:true},{id:'about',label:'關於',enabled:true}]:[{id:'services',label:'服務',enabled:true},{id:'about',label:'關於',enabled:true}]),
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
-      sectionPatterns:[],notes:''
+      sectionPatterns:[],content:{headline:'個人化首頁主標題',intro:'個人化介紹'},notes:''
     };
     if(slug==='essayist'){
       secondary.brand.heroImagePath='/images/hero-image.png';
@@ -107,6 +107,7 @@ try{
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site,'--require-assembled'],{stdio:'inherit'});
     const home=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
     if(!home.includes('data-assembled-layout="'+slug+'"'))throw Error('Missing '+slug+' distinct Home renderer');
+    if(!home.includes('config.content?.headline')||!home.includes('config.content?.intro'))throw Error('Student copy binding missing on '+slug);
     if(slug==='essayist'&&!existsSync(join(site,'public/images/hero-image.png')))throw Error('Browser-selected image was not extracted into standalone project');
     if(slug==='radio-letter'){
       if(!existsSync(join(site,'public/audio/owned-sample.mp3')))throw Error('Missing copied licensed podcast audio');
@@ -124,6 +125,7 @@ try{
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
+      if(!html.includes('個人化首頁主標題')||!html.includes('個人化介紹'))throw Error('Student copy missing from built '+slug+' page');
     }
   }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
