@@ -36,6 +36,20 @@ try{
       throw Error('Selected Layout did not produce its unique homepage composition: '+kind);
     if(kind==='knowledge'&&selectedHome.includes('clinical-fit')||kind==='helper'&&selectedHome.includes('field-rail'))
       throw Error('Two Layouts accidentally share an assembly renderer');
+    if(kind==='knowledge'){
+      const themed=structuredClone(plan);
+      themed.brand.typography='clear-sans';
+      themed.brand.imageStyle='documentary';
+      themed.brand.heroImagePath='/images/my-field.webp';
+      themed.brand.heroImageAlt='我自己的授權觀察照片';
+      const themedPlan=join(root,'brand-config.json'),themedSite=join(root,'brand-config');
+      writeFileSync(themedPlan,JSON.stringify(themed));
+      execFileSync(process.execPath,['scripts/export-starter.mjs',themedPlan,themedSite],{stdio:'inherit'});
+      const themedHome=readFileSync(join(themedSite,'src/components/layouts/selected/Home.astro'),'utf8');
+      const themedCss=readFileSync(join(themedSite,'public/site.css'),'utf8');
+      if(!themedHome.includes('heroImagePath')||!themedCss.includes('--brand-image-filter:saturate(.68)')||!themedCss.includes('--brand-heading-font:"Noto Sans TC"'))
+        throw Error('Brand font and licensed local image configuration not bound to assembled output');
+    }
     const generatedCss=readFileSync(join(site,'public/site.css'),'utf8');
     if(!generatedCss.includes('--brand-secondary:#58776C')||!generatedCss.includes('--brand-background:#F7F8F4'))throw Error('Generated palette tokens are missing');
     if(!existsSync(join(site,'src/pages/index.astro'))||!existsSync(join(site,'astro.config.mjs')))throw Error('Missing generated website');
