@@ -1,5 +1,7 @@
 # Subject Atlas／Practice Compass：獨立組裝與本輪邊界
 
+> 2026-10-14 目標校正：本文件只描述已實作的技術組裝，不是 PR B 的完整目標。PR B 要擴充同用途、同內容仍可辨識不同結構的版型與內頁；不要求每款有不同用途。最新研究與擴充 brief 見 `research-reset-2026-10-14.html`，候選清單見 `template-expansion-research.json`。本輪截圖驗收仍延期，候選不算已交付。
+
 使用者於 2026-10-14 改變本輪優先順序：先完成獨立 Starter／Adapter，截圖驗收本輪不做。這不是視覺 PASS，也不以截圖環境限制阻擋本輪技術組裝。
 
 ## 已實作的入口
