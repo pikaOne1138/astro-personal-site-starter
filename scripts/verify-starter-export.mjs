@@ -32,7 +32,7 @@ async function captureStudentSite(slug,kind,site){
         const url=new URL(request.request().url());
         if(url.origin!==base)return request.abort();
         const relative=decodeURIComponent(url.pathname).replace(/^\/+/, '');
-        const file=resolve(dist,relative.endsWith('/')?relative+'index.html':relative);
+        const file=resolve(dist,(!relative||relative.endsWith('/'))?relative+'index.html':relative);
         if(file!==dist&&!file.startsWith(dist+sep))return request.fulfill({status:403,body:'Forbidden'});
         if(!existsSync(file))return request.fulfill({status:404,body:'Not found'});
         const ext=file.slice(file.lastIndexOf('.'));
@@ -122,6 +122,15 @@ try{
     const specialized=kind==='knowledge'?'ArticleArchive.astro':'ServiceSections.astro';
     const specializedSource=readFileSync(join(site,'src/components/layouts/selected',specialized),'utf8');
     if(!specializedSource.includes("family==='"+plan.layoutSlug+"'"))throw Error('Missing first-direction '+specialized+' family branch');
+    if(kind==='knowledge'){
+      const articleDir=join(site,'src/content/articles');
+      mkdirSync(articleDir,{recursive:true});
+      writeFileSync(join(articleDir,'qa-long-title.md'),[
+        '---','title: 一篇談閱讀與實際生活中如何整理資訊的長文章標題——包含中文標點與不同長度的文字來驗證網站是否仍可閱讀',
+        'description: 文章說明的實際內容測試，不是虛構見證。','publishedAt: 2026-10-12','draft: false','---',
+        '## 第一個標題','真實內容版型與中英文混排的驗證。'
+      ].join('\n'));
+    }
     if(kind==='knowledge'&&!existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Knowledge articles missing');
     if(kind==='helper'&&existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Unexpected helper articles route');
     if(process.env.FULL_STARTER_BUILD==='1'){
