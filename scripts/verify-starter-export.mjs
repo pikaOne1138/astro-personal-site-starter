@@ -63,6 +63,11 @@ try{
     const selected=readFileSync(join(site,'src/components/SelectedPatterns.astro'),'utf8');
     const pageLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
+    const aboutComponent=readFileSync(join(site,'src/components/layouts/selected/AboutSections.astro'),'utf8');
+    if(!aboutComponent.includes("family==='"+plan.layoutSlug+"'"))throw Error('Missing first-direction About composition: '+plan.layoutSlug);
+    const specialized=kind==='knowledge'?'ArticleArchive.astro':'ServiceSections.astro';
+    const specializedSource=readFileSync(join(site,'src/components/layouts/selected',specialized),'utf8');
+    if(!specializedSource.includes("family==='"+plan.layoutSlug+"'"))throw Error('Missing first-direction '+specialized+' family branch');
     if(kind==='knowledge'&&!existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Knowledge articles missing');
     if(kind==='helper'&&existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Unexpected helper articles route');
     if(process.env.FULL_STARTER_BUILD==='1'){
@@ -70,6 +75,10 @@ try{
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
       const homepageHtml=readFileSync(join(site,'dist/index.html'),'utf8');
+      const firstAboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
+      if(!firstAboutHtml.includes('data-about-family="'+plan.layoutSlug+'"'))throw Error('Built first-direction About lost selected Design Family');
+      const firstSpecialized=readFileSync(join(site,'dist',kind==='knowledge'?'articles':'services','index.html'),'utf8');
+      if(!firstSpecialized.includes(kind==='knowledge'?'data-archive-family="field-notes"':'data-service-family="clinician"'))throw Error('Built first-direction inner page lost Design Family');
       if(!homepageHtml.includes(kind==='knowledge'?'data-assembled-layout="field-notes"':'data-assembled-layout="clinician"'))
         throw Error('Built standalone homepage lost layout-specific DOM: '+kind);
       if(!existsSync(join(site,'dist/pagefind/pagefind.js')))throw Error('Pagefind static index was not generated');
