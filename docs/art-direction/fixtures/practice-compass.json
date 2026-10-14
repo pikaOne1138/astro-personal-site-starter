@@ -62,6 +62,23 @@
         "answer": "QA 正式傳入的答案。"
       }
     ],
-    "contact": {}
+    "contact": {},
+    "visitorIntents": [
+      {
+        "title": "QA 是否適合",
+        "detail": "以設定資料提供服務適配資訊",
+        "target": "fit"
+      },
+      {
+        "title": "QA 合作方式",
+        "detail": "檢視已公開服務資訊",
+        "target": "services"
+      },
+      {
+        "title": "QA 常見疑問",
+        "detail": "不收集資訊的 FAQ 閱讀入口",
+        "target": "faq"
+      }
+    ]
   }
 }
