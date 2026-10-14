@@ -1,7 +1,8 @@
 ---
 import config from '../../../../site.config.json';
 const family=config.layoutSlug;
-const intro=config.content?.intro?.trim()||'尚未提供個人介紹。請與 AI 整理真實經歷、網站目的及服務或寫作方式。';
+const about=config.about??{};
+const intro=about.bio?.trim()||config.content?.intro?.trim()||'尚未提供個人介紹。請與 AI 整理真實經歷、網站目的及服務或寫作方式。';
 const title=config.brand.name;
 const knowledge=config.kind==='knowledge';
 const headline=knowledge?'關於寫作、整理與分享':'關於我與我的工作方式';
@@ -9,7 +10,7 @@ const purpose=knowledge?'我希望留下什麼？':'我能提供什麼？';
 const facts=config.serviceFacts??{};
 const evidence=typeof facts.qualification==='string'&&facts.qualification.trim()?facts.qualification:'專業資格資料尚未提供；不應虛構證照、年資或媒體報導。';
 const practice=typeof facts.method==='string'&&facts.method.trim()?facts.method:'工作方法與合作界線待站長確認。';
-const info=[{label:purpose,body:config.brand.tagline||'這段請使用站長確認的真實介紹。'},{label:knowledge?'如何整理內容':'如何合作',body:knowledge?'請說明自己的整理方法、文章主題與實際來源；不虛構研究成果。':practice},{label:knowledge?'內容與來源':'資格與經歷',body:knowledge?'請使用可核對的文章與作品，沒有就標記待補。':evidence}];
+const info=[{label:purpose,body:about.purpose?.trim()||config.brand.tagline||'這段請使用站長確認的真實介紹。'},{label:knowledge?'如何整理內容':'如何合作',body:about.approach?.trim()||(knowledge?'請說明自己的整理方法、文章主題與實際來源；不虛構研究成果。':practice)},{label:knowledge?'內容與來源':'資格與經歷',body:about.background?.trim()||(knowledge?'請使用可核對的文章與作品，沒有就標記待補。':evidence)}];
 ---
 <article class="about-composition" data-about-family={family} aria-label="關於網站與作者">
 {family==='field-notes'&&<div class="about-ledger"><aside><span>FIELD NOTE / AUTHOR</span><b>A—01</b><span>{title}</span></aside><div><p class="about-label">OBSERVATION / METHOD</p><h2>{headline}</h2><p class="about-lead">{intro}</p><dl>{info.map((x,i)=><div><dt>{String(i+1).padStart(2,'0')} / {x.label}</dt><dd>{x.body}</dd></div>)}</dl></div></div>}
