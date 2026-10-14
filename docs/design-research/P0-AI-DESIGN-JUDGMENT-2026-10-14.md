@@ -97,7 +97,7 @@ Rubric 不產生憑空美學統分，也不直接把第三方前端 Repo 的自�
 | `astro-ui-craft` | Design Read、tokens、圖像策略、反罐頭 critique / polish | 否 |
 | `astro-motion-craft` | Purpose-first effects、回退、複雜性預算 | 否 |
 | `astro-content-readiness` | 缺內容 / 假功能 / 實際圖片與文字準備 | 否 |
-| 未來 `astro-design-consultation`（P2） | 學員自然語言需求→參考網站拆解→多方向比較→Design Brief | 尚未建立 |
+| `astro-design-consultation`（P2，獨立 Draft PR #49） | 學員自然語言需求→參考網站拆解→多方向比較→Design Brief | 不在 P0 分支改；P2 已有獨立草案，尚未完成跨模型及真人驗證 |
 | PR47（P1） | Neutral Fixture 實圖比較，分開技術 PASS 與人工 Art Direction QA | 不在本 PR 改 |
 
 建議 P1 再經批准，將本文件以簡短 cross-link 加入各 Skill 的適當 reference 區塊；不得在 P0 偷改 PR46 / PR47 的 UI 或 Generator。
@@ -112,7 +112,8 @@ Rubric 不產生憑空美學統分，也不直接把第三方前端 Repo 的自�
 - [ ] 各第三方 repo 最新 commit / 每個 component 的逐檔授權與 source review；目前以 repo 文件為主要來源。
 - [ ] 外部 demo 的正式實機效能 / a11y / 四尺寸測試。
 - [ ] ATP 實際 UI 的 P1 視覺 QA（需要真實 Preview 截圖）。
-- [ ] 新 Consultation Skill、Starter 接線（分別 P2 / P3）。
+- [x] P2 Consultation Skill 已於獨立 [Draft PR #49](https://github.com/pikaOne1138/astro-personal-site-starter/pull/49) 建立初稿（不等於 Skill 已驗收或合併）。
+- [ ] P2 完整 Skill 行為／真人學員驗證及 P3 Starter 接線，均由各自階段驗收；不列為 P0 文件完成的前置條件。
 
 ## 8. 原始公開來源（研究可追溯）
 
