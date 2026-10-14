@@ -113,18 +113,22 @@
         "WP06",
         "GPT：Austin Kleon／Marginalian",
         "Arena：電腦玩物"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "K02",
       "slug": "editorial-frontpage",
-      "name": "編輯頭版",
+      "name": "個人刊物",
       "priority": "第一批",
       "mode": "magazine",
-      "home": "刊名 → 第一篇大頭條 7/12 ＋ 兩篇次要列 5/12 → 分區文章 → 頁尾",
+      "home": "作者／刊名 → 第一篇大文 7/12 ＋ 兩篇短列 5/12 → 其餘文章 → 本人／RSS",
       "archive": "首篇大卡＋後續緊湊圖文列，保持主次大小",
       "detail": "寬標題＋寬封面 → 窄正文＋桌面目錄 → 相關文章列",
-      "about": "編輯定位、作者、寫作／選文方式分區",
+      "about": "作者介紹、關注主題、寫作方式與代表文章；不需要編輯團隊",
       "mobile": "主文先、兩篇次文後，再到一般列表；DOM 順序與視覺一致",
       "nearest": "Essayist／Coach",
       "difference": "首屏主角是多篇文章階層，不是作者口號或單篇全文；同屏同時呈現頭條與次條",
@@ -134,7 +138,11 @@
         "Manus：Deem／PanSci",
         "GPT：Casper／colocal",
         "Arena：Lexington"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "1–2 篇只顯示主文與可用短列，不造頭條／熱門排行；不是新聞網站",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "K03",
@@ -154,7 +162,11 @@
         "WP09",
         "GPT：Fuwari／Casper",
         "Arena：Fuwari／Jules Acree"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "K04",
@@ -173,7 +185,11 @@
         "WP08",
         "Manus：Meiwen See／ONE",
         "GPT：キナリノ／colocal"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "K05",
@@ -193,7 +209,11 @@
         "Manus：Benedict Evans",
         "GPT：Derek Sivers／Cactus",
         "Arena：Bear Blog"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "K06",
@@ -213,7 +233,11 @@
         "WP05",
         "Manus：Benedict Evans",
         "GPT：Navfolio"
-      ]
+      ],
+      "kind": "knowledge",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "同一位作者與文章資料可使用不同構圖，不需改變寫作主題"
     },
     {
       "id": "H01",
@@ -232,7 +256,11 @@
         "WP11",
         "GPT：Kristin Heinrich／Minaa B.",
         "Arena：Michelle Harwell／Therapi"
-      ]
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
     },
     {
       "id": "H02",
@@ -252,13 +280,17 @@
         "GPT：Clove／Kristin",
         "Arena：Kate Crocco／Pathwise",
         "Manus：Orka"
-      ]
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
     },
     {
       "id": "H03",
       "slug": "studio-chapters",
       "name": "工作室章節",
-      "priority": "第二批",
+      "priority": "第一批",
       "mode": "chapters",
       "home": "寬幅工作照→短介紹→左章節索引＋右圖文工作方式→服務與聯絡",
       "archive": "服務條目沿章節結構，方法與服務連結可快速到達",
@@ -271,7 +303,11 @@
         "GPT：Clove／Guided Psychology",
         "Arena：The Well",
         "Manus：Meiwen See"
-      ]
+      ],
+      "kind": "helper",
+      "assemblyStatus": "not-implemented-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
     },
     {
       "id": "H04",
@@ -290,7 +326,141 @@
         "原十款：Clinician",
         "WP10",
         "Manus：Wyatt Okeefe／Orka"
-      ]
+      ],
+      "kind": "helper",
+      "assemblyStatus": "existing-strengthening-research",
+      "contentFallback": "少內容只呈現已有資料；缺圖用有意義的純文字編排，不補假內容",
+      "professionalAdaptation": "依實際服務填寫職稱、對象、資格／經驗、形式與界線；版型不內建治療身分"
+    },
+    {
+      "id": "H05",
+      "kind": "helper",
+      "slug": "editorial-practice",
+      "name": "觀點服務誌",
+      "priority": "第二批",
+      "mode": "editorial-practice",
+      "assemblyStatus": "not-implemented-research",
+      "home": "一篇服務觀點預告為主文 7/12 ＋ 本人／合作入口 4/12 → 服務列 → 方法／FAQ",
+      "archive": "文章與服務各有獨立索引，以版面角色區分而非混成相同卡片",
+      "detail": "觀點文章窄正文＋情境式服務連結；服務頁介紹該項安排，再接相關觀點",
+      "about": "本人簡介與工作立場分欄，代表文章與服務入口成對",
+      "mobile": "定位先、主文後，再呈現本人與服務；不把聯絡塞在文章中段",
+      "nearest": "Essayist／Coach",
+      "difference": "正文主角是可閱讀的服務觀點，側欄是本人與合作；不是海報口號與方法三步，也不是首頁直接放單篇全文",
+      "refs": [
+        "H-S02",
+        "H-S07",
+        "H-S08"
+      ],
+      "contentFallback": "沒有正式文章時改為站長已提供的工作理念；不生成假案例，沒有寫作意願者優先選其他方向",
+      "professionalAdaptation": "可用於教練／顧問／療癒／心理服務；服務詞彙與資格依本人，不預設醫療"
+    },
+    {
+      "id": "H06",
+      "kind": "helper",
+      "slug": "question-led-practice",
+      "name": "問答對話",
+      "priority": "第二批",
+      "mode": "question-led",
+      "assemblyStatus": "not-implemented-research",
+      "home": "一句定位 → 左側訪客提問索引 3/12 ＋ 右側連續回答 8/12（本人、服務、方法、流程）→ 聯絡",
+      "archive": "服務索引以問題與回答交錯，不只在頁尾放 FAQ",
+      "detail": "這項服務是什麼／如何進行／範圍與費用／下一步依同一對話軸呈現",
+      "about": "我是誰／如何工作／相關經驗的問答，答案仍為本人真實資料",
+      "mobile": "取消側索引；每個問題緊鄰答案，依序全文可讀；details 僅折疊次要補充",
+      "nearest": "Practice Compass／Trust Path",
+      "difference": "全頁以提問欄＋回答欄延續；沒有三個 PATH 分流、五站路線圖或關卡，FAQ 不是結尾孤立區塊",
+      "refs": [
+        "H-S01",
+        "H-S03",
+        "NEW：將已觀察的疑問回答模式擴為全頁對話軸，非原站復刻"
+      ],
+      "contentFallback": "至少本人／服務／流程三個真實回答即可成立；不硬湊十題或做診斷測驗",
+      "professionalAdaptation": "問題依服務類型改寫；不預設診斷、療程或危機處置能力"
+    }
+  ],
+  "audiences": [
+    {
+      "kind": "knowledge",
+      "target": "個人知識／內容創作者：知識整理、生活紀錄、觀點、專業文章與個人內容基地",
+      "boundary": "不以新聞媒體、多作者刊物、商城或會員營運為必要條件"
+    },
+    {
+      "kind": "helper",
+      "target": "助人者／個人專業服務者：心理／諮商、催眠、療癒、身心靈、身體工作、教練與顧問",
+      "boundary": "以單人服務為基礎；資格、界線、危機資訊依實際專業，不將所有人預設成心理師"
+    }
+  ],
+  "sourceReview": {
+    "providedScreenshotInspection": [
+      "GPT A01 Maggie Appleton",
+      "GPT A03 Austin Kleon",
+      "GPT A08 colocal",
+      "GPT A15 Astro Cactus",
+      "GPT B01 Guided Psychology",
+      "GPT B02 Minaa B.",
+      "GPT B06 Kristin Heinrich",
+      "GPT B07 Everbe",
+      "GPT B20 Clove"
+    ],
+    "boundary": "Nine supplied historic screenshots visually inspected, not newly captured; some contain loading, contrast or embed problems. Current primary-page retrieval is text evidence only. No PR47 screenshot acceptance."
+  },
+  "targetSources": [
+    {
+      "id": "H-S01",
+      "name": "Guided Psychology",
+      "url": "https://www.guidedpsychology.com.au/",
+      "observed": "附件首屏為左文／右拱形空間圖；本輪內容有本人、工作方法、FAQ。",
+      "take": "本人與方法可構成完整服務介紹；不把左右兩欄或拱形本身當新構圖。"
+    },
+    {
+      "id": "H-S02",
+      "name": "Minaa B.",
+      "url": "https://www.minaab.com/",
+      "observed": "附件首屏左肖像、右定位，現在內容同時有 Therapy／Speaking／Resource Hub。",
+      "take": "個人身份、觀點與服務可共存；不搬書／播客／媒體數字。"
+    },
+    {
+      "id": "H-S03",
+      "name": "Kristin Heinrich",
+      "url": "https://www.kristinheinrichpsychology.com.au/",
+      "observed": "附件首屏右方大片空白，原報告注明載入限制；可讀內容有對象／地點、本人與FAQ。",
+      "take": "FAQ 內容先回答疑問；空白不能當刻意設計或照片已實測正常。"
+    },
+    {
+      "id": "H-S04",
+      "name": "Everbe Therapy",
+      "url": "https://everbetherapy.com/",
+      "observed": "附件左照片右文案，色彩與字體識別強；本輪內容有本人取向與長敘事。",
+      "take": "去掉風格後仍是雙欄，不能僅學桃色與襯線；不搬療效承諾。"
+    },
+    {
+      "id": "H-S05",
+      "name": "Everroot 服務頁",
+      "url": "https://myeverroot.com/services",
+      "observed": "本輪內容逐項列服務、時長／費用、聯絡；圖片分散於服務段落。",
+      "take": "一位服務者可有單次／系列／伴侶等安排；抽取完整服務欄位，不搬實際價格。"
+    },
+    {
+      "id": "H-S06",
+      "name": "The Well",
+      "url": "https://www.thewellcounselingpractice.com/",
+      "observed": "本輪內容有工作空間、本人、個人／伴侶服務與聯絡。",
+      "take": "工作室章節可把空間與文字交替；此輪沒有取得完整新視覺截圖。"
+    },
+    {
+      "id": "H-S07",
+      "name": "Kelsey O’Halloran",
+      "url": "https://www.kelseyohalloran.com/services",
+      "observed": "本輪服務頁有本人、提供內容、時程、費用與下一步；Blog 有觀點／案例文章。",
+      "take": "非心理治療的個人專業服務參考；文章與服務建立回路，案例非必填。"
+    },
+    {
+      "id": "H-S08",
+      "name": "心理師阿綸",
+      "url": "https://www.lunpsy.com/",
+      "observed": "本輪首頁有多主題、文章、本人、一般聯絡；品牌流程舊路徑擷取失敗。",
+      "take": "繁中觀點與專業服務可以同站；不搬重複導覽／商店／課程流程。"
     }
   ]
 }
