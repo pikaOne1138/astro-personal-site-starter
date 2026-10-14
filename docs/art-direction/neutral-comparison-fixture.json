@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "purpose": "source/DOM comparison fixture; not an active site, QA evidence, or student data",
+  "visual": {
+    "fontStack": "Georgia / Noto Sans TC / system-ui",
+    "colors": {
+      "background": "#f4f1e8",
+      "ink": "#242a24",
+      "accent": "#355747"
+    },
+    "imageMode": "missing"
+  },
+  "knowledge": {
+    "kind": "knowledge",
+    "brand": {
+      "name": "一頁筆記",
+      "tagline": "把看見的事寫下來"
+    },
+    "headline": "慢慢整理，持續理解",
+    "intro": "記錄知識、日常觀察與提問。",
+    "author": {
+      "name": "示範作者",
+      "description": "作者簡介待本人填寫"
+    },
+    "articles": [
+      {
+        "slug": "first",
+        "title": "如何留下一則觀察？",
+        "description": "從生活小事開始，寫下過程與反思。",
+        "date": "2026-10-01",
+        "topics": [
+          "觀察"
+        ]
+      },
+      {
+        "slug": "second",
+        "title": "再讀一次，發現不同細節",
+        "description": "重讀與整理的重要性。",
+        "date": "2026-09-18",
+        "topics": [
+          "閱讀"
+        ]
+      },
+      {
+        "slug": "third",
+        "title": "把想法串成一條線",
+        "description": "從片段建立索引。",
+        "date": "2026-09-02",
+        "topics": [
+          "方法"
+        ]
+      }
+    ],
+    "topics": [
+      {
+        "slug": "observation",
+        "title": "觀察"
+      },
+      {
+        "slug": "reading",
+        "title": "閱讀"
+      },
+      {
+        "slug": "method",
+        "title": "方法"
+      }
+    ]
+  },
+  "helper": {
+    "kind": "helper",
+    "brand": {
+      "name": "一頁練習",
+      "tagline": "先了解，再決定合作方式"
+    },
+    "headline": "在清楚資訊中做出選擇",
+    "intro": "了解工作者、方法、範圍與合作條件。",
+    "provider": {
+      "name": "示範服務者",
+      "credential": null,
+      "location": null
+    },
+    "services": [
+      {
+        "slug": "individual",
+        "title": "個別專業服務",
+        "description": "由提供者確認的服務方式與適合對象。",
+        "duration": null,
+        "price": null,
+        "format": null
+      }
+    ],
+    "visitorIntents": [
+      {
+        "id": "fit",
+        "title": "我想知道是否適合",
+        "detail": "先核對服務範圍與界線。",
+        "target": "fit"
+      },
+      {
+        "id": "process",
+        "title": "我想了解合作方式",
+        "detail": "閱讀完整服務說明。",
+        "target": "services"
+      },
+      {
+        "id": "questions",
+        "title": "我還有一些疑問",
+        "detail": "先閱讀已公開的常見問題。",
+        "target": "faq"
+      }
+    ],
+    "scope": {
+      "suitable": [],
+      "notSuitable": []
+    },
+    "faq": [],
+    "contact": null
+  },
+  "lowContent": {
+    "knowledge": {
+      "articles": [],
+      "topics": []
+    },
+    "helper": {
+      "services": [],
+      "visitorIntents": [],
+      "scope": {
+        "suitable": [],
+        "notSuitable": []
+      },
+      "faq": []
+    }
+  },
+  "rules": [
+    "Do not invent photos, articles, qualifications, prices, testimonials, booking or live forms.",
+    "Use the same within-audience content; do not require knowledge and helper data to match.",
+    "Comparison uses source inspection until real 1440/1280/768/390 screenshots exist."
+  ]
+}
