@@ -19,7 +19,7 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
    let error=null;
    try{
     const url=new URL('layouts/'+slug+'/',base.endsWith('/')?base:base+'/');
-    const response=await page.goto(url.toString(),{waitUntil:'networkidle',timeout:45000});
+    const response=await page.goto(url.toString(),{waitUntil:'domcontentloaded',timeout:20000});
     if(!response||!response.ok())throw Error('HTTP '+(response?.status()??'missing'));
     await page.evaluate(({data,kind})=>{
       // DOM-level neutralization: a consistent visual stress test, not actual Site Brief binding.
