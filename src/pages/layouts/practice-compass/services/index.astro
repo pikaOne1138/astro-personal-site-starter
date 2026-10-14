@@ -1,11 +1,12 @@
 ---
+import PrototypeNav from '../../../../components/art-direction/PrototypeNav.astro';
 import DirectionLayout from '../../../../layouts/DirectionLayout.astro';
 const root=import.meta.env.BASE_URL+'layouts/practice-compass/';
 const rows=[['服務範圍','待由真實服務提供者確認，不能以示範敘述冒充醫療或諮商服務'],['資格與證照','待核實：姓名、資格名稱、可查詢資料'],['服務形式','待設定：實體、線上或其他形式'],['時間與費用','待設定：時長、價格、取消與退款規則'],['聯絡方式','尚未配置真實聯絡、預約或表單服務']];
 const steps=[['確認服務是否適合','先檢視服務範圍與必要的專業界線。'],['核實實際資訊','確認費用、形式、資格、保密與取消規則。'],['使用正式聯絡管道','待正式配置後才能提供聯絡入口；原型不收件。']];
 ---
 <DirectionLayout title="服務說明｜服務羅盤" description="以服務範圍、資格揭露、合作流程與知情選擇設計的內頁">
-<main id="main" class="service"><header><a href={root}>✳ 服務羅盤</a><nav><a href={root}>首頁</a><a href="#information">必要資訊</a><a href="#process">合作流程</a></nav></header>
+<main id="main" class="service"><PrototypeNav kind="helper" />
 <section class="hero"><p class="mono">TRANSPARENT SERVICES / DESIGN PROTOTYPE</p><h1>先了解範圍，<em>再討論可能性。</em></h1><p>看過服務形式與界線後再決定是否聯絡。這些欄位不代表真實機構、專業者或目前提供的服務。</p><a href="#information">查看必要資訊 ↓</a></section>
 <div class="body"><aside><p class="mono">READ THIS FIRST</p><p>本頁是原型，資格、費用與預約皆尚未設定。</p></aside><div><section id="information"><p class="mono">01 / DISCLOSURE LEDGER</p><h2>公開需要確認的資訊。</h2><dl>{rows.map(([label,detail])=><div><dt>{label}</dt><dd>{detail}</dd></div>)}</dl></section><section id="process"><p class="mono">02 / CONTACT PATH</p><h2>聯絡之前的三個步驟。</h2><ol>{steps.map(([title,detail],i)=><li><strong>{String(i+1).padStart(2,'0')}</strong><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ol></section><section class="ending"><h2>尚未啟用預約服務。</h2><p>完成真實資料核實及第三方工具設定後，才能提供聯絡入口。急迫或危機需求請使用所在地可信緊急管道。</p><a href={root}>← 返回首頁</a></section></div></div><footer><a href={root}>服務羅盤 / 首頁 ↑</a></footer></main>
 </DirectionLayout>
