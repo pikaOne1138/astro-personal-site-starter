@@ -1,5 +1,15 @@
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
+## 最新增補：第四批推進（2026-10-14，取代上方「新候選沒有實作」的舊敘述）
+- 最新權威紀錄：`docs/art-direction/PR47-EXPANSION-MATRIX.md`。原先第一批建議與「未實作」為舊時點，不可再視為現況。
+- #47 新增的 11 個方向已有各四條 Astro 路由的多頁原型，合計 44 條定義：sidebar-journal、portrait-profile、editorial-frontpage、card-journal、service-catalogue、studio-chapters、visual-stories、compact-dispatch、split-reader、editorial-practice、question-led-practice。
+- 第四批 Clinician（原有方向）已新增可查證的 Practice Dossier 結構。Subject Atlas 修正固定數字為 fixture 推導。Practice Compass 的真實 Site Brief 契約尚未修復，不可宣稱完成。
+- 新增原型尚未接學員 Content Collection／服務設定；不進 #46 Generator 或 Gallery，不得視為新增 11 個 Ready 模板。
+- 截至第二批 Head `13c18fc1` 三個 GitHub Actions 綠燈；第三／四批 Head CI 必須另查，不可沿用先前成功。新版四尺寸截圖與同內容視覺實測未完成。
+- PR #47 必須保留 Draft，不 Merge／部署 Production。獨立 Starter 截圖驗收延期。
+- 下一輪優先：查最新 Head CI，必要時修 Astro Build；完成 11 款同客群同內容 Neutral Fixture 與圖片 fallback、手機四尺寸原型視覺 QA；再處理 Subject Atlas / Practice Compass 的真實內容接線（不要改 #46 範圍）。
+
+
 更新：2026-10-14。新對話先讀此檔，再查 GitHub 最新狀態；不要假設本檔記錄的 SHA 永遠是最新。
 
 ## Repository 與工作狀態
