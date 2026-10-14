@@ -1,11 +1,17 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
-export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];}
+import contentSource from '../../../data/art-direction-layout-content.json';
+export function getStaticPaths() {
+  const fixed=[{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];
+  const additional=(contentSource.knowledge.articles??[]).slice(1).filter(entry=>entry.published===true && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.slug));
+  return [...fixed,...additional.map(entry=>({params:{page:'articles/'+entry.slug}}))];
+}
 const page=Astro.params.page??'';
 const root=import.meta.env.BASE_URL+'layouts/compact-dispatch/';
 const indexUrl=root+'articles/',detailUrl=root+'articles/sample/';
 const site=getDirectionContent('compact-dispatch','knowledge',root,'articles/sample/');
+const detailRecord=site.articles.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const entries=site.articles.filter(a=>a.published);
 const items=entries.map(a=>a.title);
 const demo=site.primary?.summary??site.intro;
@@ -14,7 +20,7 @@ const demo=site.primary?.summary??site.intro;
 <main class="direction rows" id="main"><div class="wrap">
 <header class="nav"><a class="brand" href={root}>極簡短箋<small>COMPACT-DISPATCH</small></a><nav aria-label="網站導覽"><a href={root}>首頁</a><a href={indexUrl}>短箋索引</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
 {(page===''||page==='articles')&&<><section class="intro"><span class="tiny">KNOWLEDGE / ROWS</span><h1>短短幾則，照時間排列。</h1><p>以相同的文字與基礎視覺，測試不同資訊架構。</p></section><div class="dispatch-list">{items.map((t,i)=><a href={site.primary?.href??indexUrl} class="dispatch-row"><time>10 / {14-i}</time><h2>{t}</h2><span>READ ↗</span></a>)}</div></>}
-{page==='articles/sample'&&<><section class="intro"><span class="tiny">ARTICLE DETAIL</span><h1>{site.primary?.title??'目前沒有已公開的內容'}</h1><p>{demo}</p></section><article class="prose narrow"><p class="tiny">A SHORT DISPATCH / DEMO</p><p>短箋型網站的內頁不需要加上不相關的大圖或多餘欄位。</p><p>{demo}</p></article><div class="contract-body" aria-label="可編輯詳細內容">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
+{(Astro.params.page??'').startsWith('articles/')&&<><section class="intro"><span class="tiny">ARTICLE DETAIL</span><h1>{detailRecord?.title??'目前沒有公開文章'}</h1><p>{demo}</p></section><article class="prose narrow"><p class="tiny">A SHORT DISPATCH / DEMO</p><p>短箋型網站的內頁不需要加上不相關的大圖或多餘欄位。</p><p>{demo}</p></article><div class="contract-body" aria-label="可編輯詳細內容">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
 {page==='about'&&<><section class="intro"><span class="tiny">ABOUT / ROWS</span><h1>{site.about}</h1></section><article class="prose narrow"><p>作者介紹以真實文字為主，不強迫補足假照片或履歷。</p><a href={indexUrl}>閱讀短箋 →</a></article></>}
 <section class="content-contract" aria-label="本站實際可編輯資料"><strong>{site.siteName}</strong><p>{site.intro}</p><p>{site.primary?site.primary.title:'目前沒有已公開的文章或服務。'}</p></section><footer><span>compact-dispatch / DEMO PROTOTYPE</span><a href={root}>回首頁 ↑</a><p>未提供正式預約、聯絡或虛構專業證照。</p></footer>
 </div></main></DirectionLayout>
