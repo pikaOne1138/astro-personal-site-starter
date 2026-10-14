@@ -90,6 +90,11 @@ try{
       primaryCta:kind==='knowledge'?{label:'閱讀文章',pageId:'articles'}:{label:'查看服務',pageId:'services'},
       sectionPatterns:[],notes:''
     };
+    if(slug==='essayist'){
+      secondary.brand.heroImagePath='/images/hero-image.png';
+      secondary.brand.heroImageAlt='自帶圖片的測試示意';
+      secondary.assets=[{path:'/images/hero-image.png',mime:'image/png',base64:'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLttAAAAABJRU5ErkJggg=='}];
+    }
     if(slug==='reading-atlas')secondary.reading={records:[{month:'07',title:'自己讀過的一本書',note:'真實閱讀理由。'}],annualBook:{title:'自己選出的年度書',note:'具體選入原因。'}};
     if(slug==='trust-path')secondary.serviceFacts={duration:'依實際方案而定',price:'請向服務者確認',cancellation:'依公布政策',qualification:'尚未提供可查證資格',contact:'請使用服務頁聯絡方式'};
     if(slug==='radio-letter'){
@@ -102,6 +107,7 @@ try{
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site,'--require-assembled'],{stdio:'inherit'});
     const home=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
     if(!home.includes('data-assembled-layout="'+slug+'"'))throw Error('Missing '+slug+' distinct Home renderer');
+    if(slug==='essayist'&&!existsSync(join(site,'public/images/hero-image.png')))throw Error('Browser-selected image was not extracted into standalone project');
     if(slug==='radio-letter'){
       if(!existsSync(join(site,'public/audio/owned-sample.mp3')))throw Error('Missing copied licensed podcast audio');
       const media=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8')).media;
