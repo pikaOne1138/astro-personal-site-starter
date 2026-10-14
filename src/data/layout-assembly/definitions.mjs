@@ -3,11 +3,11 @@ import directions from '../layout-directions.json' with {type:'json'};
 /**
  * Version 1 layout assembly registry.
  * The original research registry is read-only to avoid conflicts with parallel Art Direction.
- * Prototype selection remains available in the planner; only ready adapters may be exported.
+ * Prototype selection remains available in the planner. Existing scaffold-only exports stay compatible;
+ * strict --require-assembled export accepts only adapters, and ready status requires manual visual QA.
  */
 export const layoutDefinitions = directions.map(direction => {
   const adapterAvailable = direction.slug === 'field-notes' || direction.slug === 'clinician';
-  const ready = false;
   return {
     schemaVersion: 1,
     slug: direction.slug,
@@ -31,7 +31,7 @@ export const layoutDefinitions = directions.map(direction => {
   };
 });
 export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
-export const getReadyLayout = (slug,kind) => {
+export const getAssemblyLayout = (slug,kind) => {
   const result=getLayoutDefinition(slug,kind);
   if(!result || !result.adapter || !['ready','in-progress'].includes(result.assemblyStatus))throw Error('Layout '+slug+' has no independent assembly adapter yet. Export the Site Brief instead.');
   return result;
