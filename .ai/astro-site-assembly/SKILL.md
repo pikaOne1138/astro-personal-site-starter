@@ -16,6 +16,18 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 ## Generator — phase 1
 `node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.
 
+## Existing full-site Design Family contract (PR #46)
+
+The student exporter now includes the selected independent homepage AND family-specific interior components. Do not replace them with a generic hero or universal interior page.
+
+- Home: `src/data/layout-assembly/<slug>/Home.astro` → exported `src/components/layouts/selected/Home.astro`.
+- Article archive, article detail, and ordinary interior pages: `src/data/layout-assembly/DesignInterior.astro`.
+- About: `src/data/layout-assembly/AboutSections.astro`.
+- Helper service: `src/data/layout-assembly/ServiceSections.astro`.
+- Navbar/Footer: `src/data/layout-assembly/DesignChrome.css`.
+
+Preserve article collections, navigation data, SEO, RSS, sitemap, Pagefind and existing Blocks logic. Improve page-specific DOM/compositions where needed instead of recoloring generic cards. Unconfigured service, qualifications, pricing, and bookings must remain explicitly unconfigured. Current designs are first-pass, not all twelve source-faithful final multi-page sites.
+
 ## Required design adaptation — phase 2
 1. Inspect the existing independent `src/data/layout-assembly/<slug>/Home.astro` and its definition first, then review original `src/pages/layouts/<slug>/index.astro` and `public/layout-library.css` for design intent. The generator already copies the matching independent homepage into the student's site.
 2. Preserve its hierarchy, Hero proportions, content order, imagery treatment and mobile restacking; do not replace all 12 with the same hero and cards.
