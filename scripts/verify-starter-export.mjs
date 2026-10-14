@@ -135,9 +135,12 @@ try{
         '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
       ].join('\n'));
     }
-    const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
     const aboutPage=readFileSync(join(site,'src/pages/[...page].astro'),'utf8');
-    if(!sourceDetail.includes('ArticleDetail')||!aboutPage.includes('AboutSections'))throw Error('Missing actual Design Family page composition in '+slug);
+    if(!aboutPage.includes('AboutSections'))throw Error('Missing About page composition in '+slug);
+    if(kind==='knowledge'){
+      const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
+      if(!sourceDetail.includes('ArticleDetail'))throw Error('Missing article detail composition in '+slug);
+    }
     const aboutSource=readFileSync(join(site,'src/components/layouts/selected/AboutSections.astro'),'utf8');
     if(!aboutSource.includes("family==='"+slug+"'"))throw Error('No dedicated About composition branch for '+slug);
     if(kind==='knowledge'){
