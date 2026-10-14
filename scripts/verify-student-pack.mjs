@@ -19,6 +19,12 @@ try {
     'scripts/verify-v2-8-output.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
+  // Both the built website and the downloadable ZIP must declare the same source version.
+  const webManifest=JSON.parse(readFileSync('public/builder-pack-version.json','utf8'));
+  const zipManifest=JSON.parse(readFileSync(join(root,'BUILDER-PACK-VERSION.json'),'utf8'));
+  if(JSON.stringify(webManifest)!==JSON.stringify(zipManifest))throw Error('Guide/Builder Pack version mismatch');
+  if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==12||zipManifest.layoutAdapterCount!==12)throw Error('Builder Pack manifest missing twelve layouts');
+  if(!/^[a-f0-9]{40}$/.test(zipManifest.sourceCommit)&&zipManifest.sourceCommit!=='unknown')throw Error('Invalid source commit version');
   const guide=readFileSync(join(root,'AGENTS.md'),'utf8');
   if(!guide.includes('學員')||guide.includes('read `.ai/astro-ui-craft/SKILL.md` first'))throw Error('Research AGENTS was shipped instead of learner AGENTS');
   if(existsSync(join(root,'.github/workflows/deploy-pages.yml')))throw Error('Research deploy workflow included');
