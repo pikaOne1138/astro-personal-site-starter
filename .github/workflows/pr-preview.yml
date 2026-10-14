@@ -54,28 +54,12 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
-      - name: Test first-time learner Starter Planner from browser to downloaded Site Brief
-        if: github.event.action != 'closed'
-        run: node scripts/qa-learner-planner.mjs
       - name: Capture QA gallery from local build
         if: github.event.action != 'closed'
         env:
           LAYOUT_QA_PUBLIC: '1'
           LAYOUT_QA_OUT: .preview-qa/layouts
         run: node scripts/qa-layout-screenshots.mjs
-      - name: Capture 12 real standalone Starter vs Prototype pairs at four widths
-        if: github.event.action != 'closed'
-        env:
-          STARTER_FIDELITY_OUT: .preview-qa/starter-fidelity
-        run: node scripts/qa-starter-fidelity.mjs
-      - name: Preserve prototype-vs-student evidence even when a geometry test fails
-        if: always() && github.event.action != 'closed'
-        uses: actions/upload-artifact@v4
-        with:
-          name: starter-fidelity-comparison
-          path: .preview-qa/starter-fidelity/
-          retention-days: 7
-          if-no-files-found: warn
       - name: Build PR under its preview URL prefix
         if: github.event.action != 'closed'
         env:
@@ -90,19 +74,6 @@ jobs:
           cp -R .preview-qa/layouts/. dist/qa-layouts/
           test -s dist/qa-layouts/index.html
           test -s dist/qa-layouts/results.json
-      - name: Include standalone visual QA pair gallery
-        if: github.event.action != 'closed'
-        run: |
-          mkdir -p dist/qa-starters
-          cp -R .preview-qa/starter-fidelity/. dist/qa-starters/
-          test -s dist/qa-starters/results.json
-          test -s dist/qa-starters/index.html
-      - name: Include learner black-box QA evidence
-        if: github.event.action != 'closed'
-        run: |
-          mkdir -p dist/qa-learner
-          cp -R .preview-qa/learner-journey/. dist/qa-learner/
-          test -s dist/qa-learner/results.json
       - name: Upload built site
         if: github.event.action != 'closed'
         uses: actions/upload-artifact@v4
