@@ -4,16 +4,17 @@ const base=import.meta.env.BASE_URL;
 const nav=config.navigation.find(n=>n.id==='articles');
 const action=base+(nav?.path??'articles/');
 const months=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
-const records=months.map((name,i)=>({month:String(i+1).padStart(2,'0'),name}));
+const sampleMonths=months.map((name,i)=>({month:String(i+1).padStart(2,'0'),name}));
+const records=Array.isArray(config.reading?.records)&&config.reading.records.length?config.reading.records.map(x=>({month:x.month,name:months[Number(x.month)-1],title:x.title,note:x.note})):sampleMonths.map(x=>({...x,title:'尚未提供閱讀紀錄',note:'請填入實際讀過的書、評註與來源。'}));
 ---
 <div class="atlas-shell" data-assembled-layout="reading-atlas">
   <section class="atlas-hero" aria-labelledby="atlas-title">
     <div class="atlas-hero-copy"><p class="atlas-kicker">READING ALMANAC / YEAR IN REVIEW</p><h1 id="atlas-title">閱讀年鑑</h1><p class="atlas-brand">{config.brand.name} · {config.brand.tagline}</p><p class="atlas-intro">一整年的閱讀足跡，以月份、評註和年度選書串成索引。</p><a class="atlas-cta" href="#calendar">閱讀年鑑 ↓</a></div>
     <div class="atlas-art" role="img" aria-label="無圖片的年份字樣"></div>
   </section>
-  <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{records.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">顯示全年示範空白紀錄</p></section>
-<section class="atlas-section" id="year-book"><p class="atlas-section-tag">02 / YEAR-BOOK</p><h2>年度選讀</h2><p>年度之書必須由真實閱讀紀錄產生。這裡僅示範閱讀方式。</p></section>
-<section class="atlas-section" id="catalog"><p class="atlas-section-tag">03 / CATALOG</p><h2>讀書目錄</h2><p>以下是待填紀錄，不代表已讀書目。</p><div class="atlas-records">{records.map(m=><article data-record-month={m.month}><span>{m.month} / {m.name}</span><h3>尚未提供閱讀紀錄</h3><p>請填入實際讀過的書、評註與來源。</p></article>)}</div><a href={action}>閱讀文章 ↗</a></section></div>
+  <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{sampleMonths.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">顯示全年示範空白紀錄</p></section>
+<section class="atlas-section" id="year-book"><p class="atlas-section-tag">02 / YEAR-BOOK</p><h2>年度選讀</h2>{config.reading?.annualBook?<div><h3>{config.reading.annualBook.title}</h3><p>{config.reading.annualBook.note}</p></div>:<p>年度之書尚未設定。只有提供自己真實讀過的書及選擇理由才會顯示。</p>}</section>
+<section class="atlas-section" id="catalog"><p class="atlas-section-tag">03 / CATALOG</p><h2>讀書目錄</h2><p>以下是待填紀錄，不代表已讀書目。</p><div class="atlas-records">{records.map(m=><article data-record-month={m.month}><span>{m.month} / {m.name}</span><h3>{m.title}</h3><p>{m.note}</p></article>)}</div><a href={action}>閱讀文章 ↗</a></section></div>
   <footer class="atlas-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
 </div>
 <script is:inline>
