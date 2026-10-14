@@ -65,34 +65,6 @@ try{
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
     if(kind==='knowledge'&&!existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Knowledge articles missing');
     if(kind==='helper'&&existsSync(join(site,'src/pages/articles/index.astro')))throw Error('Unexpected helper articles route');
-    // Exercise student-owned content rather than the default placeholder-only empty pages.
-    // A deliberately long CJK title catches broken template bindings and overflow regressions.
-    const longTitle='一篇談閱讀與實際生活中如何整理資訊的長文章標題——包含中文標點與不同長度的文字來驗證網站是否仍可閱讀';
-    if(kind==='knowledge'){
-      const articleDir=join(site,'src/content/articles');
-      mkdirSync(articleDir,{recursive:true});
-      writeFileSync(join(articleDir,'qa-long-title.md'),[
-        '---','title: '+longTitle,'description: 這段文章摘要是實際內容測試，不是虛構的使用者見證。',
-        'publishedAt: 2026-10-12','draft: false','---',
-        '## 第一個標題','這是學員撰寫的文章，包含中文、標點與一段比較長的文字。',
-        '## 第二個標題','請保留正式文章內容，不要退回通用展示卡片。'
-      ].join('\n'));
-      writeFileSync(join(articleDir,'qa-hidden.md'),[
-        '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
-      ].join('\n'));
-    }
-    const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
-    const aboutPage=readFileSync(join(site,'src/pages/[...page].astro'),'utf8');
-    if(!sourceDetail.includes('ArticleDetail')||!aboutPage.includes('AboutSections'))throw Error('Missing actual Design Family page composition in '+slug);
-    const aboutSource=readFileSync(join(site,'src/components/layouts/selected/AboutSections.astro'),'utf8');
-    if(!aboutSource.includes("family==='"+slug+"'"))throw Error('No dedicated About composition branch for '+slug);
-    if(kind==='knowledge'){
-      const archive=readFileSync(join(site,'src/components/layouts/selected/ArticleArchive.astro'),'utf8');
-      if(!archive.includes("family==='"+slug+"'"))throw Error('No dedicated knowledge archive DOM for '+slug);
-    }else{
-      const service=readFileSync(join(site,'src/components/layouts/selected/ServiceSections.astro'),'utf8');
-      if(!service.includes("family==='"+slug+"'"))throw Error('No dedicated helper service DOM for '+slug);
-    }
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
@@ -147,6 +119,34 @@ try{
     if(slug==='trust-path'&&JSON.parse(readFileSync(join(site,'site.config.json'),'utf8')).serviceFacts.duration!=='依實際方案而定')throw Error('Service facts not exported');
     if(slug==='reading-atlas'&&(!home.includes('data-atlas-month')||!home.includes('data-record-month')||!home.includes('aria-pressed')))throw Error('Reading atlas month filters incomplete');
     if(slug==='trust-path'&&(!home.includes('trust-route')||!home.includes('href={\'#\'+id}')||!home.includes('trust-unverified')))throw Error('Trust path stations or unverified details missing');
+    // Exercise student-owned content rather than the default placeholder-only empty pages.
+    // A deliberately long CJK title catches broken template bindings and overflow regressions.
+    const longTitle='一篇談閱讀與實際生活中如何整理資訊的長文章標題——包含中文標點與不同長度的文字來驗證網站是否仍可閱讀';
+    if(kind==='knowledge'){
+      const articleDir=join(site,'src/content/articles');
+      mkdirSync(articleDir,{recursive:true});
+      writeFileSync(join(articleDir,'qa-long-title.md'),[
+        '---','title: '+longTitle,'description: 這段文章摘要是實際內容測試，不是虛構的使用者見證。',
+        'publishedAt: 2026-10-12','draft: false','---',
+        '## 第一個標題','這是學員撰寫的文章，包含中文、標點與一段比較長的文字。',
+        '## 第二個標題','請保留正式文章內容，不要退回通用展示卡片。'
+      ].join('\n'));
+      writeFileSync(join(articleDir,'qa-hidden.md'),[
+        '---','title: 不應公開的草稿','description: 草稿範例','publishedAt: 2026-10-10','draft: true','---','這段不能出現在公開搜尋。'
+      ].join('\n'));
+    }
+    const sourceDetail=readFileSync(join(site,'src/pages/articles/[slug].astro'),'utf8');
+    const aboutPage=readFileSync(join(site,'src/pages/[...page].astro'),'utf8');
+    if(!sourceDetail.includes('ArticleDetail')||!aboutPage.includes('AboutSections'))throw Error('Missing actual Design Family page composition in '+slug);
+    const aboutSource=readFileSync(join(site,'src/components/layouts/selected/AboutSections.astro'),'utf8');
+    if(!aboutSource.includes("family==='"+slug+"'"))throw Error('No dedicated About composition branch for '+slug);
+    if(kind==='knowledge'){
+      const archive=readFileSync(join(site,'src/components/layouts/selected/ArticleArchive.astro'),'utf8');
+      if(!archive.includes("family==='"+slug+"'"))throw Error('No dedicated knowledge archive DOM for '+slug);
+    }else{
+      const service=readFileSync(join(site,'src/components/layouts/selected/ServiceSections.astro'),'utf8');
+      if(!service.includes("family==='"+slug+"'"))throw Error('No dedicated helper service DOM for '+slug);
+    }
     if(process.env.FULL_STARTER_BUILD==='1'){
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
