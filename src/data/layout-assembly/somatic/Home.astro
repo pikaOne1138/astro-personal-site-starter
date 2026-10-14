@@ -1,0 +1,35 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+---
+<div class="body-shell" data-assembled-layout="somatic">
+  <section class="body-hero" aria-labelledby="body-title">
+    <div class="body-hero-copy"><p class="body-kicker">BODY / RHYTHM / SPACE TO NOTICE</p><h1 id="body-title">先回到，身體與節律。</h1><p class="body-brand">{config.brand.name} · {config.brand.tagline}</p><p class="body-intro">以身體感受、溫柔留白和練習節奏，介紹真實的服務範圍。</p><a class="body-cta" href="#arrival">了解練習 ↓</a></div>
+    <figure class="body-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="body-art" role="img" aria-label="自然光與空間示意"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="body-section-list"><section class="body-section" id="arrival"><p class="body-section-tag">01 / ARRIVAL</p><h2>先抵達這裡</h2><p>不必急著改變，先注意環境、呼吸和身體接觸點。</p></section>
+<section class="body-section" id="practice"><p class="body-section-tag">02 / PRACTICE</p><h2>三個練習錨點</h2><p>01 找到支撐／02 留意呼吸／03 自行選擇下一步</p></section>
+<section class="body-section" id="sessions"><p class="body-section-tag">03 / SESSIONS</p><h2>服務安排</h2><p>時間、費用與實際服務方式都需由站長填入，不提供療效承諾。</p><a href={action}>查看服務 ↗</a></section></div>
+  <footer class="body-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.body-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.body-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. body-hero-copy{min-width:0}
+.body-kicker,.body-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.body-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.body-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.body-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.body-figure{margin:0;min-width:0}. body-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.body-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.body-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.body-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.body-section-list{max-width:1250px;margin:0 auto 4rem}
+.body-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.body-section p{max-width:65ch;line-height:1.85}. body-section a{color:inherit}
+.body-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.body-hero{min-height:65vh;display:flex;align-items:center;position:relative}.body-hero-copy{position:relative;z-index:1;max-width:630px}.body-hero h1{font-size:clamp(3rem,7vw,7rem)}.body-art{position:absolute;inset:0 0 0 40%;height:100%;background:linear-gradient(145deg,#e9d6b8,#b6bb9f 60%,#6a8074);opacity:.65}.body-section-list{display:grid;grid-template-columns:1fr 1fr;gap:4vw}.body-section:nth-child(2){grid-column:1/-1;background:#e7e9dc}.body-section{padding:2.5rem;border-bottom:1px solid currentColor}
+@media(max-width:800px){.body-hero,.body-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.body-hero{min-height:0}.body-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.body-hero figure,.body-art{position:static;width:100%;height:auto;min-height:180px}.body-section,.body-section:nth-child(1),.body-section:nth-child(2),.body-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.body-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.body-shell{padding:1rem}.body-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.body-close{display:block}}
+</style>
