@@ -1,0 +1,6 @@
+---
+import config from '../../site.config.json';
+import SiteLayout from '../layouts/SiteLayout.astro';
+const info=config.artDirection.contact;
+---
+<SiteLayout title="聯絡方式"><section class="interior"><p class="eyebrow">CONTACT / EXTERNAL SERVICES</p><h1>聯絡與下一步</h1>{(config.pageContent['page-contact']||[]).map(p=><p>{p}</p>)}{info.email&&<p><a class="action" href={'mailto:'+info.email}>Email 聯絡</a></p>}{info.url&&<p><a class="action" href={info.url} rel="noopener noreferrer">開啟正式聯絡頁 ↗</a></p>}{info.bookingUrl&&<p><a class="action" href={info.bookingUrl} rel="noopener noreferrer">前往外部預約服務 ↗</a></p>}{!info.email&&!info.url&&!info.bookingUrl&&<p class="notice">尚未配置正式聯絡或預約服務，本站不提供可假裝送出的表單。</p>}<p>本站不提供即時危機處理。</p></section></SiteLayout>

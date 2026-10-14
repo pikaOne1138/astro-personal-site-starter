@@ -15,9 +15,24 @@
     "編號檔案",
     "編輯式長文"
   ],
-  "assemblyStatus": "prototype",
+  "assemblyStatus": "in-progress",
   "sourcePrototype": "/layouts/subject-atlas/",
-  "adapter": null,
+  "adapter": {
+    "id": "subject-atlas",
+    "version": 1,
+    "renderer": "src/components/layouts/subject-atlas/Home.astro",
+    "supportedPages": [
+      "/",
+      "/about/",
+      "/articles/",
+      "/articles/[slug]/",
+      "/topics/",
+      "/topics/[slug]/",
+      "/search/",
+      "/rss.xml",
+      "/404/"
+    ]
+  },
   "composition": {
     "hero": {
       "id": "topical-library-manifesto",

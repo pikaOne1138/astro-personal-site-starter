@@ -15,9 +15,23 @@
     "資訊揭露",
     "原生 FAQ"
   ],
-  "assemblyStatus": "prototype",
+  "assemblyStatus": "in-progress",
   "sourcePrototype": "/layouts/practice-compass/",
-  "adapter": null,
+  "adapter": {
+    "id": "practice-compass",
+    "version": 1,
+    "renderer": "src/components/layouts/practice-compass/Home.astro",
+    "supportedPages": [
+      "/",
+      "/services/",
+      "/about/",
+      "/faq/",
+      "/contact/",
+      "/privacy/",
+      "/search/",
+      "/404/"
+    ]
+  },
   "composition": {
     "hero": {
       "id": "visitor-decision-prologue",

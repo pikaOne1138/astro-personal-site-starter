@@ -87,3 +87,8 @@ No PR auto-merge, DNS or Production action permitted.
 3. Preserve decision rows and disclosure ledger in the helper adapter. Missing credentials, fees, contact and booking remain visibly unconfigured.
 4. Reuse consistent navigation semantics while retaining topic sidebar and article TOC as distinct secondary navigation.
 5. Verify independent pages and four viewport screenshots before updating assemblyStatus or screenshots in the assembly registry.
+
+
+## 最新優先順序：獨立 Adapter（2026-10-14）
+
+使用者要求本輪先完成獨立 Starter／Adapter，不再執行截圖驗收。最新兩份 Definitions 應讀為 in-progress／非空 adapter；前文 prototype／adapter:null 屬原先未組裝時點，不是目前狀態。新入口、內容契約、檢查及 #46 交接見 [INDEPENDENT-ADAPTERS.md](INDEPENDENT-ADAPTERS.md)。仍不標 Ready；不修改 #46 Gallery／Planner／既有 exporter。

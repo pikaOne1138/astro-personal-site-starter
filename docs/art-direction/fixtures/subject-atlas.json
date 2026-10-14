@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "kind": "knowledge",
+  "layoutSlug": "subject-atlas",
+  "visualTheme": "paper",
+  "brand": {
+    "name": "QA 主題網站",
+    "tagline": "整合測試用站名與文案，非真實營運者",
+    "primaryColor": "#355747"
+  },
+  "navigation": [
+    {
+      "id": "articles",
+      "label": "文章",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    },
+    {
+      "id": "page-guide",
+      "label": "指南",
+      "path": "guides/first/",
+      "parentId": "about",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "articles",
+    "label": "閱讀文章"
+  },
+  "content": {
+    "headline": "QA 首頁標題",
+    "intro": "QA 自訂首頁簡介"
+  },
+  "pageContent": {
+    "about": [
+      "QA 關於頁；僅驗證持有人文案。"
+    ],
+    "page-guide": [
+      "QA 自訂多層路徑內頁。"
+    ]
+  },
+  "artDirection": {
+    "topics": [
+      {
+        "slug": "method",
+        "title": "方法",
+        "description": "QA 主題說明"
+      }
+    ],
+    "scope": {
+      "suitable": [
+        "QA 服務範圍示意"
+      ],
+      "notSuitable": [
+        "QA 服務界線示意"
+      ]
+    },
+    "serviceFacts": {
+      "format": "QA 示範形式"
+    },
+    "faq": [
+      {
+        "question": "QA 常見問題？",
+        "answer": "QA 正式傳入的答案。"
+      }
+    ],
+    "contact": {}
+  },
+  "contentDirectory": "content"
+}

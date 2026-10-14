@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "kind": "helper",
+  "layoutSlug": "practice-compass",
+  "visualTheme": "paper",
+  "brand": {
+    "name": "QA 服務網站",
+    "tagline": "整合測試用站名與文案，非真實營運者",
+    "primaryColor": "#355747"
+  },
+  "navigation": [
+    {
+      "id": "services",
+      "label": "服務",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    },
+    {
+      "id": "page-guide",
+      "label": "指南",
+      "path": "guides/first/",
+      "parentId": "about",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "services",
+    "label": "了解服務"
+  },
+  "content": {
+    "headline": "QA 首頁標題",
+    "intro": "QA 自訂首頁簡介"
+  },
+  "pageContent": {
+    "about": [
+      "QA 關於頁；僅驗證持有人文案。"
+    ],
+    "page-guide": [
+      "QA 自訂多層路徑內頁。"
+    ]
+  },
+  "artDirection": {
+    "topics": [],
+    "scope": {
+      "suitable": [
+        "QA 服務範圍示意"
+      ],
+      "notSuitable": [
+        "QA 服務界線示意"
+      ]
+    },
+    "serviceFacts": {
+      "format": "QA 示範形式"
+    },
+    "faq": [
+      {
+        "question": "QA 常見問題？",
+        "answer": "QA 正式傳入的答案。"
+      }
+    ],
+    "contact": {}
+  }
+}

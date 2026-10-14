@@ -1,0 +1,7 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import config from '../../../site.config.json';
+import {getCollection} from 'astro:content';
+const posts=await getCollection('articles',({data})=>!data.draft);const base=import.meta.env.BASE_URL;
+---
+<SiteLayout title="主題目錄"><section class="interior"><p class="eyebrow">INDEX / TOPICS</p><h1>主題目錄</h1>{config.artDirection.topics.length?<ol>{config.artDirection.topics.map(t=><li><a class="action" href={base+'topics/'+t.slug+'/'}>{t.title}</a><p>{t.description}</p><p>{posts.filter(p=>p.data.topics.includes(t.slug)).length} 篇公開文章</p></li>)}</ol>:<p class="notice">尚未設定主題。</p>}</section></SiteLayout>
