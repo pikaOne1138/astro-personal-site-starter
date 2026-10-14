@@ -69,3 +69,21 @@ This branch only adds new layouts, their scoped source, definitions and this aud
 - Independent export Starter: intentionally owned by conversation A.
 
 No PR auto-merge, DNS or Production action permitted.
+
+
+## 09-22 continuation — 2026-10-14
+
+- Existing Preview `216f495b` was opened in Work Cloud Browser against head `0a65b71835b434c5be70ada7e9789fe165cf8271`.
+- Fixed mismatched article destinations: seven title-only fixtures are visibly unlinked; the one real demonstration article has a matching title in all discovery surfaces.
+- `src/data/subject-atlas.ts` is the prototype fixture source of truth, not a replacement for Content Collections. All four topic routes derive from it. Related links mean category navigation, not a shipped relationship graph.
+- Shared prototype navigation now appears across all 14 routes (8 knowledge, 6 helper), preserving layout-specific bodies and service disclosure ledger. No Gallery, Generator, Adapter or shared registry modification.
+- Added missing composition IDs `archive` and `information`; definitions remain `prototype`, `adapter:null`, screenshots null. A browser screenshot of a research route does not prove independent Starter readiness.
+- Local `npm run build` passed, including Pagefind and V2.8 output checks. Built route/fragment check covered 14 routes and 204 links without a missing destination.
+- Work Cloud Browser exposes no viewport resizing capability. Observed viewport is 1363×936 (content 1348px with scrollbar). Specified 1440/1280/768/390 visual gates remain BLOCKED, not PASS. Initial full-page screenshot attempt timed out; viewport captures are retained as partial evidence.
+
+### Handoff to PR #46
+1. Consume the two manifests only as prototypes. Do not register them as ready until independent export and all required routes have passed the agreed gates.
+2. Bind topic membership/article routes to real Content Collections; null `articleSlug` means a non-published display fixture. Preserve the existing Pagefind/RSS pipeline.
+3. Preserve decision rows and disclosure ledger in the helper adapter. Missing credentials, fees, contact and booking remain visibly unconfigured.
+4. Reuse consistent navigation semantics while retaining topic sidebar and article TOC as distinct secondary navigation.
+5. Verify independent pages and four viewport screenshots before updating assemblyStatus or screenshots in the assembly registry.
