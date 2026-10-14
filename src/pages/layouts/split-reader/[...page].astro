@@ -1,11 +1,17 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
-export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];}
+import contentSource from '../../../data/art-direction-layout-content.json';
+export function getStaticPaths() {
+  const fixed=[{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/sample'}},{params:{page:'about'}}];
+  const additional=(contentSource.knowledge.articles??[]).slice(1).filter(entry=>entry.published===true && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.slug));
+  return [...fixed,...additional.map(entry=>({params:{page:'articles/'+entry.slug}}))];
+}
 const page=Astro.params.page??'';
 const root=import.meta.env.BASE_URL+'layouts/split-reader/';
 const indexUrl=root+'articles/',detailUrl=root+'articles/sample/';
 const site=getDirectionContent('split-reader','knowledge',root,'articles/sample/');
+const detailRecord=site.articles.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const entries=site.articles.filter(a=>a.published);
 const items=entries.map(a=>a.title);
 const demo=site.primary?.summary??site.intro;
@@ -14,7 +20,7 @@ const demo=site.primary?.summary??site.intro;
 <main class="direction split" id="main"><div class="wrap">
 <header class="nav"><a class="brand" href={root}>雙欄閱讀台<small>SPLIT-READER</small></a><nav aria-label="網站導覽"><a href={root}>首頁</a><a href={indexUrl}>閱讀索引</a><a href={root+'about/'}>關於</a><a href={import.meta.env.BASE_URL+'layouts/'}>版型庫 ↗</a></nav></header>
 {(page===''||page==='articles')&&<><section class="intro"><span class="tiny">KNOWLEDGE / SPLIT</span><h1>主文與索引，各在自己的位置。</h1><p>以相同的文字與基礎視覺，測試不同資訊架構。</p></section><div class="split-reader"><article class="lead"><span class="tiny">FEATURED / 01</span><h2>{items[0]}</h2><p>{demo}</p><a href={site.primary?.href??indexUrl}>閱讀主文 →</a></article><div class="article-index"><span class="tiny">INDEX / ALL NOTES</span>{items.map((t,i)=><a href={site.primary?.href??indexUrl}><span>0{i+1}</span><h3>{t}</h3><span>↗</span></a>)}</div></div></>}
-{page==='articles/sample'&&<><section class="intro"><span class="tiny">ARTICLE DETAIL</span><h1>{site.primary?.title??'目前沒有已公開的內容'}</h1><p>{demo}</p></section><div class="split-reader"><aside class="lead"><span class="tiny">CONTENTS</span><p>01 / 起點</p><p>02 / 延伸</p><a href={indexUrl}>← 所有文章</a></aside><article class="prose"><h2>深入閱讀</h2><p>固定的閱讀索引與右側長文，同時維持可閱讀的段落與行長。</p><p>{demo}</p></article></div><div class="contract-body" aria-label="可編輯詳細內容">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
+{(Astro.params.page??'').startsWith('articles/')&&<><section class="intro"><span class="tiny">ARTICLE DETAIL</span><h1>{detailRecord?.title??'目前沒有公開文章'}</h1><p>{demo}</p></section><div class="split-reader"><aside class="lead"><span class="tiny">CONTENTS</span><p>01 / 起點</p><p>02 / 延伸</p><a href={indexUrl}>← 所有文章</a></aside><article class="prose"><h2>深入閱讀</h2><p>固定的閱讀索引與右側長文，同時維持可閱讀的段落與行長。</p><p>{demo}</p></article></div><div class="contract-body" aria-label="可編輯詳細內容">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
 {page==='about'&&<><section class="intro"><span class="tiny">ABOUT / SPLIT</span><h1>{site.about}</h1></section><div class="split-reader"><div class="lead"><h2>作者簡介</h2></div><article class="prose"><p>{demo}</p></article></div></>}
 <section class="content-contract" aria-label="本站實際可編輯資料"><strong>{site.siteName}</strong><p>{site.intro}</p><p>{site.primary?site.primary.title:'目前沒有已公開的文章或服務。'}</p></section><footer><span>split-reader / DEMO PROTOTYPE</span><a href={root}>回首頁 ↑</a><p>未提供正式預約、聯絡或虛構專業證照。</p></footer>
 </div></main></DirectionLayout>
