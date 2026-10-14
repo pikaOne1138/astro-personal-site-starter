@@ -23,7 +23,7 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
     if(!response||!response.ok())throw Error('HTTP '+(response?.status()??'missing'));
     await page.evaluate(({data,kind})=>{
       // DOM-level neutralization: a consistent visual stress test, not actual Site Brief binding.
-      const main=document.querySelector('main');
+      const main=document.body;
       if(!main)throw Error('Missing main');
       const titles=[data.headline,...(kind==='knowledge'?data.articles.map(a=>a.title):data.services.map(s=>s.title))];
       const paragraphs=[data.intro,...(kind==='knowledge'?data.articles.map(a=>a.description):data.services.map(s=>s.description))];
@@ -35,13 +35,13 @@ for(const [kind,slugs] of [['knowledge',knowledge],['helper',helper]]){
       const style=document.createElement('style');style.textContent=`
         *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;text-shadow:none!important}
         body,main,section,article,aside,header,footer,nav,div{--brand:#355747!important;--accent:#355747!important;--bg:#f4f1e8!important;--ink:#242a24!important}
-        main{background:#f4f1e8!important;color:#242a24!important}\n        main *,main *::before,main *::after{background-color:transparent!important;background-image:none!important;box-shadow:none!important;color:#242a24!important;border-color:#b5bdb1!important;font-family:Georgia,'Noto Sans TC',serif!important}\n        main :is(section,article,aside){background-color:transparent!important}\n        main :is(a,button){color:#355747!important}\n        main :is(.picture,.photo,.image-fallback,.image-space,.stage-art,.stage-art-title){background-color:#e7ece5!important}
-        main :is(h1,h2,h3,h4,p,li,span,a,button,dt,dd){font-family:Georgia,'Noto Sans TC',serif!important}
-        main :is(img,video,iframe){visibility:hidden!important}
+        body,main{background:#f4f1e8!important;color:#242a24!important}\n        body *,body *::before,body *::after{background-color:transparent!important;background-image:none!important;box-shadow:none!important;color:#242a24!important;border-color:#b5bdb1!important;font-family:Georgia,'Noto Sans TC',serif!important}\n        body :is(section,article,aside){background-color:transparent!important}\n        body :is(a,button){color:#355747!important}\n        body :is(.picture,.photo,.image-fallback,.image-space,.stage-art,.stage-art-title){background-color:#e7ece5!important}
+        body :is(h1,h2,h3,h4,p,li,span,a,button,dt,dd){font-family:Georgia,'Noto Sans TC',serif!important}
+        body :is(img,video,iframe){visibility:hidden!important}
       `;document.head.append(style);
     },{data,kind});
     await page.screenshot({path:join(out,kind+'-'+slug+'-'+v.name+'.png'),fullPage:true,animations:'disabled'});
-    const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,h1Count:document.querySelectorAll('main h1').length,mainWidth:Math.round(document.querySelector('main').getBoundingClientRect().width),sections:[...document.querySelectorAll('main section, main article')].slice(0,16).map(el=>{const r=el.getBoundingClientRect();return {x:Math.round(r.x),y:Math.round(r.y+scrollY),width:Math.round(r.width),height:Math.round(r.height)}})}));
+    const metrics=await page.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,h1Count:document.querySelectorAll('main h1').length,mainWidth:Math.round(document.querySelector('main').getBoundingClientRect().width),sections:[...document.querySelectorAll('body section, body article')].slice(0,16).map(el=>{const r=el.getBoundingClientRect();return {x:Math.round(r.x),y:Math.round(r.y+scrollY),width:Math.round(r.width),height:Math.round(r.height)}})}));
     reports.push({kind,slug,viewport:v.name,status:'captured',...metrics,horizontalOverflow:metrics.scrollWidth>metrics.clientWidth+2});
    }catch(e){error=String(e);reports.push({kind,slug,viewport:v.name,status:'failed',error});}
    finally{await page.close();}
