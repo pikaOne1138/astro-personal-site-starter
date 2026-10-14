@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "status": "DEMO_ONLY",
+  "knowledge": {
+    "siteName": "個人筆記｜示範",
+    "headline": "把日常整理成可以重讀的文章",
+    "intro": "這是示範內容，請換成真實資料。",
+    "about": "作者真實介紹待填寫。",
+    "articles": [
+      {
+        "slug": "sample",
+        "title": "把一件小事寫成文章",
+        "summary": "示範摘要，待替換。",
+        "body": [
+          "這是文章正文示範。"
+        ],
+        "date": "2026-10-14",
+        "tag": "觀察",
+        "published": true,
+        "image": null
+      },
+      {
+        "slug": "second",
+        "title": "尚未完成的閱讀筆記",
+        "summary": "未發表。",
+        "body": [],
+        "date": "2026-10-08",
+        "tag": "閱讀",
+        "published": false,
+        "image": null
+      },
+      {
+        "slug": "third",
+        "title": "尚未完成的生活紀錄",
+        "summary": "未發表。",
+        "body": [],
+        "date": "2026-10-02",
+        "tag": "生活",
+        "published": false,
+        "image": null
+      }
+    ]
+  },
+  "helper": {
+    "siteName": "個人專業服務｜示範",
+    "headline": "先了解服務，再決定下一步",
+    "intro": "真實服務資格與聯絡方式尚未設定。",
+    "about": "請填寫可核實的專業背景。",
+    "services": [
+      {
+        "slug": "individual",
+        "title": "個別專業服務（示範）",
+        "summary": "請依實際專業填寫。",
+        "body": [
+          "此為示範服務說明。"
+        ],
+        "fit": null,
+        "format": null,
+        "duration": null,
+        "price": null,
+        "scope": null,
+        "credential": null,
+        "bookingUrl": null,
+        "published": true,
+        "image": null
+      }
+    ],
+    "questions": [
+      {
+        "question": "適合怎樣的人？",
+        "answer": "請由服務提供者核實服務範圍。"
+      },
+      {
+        "question": "如何進行合作？",
+        "answer": "實際流程及費用待設定。"
+      },
+      {
+        "question": "有哪些必要界線？",
+        "answer": "服務界線待核實。"
+      }
+    ]
+  },
+  "layouts": {
+    "sidebar-journal": {
+      "headline": null,
+      "about": null
+    },
+    "portrait-profile": {
+      "headline": null,
+      "about": null
+    },
+    "editorial-frontpage": {
+      "headline": null,
+      "about": null
+    },
+    "card-journal": {
+      "headline": null,
+      "about": null
+    },
+    "service-catalogue": {
+      "headline": null,
+      "about": null
+    },
+    "studio-chapters": {
+      "headline": null,
+      "about": null
+    },
+    "visual-stories": {
+      "headline": null,
+      "about": null
+    },
+    "compact-dispatch": {
+      "headline": null,
+      "about": null
+    },
+    "split-reader": {
+      "headline": null,
+      "about": null
+    },
+    "editorial-practice": {
+      "headline": null,
+      "about": null
+    },
+    "question-led-practice": {
+      "headline": null,
+      "about": null
+    }
+  }
+}
