@@ -21,7 +21,9 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 The student exporter now includes the selected independent homepage AND family-specific interior components. Do not replace them with a generic hero or universal interior page.
 
 - Home: `src/data/layout-assembly/<slug>/Home.astro` → exported `src/components/layouts/selected/Home.astro`.
-- Article archive, article detail, and ordinary interior pages: `src/data/layout-assembly/DesignInterior.astro`.
+- Article archive: `src/data/layout-assembly/ArticleArchive.astro`, six structurally distinct knowledge archive views; article data/query logic remains shared.
+- Article detail: `src/data/layout-assembly/ArticleDetail.astro`, family-dependent structural reading compositions (only one `h1`, Content Collection body in a slot).
+- Other ordinary interiors: `src/data/layout-assembly/DesignInterior.astro`.
 - About: `src/data/layout-assembly/AboutSections.astro`.
 - Helper service: `src/data/layout-assembly/ServiceSections.astro`.
 - Navbar/Footer: `src/data/layout-assembly/DesignChrome.css`.
