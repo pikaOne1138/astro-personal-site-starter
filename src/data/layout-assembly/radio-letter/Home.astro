@@ -13,6 +13,7 @@ const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.epi
     <div class="radio-hero-copy"><p class="radio-kicker">RADIO LETTER / SIGNAL OPEN</p><h1 id="radio-title">{config.content?.headline || "這封信，留給願意聽的人。"}</h1><p class="radio-brand">{config.brand.name} · {config.brand.tagline}</p><p class="radio-intro">{config.content?.intro || "聲音創作與逐字稿並行。未提供授權音訊前不會出現假播放器。"}</p><a class="radio-cta" href="#now">打開逐字稿 ↓</a></div>
     <figure class="radio-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="radio-art" role="img" aria-label="深色聲波抽象封面"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
+  <div class="radio-wave" role="img" aria-label="裝飾性聲波視覺，尚非真實聲音波形">{Array.from({length:46},(_,i)=><span aria-hidden="true" style={'--bar:'+(((i*17)%7)+2)}></span>)}</div>
   <div class="radio-section-list"><section class="radio-section" id="now"><p class="radio-section-tag">01 / NOW</p><h2>本期聲音</h2>{hasAudio?<audio controls preload="metadata" aria-label="本期節目音訊"><source src={base+audio.replace(/^\//,'')}/>您的瀏覽器不支援音訊播放，請使用逐字稿。</audio>:<p role="status">尚未設定自有授權音檔，未顯示無法播放的音訊播放器。</p>}<p>請在 site.config.json 的 media.episodeAudioPath 設定本地 /audio/ 音檔，並提供有授權的逐字稿。</p></section>
 <section class="radio-section" id="transcript"><p class="radio-section-tag">02 / TRANSCRIPT</p><h2>逐字稿與筆記</h2>{transcript.length>0?<ol class="radio-transcript">{transcript.map(entry=><li><time>{entry.time}</time><p>{entry.text}</p></li>)}</ol>:<p>逐字稿尚未提供。設定 media.episodeTranscript 的 time / text 陣列即可顯示可搜尋文字；不虛構節目內容。</p>}</section>
 <section class="radio-section" id="archive"><p class="radio-section-tag">03 / ARCHIVE</p><h2>節目索引</h2><p>依主題與日期尋找過去的內容。</p><a href={action}>閱讀文章 ↗</a></section></div>
@@ -36,4 +37,20 @@ const transcript=Array.isArray(config.media?.episodeTranscript)?config.media.epi
 .radio-shell{background:#14222a;color:#f5e5cf}.radio-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:4vw;align-items:center}.radio-hero h1{font-size:clamp(3rem,6vw,6rem)}.radio-section-list{display:grid;grid-template-columns:1fr 1.5fr;gap:2rem}.radio-section:first-child{grid-column:1/-1;border-bottom:1px solid #81939a}.radio-art{background:repeating-linear-gradient(90deg,#d69b67 0 3px,#283b47 3px 14px,#9fb4bd 14px 16px,#283b47 16px 23px)}
 @media(max-width:800px){.radio-hero,.radio-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.radio-hero{min-height:0}.radio-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.radio-hero figure,.radio-art{position:static;width:100%;height:auto;min-height:180px}.radio-section,.radio-section:nth-child(1),.radio-section:nth-child(2),.radio-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.radio-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
 @media(max-width:480px){.radio-shell{padding:1rem}.radio-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.radio-close{display:block}}
-.radio-section audio{display:block;width:min(100%,680px);margin:1.5rem 0}.radio-transcript{list-style:none;padding:0;display:grid;gap:1rem}.radio-transcript li{display:grid;grid-template-columns:6rem 1fr;gap:1rem;border-top:1px solid #81939a;padding-top:1rem}.radio-transcript time{font: .85rem ui-monospace,monospace;color:#e2aa78}@media(max-width:520px){.radio-transcript li{grid-template-columns:1fr;gap:.25rem}}</style>
+.radio-section audio{display:block;width:min(100%,680px);margin:1.5rem 0}.radio-transcript{list-style:none;padding:0;display:grid;gap:1rem}.radio-transcript li{display:grid;grid-template-columns:6rem 1fr;gap:1rem;border-top:1px solid #81939a;padding-top:1rem}.radio-transcript time{font: .85rem ui-monospace,monospace;color:#e2aa78}@media(max-width:520px){.radio-transcript li{grid-template-columns:1fr;gap:.25rem}}
+.radio-shell{background:#12232c;color:#ecebdc;padding:0 clamp(1rem,4vw,4rem) 3rem}
+.radio-hero{max-width:1300px;min-height:580px;padding:3.5rem 0 2rem;gap:4vw;margin-bottom:1rem}
+.radio-hero h1{font-family:var(--brand-heading-font,Georgia,serif);font-size:clamp(3.7rem,7.5vw,7.7rem);font-weight:500;line-height:1.04;max-width:800px}
+.radio-kicker,.radio-section-tag{color:#72c5b0}
+.radio-hero .radio-figure{border:1px solid #607981;padding:1rem;background:#172b34;box-shadow:15px 15px 0 #25434b}
+.radio-hero .radio-art{background:radial-gradient(circle at 51% 50%,#bd8159 0 4%,transparent 5% 13%,#436d6f 14% 16%,transparent 17%),repeating-radial-gradient(ellipse at center,#1e3e48 0 10px,#345c63 11px 13px,#142b35 14px 25px)}
+.radio-hero .radio-figure img{max-height:430px}
+.radio-wave{max-width:1300px;margin:0 auto 5rem;display:flex;align-items:center;gap:3px;min-height:100px;overflow:hidden;border-block:1px solid #536c70}
+.radio-wave span{display:block;flex:1;min-width:2px;background:#62b6a7;height:calc(var(--bar)*7px);opacity:.7}
+.radio-section-list{grid-template-columns:1fr 1.4fr;gap:4vw}
+.radio-section:first-child{grid-column:1/-1}
+.radio-section{border-top:1px solid #6d888c;padding:2rem 0}
+.radio-section h2{font:500 clamp(2rem,4.5vw,4.5rem)/1.05 var(--brand-heading-font,Georgia,serif)}
+.radio-close{border-color:#6d888c}
+@media(max-width:800px){.radio-hero{min-height:0;grid-template-columns:1fr}.radio-wave{min-height:72px;margin-bottom:2rem}.radio-wave span{height:calc(var(--bar)*4px)}.radio-section-list{grid-template-columns:1fr}}
+</style>
