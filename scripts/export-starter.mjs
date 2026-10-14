@@ -217,6 +217,7 @@ if(hasAssemblyAdapter){
  assets['src/components/layouts/selected/ServiceSections.astro']=readFileSync(new URL('../src/data/layout-assembly/ServiceSections.astro',import.meta.url),'utf8');
  assets['src/components/layouts/selected/AboutSections.astro']=readFileSync(new URL('../src/data/layout-assembly/AboutSections.astro',import.meta.url),'utf8');
  assets['src/components/layouts/selected/ArticleArchive.astro']=readFileSync(new URL('../src/data/layout-assembly/ArticleArchive.astro',import.meta.url),'utf8');
+ assets['src/components/layouts/selected/ArticleDetail.astro']=readFileSync(new URL('../src/data/layout-assembly/ArticleDetail.astro',import.meta.url),'utf8');
  assets['public/design-family.css']=readFileSync(new URL('../src/data/layout-assembly/DesignChrome.css',import.meta.url),'utf8');
  assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'design-family.css'}/>").replace('<body><a href=','<body data-site-family={config.layoutSlug}><a href=');
  for(const page of ['src/pages/[...page].astro','src/pages/articles/index.astro','src/pages/articles/[slug].astro']){
@@ -233,9 +234,10 @@ if(hasAssemblyAdapter){
  assets['src/pages/articles/index.astro']=assets['src/pages/articles/index.astro']
   .replace("import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';","import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';\nimport ArticleArchive from '../../components/layouts/selected/ArticleArchive.astro';")
   .replace(/\{articles\.length\?<div class="family-articles">[\s\S]*?<\/DesignInterior>/,'<ArticleArchive articles={articles}/></DesignInterior>');
+ assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace("import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';","import DesignInterior from '../../components/layouts/selected/DesignInterior.astro';\nimport ArticleDetail from '../../components/layouts/selected/ArticleDetail.astro';");
  assets['src/pages/articles/[slug].astro']=assets['src/pages/articles/[slug].astro'].replace(
   '<article class="interior prose"><h1>{entry.data.title}</h1><p>{entry.data.description}</p><Content/></article>',
-  '<DesignInterior title={entry.data.title} description={entry.data.description} kicker="ARTICLE" mode="article"><article class="family-prose"><Content/></article></DesignInterior>');
+  '<DesignInterior title={entry.data.title} description={entry.data.description} kicker="ARTICLE" mode="article"><ArticleDetail entry={entry}><Content/></ArticleDetail></DesignInterior>');
 }
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
