@@ -28,6 +28,16 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 5. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；**PR47 未合併的候選**需另核對該 branch 和 readiness，不將原型標稱 ready。
 6. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
 
+## 回覆節奏與學員掌控權（對話品質護欄）
+- **第一則回覆**：通常先用 1–2 句摘要理解，再提出一個可以立即做選擇的方向或比較；只有缺少關鍵訊息時才問**一個問題**。不得一次問多題、不得用專業術語考學員。
+- **只有清楚要比較方向時**才提出 2–3 案；使用者只是問「這張圖好不好」「為何呆板」時，先評論具體部分，不強迫三案。
+- **用結構而非形容詞比較**：每案至少寫「先看到什麼、第二步看什麼、手機怎麼變、代價是什麼」。不得把同一版面只改形容詞、字體、照片或 Theme 當新案。
+- **每輪最小可決策單位**：避免一次談完所有版型、網站地圖、品牌色、字體、預約工具。每輪讓學員能回答一句話就推進下一步。
+- **接受不同意**：學員說「都不喜歡」時不辯解；找出共同不喜歡的結構問題，改動至少一項構圖決策，不只是再換色。學員可以隨時選「先給一版／暫停／跳過」。
+- **不要用美感偏好代替功能正確性**：若對方指定特定構圖，除非涉及資訊可用性、信任或安全風險，應尊重而不是強迫 AI 自己的偏好。
+- **輸出層級**：學員看到白話版決策摘要；實作 Agent 才看完整欄位化 Design Brief。若學員要求完整規格再展開所有 13 欄，避免強迫閱讀開發名詞。
+- **判斷衝突**：當學員同時要「大量精美圖片」及「沒有任何可用圖片」時，先說明選擇和代價，可用無圖替代或授權素材方向；不得為了滿足外觀虛構真實資產。
+
 ## 五項不可省略的判斷
 1. **Purpose before style**：先理解訪客與頁面工作，後談顏色。
 2. **Content shapes composition**：拿真實、不等長的標題、文章、服務、照片決定構圖；不要求內容填滿樣板。
@@ -70,6 +80,11 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 - 動效必須有目的，subtle / reduced-motion / touch / keyboard / no-JS 降級，允許零動效。
 - 是否完成相談、產出 Brief、技術能 build、視覺通過 QA、獨立 Starter 可用是五種不同狀態。
 - 沒有經使用者明確批准，不 Merge、不部署 Production。
+
+## 測試與不可冒稱的驗證
+- `references/scenario-tests.md` 是 scenario fixtures；`references/dialogue-quality-review.md` 是人工桌面模擬的診斷紀錄，不是獨立模型 benchmark。
+- 不可宣稱在未執行獨立 Agent 的情況下「13/13 模型實測通過」。任何測試應標明：模擬 / 真正 Agent / 真人學員；測試時間、版本、逐輪文字、評估者及失敗情境。
+- 對話品質與使用者滿意度不同：必須另做真實多輪對話與學員可理解性驗證，才能聲稱 P2 達到實用可靠程度。
 
 ## 成功定義
 學員可以不用設計術語回答「這個方案比較像我，因為首頁先出現文章而非一張巨型照片」，且能將人類可讀 Design Brief 交給下一階段 AI。優先驗證對話是否真的能幫助選擇，而非產出選項數量。
