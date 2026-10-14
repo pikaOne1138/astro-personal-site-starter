@@ -1,0 +1,40 @@
+name: Art Direction Neutral Visual Evidence
+on:
+  pull_request:
+    paths:
+      - 'src/pages/layouts/**'
+      - 'docs/art-direction/neutral-comparison-fixture.json'
+      - 'scripts/qa-art-direction-neutral-visual.mjs'
+      - '.github/workflows/art-direction-neutral-visual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  neutral-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Start local static preview
+        run: |
+          nohup npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/astro-preview.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/astro-preview.log
+          exit 1
+      - run: node scripts/qa-art-direction-neutral-visual.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: art-direction-neutral-25-layouts
+          path: qa-artifacts/art-direction/neutral-visual/
+          retention-days: 14
