@@ -1,10 +1,16 @@
 ---
 import DirectionLayout from '../../../layouts/DirectionLayout.astro';
 import {getDirectionContent} from '../../../data/art-direction-content';
-export function getStaticPaths(){return [{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/lead-story'}},{params:{page:'about'}}];}
+import contentSource from '../../../data/art-direction-layout-content.json';
+export function getStaticPaths() {
+  const fixed=[{params:{page:undefined}},{params:{page:'articles'}},{params:{page:'articles/lead-story'}},{params:{page:'about'}}];
+  const additional=(contentSource.knowledge.articles??[]).slice(1).filter(entry=>entry.published===true && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.slug));
+  return [...fixed,...additional.map(entry=>({params:{page:'articles/'+entry.slug}}))];
+}
 const page=Astro.params.page??'';
 const base=import.meta.env.BASE_URL+'layouts/editorial-frontpage/';
 const site=getDirectionContent('editorial-frontpage','knowledge',base,'articles/lead-story/');
+const detailRecord=site.articles.find(entry=>entry.href && entry.href.endsWith((Astro.params.page??'')+'/'))??site.primary;
 const rows=site.rows;
 const title=page==='articles'?'文章檔案':page==='about'?'關於作者':page?'我們怎麼開始理解日常？':'個人刊物';
 ---
@@ -17,7 +23,7 @@ const title=page==='articles'?'文章檔案':page==='about'?'關於作者':page?
  <section class="lower"><div><span class="section-label">EDITOR'S NOTE</span><h2>從自己好奇的地方開始。</h2><p>這是單一作者的個人刊物，不需要編輯團隊、新聞時效、熱門排行或會員訂閱。</p><a class="read" href={base+'about/'}>關於寫作者 →</a></div><div><span class="section-label">CONTENTS / ALL</span>{rows.map(row=><article class="contents"><b>{row.no}</b><div><span class="tag">{row.topic}</span>{row.href?<h3><a href={row.href}>{row.title}</a></h3>:<h3>{row.title}</h3>}</div></article>)}<a class="read" href={base+'articles/'}>全部索引 →</a></div></section>
  </>}
  {page==='articles'&&<><section class="pagehead"><span class="section-label">ISSUE / ARCHIVE</span><h1>全部文章</h1><p>有主次層級的索引，不把每一篇文章套成三張一樣的卡。</p></section><section class="archive"><article class="featured"><span class="tag">FEATURE / {rows[0].topic}</span><h2><a href={(rows[0]?.href??base+'articles/')}>{(rows[0]?.title??'目前沒有公開文章')}</a></h2><p>{(rows[0]?.sub??'請先新增文章')}</p><a class="read" href={(rows[0]?.href??base+'articles/')}>閱讀 →</a></article><div>{rows.slice(1).map(row=><article class="archive-row"><span class="tag">{row.no} / {row.topic}</span><h3>{row.title}</h3><p>尚未建立全文</p></article>)}</div></section></>}
- {page==='articles/lead-story'&&<><section class="article-head"><span class="tag">ISSUE 001 / 觀察 · DEMO</span><h1>{(rows[0]?.title??'目前沒有公開文章')}</h1><p class="summary">{(rows[0]?.sub??'請先新增文章')} 以下是示範內容，並非真實作者的經歷。</p></section><div class="reading"><aside><span class="section-label">IN THIS ARTICLE</span><a href="#seeing">01 看見</a><a href="#sorting">02 整理</a><a href={base+'articles/'}>← 文章目錄</a></aside><article class="prose"><div class="article-contract-body">{(site.primary?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><h2 id="seeing">從看見開始</h2><p>好的問題通常來自日常。先將發現記下，再尋找相關的材料，最後用自己的話表達。</p><p>文章不必每次都有完整答案，卻可以逐次讓想法更清楚。</p><blockquote>個人刊物讓文章具有前後呼應的關係，而不必變成新聞編輯室。</blockquote><h2 id="sorting">把線索整理成文字</h2><p>保留日期、主題及相關的閱讀入口，讓下次走回這篇文章的讀者還能辨識原本的問題。</p><p>正式內容需使用網站現有 Astro Content Collections 與 Pagefind，不另建假資料庫。</p></article></div><section class="related"><span class="section-label">NEXT IN THE ISSUE</span>{rows.slice(1).map(row=><article><span>{row.no} / {row.topic}</span><h3>{row.title}</h3><small>全文待撰寫</small></article>)}</section></>}
+ {(Astro.params.page??'').startsWith('articles/')&&<><section class="article-head"><span class="tag">ISSUE 001 / 觀察 · DEMO</span><h1>{(rows[0]?.title??'目前沒有公開文章')}</h1><p class="summary">{(rows[0]?.sub??'請先新增文章')} 以下是示範內容，並非真實作者的經歷。</p></section><div class="reading"><aside><span class="section-label">IN THIS ARTICLE</span><a href="#seeing">01 看見</a><a href="#sorting">02 整理</a><a href={base+'articles/'}>← 文章目錄</a></aside><article class="prose"><div class="article-contract-body">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><h2 id="seeing">從看見開始</h2><p>好的問題通常來自日常。先將發現記下，再尋找相關的材料，最後用自己的話表達。</p><p>文章不必每次都有完整答案，卻可以逐次讓想法更清楚。</p><blockquote>個人刊物讓文章具有前後呼應的關係，而不必變成新聞編輯室。</blockquote><h2 id="sorting">把線索整理成文字</h2><p>保留日期、主題及相關的閱讀入口，讓下次走回這篇文章的讀者還能辨識原本的問題。</p><p>正式內容需使用網站現有 Astro Content Collections 與 Pagefind，不另建假資料庫。</p></article></div><section class="related"><span class="section-label">NEXT IN THE ISSUE</span>{rows.slice(1).map(row=><article><span>{row.no} / {row.topic}</span><h3>{row.title}</h3><small>全文待撰寫</small></article>)}</section></>}
  {page==='about'&&<><section class="pagehead"><span class="section-label">THE WRITER / ABOUT</span><h1>{site.about}</h1><p>作者身份、照片與經歷尚未設定；不虛構報社、團隊或媒體曝光。</p></section><section class="bio"><div class="initial"><span>AUTHOR IMAGE</span><strong>作者照片<br/>可選填</strong></div><div><h2>寫什麼，為何寫？</h2><p>用第一人稱介紹持續關心的問題、文章的整理方法與希望留給讀者的閱讀入口。</p><h2>從哪篇開始？</h2><p>如果只有一篇文章，就用一篇清楚的代表文章，不補造排行榜或多篇精選。</p><a class="read" href={(rows[0]?.href??base+'articles/')}>閱讀示範文章 →</a></div></section></>}
  <footer><span>個人刊物 · 編輯式版型示範</span><a href={base}>回首頁 ↑</a><span>沒有虛構電子報或註冊成功</span></footer>
 </div>
