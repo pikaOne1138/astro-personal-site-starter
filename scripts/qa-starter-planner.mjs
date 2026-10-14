@@ -20,6 +20,7 @@ try{
  browser=await chromium.launch();
  for(const w of [1440,390]){
   const page=await browser.newPage({viewport:{width:w,height:900}});
+  const pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));
   const response=await page.goto('http://127.0.0.1:'+server.address().port+'/starter/',{waitUntil:'networkidle'});
   if(response.status()!==200)throw Error('Planner HTTP '+response.status());
   await page.locator('.nav-row').first().waitFor();
@@ -32,7 +33,7 @@ try{
   const move=page.locator('.nav-row button[aria-label^="下移："]').first();
   await move.click();
   const focused=await page.evaluate(()=>({tag:document.activeElement?.tagName,name:document.activeElement?.getAttribute('aria-label')}));
-  if(focused.tag!=='BUTTON'||!focused.name?.startsWith('下移：'))throw Error('Keyboard reorder lost focus '+w+' '+JSON.stringify(focused));
+  if(focused.tag!=='BUTTON'||!focused.name?.startsWith('下移：'))throw Error('Keyboard reorder lost focus '+w+' '+JSON.stringify(focused)+' / pageErrors='+JSON.stringify(pageErrors));
   const preview=page.locator('#plan-preview');
   const previewFocusable=(await preview.getAttribute('tabindex'))==='0'&&(await preview.getAttribute('role'))==='region'&&!!(await preview.getAttribute('aria-label'))?.trim();
   if(!previewFocusable)throw Error('Scrollable JSON preview lacks focus or accessible region name');
