@@ -39,7 +39,7 @@ const imageSource=plan.brand?.heroImagePath?resolve(dirname(resolve(input)),'pub
 if(imageSource&&!existsSync(imageSource))throw Error('Missing licensed hero image '+plan.brand.heroImagePath+'; place the asset beside your Site Brief under public/images/ before generating.');
 // Optional content metadata is explicit; templates never invent books or verified services.
 const reading=plan.layoutSlug==='reading-atlas'?plan.reading:undefined;
-if(reading?.records&&(!Array.isArray(reading.records)||reading.records.length>180||reading.records.some(x=>!/^0[1-9]|1[0-2]$/.test(x.month)||typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.note!=='string'||x.note.length>1000)))throw Error('Reading records need month (01-12), title and note');
+if(reading?.records&&(!Array.isArray(reading.records)||reading.records.length>180||reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||typeof x.title!=='string'||!x.title.trim()||x.title.length>150||typeof x.note!=='string'||x.note.length>1000)))throw Error('Reading records need month (01-12), title and note');
 if(reading?.annualBook&&(!reading.annualBook.title?.trim()||!reading.annualBook.note?.trim()))throw Error('Annual book must include an owned title and explanation');
 const serviceFacts=plan.layoutSlug==='trust-path'?plan.serviceFacts:undefined;
 if(serviceFacts&&Object.entries(serviceFacts).some(([k,v])=>!['duration','price','cancellation','qualification','contact'].includes(k)||typeof v!=='string'||v.length>500))throw Error('Invalid verified service facts');
