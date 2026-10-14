@@ -26,6 +26,11 @@ const hasAssemblyAdapter=Boolean(layoutDefinition?.adapter);
 if(process.argv.includes('--require-assembled')&&!hasAssemblyAdapter)
   throw Error('Selected layout is Prototype only; no independent assembly adapter yet: '+plan.layoutSlug+'. Export a Site Brief or choose a supported layout.');
 if(!hasAssemblyAdapter)console.warn('PROTOTYPE / SCAFFOLD ONLY: '+plan.layoutSlug+' requires actual layout composition work before publishing.');
+const typography=plan.brand?.typography??'editorial-serif';
+const imageStyle=plan.brand?.imageStyle??'natural';
+if(!['editorial-serif','clear-sans','balanced'].includes(typography)||!['natural','documentary','minimal'].includes(imageStyle))throw Error('Invalid typography or image style');
+if(plan.brand?.heroImagePath&&!/^\/images\/[a-z0-9/_-]+\.(webp|png|jpe?g|avif)$/i.test(plan.brand.heroImagePath))throw Error('Hero image must be a local /images/ asset');
+if(plan.brand?.heroImageAlt&&(!plan.brand.heroImagePath||plan.brand.heroImageAlt.length>180))throw Error('Invalid hero image alt text');
 const root=resolve(dest);
 if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty');
 const settings={version:1,layoutDefinitionVersion:1,layoutAdapter:layoutDefinition.adapter?.id??null,assemblyStatus:layoutDefinition.assemblyStatus,kind:plan.kind,layoutSlug:plan.layoutSlug,visualTheme:plan.visualTheme,brand:plan.brand,navigation:nav,primaryCta:plan.primaryCta,sectionPatterns:selections,site:'https://example.com',base:'/'};
@@ -164,6 +169,8 @@ assets['README.md']+='\n## Selected visual composition\n\nLayout: '+layoutDefini
 }else{
 assets['README.md']+='\n## Prototype-only selection\n\nIMPORTANT: '+layoutDefinition.title+' ('+layoutDefinition.slug+') currently has NO faithful layout adapter. This export is a **generic scaffold** only, NOT a ready-made site that reproduces the prototype. Open '+layoutDefinition.sourcePrototype+' and let AI build the actual composition before deployment.\n';
 }
+// Typography and image treatment adjust presentation; the chosen layout DOM and section order are untouched.
+assets['README.md']+='\n## Brand typography and images\n\nThe brand typography preset and image style are configured in site.config.json. If heroImagePath is set, place that exact licensed image under public/images/ and provide meaningful heroImageAlt. The exporter does not fetch remote images or invent licenses.\n';
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
   let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
@@ -173,6 +180,13 @@ for(const [path,body] of Object.entries(assets)){
     actual+='\n:root{--brand-primary:'+colors.primary+';--brand-secondary:'+colors.secondary+';--brand-accent:'+colors.accent+';--brand-background:'+colors.background+';--brand-text:'+colors.text+';}\n';
   }
   if(path==='public/site.css')actual+='\n:root{--accent:var(--brand-primary,var(--brand));--heading:var(--ink);--text:var(--ink);--surface:var(--bg);--muted:color-mix(in srgb,var(--ink) 75%,var(--bg));--radius:8px;--ed-ink:var(--heading);--ed-ink-2:var(--muted);--ed-accent:var(--accent);--ed-accent-deco:var(--brand-secondary,var(--accent));--ed-panel:var(--surface);--ed-line:var(--line);--ed-gutter:clamp(1rem,4vw,4rem);--ed-wide:1320px;}\n';
+  if(path==='public/site.css'){
+    const serif='"Noto Serif TC",Georgia,serif';
+    const sans='"Noto Sans TC",system-ui,sans-serif';
+    const font=typography==='clear-sans'?sans:serif;
+    const photoFilter=imageStyle==='documentary'?'saturate(.68) contrast(1.07)':imageStyle==='minimal'?'saturate(.45)':'none';
+    actual+='\\n:root{--brand-heading-font:'+font+';--brand-body-font:'+sans+';--brand-image-filter:'+photoFilter+';}\\n';
+  }
   if(path==='src/pages/articles/index.astro')actual=actual.replace(/export function getStaticPaths\(\)\{return config\.navigation\.some\(x=>x\.id==='articles'\)\?\[\{params:\{\}\}\]:\[\]\}\n/,'');
   put(path,actual);
 }
