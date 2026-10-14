@@ -6,7 +6,7 @@ const action=base+(nav?.path??'articles/');
 ---
 <div class="lab-shell" data-assembled-layout="learning-lab">
   <section class="lab-hero" aria-labelledby="lab-title">
-    <div class="lab-hero-copy"><p class="lab-kicker">LEARNING LAB / OPEN CLASSROOM</p><h1 id="lab-title">把好奇心，變成一條路。</h1><p class="lab-brand">{config.brand.name} · {config.brand.tagline}</p><p class="lab-intro">從問題、線索到實作，以清楚的路徑整理你的知識。</p><a class="lab-cta" href="#path">學習路徑 ↓</a></div>
+    <div class="lab-hero-copy"><p class="lab-kicker">LEARNING LAB / OPEN CLASSROOM</p><h1 id="lab-title">{config.content?.headline || "把好奇心，變成一條路。"}</h1><p class="lab-brand">{config.brand.name} · {config.brand.tagline}</p><p class="lab-intro">{config.content?.intro || "從問題、線索到實作，以清楚的路徑整理你的知識。"}</p><a class="lab-cta" href="#path">學習路徑 ↓</a></div>
     <figure class="lab-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="lab-art" role="img" aria-label="學習路徑示意圖"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
   </section>
   <div class="lab-section-list"><section class="lab-section" id="path"><p class="lab-section-tag">01 / PATH</p><h2>學習路徑</h2><p>先找到問題、再整理線索，最後用練習理解概念。</p></section>
