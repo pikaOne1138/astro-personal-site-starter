@@ -49,6 +49,10 @@ async function captureStudentSite(slug,kind,site,scenario={}){
         await page.evaluate(async()=>{for(const a of document.querySelectorAll('audio')){a.muted=true;await a.play();a.pause();a.currentTime=0;}});
       }catch(error){audioReady=false;errors.push('Owned audio metadata/playback failed: '+error.message);}
     }
+    if(scenario.searchState&&route==='articles/'&&width===390){
+      const matches=await page.evaluate(async()=>{const index=await import('/pagefind/pagefind.js');return (await index.search('nativewithdrawuniquetoken')).results.length;});
+      if(scenario.searchState==='published'?matches===0:matches!==0)errors.push('Pagefind publication/withdrawal result mismatch: '+matches);
+    }
     // Check actual keyboard focus and Escape, not only generated source strings.
     const firstLink=page.locator('.student-navigation > a').first();
     let keyboardFocus=true,escapeNavigation=true;
@@ -397,7 +401,7 @@ try{
     if(native){
       const dir=join(site,'src/content/articles');mkdirSync(dir,{recursive:true});
       const note=(title,draft,body)=>['---','title: '+title,'description: QA 內容描述','publishedAt: 2026-10-15','draft: '+draft,'---',body].join('\n');
-      writeFileSync(join(dir,'owned-note.md'),note('QA 長中文文章標題：用真實內容來檢查每一款版型的閱讀動線、索引、詳細頁與導覽是否完整',false,'## QA 正文標題\n\nQA 正文唯一識別。\n\n'+'長篇中文與 English terms。'.repeat(300)));
+      writeFileSync(join(dir,'owned-note.md'),note('QA 長中文文章標題：用真實內容來檢查每一款版型的閱讀動線、索引、詳細頁與導覽是否完整',false,'## QA 正文標題\n\nQA 正文唯一識別。 nativewithdrawuniquetoken\n\n'+'長篇中文與 English terms。'.repeat(300)));
       writeFileSync(join(dir,'second-note.md'),note('QA 第二篇文章',false,'QA 第二篇正文'));
       writeFileSync(join(dir,'hidden-note.md'),note('QA 隱藏文章',true,'QA 草稿不得公開'));
     }
@@ -406,8 +410,11 @@ try{
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
-    await captureStudentSite(slug,kind,site,{routes});
+    await captureStudentSite(slug,kind,site,{routes,searchState:native?'published':undefined});
     if(native){
+      const home=readFileSync(join(site,'dist/index.html'),'utf8');
+      for(const value of [plan.brand.name,plan.content.headline,plan.content.intro])if(!home.includes(value))throw Error('Native homepage lost owned copy: '+slug+' '+value);
+      if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
       const about=readFileSync(join(site,'dist/about/index.html'),'utf8');
       for(const value of Object.values(plan.about))if(!about.includes(value))throw Error('Native About lost owned field: '+slug+' '+value);
       if(existsSync(join(site,'dist/articles/hidden-note/index.html'))||existsSync(join(site,'dist/services/hidden-service/index.html')))throw Error('Native draft route leaked: '+slug);
@@ -418,7 +425,7 @@ try{
       const dir=join(site,'src/content/articles');rmSync(join(dir,'second-note.md'));build();
       await captureStudentSite(slug,kind,site,{variant:'single',routes:['articles/']});
       rmSync(join(dir,'owned-note.md'));build();
-      await captureStudentSite(slug,kind,site,{variant:'empty',routes:['articles/']});
+      await captureStudentSite(slug,kind,site,{variant:'empty',routes:['articles/'],searchState:'withdrawn'});
       for(const path of ['index.html','articles/index.html','rss.xml','sitemap.xml','search/exact-zh.json'])if(/owned-note|second-note|QA 正文唯一識別/.test(readFileSync(join(site,'dist',path),'utf8')))throw Error('Native withdrawn article survived cached build: '+slug+' '+path);
       if(existsSync(join(site,'dist/articles/owned-note/index.html')))throw Error('Native withdrawn direct route survived: '+slug);
       if(kind==='helper'){
