@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync,cpSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {installProjectContext} from './student-project-context.mjs';
 const [input,dest]=process.argv.slice(2);
@@ -164,4 +164,5 @@ for(const [path,body] of Object.entries(assets)){
   put(path,actual);
 }
 installProjectContext(root,plan);
+cpSync(new URL('../.ai/',import.meta.url),join(root,'.ai'),{recursive:true,force:false,errorOnExist:true});
 console.log('Generated independent Astro scaffold:',root,'pages:',nav.map(x=>x.id));
