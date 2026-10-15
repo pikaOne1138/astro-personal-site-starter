@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "8a81ba9e3f0d28cb7c5661d1d764cf0ce5ea1a56",
-  "layoutAdapterCount": 14,
+  "sourceCommit": "78506aedf0e9dc3037bcfc7b1bc71c86e5886e40",
+  "layoutAdapterCount": 25,
   "layoutSlugs": [
     "field-notes",
     "essayist",
@@ -16,7 +16,18 @@
     "collective",
     "trust-path",
     "subject-atlas",
-    "practice-compass"
+    "practice-compass",
+    "sidebar-journal",
+    "editorial-frontpage",
+    "card-journal",
+    "visual-stories",
+    "compact-dispatch",
+    "split-reader",
+    "portrait-profile",
+    "service-catalogue",
+    "studio-chapters",
+    "editorial-practice",
+    "question-led-practice"
   ],
   "layoutStatuses": {
     "field-notes": "in-progress",
@@ -32,7 +43,18 @@
     "collective": "in-progress",
     "trust-path": "in-progress",
     "subject-atlas": "in-progress",
-    "practice-compass": "in-progress"
+    "practice-compass": "in-progress",
+    "sidebar-journal": "in-progress",
+    "editorial-frontpage": "in-progress",
+    "card-journal": "in-progress",
+    "visual-stories": "in-progress",
+    "compact-dispatch": "in-progress",
+    "split-reader": "in-progress",
+    "portrait-profile": "in-progress",
+    "service-catalogue": "in-progress",
+    "studio-chapters": "in-progress",
+    "editorial-practice": "in-progress",
+    "question-led-practice": "in-progress"
   },
   "distribution": "AI-建站資料包.zip",
   "releaseStage": "beta-assembly"
