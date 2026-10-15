@@ -39,8 +39,8 @@ for (const path of [
   'scripts/export-starter.mjs',
   'scripts/student-project-context.mjs',
   'scripts/test-student-project-context.mjs',
-  'scripts/evaluate-interview-results.mjs',
-  'scripts/test-interview-evaluation.mjs',
+  'scripts/site-status.mjs',
+  'scripts/check-secrets.mjs',
   'scripts/export-art-direction-starter.mjs',
   'scripts/art-direction-adapters.mjs',
   'scripts/verify-starter-export.mjs',
@@ -63,6 +63,7 @@ add('docs/student-builder-pack/README.md', 'README.md');
    but does not publish unrelated project notes as student-facing instructions. */
 for (const name of [...entries.keys()]) {
   if (name.startsWith('docs/') && !name.startsWith('docs/student-builder-pack/') && !name.startsWith('docs/student-intake/')) entries.delete(name);
+  if (/^(?:docs\/student-builder-pack\/(?:interview-scenarios\.json|INTERVIEW-EVALUATION\.md)|scripts\/(?:evaluate-interview-results|test-interview-evaluation)\.mjs)$/.test(name)) entries.delete(name);
   if (name.startsWith('.ai/') && /(?:^|\/)(?:\.DS_Store|\.env|node_modules)(?:\/|$)/.test(name)) entries.delete(name);
 }
 
@@ -99,4 +100,5 @@ function zip(items) {
 mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
+if([...entries.keys()].some(n=>/interview-scenarios|INTERVIEW-EVALUATION|evaluate-interview|test-interview-evaluation/.test(n)))throw Error('Student ZIP exposes private evaluation materials');
 if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
