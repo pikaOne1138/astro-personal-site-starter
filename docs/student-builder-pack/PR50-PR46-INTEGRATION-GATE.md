@@ -21,3 +21,13 @@
 - [ ] User explicitly approves Merge of PR #50.
 
 This file is an **integration handoff gate**, not evidence that the integration has already passed.
+
+## Gemini audit critical finding: surrogate layout contaminates PROJECT.md
+The main-based `scripts/export-art-direction-starter.mjs` currently calls `export-starter.mjs` with a temporary `field-notes` (knowledge) or `clinician` (helper) `layoutSlug`, then executes `adapter.compose(generated,settings)`. Since the normal exporter finalizes `PROJECT.md` first, the generated project document can contain the **wrong layout** even though `site.config.json` is later corrected. This is a merge-blocking **confirmed sequence**, not only an absence of context files.
+
+**Required safe integration:** Refactor so the shared scaffold may be built without finalizing the context, then after the actual adapter `compose` and true `settings.layoutSlug` are finalized, run the common student site finalizer once. Never overwrite `PROJECT.md` in an existing student site. Verify `subject-atlas` and `practice-compass` (and the rest of supported 25) report their **actual** Layout in both `PROJECT.md` and `site.config.json`. Record exact paths, SHA and results. Coordinate with PR46 ownership; this document does not claim code integration is already completed.
+
+## Gemini audit other checkpoints
+- Cloudflare branch-preview indexing must be denied even with `SITE_INDEXABLE=true` (check both HTML meta robots and `robots.txt`, especially unknown production branch and all Preview configuration).
+- Evaluate whether unpublished loose Markdown notes in `src/content/drafts/` are falsely treated as leak candidates; preserve real draft isolation while allowing non-frontmatter notes only when they cannot be published.
+- Align student intake states (`CONFIRMED`, `AI_DRAFT`, `MISSING`, `DO_NOT_PUBLISH`) with PROJECT context; protect against publishing explicitly private content.
