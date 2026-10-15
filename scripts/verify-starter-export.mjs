@@ -116,7 +116,7 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       await neutral.evaluate(el=>el.remove());
       await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.dataset.originalCopy)h.firstChild.textContent=h.dataset.originalCopy;h?.querySelectorAll('[data-original-copy]').forEach(el=>el.textContent=el.dataset.originalCopy);});
       // Long real-world CJK homepage title: mutate only the existing copy node.
-      await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.firstChild?.nodeType===3){h.closest('[data-assembled-layout]')?.setAttribute('data-long-headline','true');h.firstChild.textContent='把生活裡反覆出現的問題、閱讀線索與真實觀察整理成長期可以回看的個人網站，讓每一次思考與每一步實踐都有自己的位置';}});
+      await page.evaluate(()=>{const h=document.querySelector('main h1');const walker=h&&document.createTreeWalker(h,NodeFilter.SHOW_TEXT);const text=walker?.nextNode();if(text){h.closest('[data-assembled-layout]')?.setAttribute('data-long-headline','true');text.textContent='把生活裡反覆出現的問題、閱讀線索與真實觀察整理成長期可以回看的個人網站，讓每一次思考與每一步實踐都有自己的位置';}});
       const stressName=slug+'-long-home-'+width+'.jpg';
       const stress=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,headlineFont:parseFloat(getComputedStyle(document.querySelector('main h1')).fontSize)}));
       if(width>800&&stress.headlineFont>60)errors.push('Long homepage title lost its responsive type scale: '+stress.headlineFont);
