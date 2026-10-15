@@ -60,6 +60,6 @@ export function finalizeStudentSite(directory,plan,options={}){
  pkg.scripts={...pkg.scripts,status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs'};
  writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
  const wf=join(directory,'.github/workflows/pr-check.yml');
- if(existsSync(wf)){const old=readFileSync(wf,'utf8');if(!old.includes('check:secrets'))writeFileSync(wf,old+'\n# Student credential audit (independent of build artifact)\n');}
+ if(existsSync(wf)){const old=readFileSync(wf,'utf8');if(!old.includes('check:secrets'))writeFileSync(wf,old.replace(/(\n\s*- name: .*Build[^\n]*\n\s*run: [^\n]+)/i,'$1\n      - name: Check secrets\n        run: npm run check:secrets'));}
  return directory;
 }
