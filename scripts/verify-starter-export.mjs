@@ -91,6 +91,10 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       return issues;
     });
     errors.push(...compositionIssues);
+    if(scenario.brandCheck){
+      const brand=await page.evaluate(()=>{const canvas=document.querySelector('[data-native-page]');return {background:getComputedStyle(canvas).backgroundColor,ink:getComputedStyle(canvas).color,font:getComputedStyle(document.querySelector('main h1')).fontFamily};});
+      if(brand.background!=='rgb(23, 38, 52)'||brand.ink!=='rgb(240, 245, 251)'||!brand.font.includes('Arial'))errors.push('Native Site Brief brand tokens not applied: '+JSON.stringify(brand));
+    }
     const check=await page.evaluate(()=>({
       overflow:document.documentElement.scrollWidth>innerWidth+2,
       scrollWidth:document.documentElement.scrollWidth,
@@ -439,6 +443,10 @@ try{
         await captureStudentSite(slug,kind,site,{variant:'empty-service',routes:['','services/']});
         if(existsSync(join(site,'dist/services/owned-service/index.html'))||readFileSync(join(site,'dist/sitemap.xml'),'utf8').includes('owned-service'))throw Error('Withdrawn service survived rebuild: '+slug);
       }
+      const brandedFile=join(site,'site.config.json'),branded=JSON.parse(readFileSync(brandedFile,'utf8'));
+      branded.brand.typography='clear-sans';branded.brand.palette={primary:'#9FDBFF',secondary:'#416780',accent:'#E0B778',background:'#172634',text:'#F0F5FB'};
+      writeFileSync(brandedFile,JSON.stringify(branded));build();
+      await captureStudentSite(slug,kind,site,{variant:'brand',routes:['','about/'],brandCheck:true});
     }
   }
   console.log('Starter exporter checks passed: twelve established assemblies; FULL mode adds thirteen in-progress adapters');
