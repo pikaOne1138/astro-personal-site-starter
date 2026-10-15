@@ -56,7 +56,22 @@
 ## 驗收界線
 
 - Chromium 寬度 1440／1280／768／390；未測 Safari、Firefox、真機或螢幕閱讀器。
-- 助人者的可選文章頁以 clinician 實際匯出與四尺寸圖驗證；其他五款可選文章詳情分支尚未逐款以瀏覽器另行目視，不把此額外組合說成已驗收。
+- 六款助人者的可選文章頁已逐款實際匯出／Build，並目視全部 48 張列表與詳情圖；短文章與單篇的鄰篇空狀態正常，草稿直接路由不存在。使用相同服務測試品牌設定，仍能辨識不同詳情 DOM。
 - 缺資格、價格、見證、成員、活動、音訊及時間的情境必須誠實待設定；沒有模擬預約或訂閱成功。
 - 測試包含文章零篇／一篇／多篇、無圖片、長中文與長文、實際服務資料、Navbar Enter／Tab／Escape 與焦點恢復。缺資料情境有 144 張自動化截圖，本輪人工檢視其中桌面及手機代表頁，沒有聲稱人工逐張讀完全部壓力情境。
 - Draft 待使用者以自己的品牌、文章及服務內容確認；不因測試 fixture 通過而自動發佈。
+
+
+## 最後補齊的十二款文章詳情驗收：06004222
+
+`06004222e193cb267fe99878a554495b6fb75490` 將既有 helper 可選 articles 測試從 clinician 擴為 clinician／companion／somatic／coach／collective／trust-path 全六款，沒有新增 QA 平台。網站程式同 22cbea9f；增補公開文／草稿、實際 Build、family 標記與不存在的草稿路由驗證。
+
+五項 Checks 全部 PASS：standalone-build `38688717163`、static-build `38688717174`、preview-build `38688717211`、standalone-adapters `38688717170`，以及該 SHA 的 Cloudflare Pages。
+
+[624 張四尺寸學員網站證據](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38688717163/artifacts/11951565486)，保留至 2026-10-22。實際解壓：624 JPG + index.html + results.json；九組失敗陣列全空。新增的 40 張及原 clinician 8 張已逐款目視：六種詳情的專業側欄／信件／留白圓形／粗線行動／框線編輯／路徑標記皆正常，列表與 Navbar／Footer 正常，1440／1280／768／390 無橫向溢出。
+
+最新 Builder Pack 實測（static job 116269431160）：Guide ZIP 瀏覽器下載 PASS，2,401,928 bytes；遠端 ZIP black-box PASS，immutable PR Preview `https://c7997f6e.personal-site-starter.pages.dev/`，7/7 路由 PASS。ZIP 解壓的十二款選擇、knowledge/helper 完整 Build、Guide manifest 一致及 canonical prompt 全部 PASS。
+
+本輪目標內的十二款首頁、十二款 About、六款知識文章列表／長文詳情與導覽、六款服務／FAQ／聯絡，以及助人者的可選文章列表／詳情，均已有四尺寸實際交付網站目視紀錄。未發現尚未修正的 fixture 排版阻塞；跨瀏覽器／真機／輔助科技仍未測。這是測試內容範圍的視覺驗收，不是所有未來內容的品質保證，也沒有宣稱逐張人工看完所有 624 壓力情境。
+
+本記錄的後續歸檔 commit 只改 Markdown；網站程式與測試行為同 06004222。最新 Head CI 的確切狀態列於 PR #46 說明，不把上述父 commit 的結果冒充新 Head。
