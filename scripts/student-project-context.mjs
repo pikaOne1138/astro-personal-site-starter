@@ -19,6 +19,7 @@ export function renderStudentProject(template, plan) {
     ['網站名稱：待確認', '網站名稱：' + clean(plan.brand?.name)],
     ['網站類型：待確認（知識／部落格型，或助人者／個人專業服務型）', '網站類型：' + kindName[plan.kind] + '（學員 Site Brief 選擇，待本人核對）'],
     ['一句定位：待確認', '一句定位：' + clean(plan.brand?.tagline)],
+    ['Layout ID（規劃選擇）：`pending`', 'Layout ID（規劃選擇）：`' + clean(plan.layoutSlug).replace(/[「」]/g,'') + '`'],
     ['Layout（決定版面與閱讀動線）：尚未選擇', 'Layout（決定版面與閱讀動線）：' + clean(plan.layoutSlug) + '（Site Brief，非已完成設計驗收）'],
     ['重要頁面及各頁目的：待討論', '重要頁面及各頁目的：規劃頁面：' + visiblePages + '；各頁目的待確認'],
     ['導覽順序／主要 CTA：待討論', '導覽順序／主要 CTA：' + visiblePages + '；主要 CTA：' + clean(plan.primaryCta?.label) + ' → ' + clean(cta?.label)],
@@ -53,11 +54,11 @@ export function finalizeStudentSite(directory,plan,options={}){
  const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
- for(const file of ['site-status.mjs','check-secrets.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));
- pkg.scripts={...pkg.scripts,status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs'};
+ pkg.scripts={...pkg.scripts,status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs','check:context':'node scripts/check-project-context.mjs'};
  writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
  const wf=join(directory,'.github/workflows/pr-check.yml');
  if(existsSync(wf)){
@@ -65,7 +66,7 @@ export function finalizeStudentSite(directory,plan,options={}){
   if(!old.includes('npm run check:secrets')){
     const marker='      - run: npm run build';
     if(!old.includes(marker))throw Error('Student PR CI missing expected build step');
-    writeFileSync(wf,old.replace(marker,'      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
+    writeFileSync(wf,old.replace(marker,'      - run: npm run check:context\n      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
   }
  }
  return directory;
