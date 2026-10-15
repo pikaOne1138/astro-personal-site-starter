@@ -55,7 +55,8 @@ if(studentArg!==-1){
    const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
-   // A generic draft heading shared by public navigation is not evidence of a leak.\n   // Match route references, or a distinctive draft title with accompanying private body text.\n   const privateBody=source.slice(fm?.[0]?.length||0).trim();\n   const distinctive=privateBody.split(/\\r?\\n/).map(x=>x.trim()).find(x=>x.length>=18&&!/^(?:#|\\s*$)/.test(x));\n   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)&&(!exposed.some(y=>y.path.endsWith('index.html')&&/aria-label=\\"主要導覽\\"/.test(y.body)&&y.body.includes(title))||!!distinctive&&x.body.includes(distinctive))));
+   const navigationLabel=(config.navigation||[]).some(item=>item.label===title);
+   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)&&(!navigationLabel||(!!distinctive&&x.body.includes(distinctive)))));
    if(suspects.length)throw Error('Draft leaked into public discovery/output: '+relative+'; files: '+suspects.map(x=>x.path).join(', '));
   }
  }
