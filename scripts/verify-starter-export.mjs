@@ -117,7 +117,8 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       // Long real-world CJK homepage title: mutate only the existing copy node.
       await page.evaluate(()=>{const h=document.querySelector('main h1');if(h?.firstChild?.nodeType===3){h.closest('[data-assembled-layout]')?.setAttribute('data-long-headline','true');h.firstChild.textContent='把生活裡反覆出現的問題、閱讀線索與真實觀察整理成長期可以回看的個人網站，讓每一次思考與每一步實踐都有自己的位置';}});
       const stressName=slug+'-long-home-'+width+'.jpg';
-      const stress=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+      const stress=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+2,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,headlineFont:parseFloat(getComputedStyle(document.querySelector('main h1')).fontSize)}));
+      if(width>800&&stress.headlineFont>60)errors.push('Long homepage title lost its responsive type scale: '+stress.headlineFont);
       await page.screenshot({path:visualOutput+'/'+stressName,type:'jpeg',quality:56,fullPage:true,animations:'disabled'});
       visualRows.push({slug,route:'/',width,http:response?.status(),...check,...stress,keyboardFocus,escapeNavigation,audioReady,errors,filename:stressName,variant:'long-home'});
     }
