@@ -64,6 +64,22 @@ async function captureStudentSite(slug,kind,site,scenario={}){
     }
     // Avoid screenshots of an incidental focus outline.
     await page.evaluate(()=>document.activeElement?.blur());
+    // A page can fit the viewport while its index digits wrap or framed copy
+    // touches the border. These regressions were found in actual captures.
+    const compositionIssues=await page.evaluate(()=>{
+      const issues=[];
+      for(const number of document.querySelectorAll('.module-number')){
+        const range=document.createRange();range.selectNodeContents(number);
+        const lines=new Set([...range.getClientRects()].filter(r=>r.width>0).map(r=>Math.round(r.top)));
+        if(lines.size>1)issues.push('Learning archive number wraps: '+number.textContent);
+      }
+      if(innerWidth<=800)for(const panel of document.querySelectorAll('.radio-section')){
+        const style=getComputedStyle(panel);
+        if(parseFloat(style.paddingLeft)<16||parseFloat(style.paddingRight)<16)issues.push('Radio framed panel lost its reading gutter');
+      }
+      return issues;
+    });
+    errors.push(...compositionIssues);
     const check=await page.evaluate(()=>({
       overflow:document.documentElement.scrollWidth>innerWidth+2,
       scrollWidth:document.documentElement.scrollWidth,
