@@ -60,3 +60,19 @@ test('starter context retains open question without pretending it has been resol
   assert.match(result, /最需要釐清的一個問題：待討論/);
   assert.match(result, /影響下一步實作的安全或內容風險：尚未評估/);
 });
+
+test('students may skip details or delegate reversible design without publication approval',()=>{
+ assert.match(agents,/跳過/);
+ assert.match(agents,/讓 AI 發揮/);
+ assert.match(agents,/跳過不是確認/);
+ assert.match(agents,/AI 發揮不是授權發布/);
+ assert.match(agents,/S 小修改/);
+ assert.match(agents,/H 高風險/);
+ assert.match(template,/AI_PROPOSED/);
+ assert.match(template,/SKIPPED/);
+ assert.match(template,/MISSING/);
+ assert.match(template,/DO_NOT_PUBLISH/);
+ const result=renderStudentProject(template,plan);
+ assert.match(result,/學員選擇跳過的問題/);
+ assert.match(result,/明確不公開的內容/);
+});
