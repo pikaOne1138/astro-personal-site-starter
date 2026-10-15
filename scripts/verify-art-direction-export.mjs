@@ -14,7 +14,7 @@ try{
  for(const slug of ['subject-atlas','practice-compass']){
   const source=join(fixtureDir,slug+'.json');const plan=JSON.parse(readFileSync(source));
   const site=join(workspace,slug);
-  run(process.execPath,[exporter,source,site,'--allow-in-progress']);
+  run(process.execPath,[resolve('scripts/export-starter.mjs'),source,site,'--require-assembled']);
   check(slug+' real selected adapter',()=>{const c=JSON.parse(readFileSync(join(site,'site.config.json')));assert.equal(c.layoutSlug,slug);assert.equal(c.layoutAdapter.id,slug);assert.equal(c.layoutAdapter.assemblyStatus,'in-progress');assert.ok(readFileSync(join(site,'src/components/layouts',slug,'Home.astro'),'utf8').includes('data-assembled-layout="'+slug+'"'));});
   run('npm',['install','--no-audit','--no-fund','--package-lock=false'],site);
   run('npm',['run','test:regressions'],site);
@@ -46,6 +46,6 @@ try{
  const invalidIntents=structuredClone(helperEmpty);invalidIntents.artDirection.visitorIntents=[{title:'QA',detail:'QA',target:'https://example.com'}];rejects('reject arbitrary visitor intent target',invalidIntents,['--allow-in-progress']);
  run(process.execPath,['scripts/build-student-pack.mjs'],process.cwd());
  const pack=join(workspace,'portable');run('unzip',['-q',resolve('public/AI-建站資料包.zip'),'-d',pack]);
- for(const slug of ['subject-atlas','practice-compass']){run(process.execPath,[join(pack,'scripts/export-art-direction-starter.mjs'),join(pack,'docs/student-builder-pack/art-direction',slug+'.json'),join(workspace,'portable-'+slug),'--allow-in-progress'],pack);const config=JSON.parse(readFileSync(join(workspace,'portable-'+slug,'site.config.json')));assert.equal(config.layoutAdapter.id,slug);report.checks.push(slug+' portable ZIP exporter and owned sources');}
+ for(const slug of ['subject-atlas','practice-compass']){run(process.execPath,[join(pack,'scripts/export-starter.mjs'),join(pack,'docs/student-builder-pack/art-direction',slug+'.json'),join(workspace,'portable-'+slug),'--allow-in-progress'],pack);const config=JSON.parse(readFileSync(join(workspace,'portable-'+slug,'site.config.json')));assert.equal(config.layoutAdapter.id,slug);report.checks.push(slug+' portable ZIP exporter and owned sources');}
  mkdirSync('qa-artifacts/art-direction',{recursive:true});writeFileSync('qa-artifacts/art-direction/standalone.json',JSON.stringify(report,null,2)+'\n');console.log('All standalone adapter checks PASS:',report.checks.length);
 }finally{rmSync(workspace,{recursive:true,force:true})}

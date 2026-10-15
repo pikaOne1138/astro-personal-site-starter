@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import {layoutDefinitions} from '../src/data/layout-assembly/definitions.mjs';
 
 // Build-time student distribution. Deliberately excludes the research Git history,
 // showcase workflows, internal README and any credentials or environment files.
@@ -70,8 +71,9 @@ catch { /* The learner pack can also be built without Git metadata. */ }
 const release={
   schemaVersion:1,
   sourceCommit:sourceSha,
-  layoutAdapterCount:12,
-  layoutSlugs:['field-notes','essayist','learning-lab','curator','radio-letter','reading-atlas','clinician','companion','somatic','coach','collective','trust-path'],
+  layoutAdapterCount:layoutDefinitions.filter(x=>x.adapter).length,
+  layoutSlugs:layoutDefinitions.filter(x=>x.adapter).map(x=>x.slug),
+  layoutStatuses:Object.fromEntries(layoutDefinitions.map(x=>[x.slug,x.assemblyStatus])),
   distribution:'AI-建站資料包.zip',
   releaseStage:'beta-assembly'
 };

@@ -1,3 +1,4 @@
+import {layoutDefinitions} from '../src/data/layout-assembly/definitions.mjs';
 import { mkdtempSync, existsSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -23,7 +24,7 @@ try {
   const webManifest=JSON.parse(readFileSync('public/builder-pack-version.json','utf8'));
   const zipManifest=JSON.parse(readFileSync(join(root,'BUILDER-PACK-VERSION.json'),'utf8'));
   if(JSON.stringify(webManifest)!==JSON.stringify(zipManifest))throw Error('Guide/Builder Pack version mismatch');
-  if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==12||zipManifest.layoutAdapterCount!==12)throw Error('Builder Pack manifest missing twelve layouts');
+  if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==layoutDefinitions.filter(x=>x.adapter).length||zipManifest.layoutAdapterCount!==layoutDefinitions.filter(x=>x.adapter).length)throw Error('Builder Pack manifest missing twelve layouts');
   if(!/^[a-f0-9]{40}$/.test(zipManifest.sourceCommit)&&zipManifest.sourceCommit!=='unknown')throw Error('Invalid source commit version');
   const guide=readFileSync(join(root,'AGENTS.md'),'utf8');
   if(!guide.includes('學員')||guide.includes('read `.ai/astro-ui-craft/SKILL.md` first'))throw Error('Research AGENTS was shipped instead of learner AGENTS');

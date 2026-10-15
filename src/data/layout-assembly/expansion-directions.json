@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "subject-atlas",
+    "kind": "knowledge",
+    "title": "主題標本室",
+    "description": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+    "structure": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "art-direction"
+  },
+  {
+    "slug": "practice-compass",
+    "kind": "helper",
+    "title": "服務羅盤",
+    "description": "prologue → choose situation → verify fit → transparency → FAQ",
+    "structure": "prologue → choose situation → verify fit → transparency → FAQ",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "art-direction"
+  }
+]

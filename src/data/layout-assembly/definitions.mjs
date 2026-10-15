@@ -1,4 +1,5 @@
 import directions from '../layout-directions.json' with {type:'json'};
+import expansion from './expansion-directions.json' with {type:'json'};
 
 /**
  * Version 1 layout assembly registry.
@@ -34,6 +35,7 @@ export const layoutDefinitions = directions.map(direction => {
       : {hero:direction.structure,sectionOrder:[],gridDesktop:'defined by individual src/data/layout-assembly/<slug>/Home.astro',responsive390:'adapter-specific single-column'}
   };
 });
+layoutDefinitions.push(...expansion.map(d=>({...d,schemaVersion:1,sourcePrototype:'/layouts/'+d.slug+'/',adapter:{id:d.slug,version:1,engine:d.engine},screenshots:{desktop:null,mobile:null}})));
 export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
 export const getAssemblyLayout = (slug,kind) => {
   const result=getLayoutDefinition(slug,kind);

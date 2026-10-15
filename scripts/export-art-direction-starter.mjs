@@ -15,7 +15,8 @@ const list=(v,label)=>{if(v===undefined)return [];if(!Array.isArray(v)||v.length
 const https=(v,label)=>{if(!v)return '';text(v,label,2000);let u;try{u=new URL(v)}catch{throw Error('Invalid '+label)}if(u.protocol!=='https:'||u.username||u.password)throw Error('HTTPS URL without credentials required: '+label);return u.href};
 if(plan.brand?.heroImagePath||plan.brand?.logoPath||plan.brand?.heroImageDataUrl||plan.brand?.logoDataUrl)throw Error('These text-first adapters do not yet support image asset inputs');
 if(plan.brand?.typography&&!['editorial-serif','clear-sans','balanced'].includes(plan.brand.typography))throw Error('Invalid typography preset');
-const data=plan.artDirection||{};const content={headline:text(plan.content?.headline||'','headline'),intro:text(plan.content?.intro||'','intro')};
+const supplied=plan.artDirection||{};
+const data={...supplied,serviceFacts:{scope:plan.serviceFacts?.scope,credentials:plan.serviceFacts?.qualification,format:plan.serviceFacts?.method,duration:plan.serviceFacts?.duration,price:plan.serviceFacts?.price,cancellation:plan.serviceFacts?.cancellation,...supplied.serviceFacts}};const content={headline:text(plan.content?.headline||'','headline'),intro:text(plan.content?.intro||'','intro')};
 const topics=data.topics===undefined?[]:data.topics;
 if(!Array.isArray(topics)||topics.length>50||topics.some(t=>!t||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(t.slug)||t.slug.length>64)||new Set(topics.map(t=>t.slug)).size!==topics.length)throw Error('Invalid or duplicate topic slug');
 const normalizedTopics=topics.map(t=>({slug:t.slug,title:text(t.title,'topic title',120),description:text(t.description||'','topic description')}));
@@ -30,6 +31,7 @@ const visitorIntents=rawVisitorIntents.map((intent,i)=>{if(!intent||!allowedInte
 const email=data.contact?.email||'';if(email&&(!/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)||email.length>254))throw Error('Invalid contact email');
 const contact={email,url:https(data.contact?.url,'contact URL'),bookingUrl:https(data.contact?.bookingUrl,'booking URL')};
 const pageContent=Object.create(null);for(const [key,value] of Object.entries(plan.pageContent||{}))pageContent[key]=list(value,'page paragraphs');
+if(!pageContent.about?.length)pageContent.about=['bio','purpose','approach','background'].map(k=>plan.about?.[k]).filter(v=>typeof v==='string'&&v.trim()).map(v=>text(v,'about paragraph'));
 // Essential routes are explicit and cannot be silently disabled or moved.
 const essentials=plan.kind==='knowledge'?[['articles','文章','articles/'],['topics','主題','topics/'],['about','關於','about/'],['page-search','搜尋','search/']]:[['services','服務說明','services/'],['about','關於','about/'],['faq','FAQ','faq/'],['page-contact','聯絡','contact/'],['page-privacy','隱私','privacy/'],['page-search','搜尋','search/']];
 const navigation=Array.isArray(plan.navigation)?structuredClone(plan.navigation):[];

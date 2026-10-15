@@ -1,9 +1,16 @@
 import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync,copyFileSync} from 'node:fs';
 import {resolve,join,dirname} from 'node:path';
+import {spawnSync} from 'node:child_process';
 import {getLayoutDefinition} from '../src/data/layout-assembly/definitions.mjs';
 const [input,dest]=process.argv.slice(2);
 if(!input||!dest)throw Error('Usage: node scripts/export-starter.mjs plan.json output-dir');
 const plan=JSON.parse(readFileSync(resolve(input),'utf8'));
+const selected=getLayoutDefinition(plan.layoutSlug,plan.kind);
+if(selected?.adapter?.engine){
+ if(process.argv.includes('--require-ready'))throw Error('Layout has no Ready approval: '+plan.layoutSlug);
+ const result=spawnSync(process.execPath,[new URL('./export-art-direction-starter.mjs',import.meta.url).pathname,input,dest,'--allow-in-progress'],{stdio:'inherit'});
+ process.exit(result.status??1);
+}
 const layouts=JSON.parse(readFileSync(new URL('../src/data/layout-directions.json',import.meta.url),'utf8'));
 const patterns=JSON.parse(readFileSync(new URL('../src/data/section-patterns.registry.json',import.meta.url),'utf8'));
 const allowed={knowledge:['articles','topics','start-here','about','resources'],helper:['services','first-visit','about','faq','articles','booking']};

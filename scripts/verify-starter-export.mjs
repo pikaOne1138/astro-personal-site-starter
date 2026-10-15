@@ -381,6 +381,16 @@ try{
     if(!detail.includes('data-site-family="'+layout.slug+'"'))throw Error(layout.slug+' lost helper article family');
     await captureStudentSite(layout.slug,'helper',site,{variant:'optional-articles',routes:['articles/','articles/qa-helper-note/']});
   }
+  if(process.env.FULL_STARTER_BUILD==='1')for(const slug of ['subject-atlas','practice-compass']){
+    const kind=slug==='subject-atlas'?'knowledge':'helper';
+    const fixture='docs/art-direction/fixtures/'+slug+'.json',site=join(root,'expanded-'+slug);
+    execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
+    execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+    const routes=kind==='knowledge'?['','articles/','articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
+    await captureStudentSite(slug,kind,site,{routes});
+  }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
 }finally{
  if(visualEnabled){
