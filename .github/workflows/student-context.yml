@@ -9,6 +9,7 @@ on:
       - 'scripts/evaluate-interview-results.mjs'
       - 'scripts/test-interview-evaluation.mjs'
       - 'scripts/build-student-pack.mjs'\n      - 'scripts/site-status.mjs'\n      - 'scripts/check-secrets.mjs'
+      - 'scripts/check-project-context.mjs'
       - 'scripts/test-student-site-guards.mjs'
       - 'docs/student-builder-pack/**'
       - '.github/workflows/student-context.yml'
