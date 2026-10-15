@@ -1,76 +1,49 @@
-# PR #46｜PR #47 整合與 25 款 Starter 擴充接手
+# PR46｜main 整合與 25 款正式 Starter 接手
 
-更新：2026-10-15（Asia/Taipei）。本文件是後續實作的目前入口，取代「本輪十二款驗收完成＝全部擴充工作完成」的解讀。本輪已整合 main 並完成新增十三款的主匯出器與初版正式 Adapter；尚未取得新增十一款的完整四尺寸目視驗收，不標 Ready。
+更新：2026-10-15。這是實作與驗證 checkpoint，最新 Head／Actions／Artifact／Preview 的後續結果持續寫入 [PR46 說明](https://github.com/pikaOne1138/astro-personal-site-starter/pull/46)，不得沿用舊 SHA 綠燈。保持 Draft，不 Merge、不寫 main、不修改 Production／DNS。
 
-## 本輪實作進度
+## 已完成的三批實作
 
-- main 已以雙 parent Merge Commit `0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6` 整合；保留 PR47 原型／內容契約、兩邊資料包邏輯及原十二款組裝器。該 Commit 的 Preview、Static、Standalone、Independent Adapter checks 成功。
-- `7840d3aedbdf443097832078dfd4666321546888` 已把 Subject Atlas／Practice Compass 接入主 `export-starter.mjs`、Starter 選擇與既有 ZIP。獨立 Adapter 29 項本地回歸通過；該 SHA 的 Preview／Static／Adapter checks 成功，Standalone 待取得完成結果。
-- 新增十一款：逐款移植 PR47 的原生多頁 DOM/CSS；接 Content Collections、真實文章 slug、About 四欄、顯式 published 服務與真實詳情網址。全部十一個實際匯出網站本地 Build 成功；Home 僅一個 h1／main，均有 StudentNavigation，About 四欄輸出檢查通過。
-- 主流程現有 25 個可組裝方向，新增十三款維持 **in-progress Adapter**。這是匯出能力，不是 25 款已通過設計驗收。
-- 既有 Standalone Actions 已擴充新增十三款四尺寸與十一款 0／1／多筆、撤回快取、草稿、服務 0／1／多筆回歸。新 SHA Actions／實際截圖仍待取得並目視，不能以本地 Build 代替。
-- PR47 人工 QA 的真實圖片裁切、細小點擊目標、裝置／讀屏及跨頁品質仍 pending。Native 初版仍須依截圖整理內容密度與空資料節奏，不自動核可。
+1. **main 已整合**：PR47 的 `d79fedd7a1731c81baec44ef23e4436a684d6b1e` 以雙 parent commit `0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6` 整合進同一 feature branch。共同基底為 `26acf168b90a7d672d9468c7489e8095cf060683`，沒有文字衝突；人工協調保留兩邊 build-student-pack、內容契約／原型、原十二款功能，並做實際資料包回歸。GitHub mergeable=true。
+2. **兩款獨立方向接主流程**：Subject Atlas／Practice Compass 現經主 `export-starter.mjs`、Starter 選擇與既有 ZIP 輸出，29 項原獨立 Adapter 回歸仍保留；補各自 About DOM 與長標題處理。
+3. **十一款多頁原型轉 Adapter**：六 knowledge＋五 helper 的原生 DOM／CSS 置於 `src/data/layout-assembly/expanded/<slug>/Page.astro`，接實際 Collection／slug、About、顯式公開服務、FAQ／聯絡、圖片、前後文章與 SEO／Pagefind。不是同一個 Home 換 CSS。
 
-## 最新驗收證據與待辦
+主產站流程可匯出 25 款。**新增十三款仍是 in-progress Adapter；原十二款有既有限定測試內容目視證據，25 款都不自行升 Ready。** 形式上能產站與最終 Art Direction 核可是不同驗收。
 
-- `ee2cf9e3e53f9bfc876c183bc1737e7f39160f2b` 的既有 Standalone CI 跑完 **25 款／1,340 張**，HTTP、溢出、family、h1、文章數、鍵盤／焦點、masthead 均零失敗；十一款的 0／1／多篇、草稿及撤回後實際 HTML／RSS／Sitemap／中文索引、服務撤回均通過。該 run **仍為 failure**：個人刊物 h1 內有連結，壓力測試沒替換其文字，造成六個共用 errors 列。不能稱全綠。
-- [該 SHA 的 1,340 張實際學員站截圖／results.json](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38694705887/artifacts/11953449174) 已下載，十一款 Home／Index／About 的四尺寸及詳情頁前 2,400px 已逐款目視。發現並修正：卡片刊物品牌／首頁標題與 demo 殘留、原型內容契約提示、About 重複整包欄位、短箋固定日期、首頁 intro 誤用首篇摘要、問答詳情缺服務正文／facts、實際圖片接線。修正後須使用新 SHA 截圖重看。
-- `0fde2e5c` 修正長標題文字節點走訪，`ea723b2e` 續修原生文案層級、日期、About 與 dl 手機間距，新增瀏覽器實際 Pagefind 公開／撤回查詢。最新完整 CI 與目視結論以 PR 說明為準；本文件不預先宣告成功。
-- 本地十一款逐款 Build 通過。共用 symlink node_modules 的撤回試驗出現不一致，**不採用該本地試驗作全通過證據**；上列 CI 每款獨立 npm install 的撤回輸出有實際檢查。最新增加的 Pagefind runtime 查詢仍待 CI。
-- Builder Pack 解壓後已實測全部 25 款主匯出入口，knowledge／helper FULL install／Build／verify 成功、manifest 一致。最新程式／資料包重新建置與 CI 仍須核對，不能套用前一版結果。
-- 尚未完成：最新修正後 13 款所有標準頁與 stress 圖全面目視、真實授權圖片裁切與品牌色／字型覆寫、所有新增 Layout 固定標語的內容編輯、PR47 點擊目標／真實裝置／讀屏人工清單。新增 13 款保持 in-progress，不是 Ready。
-- 正式資料接線、支援與拒絕項目：[新增十三款 Starter 契約](../student-builder-pack/EXPANDED-LAYOUTS.md)。先延續既有 Renderer／匯出器，不重建 QA 或產包流程。
+## 已確認的最近完整技術基準
 
-### 完整 Pagefind 實測 checkpoint
+`7fb5718ed4e8f5e30a81c350ee73723029766ec2` 四項 Actions 全成功：
 
-`ea723b2e456a3b0f04032d720909b7b5e6fcd606` 四項 CI 全部成功；Standalone `38696631632` 除 25 款／1,340 張外，新增十一款均實際在 Chromium import Pagefind 並查詢測試 token：公開時有結果，刪除最後一篇重建後零結果。後續 bookingUrl／目錄階層／日期與包內 Guide 更新仍須使用各自 Head 的結果，不借用這個 SHA。
+- [Standalone：25 款、1,388 張、內容／RWD／鍵盤／搜尋](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494505)
+- [PR Preview Build](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494496)
+- [Static Assets](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494483)
+- [Independent Adapters](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494510)
 
-### 後續實作 checkpoint
+[該 SHA 的四尺寸學員網站截圖、index.html、results.json](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494505/artifacts/11956221944)，1440／1280／768／390。不可將 7fb 綠燈套到後續色彩／字體 Commit。
 
-- `0fde2e5cb1aa5b022e8691e2debcd1728108ea42` 的四項 Actions（Preview、Static、Independent Adapter、Standalone）已全部成功；Standalone run `38696051480` 跑完整 25 款／1,340 張。這是長標題修正後的技術驗證，不替代後續程式 Head 的檢查。
-- 之後已實作 About 逐欄排版、短箋真實日期、服務索引標題先行與目錄逐項規格卡、全數文章索引連結、真實服務 bookingUrl（僅外連、不假回覆）、Site Brief 契約與包內 AI handoff。精確最新 Head、四項 CI、Screenshot Artifact 與 Preview 請看 PR46 說明；新增項目仍待各自新 run。
-- 十二款原有技術／限定內容目視基準保留。新增兩款及十一款均有真實主流程匯出與本地 Build，已有整批四尺寸 CI；全 13 款仍是 Adapter / in-progress。最終 Ready 尚未核定，須完成修正後目視、真實圖片／品牌覆寫、人工裝置／讀屏等清單。
+已實測 0／1／多篇、長中文、草稿、文章撤回後 Home／Archive／直接網址／RSS／Sitemap／中文索引，以及服務 0／1／多項與撤回。新增十一款在 Chromium 實際 import Pagefind：文章存在時可搜到獨有 token，最後一篇刪除重建後零結果。不是只看 Build 或 JSON。
 
-## 已核對的 GitHub 基準（原始接手記錄）
+## 最新已實作、須看其自身 CI 的項目
 
-- Repository：pikaOne1138/astro-personal-site-starter。
-- PR #46 分支：`feat/visual-template-assembly`，更新文件前 Head `84a027642dd25cf52cedbb580ce7f3dbcf6cb5d5`；Draft、open、未 Merge。
-- PR #47：merged=true；Squash Merge SHA／目前 main：`d79fedd7a1731c81baec44ef23e4436a684d6b1e`。
-- GitHub compare 顯示 diverged：#46 相對 main ahead 228、behind 1；共同基底 `26acf168b90a7d672d9468c7489e8095cf060683`。
-- 本次 GitHub 回報 #46 mergeable=true；以共同基底執行 `git merge-tree --write-tree --merge-base=<base> <PR46-head> <main-head>`，exit 0，未發現文字衝突。這只建立試算 tree、沒有實際 merge／更新分支。先前「mergeable=false」不是本次最新結果；即使乾淨合併仍需驗證語意／ZIP 相容。
-- 十二款既有 Starter 的固定驗收與限制見 [2026-10-15 驗收紀錄](PR46-ACCEPTANCE-2026-10-15.md)。[84a02764 的 624 張學員網站截圖](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38689419637/artifacts/11951691634) 保留至 2026-10-22。這份證據不涵蓋新增十三款或整合後的新 Head。
-- 每次開始均重新取得最新 Head／main／CI；不可將上述歷史 SHA 的綠燈套用到新 Commit。
+- 程式 checkpoint `6e84c170993c8157e6007a5431c9c85051da8a39`：十一款原生色彩／display 字體接既有品牌變數，新增深色 palette＋clear-sans 的實際 Build、Home／About 四尺寸及計算樣式檢查；完整截圖預期 **1,476 張**。此文件提交時該批尚待完整 Standalone 結果，最終結論看 PR46。
+- 本次交接亦移除 Practice Compass 未提供 About 欄位時的空紀錄色帶；有真實欄位時仍保留其獨立條目構圖。
+- 最新 Head 的精確 SHA、四項 Actions、Cloudflare check 與 Artifact 由 PR46 說明記錄；不得把預期張數或尚未目視的修正說成完成。
 
-## 開始前必讀
+## 實際資料包回歸
 
-PR46 分支與 PR47 merge 到 main 的版本都須核對：
-- `AGENTS.md`
-- `.ai/astro-ui-craft/SKILL.md`
-- `.ai/astro-layout-craft/SKILL.md`
-- `.ai/astro-editorial-layout-design/SKILL.md`
-- `.ai/astro-pr-preview/SKILL.md`
-- `docs/layout/PR46-HANDOFF.md`
-- `docs/art-direction/PR47-PHASE3-HANDOFF.md`
-- `docs/art-direction/PR47-BATCH-BC-REVIEW.md`
-- `docs/art-direction/PR47-MANUAL-QA-CHECKLIST.md`
-- `docs/art-direction/pr47-layout-handoff-registry.json`
+已下載 7fb 的 [CI Preview 產物](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38699494496/artifacts/11955596160)，使用其中真正的 `AI-建站資料包.zip`，不是本地自行重建來替代：
 
-目前 PR47 文件位於 main 固定 SHA；尚未整合時，不能因 feature branch 找不到它們就重造研究。已讀的 #47 歷史文件仍可能寫著 Draft／不 Merge #47；實際 #47 已 Merge 的事實以上述 GitHub 狀態為準。
+- 解壓後僅靠包內檔案，25 選項全部經主入口匯出。
+- knowledge／helper 完整 npm install、Build、verify 通過。
+- 另用包內程式實際建立 editorial-frontpage／split-reader 零文章網站，安裝／Build／verify 通過；保留持有人 headline／intro，文章數 0，沒有不存在主文的閱讀 CTA。
+- Guide／ZIP manifest 完全一致，25 slugs／狀態齊全。
+- manifest 的 `2635bb0f052acb9e3a313481319b7f15099d6682` 是 GitHub PR 測試合併 SHA，兩個 parent 為 main 與 7fb；已核對 Tree `5b45cc939fe31334a1dd7527fe6f67cc55fdc6e7` 與 7fb Head 相同。版本差異不是錯包。
 
-## 先整合 main，再接正式產站
-
-1. 讀 #46 最新 diff、CI、失敗日誌及 main，將已合併 #47 的 main 整合到同一 #46 feature branch。不得直接以 ours/theirs 覆蓋檔案。
-2. 特別檢查 `scripts/build-student-pack.mjs`：兩邊的打包來源、排除規則、Skills 參照根目錄、layout 清單與版本 manifest 都須保留並協調。乾淨文字合併也可能缺少必要包內檔案。
-3. 保留原十二款 Home／Archive／Detail／About／Service adapters、清除生成快取的 build 邏輯與零文章回歸；不可覆蓋為只有 Prototype 的 #47 狀態。
-4. 跑 Build、現有 CI、Starter 匯出、既有學生 ZIP 解壓／安裝／Build／Guide manifest／Preview 回歸。整合後的新 SHA 必須有自己的結果。
-5. 依 #47 registry 的內容契約將新增兩款 Adapter 與十一款多頁原型接入既有主 Starter Export／Gallery／Site Brief，不新建另一套產生器、QA 平台或後台。
-6. 不重新做大量版型研究；依既有構圖實作正式資料映射。單一問題久卡時記錄可重現原因，換驗證方法或推進其他不受阻的版型。
+包內 AI 指引已改為依 Registry engine 選原十二款、兩款 art-direction 或十一款 native Renderer；新增十三款的支援與拒絕項目見 [正式資料契約](../student-builder-pack/EXPANDED-LAYOUTS.md)。沒有新 ZIP 產生器／CMS／CRM／QA 平台。
 
 ## 25 款逐款狀態
 
-Definition＝設計／資料契約；Prototype＝可瀏覽原型；Adapter＝具獨立渲染與部分或完整資料接線；Ready＝主流程接線、Build、完整內容與四尺寸目視驗證，且完成必要人工核可。它們不是單看數量的完成度。
-
-原十二款在 PR47 registry 被標 prototype-only，是 #47 的來源範圍；PR46 已完成的十二款獨立匯出證據仍有效，不能被該標記抹去。新增十三款也不能借用原十二款的驗收而被升級 Ready。下表不改寫 #47 來源 registry，也不自動提升學員選擇介面的 Ready 狀態。
+Definition＝設計契約；Prototype＝展示原型；Adapter＝正式 Renderer／資料接線；Ready＝完整必要驗收與人工核可。本批全 25 款均已達 Adapter；新十三款的最終核可仍 pending。
 
 | 名稱 | slug | 已達層級／證據 | 下一個 Gate |
 |---|---|---|---|
@@ -100,37 +73,20 @@ Definition＝設計／資料契約；Prototype＝可瀏覽原型；Adapter＝具
 | 觀點服務誌 | `editorial-practice` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
 | 問答對話 | `question-led-practice` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
 
-盤點：25 個方向（13 knowledge、12 helper）；原十二款已有固定目視證據，新十三款已接入主匯出器並有本地 Build，新增十一款的整合後 CI 與目視待驗，Ready 尚未核定。
 
-## 正式資料與功能不可退化
+## 已實際目視與依圖修正
 
-- Astro Content Collections 是正式文章來源；沿用 Pagefind、RSS、Sitemap、Canonical、SEO Metadata、分類／標籤及真實 slug，不建立假文章 JSON 或第二套搜尋。
-- 不將 Prototype demo 文當正式文章；舊原型固定 sample/detail URL 與正式 collection slug 的映射／redirect 必須明訂。
-- 各款保留自己的首頁 IA、索引、詳情、About、Navbar／Footer、閱讀行長與節奏；不能全轉成同一 Hero／三卡／通用 Footer。
-- 不虛構姓名、專業資格、價格、見證、成效、聯絡來源或預約／訂閱成功。缺正式服務網址時明確待設定。
-- 學員流程維持：ATP 規劃器 → Site Brief JSON → 既有 AI Builder Pack ZIP → 官方起始提示詞 → AI 建立學員自己的 Repository → Preview → 確認部署；不要求學員 Fork 老師 Repo、跑 CLI 或理解 Astro。
+- 原十二款保留 [84a02764 的限定內容驗收](PR46-ACCEPTANCE-2026-10-15.md)，624 張歷史證據不是新增十三款的證據。
+- 已下載 ee2cf9e 的 1,340 張與 0df7f815 的 1,388 張，逐款檢視新十一款 Home／Index／About 四尺寸及詳情頁前 2,400px；兩款獨立方向另檢視文章／服務、FAQ／聯絡、About。後續修正再重看相應輸出，不宣稱每張 stress 圖都已逐像素審讀。
+- 修正：長標題內有連結的文字走訪與縮字、卡片刊物品牌／標題、原型 demo／資料契約 UI、About 重複欄位、真實日期、Home intro 誤用文章摘要、問答詳情缺 body／facts、全文章索引連結、多服務先標題再條目、服務目錄逐項規格、正式 bookingUrl 僅外連、零文章精選空殼／虛假閱讀 CTA。
+- 共用 symlink node_modules 的早期本地撤回試驗不一致，不採為通過證據；上述 CI 每款獨立 install 的撤回與瀏覽器搜尋，以及下載 ZIP 的真正獨立安裝，才是有效證據。
 
-## 每款整合後的驗收
+## 尚未完成／平台限制
 
-以真正匯出的 Starter 檢查，不用 Prototype gallery 代替：
-- 1440／1280／768／390：Home、Index、Detail、About；helper 加服務／FAQ／聯絡。
-- 0／1／多筆文章或服務、只有一項服務、長中文、長文、無圖片、未設定專業資訊。
-- Navbar 鍵盤／焦點／手機重排、頁面返回及文章鄰篇導覽。
-- 撤回／刪光文章後重新 Build，確認首頁、Archive、直接文章路由、RSS、Sitemap、Pagefind／搜尋索引均不殘留舊文章。必須驗證輸出，不只 Build exit 0。
-- Builder Pack 解壓、安裝、Build、Preview 與部署所需檔案／相對引用完整；Guide／ZIP manifest 一致。
-- 最新 CI 截圖下載後實際目視；Build 或 axe 綠燈不能代替設計及真人操作驗收。
+- 最新品牌字體修正後的完整四尺寸目視仍須承接；新十三款保持 in-progress。後續所有新 SHA 都要重新核對 CI／Artifact。
+- PR47 的真實授權圖片裁切、原型固定標語的持有人編輯、點擊目標警告、真實裝置／讀屏人工清單仍 pending。Chromium 截圖不替代 Safari／Firefox／讀屏；本環境沒有真實裝置輔助技術。
+- 新十三款非 footer Section Patterns 仍須逐款構圖接線；匯出器明確拒絕，避免靜默丟資料。原十二款既有 Blocks／Patterns 不移除。
+- Subject Atlas／Practice Compass 仍文字優先，尚不接受品牌圖片輸入。新十一款部分圖片角色已有接線，但不能把未做真圖裁切驗收的情境說成 Ready。
+- Cloudflare 對 0df7f815 回報 Preview 部署成功，但本環境直接 HTTP 讀取 `https://20909d7f.personal-site-starter.pages.dev/` 得到 403，web 讀取亦不可達。沒有把它當作可用性通過；以確實下載的 CI 產物與學員 Chromium 圖繼續驗證，未碰 Production／DNS。新 Preview URL 以最新 check 為準。
 
-## 承接 PR47 未簽核項目
-
-保留 `PR47-MANUAL-QA-CHECKLIST.md` 的 A–D，逐項註明裝置、URL、日期、審查者、截圖與結果：
-- 25 款有授權真圖／無圖的構圖；11 款連續四頁的導航、畫布與詳情閱讀節奏。
-- 224 組頁面／尺寸的小點擊目標警告：須定位具體元素與尺寸，再分級／修正／記錄豁免，不能說成 224 個確認違規，也不能直接全勾 PASS。
-- 實際鍵盤、Android Chrome／條件允許時 iOS Safari、NVDA／VoiceOver；自動 axe 不等於真人測試。
-- Subject Atlas／Practice Compass 原先延期的獨立 Starter 截圖，納入 #46 接線後的實際匯出驗收；未執行前維持 pending。
-- 真實圖片、資格／服務條款來源與設計負責人的核可仍需證據。
-
-## 交付／安全邊界
-
-保持 PR46 Draft，不自動 Merge PR46，不改 Production／DNS，不直接寫 main。本次更新沒有實際合併 main 或新增 Renderer，沒有新增通過聲明。
-
-後續每次交付記錄：整合／衝突結果、25 款逐款 Definition／Prototype／Adapter／Ready、真正主流程輸出的款數、哪些通過 Build／RWD／內容驗收、#47 人工清單承接、最新 SHA／CI／Preview／截圖及剩餘阻擋。最終目的為零程式背景學員能用 AI 和真實內容建立可維護的個人網站。
+下一次先讀本檔與 PR46 最新結果，從尚未核可的真圖／品牌／人工清單接續，不重做版型研究、不把 CI 全綠當成 25 款設計完成。
