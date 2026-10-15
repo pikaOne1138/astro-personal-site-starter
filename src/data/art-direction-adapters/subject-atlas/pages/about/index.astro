@@ -1,0 +1,9 @@
+---
+import config from '../../../site.config.json';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+const base=import.meta.env.BASE_URL;
+const fields=[['寫作與服務目的',config.about?.purpose],['工作方式',config.about?.approach],['背景與來源',config.about?.background]].filter(([,v])=>v);
+const bio=config.about?.bio||config.pageContent.about?.join('\n')||'關於資訊尚未設定';
+---
+<SiteLayout title="關於"><section class="atlas-about interior"><header><span class="eyebrow">THE AUTHOR / AN OPEN INDEX</span><h1>關於{config.brand.name}</h1><p class="lede">{bio}</p></header><div class="about-index"><aside><span class="eyebrow">閱讀路徑</span><a href={base+'articles/'}>全部文章 ↗</a><a href={base+'topics/'}>循主題探索 ↗</a></aside><div class="records">{fields.map(([label,value],i)=><section><span class="eyebrow">0{i+1} / {label}</span><h2>{label}</h2><p>{value}</p></section>)}</div></div></section></SiteLayout>
+<style>.atlas-about header{display:grid;grid-template-columns:1fr 2fr;gap:32px;border-bottom:1px solid var(--ink);padding-bottom:48px}.atlas-about header>span{grid-column:1/-1}.atlas-about h1{margin:0}.lede{font-size:22px}.about-index{display:grid;grid-template-columns:180px minmax(0,720px);gap:64px;padding-block:48px}.about-index aside a{display:block;padding-block:16px;border-bottom:1px solid var(--line)}.records section{padding-bottom:40px;border-bottom:1px solid var(--line);margin-bottom:40px}.records h2{margin-block:16px}.records p{font-size:18px;white-space:pre-line}@media(max-width:760px){.atlas-about header,.about-index{display:block}.atlas-about h1{margin-block:24px}.about-index aside{margin-bottom:40px}}</style>

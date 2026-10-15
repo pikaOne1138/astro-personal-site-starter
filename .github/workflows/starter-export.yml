@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'scripts/export-starter.mjs'
+      - 'scripts/export-art-direction-starter.mjs'
+      - 'scripts/art-direction-adapters.mjs'
+      - 'scripts/native-layout-adapters.mjs'
+      - 'src/data/art-direction-adapters/**'
       - 'scripts/verify-starter-export.mjs'
       - 'scripts/audit-generated-links.mjs'
       - 'scripts/test-generated-link-audit.mjs'
@@ -34,7 +38,7 @@ jobs:
           STUDENT_VISUAL_CAPTURE: '1'
           STUDENT_VISUAL_OUT: student-visual
         run: node scripts/verify-starter-export.mjs
-      - name: Upload twelve-layout learner screenshot gallery
+      - name: Upload assembled learner screenshot gallery
         if: always()
         uses: actions/upload-artifact@v4
         with:

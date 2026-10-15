@@ -24,7 +24,7 @@ try {
   const webManifest=JSON.parse(readFileSync('public/builder-pack-version.json','utf8'));
   const zipManifest=JSON.parse(readFileSync(join(root,'BUILDER-PACK-VERSION.json'),'utf8'));
   if(JSON.stringify(webManifest)!==JSON.stringify(zipManifest))throw Error('Guide/Builder Pack version mismatch');
-  if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==layoutDefinitions.filter(x=>x.adapter).length||zipManifest.layoutAdapterCount!==layoutDefinitions.filter(x=>x.adapter).length)throw Error('Builder Pack manifest missing twelve layouts');
+  if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==layoutDefinitions.filter(x=>x.adapter).length||zipManifest.layoutAdapterCount!==layoutDefinitions.filter(x=>x.adapter).length)throw Error('Builder Pack manifest missing registered layouts');
   if(!/^[a-f0-9]{40}$/.test(zipManifest.sourceCommit)&&zipManifest.sourceCommit!=='unknown')throw Error('Invalid source commit version');
   const guide=readFileSync(join(root,'AGENTS.md'),'utf8');
   if(!guide.includes('學員')||guide.includes('read `.ai/astro-ui-craft/SKILL.md` first'))throw Error('Research AGENTS was shipped instead of learner AGENTS');
@@ -82,6 +82,16 @@ try {
 
       }
     }
+    const expanded=JSON.parse(readFileSync(join(root,'src/data/layout-assembly/expansion-directions.json'),'utf8'));
+    for(const layout of expanded){
+      const {writeFileSync}=await import('node:fs');
+      const plan={version:1,kind:layout.kind,layoutSlug:layout.slug,visualTheme:'paper',brand:{name:'QA ZIP 獨立測試',primaryColor:'#355747'},navigation:[{id:'about',label:'關於',enabled:true}],primaryCta:{label:'關於',pageId:'about'}};
+      const file=join(output,layout.slug+'.json'),site=join(output,layout.slug);writeFileSync(file,JSON.stringify(plan));
+      execFileSync(process.execPath,[join(root,'scripts/export-starter.mjs'),file,site,'--require-assembled'],{cwd:root,stdio:'inherit'});
+      const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
+      if(config.layoutSlug!==layout.slug||config.layoutAdapter.assemblyStatus==='ready')throw Error('Expanded ZIP adapter selection/status invalid: '+layout.slug);
+      if(!existsSync(join(site,'src/pages/index.astro')))throw Error('Expanded ZIP renderer missing: '+layout.slug);
+    }
   } finally { rmSync(output,{recursive:true,force:true}); }
-  console.log('Student ZIP extracted: all 12 layout selections export; knowledge/helper Astro builds '+(process.env.FULL_STUDENT_PACK_BUILD==='1'?'passed':'SKIPPED (set FULL_STUDENT_PACK_BUILD=1)'));
+  console.log('Student ZIP extracted: all 25 registered layout selections export; knowledge/helper Astro builds '+(process.env.FULL_STUDENT_PACK_BUILD==='1'?'passed':'SKIPPED (set FULL_STUDENT_PACK_BUILD=1)'));
 } finally { rmSync(root,{recursive:true,force:true}); }
