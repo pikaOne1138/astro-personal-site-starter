@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "8a81ba9e3f0d28cb7c5661d1d764cf0ce5ea1a56",
+  "layoutAdapterCount": 14,
+  "layoutSlugs": [
+    "field-notes",
+    "essayist",
+    "learning-lab",
+    "curator",
+    "radio-letter",
+    "reading-atlas",
+    "clinician",
+    "companion",
+    "somatic",
+    "coach",
+    "collective",
+    "trust-path",
+    "subject-atlas",
+    "practice-compass"
+  ],
+  "layoutStatuses": {
+    "field-notes": "in-progress",
+    "essayist": "in-progress",
+    "learning-lab": "in-progress",
+    "curator": "in-progress",
+    "radio-letter": "in-progress",
+    "reading-atlas": "in-progress",
+    "clinician": "in-progress",
+    "companion": "in-progress",
+    "somatic": "in-progress",
+    "coach": "in-progress",
+    "collective": "in-progress",
+    "trust-path": "in-progress",
+    "subject-atlas": "in-progress",
+    "practice-compass": "in-progress"
+  },
+  "distribution": "AI-建站資料包.zip",
+  "releaseStage": "beta-assembly"
+}
