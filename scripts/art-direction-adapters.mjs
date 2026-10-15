@@ -23,6 +23,8 @@ export const artDirectionAdapters = [
  // Explicit static pages take precedence over the legacy catch-all.
  put(root,'src/pages/[...page].astro',readFileSync(new URL('shared/pages/[...page].astro',sources),'utf8'));
  put(root,'src/content.config.ts',`import {defineCollection,z} from 'astro:content';\nimport {glob} from 'astro/loaders';\nexport const collections={articles:defineCollection({loader:glob({pattern:'**/*.md',base:'./src/content/articles'}),schema:z.object({title:z.string(),description:z.string(),publishedAt:z.coerce.date(),draft:z.boolean().default(false),image:z.string().optional(),tags:z.array(z.string()).default([]),topics:z.array(z.string()).default([])})})};\n`);
+ for(const name of ['FeaturedWorkSection','TrustServiceSection'])put(root,'src/components/patterns/'+name+'.astro',readFileSync(new URL('../src/components/patterns/'+name+'.astro',import.meta.url),'utf8'));
+ for(const name of ['FeatureGrid','ServiceFit','TrustInfo','CTASection','Button'])put(root,'src/components/blocks/'+name+'.astro',readFileSync(new URL('../src/components/blocks/'+name+'.astro',import.meta.url),'utf8'));
  const css=readFileSync(new URL('shared/site.css',sources),'utf8');put(root,'public/site.css',css);
  // Preserve the existing full-text build and safety gates; add real discovered topic routes.
  const sitemap=readFileSync(join(root,'src/pages/sitemap.xml.js'),'utf8');

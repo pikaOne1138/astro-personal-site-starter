@@ -68,6 +68,22 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       await page.keyboard.press('Tab');await page.keyboard.press('Escape');
       escapeNavigation=opened&&await summary.evaluate(el=>!el.parentElement.open&&document.activeElement===el);
     }
+    if(scenario.patternCheck){
+      const expected=scenario.patternCheck[route]??[];
+      const actual=await page.locator('[data-section-pattern]').evaluateAll(nodes=>nodes.map(n=>n.dataset.sectionPattern));
+      if(JSON.stringify(actual)!==JSON.stringify(expected))errors.push('Pattern selection/order mismatch: '+JSON.stringify(actual));
+      const placed=await page.evaluate(()=>[...document.querySelectorAll('.pattern-slot')].every(slot=>{
+        const canvas=document.querySelector('[data-native-page]');
+        if(canvas&&!canvas.contains(slot))return false;
+        if(slot.dataset.patternPosition==='after-intro'&&slot.previousElementSibling?.tagName!=='SECTION')return false;
+        return slot.getBoundingClientRect().width<=innerWidth;
+      }));
+      if(!placed)errors.push('Pattern escaped its canvas or opening anchor');
+      for(const link of await page.locator('.pattern-slot a').all()){
+        await link.focus();
+        if(!await link.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&el.getBoundingClientRect().height>=44))errors.push('Pattern link lost keyboard focus or 44px target');
+      }
+    }
     if(scenario.imageCheck){
       const owned=await page.evaluate(()=>[...document.querySelectorAll('img[data-owner-image]')].map(img=>({role:img.dataset.ownerImage,loaded:img.complete&&img.naturalWidth>0,alt:img.alt,width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit,position:getComputedStyle(img).objectPosition,filter:getComputedStyle(img).filter,centered:(()=>{const a=img.closest('a.brand');if(!a)return true;const x=img.getBoundingClientRect(),y=a.getBoundingClientRect();return Math.abs((x.left+x.width/2)-(y.left+y.width/2))<2;})(),insideFrame:!img.classList.contains('owner-image--fill')||(()=>{const frame=img.closest('.native-image-slot');if(!frame)return false;const a=img.getBoundingClientRect(),b=frame.getBoundingClientRect();return Math.abs(a.left-b.left)<2&&Math.abs(a.top-b.top)<2&&a.width<=b.width+2&&a.height<=b.height+2;})()})));
       const logos=owned.filter(img=>img.role==='logo'),pictures=owned.filter(img=>img.role==='editorial');
@@ -422,6 +438,16 @@ try{
       plan.services=[{slug:'owned-service',title:'QA 自有服務',summary:'QA 服務說明，非成果宣稱',published:true,body:['QA 詳情正文'],scope:'QA 服務範圍',bookingUrl:'https://booking.example.test/owned-service'},{slug:'second-service',title:'QA 第二項服務',summary:'QA 第二項說明',published:true},{slug:'hidden-service',title:'QA 隱藏服務',published:false}];
     }
     if(!native)cpSync('docs/art-direction/fixtures/content',join(root,'content'),{recursive:true});
+    if(!plan.navigation.some(n=>n.id==='articles'))plan.navigation.push({id:'articles',label:'文章',enabled:true});
+    const featured={title:'QA 精選作品與文章',description:'QA 提供的作品資料，供版型測試，非真實客戶成果。',items:[{title:'QA 一份可以公開的作品與長中文標題：讓作品說明在手機上也能完整閱讀',description:'QA 自行提供的測試文字；沒有網址的作品保留為文字。'},{title:'QA 第二份作品',description:'QA 真實資料接線測試',url:'https://example.test/work'}],articleSlugs:[native?'owned-note':'real-note',native?'hidden-note':'legacy-draft'],action:{label:'閱讀完整指南',pageId:'page-guide'}};
+    const trust={title:'QA 合作範圍與下一步',description:'QA 已提供的服務範圍；並非真實專業服務。',suitable:['QA 希望先了解工作方式與適用範圍'],notSuitable:['QA 需要網站服務範圍以外的協助'],notice:'QA 測試說明；無即時處理服務。',format:'QA 依雙方確認方式進行',policy:'QA 依事先公開政策確認',action:{label:'先閱讀服務資訊',pageId:'services'}};
+    plan.sectionPatterns=[
+      {patternId:kind==='helper'?'trust-service-path':'featured-work',targetPage:'/',insertAfter:'after-intro',content:kind==='helper'?trust:featured},
+      {patternId:'featured-work',targetPage:'about',insertAfter:'page-end',content:featured},
+      {patternId:'featured-work',targetPage:'page-guide',insertAfter:'主要內容之後',content:featured},
+      {patternId:kind==='helper'?'trust-service-path':'featured-work',targetPage:kind==='helper'?'services':'articles',insertAfter:'page-end',content:kind==='helper'?trust:featured},
+      {patternId:'footer-editorial',targetPage:'site-wide',insertAfter:'每頁主要內容之後'}
+    ];
     const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
     if(native){
@@ -436,7 +462,14 @@ try{
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
-    await captureStudentSite(slug,kind,site,{routes,searchState:native?'published':undefined,ctaCheck:native?{label:plan.primaryCta.label,href:'/'+plan.primaryCta.pageId+'/'}:undefined});
+    routes.push('guides/first/');
+    const patternCheck={'':[kind==='helper'?'trust-service-path':'featured-work'],'about/':['featured-work'],'guides/first/':['featured-work'],[kind==='helper'?'services/':'articles/']:[kind==='helper'?'trust-service-path':'featured-work']};
+    for(const [route,expected] of Object.entries(patternCheck)){
+      const html=readFileSync(join(site,'dist',route,'index.html'),'utf8');
+      for(const id of expected)if(!html.includes('data-section-pattern="'+id+'"'))throw Error('Missing actual Pattern '+slug+' '+route+' '+id);
+      if((html.match(/<footer[\s>]/g)??[]).length!==1)throw Error('Selected footer duplicated or lost: '+slug+' '+route);
+    }
+    await captureStudentSite(slug,kind,site,{routes,patternCheck,searchState:native?'published':undefined,ctaCheck:native?{label:plan.primaryCta.label,href:'/'+plan.primaryCta.pageId+'/'}:undefined});
     if(native){
       const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
       for(const id of ['owned-note','second-note'])if(!archive.includes('href="/articles/'+id+'/"'))throw Error('Native published article lacks archive link: '+slug+' '+id);
@@ -466,6 +499,7 @@ try{
         if(existsSync(join(site,'dist/services/owned-service/index.html'))||readFileSync(join(site,'dist/sitemap.xml'),'utf8').includes('owned-service'))throw Error('Withdrawn service survived rebuild: '+slug);
       }
       const brandedFile=join(site,'site.config.json'),branded=JSON.parse(readFileSync(brandedFile,'utf8'));
+      branded.sectionPatterns.find(p=>p.targetPage==='/').insertAfter='page-end';
       branded.primaryCta={pageId:'page-guide',label:'先看我的合作與閱讀指南'};
       branded.brand.typography='clear-sans';branded.brand.palette={primary:'#9FDBFF',secondary:'#416780',accent:'#E0B778',background:'#172634',text:'#F0F5FB'};
       writeFileSync(brandedFile,JSON.stringify(branded));build();
@@ -481,6 +515,7 @@ try{
     plan.about={bio:'QA 自有圖像配置',purpose:'QA 目的',approach:'QA 方式',background:'QA 背景'};
     plan.brand.logoPath='/images/brand-logo.png';plan.brand.heroImagePath='/images/hero-image.png';plan.brand.heroImageAlt='QA 自製比例與裁切校準圖';plan.brand.imageStyle='documentary';plan.brand.imageFit='cover';plan.brand.imagePosition='top';
     plan.assets=[{path:plan.brand.logoPath,mime:'image/png',base64:readFileSync('docs/art-direction/fixtures/assets/owned-logo.png').toString('base64')},{path:plan.brand.heroImagePath,mime:'image/png',base64:readFileSync('docs/art-direction/fixtures/assets/owned-landscape.png').toString('base64')}];
+    plan.sectionPatterns=[{patternId:'featured-work',targetPage:'/',insertAfter:'page-end',content:{title:'QA 頁尾前的精選作品',items:[{title:'QA 作品',description:'QA 圖片與區段同頁的組裝檢查'}]}}];
     plan.layoutContent={headings:Object.fromEntries(Object.keys(headingFields[slug]).map(key=>[key,'QA 可編輯段落標題']))};
     const fixture=join(root,'owned-'+slug+'.json'),site=join(root,'owned-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});

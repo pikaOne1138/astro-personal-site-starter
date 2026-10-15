@@ -24,7 +24,7 @@ export const starterPages = {
 } as const;
 export type StarterPageId = typeof starterPages[StarterKind][number]['id'];
 export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;path?:string;}
-export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;}
+export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;content?: {title:string;description?:string;items?:Array<{title:string;description:string;url?:string}>;articleSlugs?:string[];suitable?:string[];notSuitable?:string[];notice?:string;professionalName?:string;credentials?:string[];areas?:string[];format?:string;policy?:string;action?:{label:string;pageId?:string;url?:string}};}
 export interface StarterPlan {
   version: 1;
   kind: StarterKind;

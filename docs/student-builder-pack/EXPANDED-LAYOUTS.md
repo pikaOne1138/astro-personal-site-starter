@@ -42,3 +42,7 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 - `verify-art-direction-export.mjs`：保留原兩款 29 項獨立、安全網址、子路徑、草稿與可攜 ZIP 回歸。
 
 四尺寸為 1440／1280／768／390。截圖與 CI 的精確 SHA、逐款狀態、未完成事項記在 PR46 整合交接及 PR 說明；新增十三款未獲最終視覺核可前不得改 Ready。
+
+## 選用的內容區段
+
+新增十三款可組裝非 footer Patterns；須先補真實 content 與明確插槽，依 [SECTION-PATTERNS.md](./SECTION-PATTERNS.md) 操作。規劃器單純選取 Pattern 不代表內容已備妥。

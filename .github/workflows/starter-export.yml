@@ -6,6 +6,7 @@ on:
       - 'scripts/export-art-direction-starter.mjs'
       - 'scripts/art-direction-adapters.mjs'
       - 'scripts/native-layout-adapters.mjs'
+      - 'scripts/expanded-section-patterns.mjs'
       - 'src/data/art-direction-adapters/**'
       - 'scripts/verify-starter-export.mjs'
       - 'scripts/audit-generated-links.mjs'

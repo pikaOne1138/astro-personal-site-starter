@@ -1,5 +1,6 @@
 ---
 import config from '../../../../site.config.json';
+import ContentPatterns from '../../ContentPatterns.astro';
 import OwnerImage from '../../OwnerImage.astro';
 import {getCollection} from 'astro:content';
 const base=import.meta.env.BASE_URL,root=base;
@@ -9,7 +10,7 @@ const posts=(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>
 const latest=posts[0];
 ---
 <div class="atlas" data-assembled-layout="subject-atlas"><div class="shell">
-<section class="hero"><p class="mono">PERSONAL KNOWLEDGE LIBRARY / AN OPEN INDEX</p><div class="hero-grid"><div><span>{config.content.intro||config.brand.tagline}</span><h1>{config.content.headline||config.brand.name}<em>{config.brand.tagline}</em></h1></div><aside>{config.brand.heroImagePath&&<OwnerImage/>}<div class="count"><strong>{String(topics.length).padStart(2,'0')}</strong>主題入口</div><p>先選擇自己在意的主題，再沿著文章閱讀。</p><a class="action" href="#directory">打開主題索引 ↓</a><p class="note">目前有 {posts.length} 篇公開文章。</p></aside></div></section>
+<section class="hero"><p class="mono">PERSONAL KNOWLEDGE LIBRARY / AN OPEN INDEX</p><div class="hero-grid"><div><span>{config.content.intro||config.brand.tagline}</span><h1>{config.content.headline||config.brand.name}<em>{config.brand.tagline}</em></h1></div><aside>{config.brand.heroImagePath&&<OwnerImage/>}<div class="count"><strong>{String(topics.length).padStart(2,'0')}</strong>主題入口</div><p>先選擇自己在意的主題，再沿著文章閱讀。</p><a class="action" href="#directory">打開主題索引 ↓</a><p class="note">目前有 {posts.length} 篇公開文章。</p></aside></div></section><ContentPatterns position="after-intro"/>
 <div class="columns"><aside class="rail" aria-label="主題快速導航"><p class="mono">INDEX / TOPICS</p>{topics.map((t,i)=><a href={'#topic-'+t.slug}><span>{String(i+1).padStart(2,'0')}</span>{t.title}</a>)}</aside><div class="body"><section id="directory"><p class="mono">01 / TOPIC DIRECTORY</p><h2>{config.layoutContent?.headings?.['h2-01']??<Fragment>循著主題，找到閱讀路徑。</Fragment>}</h2><div class="topics">{topics.length?topics.map((t,i)=><article class:list={['topic',{'lead-topic':i===0}]} id={'topic-'+t.slug}><div class="top"><span>{String(i+1).padStart(2,'0')} / {t.slug.toUpperCase()}</span><span>{posts.filter(p=>includesTopic(p,t.slug)).length} ENTRIES</span></div><h3>{t.title}</h3><a class="action" href={base+'topics/'+t.slug+'/'}>探索{t.title}主題 ↗</a><ol>{posts.filter(p=>includesTopic(p,t.slug)).map((p,j)=><li><span>{String(j+1).padStart(2,'0')}</span><a href={base+'articles/'+p.id+'/'}>{p.data.title} ↗</a></li>)}</ol>{!posts.some(p=>includesTopic(p,t.slug))&&<p>這個主題目前沒有公開文章。</p>}</article>):<p class="notice">尚未設定主題，請在 site.config.json 填入 artDirection.topics。</p>}</div></section><section class="latest" id="latest"><div><p class="mono">02 / MOST RECENT NOTE</p><h2>{config.layoutContent?.headings?.['h2-02']??<Fragment>最近新增的線索。</Fragment>}</h2></div><div>{latest?<><h3>{latest.data.title}</h3><p>{latest.data.description}</p><a class="action" href={base+'articles/'+latest.id+'/'}>閱讀文章 ↗</a></>:<p>目前沒有公開文章。</p>}</div></section><section class="foot-cta" id="archive"><p>你不必從第一篇開始。</p><a class="action" href={base+'articles/'}>開啟完整檔案清單 ↗</a></section></div></div>
 </div></div>
 <style>

@@ -2,6 +2,7 @@ import {readFileSync,writeFileSync,mkdtempSync,existsSync,readdirSync,renameSync
 import {resolve,join,dirname} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
+import {normalizeExpandedPatterns} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
@@ -39,7 +40,7 @@ for(const [id,label,path] of essentials){const existing=navigation.find(x=>x.id=
 for(const item of navigation)if(item.enabled){item.path=item.path??item.id+'/';if(essentials.some(([id,,path])=>item.id!==id&&item.path===path))throw Error('Reserved essential route collision');if(item.path==='topics/'&&plan.kind==='helper')throw Error('Topics route requires knowledge adapter');}
 if(plan.kind==='helper'&&navigation.some(x=>x.enabled&&x.path.startsWith('topics/')))throw Error('Helper adapter has no topic renderer');
 if(navigation.some(x=>x.enabled&&x.path.startsWith('topics/')&&x.path!=='topics/'))throw Error('Topic detail paths are reserved');
-if((plan.sectionPatterns||[]).some(p=>!p.patternId?.startsWith('footer-')))throw Error('Only the site-wide footer extension is supported in these adapters; non-footer patterns need an explicit composition integration.');
+const sectionPatterns=normalizeExpandedPatterns(plan.sectionPatterns,plan.kind,navigation);
 
 const rawServices=plan.services??[];
 if(!Array.isArray(rawServices)||rawServices.length>50)throw Error('Invalid services');
@@ -52,7 +53,7 @@ const copy=Object.create(null);for(const [key,value] of Object.entries(plan.layo
 const root=resolve(dest);if(existsSync(root)&&(!lstatSync(root).isDirectory()||lstatSync(root).isSymbolicLink()))throw Error('Output must be a normal empty directory');if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty; edited student websites are never overwritten');
 const workspace=mkdtempSync(join(tmpdir(),'art-direction-export-'));
 try{
- const inherited={...plan,brand:{...plan.brand,tagline:text(plan.brand?.tagline||'','tagline')},navigation,layoutSlug:plan.kind==='knowledge'?'field-notes':'clinician'};
+ const inherited={...plan,sectionPatterns,brand:{...plan.brand,tagline:text(plan.brand?.tagline||'','tagline')},navigation,layoutSlug:plan.kind==='knowledge'?'field-notes':'clinician'};
  // Reuse the reviewed scaffold/security implementation; the selected surrogate is never shipped.
  const seed=join(workspace,'seed.json'),generated=join(workspace,'site');writeFileSync(seed,JSON.stringify(inherited));
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
