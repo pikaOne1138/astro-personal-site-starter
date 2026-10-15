@@ -412,6 +412,8 @@ try{
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
     await captureStudentSite(slug,kind,site,{routes,searchState:native?'published':undefined});
     if(native){
+      const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
+      for(const id of ['owned-note','second-note'])if(!archive.includes('href="/articles/'+id+'/"'))throw Error('Native published article lacks archive link: '+slug+' '+id);
       const home=readFileSync(join(site,'dist/index.html'),'utf8');
       for(const value of [plan.brand.name,plan.content.headline,plan.content.intro])if(!home.includes(value))throw Error('Native homepage lost owned copy: '+slug+' '+value);
       if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍','https://booking.example.test/owned-service'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
