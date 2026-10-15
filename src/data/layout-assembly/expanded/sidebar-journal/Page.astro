@@ -29,7 +29,7 @@ const indexUrl=root+(site.kind==='knowledge'?'articles/':'services/'),detailUrl=
     <div class="body">
       <header class="top"><span>PERSONAL PUBLICATION</span><span>繁體中文</span></header>
       {route==='' && <>
-        <section class="intro"><p class="eyebrow">LATEST NOTES / HOME</p><h1>{route===''?site.headline:route==='about'?site.about:route==='articles'?'文章索引':route==='services'?'服務資訊':detailRecord?.title}</h1><p class="lead">{route==='about'?site.bio:route===''?site.intro:detailRecord?.summary??site.intro}</p><a class="line-link" href={base+'articles/'}>翻閱全部文章 ↗</a></section>
+        <section class="intro"><p class="eyebrow">LATEST NOTES / HOME</p><h1>{route===''?site.headline:route==='about'?site.about:route==='articles'?'文章索引':route==='services'?'服務資訊':detailRecord?.title}</h1><p class="lead">{route==='about'?site.bio:route===''?site.intro:detailRecord?.summary??site.intro}</p><a class="line-link" data-primary-cta="home" href={site.primaryCta.href}>{site.primaryCta.label} ↗</a></section>
         <section class="desk"><div class="desk-label"><p class="eyebrow">ON THE DESK</p><h2>最近的三則</h2><p>{site.copy.p4??(route==='about'?site.aboutFields[3]:'')}</p></div><div class="entries">{articles.map(a=><article class="entry"><div class="meta">{a.id} / {a.date} / {a.tag}</div><h3>{a.href?<a href={a.href}>{a.title}</a>:a.title}</h3><p>{a.summary}</p>{!a.href&&<small>僅為示範標題，尚無全文</small>}</article>)}</div></section>
         <section class="signature"><span class="eyebrow">A SMALL INTRODUCTION</span><p>{site.copy.p5??(route==='about'?site.aboutFields[0]:'')}</p><a href={base+'about/'}>關於這本手記 →</a></section>
       </>}

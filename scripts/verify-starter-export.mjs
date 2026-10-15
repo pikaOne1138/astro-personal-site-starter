@@ -67,6 +67,17 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       await page.keyboard.press('Tab');await page.keyboard.press('Escape');
       escapeNavigation=opened&&await summary.evaluate(el=>!el.parentElement.open&&document.activeElement===el);
     }
+    if(scenario.ctaCheck){
+      const actions=page.locator('[data-primary-cta]');
+      const expected=scenario.ctaCheck;
+      if(await page.locator('[data-primary-cta="navigation"]').count()!==1)errors.push('Native navigation must expose exactly one primary action');
+      if(!route&&await page.locator('[data-primary-cta="home"]').count()!==1)errors.push('Native home must expose exactly one primary action');
+      for(const action of await actions.all()){
+        if((await action.textContent()).trim().replace(/[→↗]$/,'').trim()!==expected.label||await action.getAttribute('href')!==expected.href)errors.push('Configured CTA label/route was not applied');
+        await action.focus();
+        if(!await action.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&el.getBoundingClientRect().height>=44))errors.push('Primary CTA lost keyboard focus or 44px target');
+      }
+    }
     // Avoid screenshots of an incidental focus outline.
     await page.evaluate(()=>document.activeElement?.blur());
     // A page can fit the viewport while its index digits wrap or framed copy
@@ -414,7 +425,7 @@ try{
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
-    await captureStudentSite(slug,kind,site,{routes,searchState:native?'published':undefined});
+    await captureStudentSite(slug,kind,site,{routes,searchState:native?'published':undefined,ctaCheck:native?{label:plan.primaryCta.label,href:'/'+plan.primaryCta.pageId+'/'}:undefined});
     if(native){
       const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
       for(const id of ['owned-note','second-note'])if(!archive.includes('href="/articles/'+id+'/"'))throw Error('Native published article lacks archive link: '+slug+' '+id);
@@ -444,9 +455,10 @@ try{
         if(existsSync(join(site,'dist/services/owned-service/index.html'))||readFileSync(join(site,'dist/sitemap.xml'),'utf8').includes('owned-service'))throw Error('Withdrawn service survived rebuild: '+slug);
       }
       const brandedFile=join(site,'site.config.json'),branded=JSON.parse(readFileSync(brandedFile,'utf8'));
+      branded.primaryCta={pageId:'page-guide',label:'先看我的合作與閱讀指南'};
       branded.brand.typography='clear-sans';branded.brand.palette={primary:'#9FDBFF',secondary:'#416780',accent:'#E0B778',background:'#172634',text:'#F0F5FB'};
       writeFileSync(brandedFile,JSON.stringify(branded));build();
-      await captureStudentSite(slug,kind,site,{variant:'brand',routes:['','about/'],brandCheck:true});
+      await captureStudentSite(slug,kind,site,{variant:'brand',routes:['','about/'],brandCheck:true,ctaCheck:{label:branded.primaryCta.label,href:'/guides/first/'}});
     }
   }
   console.log('Starter exporter checks passed: twelve established assemblies; FULL mode adds thirteen in-progress adapters');
