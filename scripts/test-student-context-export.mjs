@@ -53,3 +53,21 @@ test('generated Cloudflare branch previews cannot be indexed even with SITE_INDE
   assert.match(robots,/isBranchPreview\|\|process\.env\.SITE_INDEXABLE/);
  }finally{rmSync(tmp,{recursive:true,force:true});}
 });
+
+test('PROJECT layout mismatch is detected without rewriting student decisions',()=>{
+ const tmp=mkdtempSync(join(tmpdir(),'atp-context-mismatch-'));
+ try{
+  const input=join(tmp,'plan.json'),out=join(tmp,'site');writeFileSync(input,JSON.stringify(plan('knowledge')));
+  const made=spawnSync(process.execPath,[join(root,'scripts/export-starter.mjs'),input,out],{encoding:'utf8',timeout:45000});
+  assert.equal(made.status,0,made.stderr||made.stdout);
+  const ok=spawnSync(process.execPath,[join(out,'scripts/check-project-context.mjs'),out],{encoding:'utf8'});
+  assert.equal(ok.status,0,ok.stderr||ok.stdout);
+  const projectPath=join(out,'PROJECT.md'),prior=readFileSync(projectPath,'utf8');
+  const configPath=join(out,'site.config.json'),settings=JSON.parse(readFileSync(configPath,'utf8'));
+  settings.layoutSlug='subject-atlas';writeFileSync(configPath,JSON.stringify(settings));
+  const bad=spawnSync(process.execPath,[join(out,'scripts/check-project-context.mjs'),out],{encoding:'utf8'});
+  assert.notEqual(bad.status,0);
+  assert.match(bad.stdout,/differs/);
+  assert.equal(readFileSync(projectPath,'utf8'),prior);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});
