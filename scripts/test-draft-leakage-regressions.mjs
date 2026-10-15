@@ -93,7 +93,8 @@ try{
  put('dist/index.html',html('網站選單：服務說明，內部備註不應公開，這段文字作為獨特的草稿正文識別。'));
  expect('Unique private draft body still blocked',false,'Draft leaked into public discovery/output:');
  put('dist/index.html',html('Public home'));
-  // F11: the validator must reject missing Pagefind or Chinese companion indexes.
+  put('site.config.json',JSON.stringify({navigation:[]}));
+ // F11: the validator must reject missing Pagefind or Chinese companion indexes.
  unlinkSync(join(root,'dist/pagefind/pagefind.js'));
  expect('F11 missing Pagefind index',false,'Student Pagefind search index missing');
  put('dist/pagefind/pagefind.js','/* QA Pagefind fixture */');
