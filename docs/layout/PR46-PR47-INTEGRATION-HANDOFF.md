@@ -1,8 +1,17 @@
 # PR #46｜PR #47 整合與 25 款 Starter 擴充接手
 
-更新：2026-10-15（Asia/Taipei）。本文件是後續實作的目前入口，取代「本輪十二款驗收完成＝全部擴充工作完成」的解讀。這次只更新 PR 說明／交接，不表示已將 main 整合進 feature branch。
+更新：2026-10-15（Asia/Taipei）。本文件是後續實作的目前入口，取代「本輪十二款驗收完成＝全部擴充工作完成」的解讀。本輪已整合 main 並完成新增十三款的主匯出器與初版正式 Adapter；尚未取得新增十一款的完整四尺寸目視驗收，不標 Ready。
 
-## 已核對的 GitHub 基準
+## 本輪實作進度
+
+- main 已以雙 parent Merge Commit `0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6` 整合；保留 PR47 原型／內容契約、兩邊資料包邏輯及原十二款組裝器。該 Commit 的 Preview、Static、Standalone、Independent Adapter checks 成功。
+- `7840d3aedbdf443097832078dfd4666321546888` 已把 Subject Atlas／Practice Compass 接入主 `export-starter.mjs`、Starter 選擇與既有 ZIP。獨立 Adapter 29 項本地回歸通過；該 SHA 的 Preview／Static／Adapter checks 成功，Standalone 待取得完成結果。
+- 新增十一款：逐款移植 PR47 的原生多頁 DOM/CSS；接 Content Collections、真實文章 slug、About 四欄、顯式 published 服務與真實詳情網址。全部十一個實際匯出網站本地 Build 成功；Home 僅一個 h1／main，均有 StudentNavigation，About 四欄輸出檢查通過。
+- 主流程現有 25 個可組裝方向，新增十三款維持 **in-progress Adapter**。這是匯出能力，不是 25 款已通過設計驗收。
+- 既有 Standalone Actions 已擴充新增十三款四尺寸與十一款 0／1／多筆、撤回快取、草稿、服務 0／1／多筆回歸。新 SHA Actions／實際截圖仍待取得並目視，不能以本地 Build 代替。
+- PR47 人工 QA 的真實圖片裁切、細小點擊目標、裝置／讀屏及跨頁品質仍 pending。Native 初版仍須依截圖整理內容密度與空資料節奏，不自動核可。
+
+## 已核對的 GitHub 基準（原始接手記錄）
 
 - Repository：pikaOne1138/astro-personal-site-starter。
 - PR #46 分支：`feat/visual-template-assembly`，更新文件前 Head `84a027642dd25cf52cedbb580ce7f3dbcf6cb5d5`；Draft、open、未 Merge。
@@ -37,7 +46,7 @@ PR46 分支與 PR47 merge 到 main 的版本都須核對：
 5. 依 #47 registry 的內容契約將新增兩款 Adapter 與十一款多頁原型接入既有主 Starter Export／Gallery／Site Brief，不新建另一套產生器、QA 平台或後台。
 6. 不重新做大量版型研究；依既有構圖實作正式資料映射。單一問題久卡時記錄可重現原因，換驗證方法或推進其他不受阻的版型。
 
-## 25 款目前狀態（整合前，逐款）
+## 25 款逐款狀態
 
 Definition＝設計／資料契約；Prototype＝可瀏覽原型；Adapter＝具獨立渲染與部分或完整資料接線；Ready＝主流程接線、Build、完整內容與四尺寸目視驗證，且完成必要人工核可。它們不是單看數量的完成度。
 
@@ -57,21 +66,21 @@ Definition＝設計／資料契約；Prototype＝可瀏覽原型；Adapter＝具
 | 實作型教練 | `coach` | Adapter；PR46 原十二款已通過限定測試內容驗收 | 保留 624 張基準；main 整合後重驗 |
 | 共好工作室 | `collective` | Adapter；PR46 原十二款已通過限定測試內容驗收 | 保留 624 張基準；main 整合後重驗 |
 | 信任路徑 | `trust-path` | Adapter；PR46 原十二款已通過限定測試內容驗收 | 保留 624 張基準；main 整合後重驗 |
-| 主題標本室 | `subject-atlas` | Adapter；獨立方向已驗證，主匯出器接線待完成 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 服務羅盤 | `practice-compass` | Adapter；獨立方向已驗證，主匯出器接線待完成 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 側欄日誌 | `sidebar-journal` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 個人刊物 | `editorial-frontpage` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 卡片刊物 | `card-journal` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 影像故事 | `visual-stories` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 極簡短箋 | `compact-dispatch` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 雙欄閱讀台 | `split-reader` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 人物名片 | `portrait-profile` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 服務目錄 | `service-catalogue` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 工作室章節 | `studio-chapters` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 觀點服務誌 | `editorial-practice` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
-| 問答對話 | `question-led-practice` | Prototype；Definition 與可編輯多頁契約已交付 | 主 Starter 接線、真實資料、獨立輸出 Build／四尺寸目視與人工待辦 |
+| 主題標本室 | `subject-atlas` | Adapter；主匯出器接線、獨立 Build 已完成，視覺待核可 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 服務羅盤 | `practice-compass` | Adapter；主匯出器接線、獨立 Build 已完成，視覺待核可 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 側欄日誌 | `sidebar-journal` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 個人刊物 | `editorial-frontpage` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 卡片刊物 | `card-journal` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 影像故事 | `visual-stories` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 極簡短箋 | `compact-dispatch` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 雙欄閱讀台 | `split-reader` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 人物名片 | `portrait-profile` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 服務目錄 | `service-catalogue` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 工作室章節 | `studio-chapters` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 觀點服務誌 | `editorial-practice` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
+| 問答對話 | `question-led-practice` | Adapter 初版；原生多頁 DOM／真實資料接線、獨立 Build 通過 | 新 Head 內容回歸、四尺寸實際截圖目視、人工 QA |
 
-盤點：25 個方向（13 knowledge、12 helper）；主 #46 流程已實測的獨立 Starter 是原有 12 款。另 2 款為 #47 獨立 Adapter，不能加總宣稱主產站器已交付 14 或 25 款；新增 11 款仍是原型。全 25 款整合後的 Ready 數量尚未核定。
+盤點：25 個方向（13 knowledge、12 helper）；原十二款已有固定目視證據，新十三款已接入主匯出器並有本地 Build，新增十一款的整合後 CI 與目視待驗，Ready 尚未核定。
 
 ## 正式資料與功能不可退化
 

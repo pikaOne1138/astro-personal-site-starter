@@ -41,6 +41,7 @@ for (const path of [
   'scripts/export-starter.mjs',
   'scripts/export-art-direction-starter.mjs',
   'scripts/art-direction-adapters.mjs',
+  'scripts/native-layout-adapters.mjs',
   'scripts/verify-starter-export.mjs',
   'scripts/verify-student-navigation.mjs',
   'scripts/test-student-navigation-regressions.mjs',

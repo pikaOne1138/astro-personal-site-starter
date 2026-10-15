@@ -13,7 +13,7 @@ if(strict||!allowed)throw Error('Assembly in Progress: visual review is deferred
 const text=(s,label,max=5000)=>{if(typeof s!=='string'||s.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(s))throw Error('Invalid '+label);return s};
 const list=(v,label)=>{if(v===undefined)return [];if(!Array.isArray(v)||v.length>50)throw Error('Invalid '+label);return v.map(s=>text(s,label))};
 const https=(v,label)=>{if(!v)return '';text(v,label,2000);let u;try{u=new URL(v)}catch{throw Error('Invalid '+label)}if(u.protocol!=='https:'||u.username||u.password)throw Error('HTTPS URL without credentials required: '+label);return u.href};
-if(plan.brand?.heroImagePath||plan.brand?.logoPath||plan.brand?.heroImageDataUrl||plan.brand?.logoDataUrl)throw Error('These text-first adapters do not yet support image asset inputs');
+if(['subject-atlas','practice-compass'].includes(plan.layoutSlug)&&(plan.brand?.heroImagePath||plan.brand?.logoPath||plan.brand?.heroImageDataUrl||plan.brand?.logoDataUrl))throw Error('These text-first adapters do not yet support image asset inputs');
 if(plan.brand?.typography&&!['editorial-serif','clear-sans','balanced'].includes(plan.brand.typography))throw Error('Invalid typography preset');
 const supplied=plan.artDirection||{};
 const data={...supplied,serviceFacts:{scope:plan.serviceFacts?.scope,credentials:plan.serviceFacts?.qualification,format:plan.serviceFacts?.method,duration:plan.serviceFacts?.duration,price:plan.serviceFacts?.price,cancellation:plan.serviceFacts?.cancellation,...supplied.serviceFacts}};const content={headline:text(plan.content?.headline||'','headline'),intro:text(plan.content?.intro||'','intro')};
@@ -40,6 +40,13 @@ for(const item of navigation)if(item.enabled){item.path=item.path??item.id+'/';i
 if(plan.kind==='helper'&&navigation.some(x=>x.enabled&&x.path.startsWith('topics/')))throw Error('Helper adapter has no topic renderer');
 if(navigation.some(x=>x.enabled&&x.path.startsWith('topics/')&&x.path!=='topics/'))throw Error('Topic detail paths are reserved');
 if((plan.sectionPatterns||[]).some(p=>!p.patternId?.startsWith('footer-')))throw Error('Only the site-wide footer extension is supported in these adapters; non-footer patterns need an explicit composition integration.');
+
+const rawServices=plan.services??[];
+if(!Array.isArray(rawServices)||rawServices.length>50)throw Error('Invalid services');
+const services=rawServices.map(s=>{if(!s||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(s.slug)||s.slug.length>64||typeof s.published!=='boolean')throw Error('Service requires a valid slug and explicit published boolean');const result={slug:s.slug,published:s.published,body:list(s.body,'service body')};for(const key of ['title','summary','fit','format','duration','price','scope','credential','image'])result[key]=text(s[key]||'',key);return result;});
+if(new Set(services.map(s=>s.slug)).size!==services.length)throw Error('Duplicate service slug');
+const copy=Object.create(null);for(const [key,value] of Object.entries(plan.layoutContent?.copy??{})){if(!/^p[0-9]{1,3}$/.test(key))throw Error('Invalid native copy key');copy[key]=text(value,'native paragraph');}
+
 const root=resolve(dest);if(existsSync(root)&&(!lstatSync(root).isDirectory()||lstatSync(root).isSymbolicLink()))throw Error('Output must be a normal empty directory');if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty; edited student websites are never overwritten');
 const workspace=mkdtempSync(join(tmpdir(),'art-direction-export-'));
 try{
@@ -48,7 +55,7 @@ try{
  const seed=join(workspace,'seed.json'),generated=join(workspace,'site');writeFileSync(seed,JSON.stringify(inherited));
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
- settings.content=content;settings.pageContent=pageContent;
+ settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy};
  settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['articles','topics','page-search']:['services','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.

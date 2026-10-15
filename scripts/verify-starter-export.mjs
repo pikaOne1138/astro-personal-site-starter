@@ -1,9 +1,10 @@
 // Acceptance evidence and final visual limits: docs/layout/PR46-HANDOFF.md
-import {mkdtempSync,readFileSync,existsSync,writeFileSync,rmSync,mkdirSync} from 'node:fs';
+import {mkdtempSync,readFileSync,existsSync,writeFileSync,rmSync,mkdirSync,cpSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import layouts from '../src/data/layout-directions.json' with {type:'json'};
+import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 const kinds=['knowledge','helper'];
 const visualEnabled=process.env.STUDENT_VISUAL_CAPTURE==='1';
@@ -381,23 +382,62 @@ try{
     if(!detail.includes('data-site-family="'+layout.slug+'"'))throw Error(layout.slug+' lost helper article family');
     await captureStudentSite(layout.slug,'helper',site,{variant:'optional-articles',routes:['articles/','articles/qa-helper-note/']});
   }
-  if(process.env.FULL_STARTER_BUILD==='1')for(const slug of ['subject-atlas','practice-compass']){
-    const kind=slug==='subject-atlas'?'knowledge':'helper';
-    const fixture='docs/art-direction/fixtures/'+slug+'.json',site=join(root,'expanded-'+slug);
+  if(process.env.FULL_STARTER_BUILD==='1')for(const layout of expansion){
+    const {slug,kind}=layout,native=layout.engine==='native-expansion';
+    const plan=JSON.parse(readFileSync('docs/art-direction/fixtures/'+(kind==='knowledge'?'subject-atlas':'practice-compass')+'.json','utf8'));
+    plan.layoutSlug=slug;
+    if(native){
+      delete plan.contentDirectory;
+      plan.about={bio:'QA 本人提供的自我介紹',purpose:'QA 寫作目的',approach:'QA 工作方式',background:'QA 背景尚未核實'};
+      plan.services=[{slug:'owned-service',title:'QA 自有服務',summary:'QA 服務說明，非成果宣稱',published:true,body:['QA 詳情正文'],scope:'QA 服務範圍'},{slug:'second-service',title:'QA 第二項服務',summary:'QA 第二項說明',published:true},{slug:'hidden-service',title:'QA 隱藏服務',published:false}];
+    }
+    if(!native)cpSync('docs/art-direction/fixtures/content',join(root,'content'),{recursive:true});
+    const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
-    execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
-    execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    if(native){
+      const dir=join(site,'src/content/articles');mkdirSync(dir,{recursive:true});
+      const note=(title,draft,body)=>['---','title: '+title,'description: QA 內容描述','publishedAt: 2026-10-15','draft: '+draft,'---',body].join('\n');
+      writeFileSync(join(dir,'owned-note.md'),note('QA 長中文文章標題：用真實內容來檢查每一款版型的閱讀動線、索引、詳細頁與導覽是否完整',false,'## QA 正文標題\n\nQA 正文唯一識別。\n\n'+'長篇中文與 English terms。'.repeat(300)));
+      writeFileSync(join(dir,'second-note.md'),note('QA 第二篇文章',false,'QA 第二篇正文'));
+      writeFileSync(join(dir,'hidden-note.md'),note('QA 隱藏文章',true,'QA 草稿不得公開'));
+    }
+    const build=()=>execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});build();
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
-    const routes=kind==='knowledge'?['','articles/','articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
+    let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
+    if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
     await captureStudentSite(slug,kind,site,{routes});
+    if(native){
+      const about=readFileSync(join(site,'dist/about/index.html'),'utf8');
+      for(const value of Object.values(plan.about))if(!about.includes(value))throw Error('Native About lost owned field: '+slug+' '+value);
+      if(existsSync(join(site,'dist/articles/hidden-note/index.html'))||existsSync(join(site,'dist/services/hidden-service/index.html')))throw Error('Native draft route leaked: '+slug);
+      for(const path of ['index.html','articles/index.html','rss.xml','sitemap.xml','search/exact-zh.json']){
+        const html=readFileSync(join(site,'dist',path),'utf8');if(html.includes('QA 隱藏文章')||html.includes('hidden-note')||html.includes('hidden-service'))throw Error('Native draft leaked: '+slug+' '+path);
+      }
+      const detail=readFileSync(join(site,'dist/articles/owned-note/index.html'),'utf8');if(!detail.includes('QA 正文唯一識別'))throw Error('Native article lost actual body: '+slug);
+      const dir=join(site,'src/content/articles');rmSync(join(dir,'second-note.md'));build();
+      await captureStudentSite(slug,kind,site,{variant:'single',routes:['articles/']});
+      rmSync(join(dir,'owned-note.md'));build();
+      await captureStudentSite(slug,kind,site,{variant:'empty',routes:['articles/']});
+      for(const path of ['index.html','articles/index.html','rss.xml','sitemap.xml','search/exact-zh.json'])if(/owned-note|second-note|QA 正文唯一識別/.test(readFileSync(join(site,'dist',path),'utf8')))throw Error('Native withdrawn article survived cached build: '+slug+' '+path);
+      if(existsSync(join(site,'dist/articles/owned-note/index.html')))throw Error('Native withdrawn direct route survived: '+slug);
+      if(kind==='helper'){
+        const file=join(site,'site.config.json'),config=JSON.parse(readFileSync(file,'utf8'));
+        config.services=config.services.filter(s=>s.slug==='owned-service');writeFileSync(file,JSON.stringify(config));build();
+        await captureStudentSite(slug,kind,site,{variant:'single-service',routes:['','services/']});
+        config.services=[];writeFileSync(file,JSON.stringify(config));build();
+        await captureStudentSite(slug,kind,site,{variant:'empty-service',routes:['','services/']});
+        if(existsSync(join(site,'dist/services/owned-service/index.html'))||readFileSync(join(site,'dist/sitemap.xml'),'utf8').includes('owned-service'))throw Error('Withdrawn service survived rebuild: '+slug);
+      }
+    }
   }
-  console.log('Starter exporter checks passed for twelve distinct layout assemblies');
+  console.log('Starter exporter checks passed: twelve established assemblies; FULL mode adds thirteen in-progress adapters');
 }finally{
  if(visualEnabled){
   const summary={total:visualRows.length,failedHttp:visualRows.filter(x=>x.http!==200),overflow:visualRows.filter(x=>x.overflow),errors:visualRows.filter(x=>x.errors.length),noFamily:visualRows.filter(x=>x.family!==x.slug),heading:visualRows.filter(x=>x.h1!==1),articleCounts:visualRows.filter(x=>x.route==='/articles/'&&((x.variant==='empty'&&x.articleCount!==0)||(x.variant==='single'&&x.articleCount!==1))),keyboard:visualRows.filter(x=>!x.keyboardFocus||!x.escapeNavigation),invisibleMasthead:visualRows.filter(x=>x.yearVisible===false)};
   writeFileSync(visualOutput+'/results.json',JSON.stringify({summary,rows:visualRows},null,2));
   const cards=visualRows.map(x=>'<article><h2>'+escapeHtml(x.slug)+' / '+escapeHtml(x.route)+' / '+x.width+'px</h2><p>HTTP '+x.http+' · overflow '+x.overflow+' · family '+escapeHtml(x.family)+'</p><a href="'+x.filename+'"><img loading="lazy" src="'+x.filename+'" alt="'+escapeHtml(x.slug+' '+x.route)+'"/></a></article>').join('');
-  writeFileSync(visualOutput+'/index.html','<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Independent Student Site Visual QA</title><style>body{font:16px/1.6 system-ui;max-width:1320px;margin:auto;padding:20px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}article{border:1px solid #aaa;padding:12px;min-width:0}img{max-width:100%;height:auto}</style><h1>12 independent sites / responsive pages</h1><p>Rows '+summary.total+' · HTTP failures '+summary.failedHttp.length+' · overflow '+summary.overflow.length+' · browser errors '+summary.errors.length+' · wrong families '+summary.noFamily.length+'</p><a href="results.json">Full results</a><main>'+cards+'</main></html>');
+  writeFileSync(visualOutput+'/index.html','<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Independent Student Site Visual QA</title><style>body{font:16px/1.6 system-ui;max-width:1320px;margin:auto;padding:20px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}article{border:1px solid #aaa;padding:12px;min-width:0}img{max-width:100%;height:auto}</style><h1>Independent student sites / responsive pages</h1><p>Rows '+summary.total+' · HTTP failures '+summary.failedHttp.length+' · overflow '+summary.overflow.length+' · browser errors '+summary.errors.length+' · wrong families '+summary.noFamily.length+'</p><a href="results.json">Full results</a><main>'+cards+'</main></html>');
   console.log('Student visual QA summary:',JSON.stringify(Object.fromEntries(Object.entries(summary).map(([key,val])=>[key,Array.isArray(val)?val.length:val]))));
   for(const [type,issues] of [['OVERFLOW',summary.overflow],['HTTP',summary.failedHttp],['RUNTIME',summary.errors],['FAMILY',summary.noFamily],['MASTHEAD',summary.invisibleMasthead],['HEADING',summary.heading],['ARTICLE_COUNT',summary.articleCounts],['KEYBOARD',summary.keyboard]]){
     for(const issue of issues.slice(0,20))console.log('STUDENT_VISUAL_'+type,JSON.stringify(issue));
