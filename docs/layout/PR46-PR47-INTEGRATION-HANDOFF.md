@@ -1,5 +1,15 @@
 # PR46｜main 整合與 25 款正式 Starter 接手
 
+## 執行環境中斷交接（本段優先）
+
+- 最後程式 Head：`653aea8dbcb814fb961b4e9d761d17c376d32a1a`；本次只更新交接文件，沒有改程式、合併 PR 或動 Production。PR46 保持 Draft，main 已整合。
+- `6e84c170993c8157e6007a5431c9c85051da8a39` **四項 Actions 全成功**，包括品牌／字體案例。Standalone [38700676516](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38700676516) 的實際日誌為 **1,476 張；HTTP、溢出、runtime、family、h1、文章數、鍵盤及 masthead 全部零失敗**。新十一款深色 palette／clear-sans 的實際計算樣式檢查通過。
+- [6e84 的四尺寸截圖 Artifact](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38700676516/artifacts/11956659242) 已產生，**尚未目視這批新品牌圖片**。可見於先前環境的 1,340／1,388 張已有前述逐款檢視，不能把它們當成新 palette 的目視核可。
+- 653aea8 的 [Preview](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288998)、[Static](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701289028)、[Independent Adapter](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288957) 已成功；[Standalone](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288943) 寫本段時仍在執行。結果持續更新於 PR46 說明，不沿用前一個 SHA 的結論。Cloudflare 對 653aea8 回報 Preview check 成功：[該版 Preview](https://abd287b6.personal-site-starter.pages.dev/)；直接瀏覽可用性尚未確認。
+- 實際阻擋：工作區執行服務回報 `409 Conflict, environment_offline: Environment is not connected`，重試仍無法執行。新圖下載／解壓／目視及本地修改因此不能繼續；GitHub 已推送的程式、Actions、Artifacts 不受影響。後續從本分支最新 Head 建立工作區即可，勿依賴舊 scratch 圖片路徑。
+- **確切未完成項**：新 palette 截圖目視；新增十一款 Navbar／Home 的使用者自訂 `primaryCta.label/pageId` 對位（目前保留原型內文 CTA；從 exporter 的 `assets['src/components/StudentNavigation.astro']` 與 native Page 的呼叫接續，該導覽目前只列 navigation）；真實圖片／Logo 角色及裁切；PR47 點擊目標／真實裝置／讀屏人工清單。不要把「JSON 有保存」當成「所有設計角色都有套用」。
+- 因上述項目，**新增十三款維持 in-progress Adapter，不是 Ready**。已交付 25 個真正可匯出的 Renderer／資料接線與技術回歸，尚不能宣稱 25 款完整設計驗收結束。
+
 更新：2026-10-15。這是實作與驗證 checkpoint，最新 Head／Actions／Artifact／Preview 的後續結果持續寫入 [PR46 說明](https://github.com/pikaOne1138/astro-personal-site-starter/pull/46)，不得沿用舊 SHA 綠燈。保持 Draft，不 Merge、不寫 main、不修改 Production／DNS。
 
 ## 已完成的三批實作
@@ -25,7 +35,7 @@
 
 ## 最新已實作、須看其自身 CI 的項目
 
-- 程式 checkpoint `6e84c170993c8157e6007a5431c9c85051da8a39`：十一款原生色彩／display 字體接既有品牌變數，新增深色 palette＋clear-sans 的實際 Build、Home／About 四尺寸及計算樣式檢查；完整截圖預期 **1,476 張**。此文件提交時該批尚待完整 Standalone 結果，最終結論看 PR46。
+- 程式 checkpoint `6e84c170993c8157e6007a5431c9c85051da8a39`：十一款原生色彩／display 字體接既有品牌變數，新增深色 palette＋clear-sans 的實際 Build、Home／About 四尺寸及計算樣式檢查；完整截圖預期 **1,476 張**。該批 Standalone 已成功，精確證據見上方中斷交接；新圖目視仍 pending。
 - 本次交接亦移除 Practice Compass 未提供 About 欄位時的空紀錄色帶；有真實欄位時仍保留其獨立條目構圖。
 - 最新 Head 的精確 SHA、四項 Actions、Cloudflare check 與 Artifact 由 PR46 說明記錄；不得把預期張數或尚未目視的修正說成完成。
 
