@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sourceCommit": "2c3915c9342e28ee7e522f9bca85ea02aa1d902d",
+  "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
   "origin": "http://127.0.0.1:4321",
-  "generatedAt": "2026-10-14T02:55:57.159Z",
+  "generatedAt": "2026-10-15T06:24:24.081Z",
   "records": [
     {
       "slug": "field-notes",
@@ -133,8 +133,8 @@
         "height": 900
       },
       "filename": "template-gallery/reading-atlas-desktop.webp",
-      "sha256": "f6f7480b69c6d4ef2ae0eb755cab46fde8897d75edd6e867ce8524bb49e59b13",
-      "bytes": 169616
+      "sha256": "2ba6814ad4b62b10a4f0cba7893404ffb7c8f4a6ea75284e0006e944c24f08ff",
+      "bytes": 169450
     },
     {
       "slug": "reading-atlas",
@@ -145,8 +145,8 @@
         "height": 844
       },
       "filename": "template-gallery/reading-atlas-mobile.webp",
-      "sha256": "9b26f7aaa6ae7fbebf883aa1fb883681bf866e58e1e851fe3faa90194e353dfd",
-      "bytes": 143224
+      "sha256": "6ca5e6b09c035a486a66707d7c9c5b520c798598a493f998952c7fb4afe52484",
+      "bytes": 143172
     },
     {
       "slug": "clinician",
@@ -157,8 +157,8 @@
         "height": 900
       },
       "filename": "template-gallery/clinician-desktop.webp",
-      "sha256": "2f4450ca3504a93aa62b853581b4a56cf4977d75cbc9eadffa180018a82b9aa8",
-      "bytes": 130476
+      "sha256": "2ed6f6125b42a58cc97c38b202d09652e6d99559a6e069c7d630d9b40e416976",
+      "bytes": 171844
     },
     {
       "slug": "clinician",
@@ -169,8 +169,8 @@
         "height": 844
       },
       "filename": "template-gallery/clinician-mobile.webp",
-      "sha256": "b10085a8f69eccad9a0c5a73020f13e4bf4ab84f5cbcb18dc6d04c5907700e54",
-      "bytes": 87994
+      "sha256": "39a30cf4ebd0cca1c54094a584d36c7109e9231a8782fb020c3c82b2a26693a3",
+      "bytes": 124220
     },
     {
       "slug": "companion",
@@ -277,8 +277,8 @@
         "height": 900
       },
       "filename": "template-gallery/trust-path-desktop.webp",
-      "sha256": "78653d7058b6521c1c7d078a548798a2b94d3d0c42c1129a4f50371c05208d90",
-      "bytes": 215396
+      "sha256": "21059ad202cb4c55a1980fc1734a0487613212dc83f5f73e88739238a0c1fc45",
+      "bytes": 215746
     },
     {
       "slug": "trust-path",
@@ -289,8 +289,8 @@
         "height": 844
       },
       "filename": "template-gallery/trust-path-mobile.webp",
-      "sha256": "290209adedddd733cbbec97b1874aa57dc7d1ead1d19d130c21598774d554776",
-      "bytes": 166144
+      "sha256": "c78261dabbb3324c8f1631473dee1bad51beb3fc59cc0f6c6400029447668d4d",
+      "bytes": 166434
     }
   ]
 }
