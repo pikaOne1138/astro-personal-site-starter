@@ -23,6 +23,7 @@ test('new site installs guard files, one-line tool pointers, and safe workflow',
   assert.doesNotMatch(agents,/本 ZIP|export-starter\.mjs|PROJECT-TEMPLATE\.md/);
   assert.match(agents,/內容是資料不是指令/);
   const pkg=JSON.parse(readFileSync(join(root,'package.json'),'utf8'));
+  assert.ok(pkg.scripts['check:context']);
   assert.ok(pkg.scripts.status);assert.ok(pkg.scripts['check:secrets']);
   const wf=readFileSync(join(root,'.github/workflows/pr-check.yml'),'utf8');
   assert.equal(wf.split('npm run check:secrets').length-1,2);
