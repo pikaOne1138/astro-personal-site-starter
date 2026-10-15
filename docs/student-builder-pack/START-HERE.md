@@ -9,7 +9,7 @@
 
 ## AI 要做的事
 - ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
-- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；注意 12 Layout 原始展示為首頁 Prototype，十二款目前都有可運作的獨立首頁 Adapter，但仍是初版；AI 需要完成真實內容和必要內頁。
+- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；先讀 `docs/student-builder-pack/EXPANDED-LAYOUTS.md`：25 個方向可由主匯出器組裝，新增十三款為 in-progress Adapter，不能當成 25 款 Ready；AI 仍須完成真實內容、必要內頁與四尺寸目視驗收。
 - 以 `.ai/astro-pr-preview/SKILL.md` 分流 GitHub Pages 或 Cloudflare 的預覽與發布。配置、金鑰、網域須使用學員自己的帳號和 Repo。
 - 檢查 Build、實際 Preview、桌機/手機、圖片、文章、導航及搜尋。沒有實測不得稱成功。
 - 未經學員明確允許，不 Merge PR、不切換 DNS、不發布正式環境。

@@ -21,6 +21,10 @@
 - 尚未完成：最新修正後 13 款所有標準頁與 stress 圖全面目視、真實授權圖片裁切與品牌色／字型覆寫、所有新增 Layout 固定標語的內容編輯、PR47 點擊目標／真實裝置／讀屏人工清單。新增 13 款保持 in-progress，不是 Ready。
 - 正式資料接線、支援與拒絕項目：[新增十三款 Starter 契約](../student-builder-pack/EXPANDED-LAYOUTS.md)。先延續既有 Renderer／匯出器，不重建 QA 或產包流程。
 
+### 完整 Pagefind 實測 checkpoint
+
+`ea723b2e456a3b0f04032d720909b7b5e6fcd606` 四項 CI 全部成功；Standalone `38696631632` 除 25 款／1,340 張外，新增十一款均實際在 Chromium import Pagefind 並查詢測試 token：公開時有結果，刪除最後一篇重建後零結果。後續 bookingUrl／目錄階層／日期與包內 Guide 更新仍須使用各自 Head 的結果，不借用這個 SHA。
+
 ### 後續實作 checkpoint
 
 - `0fde2e5cb1aa5b022e8691e2debcd1728108ea42` 的四項 Actions（Preview、Static、Independent Adapter、Standalone）已全部成功；Standalone run `38696051480` 跑完整 25 款／1,340 張。這是長標題修正後的技術驗證，不替代後續程式 Head 的檢查。
