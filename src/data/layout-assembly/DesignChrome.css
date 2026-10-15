@@ -54,6 +54,7 @@ body[data-site-family] :is(table,figure){max-width:100%}
 body[data-site-family] table{display:block;overflow-x:auto;border-collapse:collapse}
 body[data-site-family] :focus-visible{outline:3px solid var(--chrome-accent);outline-offset:3px}
 body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition) :is(h1,h2,h3){text-wrap:balance}
+body[data-site-family] [data-assembled-layout] h1{text-wrap:balance}
 body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition) p{text-wrap:pretty}
 @media(max-width:390px){
  body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service-composition){max-width:100%;min-width:0}
