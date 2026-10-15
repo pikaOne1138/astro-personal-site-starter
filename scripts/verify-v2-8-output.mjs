@@ -55,6 +55,8 @@ if(studentArg!==-1){
    const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
+   const privateBody=source.slice(fm?.[0]?.length||0).trim();
+   const distinctive=privateBody.split(/\r?\n/).map(x=>x.trim()).find(x=>x.length>=18&&!x.startsWith('#'));
    const navigationLabel=(config.navigation||[]).some(item=>item.label===title);
    const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)&&(!navigationLabel||(!!distinctive&&x.body.includes(distinctive)))));
    if(suspects.length)throw Error('Draft leaked into public discovery/output: '+relative+'; files: '+suspects.map(x=>x.path).join(', '));
