@@ -3,12 +3,17 @@ on:
   pull_request:
     paths:
       - 'scripts/export-starter.mjs'
+      - 'scripts/export-art-direction-starter.mjs'
+      - 'scripts/verify-v2-8-output.mjs'
+      - '.ai/**'
       - 'scripts/student-project-context.mjs'
       - 'scripts/test-student-project-context.mjs'
       - 'scripts/test-student-context-export.mjs'
       - 'scripts/evaluate-interview-results.mjs'
       - 'scripts/test-interview-evaluation.mjs'
-      - 'scripts/build-student-pack.mjs'\n      - 'scripts/site-status.mjs'\n      - 'scripts/check-secrets.mjs'
+      - 'scripts/build-student-pack.mjs'
+      - 'scripts/site-status.mjs'
+      - 'scripts/check-secrets.mjs'
       - 'scripts/check-project-context.mjs'
       - 'scripts/test-student-index-build-matrix.mjs'
       - 'scripts/test-student-site-guards.mjs'
@@ -38,7 +43,8 @@ jobs:
           unzip -Z -1 public/AI-建站資料包.zip > /tmp/atp-zip-entries
           for item in AGENTS.md PROJECT-TEMPLATE.md scripts/student-project-context.mjs scripts/export-starter.mjs .ai/astro-site-maintenance/SKILL.md; do
             grep -Fx "$item" /tmp/atp-zip-entries >/dev/null || { echo "Missing ZIP file: $item"; exit 1; }
-          done\n          if grep -E '(interview-scenarios|INTERVIEW-EVALUATION|evaluate-interview|test-interview-evaluation)' /tmp/atp-zip-entries; then echo 'Private evaluation assets leaked to student ZIP'; exit 1; fi
+          done
+          if grep -E '(interview-scenarios|INTERVIEW-EVALUATION|evaluate-interview|test-interview-evaluation)' /tmp/atp-zip-entries; then echo 'Private evaluation assets leaked to student ZIP'; exit 1; fi
 
   index-build-matrix:
     runs-on: ubuntu-latest
