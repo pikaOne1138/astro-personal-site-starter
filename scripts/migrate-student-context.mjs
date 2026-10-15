@@ -20,10 +20,10 @@ export function migrateLegacySite(directory,{apply=false}={}){
  const agents=readFileSync(join(here,'docs/student-builder-pack/STUDENT-AGENTS.md'),'utf8');
  const output=renderStudentProject(template,audit.plan);
  writeFileSync(join(audit.root,'PROJECT.md'),output,{flag:'wx'});
- writeFileSync(join(audit.root,'AGENTS.md'),agents.replace(/<!-- builder-only:start -->[\\s\\S]*?<!-- builder-only:end -->/g,'').replace(/本 ZIP/g,'學員網站').replace(/PROJECT-TEMPLATE\\.md/g,'PROJECT.md').replace(/scripts\\/export-starter\\.mjs/g,'網站原始碼'),{flag:'wx'});
- writeFileSync(join(audit.root,'.gitignore'),['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key'].join('\\n')+'\\n',{flag:'wx'});
- writeFileSync(join(audit.root,'CLAUDE.md'),'@AGENTS.md\\n請閱讀 PROJECT.md，尊重既有文章與決策。\\n',{flag:'wx'});
- writeFileSync(join(audit.root,'GEMINI.md'),'請先讀 AGENTS.md 和 PROJECT.md。\\n',{flag:'wx'});
+ writeFileSync(join(audit.root,'AGENTS.md'),agents.replace(/<!-- builder-only:start -->[\s\S]*?<!-- builder-only:end -->/g,'').replace(/本 ZIP/g,'學員網站').replace(/PROJECT-TEMPLATE\.md/g,'PROJECT.md').replace(/scripts\/export-starter\.mjs/g,'網站原始碼'),{flag:'wx'});
+ writeFileSync(join(audit.root,'.gitignore'),['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key'].join('\n')+'\n',{flag:'wx'});
+ writeFileSync(join(audit.root,'CLAUDE.md'),'@AGENTS.md\n請閱讀 PROJECT.md，尊重既有文章與決策。\n',{flag:'wx'});
+ writeFileSync(join(audit.root,'GEMINI.md'),'請先讀 AGENTS.md 和 PROJECT.md。\n',{flag:'wx'});
  mkdirSync(join(audit.root,'scripts'),{recursive:true});
  for(const name of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs'])copyFileSync(join(here,'scripts',name),join(audit.root,'scripts',name));
  // Existing package.json and CI are deliberately untouched. Avoid breaking unknown old-site scripts.
