@@ -11,6 +11,7 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 | PR47 原型契約 | 正式 Site Brief／輸出 |
 |---|---|
 | siteName | `brand.name` |
+| primaryCta.label／pageId | 新十一款原生 Navbar 與首頁主要行動，依 navigation 的實際 path 解析；兩款既有 Adapter 保留其 Header 行動。巢狀自訂頁及 BASE_URL 不改成原型固定網址 |
 | headline、intro | `content.headline`、`content.intro` |
 | about | `about.bio/purpose/approach/background`；缺 bio 時接受 `pageContent.about` |
 | articles[] | 正式來源是 `src/content/articles/*.md`；`contentDirectory` 可指定 Brief 旁的內容子目錄；不另建文章 JSON |

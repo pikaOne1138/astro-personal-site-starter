@@ -1,6 +1,10 @@
 # PR46｜main 整合與 25 款正式 Starter 接手
 
-## 執行環境中斷交接（本段優先）
+## 2026-10-15 恢復執行後的有效入口
+
+最新程式為 `119dae09adf1187578f9cfb9ef851b01bc6c23f5`；環境已恢復，新版配色 Home／About 已實際看圖，十一款自訂 CTA 已接線。後續從 [恢復後驗收與證據](PR46-RESUMED-QA-2026-10-15.md) 接續；下方離線、403 與 CTA 尚未接線的內容是歷史 checkpoint，已被新紀錄取代。25 款維持 Adapter，不自動升 Ready。
+
+## 歷史：執行環境中斷交接
 
 - **更新：653aea8dbcb814fb961b4e9d761d17c376d32a1a 四項 Actions 已全部成功**：[Standalone](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288943)、[Preview](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288998)、[Static](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701289028)、[Independent Adapter](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288957)。[該版 1,476 張四尺寸實際截圖](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38701288943/artifacts/11957331135) 的日誌再次確認所有九類自動失敗數為零；**環境仍離線，未目視這批新圖**。後續只更新交接文件的 SHA 仍會觸發新 CI，不可把這個程式版本的綠燈當成新文件 Head 的狀態。
 - 最後程式 Head：`653aea8dbcb814fb961b4e9d761d17c376d32a1a`；本次只更新交接文件，沒有改程式、合併 PR 或動 Production。PR46 保持 Draft，main 已整合。
