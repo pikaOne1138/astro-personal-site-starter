@@ -393,7 +393,7 @@ try{
     if(native){
       delete plan.contentDirectory;
       plan.about={bio:'QA 本人提供的自我介紹',purpose:'QA 寫作目的',approach:'QA 工作方式',background:'QA 背景尚未核實'};
-      plan.services=[{slug:'owned-service',title:'QA 自有服務',summary:'QA 服務說明，非成果宣稱',published:true,body:['QA 詳情正文'],scope:'QA 服務範圍'},{slug:'second-service',title:'QA 第二項服務',summary:'QA 第二項說明',published:true},{slug:'hidden-service',title:'QA 隱藏服務',published:false}];
+      plan.services=[{slug:'owned-service',title:'QA 自有服務',summary:'QA 服務說明，非成果宣稱',published:true,body:['QA 詳情正文'],scope:'QA 服務範圍',bookingUrl:'https://booking.example.test/owned-service'},{slug:'second-service',title:'QA 第二項服務',summary:'QA 第二項說明',published:true},{slug:'hidden-service',title:'QA 隱藏服務',published:false}];
     }
     if(!native)cpSync('docs/art-direction/fixtures/content',join(root,'content'),{recursive:true});
     const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
@@ -414,7 +414,7 @@ try{
     if(native){
       const home=readFileSync(join(site,'dist/index.html'),'utf8');
       for(const value of [plan.brand.name,plan.content.headline,plan.content.intro])if(!home.includes(value))throw Error('Native homepage lost owned copy: '+slug+' '+value);
-      if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
+      if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍','https://booking.example.test/owned-service'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
       const about=readFileSync(join(site,'dist/about/index.html'),'utf8');
       for(const value of Object.values(plan.about))if(!about.includes(value))throw Error('Native About lost owned field: '+slug+' '+value);
       if(existsSync(join(site,'dist/articles/hidden-note/index.html'))||existsSync(join(site,'dist/services/hidden-service/index.html')))throw Error('Native draft route leaked: '+slug);

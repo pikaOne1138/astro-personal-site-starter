@@ -11,6 +11,16 @@
 - 既有 Standalone Actions 已擴充新增十三款四尺寸與十一款 0／1／多筆、撤回快取、草稿、服務 0／1／多筆回歸。新 SHA Actions／實際截圖仍待取得並目視，不能以本地 Build 代替。
 - PR47 人工 QA 的真實圖片裁切、細小點擊目標、裝置／讀屏及跨頁品質仍 pending。Native 初版仍須依截圖整理內容密度與空資料節奏，不自動核可。
 
+## 最新驗收證據與待辦
+
+- `ee2cf9e3e53f9bfc876c183bc1737e7f39160f2b` 的既有 Standalone CI 跑完 **25 款／1,340 張**，HTTP、溢出、family、h1、文章數、鍵盤／焦點、masthead 均零失敗；十一款的 0／1／多篇、草稿及撤回後實際 HTML／RSS／Sitemap／中文索引、服務撤回均通過。該 run **仍為 failure**：個人刊物 h1 內有連結，壓力測試沒替換其文字，造成六個共用 errors 列。不能稱全綠。
+- [該 SHA 的 1,340 張實際學員站截圖／results.json](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38694705887/artifacts/11953449174) 已下載，十一款 Home／About 的四尺寸已逐款目視。發現並修正：卡片刊物品牌／首頁標題與 demo 殘留、原型內容契約提示、About 重複整包欄位、短箋固定日期、首頁 intro 誤用首篇摘要、問答詳情缺服務正文／facts、實際圖片接線。修正後須使用新 SHA 截圖重看。
+- `0fde2e5c` 修正長標題文字節點走訪，`ea723b2e` 續修原生文案層級、日期、About 與 dl 手機間距，新增瀏覽器實際 Pagefind 公開／撤回查詢。最新完整 CI 與目視結論以 PR 說明為準；本文件不預先宣告成功。
+- 本地十一款逐款 Build 通過。共用 symlink node_modules 的撤回試驗出現不一致，**不採用該本地試驗作全通過證據**；上列 CI 每款獨立 npm install 的撤回輸出有實際檢查。最新增加的 Pagefind runtime 查詢仍待 CI。
+- Builder Pack 解壓後已實測全部 25 款主匯出入口，knowledge／helper FULL install／Build／verify 成功、manifest 一致。最新程式／資料包重新建置與 CI 仍須核對，不能套用前一版結果。
+- 尚未完成：最新修正後 13 款所有標準頁與 stress 圖全面目視、真實授權圖片裁切與品牌色／字型覆寫、所有新增 Layout 固定標語的內容編輯、PR47 點擊目標／真實裝置／讀屏人工清單。新增 13 款保持 in-progress，不是 Ready。
+- 正式資料接線、支援與拒絕項目：[新增十三款 Starter 契約](../student-builder-pack/EXPANDED-LAYOUTS.md)。先延續既有 Renderer／匯出器，不重建 QA 或產包流程。
+
 ## 已核對的 GitHub 基準（原始接手記錄）
 
 - Repository：pikaOne1138/astro-personal-site-starter。

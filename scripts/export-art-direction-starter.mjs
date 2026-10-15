@@ -21,7 +21,7 @@ const topics=data.topics===undefined?[]:data.topics;
 if(!Array.isArray(topics)||topics.length>50||topics.some(t=>!t||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(t.slug)||t.slug.length>64)||new Set(topics.map(t=>t.slug)).size!==topics.length)throw Error('Invalid or duplicate topic slug');
 const normalizedTopics=topics.map(t=>({slug:t.slug,title:text(t.title,'topic title',120),description:text(t.description||'','topic description')}));
 const facts={};for(const k of ['scope','credentials','format','duration','price','cancellation'])facts[k]=text(data.serviceFacts?.[k]||'',k);
-const faq=data.faq||[];if(!Array.isArray(faq)||faq.length>50)throw Error('Invalid faq');
+const faq=data.faq??plan.questions??[];if(!Array.isArray(faq)||faq.length>50)throw Error('Invalid faq');
 const questions=faq.map(q=>({question:text(q.question,'question',300),answer:text(q.answer,'answer')}));
 const rawVisitorIntents=data.visitorIntents??[];
 if(!Array.isArray(rawVisitorIntents)||rawVisitorIntents.length>6)throw Error('Invalid visitorIntents: expected up to six visitor reading entries');
@@ -43,7 +43,7 @@ if((plan.sectionPatterns||[]).some(p=>!p.patternId?.startsWith('footer-')))throw
 
 const rawServices=plan.services??[];
 if(!Array.isArray(rawServices)||rawServices.length>50)throw Error('Invalid services');
-const services=rawServices.map(s=>{if(!s||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(s.slug)||s.slug.length>64||typeof s.published!=='boolean')throw Error('Service requires a valid slug and explicit published boolean');const result={slug:s.slug,published:s.published,body:list(s.body,'service body')};for(const key of ['title','summary','fit','format','duration','price','scope','credential','image'])result[key]=text(s[key]||'',key);return result;});
+const services=rawServices.map(s=>{if(!s||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(s.slug)||s.slug.length>64||typeof s.published!=='boolean')throw Error('Service requires a valid slug and explicit published boolean');const result={slug:s.slug,published:s.published,body:list(s.body,'service body'),bookingUrl:https(s.bookingUrl,'service booking URL')};for(const key of ['title','summary','fit','format','duration','price','scope','credential','image'])result[key]=text(s[key]||'',key);return result;});
 if(new Set(services.map(s=>s.slug)).size!==services.length)throw Error('Duplicate service slug');
 const copy=Object.create(null);for(const [key,value] of Object.entries(plan.layoutContent?.copy??{})){if(!/^p[0-9]{1,3}$/.test(key))throw Error('Invalid native copy key');copy[key]=text(value,'native paragraph');}
 
