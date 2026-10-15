@@ -88,7 +88,7 @@ try{
  // A title shared with the public menu is not itself proof of a private draft leak.
  put('site.config.json',JSON.stringify({navigation:[{id:'services',label:'服務說明',path:'services/'}]}));
  put('dist/services/index.html',html('Public service placeholder'));
- put('src/content/drafts/nav-title.md','---\\ntitle: 服務說明\\ndraft: true\\n---\\n內部備註不應公開，這段文字作為獨特的草稿正文識別。');
+ put('src/content/drafts/nav-title.md','---\ntitle: 服務說明\ndraft: true\n---\n內部備註不應公開，這段文字作為獨特的草稿正文識別。');
  put('dist/index.html',html('網站選單：服務說明'));
  expect('Generic navigation title is not a private draft leak',true);
  put('dist/index.html',html('網站選單：服務說明，內部備註不應公開，這段文字作為獨特的草稿正文識別。'));
