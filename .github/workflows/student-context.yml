@@ -1,0 +1,36 @@
+name: Student Portable Context Gates
+on:
+  pull_request:
+    paths:
+      - 'scripts/export-starter.mjs'
+      - 'scripts/student-project-context.mjs'
+      - 'scripts/test-student-project-context.mjs'
+      - 'scripts/test-student-context-export.mjs'
+      - 'scripts/build-student-pack.mjs'
+      - 'docs/student-builder-pack/**'
+      - '.github/workflows/student-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit, handoff and real standalone export checks
+        run: node --test scripts/test-student-project-context.mjs scripts/test-student-context-export.mjs
+      - name: Build real student distribution ZIP
+        run: node scripts/build-student-pack.mjs
+      - name: Assert package contains source and context contract
+        run: |
+          unzip -t public/AI-建站資料包.zip | tail -1
+          unzip -Z -1 public/AI-建站資料包.zip > /tmp/atp-zip-entries
+          for item in AGENTS.md PROJECT-TEMPLATE.md scripts/student-project-context.mjs scripts/export-starter.mjs .ai/astro-site-maintenance/SKILL.md; do
+            grep -Fx "$item" /tmp/atp-zip-entries >/dev/null || { echo "Missing ZIP file: $item"; exit 1; }
+          done
