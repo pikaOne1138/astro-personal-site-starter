@@ -13,6 +13,8 @@ try{
  const plan={version:1,kind:'knowledge',layoutSlug:'field-notes',visualTheme:'paper',brand:{name:'測試閱讀站',tagline:'安全索引測試',primaryColor:'#445566'},navigation:[{id:'articles',label:'文章',enabled:true},{id:'about',label:'關於',enabled:true}],primaryCta:{pageId:'articles',label:'看文章'},sectionPatterns:[]};
  writeFileSync(input,JSON.stringify(plan));
  run(process.execPath,[join(root,'scripts/export-starter.mjs'),input,site],root,{});
+ const configFile=join(site,'site.config.json'),cfg=JSON.parse(readFileSync(configFile,'utf8'));
+ cfg.site='https://workshop.example.org';writeFileSync(configFile,JSON.stringify(cfg,null,2)+'\n');
  run('npm',['install','--no-audit','--no-fund'],site,{});
  run('npm',['run','check:context'],site,{});
  const matrix=[
