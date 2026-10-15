@@ -9,7 +9,6 @@ const draft='qa-secret-draft',title='Never Publish This Example Draft';
 const article='---\ntitle: '+title+'\ndescription: For private draft QA only\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft text';
 try{
  put('site.config.json',JSON.stringify({navigation:[]}));
- unlinkSync(join(root,'dist/services/index.html'));
  put('src/content/articles/'+draft+'.md',article);
  put('dist/index.html',html('Public home'));
  put('dist/404.html',html('Not Found'));
@@ -95,7 +94,8 @@ try{
  put('dist/index.html',html('網站選單：服務說明，內部備註不應公開，這段文字作為獨特的草稿正文識別。'));
  expect('Unique private draft body still blocked',false,'Draft leaked into public discovery/output:');
  put('dist/index.html',html('Public home'));
-  put('site.config.json',JSON.stringify({navigation:[]}));
+ put('site.config.json',JSON.stringify({navigation:[]}));
+ unlinkSync(join(root,'dist/services/index.html'));
  // F11: the validator must reject missing Pagefind or Chinese companion indexes.
  unlinkSync(join(root,'dist/pagefind/pagefind.js'));
  expect('F11 missing Pagefind index',false,'Student Pagefind search index missing');
