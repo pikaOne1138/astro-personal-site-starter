@@ -30,9 +30,9 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 
 - 原十二款維持原有 Home／Archive／Article／About／Service 及 Blocks／Section Patterns 功能。
 - 新增十三款目前只接受已明確整合的 site-wide footer pattern；其他 Pattern 要另作構圖接線，匯出器會拒絕未支援的選項，避免靜默遺失。
-- Subject Atlas／Practice Compass 仍是文字優先 Adapter，明確拒絕尚未支援的品牌圖片輸入。
+- 新增十三款均支援自有 Logo／主視覺，仍由既有本地檔案或 assets 驗證並複製。具體角色見 [圖片位置契約](../layout/PR46-OWNED-MEDIA-2026-10-15.md)；文字型首頁不為了放圖而改成通用照片 Hero。
 - 新十一款保留各自原生多頁 DOM／CSS；首頁、索引、詳情與 About 不套同一個 Home。FAQ／聯絡／搜尋／主題功能頁及 optional helper articles 保留原生外框與導覽，閱讀內容功能共用；這些頁面的進一步 Art Direction 仍須目視核可。
-- 新增十一款色彩與 display 字體已接既有品牌變數；CI 加入深色配色／clear-sans 的實際 Build 與 Home／About 四尺寸計算樣式檢查。圖片裁切、原型固定標語及 0／1／多筆時的留白品質仍須用真實學員資料驗收。Build 或四尺寸零溢出不等於 Ready。
+- 新增十一款色彩與 display 字體已接既有品牌變數；CI 加入深色配色／clear-sans 的實際 Build 與 Home／About 四尺寸計算樣式檢查。`brand.imageFit`／`imagePosition` 與 `layoutContent.headings` 已接線，允許 key 見 `src/data/layout-assembly/expanded/heading-fields.json`。圖片裁切、持有人文案及 0／1／多筆時的留白品質仍須用真實學員資料驗收。Build 或四尺寸零溢出不等於 Ready。
 
 ## 既有驗證入口
 

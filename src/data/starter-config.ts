@@ -30,7 +30,7 @@ export interface StarterPlan {
   kind: StarterKind;
   layoutSlug: string;
   visualTheme: StarterTheme;
-  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; typography?: 'editorial-serif'|'clear-sans'|'balanced'; imageStyle?: 'natural'|'documentary'|'minimal'; heroImagePath?: string; heroImageAlt?: string; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
+  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; typography?: 'editorial-serif'|'clear-sans'|'balanced'; imageStyle?: 'natural'|'documentary'|'minimal'; heroImagePath?: string; heroImageAlt?: string; imageFit?: 'cover'|'contain'; imagePosition?: 'center'|'top'|'bottom'|'left'|'right'; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
   navigation: StarterNavigationItem[];
   primaryCta: { label: string; pageId: string };
   sectionPatterns?: StarterPatternChoice[];
@@ -74,6 +74,8 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
   if(brand.imageStyle && !['natural','documentary','minimal'].includes(brand.imageStyle))errors.push('圖片風格無效');
   if(brand.logoPath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.logoPath))errors.push('Logo 請使用網站本地的 PNG、WebP、JPG 或 AVIF');
   if(brand.heroImagePath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.heroImagePath))errors.push('主視覺圖片需使用網站自己的 /images/ 檔案路徑');
+  if(brand.imageFit&&!['cover','contain'].includes(brand.imageFit))errors.push('圖片填滿方式無效');
+  if(brand.imagePosition&&!['center','top','bottom','left','right'].includes(brand.imagePosition))errors.push('圖片重點位置無效');
   if(brand.heroImageAlt && (brand.heroImageAlt.length>180 || !brand.heroImagePath))errors.push('主視覺替代文字需要有效的圖片路徑');
   if(plan.reading?.records && plan.reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||!x.title.trim()||!x.note.trim()))errors.push('閱讀紀錄需要月份、實際書名與真實評註');
   if(plan.reading?.annualBook && (!plan.reading.annualBook.title.trim()||!plan.reading.annualBook.note.trim()))errors.push('年度選書請同時提供書名與理由');

@@ -4,6 +4,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import layouts from '../src/data/layout-directions.json' with {type:'json'};
+import headingFields from '../src/data/layout-assembly/expanded/heading-fields.json' with {type:'json'};
 import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 const kinds=['knowledge','helper'];
@@ -66,6 +67,15 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       const opened=await group.evaluate(el=>el.open);
       await page.keyboard.press('Tab');await page.keyboard.press('Escape');
       escapeNavigation=opened&&await summary.evaluate(el=>!el.parentElement.open&&document.activeElement===el);
+    }
+    if(scenario.imageCheck){
+      const owned=await page.evaluate(()=>[...document.querySelectorAll('img[data-owner-image]')].map(img=>({role:img.dataset.ownerImage,loaded:img.complete&&img.naturalWidth>0,alt:img.alt,width:img.getBoundingClientRect().width,height:img.getBoundingClientRect().height,fit:getComputedStyle(img).objectFit,position:getComputedStyle(img).objectPosition,filter:getComputedStyle(img).filter,insideFrame:!img.classList.contains('owner-image--fill')||(()=>{const frame=img.closest('.native-image-slot');if(!frame)return false;const a=img.getBoundingClientRect(),b=frame.getBoundingClientRect();return Math.abs(a.left-b.left)<2&&Math.abs(a.top-b.top)<2&&a.width<=b.width+2&&a.height<=b.height+2;})()})));
+      const logos=owned.filter(img=>img.role==='logo'),pictures=owned.filter(img=>img.role==='editorial');
+      if(logos.length!==1||logos.some(img=>!img.loaded||!img.alt||img.width>125.5||img.height>48.5||img.fit!=='contain'||img.filter!=='none'))errors.push('Owned Logo missing, broken, stretched or filtered: '+JSON.stringify(logos));
+      const homeImage=['subject-atlas','practice-compass','portrait-profile','studio-chapters'].includes(slug);
+      if((route==='about/'||!route&&homeImage)&&pictures.length===0)errors.push('Owned editorial image missing from its layout role');
+      for(const img of pictures)if(!img.loaded||!img.alt||!img.insideFrame||img.width<1||img.height<1||img.fit!==scenario.imageCheck.fit||img.position!==scenario.imageCheck.position)errors.push('Owned image/crop mismatch: '+JSON.stringify(img));
+      if(scenario.imageCheck.heading&&await page.getByText('QA 可編輯段落標題',{exact:true}).count()===0&&route==='about/'&&['portrait-profile','service-catalogue','card-journal','editorial-frontpage','sidebar-journal','split-reader','visual-stories','studio-chapters'].includes(slug))errors.push('Configured editorial heading was not rendered');
     }
     if(scenario.ctaCheck){
       const actions=page.locator('[data-primary-cta]');
@@ -460,6 +470,27 @@ try{
       writeFileSync(brandedFile,JSON.stringify(branded));build();
       await captureStudentSite(slug,kind,site,{variant:'brand',routes:['','about/'],brandCheck:true,ctaCheck:{label:branded.primaryCta.label,href:'/guides/first/'}});
     }
+  }
+  // Real-sized, self-authored calibration fixtures. These are not client photos
+  // or a claim of real-image art-direction approval. Reuse the same capture flow.
+  if(process.env.FULL_STARTER_BUILD==='1')for(const layout of expansion){
+    const {slug,kind}=layout;
+    const plan=JSON.parse(readFileSync('docs/art-direction/fixtures/'+(kind==='knowledge'?'subject-atlas':'practice-compass')+'.json','utf8'));
+    delete plan.contentDirectory;plan.layoutSlug=slug;
+    plan.about={bio:'QA 自有圖像配置',purpose:'QA 目的',approach:'QA 方式',background:'QA 背景'};
+    plan.brand.logoPath='/images/brand-logo.png';plan.brand.heroImagePath='/images/hero-image.png';plan.brand.heroImageAlt='QA 自製比例與裁切校準圖';plan.brand.imageStyle='documentary';plan.brand.imageFit='cover';plan.brand.imagePosition='top';
+    plan.assets=[{path:plan.brand.logoPath,mime:'image/png',base64:readFileSync('docs/art-direction/fixtures/assets/owned-logo.png').toString('base64')},{path:plan.brand.heroImagePath,mime:'image/png',base64:readFileSync('docs/art-direction/fixtures/assets/owned-landscape.png').toString('base64')}];
+    plan.layoutContent={headings:Object.fromEntries(Object.keys(headingFields[slug]).map(key=>[key,'QA 可編輯段落標題']))};
+    const fixture=join(root,'owned-'+slug+'.json'),site=join(root,'owned-'+slug);writeFileSync(fixture,JSON.stringify(plan));
+    execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
+    for(const path of ['images/brand-logo.png','images/hero-image.png'])if(!existsSync(join(site,'public',path)))throw Error('Owned uploaded image not copied: '+slug+' '+path);
+    execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
+    execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    await captureStudentSite(slug,kind,site,{variant:'owned-landscape',routes:['','about/'],imageCheck:{fit:'cover',position:'50% 0%',heading:Object.keys(headingFields[slug]).length>0}});
+    const file=join(site,'site.config.json'),settings=JSON.parse(readFileSync(file,'utf8'));settings.brand.imageFit='contain';settings.brand.imagePosition='bottom';writeFileSync(file,JSON.stringify(settings));
+    cpSync('docs/art-direction/fixtures/assets/owned-portrait.png',join(site,'public/images/hero-image.png'));
+    execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
+    await captureStudentSite(slug,kind,site,{variant:'owned-portrait',routes:['','about/'],imageCheck:{fit:'contain',position:'50% 100%',heading:Object.keys(headingFields[slug]).length>0}});
   }
   console.log('Starter exporter checks passed: twelve established assemblies; FULL mode adds thirteen in-progress adapters');
 }finally{

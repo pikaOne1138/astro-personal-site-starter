@@ -1,0 +1,18 @@
+---
+import config from '../../site.config.json';
+interface Props { role?: 'logo'|'editorial'; fill?: boolean }
+const {role='editorial',fill=false}=Astro.props;
+const logo=role==='logo';
+const path=logo?config.brand.logoPath:config.brand.heroImagePath;
+const src=path?import.meta.env.BASE_URL+path.replace(/^\//,''):null;
+const alt=logo?config.brand.name:(config.brand.heroImageAlt||'網站持有人提供的圖片');
+const filter=config.brand.imageStyle==='documentary'?'saturate(.68)':config.brand.imageStyle==='minimal'?'saturate(.45)':'none';
+const fit=config.brand.imageFit==='contain'?'contain':'cover';
+const position=['center','top','bottom','left','right'].includes(config.brand.imagePosition)?config.brand.imagePosition:'center';
+---
+{src?<img data-owner-image={role} class:list={['owner-image',{'owner-image--logo':logo,'owner-image--fill':fill&&!logo}]} src={src} alt={alt} width={logo?125:undefined} height={logo?48:undefined} style={!logo?`--owner-fit:${fit};--owner-position:${position};--owner-filter:${filter}`:undefined}/>:logo?config.brand.name:null}
+<style>
+.owner-image{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:var(--owner-fit,cover);object-position:var(--owner-position,center);filter:var(--owner-filter,none)}
+.owner-image--logo{width:auto;max-width:125px;height:48px;max-height:48px;aspect-ratio:auto;object-fit:contain;filter:none}
+.owner-image--fill{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+</style>

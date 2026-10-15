@@ -1,6 +1,7 @@
 ---
 import config from '../../../../site.config.json';
 import StudentNavigation from '../../StudentNavigation.astro';
+import OwnerImage from '../../OwnerImage.astro';
 import {getSite} from './content.mjs';
 const {route='',entry=null,extra=false}=Astro.props;
 const page=route,root=import.meta.env.BASE_URL,base=root;
@@ -19,10 +20,10 @@ const indexUrl=root+(site.kind==='knowledge'?'articles/':'services/'),detailUrl=
 
 
 <div class="direction dispatch"  data-native-page="compact-dispatch" data-article-count={route==='articles'||(route===''&&site.kind==='knowledge')?site.articles.length:undefined} data-service-count={route==='services'?site.services.length:undefined}><div class="wrap">
-<header class="nav"><a class="brand" href={root}>{site.siteName}</a><StudentNavigation/></header>
+<header class="nav"><a class="brand" href={root}><OwnerImage role="logo"/></a><StudentNavigation/></header>
 {(page===''||page==='articles')&&<><section class="intro"><span class="tiny">KNOWLEDGE / ROWS</span><h1>{route===''?site.headline:route==='about'?site.about:route==='articles'?'文章索引':route==='services'?'服務資訊':detailRecord?.title}</h1><p>{site.intro}</p><a class="native-primary-action" data-primary-cta="home" href={site.primaryCta.href}>{site.primaryCta.label} →</a></section><div class="dispatch-list">{items.map((t,i)=><a href={entries[i]?.href??indexUrl} class="dispatch-row"><time datetime={entries[i]?.date}>{entries[i]?.date}</time><h2>{t}</h2><span>READ ↗</span></a>)}</div></>}
 {(route??'').startsWith('articles/')&&<><section class="intro"><span class="tiny">ARTICLE DETAIL</span><h1>{detailRecord?.title??'目前沒有公開文章'}</h1><p>{demo}</p></section><article class="prose narrow">{route==='about'?<><p>{site.bio}</p>{site.aboutFields.map(p=><p>{p}</p>)}</>:<slot/>}</article><div class="contract-body" aria-label="可編輯詳細內容">{(detailRecord?.body??[]).map(paragraph=><p>{paragraph}</p>)}</div><p class="back"><a href={indexUrl}>← 返回索引</a></p></>}
-{page==='about'&&<><section class="intro"><span class="tiny">ABOUT / ROWS</span><h1>{site.about}</h1></section><article class="prose narrow">{route==='about'?<><p>{site.bio}</p>{site.aboutFields.map(p=><p>{p}</p>)}</>:<slot/>}</article></>}
+{page==='about'&&<><section class="intro"><span class="tiny">ABOUT / ROWS</span><h1>{site.about}</h1></section><article class="prose narrow">{config.brand.heroImagePath&&<OwnerImage/>}{route==='about'?<><p>{site.bio}</p>{site.aboutFields.map(p=><p>{p}</p>)}</>:<slot/>}</article></>}
 {route.startsWith('services/')&&detailRecord?.bookingUrl&&<p class="native-booking"><a href={detailRecord.bookingUrl} rel="noopener noreferrer">前往正式預約頁 ↗</a></p>}{extra&&<section class="native-extra"><slot/></section>}{(route==='articles'||(route===''&&site.kind==='knowledge'))&&site.articles.length===0&&<p class="archive-empty">目前沒有公開文章。</p>}{route==='services'&&site.services.length===0&&<section class="native-unconfigured"><p>尚未提供正式服務。</p><dl>{[['服務範圍',config.serviceFacts?.scope],['服務方式',config.serviceFacts?.method],['服務時間',config.serviceFacts?.duration],['實際費用',config.serviceFacts?.price],['資格與來源',config.serviceFacts?.qualification],['取消政策',config.serviceFacts?.cancellation]].filter(([,value])=>value).map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl></section>}<footer><span>{site.siteName}</span><a href={root}>回首頁 ↑</a></footer>
 </div></div>
 <style>
@@ -36,3 +37,5 @@ const indexUrl=root+(site.kind==='knowledge'?'articles/':'services/'),detailUrl=
 <style>dl>div{display:grid;grid-template-columns:minmax(7em,1fr) minmax(0,2fr);gap:16px;padding-block:16px}dd{margin:0}.additional-services article{padding:24px;border:1px solid var(--line);margin-block:24px;background:var(--bg)}@media(max-width:600px){dl>div{display:block}dt{margin-bottom:8px}}</style>
 
 <style>.native-booking{padding:24px;max-width:1200px;margin:auto}.native-booking a{display:inline-flex;min-height:44px;align-items:center;text-decoration:underline}</style>
+
+<style>.native-image-slot{position:relative;overflow:hidden}</style>

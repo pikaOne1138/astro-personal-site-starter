@@ -33,6 +33,8 @@ const hasAssemblyAdapter=Boolean(layoutDefinition?.adapter);
 if(process.argv.includes('--require-assembled')&&!hasAssemblyAdapter)
   throw Error('Selected layout is Prototype only; no independent assembly adapter yet: '+plan.layoutSlug+'. Export a Site Brief or choose a supported layout.');
 if(!hasAssemblyAdapter)console.warn('PROTOTYPE / SCAFFOLD ONLY: '+plan.layoutSlug+' requires actual layout composition work before publishing.');
+if(plan.brand?.imageFit&&!['cover','contain'].includes(plan.brand.imageFit))throw Error('Invalid image fit');
+if(plan.brand?.imagePosition&&!['center','top','bottom','left','right'].includes(plan.brand.imagePosition))throw Error('Invalid image position');
 const typography=plan.brand?.typography??'editorial-serif';
 const imageStyle=plan.brand?.imageStyle??'natural';
 if(!['editorial-serif','clear-sans','balanced'].includes(typography)||!['natural','documentary','minimal'].includes(imageStyle))throw Error('Invalid typography or image style');

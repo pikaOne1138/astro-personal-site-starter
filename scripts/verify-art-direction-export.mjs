@@ -34,6 +34,10 @@ try{
   check(slug+' refuses overwrite',()=>{const marker=join(site,'owner-edit.txt');writeFileSync(marker,'KEEP');const r=spawnSync(process.execPath,[exporter,source,site,'--allow-in-progress']);assert.notEqual(r.status,0);assert.equal(readFileSync(marker,'utf8'),'KEEP');});
   rejects(slug+' missing explicit in-progress opt-in',plan);
   rejects(slug+' strict Ready gate',plan,['--require-ready']);
+  const badCrop=structuredClone(plan);badCrop.brand.imageFit='stretch';rejects(slug+' unsupported image fit',badCrop,['--allow-in-progress']);
+  const badPosition=structuredClone(plan);badPosition.brand.imagePosition='url(https://untrusted.example)';rejects(slug+' unsafe image position',badPosition,['--allow-in-progress']);
+  const badHeading=structuredClone(plan);badHeading.layoutContent={headings:{unknown:'bad'}};rejects(slug+' unknown editorial heading',badHeading,['--allow-in-progress']);
+  const missingImage=structuredClone(plan);missingImage.brand.heroImagePath='/images/missing.png';rejects(slug+' missing owned asset',missingImage,['--allow-in-progress']);
   const collision=structuredClone(plan);collision.navigation.push({id:'page-collision',path:'search/',enabled:true,label:'衝突'});rejects(slug+' reserved route',collision,['--allow-in-progress']);
   const unsafe=structuredClone(plan);unsafe.artDirection.contact={bookingUrl:'javascript:alert(1)'};rejects(slug+' unsafe booking URL',unsafe,['--allow-in-progress']);
   const badEmail=structuredClone(plan);badEmail.artDirection.contact={email:'owner%0ABcc@site.example'};rejects(slug+' email header injection',badEmail,['--allow-in-progress']);
