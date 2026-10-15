@@ -1,10 +1,10 @@
-import { readFileSync, existsSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const clean = (value, fallback = '待確認') => {
   if (typeof value !== 'string') return fallback;
   const text = value.trim().replace(/[\r\n|]+/g, ' ').replace(/[<>]/g, '');
-  return text.slice(0, 180) || fallback;
+  return '「' + (text.slice(0, 180) || fallback).replaceAll('」','』') + '」';
 };
 const kindName = { knowledge: '知識／部落格型', helper: '助人者／個人專業服務型' };
 
@@ -43,6 +43,23 @@ export function installProjectContext(directory, plan, options = {}) {
     throw new Error('Refusing to overwrite existing PROJECT.md or AGENTS.md; review changes manually');
   }
   writeFileSync(projectPath, renderStudentProject(template, plan), { flag: 'wx' });
-  writeFileSync(agentsPath, agents, { flag: 'wx' });
+  writeFileSync(agentsPath, agents.replace(/<!-- builder-only:start -->[\s\S]*?<!-- builder-only:end -->/g,'').replace(/本 ZIP/g,'學員的原始建站資料包').replace(/PROJECT-TEMPLATE\.md/g,'PROJECT.md').replace(/scripts\/export-starter\.mjs/g,'網站原始碼'), { flag: 'wx' });
   return { projectPath, agentsPath };
+}
+
+/** Install runtime guards only into a newly generated, independently owned site. */
+export function finalizeStudentSite(directory,plan,options={}){
+ installProjectContext(directory,plan,options);
+ const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','.DS_Store'].join('\n')+'\n';
+ writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
+ const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
+ for(const file of ['site-status.mjs','check-secrets.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
+ writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
+ const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));
+ pkg.scripts={...pkg.scripts,status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs'};
+ writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
+ const wf=join(directory,'.github/workflows/pr-check.yml');
+ if(existsSync(wf)){const old=readFileSync(wf,'utf8');if(!old.includes('check:secrets'))writeFileSync(wf,old+'\n# Student credential audit (independent of build artifact)\n');}
+ return directory;
 }
