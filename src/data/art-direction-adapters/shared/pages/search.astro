@@ -1,0 +1,5 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+const base=import.meta.env.BASE_URL;
+---
+<SiteLayout title="站內搜尋" searchable={false}><section class="interior"><h1>站內搜尋</h1><p>搜尋本站實際公開頁面與文章。</p><link rel="stylesheet" href={base+'pagefind/pagefind-ui.css'}/><div id="search"></div><noscript>全文搜尋需要 JavaScript；仍可使用上方導覽閱讀所有公開內容。</noscript></section><script is:inline src={base+'pagefind/pagefind-ui.js'}></script><script is:inline define:vars={{base}}>window.addEventListener('DOMContentLoaded',()=>{new PagefindUI({element:'#search',bundlePath:base+'pagefind/',showSubResults:true});});</script></SiteLayout>

@@ -1,0 +1,6 @@
+---
+import config from '../../site.config.json';
+import SiteLayout from '../layouts/SiteLayout.astro';
+const questions=config.artDirection.faq;
+---
+<SiteLayout title="常見問題"><section class="interior"><p class="eyebrow">FAQ / INFORMED CHOICE</p><h1>常見問題與服務界線</h1>{questions.length?questions.map(q=><details><summary>{q.question}</summary><p>{q.answer}</p></details>):<p class="notice">尚未填入正式常見問題。請由網站持有人提供實際服務說明。</p>}</section></SiteLayout>

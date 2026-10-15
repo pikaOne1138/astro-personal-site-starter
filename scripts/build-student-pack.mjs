@@ -38,6 +38,8 @@ for (const path of [
   'public/robots.txt',
   'scripts/verify-v2-8-output.mjs',
   'scripts/export-starter.mjs',
+  'scripts/export-art-direction-starter.mjs',
+  'scripts/art-direction-adapters.mjs',
   'scripts/verify-starter-export.mjs',
   'scripts/verify-student-navigation.mjs',
   'scripts/test-student-navigation-regressions.mjs',

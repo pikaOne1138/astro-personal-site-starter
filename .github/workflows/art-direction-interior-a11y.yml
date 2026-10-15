@@ -1,0 +1,39 @@
+name: Art Direction Interior Accessibility Audit
+on:
+  pull_request:
+    paths:
+      - 'src/pages/layouts/**'
+      - 'scripts/qa-art-direction-a11y.mjs'
+      - '.github/workflows/art-direction-interior-a11y.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund --package-lock=false
+      - run: npm install --no-save --package-lock=false playwright axe-core
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Start local preview
+        run: |
+          nohup npm run preview -- --host 127.0.0.1 --port 4321 >/tmp/astro-preview.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:4321/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/astro-preview.log
+          exit 1
+      - run: node scripts/qa-art-direction-a11y.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: art-direction-interior-a11y-report
+          path: qa-artifacts/art-direction/accessibility/
+          retention-days: 14
