@@ -20,3 +20,6 @@
 - **Cloudflare Pages Git integration**：若學員自己的 GitHub Repo 已連接 Pages，且 Preview Deployment 確實啟用，必須核對 PR Head SHA 與真實 `pages.dev` Branch／Deployment URL，才能交付學員驗收。
 - **GitHub Pages 單獨使用**：GitHub Pages 不會自動提供隔離的 PR 預覽。如果還沒替學員 Repo 安全配置預覽系統，先只做 PR Build 和本機／雲端臨時預覽，**不能在學員確認前推送 main**，也不能宣稱可用的 PR URL 已存在。建立 GitHub Pages PR 預覽需要另外設計不覆蓋 Production、隔離不可信 PR 程式碼的工作流程，並由老師驗收後才可作為標準學員交付。
 - 首次 Cloudflare 接上 GitHub main 可能立刻部署 Production；若尚未通過學員確認，先用未公開測試專案或隔離測試分支，在授權前不得把正式品牌、聯絡或個資內容公開。
+
+## 初學者需求訪談與未知風險
+收到模糊的自然語言需求時，依 ZIP 根目錄 `AGENTS.md` 的訪談／停問規則先釐清最重要的問題；將經學員確認的長期方向更新至 `PROJECT.md`。需求已足夠明確則直接執行，不用每次開冗長問卷。評估情境與人工評分標準在 `docs/student-builder-pack/INTERVIEW-EVALUATION.md`；測試情境不是學員的真實資料，也不是已通過模型實測的證明。
