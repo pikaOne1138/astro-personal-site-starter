@@ -425,9 +425,9 @@ try{
       }
       const detail=readFileSync(join(site,'dist/articles/owned-note/index.html'),'utf8');if(!detail.includes('QA 正文唯一識別'))throw Error('Native article lost actual body: '+slug);
       const dir=join(site,'src/content/articles');rmSync(join(dir,'second-note.md'));build();
-      await captureStudentSite(slug,kind,site,{variant:'single',routes:['articles/']});
+      await captureStudentSite(slug,kind,site,{variant:'single',routes:kind==='knowledge'?['','articles/']:['articles/']});
       rmSync(join(dir,'owned-note.md'));build();
-      await captureStudentSite(slug,kind,site,{variant:'empty',routes:['articles/'],searchState:'withdrawn'});
+      await captureStudentSite(slug,kind,site,{variant:'empty',routes:kind==='knowledge'?['','articles/']:['articles/'],searchState:'withdrawn'});
       for(const path of ['index.html','articles/index.html','rss.xml','sitemap.xml','search/exact-zh.json'])if(/owned-note|second-note|QA 正文唯一識別/.test(readFileSync(join(site,'dist',path),'utf8')))throw Error('Native withdrawn article survived cached build: '+slug+' '+path);
       if(existsSync(join(site,'dist/articles/owned-note/index.html')))throw Error('Native withdrawn direct route survived: '+slug);
       if(kind==='helper'){
