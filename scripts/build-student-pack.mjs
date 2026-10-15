@@ -37,6 +37,8 @@ for (const path of [
   'public/robots.txt',
   'scripts/verify-v2-8-output.mjs',
   'scripts/export-starter.mjs',
+  'scripts/student-project-context.mjs',
+  'scripts/test-student-project-context.mjs',
   'scripts/export-art-direction-starter.mjs',
   'scripts/art-direction-adapters.mjs',
   'scripts/verify-starter-export.mjs',
@@ -49,6 +51,7 @@ for (const path of [
   'COMPONENTS.md'
 ]) add(path);
 add('docs/student-builder-pack/STUDENT-AGENTS.md', 'AGENTS.md');
+add('docs/student-builder-pack/PROJECT-TEMPLATE.md', 'PROJECT-TEMPLATE.md');
 add('docs/student-builder-pack/UPSTREAM-SOURCES.md', 'REFERENCE-NOTES.md');
 add('docs/student-builder-pack/START-HERE.md', 'START-HERE.md');
 add('docs/student-builder-pack/AGENT-HANDOFF.md', 'AGENT-HANDOFF.md');
@@ -94,4 +97,4 @@ function zip(items) {
 mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
-if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
+if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
