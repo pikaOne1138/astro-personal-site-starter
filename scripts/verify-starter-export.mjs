@@ -73,6 +73,12 @@ async function captureStudentSite(slug,kind,site,scenario={}){
         const lines=new Set([...range.getClientRects()].filter(r=>r.width>0).map(r=>Math.round(r.top)));
         if(lines.size>1)issues.push('Learning archive number wraps: '+number.textContent);
       }
+      for(const empty of document.querySelectorAll('.archive-empty')){
+        const range=document.createRange();range.selectNodeContents(empty);
+        const height=range.getBoundingClientRect().height;
+        const style=getComputedStyle(empty);const line=parseFloat(style.lineHeight)||parseFloat(style.fontSize)*1.8;
+        if(height>line*3)issues.push('Empty archive copy is trapped in an index column');
+      }
       if(innerWidth<=800)for(const panel of document.querySelectorAll('.radio-section')){
         const style=getComputedStyle(panel);
         if(parseFloat(style.paddingLeft)<16||parseFloat(style.paddingRight)<16)issues.push('Radio framed panel lost its reading gutter');
