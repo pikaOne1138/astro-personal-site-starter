@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "47b854f4ab9089d2e479b1f75fb8626e06448a14",
+  "layoutAdapterCount": 12,
+  "layoutSlugs": [
+    "field-notes",
+    "essayist",
+    "learning-lab",
+    "curator",
+    "radio-letter",
+    "reading-atlas",
+    "clinician",
+    "companion",
+    "somatic",
+    "coach",
+    "collective",
+    "trust-path"
+  ],
+  "distribution": "AI-建站資料包.zip",
+  "releaseStage": "beta-assembly"
+}
