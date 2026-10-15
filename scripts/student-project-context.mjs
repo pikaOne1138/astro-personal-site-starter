@@ -1,0 +1,48 @@
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const clean = (value, fallback = '待確認') => {
+  if (typeof value !== 'string') return fallback;
+  const text = value.trim().replace(/[\r\n|]+/g, ' ').replace(/[<>]/g, '');
+  return text.slice(0, 180) || fallback;
+};
+const kindName = { knowledge: '知識／部落格型', helper: '助人者／個人專業服務型' };
+
+export function renderStudentProject(template, plan) {
+  if (!template.includes('# PROJECT.md') || !plan || !kindName[plan.kind]) {
+    throw new Error('Invalid project context template or StarterPlan');
+  }
+  const nav = Array.isArray(plan.navigation) ? plan.navigation.filter(x => x.enabled) : [];
+  const visiblePages = nav.map(x => clean(x.label)).join('、') || '待確認';
+  const cta = nav.find(x => x.id === plan.primaryCta?.pageId);
+  const fields = [
+    ['網站名稱：待確認', '網站名稱：' + clean(plan.brand?.name)],
+    ['網站類型：待確認（知識／部落格型，或助人者／個人專業服務型）', '網站類型：' + kindName[plan.kind] + '（學員 Site Brief 選擇，待本人核對）'],
+    ['一句定位：待確認', '一句定位：' + clean(plan.brand?.tagline)],
+    ['Layout（決定版面與閱讀動線）：尚未選擇', 'Layout（決定版面與閱讀動線）：' + clean(plan.layoutSlug) + '（Site Brief，非已完成設計驗收）'],
+    ['重要頁面及各頁目的：待討論', '重要頁面及各頁目的：規劃頁面：' + visiblePages + '；各頁目的待確認'],
+    ['導覽順序／主要 CTA：待討論', '導覽順序／主要 CTA：' + visiblePages + '；主要 CTA：' + clean(plan.primaryCta?.label) + ' → ' + clean(cta?.label)],
+    ['Site Brief JSON 路徑及版本：待確認', 'Site Brief JSON 路徑及版本：建立網站使用的 Site Brief（version ' + String(plan.version ?? '?') + '）；原始檔路徑待確認'],
+    ['階段：需求探索', '階段：建站規劃（尚未完成發布與驗收）']
+  ];
+  let output = template;
+  for (const [from, to] of fields) {
+    if (!output.includes(from)) throw new Error('Missing project template field: ' + from);
+    output = output.replace(from, to);
+  }
+  return output;
+}
+
+/** No overwrite, even if the site was generated before a new kit was downloaded. */
+export function installProjectContext(directory, plan, options = {}) {
+  const template = options.template ?? readFileSync(new URL('../docs/student-builder-pack/PROJECT-TEMPLATE.md', import.meta.url), 'utf8');
+  const agents = options.agents ?? readFileSync(new URL('../docs/student-builder-pack/STUDENT-AGENTS.md', import.meta.url), 'utf8');
+  const projectPath = join(directory, 'PROJECT.md');
+  const agentsPath = join(directory, 'AGENTS.md');
+  if (existsSync(projectPath) || existsSync(agentsPath)) {
+    throw new Error('Refusing to overwrite existing PROJECT.md or AGENTS.md; review changes manually');
+  }
+  writeFileSync(projectPath, renderStudentProject(template, plan), { flag: 'wx' });
+  writeFileSync(agentsPath, agents, { flag: 'wx' });
+  return { projectPath, agentsPath };
+}
