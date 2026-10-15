@@ -361,11 +361,12 @@ try{
       }
     }
   }
-  if(process.env.FULL_STARTER_BUILD==='1'){
-    // Preserve the planner's existing optional Articles entry for helper sites.
+  if(process.env.FULL_STARTER_BUILD==='1')for(const layout of layouts.filter(item=>item.kind==='helper')){
+    // Preserve optional Articles for every helper family, not only the default clinician.
     const plan=JSON.parse(readFileSync(join(root,'helper.json'),'utf8'));
+    plan.layoutSlug=layout.slug;
     plan.navigation.push({id:'articles',label:'文章',enabled:true});
-    const filename=join(root,'helper-articles.json'),site=join(root,'helper-articles');
+    const filename=join(root,layout.slug+'-helper-articles.json'),site=join(root,layout.slug+'-helper-articles');
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
     writeFileSync(join(site,'src/content/articles/qa-helper-note.md'),['---','title: QA 服務者公開文章','description: 文章系統驗證資料，不代表專業建議。','publishedAt: 2026-10-14','draft: false','---','這是知識與服務網站共用文章功能的驗證。'].join('\n'));
@@ -375,7 +376,10 @@ try{
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     const html=readFileSync(join(site,'dist/articles/index.html'),'utf8');
     if(!html.includes('QA 服務者公開文章')||html.includes('QA 未公開草稿')||!html.includes('data-article-count="1"'))throw Error('Optional helper article archive lost actual published content');
-    await captureStudentSite('clinician','helper',site,{variant:'optional-articles',routes:['articles/','articles/qa-helper-note/']});
+    if(existsSync(join(site,'dist/articles/qa-helper-draft/index.html')))throw Error(layout.slug+' exposed helper draft route');
+    const detail=readFileSync(join(site,'dist/articles/qa-helper-note/index.html'),'utf8');
+    if(!detail.includes('data-site-family="'+layout.slug+'"'))throw Error(layout.slug+' lost helper article family');
+    await captureStudentSite(layout.slug,'helper',site,{variant:'optional-articles',routes:['articles/','articles/qa-helper-note/']});
   }
   console.log('Starter exporter checks passed for twelve distinct layout assemblies');
 }finally{
