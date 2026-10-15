@@ -6,6 +6,7 @@
 
 - 十三款 Header 均呈現已提供的 Logo；不提供時保留文字站名。Logo 使用 contain，不套照片的濾色，最大 125 × 48px，保留可讀替代文字。
 - Subject Atlas／Practice Compass 取消先前文字優先的圖片拒絕；依既有自有資產驗證／複製程序，在原有 Hero 側欄與各自 About 放選用圖片，保留主題索引／訪客決策動線。
+- 個人刊物的 Logo 也沿用原刊頭的置中軸，不因換成圖片而退回左對齊。
 - 原生十一款保留既有構圖。人物名片、工作室章節的照片框使用填滿圖片；其他選用圖片各有 About 角色，沒有把所有首頁改成同一張大圖。
 - `OwnerImage.astro` 是輸出網站內的媒體實作，不新增 Blocks Registry 項目。填滿圖片限制在該款照片框內；沒有圖片時保留原本誠實的選填框或文字頁，不借人物照。
 - 新增十三款的 `brand.imageFit=cover|contain`、`brand.imagePosition=center|top|bottom|left|right` 控制照片呈現；預設 cover／center。Logo 固定 contain。這些是 AI 可選設定，不改變規劃器既有預設；原十二款的裁切實作維持原契約。
@@ -38,6 +39,10 @@
 - 沿用 `verify-starter-export.mjs` 四尺寸流程，新增全部十三款的橫圖／直圖 × Home／About × 1440／1280／768／390。圖片使用本專案自製比例校準 PNG（1200×600、600×900、400×120），清楚標記 QA；不是實際客戶照片或已完成真實照片的 Art Direction 簽核。
 - 瀏覽器驗證圖片實際載入、替代文字、Logo 尺寸／contain／不濾色、照片 cover/top 與 contain/bottom、填滿圖片不逃出原照片框，以及可編輯標題實際呈現。
 - 原 1,476 張與無圖／草稿／撤回／長標題／鍵盤／Pagefind 證據繼續保留；新增 208 張，完整流程預期 1,684 張。實際張數、結果、精確 Head 與 Artifact 以 PR46 當輪 Actions 和說明為準，未跑完不預先宣告通過。
+
+本機另做十三款 Home／About 四尺寸共 104 張載入／幾何檢查，沒有破圖或橫向溢出；該本機瀏覽器缺少中文字型，這些圖僅支持圖片幾何，不作中文排版核可。正式中文目視仍採 GitHub Artifact。真正下載的本輪 Builder Pack 已核對需出貨的來源檔，25 選項與兩種架構安裝／Build 通過。
+
+可攜圖片契約另放在會隨 ZIP 出貨的 `docs/student-builder-pack/OWNED-MEDIA.md`，不讓離線 AI 指向被刻意排除的內部驗收報告。
 
 ## 狀態界線
 
