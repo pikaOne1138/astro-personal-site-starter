@@ -39,3 +39,17 @@ test('standalone export includes live context and AI Skills for both audiences',
   }finally{rmSync(tmp,{recursive:true,force:true});}
  }
 });
+
+test('generated Cloudflare branch previews cannot be indexed even with SITE_INDEXABLE enabled',()=>{
+ const tmp=mkdtempSync(join(tmpdir(),'atp-preview-index-'));
+ try{
+  const input=join(tmp,'plan.json'),out=join(tmp,'site');writeFileSync(input,JSON.stringify(plan('knowledge')));
+  const result=spawnSync(process.execPath,[join(root,'scripts/export-starter.mjs'),input,out],{encoding:'utf8',timeout:45000});
+  assert.equal(result.status,0,result.stderr||result.stdout);
+  const layout=readFileSync(join(out,'src/layouts/SiteLayout.astro'),'utf8');
+  const robots=readFileSync(join(out,'src/pages/robots.txt.js'),'utf8');
+  assert.match(layout,/isBranchPreview/);
+  assert.match(layout,/SITE_INDEXABLE==='true'&&!isBranchPreview/);
+  assert.match(robots,/isBranchPreview\|\|process\.env\.SITE_INDEXABLE/);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});
