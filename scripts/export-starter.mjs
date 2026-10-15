@@ -1,5 +1,6 @@
 import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync} from 'node:fs';
 import {resolve,join} from 'node:path';
+import {installProjectContext} from './student-project-context.mjs';
 const [input,dest]=process.argv.slice(2);
 if(!input||!dest)throw Error('Usage: node scripts/export-starter.mjs plan.json output-dir');
 const plan=JSON.parse(readFileSync(resolve(input),'utf8'));
@@ -162,4 +163,5 @@ for(const [path,body] of Object.entries(assets)){
   if(path==='src/pages/articles/index.astro')actual=actual.replace(/export function getStaticPaths\(\)\{return config\.navigation\.some\(x=>x\.id==='articles'\)\?\[\{params:\{\}\}\]:\[\]\}\n/,'');
   put(path,actual);
 }
+installProjectContext(root,plan);
 console.log('Generated independent Astro scaffold:',root,'pages:',nav.map(x=>x.id));
