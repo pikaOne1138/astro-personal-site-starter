@@ -9,6 +9,7 @@ const draft='qa-secret-draft',title='Never Publish This Example Draft';
 const article='---\ntitle: '+title+'\ndescription: For private draft QA only\npublishedAt: 2026-10-09\ndraft: true\n---\nDraft text';
 try{
  put('site.config.json',JSON.stringify({navigation:[]}));
+ unlinkSync(join(root,'dist/services/index.html'));
  put('src/content/articles/'+draft+'.md',article);
  put('dist/index.html',html('Public home'));
  put('dist/404.html',html('Not Found'));
@@ -87,6 +88,7 @@ try{
  expect('Private Chinese scratch note with no frontmatter',true);
  // A title shared with the public menu is not itself proof of a private draft leak.
  put('site.config.json',JSON.stringify({navigation:[{id:'services',label:'服務說明',path:'services/'}]}));
+ put('dist/services/index.html',html('Public service placeholder'));
  put('src/content/drafts/nav-title.md','---\\ntitle: 服務說明\\ndraft: true\\n---\\n內部備註不應公開，這段文字作為獨特的草稿正文識別。');
  put('dist/index.html',html('網站選單：服務說明'));
  expect('Generic navigation title is not a private draft leak',true);
