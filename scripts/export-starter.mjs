@@ -99,7 +99,7 @@ assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro']
  .replace(/<nav aria-label="主要導覽">[^]*?<\/nav>/,'<StudentNavigation />');
 // New learner sites and branch previews remain unindexed until explicitly approved.
 assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro']
- .replace("const base=import.meta.env.BASE_URL;","const base=import.meta.env.BASE_URL;\nconst indexable=process.env.SITE_INDEXABLE==='true';")
+ .replace("const base=import.meta.env.BASE_URL;","const base=import.meta.env.BASE_URL;\nconst isBranchPreview=process.env.CF_PAGES==='1' && (!process.env.CF_PAGES_BRANCH || process.env.CF_PAGES_BRANCH!==(process.env.CF_PAGES_PRODUCTION_BRANCH||'main'));\nconst indexable=process.env.SITE_INDEXABLE==='true'&&!isBranchPreview;")
  .replace('<meta name="description" content={description}/>','<meta name="description" content={description}/><meta name="robots" content={indexable?"index, follow":"noindex, nofollow, noarchive"}/>');
 assets['README.md']+='\n搜尋引擎收錄預設關閉。僅在完成內容與預覽驗收、獲得網站擁有者明確同意、並於正式部署環境設定 SITE_INDEXABLE=true 後開放索引；不要在 Preview 分支共用這項正式發布設定。\n';
 // Generated SEO endpoints belong to the learner website, not the research demo.
@@ -138,7 +138,7 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
  return new Response(body,{headers:{'Content-Type':'text/plain; charset=utf-8'}});
 }
 `;
-assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("const demo=origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');","const demo=process.env.SITE_INDEXABLE!=='true'||origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');");
+assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("const demo=origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');","const isBranchPreview=process.env.CF_PAGES==='1'&&(!process.env.CF_PAGES_BRANCH||process.env.CF_PAGES_BRANCH!==(process.env.CF_PAGES_PRODUCTION_BRANCH||'main'));\n const demo=isBranchPreview||process.env.SITE_INDEXABLE!=='true'||origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');");
 // Supply the same search data contract as the optional SiteSearchDialog Block.
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
