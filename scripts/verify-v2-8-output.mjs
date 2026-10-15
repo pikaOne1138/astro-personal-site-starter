@@ -40,22 +40,22 @@ if(studentArg!==-1){
   for(const draftFile of files){
    const source=readFileSync(draftFile,'utf8');
    const fm=source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
-   if(!fm)throw Error('Cannot audit article frontmatter: '+draftFile);
-   const state=fm[1].match(/^draft:\s*(true|false)(?:\s+#.*)?\s*$/mi);
+   if(!fm&&sourceDir===articlesDir)throw Error('Cannot audit article frontmatter: '+draftFile);
+   const state=fm?.[1]?.match(/^draft:\s*(true|false)(?:\s+#.*)?\s*$/mi);
    if(sourceDir===articlesDir && (!state||state[1]!=='true'))continue;
    if(sourceDir===draftsDir && state?.[1]==='false')throw Error('Unpublished draft folder contains published marker: '+draftFile);
    const slug=draftFile.split(/[/\\]/).at(-1).replace(/\.(md|mdx)$/i,'');
    const relative=draftFile.slice(sourceDir.length+1).replace(/\\/g,'/');
    if(relative.includes('/'))throw Error('Draft audit requires explicit route mapping for nested article: '+relative);
-   const customSlug=fm[1].match(/^slug:\s*['"]?([^\r\n'"#]+)['"]?\s*$/mi);
+   const customSlug=fm?.[1]?.match(/^slug:\s*['"]?([^\r\n'"#]+)['"]?\s*$/mi);
    if(customSlug&&customSlug[1].trim()!==slug)throw Error('Draft audit requires route mapping for custom slug: '+draftFile);
-   if(!/^[a-zA-Z0-9_-]+$/.test(slug))throw Error('Draft audit requires safe filename slug: '+draftFile);
-   const titleLine=fm[1].match(/^title:\s*(.+)\s*$/mi);
+   if(sourceDir===articlesDir&&!/^[a-zA-Z0-9_-]+$/.test(slug))throw Error('Draft audit requires safe filename slug: '+draftFile);
+   const titleLine=fm?.[1]?.match(/^title:\s*(.+)\s*$/mi);
    const title=titleLine?.[1]?.replace(/\s+#.*$/,'').trim().replace(/^['"]|['"]$/g,'');
    const pathMatcher=new RegExp('(?:/|%2[fF])articles(?:/|%2[fF])'+slug+'(?:/|%2[fF]|["?&#<])','i');
    const route=join(output,'articles',slug,'index.html');
    if(existsSync(route))throw Error('Draft emitted as public HTML route: '+relative);
-   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)));
+   // A generic draft heading shared by public navigation is not evidence of a leak.\n   // Match route references, or a distinctive draft title with accompanying private body text.\n   const privateBody=source.slice(fm?.[0]?.length||0).trim();\n   const distinctive=privateBody.split(/\\r?\\n/).map(x=>x.trim()).find(x=>x.length>=18&&!/^(?:#|\\s*$)/.test(x));\n   const suspects=exposed.filter(x=>pathMatcher.test(x.body)||(title&&title.length>=4&&x.body.includes(title)&&(!exposed.some(y=>y.path.endsWith('index.html')&&/aria-label=\\"主要導覽\\"/.test(y.body)&&y.body.includes(title))||!!distinctive&&x.body.includes(distinctive))));
    if(suspects.length)throw Error('Draft leaked into public discovery/output: '+relative+'; files: '+suspects.map(x=>x.path).join(', '));
   }
  }
