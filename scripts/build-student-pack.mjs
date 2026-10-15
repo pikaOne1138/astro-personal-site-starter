@@ -39,6 +39,8 @@ for (const path of [
   'scripts/export-starter.mjs',
   'scripts/student-project-context.mjs',
   'scripts/test-student-project-context.mjs',
+  'scripts/evaluate-interview-results.mjs',
+  'scripts/test-interview-evaluation.mjs',
   'scripts/export-art-direction-starter.mjs',
   'scripts/art-direction-adapters.mjs',
   'scripts/verify-starter-export.mjs',
