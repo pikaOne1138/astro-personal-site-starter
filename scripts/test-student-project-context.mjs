@@ -44,3 +44,19 @@ test('different AI handoff has project context and environment safeguards', () =
   assert.match(agents,/明確核准/);
   assert.match(template,/換 AI、換電腦或開新對話/);
 });
+
+test('interview contract asks only essential question, checks unknown risks and stops questioning', () => {
+  assert.match(agents, /每輪只問一個最重要的問題/);
+  assert.match(agents, /停止規則/);
+  assert.match(agents, /未知的未知/);
+  assert.match(agents, /關鍵字只是調查假設/);
+  assert.match(agents, /API Key/);
+  assert.match(agents, /不開長訪談/);
+  assert.match(template, /需求訪談與理解狀態/);
+  assert.match(template, /尚未經學員認可的假設/);
+});
+test('starter context retains open question without pretending it has been resolved', () => {
+  const result = renderStudentProject(template, plan);
+  assert.match(result, /最需要釐清的一個問題：待討論/);
+  assert.match(result, /影響下一步實作的安全或內容風險：尚未評估/);
+});
