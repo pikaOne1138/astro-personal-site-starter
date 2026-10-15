@@ -15,7 +15,7 @@ const plan = {
 };
 test('brief initializes student context without inventing audience or deploying', () => {
   const output = renderStudentProject(template, plan);
-  assert.match(output, /網站名稱：我的書房/);
+  assert.match(output, /網站名稱：「我的書房」/);
   assert.match(output, /field-notes/);
   assert.match(output, /主要讀者／來訪者：待確認/);
   assert.match(output, /尚未完成發布與驗收/);
