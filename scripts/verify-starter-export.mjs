@@ -7,6 +7,16 @@ import layouts from '../src/data/layout-directions.json' with {type:'json'};
 import headingFields from '../src/data/layout-assembly/expanded/heading-fields.json' with {type:'json'};
 import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
+function assertStudentContext(site,expectedSlug){
+ const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
+ const project=readFileSync(join(site,'PROJECT.md'),'utf8');
+ if(config.layoutSlug!==expectedSlug)throw Error('Export config Layout mismatch: expected '+expectedSlug+', got '+config.layoutSlug);
+ if(!project.includes('Layout ID（規劃選擇）：`'+expectedSlug+'`'))throw Error('PROJECT Layout mismatch for '+expectedSlug);
+ for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs'])
+  if(!existsSync(join(site,path)))throw Error('Student export missing '+path+' for '+expectedSlug);
+ execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
+}
+
 const kinds=['knowledge','helper'];
 const visualEnabled=process.env.STUDENT_VISUAL_CAPTURE==='1';
 const visualOutput=process.env.STUDENT_VISUAL_OUT||'student-visual';
@@ -203,6 +213,7 @@ try{
     const filename=join(root,kind+'.json'),site=join(root,kind);
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
     const releaseWorkflow=readFileSync(join(site,'.github/workflows/deploy.yml'),'utf8');
     if(!releaseWorkflow.includes("SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}"))throw Error('Approved production indexing variable is not forwarded into GitHub Pages build');
     const learnerPkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
@@ -232,6 +243,7 @@ try{
       mkdirSync(join(root,'public/images'),{recursive:true});
       writeFileSync(join(root,'public/images/my-field.png'),Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLttAAAAABJRU5ErkJggg==','base64'));
       execFileSync(process.execPath,['scripts/export-starter.mjs',themedPlan,themedSite],{stdio:'inherit'});
+      assertStudentContext(themedSite,JSON.parse(readFileSync(themedPlan,'utf8')).layoutSlug);
       if(!existsSync(join(themedSite,'public/images/my-field.png')))throw Error('Licensed image was not copied to independent starter');
       const themedHome=readFileSync(join(themedSite,'src/components/layouts/selected/Home.astro'),'utf8');
       const themedCss=readFileSync(join(themedSite,'public/site.css'),'utf8');
@@ -314,6 +326,7 @@ try{
     const filename=join(root,slug+'.json'),site=join(root,slug);
     writeFileSync(filename,JSON.stringify(secondary));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site,'--require-assembled'],{stdio:'inherit'});
+    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
     const home=readFileSync(join(site,'src/components/layouts/selected/Home.astro'),'utf8');
     if(!home.includes('data-assembled-layout="'+slug+'"'))throw Error('Missing '+slug+' distinct Home renderer');
     if(!home.includes('config.content?.headline')||!home.includes('config.content?.intro'))throw Error('Student copy binding missing on '+slug);
@@ -430,6 +443,7 @@ try{
     const filename=join(root,layout.slug+'-helper-articles.json'),site=join(root,layout.slug+'-helper-articles');
     writeFileSync(filename,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',filename,site],{stdio:'inherit'});
+    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
     writeFileSync(join(site,'src/content/articles/qa-helper-note.md'),['---','title: QA 服務者公開文章','description: 文章系統驗證資料，不代表專業建議。','publishedAt: 2026-10-14','draft: false','---','這是知識與服務網站共用文章功能的驗證。'].join('\n'));
     writeFileSync(join(site,'src/content/articles/qa-helper-draft.md'),['---','title: QA 未公開草稿','description: 不得公開','publishedAt: 2026-10-14','draft: true','---','不可公開。'].join('\n'));
     execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
@@ -465,6 +479,7 @@ try{
     ];
     const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
+    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
     if(native){
       const dir=join(site,'src/content/articles');mkdirSync(dir,{recursive:true});
       const note=(title,draft,body)=>['---','title: '+title,'description: QA 內容描述','publishedAt: 2026-10-15','draft: '+draft,'---',body].join('\n');
@@ -538,6 +553,7 @@ try{
     plan.layoutContent={headings:Object.fromEntries(Object.keys(headingFields[slug]).map(key=>[key,'QA 可編輯段落標題']))};
     const fixture=join(root,'owned-'+slug+'.json'),site=join(root,'owned-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
+    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
     for(const path of ['images/brand-logo.png','images/hero-image.png'])if(!existsSync(join(site,'public',path)))throw Error('Owned uploaded image not copied: '+slug+' '+path);
     execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
     execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
