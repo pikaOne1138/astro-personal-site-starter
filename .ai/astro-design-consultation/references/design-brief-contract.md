@@ -17,6 +17,11 @@
 12. `designDecisions`: 做 / 不做的決策及理由，未決項目與學員說法。
 13. `handoffAndQA`: 開發時先讀哪個 Skill、正式 Page / Content Collections 的來源、四寬度 1440/1280/768/390、鍵盤、reduced-motion、無圖和長中文、no-JS / 真實連結；區分 not tested、tested with evidence。
 
+## 正式交付品質門檻
+- 一旦學員說「整理 Brief／Design Brief／交給另一個 AI」，除了不超過八行的白話摘要，**仍須填寫上述 13 個段落**；未知欄位以 `missing` / `not-verified` / `postponed` / `not tested` 填寫，不可省略整欄。
+- `handoffAndQA` 每次完整交付都明列 `1440 / 1280 / 768 / 390`、鍵盤、reduced-motion、無圖、長中文、no-JS、真實連結；這些是**待驗證項目**，沒有執行證據一律 `not tested`。
+- 詳細技術欄位可置於「交給下一位 AI」段落，避免讓學員以為每個技術名詞都需要自己填答。
+
 ## Brief 與 Starter 的隔離
 - 本 Brief 是**意圖描述**，不同於站點建置輸入。
 - 不保證現在已存在已選版型的全部內頁或已接入 Exporter。
