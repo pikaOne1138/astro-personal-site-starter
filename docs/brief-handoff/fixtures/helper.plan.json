@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "kind": "helper",
+  "layoutSlug": "clinician",
+  "visualTheme": "botanical",
+  "brand": {
+    "name": "QA 合作說明",
+    "primaryColor": "#50775B",
+    "tagline": "示範資料，非正式專業服務"
+  },
+  "navigation": [
+    {
+      "id": "services",
+      "label": "服務",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    },
+    {
+      "id": "faq",
+      "label": "常見問題",
+      "enabled": true
+    },
+    {
+      "id": "booking",
+      "label": "聯絡",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "services",
+    "label": "了解服務"
+  },
+  "content": {
+    "headline": "了解合作方式",
+    "intro": "示例文字，不代表已提供真實服務。"
+  },
+  "notes": "Contract fixture only. 無證照、見證、價格與預約連線；任何未確認資訊都不公開。"
+}
