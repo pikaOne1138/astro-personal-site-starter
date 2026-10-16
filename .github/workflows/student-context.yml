@@ -1,0 +1,62 @@
+name: Student Portable Context Gates
+on:
+  pull_request:
+    paths:
+      - 'scripts/export-starter.mjs'
+      - 'scripts/export-art-direction-starter.mjs'
+      - 'scripts/verify-v2-8-output.mjs'
+      - '.ai/**'
+      - 'scripts/student-project-context.mjs'
+      - 'scripts/test-student-project-context.mjs'
+      - 'scripts/test-student-context-export.mjs'
+      - 'scripts/evaluate-interview-results.mjs'
+      - 'scripts/test-interview-evaluation.mjs'
+      - 'scripts/build-student-pack.mjs'
+      - 'scripts/site-status.mjs'
+      - 'scripts/check-secrets.mjs'
+      - 'scripts/check-project-context.mjs'
+      - 'scripts/test-student-index-build-matrix.mjs'
+      - 'scripts/test-student-site-guards.mjs'
+      - 'scripts/migrate-student-context.mjs'
+      - 'scripts/test-legacy-context-migration.mjs'
+      - 'docs/student-builder-pack/**'
+      - '.github/workflows/student-context.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unit, handoff and real standalone export checks
+        run: node --test scripts/test-student-project-context.mjs scripts/test-student-context-export.mjs scripts/test-interview-evaluation.mjs scripts/test-student-site-guards.mjs scripts/test-legacy-context-migration.mjs
+      - name: Build real student distribution ZIP
+        run: node scripts/build-student-pack.mjs
+      - name: Assert package contains source and context contract
+        run: |
+          unzip -t public/AI-建站資料包.zip | tail -1
+          unzip -Z -1 public/AI-建站資料包.zip > /tmp/atp-zip-entries
+          for item in AGENTS.md PROJECT-TEMPLATE.md scripts/student-project-context.mjs scripts/export-starter.mjs .ai/astro-site-maintenance/SKILL.md; do
+            grep -Fx "$item" /tmp/atp-zip-entries >/dev/null || { echo "Missing ZIP file: $item"; exit 1; }
+          done
+          if grep -E '(interview-scenarios|INTERVIEW-EVALUATION|CROSS-MODEL-E2E-TEST-PACK|evaluate-interview|test-interview-evaluation)' /tmp/atp-zip-entries; then echo 'Private evaluation assets leaked to student ZIP'; exit 1; fi
+
+  index-build-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build actual student site across Cloudflare index scenarios
+        run: node scripts/test-student-index-build-matrix.mjs

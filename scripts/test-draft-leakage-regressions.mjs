@@ -82,6 +82,20 @@ try{
  expect('F03 N6 draft in public JSON search',false,'Draft leaked into public discovery/output:');
  put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
  expect('clean public JSON',true);
+ // Handwritten private notes may use Chinese filenames without YAML frontmatter.
+ put('src/content/drafts/私下備忘.md','今天先整理不公開的想法，不一定是正式文章。');
+ expect('Private Chinese scratch note with no frontmatter',true);
+ // A title shared with the public menu is not itself proof of a private draft leak.
+ put('site.config.json',JSON.stringify({navigation:[{id:'services',label:'服務說明',path:'services/'}]}));
+ put('dist/services/index.html',html('Public service placeholder'));
+ put('src/content/drafts/nav-title.md','---\ntitle: 服務說明\ndraft: true\n---\n內部備註不應公開，這段文字作為獨特的草稿正文識別。');
+ put('dist/index.html',html('網站選單：服務說明'));
+ expect('Generic navigation title is not a private draft leak',true);
+ put('dist/index.html',html('網站選單：服務說明，內部備註不應公開，這段文字作為獨特的草稿正文識別。'));
+ expect('Unique private draft body still blocked',false,'Draft leaked into public discovery/output:');
+ put('dist/index.html',html('Public home'));
+ put('site.config.json',JSON.stringify({navigation:[]}));
+ unlinkSync(join(root,'dist/services/index.html'));
  // F11: the validator must reject missing Pagefind or Chinese companion indexes.
  unlinkSync(join(root,'dist/pagefind/pagefind.js'));
  expect('F11 missing Pagefind index',false,'Student Pagefind search index missing');

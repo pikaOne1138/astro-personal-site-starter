@@ -4,6 +4,7 @@ import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {normalizeExpandedPatterns} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
+import {finalizeStudentSite} from './student-project-context.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
 if(args.some(x=>x.startsWith('--')&&!['--require-ready','--allow-in-progress'].includes(x))||positional.length!==2)throw Error('Usage: node scripts/export-art-direction-starter.mjs plan.json empty-output-dir --allow-in-progress');
@@ -56,7 +57,7 @@ try{
  const inherited={...plan,sectionPatterns,brand:{...plan.brand,tagline:text(plan.brand?.tagline||'','tagline')},navigation,layoutSlug:plan.kind==='knowledge'?'field-notes':'clinician'};
  // Reuse the reviewed scaffold/security implementation; the selected surrogate is never shipped.
  const seed=join(workspace,'seed.json'),generated=join(workspace,'site');writeFileSync(seed,JSON.stringify(inherited));
- const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
+ const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated,'--defer-student-context'],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
  settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy,headings};
  settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
@@ -80,6 +81,8 @@ try{
  if(plan.kind==='knowledge'){
   writeFileSync(join(generated,'src/pages/topics/index.astro'),readFileSync(join(generated,'src/pages/topics/index.astro'),'utf8').replace("const posts=await getCollection('articles',({data})=>!data.draft);","const posts=await getCollection('articles',({data})=>!data.draft);for(const entry of posts)for(const topic of entry.data.topics)if(!config.artDirection.topics.some(t=>t.slug===topic))throw Error('Unknown topic '+topic+' in '+entry.id);"));
  }
+ finalizeStudentSite(generated,{...plan,layoutSlug:adapter.slug,navigation:settings.navigation??navigation});
+ cpSync(new URL('../.ai/',import.meta.url),join(generated,'.ai'),{recursive:true,force:false,errorOnExist:true});
  mkdirSync(dirname(root),{recursive:true});if(existsSync(root))rmSync(root,{recursive:true});renameSync(generated,root);
  console.log('Independent Art Direction adapter exported:',adapter.slug,root,'Assembly in Progress; screenshots deferred');
 }finally{rmSync(workspace,{recursive:true,force:true})}
