@@ -71,3 +71,23 @@ test('PROJECT layout mismatch is detected without rewriting student decisions',(
   assert.equal(readFileSync(projectPath,'utf8'),prior);
  }finally{rmSync(tmp,{recursive:true,force:true});}
 });
+
+test('art-direction adapters finalize PROJECT with the real selected Layout',()=>{
+ for(const slug of ['subject-atlas','practice-compass']){
+  const tmp=mkdtempSync(join(tmpdir(),'atp-adapter-context-'));
+  try{
+   const input=join(root,'docs/art-direction/fixtures',slug+'.json'),out=join(tmp,'site');
+   const run=spawnSync(process.execPath,[join(root,'scripts/export-art-direction-starter.mjs'),input,out,'--allow-in-progress'],{encoding:'utf8',timeout:60000});
+   assert.equal(run.status,0,run.stderr||run.stdout);
+   const project=readFileSync(join(out,'PROJECT.md'),'utf8');
+   const config=JSON.parse(readFileSync(join(out,'site.config.json'),'utf8'));
+   assert.equal(config.layoutSlug,slug);
+   assert.match(project,new RegExp('Layout ID（規劃選擇）：`'+slug+'`'));
+   assert.ok(existsSync(join(out,'AGENTS.md')));
+   assert.ok(existsSync(join(out,'scripts/check-project-context.mjs')));
+   assert.ok(existsSync(join(out,'.ai/astro-pr-preview/SKILL.md')));
+   const guard=spawnSync(process.execPath,[join(out,'scripts/check-project-context.mjs'),out],{encoding:'utf8'});
+   assert.equal(guard.status,0,guard.stderr||guard.stdout);
+  }finally{rmSync(tmp,{recursive:true,force:true})}
+ }
+});
