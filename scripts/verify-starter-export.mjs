@@ -70,6 +70,8 @@ async function captureStudentSite(slug,kind,site,scenario={}){
     }
     if(scenario.patternCheck){
       const expected=scenario.patternCheck[route]??[];
+      if(await page.locator('.student-pattern').count())errors.push('Inherited placeholder Pattern duplicated the real content');
+      if(route==='guides/first/'&&await page.locator('.native-service-facts').count())errors.push('Custom page inherited unrelated service facts');
       const actual=await page.locator('[data-section-pattern]').evaluateAll(nodes=>nodes.map(n=>n.dataset.sectionPattern));
       if(JSON.stringify(actual)!==JSON.stringify(expected))errors.push('Pattern selection/order mismatch: '+JSON.stringify(actual));
       const placed=await page.evaluate(()=>[...document.querySelectorAll('.pattern-slot')].every(slot=>{
@@ -446,7 +448,8 @@ try{
       {patternId:'featured-work',targetPage:'about',insertAfter:'page-end',content:featured},
       {patternId:'featured-work',targetPage:'page-guide',insertAfter:'主要內容之後',content:featured},
       {patternId:kind==='helper'?'trust-service-path':'featured-work',targetPage:kind==='helper'?'services':'articles',insertAfter:'page-end',content:kind==='helper'?trust:featured},
-      {patternId:'footer-editorial',targetPage:'site-wide',insertAfter:'每頁主要內容之後'}
+      {patternId:'footer-editorial',targetPage:'site-wide',insertAfter:'每頁主要內容之後'},
+      ...(kind==='helper'?[{patternId:'featured-work',targetPage:'articles',insertAfter:'page-end',content:featured}]:[])
     ];
     const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
@@ -463,9 +466,13 @@ try{
     let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
     routes.push('guides/first/');
+    if(kind==='helper'&&!routes.includes('articles/'))routes.push('articles/');
     const patternCheck={'':[kind==='helper'?'trust-service-path':'featured-work'],'about/':['featured-work'],'guides/first/':['featured-work'],[kind==='helper'?'services/':'articles/']:[kind==='helper'?'trust-service-path':'featured-work']};
+    if(kind==='helper')patternCheck['articles/']=['featured-work'];
     for(const [route,expected] of Object.entries(patternCheck)){
       const html=readFileSync(join(site,'dist',route,'index.html'),'utf8');
+      if(/class="student-pattern(?:\s|")/.test(html))throw Error('Legacy placeholder still rendered: '+slug+' '+route);
+      if(route==='guides/first/'&&html.includes('class="native-service-facts"'))throw Error('Unrelated service facts on custom page: '+slug);
       for(const id of expected)if(!html.includes('data-section-pattern="'+id+'"'))throw Error('Missing actual Pattern '+slug+' '+route+' '+id);
       if((html.match(/<footer[\s>]/g)??[]).length!==1)throw Error('Selected footer duplicated or lost: '+slug+' '+route);
     }

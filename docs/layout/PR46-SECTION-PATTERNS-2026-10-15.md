@@ -29,3 +29,11 @@
 - Actions 與人工目視結果以 PR 正文最新 SHA 的證據為準；本文不預先宣稱遠端成功或持有人設計核可。
 
 仍待真實持有人內容與圖片、實機、Safari／Firefox／讀屏、PR47 小點擊目標分級及最終設計核准。此輪沒有把未填資料的規劃器 Brief 升格成完成網站。
+
+## 截圖目視後的修正
+
+067cbcea 的 1,736 張自動檢查全綠，但實際 CI 自訂頁畫面顯示舊 SelectedPatterns 佔位段落與真正 Pattern 並存；原測試只數 data-section-pattern 而漏掉舊 DOM。已移除 shared catch-all 及可選 helper archive 的舊渲染入口，保留全站 footer。新增 DOM／建置輸出檢查，禁止 .student-pattern 殘留，並在 helper 文章索引實測選用 Pattern。
+
+同次目視亦發現 studio-chapters 的通用 extra 內容錯附服務資料表，已移除；正式服務索引與詳細頁的資訊表保留。新增自訂頁不得帶 native-service-facts 的檢查。
+
+空網站不必填滿選填區段：資料未備時先取消該 Pattern，再照常匯出／Build；不是為了檢查而補造作品。四份由實際下載包產生、各自安裝依賴的網站（subject-atlas、practice-compass、sidebar-journal、service-catalogue）完成公開 → 草稿 → 刪除與每次 Build／verify，精選、路由及搜尋均無舊文殘留；先前共用依賴暫存測試的疑點未在隔離環境重現。

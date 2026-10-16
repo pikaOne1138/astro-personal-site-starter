@@ -59,7 +59,7 @@ try{
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
  settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy,headings};
- settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','faq','page-contact','page-privacy','page-search']};
+ settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.
  if(plan.contentDirectory){

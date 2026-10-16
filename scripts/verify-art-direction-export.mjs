@@ -27,12 +27,14 @@ try{
  for(const slug of ['subject-atlas','practice-compass']){
   const source=join(fixtureDir,slug+'.json');const plan=JSON.parse(readFileSync(source));
   plan.sectionPatterns=[{...structuredClone(pattern),content:{title:'QA <script> literal',...(slug==='subject-atlas'?{articleSlugs:['real-note','legacy-draft']}:{items:[{title:'QA 作品',description:'QA 提供的作品'}]}),action:{label:'QA 關於',pageId:'about'}}}];
+  if(!plan.navigation.some(n=>n.id==='articles'))plan.navigation.push({id:'articles',label:'文章',enabled:true});
+  for(const target of ['page-guide','articles'])plan.sectionPatterns.push({...structuredClone(plan.sectionPatterns[0]),targetPage:target,insertAfter:'page-end'});
   // Resolve the original relative article source before writing the temporary brief.
   if(plan.contentDirectory)cpSync(join(fixtureDir,plan.contentDirectory),join(workspace,plan.contentDirectory),{recursive:true});
   const selectedSource=join(workspace,slug+'.json');writeFileSync(selectedSource,JSON.stringify(plan));
   const site=join(workspace,slug);
   run(process.execPath,[resolve('scripts/export-starter.mjs'),selectedSource,site,'--require-assembled']);
-  check(slug+' real selected adapter',()=>{const c=JSON.parse(readFileSync(join(site,'site.config.json')));assert.equal(c.layoutSlug,slug);assert.equal(c.layoutAdapter.id,slug);assert.equal(c.layoutAdapter.assemblyStatus,'in-progress');assert.ok(readFileSync(join(site,'src/components/layouts',slug,'Home.astro'),'utf8').includes('data-assembled-layout="'+slug+'"'));});
+  check(slug+' real selected adapter',()=>{const c=JSON.parse(readFileSync(join(site,'site.config.json')));assert.equal(c.layoutSlug,slug);assert.equal(c.layoutAdapter.id,slug);assert.equal(c.layoutAdapter.assemblyStatus,'in-progress');if(slug==='practice-compass')assert.ok(c.artDirection.explicitPageIds.includes('articles'),'optional archive must not also be a catch-all page');assert.ok(readFileSync(join(site,'src/components/layouts',slug,'Home.astro'),'utf8').includes('data-assembled-layout="'+slug+'"'));});
   run('npm',['install','--no-audit','--no-fund','--package-lock=false'],site);
   run('npm',['run','test:regressions'],site);
   run('npm',['run','build'],site);
@@ -41,6 +43,7 @@ try{
    for(const p of ['index.html','404.html','about/index.html','guides/first/index.html','search/index.html','rss.xml','sitemap.xml','robots.txt','pagefind/pagefind.js','pagefind/pagefind-ui.js','search/exact-zh.json'])assert.ok(existsSync(join(site,'dist',p)),p);
    const c=JSON.parse(readFileSync(join(site,'site.config.json')));for(const n of c.navigation)assert.ok(existsSync(join(site,'dist',n.path,'index.html')),n.path);
    const home=readFileSync(join(site,'dist/index.html'),'utf8');assert.ok(home.includes('QA 首頁標題'));assert.ok(home.includes('noindex'));assert.ok(home.includes('data-section-pattern="featured-work"'));assert.ok(home.includes('QA &lt;script&gt; literal'));assert.ok(!home.includes('href="/articles/legacy-draft/"'));
+   for(const path of ['guides/first/index.html','articles/index.html']){const html=readFileSync(join(site,'dist',path),'utf8');assert.ok(html.includes('data-section-pattern="featured-work"'));assert.ok(!/class="student-pattern(?:\s|")/.test(html),'legacy placeholder in '+path);}
    const archive=slug==='subject-atlas'?readFileSync(join(site,'dist/articles/index.html'),'utf8'):'';
    if(slug==='subject-atlas'){assert.ok(archive.includes('索引文章 QA 示範'));assert.ok(existsSync(join(site,'dist/topics/method/index.html')));assert.ok(!existsSync(join(site,'dist/articles/legacy-draft/index.html')));assert.ok(!existsSync(join(site,'dist/articles/private-note/index.html')));assert.ok(readFileSync(join(site,'dist/rss.xml'),'utf8').includes('索引文章 QA 示範'));assert.ok(readFileSync(join(site,'dist/sitemap.xml'),'utf8').includes('topics/method/'));assert.ok(readFileSync(join(site,'dist/search/exact-zh.json'),'utf8').includes('QA_PUBLIC_NOTE_TOKEN'));}
    if(slug==='practice-compass'){assert.ok(home.includes('QA 是否適合'));assert.ok(home.includes('QA 合作方式'));assert.ok(home.includes('QA 常見疑問'));const services=readFileSync(join(site,'dist/services/index.html'),'utf8');assert.ok(services.includes('QA 示範形式'));assert.ok(services.includes('尚未設定'));assert.ok(readFileSync(join(site,'dist/faq/index.html'),'utf8').includes('<details'));assert.ok(readFileSync(join(site,'dist/contact/index.html'),'utf8').includes('尚未配置'));assert.ok(!home.includes('<form'));}

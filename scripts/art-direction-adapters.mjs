@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync,mkdirSync,cpSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync} from 'node:fs';
 import {join} from 'node:path';
 import {nativeLayoutAdapters,composeNative} from './native-layout-adapters.mjs';
 const sources=new URL('../src/data/art-direction-adapters/',import.meta.url);
@@ -31,5 +31,10 @@ export const artDirectionAdapters = [
  put(root,'src/pages/sitemap.xml.js',sitemap.replace("const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];","const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];\n if(config.kind==='knowledge') for(const topic of config.artDirection.topics) paths.push((config.navigation.find(x=>x.id==='topics')?.path??'topics/')+topic.slug+'/');"));
  put(root,'START-HERE.md',`# ${settings.brand.name}\n\n這是 ${adapter.slug} 的獨立 Astro 網站，組裝狀態為 in-progress；本輪未做截圖驗收，尚未獲視覺核准。\n\n1. npm install\n2. npm run dev\n3. npm run build && npm run verify\n\n修改 site.config.json 的 brand、content、artDirection、pageContent 與 navigation。新增文章放在 src/content/articles/，未公開稿放 src/content/drafts/。topics 對應文章 frontmatter 的 topics 陣列。不要重新執行匯出器覆蓋已編輯的網站。\n\n正式上線前設定實際 site/base、真實資格／費用／聯絡方式，並取得持有人核准。搜尋使用 Pagefind；預設 noindex。\n`);
  if(nativeLayoutAdapters.some(a=>a.slug===adapter.slug))composeNative(root,settings);
+ // Optional helper articles can retain the seed archive. Its old placeholder
+ // renderer must not run beside the owning canvas's real ContentPatterns slot.
+ const archivePath=join(root,'src/pages/articles/index.astro');
+ if(existsSync(archivePath)){const archive=readFileSync(archivePath,'utf8').replace(/import SelectedPatterns from [^;]+;\n/g,'').replace(/<SelectedPatterns page="articles"\s*\/>/g,'');
+ put(root,'src/pages/articles/index.astro',archive);}
  // This source root is packaging-only, not an imported extra homepage.
 }}));
