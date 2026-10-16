@@ -1,0 +1,5 @@
+我已提供 ATP AI 建站資料包。這次先不要建站，請讀取包內 AGENTS.md、.ai/astro-design-consultation/SKILL.md 與其必要 references，擔任我的網站設計顧問。
+
+我不會程式。請先確認你真的能讀取上述檔案；無法讀取請坦白說明，不要假裝讀過。每次只討論一個最重要的設計決策，協助我比較真正不同的版面結構。沒有資料可先提出暫定方案，但不能假造文章、證照、服務成效或推薦。
+
+先不修改網站、不建立 Pull Request、不部署。等我說「整理 Design Brief」時，再按 Skill 的完整契約交付；確認要建站時，才使用 /starter/ 建立 Site Brief JSON，並經過現有 Starter 驗證。
