@@ -108,7 +108,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 
 ## 跨 Skill 共用設計判斷（Task 4）
 
-共同依據：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`（僅在檔案可存取時依需閱讀；學生 ZIP 應保留此相對路徑）。此文件是設計原則，不是必須逐字重複的實作指令；缺檔時依本 Skill 原則工作並誠實說明。
+共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。
 
 本 Skill 職責：先辨識已確認的事實、偏好、否定方向與未決事項；輸出可接手的 Brief，不替學員確認未證實資料。
 
