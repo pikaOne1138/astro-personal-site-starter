@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "source": "Actual Astro build at PR commit; capture with scripts/capture-template-gallery.mjs",
+  "note": "Do not substitute decorative images. Missing screenshots MUST remain visibly unavailable.",
+  "viewport": {"desktop":{"width":1440,"height":900},"mobile":{"width":390,"height":844}},
+  "layouts": [
+    "field-notes","essayist","learning-lab","curator","radio-letter","reading-atlas",
+    "clinician","companion","somatic","coach","collective","trust-path"
+  ],
+  "capture": {
+    "desktopFilePattern": "public/template-gallery/<slug>-desktop.webp",
+    "mobileFilePattern": "public/template-gallery/<slug>-mobile.webp",
+    "fullPage": true,
+    "sourceRoutePattern": "/layouts/<slug>/",
+    "provenance": "Fill in exact GitHub SHA, timestamp and screenshot output hashes after capture."
+  }
+}

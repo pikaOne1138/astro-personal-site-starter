@@ -1,0 +1,59 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const team=config.team??[];
+const events=config.events??[];
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+---
+<div class="common-shell" data-assembled-layout="collective" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
+  <section class="common-hero" aria-labelledby="common-title">
+    <div class="common-hero-copy"><p class="common-kicker">COMMON GROUND / COLLECTIVE</p><h1 id="common-title">{config.content?.headline || "一起工作，讓支持有很多形狀。"}</h1><p class="common-brand">{config.brand.name} · {config.brand.tagline}</p><p class="common-intro">{config.content?.intro || "從共同理念、真實成員到活動資訊，清楚展示合作網絡。"}</p><a class="common-cta" href="#belief">認識合作 ↓</a></div>
+    <figure class="common-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="common-art" role="img" aria-label="共同創作示意拼貼"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>
+  </section>
+  <div class="common-section-list"><section class="common-source-belief" id="belief"><div><p class="common-kicker">A SHARED POSITION</p><span>{config.brand.name}</span></div><blockquote>{config.about?.purpose||'共同立場待站長提供。'}</blockquote><p>{config.serviceFacts?.exclusions||'正式網站請清楚說明合作範圍與專業界線。'}</p></section>
+<section class="common-source-people" id="people"><header><div><p class="common-kicker">THE PEOPLE / OUR PRACTICE</p><h2>不同專業，<em>共同照看。</em></h2></div><p>成員介紹需由當事人同意，資格以可查證資料為準。</p></header>{team.length?<div class="common-source-team">{team.map((person,i)=><article><span>{String(i+1).padStart(2,'0')}</span><div class="common-source-avatar" aria-hidden="true">{Array.from(person.name)[0]}</div><h3>{person.name}</h3><p>{person.role}</p><p>{person.bio}</p></article>)}</div>:<p class="common-owned-pending">成員資料尚未提供；不顯示虚構姓名、照片或專業背景。</p>}</section>
+<section class="common-source-calendar" id="calendar"><div><p class="common-kicker">OPEN TABLE / ACTIVITY NOTES</p><h2>留一張椅子，<em>一起練習。</em></h2><p>活動日期、內容與報名連結由站長確認後提供。</p></div>{events.length?<ol>{events.map(event=><li><time datetime={event.date}><b>{event.date.slice(8)}</b>{event.date.slice(0,7)}</time><div><h3>{event.title}</h3><p>{event.description}</p></div><a href={event.url}>活動資訊 ↗</a></li>)}</ol>:<p class="common-owned-pending">尚無已確認的活動；不顯示假的日期、名額或報名成功。</p>}</section></div>
+<section class="common-source-invitation"><p class="common-kicker">AN OPEN INVITATION</p><h2>可以先了解，<br/>再決定要不要參與。</h2><a href={action}>查看服務與合作 ↗</a></section>
+<footer class="common-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.common-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.common-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. common-hero-copy{min-width:0}
+.common-kicker,.common-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.common-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.common-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.common-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.common-figure{margin:0;min-width:0}. common-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.common-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.common-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.common-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.common-section-list{max-width:1250px;margin:0 auto 4rem}
+.common-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.common-section p{max-width:65ch;line-height:1.85}. common-section a{color:inherit}
+.common-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.common-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center}.common-hero h1{font-size:clamp(3rem,6.5vw,7rem)}.common-art{background:linear-gradient(45deg,#dfb5a4 0 25%,#b8d4d0 25% 50%,#e4d08a 50% 75%,#7e9997 75%)}.common-section-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.common-section:nth-child(1){grid-column:1/-1}.common-section{border:1px solid currentColor;padding:2rem}.common-section:nth-child(2){background:#efdfd3}
+@media(max-width:800px){.common-hero,.common-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.common-hero{min-height:0}.common-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.common-hero figure,.common-art{position:static;width:100%;height:auto;min-height:180px}.common-section,.common-section:nth-child(1),.common-section:nth-child(2),.common-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.common-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.common-shell{padding:1rem}.common-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.common-close{display:block}}
+
+/* Collective: collaborative editorial board, primary-blue decision band, mixed cards. */
+.common-shell{background:#fbf7ed;color:#182849;font-family:var(--brand-body-font,Arial,sans-serif)}
+.common-hero{grid-template-columns:1.15fr .85fr;gap:4vw;border-bottom:2px solid #182849;padding-bottom:3rem}
+.common-hero h1{font:800 clamp(3.6rem,8vw,7.5rem)/.97 var(--brand-body-font,Arial,sans-serif);letter-spacing:-.075em}
+.common-kicker{color:#2549d5;font-weight:800}
+.common-cta{border:0;background:#244bd8;color:#fff;padding:.8rem 1rem;box-shadow:4px 4px 0 #ffd546}
+.common-art,.common-figure img{aspect-ratio:4/3;border:2px solid #182849;transform:rotate(-2deg)}
+.common-section-list{display:grid;grid-template-columns:1fr 1fr;gap:2rem 1rem}
+.common-section{padding:1.5rem;border:0;border-top:3px solid #182849}
+.common-section:first-child{grid-column:1/-1;background:#eef0fb;padding:2rem;max-width:none}
+.common-section:first-child h2{font:800 clamp(2.8rem,5vw,5.4rem)/1.05 var(--brand-body-font,Arial,sans-serif);color:var(--brand-primary,#2449d8);letter-spacing:-.06em}
+.common-section:nth-child(2){background:#e6d0bc}
+.common-section:nth-child(3){background:#e6eef0}
+.common-section h2{font-family:var(--brand-body-font,Arial,sans-serif);font-weight:800}
+.common-close{background:var(--brand-primary,#2449d8);color:#fff;padding:2.5rem}
+@media(max-width:800px){.common-hero{grid-template-columns:1fr}.common-section-list{grid-template-columns:1fr}.common-section:first-child{grid-column:auto}}
+.common-manifesto{grid-column:1/-1;background:#20579b;color:#fff3cb;padding:clamp(1.5rem,5vw,5rem)}.common-manifesto-top{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #fff6;padding-bottom:1rem;font:.72rem ui-monospace,monospace;letter-spacing:.13em}.common-manifesto h2{font:850 clamp(3rem,7vw,7rem)/1.04 system-ui,sans-serif!important;max-width:13ch;letter-spacing:-.07em;margin:3rem 0}.common-manifesto h2 em{font-style:normal;color:#ffc46a}.common-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#fff6}.common-values>div{padding:1.5rem;background:#20579b}.common-values span{font:700 1.6rem ui-monospace,monospace}.common-values p{line-height:1.8}@media(max-width:700px){.common-values{grid-template-columns:1fr}.common-manifesto h2{font-size:clamp(2.3rem,9vw,5rem)!important}}
+.common-source-belief{grid-column:1/-1;background:#e9ebf5;padding:clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:.65fr minmax(0,1.25fr) .8fr;gap:3vw;align-items:start}.common-source-belief blockquote{font:400 clamp(1.8rem,4vw,3.8rem)/1.25 var(--brand-heading-font,Georgia,serif);letter-spacing:-.04em;margin:0}.common-source-belief p{line-height:1.85}.common-hero .common-art,.common-hero .common-figure img{border-radius:46% 46% 3px 3px;transform:none;border:0}.common-hero{grid-template-columns:1fr 1fr;padding-top:4rem;max-width:1320px}.common-hero h1{line-height:1.08;letter-spacing:-.04em}.common-section-list{grid-template-columns:repeat(2,minmax(0,1fr))}.common-section#people,.common-section#calendar{grid-column:auto;min-width:0}@media(max-width:900px){.common-source-belief{grid-template-columns:.5fr minmax(0,1.5fr)}.common-source-belief>p{grid-column:2}}@media(max-width:580px){.common-hero,.common-section-list,.common-source-belief{grid-template-columns:1fr}.common-source-belief>p{grid-column:auto}.common-hero .common-figure{width:90%;margin-left:auto}}
+.common-hero h1{line-height:1.12;letter-spacing:-.04em}
+.common-source-people,.common-source-calendar{grid-column:1/-1;margin:2rem 0 4rem;min-width:0}.common-source-people>header{display:flex;justify-content:space-between;align-items:end;gap:2rem}.common-source-people header>p{max-width:390px}.common-source-people h2,.common-source-calendar h2,.common-source-invitation h2{font:800 clamp(2.8rem,5vw,5rem)/1.12 var(--brand-body-font,system-ui);letter-spacing:-.04em}.common-source-people h2 em,.common-source-calendar h2 em{display:block;font-family:var(--brand-heading-font,Georgia,serif);font-weight:400}.common-source-team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.common-source-team article{padding:1.5rem;background:#f0ddd7;border:1px solid currentColor;min-width:0}.common-source-team article:nth-child(3n+2){background:#dfe6f8}.common-source-team article:nth-child(3n){background:#f5e8bb}.common-source-team article>span{font:.75rem ui-monospace,monospace}.common-source-avatar{width:82px;height:82px;border-radius:50%;background:#fbf5e9;display:grid;place-items:center;margin:1rem auto;font-size:2rem}.common-source-calendar{display:grid;grid-template-columns:.8fr minmax(0,1.2fr);gap:5vw;border-top:1px solid currentColor;padding-top:1.5rem}.common-source-calendar ol{padding:0;list-style:none}.common-source-calendar li{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:1rem;align-items:center;border-bottom:1px solid currentColor;padding:1rem 0}.common-source-calendar time{border-radius:50%;background:var(--brand-accent,#f5cb47);display:grid;place-items:center;min-height:72px;font:.75rem ui-monospace,monospace}.common-source-calendar time b{font-size:1.35rem}.common-source-calendar a{min-height:44px;display:flex;align-items:center}.common-source-invitation{max-width:1320px;margin:auto;background:var(--brand-primary,#2449d8);color:white;padding:2rem clamp(1.2rem,4vw,3rem)}.common-source-invitation .common-kicker{color:#f7d864}.common-source-invitation>a{color:white;display:inline-flex;align-items:center;min-height:44px}.common-source-people header{background:none;border:0;padding:0}.common-owned-pending{border:1px dashed currentColor;padding:2rem}@media(max-width:900px){.common-source-calendar{grid-template-columns:1fr}}@media(max-width:580px){.common-source-people>header{display:block}.common-source-team{grid-template-columns:1fr}.common-source-calendar li{grid-template-columns:72px minmax(0,1fr)}.common-source-calendar a{grid-column:2}}
+</style>

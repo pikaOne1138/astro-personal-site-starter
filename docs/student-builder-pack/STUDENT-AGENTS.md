@@ -10,7 +10,7 @@
 ## 執行流程
 1. 解析學員 Site Brief JSON，讀取 `.ai/astro-starter-onboarding/SKILL.md`、`.ai/astro-site-assembly/SKILL.md` 與相關 Layout、UI、Editorial Skills。
 2. 以 `scripts/export-starter.mjs` 和包內 `src/data/` 產生**另一個目錄**中的獨立 Astro 網站骨架。執行需要具備 Node 運算環境的 AI，學員不必安裝 CLI。
-3. 參照 `src/pages/layouts/`、`src/components/`、`.ai/` 的配方與元件實作，將所選 Layout 真正適配為學員首頁與必要內頁。骨架不等於 12 款版型完整移植。
+3. 參照 `src/pages/layouts/`、`src/components/`、`.ai/` 的配方與元件實作，將所選 Layout 真正適配為學員首頁與必要內頁。以 `src/data/layout-assembly/definitions.mjs` 及 `docs/student-builder-pack/EXPANDED-LAYOUTS.md` 判斷 25 個方向的 Renderer／支援範圍；新增十三款仍是 in-progress Adapter，Build 成功不可自行升 Ready。
 4. 使用真實內容、可用的圖片資產與連結，遵守權利、授權與安全規則；不得虛構服務成效、客戶見證、證照、預約成功、Newsletter 訂閱成功。
 5. 確認學員 Repo 的部署平台為 GitHub Pages 或 Cloudflare Pages／Workers，讀取 `.ai/astro-pr-preview/SKILL.md` 與 `.ai/astro-starter-deploy/SKILL.md`，用學員自己的 Repo 和實際預覽網址操作。
 6. 建立 Branch → PR → Build → Preview → 1440/1280/768/390 RWD／功能驗收，向學員回報測試證據；經明確同意才 Merge／發布正式站。

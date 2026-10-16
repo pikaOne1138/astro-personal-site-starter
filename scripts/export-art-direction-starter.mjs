@@ -2,6 +2,7 @@ import {readFileSync,writeFileSync,mkdtempSync,existsSync,readdirSync,renameSync
 import {resolve,join,dirname} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
+import {normalizeExpandedPatterns} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
@@ -13,14 +14,15 @@ if(strict||!allowed)throw Error('Assembly in Progress: visual review is deferred
 const text=(s,label,max=5000)=>{if(typeof s!=='string'||s.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(s))throw Error('Invalid '+label);return s};
 const list=(v,label)=>{if(v===undefined)return [];if(!Array.isArray(v)||v.length>50)throw Error('Invalid '+label);return v.map(s=>text(s,label))};
 const https=(v,label)=>{if(!v)return '';text(v,label,2000);let u;try{u=new URL(v)}catch{throw Error('Invalid '+label)}if(u.protocol!=='https:'||u.username||u.password)throw Error('HTTPS URL without credentials required: '+label);return u.href};
-if(plan.brand?.heroImagePath||plan.brand?.logoPath||plan.brand?.heroImageDataUrl||plan.brand?.logoDataUrl)throw Error('These text-first adapters do not yet support image asset inputs');
+if(plan.brand?.heroImageDataUrl||plan.brand?.logoDataUrl)throw Error('Use the validated local brand image paths and assets contract');
 if(plan.brand?.typography&&!['editorial-serif','clear-sans','balanced'].includes(plan.brand.typography))throw Error('Invalid typography preset');
-const data=plan.artDirection||{};const content={headline:text(plan.content?.headline||'','headline'),intro:text(plan.content?.intro||'','intro')};
+const supplied=plan.artDirection||{};
+const data={...supplied,serviceFacts:{scope:plan.serviceFacts?.scope,credentials:plan.serviceFacts?.qualification,format:plan.serviceFacts?.method,duration:plan.serviceFacts?.duration,price:plan.serviceFacts?.price,cancellation:plan.serviceFacts?.cancellation,...supplied.serviceFacts}};const content={headline:text(plan.content?.headline||'','headline'),intro:text(plan.content?.intro||'','intro')};
 const topics=data.topics===undefined?[]:data.topics;
 if(!Array.isArray(topics)||topics.length>50||topics.some(t=>!t||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(t.slug)||t.slug.length>64)||new Set(topics.map(t=>t.slug)).size!==topics.length)throw Error('Invalid or duplicate topic slug');
 const normalizedTopics=topics.map(t=>({slug:t.slug,title:text(t.title,'topic title',120),description:text(t.description||'','topic description')}));
 const facts={};for(const k of ['scope','credentials','format','duration','price','cancellation'])facts[k]=text(data.serviceFacts?.[k]||'',k);
-const faq=data.faq||[];if(!Array.isArray(faq)||faq.length>50)throw Error('Invalid faq');
+const faq=data.faq??plan.questions??[];if(!Array.isArray(faq)||faq.length>50)throw Error('Invalid faq');
 const questions=faq.map(q=>({question:text(q.question,'question',300),answer:text(q.answer,'answer')}));
 const rawVisitorIntents=data.visitorIntents??[];
 if(!Array.isArray(rawVisitorIntents)||rawVisitorIntents.length>6)throw Error('Invalid visitorIntents: expected up to six visitor reading entries');
@@ -30,6 +32,7 @@ const visitorIntents=rawVisitorIntents.map((intent,i)=>{if(!intent||!allowedInte
 const email=data.contact?.email||'';if(email&&(!/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)||email.length>254))throw Error('Invalid contact email');
 const contact={email,url:https(data.contact?.url,'contact URL'),bookingUrl:https(data.contact?.bookingUrl,'booking URL')};
 const pageContent=Object.create(null);for(const [key,value] of Object.entries(plan.pageContent||{}))pageContent[key]=list(value,'page paragraphs');
+if(!pageContent.about?.length)pageContent.about=['bio','purpose','approach','background'].map(k=>plan.about?.[k]).filter(v=>typeof v==='string'&&v.trim()).map(v=>text(v,'about paragraph'));
 // Essential routes are explicit and cannot be silently disabled or moved.
 const essentials=plan.kind==='knowledge'?[['articles','文章','articles/'],['topics','主題','topics/'],['about','關於','about/'],['page-search','搜尋','search/']]:[['services','服務說明','services/'],['about','關於','about/'],['faq','FAQ','faq/'],['page-contact','聯絡','contact/'],['page-privacy','隱私','privacy/'],['page-search','搜尋','search/']];
 const navigation=Array.isArray(plan.navigation)?structuredClone(plan.navigation):[];
@@ -37,17 +40,26 @@ for(const [id,label,path] of essentials){const existing=navigation.find(x=>x.id=
 for(const item of navigation)if(item.enabled){item.path=item.path??item.id+'/';if(essentials.some(([id,,path])=>item.id!==id&&item.path===path))throw Error('Reserved essential route collision');if(item.path==='topics/'&&plan.kind==='helper')throw Error('Topics route requires knowledge adapter');}
 if(plan.kind==='helper'&&navigation.some(x=>x.enabled&&x.path.startsWith('topics/')))throw Error('Helper adapter has no topic renderer');
 if(navigation.some(x=>x.enabled&&x.path.startsWith('topics/')&&x.path!=='topics/'))throw Error('Topic detail paths are reserved');
-if((plan.sectionPatterns||[]).some(p=>!p.patternId?.startsWith('footer-')))throw Error('Only the site-wide footer extension is supported in these adapters; non-footer patterns need an explicit composition integration.');
+const sectionPatterns=normalizeExpandedPatterns(plan.sectionPatterns,plan.kind,navigation);
+
+const rawServices=plan.services??[];
+if(!Array.isArray(rawServices)||rawServices.length>50)throw Error('Invalid services');
+const services=rawServices.map(s=>{if(!s||!/^([a-z0-9]+-)*[a-z0-9]+$/.test(s.slug)||s.slug.length>64||typeof s.published!=='boolean')throw Error('Service requires a valid slug and explicit published boolean');const result={slug:s.slug,published:s.published,body:list(s.body,'service body'),bookingUrl:https(s.bookingUrl,'service booking URL')};for(const key of ['title','summary','fit','format','duration','price','scope','credential','image'])result[key]=text(s[key]||'',key);return result;});
+if(new Set(services.map(s=>s.slug)).size!==services.length)throw Error('Duplicate service slug');
+const headingFields=JSON.parse(readFileSync(new URL('../src/data/layout-assembly/expanded/heading-fields.json',import.meta.url),'utf8'))[plan.layoutSlug]??{};
+const headings=Object.create(null);for(const [key,value] of Object.entries(plan.layoutContent?.headings??{})){if(!Object.hasOwn(headingFields,key))throw Error('Unknown editorial heading '+key);headings[key]=text(value,'editorial heading',200).trim();if(!headings[key])throw Error('Editorial heading must not be blank');}
+const copy=Object.create(null);for(const [key,value] of Object.entries(plan.layoutContent?.copy??{})){if(!/^p[0-9]{1,3}$/.test(key))throw Error('Invalid native copy key');copy[key]=text(value,'native paragraph');}
+
 const root=resolve(dest);if(existsSync(root)&&(!lstatSync(root).isDirectory()||lstatSync(root).isSymbolicLink()))throw Error('Output must be a normal empty directory');if(existsSync(root)&&readdirSync(root).length)throw Error('Output directory must be empty; edited student websites are never overwritten');
 const workspace=mkdtempSync(join(tmpdir(),'art-direction-export-'));
 try{
- const inherited={...plan,brand:{...plan.brand,tagline:text(plan.brand?.tagline||'','tagline')},navigation,layoutSlug:plan.kind==='knowledge'?'field-notes':'clinician'};
+ const inherited={...plan,sectionPatterns,brand:{...plan.brand,tagline:text(plan.brand?.tagline||'','tagline')},navigation,layoutSlug:plan.kind==='knowledge'?'field-notes':'clinician'};
  // Reuse the reviewed scaffold/security implementation; the selected surrogate is never shipped.
  const seed=join(workspace,'seed.json'),generated=join(workspace,'site');writeFileSync(seed,JSON.stringify(inherited));
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
- settings.content=content;settings.pageContent=pageContent;
- settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['articles','topics','page-search']:['services','faq','page-contact','page-privacy','page-search']};
+ settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy,headings};
+ settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.
  if(plan.contentDirectory){

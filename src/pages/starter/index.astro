@@ -1,5 +1,9 @@
 ---
-import directions from '../../data/layout-directions.json';
+import originals from '../../data/layout-directions.json';
+import expansion from '../../data/layout-assembly/expansion-directions.json';
+const directions=[...originals,...expansion];
+import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
+const statusBySlug=Object.fromEntries(layoutDefinitions.map(item=>[item.slug,item.assemblyStatus]));
 import patternRegistry from '../../data/section-patterns.registry.json';
 import { starterPages, starterThemeSeeds, starterThemePalettes } from '../../data/starter-config';
 const base=import.meta.env.BASE_URL;
@@ -13,21 +17,22 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <title>規劃我的網站｜Astro 工作坊</title>
 <meta name="description" content="依序選擇 Astro 首頁版型、品牌視覺、頁面與導覽，產生可交給 AI 的網站規格。"/>
 <link rel="stylesheet" href={base+'starter-planner.css'}/>
-</head>
+<style>.layout-option{padding:0;overflow:hidden}.layout-option>img{display:block;width:100%;height:195px;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}.layout-option>label{display:flex;flex-direction:column;gap:6px;padding:18px 18px 6px;cursor:pointer;flex:1}.layout-option>a{margin:0 18px 18px}.layout-option:has(input:checked){outline:2px solid var(--accent);outline-offset:2px}.assembly-status{font-size:12px;font-weight:700;color:#765244}</style><style>.brand-design-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.brand-design-controls label{display:grid;gap:6px;font-weight:600}.brand-design-controls select,.brand-design-controls input{font:inherit;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px;width:100%;min-width:0}@media(max-width:650px){.brand-design-controls{grid-template-columns:1fr}}</style></head>
 <body>
 <header class="planner-nav"><a href={base}>← 回設計展示總覽</a><span>WEBSITE / STARTER PLANNER</span></header>
 <main class="planner-wrap" id="main">
 <div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是<strong>規劃工具</strong>，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
 
 <form id="starter-form">
-<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先選最接近你想要的設計就好，不必一次決定所有細節。後續可以參考八款 Demo、12 款版型與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
+<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。後續可以參考八款 Demo、版型圖鑑與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
 <fieldset class="kind-choice"><legend>我想建立的是</legend><label><input type="radio" name="kind" value="knowledge" checked/> 知識／部落格</label><label><input type="radio" name="kind" value="helper"/> 助人者／專業服務</label></fieldset>
-<div class="layout-grid" id="layout-grid">
-{directions.map((item,i)=><label class="layout-option" data-kind={item.kind}><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><small>{item.structure}</small><span>{item.description}</span><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">預覽版型 ↗</a></label>)}
+<p><a href={base+'templates/'}>開啟完整視覺模板圖鑑（桌機與手機） ↗</a></p><div class="layout-grid" id="layout-grid">
+{directions.map((item,i)=>(<div class="layout-option" data-kind={item.kind}>{!expansion.some(x=>x.slug===item.slug)&&<img src={base+'template-gallery/'+item.slug+'-desktop.webp'} alt={item.title+' Astro 首頁實際縮圖'} width="1440" height="900" loading="lazy" onerror="this.hidden=true"/>}<label><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><span class="assembly-status">{statusBySlug[item.slug]==='ready'?'Starter Ready':statusBySlug[item.slug]==='in-progress'?'Assembly in Progress':'Prototype'}</span><small>{item.structure}</small><span>{item.description}</span></label><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">完整首頁預覽 ↗</a></div>))}
 </div></section>
 
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
+<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label><label>從電腦選擇 Logo（會一併放入下載的規劃檔）<input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>從電腦選擇主視覺（會一併放入下載的規劃檔）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>Logo 圖片檔案路徑<input name="logoPath" placeholder="/images/my-logo.png" /></label><label>主視覺圖片檔案路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label><label>圖片替代文字<input name="heroImageAlt" maxlength="180" placeholder="描述圖片內容，非關鍵字堆疊"/></label></div><p class="muted">優先使用上方選擇檔案：照片會留在瀏覽器內，不會上傳伺服器；下載的 JSON 會包含圖片資料，交給匯出器後才會寫入獨立網站。每張最多 4 MB。若直接填路徑，則需自行放置檔案。未提供時顯示示意圖。</p>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
 <div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
 <label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
@@ -46,6 +51,13 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
+<section class="step" aria-labelledby="step-content"><div class="step-head"><span>02+</span><div><h2 id="step-content">我的網站內容（依版型顯示）</h2><p>不用編輯 JSON。選擇「閱讀年鑑」、「聲音通信」或任一助人者版型時，填寫真實資料；未填的欄位會保留待設定提示。</p></div></div>
+<div class="layout-content-fields"><h3>首頁文字（適用全部十二款）</h3><label>首頁大標題（選填）<input id="home-headline" maxlength="120" placeholder="留空時保留原 Layout 的設計標題"/></label><label>首頁介紹（選填）<textarea id="home-intro" maxlength="800" rows="3" placeholder="你希望訪客第一眼理解的內容；留空使用版型示範"></textarea></label></div>
+<div class="layout-content-fields"><h3>關於頁（適用十二款）</h3><p class="muted">這些是獨立內頁內容，不會被首頁介紹覆蓋。只寫真實資料；不清楚可以留空。</p><label>我的介紹<textarea id="about-bio" maxlength="1200" rows="4" placeholder="真實的個人背景或目前在做的事"></textarea></label><label>網站或服務目的<textarea id="about-purpose" maxlength="1200" rows="3" placeholder="為什麼建立這個網站"></textarea></label><label>我的方法<textarea id="about-approach" maxlength="1200" rows="3" placeholder="寫作／整理／協助他人的實際方式"></textarea></label><label>作品、經歷與可查證資訊<textarea id="about-background" maxlength="1200" rows="3" placeholder="沒有資料就留空，不編造資格或見證"></textarea></label></div>
+<div class="layout-content-fields" data-content-layout="reading-atlas" hidden><h3>閱讀年鑑</h3><label>閱讀月份<select id="reading-month">{Array.from({length:12},(_,i)=><option value={String(i+1).padStart(2,'0')}>{i+1} 月</option>)}</select></label><label>一本真正讀過的書<input id="reading-title" maxlength="150" placeholder="請填入書名"/></label><label>閱讀評註<textarea id="reading-note" maxlength="1000" rows="3" placeholder="自己的真實心得"></textarea></label><label>年度選書<input id="annual-title" maxlength="150" placeholder="選填，自己實際讀過的書"/></label><label>年度選擇理由<textarea id="annual-note" maxlength="1000" rows="3"></textarea></label><p class="muted">這一版先支援一筆閱讀紀錄；其餘紀錄可由 AI 依相同格式加入。</p></div>
+<div class="layout-content-fields" data-content-layout="radio-letter" hidden><h3>聲音通信</h3><label>自有音訊檔案路徑<input id="episode-audio" placeholder="/audio/episode-01.mp3"/></label><label>逐字稿第一段時間<input id="episode-time" placeholder="00:00" maxlength="32"/></label><label>逐字稿第一段文字<textarea id="episode-text" maxlength="2000" rows="4"></textarea></label><p class="muted">產生器只接受本地有授權的音檔，請把音檔放在 Site Brief 所在資料夾的 public/audio/；不會自動錄音或生成逐字稿。</p></div>
+<div class="layout-content-fields" data-content-kind="helper" hidden><h3>助人者網站：真實的服務資訊（六款通用）</h3><label>服務範圍與適合對象<textarea id="fact-scope" maxlength="500" rows="3" placeholder="清楚寫出真正提供的服務，未確認可留空"></textarea></label><label>服務界線／不提供的服務<textarea id="fact-exclusions" maxlength="500" rows="3" placeholder="不虛構醫療資格或效果"></textarea></label><label>合作方法<textarea id="fact-method" maxlength="500" rows="3" placeholder="實際合作流程"></textarea></label><label>第一次聯絡或見面的流程<textarea id="fact-first-visit" maxlength="500" rows="3" placeholder="站長確認後填入"></textarea></label><label>一次服務時間<input id="fact-duration" maxlength="100" placeholder="待確定就留空"/></label><label>服務費用<input id="fact-price" maxlength="100"/></label><label>取消規則<input id="fact-cancellation" maxlength="200"/></label><label>專業資格（需可查證）<input id="fact-qualification" maxlength="200"/></label><label>公開聯絡方式<input id="fact-contact" maxlength="200"/></label><p class="muted">不必填滿。沒有資料就顯示待確認，不能自行編造資格、價格或預約成功。</p></div>
+</section>
 <section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
 <div class="navigation-builder">
   <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
@@ -83,6 +95,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
+<aside class="handoff-guide"><strong>下一步：交給 AI 建立自己的網站</strong><p>先下載下方的 Site Brief JSON，然後前往<a href={base+'guide/'}>正式建站 Guide</a>，取得既有的 AI 建站資料包與唯一正式起始提示詞。學員不用 Fork 老師的 GitHub，也不用自己執行終端機。</p><a class="button secondary" href={base+'guide/'}>前往 AI 建站 Guide →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
@@ -90,7 +103,9 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </main>
 <script>
 import { starterPages, starterThemeSeeds, starterThemePalettes, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
-import directions from '../../data/layout-directions.json';
+import originals from '../../data/layout-directions.json';
+import expansion from '../../data/layout-assembly/expansion-directions.json';
+const directions=[...originals,...expansion];
 import patternRegistry from '../../data/section-patterns.registry.json';
 const form=document.querySelector<HTMLFormElement>('#starter-form')!;
 const paletteKeys=['primary','secondary','accent','background','text'] as const;
@@ -195,6 +210,17 @@ function shiftItem(id:string,delta:number){
  const firstPosition=Math.min(a,b);
  remaining.splice(firstPosition,0,...(delta>0?second:first),...(delta>0?first:second));
  nav=remaining;syncNav();
+ // The clicked control is recreated by renderNav(); restore focus explicitly for keyboard users.
+ const movedRow=[...rows.querySelectorAll<HTMLElement>('.nav-row')].find(row=>row.dataset.navId===id);
+ const preferred=[...(movedRow?.querySelectorAll<HTMLButtonElement>('button')??[])].find(button=>button.getAttribute('aria-label')?.startsWith((delta>0?'下移':'上移')+'：')&&!button.disabled);
+ const focusTarget=preferred??movedRow?.querySelector<HTMLButtonElement>('button:not(:disabled)');
+ focusTarget?.focus({preventScroll:true});
+ // Browser default click processing can focus the now-detached original node after
+ // the synchronous DOM replacement. Reassert focus after the click finishes.
+ if(focusTarget){
+  queueMicrotask(()=>{if(focusTarget.isConnected)focusTarget.focus({preventScroll:true});});
+  requestAnimationFrame(()=>{if(focusTarget.isConnected)focusTarget.focus({preventScroll:true});});
+ }
 }
 function indentItem(id:string){
  const ordered=orderedNav(),i=ordered.findIndex(x=>x.id===id),item=ordered[i];
@@ -327,24 +353,82 @@ function update(){
  document.querySelector<HTMLElement>('#brand-hex')!.textContent=color.value.toUpperCase();
  renderMenu();showPlan();
 }
+type EmbeddedImage={path:string;mime:string;base64:string};
+const embeddedImages=new Map<string,EmbeddedImage>();
+for(const [elementId,key,basename,pathId] of [['logo-upload','logo','brand-logo','logoPath'],['hero-upload','hero','hero-image','heroImagePath']]){
+ const picker=document.querySelector<HTMLInputElement>('#'+elementId)!;
+ picker.addEventListener('change',async()=>{
+  const file=picker.files?.[0];
+  if(!file){embeddedImages.delete(key);showPlan();return}
+  const extensions:Record<string,string>={'image/png':'png','image/jpeg':'jpg','image/webp':'webp','image/avif':'avif'};
+  if(!extensions[file.type]||file.size>4*1024*1024||file.size===0){status.textContent='請選擇 PNG、JPG、WebP 或 AVIF，每張不超過 4 MB';picker.value='';embeddedImages.delete(key);showPlan();return}
+  const reader=new FileReader();
+  reader.onerror=()=>{status.textContent='無法讀取圖片，請換一個檔案'};
+  reader.onload=()=>{
+   const result=String(reader.result);
+   const base64=result.split(',')[1];
+   if(!base64){status.textContent='圖片編碼失敗';return}
+   const path='/images/'+basename+'.'+extensions[file.type];
+   embeddedImages.set(key,{path,mime:file.type,base64});
+   form.querySelector<HTMLInputElement>('[name="'+pathId+'"]')!.value=path;
+   status.textContent='已包含 '+file.name+'，下載規劃 JSON 時會一併保存；尚未部署';
+   showPlan();
+  };
+  reader.readAsDataURL(file);
+ });
+}
+const field=(id:string)=>document.querySelector<HTMLInputElement|HTMLTextAreaElement>('#'+id)?.value.trim()||'';
+function contentExtension():Record<string,unknown>{
+ const slug=value('layout');
+
+ if(slug==='reading-atlas'){
+  const title=field('reading-title'),note=field('reading-note'),annualTitle=field('annual-title'),annualNote=field('annual-note');
+  return {reading:{records:title||note?[{month:field('reading-month'),title,note}]:[],...(annualTitle||annualNote?{annualBook:{title:annualTitle,note:annualNote}}:{})}};
+ }
+ if(slug==='radio-letter'){
+  const path=field('episode-audio'),text=field('episode-text');
+  return {media:{...(path?{episodeAudioPath:path}:{}),episodeTranscript:text?[{time:field('episode-time')||'00:00',text}]:[]}};
+ }
+ if(value('kind')==='helper'){
+  const facts=Object.fromEntries([['scope','fact-scope'],['exclusions','fact-exclusions'],['method','fact-method'],['firstVisit','fact-first-visit'],['duration','fact-duration'],['price','fact-price'],['cancellation','fact-cancellation'],['qualification','fact-qualification'],['contact','fact-contact']].map(([key,id])=>[key,field(id)]).filter(([,v])=>v));
+  return {serviceFacts:facts};
+ }
+ return {};
+}
 function plan():StarterPlan {
  const kind=value('kind') as StarterKind;
  return {version:1,kind,layoutSlug:value('layout'),visualTheme:value('theme') as StarterTheme,
- brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:currentPalette().primary,tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value,palette:currentPalette()},
+ brand:{name:form.querySelector<HTMLInputElement>('[name="siteName"]')!.value,primaryColor:currentPalette().primary,tagline:form.querySelector<HTMLInputElement>('[name="tagline"]')!.value,palette:currentPalette(),typography:(form.querySelector<HTMLSelectElement>('[name="typography"]')!.value as 'editorial-serif'|'clear-sans'|'balanced'),imageStyle:(form.querySelector<HTMLSelectElement>('[name="imageStyle"]')!.value as 'natural'|'documentary'|'minimal'),logoPath:form.querySelector<HTMLInputElement>('[name="logoPath"]')!.value.trim()||undefined,heroImagePath:form.querySelector<HTMLInputElement>('[name="heroImagePath"]')!.value.trim()||undefined,heroImageAlt:form.querySelector<HTMLInputElement>('[name="heroImageAlt"]')!.value.trim()||undefined},
  navigation:nav.map(x=>({...x})),
  sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
- notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value};
+ notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value,about:{bio:field('about-bio'),purpose:field('about-purpose'),approach:field('about-approach'),background:field('about-background')},content:{headline:form.querySelector<HTMLInputElement>('#home-headline')!.value.trim(),intro:form.querySelector<HTMLTextAreaElement>('#home-intro')!.value.trim()},...contentExtension(),
+ assets:[...embeddedImages.values()].filter(asset=>asset.path===(asset.path.includes('brand-logo')?form.querySelector<HTMLInputElement>('[name="logoPath"]')!.value:form.querySelector<HTMLInputElement>('[name="heroImagePath"]')!.value))};
 }
-function showPlan(){const p=plan();output.textContent=JSON.stringify(p,null,2)}
+function showPlan(){
+ const slug=value('layout');
+ document.querySelectorAll<HTMLElement>('[data-content-layout]').forEach(group=>{group.hidden=group.dataset.contentLayout!==slug;});
+ document.querySelectorAll<HTMLElement>('[data-content-kind]').forEach(group=>{group.hidden=group.dataset.contentKind!==value('kind');});
+ const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
+}
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
+const initialParams=new URLSearchParams(location.search);
+const requested=directions.find(x=>x.slug===initialParams.get('layout')&&x.kind===initialParams.get('kind'));
+if(requested){
+ const kindField=form.querySelector<HTMLInputElement>('input[name="kind"][value="'+requested.kind+'"]');
+ if(kindField){kindField.checked=true;update();}
+ const chosen=form.querySelector<HTMLInputElement>('input[name="layout"][value="'+requested.slug+'"]');
+ if(chosen){chosen.checked=true;showPlan();}
+}
+
 color.addEventListener('input',()=>{document.querySelector<HTMLInputElement>('#palette-primary')!.value=color.value;paintPalette();showPlan()});
 form.addEventListener('input',()=>{renderMenu();showPlan()});
 target.addEventListener('change',showPlan);
 document.querySelector<HTMLButtonElement>('#copy-plan')!.addEventListener('click',async()=>{
  const p=plan(),errors=checkStarterPlan(p,directions);
  if(errors.length){status.textContent=errors.join('；');return}
+ if(p.assets?.length){status.textContent='已選擇圖片，請用「下載網站規劃檔」完整保存；單純複製文字不適合保存大型圖片資料。';return}
  try {await navigator.clipboard.writeText(JSON.stringify(p,null,2));status.textContent='已複製，可交給 AI 依 astro-starter-onboarding Skill 繼續。'} catch {status.textContent='無法使用剪貼簿，請選取下方 JSON 手動複製。'}
 });
 document.querySelector<HTMLButtonElement>('#save-plan')!.addEventListener('click',()=>{
@@ -371,4 +455,4 @@ update();
 .notes-field label{display:block;font-weight:600}
 .notes-field textarea{display:block;width:100%;min-width:0;max-width:100%;min-height:150px;resize:vertical;box-sizing:border-box;line-height:1.65}
 </style>
-</body></html>
+<style>.layout-content-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.layout-content-fields[hidden]{display:none}.layout-content-fields h3,.layout-content-fields p{grid-column:1/-1}.layout-content-fields label{display:flex;flex-direction:column;gap:.5rem}.layout-content-fields input,.layout-content-fields select,.layout-content-fields textarea{font:inherit;border:1px solid var(--line);background:var(--white);color:inherit;border-radius:8px;padding:.7rem;width:100%}@media(max-width:650px){.layout-content-fields{grid-template-columns:1fr}}</style><style>.handoff-guide{margin:1.5rem 0;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;background:var(--white)}.handoff-guide summary{font-weight:700;cursor:pointer}.handoff-guide li{margin:.75rem 0;line-height:1.8}.handoff-guide p{color:var(--muted)}</style></body></html>

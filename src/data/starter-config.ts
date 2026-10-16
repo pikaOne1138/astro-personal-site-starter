@@ -24,18 +24,25 @@ export const starterPages = {
 } as const;
 export type StarterPageId = typeof starterPages[StarterKind][number]['id'];
 export interface StarterNavigationItem {id:string;label:string;enabled:boolean;parentId?:string;path?:string;}
-export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;}
+export interface StarterPatternChoice {patternId:string;targetPage:string;insertAfter:string;content?: {title:string;description?:string;items?:Array<{title:string;description:string;url?:string}>;articleSlugs?:string[];suitable?:string[];notSuitable?:string[];notice?:string;professionalName?:string;credentials?:string[];areas?:string[];format?:string;policy?:string;action?:{label:string;pageId?:string;url?:string}};}
 export interface StarterPlan {
   version: 1;
   kind: StarterKind;
   layoutSlug: string;
   visualTheme: StarterTheme;
-  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
+  brand: { name: string; primaryColor: string; tagline: string; logoPath?: string; typography?: 'editorial-serif'|'clear-sans'|'balanced'; imageStyle?: 'natural'|'documentary'|'minimal'; heroImagePath?: string; heroImageAlt?: string; imageFit?: 'cover'|'contain'; imagePosition?: 'center'|'top'|'bottom'|'left'|'right'; palette?: {primary:string;secondary:string;accent:string;background:string;text:string} };
   navigation: StarterNavigationItem[];
   primaryCta: { label: string; pageId: string };
   sectionPatterns?: StarterPatternChoice[];
+  assets?: Array<{path:string;mime:string;base64:string}>;
+  content?: {headline?:string;intro?:string};
+  about?: {bio?:string;purpose?:string;approach?:string;background?:string};
   notes: string;
+  reading?: {records:Array<{month:string;title:string;note:string}>;annualBook?:{title:string;note:string}};
+  media?: {episodeAudioPath?:string;episodeTranscript?:Array<{time:string;text:string}>};
+  serviceFacts?: Partial<Record<'scope'|'exclusions'|'method'|'firstVisit'|'duration'|'price'|'cancellation'|'qualification'|'contact',string>>;
 }
+
 export const starterThemeSeeds:Record<StarterTheme,string> = {
   paper:'#9A3B2E',morning:'#C8775A',studio:'#2F5D50',botanical:'#50775B',
  ocean:'#245D78',sand:'#9C603B',slate:'#475569',lavender:'#705A95',
@@ -62,6 +69,21 @@ export function checkStarterPlan(plan:StarterPlan, availableLayouts:Array<{kind:
     if(['primary','secondary','accent','background','text'].some(k=>!/^#[0-9a-fA-F]{6}$/.test(colors[k as keyof typeof colors]||'')))errors.push('品牌色盤必須提供五個有效 HEX 色碼');
     if(colors.primary.toUpperCase()!==plan.brand.primaryColor.toUpperCase())errors.push('主色需與色盤一致');
   }
+  const brand=plan.brand;
+  if(brand.typography && !['editorial-serif','clear-sans','balanced'].includes(brand.typography))errors.push('字體組合無效');
+  if(brand.imageStyle && !['natural','documentary','minimal'].includes(brand.imageStyle))errors.push('圖片風格無效');
+  if(brand.logoPath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.logoPath))errors.push('Logo 請使用網站本地的 PNG、WebP、JPG 或 AVIF');
+  if(brand.heroImagePath && !/^\/images\/[a-z0-9/_-]+\.(?:webp|png|jpe?g|avif)$/i.test(brand.heroImagePath))errors.push('主視覺圖片需使用網站自己的 /images/ 檔案路徑');
+  if(brand.imageFit&&!['cover','contain'].includes(brand.imageFit))errors.push('圖片填滿方式無效');
+  if(brand.imagePosition&&!['center','top','bottom','left','right'].includes(brand.imagePosition))errors.push('圖片重點位置無效');
+  if(brand.heroImageAlt && (brand.heroImageAlt.length>180 || !brand.heroImagePath))errors.push('主視覺替代文字需要有效的圖片路徑');
+  if(plan.reading?.records && plan.reading.records.some(x=>!/^(0[1-9]|1[0-2])$/.test(x.month)||!x.title.trim()||!x.note.trim()))errors.push('閱讀紀錄需要月份、實際書名與真實評註');
+  if(plan.reading?.annualBook && (!plan.reading.annualBook.title.trim()||!plan.reading.annualBook.note.trim()))errors.push('年度選書請同時提供書名與理由');
+  if(plan.media?.episodeAudioPath&&!/^\/audio\/[a-z0-9/_-]+\.(mp3|wav|ogg|m4a)$/i.test(plan.media.episodeAudioPath))errors.push('音檔請使用 /audio/ 本地音檔路徑');
+  if(plan.serviceFacts && Object.values(plan.serviceFacts).some(x=>typeof x!=='string'||x.length>500))errors.push('服務資訊欄位太長');
+  if(plan.content && ((plan.content.headline?.length??0)>120||(plan.content.intro?.length??0)>800))errors.push('首頁標題或介紹文字太長');
+  if(plan.about && Object.values(plan.about).some(x=>typeof x!=='string'||x.length>1200))errors.push('關於頁文字需為文字內容，單欄最多 1200 字');
+  if(plan.assets?.some(x=>!/^\/images\/(brand-logo|hero-image)\.(png|jpg|webp|avif)$/.test(x.path)||!/^image\/(png|jpeg|webp|avif)$/.test(x.mime)||!x.base64||x.base64.length>6000000))errors.push('圖片格式或大小無效，最多約 4 MB');
   const available=starterPages[plan.kind].map(p=>p.id as string);
   const selected=plan.navigation.filter(x=>x.enabled);
   if(selected.length<2||selected.length>20)errors.push('請啟用 2 至 20 個頁面');

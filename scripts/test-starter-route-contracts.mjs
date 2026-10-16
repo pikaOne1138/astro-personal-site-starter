@@ -1,4 +1,4 @@
-import {mkdtempSync,readFileSync,writeFileSync,rmSync,mkdirSync} from 'node:fs';
+import {mkdtempSync,readFileSync,writeFileSync,rmSync,mkdirSync,existsSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {spawnSync} from 'node:child_process';
@@ -28,7 +28,9 @@ try{
  const dir=run('W10 N2 N3 custom CTA route',plan,true);
  const output=JSON.parse(readFileSync(join(dir,'site.config.json'),'utf8'));
  if(!output.navigation.some(n=>n.id==='page-custom-guide'&&n.path==='start-here/tools/'))throw Error('W10 custom route not preserved');
- const home=readFileSync(join(dir,'src/pages/index.astro'),'utf8');
+ const homepage=readFileSync(join(dir,'src/pages/index.astro'),'utf8');
+ const adapterPath=join(dir,'src/components/layouts/selected/Home.astro');
+ const home=homepage+(existsSync(adapterPath)?'\n'+readFileSync(adapterPath,'utf8'):'');
  const layout=readFileSync(join(dir,'src/layouts/SiteLayout.astro'),'utf8');
  const pages=readFileSync(join(dir,'src/pages/[...page].astro'),'utf8');
  const selected=readFileSync(join(dir,'src/components/SelectedPatterns.astro'),'utf8');

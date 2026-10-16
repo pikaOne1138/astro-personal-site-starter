@@ -1,0 +1,63 @@
+name: Build visual template cover assets
+
+# Dedicated asset generation, not a second QA suite. Writes ONLY this feature branch.
+on:
+  push:
+    branches: [feat/visual-template-assembly]
+    paths:
+      - '.github/workflows/template-gallery-assets.yml'
+      - 'scripts/capture-template-gallery.mjs'
+      - 'src/pages/layouts/**'
+      - 'src/data/layout-directions.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: template-gallery-assets-feature-only
+  cancel-in-progress: false
+
+jobs:
+  render-covers:
+    if: github.ref == 'refs/heads/feat/visual-template-assembly'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/visual-template-assembly
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies and capture browser
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-package-lock playwright sharp
+          npx playwright install --with-deps chromium
+      - name: Build actual Astro layout routes
+        env:
+          CF_PAGES_URL: https://example.com
+        run: npm run build
+      - name: Start local preview and capture real layout covers
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/template-gallery-preview.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4321/layouts/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl -fIs http://127.0.0.1:4321/layouts/
+          node scripts/capture-template-gallery.mjs
+          test "$(find public/template-gallery -type f -name '*.webp' | wc -l)" -eq 24
+      - name: Commit controlled cover assets ONLY to feature branch
+        env:
+          CAPTURE_SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/template-gallery docs/template-gallery/captured.json
+          if git diff --cached --quiet; then echo 'Cover assets already match'; exit 0; fi
+          git commit -m "assets(gallery): capture 12 real Astro layouts at desktop and mobile [skip template capture]"
+          git fetch origin feat/visual-template-assembly
+          git rebase origin/feat/visual-template-assembly
+          git push origin HEAD:feat/visual-template-assembly
