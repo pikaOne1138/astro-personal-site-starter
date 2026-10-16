@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "kind": "knowledge",
+  "layoutSlug": "field-notes",
+  "visualTheme": "paper",
+  "brand": {
+    "name": "QA 寫作筆記",
+    "primaryColor": "#9A3B2E",
+    "tagline": "示範資料，非正式網站"
+  },
+  "navigation": [
+    {
+      "id": "articles",
+      "label": "文章",
+      "enabled": true
+    },
+    {
+      "id": "about",
+      "label": "關於",
+      "enabled": true
+    }
+  ],
+  "primaryCta": {
+    "pageId": "articles",
+    "label": "閱讀文章"
+  },
+  "content": {
+    "headline": "閱讀與記錄",
+    "intro": "示例文字；由站主正式內容替換。"
+  },
+  "notes": "Contract fixture only. 設計意圖：長文優先、無圖片、按文章順序探索；未經確認不得假造真實文章。"
+}
