@@ -157,3 +157,14 @@ Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layo
 - AstroAnimate 原生核心提供 CSS-first 的按鈕、卡片與文字效果，與現有 MotionCard／Reveal 重疊；先查當前版本及範例，避免因套件名稱有 Astro 就當作必裝。astro-webtools 的 Polaroid／PostIt／Neon 是特殊視覺裝飾，不是全站預設 Motion。
 - Tailwind 與 UnoCSS 是樣式工具，不是特效庫；不要只為了單一動畫加入另一套 Utility CSS 設定。先用現有 CSS Tokens 與原生 CSS transitions/keyframes。
 - 頁面切換先評估 Astro 官方 `astro:transitions` 的 `ClientRouter`、`transition:animate`；啟用後需驗證 client-side navigation 下既有 script 的初始化時機、返回鍵、焦點與 reduced motion，並非只加一段 CSS 就完成。
+
+
+## 跨 Skill 共用設計判斷（Task 4）
+
+共同依據：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`（僅在檔案可存取時依需閱讀；學生 ZIP 應保留此相對路徑）。此文件是設計原則，不是必須逐字重複的實作指令；缺檔時依本 Skill 原則工作並誠實說明。
+
+本 Skill 職責：依內容意圖提供有目的、克制的微動效；不得用動畫掩蓋結構問題，須支援 reduced-motion。
+
+交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
+
+必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

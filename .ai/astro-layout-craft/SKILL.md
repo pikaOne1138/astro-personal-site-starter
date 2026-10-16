@@ -81,3 +81,14 @@ Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-desi
 
 ## 已上線網站：局部版面修改模式（不是重新建站）
 當學員說「調整首頁第二段」「移動圖片」「改手機排列」時，先讀**學員自己的現況**、對應頁面與 Layout，再量測/截圖原始版，列出需變更的區段、受影響共用元件、手機重排；以最小 diff 修改，不重跑 Site Brief 生成器覆蓋已完成內容。保留原有品牌、頁面結構及 URL，不讓局部需求演變成全站換版。共用 Header/Nav 的變動需要同步查每個頁面，新增/移動頁面交 `astro-page-management`。至少 1440、1280、768、390px 比較 before/after，檢查長中文標題、焦點、版心寬度與溢出。修改完必須 Branch → PR → 真實 Preview → 學員確認 → 才合併。
+
+
+## 跨 Skill 共用設計判斷（Task 4）
+
+共同依據：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`（僅在檔案可存取時依需閱讀；學生 ZIP 應保留此相對路徑）。此文件是設計原則，不是必須逐字重複的實作指令；缺檔時依本 Skill 原則工作並誠實說明。
+
+本 Skill 職責：依 Brief 已確認的資訊架構決定整頁閱讀動線；Layout 是結構，不是視覺主題。
+
+交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
+
+必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

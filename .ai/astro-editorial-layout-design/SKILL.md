@@ -118,3 +118,13 @@ import R05 from '../../recipes/code/rhythm/R05-voice-heading.astro';
 - 閾值（12px、44px、行長、字級種類 ≤12…）為 [NEW] 建議，不是十款的屬性；十款依這些閾值會被扣分（見 `scoring.md` 末段）。
 - 驗證只在 Chromium（Windows）執行；未測 Safari／Firefox／真機／螢幕閱讀器。字體為系統字體堆疊，換環境需重新截圖確認 CJK 斷行。
 - 對比檢查略過背景圖／漸層上的文字與 `aria-hidden` 元素；文字疊壓為 bounding box 啟發式，需目視複核。
+
+## 跨 Skill 共用設計判斷（Task 4）
+
+共同依據：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`（僅在檔案可存取時依需閱讀；學生 ZIP 應保留此相對路徑）。此文件是設計原則，不是必須逐字重複的實作指令；缺檔時依本 Skill 原則工作並誠實說明。
+
+本 Skill 職責：沿用 Layout 與 Brief 的內容次序，安排 Hero、Section、清單和手機閱讀節奏，不能重新引入已否決的構圖。
+
+交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
+
+必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

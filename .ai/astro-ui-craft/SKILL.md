@@ -212,3 +212,14 @@ Our Blocks and Section Patterns still represent **site-specific tasks and conten
 
 ## 既有學員網站：元件增修模式
 收到「新增卡片、替換 FAQ、修改按鈕」時先確認學生 Repo 和使用位置，搜尋該網站現有 components/Registry 與 ZIP 的 `src/data/blocks.registry.json`、`COMPONENTS.md`：優先調整 props 與既有 Blocks，確定缺少能力才新建可重用元件。不得只在某個頁面另寫功能一模一樣的區塊。變更共用元件須列出所有引用頁面、檢查現有 Props/相容性、避免破壞 CSS Tokens、鍵盤、手機與 reduced-motion；真正送出表單、預約、電子報必須有已配置的後端，否則明確示範/待設定。若涉及 Header/Nav 要依 `astro-page-management` 驗證所有頁面一致。建立 PR 並提供有對應 Head SHA 的 Preview，未經確認不發布。
+
+
+## 跨 Skill 共用設計判斷（Task 4）
+
+共同依據：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`（僅在檔案可存取時依需閱讀；學生 ZIP 應保留此相對路徑）。此文件是設計原則，不是必須逐字重複的實作指令；缺檔時依本 Skill 原則工作並誠實說明。
+
+本 Skill 職責：沿用上游已確認的結構和內容，只細化元件、Design Tokens、互動與跨頁一致性。
+
+交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
+
+必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。
