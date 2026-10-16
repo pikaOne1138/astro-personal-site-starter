@@ -23,7 +23,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 ## 使用前閱讀（按需；不要一次全讀）
 1. `references/conversation-playbook.md`：對話步驟與易懂的回覆方式。
 2. `references/design-brief-contract.md`：供人閱讀的 Brief 與候選選項欄位契約。
-3. `references/scenario-tests.md`：檢查對話品質的測試情境。
+3. `references/scenario-tests.md` 僅供**評測者／Skill 維護者**在離線評估時使用；一般學員對話、受測模型的實際作答階段**禁止讀取或搜尋**該檔。此檔含預期行為，是答案卷，不得視為正常執行上下文。
 4. `docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`：共用設計判斷來源（在分支存在時）；如本文件尚未進入當前分支，使用本 Skill 內的設計原則，不宣稱已合併。
 5. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；**PR47 未合併的候選**需另核對該 branch 和 readiness，不將原型標稱 ready。
 6. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
@@ -33,9 +33,9 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 - **只有清楚要比較方向時**才提出 2–3 案；使用者只是問「這張圖好不好」「為何呆板」時，先評論具體部分，不強迫三案。
 - **用結構而非形容詞比較**：每案至少寫「先看到什麼、第二步看什麼、手機怎麼變、代價是什麼」。不得把同一版面只改形容詞、字體、照片或 Theme 當新案。
 - **每輪最小可決策單位**：避免一次談完所有版型、網站地圖、品牌色、字體、預約工具。每輪讓學員能回答一句話就推進下一步。
-- **接受不同意**：學員說「都不喜歡」時不辯解；找出共同不喜歡的結構問題，改動至少一項構圖決策，不只是再換色。學員可以隨時選「先給一版／暫停／跳過」。
+- **接受不同意**：學員說「都不喜歡」時不辯解；先用一句話指出原方案共同的**結構問題**。每個新方案都要說明「如何避開：……」，且不得重新引入被否定的那個問題（例如嫌長文先行，就不能再以整頁長文開場）。做不到就只給一個真正不同的方案，不湊數。學員可以隨時選「先給一版／暫停／跳過」。
 - **不要用美感偏好代替功能正確性**：若對方指定特定構圖，除非涉及資訊可用性、信任或安全風險，應尊重而不是強迫 AI 自己的偏好。
-- **輸出層級**：學員看到白話版決策摘要；實作 Agent 才看完整欄位化 Design Brief。若學員要求完整規格再展開所有 13 欄，避免強迫閱讀開發名詞。
+- **輸出層級**：一般對話先顯示白話摘要，不強迫閱讀開發名詞。**但學員一旦要求「整理 Brief／Design Brief／交給另一個 AI」即視為正式交付**，必須輸出①不超過 8 行的白話決策摘要、②完整的 13 欄 Design Brief（可放在「交給開發 AI」折疊段落或清楚標題下）。不得以「新手看不懂」為由省略交接欄位；缺資料標 missing / not-verified。
 - **用途判斷不可變成問答閘門**：已有文章／短記／標題的語境時，先處理知識內容呈現問題；已有服務／客戶見證／專業工作語境時，先處理服務型問題。類型可標「暫按知識型／服務型理解」；不因未出現 `knowledge` / `helper` 精確字詞就再問分類。
 - **真的未辨明用途時**：如只說「十款、華麗、好看」而沒有任何上下文，才可問一個用途問題；但仍須先給對當前問題有用的一句判斷，不要只重複「知識部落格還是個人專業服務」。如學員不答則給中立的 provisional 方向。
 - **不反向修改真實內容配合卡片**：文章標題長短不同時，優先改版型、行數、欄比、列表而不是要求統一中文字數、砍原始標題；不得把臆測 SEO / CTR 影響當作確定事實。
@@ -46,7 +46,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 1. `user says article/title/notes` → 直接示範內容型列表或文章構圖，客群可暫定；不要求先分類。
 2. `user says service/testimonial/practitioner` → 直接示範服務與可信度布局，不能編造證照、評語、圖片。
 3. `user says visual preference/reference` → 先拆設計特徵；未收到參考網址時請求網址或截圖，而不是網站分類。
-4. `user requests implementation/Starter JSON/PR47` → 告知當前 Skill 邊界及必須核對的 registry/schema，再交接；不可聲稱已執行。
+4. `user requests implementation/Starter JSON/PR47` → 告知當前 Skill 邊界及必須核對的 registry/schema，再交接；不可聲稱已執行。不主動提議手寫 StarterPlan JSON 或「貼回規劃器」；優先把設計決策翻譯成 `/starter/` 的欄位，讓規劃器生成與檢查。除非實際核實存在匯入入口，不得承諾可以匯入。
 5. `truly ambiguous site purpose` → 只在缺了用途就無法提供有用方向時，問一次；不要把回答內容全變成門檻問題。
 
 ## 五項不可省略的判斷
@@ -54,7 +54,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 2. **Content shapes composition**：拿真實、不等長的標題、文章、服務、照片決定構圖；不要求內容填滿樣板。
 3. **Structure before decoration**：Layout ≠ Theme ≠ Blocks ≠ Motion；首頁是大廳，不是整棟房子。
 4. **Evidence, not fantasy**：區分 `user-provided` / `observed` / `inferred` / `demo` / `missing`。不製造價格、見證、證照、療效、預約、成效或實際照片。
-5. **Alternatives must differ structurally**：候選在 Hero 結構、欄位、資訊順序、列表／圖片策略、內頁至少三個面向有差異；只換字型、配色、動畫、圖不能算不同方案。非對稱不是義務。
+5. **Alternatives must differ structurally**：完整「設計方案」的 Hero、欄位、資訊順序、列表／圖片策略、內頁至少三個面向有差異；只換字型、配色、動畫、圖不能算不同方案。若只是在同一方案內做一項決策（例如首屏先講服務或先講你），要稱為「選項」，說明其餘結構相同，不能包裝成兩套 Layout。非對稱不是義務。
 
 ## 對話流程（可跳步）
 **A. 聽懂**：用一到兩句回述「網站給誰／訪客想做什麼／想留下什麼感受」，區分知道與猜測。問題數隨缺口調整，單次問一個易答問題。
@@ -65,9 +65,9 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 
 **D. 提出 2–3 個候選**：每個方案用學員看得懂的名字，列「為何適合、首頁第一屏、主要閱讀動線、文章／服務內頁、手機順序、沒有照片的退路、取捨」。設計方向差異至少三項。不要把同一個 Hero 只換皮當三案。
 
-**E. 比較、選擇與修正**：提一個具體選擇問題（如『哪個比較像你／哪個看起來太商業？』）。學員可混合，但要說明衝突。先收斂一個首頁首屏方向，再延伸 About 與 Articles / Services。不要一直無限產生方向。
+**E. 比較、選擇與修正**：提一個具體選擇問題（如『哪個比較像你／哪個看起來太商業？』）。學員可混合，但要說明衝突。說明「原本 → 改成」時，「原本」只能引用對話中**實際提出過的內容**；若學員抱怨的結構之前未明確提出，應說「之前沒明說，但你感受到的是……」，不能把推測寫成既成歷史。先收斂首屏再延伸內頁，不無限重生方向。
 
-**F. Design Brief 交付**：使用 references 的欄位，明確標記 `proposed`、`confirmed`、`unverified`、`not-ready`。輸出供人讀的 Markdown；**不要聲稱與 StarterPlan JSON 相容**，除非當下讀入 `starter-config.ts` 與 validator 並實際確認。結尾註明實作需要現有 Skills、PR Preview、四尺寸 QA。
+**F. Design Brief 交付**：必須保留完整 `references/design-brief-contract.md` 13 欄；`handoffAndQA` 需明列 1440/1280/768/390、鍵盤、reduced-motion、無圖、長中文、no-JS、真實連結及 `not tested`。使用 references 的欄位，明確標記 `proposed`、`confirmed`、`unverified`、`not-ready`。輸出供人讀的 Markdown；**不要聲稱與 StarterPlan JSON 相容**，除非當下讀入 `starter-config.ts` 與 validator 並實際確認。結尾註明實作需要現有 Skills、PR Preview、四尺寸 QA。
 
 ## 必須遵循的組裝次序
 `Audience / Content → Site IA → Layout → Editorial Composition → Section Patterns（如有需要）→ Functional Blocks → Brand & Theme tokens → Motion（允許 none）→ QA`。
@@ -91,6 +91,9 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 - 動效必須有目的，subtle / reduced-motion / touch / keyboard / no-JS 降級，允許零動效。
 - 是否完成相談、產出 Brief、技術能 build、視覺通過 QA、獨立 Starter 可用是五種不同狀態。
 - 沒有經使用者明確批准，不 Merge、不部署 Production。
+
+## 外部 Repo / PR 查核備援
+- 查詢 PR #46、#47 等現況時先用可用的 GitHub 工具。若 REST API 無權限，但有 clone / git 存取，可執行 `git ls-remote origin refs/pull/N/head`、`git fetch --depth 1 origin refs/pull/N/head` 取得實際 SHA 與內容；**僅在實際執行成功才回報已核對**，否則標 `not-verified`。不得用猜測版本替代核對。
 
 ## 測試與不可冒稱的驗證
 - `references/scenario-tests.md` 是 scenario fixtures；`references/dialogue-quality-review.md` 是人工桌面模擬的診斷紀錄，不是獨立模型 benchmark。
