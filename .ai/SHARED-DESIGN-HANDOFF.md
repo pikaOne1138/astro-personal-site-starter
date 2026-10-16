@@ -1,6 +1,6 @@
 # Task 4｜跨 Skill 設計決策交接契約
 
-本文件是六套 Skill 的輕量共用交接說明；共用設計判斷研究來源見 [P0-AI-DESIGN-JUDGMENT-2026-10-14.md](../../docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md)。不建立新 Skill、不修改版型。
+本文件是六套 Skill 的輕量共用交接說明；共用設計判斷研究來源見 [P0-AI-DESIGN-JUDGMENT-2026-10-14.md](../docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md)。不建立新 Skill、不修改版型。
 
 ## 分工
 - Design Consultation：釐清意圖、真實資料、設計方向、取捨、否定選項；整理 Design Brief。
