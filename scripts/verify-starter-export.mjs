@@ -107,6 +107,18 @@ async function captureStudentSite(slug,kind,site,scenario={}){
         if(!await action.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&el.getBoundingClientRect().height>=44))errors.push('Primary CTA lost keyboard focus or 44px target');
       }
     }
+    const footerContrast=await page.evaluate(()=>{
+      const footer=document.querySelector('.student-footer');if(!footer)return [];
+      const ctx=document.createElement('canvas').getContext('2d');
+      const rgb=color=>{ctx.clearRect(0,0,1,1);ctx.fillStyle=color;ctx.fillRect(0,0,1,1);return [...ctx.getImageData(0,0,1,1).data].slice(0,3)};
+      const luminance=channels=>channels.map(n=>{const v=n/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);
+      const bg=luminance(rgb(getComputedStyle(footer).backgroundColor));
+      return [...footer.querySelectorAll('a,p,strong,small,h2,span')].filter(el=>el.getBoundingClientRect().height>0&&el.textContent.trim()).flatMap(el=>{
+        const ink=luminance(rgb(getComputedStyle(el).color));const ratio=(Math.max(bg,ink)+.05)/(Math.min(bg,ink)+.05);
+        return ratio<4.5?[{text:el.textContent.trim().slice(0,40),ratio}]:[];
+      });
+    });
+    if(footerContrast.length)errors.push('Selected footer contrast below 4.5: '+JSON.stringify(footerContrast));
     // Avoid screenshots of an incidental focus outline.
     await page.evaluate(()=>document.activeElement?.blur());
     // A page can fit the viewport while its index digits wrap or framed copy

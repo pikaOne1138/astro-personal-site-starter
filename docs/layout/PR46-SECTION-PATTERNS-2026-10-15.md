@@ -37,3 +37,5 @@
 同次目視亦發現 studio-chapters 的通用 extra 內容錯附服務資料表，已移除；正式服務索引與詳細頁的資訊表保留。新增自訂頁不得帶 native-service-facts 的檢查。
 
 空網站不必填滿選填區段：資料未備時先取消該 Pattern，再照常匯出／Build；不是為了檢查而補造作品。四份由實際下載包產生、各自安裝依賴的網站（subject-atlas、practice-compass、sidebar-journal、service-catalogue）完成公開 → 草稿 → 刪除與每次 Build／verify，精選、路由及搜尋均無舊文殘留；先前共用依賴暫存測試的疑點未在隔離環境重現。
+
+進一步目視 067cbcea 的深色品牌截圖，發現選用 editorial footer 沿用淺色固定底、文字卻繼承淺色品牌墨色。已以同一頁的 bg／ink 修正三種頁腳：minimal 同底、editorial 品牌色 10% 混合底、professional 反相。瀏覽器回歸現在實測選用 footer 中可見文字與實際背景的對比，低於 4.5 即 FAIL，包含既有深色品牌情境。未更動原十二款頁腳來源。

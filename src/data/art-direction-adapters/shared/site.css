@@ -4,3 +4,8 @@
 
 /* Native homepage action uses the existing 44px action geometry. */
 [data-native-page] a.native-primary-action{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;font-weight:700;max-width:100%;overflow-wrap:anywhere}
+
+/* Selected footer variants follow the owning canvas, including dark brands. */
+[data-assembled-layout] .student-footer.student-footer--footer-minimal{background:var(--bg);color:var(--ink)}
+[data-assembled-layout] .student-footer.student-footer--footer-editorial{background:color-mix(in srgb,var(--brand) 10%,var(--bg));color:var(--ink)}
+[data-assembled-layout] .student-footer.student-footer--footer-professional{background:var(--ink);color:var(--bg)}
