@@ -7,6 +7,10 @@
 2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
 3. 到工作坊網站 `/guide/` 按「開始建站」提示詞的複製按鈕，或打開本 ZIP 中的 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，把**原文**貼給 AI。這是唯一正式起始提示詞；不需要自己在不同 README 中拼湊或改寫。
 
+## 可選：先討論設計，不立即建站
+
+若還不確定網站方向，可先使用同一份 ZIP 中 `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt`，從 `/guide/` 複製「先討論網站設計」提示詞給能讀取檔案的 AI。這階段不需要 Site Brief JSON，也不用先安裝額外 Skill；AI 依 `AGENTS.md` 與 `astro-design-consultation` 討論，完成 Design Brief 後再回到 `/starter/` 進入原本建站流程。不能讀 ZIP 或 `.ai/` 的純聊天 AI 不應宣稱已載入 Skill。
+
 ## 可持續的網站脈絡
 - ZIP 根目錄另有 `PROJECT-TEMPLATE.md` 和 `AGENTS.md`。第一次需求討論時，AI 可逐步把已確認資訊寫入 PROJECT；未確認的資料保留「待確認」。
 - 產出的學員**獨立網站**根目錄應有 `PROJECT.md`、`AGENTS.md`；兩者要隨網站提交到**學員自己的** Git 倉庫，供新對話、新工具接手。重新取得新版 ZIP 不得覆蓋網站現有的 PROJECT。
