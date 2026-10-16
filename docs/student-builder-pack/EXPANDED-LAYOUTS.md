@@ -29,7 +29,7 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 ## 十二款既有與新增十三款的界線
 
 - 原十二款維持原有 Home／Archive／Article／About／Service 及 Blocks／Section Patterns 功能。
-- 新增十三款目前只接受已明確整合的 site-wide footer pattern；其他 Pattern 要另作構圖接線，匯出器會拒絕未支援的選項，避免靜默遺失。
+- 新增十三款支援 featured-work、helper 專用 trust-service-path，以及 site-wide footer；首頁開場後／指定頁內容後依 [SECTION-PATTERNS.md](SECTION-PATTERNS.md) 的明確插槽與真實資料組裝。未知位置或無效資料會拒絕匯出；未準備的選填 Pattern 可先取消，空網站仍可 Build。
 - 新增十三款均支援自有 Logo／主視覺，仍由既有本地檔案或 assets 驗證並複製。具體角色見 [包內圖片位置與標題契約](OWNED-MEDIA.md)；文字型首頁不為了放圖而改成通用照片 Hero。
 - 新十一款保留各自原生多頁 DOM／CSS；首頁、索引、詳情與 About 不套同一個 Home。FAQ／聯絡／搜尋／主題功能頁及 optional helper articles 保留原生外框與導覽，閱讀內容功能共用；這些頁面的進一步 Art Direction 仍須目視核可。
 - 新增十一款色彩與 display 字體已接既有品牌變數；CI 加入深色配色／clear-sans 的實際 Build 與 Home／About 四尺寸計算樣式檢查。`brand.imageFit`／`imagePosition` 與 `layoutContent.headings` 已接線，允許 key 見 `src/data/layout-assembly/expanded/heading-fields.json`。圖片裁切、持有人文案及 0／1／多筆時的留白品質仍須用真實學員資料驗收。Build 或四尺寸零溢出不等於 Ready。
@@ -39,7 +39,7 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 - `verify-starter-export.mjs`：FULL 模式匯出 25 款、安裝／Build／verify、四尺寸真實 Chromium 截圖；新增十一款另驗 0／1／多篇、草稿、撤回後網址／RSS／Sitemap／搜尋，以及服務 0／1／多項。
 - 真實 Pagefind 瀏覽器查詢須在公開文章存在時命中測試 token、移除最後一篇後零命中，不只比對 JSON。
 - `verify-student-pack.mjs`：解壓既有 ZIP，使用包內主匯出器跑全部 25 款，核對 Guide／ZIP manifest；FULL 模式保留 knowledge／helper 完整安裝與 Build。
-- `verify-art-direction-export.mjs`：保留原兩款 29 項獨立、安全網址、子路徑、草稿與可攜 ZIP 回歸。
+- `verify-art-direction-export.mjs`：涵蓋原兩款獨立、安全網址、子路徑、草稿、Pattern 及可攜 ZIP 回歸。
 
 四尺寸為 1440／1280／768／390。截圖與 CI 的精確 SHA、逐款狀態、未完成事項記在 PR46 整合交接及 PR 說明；新增十三款未獲最終視覺核可前不得改 Ready。
 
