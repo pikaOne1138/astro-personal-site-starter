@@ -7,14 +7,9 @@
 2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
 3. 到工作坊網站 `/guide/` 按「開始建站」提示詞的複製按鈕，或打開本 ZIP 中的 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，把**原文**貼給 AI。這是唯一正式起始提示詞；不需要自己在不同 README 中拼湊或改寫。
 
-## 可持續的網站脈絡
-- ZIP 根目錄另有 `PROJECT-TEMPLATE.md` 和 `AGENTS.md`。第一次需求討論時，AI 可逐步把已確認資訊寫入 PROJECT；未確認的資料保留「待確認」。
-- 產出的學員**獨立網站**根目錄應有 `PROJECT.md`、`AGENTS.md`；兩者要隨網站提交到**學員自己的** Git 倉庫，供新對話、新工具接手。重新取得新版 ZIP 不得覆蓋網站現有的 PROJECT。
-- 本機／GitHub／混合環境都先檢查真實工作樹與權限：本機未提交檔案不可由遠端舊版本覆蓋。
-
 ## AI 要做的事
 - ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
-- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；注意 12 Layout 原始展示為首頁 Prototype，生成器第一階段僅產生骨架。
+- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；先讀 `docs/student-builder-pack/EXPANDED-LAYOUTS.md`：25 個方向可由主匯出器組裝，新增十三款為 in-progress Adapter，不能當成 25 款 Ready；AI 仍須完成真實內容、必要內頁與四尺寸目視驗收。
 - 以 `.ai/astro-pr-preview/SKILL.md` 分流 GitHub Pages 或 Cloudflare 的預覽與發布。配置、金鑰、網域須使用學員自己的帳號和 Repo。
 - 檢查 Build、實際 Preview、桌機/手機、圖片、文章、導航及搜尋。沒有實測不得稱成功。
 - 未經學員明確允許，不 Merge PR、不切換 DNS、不發布正式環境。

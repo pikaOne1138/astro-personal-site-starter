@@ -1,0 +1,10 @@
+import config from '../../../../site.config.json';
+import {getCollection} from 'astro:content';
+const image=value=>typeof value==='string'&&(/^\/images\/[a-zA-Z0-9/_-]+\.(png|jpe?g|webp|svg)$/.test(value)||/^https:\/\//.test(value))?value:null;
+export async function getSite(root){
+ const articles=(await getCollection('articles',({data})=>!data.draft)).sort((a,b)=>b.data.publishedAt-a.data.publishedAt).map((entry,index)=>({id:String(index+1).padStart(2,'0'),no:String(index+1).padStart(2,'0'),slug:entry.id,title:entry.data.title,summary:entry.data.description,text:entry.data.description,sub:entry.data.description,tag:entry.data.tags[0]??'未分類',topic:entry.data.tags[0]??'未分類',date:entry.data.publishedAt.toISOString().slice(0,10),image:image(entry.data.image),published:true,body:[],href:root+'articles/'+entry.id+'/'}));
+ const services=(config.services??[]).filter(s=>s.published===true).map((s,index)=>({...s,id:String(index+1).padStart(2,'0'),name:s.title,description:s.summary,image:image(s.image),fit:s.fit||'適用對象待確認',format:s.format||'服務方式待設定',duration:s.duration||'服務時間待設定',price:s.price||'實際費用待設定',scope:s.scope||'服務界線待確認',credential:s.credential||'資格與來源待核實',body:s.body??[],href:root+'services/'+s.slug+'/'}));
+ const ctaPage=config.navigation.find(item=>item.id===config.primaryCta.pageId);
+ const primaryCta=ctaPage?{label:config.primaryCta.label,href:root+(ctaPage.path??ctaPage.id+'/')}:null;
+ return {headings:config.layoutContent?.headings??{},primaryCta,siteName:config.brand.name,kind:config.kind,headline:config.content.headline||config.brand.name,intro:config.content.intro||config.brand.tagline||'',about:'關於'+config.brand.name,bio:config.about?.bio||config.pageContent?.about?.join('\n')||'關於資訊尚未設定',aboutFields:['purpose','approach','background'].map(k=>config.about?.[k]||''),copy:config.layoutContent?.copy??{},articles,posts:articles,rows:articles,services,questions:config.artDirection?.faq??[],primary:config.kind==='knowledge'?articles[0]??null:services[0]??null};
+}

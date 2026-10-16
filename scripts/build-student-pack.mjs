@@ -1,5 +1,7 @@
 import { readdirSync, readFileSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import {layoutDefinitions} from '../src/data/layout-assembly/definitions.mjs';
 
 // Build-time student distribution. Deliberately excludes the research Git history,
 // showcase workflows, internal README and any credentials or environment files.
@@ -38,12 +40,13 @@ for (const path of [
   'scripts/verify-v2-8-output.mjs',
   'scripts/export-starter.mjs',
   'scripts/student-project-context.mjs',
-  'scripts/test-student-project-context.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',
   'scripts/check-project-context.mjs',
   'scripts/export-art-direction-starter.mjs',
   'scripts/art-direction-adapters.mjs',
+  'scripts/native-layout-adapters.mjs',
+  'scripts/expanded-section-patterns.mjs',
   'scripts/verify-starter-export.mjs',
   'scripts/verify-student-navigation.mjs',
   'scripts/test-student-navigation-regressions.mjs',
@@ -64,10 +67,28 @@ add('docs/student-builder-pack/README.md', 'README.md');
    but does not publish unrelated project notes as student-facing instructions. */
 for (const name of [...entries.keys()]) {
   if (name.startsWith('docs/') && !name.startsWith('docs/student-builder-pack/') && !name.startsWith('docs/student-intake/')) entries.delete(name);
-  if (/^(?:docs\/student-builder-pack\/(?:interview-scenarios\.json|INTERVIEW-EVALUATION\.md|CROSS-MODEL-E2E-TEST-PACK\.md)|scripts\/(?:evaluate-interview-results|test-interview-evaluation)\.mjs)$/.test(name)) entries.delete(name);
   if (name.startsWith('.ai/') && /(?:^|\/)(?:\.DS_Store|\.env|node_modules)(?:\/|$)/.test(name)) entries.delete(name);
 }
 
+for (const name of [...entries.keys()]) if (/^(?:docs\/student-builder-pack\/(?:interview-scenarios\.json|INTERVIEW-EVALUATION\.md|CROSS-MODEL-E2E-TEST-PACK\.md)|scripts\/(?:evaluate-interview-results|test-interview-evaluation)\.mjs)$/.test(name)) entries.delete(name);
+if ([...entries.keys()].some(n=>/interview-scenarios|INTERVIEW-EVALUATION|CROSS-MODEL-E2E-TEST-PACK|evaluate-interview|test-interview-evaluation/.test(n)))throw Error('Student ZIP exposes private evaluation materials');
+// One provenance record for the website and the existing student ZIP.
+// Use the checked-out source SHA; do not claim that this is a deployed PR SHA.
+let sourceSha='unknown';
+try { sourceSha=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(); }
+catch { /* The learner pack can also be built without Git metadata. */ }
+const release={
+  schemaVersion:1,
+  sourceCommit:sourceSha,
+  layoutAdapterCount:layoutDefinitions.filter(x=>x.adapter).length,
+  layoutSlugs:layoutDefinitions.filter(x=>x.adapter).map(x=>x.slug),
+  layoutStatuses:Object.fromEntries(layoutDefinitions.map(x=>[x.slug,x.assemblyStatus])),
+  distribution:'AI-建站資料包.zip',
+  releaseStage:'beta-assembly'
+};
+const provenance=Buffer.from(JSON.stringify(release,null,2)+String.fromCharCode(10));
+entries.set('BUILDER-PACK-VERSION.json',provenance);
+writeFileSync(resolve('public/builder-pack-version.json'),provenance);
 // ZIP files must also contain the actual reference roots declared in the Skills;
 // absent optional research files are documented rather than fabricated.
 
@@ -101,5 +122,4 @@ function zip(items) {
 mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
-if([...entries.keys()].some(n=>/interview-scenarios|INTERVIEW-EVALUATION|CROSS-MODEL-E2E-TEST-PACK|evaluate-interview|test-interview-evaluation/.test(n)))throw Error('Student ZIP exposes private evaluation materials');
 if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');

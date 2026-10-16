@@ -3,10 +3,18 @@ on:
   pull_request:
     paths:
       - 'scripts/export-starter.mjs'
+      - 'scripts/export-art-direction-starter.mjs'
+      - 'scripts/art-direction-adapters.mjs'
+      - 'scripts/native-layout-adapters.mjs'
+      - 'scripts/expanded-section-patterns.mjs'
+      - 'src/data/art-direction-adapters/**'
       - 'scripts/verify-starter-export.mjs'
       - 'scripts/audit-generated-links.mjs'
       - 'scripts/test-generated-link-audit.mjs'
       - 'src/data/layout-directions.json'
+      - 'src/data/layout-assembly/**'
+      - 'src/data/starter-config.ts'
+      - 'src/pages/starter/index.astro'
       - '.github/workflows/starter-export.yml'
   workflow_dispatch:
 permissions:
@@ -21,5 +29,21 @@ jobs:
           node-version: '22'
       - name: Verify link checker catches deliberate broken links
         run: node scripts/test-generated-link-audit.mjs
+      - name: Install Chromium for actual learner site visual checks
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
       - name: Check generated knowledge and helper sites
-        run: FULL_STARTER_BUILD=1 node scripts/verify-starter-export.mjs
+        env:
+          FULL_STARTER_BUILD: '1'
+          STUDENT_VISUAL_CAPTURE: '1'
+          STUDENT_VISUAL_OUT: student-visual
+        run: node scripts/verify-starter-export.mjs
+      - name: Upload assembled learner screenshot gallery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-visual-qa
+          path: student-visual/
+          if-no-files-found: warn
+          retention-days: 7

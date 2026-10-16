@@ -1,0 +1,93 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='articles');
+const action=base+(nav?.path??'articles/');
+const months=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+const sampleMonths=months.map((name,i)=>({month:String(i+1).padStart(2,'0'),name}));
+const seasons=[{label:'第一季 / 01—03',months:['01','02','03']},{label:'第二季 / 04—06',months:['04','05','06']},{label:'第三季 / 07—09',months:['07','08','09']},{label:'第四季 / 10—12',months:['10','11','12']}];
+const hasRecords=Boolean(config.reading?.records?.length);
+const records=Array.isArray(config.reading?.records)&&config.reading.records.length?config.reading.records.map(x=>({month:x.month,name:months[Number(x.month)-1],title:x.title,note:x.note})):sampleMonths.map(x=>({...x,title:'尚未提供閱讀紀錄',note:'請填入實際讀過的書、評註與來源。'}));
+---
+<div class="atlas-shell" data-assembled-layout="reading-atlas" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
+  <section class="atlas-hero" aria-labelledby="atlas-title">
+    <div class="atlas-hero-copy"><p class="atlas-kicker">READING ALMANAC / YEAR IN REVIEW</p><h1 id="atlas-title">{config.content?.headline || "閱讀年鑑"}</h1><p class="atlas-brand">{config.brand.name} · {config.brand.tagline}</p><p class="atlas-intro">{config.content?.intro || "一整年的閱讀足跡，以月份、評註和年度選書串成索引。"}</p><a class="atlas-cta" href="#calendar">閱讀年鑑 ↓</a></div>
+    <p class="atlas-year" aria-hidden="true">{new Date().getFullYear()}</p>
+    <dl class="atlas-owned-stats"><div><dt>閱讀紀錄</dt><dd>{hasRecords?records.length:'待填'}</dd></div><div><dt>有紀錄的月份</dt><dd>{hasRecords?new Set(records.map(r=>r.month)).size:'待填'}</dd></div><div><dt>年度選書</dt><dd>{config.reading?.annualBook?'1':'待填'}</dd></div></dl>
+  </section>
+  <div class="atlas-section-list"><section class="atlas-section" id="calendar"><p class="atlas-section-tag">01 / CALENDAR</p><h2>十二個月閱讀線格</h2><div class="atlas-months" role="group" aria-label="月份篩選"><button type="button" data-atlas-month="all" aria-pressed="true">全年</button>{sampleMonths.map(m=><button type="button" data-atlas-month={m.month} aria-pressed="false">{m.month}<small>{m.name}</small></button>)}</div><p id="atlas-filter-status" role="status" aria-live="polite">{hasRecords?'顯示全年閱讀紀錄':'尚未提供閱讀紀錄'}</p><ol class="atlas-calendar-grid" aria-label="十二個月年度閱讀索引">{sampleMonths.map(m=><li data-record-month={m.month}><a href="#catalog" data-atlas-jump={m.month}><span class="atlas-cal-number">{m.month}</span><span>{m.name}</span><div class="atlas-cell-records">{hasRecords&&records.filter(r=>r.month===m.month).map(r=><div><h3>{r.title}</h3><p>{r.note}</p></div>)}</div><strong>{records.filter(r=>r.month===m.month&&!r.title.includes('尚未提供')).length?records.filter(r=>r.month===m.month&&!r.title.includes('尚未提供')).length+' 筆紀錄':'待補閱讀紀錄'}</strong></a></li>)}</ol></section>
+</div><section class="atlas-section atlas-source-annual" id="year-book"><div class="atlas-book-object" aria-hidden="true"><span>YEAR<br/>BOOK</span><b>{config.reading?.annualBook?'讀':'待'}<br/>{config.reading?.annualBook?'本':'填'}</b></div><div><p class="atlas-section-tag">02 / YEAR-BOOK</p><h2>如果只留一本，<em>由你說明理由。</em></h2>{config.reading?.annualBook?<article><h3>{config.reading.annualBook.title}</h3><p>{config.reading.annualBook.note}</p></article>:<p>年度之書尚未設定。請提供實際讀過的書與選入理由。</p>}</div></section>
+<div class="atlas-section-list"><section class="atlas-section" id="catalog"><p class="atlas-section-tag">03 / CATALOG</p><h2>讀書目錄</h2><p>{hasRecords?'站長提供的閱讀紀錄與評註。':'以下是待填紀錄，不代表已讀書目。'}</p><div class="atlas-season-index">{seasons.map(season=><section><h3>{season.label}</h3><ul>{hasRecords?records.filter(x=>season.months.includes(x.month)).map(record=><li><span>{record.month} / {record.name}</span><strong>{record.title}</strong><p>{record.note}</p></li>):<li>本季閱讀紀錄待設定。</li>}</ul>{hasRecords&&!records.some(x=>season.months.includes(x.month))&&<p>本季沒有提供閱讀紀錄。</p>}</section>)}</div><a href={action}>閱讀文章 ↗</a></section></div>
+  <footer class="atlas-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往文章入口 ↗</a></footer>
+</div>
+<script is:inline>
+document.querySelectorAll('[data-assembled-layout="reading-atlas"]').forEach(root=>{
+ const buttons=[...root.querySelectorAll('[data-atlas-month]')],items=[...root.querySelectorAll('[data-record-month]')];
+  root.querySelectorAll('[data-atlas-jump]').forEach(link=>link.addEventListener('click',()=>{
+    const target=buttons.find(button=>button.dataset.atlasMonth===link.dataset.atlasJump);
+    if(target)target.click();
+  }));
+ buttons.forEach(b=>b.addEventListener('click',()=>{
+  const value=b.dataset.atlasMonth;
+  buttons.forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
+  items.forEach(item=>item.hidden=value!=='all'&&item.dataset.recordMonth!==value);
+  root.querySelector('#atlas-filter-status').textContent=value==='all'?'顯示全年紀錄':'顯示 '+value+' 月紀錄';
+ }));
+});
+</script>
+<style>
+.atlas-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.atlas-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. atlas-hero-copy{min-width:0}
+.atlas-kicker,.atlas-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.atlas-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.atlas-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.atlas-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.atlas-figure{margin:0;min-width:0}. atlas-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.atlas-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.atlas-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.atlas-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.atlas-section-list{max-width:1250px;margin:0 auto 4rem}
+.atlas-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.atlas-section p{max-width:65ch;line-height:1.85}. atlas-section a{color:inherit}
+.atlas-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.atlas-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center}.atlas-hero h1{font-size:clamp(4rem,12vw,12rem);font-family:Georgia,serif}.atlas-art{background:#e8e4d8}.atlas-art:after{content:"2026";font:900 clamp(4rem,13vw,10rem)/1 Georgia,serif;color:#3e463d}.atlas-section-list{display:grid;grid-template-columns:repeat(12,1fr);gap:.6rem}.atlas-section:first-child{grid-column:1/-1;background:repeating-linear-gradient(90deg,transparent 0 7.9%,#a4aaa0 8% 8.2%);min-height:210px}.atlas-section:nth-child(2){grid-column:1/-1;background:#283832;color:white}.atlas-section:nth-child(3){grid-column:1/-1}
+@media(max-width:800px){.atlas-hero,.atlas-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.atlas-hero{min-height:0}.atlas-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.atlas-hero figure,.atlas-art{position:static;width:100%;height:auto;min-height:180px}.atlas-section,.atlas-section:nth-child(1),.atlas-section:nth-child(2),.atlas-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.atlas-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.atlas-shell{padding:1rem}.atlas-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.atlas-close{display:block}}
+.atlas-months{display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem}.atlas-months button{background:transparent;color:inherit;border:1px solid currentColor;min-height:3.5rem;cursor:pointer}.atlas-months button:first-child{grid-column:span 6}.atlas-months button[aria-pressed="true"]{background:#283832;color:#fff}.atlas-months small{display:block}.atlas-records{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.atlas-records article{padding:1rem;border-top:1px solid currentColor}.atlas-records article[hidden]{display:none}@media(max-width:640px){.atlas-months{grid-template-columns:repeat(3,1fr)}.atlas-months button:first-child{grid-column:span 3}.atlas-records{grid-template-columns:1fr}}
+/* Alignment regression: background ruled lines must never cross the month controls. */
+.atlas-section:first-child{background:none;min-height:auto}
+.atlas-section#calendar{position:relative;overflow:visible}
+.atlas-section#calendar::before{content:none}
+.atlas-section#calendar h2{margin-bottom:1.5rem}
+.atlas-months{position:relative;z-index:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin:1rem 0 1.5rem;align-items:stretch}
+.atlas-months button{box-sizing:border-box;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;min-height:4rem;padding:.6rem;background:#f7f6f1;border:1px solid #7d8983;border-radius:0;line-height:1.35}
+.atlas-months button:first-child{grid-column:1/-1;background:#283832;color:#fff;border-color:#283832}
+.atlas-months button[aria-pressed="true"]{background:#283832;color:#fff}
+.atlas-months button:focus-visible{outline:3px solid #b27648;outline-offset:2px}
+@media(max-width:640px){.atlas-months{grid-template-columns:repeat(3,minmax(0,1fr))}.atlas-months button:first-child{grid-column:1/-1}}
+
+
+.atlas-calendar-grid{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));padding:0;margin:2rem 0 0;border-left:1px solid #84948a;border-top:1px solid #84948a}
+.atlas-calendar-grid li{min-width:0;border-right:1px solid #84948a;border-bottom:1px solid #84948a}
+.atlas-calendar-grid a{min-height:140px;padding:1rem;display:flex;flex-direction:column;gap:.25rem;text-decoration:none;background:#f2efe5;color:#25372f}
+.atlas-calendar-grid a:hover,.atlas-calendar-grid a:focus-visible{background:#e1ddce}
+.atlas-cal-number{font:500 clamp(2rem,4vw,4rem)/1 Georgia,serif;letter-spacing:-.08em}
+.atlas-calendar-grid strong{font-size:.75rem;font-weight:500;margin-top:auto;line-height:1.5}
+.atlas-section:nth-child(2){padding:clamp(2rem,5vw,5rem);margin-block:2rem}
+.atlas-section:nth-child(2) h2{font-size:clamp(2.5rem,5vw,5rem);max-width:14ch;line-height:1.12}
+.atlas-section:nth-child(2) h3{font:500 clamp(2rem,4vw,4.5rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.atlas-section:nth-child(2) p{line-height:1.9}
+@media(max-width:800px){.atlas-calendar-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:480px){.atlas-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.atlas-calendar-grid a{min-height:112px}.atlas-section:nth-child(2){padding:1.5rem}}
+.atlas-hero{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:0;max-width:1400px;padding:3rem 0 2rem;margin-bottom:3rem;border-bottom:1px solid currentColor}.atlas-year{order:-1;text-align:center;white-space:nowrap;margin:0 0 1.5rem;font:400 clamp(7rem,26vw,26rem)/.85 Georgia,serif;letter-spacing:-.13em;color:transparent;-webkit-text-stroke:2px var(--ink,#25372f);opacity:.74;position:relative;left:-.04em}.atlas-hero-copy{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);column-gap:clamp(1rem,5vw,6rem);align-items:start}.atlas-hero-copy .atlas-kicker{grid-column:1/-1}.atlas-hero h1{font:400 clamp(2.4rem,5vw,5rem)/1.08 var(--brand-heading-font,Georgia,serif);letter-spacing:-.055em;margin:.6rem 0 1.5rem}.atlas-brand,.atlas-intro,.atlas-cta{grid-column:2}.atlas-intro{margin:0;line-height:1.9}.atlas-section:first-child{background:none;min-height:0;padding:clamp(1.2rem,3vw,3rem);border-top:1px solid currentColor}@media(max-width:800px){.atlas-hero-copy{grid-template-columns:1fr}.atlas-hero-copy>*{grid-column:1!important}.atlas-year{font-size:clamp(6.5rem,27vw,14rem);-webkit-text-stroke:1px var(--ink,#25372f)}.atlas-hero{padding-top:2rem}}
+.atlas-hero h1{line-height:1.12;letter-spacing:-.04em}.atlas-records{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}.atlas-records article{border-top:1px solid currentColor;padding:1rem 0}.atlas-records article[hidden]{display:none}@media(max-width:800px){.atlas-records{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.atlas-records{grid-template-columns:1fr}}
+.atlas-calendar-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.atlas-calendar-grid a{min-height:248px;background:var(--bg);color:var(--ink)}.atlas-cell-records h3{font:400 1.25rem/1.35 var(--brand-heading-font,Georgia,serif)}.atlas-cell-records p{font-size:.875rem;line-height:1.75}.atlas-calendar-grid .atlas-cell-records{min-width:0}@media(max-width:800px){.atlas-calendar-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:480px){.atlas-calendar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.atlas-calendar-grid a{min-height:180px}}
+.atlas-source-annual{display:grid;grid-template-columns:minmax(130px,.65fr) minmax(0,1.35fr);gap:6vw;align-items:start}.atlas-source-annual h2 em{display:block;font-weight:400}.atlas-book-object{aspect-ratio:2/3;background:#245E50;color:#f2efe5;border:1px solid currentColor;box-shadow:12px 12px 0 #0003;max-width:260px;padding:1.5rem;display:flex;justify-content:space-between;font:1rem ui-monospace,monospace}.atlas-book-object b{font:400 clamp(2rem,5vw,5rem)/1.2 var(--brand-heading-font,Georgia,serif)}.atlas-season-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}.atlas-season-index ul{list-style:none;padding:0}.atlas-season-index li{border-top:1px solid currentColor;padding:1rem 0}.atlas-season-index li>span{font:.75rem ui-monospace,monospace;display:block}.atlas-season-index li>strong{font:500 1.25rem/1.4 var(--brand-heading-font,Georgia,serif)}.atlas-calendar-grid li[hidden]{display:none}@media(max-width:800px){.atlas-source-annual{grid-template-columns:1fr}.atlas-book-object{max-width:160px}.atlas-season-index{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.atlas-season-index{grid-template-columns:1fr}}
+@media(max-width:600px){.atlas-cell-records p{font-size:1rem}}
+/* Source numeral is left aligned; counts are derived only from supplied records. */
+.atlas-year{text-align:left;left:0;font-size:clamp(7rem,30vw,28rem);letter-spacing:-.08em}.atlas-hero-copy h1{grid-column:1;grid-row:2 / 5;max-width:16ch}.atlas-owned-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid currentColor;margin:2rem 0 0;padding:0}.atlas-owned-stats>div{padding:1rem;display:flex;flex-direction:column-reverse;gap:.5rem}.atlas-owned-stats>div+div{border-left:1px solid currentColor}.atlas-owned-stats dt{font-size:.875rem}.atlas-owned-stats dd{font:400 clamp(2rem,4vw,3rem)/1.1 var(--brand-heading-font,Georgia,serif);margin:0}
+@media(max-width:800px){.atlas-year{font-size:clamp(6.5rem,30vw,18rem)}.atlas-hero-copy h1{grid-row:auto}.atlas-owned-stats>div{padding:1rem .5rem}.atlas-owned-stats dt{font-size:.75rem}}
+/* Keep the annual-book background full bleed, independent of the calendar canvas. */
+.atlas-shell{--atlas-gutter:clamp(1rem,4vw,4rem)}.atlas-shell .atlas-section#calendar{padding:2rem 0}.atlas-shell>.atlas-source-annual{margin:2rem calc(-1 * var(--atlas-gutter));background:#283832;color:#f2efe5;padding:clamp(2rem,5vw,5rem) max(var(--atlas-gutter),calc((100% - 1140px)/2 + var(--atlas-gutter)));border:0}.atlas-shell>.atlas-source-annual h2{font-size:clamp(2.5rem,5vw,5rem);line-height:1.12;max-width:14ch}.atlas-shell>.atlas-source-annual h3{font:500 clamp(2rem,4vw,4.5rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+@media(max-width:800px){.atlas-shell .atlas-section{border:0;padding:2rem 0}.atlas-shell>.atlas-source-annual{padding:2rem var(--atlas-gutter)}.atlas-shell{--atlas-gutter:clamp(1rem,4vw,4rem)}}@media(max-width:480px){.atlas-shell{--atlas-gutter:1rem}}
+</style>

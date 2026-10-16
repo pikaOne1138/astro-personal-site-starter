@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "subject-atlas",
+    "kind": "knowledge",
+    "title": "主題標本室",
+    "description": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+    "structure": "typographic manifesto → topic rail → uneven directory → latest note → archive",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "art-direction"
+  },
+  {
+    "slug": "practice-compass",
+    "kind": "helper",
+    "title": "服務羅盤",
+    "description": "prologue → choose situation → verify fit → transparency → FAQ",
+    "structure": "prologue → choose situation → verify fit → transparency → FAQ",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "art-direction"
+  },
+  {
+    "slug": "sidebar-journal",
+    "kind": "knowledge",
+    "title": "側欄日誌",
+    "description": "主文時間流＋作者右側欄",
+    "structure": "主文時間流＋作者右側欄",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "editorial-frontpage",
+    "kind": "knowledge",
+    "title": "個人刊物",
+    "description": "頭條 7:5＋次級文章",
+    "structure": "頭條 7:5＋次級文章",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "card-journal",
+    "kind": "knowledge",
+    "title": "卡片刊物",
+    "description": "等權重文章格網",
+    "structure": "等權重文章格網",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "visual-stories",
+    "kind": "knowledge",
+    "title": "影像故事",
+    "description": "左右交替的圖片／圖說",
+    "structure": "左右交替的圖片／圖說",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "compact-dispatch",
+    "kind": "knowledge",
+    "title": "極簡短箋",
+    "description": "緊湊日期列表",
+    "structure": "緊湊日期列表",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "split-reader",
+    "kind": "knowledge",
+    "title": "雙欄閱讀台",
+    "description": "主文預告 5:7＋右側索引",
+    "structure": "主文預告 5:7＋右側索引",
+    "audience": "知識與長期寫作",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "portrait-profile",
+    "kind": "helper",
+    "title": "人物名片",
+    "description": "肖像／身分 4:7＋服務",
+    "structure": "肖像／身分 4:7＋服務",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "service-catalogue",
+    "kind": "helper",
+    "title": "服務目錄",
+    "description": "服務規格表＋可比較條目",
+    "structure": "服務規格表＋可比較條目",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "studio-chapters",
+    "kind": "helper",
+    "title": "工作室章節",
+    "description": "章節目錄＋方法閱讀",
+    "structure": "章節目錄＋方法閱讀",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "editorial-practice",
+    "kind": "helper",
+    "title": "觀點服務誌",
+    "description": "主張文章 7:4＋側記",
+    "structure": "主張文章 7:4＋側記",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  },
+  {
+    "slug": "question-led-practice",
+    "kind": "helper",
+    "title": "問答對話",
+    "description": "問答雙欄 3:8",
+    "structure": "問答雙欄 3:8",
+    "audience": "個人專業服務",
+    "assemblyStatus": "in-progress",
+    "engine": "native-expansion"
+  }
+]

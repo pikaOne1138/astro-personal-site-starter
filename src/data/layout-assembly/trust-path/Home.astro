@@ -1,0 +1,86 @@
+---
+import config from '../../../../site.config.json';
+const base=import.meta.env.BASE_URL;
+const nav=config.navigation.find(n=>n.id==='services');
+const action=base+(nav?.path??'services/');
+const facts=config.serviceFacts??{};
+const timing=config.serviceTiming??[];
+const minutes=timing.reduce((sum,x)=>sum+x.minutes,0);
+const show=(key,placeholder)=>facts[key]?.trim()||placeholder;
+---
+<div class="trust-shell" data-assembled-layout="trust-path" data-long-headline={(config.content?.headline||config.brand.name).length>32}>
+  <section class="trust-hero" aria-labelledby="trust-title">
+    <div class="trust-hero-copy"><p class="trust-kicker">TRUST PATH / A FIVE-STOP GUIDE</p><h1 id="trust-title">{config.content?.headline || "在開始之前，先把事情說清楚。"}</h1><p class="trust-brand">{config.brand.name} · {config.brand.tagline}</p><p class="trust-intro">{config.content?.intro || "讓第一次來訪的人沿著五個站點了解適用範圍、方法、費用與選擇。"}</p><a class="trust-cta" href="#scope">看完整路徑 ↓</a></div>
+    {config.brand.heroImagePath&&<figure class="trust-figure">{config.brand.heroImagePath?<img src={base+config.brand.heroImagePath.replace(/^\//,'')} alt={config.brand.heroImageAlt||'請補上圖片描述'}/>:<div class="trust-art" role="img" aria-label="五站折線導覽"></div>}<figcaption>示範視覺，可替換為自有授權照片</figcaption></figure>}
+  <nav class="trust-route" aria-label="五站服務說明路線"><svg viewBox="0 0 1000 120" role="img" aria-label="串起五個站點的折線" preserveAspectRatio="none"><path d="M0 80 L100 80 C200 80 200 40 300 40 C400 40 400 80 500 80 C600 80 600 40 700 40 C800 40 800 80 900 80 L1000 80" fill="none" stroke="currentColor" stroke-width="3"/></svg>{[['scope','範圍'],['method','方法'],['fees','費用與時間'],['first','第一次見面'],['refer','若不適合']].map(([id,label],i)=><a href={'#'+id} style={'--route-y:'+([80,40,80,40,80][i])+'px'}><span>{i+1}</span>{label}</a>)}</nav></section>
+  <div class="trust-section-list"><section class="trust-section" id="scope"><span class="trust-stop-node" aria-hidden="true">1</span><div class="trust-stop-body"><p class="trust-section-tag">01 / SCOPE</p><h2>我能談的，和我不談的。</h2><p>訪客需要知道：什麼適合在這裡討論？什麼超出服務範圍？</p><div class="trust-scope-pair"><div><h3>適合討論</h3><p>{facts.scope||'待站長填寫實際服務範圍與適合對象。'}</p></div><div><h3>不在服務範圍</h3><p>{facts.exclusions||'待站長填寫服務界線及必要時如何尋求適當協助。'}</p></div></div></div><aside class="trust-stop-question"><span>THIS STOP ANSWERS</span><p>我的情況，在這裡談得了嗎？</p></aside></section>
+<section class="trust-section" id="method"><span class="trust-stop-node" aria-hidden="true">2</span><div class="trust-stop-body"><p class="trust-section-tag">02 / METHOD</p><h2>三個動作，先確認合作方式。</h2><p>如何開始、需要準備什麼？合作的選擇始終屬於來訪者。</p><div class="trust-method-flow"><div><span>STEP A</span><strong>確認需求</strong><p>整理你希望討論的問題與期待。</p></div><div><span>STEP B</span><strong>了解方法</strong><p>{facts.method||'服務方式待站長說明；不預設任何療效或成果。'}</p></div><div><span>STEP C</span><strong>決定下一步</strong><p>是否繼續由來訪者自行決定。</p></div></div></div><aside class="trust-stop-question"><span>THIS STOP ANSWERS</span><p>你會要我做什麼？我需要先準備什麼？</p></aside></section>
+<section class="trust-section" id="fees"><span class="trust-stop-node" aria-hidden="true">3</span><div class="trust-stop-body"><p class="trust-section-tag">03 / FEES</p><h2>這些資訊，聯絡之前就寫好。</h2><dl class="trust-unverified"><div><dt>單次時間</dt><dd>{show('duration','待站長填寫')}</dd></div><div><dt>費用</dt><dd>{show('price','待站長填寫')}</dd></div><div><dt>取消規則</dt><dd>{show('cancellation','待站長填寫')}</dd></div><div><dt>資格或證照</dt><dd>{show('qualification','待提供可查證資料')}</dd></div></dl></div><aside class="trust-stop-question"><span>THIS STOP ANSWERS</span><p>要花多少時間與費用？可以取消嗎？</p></aside></section>
+<section class="trust-section" id="first"><span class="trust-stop-node" aria-hidden="true">4</span><div class="trust-stop-body"><p class="trust-section-tag">04 / FIRST</p><h2>第一次見面，先了解安排。</h2><p>這裡應說明實際的初次接觸程序，不預設固定時長或暗示已完成預約。</p><div class="trust-source-timing"><h3>時間安排</h3>{timing.length?<Fragment><p>站長提供的流程共 {minutes} 分鐘。</p><ol>{timing.map(item=><li style={'--share:'+item.minutes}><span>{item.label}</span><strong>{item.minutes} 分鐘</strong></li>)}</ol></Fragment>:<p>各階段時間尚未提供；不以示範數字冒充實際服務安排。</p>}</div><div class="trust-first-journey"><span>CONTACT</span><div><h3>來訪者首先會經歷什麼？</h3><p>{facts.firstVisit||'初次接觸方式、會談流程與注意事項待站長填寫。'}</p></div><span>CHOICE</span></div></div><aside class="trust-stop-question"><span>THIS STOP ANSWERS</span><p>第一次接觸，實際會發生什麼？</p></aside></section>
+<section class="trust-section" id="refer"><span class="trust-stop-node" aria-hidden="true">5</span><div class="trust-stop-body"><p class="trust-section-tag">05 / REFER</p><h2>不適合，也能說清楚。</h2><p>提供服務範圍說明與適當轉介方向，不虛構危機電話。</p>{facts.contact?<p>一般聯絡方式：{facts.contact}</p>:<p>聯絡方式待站長確認。</p>}<a href={action}>查看服務 ↗</a></div><aside class="trust-stop-question"><span>THIS STOP ANSWERS</span><p>如果不適合，還有哪些選擇？</p></aside></section></div>
+  <footer class="trust-close"><p>版型示範內容，需要站長以真實資料替換。</p><a href={action}>前往服務入口 ↗</a></footer>
+</div>
+<style>
+.trust-shell{--brand:var(--brand-primary,#58746f);background:var(--bg,#f6f4ee);color:var(--ink,#292821);padding:clamp(1rem,4vw,4rem);font-family:var(--brand-body-font,system-ui,sans-serif)}
+.trust-hero{max-width:1340px;margin:0 auto 5rem;min-height:430px}. trust-hero-copy{min-width:0}
+.trust-kicker,.trust-section-tag{font:.7rem ui-monospace,monospace;letter-spacing:.1em;opacity:.8}
+.trust-hero h1{line-height:1.06;letter-spacing:-.05em;overflow-wrap:anywhere;font-family:var(--brand-heading-font,Georgia,serif);font-weight:500}
+.trust-intro{font-size:1.08rem;line-height:1.85;max-width:570px}
+.trust-cta{display:inline-block;margin-top:1.5rem;border-bottom:2px solid var(--brand);padding:.6rem 0;color:inherit;text-decoration:none}
+.trust-figure{margin:0;min-width:0}. trust-figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.trust-figure img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:var(--brand-image-filter,none)}
+.trust-figure figcaption{font:.72rem ui-monospace,monospace;margin-top:.5rem}
+.trust-art{min-height:240px;aspect-ratio:3/2;display:flex;align-items:center;justify-content:center}
+.trust-section-list{max-width:1250px;margin:0 auto 4rem}
+.trust-section h2{font:500 clamp(1.75rem,3vw,3rem)/1.2 var(--brand-heading-font,Georgia,serif)}
+.trust-section p{max-width:65ch;line-height:1.85}. trust-section a{color:inherit}
+.trust-close{max-width:1250px;margin:auto;border-top:1px solid currentColor;padding:2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.trust-shell{background:#f5f4ee}.trust-hero{background:#213c3b;color:white;padding:4rem;display:grid;grid-template-columns:1.5fr .5fr;gap:2vw}.trust-hero h1{font-size:clamp(3rem,6vw,6rem)}.trust-art{background:repeating-linear-gradient(120deg,#516a63 0 18px,#d7c4a5 19px 21px,#213c3b 22px 90px)}.trust-section-list{display:grid;grid-template-columns:1fr;gap:0;position:relative}.trust-section{border-left:3px solid #71837b;border-bottom:1px solid #bdc5b9;padding:2rem 2rem 2rem 4rem;margin-left:2rem;max-width:990px}.trust-section:before{content:"●";position:absolute;margin-left:-4.85rem;color:#71837b}.trust-section:nth-child(odd){margin-left:15%}
+@media(max-width:800px){.trust-hero,.trust-section-list{display:grid;grid-template-columns:1fr;gap:1.3rem}.trust-hero{min-height:0}.trust-hero h1{font-size:clamp(2.8rem,9vw,5.8rem)}.trust-hero figure,.trust-art{position:static;width:100%;height:auto;min-height:180px}.trust-section,.trust-section:nth-child(1),.trust-section:nth-child(2),.trust-section:nth-child(3){grid-column:auto;grid-row:auto;margin:0;min-height:auto}.trust-section{padding:1.5rem;border:1px solid currentColor}.trust-hero{padding:1.5rem}.trust-section:before{display:none}}
+@media(max-width:480px){.trust-shell{padding:1rem}.trust-hero h1{font-size:clamp(2.3rem,11vw,4rem)}.trust-close{display:block}}
+.trust-route{grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;align-items:center;padding:1.5rem 0}.trust-route svg{position:absolute;inset:0;width:100%;height:100%;opacity:.35;pointer-events:none}.trust-route a{z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;font-size:.8rem;color:inherit;text-decoration:none}.trust-route a span{display:grid;place-items:center;border:1px solid white;background:#213c3b;width:2.4rem;height:2.4rem;border-radius:50%}.trust-route a:focus-visible{outline:3px solid #f5d38e}.trust-unverified{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.trust-unverified div{border-top:1px solid #9aa9a1;padding:.6rem 0}.trust-unverified dt{font-size:.8rem}.trust-unverified dd{margin:.5rem 0;font-weight:600}@media(max-width:640px){.trust-route{grid-template-columns:1fr;align-items:start}.trust-route svg{display:none}.trust-route a{flex-direction:row;text-align:left}.trust-unverified{grid-template-columns:1fr}}
+/* Alignment regression: the route and five content stations share actual geometry. */
+.trust-route{--station-line:50%;align-items:start;column-gap:0;row-gap:0;padding:1.4rem 0 0}
+.trust-route svg{display:none}
+.trust-route::before{content:"";position:absolute;left:10%;right:10%;top:calc(1.4rem + 1.2rem);height:1px;background:#a6b6ad;opacity:.8;pointer-events:none}
+.trust-route a{min-width:0;gap:.65rem;position:relative}
+.trust-route a span{width:2.4rem;height:2.4rem;flex:none}
+.trust-section-list{--station-x:clamp(2rem,6vw,5.5rem);display:block;max-width:1140px;margin:0 auto 4rem;padding-left:0}
+.trust-section,.trust-section:nth-child(odd){box-sizing:border-box;margin:0 0 0 var(--station-x);max-width:none;padding:2.5rem clamp(1.2rem,4vw,3rem);border-left:2px solid #71837b;border-bottom:1px solid #bdc5b9;position:relative}
+.trust-section::before,.trust-section:nth-child(odd)::before{content:"";display:block;position:absolute;top:2.8rem;left:-6px;margin:0;width:10px;height:10px;background:#71837b;border-radius:50%;color:transparent}
+.trust-section h2{overflow-wrap:anywhere}
+@media(max-width:800px){
+ .trust-section-list{--station-x:1.5rem}
+ .trust-section,.trust-section:nth-child(odd){margin:0 0 0 var(--station-x);padding:1.6rem 1.2rem;border:0;border-left:2px solid #71837b;border-bottom:1px solid #bdc5b9}
+ .trust-section::before,.trust-section:nth-child(odd)::before{display:block;top:2rem}
+}
+@media(max-width:640px){
+ .trust-route{display:grid;grid-template-columns:1fr;gap:.6rem;padding:1rem 0}
+ .trust-route::before{left:1.2rem;right:auto;top:2rem;bottom:2rem;width:1px;height:auto}
+ .trust-route a{display:flex;flex-direction:row;justify-content:flex-start;gap:1rem;text-align:left}
+}
+
+.trust-scope-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;border:1px solid #71837b;background:#71837b;margin-top:2rem}
+.trust-scope-pair>div{background:#f5f4ee;padding:clamp(1rem,3vw,2.2rem)}
+.trust-scope-pair>div+div{background:#ebe7db}
+.trust-scope-pair h3{font:500 clamp(1.15rem,2vw,1.75rem)/1.3 var(--brand-heading-font,Georgia,serif)}
+.trust-method-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.trust-method-flow>div{border-top:3px solid #71837b;padding:1.2rem .8rem}
+.trust-method-flow span{display:block;font:.72rem ui-monospace,monospace;letter-spacing:.1em}
+.trust-method-flow strong{display:block;margin:1rem 0;font:500 clamp(1.2rem,2vw,1.65rem)/1.3 var(--brand-heading-font,Georgia,serif)}
+.trust-first-journey{display:grid;grid-template-columns:90px minmax(0,1fr) 90px;gap:1rem;align-items:center;margin:2rem 0;border-top:2px solid #71837b;border-bottom:2px solid #71837b;padding:1.5rem 0}
+.trust-first-journey>span{font:.75rem ui-monospace,monospace;letter-spacing:.1em;overflow-wrap:anywhere}
+.trust-first-journey>div{border-left:1px solid #71837b;border-right:1px solid #71837b;padding:1rem}
+.trust-first-journey h3{font:500 clamp(1.2rem,2vw,1.8rem)/1.25 var(--brand-heading-font,Georgia,serif)}
+.trust-section{scroll-margin-top:1.5rem}
+@media(max-width:640px){.trust-scope-pair,.trust-method-flow{grid-template-columns:1fr}.trust-first-journey{grid-template-columns:1fr}.trust-first-journey>div{border:0;border-top:1px solid #71837b;border-bottom:1px solid #71837b;padding:1rem 0}}
+.trust-shell{background:#f6f0e6;color:#2a2118}.trust-hero{background:#261b13;color:#f3ead9;display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem;position:relative;margin:0 calc(-1 * clamp(1rem,4vw,4rem)) 3rem;max-width:none;padding:clamp(2rem,5vw,5rem);min-height:560px}.trust-hero-copy{position:relative;z-index:2;max-width:950px}.trust-hero h1{font:400 clamp(3.6rem,7vw,8rem)/1.03 var(--brand-heading-font,Georgia,serif);letter-spacing:-.075em;max-width:14ch}.trust-kicker{color:#dc9e75}.trust-intro{max-width:580px;color:#ded0bd}.trust-cta{border-bottom-color:#d59161;color:#f3ead9}.trust-hero .trust-figure{position:absolute;right:3%;top:3rem;max-width:28%;opacity:.35;z-index:0;margin:0;pointer-events:none}.trust-hero .trust-figure img{width:100%;height:100%;object-fit:cover}.trust-hero .trust-figure figcaption{display:none}.trust-route{grid-column:1/-1;align-self:end;position:relative;z-index:3;color:#d7a879}.trust-route a{color:#f3ead9}.trust-section{border-left-color:#c29269}.trust-section:before{color:#8a3d1c}@media(max-width:800px){.trust-hero{padding:2rem 1.25rem;min-height:560px;grid-template-columns:1fr}.trust-hero h1{font-size:clamp(3rem,10vw,5.3rem)}.trust-hero .trust-figure{display:none}.trust-route{overflow-x:auto;max-width:100%}}
+.trust-hero h1{line-height:1.12;letter-spacing:-.04em}.trust-section{scroll-margin-top:2rem}.trust-route a{min-height:44px}
+.trust-source-timing{border-block:1px solid currentColor;padding:1.5rem 0;margin:2rem 0}.trust-source-timing ol{list-style:none;padding:0;margin:0;display:flex;gap:1px;background:currentColor;border:1px solid currentColor}.trust-source-timing li{flex:var(--share) 1 0;min-width:0;padding:1rem;background:var(--bg,#f5f4ee);color:var(--ink,#233d39);display:flex;flex-direction:column;justify-content:space-between;gap:1rem}.trust-source-timing strong{font:500 1.25rem var(--brand-heading-font,Georgia,serif)}@media(max-width:640px){.trust-source-timing ol{display:grid;grid-template-columns:1fr}}
+/* Preserve the original type-led five-stop spread and shared route coordinates. */
+.trust-hero{padding-inline:max(1rem,calc((100% - 1140px)/2));padding-block:4rem 2rem}.trust-hero-copy{max-width:950px}.trust-hero h1{max-width:16ch;font-size:clamp(3.6rem,7vw,7rem)}
+.trust-route{min-height:170px;padding:0;align-items:start}.trust-route::before{display:none}.trust-route svg{display:block;top:0;height:120px;opacity:.65}.trust-route a{padding-top:calc(var(--route-y) - 1.2rem)}.trust-route a span{background:#261b13;border-color:#dc9e75}.trust-route a:focus-visible{outline-offset:4px}
+.trust-section,.trust-section:nth-child(odd){display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,.32fr);column-gap:clamp(2rem,5vw,5rem);margin-left:2.5rem;padding:3rem 0 4rem 3rem;border-bottom:0}.trust-section::before,.trust-section:nth-child(odd)::before{display:none}.trust-stop-node{position:absolute;left:-1.2rem;top:3rem;width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:50%;background:#2a2118;color:#f6f0e6;font:700 1rem system-ui}.trust-stop-body{min-width:0}.trust-stop-question{border-left:2px solid #c9773f;padding-left:1.5rem;align-self:start}.trust-stop-question span{font:.75rem ui-monospace,monospace;letter-spacing:.08em}.trust-stop-question p{font:italic 1.15rem/1.7 var(--brand-heading-font,Georgia,serif);margin:.75rem 0 0}.trust-stop-body>h2{font-size:clamp(2.4rem,4.5vw,4.5rem);line-height:1.12;max-width:14ch}.trust-method-flow{grid-template-columns:1fr;gap:0}.trust-method-flow>div{display:grid;grid-template-columns:5rem minmax(0,1fr);column-gap:1rem;padding:1.2rem 0}.trust-method-flow span{grid-row:span 2;align-self:start;margin-top:1rem}.trust-method-flow strong{margin:0 0 .5rem}.trust-method-flow p{grid-column:2;margin:0}.trust-unverified{display:block}.trust-unverified>div{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1rem;padding:1rem 0}.trust-unverified dd{margin:0}.trust-close{max-width:none;margin-inline:calc(-1 * clamp(1rem,4vw,4rem));padding:3rem max(1rem,calc((100% - 1140px)/2));background:#261b13;color:#f3ead9;align-items:center}.trust-close p{font:400 clamp(1.6rem,3vw,3rem)/1.3 var(--brand-heading-font,Georgia,serif);max-width:24ch}.trust-close a{color:inherit;min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:1100px){.trust-section,.trust-section:nth-child(odd){grid-template-columns:minmax(0,1fr)}.trust-stop-question{margin-top:1.5rem;max-width:34em}}
+@media(max-width:640px){.trust-route{min-height:0;gap:.75rem;padding:1rem 0}.trust-route svg{display:none}.trust-route::before{display:block;top:2rem;bottom:2rem;left:1.2rem;right:auto;width:1px;height:auto}.trust-route a{padding-top:0}.trust-section,.trust-section:nth-child(odd){margin-left:1.2rem;padding:2rem 0 3rem 1.8rem}.trust-stop-node{top:2rem}.trust-stop-body>h2{font-size:2.3rem}.trust-unverified>div{grid-template-columns:1fr;gap:.5rem}.trust-stop-question p{font-size:1rem}.trust-close{margin-inline:-1rem;padding:2rem 1rem}}
+</style>
