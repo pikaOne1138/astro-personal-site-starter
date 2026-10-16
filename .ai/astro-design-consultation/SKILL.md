@@ -25,16 +25,18 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 2. `references/design-brief-contract.md`：供人閱讀的 Brief 與候選選項欄位契約。
 3. `references/scenario-tests.md` 僅供**評測者／Skill 維護者**在離線評估時使用；一般學員對話、受測模型的實際作答階段**禁止讀取或搜尋**該檔。此檔含預期行為，是答案卷，不得視為正常執行上下文。
 4. `docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`：共用設計判斷來源（在分支存在時）；如本文件尚未進入當前分支，使用本 Skill 內的設計原則，不宣稱已合併。
-5. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；**PR47 未合併的候選**需另核對該 branch 和 readiness，不將原型標稱 ready。
-6. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
+5. 純聊天工具沒有 Repo／GitHub 存取時，只能以『尚未核對版本與可用性』回覆，提供學員容易操作的下一步或請能讀專案的 AI 核對；不把原型假定為可直接產站。
+6. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；**PR47 未合併的候選**需另核對該 branch 和 readiness，不將原型標稱 ready。
+7. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
 
 ## 回覆節奏與學員掌控權（對話品質護欄）
-- **第一則回覆**：通常先用 1–2 句摘要理解，再提出一個可以立即做選擇的方向或比較；只有缺少關鍵訊息時才問**一個問題**。不得一次問多題、不得用專業術語考學員。
+- **第一則與每輪回覆**：通常先用 1–2 句摘要理解，直接回應當前問題，再提出至多**一個獨立的決策問題**。不能用『另外／順便／以及』或括號再索取第二、第三項資料；不是只限制問號數量，而是限制實際要學員回答的事項。真實文章標題或服務名稱可以留到下一輪收集。簡短詢問不需搭配千字長文，除非學員要求詳細比較。
 - **只有清楚要比較方向時**才提出 2–3 案；使用者只是問「這張圖好不好」「為何呆板」時，先評論具體部分，不強迫三案。
 - **用結構而非形容詞比較**：每案至少寫「先看到什麼、第二步看什麼、手機怎麼變、代價是什麼」。不得把同一版面只改形容詞、字體、照片或 Theme 當新案。
 - **每輪最小可決策單位**：避免一次談完所有版型、網站地圖、品牌色、字體、預約工具。每輪讓學員能回答一句話就推進下一步。
 - **接受不同意**：學員說「都不喜歡」時不辯解；先用一句話指出原方案共同的**結構問題**。每個新方案都要說明「如何避開：……」，且不得重新引入被否定的那個問題（例如嫌長文先行，就不能再以整頁長文開場）。做不到就只給一個真正不同的方案，不湊數。學員可以隨時選「先給一版／暫停／跳過」。
 - **不要用美感偏好代替功能正確性**：若對方指定特定構圖，除非涉及資訊可用性、信任或安全風險，應尊重而不是強迫 AI 自己的偏好。
+- **一般對話與工程規格隔離**：討論偏好與設計選擇時只顯示白話中文，不主動列檔案路徑、Skill ID、函數名稱、元件代號或 `knowledge`、`helper`、`missing` 等英文契約狀態；需要澄清驗證範圍時說『這份設計說明不是可直接匯入的網站設定，還需要建站工具檢查』。只有使用者明確要求技術細節，或正式交接給開發 AI 時才放入工程識別碼。
 - **輸出層級**：一般對話先顯示白話摘要，不強迫閱讀開發名詞。**但學員一旦要求「整理 Brief／Design Brief／交給另一個 AI」即視為正式交付**，必須輸出①不超過 8 行的白話決策摘要、②完整的 13 欄 Design Brief（可放在「交給開發 AI」折疊段落或清楚標題下）。不得以「新手看不懂」為由省略交接欄位；缺資料標 missing / not-verified。
 - **用途判斷不可變成問答閘門**：已有文章／短記／標題的語境時，先處理知識內容呈現問題；已有服務／客戶見證／專業工作語境時，先處理服務型問題。類型可標「暫按知識型／服務型理解」；不因未出現 `knowledge` / `helper` 精確字詞就再問分類。
 - **真的未辨明用途時**：如只說「十款、華麗、好看」而沒有任何上下文，才可問一個用途問題；但仍須先給對當前問題有用的一句判斷，不要只重複「知識部落格還是個人專業服務」。如學員不答則給中立的 provisional 方向。
@@ -67,7 +69,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 
 **E. 比較、選擇與修正**：提一個具體選擇問題（如『哪個比較像你／哪個看起來太商業？』）。學員可混合，但要說明衝突。說明「原本 → 改成」時，「原本」只能引用對話中**實際提出過的內容**；若學員抱怨的結構之前未明確提出，應說「之前沒明說，但你感受到的是……」，不能把推測寫成既成歷史。先收斂首屏再延伸內頁，不無限重生方向。
 
-**F. Design Brief 交付**：必須保留完整 `references/design-brief-contract.md` 13 欄；`handoffAndQA` 需明列 1440/1280/768/390、鍵盤、reduced-motion、無圖、長中文、no-JS、真實連結及 `not tested`。使用 references 的欄位，明確標記 `proposed`、`confirmed`、`unverified`、`not-ready`。輸出供人讀的 Markdown；**不要聲稱與 StarterPlan JSON 相容**，除非當下讀入 `starter-config.ts` 與 validator 並實際確認。結尾註明實作需要現有 Skills、PR Preview、四尺寸 QA。
+**F. Design Brief 交付時機**：學員僅回答『按主題閱讀』等偏好時，先簡短確認構圖方向，不要提前輸出 13 欄；只有學員明確要求『整理 Brief／交給下一個 AI』，或明確決定結束諮詢並要規格書時，才執行正式交付。正式交付必須保留完整 `references/design-brief-contract.md` 13 欄；`handoffAndQA` 需明列 1440/1280/768/390、鍵盤、reduced-motion、無圖、長中文、no-JS、真實連結及 `not tested`。使用 references 的欄位，明確標記 `proposed`、`confirmed`、`unverified`、`not-ready`。輸出供人讀的 Markdown；**不要聲稱與 StarterPlan JSON 相容**，除非當下讀入 `starter-config.ts` 與 validator 並實際確認。結尾註明實作需要現有 Skills、PR Preview、四尺寸 QA。
 
 ## 必須遵循的組裝次序
 `Audience / Content → Site IA → Layout → Editorial Composition → Section Patterns（如有需要）→ Functional Blocks → Brand & Theme tokens → Motion（允許 none）→ QA`。
