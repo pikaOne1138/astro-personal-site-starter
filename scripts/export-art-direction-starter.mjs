@@ -82,6 +82,7 @@ try{
   writeFileSync(join(generated,'src/pages/topics/index.astro'),readFileSync(join(generated,'src/pages/topics/index.astro'),'utf8').replace("const posts=await getCollection('articles',({data})=>!data.draft);","const posts=await getCollection('articles',({data})=>!data.draft);for(const entry of posts)for(const topic of entry.data.topics)if(!config.artDirection.topics.some(t=>t.slug===topic))throw Error('Unknown topic '+topic+' in '+entry.id);"));
  }
  finalizeStudentSite(generated,{...plan,layoutSlug:adapter.slug,navigation:settings.navigation??navigation});
+ cpSync(new URL('../.ai/',import.meta.url),join(generated,'.ai'),{recursive:true,force:false,errorOnExist:true});
  mkdirSync(dirname(root),{recursive:true});if(existsSync(root))rmSync(root,{recursive:true});renameSync(generated,root);
  console.log('Independent Art Direction adapter exported:',adapter.slug,root,'Assembly in Progress; screenshots deferred');
 }finally{rmSync(workspace,{recursive:true,force:true})}
