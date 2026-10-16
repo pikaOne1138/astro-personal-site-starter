@@ -479,7 +479,7 @@ try{
     ];
     const fixture=join(root,slug+'.json'),site=join(root,'expanded-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
-    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
+    assertStudentContext(site,JSON.parse(readFileSync(fixture,'utf8')).layoutSlug);
     if(native){
       const dir=join(site,'src/content/articles');mkdirSync(dir,{recursive:true});
       const note=(title,draft,body)=>['---','title: '+title,'description: QA 內容描述','publishedAt: 2026-10-15','draft: '+draft,'---',body].join('\n');
@@ -553,7 +553,7 @@ try{
     plan.layoutContent={headings:Object.fromEntries(Object.keys(headingFields[slug]).map(key=>[key,'QA 可編輯段落標題']))};
     const fixture=join(root,'owned-'+slug+'.json'),site=join(root,'owned-'+slug);writeFileSync(fixture,JSON.stringify(plan));
     execFileSync(process.execPath,['scripts/export-starter.mjs',fixture,site,'--require-assembled'],{stdio:'inherit'});
-    assertStudentContext(site,JSON.parse(readFileSync(filename,'utf8')).layoutSlug);
+    assertStudentContext(site,JSON.parse(readFileSync(fixture,'utf8')).layoutSlug);
     for(const path of ['images/brand-logo.png','images/hero-image.png'])if(!existsSync(join(site,'public',path)))throw Error('Owned uploaded image not copied: '+slug+' '+path);
     execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
     execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
