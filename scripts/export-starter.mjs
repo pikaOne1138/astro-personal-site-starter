@@ -223,7 +223,7 @@ assets['src/pages/robots.txt.js'] = `export async function GET({site}) {
  return new Response(body,{headers:{'Content-Type':'text/plain; charset=utf-8'}});
 }
 `;
-assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("const demo=origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');","const isBranchPreview=process.env.CF_PAGES==='1'&&(!process.env.CF_PAGES_BRANCH||process.env.CF_PAGES_BRANCH!==(process.env.CF_PAGES_PRODUCTION_BRANCH||'main'));\\n const demo=isBranchPreview||process.env.SITE_INDEXABLE!=='true'||origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');");
+assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("const demo=origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');","const isBranchPreview=process.env.CF_PAGES==='1'&&(!process.env.CF_PAGES_BRANCH||process.env.CF_PAGES_BRANCH!==(process.env.CF_PAGES_PRODUCTION_BRANCH||'main'));\n const demo=isBranchPreview||process.env.SITE_INDEXABLE!=='true'||origin.hostname==='example.com'||origin.hostname.endsWith('.invalid');");
 // Supply the same search data contract as the optional SiteSearchDialog Block.
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
