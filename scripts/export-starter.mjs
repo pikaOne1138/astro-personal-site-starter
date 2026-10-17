@@ -169,9 +169,9 @@ assets['src/components/StudentNavigation.astro']="---\nimport config from '../..
 // Keep unconfigured contact endpoints out of visitor navigation, but preserve
 // the underlying route for editing and preview.
 assets['src/components/StudentNavigation.astro']=assets['src/components/StudentNavigation.astro']
- .replace("const roots=config.navigation.filter(x=>!x.parentId);", "const hasContact=Boolean(config.artDirection?.contact?.email||config.artDirection?.contact?.url||config.artDirection?.contact?.bookingUrl);\\nconst roots=config.navigation.filter(x=>!x.parentId&&(hasContact||(x.path??x.id+'/')!=='contact/'));")
+ .replace("const roots=config.navigation.filter(x=>!x.parentId);", "const hasContact=Boolean(config.artDirection?.contact?.email||config.artDirection?.contact?.url||config.artDirection?.contact?.bookingUrl);\nconst roots=config.navigation.filter(x=>!x.parentId&&(hasContact||(x.path??x.id+'/')!=='contact/'));")
  .replace('<nav class="student-navigation"', '<nav class="student-navigation desktop-navigation"')
- .replace('</nav>', '</nav>\\n<details class="student-mobile-navigation"><summary>選單</summary><nav aria-label="手機主要導覽">{roots.map(item=><a href={href(item)} aria-current={current===href(item)?"page":undefined}>{item.label}</a>)}</nav></details>')
+ .replace('</nav>', '</nav>\n<details class="student-mobile-navigation"><summary>選單</summary><nav aria-label="手機主要導覽">{roots.map(item=><a href={href(item)} aria-current={current===href(item)?"page":undefined}>{item.label}</a>)}</nav></details>')
  .replace('</style>', '.student-mobile-navigation{display:none} @media(max-width:740px){.desktop-navigation{display:none}.student-mobile-navigation{display:block;position:relative;width:100%;max-width:100%}.student-mobile-navigation>summary{min-height:44px;cursor:pointer;padding:9px 12px;border:1px solid currentColor;border-radius:6px;list-style:none;display:inline-flex;align-items:center}.student-mobile-navigation>nav{display:grid;gap:4px;padding:12px 0}.student-mobile-navigation>nav>a{padding:9px 12px;min-height:44px;text-decoration:none;overflow-wrap:anywhere}} </style>');
 // Native expansion headers own their navigation, so expose the configured action
 // here rather than relying on the hidden scaffold header. Legacy layouts retain
