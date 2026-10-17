@@ -91,3 +91,26 @@ test('art-direction adapters finalize PROJECT with the real selected Layout',()=
   }finally{rmSync(tmp,{recursive:true,force:true})}
  }
 });
+
+
+test('practice-compass export uses visitor-safe copy and mobile navigation',()=>{
+ const tmp=mkdtempSync(join(tmpdir(),'atp-visitor-export-'));
+ try{
+  const input=join(root,'docs/art-direction/fixtures/practice-compass.json');
+  const out=join(tmp,'site');
+  const run=spawnSync(process.execPath,[join(root,'scripts/export-art-direction-starter.mjs'),input,out,'--allow-in-progress'],{encoding:'utf8',timeout:60000});
+  assert.equal(run.status,0,run.stderr||run.stdout);
+  const nav=readFileSync(join(out,'src/components/StudentNavigation.astro'),'utf8');
+  const layout=readFileSync(join(out,'src/layouts/SiteLayout.astro'),'utf8');
+  const home=readFileSync(join(out,'src/components/layouts/practice-compass/Home.astro'),'utf8');
+  assert.match(nav,/student-mobile-navigation/);
+  assert.doesNotMatch(nav,/hasContact/);
+  assert.match(nav,/const roots=config.navigation.filter\(x=>!x.parentId\)/);
+  assert.match(layout,/config.navigation.map\(x=>/);
+  assert.match(nav,/<summary>選單<\/summary>/);
+  assert.doesNotMatch(layout,/visibleNavigation/);
+  assert.doesNotMatch(home,/BEFORE ANY APPOINTMENT|VISITOR DECISIONS|SCOPE & BOUNDARIES/);
+  assert.match(home,/服務範圍與界線/);
+  assert.doesNotMatch(layout,/THE PRACTICE COMPASS/);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});

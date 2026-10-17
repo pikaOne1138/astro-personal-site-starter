@@ -5,4 +5,4 @@ export function getStaticPaths(){return config.navigation.filter(x=>!config.artD
 const {item}=Astro.props;
 const paragraphs=config.pageContent[item.id]||[];
 ---
-<SiteLayout title={item.label}><section class="interior"><p class="eyebrow">{item.id.toUpperCase()}</p><h1>{item.label}</h1>{paragraphs.length?paragraphs.map(p=><p>{p}</p>):<p class="notice">尚未填入本站正式內容，請由網站持有人提供並確認。</p>}</section></SiteLayout>
+<SiteLayout title={item.label}><section class="interior"><p class="eyebrow">{item.id.toUpperCase()}</p><h1>{item.label}</h1>{paragraphs.length?paragraphs.map(p=><p>{p}</p>):<p class="notice">此頁內容尚在整理中。</p>}</section></SiteLayout>
