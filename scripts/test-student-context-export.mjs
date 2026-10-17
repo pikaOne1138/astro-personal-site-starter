@@ -105,7 +105,7 @@ test('practice-compass export uses visitor-safe copy and mobile navigation',()=>
   const home=readFileSync(join(out,'src/components/layouts/practice-compass/Home.astro'),'utf8');
   assert.match(nav,/student-mobile-navigation/);
   assert.match(nav,/hasContact/);
-  assert.match(nav,/<summary>選單<\\/summary>/);
+  assert.match(nav,/<summary>選單<\/summary>/);
   assert.match(layout,/visibleNavigation/);
   assert.doesNotMatch(home,/BEFORE ANY APPOINTMENT|VISITOR DECISIONS|SCOPE & BOUNDARIES/);
   assert.match(home,/服務範圍與界線/);
