@@ -177,8 +177,8 @@ assets['src/components/StudentNavigation.astro']=assets['src/components/StudentN
 // their existing separate CTA.
 assets['src/components/StudentNavigation.astro']=assets['src/components/StudentNavigation.astro']
  .replace("const current=Astro.url.pathname;", "const current=Astro.url.pathname;\nconst ctaPage=roots.find(item=>item.id===config.primaryCta.pageId);")
- .replace('</nav>', '<Fragment>{config.nativeLayout&&ctaPage&&<a class="student-navigation__cta" data-primary-cta="navigation" href={href(ctaPage)}>{config.primaryCta.label}</a>}</Fragment></nav>')
- .replace('</style>', '.student-navigation>a.student-navigation__cta{border:1px solid currentColor;font-weight:700;overflow-wrap:anywhere;max-width:100%}</style>');
+ .replace('</nav></details>', '</nav></details><Fragment>{config.nativeLayout&&ctaPage&&<a class="student-navigation__cta" data-primary-cta="navigation" href={href(ctaPage)}>{config.primaryCta.label}</a>}</Fragment>')
+ .replace('</style>', 'a.student-navigation__cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 12px;border:1px solid currentColor;border-radius:6px;font-weight:700;overflow-wrap:anywhere;max-width:100%;text-decoration:none}a.student-navigation__cta:focus-visible{outline:3px solid currentColor;outline-offset:3px}</style>');
 assets['src/components/StudentNavigation.astro']+=`
 <script is:inline>
 document.querySelectorAll('.student-navigation').forEach(nav=>{nav.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const group=event.target.closest('details[open]');if(!group)return;group.open=false;group.querySelector('summary').focus();event.preventDefault();});});
