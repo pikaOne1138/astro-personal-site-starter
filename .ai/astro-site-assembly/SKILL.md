@@ -16,6 +16,13 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 ## Generator — phase 1
 `node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.
 
+## Draft content and publication are the owner's decision
+
+- **Draft/Preview:** DEMO labels, sample copy, clearly unconfigured fields, and unfinished contact pages may remain visible for layout review. Do not silently remove or hide them merely because they are unfinished. Keep any placeholder unambiguously labelled; do not invent real credentials, testimonials, bookings, health outcomes, prices or working forms.
+- **Before publishing:** tell the student which exact pages or elements still show DEMO/sample/unconfigured content, and ask whether to (a) keep and publish as-is, (b) edit, or (c) hide specified elements. The student may explicitly choose (a). Do not equate content readiness with mandatory deletion.
+- **Publication gate:** require explicit approval for the specific current version, scope and production action; preview and Build do not constitute that approval. Acknowledged placeholder content alone does not block a user-approved release.
+- **Safety:** never expose secrets or third-party private data, and never depict unverified credentials or services as genuine. Explain public-preview exposure and protect sensitive materials even before production.
+
 ## Student-owned content is not decorative placeholder text
 
 - Site Brief `about.bio`, `about.purpose`, `about.approach`, and `about.background` now drive all twelve About page compositions. Prefer these over homepage tagline/intro. Never fabricate qualification, case history, testimonials or awards.
