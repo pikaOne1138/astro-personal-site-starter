@@ -51,7 +51,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
-<section class="step" aria-labelledby="step-content"><div class="step-head"><span>02+</span><div><h2 id="step-content">我的網站內容（依版型顯示）</h2><p>不用編輯 JSON。選擇「閱讀年鑑」、「聲音通信」或任一助人者版型時，填寫真實資料；未填的欄位會保留待設定提示。</p></div></div>
+<section class="step" aria-labelledby="step-content"><div class="step-head"><span>03</span><div><h2 id="step-content">我的網站內容（依版型顯示）</h2><p>不用編輯 JSON。選擇「閱讀年鑑」、「聲音通信」或任一助人者版型時，填寫真實資料；未填的欄位會保留待設定提示。</p></div></div>
 <div class="layout-content-fields"><h3>首頁文字（適用全部十二款）</h3><label>首頁大標題（選填）<input id="home-headline" maxlength="120" placeholder="留空時保留原 Layout 的設計標題"/></label><label>首頁介紹（選填）<textarea id="home-intro" maxlength="800" rows="3" placeholder="你希望訪客第一眼理解的內容；留空使用版型示範"></textarea></label></div>
 <div class="layout-content-fields"><h3>關於頁（適用十二款）</h3><p class="muted">這些是獨立內頁內容，不會被首頁介紹覆蓋。只寫真實資料；不清楚可以留空。</p><label>我的介紹<textarea id="about-bio" maxlength="1200" rows="4" placeholder="真實的個人背景或目前在做的事"></textarea></label><label>網站或服務目的<textarea id="about-purpose" maxlength="1200" rows="3" placeholder="為什麼建立這個網站"></textarea></label><label>我的方法<textarea id="about-approach" maxlength="1200" rows="3" placeholder="寫作／整理／協助他人的實際方式"></textarea></label><label>作品、經歷與可查證資訊<textarea id="about-background" maxlength="1200" rows="3" placeholder="沒有資料就留空，不編造資格或見證"></textarea></label></div>
 <div class="layout-content-fields" data-content-layout="reading-atlas" hidden><h3>閱讀年鑑</h3><label>閱讀月份<select id="reading-month">{Array.from({length:12},(_,i)=><option value={String(i+1).padStart(2,'0')}>{i+1} 月</option>)}</select></label><label>一本真正讀過的書<input id="reading-title" maxlength="150" placeholder="請填入書名"/></label><label>閱讀評註<textarea id="reading-note" maxlength="1000" rows="3" placeholder="自己的真實心得"></textarea></label><label>年度選書<input id="annual-title" maxlength="150" placeholder="選填，自己實際讀過的書"/></label><label>年度選擇理由<textarea id="annual-note" maxlength="1000" rows="3"></textarea></label><p class="muted">這一版先支援一筆閱讀紀錄；其餘紀錄可由 AI 依相同格式加入。</p></div>
@@ -59,7 +59,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="layout-content-fields" data-content-kind="helper" hidden><h3>助人者網站：真實的服務資訊（六款通用）</h3><label>服務範圍與適合對象<textarea id="fact-scope" maxlength="500" rows="3" placeholder="清楚寫出真正提供的服務，未確認可留空"></textarea></label><label>服務界線／不提供的服務<textarea id="fact-exclusions" maxlength="500" rows="3" placeholder="不虛構醫療資格或效果"></textarea></label><label>合作方法<textarea id="fact-method" maxlength="500" rows="3" placeholder="實際合作流程"></textarea></label><label>第一次聯絡或見面的流程<textarea id="fact-first-visit" maxlength="500" rows="3" placeholder="站長確認後填入"></textarea></label><label>一次服務時間<input id="fact-duration" maxlength="100" placeholder="待確定就留空"/></label><label>服務費用<input id="fact-price" maxlength="100"/></label><label>取消規則<input id="fact-cancellation" maxlength="200"/></label><label>專業資格（需可查證）<input id="fact-qualification" maxlength="200"/></label><label>公開聯絡方式<input id="fact-contact" maxlength="200"/></label><p class="muted">不必填滿。沒有資料就顯示待確認，不能自行編造資格、價格或預約成功。</p></div>
 </section>
 <section class="step" aria-labelledby="step-ai-interview">
-  <div class="step-head"><span>02++</span><div><h2 id="step-ai-interview">AI 需求訪談與 Logo 設計（選填）</h2><p>可以現在與 AI 討論，也可以等網站有初稿後再調整。這不影響接下來的規劃、下載或建站。</p></div></div>
+  <div class="step-head"><span>04</span><div><h2 id="step-ai-interview">AI 需求訪談與 Logo 設計（選填）</h2><p>可以現在與 AI 討論，也可以等網站有初稿後再調整。這不影響接下來的規劃、下載或建站。</p></div></div>
   <div class="ai-interview-panel">
     <h3>先與 AI 討論網站需求</h3>
     <p>你可以在慣用的 AI 工具中訪談網站定位、客群、內容與品牌方向。請 AI 在結束時整理一份方便複製的摘要，再貼在下方。也可以直接貼上你已有的討論整理。</p>
@@ -73,14 +73,14 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
     <p id="interview-copy-status" class="muted" role="status" aria-live="polite"></p>
   </div>
 </section>
-<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
+<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>05</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
 <div class="navigation-builder">
   <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
   <aside class="navigation-preview"><p class="eyebrow">NAVIGATION PREVIEW</p><strong id="preview-name">我的個人網站</strong><div id="preview-menu"></div><div class="cta-field"><label for="cta-target">主要按鈕前往</label><select id="cta-target" name="ctaTarget"></select><label for="cta-label">按鈕文字</label><input name="ctaLabel" id="cta-label" maxlength="24" value="閱讀文章"/></div></aside>
 </div>
 </section>
 <section class="step" aria-labelledby="step-patterns">
-<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
+<div class="step-head"><span>06</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
 <div class="pattern-options" id="pattern-options">
 {patternRegistry.filter(x=>!x.id.startsWith('footer-')).map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
 <label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.id==='featured-work'?'精選內容展示（文章／作品／專題）':x.title}</strong></label>
@@ -109,7 +109,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </div>
 </section>
-<section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
+<section class="step" aria-labelledby="step-output"><div class="step-head"><span>07</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
 <aside class="handoff-guide"><strong>下一步：交給 AI 建立自己的網站</strong><p>先下載下方的 Site Brief JSON，然後前往<a href={base+'guide/'}>正式建站 Guide</a>，取得既有的 AI 建站資料包與唯一正式起始提示詞。學員不用 Fork 老師的 GitHub，也不用自己執行終端機。</p><a class="button secondary" href={base+'guide/'}>前往 AI 建站 Guide →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
