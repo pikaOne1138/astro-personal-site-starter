@@ -58,6 +58,21 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="layout-content-fields" data-content-layout="radio-letter" hidden><h3>聲音通信</h3><label>自有音訊檔案路徑<input id="episode-audio" placeholder="/audio/episode-01.mp3"/></label><label>逐字稿第一段時間<input id="episode-time" placeholder="00:00" maxlength="32"/></label><label>逐字稿第一段文字<textarea id="episode-text" maxlength="2000" rows="4"></textarea></label><p class="muted">產生器只接受本地有授權的音檔，請把音檔放在 Site Brief 所在資料夾的 public/audio/；不會自動錄音或生成逐字稿。</p></div>
 <div class="layout-content-fields" data-content-kind="helper" hidden><h3>助人者網站：真實的服務資訊（六款通用）</h3><label>服務範圍與適合對象<textarea id="fact-scope" maxlength="500" rows="3" placeholder="清楚寫出真正提供的服務，未確認可留空"></textarea></label><label>服務界線／不提供的服務<textarea id="fact-exclusions" maxlength="500" rows="3" placeholder="不虛構醫療資格或效果"></textarea></label><label>合作方法<textarea id="fact-method" maxlength="500" rows="3" placeholder="實際合作流程"></textarea></label><label>第一次聯絡或見面的流程<textarea id="fact-first-visit" maxlength="500" rows="3" placeholder="站長確認後填入"></textarea></label><label>一次服務時間<input id="fact-duration" maxlength="100" placeholder="待確定就留空"/></label><label>服務費用<input id="fact-price" maxlength="100"/></label><label>取消規則<input id="fact-cancellation" maxlength="200"/></label><label>專業資格（需可查證）<input id="fact-qualification" maxlength="200"/></label><label>公開聯絡方式<input id="fact-contact" maxlength="200"/></label><p class="muted">不必填滿。沒有資料就顯示待確認，不能自行編造資格、價格或預約成功。</p></div>
 </section>
+<section class="step" aria-labelledby="step-ai-interview">
+  <div class="step-head"><span>02++</span><div><h2 id="step-ai-interview">AI 需求訪談與 Logo 設計（選填）</h2><p>可以現在與 AI 討論，也可以等網站有初稿後再調整。這不影響接下來的規劃、下載或建站。</p></div></div>
+  <div class="ai-interview-panel">
+    <h3>先與 AI 討論網站需求</h3>
+    <p>你可以在慣用的 AI 工具中訪談網站定位、客群、內容與品牌方向。請 AI 在結束時整理一份方便複製的摘要，再貼在下方。也可以直接貼上你已有的討論整理。</p>
+    <button class="button secondary" type="button" id="copy-interview-prompt">複製 AI 訪談指令</button>
+    <label for="interview-summary">AI 訪談結果（選填，保留原文）</label>
+    <textarea id="interview-summary" rows="8" placeholder="貼上 AI 整理的網站需求摘要。未完成可留白；不需轉成 JSON。"></textarea>
+    <h3>Logo 與品牌圖片</h3>
+    <p>可以先請 AI 討論 Logo 方向、色彩與網站圖片；做好後使用上方「品牌視覺」的圖片上傳欄位。若還沒決定，先建站、之後再修改也可以。</p>
+    <button class="button secondary" type="button" id="copy-logo-prompt">複製 Logo 設計指令</button>
+    <p class="muted">若摘要與規劃器設定有明確差異，建站 AI 應先向你確認，不能直接忽略任何一方。</p>
+    <p id="interview-copy-status" class="muted" role="status" aria-live="polite"></p>
+  </div>
+</section>
 <section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
 <div class="navigation-builder">
   <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
@@ -402,7 +417,7 @@ function plan():StarterPlan {
  navigation:nav.map(x=>({...x})),
  sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
- notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value,about:{bio:field('about-bio'),purpose:field('about-purpose'),approach:field('about-approach'),background:field('about-background')},content:{headline:form.querySelector<HTMLInputElement>('#home-headline')!.value.trim(),intro:form.querySelector<HTMLTextAreaElement>('#home-intro')!.value.trim()},...contentExtension(),
+ notes:[document.querySelector<HTMLTextAreaElement>('#notes')!.value.trim(),...(document.querySelector<HTMLTextAreaElement>('#interview-summary')!.value.trim()?['【AI 需求訪談原始摘要（與規劃設定若有明確衝突，先詢問學員，不預設優先）】\\n'+document.querySelector<HTMLTextAreaElement>('#interview-summary')!.value.trim()]:[])].filter(Boolean).join('\\n\\n'),about:{bio:field('about-bio'),purpose:field('about-purpose'),approach:field('about-approach'),background:field('about-background')},content:{headline:form.querySelector<HTMLInputElement>('#home-headline')!.value.trim(),intro:form.querySelector<HTMLTextAreaElement>('#home-intro')!.value.trim()},...contentExtension(),
  assets:[...embeddedImages.values()].filter(asset=>asset.path===(asset.path.includes('brand-logo')?form.querySelector<HTMLInputElement>('[name="logoPath"]')!.value:form.querySelector<HTMLInputElement>('[name="heroImagePath"]')!.value))};
 }
 function showPlan(){
@@ -411,6 +426,15 @@ function showPlan(){
  document.querySelectorAll<HTMLElement>('[data-content-kind]').forEach(group=>{group.hidden=group.dataset.contentKind!==value('kind');});
  const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
 }
+const interviewPrompts={
+ interview:'請與我進行網站需求訪談，一次聚焦一個問題，了解網站目的、受眾、核心內容、預計頁面、希望的風格與未決事項。完成後請將我們實際確認過的資訊整理成可直接複製的 Markdown 摘要；標註尚未決定的項目，不要自行捏造。這份摘要之後會貼進 ATP 網站規劃器。',
+ logo:'請根據我的網站定位、受眾與品牌方向，協助討論 Logo 與網站圖片。先提出幾種視覺方向供我選擇，確認後再協助產生圖片或製作提示詞。若資訊不足先詢問，不要自作決定。結果之後會由我自行放進 ATP 規劃器。'
+};
+document.querySelectorAll<HTMLButtonElement>('#copy-interview-prompt,#copy-logo-prompt').forEach(btn=>btn.addEventListener('click',async()=>{
+ const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
+ try{await navigator.clipboard.writeText(btn.id==='copy-logo-prompt'?interviewPrompts.logo:interviewPrompts.interview);status.textContent='指令已複製，可以貼給 AI。';}
+ catch{status.textContent='無法自動複製，請改用其他方式提供指令。';}
+}));
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
 const initialParams=new URLSearchParams(location.search);
@@ -455,4 +479,4 @@ update();
 .notes-field label{display:block;font-weight:600}
 .notes-field textarea{display:block;width:100%;min-width:0;max-width:100%;min-height:150px;resize:vertical;box-sizing:border-box;line-height:1.65}
 </style>
-<style>.layout-content-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.layout-content-fields[hidden]{display:none}.layout-content-fields h3,.layout-content-fields p{grid-column:1/-1}.layout-content-fields label{display:flex;flex-direction:column;gap:.5rem}.layout-content-fields input,.layout-content-fields select,.layout-content-fields textarea{font:inherit;border:1px solid var(--line);background:var(--white);color:inherit;border-radius:8px;padding:.7rem;width:100%}@media(max-width:650px){.layout-content-fields{grid-template-columns:1fr}}</style><style>.handoff-guide{margin:1.5rem 0;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;background:var(--white)}.handoff-guide summary{font-weight:700;cursor:pointer}.handoff-guide li{margin:.75rem 0;line-height:1.8}.handoff-guide p{color:var(--muted)}</style></body></html>
+<style>.ai-interview-panel{border:1px solid var(--line);border-radius:12px;background:var(--white);padding:22px;display:grid;gap:12px}.ai-interview-panel h3,.ai-interview-panel p{margin:0}.ai-interview-panel h3:not(:first-child){margin-top:12px}.ai-interview-panel label{font-weight:700}.ai-interview-panel textarea{display:block;width:100%;min-height:180px;padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--white);font:inherit;resize:vertical}.ai-interview-panel button{justify-self:start}</style><style>.layout-content-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.layout-content-fields[hidden]{display:none}.layout-content-fields h3,.layout-content-fields p{grid-column:1/-1}.layout-content-fields label{display:flex;flex-direction:column;gap:.5rem}.layout-content-fields input,.layout-content-fields select,.layout-content-fields textarea{font:inherit;border:1px solid var(--line);background:var(--white);color:inherit;border-radius:8px;padding:.7rem;width:100%}@media(max-width:650px){.layout-content-fields{grid-template-columns:1fr}}</style><style>.handoff-guide{margin:1.5rem 0;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;background:var(--white)}.handoff-guide summary{font-weight:700;cursor:pointer}.handoff-guide li{margin:.75rem 0;line-height:1.8}.handoff-guide p{color:var(--muted)}</style></body></html>
