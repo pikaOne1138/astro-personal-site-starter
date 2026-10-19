@@ -12,47 +12,34 @@ const base = import.meta.env.BASE_URL;
       <h1>從喜歡的設計開始<span class="hero-line">打造自己的網站</span></h1>
       <p>不需要先懂程式或設計，看看不同網站怎麼呈現內容<span class="hero-line">挑選喜歡的版型、風格和功能，讓 AI 協助你逐步完成自己的網站</span></p>
     </header>
-    <section class="starter-entry" aria-label="開始規劃自己的網站">
-      <div><p class="eyebrow">YOUR OWN WEBSITE</p><h2>選好方向後，開始規劃你的網站</h2><p>選版型、品牌色、網站頁面與導航，產生一份能交給 AI 接續製作的規格。</p></div>
-      <a href={base+'starter/'}>開始規劃網站 →</a>
+    <section class="workshop-paths" aria-labelledby="workshop-start-title">
+      <div class="workshop-paths-heading"><p class="eyebrow">START HERE · BUILD YOUR SITE</p><h2 id="workshop-start-title">開始製作自己的網站</h2><p>這是建站的主路線。第一次使用先準備工具；準備好後就從版型開始，選好直接接續規劃。</p></div>
+      <div class="workshop-path-grid">
+        <a class="demo-card workshop-path-card" href={base+'guide/prepare/'}>
+          <small>01 · PREPARE</small><h3>第一次使用？先完成前置準備</h3><p>準備 GitHub、AI 工具與文字圖片素材。</p><b>查看前置準備 →</b>
+        </a>
+        <a class="demo-card workshop-path-card" href={base+'layouts/'}>
+          <small>02 · CHOOSE A LAYOUT</small><h3>準備好了？探索 25 種網站版型</h3><p>比較真正不同的網站結構，選好再進入規劃器。</p><b>探索網站版型 →</b>
+        </a>
+      </div>
     </section>
-    <section class="matrix-group showcase-examples" aria-labelledby="examples-title">
-      <div class="matrix-heading">
-        <span>A</span>
-        <div>
-          <h2 id="examples-title">選一個適合你的網站起點</h2>
-          <p>先看看你想做哪一種網站，再比較不同的視覺風格。每個範例都可以打開實際體驗，不只是看首頁圖片。</p>
-        </div>
-      </div>
-      <div class="showcase-example-groups">
-        {kinds.map((kind)=><div class="showcase-example-group">
-          <div class="showcase-example-intro">
-            <div>
-              <p class="eyebrow">{kind === 'knowledge' ? 'KNOWLEDGE / BLOG' : 'HELPER / PROFESSIONAL'}</p>
-              <h3>{kindMeta[kind].label}</h3>
-            </div>
-            <p>{kind === 'knowledge'
-              ? '適合記錄生活、分享觀點、整理知識與長期累積文章。可體驗搜尋、標籤、文章分類與閱讀功能。'
-              : '適合心理師、療癒師、教練與顧問。可體驗服務介紹、合作流程、常見問題與預約入口。'}</p>
-          </div>
-          <ShowcaseDemoGrid kind={kind} />
-        </div>)}
-      </div>
+    <section class="matrix-group" aria-labelledby="explore-resources-title">
+      <div class="matrix-heading"><span>+</span><div><h2 id="explore-resources-title">設計靈感與功能資源 · 自由探索</h2><p>以下是進階參考與補充工具，不是建站必做步驟；想看更多時可以隨時岔出去探索。</p></div></div>
     </section>
     <section class="matrix-group blocks-entry" aria-labelledby="libraries-title">
       <div class="matrix-heading">
-        <span>B</span>
+        <span>·</span>
         <div>
           <h2 id="libraries-title">版型、組合、特效、元件 · 四座網站設計庫</h2>
-          <p>先選 12 種整頁版型，再加入區段組合；依需求添加 7 組互動特效，最後探索 {blockRegistry.length} 個可調整的功能元件。</p>
+          <p>參考版型與區段組合；依需求添加 7 組互動特效，最後探索 {blockRegistry.length} 個可調整的功能元件。</p>
         </div>
       </div>
       <div class="library-entry-grid">
         <a class="demo-card library-entry-card" href={base+'layouts/'}>
           <p class="eyebrow">LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
           <h3>版型庫 · 網站怎麼說故事</h3>
-          <p>12 種獨立的網站結構與內容閱讀動線：六款知識內容、六款助人專業。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
-          <b>進入 12 種版型庫 →</b>
+          <p>25 種網站設計方向，涵蓋知識內容與助人專業；依成熟度區分可組裝版本與原型。比較首頁區塊如何排列，而不只看顏色或導覽列。</p>
+          <b>探索 25 種版型 →</b>
         </a>
         <a class="demo-card library-entry-card" href={base+'section-patterns/'}>
           <p class="eyebrow">SECTION PATTERNS · COMPOSED SECTIONS</p>
@@ -76,7 +63,7 @@ const base = import.meta.env.BASE_URL;
     </section>
     <section class="matrix-group blocks-entry" aria-labelledby="search-features-title">
       <div class="matrix-heading">
-        <span>C</span>
+        <span>·</span>
         <div>
           <h2 id="search-features-title">全站搜尋與文章瀏覽 · 五種找內容的方法</h2>
           <p>搜尋不只有一個輸入框。依照訪客記得的是關鍵字、主題或日期，選擇最適合的入口。這五個元件可以各自使用，也能組合在同一個網站。</p>
@@ -125,6 +112,7 @@ const base = import.meta.env.BASE_URL;
 </DemoLayout>
 
 <style>
+  .workshop-paths{margin:0 0 72px}.workshop-paths-heading{margin-bottom:20px}.workshop-paths-heading h2{font-size:clamp(25px,3vw,36px);margin:4px 0 10px}.workshop-paths-heading>p:last-child{color:var(--muted);margin:0;max-width:72ch}.workshop-path-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.workshop-path-card{display:flex;flex-direction:column;gap:12px;min-width:0;text-decoration:none}.workshop-path-card h3,.workshop-path-card p{margin:0}.workshop-path-card b{margin-top:auto;padding-top:16px}@media(max-width:720px){.workshop-path-grid{grid-template-columns:1fr}}
   .index-hero .hero-line{display:block}
   @media(max-width:600px){.index-hero .hero-line{display:block}}
   .showcase-example-groups{display:grid;grid-template-columns:minmax(0,1fr);gap:64px}
