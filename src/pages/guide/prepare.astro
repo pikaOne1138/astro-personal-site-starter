@@ -1,4 +1,5 @@
 ---
+import WorkshopNav from '../../components/WorkshopNav.astro';
 import intakeReadme from '../../../docs/student-intake/README.md?raw';
 import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
 import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
@@ -41,7 +42,7 @@ const pages=[
 .hosting-hint{margin:20px auto 16px;padding:19px 20px;max-width:560px;text-align:center;background:#e8efe7;border:1px solid #bed0bf;border-radius:10px}.hosting-hint strong,.hosting-hint span{display:block}.hosting-hint strong{font-size:19px;color:#193e30}.hosting-hint span{font-size:14px;color:#3b5549}.hosting-hint[hidden]{display:none!important}
 .deploy-check{margin:14px 0 17px;padding:18px 20px;border:1px solid #a9c2ad;border-radius:10px;background:#edf3e9}.deploy-check>strong{display:block;color:#214b34;font-size:17px}.deploy-check dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}.deploy-check dl>div{background:#fffefa;border:1px solid #d4e0d1;padding:10px 13px;border-radius:7px}.deploy-check dt{font-size:13px;color:#53665a}.deploy-check dd{margin:3px 0 0;font-weight:700}.deploy-check p{margin:7px 0 0;font-size:14px;color:#415a49}@media(max-width:520px){.deploy-check dl{grid-template-columns:1fr}}
 </style></head><body>
-<header class="top"><strong>個人網站建置指南</strong><nav aria-label="教學章節"><a href={base+'guide/prepare/'} aria-current="page">前置準備</a><a href={base+'guide/'}>開始建置</a></nav></header>
+<WorkshopNav current="prepare" />
 <main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI、準備網站內容與品牌圖片。</p>
 <div class="steps">{pages.map(x=><a href={'#'+x.id}><strong>{x.title} ↓</strong><small>{x.desc}</small></a>)}</div>
 <section id="account"><h2>01｜註冊並登入 GitHub</h2>
