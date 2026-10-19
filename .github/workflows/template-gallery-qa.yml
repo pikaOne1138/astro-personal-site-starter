@@ -29,6 +29,7 @@ jobs:
           for n in $(seq 1 30); do curl -sf http://127.0.0.1:4321/layouts/ > /dev/null && break; sleep 1; done
           node scripts/capture-template-gallery.mjs
           node scripts/verify-template-gallery.mjs
+          cp public/template-gallery/*.webp dist/template-gallery/
       - name: Gallery browser QA
         run: node scripts/qa-template-gallery.mjs
       - uses: actions/upload-artifact@v4

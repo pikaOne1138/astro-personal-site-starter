@@ -5,10 +5,18 @@ const base=(process.env.TEMPLATE_CAPTURE_BASE||'http://127.0.0.1:4321').replace(
 const out='docs/template-gallery/qa';mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
 const results=[];
+const errors=[];
+browser.on('page',page=>page.on('pageerror',error=>errors.push({url:page.url(),error:error.message})));
 try{
  for(const width of [1440,1280,768,390])for(const route of ['layouts','templates','starter']){
   const page=await browser.newPage({viewport:{width,height:width===390?844:900},reducedMotion:'reduce'});
   await page.goto(`${base}/${route}/`,{waitUntil:'networkidle'});
+  if(route!=='starter'){
+   for(const d of layoutDefinitions){
+    const href=await page.locator(`a[href*='starter/?layout=${d.slug}&kind=${d.kind}']`).first().getAttribute('href');
+    if(!href)throw Error('Missing selection link '+d.slug);
+   }
+  }
   // Exercise lazy images, including hidden helper cards in Starter.
   if(route==='starter')await page.locator('input[name=kind][value=helper]').check();
   await page.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,30));}await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));scrollTo(0,0);});
@@ -18,6 +26,7 @@ try{
   if(route==='templates'){
    const group=page.locator('.template-controls').first();await group.locator('[data-view=mobile]').click();
    if(await group.locator('[data-view=mobile]').getAttribute('aria-pressed')!=='true')throw Error('Mobile toggle failed');
+   await page.screenshot({path:`${out}/templates-phone-${width}.png`,fullPage:true});
   }
   await page.close();
  }
@@ -32,7 +41,7 @@ try{
   results.push({slug:d.slug,selection,brief:true});
  }
  await page.close();
- writeFileSync(`${out}/results.json`,JSON.stringify({base,checkedAt:new Date().toISOString(),results},null,2)+'\n');
- if(results.some(r=>r.overflow||r.brokenImages?.length))throw Error('Gallery browser QA failed; see results.json');
+ writeFileSync(`${out}/results.json`,JSON.stringify({base,checkedAt:new Date().toISOString(),results,errors},null,2)+'\n');
+ if(errors.length||results.some(r=>r.overflow||r.brokenImages?.length))throw Error('Gallery browser QA failed; see results.json');
  console.log('Three gallery surfaces × four widths; 25 Starter preselection + Site Brief checks passed');
 }finally{await browser.close();}

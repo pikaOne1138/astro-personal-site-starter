@@ -100,6 +100,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </form>
 </main>
 <script>
+import {layoutDefinitions as directions} from '../../data/layout-assembly/definitions.mjs';
 import { starterPages, starterThemeSeeds, starterThemePalettes, checkStarterPlan, type StarterKind, type StarterTheme, type StarterPlan } from '../../data/starter-config';
 import patternRegistry from '../../data/section-patterns.registry.json';
 const form=document.querySelector<HTMLFormElement>('#starter-form')!;
