@@ -21,14 +21,8 @@ try {
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
   // Both the built website and the downloadable ZIP must declare the same source version.
+  const webManifest=JSON.parse(readFileSync(process.env.STUDENT_PACK_WEB_MANIFEST||'public/builder-pack-version.json','utf8'));
   const zipManifest=JSON.parse(readFileSync(join(root,'BUILDER-PACK-VERSION.json'),'utf8'));
-  // Remote black-box checks run on a downloaded ZIP without a local site build.
-  // Compare to the actual deployed website manifest supplied by the HTTP auditor.
-  // Local builds continue to require the generated web manifest.
-  const remoteManifest=process.env.STUDENT_PACK_EXPECTED_MANIFEST;
-  const webManifest=remoteManifest
-    ? JSON.parse(remoteManifest)
-    : JSON.parse(readFileSync('public/builder-pack-version.json','utf8'));
   if(JSON.stringify(webManifest)!==JSON.stringify(zipManifest))throw Error('Guide/Builder Pack version mismatch');
   if(!Array.isArray(zipManifest.layoutSlugs)||zipManifest.layoutSlugs.length!==layoutDefinitions.filter(x=>x.adapter).length||zipManifest.layoutAdapterCount!==layoutDefinitions.filter(x=>x.adapter).length)throw Error('Builder Pack manifest missing registered layouts');
   if(!/^[a-f0-9]{40}$/.test(zipManifest.sourceCommit)&&zipManifest.sourceCommit!=='unknown')throw Error('Invalid source commit version');

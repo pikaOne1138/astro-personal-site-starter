@@ -10,9 +10,7 @@ const checks=[];
 const measure=page=>page.evaluate(()=>({
  viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
  overflow:document.documentElement.scrollWidth>innerWidth+2,
- galleryScrollers:[...document.querySelectorAll('.showcase-demo-grid')].map(x=>({
-   clientWidth:x.clientWidth,scrollWidth:x.scrollWidth,scrollable:getComputedStyle(x).overflowX==='auto'
- }))
+ startGridCount:document.querySelectorAll('.workshop-path-grid').length
 }));
 try{
  let ready=false;
@@ -23,12 +21,12 @@ try{
  const response=await page.goto(base+'/',{waitUntil:'domcontentloaded'});
  if(response?.status()!==200)throw Error('Home HTTP status '+response?.status());
  const baseline=await measure(page);
- const baselinePass=!baseline.overflow&&baseline.galleryScrollers.length===2&&baseline.galleryScrollers.every(x=>x.scrollable);
- checks.push({name:'normal 390px homepage: outer viewport fits; two carousels remain horizontally scrollable',pass:baselinePass,measurement:baseline});
- await page.addStyleTag({content:'.showcase-example-groups { min-width:520px !important }'});
+ const baselinePass=!baseline.overflow&&baseline.startGridCount===1;
+ checks.push({name:'normal 390px homepage: main workshop path fits viewport',pass:baselinePass,measurement:baseline});
+ await page.addStyleTag({content:'.workshop-path-grid { min-width: 720px !important }'});
  const broken=await measure(page);
  const mutationDetected=broken.overflow;
- checks.push({name:'F07 fault injection: unexpected 520px page-wide minimum must trigger outer overflow',pass:mutationDetected,measurement:broken});
+ checks.push({name:'F07 fault injection: unexpected 720px workshop grid minimum must trigger outer overflow',pass:mutationDetected,measurement:broken});
  if(!mutationDetected||!baselinePass)process.exitCode=1;
  await page.close();
 }finally{await browser?.close();server.kill('SIGTERM');}

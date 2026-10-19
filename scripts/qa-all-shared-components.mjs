@@ -4,7 +4,7 @@ import {setTimeout as pause} from 'node:timers/promises';
 import {mkdirSync,writeFileSync} from 'node:fs';
 const port=4388,base='http://127.0.0.1:'+port;
 const cases=[
- {component:'ShowcaseDemoGrid',route:'/',selector:'.showcase-demo-grid',count:2,extra:'.showcase-demo-grid a.demo-card',extraCount:8},
+ {component:'WorkshopNav',route:'/guide/',selector:'header.workshop-nav',count:1,extra:'header.workshop-nav nav a',extraCount:3},
  {component:'DesignLibraryNav',route:'/blocks/',selector:'nav.design-library-nav',count:1,extra:'nav.design-library-nav a[aria-current="page"]',extraCount:1},
  {component:'SiteNav',route:'/knowledge/paper/',selector:'header.v02-nav',count:1,extra:'nav.v02-links a[href]',extraMin:2},
  {component:'ArticleArchive',route:'/knowledge/paper/articles/',selector:'.article-archive[data-article-archive]',count:1,extra:'.article-archive [data-result-counter]',extraCount:1},
