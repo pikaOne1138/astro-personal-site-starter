@@ -1,4 +1,5 @@
 ---
+import WorkshopNav from '../../components/WorkshopNav.astro';
 const base = import.meta.env.BASE_URL;
 const resources = [
   {
@@ -41,14 +42,7 @@ const resources = [
   </style>
 </head>
 <body>
-<header class="top">
-  <strong>個人網站工作坊</strong>
-  <nav class="tabs" aria-label="工作坊導覽">
-    <a href={base+'guide/prepare/'}>前置準備</a>
-    <a href={base+'guide/'}>開始建置</a>
-    <a href={base+'resources/'} aria-current="page">延伸資源</a>
-  </nav>
-</header>
+<WorkshopNav current="resources" />
 <main>
   <p class="eyebrow">AFTER LAUNCH · OPTIONAL RESOURCES</p>
   <h1>網站上線後，還能做些什麼？</h1>
