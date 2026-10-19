@@ -69,15 +69,25 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-ai-interview">
   <div class="step-head"><span>04</span><div><h2 id="step-ai-interview">AI 需求訪談與 Logo 設計（選填）</h2><p>可以現在與 AI 討論，也可以等網站有初稿後再調整。這不影響接下來的規劃、下載或建站。</p></div></div>
   <div class="ai-interview-panel">
-    <h3>需要 AI 幫忙釐清需求時</h3>
-    <p>沒有訪談需求可以跳過。想請 AI 協助時，下載訪談包或複製簡短提示詞，交給你使用的 AI 對話工具。</p>
-    <div class="intake-download"><strong>AI 需求訪談包（選用）</strong><p>這份資料包包含訪談主持流程、網站定位、內容準備、品牌與 Logo 設計參考。下載後解壓縮，將相關文件交給你慣用的 AI，讓它一次問你一個問題。</p><button class="button secondary" type="button" id="download-intake-zip">下載 AI 需求訪談包 ZIP ↓</button><p class="muted">訪談後，請 AI 整理文字摘要，貼在下方「AI 訪談結果」欄位。第 07 步下載的 Site Brief 會包含這段文字；建站時不用再上傳訪談包。</p></div><button class="button secondary" type="button" id="copy-interview-prompt">只複製簡短訪談指令</button>
-    <label for="interview-summary">AI 訪談結果（選填，保留原文）</label>
-    <textarea id="interview-summary" rows="8" placeholder="貼上 AI 整理的網站需求摘要。未完成可留白；不需轉成 JSON。"></textarea>
+    <h3>需要 AI 幫你把網站想法整理清楚嗎？（選填）</h3>
+    <p>如果你已經知道網站要放什麼內容，可以跳過訪談，直接繼續。若還不確定要寫什麼、想服務誰，或希望有人陪你整理個人介紹、文章／服務內容和品牌方向，就使用下面的<strong>完整 AI 需求訪談包</strong>。它不是只聊幾句的短提示詞。</p>
+    <div class="intake-download">
+      <strong>照著這 5 步操作</strong>
+      <ol class="logo-handoff-steps">
+        <li><strong>下載：</strong>按「下載完整 AI 需求訪談包 ZIP」，把 ZIP 儲存到電腦並解壓縮。</li>
+        <li><strong>交給 AI：</strong>打開你平常使用的 ChatGPT、Claude 或其他支援上傳檔案的 AI。開啟一段新對話，把解壓縮後的 <strong>README.md 和 01～06 六份 Markdown 文件一起上傳</strong>；請 AI 先讀完，不要直接建站。</li>
+        <li><strong>開始訪談：</strong>按「複製訪談開場指令」，貼到同一段 AI 對話送出。AI 會一次問你一個問題，討論網站用途、訪客、個人介紹、文章或服務內容、品牌與圖片。不知道的問題可以直接說「不知道」或「先跳過」。</li>
+        <li><strong>確認結果：</strong>訪談結束，請 AI 依包內規則整理<strong>《網站內容準備稿 v1》</strong>，分清楚已確認、待確認、缺少及不公開的資料。先檢查內容是否正確，不要把 AI 的猜測當成事實。</li>
+        <li><strong>貼回這裡：</strong>將確認過的《網站內容準備稿 v1》全文複製，貼到下方「AI 訪談結果」大文字框。完成本頁其他設定後，在第 07 步下載 Site Brief；訪談內容會一起交給建站 AI，<strong>不需要再上傳一次訪談包</strong>。</li>
+      </ol>
+      <button class="button secondary" type="button" id="download-intake-zip">下載完整 AI 需求訪談包 ZIP ↓</button>
+      <button class="button secondary" type="button" id="copy-intake-start">複製訪談開場指令</button>
+      <p class="muted">這份訪談包同時包含 Logo 與圖片設計的討論指南。AI 不會因為下載檔案就自動開始訪談，必須把文件和開場指令交給 AI。</p>
+    </div>
+    <label for="interview-summary">貼上 AI 整理的《網站內容準備稿 v1》（選填）</label>
+    <textarea id="interview-summary" rows="8" placeholder="完成 AI 訪談並確認內容後，將《網站內容準備稿 v1》的全文貼在這裡。還沒訪談可留空。"></textarea>
     <h3>Logo 與品牌圖片（選填）</h3>
-    <p>如要設計 Logo，可複製提示詞到 AI 對話；還沒決定就先跳過。</p>
-    <ol class="logo-handoff-steps"><li>按下方按鈕複製提示詞，切換到你慣用的 AI 對話，貼上並開始討論 Logo 風格。</li><li>如果 AI 產出 Logo 圖片，先儲存到電腦，再到 <a href="#brand-logo-upload">本步下方的「Logo 與主視覺圖片上傳」</a> 上傳。</li><li>如果 AI 只整理了 Logo 方向、配色、設計概念等文字，請把這段文字貼到<strong>本步上方「AI 訪談結果」</strong>文字框，並註明是 Logo 設計需求。</li><li>若暫時沒有 Logo，可先跳過，網站有初稿後再補充。</li></ol>
-    <button class="button secondary" type="button" id="copy-logo-prompt">複製給 AI 的 Logo 設計提示詞</button>
+    <p>訪談包也會協助你討論 Logo 和網站圖片。如果已經有圖片，直接在下方上傳；若還沒有，可以先完成訪談，再請 AI 協助設計。AI 產生圖片後先儲存到電腦，再到下面選擇檔案。現在沒有也可以先跳過。</p>
     <h3 id="brand-logo-upload">Logo 與主視覺圖片上傳（選填）</h3>
     <p>如果已經有圖片，可以直接上傳；還沒有就先使用上方提示詞請 AI 設計，完成後回到這裡上傳。兩種圖片都可以不提供，之後再補。</p>
     <div class="brand-design-controls">
@@ -444,15 +454,12 @@ function showPlan(){
  document.querySelectorAll<HTMLElement>('[data-content-kind]').forEach(group=>{group.hidden=group.dataset.contentKind!==value('kind');});
  const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
 }
-const interviewPrompts={
- interview:'請與我進行網站需求訪談，一次聚焦一個問題，了解網站目的、受眾、核心內容、預計頁面、希望的風格與未決事項。完成後請將我們實際確認過的資訊整理成可直接複製的 Markdown 摘要；標註尚未決定的項目，不要自行捏造。這份摘要之後會貼進 ATP 網站規劃器。',
- logo:'請根據我的網站定位、受眾與品牌方向，協助討論 Logo 與網站圖片。先提出幾種視覺方向供我選擇，確認後再協助產生圖片或製作提示詞。若資訊不足先詢問，不要自作決定。完成後請將確認的品牌概念整理成可複製的文字摘要。如果有產生 Logo 圖片，提醒我下載圖片，在 Starter 第 04 步下方上傳；文字摘要可貼到 Starter 第 04 步的「AI 訪談結果」欄位。'
-};
-document.querySelectorAll<HTMLButtonElement>('#copy-interview-prompt,#copy-logo-prompt').forEach(btn=>btn.addEventListener('click',async()=>{
+const intakeStartPrompt='我完全沒有網站開發背景。我已上傳「建站前 AI 訪談包」。請先讀 01-AI-訪談主持人.md，再參考其他文件目前填寫的內容。請像一位會引導對話的網站企劃，一次只問我一個最有幫助的問題，允許我回答「不知道」。先幫我釐清定位與準備真實內容，不要立刻做網站、要求註冊帳號或寫程式。最後幫我產出一份可讓我確認的《網站內容準備稿 v1》，再提醒我把全文複製貼回 ATP Starter 第 04 步「AI 訪談結果」文字框。';
+document.querySelector<HTMLButtonElement>('#copy-intake-start')?.addEventListener('click',async()=>{
  const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
- try{await navigator.clipboard.writeText(btn.id==='copy-logo-prompt'?interviewPrompts.logo:interviewPrompts.interview);status.textContent=btn.id==='copy-logo-prompt'?'Logo 設計提示詞已複製。請開啟 AI 對話貼上；完成的圖片在本步下方上傳，文字摘要貼到本步上方。':'訪談提示詞已複製。請貼到 AI 對話，訪談結束後將摘要貼回本步文字框。';}
- catch{status.textContent='無法自動複製，請改用其他方式提供指令。';}
-}));
+ try{await navigator.clipboard.writeText(intakeStartPrompt);status.textContent='訪談開場指令已複製。請先把完整訪談包的七份文件上傳給 AI，再將指令貼進同一段對話。';}
+ catch{status.textContent='無法自動複製，請使用訪談包 README.md 中的「開場語」貼給 AI。';}
+});
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
 const initialParams=new URLSearchParams(location.search);
