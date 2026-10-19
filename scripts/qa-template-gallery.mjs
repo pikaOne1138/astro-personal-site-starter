@@ -19,7 +19,7 @@ try{
   }
   // Exercise lazy images, including hidden helper cards in Starter.
   if(route==='starter')await page.locator('input[name=kind][value=helper]').check();
-  await page.evaluate(async()=>{for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,30));}await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));scrollTo(0,0);});
+  await page.evaluate(async()=>{document.querySelectorAll('img').forEach(i=>i.loading='eager');for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,30));}await Promise.race([Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))),new Promise(r=>setTimeout(r,10000))]);scrollTo(0,0);});
   const result=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,brokenImages:[...document.images].filter(i=>!i.naturalWidth).map(i=>i.currentSrc)}));
   results.push({route,width,...result});
   await page.screenshot({path:`${out}/${route}-${width}.png`,fullPage:true,animations:'disabled'});

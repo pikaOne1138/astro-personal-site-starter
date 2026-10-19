@@ -13,6 +13,7 @@ permissions:
   contents: read
 jobs:
   gallery:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +31,13 @@ jobs:
           node scripts/capture-template-gallery.mjs
           node scripts/verify-template-gallery.mjs
           cp public/template-gallery/*.webp dist/template-gallery/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: template-gallery-captures
+          path: |
+            public/template-gallery/
+            docs/template-gallery/captured.json
+          retention-days: 14
       - name: Gallery browser QA
         run: node scripts/qa-template-gallery.mjs
       - uses: actions/upload-artifact@v4
