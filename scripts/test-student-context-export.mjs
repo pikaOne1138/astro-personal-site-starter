@@ -114,3 +114,31 @@ test('practice-compass export uses visitor-safe copy and mobile navigation',()=>
   assert.doesNotMatch(layout,/THE PRACTICE COMPASS/);
  }finally{rmSync(tmp,{recursive:true,force:true});}
 });
+
+
+test('exported navigation preserves nested links and uses a single shared tree',()=>{
+ const source=readFileSync(join(root,'src/components/student/StudentNavigation.astro'),'utf8');
+ assert.match(source,/children=navigation\.filter\(child=>child\.parentId===item\.id\)/);
+ assert.match(source,/children\.map\(child=>/);
+ assert.match(source,/student-nav-mobile/);
+ assert.match(source,/student-navigation__cta/);
+ const exporter=readFileSync(join(root,'scripts/export-starter.mjs'),'utf8');
+ assert.match(exporter,/readFileSync\(new URL\('\.\.\/src\/components\/student\/StudentNavigation\.astro'/);
+ assert.doesNotMatch(exporter,/\.replace\('<nav class="student-navigation"/);
+});
+
+test('third-level and orphan navigation are rejected by the standard exporter',()=>{
+ const fixture=JSON.parse(readFileSync(join(root,'docs/art-direction/fixtures/practice-compass.json'),'utf8'));
+ const first=(fixture.navigation||[]).find(item=>item.enabled!==false&&!item.parentId);
+ assert.ok(first,'fixture must have a root navigation entry');
+ const child={id:'page-test-child',label:'測試子頁',path:'test-child/',enabled:true,parentId:first.id};
+ const grandchild={id:'page-test-grandchild',label:'測試第三層',path:'test-grandchild/',enabled:true,parentId:child.id};
+ const tmp=mkdtempSync(join(tmpdir(),'atp-navigation-depth-'));
+ try{
+  const plan={...fixture,navigation:[...fixture.navigation,child,grandchild]};
+  const input=join(tmp,'plan.json');writeFileSync(input,JSON.stringify(plan));
+  const result=spawnSync(process.execPath,[join(root,'scripts/export-starter.mjs'),input,join(tmp,'out')],{encoding:'utf8',timeout:60000});
+  assert.notEqual(result.status,0);
+  assert.match(result.stderr+result.stdout,/at most two levels/);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});
