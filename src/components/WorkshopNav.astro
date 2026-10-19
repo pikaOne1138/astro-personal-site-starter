@@ -1,0 +1,24 @@
+---
+interface Props { current: 'prepare' | 'build' | 'resources'; }
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const links = [
+  { id: 'prepare', label: '前置準備', path: 'guide/prepare/' },
+  { id: 'build', label: '開始建置', path: 'guide/' },
+  { id: 'resources', label: '延伸資源', path: 'resources/' },
+] as const;
+---
+<header class="workshop-nav">
+  <strong>個人網站建置指南</strong>
+  <nav aria-label="工作坊導覽">
+    {links.map(item => <a href={base+item.path} aria-current={current === item.id ? 'page' : undefined}>{item.label}</a>)}
+  </nav>
+</header>
+<style>
+  .workshop-nav{background:#fffefa;border-bottom:1px solid var(--line,#d8ded4);padding:17px max(24px,calc((100vw - 1050px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .workshop-nav nav{display:flex;gap:9px;flex-wrap:wrap}
+  .workshop-nav a{border:1px solid var(--line,#d8ded4);border-radius:7px;padding:6px 14px;text-decoration:none;color:var(--green,#254e3d)}
+  .workshop-nav a[aria-current=page]{background:var(--green,#254e3d);color:white}
+  .workshop-nav a:focus-visible{outline:3px solid #b47848;outline-offset:3px}
+  @media(max-width:650px){.workshop-nav{padding:14px 19px}}
+</style>
