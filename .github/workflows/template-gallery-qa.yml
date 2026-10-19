@@ -13,10 +13,14 @@ permissions:
   contents: read
 jobs:
   gallery:
+    env:
+      GITHUB_SHA: ${{ github.event.pull_request.head.sha }}
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
