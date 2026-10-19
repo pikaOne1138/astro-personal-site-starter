@@ -12,12 +12,12 @@ const temp=mkdtempSync(join(tmpdir(),'intake-download-'));
 let browser;
 try{
  let ready=false;
- for(let i=0;i<50;i++){try{if((await fetch(base+'/guide/prepare/')).ok){ready=true;break}}catch{}await wait(300)}
- if(!ready)throw Error('Preparation guide preview unavailable');
+ for(let i=0;i<50;i++){try{if((await fetch(base+'/starter/')).ok){ready=true;break}}catch{}await wait(300)}
+ if(!ready)throw Error('Starter preview unavailable');
  browser=await chromium.launch({headless:true});
  const page=await browser.newPage({acceptDownloads:true,viewport:{width:390,height:844}});
- const response=await page.goto(base+'/guide/prepare/',{waitUntil:'domcontentloaded',timeout:20000});
- if(response?.status()!==200)throw Error('Preparation guide HTTP '+response?.status());
+ const response=await page.goto(base+'/starter/',{waitUntil:'domcontentloaded',timeout:20000});
+ if(response?.status()!==200)throw Error('Starter HTTP '+response?.status());
  const [download]=await Promise.all([page.waitForEvent('download',{timeout:20000}),page.locator('#download-intake-zip').click()]);
  const archive=await download.path();if(!archive)throw Error('Interview pack download failed');
  execFileSync('python3',['-m','zipfile','-e',archive,temp],{stdio:'pipe'});

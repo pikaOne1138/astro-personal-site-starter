@@ -1,4 +1,12 @@
 ---
+import intakeReadme from '../../../docs/student-intake/README.md?raw';
+import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
+import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
+import intakeContent from '../../../docs/student-intake/03-內容準備-二選一.md?raw';
+import intakeAssets from '../../../docs/student-intake/04-圖片與發布準備.md?raw';
+import intakeVisual from '../../../docs/student-intake/05-AI-品牌識別與圖片共創.md?raw';
+import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計研究.md?raw';
+const intakeFiles={"README.md":intakeReadme,"01-AI-訪談主持人.md":intakeHost,"02-網站定位與個人介紹.md":intakeAbout,"03-內容準備-二選一.md":intakeContent,"04-圖片與發布準備.md":intakeAssets,"05-AI-品牌識別與圖片共創.md":intakeVisual,"06-Logo與圖片設計研究.md":intakeResearch};
 import originals from '../../data/layout-directions.json';
 import expansion from '../../data/layout-assembly/expansion-directions.json';
 const directions=[...originals,...expansion];
@@ -21,18 +29,18 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <body>
 <header class="planner-nav"><a href={base}>← 回設計展示總覽</a><span>WEBSITE / STARTER PLANNER</span></header>
 <main class="planner-wrap" id="main">
-<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>先選用途與首頁的閱讀動線，再決定品牌色、頁面與導航。最後取得一份可以交給 AI 接續開發的網站規格。</p><p class="notice">這裡是<strong>規劃工具</strong>，不會直接修改正式網站、建立新 Repository 或發布。</p></div>
+<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>這裡不是要你寫程式，而是把網站想法整理成 AI 看得懂的建站規格（Site Brief）。依照 01～07 步挑選版型、調整品牌與內容，最後下載設定檔。</p><p class="notice">不知道某個答案可以先留白。需求訪談與 Logo 設計是選填，日後都能與 AI 調整；這裡<strong>不會直接建立或發布網站</strong>。</p><div class="starter-journey"><strong>如何使用 Starter？</strong><p>選好 Layout、品牌與網站內容；有不確定的地方，可以在第 04 步下載訪談包交給 AI 討論，再把 AI 整理的文字貼回同一步的欄位。訪談不是必做。第 07 步下載 Site Brief，交給建站指南接續。</p><p>Logo、圖片或內容沒決定也沒關係，之後可以再與 AI 修改。</p></div></div>
 
 <form id="starter-form">
-<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。後續可以參考八款 Demo、版型圖鑑與構圖配方，再調整版面、增減區塊、修改導航與品牌視覺。</p></div></div>
+<section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。若已從版型庫選好設計，會自動帶入所選版型；需要比較其他方向可回到版型庫。</p></div></div>
 <fieldset class="kind-choice"><legend>我想建立的是</legend><label><input type="radio" name="kind" value="knowledge" checked/> 知識／部落格</label><label><input type="radio" name="kind" value="helper"/> 助人者／專業服務</label></fieldset>
-<p><a href={base+'templates/'}>開啟完整視覺模板圖鑑（桌機與手機） ↗</a></p><div class="layout-grid" id="layout-grid">
+<p><a href={base+'layouts/'}>回到 25 種網站版型庫 ↗</a></p><div class="layout-grid" id="layout-grid">
 {directions.map((item,i)=>(<div class="layout-option" data-kind={item.kind}>{!expansion.some(x=>x.slug===item.slug)&&<img src={base+'template-gallery/'+item.slug+'-desktop.webp'} alt={item.title+' Astro 首頁實際縮圖'} width="1440" height="900" loading="lazy" onerror="this.hidden=true"/>}<label><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String((i%6)+1).padStart(2,'0')}</span><strong>{item.title}</strong><span class="assembly-status">{statusBySlug[item.slug]==='ready'?'Starter Ready':statusBySlug[item.slug]==='in-progress'?'Assembly in Progress':'Prototype'}</span><small>{item.structure}</small><span>{item.description}</span></label><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">完整首頁預覽 ↗</a></div>))}
 </div></section>
 
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
-<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label><label>從電腦選擇 Logo（會一併放入下載的規劃檔）<input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>從電腦選擇主視覺（會一併放入下載的規劃檔）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/></label><label>Logo 圖片檔案路徑<input name="logoPath" placeholder="/images/my-logo.png" /></label><label>主視覺圖片檔案路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label><label>圖片替代文字<input name="heroImageAlt" maxlength="180" placeholder="描述圖片內容，非關鍵字堆疊"/></label></div><p class="muted">優先使用上方選擇檔案：照片會留在瀏覽器內，不會上傳伺服器；下載的 JSON 會包含圖片資料，交給匯出器後才會寫入獨立網站。每張最多 4 MB。若直接填路徑，則需自行放置檔案。未提供時顯示示意圖。</p>
+<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
 <div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
 <label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
@@ -51,21 +59,58 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <div class="color-row" hidden><label for="brand-color">相容主色</label><input type="color" id="brand-color" name="brandColor" value="#9a3b2e"/><output id="brand-hex">#9A3B2E</output></div>
 </section>
 
-<section class="step" aria-labelledby="step-content"><div class="step-head"><span>02+</span><div><h2 id="step-content">我的網站內容（依版型顯示）</h2><p>不用編輯 JSON。選擇「閱讀年鑑」、「聲音通信」或任一助人者版型時，填寫真實資料；未填的欄位會保留待設定提示。</p></div></div>
-<div class="layout-content-fields"><h3>首頁文字（適用全部十二款）</h3><label>首頁大標題（選填）<input id="home-headline" maxlength="120" placeholder="留空時保留原 Layout 的設計標題"/></label><label>首頁介紹（選填）<textarea id="home-intro" maxlength="800" rows="3" placeholder="你希望訪客第一眼理解的內容；留空使用版型示範"></textarea></label></div>
-<div class="layout-content-fields"><h3>關於頁（適用十二款）</h3><p class="muted">這些是獨立內頁內容，不會被首頁介紹覆蓋。只寫真實資料；不清楚可以留空。</p><label>我的介紹<textarea id="about-bio" maxlength="1200" rows="4" placeholder="真實的個人背景或目前在做的事"></textarea></label><label>網站或服務目的<textarea id="about-purpose" maxlength="1200" rows="3" placeholder="為什麼建立這個網站"></textarea></label><label>我的方法<textarea id="about-approach" maxlength="1200" rows="3" placeholder="寫作／整理／協助他人的實際方式"></textarea></label><label>作品、經歷與可查證資訊<textarea id="about-background" maxlength="1200" rows="3" placeholder="沒有資料就留空，不編造資格或見證"></textarea></label></div>
+<section class="step" aria-labelledby="step-content"><div class="step-head"><span>03</span><div><h2 id="step-content">我的網站內容（依版型顯示）</h2><p>不用編輯 JSON。選擇「閱讀年鑑」、「聲音通信」或任一助人者版型時，填寫真實資料；未填的欄位會保留待設定提示。</p></div></div>
+<div class="layout-content-fields"><h3>首頁文字（依所選 Layout 使用）</h3><label>首頁大標題（選填）<input id="home-headline" maxlength="120" placeholder="留空時保留原 Layout 的設計標題"/></label><label>首頁介紹（選填）<textarea id="home-intro" maxlength="800" rows="3" placeholder="你希望訪客第一眼理解的內容；留空使用版型示範"></textarea></label></div>
+<div class="layout-content-fields"><h3>關於頁（可依需要使用）</h3><p class="muted">這些是獨立內頁內容，不會被首頁介紹覆蓋。只寫真實資料；不清楚可以留空。</p><label>我的介紹<textarea id="about-bio" maxlength="1200" rows="4" placeholder="真實的個人背景或目前在做的事"></textarea></label><label>網站或服務目的<textarea id="about-purpose" maxlength="1200" rows="3" placeholder="為什麼建立這個網站"></textarea></label><label>我的方法<textarea id="about-approach" maxlength="1200" rows="3" placeholder="寫作／整理／協助他人的實際方式"></textarea></label><label>作品、經歷與可查證資訊<textarea id="about-background" maxlength="1200" rows="3" placeholder="沒有資料就留空，不編造資格或見證"></textarea></label></div>
 <div class="layout-content-fields" data-content-layout="reading-atlas" hidden><h3>閱讀年鑑</h3><label>閱讀月份<select id="reading-month">{Array.from({length:12},(_,i)=><option value={String(i+1).padStart(2,'0')}>{i+1} 月</option>)}</select></label><label>一本真正讀過的書<input id="reading-title" maxlength="150" placeholder="請填入書名"/></label><label>閱讀評註<textarea id="reading-note" maxlength="1000" rows="3" placeholder="自己的真實心得"></textarea></label><label>年度選書<input id="annual-title" maxlength="150" placeholder="選填，自己實際讀過的書"/></label><label>年度選擇理由<textarea id="annual-note" maxlength="1000" rows="3"></textarea></label><p class="muted">這一版先支援一筆閱讀紀錄；其餘紀錄可由 AI 依相同格式加入。</p></div>
 <div class="layout-content-fields" data-content-layout="radio-letter" hidden><h3>聲音通信</h3><label>自有音訊檔案路徑<input id="episode-audio" placeholder="/audio/episode-01.mp3"/></label><label>逐字稿第一段時間<input id="episode-time" placeholder="00:00" maxlength="32"/></label><label>逐字稿第一段文字<textarea id="episode-text" maxlength="2000" rows="4"></textarea></label><p class="muted">產生器只接受本地有授權的音檔，請把音檔放在 Site Brief 所在資料夾的 public/audio/；不會自動錄音或生成逐字稿。</p></div>
-<div class="layout-content-fields" data-content-kind="helper" hidden><h3>助人者網站：真實的服務資訊（六款通用）</h3><label>服務範圍與適合對象<textarea id="fact-scope" maxlength="500" rows="3" placeholder="清楚寫出真正提供的服務，未確認可留空"></textarea></label><label>服務界線／不提供的服務<textarea id="fact-exclusions" maxlength="500" rows="3" placeholder="不虛構醫療資格或效果"></textarea></label><label>合作方法<textarea id="fact-method" maxlength="500" rows="3" placeholder="實際合作流程"></textarea></label><label>第一次聯絡或見面的流程<textarea id="fact-first-visit" maxlength="500" rows="3" placeholder="站長確認後填入"></textarea></label><label>一次服務時間<input id="fact-duration" maxlength="100" placeholder="待確定就留空"/></label><label>服務費用<input id="fact-price" maxlength="100"/></label><label>取消規則<input id="fact-cancellation" maxlength="200"/></label><label>專業資格（需可查證）<input id="fact-qualification" maxlength="200"/></label><label>公開聯絡方式<input id="fact-contact" maxlength="200"/></label><p class="muted">不必填滿。沒有資料就顯示待確認，不能自行編造資格、價格或預約成功。</p></div>
+<div class="layout-content-fields" data-content-kind="helper" hidden><h3>助人者網站：真實的服務資訊</h3><label>服務範圍與適合對象<textarea id="fact-scope" maxlength="500" rows="3" placeholder="清楚寫出真正提供的服務，未確認可留空"></textarea></label><label>服務界線／不提供的服務<textarea id="fact-exclusions" maxlength="500" rows="3" placeholder="不虛構醫療資格或效果"></textarea></label><label>合作方法<textarea id="fact-method" maxlength="500" rows="3" placeholder="實際合作流程"></textarea></label><label>第一次聯絡或見面的流程<textarea id="fact-first-visit" maxlength="500" rows="3" placeholder="站長確認後填入"></textarea></label><label>一次服務時間<input id="fact-duration" maxlength="100" placeholder="待確定就留空"/></label><label>服務費用<input id="fact-price" maxlength="100"/></label><label>取消規則<input id="fact-cancellation" maxlength="200"/></label><label>專業資格（需可查證）<input id="fact-qualification" maxlength="200"/></label><label>公開聯絡方式<input id="fact-contact" maxlength="200"/></label><p class="muted">不必填滿。沒有資料就顯示待確認，不能自行編造資格、價格或預約成功。</p></div>
 </section>
-<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>03</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型的六款 Layout 共用初始項目，並非每款版型都有不同選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
+<section class="step" aria-labelledby="step-ai-interview">
+  <div class="step-head"><span>04</span><div><h2 id="step-ai-interview">AI 需求訪談與 Logo 設計（選填）</h2><p>可以現在與 AI 討論，也可以等網站有初稿後再調整。這不影響接下來的規劃、下載或建站。</p></div></div>
+  <div class="ai-interview-panel">
+    <h3>需要 AI 幫你把網站想法整理清楚嗎？（選填）</h3>
+    <p>如果你已經知道網站要放什麼內容，可以跳過訪談，直接繼續。若還不確定要寫什麼、想服務誰，或希望有人陪你整理個人介紹、文章／服務內容和品牌方向，就使用下面的<strong>完整 AI 需求訪談包</strong>。它不是只聊幾句的短提示詞。</p>
+    <div class="intake-download">
+      <strong>照著這 5 步操作</strong>
+      <ol class="logo-handoff-steps">
+        <li><strong>下載：</strong>按「下載完整 AI 需求訪談包 ZIP」，把 ZIP 儲存到電腦並解壓縮。</li>
+        <li><strong>交給 AI：</strong>打開你平常使用的 ChatGPT、Claude 或其他支援上傳檔案的 AI。開啟一段新對話，把解壓縮後的 <strong>README.md 和 01～06 六份 Markdown 文件一起上傳</strong>；請 AI 先讀完，不要直接建站。</li>
+        <li><strong>開始訪談：</strong>按「複製訪談開場指令」，貼到同一段 AI 對話送出。AI 會一次問你一個問題，討論網站用途、訪客、個人介紹、文章或服務內容、品牌與圖片。不知道的問題可以直接說「不知道」或「先跳過」。</li>
+        <li><strong>確認結果：</strong>訪談結束，請 AI 依包內規則整理<strong>「網站需求整理稿」</strong>，分清楚已確認、待確認、缺少及不公開的資料。先檢查內容是否正確，不要把 AI 的猜測當成事實。</li>
+        <li><strong>貼回這裡：</strong>將確認過的「網站需求整理稿」全文複製，貼到下方「AI 訪談結果」大文字框。完成本頁其他設定後，在第 07 步下載 Site Brief；訪談內容會一起交給建站 AI，<strong>不需要再上傳一次訪談包</strong>。</li>
+      </ol>
+      <button class="button secondary" type="button" id="download-intake-zip">下載完整 AI 需求訪談包 ZIP ↓</button>
+      <button class="button secondary" type="button" id="copy-intake-start">複製訪談開場指令</button>
+      <p class="muted">這份訪談包同時包含 Logo 與圖片設計的討論指南。AI 不會因為下載檔案就自動開始訪談，必須把文件和開場指令交給 AI。</p>
+    </div>
+    <label for="interview-summary">貼上 AI 整理的「網站需求整理稿」（選填）</label>
+    <textarea id="interview-summary" rows="8" placeholder="完成 AI 訪談並確認內容後，將「網站需求整理稿」的全文貼在這裡。還沒訪談可留空。"></textarea>
+    <h3>Logo 與品牌圖片（選填）</h3>
+    <p>如果已經有 Logo 或首頁圖片，可以直接在下面上傳。如果還沒有，請先把上方完整訪談包交給 AI，再按「複製 Logo 與圖片設計指令」繼續討論。AI 會依包內的品牌設計指南，先確認方向，再協助你製作圖片；不必現在就做完。</p>
+    <button class="button secondary" type="button" id="copy-logo-prompt">複製 Logo 與圖片設計指令</button>
+    <p>把複製的指令貼到<strong>剛才上傳訪談包的同一段 AI 對話</strong>。如果沒有做前面的訪談，請先上傳訪談包，再使用這個指令，讓 AI 有足夠的設計依據。完成後，將圖片儲存到電腦並在下方上傳；品牌方向的文字整理可以貼在上方訪談結果欄位。</p>
+    <h3 id="brand-logo-upload">上傳已完成的圖片（選填）</h3>
+    <p>如果已經有圖片，可以直接上傳；還沒有可以先請 AI 協助設計，完成後再上傳。兩種圖片都可以不提供，之後再補。</p>
+    <div class="brand-design-controls">
+<label><span id="logo-upload-label">Logo 圖片（選填）</span><input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>網站名稱旁或頁首使用的品牌識別圖。還沒有 Logo 可以先不選。</small></label>
+<label>網站主視覺圖片（選填）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>通常是首頁最醒目區塊（Hero）的照片或插畫，例如工作環境、作品、品牌形象；沒有圖片可以先留空。</small></label>
+<input type="hidden" name="logoPath"/><input type="hidden" name="heroImagePath"/>
+<label>主視覺圖片描述（選填）<input name="heroImageAlt" maxlength="180" placeholder="例如：明亮工作室內的一張木桌與筆記本"/></label>
+    </div>
+    <p class="muted">選擇圖片後，系統會自動設定路徑並放進下載的 Site Brief，無須輸入檔案位置。圖片只在瀏覽器中處理，不會上傳本站伺服器；每張最多 4 MB。</p>
+    <p class="muted">若摘要與規劃器設定有明確差異，建站 AI 應先向你確認，不能直接忽略任何一方。</p>
+    <p id="interview-copy-status" class="muted" role="status" aria-live="polite"></p>
+  </div>
+</section>
+<section class="step" aria-labelledby="step-nav"><div class="step-head"><span>05</span><div><h2 id="step-nav">頁面架構與導航列</h2><p>這裡會依照步驟 01 選擇的網站方向，帶入一組預設導航項目：A01–A06（知識／部落格）使用內容型預設，B01–B06（助人者／專業服務）使用服務型預設。目前同類型 Layout 使用共通的初始導航項目，並非每款都有獨立選單；你可以自由新增、刪除、排序及設定第二層選單。</p></div></div>
 <div class="navigation-builder">
   <div><h3>網站導覽</h3><div id="nav-items"></div><button type="button" id="add-nav-page" class="nav-add">＋ 新增自訂頁面</button><p class="muted">拖曳 ⠿ 調整順序；→ 縮排為子選單、← 提升層級。觸控或鍵盤可使用 ↑ ↓ 排序。所有頁面都可刪除或暫時取消勾選；有子選單的頁面刪除前會先詢問。</p></div>
   <aside class="navigation-preview"><p class="eyebrow">NAVIGATION PREVIEW</p><strong id="preview-name">我的個人網站</strong><div id="preview-menu"></div><div class="cta-field"><label for="cta-target">主要按鈕前往</label><select id="cta-target" name="ctaTarget"></select><label for="cta-label">按鈕文字</label><input name="ctaLabel" id="cta-label" maxlength="24" value="閱讀文章"/></div></aside>
 </div>
 </section>
 <section class="step" aria-labelledby="step-patterns">
-<div class="step-head"><span>04</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
+<div class="step-head"><span>06</span><div><h2 id="step-patterns">選擇組合樣板（選填）</h2><p>組合樣板不是單顆按鈕，而是完成一件事的整段內容。例如「精選文章／作品」會把標題、說明、代表內容與下一步串起來，幫第一次來的讀者快速找到值得看的東西。</p><a href={base+'section-patterns/#featured-work'} target="_blank" rel="noopener noreferrer">看「精選作品／文章」的整段示範 ↗</a></div></div>
 <div class="pattern-options" id="pattern-options">
 {patternRegistry.filter(x=>!x.id.startsWith('footer-')).map(x=><div class="pattern-option" data-pattern-id={x.id} data-kind={x.kind.join(',')}>
 <label><input type="checkbox" class="pattern-choice" value={x.id}/><strong>{x.id==='featured-work'?'精選內容展示（文章／作品／專題）':x.title}</strong></label>
@@ -94,10 +139,10 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </div>
 </section>
-<section class="step" aria-labelledby="step-output"><div class="step-head"><span>05</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<aside class="handoff-guide"><strong>下一步：交給 AI 建立自己的網站</strong><p>先下載下方的 Site Brief JSON，然後前往<a href={base+'guide/'}>正式建站 Guide</a>，取得既有的 AI 建站資料包與唯一正式起始提示詞。學員不用 Fork 老師的 GitHub，也不用自己執行終端機。</p><a class="button secondary" href={base+'guide/'}>前往 AI 建站 Guide →</a></aside>
+<section class="step" aria-labelledby="step-output"><div class="step-head"><span>07</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
+<aside class="handoff-guide"><strong>完成規劃後，下載 Site Brief</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>若有在第 04 步貼上 AI 訪談摘要，它已包含在這份 Site Brief 裡，<strong>不必額外上傳訪談包</strong>。接著前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP，將 Site Brief 與建站包一起交給 AI，再複製開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：前往建站指南 →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
-<div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 JSON 設定</button></div>
+<div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 Site Brief JSON</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
 </form>
 </main>
@@ -402,7 +447,7 @@ function plan():StarterPlan {
  navigation:nav.map(x=>({...x})),
  sectionPatterns:[...Array.from(document.querySelectorAll<HTMLInputElement>('.pattern-choice:checked')).map(check=>{const box=check.closest<HTMLElement>('.pattern-option')!;return {patternId:check.value,targetPage:box.querySelector<HTMLSelectElement>('.pattern-page')!.value,insertAfter:box.querySelector<HTMLInputElement>('.pattern-position')!.value.trim()}}),...(form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')?.value?[{patternId:form.querySelector<HTMLInputElement>('input[name="footerPattern"]:checked')!.value,targetPage:'site-wide',insertAfter:'每頁主要內容之後'}]:[])],
  primaryCta:{label:form.querySelector<HTMLInputElement>('#cta-label')!.value,pageId:target.value},
- notes:document.querySelector<HTMLTextAreaElement>('#notes')!.value,about:{bio:field('about-bio'),purpose:field('about-purpose'),approach:field('about-approach'),background:field('about-background')},content:{headline:form.querySelector<HTMLInputElement>('#home-headline')!.value.trim(),intro:form.querySelector<HTMLTextAreaElement>('#home-intro')!.value.trim()},...contentExtension(),
+ notes:[document.querySelector<HTMLTextAreaElement>('#notes')!.value.trim(),...(document.querySelector<HTMLTextAreaElement>('#interview-summary')!.value.trim()?['【AI 需求訪談原始摘要（與規劃設定若有明確衝突，先詢問學員，不預設優先）】\n'+document.querySelector<HTMLTextAreaElement>('#interview-summary')!.value.trim()]:[])].filter(Boolean).join('\n\n'),about:{bio:field('about-bio'),purpose:field('about-purpose'),approach:field('about-approach'),background:field('about-background')},content:{headline:form.querySelector<HTMLInputElement>('#home-headline')!.value.trim(),intro:form.querySelector<HTMLTextAreaElement>('#home-intro')!.value.trim()},...contentExtension(),
  assets:[...embeddedImages.values()].filter(asset=>asset.path===(asset.path.includes('brand-logo')?form.querySelector<HTMLInputElement>('[name="logoPath"]')!.value:form.querySelector<HTMLInputElement>('[name="heroImagePath"]')!.value))};
 }
 function showPlan(){
@@ -411,6 +456,18 @@ function showPlan(){
  document.querySelectorAll<HTMLElement>('[data-content-kind]').forEach(group=>{group.hidden=group.dataset.contentKind!==value('kind');});
  const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
 }
+const intakeStartPrompt='我完全沒有網站開發背景。我已上傳「建站前 AI 訪談包」。請先讀 01-AI-訪談主持人.md，再參考其他文件目前填寫的內容。請像一位會引導對話的網站企劃，一次只問我一個最有幫助的問題，允許我回答「不知道」。先幫我釐清定位與準備真實內容，不要立刻做網站、要求註冊帳號或寫程式。最後幫我產出一份可讓我確認的「網站需求整理稿」，再提醒我把全文複製貼回 ATP Starter 第 04 步「AI 訪談結果」文字框。';
+document.querySelector<HTMLButtonElement>('#copy-intake-start')?.addEventListener('click',async()=>{
+ const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
+ try{await navigator.clipboard.writeText(intakeStartPrompt);status.textContent='訪談開場指令已複製。請先把完整訪談包的七份文件上傳給 AI，再將指令貼進同一段對話。';}
+ catch{status.textContent='無法自動複製，請使用訪談包 README.md 中的「開場語」貼給 AI。';}
+});
+const logoDesignPrompt='我已上傳 ATP 的完整 AI 需求訪談包。請先閱讀其中的「05-AI-品牌識別與圖片共創.md」與「06-Logo與圖片設計研究.md」，並參考我們已確認的網站需求。現在請依文件中的五個設計階段，陪我逐步討論 Logo、favicon 與網站主視覺圖片：先提供三種真正不同的品牌概念與適用原因，一次只問我一個問題，讓我選擇後再製作圖片。如果你無法讀取文件，請直接告訴我並請我補上；如果你不能生圖，就為選定方向產生能交給生圖工具使用的詳細提示詞。不要模仿其他品牌、虛構人物或資格，也不要直接發布網站。完成後請提醒我將 Logo／主視覺圖片下載到電腦，回到 Starter 第 04 步上傳；把已確認的品牌設計結論整理成可貼回訪談結果的文字。';
+document.querySelector<HTMLButtonElement>('#copy-logo-prompt')?.addEventListener('click',async()=>{
+ const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
+ try{await navigator.clipboard.writeText(logoDesignPrompt);status.textContent='Logo 與圖片設計指令已複製。請貼到已上傳完整訪談包的 AI 對話。';}
+ catch{status.textContent='無法自動複製，請使用訪談包內「05-AI-品牌識別與圖片共創.md」請 AI 協助設計。';}
+});
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
 const initialParams=new URLSearchParams(location.search);
@@ -455,4 +512,18 @@ update();
 .notes-field label{display:block;font-weight:600}
 .notes-field textarea{display:block;width:100%;min-width:0;max-width:100%;min-height:150px;resize:vertical;box-sizing:border-box;line-height:1.65}
 </style>
-<style>.layout-content-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.layout-content-fields[hidden]{display:none}.layout-content-fields h3,.layout-content-fields p{grid-column:1/-1}.layout-content-fields label{display:flex;flex-direction:column;gap:.5rem}.layout-content-fields input,.layout-content-fields select,.layout-content-fields textarea{font:inherit;border:1px solid var(--line);background:var(--white);color:inherit;border-radius:8px;padding:.7rem;width:100%}@media(max-width:650px){.layout-content-fields{grid-template-columns:1fr}}</style><style>.handoff-guide{margin:1.5rem 0;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;background:var(--white)}.handoff-guide summary{font-weight:700;cursor:pointer}.handoff-guide li{margin:.75rem 0;line-height:1.8}.handoff-guide p{color:var(--muted)}</style></body></html>
+<style>.logo-handoff-steps{padding-left:1.5rem;margin:0;line-height:1.8}.logo-handoff-steps li{margin:0 0 8px}.logo-handoff-steps a{color:var(--accent)} </style><style>.starter-journey{margin-top:22px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--white)}.starter-journey ol{padding-left:24px;margin:8px 0}.starter-journey li{margin:8px 0}.intake-download{padding:18px;border:1px solid var(--line);border-radius:10px;display:grid;gap:10px}.intake-download p{margin:0}.intake-download button{justify-self:start}</style><style>.ai-interview-panel{border:1px solid var(--line);border-radius:12px;background:var(--white);padding:22px;display:grid;gap:12px}.ai-interview-panel h3,.ai-interview-panel p{margin:0}.ai-interview-panel h3:not(:first-child){margin-top:12px}.ai-interview-panel label{font-weight:700}.ai-interview-panel textarea{display:block;width:100%;min-height:180px;padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--white);font:inherit;resize:vertical}.ai-interview-panel button{justify-self:start}</style><style>.layout-content-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.layout-content-fields[hidden]{display:none}.layout-content-fields h3,.layout-content-fields p{grid-column:1/-1}.layout-content-fields label{display:flex;flex-direction:column;gap:.5rem}.layout-content-fields input,.layout-content-fields select,.layout-content-fields textarea{font:inherit;border:1px solid var(--line);background:var(--white);color:inherit;border-radius:8px;padding:.7rem;width:100%}@media(max-width:650px){.layout-content-fields{grid-template-columns:1fr}}</style><style>.handoff-guide{margin:1.5rem 0;border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;background:var(--white)}.handoff-guide summary{font-weight:700;cursor:pointer}.handoff-guide li{margin:.75rem 0;line-height:1.8}.handoff-guide p{color:var(--muted)}</style><script is:inline define:vars={{intakeFiles}}>
+function zipFiles(files){
+ const enc=new TextEncoder(),parts=[],central=[];let offset=0;
+ const u16=n=>new Uint8Array([n&255,(n>>>8)&255]),u32=n=>new Uint8Array([n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255]);
+ const cat=(...xs)=>{const out=new Uint8Array(xs.reduce((a,x)=>a+x.length,0));let p=0;for(const x of xs){out.set(x,p);p+=x.length;}return out;};
+ const crc32=data=>{let c=-1;for(const b of data){c^=b;for(let i=0;i<8;i++)c=(c>>>1)^((c&1)?0xedb88320:0);}return(c^-1)>>>0;};
+ for(const [name,content] of Object.entries(files)){const fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x800;
+ const loc=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);parts.push(loc);
+ central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));offset+=loc.length;}
+ const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
+ return new Blob([body,dir,end],{type:'application/zip'});
+}
+document.getElementById('download-intake-zip')?.addEventListener('click',()=>{const url=URL.createObjectURL(zipFiles(intakeFiles)),a=document.createElement('a');a.href=url;a.download='AI-需求訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+</script>
+</body></html>

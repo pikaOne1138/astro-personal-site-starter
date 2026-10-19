@@ -2998,6 +2998,33 @@
         "status": "NOT TESTED",
         "evidence": "09.2 all 14 prototype routes; built route and fragment checks"
       }
+    },
+    "src/components/WorkshopNav.astro": {
+      "group": "shared",
+      "syntax": {
+        "status": "NOT TESTED",
+        "evidence": "scripts/verify-all-astro-components.mjs"
+      },
+      "props": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "behavior": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "accessibility": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "responsive": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      },
+      "integration": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
     }
   }
 }

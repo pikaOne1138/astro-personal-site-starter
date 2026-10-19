@@ -1,20 +1,10 @@
 ---
 import WorkshopNav from '../../components/WorkshopNav.astro';
-import intakeReadme from '../../../docs/student-intake/README.md?raw';
-import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
-import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
-import intakeContent from '../../../docs/student-intake/03-內容準備-二選一.md?raw';
-import intakeAssets from '../../../docs/student-intake/04-圖片與發布準備.md?raw';
-import intakeVisual from '../../../docs/student-intake/05-AI-品牌識別與圖片共創.md?raw';
-import intakeResearch from '../../../docs/student-intake/06-Logo與圖片設計研究.md?raw';
-const intakeFiles={'README.md':intakeReadme,'01-AI-訪談主持人.md':intakeHost,'02-網站定位與個人介紹.md':intakeAbout,'03-內容準備-二選一.md':intakeContent,'04-圖片與發布準備.md':intakeAssets,'05-AI-品牌識別與圖片共創.md':intakeVisual,'06-Logo與圖片設計研究.md':intakeResearch};
 const base=import.meta.env.BASE_URL;
 const pages=[
 {title:'註冊 GitHub 帳號',id:'account',desc:'註冊並登入 GitHub。'},
 {title:'建立自己的倉庫',id:'repo',desc:'建立網站倉庫。'},
 {title:'連接 AI 與 GitHub',id:'access',desc:'新帳號首次授權，分清唯讀與寫入。'},
-{title:'網站內容訪談',id:'intake',desc:'下載訪談包，與 AI 討論內容。'},
-{title:'Logo、Favicon 與網站圖片',id:'visual',desc:'用 AI 設計 Logo、favicon 和圖片。'},
 {title:'選擇發布方式',id:'hosting',desc:'A｜GitHub Pages 或 B｜Cloudflare Pages。'}
 ];
 ---
@@ -43,11 +33,11 @@ const pages=[
 .deploy-check{margin:14px 0 17px;padding:18px 20px;border:1px solid #a9c2ad;border-radius:10px;background:#edf3e9}.deploy-check>strong{display:block;color:#214b34;font-size:17px}.deploy-check dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}.deploy-check dl>div{background:#fffefa;border:1px solid #d4e0d1;padding:10px 13px;border-radius:7px}.deploy-check dt{font-size:13px;color:#53665a}.deploy-check dd{margin:3px 0 0;font-weight:700}.deploy-check p{margin:7px 0 0;font-size:14px;color:#415a49}@media(max-width:520px){.deploy-check dl{grid-template-columns:1fr}}
 </style></head><body>
 <WorkshopNav current="prepare" />
-<main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI、準備網站內容與品牌圖片。</p>
+<main><p class="fine">PREPARATION / 完全不會程式也能照做</p><h1>先準備好，再開始建置。</h1><p class="lead">建立 GitHub 帳號、連接 AI 並選擇發布方式。需求訪談與 Logo 設計可到 Starter 選填，現在不必準備好。</p>
 <div class="steps">{pages.map(x=><a href={'#'+x.id}><strong>{x.title} ↓</strong><small>{x.desc}</small></a>)}</div>
 <section id="account"><h2>01｜註冊並登入 GitHub</h2>
 <ol><li>開啟 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊 ↗</a>；若已有帳號，就直接登入。</li><li>登入後，確認右上角頭像選單能看到自己的帳號名稱。</li><li>記下自己的 GitHub 帳號名稱。</li></ol><aside>找不到按鈕？截圖給 AI，請它教下一步。截圖前遮住敏感資訊。</aside></section>
-<section id="repo"><h2>02｜建立網站倉庫</h2><aside><strong>AI 公司網路／雲端電腦提醒：</strong>受限制的公司 AI 環境可能需要允許存取 GitHub（github.com、api.github.com）、套件服務（registry.npmjs.org）、網站預覽（*.pages.dev）及對應的 Cloudflare 驗證／部署端點。實際需求依所選工具與平台確認；若不能連線，請先查服務權限／網路政策，勿要求輸入私人 Token 來繞過限制。<strong>無法連線時的替代方案：</strong>可以先下載本站的 AI 訪談包與建站資料包 ZIP，離線整理網站內容及 Site Brief；等回到可授權的個人網路、改用支援 GitHub 連接的 AI 工具或請老師協助再進行 Build／PR／部署。離線準備不等於網站已完成驗證或上線。</aside><aside><strong>隱私與歷史紀錄：</strong>建議 GitHub 倉庫選 Private。Git Commit 會保存修改歷史；即使刪掉檔案或改為 Private，也不能保證已公開的 Commit、fork、快取與 Cloudflare 舊 Preview 消失。AI 可以協助評估重寫歷史、刪除部署及撤銷憑證，但這是高風險操作，務必先備份、說明影響並取得你明確同意，不能保證網路上的痕跡完全清除。敏感資料、密碼與真實客戶資料不要放入網站倉庫。</aside><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇倉庫公開方式：<strong>建議優先選 Private（私人），避免草稿、歷史 Commit 與未發布內容直接被他人看到；Cloudflare Pages 可連接私人倉庫。只有選擇免費 GitHub Pages 等需要公開 Repo 的方案時，再考慮 Public。</strong> 若選 Private（私人），後續建議使用 Cloudflare Pages；其他方案詳見 <a href="#hosting">第 06 步｜選擇網站發布方式</a>。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li><li><strong>確認不是空倉庫：</strong>Code 頁應看得到 <code>README.md</code> 與至少一筆 Commit。若只有 Quick setup、沒有任何檔案，代表還沒有第一筆 Commit，AI 無法直接建立正常的 Branch／PR。</li></ol><aside><strong>忘了勾 README 怎麼辦？</strong>在自己的空 Repo 點 <strong>creating a new file／Add file → Create new file</strong>（依實際介面），檔名填 <code>README.md</code>、內文填「我的個人網站」，確認提交到 <code>main</code> 作為<strong>唯一一次初始化 Commit</strong>。若請 AI 代做，必須先明確授權它僅建立這份 README，不可藉機把整站直接寫進 main。完成後再次確認 README 與 Commit 存在，後續網站開發一律走 Feature Branch → PR。</aside>
+<section id="repo"><h2>02｜建立網站倉庫</h2><aside><strong>AI 公司網路／雲端電腦提醒：</strong>受限制的公司 AI 環境可能需要允許存取 GitHub（github.com、api.github.com）、套件服務（registry.npmjs.org）、網站預覽（*.pages.dev）及對應的 Cloudflare 驗證／部署端點。實際需求依所選工具與平台確認；若不能連線，請先查服務權限／網路政策，勿要求輸入私人 Token 來繞過限制。<strong>無法連線時的替代方案：</strong>可以先使用 Starter 規劃器整理網站內容及 Site Brief，或下載建站資料包 ZIP，先在電腦離線整理網站內容與檔案；等回到可授權的個人網路、改用支援 GitHub 連接的 AI 工具或請老師協助再進行 Build／PR／部署。離線準備不等於網站已完成驗證或上線。</aside><aside><strong>隱私與歷史紀錄：</strong>建議 GitHub 倉庫選 Private。Git Commit 會保存修改歷史；即使刪掉檔案或改為 Private，也不能保證已公開的 Commit、fork、快取與 Cloudflare 舊 Preview 消失。AI 可以協助評估重寫歷史、刪除部署及撤銷憑證，但這是高風險操作，務必先備份、說明影響並取得你明確同意，不能保證網路上的痕跡完全清除。敏感資料、密碼與真實客戶資料不要放入網站倉庫。</aside><ol><li>開啟 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">GitHub New repository ↗</a>。</li><li>確認 Owner 是自己的帳號。</li><li>Repository name 輸入英文簡短名稱，例如 <code>my-personal-site</code>。</li><li>選擇倉庫公開方式：<strong>建議優先選 Private（私人），避免草稿、歷史 Commit 與未發布內容直接被他人看到；Cloudflare Pages 可連接私人倉庫。只有選擇免費 GitHub Pages 等需要公開 Repo 的方案時，再考慮 Public。</strong> 若選 Private（私人），後續建議使用 Cloudflare Pages；其他方案詳見 <a href="#hosting">第 04 步｜選擇網站發布方式</a>。</li><li>勾選 Add a README file，其餘保持預設。</li><li>點 Create repository。看到 <code>你的帳號/my-personal-site</code> 的 Code 頁，代表倉庫建立成功。</li><li><strong>確認不是空倉庫：</strong>Code 頁應看得到 <code>README.md</code> 與至少一筆 Commit。若只有 Quick setup、沒有任何檔案，代表還沒有第一筆 Commit，AI 無法直接建立正常的 Branch／PR。</li></ol><aside><strong>忘了勾 README 怎麼辦？</strong>在自己的空 Repo 點 <strong>creating a new file／Add file → Create new file</strong>（依實際介面），檔名填 <code>README.md</code>、內文填「我的個人網站」，確認提交到 <code>main</code> 作為<strong>唯一一次初始化 Commit</strong>。若請 AI 代做，必須先明確授權它僅建立這份 README，不可藉機把整站直接寫進 main。完成後再次確認 README 與 Commit 存在，後續網站開發一律走 Feature Branch → PR。</aside>
 <p><strong>不會操作？複製提示詞給 AI。</strong></p><div class="card"><button type="button" class="button secondary" id="copy-github">複製 GitHub 截圖陪跑提示詞</button><div class="prompt" id="github-prompt">請一步一步教我在 GitHub 建立個人網站倉庫。每次只給一個步驟，告訴我要按哪裡、成功後會看到什麼。如果介面不同，請我截圖給你確認。不要要求密碼或驗證碼。</div></div></section>
 <section id="access"><h2>03｜第一次連接 AI 與 GitHub：要能讀，也要能修改</h2>
 <p>這一步是讓 AI 能在<strong>你自己的 GitHub 倉庫</strong>建立網站。第一次使用全新帳號時，單純「連接成功」不等於 AI 已有寫入權限。以下以 ChatGPT Codex Connector 為例，其他 AI 的介面與權限名稱可能不同。</p>
@@ -71,12 +61,7 @@ const pages=[
 <div class="prompt">我正在連接 AI 和 GitHub，完全不懂這個畫面。請看我附的截圖，先確認目前在哪個設定頁，再一次只教我下一步要點哪裡、點完會看到什麼。如果畫面跟你說的不一樣，請叫我再截圖，不要猜測。不要要求我提供密碼、Token 或驗證碼，也不要擅自修改 main 或發布網站。</div>
 </div>
 <aside><strong>排錯：</strong>AI 看得到 Repository 卻不能寫，先查工具模式和 App 權限；AI 找不到新 Repo，先回 GitHub Installed Apps 檢查 Only select repositories 是否已加入並儲存。若授權按鈕與教學不同，請截圖給 AI，不要猜。</aside></section>
-<section id="intake"><h2>04｜讓 AI 訪談你，寫出網站所需內容</h2><p>用訪談包讓 AI 協助整理網站名稱、介紹、文章或服務內容。</p>
-<div class="card"><h3>一鍵下載訪談包</h3><p>下載後解壓縮，將文件上傳給 AI。</p><button type="button" class="button" id="download-intake-zip">下載完整 AI 訪談包 ZIP ↓</button></div>
-<div class="card"><strong>第一句話</strong><div class="prompt">我完全不會網站開發。我想請你先擔任我的網站訪談主持人，一次只問我一個問題，協助釐清網站的讀者、名稱、自我介紹、文章或服務內容。我不知道的地方請提供具體例子討論，最後整理出待我確認的網站內容準備稿。請先不要寫程式或公開內容。</div></div></section>
-<section id="visual"><h2>05｜不用事先有 Logo：一起做品牌圖像</h2><p>請 AI 提出三款 Logo 方向，選定後製作 favicon 和網站圖片。</p>
-<ol><li>從三款概念選一款。</li><li>確認 Logo 中文名稱正確。</li><li>請 AI 檢查 favicon 在小尺寸是否清楚。</li><li>確認圖片沒有冒充真實人物、客戶或場所。</li></ol></section>
-<section id="hosting"><h2>06｜選擇網站發布方式</h2><div class="hosting-hint" id="hosting-hint" role="status"><strong>請先選擇 A 或 B</strong><span>點選下方卡片，查看對應設定步驟。</span></div><p class="hosting-advice"><strong>建議從一開始就選 Private（私人）建站，並使用 Cloudflare Pages。先公開再改私人，過去被複製、索引或下載的內容不能保證消失。</strong> 免費 GitHub Pages 需要公開倉庫；想用私人倉庫搭配 GitHub Pages，須符合付費方案資格。Cloudflare Pages 支援私人倉庫，網站仍可公開瀏覽。</p><div class="steps hosting-choices" role="group" aria-label="選擇網站發布方式"><button type="button" class="hosting-choice" data-hosting="github" aria-pressed="false"><strong>A｜GitHub Pages</strong><small>想簡單免費，可以接受原始碼公開。</small></button><button type="button" class="hosting-choice" data-hosting="cloudflare" aria-pressed="false"><strong>B｜Cloudflare Pages</strong><small>希望原始碼留在私人倉庫，並方便預覽修改。</small></button></div></section>
+<section id="hosting"><h2>04｜選擇網站發布方式</h2><div class="hosting-hint" id="hosting-hint" role="status"><strong>請先選擇 A 或 B</strong><span>點選下方卡片，查看對應設定步驟。</span></div><p class="hosting-advice"><strong>建議從一開始就選 Private（私人）建站，並使用 Cloudflare Pages。先公開再改私人，過去被複製、索引或下載的內容不能保證消失。</strong> 免費 GitHub Pages 需要公開倉庫；想用私人倉庫搭配 GitHub Pages，須符合付費方案資格。Cloudflare Pages 支援私人倉庫，網站仍可公開瀏覽。</p><div class="steps hosting-choices" role="group" aria-label="選擇網站發布方式"><button type="button" class="hosting-choice" data-hosting="github" aria-pressed="false"><strong>A｜GitHub Pages</strong><small>想簡單免費，可以接受原始碼公開。</small></button><button type="button" class="hosting-choice" data-hosting="cloudflare" aria-pressed="false"><strong>B｜Cloudflare Pages</strong><small>希望原始碼留在私人倉庫，並方便預覽修改。</small></button></div></section>
 <section id="github-pages" class="hosting-instructions" hidden><h2>A｜GitHub Pages：設定步驟</h2>
 <div class="card"><h3>GitHub Pages 連接網站：照著操作</h3>
 <ol>
@@ -135,29 +120,7 @@ const pages=[
 </section>
 <p><a class="button" style="display:inline-block;text-decoration:none" href={base+'guide/'}>前置完成，開始建置網站 →</a></p>
 </main><footer>個人網站建置指南 · 前置準備 ｜ <a href={base+'guide/'}>開始建置</a></footer>
-<script is:inline define:vars={{intakeFiles}}>
-// Small dependency-free ZIP writer (STORE, UTF-8 filenames) for beginner download.
-function makeZip(files){
- const enc=new TextEncoder(), parts=[], central=[];let offset=0;
- const u16=n=>new Uint8Array([n&255,n>>>8&255]);
- const u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);
- const cat=(...a)=>{let size=a.reduce((s,x)=>s+x.length,0),out=new Uint8Array(size),i=0;for(let x of a){out.set(x,i);i+=x.length}return out};
- const crc32=data=>{let c=-1;for(let b of data){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xEDB88320:0)}return(c^-1)>>>0};
- for(const [name,content] of Object.entries(files)){
-   let fn=enc.encode(name),data=enc.encode(content),crc=crc32(data),flag=0x0800;
-   let local=cat(u32(0x04034b50),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),fn,data);
-   parts.push(local);
-   central.push(cat(u32(0x02014b50),u16(20),u16(20),u16(flag),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(fn.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),fn));
-   offset+=local.length;
- }
- const body=cat(...parts),dir=cat(...central),end=cat(u32(0x06054b50),u16(0),u16(0),u16(central.length),u16(central.length),u32(dir.length),u32(body.length),u16(0));
- return new Blob([body,dir,end],{type:'application/zip'});
-}
-document.getElementById('download-intake-zip')?.addEventListener('click',()=>{
- const a=document.createElement('a'),blob=makeZip(intakeFiles),url=URL.createObjectURL(blob);
- a.href=url;a.download='建站前AI訪談包.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-});
-
+<script is:inline>
 const hostingButtons=[...document.querySelectorAll('[data-hosting]')];
 function selectHosting(choice){for(const b of hostingButtons)b.setAttribute('aria-pressed',String(b.dataset.hosting===choice));document.getElementById('github-pages').hidden=choice!=='github';document.getElementById('cloudflare-instructions').hidden=choice!=='cloudflare';document.getElementById('hosting-hint').hidden=choice==='github'||choice==='cloudflare';}
 hostingButtons.forEach(b=>b.addEventListener('click',()=>selectHosting(b.dataset.hosting)));
