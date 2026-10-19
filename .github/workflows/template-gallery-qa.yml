@@ -1,0 +1,41 @@
+name: Template Gallery QA
+on:
+  pull_request:
+    paths:
+      - 'scripts/*template-gallery*'
+      - 'src/data/layout-assembly/**'
+      - 'src/pages/layouts/**'
+      - 'src/pages/templates/**'
+      - 'src/pages/starter/**'
+      - 'public/template-gallery/**'
+      - '.github/workflows/template-gallery-qa.yml'
+permissions:
+  contents: read
+jobs:
+  gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-save --no-package-lock playwright sharp
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Capture missing thumbnails and validate all routes
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/preview.log 2>&1 &
+          for n in $(seq 1 30); do curl -sf http://127.0.0.1:4321/layouts/ > /dev/null && break; sleep 1; done
+          node scripts/capture-template-gallery.mjs
+          node scripts/verify-template-gallery.mjs
+      - name: Gallery browser QA
+        run: node scripts/qa-template-gallery.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: template-gallery-evidence
+          path: |
+            public/template-gallery/
+            docs/template-gallery/
+          retention-days: 14
