@@ -103,11 +103,11 @@ test('practice-compass export uses visitor-safe copy and mobile navigation',()=>
   const nav=readFileSync(join(out,'src/components/StudentNavigation.astro'),'utf8');
   const layout=readFileSync(join(out,'src/layouts/SiteLayout.astro'),'utf8');
   const home=readFileSync(join(out,'src/components/layouts/practice-compass/Home.astro'),'utf8');
-  assert.match(nav,/student-mobile-navigation/);
+  assert.match(nav,/student-nav-toggle/);
   assert.doesNotMatch(nav,/hasContact/);
   assert.match(nav,/const roots=config.navigation.filter\(x=>!x.parentId\)/);
   assert.match(layout,/config.navigation.map\(x=>/);
-  assert.match(nav,/<summary>選單<\/summary>/);
+  assert.match(nav,/aria-expanded="false"/);
   assert.doesNotMatch(layout,/visibleNavigation/);
   assert.doesNotMatch(home,/BEFORE ANY APPOINTMENT|VISITOR DECISIONS|SCOPE & BOUNDARIES/);
   assert.match(home,/服務範圍與界線/);
@@ -120,7 +120,7 @@ test('exported navigation preserves nested links and uses a single shared tree',
  const source=readFileSync(join(root,'src/components/student/StudentNavigation.astro'),'utf8');
  assert.match(source,/children=navigation\.filter\(child=>child\.parentId===item\.id\)/);
  assert.match(source,/children\.map\(child=>/);
- assert.match(source,/student-nav-mobile/);
+ assert.match(source,/student-nav-toggle/);
  assert.match(source,/student-navigation__cta/);
  const exporter=readFileSync(join(root,'scripts/export-starter.mjs'),'utf8');
  assert.match(exporter,/readFileSync\(new URL\('\.\.\/src\/components\/student\/StudentNavigation\.astro'/);
