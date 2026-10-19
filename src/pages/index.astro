@@ -23,18 +23,21 @@ const base = import.meta.env.BASE_URL;
         </a>
       </div>
     </section>
-    <section class="matrix-group" aria-labelledby="explore-resources-title">
-      <div class="matrix-heading"><span>+</span><div><h2 id="explore-resources-title">設計靈感與功能資源 · 自由探索</h2><p>以下是進階參考與補充工具，不是建站必做步驟；想看更多時可以隨時岔出去探索。</p></div></div>
-    </section>
     <section class="matrix-group blocks-entry" aria-labelledby="libraries-title">
       <div class="matrix-heading">
         <span>·</span>
         <div>
-          <h2 id="libraries-title">版型、組合、特效、元件 · 四座網站設計庫</h2>
-          <p>參考版型與區段組合；依需求添加 7 組互動特效，最後探索 {blockRegistry.length} 個可調整的功能元件。</p>
+          <h2 id="libraries-title">設計靈感與延伸資源 · 自由探索</h2>
+          <p>這些是自由查閱的補充工具，不是建站必做步驟。可探索版型構圖、區段組合、互動特效、{blockRegistry.length} 個功能元件，以及 AI Skills。</p>
         </div>
       </div>
       <div class="library-entry-grid">
+        <a class="demo-card library-entry-card" href={base+'resources/'}>
+          <p class="eyebrow">OPTIONAL AI SKILLS · AFTER LAUNCH</p>
+          <h3>AI Skill 延伸資源 · SEO Coach</h3>
+          <p>網站上線後想學 SEO？從 SEO Coach 開始，查看介紹並複製指令，讓 AI 協助評估與安裝；未來也會收錄其他可選用工具。</p>
+          <b>查看 SEO Coach 與延伸資源 →</b>
+        </a>
         <a class="demo-card library-entry-card" href={base+'layouts/'}>
           <p class="eyebrow">LAYOUTS · STRUCTURAL DESIGN LIBRARY</p>
           <h3>版型庫 · 網站怎麼說故事</h3>
@@ -102,7 +105,6 @@ const base = import.meta.env.BASE_URL;
         </a>
       </div>
     </section>
-    <section class="matrix-group" aria-labelledby="optional-resources-title"><div class="matrix-heading"><span>D</span><div><h2 id="optional-resources-title">延伸資源 · 網站上線後繼續探索</h2><p>需要時再讓 AI 協助安裝其他工具，不影響原本建站流程。</p></div></div><div class="demo-grid"><a class="demo-card" href={base+'resources/'}><small>OPTIONAL AI SKILLS</small><h3>推薦工具與學習資源</h3><p>從 SEO Coach 開始，未來持續整理有助網站經營的實用資源。</p><b>查看延伸資源 →</b></a></div></section>
     <footer class="index-footer">Research → Structure → Visual System → Prototype → Workshop</footer>
   <style>
       .starter-entry{display:flex;align-items:center;justify-content:space-between;gap:32px;margin:0 0 64px;padding:28px 32px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
