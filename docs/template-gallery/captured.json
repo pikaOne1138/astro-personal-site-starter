@@ -1,8 +1,9 @@
 {
-  "version": 1,
-  "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+  "version": 2,
+  "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
   "origin": "http://127.0.0.1:4321",
-  "generatedAt": "2026-10-15T06:24:24.081Z",
+  "generatedAt": "2026-10-19T08:58:04.680Z",
+  "capture": "Playwright Chromium full-page; viewport dimensions are not output height",
   "records": [
     {
       "slug": "field-notes",
@@ -14,7 +15,25 @@
       },
       "filename": "template-gallery/field-notes-desktop.webp",
       "sha256": "e00fe75f93692af3af84f141617e2570fbb80357b52f7abd6108d68eec02543e",
-      "bytes": 96392
+      "bytes": 96392,
+      "title": "田野筆記",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 1925
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": "先把世界記錄下來，再慢慢理解。",
+        "bodyCharacters": 498,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:35.657Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "field-notes",
@@ -26,7 +45,25 @@
       },
       "filename": "template-gallery/field-notes-mobile.webp",
       "sha256": "8ba1f5abd8bf71dabaacda8a62170bfbe68235836db0e391c00036625ac3607e",
-      "bytes": 56706
+      "bytes": 56706,
+      "title": "田野筆記",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 1927
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "田野筆記｜知識網站方向 01",
+        "h1": "先把世界記錄下來，再慢慢理解。",
+        "bodyCharacters": 489,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:36.224Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "essayist",
@@ -38,7 +75,25 @@
       },
       "filename": "template-gallery/essayist-desktop.webp",
       "sha256": "c51df9789ad070bcad2e651940acc19a86acb60726cd46a2f7c1eb48aea8b3d3",
-      "bytes": 114514
+      "bytes": 114514,
+      "title": "長文書房",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 1954
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "長文書房｜知識網站方向 02",
+        "h1": "把一個問題想完整。",
+        "bodyCharacters": 618,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:36.853Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "essayist",
@@ -50,7 +105,25 @@
       },
       "filename": "template-gallery/essayist-mobile.webp",
       "sha256": "eb4b7e93187623f2168fbc21bf35624f7b3c96ba86bba02480f8dc0e6b90c32c",
-      "bytes": 89094
+      "bytes": 89094,
+      "title": "長文書房",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 2382
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "長文書房｜知識網站方向 02",
+        "h1": "把一個問題想完整。",
+        "bodyCharacters": 618,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:37.421Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "learning-lab",
@@ -62,7 +135,25 @@
       },
       "filename": "template-gallery/learning-lab-desktop.webp",
       "sha256": "f0a68c42a8bd3a948d335b807499293ebe837804a2141539e8d90dc954390795",
-      "bytes": 106272
+      "bytes": 106272,
+      "title": "學習實驗室",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 1804
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": "把好奇心變成一條路。",
+        "bodyCharacters": 596,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:37.997Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "learning-lab",
@@ -74,7 +165,25 @@
       },
       "filename": "template-gallery/learning-lab-mobile.webp",
       "sha256": "391a0b3085f78603b3d9f16c41c68de05099e7daeba8b733d442f7b56fc09bca",
-      "bytes": 75146
+      "bytes": 75146,
+      "title": "學習實驗室",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 2356
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "學習實驗室｜知識網站方向 03",
+        "h1": "把好奇心變成一條路。",
+        "bodyCharacters": 580,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:38.680Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "curator",
@@ -86,7 +195,25 @@
       },
       "filename": "template-gallery/curator-desktop.webp",
       "sha256": "14e8460815177a68de6f1fed6dcd8d782dc2745ee317ff610275f1fd6acafaf9",
-      "bytes": 72194
+      "bytes": 72194,
+      "title": "收藏者目錄",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 1422
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": "我替你先選過一輪。",
+        "bodyCharacters": 571,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:39.242Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "curator",
@@ -98,7 +225,25 @@
       },
       "filename": "template-gallery/curator-mobile.webp",
       "sha256": "7e29a6179f5cfc9e928337f0b5a2c9b67278d5169ce148f7fe412f10f8539df7",
-      "bytes": 49974
+      "bytes": 49974,
+      "title": "收藏者目錄",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 1961
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "收藏者目錄｜知識網站方向 04",
+        "h1": "我替你先選過一輪。",
+        "bodyCharacters": 571,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:39.794Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "radio-letter",
@@ -110,7 +255,25 @@
       },
       "filename": "template-gallery/radio-letter-desktop.webp",
       "sha256": "9a9a8f7f58a9285fcc4209f019c7c72db3b4678cee8346c76e010725dab50430",
-      "bytes": 108714
+      "bytes": 108714,
+      "title": "聲音通信",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 1866
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": "按下播放，這封信說給你聽。",
+        "bodyCharacters": 674,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:40.430Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "radio-letter",
@@ -122,7 +285,25 @@
       },
       "filename": "template-gallery/radio-letter-mobile.webp",
       "sha256": "f12a6724cee874a4776a5db70f68b30801382a504c0866550287cc489f466476",
-      "bytes": 82372
+      "bytes": 82372,
+      "title": "聲音通信",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 2708
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "聲音通信｜知識網站方向 05",
+        "h1": "按下播放，這封信說給你聽。",
+        "bodyCharacters": 674,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:41.061Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "reading-atlas",
@@ -134,7 +315,25 @@
       },
       "filename": "template-gallery/reading-atlas-desktop.webp",
       "sha256": "2ba6814ad4b62b10a4f0cba7893404ffb7c8f4a6ea75284e0006e944c24f08ff",
-      "bytes": 169450
+      "bytes": 169450,
+      "title": "閱讀年鑑",
+      "kind": "knowledge",
+      "image": {
+        "width": 1440,
+        "height": 3524
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": "這一年，我讀完了這些書。",
+        "bodyCharacters": 1543,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:41.595Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "reading-atlas",
@@ -146,7 +345,25 @@
       },
       "filename": "template-gallery/reading-atlas-mobile.webp",
       "sha256": "6ca5e6b09c035a486a66707d7c9c5b520c798598a493f998952c7fb4afe52484",
-      "bytes": 143172
+      "bytes": 143172,
+      "title": "閱讀年鑑",
+      "kind": "knowledge",
+      "image": {
+        "width": 390,
+        "height": 5555
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "閱讀年鑑 2026｜示意版型",
+        "h1": "這一年，我讀完了這些書。",
+        "bodyCharacters": 1543,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:42.280Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "clinician",
@@ -158,7 +375,25 @@
       },
       "filename": "template-gallery/clinician-desktop.webp",
       "sha256": "2ed6f6125b42a58cc97c38b202d09652e6d99559a6e069c7d630d9b40e416976",
-      "bytes": 171844
+      "bytes": 171844,
+      "title": "清晰臨床",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 3060
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": "讓你知道接下來會發生什麼。",
+        "bodyCharacters": 1003,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:43.088Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "clinician",
@@ -170,7 +405,25 @@
       },
       "filename": "template-gallery/clinician-mobile.webp",
       "sha256": "39a30cf4ebd0cca1c54094a584d36c7109e9231a8782fb020c3c82b2a26693a3",
-      "bytes": 124220
+      "bytes": 124220,
+      "title": "清晰臨床",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 4240
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "清晰臨床｜助人服務方向 06",
+        "h1": "讓你知道接下來會發生什麼。",
+        "bodyCharacters": 1003,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:43.888Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "companion",
@@ -182,7 +435,25 @@
       },
       "filename": "template-gallery/companion-desktop.webp",
       "sha256": "ee572146b216c884ccab2107a4e666a526dea4e8f155146308e041f2978d7fed",
-      "bytes": 126102
+      "bytes": 126102,
+      "title": "溫柔陪伴",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 2373
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": "你可以先從想說的那一小段開始。",
+        "bodyCharacters": 739,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:44.531Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "companion",
@@ -194,7 +465,25 @@
       },
       "filename": "template-gallery/companion-mobile.webp",
       "sha256": "5d811148da928e0799cbbce8b80cdbadf9a8db27be92115e5243db1838f24939",
-      "bytes": 90042
+      "bytes": 90042,
+      "title": "溫柔陪伴",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 3054
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "溫柔陪伴｜助人服務方向 07",
+        "h1": "你可以先從想說的那一小段開始。",
+        "bodyCharacters": 739,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:45.326Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "somatic",
@@ -206,7 +495,25 @@
       },
       "filename": "template-gallery/somatic-desktop.webp",
       "sha256": "245a068a9963aae4c5523fc5a36722cf121aa7e0ef9d81eb0c9782fbeab4922f",
-      "bytes": 148098
+      "bytes": 148098,
+      "title": "身體與節律",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 2202
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": "先回到身體裡。",
+        "bodyCharacters": 651,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:46.171Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "somatic",
@@ -218,7 +525,25 @@
       },
       "filename": "template-gallery/somatic-mobile.webp",
       "sha256": "498c2ceb48bd3139825f25fdfcab4dd7c29a51ccf0283301be549c975f6326d7",
-      "bytes": 70862
+      "bytes": 70862,
+      "title": "身體與節律",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 2270
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "身體與節律｜助人服務方向 08",
+        "h1": "先回到身體裡。",
+        "bodyCharacters": 651,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:46.989Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "coach",
@@ -230,7 +555,25 @@
       },
       "filename": "template-gallery/coach-desktop.webp",
       "sha256": "387da3e282bb83e1b79b4b86b88d78b582f3c2f64dd993de7140b6557857552d",
-      "bytes": 126040
+      "bytes": 126040,
+      "title": "實作型教練",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 2385
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": "卡住的事，拆成下一步。",
+        "bodyCharacters": 702,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:47.756Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "coach",
@@ -242,7 +585,25 @@
       },
       "filename": "template-gallery/coach-mobile.webp",
       "sha256": "8006f264a8bfa8c82ed578f32be02ce1cb60b0ca51595c5a7a740111099bdd00",
-      "bytes": 80514
+      "bytes": 80514,
+      "title": "實作型教練",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 3025
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "實作型教練｜助人服務方向 09",
+        "h1": "卡住的事，拆成下一步。",
+        "bodyCharacters": 702,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:48.706Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "collective",
@@ -254,7 +615,25 @@
       },
       "filename": "template-gallery/collective-desktop.webp",
       "sha256": "0c82b47754bf30c53660261bdc9ec67162874b4823ea93e15e172499e34ea558",
-      "bytes": 152390
+      "bytes": 152390,
+      "title": "共好工作室",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 2488
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": "一起工作，不用把答案交給一個人。",
+        "bodyCharacters": 767,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:49.645Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "collective",
@@ -266,7 +645,25 @@
       },
       "filename": "template-gallery/collective-mobile.webp",
       "sha256": "869a317ff74674c4e2c2bd212be86a3018034af9b903b3ebf63bd7c849700ea8",
-      "bytes": 92518
+      "bytes": 92518,
+      "title": "共好工作室",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 3237
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "共好工作室｜助人服務方向 10",
+        "h1": "一起工作，不用把答案交給一個人。",
+        "bodyCharacters": 767,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:50.356Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "trust-path",
@@ -278,7 +675,25 @@
       },
       "filename": "template-gallery/trust-path-desktop.webp",
       "sha256": "21059ad202cb4c55a1980fc1734a0487613212dc83f5f73e88739238a0c1fc45",
-      "bytes": 215746
+      "bytes": 215746,
+      "title": "信任路徑",
+      "kind": "helper",
+      "image": {
+        "width": 1440,
+        "height": 4273
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": "走近之前，先把路看清楚。",
+        "bodyCharacters": 1273,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:51.006Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     },
     {
       "slug": "trust-path",
@@ -290,7 +705,805 @@
       },
       "filename": "template-gallery/trust-path-mobile.webp",
       "sha256": "c78261dabbb3324c8f1631473dee1bad51beb3fc59cc0f6c6400029447668d4d",
-      "bytes": 166434
+      "bytes": 166434,
+      "title": "信任路徑",
+      "kind": "helper",
+      "image": {
+        "width": 390,
+        "height": 5144
+      },
+      "sourceCommit": "0975ecf3d62dfd65b44fbb8320f6af4a0a70f5c6",
+      "capturedAt": "2026-10-15T06:24:24.081Z",
+      "action": "preserved",
+      "validation": {
+        "title": "路徑｜先把路看清楚（示意版型）",
+        "h1": "走近之前，先把路看清楚。",
+        "bodyCharacters": 1258,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:51.624Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "subject-atlas",
+      "title": "主題標本室",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/subject-atlas/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 2797
+      },
+      "filename": "template-gallery/subject-atlas-desktop.webp",
+      "sha256": "683cfa135d10b3152fc3a234d105c2311bfb60b12c3fa21970607993ae961c3e",
+      "bytes": 102070,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:52.325Z",
+      "action": "created",
+      "validation": {
+        "title": "主題標本室｜知識型網站",
+        "h1": "把想法，放回相互連結的位置。",
+        "bodyCharacters": 821,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:52.325Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "subject-atlas",
+      "title": "主題標本室",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/subject-atlas/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 3513
+      },
+      "filename": "template-gallery/subject-atlas-mobile.webp",
+      "sha256": "1d07a9b94f7e281d3c193ce1d39f889b92d577df35199e2fcf7323e692a37487",
+      "bytes": 84482,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:52.905Z",
+      "action": "created",
+      "validation": {
+        "title": "主題標本室｜知識型網站",
+        "h1": "把想法，放回相互連結的位置。",
+        "bodyCharacters": 817,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:52.905Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "practice-compass",
+      "title": "服務羅盤",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/practice-compass/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 3105
+      },
+      "filename": "template-gallery/practice-compass-desktop.webp",
+      "sha256": "07e3425d419630122b8f52bd1ffdc24a0e84875217cac2c50618b91e2f5bb5d4",
+      "bytes": 141184,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:53.703Z",
+      "action": "created",
+      "validation": {
+        "title": "服務羅盤｜助人者原型",
+        "h1": "先知道自己需要什麼支持，再決定下一步。",
+        "bodyCharacters": 828,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:53.703Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "practice-compass",
+      "title": "服務羅盤",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/practice-compass/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 4168
+      },
+      "filename": "template-gallery/practice-compass-mobile.webp",
+      "sha256": "d096d30daae21e8bc133ba9e6e0945c0eceef35f7eb3620edda027b1d2cd108e",
+      "bytes": 117240,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:54.381Z",
+      "action": "created",
+      "validation": {
+        "title": "服務羅盤｜助人者原型",
+        "h1": "先知道自己需要什麼支持，再決定下一步。",
+        "bodyCharacters": 828,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:54.381Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "sidebar-journal",
+      "title": "側欄日誌",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/sidebar-journal/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1880
+      },
+      "filename": "template-gallery/sidebar-journal-desktop.webp",
+      "sha256": "827363a1683324283d1c5bc64e2371cc45cf61b77cf9f4f7b2fb4f46e2094add",
+      "bytes": 64480,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:54.932Z",
+      "action": "created",
+      "validation": {
+        "title": "側欄日誌｜側欄日誌（原型）",
+        "h1": "最近的文章與筆記。",
+        "bodyCharacters": 523,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:54.932Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "sidebar-journal",
+      "title": "側欄日誌",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/sidebar-journal/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2103
+      },
+      "filename": "template-gallery/sidebar-journal-mobile.webp",
+      "sha256": "607681be8cbf2edaed0c71b8a0865101dc027fd6ac81c89b29a5e73544ef5685",
+      "bytes": 45522,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:55.353Z",
+      "action": "created",
+      "validation": {
+        "title": "側欄日誌｜側欄日誌（原型）",
+        "h1": "最近的文章與筆記。",
+        "bodyCharacters": 450,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:55.353Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "editorial-frontpage",
+      "title": "個人刊物",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/editorial-frontpage/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1888
+      },
+      "filename": "template-gallery/editorial-frontpage-desktop.webp",
+      "sha256": "aa61eac5e5b1e659490e47b8e41f3f182de82f8d2564330d748cd3ec2d224094",
+      "bytes": 62248,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:55.901Z",
+      "action": "created",
+      "validation": {
+        "title": "個人刊物｜個人刊物（原型）",
+        "h1": "把一件小事寫成文章",
+        "bodyCharacters": 406,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:55.901Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "editorial-frontpage",
+      "title": "個人刊物",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/editorial-frontpage/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2531
+      },
+      "filename": "template-gallery/editorial-frontpage-mobile.webp",
+      "sha256": "b873fa3d06fae70f25f0061c59374a4d2a01662f3f36dc27751bb80e2e2770f0",
+      "bytes": 49286,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:56.370Z",
+      "action": "created",
+      "validation": {
+        "title": "個人刊物｜個人刊物（原型）",
+        "h1": "把一件小事寫成文章",
+        "bodyCharacters": 406,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:56.370Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "card-journal",
+      "title": "卡片刊物",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/card-journal/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 2063
+      },
+      "filename": "template-gallery/card-journal-desktop.webp",
+      "sha256": "46a9b5a37a574042d115ee64e11b3a93ec474fbf70dc502b5c06d88f3019dcbb",
+      "bytes": 64108,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:56.919Z",
+      "action": "created",
+      "validation": {
+        "title": "卡片刊物｜卡片刊物（設計原型）",
+        "h1": "一篇一篇，把想法保存下來。",
+        "bodyCharacters": 424,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:56.919Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "card-journal",
+      "title": "卡片刊物",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/card-journal/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2716
+      },
+      "filename": "template-gallery/card-journal-mobile.webp",
+      "sha256": "54982150c8c12488bd8dec47c4fd2b188e4eb0150a88748671cd642482a247f5",
+      "bytes": 50832,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:57.408Z",
+      "action": "created",
+      "validation": {
+        "title": "卡片刊物｜卡片刊物（設計原型）",
+        "h1": "一篇一篇，把想法保存下來。",
+        "bodyCharacters": 424,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:57.408Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "visual-stories",
+      "title": "影像故事",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/visual-stories/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1607
+      },
+      "filename": "template-gallery/visual-stories-desktop.webp",
+      "sha256": "f6470d2d575456b269b8c831459afaac1b25e90715987c837e1741ce1da8972f",
+      "bytes": 37920,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:57.840Z",
+      "action": "created",
+      "validation": {
+        "title": "影像故事｜Astro 版型原型",
+        "h1": "從圖說開始閱讀一段故事。",
+        "bodyCharacters": 256,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:57.840Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "visual-stories",
+      "title": "影像故事",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/visual-stories/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 1556
+      },
+      "filename": "template-gallery/visual-stories-mobile.webp",
+      "sha256": "6ce37bdc68176fc94d71c70fa875716666a157be14a0b7b3d06f96a1c80d3fa7",
+      "bytes": 29218,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:58.159Z",
+      "action": "created",
+      "validation": {
+        "title": "影像故事｜Astro 版型原型",
+        "h1": "從圖說開始閱讀一段故事。",
+        "bodyCharacters": 256,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:58.159Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "compact-dispatch",
+      "title": "極簡短箋",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/compact-dispatch/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1093
+      },
+      "filename": "template-gallery/compact-dispatch-desktop.webp",
+      "sha256": "46f93344bb9b35aa8b24b983c4ac35307b1f686778c50d14824dd43fca38815b",
+      "bytes": 30048,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:58.485Z",
+      "action": "created",
+      "validation": {
+        "title": "極簡短箋｜Astro 版型原型",
+        "h1": "短短幾則，照時間排列。",
+        "bodyCharacters": 220,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:58.485Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "compact-dispatch",
+      "title": "極簡短箋",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/compact-dispatch/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 1018
+      },
+      "filename": "template-gallery/compact-dispatch-mobile.webp",
+      "sha256": "2988c7e4b841d6da4cf2960a7c1d82baf7775f2c9f75299f31cb26b5f197a41a",
+      "bytes": 24656,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:58.739Z",
+      "action": "created",
+      "validation": {
+        "title": "極簡短箋｜Astro 版型原型",
+        "h1": "短短幾則，照時間排列。",
+        "bodyCharacters": 220,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:58.739Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "split-reader",
+      "title": "雙欄閱讀台",
+      "kind": "knowledge",
+      "mode": "desktop",
+      "route": "/layouts/split-reader/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1511
+      },
+      "filename": "template-gallery/split-reader-desktop.webp",
+      "sha256": "b344cb4bca70d6b9e86e8d4aa8a24160ccb163b1fd0d89f11dd86fee7e430bed",
+      "bytes": 37684,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:59.168Z",
+      "action": "created",
+      "validation": {
+        "title": "雙欄閱讀台｜Astro 版型原型",
+        "h1": "主文與索引，各在自己的位置。",
+        "bodyCharacters": 268,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:59.168Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "split-reader",
+      "title": "雙欄閱讀台",
+      "kind": "knowledge",
+      "mode": "mobile",
+      "route": "/layouts/split-reader/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 1444
+      },
+      "filename": "template-gallery/split-reader-mobile.webp",
+      "sha256": "e2d7e6c7b92f345e3bc88290452f586c0065cee09fb802926b41ff174328cdad",
+      "bytes": 30196,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:57:59.503Z",
+      "action": "created",
+      "validation": {
+        "title": "雙欄閱讀台｜Astro 版型原型",
+        "h1": "主文與索引，各在自己的位置。",
+        "bodyCharacters": 268,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:57:59.503Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "portrait-profile",
+      "title": "人物名片",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/portrait-profile/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 2372
+      },
+      "filename": "template-gallery/portrait-profile-desktop.webp",
+      "sha256": "7696ba7974a6f076bdfdb922af4ba49fce6b4ea46eb026c7ae2b20a2b8651f2b",
+      "bytes": 85872,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:00.099Z",
+      "action": "created",
+      "validation": {
+        "title": "人物名片｜人物名片原型",
+        "h1": "先認識這個人，再了解他的工作。",
+        "bodyCharacters": 528,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:00.099Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "portrait-profile",
+      "title": "人物名片",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/portrait-profile/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2656
+      },
+      "filename": "template-gallery/portrait-profile-mobile.webp",
+      "sha256": "d41d6bb88f1399d2aef117822b12bd369a023b3e51632a007d6a238997e4da84",
+      "bytes": 69712,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:00.605Z",
+      "action": "created",
+      "validation": {
+        "title": "人物名片｜人物名片原型",
+        "h1": "先認識這個人，再了解他的工作。",
+        "bodyCharacters": 528,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:00.605Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "service-catalogue",
+      "title": "服務目錄",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/service-catalogue/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 2322
+      },
+      "filename": "template-gallery/service-catalogue-desktop.webp",
+      "sha256": "35c595d4be46401a6ebf9d243b5c1b5ee14220999c2fc79f26512c25693557f7",
+      "bytes": 74912,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:01.186Z",
+      "action": "created",
+      "validation": {
+        "title": "服務目錄｜服務目錄設計原型",
+        "h1": "看清楚服務，再決定下一步。",
+        "bodyCharacters": 451,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:01.186Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "service-catalogue",
+      "title": "服務目錄",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/service-catalogue/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2407
+      },
+      "filename": "template-gallery/service-catalogue-mobile.webp",
+      "sha256": "666dbf737bd4e4f37a32a225afac92b97620caf8e9d69af169c75f8093b9ce66",
+      "bytes": 60454,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:01.677Z",
+      "action": "created",
+      "validation": {
+        "title": "服務目錄｜服務目錄設計原型",
+        "h1": "看清楚服務，再決定下一步。",
+        "bodyCharacters": 451,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:01.677Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "studio-chapters",
+      "title": "工作室章節",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/studio-chapters/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 3040
+      },
+      "filename": "template-gallery/studio-chapters-desktop.webp",
+      "sha256": "1fe47c1e8e1a45baf2b66bba984dca87806a38717313f24d1c73ba4945af77d2",
+      "bytes": 73502,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:02.452Z",
+      "action": "created",
+      "validation": {
+        "title": "工作室章節｜工作室章節（原型）",
+        "h1": "從空間，讀懂一種工作方式。",
+        "bodyCharacters": 470,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:02.452Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "studio-chapters",
+      "title": "工作室章節",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/studio-chapters/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 2936
+      },
+      "filename": "template-gallery/studio-chapters-mobile.webp",
+      "sha256": "4922c5f2b075f384ab3f4ceee94694c30bc947cef414004f7fdbb7fdf8648360",
+      "bytes": 59478,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:02.959Z",
+      "action": "created",
+      "validation": {
+        "title": "工作室章節｜工作室章節（原型）",
+        "h1": "從空間，讀懂一種工作方式。",
+        "bodyCharacters": 470,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:02.960Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "editorial-practice",
+      "title": "觀點服務誌",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/editorial-practice/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1463
+      },
+      "filename": "template-gallery/editorial-practice-desktop.webp",
+      "sha256": "5f95e75f5092fea3519254abdf8a8dbfd9c6c8e9e10462bcd9939683ee79b09e",
+      "bytes": 50892,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:03.414Z",
+      "action": "created",
+      "validation": {
+        "title": "觀點服務誌｜Astro 版型原型",
+        "h1": "服務從真正的觀點開始。",
+        "bodyCharacters": 355,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:03.414Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "editorial-practice",
+      "title": "觀點服務誌",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/editorial-practice/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 1671
+      },
+      "filename": "template-gallery/editorial-practice-mobile.webp",
+      "sha256": "045136a411b60851619ae76c00bf6175c436f0d443fac4d1ae243d0026c92a3f",
+      "bytes": 43412,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:03.775Z",
+      "action": "created",
+      "validation": {
+        "title": "觀點服務誌｜Astro 版型原型",
+        "h1": "服務從真正的觀點開始。",
+        "bodyCharacters": 355,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:03.775Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "question-led-practice",
+      "title": "問答對話",
+      "kind": "helper",
+      "mode": "desktop",
+      "route": "/layouts/question-led-practice/",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "image": {
+        "width": 1440,
+        "height": 1842
+      },
+      "filename": "template-gallery/question-led-practice-desktop.webp",
+      "sha256": "962130211450bb094f1895058f8e0b14afb94487f6eac748ec093060e3a57c62",
+      "bytes": 52538,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:04.319Z",
+      "action": "created",
+      "validation": {
+        "title": "問答對話｜Astro 版型原型",
+        "h1": "你可能想先問這些問題。",
+        "bodyCharacters": 335,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:04.319Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
+    },
+    {
+      "slug": "question-led-practice",
+      "title": "問答對話",
+      "kind": "helper",
+      "mode": "mobile",
+      "route": "/layouts/question-led-practice/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image": {
+        "width": 390,
+        "height": 1767
+      },
+      "filename": "template-gallery/question-led-practice-mobile.webp",
+      "sha256": "269e5f48b01829faadf051263c1c0ca0623f168c95d90e3026d4212ee1a78470",
+      "bytes": 40436,
+      "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e",
+      "capturedAt": "2026-10-19T08:58:04.676Z",
+      "action": "created",
+      "validation": {
+        "title": "問答對話｜Astro 版型原型",
+        "h1": "你可能想先問這些問題。",
+        "bodyCharacters": 335,
+        "brokenImages": [],
+        "horizontalOverflow": false,
+        "checkedAt": "2026-10-19T08:58:04.676Z",
+        "sourceCommit": "53f9ec094f6d06b1e4651affb61bee6b141af10e"
+      }
     }
   ]
 }

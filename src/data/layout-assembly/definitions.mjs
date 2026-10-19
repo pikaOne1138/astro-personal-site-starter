@@ -35,7 +35,7 @@ export const layoutDefinitions = directions.map(direction => {
       : {hero:direction.structure,sectionOrder:[],gridDesktop:'defined by individual src/data/layout-assembly/<slug>/Home.astro',responsive390:'adapter-specific single-column'}
   };
 });
-layoutDefinitions.push(...expansion.map(d=>({...d,schemaVersion:1,sourcePrototype:'/layouts/'+d.slug+'/',adapter:{id:d.slug,version:1,engine:d.engine},screenshots:{desktop:null,mobile:null}})));
+layoutDefinitions.push(...expansion.map(d=>({...d,schemaVersion:1,sourcePrototype:'/layouts/'+d.slug+'/',adapter:{id:d.slug,version:1,engine:d.engine},screenshots:{desktop:'/template-gallery/'+d.slug+'-desktop.webp',mobile:'/template-gallery/'+d.slug+'-mobile.webp'}})));
 export const getLayoutDefinition = (slug,kind) => layoutDefinitions.find(d=>d.slug===slug&&d.kind===kind);
 export const getAssemblyLayout = (slug,kind) => {
   const result=getLayoutDefinition(slug,kind);
