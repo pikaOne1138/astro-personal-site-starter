@@ -77,19 +77,21 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
         <li><strong>下載：</strong>按「下載完整 AI 需求訪談包 ZIP」，把 ZIP 儲存到電腦並解壓縮。</li>
         <li><strong>交給 AI：</strong>打開你平常使用的 ChatGPT、Claude 或其他支援上傳檔案的 AI。開啟一段新對話，把解壓縮後的 <strong>README.md 和 01～06 六份 Markdown 文件一起上傳</strong>；請 AI 先讀完，不要直接建站。</li>
         <li><strong>開始訪談：</strong>按「複製訪談開場指令」，貼到同一段 AI 對話送出。AI 會一次問你一個問題，討論網站用途、訪客、個人介紹、文章或服務內容、品牌與圖片。不知道的問題可以直接說「不知道」或「先跳過」。</li>
-        <li><strong>確認結果：</strong>訪談結束，請 AI 依包內規則整理<strong>《網站內容準備稿 v1》</strong>，分清楚已確認、待確認、缺少及不公開的資料。先檢查內容是否正確，不要把 AI 的猜測當成事實。</li>
-        <li><strong>貼回這裡：</strong>將確認過的《網站內容準備稿 v1》全文複製，貼到下方「AI 訪談結果」大文字框。完成本頁其他設定後，在第 07 步下載 Site Brief；訪談內容會一起交給建站 AI，<strong>不需要再上傳一次訪談包</strong>。</li>
+        <li><strong>確認結果：</strong>訪談結束，請 AI 依包內規則整理<strong>「網站需求整理稿」</strong>，分清楚已確認、待確認、缺少及不公開的資料。先檢查內容是否正確，不要把 AI 的猜測當成事實。</li>
+        <li><strong>貼回這裡：</strong>將確認過的「網站需求整理稿」全文複製，貼到下方「AI 訪談結果」大文字框。完成本頁其他設定後，在第 07 步下載 Site Brief；訪談內容會一起交給建站 AI，<strong>不需要再上傳一次訪談包</strong>。</li>
       </ol>
       <button class="button secondary" type="button" id="download-intake-zip">下載完整 AI 需求訪談包 ZIP ↓</button>
       <button class="button secondary" type="button" id="copy-intake-start">複製訪談開場指令</button>
       <p class="muted">這份訪談包同時包含 Logo 與圖片設計的討論指南。AI 不會因為下載檔案就自動開始訪談，必須把文件和開場指令交給 AI。</p>
     </div>
-    <label for="interview-summary">貼上 AI 整理的《網站內容準備稿 v1》（選填）</label>
-    <textarea id="interview-summary" rows="8" placeholder="完成 AI 訪談並確認內容後，將《網站內容準備稿 v1》的全文貼在這裡。還沒訪談可留空。"></textarea>
+    <label for="interview-summary">貼上 AI 整理的「網站需求整理稿」（選填）</label>
+    <textarea id="interview-summary" rows="8" placeholder="完成 AI 訪談並確認內容後，將「網站需求整理稿」的全文貼在這裡。還沒訪談可留空。"></textarea>
     <h3>Logo 與品牌圖片（選填）</h3>
-    <p>訪談包也會協助你討論 Logo 和網站圖片。如果已經有圖片，直接在下方上傳；若還沒有，可以先完成訪談，再請 AI 協助設計。AI 產生圖片後先儲存到電腦，再到下面選擇檔案。現在沒有也可以先跳過。</p>
-    <h3 id="brand-logo-upload">Logo 與主視覺圖片上傳（選填）</h3>
-    <p>如果已經有圖片，可以直接上傳；還沒有就先使用上方提示詞請 AI 設計，完成後回到這裡上傳。兩種圖片都可以不提供，之後再補。</p>
+    <p>如果已經有 Logo 或首頁圖片，可以直接在下面上傳。如果還沒有，請先把上方完整訪談包交給 AI，再按「複製 Logo 與圖片設計指令」繼續討論。AI 會依包內的品牌設計指南，先確認方向，再協助你製作圖片；不必現在就做完。</p>
+    <button class="button secondary" type="button" id="copy-logo-prompt">複製 Logo 與圖片設計指令</button>
+    <p>把複製的指令貼到<strong>剛才上傳訪談包的同一段 AI 對話</strong>。如果沒有做前面的訪談，請先上傳訪談包，再使用這個指令，讓 AI 有足夠的設計依據。完成後，將圖片儲存到電腦並在下方上傳；品牌方向的文字整理可以貼在上方訪談結果欄位。</p>
+    <h3 id="brand-logo-upload">上傳已完成的圖片（選填）</h3>
+    <p>如果已經有圖片，可以直接上傳；還沒有可以先請 AI 協助設計，完成後再上傳。兩種圖片都可以不提供，之後再補。</p>
     <div class="brand-design-controls">
 <label><span id="logo-upload-label">Logo 圖片（選填）</span><input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>網站名稱旁或頁首使用的品牌識別圖。還沒有 Logo 可以先不選。</small></label>
 <label>網站主視覺圖片（選填）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>通常是首頁最醒目區塊（Hero）的照片或插畫，例如工作環境、作品、品牌形象；沒有圖片可以先留空。</small></label>
@@ -454,11 +456,17 @@ function showPlan(){
  document.querySelectorAll<HTMLElement>('[data-content-kind]').forEach(group=>{group.hidden=group.dataset.contentKind!==value('kind');});
  const p=plan();output.textContent=JSON.stringify({...p,assets:p.assets?.map(x=>({path:x.path,mime:x.mime,sizeBytes:Math.floor(x.base64.length*.75),data:'[圖片已包含於下載檔，不顯示 Base64]'}))},null,2);
 }
-const intakeStartPrompt='我完全沒有網站開發背景。我已上傳「建站前 AI 訪談包」。請先讀 01-AI-訪談主持人.md，再參考其他文件目前填寫的內容。請像一位會引導對話的網站企劃，一次只問我一個最有幫助的問題，允許我回答「不知道」。先幫我釐清定位與準備真實內容，不要立刻做網站、要求註冊帳號或寫程式。最後幫我產出一份可讓我確認的《網站內容準備稿 v1》，再提醒我把全文複製貼回 ATP Starter 第 04 步「AI 訪談結果」文字框。';
+const intakeStartPrompt='我完全沒有網站開發背景。我已上傳「建站前 AI 訪談包」。請先讀 01-AI-訪談主持人.md，再參考其他文件目前填寫的內容。請像一位會引導對話的網站企劃，一次只問我一個最有幫助的問題，允許我回答「不知道」。先幫我釐清定位與準備真實內容，不要立刻做網站、要求註冊帳號或寫程式。最後幫我產出一份可讓我確認的「網站需求整理稿」，再提醒我把全文複製貼回 ATP Starter 第 04 步「AI 訪談結果」文字框。';
 document.querySelector<HTMLButtonElement>('#copy-intake-start')?.addEventListener('click',async()=>{
  const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
  try{await navigator.clipboard.writeText(intakeStartPrompt);status.textContent='訪談開場指令已複製。請先把完整訪談包的七份文件上傳給 AI，再將指令貼進同一段對話。';}
  catch{status.textContent='無法自動複製，請使用訪談包 README.md 中的「開場語」貼給 AI。';}
+});
+const logoDesignPrompt='我已上傳 ATP 的完整 AI 需求訪談包。請先閱讀其中的「05-AI-品牌識別與圖片共創.md」與「06-Logo與圖片設計研究.md」，並參考我們已確認的網站需求。現在請依文件中的五個設計階段，陪我逐步討論 Logo、favicon 與網站主視覺圖片：先提供三種真正不同的品牌概念與適用原因，一次只問我一個問題，讓我選擇後再製作圖片。如果你無法讀取文件，請直接告訴我並請我補上；如果你不能生圖，就為選定方向產生能交給生圖工具使用的詳細提示詞。不要模仿其他品牌、虛構人物或資格，也不要直接發布網站。完成後請提醒我將 Logo／主視覺圖片下載到電腦，回到 Starter 第 04 步上傳；把已確認的品牌設計結論整理成可貼回訪談結果的文字。';
+document.querySelector<HTMLButtonElement>('#copy-logo-prompt')?.addEventListener('click',async()=>{
+ const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
+ try{await navigator.clipboard.writeText(logoDesignPrompt);status.textContent='Logo 與圖片設計指令已複製。請貼到已上傳完整訪談包的 AI 對話。';}
+ catch{status.textContent='無法自動複製，請使用訪談包內「05-AI-品牌識別與圖片共創.md」請 AI 協助設計。';}
 });
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
 form.querySelectorAll<HTMLInputElement>('input[name="layout"]').forEach(e=>e.addEventListener('change',showPlan));
