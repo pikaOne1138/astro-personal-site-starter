@@ -51,10 +51,23 @@
 
 [Workflow 39226380700](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39226380700) 通過：三個入口 × 1440/1280/768/390，均無水平溢出或破圖；25 款 query 預選與 Site Brief slug/kind 完全相符，圖庫選用連結及手機切換通過，無瀏覽器 JS 錯誤。
 
-[16 張實際桌機／手機截圖與 JSON](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39226380700/artifacts/12174042685)。已目視原始 24 張和新增 26 張的首頁 contact sheet。手機選版卡原本高度太矮，會把主標題裁在下緣，本輪改為 180×390 的直式預覽窗（沿用既有圖鑑手機寬度，顯示約原始 390×844 視窗），不修改原始 WebP；需以最終 head 再驗證。
+[16 張實際桌機／手機截圖與 JSON](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39226380700/artifacts/12174042685)。已目視原始 24 張和新增 26 張的首頁 contact sheet。手機選版卡原本高度太矮，會把主標題裁在下緣，本輪改為 180×390 的直式預覽窗（沿用既有圖鑑手機寬度，顯示約原始 390×844 視窗），不修改原始 WebP；已在最終程式 commit `187978c806bbc4755062fec1678923cc34d7edfb` 回歸通過。
 
 WorkshopNav 的 CI 修復由另一個對話負責，本 PR 不修改其元件或 QA Registry。
 
 ## 範圍限制
 
 這次驗收的是縮圖捕捉、選版入口與預選，不是 25 套獨立 Starter 全站驗收。Safari、Firefox、真機、螢幕閱讀器未測。PR 保持 Draft；不 Merge，不發布 Production。
+
+## 最終驗收（程式 commit 187978c）
+
+- [Template Gallery QA](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39228563741)：PASS，含 Build、50 路由／圖片檢查、三入口 × 四尺寸、25 預選與 Site Brief、手機切換、JS errors。37 筆測試結果：`evidence/results.json`。
+- [最終 16 張瀏覽器原圖與 JSON](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39228563741/artifacts/12176521442)。`evidence/desktop-mobile.webp` 是其中桌機圖鑑與手機 Starter 的等比例裁切並排；完整未裁切原圖見 Actions Artifact。
+- 最終圖片在 GitHub 的 Blob SHA 與本機資產完全一致，50 張均有不同 SHA-256，沒有拿其他版型圖片充數。
+- 修正後的 390px Layout 卡片與 Starter 卡片已目視複查。最終程式的 1440/1280/768/390 均無破圖／水平溢出；未宣稱所有字體、對比與完整多頁功能皆完成 QA。
+- Cloudflare immutable Preview（187978c）：https://964c18cf.personal-site-starter.pages.dev/ 。已用連接的 Chrome 實際開啟 `/layouts/`，390px 查看新增縮圖並由主題標本室選用連結進 Starter，slug=subject-atlas / kind=knowledge 正確且無溢出。
+- GitHub Pages PR Preview Build（187978c）：PASS；已開啟真實 `/astro-personal-site-starter/pr-preview/pr-57/layouts/` 驗證頁面及子路徑連結。
+- Verify Cloudflare Static Assets：FAIL（WorkshopNav 宣告阻擋由另一對話維修）；Standalone Starter Export Check 整套匯出測試回報時仍在執行，不列為通過。其餘 Art Direction 與交接合約 workflows 已通過，但不是本輪完整 Starter 驗收證明。
+- 發現並修正本輪手機 CSS 回歸：多個 Astro style 區塊合併後覆寫手機比例，導致 expansions 390px 溢出；已合併 Layout inline styles 並約束圖片框。新增選用連結也不再套用預覽連結的整卡片 Grid/100% 高度。失敗 run 39227725749 不作通過證據。
+
+![桌機圖鑑與手機 Starter 實際截圖](evidence/desktop-mobile.webp)

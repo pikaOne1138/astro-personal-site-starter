@@ -1,0 +1,279 @@
+{
+  "base": "http://127.0.0.1:4321",
+  "checkedAt": "2026-10-19T09:17:17.438Z",
+  "results": [
+    {
+      "route": "layouts",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "templates",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "starter",
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "layouts",
+      "width": 1280,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "templates",
+      "width": 1280,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "starter",
+      "width": 1280,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "layouts",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "templates",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "starter",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "layouts",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "templates",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "route": "starter",
+      "width": 390,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "slug": "field-notes",
+      "selection": {
+        "layout": "field-notes",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "essayist",
+      "selection": {
+        "layout": "essayist",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "learning-lab",
+      "selection": {
+        "layout": "learning-lab",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "curator",
+      "selection": {
+        "layout": "curator",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "radio-letter",
+      "selection": {
+        "layout": "radio-letter",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "reading-atlas",
+      "selection": {
+        "layout": "reading-atlas",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "clinician",
+      "selection": {
+        "layout": "clinician",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "companion",
+      "selection": {
+        "layout": "companion",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "somatic",
+      "selection": {
+        "layout": "somatic",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "coach",
+      "selection": {
+        "layout": "coach",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "collective",
+      "selection": {
+        "layout": "collective",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "trust-path",
+      "selection": {
+        "layout": "trust-path",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "subject-atlas",
+      "selection": {
+        "layout": "subject-atlas",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "practice-compass",
+      "selection": {
+        "layout": "practice-compass",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "sidebar-journal",
+      "selection": {
+        "layout": "sidebar-journal",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "editorial-frontpage",
+      "selection": {
+        "layout": "editorial-frontpage",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "card-journal",
+      "selection": {
+        "layout": "card-journal",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "visual-stories",
+      "selection": {
+        "layout": "visual-stories",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "compact-dispatch",
+      "selection": {
+        "layout": "compact-dispatch",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "split-reader",
+      "selection": {
+        "layout": "split-reader",
+        "kind": "knowledge"
+      },
+      "brief": true
+    },
+    {
+      "slug": "portrait-profile",
+      "selection": {
+        "layout": "portrait-profile",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "service-catalogue",
+      "selection": {
+        "layout": "service-catalogue",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "studio-chapters",
+      "selection": {
+        "layout": "studio-chapters",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "editorial-practice",
+      "selection": {
+        "layout": "editorial-practice",
+        "kind": "helper"
+      },
+      "brief": true
+    },
+    {
+      "slug": "question-led-practice",
+      "selection": {
+        "layout": "question-led-practice",
+        "kind": "helper"
+      },
+      "brief": true
+    }
+  ],
+  "errors": []
+}
