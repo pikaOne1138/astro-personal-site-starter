@@ -71,7 +71,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
   <div class="ai-interview-panel">
     <h3>先與 AI 討論網站需求</h3>
     <p>你可以在慣用的 AI 工具中訪談網站定位、客群、內容與品牌方向。請 AI 在結束時整理一份方便複製的摘要，再貼在下方。也可以直接貼上你已有的討論整理。</p>
-    <div class="intake-download"><strong>AI 需求訪談包（選用）</strong><p>這份資料包包含訪談主持流程、網站定位、內容準備、品牌與 Logo 設計參考。下載後解壓縮，將相關文件交給你慣用的 AI，讓它一次問你一個問題。</p><button class="button secondary" type="button" id="download-intake-zip">下載 AI 需求訪談包 ZIP ↓</button><p class="muted">訪談結束後，請 AI 彙整成一份可複製的文字摘要，貼在下面的欄位；不用請 AI 產生 JSON。</p></div><button class="button secondary" type="button" id="copy-interview-prompt">只複製簡短訪談指令</button>
+    <div class="intake-download"><strong>AI 需求訪談包（選用）</strong><p>這份資料包包含訪談主持流程、網站定位、內容準備、品牌與 Logo 設計參考。下載後解壓縮，將相關文件交給你慣用的 AI，讓它一次問你一個問題。</p><button class="button secondary" type="button" id="download-intake-zip">下載 AI 需求訪談包 ZIP ↓</button><p class="muted">訪談結束後，請 AI 整理一份可複製的文字摘要，貼在下方「AI 訪談結果」欄位。它會連同其他設定寫入第 07 步下載的 Site Brief，之後建站只需要交 Site Brief 與完整建站包；訪談包不用再傳一次。</p></div><button class="button secondary" type="button" id="copy-interview-prompt">只複製簡短訪談指令</button>
     <label for="interview-summary">AI 訪談結果（選填，保留原文）</label>
     <textarea id="interview-summary" rows="8" placeholder="貼上 AI 整理的網站需求摘要。未完成可留白；不需轉成 JSON。"></textarea>
     <h3>Logo 與品牌圖片</h3>
@@ -118,7 +118,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>07</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<aside class="handoff-guide"><strong>完成規劃後，下載 Site Brief</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>下載後，前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP。把兩份檔案一起提供給 AI，再複製正式開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：前往建站指南 →</a></aside>
+<aside class="handoff-guide"><strong>完成規劃後，下載 Site Brief</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>若有在第 04 步貼上 AI 訪談摘要，它已包含在這份 Site Brief 裡，<strong>不必額外上傳訪談包</strong>。接著前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP，將 Site Brief 與建站包一起交給 AI，再複製開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：前往建站指南 →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 Site Brief JSON</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
