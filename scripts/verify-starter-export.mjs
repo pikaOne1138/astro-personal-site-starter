@@ -256,7 +256,7 @@ try{
     const navigation=readFileSync(join(site,'src/components/StudentNavigation.astro'),'utf8');
     if(!navigation.includes('student-navigation__submenu'))throw Error('Missing nested navigation');
     if(kind==='knowledge'&&!out.navigation.some(x=>x.parentId==='articles'))throw Error('Nested navigation lost');
-    if(kind==='knowledge'&&(!out.navigation.some(x=>x.path==='start-here/tools/')||!navigation.includes('child.path??child.id')))throw Error('Custom nested path was not preserved');
+    if(kind==='knowledge'&&(!out.navigation.some(x=>x.path==='start-here/tools/')||!navigation.includes('children.map(child=>')||!navigation.includes('href(child)')))throw Error('Custom nested path was not preserved');
     const selected=readFileSync(join(site,'src/components/SelectedPatterns.astro'),'utf8');
     const pageLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
