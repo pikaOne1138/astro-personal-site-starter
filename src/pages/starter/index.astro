@@ -40,12 +40,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 
 <section class="step" aria-labelledby="step-brand"><div class="step-head"><span>02</span><div><h2 id="step-brand">品牌視覺</h2><p>先選一組配色起點，再自由調整五色盤。這些是配色預設，不會改變你在步驟 01 選的整頁 Layout。</p></div></div>
 <div class="form-grid"><label>網站名稱<input name="siteName" required maxlength="80" value="我的個人網站"/></label><label>一句話介紹<input name="tagline" maxlength="150" value="把我想分享的事，整理成自己的網站"/></label></div>
-<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label><label><span id="brand-logo-upload">Logo 圖片（選填）</span><input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>網站名稱旁或頁首使用的品牌識別圖。還沒有 Logo 可以先不選。</small></label>
-<label>網站主視覺圖片（選填）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>通常是首頁最醒目區塊（Hero）的照片或插畫，例如工作環境、作品、品牌形象；沒有圖片可以先留空。</small></label>
-<details class="advanced-image-paths"><summary>進階設定：使用網站專案內已有的圖片路徑</summary><p>只有已經有 Astro 網站專案、且知道圖片放在哪個路徑時才需要。一般學員直接使用上面的檔案選擇即可，系統會自動建立路徑。</p>
-<label>Logo 專案圖片路徑<input name="logoPath" placeholder="/images/my-logo.png"/></label>
-<label>主視覺專案圖片路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label></details>
-<label>主視覺圖片描述（選填）<input name="heroImageAlt" maxlength="180" placeholder="例如：明亮工作室內的一張木桌與筆記本"/></label></div><p class="muted">選擇圖片後，系統會自動設定路徑並放進下載的 Site Brief，無須輸入檔案位置。圖片只在瀏覽器中處理，不會上傳本站伺服器；每張最多 4 MB。若使用進階路徑，必須確認建站專案中確實存在對應檔案。</p>
+<div class="brand-design-controls"><label>字體感覺<select name="typography"><option value="editorial-serif">書刊編輯感（襯線標題）</option><option value="clear-sans">清楚現代感（無襯線）</option><option value="balanced">柔和平衡（標題襯線、內文清楚）</option></select></label><label>圖片處理<select name="imageStyle"><option value="natural">自然原色</option><option value="documentary">紀實低飽和</option><option value="minimal">簡潔中性</option></select></label></div>
 <fieldset class="theme-choice"><legend>視覺風格</legend>{themes.map((t,i)=><label class="theme-option"><input type="radio" name="theme" value={t.id} checked={i===0}/><span class="theme-swatch" style={'--seed:'+starterThemeSeeds[t.id]}/><strong>{t.title}</strong><small>{t.description}</small></label>)}</fieldset>
 <div class="brand-palette-intro"><h3>品牌配色（五色盤）</h3><p>先從上方風格取得一組搭配，再自行調整五個角色。不是五種顏色都要大量使用，背景與文字也有自己的工作。</p></div><div class="brand-palette-fields"><label class="palette-field" for="palette-primary"><span>品牌主色</span><input id="palette-primary" data-palette="primary" type="color" value="#9A3B2E"/><input id="palette-primary-hex" class="palette-hex-input" data-hex-for="primary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="primary HEX 色碼" value="#9A3B2E"/></label>
 <label class="palette-field" for="palette-secondary"><span>輔助色</span><input id="palette-secondary" data-palette="secondary" type="color" value="#806A54"/><input id="palette-secondary-hex" class="palette-hex-input" data-hex-for="secondary" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="7" aria-label="secondary HEX 色碼" value="#806A54"/></label>
@@ -81,8 +76,19 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
     <textarea id="interview-summary" rows="8" placeholder="貼上 AI 整理的網站需求摘要。未完成可留白；不需轉成 JSON。"></textarea>
     <h3>Logo 與品牌圖片（選填）</h3>
     <p>如要設計 Logo，可複製提示詞到 AI 對話；還沒決定就先跳過。</p>
-    <ol class="logo-handoff-steps"><li>按下方按鈕複製提示詞，切換到你慣用的 AI 對話，貼上並開始討論 Logo 風格。</li><li>如果 AI 產出 Logo 圖片，先儲存到電腦，再到 <a href="#brand-logo-upload">第 02 步「品牌視覺 → 從電腦選擇 Logo」</a> 上傳。</li><li>如果 AI 只整理了 Logo 方向、配色、設計概念等文字，請把這段文字貼到<strong>本步上方「AI 訪談結果」</strong>文字框，並註明是 Logo 設計需求。</li><li>若暫時沒有 Logo，可先跳過，網站有初稿後再補充。</li></ol>
+    <ol class="logo-handoff-steps"><li>按下方按鈕複製提示詞，切換到你慣用的 AI 對話，貼上並開始討論 Logo 風格。</li><li>如果 AI 產出 Logo 圖片，先儲存到電腦，再到 <a href="#brand-logo-upload">本步下方的「Logo 與主視覺圖片上傳」</a> 上傳。</li><li>如果 AI 只整理了 Logo 方向、配色、設計概念等文字，請把這段文字貼到<strong>本步上方「AI 訪談結果」</strong>文字框，並註明是 Logo 設計需求。</li><li>若暫時沒有 Logo，可先跳過，網站有初稿後再補充。</li></ol>
     <button class="button secondary" type="button" id="copy-logo-prompt">複製給 AI 的 Logo 設計提示詞</button>
+    <h3 id="brand-logo-upload">Logo 與主視覺圖片上傳（選填）</h3>
+    <p>如果已經有圖片，可以直接上傳；還沒有就先使用上方提示詞請 AI 設計，完成後回到這裡上傳。兩種圖片都可以不提供，之後再補。</p>
+    <div class="brand-design-controls">
+<label><span id="logo-upload-label">Logo 圖片（選填）</span><input id="logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>網站名稱旁或頁首使用的品牌識別圖。還沒有 Logo 可以先不選。</small></label>
+<label>網站主視覺圖片（選填）<input id="hero-upload" type="file" accept="image/png,image/jpeg,image/webp,image/avif"/><small>通常是首頁最醒目區塊（Hero）的照片或插畫，例如工作環境、作品、品牌形象；沒有圖片可以先留空。</small></label>
+<details class="advanced-image-paths"><summary>進階設定：使用網站專案內已有的圖片路徑</summary><p>只有已經有 Astro 網站專案、且知道圖片放在哪個路徑時才需要。一般學員直接使用上面的檔案選擇即可，系統會自動建立路徑。</p>
+<label>Logo 專案圖片路徑<input name="logoPath" placeholder="/images/my-logo.png"/></label>
+<label>主視覺專案圖片路徑<input name="heroImagePath" placeholder="/images/my-hero.webp" pattern="/images/[a-zA-Z0-9/_-]+\\.(webp|png|jpg|jpeg|avif)"/></label></details>
+<label>主視覺圖片描述（選填）<input name="heroImageAlt" maxlength="180" placeholder="例如：明亮工作室內的一張木桌與筆記本"/></label>
+    </div>
+    <p class="muted">選擇圖片後，系統會自動設定路徑並放進下載的 Site Brief，無須輸入檔案位置。圖片只在瀏覽器中處理，不會上傳本站伺服器；每張最多 4 MB。若使用進階路徑，必須確認建站專案中確實存在對應檔案。</p>
     <p class="muted">若摘要與規劃器設定有明確差異，建站 AI 應先向你確認，不能直接忽略任何一方。</p>
     <p id="interview-copy-status" class="muted" role="status" aria-live="polite"></p>
   </div>
@@ -442,11 +448,11 @@ function showPlan(){
 }
 const interviewPrompts={
  interview:'請與我進行網站需求訪談，一次聚焦一個問題，了解網站目的、受眾、核心內容、預計頁面、希望的風格與未決事項。完成後請將我們實際確認過的資訊整理成可直接複製的 Markdown 摘要；標註尚未決定的項目，不要自行捏造。這份摘要之後會貼進 ATP 網站規劃器。',
- logo:'請根據我的網站定位、受眾與品牌方向，協助討論 Logo 與網站圖片。先提出幾種視覺方向供我選擇，確認後再協助產生圖片或製作提示詞。若資訊不足先詢問，不要自作決定。完成後請將確認的品牌概念整理成可複製的文字摘要。如果有產生 Logo 圖片，提醒我下載圖片，回到 Starter 第 02 步上傳；文字摘要可貼到 Starter 第 04 步的「AI 訪談結果」欄位。'
+ logo:'請根據我的網站定位、受眾與品牌方向，協助討論 Logo 與網站圖片。先提出幾種視覺方向供我選擇，確認後再協助產生圖片或製作提示詞。若資訊不足先詢問，不要自作決定。完成後請將確認的品牌概念整理成可複製的文字摘要。如果有產生 Logo 圖片，提醒我下載圖片，在 Starter 第 04 步下方上傳；文字摘要可貼到 Starter 第 04 步的「AI 訪談結果」欄位。'
 };
 document.querySelectorAll<HTMLButtonElement>('#copy-interview-prompt,#copy-logo-prompt').forEach(btn=>btn.addEventListener('click',async()=>{
  const status=document.querySelector<HTMLElement>('#interview-copy-status')!;
- try{await navigator.clipboard.writeText(btn.id==='copy-logo-prompt'?interviewPrompts.logo:interviewPrompts.interview);status.textContent=btn.id==='copy-logo-prompt'?'Logo 設計提示詞已複製。請開啟 AI 對話貼上；完成的圖片回第 02 步上傳，文字摘要貼到本步上方。':'訪談提示詞已複製。請貼到 AI 對話，訪談結束後將摘要貼回本步文字框。';}
+ try{await navigator.clipboard.writeText(btn.id==='copy-logo-prompt'?interviewPrompts.logo:interviewPrompts.interview);status.textContent=btn.id==='copy-logo-prompt'?'Logo 設計提示詞已複製。請開啟 AI 對話貼上；完成的圖片在本步下方上傳，文字摘要貼到本步上方。':'訪談提示詞已複製。請貼到 AI 對話，訪談結束後將摘要貼回本步文字框。';}
  catch{status.textContent='無法自動複製，請改用其他方式提供指令。';}
 }));
 form.querySelectorAll<HTMLInputElement>('input[name="kind"],input[name="theme"]').forEach(e=>e.addEventListener('change',update));
