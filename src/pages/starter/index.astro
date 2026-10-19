@@ -29,7 +29,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <body>
 <header class="planner-nav"><a href={base}>← 回設計展示總覽</a><span>WEBSITE / STARTER PLANNER</span></header>
 <main class="planner-wrap" id="main">
-<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>這裡不是要你寫程式，而是把網站想法整理成 AI 看得懂的建站規格（Site Brief）。依照 01～07 步挑選版型、調整品牌與內容，最後下載設定檔。</p><p class="notice">不知道某個答案可以先留白。需求訪談與 Logo 設計是選填，日後都能與 AI 調整；這裡<strong>不會直接建立或發布網站</strong>。</p><div class="starter-journey"><strong>你會取得三份不同用途的資料：</strong><ol><li><b>訪談包 ZIP（選填）</b>：第 04 步下載，交給 AI 幫忙想清楚網站要做什麼。</li><li><b>Site Brief JSON</b>：第 07 步下載，保存這次的網站規劃與訪談摘要。</li><li><b>完整建站包 ZIP</b>：前往建站指南第 02 步下載，與 Site Brief 一起交給 AI 建立網站。</li></ol><p>你可以直接開始選版型；不需要先完成訪談或準備 Logo。</p></div></div>
+<div class="planner-head"><p class="eyebrow">SITE BRIEF / GUIDED SETUP</p><h1>從喜歡的設計開始<br/>規劃自己的網站</h1><p>這裡不是要你寫程式，而是把網站想法整理成 AI 看得懂的建站規格（Site Brief）。依照 01～07 步挑選版型、調整品牌與內容，最後下載設定檔。</p><p class="notice">不知道某個答案可以先留白。需求訪談與 Logo 設計是選填，日後都能與 AI 調整；這裡<strong>不會直接建立或發布網站</strong>。</p><div class="starter-journey"><strong>如何使用 Starter？</strong><p>先挑選版型與品牌方向，再填入目前知道的網站內容。若想請 AI 幫忙釐清需求，可以在第 04 步進行訪談並貼回摘要；不做訪談也能繼續。完成規劃後，到第 07 步下載 Site Brief，接著依建站指南把規劃交給 AI。</p><p>Logo、圖片或內容沒決定也沒關係，之後可以再與 AI 修改。</p></div></div>
 
 <form id="starter-form">
 <section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。若已從版型庫選好設計，會自動帶入所選版型；需要比較其他方向可回到版型庫。</p></div></div>
@@ -71,7 +71,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
   <div class="ai-interview-panel">
     <h3>先與 AI 討論網站需求</h3>
     <p>你可以在慣用的 AI 工具中訪談網站定位、客群、內容與品牌方向。請 AI 在結束時整理一份方便複製的摘要，再貼在下方。也可以直接貼上你已有的討論整理。</p>
-    <div class="intake-download"><strong>下載 ①｜AI 需求訪談包 ZIP（選填）</strong><p>這份資料包包含訪談主持流程、網站定位、內容準備、品牌與 Logo 設計參考。下載後解壓縮，將相關文件交給你慣用的 AI，讓它一次問你一個問題。</p><button class="button secondary" type="button" id="download-intake-zip">下載 AI 需求訪談包 ZIP ↓</button><p class="muted">訪談結束後，請 AI 彙整成一份可複製的文字摘要，貼在下面的欄位；不用請 AI 產生 JSON。</p></div><button class="button secondary" type="button" id="copy-interview-prompt">只複製簡短訪談指令</button>
+    <div class="intake-download"><strong>AI 需求訪談包（選用）</strong><p>這份資料包包含訪談主持流程、網站定位、內容準備、品牌與 Logo 設計參考。下載後解壓縮，將相關文件交給你慣用的 AI，讓它一次問你一個問題。</p><button class="button secondary" type="button" id="download-intake-zip">下載 AI 需求訪談包 ZIP ↓</button><p class="muted">訪談結束後，請 AI 彙整成一份可複製的文字摘要，貼在下面的欄位；不用請 AI 產生 JSON。</p></div><button class="button secondary" type="button" id="copy-interview-prompt">只複製簡短訪談指令</button>
     <label for="interview-summary">AI 訪談結果（選填，保留原文）</label>
     <textarea id="interview-summary" rows="8" placeholder="貼上 AI 整理的網站需求摘要。未完成可留白；不需轉成 JSON。"></textarea>
     <h3>Logo 與品牌圖片</h3>
@@ -118,7 +118,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 </div>
 </section>
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>07</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
-<aside class="handoff-guide"><strong>下載 ②｜Site Brief：保存這次的網站規劃</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>下載後，前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP。把兩份檔案一起提供給 AI，再複製正式開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：下載 ③ 完整建站包 →</a></aside>
+<aside class="handoff-guide"><strong>完成規劃後，下載 Site Brief</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>下載後，前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP。把兩份檔案一起提供給 AI，再複製正式開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：前往建站指南 →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
 <div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 Site Brief JSON</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
