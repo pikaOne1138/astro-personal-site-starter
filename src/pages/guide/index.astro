@@ -3,7 +3,6 @@ import WorkshopNav from '../../components/WorkshopNav.astro';
 import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
 const assembledLayoutCount=layoutDefinitions.filter(layout=>layout.adapter).length;
 import startBuildPrompt from '../../../docs/student-builder-pack/START-BUILD-PROMPT.txt?raw';
-import designConsultationPrompt from '../../../docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt?raw';
 const base=import.meta.env.BASE_URL;
 const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
@@ -20,8 +19,8 @@ const prompts=[
 {title:'請 AI 引導連接網站託管',text:'我想把這個網站放上網路，使用【Cloudflare Pages／GitHub Pages】。請依我眼前的網站畫面，一次教我按一個步驟。碰到畫面不一樣就請我截圖，不要猜測按鈕位置。程式設定由你處理；每一步請告訴我完成後應看到什麼。先取得可打開的測試網址，不要擅自發布正式版本。'},
 {title:'請 AI 幫我修正畫面',text:'這是我的網站預覽連結：【貼網址】。這是我想修改的地方：【用自己的話描述，也可以附截圖】。請只修改這次提到的問題，保留原本選擇的設計風格。修好後給我新的預覽連結，並用白話告訴我改了什麼。先不要合併或發布。'},
 {title:'請 AI 進行上線前檢查',text:'我正在確認網站能不能正式公開。請替我檢查頁面、圖片、連結、搜尋、手機畫面與不應公開的資料。請用「正常／有問題／需要我親自看」三類白話回報，並提供預覽網址。我還沒有同意合併或發布，請先等我確認。'},
-{title:'請 AI 幫我日後更新',text:'我想修改自己已上線的網站：【說明想改什麼】。請先製作一份不影響目前正式網站的預覽版本，提供網址讓我查看。確認沒問題再問我是否同意發布。'},
-{title:'先討論網站設計',text:designConsultationPrompt.trim()}
+{title:'請 AI 幫我日後更新',text:'我想修改自己已上線的網站：【說明想改什麼】。請先製作一份不影響目前正式網站的預覽版本，提供網址讓我查看。確認沒問題再問我是否同意發布。'}
+
 ];
 ---
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>開始建置｜個人網站指南</title>
@@ -30,8 +29,7 @@ const prompts=[
 </style></head><body>
 <WorkshopNav current="build" />
 <main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">完成版型與網站規劃後，從這裡把 Site Brief 交給 AI，接續製作、預覽與發布。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
-<section class="section" aria-labelledby="choose-start"><h2 id="choose-start">三份資料、兩個頁面：照順序就能開始</h2><p><strong>Starter：</strong>選填下載 ① AI 訪談包 → 完成規劃並下載 ② Site Brief JSON。<strong>本頁 Guide：</strong>下載 ③ 完整建站包 ZIP，再將 ② 與 ③ 一起交給 AI。第一次使用還沒準備 GitHub 或部署環境，可先到前置準備頁。</p><div class="two"><div><h3>已經有 Site Brief JSON</h3><p>從步驟 02 下載 AI 建站資料包，並複製正式開始建站提示詞，不必重新挑選版型。</p><a href="#step-02">接續交給 AI →</a></div><div><h3>還沒有 Site Brief</h3><p>先前往版型庫挑選網站結構，再到規劃器完成設定；也可以選擇先讓 AI 協助討論設計。</p><a href={link('layouts/')}>挑選網站版型 →</a></div></div><div class="note"><p>不同 AI 的能力不完全相同：若不能讀取 ZIP 與其內部路徑，先解壓並在支援多檔專案的環境中提供完整資料夾；純聊天 AI 只能在讀得到的資料範圍討論設計，不代表它能產生或部署網站。</p></div></section><section class="section" id="consult-first"><h2>先討論設計｜複製提示詞</h2><p>設計顧問是可選路線；完成 Design Brief 後可回到本頁進行建站。</p><p><a href="#step-02">到下載建站資料包的步驟 ↓</a></p><div class="prompt"><div class="prompt-head"><strong>請 AI 擔任網站設計顧問</strong><button class="button alt copy" type="button" data-prompt="5">複製提示詞</button></div><p>{prompts[5].text}</p></div></section>
-<nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
+<section class="section" aria-labelledby="choose-start"><h2 id="choose-start">三份資料、兩個頁面：照順序就能開始</h2><p><strong>Starter：</strong>選填下載 ① AI 訪談包 → 完成規劃並下載 ② Site Brief JSON。<strong>本頁 Guide：</strong>下載 ③ 完整建站包 ZIP，再將 ② 與 ③ 一起交給 AI。第一次使用還沒準備 GitHub 或部署環境，可先到前置準備頁。</p><div class="two"><div><h3>已經有 Site Brief JSON</h3><p>從步驟 02 下載 AI 建站資料包，並複製正式開始建站提示詞，不必重新挑選版型。</p><a href="#step-02">接續交給 AI →</a></div><div><h3>還沒有 Site Brief</h3><p>先前往版型庫挑選網站結構，再到規劃器完成設定；需要需求訪談或 Logo 設計，可在 Starter 第 04 步進行。</p><a href={link('layouts/')}>挑選網站版型 →</a></div></div><div class="note"><p>不同 AI 的能力不完全相同：若不能讀取 ZIP 與其內部路徑，先解壓並在支援多檔專案的環境中提供完整資料夾；純聊天 AI 只能在讀得到的資料範圍討論設計，不代表它能產生或部署網站。</p></div></section><nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
 {steps.map((st,i)=><section class="section" id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>
 {i===0 && <Fragment><p><a class="button" href={link('starter/')}>開啟 Starter：完成 01～07 並下載 Site Brief →</a></p></Fragment>}
 {i===1 && <Fragment><div class="card"><h3>下載 ③｜完整 AI 建站資料包 ZIP</h3><p>完整離線建站資料包（包含網站生成器、版型、元件、設計 Skills 與相關原始碼），下載後與 Site Brief JSON 一起交給 AI。</p><button class="button" type="button" id="download-builder-zip">下載 AI 建站資料包 ZIP ↓</button><p class="small" id="builder-pack-version" role="status">資料包版本：讀取中。請從目前測試版 Guide 下載，勿混用其他環境的 JSON 或資料包。</p><details class="note"><summary><strong>Beta 測試版：目前能做什麼、還需要 AI 做什麼？</strong></summary><p>資料包提供 {assembledLayoutCount} 種可產生獨立網站的設計選項，以及網站規劃、文章或服務頁、個人介紹、品牌與導覽設定。AI 可依資料包建立你自己的 Astro 專案，不必複製老師的 Repo。</p><p>部分新增設計仍在測試；選擇設計不代表網站已完成驗收。AI 仍需與你確認真實文字、圖片、服務資訊及內頁細節，完成電腦與手機預覽，並由你授權連接 GitHub 與發布平台；下載 ZIP 本身不會直接發布網站。</p><p>測試時請記下所選版型、遇到的困難，並把相關畫面截圖回報給工作坊。不要把示範資格、預約、書目、音訊或服務資訊當成真實資料。</p></details><p class="small">如果 AI 無法接收 ZIP，請改用能上傳<strong>完整資料夾或多檔專案</strong>的工具，解壓後保留 <code>.ai/</code>、<code>src/</code>、<code>scripts/</code> 等原始目錄結構；不能只傳 README 或幾份 Markdown。若工具無法保留檔案路徑，請先換成支援 ZIP／專案檔案的 AI 工作模式，再開始建站。</p></div></Fragment>}
