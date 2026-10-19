@@ -6,10 +6,11 @@ const out='docs/template-gallery/qa';mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{})});
 const results=[];
 const errors=[];
-browser.on('page',page=>page.on('pageerror',error=>errors.push({url:page.url(),error:error.message})));
+const observe=page=>page.on('pageerror',error=>errors.push({url:page.url(),error:error.message}));
 try{
  for(const width of [1440,1280,768,390])for(const route of ['layouts','templates','starter']){
   const page=await browser.newPage({viewport:{width,height:width===390?844:900},reducedMotion:'reduce'});
+  observe(page);
   await page.goto(`${base}/${route}/`,{waitUntil:'networkidle'});
   if(route!=='starter'){
    for(const d of layoutDefinitions){
@@ -30,7 +31,7 @@ try{
   }
   await page.close();
  }
- const page=await browser.newPage();
+ const page=await browser.newPage();observe(page);
  for(const d of layoutDefinitions){
   await page.goto(`${base}/starter/?layout=${d.slug}&kind=${d.kind}`);
   await page.waitForFunction(slug=>document.querySelector('input[name=layout]:checked')?.value===slug,d.slug);
