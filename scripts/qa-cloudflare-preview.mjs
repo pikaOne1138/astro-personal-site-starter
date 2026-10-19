@@ -47,11 +47,16 @@ try {
   report.download={status:res.status,validZip:ok,bytes:bytes.length,sha256:digest(bytes)};
   if(!ok)report.errors.push('Public student package unavailable or not a valid ZIP');
   if(ok && process.env.QA_REMOTE_BLACKBOX==='1'){
+   // The downloaded ZIP must match the manifest served by the same immutable deployment.
+   const manifestResponse=await fetch(new URL('/builder-pack-version.json',address),{redirect:'follow',signal:AbortSignal.timeout(18000)});
+   if(!manifestResponse.ok)throw Error('Deployed Builder Pack manifest HTTP '+manifestResponse.status);
+   const deployedManifest=await manifestResponse.json();
+   if(!deployedManifest||typeof deployedManifest!=='object'||!Array.isArray(deployedManifest.layoutSlugs))throw Error('Invalid deployed Builder Pack manifest');
    const work=mkdtempSync(join(tmpdir(),'remote-student-zip-'));
    try {
     const archive=join(work,'downloaded-student.zip');writeFileSync(archive,bytes);
     const child=spawnSync(process.execPath,['scripts/verify-student-pack.mjs'],{
-     env:{...process.env,STUDENT_PACK_ARCHIVE:archive,FULL_STUDENT_PACK_BUILD:'1'},
+     env:{...process.env,STUDENT_PACK_ARCHIVE:archive,STUDENT_PACK_EXPECTED_MANIFEST:JSON.stringify(deployedManifest),FULL_STUDENT_PACK_BUILD:'1'},
      encoding:'utf8',timeout:240000,maxBuffer:20*1024*1024
     });
     report.download.blackBox={status:child.status===0?'PASS':'FAIL',exitCode:child.status,
