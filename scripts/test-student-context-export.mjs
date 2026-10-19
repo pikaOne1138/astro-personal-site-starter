@@ -105,7 +105,7 @@ test('practice-compass export uses visitor-safe copy and mobile navigation',()=>
   const home=readFileSync(join(out,'src/components/layouts/practice-compass/Home.astro'),'utf8');
   assert.match(nav,/student-nav-toggle/);
   assert.doesNotMatch(nav,/hasContact/);
-  assert.match(nav,/const roots=config.navigation.filter\(x=>!x.parentId\)/);
+  assert.match(nav,/const roots=navigation.filter\(item=>!item.parentId\)/);
   assert.match(layout,/config.navigation.map\(x=>/);
   assert.match(nav,/aria-expanded="false"/);
   assert.doesNotMatch(layout,/visibleNavigation/);
