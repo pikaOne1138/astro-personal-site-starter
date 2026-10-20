@@ -91,3 +91,54 @@ test('art-direction adapters finalize PROJECT with the real selected Layout',()=
   }finally{rmSync(tmp,{recursive:true,force:true})}
  }
 });
+
+
+test('practice-compass export uses visitor-safe copy and mobile navigation',()=>{
+ const tmp=mkdtempSync(join(tmpdir(),'atp-visitor-export-'));
+ try{
+  const input=join(root,'docs/art-direction/fixtures/practice-compass.json');
+  const out=join(tmp,'site');
+  const run=spawnSync(process.execPath,[join(root,'scripts/export-art-direction-starter.mjs'),input,out,'--allow-in-progress'],{encoding:'utf8',timeout:60000});
+  assert.equal(run.status,0,run.stderr||run.stdout);
+  const nav=readFileSync(join(out,'src/components/StudentNavigation.astro'),'utf8');
+  const layout=readFileSync(join(out,'src/layouts/SiteLayout.astro'),'utf8');
+  const home=readFileSync(join(out,'src/components/layouts/practice-compass/Home.astro'),'utf8');
+  assert.match(nav,/student-nav-toggle/);
+  assert.doesNotMatch(nav,/hasContact/);
+  assert.match(nav,/const roots=navigation.filter\(item=>!item.parentId\)/);
+  assert.match(layout,/config.navigation.map\(x=>/);
+  assert.match(nav,/aria-expanded="false"/);
+  assert.doesNotMatch(layout,/visibleNavigation/);
+  assert.doesNotMatch(home,/BEFORE ANY APPOINTMENT|VISITOR DECISIONS|SCOPE & BOUNDARIES/);
+  assert.match(home,/服務範圍與界線/);
+  assert.doesNotMatch(layout,/THE PRACTICE COMPASS/);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});
+
+
+test('exported navigation preserves nested links and uses a single shared tree',()=>{
+ const source=readFileSync(join(root,'src/components/student/StudentNavigation.astro'),'utf8');
+ assert.match(source,/children=navigation\.filter\(child=>child\.parentId===item\.id\)/);
+ assert.match(source,/children\.map\(child=>/);
+ assert.match(source,/student-nav-toggle/);
+ assert.match(source,/student-navigation__cta/);
+ const exporter=readFileSync(join(root,'scripts/export-starter.mjs'),'utf8');
+ assert.match(exporter,/readFileSync\(new URL\('\.\.\/src\/components\/student\/StudentNavigation\.astro'/);
+ assert.doesNotMatch(exporter,/\.replace\('<nav class="student-navigation"/);
+});
+
+test('third-level and orphan navigation are rejected by the standard exporter',()=>{
+ const fixture=JSON.parse(readFileSync(join(root,'docs/art-direction/fixtures/practice-compass.json'),'utf8'));
+ const first=(fixture.navigation||[]).find(item=>item.enabled!==false&&!item.parentId);
+ assert.ok(first,'fixture must have a root navigation entry');
+ const child={id:'page-test-child',label:'測試子頁',path:'test-child/',enabled:true,parentId:first.id};
+ const grandchild={id:'page-test-grandchild',label:'測試第三層',path:'test-grandchild/',enabled:true,parentId:child.id};
+ const tmp=mkdtempSync(join(tmpdir(),'atp-navigation-depth-'));
+ try{
+  const plan={...fixture,navigation:[...fixture.navigation,child,grandchild]};
+  const input=join(tmp,'plan.json');writeFileSync(input,JSON.stringify(plan));
+  const result=spawnSync(process.execPath,[join(root,'scripts/export-starter.mjs'),input,join(tmp,'out')],{encoding:'utf8',timeout:60000});
+  assert.notEqual(result.status,0);
+  assert.match(result.stderr+result.stdout,/at most two levels/);
+ }finally{rmSync(tmp,{recursive:true,force:true});}
+});

@@ -64,12 +64,24 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       const matches=await page.evaluate(async()=>{const index=await import('/pagefind/pagefind.js');return (await index.search('nativewithdrawuniquetoken')).results.length;});
       if(scenario.searchState==='published'?matches===0:matches!==0)errors.push('Pagefind publication/withdrawal result mismatch: '+matches);
     }
-    // Check actual keyboard focus and Escape, not only generated source strings.
-    const firstLink=page.locator('.student-navigation > a').first();
+    // Test the single navigation tree as a visitor would operate it.
+    // At mobile widths links are intentionally hidden until the toggle opens.
     let keyboardFocus=true,escapeNavigation=true;
+    const mobileToggle=page.locator('.student-nav-toggle');
+    const isMobileToggleVisible=await mobileToggle.count()&&await mobileToggle.isVisible();
+    if(isMobileToggleVisible){
+      const navLinks=page.locator('.student-navigation');
+      keyboardFocus=await navLinks.isHidden();
+      await mobileToggle.focus();
+      keyboardFocus=keyboardFocus&&await mobileToggle.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&parseFloat(getComputedStyle(el).outlineWidth)>=2);
+      await page.keyboard.press('Enter');
+      const opened=await mobileToggle.getAttribute('aria-expanded')==='true'&&await navLinks.isVisible();
+      keyboardFocus=keyboardFocus&&opened;
+    }
+    const firstLink=page.locator('.student-navigation > a').first();
     if(await firstLink.count()){
       await firstLink.focus();
-      keyboardFocus=await firstLink.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&parseFloat(getComputedStyle(el).outlineWidth)>=2);
+      keyboardFocus=keyboardFocus&&await firstLink.evaluate(el=>document.activeElement===el&&getComputedStyle(el).outlineStyle!=='none'&&parseFloat(getComputedStyle(el).outlineWidth)>=2);
     }
     const group=page.locator('.student-navigation details').first();
     if(await group.count()){
@@ -77,6 +89,13 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       const opened=await group.evaluate(el=>el.open);
       await page.keyboard.press('Tab');await page.keyboard.press('Escape');
       escapeNavigation=opened&&await summary.evaluate(el=>!el.parentElement.open&&document.activeElement===el);
+    }
+    if(isMobileToggleVisible){
+      // A second Escape closes only the mobile drawer and returns focus to its toggle.
+      await page.keyboard.press('Escape');
+      const closed=await mobileToggle.getAttribute('aria-expanded')==='false'&&await page.locator('.student-navigation').isHidden();
+      const focused=await mobileToggle.evaluate(el=>document.activeElement===el);
+      escapeNavigation=escapeNavigation&&closed&&focused;
     }
     if(scenario.patternCheck){
       const expected=scenario.patternCheck[route]??[];
@@ -256,7 +275,7 @@ try{
     const navigation=readFileSync(join(site,'src/components/StudentNavigation.astro'),'utf8');
     if(!navigation.includes('student-navigation__submenu'))throw Error('Missing nested navigation');
     if(kind==='knowledge'&&!out.navigation.some(x=>x.parentId==='articles'))throw Error('Nested navigation lost');
-    if(kind==='knowledge'&&(!out.navigation.some(x=>x.path==='start-here/tools/')||!navigation.includes('child.path??child.id')))throw Error('Custom nested path was not preserved');
+    if(kind==='knowledge'&&(!out.navigation.some(x=>x.path==='start-here/tools/')||!navigation.includes('children.map(child=>')||!navigation.includes('href(child)')))throw Error('Custom nested path was not preserved');
     const selected=readFileSync(join(site,'src/components/SelectedPatterns.astro'),'utf8');
     const pageLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
     if(!selected.includes('settings.sectionPatterns')||!pageLayout.includes('SelectedPatterns'))throw Error('Pattern was not integrated into generated pages');
