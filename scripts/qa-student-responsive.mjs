@@ -157,6 +157,29 @@ try {
   const warnings = rows.filter(r => r.brokenRemoteImages.length || r.interactions.some(x => x.skipped));
   const report = { schemaVersion: 2, checkedAt: new Date().toISOString(), viewportWidths: widths, pages: paths.length, total: rows.length, failed: failed.length, warnings: warnings.length, rows };
   writeFileSync(out + '/results.json', JSON.stringify(report, null, 2) + '\n');
+  const lines=[
+    '# 學員網站防跑版檢查結果',
+    '',
+    '檢查頁數：'+paths.length+'；尺寸：'+widths.join(', ')+'px；失敗視圖：'+failed.length+'；提醒視圖：'+warnings.length,
+    '',
+    '自動化可偵測技術錯誤，但不能取代本人對排版、圖片焦點及內容的確認。',
+    ''
+  ];
+  for(const row of failed){
+    lines.push('## FAIL '+row.path+' @ '+row.width+'px');
+    if(row.status!==200)lines.push('- HTTP: '+row.status+'；請確認輸出路由與部署 base');
+    if(row.overflow)lines.push('- 水平溢出；優先檢查 Grid、固定寬度、min-width、長網址。元素：'+JSON.stringify(row.offenders.slice(0,5)));
+    if(row.brokenLocalImages.length)lines.push('- 站內圖片無法載入：'+row.brokenLocalImages.join(', '));
+    if(row.errors.length)lines.push('- 瀏覽器錯誤：'+row.errors.join('; '));
+    lines.push('');
+  }
+  if(warnings.length){
+    lines.push('## WARN：人工確認事項');
+    for(const row of warnings.slice(0,30))lines.push('- '+row.path+' @ '+row.width+'px：'+(row.brokenRemoteImages.length?'外部圖片 '+row.brokenRemoteImages.join(', '):'')+(row.interactions.some(x=>x.skipped)?'；無法識別手機導航切換方式':''));
+    lines.push('');
+  }
+  lines.push('AI 修復指引：僅修正失敗頁面與對應元件，保留原內容、配色與版型；不可關閉測試或隱藏出錯元素。修復後重新執行 npm run build、npm run verify、npm run qa:responsive。');
+  writeFileSync(out + '/REPORT.md',lines.join('\n')+'\n');
   console.log('Student responsive QA: ' + (rows.length - failed.length) + '/' + rows.length + ' passed; ' + warnings.length + ' warning views.');
   for (const r of failed) console.error('RESPONSIVE_FAIL', JSON.stringify(r));
   for (const r of warnings) console.warn('RESPONSIVE_WARN', JSON.stringify({ path: r.path, width: r.width, brokenRemoteImages: r.brokenRemoteImages, interactions: r.interactions }));
