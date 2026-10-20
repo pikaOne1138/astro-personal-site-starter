@@ -57,6 +57,9 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Exercise student browser QA failure fixtures
+        if: github.event.action != 'closed'
+        run: npm run test:student-browser
       - name: Capture QA gallery from local build
         if: github.event.action != 'closed'
         env:
