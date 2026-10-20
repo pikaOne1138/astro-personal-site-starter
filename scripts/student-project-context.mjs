@@ -51,7 +51,7 @@ export function installProjectContext(directory, plan, options = {}) {
 /** Install runtime guards only into a newly generated, independently owned site. */
 export function finalizeStudentSite(directory,plan,options={}){
  installProjectContext(directory,plan,options);
- const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','.DS_Store'].join('\n')+'\n';
+ const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
  for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
