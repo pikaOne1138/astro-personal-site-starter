@@ -1,7 +1,8 @@
 import { chromium } from 'playwright';
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
-import { spawn, execFileSync } from 'node:child_process';
+import { createServer } from 'node:http';
+import { join, relative, resolve, sep, extname } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 
 const config = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
@@ -46,19 +47,46 @@ const paths = [...new Set([...topLevel, ...sampled])];
 const browserNotTested = discovered.filter(p => !paths.includes(p));
 let sourceCommit = process.env.GITHUB_SHA || 'local-uncommitted';
 if(!process.env.GITHUB_SHA)try { sourceCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(); }catch {}
-const server = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm',
-  ['run', 'preview', '--', '--host', '127.0.0.1', '--port', String(port)],
-  { stdio: 'ignore', env: { ...process.env, ASTRO_BASE_PATH: configuredBase } });
+const mime = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp', '.avif': 'image/avif',
+  '.woff': 'font/woff', '.woff2': 'font/woff2',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.ico': 'image/x-icon'
+};
+const staticRoot = resolve(outputRoot);
+const server = createServer((request, response) => {
+  try {
+    const url = new URL(request.url || '/', origin);
+    const pathname = decodeURIComponent(url.pathname);
+    if (!pathname.startsWith(prefix)) {
+      response.writeHead(404); response.end('Outside configured base'); return;
+    }
+    const relativePath = pathname.slice(prefix.length);
+    const target = resolve(staticRoot, relativePath.endsWith('/') || !relativePath ? relativePath + 'index.html' : relativePath);
+    if (!target.startsWith(staticRoot + sep)) {
+      response.writeHead(403); response.end('Forbidden'); return;
+    }
+    if (!existsSync(target)) {
+      response.writeHead(404); response.end('Not found: ' + relativePath); return;
+    }
+    response.writeHead(200, { 'Content-Type': mime[extname(target).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+    response.end(readFileSync(target));
+  } catch (error) {
+    response.writeHead(500); response.end('Static test server error: ' + error.message);
+  }
+});
 let browser;
 const rows = [];
 try {
-  let ready = false;
-  for (let i = 0; i < 45; i++) {
-    try { const r = await fetch(origin + prefix); if (r.ok) { ready = true; break; } } catch {}
-    await delay(400);
-  }
-  if (!ready) throw Error('Student Astro preview did not start; run npm run build first.');
-
+  await new Promise((ok, fail) => { server.once('error', fail); server.listen(port, '127.0.0.1', ok); });
   browser = await chromium.launch({ headless: true });
   for (const path of paths) {
     for (const width of widths) {
@@ -195,5 +223,5 @@ try {
   if (failed.length) process.exitCode = 1;
 } finally {
   await browser?.close();
-  server.kill('SIGTERM');
+  if(server.listening)await new Promise(resolveClose => server.close(resolveClose));
 }
