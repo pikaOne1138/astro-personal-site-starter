@@ -66,7 +66,8 @@ export function finalizeStudentSite(directory,plan,options={}){
   const old=readFileSync(wf,'utf8');
   if(!old.includes('npm run qa:responsive')){
     const verifyMarker='      - name: Verify site output and draft isolation';
-    if(!old.includes(verifyMarker))throw Error('Student PR CI missing expected verify step');
+    const marker=old.includes(verifyMarker)?verifyMarker:'      - run: npm run build';
+    if(!old.includes(marker))throw Error('Student PR CI missing expected build/verify step');
     const browserSteps=[
       '      - name: Install browser for student responsive QA',
       '        run: npx playwright install --with-deps chromium',
@@ -80,7 +81,7 @@ export function finalizeStudentSite(directory,plan,options={}){
       '          path: qa-artifacts/student-responsive/',
       '          if-no-files-found: warn'
     ].join('\n')+'\n';
-    writeFileSync(wf,old.replace(verifyMarker,browserSteps+verifyMarker));
+    writeFileSync(wf,old.includes(verifyMarker)?old.replace(verifyMarker,browserSteps+verifyMarker):old.replace(marker,marker+'\n'+browserSteps.trimEnd()));
   }
   const withQa=readFileSync(wf,'utf8');
   if(!withQa.includes('npm run check:secrets')){
