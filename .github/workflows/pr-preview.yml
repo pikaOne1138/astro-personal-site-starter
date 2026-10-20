@@ -44,6 +44,9 @@ jobs:
       - name: Install
         if: github.event.action != 'closed'
         run: npm install --no-audit --no-fund
+      - name: Validate student QA packaging
+        if: github.event.action != 'closed'
+        run: npm run test:student-safety
       - name: Build root-path visual audit source
         if: github.event.action != 'closed'
         env:
@@ -54,6 +57,12 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Exercise student browser QA failure fixtures
+        if: github.event.action != 'closed'
+        run: npm run test:student-browser
+      - name: Verify portable student QA with real root/subpath builds and injected faults
+        if: github.event.action != 'closed'
+        run: npm run test:student-responsive-e2e
       - name: Capture QA gallery from local build
         if: github.event.action != 'closed'
         env:
