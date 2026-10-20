@@ -143,6 +143,8 @@ jobs:
       - name: Verify starter planner keyboard, labels and custom path in real browser
         id: planner
         run: node scripts/qa-starter-planner.mjs
+      - name: Browser-verify Site Brief download, interview notes and owned images
+        run: node scripts/qa-student-brief-handoff.mjs
       - name: Verify first-time onboarding guide at four widths
         id: guide
         run: node scripts/qa-preparation-guide.mjs
