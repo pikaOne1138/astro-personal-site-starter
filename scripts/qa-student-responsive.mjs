@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 
 const config = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
@@ -44,6 +44,8 @@ const capacity = Math.max(0, maxPages - topLevel.length);
 const sampled = samples.length <= capacity ? samples : Array.from({ length: capacity }, (_, i) => samples[Math.floor(i * samples.length / capacity)]);
 const paths = [...new Set([...topLevel, ...sampled])];
 const browserNotTested = discovered.filter(p => !paths.includes(p));
+let sourceCommit = process.env.GITHUB_SHA || 'local-uncommitted';
+if(!process.env.GITHUB_SHA)try { sourceCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(); }catch {}
 const server = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm',
   ['run', 'preview', '--', '--host', '127.0.0.1', '--port', String(port)],
   { stdio: 'ignore', env: { ...process.env, ASTRO_BASE_PATH: configuredBase } });
@@ -160,11 +162,12 @@ try {
   }
   const failed = rows.filter(r => r.status !== 200 || r.overflow || r.brokenLocalImages.length || r.errors.length);
   const warnings = rows.filter(r => r.brokenRemoteImages.length || r.interactions.some(x => x.skipped));
-  const report = { schemaVersion: 3, discoveredPages: discovered.length, browserNotTested, checkedAt: new Date().toISOString(), viewportWidths: widths, pages: paths.length, total: rows.length, failed: failed.length, warnings: warnings.length, rows };
+  const report = { schemaVersion: 3, sourceCommit, configuredBase, discoveredPages: discovered.length, browserNotTested, checkedAt: new Date().toISOString(), viewportWidths: widths, pages: paths.length, total: rows.length, failed: failed.length, warnings: warnings.length, rows };
   writeFileSync(out + '/results.json', JSON.stringify(report, null, 2) + '\n');
   const lines=[
     '# 學員網站防跑版檢查結果',
     '',
+    '來源版本：'+sourceCommit+'；部署 base：'+configuredBase,
     '瀏覽器抽樣頁數：'+paths.length+'／'+discovered.length+'；尺寸：'+widths.join(', ')+'px；失敗視圖：'+failed.length+'；提醒視圖：'+warnings.length,
     '',
     '自動化可偵測技術錯誤，但不能取代本人對排版、圖片焦點及內容的確認。',
