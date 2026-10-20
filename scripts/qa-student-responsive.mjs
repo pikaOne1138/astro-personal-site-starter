@@ -14,6 +14,7 @@ const widths = [1440, 1280, 768, 390, 375];
 const outputRoot = process.env.ATP_QA_DIST || 'dist';
 const out = process.env.ATP_QA_OUT || 'qa-artifacts/student-responsive';
 const maxPages = 80;
+const failOnSkippedNavigation = process.env.ATP_QA_STRICT_NAV === '1';
 mkdirSync(out, { recursive: true });
 
 function discoverPages() {
@@ -63,6 +64,7 @@ try {
       let status = null;
       let metrics = { overflow: false, offenders: [], brokenLocalImages: [], brokenRemoteImages: [] };
       const interactions = [];
+      let navLinkFailures = [];
       try {
         const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
         status = response?.status() ?? null;
@@ -125,12 +127,26 @@ try {
               const ok = before !== null ? before !== after : true;
               interactions.push({ name: 'mobile-navigation-toggle', ok, label });
               if (!ok) errors.push('Mobile navigation toggle did not update aria-expanded');
+              const controls = await button.getAttribute('aria-controls');
+              if (controls) {
+                const panel = page.locator('[id="' + controls.replace(/[^a-zA-Z0-9_-]/g, '') + '"]');
+                if (await panel.count() === 1 && !(await panel.isVisible())) errors.push('Mobile navigation panel did not become visible');
+              }
+              await button.press('Escape').catch(() => {});
               break;
             }
             if (!exercised) interactions.push({ name: 'mobile-navigation-toggle', skipped: 'No identifiable semantic toggle' });
           } else {
             interactions.push({ name: 'mobile-navigation-toggle', skipped: 'No semantic mobile toggle found' });
           }
+          // Visible navigation links should remain keyboard-focusable and have destinations.
+          navLinkFailures = await page.locator('nav a[href]').evaluateAll(els => els.filter(a => {
+            const s = getComputedStyle(a), r = a.getBoundingClientRect();
+            return s.display !== 'none' && s.visibility !== 'hidden' && r.width > 0 && r.height > 0 &&
+              (!a.href || a.getAttribute('href') === '#');
+          }).map(a => a.textContent?.trim() || '[unnamed]'));
+          if (navLinkFailures.length) errors.push('Visible navigation links have no destination: ' + navLinkFailures.join(', '));
+          if (failOnSkippedNavigation && interactions.some(x => x.skipped)) errors.push('Mobile navigation could not be verified in strict mode');
         }
       } catch (error) { errors.push('BROWSER_QA: ' + error.message); }
       rows.push({ path: '/' + path, width, status, ...metrics, interactions, errors });
