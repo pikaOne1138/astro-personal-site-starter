@@ -304,6 +304,8 @@ try{
       execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+      // Run the same portable browser checker students receive, on both representative types.
+      if(process.env.STUDENT_PORTABLE_QA==='1')execFileSync('npm',['run','qa:responsive'],{cwd:site,stdio:'inherit',timeout:240000});
       await captureStudentSite(kind==='knowledge'?'field-notes':'clinician',kind,site);
       const homepageHtml=readFileSync(join(site,'dist/index.html'),'utf8');
       const firstAboutHtml=readFileSync(join(site,'dist/about/index.html'),'utf8');
