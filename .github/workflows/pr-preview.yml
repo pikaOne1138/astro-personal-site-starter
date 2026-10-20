@@ -60,6 +60,9 @@ jobs:
       - name: Exercise student browser QA failure fixtures
         if: github.event.action != 'closed'
         run: npm run test:student-browser
+      - name: Verify portable student QA with real root/subpath builds and injected faults
+        if: github.event.action != 'closed'
+        run: npm run test:student-responsive-e2e
       - name: Capture QA gallery from local build
         if: github.event.action != 'closed'
         env:
