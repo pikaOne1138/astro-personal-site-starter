@@ -12,9 +12,13 @@ function assertStudentContext(site,expectedSlug){
  const project=readFileSync(join(site,'PROJECT.md'),'utf8');
  if(config.layoutSlug!==expectedSlug)throw Error('Export config Layout mismatch: expected '+expectedSlug+', got '+config.layoutSlug);
  if(!project.includes('Layout ID（規劃選擇）：`'+expectedSlug+'`'))throw Error('PROJECT Layout mismatch for '+expectedSlug);
- for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs'])
+ for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs'])
   if(!existsSync(join(site,path)))throw Error('Student export missing '+path+' for '+expectedSlug);
  execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
+ const pkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
+ if(!pkg.scripts['qa:responsive']||!pkg.devDependencies?.playwright)throw Error('Student export missing portable Playwright QA: '+expectedSlug);
+ const workflow=readFileSync(join(site,'.github/workflows/pr-check.yml'),'utf8');
+ for(const gate of ['npm run build','npm run qa:responsive','npm run check:secrets','npm run verify'])if(!workflow.includes(gate))throw Error('Student PR lacks quality gate '+gate+' for '+expectedSlug);
 }
 
 const kinds=['knowledge','helper'];
