@@ -67,14 +67,26 @@ export function finalizeStudentSite(directory,plan,options={}){
   if(!old.includes('npm run qa:responsive')){
     const verifyMarker='      - name: Verify site output and draft isolation';
     if(!old.includes(verifyMarker))throw Error('Student PR CI missing expected verify step');
-    const browserSteps='      - name: Install browser for student responsive QA\\n        run: npx playwright install --with-deps chromium\\n      - name: Check responsive website in real browser\\n        run: npm run qa:responsive\\n      - name: Upload responsive QA evidence\\n        if: always()\\n        uses: actions/upload-artifact@v4\\n        with:\\n          name: student-responsive-qa\\n          path: qa-artifacts/student-responsive/\\n          if-no-files-found: warn\\n';
+    const browserSteps=[
+      '      - name: Install browser for student responsive QA',
+      '        run: npx playwright install --with-deps chromium',
+      '      - name: Check responsive website in real browser',
+      '        run: npm run qa:responsive',
+      '      - name: Upload responsive QA evidence',
+      '        if: always()',
+      '        uses: actions/upload-artifact@v4',
+      '        with:',
+      '          name: student-responsive-qa',
+      '          path: qa-artifacts/student-responsive/',
+      '          if-no-files-found: warn'
+    ].join('\n')+'\n';
     writeFileSync(wf,old.replace(verifyMarker,browserSteps+verifyMarker));
   }
   const withQa=readFileSync(wf,'utf8');
   if(!withQa.includes('npm run check:secrets')){
     const marker='      - run: npm run build';
-    if(!old.includes(marker))throw Error('Student PR CI missing expected build step');
-    writeFileSync(wf,old.replace(marker,'      - run: npm run check:context\n      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
+    if(!withQa.includes(marker))throw Error('Student PR CI missing expected build step');
+    writeFileSync(wf,withQa.replace(marker,'      - run: npm run check:context\n      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
   }
  }
  return directory;
