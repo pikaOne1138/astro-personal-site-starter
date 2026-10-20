@@ -51,22 +51,43 @@ export function installProjectContext(directory, plan, options = {}) {
 /** Install runtime guards only into a newly generated, independently owned site. */
 export function finalizeStudentSite(directory,plan,options={}){
  installProjectContext(directory,plan,options);
- const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','.DS_Store'].join('\n')+'\n';
+ const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
- for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));
- pkg.scripts={...pkg.scripts,status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs','check:context':'node scripts/check-project-context.mjs'};
+ pkg.devDependencies={...pkg.devDependencies,playwright:'^1.56.0'};
+ pkg.scripts={...pkg.scripts,'qa:responsive':'node scripts/qa-student-responsive.mjs',status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs','check:context':'node scripts/check-project-context.mjs'};
  writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
  const wf=join(directory,'.github/workflows/pr-check.yml');
  if(existsSync(wf)){
   const old=readFileSync(wf,'utf8');
-  if(!old.includes('npm run check:secrets')){
+  if(!old.includes('npm run qa:responsive')){
+    const verifyMarker='      - name: Verify site output and draft isolation';
+    const marker=old.includes(verifyMarker)?verifyMarker:'      - run: npm run build';
+    if(!old.includes(marker))throw Error('Student PR CI missing expected build/verify step');
+    const browserSteps=[
+      '      - name: Install browser for student responsive QA',
+      '        run: npx playwright install --with-deps chromium',
+      '      - name: Check responsive website in real browser',
+      '        run: npm run qa:responsive',
+      '      - name: Upload responsive QA evidence',
+      '        if: always()',
+      '        uses: actions/upload-artifact@v4',
+      '        with:',
+      '          name: student-responsive-qa',
+      '          path: qa-artifacts/student-responsive/',
+      '          if-no-files-found: warn'
+    ].join('\n')+'\n';
+    writeFileSync(wf,old.includes(verifyMarker)?old.replace(verifyMarker,browserSteps+verifyMarker):old.replace(marker,marker+'\n'+browserSteps.trimEnd()));
+  }
+  const withQa=readFileSync(wf,'utf8');
+  if(!withQa.includes('npm run check:secrets')){
     const marker='      - run: npm run build';
-    if(!old.includes(marker))throw Error('Student PR CI missing expected build step');
-    writeFileSync(wf,old.replace(marker,'      - run: npm run check:context\n      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
+    if(!withQa.includes(marker))throw Error('Student PR CI missing expected build step');
+    writeFileSync(wf,withQa.replace(marker,'      - run: npm run check:context\n      - run: npm run check:secrets\n'+marker+'\n      - run: npm run check:secrets'));
   }
  }
  return directory;
