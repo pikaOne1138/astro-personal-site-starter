@@ -26,6 +26,9 @@ try {
     const measured = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
     assert.equal(measured, sample.overflow, sample.label);
   }
+  // Common real-user edits: long Chinese heading, no image, extra service cards.
+  await page.setContent('<!doctype html><meta name="viewport" content="width=device-width"><style>*{box-sizing:border-box}body{margin:0}main{max-width:1100px;width:100%;padding:18px;margin:auto}h1{overflow-wrap:anywhere}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}article{padding:12px;min-width:0;border:1px solid #ddd}</style><main><h1>'+('這是一個希望可以好好說明自己的長中文個人網站首頁標題').repeat(5)+'</h1><section>'+Array.from({length:12},(_,i)=>'<article>服務項目'+i+'：'+('詳細介紹'.repeat(18))+'</article>').join('')+'</section></main>');
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2), false, 'fluid long Chinese content and multiple services must remain responsive');
   // Mobile interaction fixture: a semantic control must expose an operable panel.
   await page.setContent('<!doctype html><meta name="viewport" content="width=device-width"><button id="menu" aria-controls="links" aria-expanded="false">開啟選單</button><nav id="links" hidden><a href="/about/">關於</a></nav><script>document.querySelector("#menu").addEventListener("click",()=>{const b=document.querySelector("#menu"),n=document.querySelector("#links");n.hidden=!n.hidden;b.setAttribute("aria-expanded",String(!n.hidden));});</script>');
   await page.getByRole('button', { name: '開啟選單' }).click();
