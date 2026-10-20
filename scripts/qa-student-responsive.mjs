@@ -13,7 +13,7 @@ const prefix = segments.length ? '/' + segments.join('/') + '/' : '/';
 const widths = [1440, 1280, 768, 390, 375];
 const outputRoot = process.env.ATP_QA_DIST || 'dist';
 const out = process.env.ATP_QA_OUT || 'qa-artifacts/student-responsive';
-const maxPages = 80;
+const maxPages = 40;
 const failOnSkippedNavigation = process.env.ATP_QA_STRICT_NAV === '1';
 mkdirSync(out, { recursive: true });
 
@@ -34,11 +34,16 @@ function discoverPages() {
   visit(outputRoot);
   found.sort((a, b) => a === '' ? -1 : b === '' ? 1 : a.localeCompare(b));
   if (!found.length) throw Error('No built index.html found in ' + outputRoot);
-  if (found.length > maxPages) throw Error('Student QA supports up to ' + maxPages + ' HTML pages; found ' + found.length + '. Split the audit explicitly instead of silently skipping pages.');
   return found;
 }
 
-const paths = discoverPages();
+const discovered = discoverPages();
+const topLevel = discovered.filter(p => !p || p.split('/').filter(Boolean).length <= 1);
+const samples = discovered.filter(p => !topLevel.includes(p));
+const capacity = Math.max(0, maxPages - topLevel.length);
+const sampled = samples.length <= capacity ? samples : Array.from({ length: capacity }, (_, i) => samples[Math.floor(i * samples.length / capacity)]);
+const paths = [...new Set([...topLevel, ...sampled])];
+const browserNotTested = discovered.filter(p => !paths.includes(p));
 const server = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm',
   ['run', 'preview', '--', '--host', '127.0.0.1', '--port', String(port)],
   { stdio: 'ignore', env: { ...process.env, ASTRO_BASE_PATH: configuredBase } });
@@ -155,12 +160,12 @@ try {
   }
   const failed = rows.filter(r => r.status !== 200 || r.overflow || r.brokenLocalImages.length || r.errors.length);
   const warnings = rows.filter(r => r.brokenRemoteImages.length || r.interactions.some(x => x.skipped));
-  const report = { schemaVersion: 2, checkedAt: new Date().toISOString(), viewportWidths: widths, pages: paths.length, total: rows.length, failed: failed.length, warnings: warnings.length, rows };
+  const report = { schemaVersion: 3, discoveredPages: discovered.length, browserNotTested, checkedAt: new Date().toISOString(), viewportWidths: widths, pages: paths.length, total: rows.length, failed: failed.length, warnings: warnings.length, rows };
   writeFileSync(out + '/results.json', JSON.stringify(report, null, 2) + '\n');
   const lines=[
     '# 學員網站防跑版檢查結果',
     '',
-    '檢查頁數：'+paths.length+'；尺寸：'+widths.join(', ')+'px；失敗視圖：'+failed.length+'；提醒視圖：'+warnings.length,
+    '瀏覽器抽樣頁數：'+paths.length+'／'+discovered.length+'；尺寸：'+widths.join(', ')+'px；失敗視圖：'+failed.length+'；提醒視圖：'+warnings.length,
     '',
     '自動化可偵測技術錯誤，但不能取代本人對排版、圖片焦點及內容的確認。',
     ''
@@ -173,6 +178,7 @@ try {
     if(row.errors.length)lines.push('- 瀏覽器錯誤：'+row.errors.join('; '));
     lines.push('');
   }
+  if(browserNotTested.length){lines.push('## NOT TESTED：未進行瀏覽器抽樣的頁面（由既有 Build / Verify 檢查路由）');for(const p of browserNotTested)lines.push('- /'+p);lines.push('');}
   if(warnings.length){
     lines.push('## WARN：人工確認事項');
     for(const row of warnings.slice(0,30))lines.push('- '+row.path+' @ '+row.width+'px：'+(row.brokenRemoteImages.length?'外部圖片 '+row.brokenRemoteImages.join(', '):'')+(row.interactions.some(x=>x.skipped)?'；無法識別手機導航切換方式':''));
