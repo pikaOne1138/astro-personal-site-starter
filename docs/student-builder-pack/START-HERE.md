@@ -16,6 +16,12 @@
 - 產出的學員**獨立網站**根目錄應有 `PROJECT.md`、`AGENTS.md`；兩者要隨網站提交到**學員自己的** Git 倉庫，供新對話、新工具接手。重新取得新版 ZIP 不得覆蓋網站現有的 PROJECT。
 - 本機／GitHub／混合環境都先檢查真實工作樹與權限：本機未提交檔案不可由遠端舊版本覆蓋。
 
+## AI 讀取順序（單一入口）
+1. 先讀本文件及 ZIP 根目錄 `AGENTS.md`，遵循安全與操作規則；讀取學員 Site Brief JSON。
+2. 初次組站讀 `.ai/astro-site-assembly/SKILL.md`，再按選定版型與實際任務讀相關 Skills／Registry；不要一次載入全部 `.ai/`、研究附件或版型原始碼。
+3. `docs/student-builder-pack/AGENT-HANDOFF.md` 只在接手既有專案、跨對話或跨代理交接時讀取；初次建站不必把它當成額外必經文件。若接手既有網站，以該站自己的 `PROJECT.md`／`AGENTS.md` 和目前 Git 工作樹為準，不得覆蓋。
+4. 編輯式 Section Patterns 是選配資源，學員沒有指定時由 AI 判斷是否需要；不得為了選 Pattern 中斷建站主流程。
+
 ## AI 要做的事
 - ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
 - 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；先讀 `docs/student-builder-pack/EXPANDED-LAYOUTS.md`：25 個方向可由主匯出器組裝，新增十三款為 in-progress Adapter，不能當成 25 款 Ready；AI 仍須完成真實內容、必要內頁與四尺寸目視驗收。
