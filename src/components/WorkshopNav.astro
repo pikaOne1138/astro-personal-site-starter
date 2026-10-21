@@ -1,11 +1,12 @@
 ---
-interface Props { current: 'prepare' | 'build' | 'resources'; }
+interface Props { current: 'prepare' | 'build' | 'resources' | 'faq'; }
 const { current } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const links = [
   { id: 'prepare', label: '前置準備', path: 'guide/prepare/' },
   { id: 'build', label: '開始建置', path: 'guide/' },
   { id: 'resources', label: '延伸資源', path: 'resources/' },
+  { id: 'faq', label: '常見問題', path: 'guide/faq/' },
 ] as const;
 ---
 <header class="workshop-nav">
