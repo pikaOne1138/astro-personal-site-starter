@@ -495,14 +495,14 @@ update();
 const draftKey='atp-starter-draft-v1';
 const draftStatus=document.querySelector<HTMLElement>('#draft-status')!;
 let restoringDraft=false;
-function storeDraft(){
+function storeDraft(quiet=false){
  if(restoringDraft)return;
  try{
   const fields=Array.from(form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>('input,select,textarea')).filter(el=>el.id!=='import-plan'&&el.type!=='file');
   const values=fields.map((el,i)=>({i,id:el.id,name:el.name,type:el.type,value:el.value,checked:el instanceof HTMLInputElement?el.checked:undefined}));
   const draft={version:1,values,nav,layout:value('layout'),palette:currentPalette(),savedAt:new Date().toISOString()};
   localStorage.setItem(draftKey,JSON.stringify(draft));
-  draftStatus.textContent='已儲存於此瀏覽器（'+new Date().toLocaleTimeString('zh-TW')+'）';
+  if(!quiet)draftStatus.textContent='已儲存於此瀏覽器（'+new Date().toLocaleTimeString('zh-TW')+'）';
  }catch{draftStatus.textContent='瀏覽器無法保存草稿，請下載 Site Brief JSON 備份。';}
 }
 function restoreFields(values:any[]){
@@ -573,7 +573,7 @@ document.querySelector<HTMLButtonElement>('#clear-draft')?.addEventListener('cli
 });
 form.addEventListener('input',storeDraft);
 form.addEventListener('change',()=>queueMicrotask(storeDraft));
-const draftObserver=new MutationObserver(()=>{if(!restoringDraft)storeDraft()});
+const draftObserver=new MutationObserver(()=>{if(!restoringDraft)storeDraft(true)});
 draftObserver.observe(rows,{childList:true,subtree:true});
 restoreDraft();
 </script>
