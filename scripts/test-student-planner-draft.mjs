@@ -30,7 +30,8 @@ try{
  const file=join(temp,'site-brief.json');await download.saveAs(file);
  await page.locator('[name=siteName]').fill('將被匯入覆蓋');
  await page.locator('#import-plan').setInputFiles(file);
- assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','JSON import failed');
+ await page.waitForFunction(()=>{const name=document.querySelector('[name=siteName]')?.value;const status=document.querySelector('#draft-status')?.textContent||'';return name==='測試學員網站'||status.includes('匯入失敗');},{timeout:5000});
+ assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','JSON import failed: '+await page.locator('#draft-status').textContent());
  assert((await page.locator('#draft-status').textContent()).includes('已匯入'),'import confirmation missing');
  page.once('dialog',d=>d.accept());
  await page.locator('#clear-draft').click();
