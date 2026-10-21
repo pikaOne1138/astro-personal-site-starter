@@ -1487,6 +1487,26 @@
         "status": "NOT TESTED",
         "evidence": ""
       }
+    },
+    ".ai/astro-site-entry/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-entry/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
+    ".ai/astro-site-from-zero/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-site-from-zero/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
     }
   },
   "recipes": {
