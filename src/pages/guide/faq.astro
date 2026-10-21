@@ -21,7 +21,7 @@ const checks=[
 {q:'我可以打開上課使用的 AI。',opts:['可以','不確定','需要幫忙']},
 {q:'我有一台可以上網的電腦。',opts:['有','只有手機／平板','需要借用或協助']},
 {q:'我知道課堂要在哪裡和 AI 對話。',opts:['知道','不確定','需要幫忙']},
-{q:'我知道如何讓 AI 讀取課堂提供的 Astro Skill，或知道講師會協助。',opts:['已完成','不確定','需要幫忙']},
+{q:'我知道如何讓 AI 讀取課堂提供的建站 Skill，或知道講師會協助。',opts:['已完成','不確定','需要幫忙']},
 {q:'我知道網站大概想分享什麼。',opts:['知道','還沒想好','想請 AI 帶我想']},
 {q:'我有網站文字或照片可以使用。',opts:['有','還沒有','不確定能不能公開']}
 ];
@@ -33,12 +33,12 @@ const instructor=[
 ['保留既有成果','檢查原有工作區、PROJECT.md 和版本，先確認備份，不直接刪除或重建。'],
 ['遇到平台中斷','先保存已確認的網站方向與內容草稿，待工具可用時接續，不反覆要求私人資料。']
 ];
-const stuck='我卡住了。我現在看到的是：＿＿＿＿。我不知道下一步。請先用白話說明，不要一次給很多步驟，也不要要我貼密碼或驗證碼；只告訴我一個安全的下一步，以及我怎麼知道它成功了。';
+const stuck='我卡住了。我現在看到的是：＿＿＿＿。我可以附上目前畫面的截圖，請先根據截圖確認問題，不要只猜測。如果要傳截圖，請提醒我先遮住姓名、電子郵件、私人網址、帳號資訊、密碼和驗證碼。我不知道下一步，請用白話說明，一次只告訴我一個安全的操作步驟，以及我怎麼知道它成功了。';
 ---
 <!doctype html>
 <html lang="zh-Hant">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>新手課前安心檢查與常見問題｜Astro 架站工作坊</title><meta name="description" content="給零基礎學員的 Astro 架站課前準備、AI 操作疑難排解、預覽與發布安全 FAQ。"/>
+<title>新手課前安心檢查與常見問題｜AI 架站工作坊</title><meta name="description" content="給零基礎學員的 AI 架站課前準備、AI 操作疑難排解、預覽與發布安全 FAQ。"/>
 <style>
 :root{--bg:#f7f5f0;--ink:#272822;--green:#254e3d;--line:#d8ded4;--muted:#59635b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,"Noto Sans TC",sans-serif}h1{font:600 clamp(35px,5vw,54px)/1.25 Georgia,"Noto Serif TC",serif;margin:10px 0 24px}h2{font-size:27px;line-height:1.35;margin:0 0 16px}h3{font-size:19px}a{color:var(--green)}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #b47848;outline-offset:3px}.wrap{max-width:1000px;margin:auto;padding:44px 24px 90px}.eyebrow{font-size:12px;letter-spacing:.15em;color:#506858;font-weight:700}.lead{font-size:19px;max-width:770px}.muted{color:var(--muted)}section{border-top:1px solid var(--line);margin-top:42px;padding-top:33px;scroll-margin-top:20px}.jump{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0}.jump a{border:1px solid var(--line);background:#fffefa;border-radius:7px;padding:7px 14px;text-decoration:none}.panel{border:1px solid var(--line);background:#fffefa;padding:20px 23px;border-radius:10px;margin:16px 0}.panel legend{font-weight:700;padding:0 5px}.question{border:0;padding:0;margin:0 0 16px}.question>legend{font-weight:700;margin-bottom:7px}.options{display:flex;gap:10px 18px;flex-wrap:wrap}.options label{display:flex;align-items:center;gap:5px;cursor:pointer}.options input{accent-color:var(--green)}.notice{border-left:4px solid #a87949;background:#fff4e8;padding:16px 19px;margin:25px 0}.faq{border-bottom:1px solid var(--line);padding:16px 4px}.faq summary{cursor:pointer;font-size:17px;font-weight:650}.faq p{margin:12px 0 4px}.quick-script{white-space:pre-wrap;background:#eaf0e9;border:1px solid var(--line);border-radius:10px;padding:19px;overflow-wrap:anywhere}.btn{background:var(--green);color:white;border:0;border-radius:7px;padding:9px 16px;margin-top:9px}.teacher-list{display:grid;gap:12px}.teacher-item{padding:14px 0;border-bottom:1px solid var(--line)}.teacher-item strong{display:block}footer{border-top:1px solid var(--line);padding:24px;text-align:center}@media(max-width:650px){.wrap{padding:30px 19px 70px}.options{flex-direction:column;gap:6px}.panel{padding:18px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head>
@@ -53,12 +53,12 @@ const stuck='我卡住了。我現在看到的是：＿＿＿＿。我不知道�
 <div class="notice"><strong>不確定、需要幫忙，都不代表不能上課。</strong>你可以將勾選結果私下傳給講師；不會由本頁自動上傳或儲存。沒有文字、照片也能先討論版面或製作明確標示的草稿。</div>
 <h3>課前不必做的事</h3><p>不需要先學寫程式，也不必自己安裝 Astro、打開終端機，或先建立 GitHub 與託管帳號。只需依實際課程通知開啟指定 AI 工具；帳號、授權和發布平台會在需要時引導你。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
 <section id="faq"><h2>學員常見問題</h2><p class="muted">點開問題查看說明；可以先看與自己目前遇到的情況有關的題目。</p>{questions.map((item,i)=><details class="faq"><summary>{item.q}</summary><p>{item.a}</p></details>)}</section>
-<section id="stuck"><h2>卡住時，直接複製這段給 AI</h2><div class="quick-script" id="stuck-script">{stuck}</div><button class="btn" id="copy-stuck" type="button">複製求助句子</button><p class="muted" id="stuck-status" aria-live="polite"></p></section>
+<section id="stuck"><h2>卡住時，直接複製這段給 AI</h2><div class="quick-script" id="stuck-script">{stuck}</div><p class="muted">建議一併附上目前畫面截圖，讓 AI 看見你遇到的問題。傳送前請先遮住個人資料、帳號與驗證資訊。</p><button class="btn" id="copy-stuck" type="button">複製求助句子</button><p class="muted" id="stuck-status" aria-live="polite"></p></section>
 <section id="teacher"><h2>講師快速應對卡</h2><p class="muted">這一段主要供講師或助教協助新手時參考。</p><div class="teacher-list">{instructor.map((item,i)=><div class="teacher-item"><strong>{i+1}. {item[0]}</strong><span>{item[1]}</span></div>)}</div></section>
-</main><footer>Astro 架站工作坊 · <a href={base+'guide/'}>返回建站指南</a></footer>
+</main><footer>AI 架站工作坊 · <a href={base+'guide/'}>返回建站指南</a></footer>
 <script is:inline define:vars={{checks,stuck}}>
 const write=async (value,status)=>{try{await navigator.clipboard.writeText(value);status.textContent='已複製，可以貼給講師或 AI。';}catch{status.textContent='瀏覽器不允許複製，請手動選取文字。';}};
-document.getElementById('copy-check')?.addEventListener('click',()=>{const f=document.getElementById('comfort-check');const ans=checks.map((x,i)=>{const selected=f.querySelector('input[name="check-'+i+'"]:checked');return (i+1)+'. '+x.q+' '+(selected?.value||'尚未選擇')}).join('\n');write('我的 Astro 課前安心檢查：\n'+ans,document.getElementById('copy-status'));});
+document.getElementById('copy-check')?.addEventListener('click',()=>{const f=document.getElementById('comfort-check');const ans=checks.map((x,i)=>{const selected=f.querySelector('input[name="check-'+i+'"]:checked');return (i+1)+'. '+x.q+' '+(selected?.value||'尚未選擇')}).join('\n');write('我的課前安心檢查：\n'+ans,document.getElementById('copy-status'));});
 document.getElementById('copy-stuck')?.addEventListener('click',()=>write(stuck,document.getElementById('stuck-status')));
 </script>
 </body></html>
