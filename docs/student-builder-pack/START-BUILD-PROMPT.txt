@@ -1,4 +1,4 @@
-我已上傳 Site Brief JSON 與「AI 建站資料包」ZIP。請先閱讀資料包中的 AGENTS.md、AGENT-HANDOFF.md、START-HERE.md 與適用的 AI Skills，依照我的規劃檔建立專屬於我的 Astro 個人網站。請先確認我使用的 GitHub 帳號與網站專案；如果無法取得必要資訊，請一步一步引導我完成，不要假設我知道 Repository 網址。
+我已上傳 Site Brief JSON 與「AI 建站資料包」ZIP。請先閱讀資料包中的 START-HERE.md，由該入口依序載入 AGENTS.md 與適用的 AI Skills；AGENT-HANDOFF.md 僅在接續既有網站或跨代理交接時讀取，不必預先讀取全部文件，依照我的規劃檔建立專屬於我的 Astro 個人網站。請先確認我使用的 GitHub 帳號與網站專案；如果無法取得必要資訊，請一步一步引導我完成，不要假設我知道 Repository 網址。
 
 開始前，先確認你是否能讀取檔案、建立與修改網站、執行 Astro Build、經我授權連接 GitHub 並建立 Branch／Pull Request；做不到的部分請明確告訴我，不能假裝完成。一次只向我確認一個必要問題。
 
