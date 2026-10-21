@@ -18,8 +18,7 @@ try{
  await page.goto(origin+'/starter/');
  await page.locator('[name=siteName]').fill('測試學員網站');
  await page.locator('#interview-summary').fill('這是一份訪談摘要');
- await page.locator('#palette-primary').fill('#345678');
- await page.locator('#palette-primary').dispatchEvent('input');
+ await page.locator('#palette-primary').evaluate(el=>{el.value='#345678';el.dispatchEvent(new Event('input',{bubbles:true}));});
  await page.reload();
  assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','siteName lost after reload');
  assert(await page.locator('#interview-summary').inputValue()==='這是一份訪談摘要','interview summary lost');
