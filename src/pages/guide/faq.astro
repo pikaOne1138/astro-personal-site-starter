@@ -1,0 +1,64 @@
+---
+import WorkshopNav from '../../components/WorkshopNav.astro';
+const base=import.meta.env.BASE_URL;
+const questions=[
+{q:'我完全不會用電腦，會不會跟不上？',a:'不會寫程式不是障礙。你可以用平常說話的方式告訴 AI 想做什麼，並說「我不懂，請一次只告訴我一個步驟」。如果連工具操作也不熟，請先請講師協助登入或開啟工作區。'},
+{q:'我不知道網站要長什麼樣，也還沒想好名字，怎麼辦？',a:'直接說「我還不知道，請先給我一個容易修改的初稿」。名稱、顏色、頁面數都可以暫定。你可以直接和 AI 討論，並不一定要先完成 Starter 規劃器。'},
+{q:'AI 一次問我很多問題，我看不懂怎麼回答？',a:'回覆：「請一次只問我一個簡單問題。我不懂的地方先用安全、容易修改的預設。」不知道可以說「不知道」或「先跳過」。'},
+{q:'AI 只給我一大段程式碼，沒有真的做出網站？',a:'可能目前使用的是一般聊天視窗，沒有讀寫專案或建置工具。請講師協助切換到能讀寫檔案、執行建置、查看預覽的工作區。看到程式碼不等於網站完成。'},
+{q:'我找不到 Skill，或 AI 好像沒有使用它？',a:'先告訴講師「我不確定 Skill 有沒有載入」。有技能管理功能的平台，請確認對應的 Astro Skill 是否已啟用；沒有 Skills 功能的工具，也可能改由 AI 讀取資料包中的 SKILL.md。不同平台做法不同。'},
+{q:'AI 說「本機預覽網址」或 localhost，但我打不開？',a:'localhost 通常只在執行網站的那台電腦上有效。請 AI 提供你這邊真正能開啟的預覽網址；如果無法提供，就明確說明目前的限制或可行的預覽方式。'},
+{q:'預覽打開了，但畫面空白、錯誤或跟 AI 說的不一樣？',a:'先保留錯誤畫面或訊息，請 AI 檢查實際預覽，而不是猜測原因。分享截圖前請遮住姓名、電子郵件、私人頁面網址、帳號資訊及驗證碼，再透過講師指定的管道傳送。'},
+{q:'AI 說建置失敗，出現一堆英文或紅色文字？',a:'先不要自己刪檔案或照著看不懂的指令操作。把錯誤訊息交給 AI，請它用白話說明，並且一次只告訴你一個安全的下一步。'},
+{q:'我的照片或文件找不到，或不知道怎麼上傳？',a:'告訴 AI「我找不到檔案，請一次帶我完成一個動作」。不知道能否公開的素材先不要上傳；沒有照片也可以先用文字排版或明確標示的待補位置。'},
+{q:'AI 要我登入、授權或連結帳號，是正常的嗎？',a:'可能需要連接 GitHub 或託管平台，但只應透過官方登入與授權畫面操作。不要把密碼、簡訊碼、恢復碼、Token 或驗證碼貼到聊天或截圖。看不懂授權範圍，先請講師確認。'},
+{q:'我不小心按到「發布」或網站已經公開了，怎麼辦？',a:'立即告訴講師，先確認公開網址與頁面內容，由有權限的人協助暫停公開、撤回或調整設定；檢查有沒有洩露私人資料。不要繼續亂改 DNS 或刪除帳號。'},
+{q:'AI 要我付費、升級或輸入信用卡，該怎麼辦？',a:'先停止操作，不要輸入付款資料或確認付款。請講師先確認費用是否必要、有沒有免費替代方案，以及是否超過課程既定範圍。'},
+{q:'網路斷掉、頁面關閉，或下次回來 AI 不記得進度？',a:'重新開啟原本的專案，請 AI 先檢查目前工作區、Git 狀態與 PROJECT.md，再說明已完成和待完成事項。找不到原專案時請先求助，不要新建一個專案覆蓋原資料。'},
+{q:'我不知道哪些內容可以公開？',a:'不確定的資料先不放。住址、私人電話、身分證件、帳戶資料、客戶資料、他人照片與未經同意的對話，都不要隨意公開。自介、學歷、經歷、資格與成果也要由你確認後才能作為正式內容。'}
+];
+const checks=[
+{q:'我可以打開上課使用的 AI。',opts:['可以','不確定','需要幫忙']},
+{q:'我有一台可以上網的電腦。',opts:['有','只有手機／平板','需要借用或協助']},
+{q:'我知道課堂要在哪裡和 AI 對話。',opts:['知道','不確定','需要幫忙']},
+{q:'我知道如何讓 AI 讀取課堂提供的 Astro Skill，或知道講師會協助。',opts:['已完成','不確定','需要幫忙']},
+{q:'我知道網站大概想分享什麼。',opts:['知道','還沒想好','想請 AI 帶我想']},
+{q:'我有網站文字或照片可以使用。',opts:['有','還沒有','不確定能不能公開']}
+];
+const instructor=[
+['先確認卡在哪裡','打不開 AI、找不到 Skill、沒有檔案工作區、建置出錯、預覽打不開、帳號授權或公開設定。'],
+['一次只處理一件事','請學員描述畫面，必要時遮蔽個資後截圖；不要讓新手同時切換多個工具與設定頁。'],
+['區分工具能力和操作問題','如果 AI 沒有檔案與終端機能力，應更換工作區或改成示範教學。'],
+['安全與付款先停','不收集密碼、驗證碼與付款資料；授權和公開範圍未確認前不繼續。'],
+['保留既有成果','檢查原有工作區、PROJECT.md 和版本，先確認備份，不直接刪除或重建。'],
+['遇到平台中斷','先保存已確認的網站方向與內容草稿，待工具可用時接續，不反覆要求私人資料。']
+];
+const stuck='我卡住了。我現在看到的是：＿＿＿＿。我不知道下一步。請先用白話說明，不要一次給很多步驟，也不要要我貼密碼或驗證碼；只告訴我一個安全的下一步，以及我怎麼知道它成功了。';
+---
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>新手課前安心檢查與常見問題｜Astro 架站工作坊</title><meta name="description" content="給零基礎學員的 Astro 架站課前準備、AI 操作疑難排解、預覽與發布安全 FAQ。"/>
+<style>
+:root{--bg:#f7f5f0;--ink:#272822;--green:#254e3d;--line:#d8ded4;--muted:#59635b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,"Noto Sans TC",sans-serif}h1{font:600 clamp(35px,5vw,54px)/1.25 Georgia,"Noto Serif TC",serif;margin:10px 0 24px}h2{font-size:27px;line-height:1.35;margin:0 0 16px}h3{font-size:19px}a{color:var(--green)}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #b47848;outline-offset:3px}.wrap{max-width:1000px;margin:auto;padding:44px 24px 90px}.eyebrow{font-size:12px;letter-spacing:.15em;color:#506858;font-weight:700}.lead{font-size:19px;max-width:770px}.muted{color:var(--muted)}section{border-top:1px solid var(--line);margin-top:42px;padding-top:33px;scroll-margin-top:20px}.jump{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0}.jump a{border:1px solid var(--line);background:#fffefa;border-radius:7px;padding:7px 14px;text-decoration:none}.panel{border:1px solid var(--line);background:#fffefa;padding:20px 23px;border-radius:10px;margin:16px 0}.panel legend{font-weight:700;padding:0 5px}.question{border:0;padding:0;margin:0 0 16px}.question>legend{font-weight:700;margin-bottom:7px}.options{display:flex;gap:10px 18px;flex-wrap:wrap}.options label{display:flex;align-items:center;gap:5px;cursor:pointer}.options input{accent-color:var(--green)}.notice{border-left:4px solid #a87949;background:#fff4e8;padding:16px 19px;margin:25px 0}.faq{border-bottom:1px solid var(--line);padding:16px 4px}.faq summary{cursor:pointer;font-size:17px;font-weight:650}.faq p{margin:12px 0 4px}.quick-script{white-space:pre-wrap;background:#eaf0e9;border:1px solid var(--line);border-radius:10px;padding:19px;overflow-wrap:anywhere}.btn{background:var(--green);color:white;border:0;border-radius:7px;padding:9px 16px;margin-top:9px}.teacher-list{display:grid;gap:12px}.teacher-item{padding:14px 0;border-bottom:1px solid var(--line)}.teacher-item strong{display:block}footer{border-top:1px solid var(--line);padding:24px;text-align:center}@media(max-width:650px){.wrap{padding:30px 19px 70px}.options{flex-direction:column;gap:6px}.panel{padding:18px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body><WorkshopNav current="faq"/>
+<main class="wrap"><p class="eyebrow">BEFORE CLASS / BEGINNER SUPPORT</p><h1>新手課前安心檢查與常見問題</h1>
+<p class="lead">這不是電腦能力考試，沒有分數，也不需要先學會任何技術。這份清單是讓你和講師提前知道，哪些地方可能需要多一點協助。</p>
+<p>你可以使用 ATP Starter 挑選版型，也可以直接和 AI 討論建站；如果是要重建自己擁有或獲授權的網站，也有復刻路線。<strong>不必先學會所有操作。</strong></p>
+<nav class="jump" aria-label="本頁內容"><a href="#check">3 分鐘安心檢查</a><a href="#faq">學員常見問題</a><a href="#stuck">卡住時複製</a><a href="#teacher">講師應對卡</a></nav>
+<section id="check"><h2>課前 3 分鐘安心檢查</h2><p>請選擇最符合你的情況。不知道就照實選「不確定」，沒有對錯，也不影響參加課程。</p>
+<form id="comfort-check" class="panel" aria-label="課前安心檢查">{checks.map((item,i)=><fieldset class="question"><legend>{i+1}. {item.q}</legend><div class="options">{item.opts.map(opt=><label><input type="radio" name={'check-'+i} value={opt}/>{opt}</label>)}</div></fieldset>)}
+<button class="btn" type="button" id="copy-check">複製我的課前情況</button><p id="copy-status" aria-live="polite" class="muted"></p></form>
+<div class="notice"><strong>不確定、需要幫忙，都不代表不能上課。</strong>你可以將勾選結果私下傳給講師；不會由本頁自動上傳或儲存。沒有文字、照片也能先討論版面或製作明確標示的草稿。</div>
+<h3>課前不必做的事</h3><p>不需要先學寫程式，也不必自己安裝 Astro、打開終端機，或先建立 GitHub 與託管帳號。只需依實際課程通知開啟指定 AI 工具；帳號、授權和發布平台會在需要時引導你。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
+<section id="faq"><h2>學員常見問題</h2><p class="muted">點開問題查看說明；可以先看與自己目前遇到的情況有關的題目。</p>{questions.map((item,i)=><details class="faq"><summary>{item.q}</summary><p>{item.a}</p></details>)}</section>
+<section id="stuck"><h2>卡住時，直接複製這段給 AI</h2><div class="quick-script" id="stuck-script">{stuck}</div><button class="btn" id="copy-stuck" type="button">複製求助句子</button><p class="muted" id="stuck-status" aria-live="polite"></p></section>
+<section id="teacher"><h2>講師快速應對卡</h2><p class="muted">這一段主要供講師或助教協助新手時參考。</p><div class="teacher-list">{instructor.map((item,i)=><div class="teacher-item"><strong>{i+1}. {item[0]}</strong><span>{item[1]}</span></div>)}</div></section>
+</main><footer>Astro 架站工作坊 · <a href={base+'guide/'}>返回建站指南</a></footer>
+<script is:inline define:vars={{checks,stuck}}>
+const write=async (value,status)=>{try{await navigator.clipboard.writeText(value);status.textContent='已複製，可以貼給講師或 AI。';}catch{status.textContent='瀏覽器不允許複製，請手動選取文字。';}};
+document.getElementById('copy-check')?.addEventListener('click',()=>{const f=document.getElementById('comfort-check');const ans=checks.map((x,i)=>{const selected=f.querySelector('input[name="check-'+i+'"]:checked');return (i+1)+'. '+x.q+' '+(selected?.value||'尚未選擇')}).join('\n');write('我的 Astro 課前安心檢查：\n'+ans,document.getElementById('copy-status'));});
+document.getElementById('copy-stuck')?.addEventListener('click',()=>write(stuck,document.getElementById('stuck-status')));
+</script>
+</body></html>
