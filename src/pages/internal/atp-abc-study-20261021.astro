@@ -1,0 +1,28 @@
+---
+const base=import.meta.env.BASE_URL;
+const url=(p)=>base+p.replace(/^\//,'');
+const tests=[
+{label:'A｜完整 ATP',type:'production',desc:'現有完整建站包、原本的 Builder/Skills/Layouts。作為基準，不修改學生正式下載包。',file:'AI-建站資料包.zip',href:'AI-建站資料包.zip'},
+{label:'B｜精簡 ATP',type:'lean',desc:'保留匯出器及其來源，減少文件與 Skill 範圍；測試按需讀取，並非品質已驗證的成品。',file:'B-lean-ATP.zip',href:'atp-lab-assets/B-lean-ATP.zip'},
+{label:'C｜Skill 自主建站',type:'skill',desc:'只提供可建置的空白 Astro 起點及獨立 Skill，不含 ATP Layout/Block 系統。需由 AI 完整建立。',file:'C-skill-only.zip',href:'atp-lab-assets/C-skill-only.zip'}
+];
+---
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow,noarchive"/><title>ATP 建站 A/B/C 實驗｜內部測試</title>
+<style>
+:root{font-family:system-ui,"Noto Sans TC",sans-serif;background:#f7f5f0;color:#253029}*{box-sizing:border-box}body{margin:0}main{max-width:1050px;margin:auto;padding:65px 24px 100px}h1{font-size:clamp(32px,5vw,54px);line-height:1.2;margin:12px 0 25px}h2{font-size:25px;margin:45px 0 16px}p,li{line-height:1.8}a{color:#245841;text-underline-offset:3px}.eyebrow{letter-spacing:.13em;text-transform:uppercase;font-size:12px;color:#627468}.muted{color:#58665f}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:34px 0}.card{padding:24px;background:#fff;border:1px solid #d9dfd6;border-radius:14px;display:flex;flex-direction:column;gap:14px}.card h3{font-size:21px;margin:0}.card p{flex:1;margin:0}.button{display:inline-block;background:#245841;color:#fff;padding:12px 17px;border-radius:7px;text-decoration:none;text-align:center;font-weight:650}.button:hover{background:#143c29}.panel{background:#fff;border:1px solid #d9dfd6;border-radius:12px;padding:22px;margin:18px 0}.notice{background:#f1eadf;border-left:4px solid #a87949;padding:16px 19px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:600px}th,td{padding:12px 14px;border-bottom:1px solid #dde2dc;text-align:left;vertical-align:top}th{background:#e8efe9}code{background:#e7ebe6;padding:2px 5px}a:focus-visible{outline:3px solid #a87949;outline-offset:4px}@media(max-width:730px){main{padding:35px 18px 80px}.cards{grid-template-columns:1fr}}
+</style></head><body><main>
+<div class="eyebrow">INTERNAL EXPERIMENT / URL-ONLY DISCOVERY</div><h1>三種 AI 架站方式對照實驗</h1>
+<p class="muted">本頁不加入網站導航與內部入口，不提供搜尋引擎索引。僅供 ATP 開發者測試；頁面沒有密碼保護，知道網址的人仍可存取，也可能被分享。請勿放個資或私人測試資料。</p>
+<div class="notice"><strong>不是正式學員入口。</strong> A 組保留現行發行包；B、C 是新產生的實驗包。三組必須使用相同 Site Brief 和驗收標準。PR 預覽網址應由 GitHub Checks 或 Cloudflare Deployment 取得，不能把這個路由的存在當成部署成功。</div>
+<h2>下載三組測試包</h2>
+<div class="cards">{tests.map(x=><section class="card"><h3>{x.label}</h3><p>{x.desc}</p><a class="button" href={url(x.href)} download>下載 {x.file} ↓</a></section>)}</div>
+<h2>共用材料</h2>
+<div class="panel"><p>三組都要使用同一份 Site Brief JSON，請先在 <a href={url('starter/')}>網站規劃器</a> 匯出自己的測試 Brief，複製成三份完全相同的檔案。若要使用固定案例，下載以下合成情境，再由 AI 按 <a href={url('atp-lab-assets/TEST-CASES.md')}>測試案例說明</a> 整理為符合原本 Schema 的 Brief；不要將示範人物當成真實學員。</p>
+<p><a href={url('atp-lab-assets/TEST-CASES.md')} download>下載測試情境與統一操作方式（Markdown）</a>　·　<a href={url('atp-lab-assets/RUBRIC.md')} download>下載共用評分表（Markdown）</a>　·　<a href={url('atp-lab-assets/manifest.json')}>查看生成清單</a></p></div>
+<h2>實驗怎麼執行</h2>
+<div class="panel"><ol><li>固定測試模型、工具環境、學員資料及 Site Brief；A/B/C 必須分三個新的獨立工作區或對話。</li><li>A 組上傳完整包與 JSON，依包內正式 <code>START-HERE.md</code> 執行。B 組上傳精簡包與同一份 JSON，先讀 <code>EXPERIMENT-README.md</code>。C 組上傳 Skill-only 包與 JSON，先讀 <code>SKILL.md</code>。</li><li>每組都需從建站到 Build、檢查所有頁面與關鍵連結，並取得真實 Preview。若工具沒有部署能力，應註明無法驗證，不可直接視為失敗或成功。</li><li>依相同評分表比較功能、設計品質、可修改性與人工介入量，記錄每次對話及變更。</li></ol></div>
+<h2>比較維度</h2><div class="table-wrap"><table><thead><tr><th>項目</th><th>檢查方式</th><th>最低證據</th></tr></thead><tbody>
+<tr><td>資訊架構</td><td>首頁＋文章或服務內頁完整性</td><td>每個選定路由可開啟</td></tr><tr><td>設計與 RWD</td><td>1440 / 1280 / 768 / 390</td><td>逐尺寸截圖與問題記錄</td></tr><tr><td>內容真實性</td><td>資格、報價、見證、按鈕</td><td>無未標示假資料</td></tr><tr><td>技術</td><td>Astro Build、連結、SEO、文章</td><td>Build logs 與靜態輸出檢查</td></tr><tr><td>發布安全</td><td>PR/Preview/同意關卡</td><td>Preview URL 與 Commit SHA</td></tr><tr><td>學員負擔</td><td>人工修正、選擇與重複輸入</td><td>逐次操作紀錄</td></tr>
+</tbody></table></div>
+<p class="muted">安全提醒：<code>noindex</code> 與不外連只是減少被發現，沒有存取權限隔離。如需真正私人實驗，應改用 Cloudflare Access 等授權機制。</p>
+</main></body></html>
