@@ -124,3 +124,19 @@ mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
 if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
+
+
+const routeShared=['.ai/astro-site-entry/SKILL.md','.ai/astro-pr-preview/SKILL.md','.ai/astro-starter-deploy/SKILL.md','.ai/astro-site-maintenance/SKILL.md','.ai/astro-content-publishing/SKILL.md','.ai/astro-ui-craft/SKILL.md','.ai/astro-layout-craft/SKILL.md','.ai/astro-design-consultation/SKILL.md'];
+for(const [name,specific,description] of [
+ ['replica',['.ai/url-to-frontend-replica/SKILL.md'],'既有網站復刻'],
+ ['from-zero',['.ai/astro-site-from-zero/SKILL.md'],'直接與 AI 討論建站']
+]){
+ const files=new Map();
+ for(const p of [...routeShared,...specific])if(entries.has(p))files.set(p,entries.get(p));else throw Error('Missing route Skill: '+p);
+ for(const p of ['AGENTS.md','PROJECT-TEMPLATE.md'])if(entries.has(p))files.set(p,entries.get(p));
+ files.set('START-HERE.md',Buffer.from('# '+description+'｜AI Skill 資料包\n\n這份 ZIP 只有 AI 操作 Skill 和必要的共用守則，不是可直接執行的 Astro 網站；建站 AI 需有檔案操作和建置能力。\n先讀 .ai/astro-site-entry/SKILL.md，然後讀 .ai/'+(name==='replica'?'url-to-frontend-replica':'astro-site-from-zero')+'/SKILL.md，其他 Skills 依實際工作按需讀取。\n不必先產生 Site Brief JSON，也不必登入老師的 Repository。使用者明確同意前不可 Merge 或正式發布。\n'));
+ files.set('SKILL-PACK-VERSION.json',Buffer.from(JSON.stringify({schemaVersion:1,sourceCommit:sourceSha,route:name,skillFiles:[...files.keys()].filter(x=>x.startsWith('.ai/'))},null,2)+'\n'));
+ const filename='AI-'+name+'-skill-pack.zip';
+ writeFileSync(resolve('public/'+filename),zip(files));
+ console.log('Route Skill pack:',name,files.size,'files');
+}

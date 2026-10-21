@@ -2,7 +2,15 @@
 
 本包給 AI 讀取；學員不用安裝 Node、CLI，也不需要老師的 GitHub Repository 權限。
 
-## 學員只需要準備
+## 選擇建站入口（先選一條，不需三條都走）
+有三種方式開始；完整分工見 `docs/student-builder-pack/THREE-WAYS-TO-BUILD.md`，AI 先讀 `.ai/astro-site-entry/SKILL.md` 判斷：
+- **A 復刻既有網站**：提供本人擁有或已授權的來源網站網址，AI 依 `.ai/url-to-frontend-replica/SKILL.md` 盤點並重建；不強制使用 Starter 規劃器。
+- **B 使用 ATP Starter**：有意挑選版型、品牌與頁面，依下方原有流程產生 Site Brief JSON、上傳資料包，由 Exporter 組站。
+- **C AI 直接訪談建站**：用白話告訴 AI 想做什麼，由 `.ai/astro-site-from-zero/SKILL.md` 一次問一題，自行整理計畫與建立網站；**不用先產生 Site Brief JSON**。
+ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類型可以討論但不保證已有 Ready Starter。文章型網站保留 Content Collections 以支援日後持續新增與維護。
+
+## B 路線：使用 Starter 時的原本流程
+
 1. 在網站規劃器 `/starter/` 選擇網站方向、Layout、內容與品牌設定，下載 Site Brief JSON。
 2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
 3. 到工作坊網站 `/guide/` 按「開始建站」提示詞的複製按鈕，或打開本 ZIP 中的 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，把**原文**貼給 AI。這是唯一正式起始提示詞；不需要自己在不同 README 中拼湊或改寫。
