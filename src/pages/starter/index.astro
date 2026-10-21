@@ -519,7 +519,7 @@ function restoreDraft(){
   const saved=JSON.parse(raw);if(saved.version!==1||!Array.isArray(saved.values)||!Array.isArray(saved.nav))return;
   restoringDraft=true;
   restoreFields(saved.values);
-  nav=saved.nav.filter((x:any)=>x&&typeof x.id==='string'&&typeof x.label==='string'&&typeof x.enabled==='boolean').slice(0,20);
+  const importedNav=saved.nav.filter((x:any)=>x&&typeof x.id==='string'&&typeof x.label==='string'&&typeof x.enabled==='boolean').slice(0,20);if(importedNav.length)nav=importedNav;
   priorKind=value('kind') as StarterKind;
   renderNav();renderMenu();renderPatterns();
   for(const key of paletteKeys)if(/^#[0-9A-Fa-f]{6}$/.test(saved.palette?.[key]))document.querySelector<HTMLInputElement>('#palette-'+key)!.value=saved.palette[key];
@@ -544,6 +544,16 @@ function applyImportedPlan(p:StarterPlan){
   set('#cta-label',p.primaryCta.label);set('#cta-target',p.primaryCta.pageId);
   set('#notes',p.notes||'');set('#about-bio',p.about?.bio);set('#about-purpose',p.about?.purpose);set('#about-approach',p.about?.approach);set('#about-background',p.about?.background);
   set('#home-headline',p.content?.headline);set('#home-intro',p.content?.intro);
+  set('#fact-scope',p.serviceFacts?.scope);set('#fact-exclusions',p.serviceFacts?.exclusions);
+  set('#fact-method',p.serviceFacts?.method);set('#fact-first-visit',p.serviceFacts?.firstVisit);
+  set('#fact-duration',p.serviceFacts?.duration);set('#fact-price',p.serviceFacts?.price);
+  set('#fact-cancellation',p.serviceFacts?.cancellation);set('#fact-qualification',p.serviceFacts?.qualification);set('#fact-contact',p.serviceFacts?.contact);
+  set('#reading-title',p.reading?.records?.[0]?.title);set('#reading-note',p.reading?.records?.[0]?.note);set('#reading-month',p.reading?.records?.[0]?.month);
+  set('#annual-title',p.reading?.annualBook?.title);set('#annual-note',p.reading?.annualBook?.note);
+  set('#episode-audio',p.media?.episodeAudioPath);set('#episode-text',p.media?.episodeTranscript?.[0]?.text);set('#episode-time',p.media?.episodeTranscript?.[0]?.time);
+  const section=(p.sectionPatterns||[]);for(const box of document.querySelectorAll<HTMLElement>('.pattern-option')){const check=box.querySelector<HTMLInputElement>('.pattern-choice');if(!check)continue;const match=section.find(x=>x.patternId===check.value);check.checked=Boolean(match);if(match){set('#'+box.id+' .pattern-page',match.targetPage);set('#'+box.id+' .pattern-position',match.insertAfter)}box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked;}
+  const footer=section.find(x=>x.targetPage==='site-wide');if(footer)pick('footerPattern',footer.patternId);
+
   embeddedImages.clear();
   for(const asset of p.assets||[])if(asset&&typeof asset.path==='string'&&typeof asset.mime==='string'&&typeof asset.base64==='string')embeddedImages.set(asset.path.includes('brand-logo')?'logo':'hero',asset);
   paintPalette();renderFooterPreview();showPlan();
