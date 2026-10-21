@@ -16,7 +16,7 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 2. 明白說明第一個可能被公開的版本是什麼。若學員還不願公開真正內容，使用經學員允許的安全初始化內容與獨立 Preview 專案／分支策略；不要把沒有密碼保護的 Preview 說成私人站。
 3. 先確認 Cloudflare Pages 或 Workers 產品種類、Git 授權、Production branch、build command、dist、部署環境變數。用學員帳號實際介面核對，遇到授權門檻由講師／Computer Use／截圖陪跑，不要求私密 Token。
 4. 取得真實 PR Head SHA 和平台回報的 Preview Deployment URL，核對部署 SHA 且可由學員瀏覽器開啟；若平台無 Preview，先停止，提出安全替代驗收，不准拿正式站冒充。
-5. 人工核准只針對指定版本與發布影響；正式部署後依 `.ai/astro-launch-health-check/SKILL.md` 核查正式 URL、內容、RWD、robots／canonical／sitemap、功能與還原。學員正式發布指令單一來源：`docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md`（若學生資料包未包含，應由建站工作坊交付該文件，不得憑空推斷同意）。
+5. 人工核准只針對指定版本與發布影響；正式部署後依 `.ai/astro-launch-health-check/SKILL.md` 核查正式 URL、內容、RWD、robots／canonical／sitemap、功能與還原。學員正式發布指令單一來源：研究 Repo 的 `docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md`（匯出資料包根目錄為 `RELEASE-APPROVAL-PROMPT.md`）。網頁指南讀同一來源；文件本身不是同意，必須由學員針對本次版本親自送出。
 
 ## A｜GitHub Pages（學員可選）
 1. 在學員自己的新Repository使用ZIP匯出的獨立專案；不Fork/Clone老師Repo。不可在展示 Repo 的 main 上直接修改學員資料。
