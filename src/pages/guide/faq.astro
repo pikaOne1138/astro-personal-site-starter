@@ -6,7 +6,7 @@ const questions=[
 {q:'我不知道網站要長什麼樣，也還沒想好名字，怎麼辦？',a:'直接說「我還不知道，請先給我一個容易修改的初稿」。名稱、顏色、頁面數都可以暫定。你可以直接和 AI 討論，並不一定要先完成 Starter 規劃器。'},
 {q:'AI 一次問我很多問題，我看不懂怎麼回答？',a:'回覆：「請一次只問我一個簡單問題。我不懂的地方先用安全、容易修改的預設。」不知道可以說「不知道」或「先跳過」。'},
 {q:'AI 只給我一大段程式碼，沒有真的做出網站？',a:'可能目前使用的是一般聊天視窗，沒有讀寫專案或建置工具。請講師協助切換到能讀寫檔案、執行建置、查看預覽的工作區。看到程式碼不等於網站完成。'},
-{q:'我找不到 Skill，或 AI 好像沒有使用它？',a:'先告訴講師「我不確定 Skill 有沒有載入」。有技能管理功能的平台，請確認對應的 Astro Skill 是否已啟用；沒有 Skills 功能的工具，也可能改由 AI 讀取資料包中的 SKILL.md。不同平台做法不同。'},
+{q:'我找不到 Skill，或 AI 好像沒有使用它？',a:'先告訴講師「我不確定 Skill 有沒有載入」。有技能管理功能的平台，請確認對應的建站 Skill 是否已啟用；沒有 Skills 功能的工具，也可能改由 AI 讀取資料包中的 SKILL.md。不同平台做法不同。'},
 {q:'AI 說「本機預覽網址」或 localhost，但我打不開？',a:'localhost 通常只在執行網站的那台電腦上有效。請 AI 提供你這邊真正能開啟的預覽網址；如果無法提供，就明確說明目前的限制或可行的預覽方式。'},
 {q:'預覽打開了，但畫面空白、錯誤或跟 AI 說的不一樣？',a:'先保留錯誤畫面或訊息，請 AI 檢查實際預覽，而不是猜測原因。分享截圖前請遮住姓名、電子郵件、私人頁面網址、帳號資訊及驗證碼，再透過講師指定的管道傳送。'},
 {q:'AI 說建置失敗，出現一堆英文或紅色文字？',a:'先不要自己刪檔案或照著看不懂的指令操作。把錯誤訊息交給 AI，請它用白話說明，並且一次只告訴你一個安全的下一步。'},
@@ -51,7 +51,7 @@ const stuck='我卡住了。我現在看到的是：＿＿＿＿。我可以附�
 <form id="comfort-check" class="panel" aria-label="課前安心檢查">{checks.map((item,i)=><fieldset class="question"><legend>{i+1}. {item.q}</legend><div class="options">{item.opts.map(opt=><label><input type="radio" name={'check-'+i} value={opt}/>{opt}</label>)}</div></fieldset>)}
 <button class="btn" type="button" id="copy-check">複製我的課前情況</button><p id="copy-status" aria-live="polite" class="muted"></p></form>
 <div class="notice"><strong>不確定、需要幫忙，都不代表不能上課。</strong>你可以將勾選結果私下傳給講師；不會由本頁自動上傳或儲存。沒有文字、照片也能先討論版面或製作明確標示的草稿。</div>
-<h3>課前不必做的事</h3><p>不需要先學寫程式，也不必自己安裝 Astro、打開終端機，或先建立 GitHub 與託管帳號。只需依實際課程通知開啟指定 AI 工具；帳號、授權和發布平台會在需要時引導你。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
+<h3>課前不必做的事</h3><p>不需要先學寫程式，也不必自己安裝架站工具、打開終端機，或先建立 GitHub 與託管帳號。只需依實際課程通知開啟指定 AI 工具；帳號、授權和發布平台會在需要時引導你。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
 <section id="faq"><h2>學員常見問題</h2><p class="muted">點開問題查看說明；可以先看與自己目前遇到的情況有關的題目。</p>{questions.map((item,i)=><details class="faq"><summary>{item.q}</summary><p>{item.a}</p></details>)}</section>
 <section id="stuck"><h2>卡住時，直接複製這段給 AI</h2><div class="quick-script" id="stuck-script">{stuck}</div><p class="muted">建議一併附上目前畫面截圖，讓 AI 看見你遇到的問題。傳送前請先遮住個人資料、帳號與驗證資訊。</p><button class="btn" id="copy-stuck" type="button">複製求助句子</button><p class="muted" id="stuck-status" aria-live="polite"></p></section>
 <section id="teacher"><h2>講師快速應對卡</h2><p class="muted">這一段主要供講師或助教協助新手時參考。</p><div class="teacher-list">{instructor.map((item,i)=><div class="teacher-item"><strong>{i+1}. {item[0]}</strong><span>{item[1]}</span></div>)}</div></section>
