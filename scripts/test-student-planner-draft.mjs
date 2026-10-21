@@ -1,0 +1,41 @@
+import {chromium} from 'playwright';
+import {spawn} from 'node:child_process';
+import {setTimeout as sleep} from 'node:timers/promises';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+const port=4369,origin='http://127.0.0.1:'+port;
+const server=spawn('node',['node_modules/astro/astro.js','preview','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe']});
+let logs='';server.stdout.on('data',x=>logs+=x);server.stderr.on('data',x=>logs+=x);
+let browser,temp;
+const assert=(value,label)=>{if(!value)throw new Error(label)};
+try{
+ let ready=false;
+ for(let i=0;i<50;i++){try{const r=await fetch(origin+'/starter/');if(r.ok){ready=true;break;}}catch{}await sleep(200)}
+ assert(ready,'Astro preview not ready: '+logs);
+ browser=await chromium.launch({headless:true});
+ const page=await browser.newPage({acceptDownloads:true});
+ await page.goto(origin+'/starter/');
+ await page.locator('[name=siteName]').fill('測試學員網站');
+ await page.locator('#interview-summary').fill('這是一份訪談摘要');
+ await page.locator('#palette-primary').fill('#345678');
+ await page.locator('#palette-primary').dispatchEvent('input');
+ await page.reload();
+ assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','siteName lost after reload');
+ assert(await page.locator('#interview-summary').inputValue()==='這是一份訪談摘要','interview summary lost');
+ assert((await page.locator('#palette-primary').inputValue()).toLowerCase()==='#345678','palette lost');
+ const downloadPromise=page.waitForEvent('download');
+ await page.locator('#save-plan').click();
+ const download=await downloadPromise;
+ temp=await mkdtemp(join(tmpdir(),'atp-student-draft-'));
+ const file=join(temp,'site-brief.json');await download.saveAs(file);
+ await page.locator('[name=siteName]').fill('將被匯入覆蓋');
+ await page.locator('#import-plan').setInputFiles(file);
+ assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','JSON import failed');
+ assert((await page.locator('#draft-status').textContent()).includes('已匯入'),'import confirmation missing');
+ page.once('dialog',d=>d.accept());
+ await page.locator('#clear-draft').click();
+ await page.waitForLoadState('load');
+ assert(await page.locator('[name=siteName]').inputValue()==='我的個人網站','clear draft did not restore defaults');
+ console.log('PASS student draft reload / Site Brief import / clear');
+}finally{await browser?.close();server.kill('SIGTERM');if(temp)await rm(temp,{recursive:true,force:true});}
