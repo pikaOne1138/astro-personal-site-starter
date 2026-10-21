@@ -1477,6 +1477,16 @@
         "status": "NOT TESTED",
         "evidence": ""
       }
+    },
+    ".ai/url-to-frontend-replica/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/url-to-frontend-replica/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
     }
   },
   "recipes": {
