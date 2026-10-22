@@ -425,3 +425,11 @@
 - [建站／維護／導航／復刻 7 Skills](PHASE2-SKILLS-OPERATIONS.md)：**79 行**原文規範詞候選，逐行可回溯，待拆獨立義務。
 - 加上已進行的 4 Skills P0，現在 **19 / 19 個主 Skill 均有 frozen 來源、重點規範與交叉比對索引**；但不是 19 個 Skill 的全部規範已原子化。正則掃描非語意驗證，不命中的句子仍可能有規範性要求。
 - 後續須處理 `.ai/**/references`、`checklists`、`recipes` 內的額外規範、同義去重、衝突和人工核准；第三、四階段仍 BLOCKED。
+
+## 第二階段續作｜Skill references/checklists/recipes 掃描
+
+已新增 [來源覆蓋清單](PHASE2-REFERENCES-COVERAGE.md)：附屬文字檔共 90 份，**42 份完成關鍵字候選逐行取證**；另外 48 份設計範例、研究原文、source snapshot 等尚未做規範語義審核（全部原文保留）。
+
+分批依據：[A 內容發布／諮詢／部署](PHASE2-REFERENCES-A.md) 10 份 73 行候選；[B Editorial 配方／檢查表](PHASE2-REFERENCES-B.md) 14 份 52 行候選；[C1 動效／UI](PHASE2-REFERENCES-C1.md) 11 份 45 行候選；[C2 UI references](PHASE2-REFERENCES-C2.md) 8 份 29 行候選。**注意 A–C 加總是 43 個文件列席次，與唯一 42 份不一致時應以 manifest 唯一路徑去重；不得將列席次冒稱獨立文件或計入 100% 完成率。**
+
+尚須依語義判斷有無未命中關鍵詞的義務、補分解子條款、衝突比對與人為審核。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
