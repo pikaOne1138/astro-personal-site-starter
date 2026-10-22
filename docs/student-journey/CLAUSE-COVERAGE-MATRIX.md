@@ -473,3 +473,7 @@
 [PHASE2-ATOMIC-P0-SUBCLAUSES.md](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 現為 **41 個唯一候選 ID**（先前 31 + 補列 10）。新增每條含凍結來源 SHA/行號；逐條標記 `DIRECT` 或 `DIRECT_COMPOSITE`，後者仍需拆出所有附帶條件。來源不變、候選尚未經人工語義核准。
 
 **注意**：本文件若保留 31 項、30 處定位或 10 項 `GAP_NOT_MAPPED` 數字，均屬此次修補之前的稽核快照，**不得當作最新狀態**。重新產生完整 41 項的雙向語義映射尚待執行，不能宣稱條款零遺失已通過。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜41 項候選來源雙向索引 v3
+
+[PHASE2-ATOMIC-BIDIRECTIONAL-V3.md](PHASE2-ATOMIC-BIDIRECTIONAL-V3.md) 已重新生成 41 項候選 → 31 個唯一原文行定位及其反向表；其中 13 項列為 PARTIAL（含適用範圍或複合義務疑義），其餘屬 DIRECT_CANDIDATE（僅來源存在且待人工逐筆判定），**沒有條款獲正式語義 PASS**。仍缺每一個 ID × 來源行支持程度、複合義務完全拆分與全量規範母數。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
