@@ -122,3 +122,7 @@
 ## 第二階段續作｜41 項候選來源雙向索引 v3
 
 [PHASE2-ATOMIC-BIDIRECTIONAL-V3.md](PHASE2-ATOMIC-BIDIRECTIONAL-V3.md) 已重新生成 41 項候選 → 31 個唯一原文行定位及其反向表；其中 13 項列為 PARTIAL（含適用範圍或複合義務疑義），其餘屬 DIRECT_CANDIDATE（僅來源存在且待人工逐筆判定），**沒有條款獲正式語義 PASS**。仍缺每一個 ID × 來源行支持程度、複合義務完全拆分與全量規範母數。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜13 項 PARTIAL 的複合條款拆解
+
+[PHASE2-ATOMIC-PARTIAL-SPLIT.md](PHASE2-ATOMIC-PARTIAL-SPLIT.md) 已針對 P0 v3 的 **13 項 PARTIAL 父主題**，建立 **31 個子候選**，分別保留凍結來源行及適用範圍。**父與子不可相加成 72 條**，也不能認定原子語義 PASS；後續仍需對每個 ID × 來源行做逐筆 DIRECT/PARTIAL/UNSUPPORTED 判讀。原始來源一律保留。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
