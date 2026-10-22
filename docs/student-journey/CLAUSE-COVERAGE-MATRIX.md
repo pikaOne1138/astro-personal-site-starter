@@ -445,3 +445,9 @@
 [PHASE2-ATOMIC-CROSSFILE-LEDGER.md](PHASE2-ATOMIC-CROSSFILE-LEDGER.md) 先建立 **10 組**可追溯的跨文件風險主題 ID（發布授權、Preview/CI、隱私/憑證、真實內容、索引、RWD QA）。每組列凍結 Blob SHA、行號與例外事項，原文仍保留原位。
 
 **10 組是主題分類，不是十條已獲核准的完整原子規範，更不是全量覆蓋率。** 同一主題多來源不得未經人工語義確認便刪去任何一處安全限制。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 主題拆成 31 項候選子義務
+
+[PHASE2-ATOMIC-P0-SUBCLAUSES.md](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 將先前 10 組跨文件主題拆為 **31 項**較細的義務候選，每項都有 frozen main 的可點擊來源行，並另列 Blob SHA；範圍包括發布授權、Preview、獨立學員 CI、隱私憑證、內容真實性、搜尋索引與驗收尺寸。
+
+此 31 項尚未人工確認來源與子義務完全等價，未建構全量 source→atomic／atomic→source 逆向覆蓋，也尚未納入其他版本差異。**不能視為 31 項通過或 100% 覆蓋。** Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
