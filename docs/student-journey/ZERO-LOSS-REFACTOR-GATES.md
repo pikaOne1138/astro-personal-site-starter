@@ -166,3 +166,7 @@
 ## 第二階段續作｜27 未映射來源行細分完成
 
 [PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 已於原檔補登 **27 行來源 → 45 個子候選工作 ID**（規範 18、流程 21、架構邊界 4、條件式程序 1、驗收條件 1），每個都連到凍結原文並附 8 組同義／部分交疊的交叉比對候選。此分類為工作判讀，不是經人為驗收的義務，也尚未連入真正唯一規範總分母；不可與 P0 的 82 個工作代表加總。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## Phase 2｜三份核心 Skill 逐行來源盤點 B
+
+已新增 [PHASE2-CORE-SKILLS-FULL-LINE-B.md](PHASE2-CORE-SKILLS-FULL-LINE-B.md)，核對凍結版本內容發布、組站、部署三份 Skill，共 207 行，103 行含規範或操作程序。全數附原始檔案行號；但複合義務尚未逐一建立唯一 ID 或完成跨文件語義驗收。Phase 2 未完成；Phase 3、4 保持阻擋。
