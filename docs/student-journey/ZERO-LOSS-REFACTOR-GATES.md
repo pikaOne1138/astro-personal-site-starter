@@ -185,3 +185,8 @@
 ## Phase 2｜Core Skills B Atomic Batch 3
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH3.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH3.md) 記錄 frozen source 10 個新來源行與 29 個工作候選，連同前兩批暫計 20/103 行、69 個候選；尚有 83 行未初步原子化。候選尚未跨 P0 canonical/alias 與 A 批完成語義去重，也不是最終獨立規範數。Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。原始 Skills 不變，不 Merge。
+
+
+## Phase 2｜Core Skills B 跨批次語義去重初判
+
+新增 [PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md](PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md)：核實 Batch1–3 合計 20 個不重複來源行、69 個暫定工作候選，開始與 P0 canonical/alias 逐組比對；明確區分 SAME_CANDIDATE、PARTIAL_OVERLAP、DISTINCT 與不存在 ID 的反例。這是語義初判、非已裁決去重；不能把工作候選數直接加總或扣除成獨立規範母數。餘 83/103 行待初步拆分。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
