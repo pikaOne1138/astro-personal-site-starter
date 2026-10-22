@@ -82,3 +82,9 @@
 - [references coverage manifest](PHASE2-REFERENCES-COVERAGE.md) 列出 90 份附屬文件，已建立 42 份唯一來源之規範候選掃描，48 份尚未語義審核。
 - A/B/C1/C2 分批取證均保留原始路徑、Blob SHA、行號；掃描結果非完整義務集、亦非 100% 覆蓋。
 - 不因研究原文或程式碼快照數量多而刪除。第三、第四階段繼續鎖定。
+
+## 第二階段續作｜48 份剩餘附屬來源已分類
+
+[參考文件完整索引](PHASE2-REFERENCES-COVERAGE.md) 現已追蹤原先未做語義審核的 48 份文件：8 份案例特定設計決策、10 份十站逆向研究、2 份歷史稽核、9 份程式碼來源快照、19 份原始設計研究。分批證據：[Examples](PHASE2-SOURCES-EXAMPLES.md)、[Site Analysis](PHASE2-SOURCES-SITE-ANALYSIS.md)、[Snapshots](PHASE2-SOURCES-SNAPSHOTS.md)、[Research A](PHASE2-SOURCES-RESEARCH-A.md)、[Research B](PHASE2-SOURCES-RESEARCH-B.md)。
+
+**48/48 代表來源保全與分類已完成，不代表語義條款驗收完成**。原始檔案未動，不刪研究資料，也不把案例推論當正式規格；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
