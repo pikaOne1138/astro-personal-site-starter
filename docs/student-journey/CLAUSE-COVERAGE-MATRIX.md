@@ -550,3 +550,8 @@
 ## 第二階段｜Core Skills B Batch 4 與跨平台複合候選校正
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH4.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH4.md)：新增 11 個不重複 Frozen Source 行與 26 個暫定子候選，累計 **31/103 行、95 個工作候選**，還有 72 行待拆分。Batch1 的 `B1-DEP31-04` 現明確保留父 ID 並加 `-CF`、`-GH` 條件子欄位（不得重複加總），避免把 Cloudflare Preview 索引與 GitHub Pages Actions Variables 混成同一設定。95 不是唯一規範母數；P0/A 批語義去重和來源反向核查未完成。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 未修改、不 Merge、不部署。
+
+
+## Phase 2｜Batch 5 與來源行計數校正
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH5.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH5.md) 補充 8 個 Frozen 來源行與 24 個暫定子候選；反向查核前四批發現 `DEP L43` 在 Batch2 及 Batch4 重複、且 Batch3 的實際來源行為 11 行，故先前 **31/103** 快照不準確。現依來源行去重集合：**40/103 行**已有工作子 ID，**63 行待拆**；共 119 筆工作候選列項，仍混合程序、限制、驗收與語義重疊，**不是唯一規範總數，也不是 Phase 2 PASS**。原始 Skill 未動，Phase 3/4 BLOCKED。
