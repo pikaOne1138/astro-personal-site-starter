@@ -433,3 +433,9 @@
 分批依據：[A 內容發布／諮詢／部署](PHASE2-REFERENCES-A.md) 10 份 73 行候選；[B Editorial 配方／檢查表](PHASE2-REFERENCES-B.md) 14 份 52 行候選；[C1 動效／UI](PHASE2-REFERENCES-C1.md) 11 份 45 行候選；[C2 UI references](PHASE2-REFERENCES-C2.md) 8 份 29 行候選。**校正：C1 的 11 個列席包含 `astro-motion-craft/SKILL.md` 主檔（已在 19 Skills 組審），因此 C1 唯一附屬檔為 10 份，A/B/C1/C2 共 42 份唯一附屬檔。不可把主 Skill 雙重計入 references 覆蓋率。**
 
 尚須依語義判斷有無未命中關鍵詞的義務、補分解子條款、衝突比對與人為審核。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜48 份剩餘附屬來源已分類
+
+[參考文件完整索引](PHASE2-REFERENCES-COVERAGE.md) 現已追蹤原先未做語義審核的 48 份文件：8 份案例特定設計決策、10 份十站逆向研究、2 份歷史稽核、9 份程式碼來源快照、19 份原始設計研究。分批證據：[Examples](PHASE2-SOURCES-EXAMPLES.md)、[Site Analysis](PHASE2-SOURCES-SITE-ANALYSIS.md)、[Snapshots](PHASE2-SOURCES-SNAPSHOTS.md)、[Research A](PHASE2-SOURCES-RESEARCH-A.md)、[Research B](PHASE2-SOURCES-RESEARCH-B.md)。
+
+**48/48 代表來源保全與分類已完成，不代表語義條款驗收完成**。原始檔案未動，不刪研究資料，也不把案例推論當正式規格；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
