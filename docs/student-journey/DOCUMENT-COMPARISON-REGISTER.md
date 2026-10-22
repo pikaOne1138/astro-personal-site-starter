@@ -275,3 +275,20 @@ Skill 交疊判斷：`astro-pr-preview` 管 PR／Preview／人為 Merge gate，`
 | `.ai/astro-editorial-layout-design/references/site-analysis/10-collective.md` | # 10 共好工作室 `cg-`（助人／團體）; ## [OBS] 原始碼事實; ## [MEAS] | 971b0846f68f |
 
 Editorial 判斷：Hero／Sections／Lists／Rhythm／CTA recipes 屬構圖參考；visual-qa/scoring/diversity-check 屬設計檢查方法；site-analysis 和 examples 主要是研究及設計決策證據，不是管理 SSOT。相似的「品質」字詞不等於同內容重複，需要保留技術特定檢查。
+
+## Batch 07A｜其他 AI references 1（已讀）
+
+| 檔案 | 原文標題／內容起點 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/SHARED-DESIGN-HANDOFF.md` | # Task 4｜跨 Skill 設計決策交接契約; ## 分工; ## 每次階段交接最小資訊 | b4483fc6939a |
+| `.ai/astro-content-publishing/references/article-authoring.md` | # Article authoring reference; ## 第一個小節 | a07954e06bc1 |
+| `.ai/astro-content-publishing/references/seo-and-release-checklist.md` | # SEO, content and release checklist; ## Before publication; ## Validation | 6f67b332aacd |
+| `.ai/astro-design-consultation/references/conversation-playbook.md` | # Conversation Playbook｜零程式學員設計對話; ## 主持原則; ## A 開場例 | 995e4b8237a9 |
+| `.ai/astro-design-consultation/references/cross-model-review-v3.md` | # PR #49｜第三輪跨模型對話測試（Workers AI 實際推論）; ## 核心觀察; ## 實際輸出例（有鑑別力） | 014cc186904f |
+| `.ai/astro-design-consultation/references/design-brief-contract.md` | # ATP Consultation Design Brief｜人類可讀規格; ## 必填段落（以 Markdown）; ## 正式交付品質門檻 | 361af99ba82c |
+| `.ai/astro-design-consultation/references/dialogue-quality-retest-v2.md` | # PR49｜第二輪：新版 Skill 情境回覆再驗證（可追溯紀錄）; ## 評分規則; ## K1｜生活短記，網站像筆記本 | 1fff66c0990a |
+| `.ai/astro-design-consultation/references/dialogue-quality-review.md` | # PR49｜對話品質驗證報告（第一輪）; ## 評估尺度; ## 13 個情境的示範回覆與桌面審查 | 26337b958573 |
+| `.ai/astro-design-consultation/references/scenario-tests.md` | # Scenario-based Evaluation｜P2 Skill 人工評估情境; ## 日後的評測方法 | 7c9080c3e790 |
+| `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` | # Layout source audit｜PR #20; ## Manus 原始程式移植：10 / 10; ## 不可避免的路徑調整 | a21eec142f33 |
+| `.ai/astro-motion-craft/library/README.md` | # 特效參考庫｜Astro Motion Reference Library; ## 來源與資料層級; ## 從哪裡開始 | cf3a2df89633 |
+| `.ai/astro-motion-craft/library/effect-catalog.md` | # 動效型錄：Manus v2 × 現有 Astro 元件; ## PR #19：實作狀態補充（即時狀態以程式檔案為準） | a27fa515c98a |
