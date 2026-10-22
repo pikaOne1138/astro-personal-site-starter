@@ -430,6 +430,6 @@
 
 已新增 [來源覆蓋清單](PHASE2-REFERENCES-COVERAGE.md)：附屬文字檔共 90 份，**42 份完成關鍵字候選逐行取證**；另外 48 份設計範例、研究原文、source snapshot 等尚未做規範語義審核（全部原文保留）。
 
-分批依據：[A 內容發布／諮詢／部署](PHASE2-REFERENCES-A.md) 10 份 73 行候選；[B Editorial 配方／檢查表](PHASE2-REFERENCES-B.md) 14 份 52 行候選；[C1 動效／UI](PHASE2-REFERENCES-C1.md) 11 份 45 行候選；[C2 UI references](PHASE2-REFERENCES-C2.md) 8 份 29 行候選。**注意 A–C 加總是 43 個文件列席次，與唯一 42 份不一致時應以 manifest 唯一路徑去重；不得將列席次冒稱獨立文件或計入 100% 完成率。**
+分批依據：[A 內容發布／諮詢／部署](PHASE2-REFERENCES-A.md) 10 份 73 行候選；[B Editorial 配方／檢查表](PHASE2-REFERENCES-B.md) 14 份 52 行候選；[C1 動效／UI](PHASE2-REFERENCES-C1.md) 11 份 45 行候選；[C2 UI references](PHASE2-REFERENCES-C2.md) 8 份 29 行候選。**校正：C1 的 11 個列席包含 `astro-motion-craft/SKILL.md` 主檔（已在 19 Skills 組審），因此 C1 唯一附屬檔為 10 份，A/B/C1/C2 共 42 份唯一附屬檔。不可把主 Skill 雙重計入 references 覆蓋率。**
 
 尚須依語義判斷有無未命中關鍵詞的義務、補分解子條款、衝突比對與人為審核。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
