@@ -390,3 +390,10 @@
 已新增 [PHASE2-CLAUSE-REVIEW-BATCH1.md](PHASE2-CLAUSE-REVIEW-BATCH1.md)：品質契約、PR59、PR56、三道品質關卡合計 62 條**選定原文行**，另抽出 30 個不得省略的細節提醒，及五組跨文件差異／一致性判斷。這份是本矩陣的延伸證據，不是第二個 SSOT。
 
 **不將「62 行」或「30 個提醒」視為已逐項完成的全量條款。** 目前沒有規範性子句的完整分母，所有跨文檔移轉標為 `PENDING_CROSSCHECK`；來源文件仍保留原狀。Phase 2 進行中，Phase 3/4 BLOCKED。
+
+
+## 第二階段續作｜資料包條款批次 2（2026-10-22）
+
+[PHASE2-CLAUSE-REVIEW-BATCH2.md](PHASE2-CLAUSE-REVIEW-BATCH2.md) 固定 main 基線 8 份資料包／Brief 規範文件共 **151 行非空非標題原文**，附檔案 SHA、行號與原文字面，特別追蹤 12+13 Layout 成熟度、Section Patterns 插槽、媒體授權、雙 Brief 契約與建站工具權限。
+
+所有列目前為 `NEEDS_SUBCLAUSE_REVIEW`，未完成複合句拆解、JSON 欄位映射或人工核准。這 151 行**不是 151 個已完成規範**；與先前批次可能有重複意義，也不得直接加總為唯一條款分母。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
