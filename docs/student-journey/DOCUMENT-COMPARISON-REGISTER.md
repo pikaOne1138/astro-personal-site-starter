@@ -113,3 +113,22 @@
 | `docs/student-builder-pack/MEDIA-REPLACEMENT.md` | `5b5d9f200801e88235465701339c515189f11bef` |
 | `docs/student-builder-pack/OWNED-MEDIA.md` | `8ca0a4b51be64469d640bec52f89c0ac63695bf9` |
 | `docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md` | `d63f96a0652559bdcdc04de5049d018cec8dd4c6` |
+
+## Batch 04A｜Registry、部署、學員流程與技術驗收文件
+
+| 路徑 | 原文標題／內容章節 | Blob SHA 前綴 |
+|---|---|---|
+| `COMPONENTS.md` | # Astro Blocks · V2；## 版本邊界；## 元件展示分類原則；## 元件名錄 | ef5079318581 |
+| `docs/astro-skills-end-to-end-validation-v1.md` | # Astro 架站工作坊｜十套 AI Skills 端到端驗證手冊 v1.0；## 0. 驗證要回答的三個問題；## 1. 十套 Skills 與必須驗證的責任；### Skill 交接順序 | 6083f3088b56 |
+| `docs/brief-handoff/README.md` | # ATP｜Design Brief → Starter 交接規則（Task 5＋6）；## 目的與邊界；## 兩者映射；## AI 接手順序 | cf5da0ffa931 |
+| `docs/cloudflare-pages-deployment.md` | # Cloudflare Pages｜workshop default static deployment | e9f29e824872 |
+| `docs/cloudflare-workers-static-assets.md` | # Cloudflare Workers Static Assets deployment；## Cloudflare Workers Builds (connected GitHub repository)；## Smoke checks | 562a3d73fc6d |
+| `docs/github-pr-preview-setup.md` | # GitHub-only Astro PR Preview — 一次設定，後續自動預覽；## 目標；## Pipeline；## Initial setup (maintainer) | 306c75684642 |
+| `docs/pr-preview-reconciliation.md` | # PR 預覽長期同步維護；## 安全界線；## 故障排查；## 驗收案例 | dff6a2e6f07b |
+| `docs/pr-preview-smoke-test.md` | # PR Preview activation | 3c923c756e11 |
+| `docs/student-site-building-flow-with-section-patterns.md` | # 學員架站流程｜完整建站與測試流程（2026-10-09）；## 給學員看的說明；## 發布前後要確認的事；## 外部配色資源（放在規劃器 Step 02 底部） | 0741c9aa67f6 |
+| `docs/template-gallery/ACCEPTANCE-25.md` | # 25 款 Layout 縮圖盤點與驗收；## 原始資產核對；## 頁面整合；## 驗收狀態 | 822690afd1ca |
+| `docs/template-gallery/README.md` | # Layout thumbnail capture；## Reproduce；# In another terminal:；# If capture created files after build, copy them before browser QA: | 01ddef8b4267 |
+| `docs/quality/PROPS-URL-CONTRACT-TARGETS.md` | # QA v2.0｜Props 契約與 URL 護欄定點回歸；## 目前確認的風險；## 必要負向注入；## 證據分層 | 4acdcbf65a7e |
+
+交疊觀察：Cloudflare Pages/Workers、GitHub PR Preview、Smoke/Reconciliation 四類文件均涉及部署，但分別處理不同平台與故障排除；必須與 astro-pr-preview / astro-starter-deploy Skills 指向同一套核准與 Preview 證據規則。ACCEPTANCE-25 是版型庫專項驗收，不能取代學員七關驗收。COMPONENTS 是元件目錄而非專案進度 SSOT。
