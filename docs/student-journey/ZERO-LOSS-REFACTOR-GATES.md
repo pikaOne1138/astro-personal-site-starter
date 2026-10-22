@@ -69,3 +69,10 @@
 - [PHASE2-SKILLS-ATOMIC-P0.md](PHASE2-SKILLS-ATOMIC-P0.md)：4 份入口／發布 Skills，51 組可回溯的子條款候選，已區分 A/B/C、GitHub Build、實際 Preview、Cloudflare 初始化與索引授權。
 - 尚須完整分解 19 Skills 中剩餘條款及 references，並完成每條跨文件語義比對。**51 不是總分母或核准通過數**。
 - 第三、第四階段持續 BLOCKED。
+
+## 第二階段續作｜15 Skills 全文候選掃描
+
+- [8 個設計／內容 Skills](PHASE2-SKILLS-DESIGN-CONTENT.md)：137 行候選。
+- [7 個組裝／日常操作 Skills](PHASE2-SKILLS-OPERATIONS.md)：79 行候選。
+- 不得把 **216 個關鍵字命中來源行**當 216 項完整子條款；沒有命中的原文也不能視為無義務。第二階段的 Skill 主文件已全數建立來源清單，references 未全審。
+- Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。保留全部原文與 Git SHA。
