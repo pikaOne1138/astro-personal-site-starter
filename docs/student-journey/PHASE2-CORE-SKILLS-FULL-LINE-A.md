@@ -118,3 +118,81 @@
 - **27 行**暫列 `NEW_SCOPE_CANDIDATE`，表示本輪尚未建立 P0 同義連結，**不是 27 條獨立新規範**。
 - 此批 74 個義務／步驟候選尚缺逐項 ID × 來源行支持度、是否規範或純流程的正式判定。
 - 禁止將 74 個候選加上 P0 的 82 個工作代表當成最終分母。
+
+## 第二階段｜27 個尚未映射 P0 的來源行：子候選分類登錄
+
+這份表仍附屬於主矩陣。逐個抽取先前已記錄的 `S行.序號` 候選、保留 Frozen 原文定位。**共 45 個候選，不等於新增 45 條獨立政策。** 類型標註是首次語義工作判讀，且部分仍含多個條件，需要後續再次細化。
+
+| 新候選工作 ID | 來源行子要求摘要 | 暫定型態 | Frozen 原文 | 審核 |
+|---|---|---|---|---|
+| `ENTRY-L8-1` | 已知需求不得重複訪談；只有路線不明時問一題 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L8](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L8) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L9-1` | A 路線要求來源網站為本人所有或已獲授權 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L9](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L9) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L9-2` | A 讀復刻 Skill；不強迫 Layout/Site Brief | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L9](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L9) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L10-1` | B 可選 Starter 產出 Site Brief 並依 Onboarding/Assembly | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L10](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L10) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L10-2` | Prototype 不得當 Ready | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L10](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L10) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L11-1` | C 不以 Site Brief JSON 作為訪談與草稿前置條件 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L11](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L11) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L11-2` | 只有使用 Exporter 才需合法 JSON | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L11](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L11) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L14-1` | ATP 優先兩大客群；其他類型須揭露非 Ready | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L14](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L14) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L14-2` | 不得擴張成 CRM/會員/金流/醫療後台 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L14](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L14) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L17-1` | 長期結構化文章應保留/優先 Content Collections | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L17](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L17) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L17-2` | Pagefind/SEO/RSS 按實際需求配置 | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L17](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L17) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L19-1` | 變更前先讀 AGENTS/PROJECT/工作樹/平台 | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L19](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L19) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L19-2` | Skills 按需讀，非全部必修 | OPERATIONAL | [.ai/astro-site-entry/SKILL.md:L19](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L19) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L21-1` | 僅改學員自己的專案，不要求 Fork 教師 Repo | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L21](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L21) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L24-1` | 入口 Skill 僅分流，不複製復刻/Export/部署指令 | ARCHITECTURE_BOUNDARY | [.ai/astro-site-entry/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L24) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L24-2` | C 不受 B 的 schema 約束 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L24) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ENTRY-L24-3` | 換路線應保留已確認內容、原檔且不重問 | NORMATIVE | [.ai/astro-site-entry/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L24) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L7-1` | 定位為自然語言入口，非第二套 Starter 生成器 | ARCHITECTURE_BOUNDARY | [.ai/astro-site-from-zero/SKILL.md:L7](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L7) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L10-1` | 先檢查工作區/Repo/未提交變動/工具能力 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L10](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L10) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L10-2` | 有真實執行能力才 Build Mode，否則 Guided Mode | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L10](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L10) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L10-3` | Guided 一步一動，不虛報 | NORMATIVE | [.ai/astro-site-from-zero/SKILL.md:L10](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L10) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L13-1` | 使用已提供資訊，不重問 | NORMATIVE | [.ai/astro-site-from-zero/SKILL.md:L13](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L13) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L13-2` | 一次一個最重要問題，可跳過/回答不知道 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L13](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L13) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L14-1` | 資訊足夠應確認短計畫與未知事項 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L14](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L14) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L14-2` | 完整訪談及 /starter/ 不得成為門檻 | NORMATIVE | [.ai/astro-site-from-zero/SKILL.md:L14](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L14) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L15-1` | Markdown 摘要可開始；不強制 JSON | NORMATIVE | [.ai/astro-site-from-zero/SKILL.md:L15](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L15) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L15-2` | 只有使用 Exporter 才轉為合法 Site Brief JSON | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L15](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L15) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L16-1` | 設計 Skill 按需讀，不強迫逐一挑選 Blocks/Effects | NORMATIVE | [.ai/astro-site-from-zero/SKILL.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L16) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L16-2` | 真實有權素材優先，缺少標待設定 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L16) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L17-1` | Astro 靜態可維護為預設，避免不必要的 SSR/React/CMS/DB | ARCHITECTURE_BOUNDARY | [.ai/astro-site-from-zero/SKILL.md:L17](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L17) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L17-2` | 長期內容網站優先 Content Collections；簡單單頁可不用 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L17](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L17) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L22-1` | 兩大類有設計起點，其他類告知沒有 Ready Starter | ARCHITECTURE_BOUNDARY | [.ai/astro-site-from-zero/SKILL.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L22) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `ZERO-L22-2` | 不暗示含 CRM/會員/付款等系統 | OPERATIONAL | [.ai/astro-site-from-zero/SKILL.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-from-zero/SKILL.md#L22) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L8-1` | 完成目的/受眾及 Layout/Pattern 選擇後、實作內容前執行；與三 Skill 協作 | CONDITIONAL_PROCEDURE | [.ai/astro-content-readiness/SKILL.md:L8](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L8) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L11-1` | 使用學生 Site Brief 與實際提供的內容 | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L11](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L11) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L12-1` | 查 Section Pattern Registry 的 required/optional/safety/composition | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L12](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L12) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L13-1` | 查選定 Layout 及 Blocks Registry | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L13](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L13) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L14-1` | 有文章時讀 Collection Schema | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L14](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L14) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L17-1` | 列所有已啟用頁、Pattern ID/頁面/位置；區分 demo 與正式 | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L17](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L17) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L18-1` | required 轉白話清單 | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L18) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L18-2` | optional 一律保持選填 | NORMATIVE | [.ai/astro-content-readiness/SKILL.md:L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L18) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L22-1` | 菜單及主要 CTA 須指向已生成的真頁 | ACCEPTANCE_CRITERION | [.ai/astro-content-readiness/SKILL.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L22) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L23-1` | Assembly 交接包含 patternId/targetPage/fieldsReady/missingFields/decision/evidence | OPERATIONAL | [.ai/astro-content-readiness/SKILL.md:L23](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L23) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L24-1` | 選填區塊未就緒不可卡全站 | NORMATIVE | [.ai/astro-content-readiness/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L24) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+| `CONTENT-L24-2` | 最小有效版優先於假完整 | NORMATIVE | [.ai/astro-content-readiness/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-readiness/SKILL.md#L24) | SOURCE_VERIFIED_SEMANTICS_PENDING |
+
+### 跨來源同義與適用範圍候選
+
+| 左側 | 右側 | 交叉關係 | 避免誤刪 |
+|---|---|---|---|
+| `ENTRY-L8-1` | `ZERO-L13-1` | PARTIAL_OVERLAP | 兩路線都避免重問，但 ENTRY 另有分流不明才一題的適用條件 |
+| `ENTRY-L11-1` | `ZERO-L15-1` | SAME_CORE_CONDITIONAL | C 路線開始不需 JSON；ZERO 明確允許 Markdown 摘要 |
+| `ENTRY-L11-2` | `ZERO-L15-2` | SAME_CORE_CONDITIONAL | 僅採用 Exporter 才需映射合法 JSON |
+| `ENTRY-L14-1` | `ZERO-L22-1` | SAME_CORE_CONDITIONAL | 兩大客群有起點；其他類型須告知沒有 Ready Starter |
+| `ENTRY-L14-2` | `ZERO-L22-2` | SAME_CORE_CONDITIONAL | 不誇稱 SaaS/金流/會員等範圍，保留各源完整列舉 |
+| `ENTRY-L17-1` | `ZERO-L17-2` | SCOPE_OVERLAP | 長期內容網站用 Collections；極小單頁例外只明載 ZERO |
+| `ENTRY-L19-2` | `ZERO-L16-1` | SCOPE_OVERLAP | Skill 按需讀；Design 選項不得強制學員逐項操作 |
+| `ENTRY-L24-2` | `ENTRY-L11-1` | RELATED_NOT_DUPLICATE | C 不受 B schema 綁定為設計護欄，與訪談不強制 JSON 相關 |
+
+### 工作統計（不是整體覆蓋率）
+
+- `NORMATIVE`：18
+- `OPERATIONAL`：21
+- `ARCHITECTURE_BOUNDARY`：4
+- `CONDITIONAL_PROCEDURE`：1
+- `ACCEPTANCE_CRITERION`：1
+
+- 所有 27 個來源行均至少一個新候選工作 ID；但候選內容未與原文作完整人工語義簽核。
+- 有些操作流程雖不構成全域禁令，仍須在路線程序中保存；不能刪作「非規範」。
+- 以上跨文件同義候選僅先行登記，**不得自行折減全庫唯一母數**。
+- Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
