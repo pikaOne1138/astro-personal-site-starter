@@ -461,3 +461,9 @@
 ## 第二階段續作｜P0 六項問題的證據補正
 
 [候選子條款表](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 已修正錯引與補充來源，[雙向稽核](PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md) 保留原始六項問題作歷史紀錄。**這不是人工語義審核通過**；下一輪需依修正版重算 source→ID 逆向映射，並補原文其他子義務。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 雙向索引 v2
+
+[PHASE2-ATOMIC-BIDIRECTIONAL-V2.md](PHASE2-ATOMIC-BIDIRECTIONAL-V2.md) 已針對補正後 31 項候選重新建立 source→候選反向索引：**31/31 條有至少一個來源連結，涉及 30 個唯一來源行定位**。這僅是 URL/定位完整性，不是 31/31 語義驗收。逐字查核另找出至少 **10 個**尚未獨立建成候選的義務與例外（含刪舊 Preview 授權、第三方快取、QA 證據、索引重建與學員 Repo 目標證據）。舊的 26 定位索引仍是歷史快照，不可當最新版。
+
+需繼續逐項標記 DIRECT/PARTIAL/UNSUPPORTED、建立原子條款總分母與 PR61/69 版本差異。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
