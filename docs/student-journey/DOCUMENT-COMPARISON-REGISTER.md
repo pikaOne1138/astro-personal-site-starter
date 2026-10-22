@@ -210,3 +210,19 @@ publishedAt: 2026-10-14 | 04fcb316816dbc79b65fc4ddd875ad69c57c6956 |
 | `.ai/astro-navigation-tree-test/SKILL.md` | # Astro Navigation Tree Test｜導航可理解性測試；## When to run；## Distinguish two evaluations；## Procedure | 64c4597eb034fcaac226e9bd18a188683b311ea5 |
 | `.ai/astro-page-management/SKILL.md` | # Astro Page Management｜既有網站的頁面管理；## 適用時機；## 核心原則：一個導航來源，整站一致；## 工作流程 A｜新增頁面 | 64878b45861ab912d917e20d4bc8be92bb64adc8 |
 | `.ai/astro-pr-preview/SKILL.md` | # Astro PR Preview & Safe Release｜學員雙平台預覽與安全發布；## 目的；## Step 0｜先辨識環境，不能猜；## 共同安全流程（兩平台皆適用） | 411c091674981f0f600b4154df085ad3cb9d8ca7 |
+
+## Batch 05B｜Skill 主文件 2/2（已讀）
+
+| 檔名 | 內容章節 | Blob SHA |
+|---|---|---|
+| `.ai/astro-section-pattern-craft/SKILL.md` | # Astro Section Pattern Craft｜區段組合樣板；## 入口與定位；## 選擇流程；## V1 模式 | 4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3 |
+| `.ai/astro-site-assembly/SKILL.md` | # Astro Site Assembly｜把學員規劃變成獨立網站；## Role；## Inputs；## Generator — phase 1 | d7d78ef65952a00ca5704153b672830e4d28386e |
+| `.ai/astro-site-entry/SKILL.md` | # ATP 建站總入口｜三條路，單一維護護欄；## 先判斷需求，不先叫學員填表；## 主打客群與能力界線；## 三條路共用的交付基礎 | b141f9c57e7810a9d4b39d161ec96973504e84db |
+| `.ai/astro-site-from-zero/SKILL.md` | # Astro Site from Zero｜直接對話建站；## 模式先行；## 學員對話流程；## 定位 | 8224afcff166a8864326f2eff33cd8f718706eee |
+| `.ai/astro-site-maintenance/SKILL.md` | # Astro Site Maintenance｜更新、備份與復原；## 用途；## 重要觀念；## 工作流程 A｜日常安全更新 | e10010c421b143a26bd5d48f9ad4e2eee90159ab |
+| `.ai/astro-starter-deploy/SKILL.md` | # Astro Starter Deploy｜獨立網站部署；## 目的與界線；## 開始前必讀；## A｜GitHub Pages（學員可選） | 0354681c6c6217310d5d858d3bddbdffe3911f49 |
+| `.ai/astro-starter-onboarding/SKILL.md` | # Astro Starter Onboarding；## Trigger；## Beginner workflow；## 下一步：匯出獨立 Starter | 54dad8192d899b42b3e495280e916838fe0ebdd6 |
+| `.ai/astro-ui-craft/SKILL.md` | # Astro UI Craft；## Core model；## Scope guardrail；## Evidence hierarchy | 70ceabb3ad04551d544133854667e7df7bbf659f |
+| `.ai/url-to-frontend-replica/SKILL.md` | # URL-to-Frontend Replica｜既有網站的授權前端重建；## 0. 先辨識權利與環境；## 1. 發現完整頁面與範圍；## 2. 觀察設計、內容、素材與互動 | 858bc69db2ba46d3074a2e10d9f9d8390f668b3b |
+
+Skill 交疊判斷：`astro-pr-preview` 管 PR／Preview／人為 Merge gate，`astro-starter-deploy` 管首次平台設定，`astro-launch-health-check` 管 Production 上線後健康檢查；這是三個時間點，不能因為都出現部署而合成巨型 Skill。`astro-site-entry` 選 A/B/C 路線；`astro-starter-onboarding` 規劃輸入；`astro-site-assembly` 組裝；`astro-site-from-zero` 直接訪談組站；`astro-site-maintenance` 管既有站變更與復原。Layout、Editorial、UI、Motion、Section Pattern 同理保持專職，重複的共通安全規則由上位 AGENTS 與有效 Skill 引用。
