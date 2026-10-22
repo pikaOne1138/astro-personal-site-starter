@@ -62,3 +62,9 @@
 - 最少 10 個新增缺口尚需建立正式子條款 ID。原文未改，舊缺陷紀錄保留。
 - 原本同一候選列引用多行，但每行可能只支持部分內容：還需判定單一義務對單一原文的 **DIRECT / PARTIAL / UNSUPPORTED** 關係。
 - 仍缺全量規範性句子的分母與活躍 PR 分支差異對照；Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 十項漏列規範已加入候選台帳
+
+[PHASE2-ATOMIC-P0-SUBCLAUSES.md](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 現為 **41 個唯一候選 ID**（先前 31 + 補列 10）。新增每條含凍結來源 SHA/行號；逐條標記 `DIRECT` 或 `DIRECT_COMPOSITE`，後者仍需拆出所有附帶條件。來源不變、候選尚未經人工語義核准。
+
+**注意**：本文件若保留 31 項、30 處定位或 10 項 `GAP_NOT_MAPPED` 數字，均屬此次修補之前的稽核快照，**不得當作最新狀態**。重新產生完整 41 項的雙向語義映射尚待執行，不能宣稱條款零遺失已通過。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
