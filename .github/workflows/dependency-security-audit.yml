@@ -18,12 +18,17 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - name: Generate audit-only lockfile when absent
         run: |
           if [ ! -f package-lock.json ]; then
             npm install --package-lock-only --ignore-scripts --no-audit --no-fund
           fi
+      - name: Install and build for Astro compatibility
+        run: |
+          npm install --no-audit --no-fund
+          npm run test:student-safety
+          npm run build
       - name: Audit dependencies (nonblocking until triage)
         run: |
           npm audit --json > npm-audit.json || true
