@@ -167,3 +167,31 @@
 | `docs/layout/TWELVE-ASSEMBLY-READINESS.md` | # Twelve layout assembly status (PR #46) | a2bd66fff5c701a58bd9b72179d3501835617763 |
 
 比較判斷：LAYOUT-DEFINITION-CONTRACT 是現行架構契約候選，CONTENT-INPUTS 是內容欄位契約；PR46 具日期之 Acceptance、QA、Media、Section、Handoff 屬時點工作證據，必須對照最新 definitions/Exporter 以判定是否仍適用；TWELVE-ASSEMBLY-READINESS 的十二款不能拿來代表 25 款整體驗收。
+
+## Batch 04D｜Art Direction PR47 文檔與 Fixtures（已讀）
+
+| 路徑 | 原文章節／Fixture 內容起點 | Blob SHA |
+|---|---|---|
+| `docs/art-direction/09-2-differentiation-audit.md` | # 09.2 Art Direction differentiation audit and parallel handoff；## Twelve-layout structure comparison；## Priority differentiation decisions [INF/NEW]；## Original extensions in this commit [NEW] | 1f46ff8eff7abcbc03b16687b09cb82e3831346d |
+| `docs/art-direction/INDEPENDENT-ADAPTERS.md` | # Subject Atlas／Practice Compass：獨立組裝與本輪邊界；## 已實作的入口；## 自有構圖與多頁內容；## Site Brief v1 的 additive 欄位 | 9b9bd564019f05428ed102cee26fd3159c1651f7 |
+| `docs/art-direction/PR47-BATCH-A-VISUAL-REVIEW.md` | # PR #47｜人工驗收批次 A：五組高相似結構（第一輪）；## 正式入口；## 審查方法與界線；## 實際發現與修正 | 40f3be2ba461076e0ab273c5ac70d9ad9c7e5589 |
+| `docs/art-direction/PR47-BATCH-BC-REVIEW.md` | # PR #47｜批次 B＋C 設計驗收／收斂報告；## 最新證據；## Batch B｜11 款成套多頁；## Batch C｜25 款整體 Art Direction | 775ced303039f4afbdcd9c06673264d8ccc33e88 |
+| `docs/art-direction/PR47-CONTENT-CONTRACT-11.md` | # PR #47｜第一階段：11 款 Layout 的可編輯內容契約；## 單一可編輯資料來源；### Knowledge：6 款；### Helper：5 款 | c9fdd062cbcb4b9b5e28fef5991d025f4488f6be |
+| `docs/art-direction/PR47-EXPANSION-MATRIX.md` | # PR #47｜25 款 Art Direction 擴充矩陣；## 數量邊界；## 原有 12 與研究方向；## 批次與每款交付規格 | 9e32965a4c1a55f11304fb716353120cdcb4315f |
+| `docs/art-direction/PR47-HANDOFF.md` | # PR #47 接手入口｜09.2 Art Direction + Template Expansion；## 批次 B／C 審查更新（2026-10-14）；## 第三階段最新交付（2026-10-14）；## 第二階段更新（2026-10-14） | ea7f46b2a505f44cbd30b954bf07ba625ea51714 |
+| `docs/art-direction/PR47-MANUAL-QA-CHECKLIST.md` | # PR #47｜人工 QA 驗收清單與合併保留項目；## A. 全站視覺設計（25 款首頁）；## B. 11 款新增多頁原型；## C. 助人者網站特有的內容真實性 | 7570a1c1c0ea8b62fe26c64c77c28e49454664f7 |
+| `docs/art-direction/PR47-P0-NEUTRAL-AUDIT.md` | # PR47 P0｜25 方向中性內容與結構差異稽核（source-only）；## A｜知識與內容：13 款；## B｜助人者與個人服務：12 款；## 需整改的結構碰撞（以優先順序排列） | bbed6617dc60de634d5d2f99b3e77b70b6071ba0 |
+| `docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md` | # PR #47｜P0 中性版型視覺與獨立 Adapter 驗證（2026-10-14）；## 可重現證據；## 實際截圖的五組定點人工檢視；## 獨立 Adapter 真實測試 | 1419617bba0e94eb5feded51f5f8843478dc2e66 |
+| `docs/art-direction/PR47-PHASE2-INTERIOR-QA.md` | # PR47 第二階段｜內頁四尺寸 QA 第一輪；## 實際執行證據；## 第一輪人工圖面抽查；## 本輪完成 / 尚待 | a4dc84270c20c092a378db8a789e348ef39d8fe4 |
+| `docs/art-direction/PR47-PHASE3-HANDOFF.md` | # PR #47 第三階段｜25 Layout Definition 與 PR #46 交接；## 單一可機器讀取的交付清單；## 給 PR46 實作的契約交接；## 驗收證據（現有，不得外推） | 3b7a2a37bfae483a9ef9d37b2ceb6d699aeb87c3 |
+| `docs/art-direction/fixtures/content/articles/legacy-draft.md` | ---
+title: '不得公開的舊格式測試稿'
+description: 'QA 草稿。'
+publishedAt: 2026-10-14 | f4e968a3737ae4cff9065b7e5d6cbf9da9880c6d |
+| `docs/art-direction/fixtures/content/articles/real-note.md` | ## 文章正文 | 8d4fa1d0041040e8f0e2222e9ef2828ff914d03c |
+| `docs/art-direction/fixtures/content/drafts/private-note.md` | ---
+title: '未公開資料夾測試稿'
+description: 'QA 未公開稿。'
+publishedAt: 2026-10-14 | 04fcb316816dbc79b65fc4ddd875ad69c57c6956 |
+
+比較判斷：EXPANSION-MATRIX／CONTENT-CONTRACT／INDEPENDENT-ADAPTERS 是設計與實作契約；PR47 各階段 Visual Review、P0、Manual QA、Handoff 都有歷史分支／日期語境，應保留原始證據而非聲稱現在仍 Draft；fixtures 下的 Markdown 是用於測試文章與草稿公開性，**不是文件 SSOT，也不能清掉**。對 25 款的現行狀態須以 registry + 最新 PR／Actions 為準。
