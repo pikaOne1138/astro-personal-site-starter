@@ -170,3 +170,8 @@
 ## Phase 2｜三份核心 Skill 逐行來源盤點 B
 
 已新增 [PHASE2-CORE-SKILLS-FULL-LINE-B.md](PHASE2-CORE-SKILLS-FULL-LINE-B.md)，核對凍結版本內容發布、組站、部署三份 Skill，共 207 行，103 行含規範或操作程序。全數附原始檔案行號；但複合義務尚未逐一建立唯一 ID 或完成跨文件語義驗收。Phase 2 未完成；Phase 3、4 保持阻擋。
+
+
+## 第二階段｜核心 Skills B 原子候選首批 Gate
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md) 已針對 frozen main 之內容發布、組站、部署 Skills 的 **5 個高風險複合來源行**建立 **25 個來源錨定子候選 ID**。103 個來源規範／程序行目前仍有 98 行未完成原子化；這 25 個為工作候選，尚未與 P0 canonical/alias 及 A 批候選完成同義去重，**不可加總為最終條款數**。原始 Skills 未修改；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
