@@ -30,7 +30,9 @@ Frozen source: main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`.
 | B1-DEP31-01 | 預設 HTML noindex，robots.txt 禁止索引 | [deploy L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) |
 | B1-DEP31-02 | 完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引 | 同上 |
 | B1-DEP31-03 | 只在 Production 使用 SITE_INDEXABLE=true 並重新 Build、檢查 robots/canonical/Sitemap | 同上 |
-| B1-DEP31-04 | Cloudflare Preview 不得共用正式站索引設定；GitHub Pages Actions Variable 預設 false，核准後手動正式部署 | 同上 |
+| B1-DEP31-04 | Cloudflare Preview 不得共用正式站索引設定 | 同上 |
+| B1-DEP31-04-CF | Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數 | 同上 |
+| B1-DEP31-04-GH | GitHub Pages Actions Variables 中 SITE_INDEXABLE 未設定視為 false；正式站審查並獲核准後才設 true 並手動執行 Production Workflow | 同上 |
 
 ## 跨文件關係：待 P0 canonical 審核
 
@@ -42,3 +44,7 @@ Frozen source: main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`.
 ## Gate
 
 第二階段持續進行。此批 5/103 個規範／程序來源行已拆，98 行仍待處理；人工語義審核及正式去重未完成。第三、四階段繼續 BLOCKED。原始 Skills 未修改，PR 維持 Draft，未 Merge。
+
+## 2026-10-23 校正：父子候選不可加總
+
+`B1-DEP31-04` 保留原始工作 ID 作父 alias；`-CF` 和 `-GH` 是互不混用的平台條件。**前批 25 個工作 ID 計數不變**，另外兩個子欄位不作新增獨立規範。`B1-DEP31-03` 所含重新 Build 與 SEO 檢查仍為複合驗收子項，尚待拆分。以上是文件登錄調整，不改 Frozen Skill。
