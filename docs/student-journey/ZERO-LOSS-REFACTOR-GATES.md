@@ -76,3 +76,9 @@
 - [7 個組裝／日常操作 Skills](PHASE2-SKILLS-OPERATIONS.md)：79 行候選。
 - 不得把 **216 個關鍵字命中來源行**當 216 項完整子條款；沒有命中的原文也不能視為無義務。第二階段的 Skill 主文件已全數建立來源清單，references 未全審。
 - Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。保留全部原文與 Git SHA。
+
+## 第二階段續作｜參考文件覆蓋界線
+
+- [references coverage manifest](PHASE2-REFERENCES-COVERAGE.md) 列出 90 份附屬文件，已建立 42 份唯一來源之規範候選掃描，48 份尚未語義審核。
+- A/B/C1/C2 分批取證均保留原始路徑、Blob SHA、行號；掃描結果非完整義務集、亦非 100% 覆蓋。
+- 不因研究原文或程式碼快照數量多而刪除。第三、第四階段繼續鎖定。
