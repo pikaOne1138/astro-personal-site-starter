@@ -142,3 +142,7 @@
 ## 第二階段續作｜P0 單一計數工作視圖
 
 [PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 將既有 41 父候選、31 子候選、35 檢查點依「末端優先」規則整成 **86 筆暫定紀錄**（28 未拆父＋23 未再拆子＋35 檢查點），每筆保留來源與層級型態，另登記已辨識的跨條款同義關係。**86 並非唯一語義條款總數**；證據欄位不是獨立政策，語義重複仍須確認，全量原文規範也尚未盤點完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜86 筆末端紀錄類型分類
+
+[PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已在原有表格中直接對 **86 筆**作暫定語義分類：**規範義務 36、驗收條件 36、證據欄位 14**。全部仍標 `CLASSIFIED_PENDING_SEMANTIC_REVIEW`，避免把類型推斷當成通過驗收。尚須檢查混合語義及重複 ID；**86 筆不是全量、也不是去重的獨立條款母數**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
