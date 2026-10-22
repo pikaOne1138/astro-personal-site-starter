@@ -1,13 +1,20 @@
 import { chromium } from 'playwright';
 import {spawn} from 'node:child_process';
+import {createServer} from 'node:net';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {setTimeout as delay} from 'node:timers/promises';
 
-const base='http://127.0.0.1:4328';
+const port=await new Promise((resolve,reject)=>{
+ const probe=createServer();
+ probe.once('error',reject);
+ probe.listen(0,'127.0.0.1',()=>{const p=probe.address().port;probe.close(()=>resolve(p))});
+});
+const base=`http://127.0.0.1:${port}`;
 const widths=[1440,1280,768,390];
 const out='qa-artifacts/prepare';
 mkdirSync(out,{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port','4328'],{stdio:['ignore','pipe','pipe']});
+// Spawn Astro directly so SIGTERM stops the actual server, not just an npm wrapper.
+const server=spawn(process.execPath,['node_modules/astro/astro.js','preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{stdio:['ignore','pipe','pipe']});
 let serverOutput='';
 for(const stream of [server.stdout,server.stderr])stream.on('data',chunk=>{serverOutput=(serverOutput+chunk.toString()).slice(-12000)});
 let serverError=null;
