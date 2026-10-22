@@ -27,11 +27,11 @@
 | `P0-U021` | `QA-001.01` | 一般 UI Preview 檢查 1440／1280／768／390 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U022` | `QA-001.02` | PR59 獨立學生站人工驗收另需 375 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U023` | `QA-001.03` | 沒有實測不得稱完成視覺驗收 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
-| `P0-U024` | `PREVIEW-HISTORY-01` | 變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
+| `P0-U024` | `PREVIEW-HISTORY-01` | 變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U025` | `PREVIEW-HISTORY-02` | 不能保證已被第三方複製的公開內容消失 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U026` | `PREVIEW-HISTORY-03` | 不得擅自破壞 QA 證據 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U027` | `PREVIEW-HISTORY-04` | 未公開草稿優先本機或受限制存取 Preview | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
-| `P0-U028` | `PR59-EVIDENCE-02` | 自動化 PASS 不足以證明內容真實或法律適用性 | EVIDENCE_FIELD | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L39) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
+| `P0-U028` | `PR59-EVIDENCE-02` | 自動化 PASS 不足以證明內容真實或法律適用性 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L39) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U029` | `GATE-001.03.S1` | 證據需記錄核准所對應的確切 PR SHA | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L40) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U030` | `GATE-002.02.S1` | 未經同意不得更動 DNS | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U031` | `GATE-002.02.S2` | 未經同意不得刪 Repo | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
@@ -49,7 +49,7 @@
 | `P0-U043` | `PRIV-001.01.S2` | 檢查是否包含尚未核准內容 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L39) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U044` | `PREVIEW-POLICY-01.S1` | 缺 Live Preview 必須明示 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U045` | `PREVIEW-POLICY-01.S2` | 新增 Preview 部署方法須學員同意 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
-| `P0-U046` | `PR59-EVIDENCE-01.S3` | 上游變更後重新判斷證據有效性 | EVIDENCE_FIELD | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
+| `P0-U046` | `PR59-EVIDENCE-01.S3` | 上游變更後重新判斷證據有效性 | ACCEPTANCE_CRITERION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U047` | `INDEX-DETAIL-01.S1` | 核准後只在正式環境設定 indexable | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U048` | `INDEX-DETAIL-01.S2` | 重新 Build | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
 | `P0-U049` | `INDEX-DETAIL-01.S4` | Preview 不共用正式 indexable 設定 | NORMATIVE_OBLIGATION | [Frozen source](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | CLASSIFIED_PENDING_SEMANTIC_REVIEW |
@@ -111,3 +111,31 @@
 - `REVIEW_MIXED`：若後續發現單一末端記錄仍混合要求，應再拆解；目前分類是**工作判讀而非人為語義簽核**。
 
 分類暫計：規範義務 36、驗收條件 36、證據欄位 14。三類合計 86 筆。**類型總數不能宣稱唯一義務分母或覆蓋率；跨來源重複和適用條件尚未審核完。**
+
+## 第二輪語義重疊審查（候選，不直接消滅來源）
+
+本節是對已列 86 筆末端紀錄的 **11 組具體關聯**，其中 `SAME_CANDIDATE` 為 4 組可能同義，不代表語義裁決已通過；其餘保留特殊平台、程序階段與證據範圍。不根據這些關聯自行扣除分母。
+
+| 條款 A | 條款 B | 初核關係 | 不得遺失的範圍差異 | 狀態 |
+|---|---|---|---|---|
+| `P0-U035` | `P0-U044` | SAME_CANDIDATE | GitHub Pages 未設定可用 PR Preview 時必須如實告知；保留來源場景 | HUMAN_REVIEW_PENDING |
+| `P0-U036` | `P0-U045` | SAME_CANDIDATE | 變更／新增預覽部署方法前須同意 | HUMAN_REVIEW_PENDING |
+| `P0-U018` | `P0-U047` | SAME_CANDIDATE | 正式發布取得同意才啟用索引，需保留重建及正式環境條件 | HUMAN_REVIEW_PENDING |
+| `P0-U019` | `P0-U049` | SAME_CANDIDATE | Cloudflare Preview 不應套用正式站 indexable 設定 | HUMAN_REVIEW_PENDING |
+| `P0-U006` | `P0-U050` | SCOPE_OVERLAP | PR Head SHA 與 GitHub Pages 子路徑的特定 EXT-03 是一般及專項情境 | HUMAN_REVIEW_PENDING |
+| `P0-U042` | `P0-U074` | TEST_OVERLAP | 索引暴露風險與 Preview noindex 測試相互關聯，但非完全同義 | HUMAN_REVIEW_PENDING |
+| `P0-U065` | `P0-U079` | SCOPE_OVERLAP | 一般 Preview 導航與 Pages 子路徑導航，是一般與平台專項驗收 | HUMAN_REVIEW_PENDING |
+| `P0-U061` | `P0-U081` | SCOPE_OVERLAP | 正式索引 canonical 與 GitHub Pages 子路徑 canonical 測試不同 | HUMAN_REVIEW_PENDING |
+| `P0-U053` | `P0-U085` | FIELD_SCOPE_OVERLAP | 一般測試紀錄 SHA 與 EXT-01 專項證據 SHA 均需保存 | HUMAN_REVIEW_PENDING |
+| `P0-U054` | `P0-U082` | FIELD_SCOPE_OVERLAP | 一般 URL 或 Artifact 與學生 Repo URL 證據不同，不能直接等價 | HUMAN_REVIEW_PENDING |
+| `P0-U003` | `P0-U033` | AUTHORIZATION_SCOPE | 學員正式發布授權與 PR59 研究合併權限不得混淆 | HUMAN_REVIEW_PENDING |
+
+### 分類校正
+
+原有類型初核有三筆容易誤導：`P0-U024`（歷史部署操作需另授權）改為規範義務；`P0-U028`（自動 PASS 無法代替真人真實性／法律核對）與 `P0-U046`（上游變更後重判測試證據）改為驗收／證據有效性要求。三筆僅調整類型，不修改原始規範主張。先前的「36／36／14」為**分類校正前快照**，不可繼續作現行數字。每筆類型仍需人工語義審核。
+
+**禁止以 86 減掉四組 SAME_CANDIDATE 宣稱最終母數。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。**
+
+### 分類校正後即時計數
+
+{"NORMATIVE_OBLIGATION":37,"ACCEPTANCE_CRITERION":37,"EVIDENCE_FIELD":12}（合計 86；仍為候選）。
