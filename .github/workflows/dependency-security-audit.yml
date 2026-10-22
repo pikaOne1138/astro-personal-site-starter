@@ -1,5 +1,11 @@
 name: Dependency security audit
 on:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'npm-shrinkwrap.json'
+      - '.github/workflows/dependency-security-audit.yml'
   workflow_dispatch:
   schedule:
     - cron: '17 3 * * 1'
