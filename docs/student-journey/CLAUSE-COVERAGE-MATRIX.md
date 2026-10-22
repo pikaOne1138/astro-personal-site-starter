@@ -457,3 +457,7 @@
 [PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md](PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md) 已為 31 項候選建立 26 組「被引用原文行 → 候選 ID」逆向索引，並查出 **6 項**定位錯誤、證據不精確或範圍混淆風險。尤其 `astro-pr-preview/SKILL.md` L64 是章節標題、L55 是人工 QA 限制，不能用來證明歷史 Preview 外洩或 Private Repo 的可見性。原候選表仍未核准，將錯誤登記而非偷偷當 PASS。
 
 這是**已引用行的逆向索引**，不是所有來源行的規範性分母；Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 六項問題的證據補正
+
+[候選子條款表](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 已修正錯引與補充來源，[雙向稽核](PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md) 保留原始六項問題作歷史紀錄。**這不是人工語義審核通過**；下一輪需依修正版重算 source→ID 逆向映射，並補原文其他子義務。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
