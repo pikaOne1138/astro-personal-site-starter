@@ -50,3 +50,10 @@
 - 批次 B：`START-HERE`、`STUDENT-AGENTS`、`PROJECT-TEMPLATE`、`PORTABLE-PROJECT-CONTEXT-SPEC`、`THREE-WAYS-TO-BUILD`、PR56 學員動線：**187 行**凍結原文與連結。
 - 累計新增 **280 行原文映射記錄**（不是 280 項已完成的獨立條款）。最初 7 筆摘要式映射仍需逐項核實並改為精確條款；不得將記錄行數當完成率。
 - **Gate 狀態：階段 2 IN PROGRESS；階段 3／4 BLOCKED。** 缺少各文件所有規範性子句的總分母、複合句拆分、衝突歸併及逐條人工審核。所有被盤點的原始文件仍維持不改動。
+
+## 第二階段續作｜更多建站契約（2026-10-22）
+
+- [批次 2：資料包／版型／素材／Brief](PHASE2-CLAUSE-REVIEW-BATCH2.md)：8 份檔案、151 行非空非標題原文，所有需再拆子條款。
+- [批次 3：學員脈絡／三條路線／交接](PHASE2-CLAUSE-REVIEW-BATCH3.md)：5 份檔案、134 行來源原文；與較早批次有來源重疊，**不累加為獨立規範**。
+- 不丟失的特殊條件：in-progress 不等於 Ready；首頁與導航 ID 插槽有差異；媒體須有授權且 Logo 非必填；Design Brief Markdown 不能冒稱可直接匯入 JSON；PR Build 不等於部署 Preview；學生意圖文件不能取代 Git/程式事實。
+- 第二階段仍未達 Gate：沒有全量獨立子條款分母、未完成衝突仲裁及人工作證。第三與第四階段仍明確禁止。
