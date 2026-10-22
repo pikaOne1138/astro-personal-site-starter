@@ -485,3 +485,7 @@
 ## 第二階段續作｜31 子候選來源初核
 
 [PHASE2-PARTIAL-SOURCE-ADJUDICATION.md](PHASE2-PARTIAL-SOURCE-ADJUDICATION.md) 對 13 個 PARTIAL 父主題拆出的 31 個子候選逐一讀取凍結來源行：27 項 `DIRECT_CANDIDATE`、4 項 `PARTIAL`（獨立 Repo 證據、PR59 複合證據欄位、正式索引範圍、站點功能 QA 適用性）。這僅是來源文本與候選摘要的初核，非正式人工語義 PASS。父子不可加總，仍須去重並建立全量來源分母。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜13 父／31 子的非加總計數與四項範圍解釋
+
+[PHASE2-PARENT-CHILD-DEDUPE.md](PHASE2-PARENT-CHILD-DEDUPE.md) 對 13 個 PARTIAL 父主題與 31 個拆解子候選逐組記錄重疊、不同平台與證據限制；四項待確認範圍已寫明依據（獨立 Repo EXT 尚未測試、PR59 證據必填欄、SITE_INDEXABLE 正式環境限制、功能型 QA 的適用條件）。仍有子項是複合義務，**未取得真正去重後的原子總母數，父 41 + 子 31 不可加總**。原始文件未動。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
