@@ -535,3 +535,8 @@
 ## Phase 2｜Core Skills B Atomic Batch 2
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH2.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH2.md)：新增 5 行 Frozen Skill 的 15 個來源錨定子候選；連同 Batch1 共 10/103 個含規範或程序來源行完成初步拆解，尚餘 93 行。工作 ID 尚待 P0 canonical、前批 A 及其他來源語義去重；不可將 25+15 當最終規範母數。原文不變，Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+
+## Phase 2｜Core Skills B Atomic Batch 3
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH3.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH3.md) 記錄 frozen source 10 個新來源行與 29 個工作候選，連同前兩批暫計 20/103 行、69 個候選；尚有 83 行未初步原子化。候選尚未跨 P0 canonical/alias 與 A 批完成語義去重，也不是最終獨立規範數。Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。原始 Skills 不變，不 Merge。
