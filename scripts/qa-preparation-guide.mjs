@@ -7,13 +7,17 @@ const base='http://127.0.0.1:4328';
 const widths=[1440,1280,768,390];
 const out='qa-artifacts/prepare';
 mkdirSync(out,{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port','4328'],{stdio:'ignore'});
+const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port','4328'],{stdio:['ignore','pipe','pipe']});
+let serverOutput='';
+for(const stream of [server.stdout,server.stderr])stream.on('data',chunk=>{serverOutput=(serverOutput+chunk.toString()).slice(-12000)});
+let serverError=null;
+server.on('error',err=>{serverError=err.message});
 let browser;
 const rows=[];
 try {
  let ready=false;
  for(let i=0;i<40;i++){try{const r=await fetch(base+'/guide/prepare/');if(r.ok){ready=true;break}}catch{}await delay(500)}
- if(!ready)throw Error('Preview guide unavailable');
+ if(!ready)throw Error('Preview guide unavailable: '+JSON.stringify({url:base+'/guide/prepare/',exitCode:server.exitCode,signalCode:server.signalCode,error:serverError,output:serverOutput}));
  browser=await chromium.launch({headless:true});
  for(const width of widths) {
   const page=await browser.newPage({viewport:{width,height:900}});
