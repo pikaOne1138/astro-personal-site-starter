@@ -43,3 +43,10 @@
 
 - 2026-10-22 第一階段來源：`main@2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`；Git tree 未截斷，共 192 份 `.md/.mdx/.txt`。
 - 第二階段初始狀態：**未完成**。不能用先前 192 份的「已讀與分類」冒充逐條 100% 遷移覆蓋。
+
+## 第二階段執行紀錄｜2026-10-22
+
+- 批次 A：`QUALITY-CONTRACT`、PR59 獨立驗收、`AGENT-HANDOFF`、`PREVIEW-BOOTSTRAP`：**93 行**凍結原文與精確連結。
+- 批次 B：`START-HERE`、`STUDENT-AGENTS`、`PROJECT-TEMPLATE`、`PORTABLE-PROJECT-CONTEXT-SPEC`、`THREE-WAYS-TO-BUILD`、PR56 學員動線：**187 行**凍結原文與連結。
+- 累計新增 **280 行原文映射記錄**（不是 280 項已完成的獨立條款）。最初 7 筆摘要式映射仍需逐項核實並改為精確條款；不得將記錄行數當完成率。
+- **Gate 狀態：階段 2 IN PROGRESS；階段 3／4 BLOCKED。** 缺少各文件所有規範性子句的總分母、複合句拆分、衝突歸併及逐條人工審核。所有被盤點的原始文件仍維持不改動。
