@@ -509,3 +509,7 @@
 ## 第二階段續作｜四組同源同義條款建立 canonical alias
 
 [PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已對四組 SAME_CANDIDATE 逐字比對凍結來源（均為同一原文行經不同拆分路徑產生），建立 4 個 canonical ID 並保留原有 8 個工作 ID 作 alias。適用範圍和例外已在表中列明，並非跨版本語義驗收。86 筆末端工作記錄的 4 組重複可暫作 82 個工作代表，**82 不是全部來源的唯一規範分母，亦非正式 PASS**；原文未刪改。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜三份核心 Skills 全行來源處置
+
+[PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 對固定 baseline 的 `astro-site-entry`（25 行）、`astro-site-from-zero`（26 行）、`astro-content-readiness`（34 行）逐行分類，共 85 行、37 行帶規範／流程內容，拆出 74 個義務或操作步驟候選，含原始 Blob SHA 和 L# URL。這是逐行審閱，不是僅擷取 regex 關鍵字；**74 不等於 74 項已去重獨立規範，且仍待連結 P0 與全量語義核對**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
