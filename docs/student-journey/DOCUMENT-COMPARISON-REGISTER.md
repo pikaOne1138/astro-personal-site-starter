@@ -195,3 +195,18 @@ description: 'QA 未公開稿。'
 publishedAt: 2026-10-14 | 04fcb316816dbc79b65fc4ddd875ad69c57c6956 |
 
 比較判斷：EXPANSION-MATRIX／CONTENT-CONTRACT／INDEPENDENT-ADAPTERS 是設計與實作契約；PR47 各階段 Visual Review、P0、Manual QA、Handoff 都有歷史分支／日期語境，應保留原始證據而非聲稱現在仍 Draft；fixtures 下的 Markdown 是用於測試文章與草稿公開性，**不是文件 SSOT，也不能清掉**。對 25 款的現行狀態須以 registry + 最新 PR／Actions 為準。
+
+## Batch 05A｜Skill 主文件 1/2（已讀）
+
+| 檔名 | 內容章節 | Blob SHA |
+|---|---|---|
+| `.ai/astro-content-publishing/SKILL.md` | # Astro Content Publishing；## Mission and boundaries；## Source of truth and mandatory reading；## Public vs draft source folders (student Starter) | 6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298 |
+| `.ai/astro-content-readiness/SKILL.md` | # Astro Content Readiness｜內容準備度檢查；## When to run；## Read sources of truth；## Procedure | f7a3b255189adb996fed03099896cababc1ec208 |
+| `.ai/astro-design-consultation/SKILL.md` | # Astro Design Consultation｜網站設計對話顧問；## 使命與適用對象；## 何時啟動；## 使用前閱讀（按需；不要一次全讀） | a9e8de73f26b72499f1372b605a348665e41fa08 |
+| `.ai/astro-editorial-layout-design/SKILL.md` | # Astro Editorial Layout Design；## 0. 證據標記（讀任何檔案前先懂）；## 1. 硬規則（違反＝退回）；## 2. 工作流程（詳見 `references/04-workflow.md`） | c14edf53f2f69d47d2465e3b30bd159c759a8279 |
+| `.ai/astro-launch-health-check/SKILL.md` | # Astro Launch Health Check｜發布後健康檢查；## When to run；## Preconditions；## Verification checklist | 074060c27edae6ff2e3a5444bf241c8913f4d9b4 |
+| `.ai/astro-layout-craft/SKILL.md` | # Astro Layout Craft｜版型設計與組裝 Skill；## 定位；## 來源與誠實標註；## 必須遵循的組裝步驟 | 2c148dd24e89a38d0c6026c1f8cb12c257a54bb9 |
+| `.ai/astro-motion-craft/SKILL.md` | # Astro Motion Craft — 動效與微互動設計 Skill；## 必讀：特效參考庫（不是只有一份 Skill 文件）；## 何時使用；## 步驟（必須依序） | 39ed33b76ccbd67abf2032f9c655165cf6dfbdf9 |
+| `.ai/astro-navigation-tree-test/SKILL.md` | # Astro Navigation Tree Test｜導航可理解性測試；## When to run；## Distinguish two evaluations；## Procedure | 64c4597eb034fcaac226e9bd18a188683b311ea5 |
+| `.ai/astro-page-management/SKILL.md` | # Astro Page Management｜既有網站的頁面管理；## 適用時機；## 核心原則：一個導航來源，整站一致；## 工作流程 A｜新增頁面 | 64878b45861ab912d917e20d4bc8be92bb64adc8 |
+| `.ai/astro-pr-preview/SKILL.md` | # Astro PR Preview & Safe Release｜學員雙平台預覽與安全發布；## 目的；## Step 0｜先辨識環境，不能猜；## 共同安全流程（兩平台皆適用） | 411c091674981f0f600b4154df085ad3cb9d8ca7 |
