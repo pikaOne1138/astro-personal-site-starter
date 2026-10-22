@@ -481,3 +481,7 @@
 ## 第二階段續作｜13 項 PARTIAL 的複合條款拆解
 
 [PHASE2-ATOMIC-PARTIAL-SPLIT.md](PHASE2-ATOMIC-PARTIAL-SPLIT.md) 已針對 P0 v3 的 **13 項 PARTIAL 父主題**，建立 **31 個子候選**，分別保留凍結來源行及適用範圍。**父與子不可相加成 72 條**，也不能認定原子語義 PASS；後續仍需對每個 ID × 來源行做逐筆 DIRECT/PARTIAL/UNSUPPORTED 判讀。原始來源一律保留。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜31 子候選來源初核
+
+[PHASE2-PARTIAL-SOURCE-ADJUDICATION.md](PHASE2-PARTIAL-SOURCE-ADJUDICATION.md) 對 13 個 PARTIAL 父主題拆出的 31 個子候選逐一讀取凍結來源行：27 項 `DIRECT_CANDIDATE`、4 項 `PARTIAL`（獨立 Repo 證據、PR59 複合證據欄位、正式索引範圍、站點功能 QA 適用性）。這僅是來源文本與候選摘要的初核，非正式人工語義 PASS。父子不可加總，仍須去重並建立全量來源分母。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
