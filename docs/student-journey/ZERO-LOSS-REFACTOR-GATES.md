@@ -88,3 +88,9 @@
 [參考文件完整索引](PHASE2-REFERENCES-COVERAGE.md) 現已追蹤原先未做語義審核的 48 份文件：8 份案例特定設計決策、10 份十站逆向研究、2 份歷史稽核、9 份程式碼來源快照、19 份原始設計研究。分批證據：[Examples](PHASE2-SOURCES-EXAMPLES.md)、[Site Analysis](PHASE2-SOURCES-SITE-ANALYSIS.md)、[Snapshots](PHASE2-SOURCES-SNAPSHOTS.md)、[Research A](PHASE2-SOURCES-RESEARCH-A.md)、[Research B](PHASE2-SOURCES-RESEARCH-B.md)。
 
 **48/48 代表來源保全與分類已完成，不代表語義條款驗收完成**。原始檔案未動，不刪研究資料，也不把案例推論當正式規格；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
+
+## 第二階段續作｜跨文件高風險原子條款台帳
+
+[PHASE2-ATOMIC-CROSSFILE-LEDGER.md](PHASE2-ATOMIC-CROSSFILE-LEDGER.md) 先建立 **10 組**可追溯的跨文件風險主題 ID（發布授權、Preview/CI、隱私/憑證、真實內容、索引、RWD QA）。每組列凍結 Blob SHA、行號與例外事項，原文仍保留原位。
+
+**10 組是主題分類，不是十條已獲核准的完整原子規範，更不是全量覆蓋率。** 同一主題多來源不得未經人工語義確認便刪去任何一處安全限制。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
