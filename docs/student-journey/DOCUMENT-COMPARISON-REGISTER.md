@@ -243,3 +243,20 @@ Skill 交疊判斷：`astro-pr-preview` 管 PR／Preview／人為 Merge gate，`
 | `.ai/astro-editorial-layout-design/examples/trust-path/brief.md` | # Brief — 信任路徑（工作流程步驟 1）; ## 內容層級表; ## 與誠實相關的設計決定 | 7e984ab6150b |
 | `.ai/astro-editorial-layout-design/examples/trust-path/direction.md` | # Direction — 信任路徑（步驟 2：版型方向）; ## 8 旋鈕; ## 與十款最接近者的差異 | 4ecbd43d7bec |
 | `.ai/astro-editorial-layout-design/examples/trust-path/wireframe.md` | # Wireframe — 信任路徑（步驟 3）; ## 1440（深色 hero 滿版；內容欄 1180）; ## 390 | 10da0e808b5a |
+
+## Batch 06B｜Editorial Layout Design 文件 2/3（已讀）
+
+| 檔案 | 原文標題與章節 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-editorial-layout-design/recipes/cta-trust.md` | # CTA 與信任資訊安排 ×8（知識型 + 助人者）; ## 助人者網站的信任順序 [NEW 建議]; ## 知識型網站的信任順序 [NEW 建議] | 8901779067b8 |
+| `.ai/astro-editorial-layout-design/recipes/heroes.md` | # Hero 構圖配方 ×12; ## H01 rail-margin — 窄索引軌 + 主欄大標 + 邊注; ## H02 offset-stagger — 巨大標題（8 欄）+ 錯位傾斜圖 | 2ef3652e01c7 |
+| `.ai/astro-editorial-layout-design/recipes/lists.md` | # 列表／目錄配方 ×6; ## L01 ledger-rows; ## L02 node-track | 8928e4038eb3 |
+| `.ai/astro-editorial-layout-design/recipes/rhythm.md` | # 視覺節奏配方 ×6; ## R01 spacing-ladder; ## R02 band-alternation | 02ff7a0af801 |
+| `.ai/astro-editorial-layout-design/recipes/sections.md` | # 內容分區配方 ×8; ## S01 manifesto-split; ## S02 fit-pair | dbfcf0b3fae9 |
+| `.ai/astro-editorial-layout-design/references/00-evidence-legend.md` | # 證據標記與量測方法; ## 十款來源檔案; ## 實測摘要 [MEAS]（1440px 視窗；`rem`=16px） | 8ef9d8d7efb0 |
+| `.ai/astro-editorial-layout-design/references/01-cross-site-patterns.md` | # 跨網站規律：共同遵守 vs 刻意不同; ## A. 十款共同遵守的品質規則（可重用原則）; ## B. 刻意不同的設計手法（讓十款不是換色模板） | b89c8088f3cd |
+| `.ai/astro-editorial-layout-design/references/02-design-tokens.md` | # 設計 Tokens（尺寸、字級、留白、色彩）; ## 1. 容器與水平 padding; ## 2. 字級階（Type scale） | 06c0dfb75b84 |
+| `.ai/astro-editorial-layout-design/references/03-ai-failure-modes.md` | # 常見 AI 設計失敗（含偵測與修正）; ## F01 過度使用三欄卡片; ## F02 制式 Hero（左文右圖／置中大標＋兩顆按鈕） | 48b7c83ea377 |
+| `.ai/astro-editorial-layout-design/references/04-workflow.md` | # AI 生成工作流程（八步，每步有產出物與出口條件）; ## 1. 需求理解（產出：`brief.md`）; ## 2. 選版型方向（產出：`direction.md`） | d150cacd2b04 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/01-field-notes.md` | # 01 田野筆記 `fn-`（知識／研究者）; ## [OBS] 原始碼事實; ## [MEAS] 實測 | 9f0d70680b63 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/02-essayist.md` | # 02 長文書房 `es-`（知識／作家）; ## [OBS] 原始碼事實; ## [MEAS] | 096f23b16794 |
