@@ -139,3 +139,21 @@
 ### 分類校正後即時計數
 
 {"NORMATIVE_OBLIGATION":37,"ACCEPTANCE_CRITERION":37,"EVIDENCE_FIELD":12}（合計 86；仍為候選）。
+
+## 四組 SAME_CANDIDATE 原文逐行裁決（僅限 P0 凍結版本）
+
+本批核對了兩份 Frozen Skill 的**相同行**：`astro-pr-preview/SKILL.md#L30` 與 `astro-starter-deploy/SKILL.md#L31`。這四組皆為同一原始行經不同拆分路徑重複生成，因此就**文字含義與當前適用範圍**可建立共用 canonical ID；仍保留兩個舊工作 ID 作 alias。這只是稽核員的來源對照裁決，並非使用者對整份語義矩陣的驗收核准。
+
+| Canonical ID | Alias | 判斷 | 共同要求 | 來源 | 必須保留的限定 | 狀態 |
+|---|---|---|---|---|---|---|
+| `P0-CANON-PRVIEW-MISSING` | `P0-U035`、`P0-U044` | SAME_MEANING | 同一 GitHub Pages 缺可用隔離 Preview 時的如實回報義務；沒有就不得宣稱有線上 Preview | astro-pr-preview/SKILL.md L30 | 學員自己 Repo／GitHub Pages；需先核查 Workflow 或外部 Hosting | DOCUMENTARY_CONSOLIDATION_ONLY |
+| `P0-CANON-PRVIEW-CONSENT` | `P0-U036`、`P0-U045` | SAME_MEANING | 同一設置／變更隔離 Preview 部署架構前取得學員同意的義務 | astro-pr-preview/SKILL.md L30 | 僅針對部署架構變更，不等於所有本地 Build 需另獲批准 | DOCUMENTARY_CONSOLIDATION_ONLY |
+| `P0-CANON-INDEX-ENABLE` | `P0-U018`、`P0-U047` | SAME_MEANING | 經內容、實際預覽、安全與授權驗收且學員同意，僅正式部署環境啟用 SITE_INDEXABLE=true | astro-starter-deploy/SKILL.md L31 | 另保留重新 Build、檢查 meta/robots/canonical/sitemap 與 GitHub Pages variables 行為 | DOCUMENTARY_CONSOLIDATION_ONLY |
+| `P0-CANON-PREVIEW-INDEX` | `P0-U019`、`P0-U049` | SAME_MEANING | Cloudflare Preview 不能沿用正式站 SITE_INDEXABLE=true 設定 | astro-starter-deploy/SKILL.md L31 | 不得擴大成所有平台都有同一個環境變數機制 | DOCUMENTARY_CONSOLIDATION_ONLY |
+
+### 去重操作限制
+
+- 不刪除任何原始 Skill、原始工作 ID、來源或先前稽核紀錄。
+- 四組只是**同一原始行的拆分別名**，而非從不同版本／不同語境推定所有文字皆可合併。
+- 本 P0 視圖的 86 筆末端紀錄中已有 4 組二對一 alias；若只計其工作語義代表，可得到暫定 82 個代表，但混有測試欄位與檢查點，因此 **82 絕不是全 repo 唯一規範條款分母或 PASS 數字**。
+- Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
