@@ -175,3 +175,8 @@
 ## 第二階段｜核心 Skills B 原子候選首批 Gate
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md) 已針對 frozen main 之內容發布、組站、部署 Skills 的 **5 個高風險複合來源行**建立 **25 個來源錨定子候選 ID**。103 個來源規範／程序行目前仍有 98 行未完成原子化；這 25 個為工作候選，尚未與 P0 canonical/alias 及 A 批候選完成同義去重，**不可加總為最終條款數**。原始 Skills 未修改；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
+
+
+## Phase 2｜Core Skills B Atomic Batch 2
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH2.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH2.md)：新增 5 行 Frozen Skill 的 15 個來源錨定子候選；連同 Batch1 共 10/103 個含規範或程序來源行完成初步拆解，尚餘 93 行。工作 ID 尚待 P0 canonical、前批 A 及其他來源語義去重；不可將 25+15 當最終規範母數。原文不變，Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
