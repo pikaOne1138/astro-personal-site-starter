@@ -322,3 +322,20 @@ interface Props { src: string; alt: string; href?: s | a949d3f1cedd |
  * This is | 17c5467f4dc5 |
 | `.ai/astro-motion-craft/library/source-snapshots/manus-v2/reveal.ts.txt` | export function initializeReveals(): void {
   const nodes = [...document.querySelectorAll<HTMLE | 528a558bdf68 |
+
+## Batch 07C｜其他 AI references 3（已讀）
+
+| 檔案 | 原文標題／內容起點 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-motion-craft/references/manus-v2-motion-map.md` | # Manus v2：動效 API 與本專案整合對照; ## 避免「變成 AI 網站」的視覺規範; ## 可參考的元件骨架 | f290bea4de07 |
+| `.ai/astro-pr-preview/references/deployment-recovery.md` | # GitHub Pages／PR Preview 故障排除與恢復操作; ## 1. 先分清楚失敗階段; ## 2. 本倉庫正確恢復 PR #N 最新預覽的方法 | e17482c55599 |
+| `.ai/astro-ui-craft/docs/research-log.md` | # Research / Decision Log; ## 2026-10-07; ## Prototype v0.1 | 60c717ce7055 |
+| `.ai/astro-ui-craft/references/00-source-map.md` | # Source Map; ## Evidence levels; ## Raw research | 63e94940a3d0 |
+| `.ai/astro-ui-craft/references/01-design-principles.md` | # Design Principles | c8f4ea6c9293 |
+| `.ai/astro-ui-craft/references/02-architecture.md` | # Architecture; ## Knowledge / Blog; ## Helper / Professional | 59ba415f6fc9 |
+| `.ai/astro-ui-craft/references/03-pattern-library.md` | # Pattern Library; ## Navigation; ## Homepage | 67384dd98f85 |
+| `.ai/astro-ui-craft/references/04-visual-systems.md` | # Visual Systems; ## Paper & Ink; ## Morning Light | c5d449625c20 |
+| `.ai/astro-ui-craft/references/05-motion.md` | # Motion | e527efaaee21 |
+| `.ai/astro-ui-craft/references/06-cta-content.md` | # CTA & Content; ## Knowledge; ## Helper | 0ed86766ced3 |
+| `.ai/astro-ui-craft/references/07-article-service-pages.md` | # Article & Service Pages; ## Article; ## Service | f39fe940ad3d |
+| `.ai/astro-ui-craft/references/08-responsive-accessibility.md` | # Responsive & Accessibility | 888cf83b56c4 |
