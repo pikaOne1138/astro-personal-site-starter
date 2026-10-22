@@ -10,7 +10,7 @@ const dir='qa-artifacts/quality';
 mkdirSync(dir,{recursive:true});
 const rows=[],failures=[];
 let browser;
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});
 try {
  let ready=false;
  for(let attempt=0;attempt<50;attempt++){

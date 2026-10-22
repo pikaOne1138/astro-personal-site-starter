@@ -12,7 +12,7 @@ const cases=[
  {component:'MultiPage',route:'/helper/paper/services/',selector:'main.v02-page',count:1,extra:'main.v02-page h1',extraCount:1}
 ],widths=[1440,1280,768,390],rows=[],errors=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});let browser;
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});let browser;
 try{
  let up=false;for(let i=0;i<60;i++){try{if((await fetch(base+'/')).ok){up=true;break}}catch{}await pause(300)}
  if(!up)throw Error('Shared component preview unavailable');
