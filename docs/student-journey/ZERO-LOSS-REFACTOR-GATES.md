@@ -138,3 +138,7 @@
 ## 第二階段續作｜8 組複合子候選的欄位拆解
 
 [PHASE2-ATOMIC-LEAF-DECOMPOSITION.md](PHASE2-ATOMIC-LEAF-DECOMPOSITION.md) 對 8 組仍複合的子候選，將必填證據欄位、SEO 驗證項、Preview 互動與路徑檢查細分為 **35 個可核對欄位／檢查點**。列出同義條款候選，保留原始 SHA／行號。**35 不是新增的 35 條獨立政策，不可與 41 個父候選、31 個子候選加總**。尚待逐條語義判定、覆蓋分母與人為驗收。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 單一計數工作視圖
+
+[PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 將既有 41 父候選、31 子候選、35 檢查點依「末端優先」規則整成 **86 筆暫定紀錄**（28 未拆父＋23 未再拆子＋35 檢查點），每筆保留來源與層級型態，另登記已辨識的跨條款同義關係。**86 並非唯一語義條款總數**；證據欄位不是獨立政策，語義重複仍須確認，全量原文規範也尚未盤點完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
