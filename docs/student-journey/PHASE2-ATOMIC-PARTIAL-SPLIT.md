@@ -1,0 +1,44 @@
+# Phase 2｜13 項 PARTIAL 複合規範拆分工作表
+
+依 [41 項雙向比對 v3](PHASE2-ATOMIC-BIDIRECTIONAL-V3.md) 的 13 項 PARTIAL，拆出 31 個較細的工作候選。本表使用父 ID 的 `.Sx` 附屬編號，**不是將父條款和子條款同時計入總分母**；父條款尚未取代或移除。來源 frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。嚴格的每項 ID × 原文語義 PASS 仍未完成。
+
+| 子候選 | 獨立約束 | 原文 | 判讀 |
+|---|---|---|---|
+| `GATE-001.03.S1` | 證據需記錄核准所對應的確切 PR SHA | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L40](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L40) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `GATE-002.02.S1` | 未經同意不得更動 DNS | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `GATE-002.02.S2` | 未經同意不得刪 Repo | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `GATE-002.02.S3` | 未經同意不得覆寫網站 | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `GATE-002.03.S1` | 研究 PR59 合併不等於學員站公開核准 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L72](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L72) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-001.03.S1` | GitHub Pages PR 無天然隔離 Preview | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-001.03.S2` | 未設好時須回報不存在 Live URL | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-001.03.S3` | 修改預覽架構需同意 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-002.01.S1` | Cloudflare URL 必須依實際平台回報 | [.ai/astro-pr-preview/SKILL.md:L38](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L38) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-002.01.S2` | 不猜 Pages.dev 或移植 GitHub Pages URL 規律 | [.ai/astro-pr-preview/SKILL.md:L38](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L38) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-003.02.S1` | 獨立學生 Repo 要驗證真實 PR 執行 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L22) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-003.02.S2` | 輸出須有對應 Actions/Artifact/HEAD SHA 證據 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L22) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-003.03.S1` | Pages 子路徑獨立測試 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PROOF-003.03.S2` | Cloudflare 根路徑僅在選用時測試 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PRIV-001.01.S1` | 檢查 Preview 是否可能被索引 | [.ai/astro-pr-preview/SKILL.md:L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L39) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PRIV-001.01.S2` | 檢查是否包含尚未核准內容 | [.ai/astro-pr-preview/SKILL.md:L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L39) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PREVIEW-POLICY-01.S1` | 缺 Live Preview 必須明示 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PREVIEW-POLICY-01.S2` | 新增 Preview 部署方法須學員同意 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PR59-EVIDENCE-01.S1` | 記錄目標及 SHA、URL 或 Artifact | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PR59-EVIDENCE-01.S2` | 記錄時間、執行者與風險 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `PR59-EVIDENCE-01.S3` | 上游變更後重新判斷證據有效性 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `INDEX-DETAIL-01.S1` | 核准後只在正式環境設定 indexable | [.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `INDEX-DETAIL-01.S2` | 重新 Build | [.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `INDEX-DETAIL-01.S3` | 檢查 meta robots/robots/canonical/sitemap | [.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `INDEX-DETAIL-01.S4` | Preview 不共用正式 indexable 設定 | [.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `QA-DETAIL-01.S1` | 驗證主要頁面與 Pagefind/RSS/Sitemap/404 | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `QA-DETAIL-01.S2` | 檢查鍵盤／觸控／reduced-motion | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `QA-DETAIL-01.S3` | 檢查 noindex／隱私／外部測試資料 | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `EXT-DETAIL-01.S1` | 驗證 Pages 子路徑中的路由／資產／搜尋／canonical | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `EXT-DETAIL-01.S2` | 需真實 Preview 與對應 SHA | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+| `EXT-DETAIL-01.S3` | 不得以本地模擬當線上證據 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_CANDIDATE / HUMAN_PENDING |
+
+## 仍需覆核
+
+- 部分候選只在一行來源中直接表述，其他先前引用來源仍須一對一核對，不能把單一行支持擴大到所有引用。
+- EXT-01 與 EXT-03/04 不可合併，Cloudflare 並非所有學員必用；GitHub Pages 子路徑測試與實際正式上線不同。
+- 保留原始 41 ID 與 13 個 PARTIAL 標記；本子表是拆分候選，不是語義驗收通過證據。
+- Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
