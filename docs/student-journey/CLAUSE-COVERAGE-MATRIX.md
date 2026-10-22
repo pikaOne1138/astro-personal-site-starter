@@ -525,3 +525,8 @@
 ## 第二階段續作｜三份核心 Skill 的完整逐行來源盤點 B
 
 [PHASE2-CORE-SKILLS-FULL-LINE-B.md](PHASE2-CORE-SKILLS-FULL-LINE-B.md) 已依 frozen main 對 `astro-content-publishing`、`astro-site-assembly`、`astro-starter-deploy` 的 **207 個來源行**逐行分類，含 **103 行**規範／程序摘要，且每行有 source commit 與 URL、每檔 Blob SHA。這是完整原文行處置，尚未將 103 行內複合條件全部拆成唯一 ID，也未完成跨 P0/三份先前 Skill 的雙向映射。**不得宣稱 Phase 2 全量通過。** Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+
+## 第二階段續作｜核心 Skills B 高風險複合條款首批拆解
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH1.md) 已針對 frozen main 之內容發布、組站、部署 Skills 的 **5 個高風險複合來源行**建立 **25 個來源錨定子候選 ID**。103 個來源規範／程序行目前仍有 98 行未完成原子化；這 25 個為工作候選，尚未與 P0 canonical/alias 及 A 批候選完成同義去重，**不可加總為最終條款數**。原始 Skills 未修改；Phase 2 IN PROGRESS、Phase 3/4 BLOCKED。
