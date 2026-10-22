@@ -112,3 +112,9 @@
 [PHASE2-ATOMIC-BIDIRECTIONAL-V2.md](PHASE2-ATOMIC-BIDIRECTIONAL-V2.md) 已針對補正後 31 項候選重新建立 source→候選反向索引：**31/31 條有至少一個來源連結，涉及 30 個唯一來源行定位**。這僅是 URL/定位完整性，不是 31/31 語義驗收。逐字查核另找出至少 **10 個**尚未獨立建成候選的義務與例外（含刪舊 Preview 授權、第三方快取、QA 證據、索引重建與學員 Repo 目標證據）。舊的 26 定位索引仍是歷史快照，不可當最新版。
 
 需繼續逐項標記 DIRECT/PARTIAL/UNSUPPORTED、建立原子條款總分母與 PR61/69 版本差異。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 十項漏列規範已加入候選台帳
+
+[PHASE2-ATOMIC-P0-SUBCLAUSES.md](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 現為 **41 個唯一候選 ID**（先前 31 + 補列 10）。新增每條含凍結來源 SHA/行號；逐條標記 `DIRECT` 或 `DIRECT_COMPOSITE`，後者仍需拆出所有附帶條件。來源不變、候選尚未經人工語義核准。
+
+**注意**：本文件若保留 31 項、30 處定位或 10 項 `GAP_NOT_MAPPED` 數字，均屬此次修補之前的稽核快照，**不得當作最新狀態**。重新產生完整 41 項的雙向語義映射尚待執行，不能宣稱條款零遺失已通過。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
