@@ -404,3 +404,13 @@
 [PHASE2-CLAUSE-REVIEW-BATCH3.md](PHASE2-CLAUSE-REVIEW-BATCH3.md) 再登錄五份學員站規格：Portable Context、THREE-WAYS、PROJECT-TEMPLATE、AGENT-HANDOFF 和三項品質關卡，保全 **134 行原文**。這些與原 Batch A/B 重讀的來源重疊，**不可作為 134 條新的獨立規範**，避免虛報覆蓋率。
 
 新增待處理差異：三條入口是否需要 Site Brief、學生 PROJECT 與 Git 的事實來源順序、交接版本是否與 PR #61 一致、發布授權是否與 PR #69 一致。狀態仍為 NEEDS_CROSSCHECK；第三、四階段仍 BLOCKED。
+
+
+## 第二階段續作｜19 個 Skills 職責與來源抽樣
+
+- [Skills 批次 A（10 份）](PHASE2-SKILLS-A.md)：108 行高風險規範原文與 Frozen SHA／行號。
+- [Skills 批次 B（9 份）](PHASE2-SKILLS-B.md)：85 行高風險規範原文與 Frozen SHA／行號。
+- 共 **19 個 Skill，193 行選定規範原文**；抽樣上限每檔 15 行，不是全量子條款盤點。禁止將 193 當完成條款數。
+- 待釐清重疊：Site Entry vs From Zero vs Starter Assembly；Layout vs Editorial vs UI vs Motion；Content Publishing vs Readiness；PR Preview vs Starter Deploy vs Launch Health vs Maintenance；Site Replica 的授權與後端界線。
+- 重大可能的時點差異：Onboarding 記述 12 款、建站包 25 方向；UI Craft 舊 metadata 搜尋、Content Publishing 的 Pagefind 全文索引；不同文件 375/390 驗收條件。這些都要核對最新實作與適用專案，不能默默改成一方。
+- **Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。** 未刪改任何原有 Skill。
