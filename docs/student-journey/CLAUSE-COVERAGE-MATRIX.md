@@ -517,3 +517,7 @@
 ## 第二階段續作｜三份核心 Skill 與 P0 工作 ID 對照
 
 [PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 已直接在 37 個規範／流程來源行補映射：**10 行**與現有 P0 工作 ID 有部分交疊（`PARTIAL_OVERLAP_P0`），**27 行**仍為新範圍候選（`NEW_SCOPE_CANDIDATE`）。這是「來源行 → 已有 P0 工作 ID」初步連結，不等於原行所有子義務已完整覆蓋；74 個細項候選尚未逐條語義驗收，不能直接加到 P0 82 個工作代表。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜27 未映射來源行細分完成
+
+[PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 已於原檔補登 **27 行來源 → 45 個子候選工作 ID**（規範 18、流程 21、架構邊界 4、條件式程序 1、驗收條件 1），每個都連到凍結原文並附 8 組同義／部分交疊的交叉比對候選。此分類為工作判讀，不是經人為驗收的義務，也尚未連入真正唯一規範總分母；不可與 P0 的 82 個工作代表加總。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
