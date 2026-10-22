@@ -146,3 +146,7 @@
 ## 第二階段續作｜86 筆末端紀錄類型分類
 
 [PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已在原有表格中直接對 **86 筆**作暫定語義分類：**規範義務 36、驗收條件 36、證據欄位 14**。全部仍標 `CLASSIFIED_PENDING_SEMANTIC_REVIEW`，避免把類型推斷當成通過驗收。尚須檢查混合語義及重複 ID；**86 筆不是全量、也不是去重的獨立條款母數**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜86 筆跨來源語義初核
+
+[PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已直接補上 **11 組**同義、部分重疊或授權範圍差異的對照：其中 **4 組 SAME_CANDIDATE** 只是同義候選，尚未人工裁決、尚未合併 ID。並校正 3 筆語義類型，目前暫計：**規範義務 37、驗收條件 37、證據欄位 12**（共 86 筆）。原 36/36/14 已屬舊快照；不能按四組候選重複直接扣除分母。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
