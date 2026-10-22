@@ -414,3 +414,7 @@
 - 待釐清重疊：Site Entry vs From Zero vs Starter Assembly；Layout vs Editorial vs UI vs Motion；Content Publishing vs Readiness；PR Preview vs Starter Deploy vs Launch Health vs Maintenance；Site Replica 的授權與後端界線。
 - 重大可能的時點差異：Onboarding 記述 12 款、建站包 25 方向；UI Craft 舊 metadata 搜尋、Content Publishing 的 Pagefind 全文索引；不同文件 375/390 驗收條件。這些都要核對最新實作與適用專案，不能默默改成一方。
 - **Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。** 未刪改任何原有 Skill。
+
+## 第二階段續作｜建站入口與部署 Skill 原子條款（P0）
+
+[PHASE2-SKILLS-ATOMIC-P0.md](PHASE2-SKILLS-ATOMIC-P0.md) 對 `astro-site-entry`、`astro-site-from-zero`、`astro-pr-preview`、`astro-starter-deploy` 共四份 Skill，依 frozen main 原文辨識 **51 組子條款候選**，含原行號與完整原文字面。狀態全部為 `NEEDS_HUMAN_CROSSCHECK`，仍非全部子條款總數，不代表人工通過。原文不動，Phase 3/4 BLOCKED。
