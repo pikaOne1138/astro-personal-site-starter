@@ -418,3 +418,10 @@
 ## 第二階段續作｜建站入口與部署 Skill 原子條款（P0）
 
 [PHASE2-SKILLS-ATOMIC-P0.md](PHASE2-SKILLS-ATOMIC-P0.md) 對 `astro-site-entry`、`astro-site-from-zero`、`astro-pr-preview`、`astro-starter-deploy` 共四份 Skill，依 frozen main 原文辨識 **51 組子條款候選**，含原行號與完整原文字面。狀態全部為 `NEEDS_HUMAN_CROSSCHECK`，仍非全部子條款總數，不代表人工通過。原文不動，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜剩餘 15 Skills 的全文規範候選索引
+
+- [設計與內容 8 Skills](PHASE2-SKILLS-DESIGN-CONTENT.md)：**137 行**原文規範詞候選，逐行凍結版本及來源，待拆獨立義務。
+- [建站／維護／導航／復刻 7 Skills](PHASE2-SKILLS-OPERATIONS.md)：**79 行**原文規範詞候選，逐行可回溯，待拆獨立義務。
+- 加上已進行的 4 Skills P0，現在 **19 / 19 個主 Skill 均有 frozen 來源、重點規範與交叉比對索引**；但不是 19 個 Skill 的全部規範已原子化。正則掃描非語意驗證，不命中的句子仍可能有規範性要求。
+- 後續須處理 `.ai/**/references`、`checklists`、`recipes` 內的額外規範、同義去重、衝突和人工核准；第三、四階段仍 BLOCKED。
