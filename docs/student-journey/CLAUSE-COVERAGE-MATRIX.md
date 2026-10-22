@@ -560,3 +560,8 @@
 ## Phase 2｜Batch 6 實際來源行集合校正
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH6.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH6.md) 新增 8 個 Frozen 規範／程序來源行與 25 個暫定子 ID。比對 Batch1–5 的實際工作 ID，先前累計 40 行應修正為 **41 行**；本批後為 **49/103 行**、**54 行尚待拆解**。列項候選暫計 144（119+25），但仍須全量 ID 及跨來源語義去重，並非獨立規範數。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 未改，不合併。
+
+
+## Phase 2｜Batch 7：Publishing Lifecycle 與反向行數核對
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH7.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH7.md) 依 frozen main 對 Publishing L70、L72、L76–L81 建立 **8 行／22 個來源錨定工作候選**，包括文章發布、修改、撤回、歷史風險、交接及一般頁面職責。由 Batch1–6 ID 集合重算原已覆蓋 **50 行**，修正上一輪 49 行快照；本批後為 **58/103 行**，**45 行尚未初步原子化**。候選涉及程序、規範、證據與重疊，非 22 條新 canonical 規範；去重與全量雙向語義驗收未完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skill 不變，不 Merge、不部署。
