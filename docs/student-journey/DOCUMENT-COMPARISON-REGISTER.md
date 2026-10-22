@@ -77,3 +77,39 @@
 - 將 ATP 專案目標、有效決策、現階段 PR、學員驗收關卡、品質規則連結集中成一個管理入口；單一入口管理，並非合併所有技術手冊。
 - 針對真正重複的**規範**確定權威來源後，其他文件改指向；歷史 PR 證據保留。
 - 先釐清 PR #61 是否需先合併／重基準；不修改該 PR 負責的檔案。
+
+## Batch 03｜Builder Pack 其餘十份操作／技術文件（已讀原文）
+
+| 檔名（main） | 文件實際內容 | 內容重疊／待查風險 | 建議職責 |
+| --- | --- | --- | --- |
+| `docs/student-builder-pack/README.md` | 完整學員 ZIP 包說明、Starter JSON＋Guide ZIP＋官方 Prompt、25 Layout in-progress、包版本、媒體與 Preview 安全 | 和 `START-HERE` 重複 B 路線操作；此文把必備流程寫為 Starter JSON，未同時說明 A 復刻／C 直接 AI 建站可不走 JSON，應標記為 **B 路線專用** 而非全部學員必經 | 保留 ZIP 人類導讀，實際 AI 讀取以 START-HERE 分流 |
+| `docs/student-builder-pack/START-BUILD-PROMPT.txt` | 單一正式 B 路線建站提示詞：上傳 Site Brief＋ZIP、讀 START-HERE、確認能力與帳號，Build/PR/Preview、未授權不 Merge | 與 `START-HERE` 的 AI 工作內容重複，合理：前者是**學員可複製輸入**，後者是 AI 操作入口；C／A 不該被此 Prompt 強迫產 JSON | **保留單一可複製 Prompt**，網頁／ZIP 應引用這個檔案 |
+| `docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md` | PR50 Claude/Gemini/Codex 隔離情境、模型第一次接手、UX-S/M/H 安全案例、打分與記錄 schema、PR46 整合條件 | 和七關驗收的「工具可否操作」、「學員容易理解」交疊，但更細到模型／策略行為；該表是**測試設計，不是已實測證明** | 保留實驗規格／歷史測試證據，七關驗收引用對應 Case |
+| `docs/student-builder-pack/INTERVIEW-EVALUATION.md` | PR50 16 組訪談案例、五項 0–2 分評分、模型／工具／評審證據、建議門檻與安全錯誤 | 同 CROSS-MODEL 的採證方法交疊，但測量的焦點是「需求訪談品質」而非整個生成站流程；不能由 schema 測試宣稱真人品質 PASS | 保留訪談評估規格；明列需真實對話結果 |
+| `docs/student-builder-pack/ART-DIRECTION-STARTER.md` | subject-atlas／practice-compass 專用 exporter 與需補資料方式，強調未 Ready、命令與圖片限制 | 文件仍稱 Gallery／主規劃器接線是後續工作，和較新的 `EXPANDED-LAYOUTS.md` 已描述整合主匯出器有**歷史階段差異**；不能直接拿此舊說明給當前學生 | **優先確認新主流程後** 標明為過時專用路線或歷史使用說明，不能同時維持衝突的「最新」操作 |
+| `docs/student-builder-pack/EXPANDED-LAYOUTS.md` | PR46 12＋13 配接契約，engine/Renderer、native Page、Article/Service/FAQ/Media、需自有真實資料、不得把 in-progress 宣稱 Ready | 和 ART-DIRECTION-STARTER 的雙 Adapter 範圍有交疊；和 `OWNED-MEDIA`、`SECTION-PATTERNS` 存在引用關係，非無目的重複 | 保留目前的擴充技術契約，驗證 registry／實作後再指定權威版本 |
+| `docs/student-builder-pack/SECTION-PATTERNS.md` | 新十三款 Pattern 適用範圍、`targetPage` 為導航 ID、`after-intro`/ `page-end` 插槽、featured-work/trust-service-path 資料契約 | 與 EXPANDED-LAYOUTS 只重複入口與 in-progress 警示；具體插槽、驗證與內容契約應獨立，不屬 SSOT 進度 | 保留技術 API 詳規 |
+| `docs/student-builder-pack/MEDIA-REPLACEMENT.md` | 遠端 Manus 圖片／音訊版權風險、資產盤點、Demo 占位、圖音可用性與授權檢查 | 和 OWNED-MEDIA 都講自有圖片，但前者是**外來展示素材的權利與替換 QA**，後者是**欄位與版面呈現**；不應誤刪 | 保留來源風險檢查與媒體替換作業 |
+| `docs/student-builder-pack/OWNED-MEDIA.md` | 新十三款 `brand.logoPath/heroImagePath/assets`、圖片裁切與位置、各 Layout 圖片角色、`layoutContent.headings` | 跟 MEDIA-REPLACEMENT 互補；目前學員 Starter 允許圖片上傳，但文件主要給 AI／Exporter 看，不應額外把檔案路徑變成學員必填欄位 | 保留技術欄位契約，學員 UI 應維持選填上傳 |
+| `docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md` | PR50 在 PR46 之後合併驗收、兩種 Exporter 的 PROJECT/AGENTS 檔案一致性、25 Layout、測試案例 | **歷史 PR 條件**，開頭以「PR46 若未合併則 BLOCKED」為前提；不能直接沿用它判定 2026-10-22 的開發進度。應核對實際 merge SHA 與 code 後轉歷史資料 | 保留 PR50/46 驗收來龍去脈，避免作為新 PR 阻塞規則 |
+
+### Batch 03 實質差異
+1. **三條路線 vs. B 路線包**：`THREE-WAYS` 與 `START-HERE` 均允許 A/C 不需要 Site Brief；`student-builder-pack/README` 與 `START-BUILD-PROMPT` 卻以 B 路線為主。這是適用範圍差異，不是要求把 A/C 強制收斂成先下載 JSON。
+2. **老文件的當下時態**：`ART-DIRECTION-STARTER` 的「Gallery／主要規劃器接線尚未做」和 `EXPANDED-LAYOUTS` 的「已由主匯出器接線」需要實作查核，不應僅改寫成任一方為對。
+3. **媒體兩份文件不是重複**：授權替換流程 vs. 可設定的 Layout 圖片角色，需要各自保留。
+4. **工程規格與管理 SSOT 分層**：SECTION-PATTERNS、EXPANDED-LAYOUTS 是契約，PR50-PR46 gate 是特定 PR 的歷史驗收，不該與專案狀態共編一份。
+
+### Batch 03 原文版本
+
+| 路徑（皆 main） | 已讀 Blob SHA |
+| --- | --- |
+| `docs/student-builder-pack/README.md` | `7e8e676951c7104af42b76a11e9113ccf9ecc30b` |
+| `docs/student-builder-pack/START-BUILD-PROMPT.txt` | `72766d4280a141d50af660d3c55a88ab8796cb4f` |
+| `docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md` | `d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9` |
+| `docs/student-builder-pack/INTERVIEW-EVALUATION.md` | `1067b605a73632df9cd6baaa51b9378bb318196d` |
+| `docs/student-builder-pack/ART-DIRECTION-STARTER.md` | `0b0b3870098f56dcaefc6d486ec789364b0b5ef1` |
+| `docs/student-builder-pack/EXPANDED-LAYOUTS.md` | `8fe4c3ea3ed6b3523d868056ef570391eb4fe09a` |
+| `docs/student-builder-pack/SECTION-PATTERNS.md` | `7fb9d7457cbf054675fb62e29f20f45fcd2d6820` |
+| `docs/student-builder-pack/MEDIA-REPLACEMENT.md` | `5b5d9f200801e88235465701339c515189f11bef` |
+| `docs/student-builder-pack/OWNED-MEDIA.md` | `8ca0a4b51be64469d640bec52f89c0ac63695bf9` |
+| `docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md` | `d63f96a0652559bdcdc04de5049d018cec8dd4c6` |
