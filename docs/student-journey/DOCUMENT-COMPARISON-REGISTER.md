@@ -260,3 +260,18 @@ Skill 交疊判斷：`astro-pr-preview` 管 PR／Preview／人為 Merge gate，`
 | `.ai/astro-editorial-layout-design/references/04-workflow.md` | # AI 生成工作流程（八步，每步有產出物與出口條件）; ## 1. 需求理解（產出：`brief.md`）; ## 2. 選版型方向（產出：`direction.md`） | d150cacd2b04 |
 | `.ai/astro-editorial-layout-design/references/site-analysis/01-field-notes.md` | # 01 田野筆記 `fn-`（知識／研究者）; ## [OBS] 原始碼事實; ## [MEAS] 實測 | 9f0d70680b63 |
 | `.ai/astro-editorial-layout-design/references/site-analysis/02-essayist.md` | # 02 長文書房 `es-`（知識／作家）; ## [OBS] 原始碼事實; ## [MEAS] | 096f23b16794 |
+
+## Batch 06C｜Editorial Layout Design 文件 3/3（已讀）
+
+| 檔案 | 原文標題與章節 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-editorial-layout-design/references/site-analysis/03-learning-lab.md` | # 03 學習實驗室 `ll-`（知識／教學）; ## [OBS] 原始碼事實; ## [MEAS] | f1142cd46176 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/04-curator.md` | # 04 收藏者目錄 `cu-`（知識／策展）; ## [OBS] 原始碼事實; ## [MEAS] | 2a65678b602b |
+| `.ai/astro-editorial-layout-design/references/site-analysis/05-radio-letter.md` | # 05 聲音通信 `ra-`（知識／聲音）; ## [OBS] 原始碼事實; ## [MEAS] | 9df415864cd9 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/06-clinician.md` | # 06 清晰臨床 `cl-`（助人／專業說明書）; ## [OBS] 原始碼事實; ## [MEAS] | 25e576f5f645 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/07-companion.md` | # 07 溫柔陪伴 `co-`（助人／關係）; ## [OBS] 原始碼事實; ## [MEAS] | 3453f167c756 |
+| `.ai/astro-editorial-layout-design/references/site-analysis/08-somatic.md` | # 08 身體與節律 `so-`（助人／身體工作）; ## [OBS] 原始碼事實; ## [MEAS] | 9c461a39ce5a |
+| `.ai/astro-editorial-layout-design/references/site-analysis/09-coach.md` | # 09 實作型教練 `ma-`（助人／行動教練）; ## [OBS] 原始碼事實; ## [MEAS] | ddefae78301d |
+| `.ai/astro-editorial-layout-design/references/site-analysis/10-collective.md` | # 10 共好工作室 `cg-`（助人／團體）; ## [OBS] 原始碼事實; ## [MEAS] | 971b0846f68f |
+
+Editorial 判斷：Hero／Sections／Lists／Rhythm／CTA recipes 屬構圖參考；visual-qa/scoring/diversity-check 屬設計檢查方法；site-analysis 和 examples 主要是研究及設計決策證據，不是管理 SSOT。相似的「品質」字詞不等於同內容重複，需要保留技術特定檢查。
