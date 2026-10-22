@@ -158,3 +158,7 @@
 ## 第二階段續作｜三份核心 Skills 全行來源處置
 
 [PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 對固定 baseline 的 `astro-site-entry`（25 行）、`astro-site-from-zero`（26 行）、`astro-content-readiness`（34 行）逐行分類，共 85 行、37 行帶規範／流程內容，拆出 74 個義務或操作步驟候選，含原始 Blob SHA 和 L# URL。這是逐行審閱，不是僅擷取 regex 關鍵字；**74 不等於 74 項已去重獨立規範，且仍待連結 P0 與全量語義核對**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜三份核心 Skill 與 P0 工作 ID 對照
+
+[PHASE2-CORE-SKILLS-FULL-LINE-A.md](PHASE2-CORE-SKILLS-FULL-LINE-A.md) 已直接在 37 個規範／流程來源行補映射：**10 行**與現有 P0 工作 ID 有部分交疊（`PARTIAL_OVERLAP_P0`），**27 行**仍為新範圍候選（`NEW_SCOPE_CANDIDATE`）。這是「來源行 → 已有 P0 工作 ID」初步連結，不等於原行所有子義務已完整覆蓋；74 個細項候選尚未逐條語義驗收，不能直接加到 P0 82 個工作代表。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
