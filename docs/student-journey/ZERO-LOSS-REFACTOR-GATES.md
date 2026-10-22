@@ -63,3 +63,9 @@
 - [Skills A](PHASE2-SKILLS-A.md) 10 份、108 行高風險抽樣；[Skills B](PHASE2-SKILLS-B.md) 9 份、85 行高風險抽樣；全部有 frozen Git blob 與行號。
 - 抽樣不是全文逐條拆分，亦未完成 Skill references 的規範性內容比對。不可宣稱 19 Skills 已全部語義驗收。
 - 依然禁止 Phase 3/4；安全護欄的跨 Skill 重複不得未經證明就刪除。
+
+## 第二階段續作｜Skill 原子條款 P0
+
+- [PHASE2-SKILLS-ATOMIC-P0.md](PHASE2-SKILLS-ATOMIC-P0.md)：4 份入口／發布 Skills，51 組可回溯的子條款候選，已區分 A/B/C、GitHub Build、實際 Preview、Cloudflare 初始化與索引授權。
+- 尚須完整分解 19 Skills 中剩餘條款及 references，並完成每條跨文件語義比對。**51 不是總分母或核准通過數**。
+- 第三、第四階段持續 BLOCKED。
