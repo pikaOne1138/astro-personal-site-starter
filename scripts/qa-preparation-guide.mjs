@@ -1,30 +1,30 @@
 import { chromium } from 'playwright';
-import {spawn} from 'node:child_process';
-import {createServer} from 'node:net';
-import {mkdirSync,writeFileSync} from 'node:fs';
-import {setTimeout as delay} from 'node:timers/promises';
+import {createServer} from 'node:http';
+import {readFileSync,existsSync,statSync,mkdirSync,writeFileSync} from 'node:fs';
+import {resolve,join,extname,sep} from 'node:path';
 
-const port=await new Promise((resolve,reject)=>{
- const probe=createServer();
- probe.once('error',reject);
- probe.listen(0,'127.0.0.1',()=>{const p=probe.address().port;probe.close(()=>resolve(p))});
+// Serve the finished dist/ to avoid Astro preview's process-wide singleton guard.
+const root=resolve('dist');
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp','.ico':'image/x-icon'};
+const server=createServer((req,res)=>{
+ let pathname;
+ try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname)}catch{res.writeHead(400).end();return}
+ const target=resolve(root,'.'+pathname);
+ if(target!==root&&!target.startsWith(root+sep)){res.writeHead(403).end();return}
+ let file=target;
+ if(existsSync(file)&&statSync(file).isDirectory())file=join(file,'index.html');
+ if(!existsSync(file)||!statSync(file).isFile()){res.writeHead(404).end();return}
+ res.writeHead(200,{'Content-Type':(types[extname(file)]||'application/octet-stream')+'; charset=utf-8'});
+ res.end(readFileSync(file));
 });
-const base=`http://127.0.0.1:${port}`;
+await new Promise((ok,fail)=>{server.once('error',fail);server.listen(0,'127.0.0.1',ok)});
+const base='http://127.0.0.1:'+server.address().port;
 const widths=[1440,1280,768,390];
 const out='qa-artifacts/prepare';
 mkdirSync(out,{recursive:true});
-// Spawn Astro directly so SIGTERM stops the actual server, not just an npm wrapper.
-const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{stdio:['ignore','pipe','pipe']});
-let serverOutput='';
-for(const stream of [server.stdout,server.stderr])stream.on('data',chunk=>{serverOutput=(serverOutput+chunk.toString()).slice(-12000)});
-let serverError=null;
-server.on('error',err=>{serverError=err.message});
 let browser;
 const rows=[];
 try {
- let ready=false;
- for(let i=0;i<40;i++){try{const r=await fetch(base+'/guide/prepare/');if(r.ok){ready=true;break}}catch{}await delay(500)}
- if(!ready)throw Error('Preview guide unavailable: '+JSON.stringify({url:base+'/guide/prepare/',exitCode:server.exitCode,signalCode:server.signalCode,error:serverError,output:serverOutput}));
  browser=await chromium.launch({headless:true});
  for(const width of widths) {
   const page=await browser.newPage({viewport:{width,height:900}});
@@ -50,4 +50,4 @@ try {
  }
  writeFileSync(out+'/results.json',JSON.stringify(rows,null,2));
  console.log('Preparation guide Chromium QA:',JSON.stringify(rows));
-}finally{await browser?.close();server.kill('SIGTERM')}
+}finally{await browser?.close();await new Promise(resolve=>server.close(resolve))}
