@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - name: Build independently exported sites and reject unsafe inputs
         run: node scripts/verify-art-direction-export.mjs
       - uses: actions/upload-artifact@v4
