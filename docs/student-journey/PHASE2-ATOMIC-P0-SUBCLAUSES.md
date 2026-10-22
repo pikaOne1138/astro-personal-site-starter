@@ -1,6 +1,6 @@
 # Phase 2｜P0 跨文件原子義務拆分 v1
 
-主控：[CLAUSE-COVERAGE-MATRIX.md](CLAUSE-COVERAGE-MATRIX.md)；父層主題：[PHASE2-ATOMIC-CROSSFILE-LEDGER.md](PHASE2-ATOMIC-CROSSFILE-LEDGER.md)。凍結 `main@2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`；這是從十組 P0 主題進一步拆出的 **31 項候選義務**，不是 31 項人工核准規範。完整原文由每筆固定的 commit 行號及下方 Blob SHA 還原，不以此表摘要代替。
+主控：[CLAUSE-COVERAGE-MATRIX.md](CLAUSE-COVERAGE-MATRIX.md)；父層主題：[PHASE2-ATOMIC-CROSSFILE-LEDGER.md](PHASE2-ATOMIC-CROSSFILE-LEDGER.md)。凍結 `main@2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`；這是從十組 P0 主題進一步拆出的 **41 項候選義務**，不是 41 項人工核准規範。完整原文由每筆固定的 commit 行號及下方 Blob SHA 還原，不以此表摘要代替。
 
 | 原子候選 ID | 子義務／限制（工作解釋） | 精確原文出處 | 查核狀態 |
 |---|---|---|---|
@@ -36,6 +36,17 @@
 | `QA-001.02` | PR59 獨立學生站人工驗收另需 375 | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24)；[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L35](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L35)；[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L36](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L36) | SOURCE_VERIFIED, SEMANTICS_PENDING |
 | `QA-001.03` | 沒有實測不得稱完成視覺驗收 | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24)；[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L35](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L35)；[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L36](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L36) | SOURCE_VERIFIED, SEMANTICS_PENDING |
 
+| `PREVIEW-HISTORY-01` | 變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PREVIEW-HISTORY-02` | 不能保證已被第三方複製的公開內容消失 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PREVIEW-HISTORY-03` | 不得擅自破壞 QA 證據 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PREVIEW-HISTORY-04` | 未公開草稿優先本機或受限制存取 Preview | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PREVIEW-POLICY-01` | GitHub Pages 缺隔離 Preview 時如實回報；更改預覽部署架構需學員同意 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_COMPOSITE: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PR59-EVIDENCE-01` | 每筆測試記錄目標、SHA、URL/Artifact、日期、執行者、結果與風險；上游改動需重判 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16) | DIRECT_COMPOSITE: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `PR59-EVIDENCE-02` | 自動化 PASS 不足以證明內容真實或法律適用性 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L39) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `INDEX-DETAIL-01` | 正式索引授權後重新 Build，驗證 meta robots、robots、canonical、sitemap，並確認變數作用環境 | [.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31) | DIRECT_COMPOSITE: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `QA-DETAIL-01` | 對真實 Preview 檢查 Pagefind、RSS、Sitemap、404、鍵盤、觸控、reduced-motion、noindex、隱私 | [.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24) | DIRECT_COMPOSITE: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+| `EXT-DETAIL-01` | GitHub Pages 子路徑真實測資產、內頁、導航、搜尋、canonical 與部署 SHA，不能本機冒充線上 | [docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24) | DIRECT_COMPOSITE: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |
+
 ## 來源 Blob 鎖定
 
 - `.ai/astro-pr-preview/SKILL.md`: `411c091674981f0f600b4154df085ad3cb9d8ca7`
@@ -60,3 +71,18 @@
 - PROOF-003.02 附 PR59 EXT-01 來源，但此為**待測驗收標準**而非已 PASS。
 - PRIV-001 來源 L62 尚有舊部署刪除需額外授權、快取不能完全消除、不得破壞 QA 證據等子義務；**尚未完整原子化**。
 - 本次僅修正候選表的**來源證據**，31 項一律仍是 `SEMANTICS_PENDING`。不能稱為六項風險全部經人工語義驗收。
+
+## 第二輪補正：10 項缺口正式入列
+
+前述 10 項缺口已新增固定 ID、行號與來源。標記 `DIRECT` 表示該來源句直接支持**概念**，`DIRECT_COMPOSITE` 表示原文同時含多個不可丟失的條件，仍待下一輪拆成更細的獨立義務。**41 項仍不是 41 項已通過人為語義驗收的條款。**
+
+- `PREVIEW-HISTORY-01` DIRECT：`.ai/astro-pr-preview/SKILL.md#L62` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `PREVIEW-HISTORY-02` DIRECT：`.ai/astro-pr-preview/SKILL.md#L62` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `PREVIEW-HISTORY-03` DIRECT：`.ai/astro-pr-preview/SKILL.md#L62` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `PREVIEW-HISTORY-04` DIRECT：`.ai/astro-pr-preview/SKILL.md#L62` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `PREVIEW-POLICY-01` DIRECT_COMPOSITE：`.ai/astro-pr-preview/SKILL.md#L30` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `PR59-EVIDENCE-01` DIRECT_COMPOSITE：`docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16` · blob `62e7406a9fb784c6d6b192982eb5b83911f359d7`
+- `PR59-EVIDENCE-02` DIRECT：`docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L39` · blob `62e7406a9fb784c6d6b192982eb5b83911f359d7`
+- `INDEX-DETAIL-01` DIRECT_COMPOSITE：`.ai/astro-starter-deploy/SKILL.md#L31` · blob `0354681c6c6217310d5d858d3bddbdffe3911f49`
+- `QA-DETAIL-01` DIRECT_COMPOSITE：`.ai/astro-pr-preview/SKILL.md#L24` · blob `411c091674981f0f600b4154df085ad3cb9d8ca7`
+- `EXT-DETAIL-01` DIRECT_COMPOSITE：`docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24` · blob `62e7406a9fb784c6d6b192982eb5b83911f359d7`
