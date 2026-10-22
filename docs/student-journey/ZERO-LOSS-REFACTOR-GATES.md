@@ -57,3 +57,9 @@
 - [批次 3：學員脈絡／三條路線／交接](PHASE2-CLAUSE-REVIEW-BATCH3.md)：5 份檔案、134 行來源原文；與較早批次有來源重疊，**不累加為獨立規範**。
 - 不丟失的特殊條件：in-progress 不等於 Ready；首頁與導航 ID 插槽有差異；媒體須有授權且 Logo 非必填；Design Brief Markdown 不能冒稱可直接匯入 JSON；PR Build 不等於部署 Preview；學生意圖文件不能取代 Git/程式事實。
 - 第二階段仍未達 Gate：沒有全量獨立子條款分母、未完成衝突仲裁及人工作證。第三與第四階段仍明確禁止。
+
+## 第二階段續作｜19 個 Skills（2026-10-22）
+
+- [Skills A](PHASE2-SKILLS-A.md) 10 份、108 行高風險抽樣；[Skills B](PHASE2-SKILLS-B.md) 9 份、85 行高風險抽樣；全部有 frozen Git blob 與行號。
+- 抽樣不是全文逐條拆分，亦未完成 Skill references 的規範性內容比對。不可宣稱 19 Skills 已全部語義驗收。
+- 依然禁止 Phase 3/4；安全護欄的跨 Skill 重複不得未經證明就刪除。
