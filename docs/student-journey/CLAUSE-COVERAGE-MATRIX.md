@@ -489,3 +489,7 @@
 ## 第二階段續作｜13 父／31 子的非加總計數與四項範圍解釋
 
 [PHASE2-PARENT-CHILD-DEDUPE.md](PHASE2-PARENT-CHILD-DEDUPE.md) 對 13 個 PARTIAL 父主題與 31 個拆解子候選逐組記錄重疊、不同平台與證據限制；四項待確認範圍已寫明依據（獨立 Repo EXT 尚未測試、PR59 證據必填欄、SITE_INDEXABLE 正式環境限制、功能型 QA 的適用條件）。仍有子項是複合義務，**未取得真正去重後的原子總母數，父 41 + 子 31 不可加總**。原始文件未動。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
+
+## 第二階段續作｜8 組複合子候選的欄位拆解
+
+[PHASE2-ATOMIC-LEAF-DECOMPOSITION.md](PHASE2-ATOMIC-LEAF-DECOMPOSITION.md) 對 8 組仍複合的子候選，將必填證據欄位、SEO 驗證項、Preview 互動與路徑檢查細分為 **35 個可核對欄位／檢查點**。列出同義條款候選，保留原始 SHA／行號。**35 不是新增的 35 條獨立政策，不可與 41 個父候選、31 個子候選加總**。尚待逐條語義判定、覆蓋分母與人為驗收。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
