@@ -377,3 +377,28 @@ interface Props { src: string; alt: string; href?: s | a949d3f1cedd |
 | `.ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md` | ## 0. 先說明這份回覆的性質; ## 一、案例池（待驗證）; ## 二、暫定優先驗證名單（假設，非實測排名） | 903caf2bedf6 |
 
 來源研究、社群案例清單、不同模型的設計研究文字，應以不可任意改寫的證據保存；「曾研究過的網站或配方」並不代表現在站點仍可用、也不是已取得素材著作權。元件舊版研究與現有 Registry 數量須分開引用。
+
+## Batch 08｜最後的歷史版本文件、部署資產與示範文章（已讀）
+
+| 路徑 | 原文內容／標題 | Blob SHA |
+|---|---|---|
+| `docs/v0.2-collaboration.md` | # v0.2 協作與合併紀錄; ## 目標; ## Branch 分工; ## v0.2 Navbar 原則 | d098cda82550c2896b442a3d8eab440c45b2d500 |
+| `docs/v2-8-content-and-seo.md` | # V2.8｜內容與搜尋引擎基礎設施; ## 新增文章; ## 發布與搜尋引擎; ## QA | 11c740b02c979590cc5f9d8a56d520001fd2b47c |
+| `public/robots.txt` | User-agent: * Allow: / Sitemap: https://pikaone1138.github.io/astro-personal-site-starter/sitemap.xml  | dc06b580653cde2b4ce5ad3977e77f99142b6d41 |
+| `src/content/articles/astro-starter-notes.md` | ## 先擁有能持續更新的網站; ## 讓 AI 協助修改 | f9d7aa95a9e3a55fac1f154286b5f695aedb78f0 |
+| `src/content/articles/homepage-is-a-lobby.md` | ## 首頁只負責讓人知道下一步; ## 文章頁要讓人願意閱讀 | 6db2f55701ae8b9d76121ba14c342f5dd1c9f871 |
+| `src/content/articles/make-complex-things-clear.md` | ## 先決定讀者的問題; ## 用標題整理思考 | 48f78c70a8aac055dd14b981808cbe9d59efb3be |
+| `src/content/articles/one-good-article.md` | ## 多一條閱讀路徑; ## 連結到相關內容 | b506cb1a4c3915968ea3217301aa66842062b83c |
+| `src/content/articles/organize-knowledge.md` | ## 分類是路線，標籤是線索; ## 讓資訊有第二次被看見的機會 | 2d17dbb9968cbace67bc509a80e93949ecb6c9ed |
+| `src/content/articles/quiet-writing.md` | ## 留下一個觀察; ## 給寫作留下空間 | 458f1d8fe7f8f41a764ebd4ca84790c4d26a785a |
+
+比較：v0.2 協作與 v2.8 SEO 屬歷史版本／特定能力描述，最新可運作的路由與索引應由 source 和 build 查核。public/robots.txt 是運作資產而非文件 SSOT，不能為了減少 Markdown 檔案而刪。src/content/articles 是內容網站的真實文章資料，與管理文件完全不同；不能合併到管理入口，也不得自動改寫內容。
+
+## 全量盤點結果與治理建議
+
+- 已按照 2026-10-22 檢索到的 GitHub `main` 文字檔樹，逐一讀取 **192 份** `.md/.mdx/.txt` 文件／文字資產原文；其中前 27 份在 Batch 01–03 完成，其餘在 Batch 04A–08 完成。歷史 PR #61 與本輪 PR #67 的差異另以分支比對，非擅自視為 main。
+- 明顯需要**集中管理且有實質重疊**的是：PR59 與新七關驗收的部署／人工核准檢查，PR56 動線與新七關的前四步，以及 START-HERE／AGENT-HANDOFF／學生 AGENTS 之間的重複操作提醒。但它們目前仍有不同權責，不建議直接刪除。
+- **需核對再更新的過時敘述**：README 與部分舊版文件仍寫「12 款」而當前 registry／Builder Pack 文案寫「25 個方向」；ART-DIRECTION-STARTER 的接線狀態與 EXPANDED-LAYOUTS 描述不同階段；PR46/47/50 歷史文件仍保留當時 Draft／待整合語氣。須連至新進度索引並註明歷史性。
+- **不應合併**：研究 Repo 的 AGENTS 與學生獨立站 AGENTS；技術規格與 PR 歷史證據；19 個專職 Skills；原型構圖 recipe、研究原始文稿、原始碼快照；學生訪談表格與示範文章／測試 Fixture。
+- **建議入口層級**：專案級 `PROJECT-SSOT.md` 集中有效決策、當前待辦、驗收項目索引與證據連結；`QUALITY-CONTRACT` 定義通用 PASS，`DEFECT-REGISTER` 是缺陷台帳，`START-HERE` 是學員包入口，`AGENTS` 是相應 Repo 的 AI 操作契約。這不是建立多份同等權威 SSOT。
+- **注意**：讀取全部文字與章節並完成分類，不等於實際跑過每個 Script、驗證每個 PR 過往說法或逐條完成 19 Skills 間所有相似段落的逐句 diff。此處指出的是**來源原文可直接支持的重疊與矛盾候選**；實作真相仍待專項執行查核。未經使用者同意，不做刪檔、Merge 或 Production 部署。
