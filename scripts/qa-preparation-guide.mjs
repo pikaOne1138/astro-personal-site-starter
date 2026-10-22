@@ -14,7 +14,7 @@ const widths=[1440,1280,768,390];
 const out='qa-artifacts/prepare';
 mkdirSync(out,{recursive:true});
 // Spawn Astro directly so SIGTERM stops the actual server, not just an npm wrapper.
-const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{stdio:['ignore','pipe','pipe']});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:['ignore','pipe','pipe']});
 let serverOutput='';
 for(const stream of [server.stdout,server.stderr])stream.on('data',chunk=>{serverOutput=(serverOutput+chunk.toString()).slice(-12000)});
 let serverError=null;
