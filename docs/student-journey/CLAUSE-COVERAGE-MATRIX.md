@@ -451,3 +451,9 @@
 [PHASE2-ATOMIC-P0-SUBCLAUSES.md](PHASE2-ATOMIC-P0-SUBCLAUSES.md) 將先前 10 組跨文件主題拆為 **31 項**較細的義務候選，每項都有 frozen main 的可點擊來源行，並另列 Blob SHA；範圍包括發布授權、Preview、獨立學員 CI、隱私憑證、內容真實性、搜尋索引與驗收尺寸。
 
 此 31 項尚未人工確認來源與子義務完全等價，未建構全量 source→atomic／atomic→source 逆向覆蓋，也尚未納入其他版本差異。**不能視為 31 項通過或 100% 覆蓋。** Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜P0 雙向來源驗證發現六項缺口
+
+[PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md](PHASE2-ATOMIC-BIDIRECTIONAL-AUDIT.md) 已為 31 項候選建立 26 組「被引用原文行 → 候選 ID」逆向索引，並查出 **6 項**定位錯誤、證據不精確或範圍混淆風險。尤其 `astro-pr-preview/SKILL.md` L64 是章節標題、L55 是人工 QA 限制，不能用來證明歷史 Preview 外洩或 Private Repo 的可見性。原候選表仍未核准，將錯誤登記而非偷偷當 PASS。
+
+這是**已引用行的逆向索引**，不是所有來源行的規範性分母；Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
