@@ -292,3 +292,33 @@ Editorial 判斷：Hero／Sections／Lists／Rhythm／CTA recipes 屬構圖參�
 | `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` | # Layout source audit｜PR #20; ## Manus 原始程式移植：10 / 10; ## 不可避免的路徑調整 | a21eec142f33 |
 | `.ai/astro-motion-craft/library/README.md` | # 特效參考庫｜Astro Motion Reference Library; ## 來源與資料層級; ## 從哪裡開始 | cf3a2df89633 |
 | `.ai/astro-motion-craft/library/effect-catalog.md` | # 動效型錄：Manus v2 × 現有 Astro 元件; ## PR #19：實作狀態補充（即時狀態以程式檔案為準） | a27fa515c98a |
+
+## Batch 07B｜其他 AI references 2（已讀）
+
+| 檔案 | 原文標題／內容起點 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-motion-craft/library/recipes/content-interactions.md` | # Recipe I01、L01、F01｜ZoomImage／UnderlineLink／FAQ; ## Manus v2 原始來源; ## ZoomImage | d70b24cf1aa6 |
+| `.ai/astro-motion-craft/library/recipes/pointer-interactions.md` | # Recipe P01–P02｜Tilt／Spotlight／Magnetic; ## 來源（Manus v2 ZIP 原始檔）; ## Manus 原始碼確認 | c6c0ee66f032 |
+| `.ai/astro-motion-craft/library/recipes/reveal-and-stagger.md` | # Recipe R01–R02｜Reveal + Stagger; ## 來源（Manus v2 ZIP 原始檔）; ## 與我們既有全域 Reveal 融合 | ca5e9c8982fa |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/Button.astro.txt` | ---
+interface Props { href?: string; variant?: 'primary' / 'secondary' / 'text' / 'small'; type | ab35655cd30b |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/FAQAccordion.astro.txt` | ---
+interface FAQItem { question: string; answer: string }
+interface Props { items: FAQItem[];  | 58daaf09109a |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/MotionCard.astro.txt` | ---
+interface Props { reveal?: boolean; delay?: number; className?: string; tilt?: boolean; spo | 8cef963c991b |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/Reveal.astro.txt` | ---
+type Variant = 'fade-up' / 'fade' / 'soft-zoom' / 'blur-up' / 'slide-left' / 'slide-right'  | 147a8e05fc8a |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/StaggerGroup.astro.txt` | ---
+interface Props { step?: number; start?: number; className?: string; }
+const { step = 90, s | 8ce5dfc1765a |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/UnderlineLink.astro.txt` | ---
+type Variant = 'grow' / 'center' / 'marker';
+interface Props { href: string; arrow?: boolea | 063f220b050d |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/ZoomImage.astro.txt` | ---
+type Effect = 'zoom' / 'pan' / 'none';
+interface Props { src: string; alt: string; href?: s | a949d3f1cedd |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/components.effects.css.txt` | /* Source excerpt copied from user-supplied Manus v2 zip: src/styles/components.css.
+ * This is | 17c5467f4dc5 |
+| `.ai/astro-motion-craft/library/source-snapshots/manus-v2/reveal.ts.txt` | export function initializeReveals(): void {
+  const nodes = [...document.querySelectorAll<HTMLE | 528a558bdf68 |
