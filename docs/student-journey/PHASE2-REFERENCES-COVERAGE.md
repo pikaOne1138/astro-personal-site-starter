@@ -108,3 +108,15 @@
 | `.ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md` | `903caf2bedf649b5f570d7bea0a3c1f1a6397494` | PRESERVE_IN_PLACE / NOT_SEMANTICALLY_REVIEWED |
 
 **Gate：** Phase 2 IN PROGRESS；Phase 3/4 BLOCKED；完整規範母數未建立，不能聲稱 100%。
+
+
+## 本輪補充分類：原先 48 份未做語義審核之附屬文件
+
+- [設計案例決策 8 份](PHASE2-SOURCES-EXAMPLES.md)：案例專屬 Brief/Direction/DECISIONS/Wireframe；不是全域約束。
+- [十站設計逆向分析 10 份](PHASE2-SOURCES-SITE-ANALYSIS.md)：OBSERVED_RESEARCH，不能冒充正式 QA。
+- [歷史稽核 2 份＋原始碼快照 9 份](PHASE2-SOURCES-SNAPSHOTS.md)：保留原始 Git Blob，不能以摘要取代程式位元組。
+- [研究原始資料 A 10 份](PHASE2-SOURCES-RESEARCH-A.md)、[B 9 份](PHASE2-SOURCES-RESEARCH-B.md)：來源檔完整保全，研究結論不可冒稱為已實作功能。
+
+**48/48 份已建立精確路徑、來源 Blob SHA 與資料類型分類紀錄。** 這代表「保全及用途分類」完成，**不代表 48 份文件都做了所有語義命題或強制規範的逐條審核**；其中實例與案例可能仍含相對於該設計的有效決策。清單上方原有 `NOT_SEMANTICALLY_REVIEWED` 不因建立來源分類而自動變為語義驗收通過。
+
+第二階段仍須：主 Skill／references 全文原子條款及跨文件歧義比對、逐項覆蓋分母、人工核准。Phase 3/4 BLOCKED。
