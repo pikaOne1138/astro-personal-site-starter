@@ -226,3 +226,20 @@ publishedAt: 2026-10-14 | 04fcb316816dbc79b65fc4ddd875ad69c57c6956 |
 | `.ai/url-to-frontend-replica/SKILL.md` | # URL-to-Frontend Replica｜既有網站的授權前端重建；## 0. 先辨識權利與環境；## 1. 發現完整頁面與範圍；## 2. 觀察設計、內容、素材與互動 | 858bc69db2ba46d3074a2e10d9f9d8390f668b3b |
 
 Skill 交疊判斷：`astro-pr-preview` 管 PR／Preview／人為 Merge gate，`astro-starter-deploy` 管首次平台設定，`astro-launch-health-check` 管 Production 上線後健康檢查；這是三個時間點，不能因為都出現部署而合成巨型 Skill。`astro-site-entry` 選 A/B/C 路線；`astro-starter-onboarding` 規劃輸入；`astro-site-assembly` 組裝；`astro-site-from-zero` 直接訪談組站；`astro-site-maintenance` 管既有站變更與復原。Layout、Editorial、UI、Motion、Section Pattern 同理保持專職，重複的共通安全規則由上位 AGENTS 與有效 Skill 引用。
+
+## Batch 06A｜Editorial Layout Design 文件 1/3（已讀）
+
+| 檔案 | 原文標題與章節 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-editorial-layout-design/README.md` | # Astro Editorial Layout Design Skill; ## 內容; ## 快速開始 | 9b9c82db052f |
+| `.ai/astro-editorial-layout-design/checklists/diversity-check.md` | # 差異性檢查：構圖指紋（禁止「只有配色不同」）; ## 十款指紋 [INF：由 [OBS] 歸納]; ## 旋鈕值對照（新站填寫用） | b781b3a503ce |
+| `.ai/astro-editorial-layout-design/checklists/scoring.md` | # 評分規則（100 分）; ## 門檻（先過門檻，再算分）; ## 計分 | c4b8b2802c23 |
+| `.ai/astro-editorial-layout-design/checklists/visual-qa.md` | # 視覺驗收清單（四寬度 × 十二類檢查）; # 1. 啟動; # 2. 量測（每頁 4 寬度截圖 + report.json；有 FAIL 則結束碼 1） | c52d149e5e77 |
+| `.ai/astro-editorial-layout-design/examples/reading-almanac/DECISIONS.md` | # DECISIONS — 閱讀年鑑; ## 截圖（`screenshots/`）; ## 構圖決策（每項都有數值與理由） | 0e2de60e7075 |
+| `.ai/astro-editorial-layout-design/examples/reading-almanac/brief.md` | # Brief — 閱讀年鑑（工作流程步驟 1）; ## 內容層級表; ## 與誠實相關的設計決定 | 4a57d226b53e |
+| `.ai/astro-editorial-layout-design/examples/reading-almanac/direction.md` | # Direction — 閱讀年鑑（步驟 2：版型方向）; ## 8 旋鈕; ## 與十款最接近者的差異 | 00cf3272b2d8 |
+| `.ai/astro-editorial-layout-design/examples/reading-almanac/wireframe.md` | # Wireframe — 閱讀年鑑（步驟 3）; ## 1440（容器 1320、gutter 57.6）; ## 390 | 56f4d542b6a9 |
+| `.ai/astro-editorial-layout-design/examples/trust-path/DECISIONS.md` | # DECISIONS — 信任路徑; ## 截圖（`screenshots/`）; ## 構圖決策 | 4231e9036985 |
+| `.ai/astro-editorial-layout-design/examples/trust-path/brief.md` | # Brief — 信任路徑（工作流程步驟 1）; ## 內容層級表; ## 與誠實相關的設計決定 | 7e984ab6150b |
+| `.ai/astro-editorial-layout-design/examples/trust-path/direction.md` | # Direction — 信任路徑（步驟 2：版型方向）; ## 8 旋鈕; ## 與十款最接近者的差異 | 4ecbd43d7bec |
+| `.ai/astro-editorial-layout-design/examples/trust-path/wireframe.md` | # Wireframe — 信任路徑（步驟 3）; ## 1440（深色 hero 滿版；內容欄 1180）; ## 390 | 10da0e808b5a |
