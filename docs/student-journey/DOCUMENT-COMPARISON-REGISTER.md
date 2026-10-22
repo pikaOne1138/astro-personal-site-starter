@@ -356,3 +356,24 @@ interface Props { src: string; alt: string; href?: s | a949d3f1cedd |
 | `.ai/astro-ui-craft/references/raw-research/arenaAgent-02B_案例池_助人者_11-20.md` | # 案例池 B｜助人者／個人專業服務型（B11–B20＋遺珠）; ## B11｜Cup of Tea Psychotherapy（加拿大・溫暖可愛派）; ## B12｜The Well Counseling Practice（女性藝術感・質感派） | 3ccab6be12a9 |
 | `.ai/astro-ui-craft/references/raw-research/arenaAgent-03_Top10精選.md` | # Top 10 精選（第二部分）; ## 知識／部落格 Top 10; ## 助人者 Top 10 | 5fd9a6a43bd2 |
 | `.ai/astro-ui-craft/references/raw-research/arenaAgent-04_Pattern分析_導航與首頁.md` | # Pattern 分析（上）｜導航列＋首頁排版; ## 二、導航列研究; ## 三、首頁排版研究 | 1bb22f9b071d |
+
+## Batch 07E｜其他 AI references 5（已讀）
+
+| 檔案 | 原文標題／內容起點 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-05_Pattern分析_CSS動畫CTA文章頁.md` | # Pattern 分析（下）｜CSS 視覺系統＋小動畫＋CTA＋文章頁; ## 四、CSS 視覺系統（Design Tokens）; ## 五、精緻感小動畫 | c2a967731111 |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-06_模板DesignBrief與融合建議.md` | # 模板 Design Brief＋融合建議（第四、五部分）; ## 模板 A｜知識／部落格; ## 模板 B｜助人者 | 14d1a2ebd66b |
+| `.ai/astro-ui-craft/references/raw-research/gemini-AstroTmplateResearch.md` | # 我正在設計一堂給完全不會程式、也沒有網站開發背景者的 Astro 架站工作坊。 目前我只聚焦兩種網站模板： A. 知識／部落格型網站 適合： 個人知識整理 部落格 個人觀點分享 專業文章 創作者內容基; # you asked; # gemini response | 6a99c10184c9 |
+| `.ai/astro-ui-craft/references/raw-research/grok-AstroTmplateResearch.md` | # Astro 教學模板視覺研究與案例拆解; # you asked; # grok response | e33430f33ddc |
+| `.ai/astro-ui-craft/references/raw-research/mistral-AstroTmplateResearch.md` | # Astro 架站工作坊/模板視覺研究與案例拆解報告; # 第一部分:完整案例池; ## 1A. 知識/部落格型案例池(20 個) | 7d065e9a6846 |
+| `.ai/astro-ui-craft/references/raw-research/perplexity-AstroTmplateResearch.md` | # 我正在設計一堂給完全不會程式、也沒有網站開發背景者的 Astro 架站工作坊。 目前我只聚焦兩種網站模板： A....; # you asked; # perplexity response | 6eb93f197540 |
+| `.ai/astro-ui-craft/references/raw-research/tenbin-gemini3.0Flash-AstroTmplateResearch.md` | ### 第一部分：完整案例池
+
+以下是經由視覺研究與案例拆解所整理的清單。這些案例涵蓋了從極簡、雜誌感到專業溫潤的風格，且皆具有良好的資訊架構，適合轉化為 Astro 模板。
+
+#### 【 | d5c36ee6fb6b |
+| `.ai/astro-ui-craft/references/raw-research/tenbin-gpt5.4nano-AstroTmplateResearch.md` | ## 1) 你的需求拆解成可執行的研究流程（大量搜尋 → 觀察 → 比較 → 收斂）; ## 2) 你要的「每個案例 30 項」如何落地：建立研究表（你/你的助理可用）; ## 3) 你最後要的輸出順序，我會怎麼產出（但需要你提供候選連結/截圖） | 6eda0522bb01 |
+| `.ai/astro-ui-craft/references/raw-research/tenbin-gpt6.1Sol-AstroTmplateResearch.md` | ## 第一部分：完整案例池; ## 第二部分：知識／部落格 Top 10、助人者 Top 10; ## 第三部分：跨案例 Pattern Analysis | 5836e382fd17 |
+| `.ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md` | ## 0. 先說明這份回覆的性質; ## 一、案例池（待驗證）; ## 二、暫定優先驗證名單（假設，非實測排名） | 903caf2bedf6 |
+
+來源研究、社群案例清單、不同模型的設計研究文字，應以不可任意改寫的證據保存；「曾研究過的網站或配方」並不代表現在站點仍可用、也不是已取得素材著作權。元件舊版研究與現有 Registry 數量須分開引用。
