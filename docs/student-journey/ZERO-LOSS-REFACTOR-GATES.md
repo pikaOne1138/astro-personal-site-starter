@@ -150,3 +150,7 @@
 ## 第二階段續作｜86 筆跨來源語義初核
 
 [PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已直接補上 **11 組**同義、部分重疊或授權範圍差異的對照：其中 **4 組 SAME_CANDIDATE** 只是同義候選，尚未人工裁決、尚未合併 ID。並校正 3 筆語義類型，目前暫計：**規範義務 37、驗收條件 37、證據欄位 12**（共 86 筆）。原 36/36/14 已屬舊快照；不能按四組候選重複直接扣除分母。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+## 第二階段續作｜四組同源同義條款建立 canonical alias
+
+[PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md](PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md) 已對四組 SAME_CANDIDATE 逐字比對凍結來源（均為同一原文行經不同拆分路徑產生），建立 4 個 canonical ID 並保留原有 8 個工作 ID 作 alias。適用範圍和例外已在表中列明，並非跨版本語義驗收。86 筆末端工作記錄的 4 組重複可暫作 82 個工作代表，**82 不是全部來源的唯一規範分母，亦非正式 PASS**；原文未刪改。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED。
