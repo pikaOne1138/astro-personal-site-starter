@@ -1,6 +1,6 @@
 # Phase 2｜核心 Skills B 原子候選 Batch 4
 
-Frozen main: `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本批新增 10 個不重複來源行、26 個工作候選。每個子候選仍需與 P0 及先前批次做語義比較，非正式 Canonical 條款。
+Frozen main: `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本批新增 11 個不重複來源行、26 個工作候選。每個子候選仍需與 P0 及先前批次做語義比較，非正式 Canonical 條款。
 
 | ID | 來源候選與保留範圍 | Frozen source |
 |---|---|---|
@@ -40,4 +40,4 @@ Frozen main: `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本批新增 10 個不
 
 ## 統計及 Gate
 
-Batch1/2/3 為 20 行／69 候選；本批 10 行／26 候選，暫計 **30/103 行、95 個工作候選**，尚餘 **73 個來源行**未初步拆分。前批新增父 ID 下的 Cloudflare／GitHub 子欄位不可加總。仍未取得 103 行全量原子化與 P0 全量語義去重。Phase 2 IN PROGRESS、Phase 3/4 BLOCKED；原始 Skill 未修改，不 Merge 或部署。
+Batch1/2/3 為 20 行／69 候選；本批 11 行／26 候選，暫計 **31/103 行、95 個工作候選**，尚餘 **72 個來源行**未初步拆分。前批新增父 ID 下的 Cloudflare／GitHub 子欄位不可加總。仍未取得 103 行全量原子化與 P0 全量語義去重。Phase 2 IN PROGRESS、Phase 3/4 BLOCKED；原始 Skill 未修改，不 Merge 或部署。
