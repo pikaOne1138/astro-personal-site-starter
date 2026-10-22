@@ -132,3 +132,22 @@
 | `docs/quality/PROPS-URL-CONTRACT-TARGETS.md` | # QA v2.0｜Props 契約與 URL 護欄定點回歸；## 目前確認的風險；## 必要負向注入；## 證據分層 | 4acdcbf65a7e |
 
 交疊觀察：Cloudflare Pages/Workers、GitHub PR Preview、Smoke/Reconciliation 四類文件均涉及部署，但分別處理不同平台與故障排除；必須與 astro-pr-preview / astro-starter-deploy Skills 指向同一套核准與 Preview 證據規則。ACCEPTANCE-25 是版型庫專項驗收，不能取代學員七關驗收。COMPONENTS 是元件目錄而非專案進度 SSOT。
+
+## Batch 04B｜訪談與設計研究原文（已讀）
+
+| 檔案 | 原文內容綱要 | Blob SHA |
+|---|---|---|
+| `docs/student-intake/README.md` | # 建站前 AI 訪談包｜學員使用說明；## 七份文件；## 開場語（複製到 AI）；## 真正完成的標準；## 下一步 | 0883b659f92a64d9509c1208b3863ca470d1d86a |
+| `docs/student-intake/01-AI-訪談主持人.md` | # AI 角色指令｜我的建站前內容訪談主持人；## 對話規則；## 訪談階段（自然對話，不是一次貼整份表單）；### 第一階段｜找到方向；### 第二階段｜About：訪客認識你 | b14088ae85ee9bfce8a0cc691969a4c4fa2c5df2 |
+| `docs/student-intake/02-網站定位與個人介紹.md` | # 我的網站｜定位與 About 準備紙；## 1. 我想做哪一種網站？；## 2. 網站名稱；## 3. 讀者與下一步；## 4. 一句話介紹（不知道就讓 AI 提案） | 2cd591bf4070d498efb63f0cccf7affa2bcb6328 |
+| `docs/student-intake/03-內容準備-二選一.md` | # 我的網站｜文章或服務內容準備紙；## A｜知識／部落格（選這類才填）；### 想分享的三個主題；### 第一篇文章的素材；### 可選的第二、第三篇文章 | 09a235231055a52d87b7baea492f284a8c9d4a5f |
+| `docs/student-intake/04-圖片與發布準備.md` | # 我的網站｜圖片、聯絡與公開資料準備紙；## 1. Logo 與視覺素材；## 1A. 跟 AI 一起產圖的下一步；## 2. 可以公開的外部連結；## 3. 我希望正式網站公開的資訊 | 6e99528c26a57c9ac4a40205a9937b9ce25754b7 |
+| `docs/student-intake/05-AI-品牌識別與圖片共創.md` | # AI 品牌識別共創｜從網站名稱到 Logo、Favicon、替代圖片；## 角色；## 設計分五關；### 1. 品牌線索；### 2. 標誌策略 | 82c038c799b74bdebdaf6d1ddddb8ee880ddac6d |
+| `docs/student-intake/06-Logo與圖片設計研究.md` | # Logo、Favicon 與 AI 網站圖片｜設計研究備忘；## 研究後的核心判斷；## 工作坊採用的交付檔；## 參考閱讀 | 2a3fde90d097d619110be123a8441b9579c5925e |
+| `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt` | 我已提供 ATP AI 建站資料包。這次先不要建站，請讀取包內 AGENTS.md、.ai/astro-design-consultation/SKILL.md 與其必要 refe | 8b2887ba4c236bf7aeab03f3ba8c52caa9b6af6b |
+| `docs/student-builder-pack/UPSTREAM-SOURCES.md` | # 學員離線資料包的內容與界線；## 這份 ZIP 已經包含的資料；## 獨立使用方式；## 尚需學員決定或配置的事項 | 53acadfa6cc6d61ea8504aa9bc55076a057ab20d |
+| `docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md` | # ATP P0｜AI 設計能力外部研究與共用設計判斷規則；## 1. 研究目標與邊界；## 2. 外部來源逐項拆解；## 3. 額外挖掘：這批研究帶給 ATP 六個新機制；## 4. P0 共用設計判斷規則（可供現有 Skills 引用） | b319cfc9655058e154f3044d3a23da77b02ecb37 |
+| `docs/research-gap-matrix-v2-5.md` | # 跨 AI 研究 × Astro 35 元件缺口矩陣；## 1. 範圍與資料可信度；## 2. 已有 35 個元件：能力與缺口（不能只看名稱）；## 3. 缺口優先級：研究交叉證據 × 教學價值；## 4. 建議 V2.5 實作範圍（**10 組核心能力、分批實作**） | a88ed8599e1e516e03b8b3227512f54ed190577d |
+| `docs/manus-component-gap-v2-5-part2.md` | # Manus Component Kit × 現有 Astro 元件庫｜V2.5 第二批決策矩陣；## 1. 對照原則；## 2. 全部 44 個 Manus 元件分類（依 ZIP 原始檔案核對）；### A. 共用 11 個；### B. 知識／部落格 19 個 | 3988c1060b9beb8ab34628224ae2a2359f6be04a |
+
+比較：student-intake 七份是提供給學員／訪談 AI 的連續使用資料，並非七份專案 SSOT；其中 Logo／品牌訪談屬選填，不應藉文件整合新增前置硬性欄位。Design Consultation Prompt 與正式 Start Build Prompt 處於不同階段；研究缺口與 Manus Gap 屬來源研究／歷史判斷，不是即時程式實作狀態。
