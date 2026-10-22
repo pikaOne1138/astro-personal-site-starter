@@ -339,3 +339,20 @@ interface Props { src: string; alt: string; href?: s | a949d3f1cedd |
 | `.ai/astro-ui-craft/references/06-cta-content.md` | # CTA & Content; ## Knowledge; ## Helper | 0ed86766ced3 |
 | `.ai/astro-ui-craft/references/07-article-service-pages.md` | # Article & Service Pages; ## Article; ## Service | f39fe940ad3d |
 | `.ai/astro-ui-craft/references/08-responsive-accessibility.md` | # Responsive & Accessibility | 888cf83b56c4 |
+
+## Batch 07D｜其他 AI references 4（已讀）
+
+| 檔案 | 原文標題／內容起點 | Blob SHA 前綴 |
+|---|---|---|
+| `.ai/astro-ui-craft/references/09-quality-gates.md` | # Quality Gates | 93237c5d3a78 |
+| `.ai/astro-ui-craft/references/article-exploration-v2.md` | # Astro Blocks V2 — Article Discovery & Rich Content Reference; ## Added capabilities (12 blocks); ## Data contract | 999d857a3a77 |
+| `.ai/astro-ui-craft/references/component-library-v1.5.md` | # Astro Blocks V1.5 — Component Library Reference; ## Product scope; ## V1.5 reusable components (23) | 281bcddef7bb |
+| `.ai/astro-ui-craft/references/raw-research/Claude-AstroTmplateResearch.md` | # Astro 工作坊模板視覺研究（知識／部落格 × 助人者）; ## 0. 先講清楚：這份研究實際做到什麼、沒做到什麼; ## 第一部分：案例池 | 576d32a7c98a |
+| `.ai/astro-ui-craft/references/raw-research/Claude-三種網站風格設計規格.md` | # Astro 架站工作坊｜三種網站風格設計規格; ## 總覽; ## 風格一｜紙墨 Paper & Ink | 1c3b2c15b28a |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-00_總覽與方法.md` | # Astro 架站工作坊｜視覺研究與模板拆解報告; ## 文件結構; ## 研究方法（誠實說明） | 03ad4d943d9c |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-01A_案例池_知識部落格_01-10.md` | # 案例池 A｜知識／部落格型（A01–A10）; ## A01｜James Clear（習慣領域・個人知識品牌天花板）; ## A02｜Ness Labs（知識體系＋社群＋課程的內容基地範本） | 40c59bf23d6c |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-01B_案例池_知識部落格_11-20.md` | # 案例池 A｜知識／部落格型（A11–A20＋遺珠）; ## A11｜Astro Cactus（Astro 原生・極簡部落格 starter）; ## A12｜Astro Paper（Astro 原生・紙感極簡） | 3a716bdf5d62 |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-02A_案例池_助人者_01-10.md` | # 案例池 B｜助人者／個人專業服務型（B01–B10）; ## B01｜Marie Forleo（教練品牌全球天花板）; ## B02｜Melissa Ambrosini（柔美教練・低壓轉換代表） | 14e6e2cc4a7d |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-02B_案例池_助人者_11-20.md` | # 案例池 B｜助人者／個人專業服務型（B11–B20＋遺珠）; ## B11｜Cup of Tea Psychotherapy（加拿大・溫暖可愛派）; ## B12｜The Well Counseling Practice（女性藝術感・質感派） | 3ccab6be12a9 |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-03_Top10精選.md` | # Top 10 精選（第二部分）; ## 知識／部落格 Top 10; ## 助人者 Top 10 | 5fd9a6a43bd2 |
+| `.ai/astro-ui-craft/references/raw-research/arenaAgent-04_Pattern分析_導航與首頁.md` | # Pattern 分析（上）｜導航列＋首頁排版; ## 二、導航列研究; ## 三、首頁排版研究 | 1bb22f9b071d |
