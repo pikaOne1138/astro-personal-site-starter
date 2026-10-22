@@ -126,3 +126,7 @@ Blob `67384dd98f85d946c19b669955eea61836da1da0` · 27 lines · 2 candidates.
 | [L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-ui-craft/references/03-pattern-library.md#L18) | - FAQ before booking; | NEEDS_REVIEW |
 
 Phase 2 IN PROGRESS; Phase 3/4 BLOCKED.
+
+## Coverage correction
+
+本批 11 個列席中，`.ai/astro-motion-craft/SKILL.md` 是**主 Skill，不是附屬參考文件**，已在 19 Skills 稽核中處理；本批實際唯一附屬檔為 **10 份**。原抽樣內容及來源行號保留供比對，但不可雙重計數。四批唯一附屬檔總計 **42 份**，與 coverage manifest 相符。
