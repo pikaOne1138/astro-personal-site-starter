@@ -383,3 +383,10 @@
 | UJ-L038 | [L38](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/workshop/PR56-USER-JOURNEY-QA.md#L38) | - [ ] 正式建站 Prompt 有要求理解 Site Brief notes 與處理矛盾；需用 Builder Pack 端到端驗證。 | PRESERVE_IN_PLACE | MAPPED — 原位保留 |
 | UJ-L039 | [L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/workshop/PR56-USER-JOURNEY-QA.md#L39) | - [ ] Astro Build、CI、桌面／手機瀏覽器 QA 皆通過。 | PRESERVE_IN_PLACE | MAPPED — 原位保留 |
 | UJ-L041 | [L41](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/workshop/PR56-USER-JOURNEY-QA.md#L41) | > 此文件為驗收依據，不代表所有檢查已完成。PR 保持 Draft，未核實的項目不可宣稱通過。 | PRESERVE_IN_PLACE | MAPPED — 原位保留 |
+
+
+## 第二階段續作｜逐條核對批次 1
+
+已新增 [PHASE2-CLAUSE-REVIEW-BATCH1.md](PHASE2-CLAUSE-REVIEW-BATCH1.md)：品質契約、PR59、PR56、三道品質關卡合計 62 條**選定原文行**，另抽出 30 個不得省略的細節提醒，及五組跨文件差異／一致性判斷。這份是本矩陣的延伸證據，不是第二個 SSOT。
+
+**不將「62 行」或「30 個提醒」視為已逐項完成的全量條款。** 目前沒有規範性子句的完整分母，所有跨文檔移轉標為 `PENDING_CROSSCHECK`；來源文件仍保留原狀。Phase 2 進行中，Phase 3/4 BLOCKED。
