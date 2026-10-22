@@ -190,3 +190,8 @@
 ## Phase 2｜Core Skills B 跨批次語義去重初判
 
 新增 [PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md](PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md)：核實 Batch1–3 合計 20 個不重複來源行、69 個暫定工作候選，開始與 P0 canonical/alias 逐組比對；明確區分 SAME_CANDIDATE、PARTIAL_OVERLAP、DISTINCT 與不存在 ID 的反例。這是語義初判、非已裁決去重；不能把工作候選數直接加總或扣除成獨立規範母數。餘 83/103 行待初步拆分。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。
+
+
+## 第二階段｜Core Skills B Batch 4 與跨平台複合候選校正
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH4.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH4.md)：新增 10 個不重複 Frozen Source 行與 26 個暫定子候選，累計 **30/103 行、95 個工作候選**，還有 73 行待拆分。Batch1 的 `B1-DEP31-04` 現明確保留父 ID 並加 `-CF`、`-GH` 條件子欄位（不得重複加總），避免把 Cloudflare Preview 索引與 GitHub Pages Actions Variables 混成同一設定。95 不是唯一規範母數；P0/A 批語義去重和來源反向核查未完成。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 未修改、不 Merge、不部署。
