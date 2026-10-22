@@ -151,3 +151,19 @@
 | `docs/manus-component-gap-v2-5-part2.md` | # Manus Component Kit × 現有 Astro 元件庫｜V2.5 第二批決策矩陣；## 1. 對照原則；## 2. 全部 44 個 Manus 元件分類（依 ZIP 原始檔案核對）；### A. 共用 11 個；### B. 知識／部落格 19 個 | 3988c1060b9beb8ab34628224ae2a2359f6be04a |
 
 比較：student-intake 七份是提供給學員／訪談 AI 的連續使用資料，並非七份專案 SSOT；其中 Logo／品牌訪談屬選填，不應藉文件整合新增前置硬性欄位。Design Consultation Prompt 與正式 Start Build Prompt 處於不同階段；研究缺口與 Manus Gap 屬來源研究／歷史判斷，不是即時程式實作狀態。
+
+## Batch 04C｜Layout 契約與 PR46 歷史驗收（已讀）
+
+| 路徑 | 原文章節 | Blob SHA |
+|---|---|---|
+| `docs/layout/CONTENT-INPUTS-THREE-LAYOUTS.md` | # Starter content inputs: Reading Atlas, Radio Letter, Trust Path；## Reading Atlas (reading-atlas)；## Radio Letter (radio-letter)；## Trust Path (trust-path)；## Acceptance | c0a273de67417e3b319700db3667e220304ef9f3 |
+| `docs/layout/LAYOUT-DEFINITION-CONTRACT-v1.md` | # Layout Definition Contract v1 — Visual Template → Independent Astro Starter；## 1. Identity and lifecycle；## 2. Visual assets controlled by this repository；## 3. Structural definition: never Theme-as-Layout；## 4. Adapter and generated-site interface | 6ea68d39144dd245f8b79898302f95406153b721 |
+| `docs/layout/PR46-ACCEPTANCE-2026-10-15.md` | # PR #46｜2026-10-15 實際驗收；## 本輪發現與修正；## 十二款逐款視覺紀錄；## 自動化與交付；## 驗收界線 | 7c5ea1f72b8184deef1998f1373fcac962e898ee |
+| `docs/layout/PR46-HANDOFF.md` | # PR #46 接手／驗收記錄；## 目前有效範圍；## 本輪完成的程式；## 重要回歸：舊「576 張全綠」不能視為全部通過；## 四尺寸證據與其界線 | 9f9f43a68182187a2a2ac6ce9ab660005cc8a80c |
+| `docs/layout/PR46-OWNED-MEDIA-2026-10-15.md` | # PR46｜新增十三款的自有圖片、Logo 與段落標題；## 本輪實作；## 圖片位置契約；## 驗證與證據方式；## 狀態界線 | e13ee9786f5f4c7def199f525ba01ab8ec6c4deb |
+| `docs/layout/PR46-PR47-INTEGRATION-HANDOFF.md` | # PR46｜main 整合與 25 款正式 Starter 接手；## 2026-10-15 自有媒體與可編輯標題（目前入口）；## 前輪：恢復執行後的有效入口；## 歷史：執行環境中斷交接；## 已完成的三批實作 | 54d7d0ca37419b2581c9880af4fade869e283bb2 |
+| `docs/layout/PR46-RESUMED-QA-2026-10-15.md` | # PR46｜恢復執行後的 CTA 與品牌驗收；## 承接位置與實際修正；## 這一版的證據；## 交付狀態與剩餘 Gate | 956657575e76263fb35d31f681ee7cfe6b9a7461 |
+| `docs/layout/PR46-SECTION-PATTERNS-2026-10-15.md` | # PR46｜新增十三款非頁腳 Section Patterns；## 組裝結果；## 資料與失敗方式；## 驗證範圍與界線；## 截圖目視後的修正 | ac92e15f2d251c822a6668673b66bfc5782d192e |
+| `docs/layout/TWELVE-ASSEMBLY-READINESS.md` | # Twelve layout assembly status (PR #46) | a2bd66fff5c701a58bd9b72179d3501835617763 |
+
+比較判斷：LAYOUT-DEFINITION-CONTRACT 是現行架構契約候選，CONTENT-INPUTS 是內容欄位契約；PR46 具日期之 Acceptance、QA、Media、Section、Handoff 屬時點工作證據，必須對照最新 definitions/Exporter 以判定是否仍適用；TWELVE-ASSEMBLY-READINESS 的十二款不能拿來代表 25 款整體驗收。
