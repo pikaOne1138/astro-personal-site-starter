@@ -555,3 +555,8 @@
 ## Phase 2｜Batch 5 與來源行計數校正
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH5.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH5.md) 補充 8 個 Frozen 來源行與 24 個暫定子候選；反向查核前四批發現 `DEP L43` 在 Batch2 及 Batch4 重複、且 Batch3 的實際來源行為 11 行，故先前 **31/103** 快照不準確。現依來源行去重集合：**40/103 行**已有工作子 ID，**63 行待拆**；共 119 筆工作候選列項，仍混合程序、限制、驗收與語義重疊，**不是唯一規範總數，也不是 Phase 2 PASS**。原始 Skill 未動，Phase 3/4 BLOCKED。
+
+
+## Phase 2｜Batch 6 實際來源行集合校正
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH6.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH6.md) 新增 8 個 Frozen 規範／程序來源行與 25 個暫定子 ID。比對 Batch1–5 的實際工作 ID，先前累計 40 行應修正為 **41 行**；本批後為 **49/103 行**、**54 行尚待拆解**。列項候選暫計 144（119+25），但仍須全量 ID 及跨來源語義去重，並非獨立規範數。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 未改，不合併。
