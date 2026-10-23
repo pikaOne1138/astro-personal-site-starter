@@ -1026,6 +1026,45 @@ if(process.argv[2]==='import'){
    acceptanceCriteria:[],approvalEvidence:{frozenPath:source,frozenLine:line,sourceText:frozenLine(source,line),
     frozenBlobSha:manifest[source],method:'IMMUTABLE_SOURCE_AND_PREEXISTING_ATOMIC_WORK_ITEM'}});
  }
+ // B2: close explicitly reviewed same-source composite *historical* IDs.
+ // A composite is not another canonical obligation; its atomic approved
+ // children carry the enforceable requirements. Never close on line identity
+ // without the reviewed complete list below.
+ const reviewedCompositeSets=[
+  {source:'.ai/astro-site-assembly/SKILL.md',line:77,
+   ids:['B9C-ASM77','B9-ASM-L77-1','OPS4-020'],
+   children:['B9C-ASM77-01','B9C-ASM77-02','B9C-ASM77-03','B9C-ASM77-04','B9C-ASM77-05']},
+  {source:'.ai/astro-site-assembly/SKILL.md',line:78,
+   ids:['B9C-ASM78','B9-ASM-L78-1'],
+   children:['B9C-ASM78-01','B9C-ASM78-02','B9C-ASM78-03','B9C-ASM78-04','B9C-ASM78-05']},
+  {source:'.ai/astro-site-assembly/SKILL.md',line:80,
+   ids:['B9-ASM-L80-1','OPS4-021'],
+   children:['B9C-ASM80-01','B9C-ASM80-02','B9C-ASM80-03','B9C-ASM80-04']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:36,
+   ids:['B9-DEP-L36-1'],
+   children:['B9C-DEP36-01','B9C-DEP36-02','B9C-DEP36-03','B9C-DEP36-04','B9C-DEP36-05']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:11,
+   ids:['B9-DEP-L11-1','DEPLOY-02'],
+   children:['B9C-DEP11-01','B9C-DEP11-02','B9C-DEP11-03','B9C-DEP11-04']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:17,
+   ids:['B4-DEP17-02','DEPLOY-04'],
+   children:['B4-DEP17-01','B4-DEP17-02-S01','B4-DEP17-02-S02','B4-DEP17-02-S03','B4-DEP17-02-S04','B4-DEP17-02-S05','B4-DEP17-03']}
+ ];
+ for(const group of reviewedCompositeSets){
+  const original=frozenLine(group.source,group.line);
+  if(!original||group.children.some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))
+   throw Error('Composite cannot be closed with missing approved children '+group.source+':'+group.line);
+  for(const id of group.ids){
+   const row=byId.get(id);
+   if(!row||row.canonicalId||!row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===group.source&&ref.lineStart===group.line))
+    throw Error('Composite source proof missing, or prior canonical in use: '+id);
+   Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+    childrenLegacyIds:group.children,
+    parentDisposition:'Reviewed original composite is fully represented by the listed, independently approved child obligations',
+    approvalEvidence:{frozenPath:group.source,frozenLine:group.line,frozenBlobSha:manifest[group.source],
+     sourceText:original,method:'EXPLICIT_COMPOSITE_COVERAGE_AND_SCOPE_REVIEW'}});
+  }
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
