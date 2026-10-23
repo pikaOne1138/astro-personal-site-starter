@@ -362,6 +362,24 @@ const aliasPairs=[...canonicalGroups.entries()].filter(([,v])=>v.length>1).map((
 // Read every Frozen manifest file, not only the 45 operational contract files.
 const scopedNormativeFiles=Object.keys(manifest).sort();
 const isPriorityContract=p=>p.startsWith('.ai/')&&p.endsWith('/SKILL.md')||p.startsWith('docs/student-builder-pack/')||p.startsWith('docs/quality/')||p.startsWith('docs/workshop/')||p.startsWith('docs/qa/')||p.startsWith('docs/student-journey/ACCEPTANCE-');
+function frozenDocumentRole(file){
+ if(isPriorityContract(file))return ['OPERATIVE_CONTRACT_OR_QA_RECORD','Operational source; inspect each obligation and historical status'];
+ if(/\/raw-research\/|\/source-snapshots\/|\/fixtures\/|^src\/content\/articles\//.test(file))
+  return ['RESEARCH_OR_FIXTURE','Raw research, copied source snapshot, or demonstration content; not automatically binding policy'];
+ if(/\/examples\/|\/references\/site-analysis\/|\/recipes\/|\/checklists\/|\/research-log\.md$/.test(file))
+  return ['DESIGN_REFERENCE_OR_EXAMPLE','Recipe, case study or reference may contain techniques, not universal student obligations'];
+ if(/(?:^docs\/art-direction\/|^docs\/layout\/PR4|PR4\d|2026-\d\d-\d\d|audit|handoff|smoke-test)/i.test(file))
+  return ['HISTORICAL_PROJECT_EVIDENCE','Time-bound implementation/acceptance evidence, requires current applicability review'];
+ if(/^(?:README\.md|COMPONENTS\.md|AGENTS\.md)$|^\.ai\/.*\/references\//.test(file))
+  return ['ACTIVE_REFERENCE_OR_RULE_CANDIDATE','May contain active conventions; must undergo source-to-ledger review'];
+ return ['UNCLASSIFIED_FROZEN_SOURCE','Review function and normative authority before applying source line obligations'];
+}
+const frozenFileRoleInventory=Object.entries(manifest).map(([path,blobSha])=>{
+ const [role,reason]=frozenDocumentRole(path);
+ return {path,blobSha,role,reason,reviewStatus:'DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION'};
+});
+const roleCount=Object.fromEntries([...new Set(frozenFileRoleInventory.map(x=>x.role))].map(role=>
+ [role,frozenFileRoleInventory.filter(x=>x.role===role).length]));
 const cues=/(必須|不得|禁止|應該|應先|須|不能|未經|確認|檢查|驗證|需|must\b|never\b|should\b|shall\b|required\b|do not\b|don't\b|verify\b|ensure\b|check\b|only\b)/i;
 const sourceLineInventory=[],sourceInventoryFailures=[];
 for(const file of scopedNormativeFiles){
@@ -951,6 +969,7 @@ const status={
  documentaryDistinct:(old.semanticRelations||[]).filter(x=>x.decision==='DISTINCT').length,
  frozenLinesReferenced:sourceCoverage.size,
  sourceFirstScopeFiles:scopedNormativeFiles.length,
+ frozenFileRoleCounts:JSON.stringify(roleCount),
  sourceFirstScopeCoverageOfFrozenFiles:scopedNormativeFiles.length+'/'+Object.keys(manifest).length,
  sourceFirstLinesScanned:sourceLineInventory.length,
  sourceFirstUnscannedFrozenFiles:Object.keys(manifest).filter(p=>!scopedNormativeFiles.includes(p)).length,
@@ -1019,7 +1038,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,p0InvariantFailures,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,frozenFileRoleInventory,p0InvariantFailures,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
@@ -1027,6 +1046,7 @@ const report=[
 if(process.argv[2]==='report'){
  old.sourceReviewQueue=sourceReviewQueue;
  old.sourceFirstCandidateLinks=frozenCandidateLinks;
+ old.frozenFileRoleInventory=frozenFileRoleInventory;
  fs.writeFileSync(dir+'canonical-ledger.json',JSON.stringify(old,null,2)+'\n');
  fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
 }
