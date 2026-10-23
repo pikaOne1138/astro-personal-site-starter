@@ -692,6 +692,24 @@ const terminalSourceDecisions={
  'docs/student-builder-pack/ART-DIRECTION-STARTER.md:12':['NON_NORMATIVE','Isolated shell invocation illustrative of an existing verification command'],
  'docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:15':['NON_NORMATIVE','An evaluation scenario row, not a universally applicable website policy']
 };
+// Exact-document references, example user scripts and frozen status snapshots
+// do not constitute fresh enforceable requirements by themselves.
+Object.assign(terminalSourceDecisions,{
+ '.ai/astro-design-consultation/SKILL.md:111':['NON_NORMATIVE','Link to shared Design Handoff and teacher research files, not an independent obligation'],
+ '.ai/astro-editorial-layout-design/SKILL.md:124':['NON_NORMATIVE','Documentation pointer to shared handoff and research, not an atomic requirement'],
+ '.ai/astro-layout-craft/SKILL.md:88':['NON_NORMATIVE','Reference-only path to shared and teacher research material'],
+ '.ai/astro-motion-craft/SKILL.md:164':['NON_NORMATIVE','Reference-only shared material pointer'],
+ '.ai/astro-section-pattern-craft/SKILL.md:48':['NON_NORMATIVE','Shared handoff and teacher research reference'],
+ '.ai/astro-ui-craft/SKILL.md:219':['NON_NORMATIVE','Reference to handoff and optional teacher research'],
+ '.ai/astro-page-management/SKILL.md:54':['NON_NORMATIVE','Quoted example student prompt, not an additional independent approval rule'],
+ '.ai/astro-section-pattern-craft/SKILL.md:39':['NON_NORMATIVE','Quoted example student prompt; actual QA and approval obligations reside in operative instructions'],
+ '.ai/astro-site-maintenance/SKILL.md:39':['NON_NORMATIVE','Illustrative maintenance example, not independent normative instruction'],
+ 'docs/quality/BETA-CANDIDATE-SCOPE.md:12':['NON_NORMATIVE','Historical experimental workflow/fixture defect snapshot, not current component failure'],
+ 'docs/quality/BETA-CANDIDATE-SCOPE.md:14':['NON_NORMATIVE','Time-bound report of not-yet-run learner usability checks; recheck state rather than canonize result'],
+ 'docs/quality/DEFECT-REGISTER.md:9':['NON_NORMATIVE','Historical defect register status row with linked acceptance targets'],
+ 'docs/quality/DEFECT-REGISTER.md:13':['NON_NORMATIVE','Historical W6 issue disposition; warning policy needs distinct Frozen operative source'],
+ 'docs/quality/DEFECT-REGISTER.md:24':['NON_NORMATIVE','Historical N19 implementation state, not proof of present runtime acceptance']
+});
 for(const entry of sourceReviewQueue){
  const d=terminalSourceDecisions[entry.sourceKey];
  if(!d)continue;
