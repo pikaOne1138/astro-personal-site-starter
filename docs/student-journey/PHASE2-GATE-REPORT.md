@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1305 |
-| approvedCanonicalIds | 60 |
+| pendingSemanticDecisions | 1289 |
+| approvedCanonicalIds | 73 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 18 |
+| sourceFirstApprovedCanonicalLinkLines | 19 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1305,
-    "approvedCanonicalIds": 60,
+    "pendingSemanticDecisions": 1289,
+    "approvedCanonicalIds": 73,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 18,
+    "sourceFirstApprovedCanonicalLinkLines": 19,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -1361,113 +1361,113 @@
           "id": "B1-PUB56-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "文章修改後須乾淨 Build 並對實際學員站執行 Gate"
         },
         {
           "id": "B1-PUB56-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "檢查草稿直接 HTML 路由、全部 HTML、RSS、Sitemap 及搜尋發現介面"
         },
         {
           "id": "B1-PUB56-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "負向故障注入應被驗證器偵測為 FAIL"
+          "canonicalId": "ATP-P2-0068",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Use a deliberately leaking negative fixture and require the draft gate to fail"
         },
         {
           "id": "B1-PUB56-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證器漏報必須修 Gate，不能修報告"
+          "canonicalId": "ATP-P2-0069",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "If draft-leakage gate misses a leak, repair the gate instead of rewriting the QA report"
         },
         {
           "id": "B1-PUB56-05",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "自訂 slug、巢狀路由、MDX、CMS 等須另外擴展 route-aware 驗證"
         },
         {
           "id": "B1-PUB56-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "執行乾淨 Build"
+          "canonicalId": "ATP-P2-0061",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Run clean Astro build before draft leakage inspection"
         },
         {
           "id": "B1-PUB56-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "在實際學員站執行 draft leak gate"
+          "canonicalId": "ATP-P2-0062",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Run the output draft leakage gate in the actual student site"
         },
         {
           "id": "B1-PUB56-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查草稿直接 HTML 路由"
+          "canonicalId": "ATP-P2-0063",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify withdrawn drafts do not have direct public HTML routes"
         },
         {
           "id": "B1-PUB56-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查所有生成 HTML"
+          "canonicalId": "ATP-P2-0064",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify all generated HTML is free of draft leakage"
         },
         {
           "id": "B1-PUB56-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查 RSS"
+          "canonicalId": "ATP-P2-0065",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify RSS output omits withdrawn drafts"
         },
         {
           "id": "B1-PUB56-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查 Sitemap"
+          "canonicalId": "ATP-P2-0066",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify sitemap output omits withdrawn drafts"
         },
         {
           "id": "B1-PUB56-02-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查已配置搜尋與內容發現介面"
+          "canonicalId": "ATP-P2-0067",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify configured search and content discovery do not expose drafts"
         },
         {
           "id": "B1-PUB56-05-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "自訂 slug 使用 route-aware 驗證"
+          "canonicalId": "ATP-P2-0070",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Extend route-aware draft leak verification for custom slugs"
         },
         {
           "id": "B1-PUB56-05-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "巢狀路由使用 route-aware 驗證"
+          "canonicalId": "ATP-P2-0071",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Extend route-aware draft leak verification for nested routes"
         },
         {
           "id": "B1-PUB56-05-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "MDX 使用 route-aware 驗證"
+          "canonicalId": "ATP-P2-0072",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Extend route-aware draft leak verification for MDX"
         },
         {
           "id": "B1-PUB56-05-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "CMS 或非常規來源使用 route-aware 驗證"
+          "canonicalId": "ATP-P2-0073",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Extend route-aware draft leak verification for CMS or unconventional sources"
         },
         {
           "id": "DES7-014",

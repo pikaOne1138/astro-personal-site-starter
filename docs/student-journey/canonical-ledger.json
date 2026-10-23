@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "27c356621eeebf3fd35988a2eb87f76a1596adb2"
+        "blobSha": "723c3576b4518ec11dfcb0bbcc72d62e73d49fbe"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -8287,8 +8287,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8304,7 +8304,11 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B1-PUB56-01-S01",
+        "B1-PUB56-01-S02"
+      ],
+      "parentDisposition": "Content verified from the listed atomic children; retain for historical trace only"
     },
     {
       "legacyId": "B1-PUB56-02",
@@ -8356,8 +8360,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8379,7 +8383,13 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": [],
+      "childrenLegacyIds": [
+        "B1-PUB56-02-S01",
+        "B1-PUB56-02-S02",
+        "B1-PUB56-02-S03",
+        "B1-PUB56-02-S04",
+        "B1-PUB56-02-S05"
+      ],
       "semanticRelations": [
         {
           "otherLegacyIds": [
@@ -8388,13 +8398,14 @@
           "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L10"
         }
-      ]
+      ],
+      "parentDisposition": "Content verified from the listed atomic children; retain for historical trace only"
     },
     {
       "legacyId": "B1-PUB56-03",
-      "canonicalId": null,
-      "requirement": "負向故障注入應被驗證器偵測為 FAIL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0068",
+      "requirement": "Use a deliberately leaking negative fixture and require the draft gate to fail",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8419,12 +8430,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8434,13 +8447,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-04",
-      "canonicalId": null,
-      "requirement": "驗證器漏報必須修 Gate，不能修報告",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0069",
+      "requirement": "If draft-leakage gate misses a leak, repair the gate instead of rewriting the QA report",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8472,12 +8492,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8493,7 +8515,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-05",
@@ -8535,8 +8564,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8552,7 +8581,13 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B1-PUB56-05-S01",
+        "B1-PUB56-05-S02",
+        "B1-PUB56-05-S03",
+        "B1-PUB56-05-S04"
+      ],
+      "parentDisposition": "Content verified from the listed atomic children; retain for historical trace only"
     },
     {
       "legacyId": "B1-ASM22-01",
@@ -21832,9 +21867,9 @@
     },
     {
       "legacyId": "B1-PUB56-01-S01",
-      "canonicalId": null,
-      "requirement": "執行乾淨 Build",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0061",
+      "requirement": "Run clean Astro build before draft leakage inspection",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21856,12 +21891,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21871,13 +21908,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-01-S02",
-      "canonicalId": null,
-      "requirement": "在實際學員站執行 draft leak gate",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0062",
+      "requirement": "Run the output draft leakage gate in the actual student site",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21899,12 +21943,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21914,13 +21960,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-02-S01",
-      "canonicalId": null,
-      "requirement": "檢查草稿直接 HTML 路由",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0063",
+      "requirement": "Verify withdrawn drafts do not have direct public HTML routes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21942,12 +21995,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21957,13 +22012,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-02-S02",
-      "canonicalId": null,
-      "requirement": "檢查所有生成 HTML",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0064",
+      "requirement": "Verify all generated HTML is free of draft leakage",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -21985,12 +22047,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22000,13 +22064,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-02-S03",
-      "canonicalId": null,
-      "requirement": "檢查 RSS",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0065",
+      "requirement": "Verify RSS output omits withdrawn drafts",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22028,12 +22099,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22043,13 +22116,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-02-S04",
-      "canonicalId": null,
-      "requirement": "檢查 Sitemap",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0066",
+      "requirement": "Verify sitemap output omits withdrawn drafts",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22071,12 +22151,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22086,13 +22168,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-02-S05",
-      "canonicalId": null,
-      "requirement": "檢查已配置搜尋與內容發現介面",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0067",
+      "requirement": "Verify configured search and content discovery do not expose drafts",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22114,12 +22203,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22129,13 +22220,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-05-S01",
-      "canonicalId": null,
-      "requirement": "自訂 slug 使用 route-aware 驗證",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0070",
+      "requirement": "Extend route-aware draft leak verification for custom slugs",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22157,12 +22255,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
+      "conditions": [
+        "Only if custom content routing/data source is used"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22172,13 +22274,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-05-S02",
-      "canonicalId": null,
-      "requirement": "巢狀路由使用 route-aware 驗證",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0071",
+      "requirement": "Extend route-aware draft leak verification for nested routes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22200,12 +22309,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
+      "conditions": [
+        "Only if custom content routing/data source is used"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22215,13 +22328,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-05-S03",
-      "canonicalId": null,
-      "requirement": "MDX 使用 route-aware 驗證",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0072",
+      "requirement": "Extend route-aware draft leak verification for MDX",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22243,12 +22363,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
+      "conditions": [
+        "Only if custom content routing/data source is used"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22258,13 +22382,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-PUB56-05-S04",
-      "canonicalId": null,
-      "requirement": "CMS 或非常規來源使用 route-aware 驗證",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0073",
+      "requirement": "Extend route-aware draft leak verification for CMS or unconventional sources",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22286,12 +22417,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student article sites with public/draft content"
+      ],
+      "conditions": [
+        "Only if custom content routing/data source is used"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -22301,7 +22436,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 56,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.",
+        "method": "FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW"
+      }
     },
     {
       "legacyId": "B1-DEP31-01-S01",
@@ -73334,113 +73476,113 @@
         {
           "legacyId": "B1-PUB56-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "文章修改後須乾淨 Build 並對實際學員站執行 Gate",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "檢查草稿直接 HTML 路由、全部 HTML、RSS、Sitemap 及搜尋發現介面",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "負向故障注入應被驗證器偵測為 FAIL",
+          "canonicalId": "ATP-P2-0068",
+          "reviewStatus": "APPROVED",
+          "requirement": "Use a deliberately leaking negative fixture and require the draft gate to fail",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證器漏報必須修 Gate，不能修報告",
+          "canonicalId": "ATP-P2-0069",
+          "reviewStatus": "APPROVED",
+          "requirement": "If draft-leakage gate misses a leak, repair the gate instead of rewriting the QA report",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-05",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "自訂 slug、巢狀路由、MDX、CMS 等須另外擴展 route-aware 驗證",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "執行乾淨 Build",
+          "canonicalId": "ATP-P2-0061",
+          "reviewStatus": "APPROVED",
+          "requirement": "Run clean Astro build before draft leakage inspection",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "在實際學員站執行 draft leak gate",
+          "canonicalId": "ATP-P2-0062",
+          "reviewStatus": "APPROVED",
+          "requirement": "Run the output draft leakage gate in the actual student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查草稿直接 HTML 路由",
+          "canonicalId": "ATP-P2-0063",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify withdrawn drafts do not have direct public HTML routes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查所有生成 HTML",
+          "canonicalId": "ATP-P2-0064",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify all generated HTML is free of draft leakage",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 RSS",
+          "canonicalId": "ATP-P2-0065",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify RSS output omits withdrawn drafts",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 Sitemap",
+          "canonicalId": "ATP-P2-0066",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify sitemap output omits withdrawn drafts",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-02-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查已配置搜尋與內容發現介面",
+          "canonicalId": "ATP-P2-0067",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify configured search and content discovery do not expose drafts",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-05-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "自訂 slug 使用 route-aware 驗證",
+          "canonicalId": "ATP-P2-0070",
+          "reviewStatus": "APPROVED",
+          "requirement": "Extend route-aware draft leak verification for custom slugs",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-05-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "巢狀路由使用 route-aware 驗證",
+          "canonicalId": "ATP-P2-0071",
+          "reviewStatus": "APPROVED",
+          "requirement": "Extend route-aware draft leak verification for nested routes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-05-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "MDX 使用 route-aware 驗證",
+          "canonicalId": "ATP-P2-0072",
+          "reviewStatus": "APPROVED",
+          "requirement": "Extend route-aware draft leak verification for MDX",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-PUB56-05-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "CMS 或非常規來源使用 route-aware 驗證",
+          "canonicalId": "ATP-P2-0073",
+          "reviewStatus": "APPROVED",
+          "requirement": "Extend route-aware draft leak verification for CMS or unconventional sources",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -73451,7 +73593,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:58",
