@@ -17,7 +17,7 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1046 |
+| pendingSemanticDecisions | 1044 |
 | approvedCanonicalIds | 247 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
@@ -27,8 +27,8 @@
 | p0UnhandledLeaves | 0 |
 | p0InvariantFailures | 0 |
 | aliasGroups | 19 |
-| documentaryRelationGroups | 73 |
-| documentaryMerges | 59 |
+| documentaryRelationGroups | 75 |
+| documentaryMerges | 61 |
 | documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
@@ -94,7 +94,7 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1046,
+    "pendingSemanticDecisions": 1044,
     "approvedCanonicalIds": 247,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
@@ -104,8 +104,8 @@
     "p0UnhandledLeaves": 0,
     "p0InvariantFailures": 0,
     "aliasGroups": 19,
-    "documentaryRelationGroups": 73,
-    "documentaryMerges": 59,
+    "documentaryRelationGroups": 75,
+    "documentaryMerges": 61,
     "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
@@ -1581,17 +1581,17 @@
         },
         {
           "id": "P0-CANON-PRVIEW-MISSING",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "SAME_MEANING"
+          "canonicalId": "ATP-P2-0001",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
         },
         {
           "id": "P0-CANON-PRVIEW-CONSENT",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "SAME_MEANING"
+          "canonicalId": "ATP-P2-0002",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Obtain student consent before changing preview or deployment architecture."
         },
         {
           "id": "PREVIEW-11",
@@ -8874,7 +8874,8 @@
         "PROOF-001.03.S2",
         "PREVIEW-POLICY-01.S1",
         "P0-U035",
-        "P0-U044"
+        "P0-U044",
+        "P0-CANON-PRVIEW-MISSING"
       ]
     },
     {
@@ -8883,7 +8884,8 @@
         "PROOF-001.03.S3",
         "PREVIEW-POLICY-01.S2",
         "P0-U036",
-        "P0-U045"
+        "P0-U045",
+        "P0-CANON-PRVIEW-CONSENT"
       ]
     },
     {
@@ -9212,6 +9214,34 @@
       "sharedExactFrozenAnchors": [],
       "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
       "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "P0-CANON-PRVIEW-MISSING",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "P0-CANON-PRVIEW-CONSENT",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
     },
     {
       "legacyIds": [

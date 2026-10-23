@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "8c34078e4e50d68d362f8319a69e3b5dea5c33b9"
+        "blobSha": "80345964918b701345022160cd99cf4cea798ede"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -5720,7 +5720,8 @@
       "aliases": [
         "PREVIEW-POLICY-01.S1",
         "P0-U035",
-        "P0-U044"
+        "P0-U044",
+        "P0-CANON-PRVIEW-MISSING"
       ],
       "applicability": [
         "student-owned GitHub Pages without functioning isolated PR preview"
@@ -5813,7 +5814,8 @@
       "aliases": [
         "PREVIEW-POLICY-01.S2",
         "P0-U036",
-        "P0-U045"
+        "P0-U045",
+        "P0-CANON-PRVIEW-CONSENT"
       ],
       "applicability": [
         "student preview infrastructure change"
@@ -6794,7 +6796,8 @@
       "aliases": [
         "PROOF-001.03.S2",
         "P0-U035",
-        "P0-U044"
+        "P0-U044",
+        "P0-CANON-PRVIEW-MISSING"
       ],
       "applicability": [
         "student-owned GitHub Pages without functioning isolated PR preview"
@@ -6871,7 +6874,8 @@
       "aliases": [
         "PROOF-001.03.S3",
         "P0-U036",
-        "P0-U045"
+        "P0-U045",
+        "P0-CANON-PRVIEW-CONSENT"
       ],
       "applicability": [
         "student preview infrastructure change"
@@ -54603,7 +54607,8 @@
       "aliases": [
         "PROOF-001.03.S2",
         "PREVIEW-POLICY-01.S1",
-        "P0-U044"
+        "P0-U044",
+        "P0-CANON-PRVIEW-MISSING"
       ],
       "applicability": [
         "student-owned GitHub Pages without functioning isolated PR preview"
@@ -54688,7 +54693,8 @@
       "aliases": [
         "PROOF-001.03.S3",
         "PREVIEW-POLICY-01.S2",
-        "P0-U045"
+        "P0-U045",
+        "P0-CANON-PRVIEW-CONSENT"
       ],
       "applicability": [
         "student preview infrastructure change"
@@ -55157,7 +55163,8 @@
       "aliases": [
         "PROOF-001.03.S2",
         "PREVIEW-POLICY-01.S1",
-        "P0-U035"
+        "P0-U035",
+        "P0-CANON-PRVIEW-MISSING"
       ],
       "applicability": [
         "student-owned GitHub Pages without functioning isolated PR preview"
@@ -55226,7 +55233,8 @@
       "aliases": [
         "PROOF-001.03.S3",
         "PREVIEW-POLICY-01.S2",
-        "P0-U036"
+        "P0-U036",
+        "P0-CANON-PRVIEW-CONSENT"
       ],
       "applicability": [
         "student preview infrastructure change"
@@ -57442,9 +57450,9 @@
     },
     {
       "legacyId": "P0-CANON-PRVIEW-MISSING",
-      "canonicalId": null,
-      "requirement": "SAME_MEANING",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0001",
+      "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -57468,13 +57476,24 @@
           "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PROOF-001.03.S2",
+        "PREVIEW-POLICY-01.S1",
+        "P0-U035",
+        "P0-U044"
+      ],
+      "applicability": [
+        "student-owned GitHub Pages without functioning isolated PR preview"
+      ],
+      "conditions": [
+        "No verified student PR Preview deployment exists"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "No Live URL claimed without real deployment evidence"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -57500,13 +57519,21 @@
           "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L17"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "SAME_MEANING",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "P0-CANON-PRVIEW-CONSENT",
-      "canonicalId": null,
-      "requirement": "SAME_MEANING",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0002",
+      "requirement": "Obtain student consent before changing preview or deployment architecture.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -57530,13 +57557,24 @@
           "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PROOF-001.03.S3",
+        "PREVIEW-POLICY-01.S2",
+        "P0-U036",
+        "P0-U045"
+      ],
+      "applicability": [
+        "student preview infrastructure change"
+      ],
+      "conditions": [
+        "Proposed installation or alteration of Preview hosting/workflow"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Specific student approval precedes architecture modification"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -57546,7 +57584,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "SAME_MEANING",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "P0-CANON-INDEX-ENABLE",
@@ -69708,6 +69754,34 @@
     },
     {
       "legacyIds": [
+        "P0-CANON-PRVIEW-MISSING",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "P0-CANON-PRVIEW-CONSENT",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
+    },
+    {
+      "legacyIds": [
         "P0-CANON-INDEX-ENABLE",
         "P0-U018"
       ],
@@ -80685,16 +80759,16 @@
         },
         {
           "legacyId": "P0-CANON-PRVIEW-MISSING",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "SAME_MEANING",
+          "canonicalId": "ATP-P2-0001",
+          "reviewStatus": "APPROVED",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-CANON-PRVIEW-CONSENT",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "SAME_MEANING",
+          "canonicalId": "ATP-P2-0002",
+          "reviewStatus": "APPROVED",
+          "requirement": "Obtain student consent before changing preview or deployment architecture.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
