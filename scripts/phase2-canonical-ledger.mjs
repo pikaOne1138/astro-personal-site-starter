@@ -689,6 +689,52 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
    parentDisposition:'All source conditions decomposed into source-approved leaf clauses'});
  }
+ // Student site assembly: atomize config validation and independent export.
+ const assemblyAtomic=[
+ ['B4-ASM12-01','Read actual Starter configuration, selected layout directions and Blocks registry before assembly',12],
+ ['B4-ASM12-02','Validate student kind and selected layoutSlug association',12],
+ ['B4-ASM12-03-S01','Validate HEX brand color inputs',12],
+ ['B4-ASM12-03-S02','Validate configured site routes',12],
+ ['B4-ASM12-03-S03','Validate real configured primary CTA',12],
+ ['B4-ASM12-03-S04','Validate navigation labels',12],
+ ['B4-ASM12-03-S05','Validate navigation item order',12],
+ ['B8-ASM-L17-01','Export an independent runnable Astro project without modifying teacher Showcase',17],
+ ['B8-ASM-L17-02-S01','Export actual selected page routes, not teacher demonstration routes',17],
+ ['B8-ASM-L17-02-S02','Export shared student navbar and responsive navigation',17],
+ ['B8-ASM-L17-02-S03','Export site-specific assets and tokens',17],
+ ['B8-ASM-L17-02-S04','Do not copy all teacher showcase routes into an independent student site',17],
+ ['B8-ASM-L17-03','Preserve selected layout-specific homepage adapter rather than substituting generic hero',17],
+ ['B8-ASM-L17-04','Do not claim first-pass prototypes are fully ported multi-page sites',17],
+ ['B2-ASM50-01-S01','Consult section pattern craft Skill before selecting pattern',50],
+ ['B2-ASM50-01-S02','Check actual Section Pattern registry',50],
+ ['B2-ASM50-02','Do not force a Section Pattern without learner selection or need',50],
+ ['B2-ASM50-03-S01','Exported Section Pattern shell does not constitute a finished design',50],
+ ['B2-ASM50-03-S02','Supply actual approved content for selected Section Pattern',50],
+ ['B2-ASM50-03-S03','Complete visual translation respecting original pattern and responsive rhythm',50]
+ ];
+ for(let i=0;i<assemblyAtomic.length;i++){
+  const [id,requirement,line]=assemblyAtomic[i],entry=byId.get(id),source='.ai/astro-site-assembly/SKILL.md';
+  const canonicalId='ATP-P2-'+String(154+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Assembly leaf Frozen source missing '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Assembly canonical collision '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:'procedure',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student Starter assembly path, applicable to chosen features'],
+   conditions:line===50?['Section Patterns are used or selected']:[],
+   exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),
+    method:'FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW'}});
+ }
+ for(const [id,kids] of [
+  ['B4-ASM12-03',Array.from({length:5},(_,i)=>'B4-ASM12-03-S0'+(i+1))],
+  ['B8-ASM-L17-02',Array.from({length:4},(_,i)=>'B8-ASM-L17-02-S0'+(i+1))],
+  ['B2-ASM50-01',Array.from({length:2},(_,i)=>'B2-ASM50-01-S0'+(i+1))],
+  ['B2-ASM50-03',Array.from({length:3},(_,i)=>'B2-ASM50-03-S0'+(i+1))]
+ ]){
+  const row=byId.get(id);
+  if(!row||kids.some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Assembly parent not covered '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+   childrenLegacyIds:kids,parentDisposition:'Composite inherited from complete approved atomic children'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
