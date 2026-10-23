@@ -265,3 +265,8 @@
 ## Phase 2｜Crosswalk 05：Layout／Blocks／Motion／Visual QA
 
 新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-05.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-05.md)：直接核對 Frozen Assembly 九行（45/48/49/51/52/54/57/61/64）、Layout 三行（9/47/79）、Motion 四行（35/38/66/119），合計 16 個不重複來源行，整理 10 個待定義語義群。把結構忠實度、Registry 功能 Block、Token、動效 fallback、四尺寸視覺 QA、互動可用性與獨立學員網站測試分開。**Layout/Motion 的新原子 ID 尚未完成；本輪僅跨來源候選映射，不是全量去重 PASS**。Stage 2 持續；3/4 BLOCKED。#61 與 #58 不變；原始 Skills、Template、生成器不改。
+
+
+## 本輪後續補正｜Batch9-C 的 72 個子條件 ID
+
+[PHASE2-BATCH9-C-CHILD-ID-REGISTER.md](PHASE2-BATCH9-C-CHILD-ID-REGISTER.md) 已將原 Batch9-C 的 **21 父行／72 個原有編號子條件** 各配一個獨立可反查的工作 ID（如 `B9C-DEP40-01`、`B9C-ASM77-03`），修復本輪發現的 `CHILD_ID_NOT_MINTED` 類型缺口。原父列與 Frozen source 均保留；原文子條件仍需要進一步分拆複合語義，**72 不是唯一 Canonical 數，Phase 2 仍 IN PROGRESS**。已記錄的其他跨表關係還須全量存在性及正反向驗證，Stage 3/4 BLOCKED。
