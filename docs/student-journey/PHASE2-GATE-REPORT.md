@@ -27,8 +27,8 @@
 | p0UnhandledLeaves | 0 |
 | p0InvariantFailures | 0 |
 | aliasGroups | 15 |
-| documentaryRelationGroups | 36 |
-| documentaryMerges | 22 |
+| documentaryRelationGroups | 71 |
+| documentaryMerges | 57 |
 | documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
@@ -104,8 +104,8 @@
     "p0UnhandledLeaves": 0,
     "p0InvariantFailures": 0,
     "aliasGroups": 15,
-    "documentaryRelationGroups": 36,
-    "documentaryMerges": 22,
+    "documentaryRelationGroups": 71,
+    "documentaryMerges": 57,
     "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
@@ -189,29 +189,29 @@
         {
           "id": "INDEX-DETAIL-01.S3.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "INDEX-DETAIL-01.S3"
         },
         {
           "id": "INDEX-DETAIL-01.S3.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "INDEX-DETAIL-01.S3"
         },
         {
           "id": "INDEX-DETAIL-01.S3.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "INDEX-DETAIL-01.S3"
         },
         {
           "id": "INDEX-DETAIL-01.S3.A4",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "INDEX-DETAIL-01.S3"
         },
         {
@@ -537,99 +537,99 @@
         {
           "id": "QA-DETAIL-01.S1.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A4",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A5",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A6",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A7",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S1.A8",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S1"
         },
         {
           "id": "QA-DETAIL-01.S2.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S2"
         },
         {
           "id": "QA-DETAIL-01.S2.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S2"
         },
         {
           "id": "QA-DETAIL-01.S2.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S2"
         },
         {
           "id": "QA-DETAIL-01.S3.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S3"
         },
         {
           "id": "QA-DETAIL-01.S3.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S3"
         },
         {
           "id": "QA-DETAIL-01.S3.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "QA-DETAIL-01.S3"
         },
         {
@@ -815,36 +815,36 @@
         {
           "id": "EXT-DETAIL-01.S1.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "EXT-DETAIL-01.S1"
         },
         {
           "id": "EXT-DETAIL-01.S1.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "EXT-DETAIL-01.S1"
         },
         {
           "id": "EXT-DETAIL-01.S1.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "EXT-DETAIL-01.S1"
         },
         {
           "id": "EXT-DETAIL-01.S1.A4",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "EXT-DETAIL-01.S1"
         },
         {
           "id": "EXT-DETAIL-01.S1.A5",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "EXT-DETAIL-01.S1"
         },
         {
@@ -974,50 +974,50 @@
         {
           "id": "PR59-EVIDENCE-01.S1.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S1"
         },
         {
           "id": "PR59-EVIDENCE-01.S1.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S1"
         },
         {
           "id": "PR59-EVIDENCE-01.S1.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S1"
         },
         {
           "id": "PR59-EVIDENCE-01.S2.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S2"
         },
         {
           "id": "PR59-EVIDENCE-01.S2.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S2"
         },
         {
           "id": "PR59-EVIDENCE-01.S2.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S2"
         },
         {
           "id": "PR59-EVIDENCE-01.S2.A4",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PR59-EVIDENCE-01.S2"
         },
         {
@@ -1126,36 +1126,36 @@
         {
           "id": "PROOF-003.02.S2.A1",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PROOF-003.02.S2"
         },
         {
           "id": "PROOF-003.02.S2.A2",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PROOF-003.02.S2"
         },
         {
           "id": "PROOF-003.02.S2.A3",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PROOF-003.02.S2"
         },
         {
           "id": "PROOF-003.02.S2.A4",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PROOF-003.02.S2"
         },
         {
           "id": "PROOF-003.02.S2.A5",
           "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
+          "kind": "acceptance",
+          "decision": "MERGE",
           "requirement": "PROOF-003.02.S2"
         },
         {
@@ -9434,6 +9434,496 @@
       ],
       "reviewStatus": "APPROVED",
       "canonicalId": "ATP-P2-0002"
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A1",
+        "P0-U052"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A2",
+        "P0-U053"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A3",
+        "P0-U054"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A1",
+        "P0-U055"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A2",
+        "P0-U056"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A3",
+        "P0-U057"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A4",
+        "P0-U058"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A1",
+        "P0-U059"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A2",
+        "P0-U060"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A3",
+        "P0-U061"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A4",
+        "P0-U062"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A1",
+        "P0-U063"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A2",
+        "P0-U064"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A3",
+        "P0-U065"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A4",
+        "P0-U066"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A5",
+        "P0-U067"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A6",
+        "P0-U068"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A7",
+        "P0-U069"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A8",
+        "P0-U070"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A1",
+        "P0-U071"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A2",
+        "P0-U072"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A3",
+        "P0-U073"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A1",
+        "P0-U074"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A2",
+        "P0-U075"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A3",
+        "P0-U076"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A1",
+        "P0-U077"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A2",
+        "P0-U078"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A3",
+        "P0-U079"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A4",
+        "P0-U080"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A5",
+        "P0-U081"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A1",
+        "P0-U082"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A2",
+        "P0-U083"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A3",
+        "P0-U084"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A4",
+        "P0-U085"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A5",
+        "P0-U086"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
     }
   ],
   "relationOrphans": [],

@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "6de7e605c7deda8f763a1b8069c0cfe81c9a07e1"
+        "blobSha": "5c2aa13a9097f20dd3fec9813b46d0dd93e26554"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -3786,7 +3786,7 @@
       "legacyId": "PR59-EVIDENCE-01.S1.A1",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3812,8 +3812,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3823,13 +3823,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U052",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "測試目標／Repository",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S1.A2",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3855,8 +3866,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3866,13 +3877,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U053",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "Commit SHA",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S1.A3",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3898,8 +3920,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3909,13 +3931,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U054",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "實際網址或 Artifact",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S2.A1",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3941,8 +3974,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3952,13 +3985,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U055",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "日期",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S2.A2",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3984,8 +4028,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -3995,13 +4039,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U056",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "執行者",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S2.A3",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4027,8 +4082,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4038,13 +4093,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U057",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "測試結果",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S2.A4",
       "canonicalId": null,
       "requirement": "PR59-EVIDENCE-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4070,8 +4136,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4081,13 +4147,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U058",
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "atomicEvidenceText": "未解風險",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 16,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "INDEX-DETAIL-01.S3.A1",
       "canonicalId": null,
       "requirement": "INDEX-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4113,8 +4190,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4124,13 +4201,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U059",
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "atomicEvidenceText": "meta robots",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 31,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "INDEX-DETAIL-01.S3.A2",
       "canonicalId": null,
       "requirement": "INDEX-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4156,8 +4244,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4167,13 +4255,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U060",
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "atomicEvidenceText": "robots.txt",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 31,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "INDEX-DETAIL-01.S3.A3",
       "canonicalId": null,
       "requirement": "INDEX-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4199,8 +4298,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4210,13 +4309,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U061",
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "atomicEvidenceText": "canonical",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 31,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "INDEX-DETAIL-01.S3.A4",
       "canonicalId": null,
       "requirement": "INDEX-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4242,8 +4352,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4253,13 +4363,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U062",
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "atomicEvidenceText": "Sitemap",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 31,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A1",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4285,8 +4406,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4296,13 +4417,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U063",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "首頁",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A2",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4328,8 +4460,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4339,13 +4471,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U064",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "CSS／圖片",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A3",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4371,8 +4514,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4382,13 +4525,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U065",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "導航",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A4",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4414,8 +4568,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4425,13 +4579,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U066",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "文章／內容頁（適用時）",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A5",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4457,8 +4622,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4468,13 +4633,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U067",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "Pagefind（適用時）",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A6",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4500,8 +4676,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4511,13 +4687,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U068",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "RSS（適用時）",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A7",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4543,8 +4730,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4554,13 +4741,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U069",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "Sitemap",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S1.A8",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4586,8 +4784,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4597,13 +4795,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U070",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "404",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S2.A1",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4629,8 +4838,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4640,13 +4849,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U071",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "鍵盤操作",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S2.A2",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4672,8 +4892,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4683,13 +4903,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U072",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "觸控操作",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S2.A3",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4715,8 +4946,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4726,13 +4957,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U073",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "reduced-motion",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S3.A1",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4758,8 +5000,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4769,13 +5011,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U074",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "Preview noindex",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S3.A2",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4801,8 +5054,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4812,13 +5065,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U075",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "未公開／敏感內容",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "QA-DETAIL-01.S3.A3",
       "canonicalId": null,
       "requirement": "QA-DETAIL-01.S3",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4844,8 +5108,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4855,13 +5119,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U076",
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "atomicEvidenceText": "外部服務測試資料",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "EXT-DETAIL-01.S1.A1",
       "canonicalId": null,
       "requirement": "EXT-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4887,8 +5162,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4898,13 +5173,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U077",
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "atomicEvidenceText": "Pages 子路徑資產",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "EXT-DETAIL-01.S1.A2",
       "canonicalId": null,
       "requirement": "EXT-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4930,8 +5216,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4941,13 +5227,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U078",
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "atomicEvidenceText": "文章／服務內頁",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "EXT-DETAIL-01.S1.A3",
       "canonicalId": null,
       "requirement": "EXT-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4973,8 +5270,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -4984,13 +5281,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U079",
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "atomicEvidenceText": "導航",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "EXT-DETAIL-01.S1.A4",
       "canonicalId": null,
       "requirement": "EXT-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5016,8 +5324,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5027,13 +5335,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U080",
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "atomicEvidenceText": "搜尋",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "EXT-DETAIL-01.S1.A5",
       "canonicalId": null,
       "requirement": "EXT-DETAIL-01.S1",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5059,8 +5378,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5070,13 +5389,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U081",
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "atomicEvidenceText": "canonical",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-003.02.S2.A1",
       "canonicalId": null,
       "requirement": "PROOF-003.02.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5102,8 +5432,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5113,13 +5443,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U082",
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "atomicEvidenceText": "獨立 Repo URL",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 22,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-003.02.S2.A2",
       "canonicalId": null,
       "requirement": "PROOF-003.02.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5145,8 +5486,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5156,13 +5497,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U083",
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "atomicEvidenceText": "PR URL",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 22,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-003.02.S2.A3",
       "canonicalId": null,
       "requirement": "PROOF-003.02.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5188,8 +5540,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5199,13 +5551,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U084",
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "atomicEvidenceText": "Workflow Run URL",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 22,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-003.02.S2.A4",
       "canonicalId": null,
       "requirement": "PROOF-003.02.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5231,8 +5594,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5242,13 +5605,24 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U085",
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "atomicEvidenceText": "SHA",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 22,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-003.02.S2.A5",
       "canonicalId": null,
       "requirement": "PROOF-003.02.S2",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5274,8 +5648,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5285,7 +5659,18 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "equivalentAcceptanceDimensionId": "P0-U086",
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "atomicEvidenceText": "QA Artifact",
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenLine": 22,
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD"
+      }
     },
     {
       "legacyId": "PROOF-001.03.S2",
@@ -52888,7 +53273,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "測試目標／Repository"
+      "atomicEvidenceText": "測試目標／Repository",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S1.A1"
+      ]
     },
     {
       "legacyId": "P0-U053",
@@ -52951,7 +53339,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "Commit SHA"
+      "atomicEvidenceText": "Commit SHA",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S1.A2"
+      ]
     },
     {
       "legacyId": "P0-U054",
@@ -53014,7 +53405,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "實際網址或 Artifact"
+      "atomicEvidenceText": "實際網址或 Artifact",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S1.A3"
+      ]
     },
     {
       "legacyId": "P0-U055",
@@ -53061,7 +53455,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "日期"
+      "atomicEvidenceText": "日期",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S2.A1"
+      ]
     },
     {
       "legacyId": "P0-U056",
@@ -53108,7 +53505,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "執行者"
+      "atomicEvidenceText": "執行者",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S2.A2"
+      ]
     },
     {
       "legacyId": "P0-U057",
@@ -53155,7 +53555,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "測試結果"
+      "atomicEvidenceText": "測試結果",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S2.A3"
+      ]
     },
     {
       "legacyId": "P0-U058",
@@ -53202,7 +53605,10 @@
       "parentCanonicalCandidate": "PR59-EVIDENCE-01",
       "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
       "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
-      "atomicEvidenceText": "未解風險"
+      "atomicEvidenceText": "未解風險",
+      "equivalentDimensionAliases": [
+        "PR59-EVIDENCE-01.S2.A4"
+      ]
     },
     {
       "legacyId": "P0-U059",
@@ -53249,7 +53655,10 @@
       "parentCanonicalCandidate": "ATP-P2-0003",
       "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
       "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
-      "atomicEvidenceText": "meta robots"
+      "atomicEvidenceText": "meta robots",
+      "equivalentDimensionAliases": [
+        "INDEX-DETAIL-01.S3.A1"
+      ]
     },
     {
       "legacyId": "P0-U060",
@@ -53296,7 +53705,10 @@
       "parentCanonicalCandidate": "ATP-P2-0003",
       "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
       "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
-      "atomicEvidenceText": "robots.txt"
+      "atomicEvidenceText": "robots.txt",
+      "equivalentDimensionAliases": [
+        "INDEX-DETAIL-01.S3.A2"
+      ]
     },
     {
       "legacyId": "P0-U061",
@@ -53359,7 +53771,10 @@
       "parentCanonicalCandidate": "ATP-P2-0003",
       "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
       "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
-      "atomicEvidenceText": "canonical"
+      "atomicEvidenceText": "canonical",
+      "equivalentDimensionAliases": [
+        "INDEX-DETAIL-01.S3.A3"
+      ]
     },
     {
       "legacyId": "P0-U062",
@@ -53406,7 +53821,10 @@
       "parentCanonicalCandidate": "ATP-P2-0003",
       "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
       "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
-      "atomicEvidenceText": "Sitemap"
+      "atomicEvidenceText": "Sitemap",
+      "equivalentDimensionAliases": [
+        "INDEX-DETAIL-01.S3.A4"
+      ]
     },
     {
       "legacyId": "P0-U063",
@@ -53453,7 +53871,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "首頁"
+      "atomicEvidenceText": "首頁",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A1"
+      ]
     },
     {
       "legacyId": "P0-U064",
@@ -53500,7 +53921,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "CSS／圖片"
+      "atomicEvidenceText": "CSS／圖片",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A2"
+      ]
     },
     {
       "legacyId": "P0-U065",
@@ -53563,7 +53987,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "導航"
+      "atomicEvidenceText": "導航",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A3"
+      ]
     },
     {
       "legacyId": "P0-U066",
@@ -53610,7 +54037,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "文章／內容頁（適用時）"
+      "atomicEvidenceText": "文章／內容頁（適用時）",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A4"
+      ]
     },
     {
       "legacyId": "P0-U067",
@@ -53657,7 +54087,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "Pagefind（適用時）"
+      "atomicEvidenceText": "Pagefind（適用時）",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A5"
+      ]
     },
     {
       "legacyId": "P0-U068",
@@ -53704,7 +54137,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "RSS（適用時）"
+      "atomicEvidenceText": "RSS（適用時）",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A6"
+      ]
     },
     {
       "legacyId": "P0-U069",
@@ -53751,7 +54187,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "Sitemap"
+      "atomicEvidenceText": "Sitemap",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A7"
+      ]
     },
     {
       "legacyId": "P0-U070",
@@ -53798,7 +54237,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "404"
+      "atomicEvidenceText": "404",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S1.A8"
+      ]
     },
     {
       "legacyId": "P0-U071",
@@ -53845,7 +54287,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "鍵盤操作"
+      "atomicEvidenceText": "鍵盤操作",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S2.A1"
+      ]
     },
     {
       "legacyId": "P0-U072",
@@ -53892,7 +54337,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "觸控操作"
+      "atomicEvidenceText": "觸控操作",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S2.A2"
+      ]
     },
     {
       "legacyId": "P0-U073",
@@ -53939,7 +54387,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "reduced-motion"
+      "atomicEvidenceText": "reduced-motion",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S2.A3"
+      ]
     },
     {
       "legacyId": "P0-U074",
@@ -53986,7 +54437,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "Preview noindex"
+      "atomicEvidenceText": "Preview noindex",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S3.A1"
+      ]
     },
     {
       "legacyId": "P0-U075",
@@ -54033,7 +54487,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "未公開／敏感內容"
+      "atomicEvidenceText": "未公開／敏感內容",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S3.A2"
+      ]
     },
     {
       "legacyId": "P0-U076",
@@ -54080,7 +54537,10 @@
       "parentCanonicalCandidate": "QA-DETAIL-01",
       "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
       "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
-      "atomicEvidenceText": "外部服務測試資料"
+      "atomicEvidenceText": "外部服務測試資料",
+      "equivalentDimensionAliases": [
+        "QA-DETAIL-01.S3.A3"
+      ]
     },
     {
       "legacyId": "P0-U077",
@@ -54127,7 +54587,10 @@
       "parentCanonicalCandidate": "PROOF-003.03",
       "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
       "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
-      "atomicEvidenceText": "Pages 子路徑資產"
+      "atomicEvidenceText": "Pages 子路徑資產",
+      "equivalentDimensionAliases": [
+        "EXT-DETAIL-01.S1.A1"
+      ]
     },
     {
       "legacyId": "P0-U078",
@@ -54174,7 +54637,10 @@
       "parentCanonicalCandidate": "PROOF-003.03",
       "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
       "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
-      "atomicEvidenceText": "文章／服務內頁"
+      "atomicEvidenceText": "文章／服務內頁",
+      "equivalentDimensionAliases": [
+        "EXT-DETAIL-01.S1.A2"
+      ]
     },
     {
       "legacyId": "P0-U079",
@@ -54221,7 +54687,10 @@
       "parentCanonicalCandidate": "PROOF-003.03",
       "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
       "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
-      "atomicEvidenceText": "導航"
+      "atomicEvidenceText": "導航",
+      "equivalentDimensionAliases": [
+        "EXT-DETAIL-01.S1.A3"
+      ]
     },
     {
       "legacyId": "P0-U080",
@@ -54268,7 +54737,10 @@
       "parentCanonicalCandidate": "PROOF-003.03",
       "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
       "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
-      "atomicEvidenceText": "搜尋"
+      "atomicEvidenceText": "搜尋",
+      "equivalentDimensionAliases": [
+        "EXT-DETAIL-01.S1.A4"
+      ]
     },
     {
       "legacyId": "P0-U081",
@@ -54315,7 +54787,10 @@
       "parentCanonicalCandidate": "PROOF-003.03",
       "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
       "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
-      "atomicEvidenceText": "canonical"
+      "atomicEvidenceText": "canonical",
+      "equivalentDimensionAliases": [
+        "EXT-DETAIL-01.S1.A5"
+      ]
     },
     {
       "legacyId": "P0-U082",
@@ -54362,7 +54837,10 @@
       "parentCanonicalCandidate": "PROOF-003.02",
       "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
       "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
-      "atomicEvidenceText": "獨立 Repo URL"
+      "atomicEvidenceText": "獨立 Repo URL",
+      "equivalentDimensionAliases": [
+        "PROOF-003.02.S2.A1"
+      ]
     },
     {
       "legacyId": "P0-U083",
@@ -54409,7 +54887,10 @@
       "parentCanonicalCandidate": "PROOF-003.02",
       "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
       "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
-      "atomicEvidenceText": "PR URL"
+      "atomicEvidenceText": "PR URL",
+      "equivalentDimensionAliases": [
+        "PROOF-003.02.S2.A2"
+      ]
     },
     {
       "legacyId": "P0-U084",
@@ -54456,7 +54937,10 @@
       "parentCanonicalCandidate": "PROOF-003.02",
       "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
       "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
-      "atomicEvidenceText": "Workflow Run URL"
+      "atomicEvidenceText": "Workflow Run URL",
+      "equivalentDimensionAliases": [
+        "PROOF-003.02.S2.A3"
+      ]
     },
     {
       "legacyId": "P0-U085",
@@ -54503,7 +54987,10 @@
       "parentCanonicalCandidate": "PROOF-003.02",
       "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
       "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
-      "atomicEvidenceText": "SHA"
+      "atomicEvidenceText": "SHA",
+      "equivalentDimensionAliases": [
+        "PROOF-003.02.S2.A4"
+      ]
     },
     {
       "legacyId": "P0-U086",
@@ -54550,7 +55037,10 @@
       "parentCanonicalCandidate": "PROOF-003.02",
       "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
       "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
-      "atomicEvidenceText": "QA Artifact"
+      "atomicEvidenceText": "QA Artifact",
+      "equivalentDimensionAliases": [
+        "PROOF-003.02.S2.A5"
+      ]
     },
     {
       "legacyId": "P0-CANON-PRVIEW-MISSING",
@@ -66747,6 +67237,496 @@
       ],
       "reviewStatus": "APPROVED",
       "canonicalId": "ATP-P2-0002"
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A1",
+        "P0-U052"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A2",
+        "P0-U053"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S1.A3",
+        "P0-U054"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A1",
+        "P0-U055"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A2",
+        "P0-U056"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A3",
+        "P0-U057"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PR59-EVIDENCE-01.S2.A4",
+        "P0-U058"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A1",
+        "P0-U059"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A2",
+        "P0-U060"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A3",
+        "P0-U061"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "INDEX-DETAIL-01.S3.A4",
+        "P0-U062"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A1",
+        "P0-U063"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A2",
+        "P0-U064"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A3",
+        "P0-U065"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A4",
+        "P0-U066"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A5",
+        "P0-U067"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A6",
+        "P0-U068"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A7",
+        "P0-U069"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S1.A8",
+        "P0-U070"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A1",
+        "P0-U071"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A2",
+        "P0-U072"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S2.A3",
+        "P0-U073"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A1",
+        "P0-U074"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A2",
+        "P0-U075"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "QA-DETAIL-01.S3.A3",
+        "P0-U076"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A1",
+        "P0-U077"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A2",
+        "P0-U078"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A3",
+        "P0-U079"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A4",
+        "P0-U080"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "EXT-DETAIL-01.S1.A5",
+        "P0-U081"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A1",
+        "P0-U082"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A2",
+        "P0-U083"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A3",
+        "P0-U084"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A4",
+        "P0-U085"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "PROOF-003.02.S2.A5",
+        "P0-U086"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS",
+      "scopeNote": "Identical individually testable acceptance field; no extra independent policy",
+      "sharedExactFrozenAnchors": [
+        "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22"
+      ],
+      "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
+      "canonicalId": null
     }
   ],
   "sourceReviewQueue": [
@@ -76563,98 +77543,98 @@
         {
           "legacyId": "QA-DETAIL-01.S1.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A4",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A5",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A6",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A7",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S1.A8",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S2.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S2.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S2.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S3.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S3.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "QA-DETAIL-01.S3.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "QA-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -80144,28 +81124,28 @@
         {
           "legacyId": "INDEX-DETAIL-01.S3.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "INDEX-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "INDEX-DETAIL-01.S3.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "INDEX-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "INDEX-DETAIL-01.S3.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "INDEX-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "INDEX-DETAIL-01.S3.A4",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "INDEX-DETAIL-01.S3",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -88250,49 +89230,49 @@
         {
           "legacyId": "PR59-EVIDENCE-01.S1.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S1.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S1.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S2.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S2.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S2.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PR59-EVIDENCE-01.S2.A4",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PR59-EVIDENCE-01.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -88406,35 +89386,35 @@
         {
           "legacyId": "PROOF-003.02.S2.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PROOF-003.02.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-003.02.S2.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PROOF-003.02.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-003.02.S2.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PROOF-003.02.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-003.02.S2.A4",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PROOF-003.02.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-003.02.S2.A5",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "PROOF-003.02.S2",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -88571,35 +89551,35 @@
         {
           "legacyId": "EXT-DETAIL-01.S1.A1",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "EXT-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "EXT-DETAIL-01.S1.A2",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "EXT-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "EXT-DETAIL-01.S1.A3",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "EXT-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "EXT-DETAIL-01.S1.A4",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "EXT-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "EXT-DETAIL-01.S1.A5",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING",
           "requirement": "EXT-DETAIL-01.S1",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
