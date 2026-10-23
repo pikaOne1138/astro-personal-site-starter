@@ -1,0 +1,53 @@
+import {chromium} from 'playwright';
+import {spawn} from 'node:child_process';
+import {setTimeout as sleep} from 'node:timers/promises';
+import {mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+const port=4369,origin='http://127.0.0.1:'+port;
+// Use the project's supported Astro CLI entrypoint instead of a version-specific node_modules path.
+const server=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe'],detached:process.platform!=='win32'});
+let logs='';server.stdout.on('data',x=>logs+=x);server.stderr.on('data',x=>logs+=x);
+let browser,temp;
+const assert=(value,label)=>{if(!value)throw new Error(label)};
+try{
+ let ready=false;
+ for(let i=0;i<50;i++){try{const r=await fetch(origin+'/starter/');if(r.ok){ready=true;break;}}catch{}await sleep(200)}
+ assert(ready,'Astro preview not ready: '+logs);
+ browser=await chromium.launch({headless:true});
+ const page=await browser.newPage({acceptDownloads:true});
+ await page.goto(origin+'/starter/');
+ await page.locator('[name=siteName]').fill('測試學員網站');
+ await page.locator('#interview-summary').fill('這是一份訪談摘要');
+ await page.locator('#palette-primary').evaluate(el=>{el.value='#345678';el.dispatchEvent(new Event('input',{bubbles:true}));});
+ await page.reload();
+ assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','siteName lost after reload');
+ assert(await page.locator('#interview-summary').inputValue()==='這是一份訪談摘要','interview summary lost');
+ assert((await page.locator('#palette-primary').inputValue()).toLowerCase()==='#345678','palette lost');
+ const downloadPromise=page.waitForEvent('download');
+ await page.locator('#save-plan').click();
+ const download=await downloadPromise;
+ temp=await mkdtemp(join(tmpdir(),'atp-student-draft-'));
+ const file=join(temp,'site-brief.json');await download.saveAs(file);
+ await page.locator('[name=siteName]').fill('將被匯入覆蓋');
+ await page.locator('#import-plan').setInputFiles(file);
+ await page.waitForFunction(()=>{const name=document.querySelector('[name=siteName]')?.value;const status=document.querySelector('#draft-status')?.textContent||'';return name==='測試學員網站'||status.includes('匯入失敗');},{timeout:5000});
+ assert(await page.locator('[name=siteName]').inputValue()==='測試學員網站','JSON import failed: '+await page.locator('#draft-status').textContent());
+ assert((await page.locator('#draft-status').textContent()).includes('已匯入'),'import confirmation missing');
+ page.once('dialog',d=>d.accept());
+ await page.locator('#clear-draft').click();
+ await page.waitForLoadState('load');
+ assert(await page.locator('[name=siteName]').inputValue()==='我的個人網站','clear draft did not restore defaults');
+ console.log('PASS student draft reload / Site Brief import / clear');
+}finally{
+ await browser?.close();
+ // npm creates a shell/child Astro process; killing npm alone leaves Astro
+ // holding the inherited stdout/stderr pipes open and hangs this Node test.
+ if(server.pid){
+  if(process.platform==='win32')server.kill('SIGTERM');
+  else {try{process.kill(-server.pid,'SIGTERM');}catch(e){if(e.code!=='ESRCH')throw e;}}
+ }
+ server.stdout.destroy();
+ server.stderr.destroy();
+ if(temp)await rm(temp,{recursive:true,force:true});
+}

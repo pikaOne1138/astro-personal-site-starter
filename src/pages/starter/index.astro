@@ -140,7 +140,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <section class="step" aria-labelledby="step-output"><div class="step-head"><span>07</span><div><h2 id="step-output">交給 AI 接續組裝</h2><p>這份 Site Brief 描述你的選擇；不代表版型已自動轉換為完整網站。</p></div></div>
 <aside class="handoff-guide"><strong>完成規劃後，下載 Site Brief</strong><p>先確認版型、品牌、內容與頁面架構。下方按「下載 Site Brief JSON」，電腦就會得到 <code>my-astro-site-plan.json</code>。這是給建站 AI 閱讀的設定檔，<strong>不需要自己打開修改，也不是網站成品</strong>。</p><p>若有在第 04 步貼上 AI 訪談摘要，它已包含在這份 Site Brief 裡，<strong>不必額外上傳訪談包</strong>。接著前往 <a href={base+'guide/#step-02'}>建站指南第 02 步</a>取得完整建站包 ZIP，將 Site Brief 與建站包一起交給 AI，再複製開始建站的提示詞。</p><a class="button secondary" href={base+'guide/#step-02'}>下一步：前往建站指南 →</a></aside>
 <div class="notes-field"><label for="notes">還有什麼要 AI 注意的？</label><textarea id="notes" rows="5" placeholder="例如：想把文章放首頁第一區、手機選單優先顯示聯絡方式"></textarea></div>
-<div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 Site Brief JSON</button></div>
+<div class="card" aria-label="草稿保存"><strong>本機草稿</strong><p id="draft-status" role="status">尚未儲存</p><label>匯入已下載的 Site Brief JSON <input id="import-plan" type="file" accept=".json,application/json"/></label><button id="clear-draft" type="button" class="secondary">清除本機草稿</button><p>草稿只保存在此瀏覽器；跨裝置請使用 JSON。圖片請保留下載的 JSON 備份，瀏覽器無法恢復檔案上傳欄位。</p></div><div class="form-actions"><button type="button" id="copy-plan">複製網站規格</button><button type="button" id="save-plan" class="secondary">下載 Site Brief JSON</button></div>
 <p id="form-status" role="status" aria-live="polite"></p><pre id="plan-preview" tabindex="0" role="region" aria-label="網站設定預覽"></pre></section>
 </form>
 </main>
@@ -491,6 +491,91 @@ document.querySelector<HTMLButtonElement>('#save-plan')!.addEventListener('click
  status.textContent='已下載網站設定，這是規劃檔案，不是已部署的網站。';
 });
 update();
+
+const draftKey='atp-starter-draft-v1';
+const draftStatus=document.querySelector<HTMLElement>('#draft-status')!;
+let restoringDraft=false;
+function storeDraft(quiet=false){
+ if(restoringDraft)return;
+ try{
+  const fields=Array.from(form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>('input,select,textarea')).filter(el=>el.id!=='import-plan'&&el.type!=='file');
+  const values=fields.map((el,i)=>({i,id:el.id,name:el.name,type:el.type,value:el.value,checked:el instanceof HTMLInputElement?el.checked:undefined}));
+  const draft={version:1,values,nav,layout:value('layout'),palette:currentPalette(),savedAt:new Date().toISOString()};
+  localStorage.setItem(draftKey,JSON.stringify(draft));
+  if(!quiet)draftStatus.textContent='已儲存於此瀏覽器（'+new Date().toLocaleTimeString('zh-TW')+'）';
+ }catch{draftStatus.textContent='瀏覽器無法保存草稿，請下載 Site Brief JSON 備份。';}
+}
+function restoreFields(values:any[]){
+ const fields=Array.from(form.querySelectorAll<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>('input,select,textarea')).filter(el=>el.id!=='import-plan'&&el.type!=='file');
+ for(const entry of values){
+  const el=fields[entry.i];if(!el||el.id!==entry.id||el.name!==entry.name)continue;
+  if(el instanceof HTMLInputElement&&(el.type==='checkbox'||el.type==='radio'))el.checked=Boolean(entry.checked);
+  else el.value=String(entry.value??'');
+ }
+}
+function restoreDraft(){
+ try{
+  const raw=localStorage.getItem(draftKey);if(!raw)return;
+  const saved=JSON.parse(raw);if(saved.version!==1||!Array.isArray(saved.values)||!Array.isArray(saved.nav))return;
+  restoringDraft=true;
+  restoreFields(saved.values);
+  const importedNav=saved.nav.filter((x:any)=>x&&typeof x.id==='string'&&typeof x.label==='string'&&typeof x.enabled==='boolean').slice(0,20);if(importedNav.length)nav=importedNav;
+  priorKind=value('kind') as StarterKind;
+  renderNav();renderMenu();renderPatterns();
+  for(const key of paletteKeys)if(/^#[0-9A-Fa-f]{6}$/.test(saved.palette?.[key]))document.querySelector<HTMLInputElement>('#palette-'+key)!.value=saved.palette[key];
+  paintPalette();renderFooterPreview();showPlan();
+  draftStatus.textContent='已恢復上次草稿';
+ }catch{draftStatus.textContent='草稿無法還原，請匯入之前下載的 Site Brief。'}
+ finally{restoringDraft=false;}
+}
+function applyImportedPlan(p:StarterPlan){
+ if(p.version!==1||!['knowledge','helper'].includes(p.kind)||!directions.some(x=>x.slug===p.layoutSlug&&x.kind===p.kind))throw Error('版本或版型不相容');
+ const errors=checkStarterPlan(p,directions);if(errors.length)throw Error(errors.join('；'));
+ restoringDraft=true;
+ try{
+  const pick=(name:string,val:string)=>{const el=form.querySelector<HTMLInputElement>('input[name="'+name+'"][value="'+val+'"]');if(el)el.checked=true};
+  pick('kind',p.kind);update();pick('layout',p.layoutSlug);pick('theme',p.visualTheme);
+  const set=(selector:string,v:unknown)=>{const el=form.querySelector<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>(selector);if(el&&typeof v==='string')el.value=v};
+  set('[name="siteName"]',p.brand.name);set('[name="tagline"]',p.brand.tagline);
+  set('[name="typography"]',p.brand.typography);set('[name="imageStyle"]',p.brand.imageStyle);
+  set('[name="logoPath"]',p.brand.logoPath);set('[name="heroImagePath"]',p.brand.heroImagePath);set('[name="heroImageAlt"]',p.brand.heroImageAlt);
+  for(const key of paletteKeys){const v=p.brand.palette?.[key]|| (key==='primary'?p.brand.primaryColor:'');if(/^#[0-9A-Fa-f]{6}$/.test(v))set('#palette-'+key,v)}
+  nav=p.navigation.map(x=>({...x}));priorKind=p.kind;renderNav();renderMenu();renderPatterns();
+  set('#cta-label',p.primaryCta.label);set('#cta-target',p.primaryCta.pageId);
+  set('#notes',p.notes||'');set('#about-bio',p.about?.bio);set('#about-purpose',p.about?.purpose);set('#about-approach',p.about?.approach);set('#about-background',p.about?.background);
+  set('#home-headline',p.content?.headline);set('#home-intro',p.content?.intro);
+  set('#fact-scope',p.serviceFacts?.scope);set('#fact-exclusions',p.serviceFacts?.exclusions);
+  set('#fact-method',p.serviceFacts?.method);set('#fact-first-visit',p.serviceFacts?.firstVisit);
+  set('#fact-duration',p.serviceFacts?.duration);set('#fact-price',p.serviceFacts?.price);
+  set('#fact-cancellation',p.serviceFacts?.cancellation);set('#fact-qualification',p.serviceFacts?.qualification);set('#fact-contact',p.serviceFacts?.contact);
+  set('#reading-title',p.reading?.records?.[0]?.title);set('#reading-note',p.reading?.records?.[0]?.note);set('#reading-month',p.reading?.records?.[0]?.month);
+  set('#annual-title',p.reading?.annualBook?.title);set('#annual-note',p.reading?.annualBook?.note);
+  set('#episode-audio',p.media?.episodeAudioPath);set('#episode-text',p.media?.episodeTranscript?.[0]?.text);set('#episode-time',p.media?.episodeTranscript?.[0]?.time);
+  const section=(p.sectionPatterns||[]);for(const box of document.querySelectorAll<HTMLElement>('.pattern-option')){const check=box.querySelector<HTMLInputElement>('.pattern-choice');if(!check)continue;const match=section.find(x=>x.patternId===check.value);check.checked=Boolean(match);if(match){set('#'+box.id+' .pattern-page',match.targetPage);set('#'+box.id+' .pattern-position',match.insertAfter)}box.querySelector<HTMLElement>('.pattern-config')!.hidden=!check.checked;}
+  const footer=section.find(x=>x.targetPage==='site-wide');if(footer)pick('footerPattern',footer.patternId);
+
+  embeddedImages.clear();
+  for(const asset of p.assets||[])if(asset&&typeof asset.path==='string'&&typeof asset.mime==='string'&&typeof asset.base64==='string')embeddedImages.set(asset.path.includes('brand-logo')?'logo':'hero',asset);
+  paintPalette();renderFooterPreview();showPlan();
+ }finally{restoringDraft=false;}
+ storeDraft();
+}
+document.querySelector<HTMLInputElement>('#import-plan')?.addEventListener('change',async event=>{
+ const input=event.currentTarget as HTMLInputElement;const file=input.files?.[0];if(!file)return;
+ try{if(file.size>12*1024*1024)throw Error('檔案超過 12MB');applyImportedPlan(JSON.parse(await file.text()));draftStatus.textContent='已匯入 Site Brief 並保存草稿';}
+ catch(error){draftStatus.textContent='匯入失敗：'+(error instanceof Error?error.message:'檔案格式錯誤');}
+ input.value='';
+});
+document.querySelector<HTMLButtonElement>('#clear-draft')?.addEventListener('click',()=>{
+ if(!confirm('確定清除本機草稿？已下載的 JSON 不會受到影響。'))return;
+ try{localStorage.removeItem(draftKey);}catch{}
+ location.reload();
+});
+form.addEventListener('input',storeDraft);
+form.addEventListener('change',()=>queueMicrotask(storeDraft));
+const draftObserver=new MutationObserver(()=>{if(!restoringDraft)storeDraft(true)});
+draftObserver.observe(rows,{childList:true,subtree:true});
+restoreDraft();
 </script>
 <style>
 .pattern-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
