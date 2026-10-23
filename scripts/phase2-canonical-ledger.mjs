@@ -13,7 +13,7 @@ for(const file of files){
  content.split('\n').forEach((line,n)=>{
   if(!line.startsWith('|'))return;
   const cols=line.split('|').slice(1,-1).map(x=>x.trim());
-  const id=cols[0]?.match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1];
+  const id=cols[0]?.match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1] || (file === 'PHASE2-BATCH9-ATOMIC-C.md' ? cols[0]?.match(/^(B9C-[A-Z]+\d+)$/)?.[1] : null);
   if(!id||cols.length<3)return;
   const refs=[];
   for(const m of line.matchAll(/https:\/\/github\.com\/pikaOne1138\/astro-personal-site-starter\/blob\/([0-9a-f]{40})\/([^\s)#]+)(?:#L(\d+)(?:-L(\d+))?)?/g)){
@@ -26,12 +26,21 @@ for(const file of files){
   records.set(id,{legacyId:id,canonicalId:null,requirement:(cols[2]||cols[1]).replace(/\x60/g,''),kind:'evidence',sourceRefs:refs,aliases:[],applicability:[],conditions:[],exceptions:[],acceptanceCriteria:[],decision:'PENDING',reviewStatus:'PENDING_SEMANTIC_REVIEW',evidence:[evidence],parentLegacyId:parent,childrenLegacyIds:[]});
  });
 }
-for(const r of records.values())if(r.parentLegacyId&&records.has(r.parentLegacyId))records.get(r.parentLegacyId).childrenLegacyIds.push(r.legacyId);
+for(const r of records.values())if(r.parentLegacyId&&records.has(r.parentLegacyId)){
+ const parent=records.get(r.parentLegacyId);
+ parent.childrenLegacyIds.push(r.legacyId);
+ if(!r.sourceRefs.length)r.sourceRefs.push(...parent.sourceRefs.map(x=>({...x,legacyWorkId:r.legacyId,sourceInference:'EXACT_PARENT_WORK_ROW'})));
+}
+// Keep all previously recorded legacy IDs even when a parser version cannot rediscover them.
+const previousLedger=fs.existsSync(dir+'canonical-ledger.json')?JSON.parse(fs.readFileSync(dir+'canonical-ledger.json','utf8')):null;
+for(const prior of previousLedger?.records||[])if(!records.has(prior.legacyId)){
+ records.set(prior.legacyId,{...prior,reviewStatus:'SOURCE_ROW_NOT_REDISCOVERED'});
+}
 const path=dir+'canonical-ledger.json';
 const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
  const oldById=new Map((old?.records||[]).map(x=>[x.legacyId,x]));
- const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,canonicalId:previous.canonicalId,decision:previous.decision,reviewStatus:previous.reviewStatus,kind:previous.kind,aliases:previous.aliases,applicability:previous.applicability,conditions:previous.conditions,exceptions:previous.exceptions,acceptanceCriteria:previous.acceptanceCriteria}:x;});
+ const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,sourceRefs:x.sourceRefs.length?x.sourceRefs:previous.sourceRefs,canonicalId:previous.canonicalId,decision:previous.decision,reviewStatus:previous.reviewStatus,kind:previous.kind,aliases:previous.aliases,applicability:previous.applicability,conditions:previous.conditions,exceptions:previous.exceptions,acceptanceCriteria:previous.acceptanceCriteria}:x;});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,importErrors:errors},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
