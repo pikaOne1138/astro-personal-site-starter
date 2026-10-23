@@ -36,6 +36,33 @@ const previousLedger=fs.existsSync(dir+'canonical-ledger.json')?JSON.parse(fs.re
 for(const prior of previousLedger?.records||[])if(!records.has(prior.legacyId)){
  records.set(prior.legacyId,{...prior,reviewStatus:'SOURCE_ROW_NOT_REDISCOVERED'});
 }
+// Recover mechanically encoded Batch 1–8 source coordinates from the Frozen Git tree.
+// The working identifier B{batch}-{PUB|ASM|DEP}{line}-{ordinal} contains the
+// source family and line number; verify the line exists before recording it.
+// Preserve exact line text as evidence; this is not a semantic adjudication.
+const families={PUB:'.ai/astro-content-publishing/SKILL.md',ASM:'.ai/astro-site-assembly/SKILL.md',DEP:'.ai/astro-starter-deploy/SKILL.md'};
+const frozenCache=new Map(),recoveryFailures=[];
+function frozenLine(source,line){
+ if(!frozenCache.has(source)){
+  try {frozenCache.set(source,execFileSync('git',['show',frozen+':'+source],{encoding:'utf8',maxBuffer:8*1024*1024}).split(/\r?\n/));}
+  catch(e){frozenCache.set(source,null);}
+ }
+ return frozenCache.get(source)?.[line-1]||null;
+}
+for(const row of records.values()){
+ if(row.sourceRefs.some(ref=>ref.revision===frozen && ref.lineStart))continue;
+ const m=row.legacyId.match(/^B[1-8]-(PUB|ASM|DEP)(\d+)-\d+(?:-CF|-GH)?$/);
+ if(!m)continue;
+ const source=families[m[1]],line=Number(m[2]),original=frozenLine(source,line);
+ if(!original||!manifest[source]){
+  recoveryFailures.push({legacyId:row.legacyId,reason:'encoded Frozen source line unavailable',source,line});
+  continue;
+ }
+ row.sourceRefs.push({path:source,revision:frozen,blobSha:manifest[source],
+  lineStart:line,lineEnd:line,legacyWorkId:row.legacyId,
+  sourceLayer:'FROZEN_SOURCE',sourceInference:'ENCODED_BATCH_ID_VERIFIED_AGAINST_FROZEN_LINE',
+  sourceText:original});
+}
 const path=dir+'canonical-ledger.json';
 const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
@@ -58,9 +85,9 @@ for(const r of old.records){
  if(r.parentLegacyId&&!ids.has(r.parentLegacyId)&&!old.records.some(x=>x.legacyId===r.parentLegacyId))failures.push('orphan parent: '+r.legacyId);
 }
 const missing=[...records.keys()].filter(x=>!ids.has(x));
-const state=failures.length+missing.length+review.length+errors.length?'BLOCKED':'PASS';
+const state=failures.length+missing.length+missingFrozen.length+review.length+errors.length?'BLOCKED':'PASS';
 const report=['# Phase 2 Gate Report','', 'Generated from canonical-ledger.json. No semantic approval is inferred.','',
  '| Metric | Value |','|---|---:|','| Working Phase2 files | '+(files.length-1)+' |','| Frozen files | '+Object.keys(manifest).length+' |','| Imported legacy IDs | '+old.records.length+' |','| Discovered legacy IDs | '+records.size+' |','| Unimported IDs | '+missing.length+' |','| Broken refs | '+failures.length+' |','| Pending adjudication | '+review.length+' |','| Import read failures | '+errors.length+' |','| No directly anchored Frozen or upstream source | '+missingFrozen.length+' |','',
- '**Phase 2: '+state+'**. Phase 3/4: BLOCKED.','', '## Failures','', '~~~json',JSON.stringify({missing,failures,missingFrozenCount:missingFrozen.length,missingFrozenSample:missingFrozen.slice(0,50),importErrors:errors,pendingSample:review.slice(0,20)},null,2),'~~~',''].join('\n');
+ '**Phase 2: '+state+'**. Phase 3/4: BLOCKED.','', '## Failures','', '~~~json',JSON.stringify({missing,failures,missingFrozenCount:missingFrozen.length,missingFrozenIds:missingFrozen,importErrors:errors,pendingSample:review.slice(0,20)},null,2),'~~~',''].join('\n');
 if(process.argv[2]==='report')fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
 console.log(report);if(state!=='PASS')process.exitCode=1;
