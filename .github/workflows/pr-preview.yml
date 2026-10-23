@@ -40,7 +40,7 @@ jobs:
         if: github.event.action != 'closed'
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - name: Install
         if: github.event.action != 'closed'
         run: npm install --no-audit --no-fund
