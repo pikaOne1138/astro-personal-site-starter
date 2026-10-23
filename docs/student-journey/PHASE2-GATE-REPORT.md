@@ -23,6 +23,12 @@
 | documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
+| sourceFirstScopeFiles | 10 |
+| sourceFirstLinesScanned | 352 |
+| sourceFirstCandidateLines | 202 |
+| sourceFirstUnmappedCandidateLines | 25 |
+| sourceFirstMappedCandidateLines | 177 |
+| sourceFirstReadFailures | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
 | oldFileRetirement | NOT_AUTHORIZED |
@@ -34,6 +40,7 @@
 
 ## Gate blockers
 - Semantic adjudication incomplete
+- Source-first potentially normative lines not mapped
 - No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
 ## Machine-verifiable diagnostics
@@ -59,12 +66,286 @@
     "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
+    "sourceFirstScopeFiles": 10,
+    "sourceFirstLinesScanned": 352,
+    "sourceFirstCandidateLines": 202,
+    "sourceFirstUnmappedCandidateLines": 25,
+    "sourceFirstMappedCandidateLines": 177,
+    "sourceFirstReadFailures": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",
     "oldFileRetirement": "NOT_AUTHORIZED",
     "stage2": "BLOCKED",
     "stage3": "BLOCKED",
     "stage4": "BLOCKED"
+  },
+  "sourceFirst": {
+    "scopeFiles": [
+      ".ai/astro-content-publishing/SKILL.md",
+      ".ai/astro-site-assembly/SKILL.md",
+      ".ai/astro-starter-deploy/SKILL.md",
+      ".ai/astro-pr-preview/SKILL.md",
+      ".ai/astro-site-entry/SKILL.md",
+      "docs/quality/QUALITY-CONTRACT.md",
+      "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+      "docs/workshop/PR56-USER-JOURNEY-QA.md",
+      "docs/student-builder-pack/AGENT-HANDOFF.md",
+      "docs/student-builder-pack/PROJECT-TEMPLATE.md"
+    ],
+    "readFailures": [],
+    "unmappedCandidateLines": [
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 3,
+        "sourceText": "description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform.",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 21,
+        "sourceText": "2. 保持 `import.meta.env.BASE_URL` 與 route/asset URL 正確。檢查已設定的 Node 版本、安裝與 `npm run build`；不得虛構測試成功。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 29,
+        "sourceText": "- 初次部署閱讀 `astro-starter-deploy`；確認 GitHub Pages 的 Source、Repo 類型、自訂網域與適用方案，`site`、`base` 及 `ASTRO_BASE_PATH` 隨**學員** Repo/網域調整。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 36,
+        "sourceText": "- 核對 Cloudflare Pages 專案已連接學員自己的 GitHub Repository、Production branch、build command、輸出目錄（Astro 靜態通常 `dist`），並確認非 Production branch／PR Preview Deployments 的實際設定。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 51,
+        "sourceText": "- PR Build 失敗：修復程式並重新建立有效檢查；部署失敗：依對應平台 Log 診斷，勿無差別重跑。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 53,
+        "sourceText": "- Preview 舊版：比較 PR head SHA 與部署 commit，更新到最新 head 再驗證。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 55,
+        "sourceText": "- 若無法執行瀏覽器驗證，明確標註待人工 QA。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 59,
+        "sourceText": "「請先查看我自己的 GitHub Repository 與實際使用的託管平台（GitHub Pages、Cloudflare Pages 或 Workers），依 astro-pr-preview 與 astro-starter-deploy Skill 修改網站。建立 Branch 和 PR，檢查 Build，找到**平台真正產生、對應最新 Commit**的預覽網址給我，確認電腦與手機畫面；我明確同意後才合併與發布。不要把教學研究 Repo 的預覽網址當成我的網站。」",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "line": 65,
+        "sourceText": "舊的 `/pr-preview/pr-N/` 研究 Repo 靜態路徑可能回 404；這不證明分支 Cloudflare Preview 本身失效。請到 GitHub PR 的實際 Checks／Deployment 取得目前有效的 Branch/Deployment URL、核對 SHA 與 HTTP，再告知學員。不要寫死或憑規律拼接 URL。正式學員指南請使用工作坊最新確認的入口，避免給已失效的版本網址。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/quality/QUALITY-CONTRACT.md",
+        "frozenBlobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+        "line": 9,
+        "sourceText": "- **NOTICE**: example/placeholder content, empty articles, or deliberate experimentation; never block technical builds solely for these.",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/quality/QUALITY-CONTRACT.md",
+        "frozenBlobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+        "line": 10,
+        "sourceText": "- **NOT TESTED**: no evidence at this commit; never silently count as PASS.",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/quality/QUALITY-CONTRACT.md",
+        "frozenBlobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+        "line": 11,
+        "sourceText": "- **BLOCKED**: tool access, unsupported platform, deployment or environment prevented the check.",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/quality/QUALITY-CONTRACT.md",
+        "frozenBlobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+        "line": 28,
+        "sourceText": "| Layer | Validations | Required evidence |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 3,
+        "sourceText": "> **唯一事實來源（SSOT）**：本檔只追蹤 PR #59 尚需在**學員自己的 GitHub Repository／實際部署環境**或由**人類**執行的驗收。程式碼與 CI 的技術真相仍以對應 Commit、Actions、Artifact 為準。本檔不得用預期結果代替證據。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 5,
+        "sourceText": "> 範圍：ATP PR #59 學員獨立 Astro 網站的 RWD／功能安全網；不涵蓋 Issue #58 收尾、不重新 QA ATP 25 款展示 Layout。**未經授權不建立學員正式 Repo、不 Merge、不部署 Production。**",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 9,
+        "sourceText": "- **NOT TESTED**：未在指定目標環境執行；不能宣稱 PASS。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 10,
+        "sourceText": "- **BLOCKED**：因授權、環境或必要資料缺失無法進行，必須寫明原因及解除條件。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 29,
+        "sourceText": "> **已完成的替代性自動檢查（不是 EXT-01～06 PASS）**：主 Repo 的封裝測試確認學員工作流程有被匯出；本地靜態伺服器的根路徑／子路徑正反故障注入檢查通過。這不能證明學員獨立 GitHub Repo 的 PR 事件、授權或線上 Preview 已驗收。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 44,
+        "sourceText": "| 項目 | 最新已確認的結果 | 證據 |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 47,
+        "sourceText": "| Art Direction Independent Adapter Check | PASS（同 Commit） | [Actions Run 39444544952](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544952) |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 49,
+        "sourceText": "| Verify Cloudflare Static Assets | PASS（同 Commit） | [Actions Run 39444544959](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544959) |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 50,
+        "sourceText": "| Standalone Starter Export Check | IN PROGRESS（最後查詢時） | [Actions Run 39444544891](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544891) |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "line": 52,
+        "sourceText": "> 此表是一個**帶時間性的驗證快照**。查詢最新狀態時，應以 GitHub Actions 真實結論更新，不得把「IN PROGRESS」永久當成失敗或通過。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+        "frozenBlobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+        "line": 15,
+        "sourceText": "| AI 需求訪談包 ZIP | Starter 04 | 選填 | 解壓後交 AI 進行訪談；AI 整理摘要，學員貼回 Starter 04 |",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      },
+      {
+        "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+        "frozenBlobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+        "line": 41,
+        "sourceText": "> 此文件為驗收依據，不代表所有檢查已完成。PR 保持 Draft，未核實的項目不可宣稱通過。",
+        "candidateForNormativeReview": true,
+        "legacyIds": [],
+        "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+      }
+    ],
+    "classification": "HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS"
   },
   "missingLegacy": [],
   "missingFrozen": [],
