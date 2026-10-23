@@ -153,8 +153,9 @@ for(const filename of files.filter(n=>/(CROSSWALK|DEDUPE|SEMANTIC|REVIEW)/.test(
 const path=dir+'canonical-ledger.json';
 const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
+ // Always recompute adjudications from immutable Legacy evidence; the generated Ledger is an output, not approval-state input.
  const oldById=new Map((old?.records||[]).map(x=>[x.legacyId,x]));
- const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,sourceRefs:x.sourceRefs.length?x.sourceRefs:previous.sourceRefs,canonicalId:previous.canonicalId,decision:previous.decision,reviewStatus:previous.reviewStatus,kind:previous.kind,aliases:previous.aliases,applicability:previous.applicability,conditions:previous.conditions,exceptions:previous.exceptions,acceptanceCriteria:previous.acceptanceCriteria}:x;});
+ const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,sourceRefs:x.sourceRefs.length?x.sourceRefs:previous.sourceRefs}:x;});
  // Four exact-source, independently checked P0 aliases. Never infer merges
  // from proximity. Frozen text and the P0 register identify the same action.
  const approvedPairs=[
