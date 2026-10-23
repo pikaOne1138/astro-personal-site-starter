@@ -569,6 +569,58 @@ if(process.argv[2]==='import'){
     reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
     parentDisposition:'Verified original component obligations carried by child canonical clauses'});
  }
+ // Verified publishing input provenance and real-content authoring requirements.
+ const contentAtomic=[
+  ['B5-PUB12-01-S01','Website words and article text come from the website owner',12],
+  ['B5-PUB12-01-S02','Identity and professional facts are provided or verified by the website owner',12],
+  ['B5-PUB12-01-S03','Live URLs and contact details come from the website owner',12],
+  ['B5-PUB12-01-S04','Image assets require owner-provided or otherwise licensed sources',12],
+  ['B5-PUB12-02-S01','Do not invent professional qualifications or testimonials',12],
+  ['B5-PUB12-02-S02','Do not invent prices or contact details',12],
+  ['B5-PUB12-02-S03','Do not claim newsletter subscription succeeds without proof',12],
+  ['B5-PUB12-02-S04','Do not claim booking succeeded without a real integration',12],
+  ['B3-PUB20-01-S01','Use the actual generated student content schema for authoring',20],
+  ['B3-PUB20-01-S02','Use actual generated student navigation and routes',20],
+  ['B3-PUB20-01-S03','Use actual generated student build and verification scripts',20],
+  ['B3-PUB20-02','Pagefind build index creation does not prove search-dialog UI is assembled',20],
+  ['B3-PUB20-03-S01','Do not claim category or month search UI exists unless assembled',20],
+  ['B3-PUB20-03-S02','Do not claim OG metadata is configured unless implemented',20],
+  ['B3-PUB20-03-S03','Do not claim structured data exists unless implemented',20],
+  ['B3-PUB35-01-S01','Published article body uses factual actual content rather than fabricated placeholder prose',35],
+  ['B3-PUB35-01-S02','Published articles use accessible headings',35],
+  ['B3-PUB35-01-S03','Published article links use meaningful anchor text',35],
+  ['B3-PUB35-02-S01','Published article images require suitable use rights',35],
+  ['B3-PUB35-02-S02','Published article images include alternative text',35],
+  ['B3-PUB35-03','Do not inject fictional examples or generic demo components into real articles',35]
+ ];
+ for(let i=0;i<contentAtomic.length;i++){
+  const [id,requirement,line]=contentAtomic[i],entry=byId.get(id);
+  const source='.ai/astro-content-publishing/SKILL.md';
+  const canonicalId='ATP-P2-'+String(101+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Article authorship atomic source invalid: '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Article atomic ID collision: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:line===12?'policy':line===20?'architecture':'procedure',
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student websites publishing actual articles'],
+   conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'EXACT_FROZEN_LINE_AND_PRIOR_ATOMIC_ITEM'}});
+ }
+ for(const [id,kids] of [
+  ['B5-PUB12-01',Array.from({length:4},(_,i)=>'B5-PUB12-01-S0'+(i+1))],
+  ['B5-PUB12-02',Array.from({length:4},(_,i)=>'B5-PUB12-02-S0'+(i+1))],
+  ['B3-PUB20-01',Array.from({length:3},(_,i)=>'B3-PUB20-01-S0'+(i+1))],
+  ['B3-PUB20-03',Array.from({length:3},(_,i)=>'B3-PUB20-03-S0'+(i+1))],
+  ['B3-PUB35-01',Array.from({length:3},(_,i)=>'B3-PUB35-01-S0'+(i+1))],
+  ['B3-PUB35-02',Array.from({length:2},(_,i)=>'B3-PUB35-02-S0'+(i+1))]
+ ]){
+  const row=byId.get(id);
+  if(!row||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))throw Error('Authoring composite uncovered: '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+   parentDisposition:'Individual approved child obligations preserve complete composite source'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
