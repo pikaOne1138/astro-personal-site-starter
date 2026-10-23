@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "484f390e0a232f14007fcda590c141b19202f509"
+        "blobSha": "86d3f875d6d5d99656c4a5970cf8985bdfe5f6f8"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -12887,9 +12887,9 @@
     },
     {
       "legacyId": "B4-DEP17-01",
-      "canonicalId": null,
-      "requirement": "用 import.meta.env.BASE_URL 處理路由與資產",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0174",
+      "requirement": "Use Astro import.meta.env.BASE_URL for site routes and assets",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12921,12 +12921,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12942,7 +12944,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP17-02",
@@ -12977,8 +12986,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12988,13 +12997,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B4-DEP17-02-S01",
+        "B4-DEP17-02-S02",
+        "B4-DEP17-02-S03",
+        "B4-DEP17-02-S04",
+        "B4-DEP17-02-S05"
+      ],
+      "parentDisposition": "Complete URL evidence carried by five separate acceptance leaves"
     },
     {
       "legacyId": "B4-DEP17-03",
-      "canonicalId": null,
-      "requirement": "移除研究站的硬編碼 URL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0180",
+      "requirement": "Replace research-site hardcoded links in exported student site",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13019,12 +13035,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13034,7 +13052,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP18-01",
@@ -15645,8 +15670,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15662,13 +15687,18 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B6-ASM13-01-S01",
+        "B6-ASM13-01-S02",
+        "B6-ASM13-01-S03"
+      ],
+      "parentDisposition": "Three required checks carried in approved children"
     },
     {
       "legacyId": "B6-ASM13-02",
-      "canonicalId": null,
-      "requirement": "專業履歷及資格僅能使用本人提供事實",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0189",
+      "requirement": "Only use professional histories and qualifications actually supplied by practitioner",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15700,12 +15730,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site assembly with helper/contact content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15721,13 +15753,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 13,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B6-ASM13-03",
-      "canonicalId": null,
-      "requirement": "未配置第三方整合須隱藏或明確標示",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0190",
+      "requirement": "Hide unconfigured external integrations or mark them explicitly unconfigured",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15759,12 +15798,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site assembly with helper/contact content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15780,7 +15821,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 13,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B6-DEP30-01",
@@ -21367,9 +21415,9 @@
     },
     {
       "legacyId": "B4-DEP17-02-S01",
-      "canonicalId": null,
-      "requirement": "驗證 canonical",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0175",
+      "requirement": "Verify actual canonical URL in generated production outputs",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21391,12 +21439,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21406,13 +21456,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP17-02-S02",
-      "canonicalId": null,
-      "requirement": "驗證 RSS",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0176",
+      "requirement": "Verify actual RSS URL in generated production outputs",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21434,12 +21491,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21449,13 +21508,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP17-02-S03",
-      "canonicalId": null,
-      "requirement": "驗證 Sitemap",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0177",
+      "requirement": "Verify actual Sitemap URLs",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21477,12 +21543,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21492,13 +21560,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP17-02-S04",
-      "canonicalId": null,
-      "requirement": "驗證 robots",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0178",
+      "requirement": "Verify robots URL and rules for actual hosting environment",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21520,12 +21595,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21535,13 +21612,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP17-02-S05",
-      "canonicalId": null,
-      "requirement": "驗證 OG URL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0179",
+      "requirement": "Verify Open Graph absolute URLs point to actual student domain",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21563,12 +21647,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Actual student deployment configuration"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21578,7 +21664,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B4-DEP24-01-S01",
@@ -24788,9 +24881,9 @@
     },
     {
       "legacyId": "B6-ASM13-01-S01",
-      "canonicalId": null,
-      "requirement": "核對品牌真實資料",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0186",
+      "requirement": "Check factual brand identity before assembly",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24812,12 +24905,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site assembly with helper/contact content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24827,13 +24922,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 13,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B6-ASM13-01-S02",
-      "canonicalId": null,
-      "requirement": "核對圖片授權",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0187",
+      "requirement": "Confirm licensed use of student images",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24855,12 +24957,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site assembly with helper/contact content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24870,13 +24974,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 13,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B6-ASM13-01-S03",
-      "canonicalId": null,
-      "requirement": "核對真實聯絡與預約方式",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0188",
+      "requirement": "Confirm genuine contact and booking endpoints",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24898,12 +25009,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site assembly with helper/contact content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24913,7 +25026,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 13,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B6-PUB66-01-S01",
@@ -30139,9 +30259,9 @@
     },
     {
       "legacyId": "B9C-ASM77-01",
-      "canonicalId": null,
-      "requirement": "collective team/events 選填資料結構",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0181",
+      "requirement": "Collective team and event content fields are optional",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30163,12 +30283,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Optional collective layout only"
+      ],
+      "conditions": [
+        "Collective team/events content enabled"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30187,13 +30311,20 @@
           "decision": "DISTINCT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 77,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B9C-ASM77-02",
-      "canonicalId": null,
-      "requirement": "成員需 owner 核准",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0182",
+      "requirement": "Display collective team-member identities only with owner verification",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30215,12 +30346,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Optional collective layout only"
+      ],
+      "conditions": [
+        "Collective team/events content enabled"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30239,13 +30374,20 @@
           "decision": "DISTINCT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 77,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B9C-ASM77-03",
-      "canonicalId": null,
-      "requirement": "活動需確實確認",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0183",
+      "requirement": "Publish collective events only after factual confirmation",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30267,12 +30409,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Optional collective layout only"
+      ],
+      "conditions": [
+        "Collective team/events content enabled"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30282,13 +30428,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM77",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 77,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B9C-ASM77-04",
-      "canonicalId": null,
-      "requirement": "空資料顯示 pending",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0184",
+      "requirement": "When collective event/member data is absent show an explicitly pending state",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30310,12 +30463,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Optional collective layout only"
+      ],
+      "conditions": [
+        "Collective team/events content enabled"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30325,13 +30482,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM77",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 77,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B9C-ASM77-05",
-      "canonicalId": null,
-      "requirement": "禁止虛構名冊、日期與可預約性",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0185",
+      "requirement": "Never fabricate roster, date or booking availability for collective teams/events",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30353,12 +30517,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Optional collective layout only"
+      ],
+      "conditions": [
+        "Collective team/events content enabled"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30368,13 +30536,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM77",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 77,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.",
+        "method": "FROZEN_LINE_PLUS_ATOMIC_RECORD"
+      }
     },
     {
       "legacyId": "B9C-ASM78-01",
-      "canonicalId": null,
-      "requirement": "trust-path serviceTiming 選填",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0191",
+      "requirement": "Trust-path serviceTiming is optional content, not a required scheduling feature",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30396,12 +30571,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Trust-path helper layout only"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30411,13 +30588,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM78",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B9C-ASM78-02",
-      "canonicalId": null,
-      "requirement": "正整數分鐘才產生比例時序與真實總長",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0192",
+      "requirement": "Only positive integer minutes can produce proportionate service timeline and actual total",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30439,12 +30623,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Trust-path helper layout only"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30463,13 +30649,20 @@
           "decision": "DISTINCT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B9C-ASM78-03",
-      "canonicalId": null,
-      "requirement": "缺資料顯示 pending",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0193",
+      "requirement": "If service duration missing, visibly indicate pending information",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30491,12 +30684,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Trust-path helper layout only"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30515,13 +30710,20 @@
           "decision": "DISTINCT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B9C-ASM78-04",
-      "canonicalId": null,
-      "requirement": "不虛構 50 分鐘",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0194",
+      "requirement": "Never fabricate a default 50-minute therapy session",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30543,12 +30745,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Trust-path helper layout only"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30558,13 +30762,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM78",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B9C-ASM78-05",
-      "canonicalId": null,
-      "requirement": "不是預約系統或 CRM",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0195",
+      "requirement": "Service timeline content is not an appointment system or CRM",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30586,12 +30797,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Trust-path helper layout only"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30601,7 +30814,14 @@
         }
       ],
       "parentLegacyId": "B9C-ASM78",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.",
+        "method": "SOURCE_AND_ATOMIC_LEGACY_VERIFICATION"
+      }
     },
     {
       "legacyId": "B9C-ASM79-01",
@@ -79987,43 +80207,43 @@
         {
           "legacyId": "B6-ASM13-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "核對品牌、圖片權利、真實聯絡與預約方式",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-ASM13-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "專業履歷及資格僅能使用本人提供事實",
+          "canonicalId": "ATP-P2-0189",
+          "reviewStatus": "APPROVED",
+          "requirement": "Only use professional histories and qualifications actually supplied by practitioner",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-ASM13-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "未配置第三方整合須隱藏或明確標示",
+          "canonicalId": "ATP-P2-0190",
+          "reviewStatus": "APPROVED",
+          "requirement": "Hide unconfigured external integrations or mark them explicitly unconfigured",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-ASM13-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對品牌真實資料",
+          "canonicalId": "ATP-P2-0186",
+          "reviewStatus": "APPROVED",
+          "requirement": "Check factual brand identity before assembly",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-ASM13-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對圖片授權",
+          "canonicalId": "ATP-P2-0187",
+          "reviewStatus": "APPROVED",
+          "requirement": "Confirm licensed use of student images",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-ASM13-01-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對真實聯絡與預約方式",
+          "canonicalId": "ATP-P2-0188",
+          "reviewStatus": "APPROVED",
+          "requirement": "Confirm genuine contact and booking endpoints",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -80034,7 +80254,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-site-assembly/SKILL.md:17",
@@ -80965,37 +81185,37 @@
         },
         {
           "legacyId": "B9C-ASM77-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "collective team/events 選填資料結構",
+          "canonicalId": "ATP-P2-0181",
+          "reviewStatus": "APPROVED",
+          "requirement": "Collective team and event content fields are optional",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM77-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "成員需 owner 核准",
+          "canonicalId": "ATP-P2-0182",
+          "reviewStatus": "APPROVED",
+          "requirement": "Display collective team-member identities only with owner verification",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM77-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "活動需確實確認",
+          "canonicalId": "ATP-P2-0183",
+          "reviewStatus": "APPROVED",
+          "requirement": "Publish collective events only after factual confirmation",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM77-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "空資料顯示 pending",
+          "canonicalId": "ATP-P2-0184",
+          "reviewStatus": "APPROVED",
+          "requirement": "When collective event/member data is absent show an explicitly pending state",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM77-05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "禁止虛構名冊、日期與可預約性",
+          "canonicalId": "ATP-P2-0185",
+          "reviewStatus": "APPROVED",
+          "requirement": "Never fabricate roster, date or booking availability for collective teams/events",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -81013,7 +81233,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-site-assembly/SKILL.md:80",
@@ -81978,58 +82198,58 @@
       "legacyMatches": [
         {
           "legacyId": "B4-DEP17-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "用 import.meta.env.BASE_URL 處理路由與資產",
+          "canonicalId": "ATP-P2-0174",
+          "reviewStatus": "APPROVED",
+          "requirement": "Use Astro import.meta.env.BASE_URL for site routes and assets",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "核對 canonical、RSS、Sitemap、robots、OG URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "移除研究站的硬編碼 URL",
+          "canonicalId": "ATP-P2-0180",
+          "reviewStatus": "APPROVED",
+          "requirement": "Replace research-site hardcoded links in exported student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 canonical",
+          "canonicalId": "ATP-P2-0175",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify actual canonical URL in generated production outputs",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 RSS",
+          "canonicalId": "ATP-P2-0176",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify actual RSS URL in generated production outputs",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 Sitemap",
+          "canonicalId": "ATP-P2-0177",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify actual Sitemap URLs",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 robots",
+          "canonicalId": "ATP-P2-0178",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify robots URL and rules for actual hosting environment",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP17-02-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 OG URL",
+          "canonicalId": "ATP-P2-0179",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify Open Graph absolute URLs point to actual student domain",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -82040,7 +82260,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-starter-deploy/SKILL.md:18",

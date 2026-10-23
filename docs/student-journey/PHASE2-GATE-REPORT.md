@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1165 |
-| approvedCanonicalIds | 173 |
+| pendingSemanticDecisions | 1141 |
+| approvedCanonicalIds | 195 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 31 |
+| sourceFirstApprovedCanonicalLinkLines | 34 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1165,
-    "approvedCanonicalIds": 173,
+    "pendingSemanticDecisions": 1141,
+    "approvedCanonicalIds": 195,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 31,
+    "sourceFirstApprovedCanonicalLinkLines": 34,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -2912,59 +2912,59 @@
       "rows": [
         {
           "id": "B4-DEP17-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "用 import.meta.env.BASE_URL 處理路由與資產"
+          "canonicalId": "ATP-P2-0174",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Use Astro import.meta.env.BASE_URL for site routes and assets"
         },
         {
           "id": "B4-DEP17-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "核對 canonical、RSS、Sitemap、robots、OG URL"
         },
         {
           "id": "B4-DEP17-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "移除研究站的硬編碼 URL"
+          "canonicalId": "ATP-P2-0180",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Replace research-site hardcoded links in exported student site"
         },
         {
           "id": "B4-DEP17-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 canonical"
+          "canonicalId": "ATP-P2-0175",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual canonical URL in generated production outputs"
         },
         {
           "id": "B4-DEP17-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 RSS"
+          "canonicalId": "ATP-P2-0176",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual RSS URL in generated production outputs"
         },
         {
           "id": "B4-DEP17-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 Sitemap"
+          "canonicalId": "ATP-P2-0177",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual Sitemap URLs"
         },
         {
           "id": "B4-DEP17-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 robots"
+          "canonicalId": "ATP-P2-0178",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify robots URL and rules for actual hosting environment"
         },
         {
           "id": "B4-DEP17-02-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 OG URL"
+          "canonicalId": "ATP-P2-0179",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify Open Graph absolute URLs point to actual student domain"
         },
         {
           "id": "DEPLOY-04",
@@ -3360,38 +3360,38 @@
         },
         {
           "id": "B9C-ASM77-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "collective team/events 選填資料結構"
+          "canonicalId": "ATP-P2-0181",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Collective team and event content fields are optional"
         },
         {
           "id": "B9C-ASM77-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "成員需 owner 核准"
+          "canonicalId": "ATP-P2-0182",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Display collective team-member identities only with owner verification"
         },
         {
           "id": "B9C-ASM77-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "活動需確實確認"
+          "canonicalId": "ATP-P2-0183",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Publish collective events only after factual confirmation"
         },
         {
           "id": "B9C-ASM77-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "空資料顯示 pending"
+          "canonicalId": "ATP-P2-0184",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "When collective event/member data is absent show an explicitly pending state"
         },
         {
           "id": "B9C-ASM77-05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "禁止虛構名冊、日期與可預約性"
+          "canonicalId": "ATP-P2-0185",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Never fabricate roster, date or booking availability for collective teams/events"
         },
         {
           "id": "B9-ASM-L77-1",
@@ -3531,43 +3531,43 @@
           "id": "B6-ASM13-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "核對品牌、圖片權利、真實聯絡與預約方式"
         },
         {
           "id": "B6-ASM13-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "專業履歷及資格僅能使用本人提供事實"
+          "canonicalId": "ATP-P2-0189",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Only use professional histories and qualifications actually supplied by practitioner"
         },
         {
           "id": "B6-ASM13-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未配置第三方整合須隱藏或明確標示"
+          "canonicalId": "ATP-P2-0190",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Hide unconfigured external integrations or mark them explicitly unconfigured"
         },
         {
           "id": "B6-ASM13-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對品牌真實資料"
+          "canonicalId": "ATP-P2-0186",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Check factual brand identity before assembly"
         },
         {
           "id": "B6-ASM13-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對圖片授權"
+          "canonicalId": "ATP-P2-0187",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Confirm licensed use of student images"
         },
         {
           "id": "B6-ASM13-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對真實聯絡與預約方式"
+          "canonicalId": "ATP-P2-0188",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Confirm genuine contact and booking endpoints"
         },
         {
           "id": "OPS4-002",
@@ -3590,38 +3590,38 @@
         },
         {
           "id": "B9C-ASM78-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "trust-path serviceTiming 選填"
+          "canonicalId": "ATP-P2-0191",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Trust-path serviceTiming is optional content, not a required scheduling feature"
         },
         {
           "id": "B9C-ASM78-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "正整數分鐘才產生比例時序與真實總長"
+          "canonicalId": "ATP-P2-0192",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Only positive integer minutes can produce proportionate service timeline and actual total"
         },
         {
           "id": "B9C-ASM78-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "缺資料顯示 pending"
+          "canonicalId": "ATP-P2-0193",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "If service duration missing, visibly indicate pending information"
         },
         {
           "id": "B9C-ASM78-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不虛構 50 分鐘"
+          "canonicalId": "ATP-P2-0194",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Never fabricate a default 50-minute therapy session"
         },
         {
           "id": "B9C-ASM78-05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不是預約系統或 CRM"
+          "canonicalId": "ATP-P2-0195",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Service timeline content is not an appointment system or CRM"
         },
         {
           "id": "B9-ASM-L78-1",
