@@ -669,6 +669,35 @@ const thirdPassAtomic=[
 ];
 Object.assign(assessedLines,Object.fromEntries(thirdPassAtomic.map(([key,kind,clauses])=>
  [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
+const fourthPassAtomic=[
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:15','MINIMAL_CHANGE_BOUNDARY',['Describe task goal, minimal impact, preserved behavior and checkable acceptance','Ask only if unclear requirements materially affect existing confirmed design']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:22','INTERVIEW_DECISION',['Low-risk specific edits proceed without unnecessary interviewing','Clarify when unclear scope affects architecture, privacy or publication']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:26','DIAGNOSIS_NOT_ASSUMPTION',['Turn user descriptions into testable hypotheses','Do not infer root cause from symptoms without evidence']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:31','FEEDBACK_AND_PROJECT_UPDATES',['Use evidence from draft or Preview to refine requirements','Persist only durable confirmed audience/brand decisions in PROJECT.md']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:45','EMAIL_COLLECTION_REALITY',['Before collecting email confirm consent, data destination, third-party configuration and delivery tests','Do not claim subscription or submission without proof']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:46','FRONTEND_SECRET_PROHIBITION',['Do not put private API keys in publicly delivered code','Investigate existing exposure and propose secret-safe backend design']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:67','REVERSIBLE_DESIGN_DRAFT',['For moderate-impact design edits ask only material questions','Offer reversible, explicitly proposed drafts where learner does not know, without treating it as confirmed']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:73','AUTONOMOUS_ACTION_SCOPE',['Within authorized work area AI may inspect, research, plan, branch and test','Higher impact release actions require separately scoped approval']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:78','STUDENT_DEPLOY_PLATFORM',['Do not import teacher demonstration workflow or hardcoded preview URLs','Configure per actual student GitHub Pages, Cloudflare Pages or Workers evidence']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:91','VIEWPORT_QA_EVIDENCE',['Run available real build and QA','Distinguish screenshot creation from actual visual examination at four breakpoints']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:94','RELEASE_QA_TRUTH',['Do not merge, production publish or claim unexecuted QA as passed']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:108','BRIEF_NOT_IMPLEMENTATION',['Site Brief JSON is early planning data, not current code/Git implementation source','A chosen homepage layout does not mean internal pages are complete']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:109','DURABLE_PROJECT_DECISIONS',['Update PROJECT.md for durable confirmed brand/audience/layout decisions','Do not append permanent logs for trivial visual edits']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:111','NEW_AGENT_REVALIDATES',['New AI conversations must inspect current PROJECT and actual code/Git state rather than assuming prior chat memory']],
+ ['docs/student-builder-pack/STUDENT-AGENTS.md:116','PR61_BRIEF_APPLICABILITY_CONFLICT',['Old ZIP text assumes Site Brief JSON always supplied','Later product decision permits A replica and C direct AI interview with no mandatory Site Brief; do not turn this into a universal requirement']],
+ ['docs/student-builder-pack/START-HERE.md:16','SINGLE_START_PROMPT',['Begin learner build from official guide or packaged START-BUILD-PROMPT verbatim, not piecemeal README fragments']],
+ ['docs/student-builder-pack/START-HERE.md:20','DESIGN_CONSULTATION_OPTIONAL',['Early design-only discussion requires no Site Brief JSON','Only claim AI loaded Skills when it can actually read ZIP/skill files']],
+ ['docs/student-builder-pack/START-HERE.md:31','OPTIONAL_SECTION_PATTERNS',['Section patterns are optional; do not interrupt building when learner has not selected them']],
+ ['docs/student-builder-pack/START-HERE.md:35','LAYOUT_READINESS_BOUNDARY',['25 layout directions are not all validated Ready exported sites','Generated site requires actual content, necessary internal pages and four-width visual acceptance']],
+ ['docs/student-builder-pack/START-HERE.md:36','STUDENT_ACCOUNT_BOUNDARY',['Preview/deploy must use hosting configuration, domain and keys from learner account rather than teacher site']],
+ ['docs/student-builder-pack/START-HERE.md:41','STUDENT_DELIVERY_EVIDENCE',['Handoff includes student repo, actual preview, unresolved content list, deployment verification and safe update instructions']],
+ ['docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:8','STUDENT_PREVIEW_VALIDITY',['Create preview only from configured and actually reachable isolated environment','Student checks real homepage/subpages/mobile/functions and AI verifies exact SHA']],
+ ['docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:9','DEPLOY_PATH_CONSENT',['Require student merge approval','For GitHub Pages deploy production manually with authorization','For Cloudflare check actual production branch auto-deploy policy']],
+ ['docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:14','ISOLATED_PREVIEW_OPTION',['Cloudflare isolated preview-only project is optional route, not mandatory platform','Separate Cloudflare and GitHub authorization and resources']],
+ ['docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:26','PREVIEW_HANDOFF_FIELDS',['Provide actual hosting provider, valid preview URL, corresponding SHA and checked device/page evidence']]
+];
+Object.assign(assessedLines,Object.fromEntries(fourthPassAtomic.map(([key,kind,clauses])=>
+ [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
 for(const entry of sourceReviewQueue){
  const assessment=assessedLines[entry.sourceKey];
  if(!assessment)continue;
