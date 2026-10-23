@@ -36,6 +36,9 @@
 | sourceFirstUnmappedP0 | 92 |
 | sourceFirstUnmappedP1 | 73 |
 | sourceFirstUnmappedP2 | 87 |
+| p0p1QueueItems | 165 |
+| p0p1PendingSourceMapping | 165 |
+| p0p1RemovedQueueKeys | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
 | oldFileRetirement | NOT_AUTHORIZED |
@@ -47,6 +50,7 @@
 
 ## Gate blockers
 - Semantic adjudication incomplete
+- P0/P1 source-to-ledger semantic mapping incomplete
 - Source-first potentially normative lines not mapped
 - No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
@@ -86,6 +90,9 @@
     "sourceFirstUnmappedP0": 92,
     "sourceFirstUnmappedP1": 73,
     "sourceFirstUnmappedP2": 87,
+    "p0p1QueueItems": 165,
+    "p0p1PendingSourceMapping": 165,
+    "p0p1RemovedQueueKeys": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",
     "oldFileRetirement": "NOT_AUTHORIZED",
