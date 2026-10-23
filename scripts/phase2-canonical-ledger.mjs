@@ -1239,6 +1239,25 @@ if(process.argv[2]==='import'){
    approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
     sourceText:frozenLine(source,line),method:'MANUALLY_SCOPED_CLOUDFLARE_SOURCE_LINE_REVIEW'}});
  }
+ // Full Cloudflare onboarding prose is an aggregate of separately verified
+ // tooling, read-only guidance, token safety, privacy and SHA evidence.
+ const onboardSummary=byId.get('DEPLOY-14');
+ const onboardChildren=[
+  'B2-DEP43-01-S01','B2-DEP43-01-S02','B2-DEP43-01-S03',
+  'B2-DEP43-02-S01','B2-DEP43-02-S02','B2-DEP43-02-S03',
+  'B2-DEP43-03','B2-DEP43-04','B2-DEP43-05'
+ ];
+ const onboardSource='.ai/astro-starter-deploy/SKILL.md',onboardLine=43;
+ if(!onboardSummary||onboardSummary.canonicalId||!frozenLine(onboardSource,onboardLine)||
+   !onboardSummary.sourceRefs.some(x=>x.revision===frozen&&x.path===onboardSource&&x.lineStart===onboardLine)||
+   onboardChildren.some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))
+   throw Error('Cloudflare onboarding summary lacks exact source or complete child acceptance');
+ Object.assign(onboardSummary,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:onboardChildren,
+   parentDisposition:'Documented Cloudflare onboarding source exhaustively mapped to nine scoped atomic clauses',
+   approvalEvidence:{frozenPath:onboardSource,frozenLine:onboardLine,
+     frozenBlobSha:manifest[onboardSource],sourceText:frozenLine(onboardSource,onboardLine),
+     method:'SOURCE_REVIEWED_COMPLETE_ONBOARDING_DECOMPOSITION'}});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
