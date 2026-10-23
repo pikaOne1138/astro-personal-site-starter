@@ -275,3 +275,8 @@
 ## Phase 2｜Batch 1–8 原子化補正（2026-10-23）
 
 新增 [PHASE2-BATCH1-8-CHILD-SPLIT-01.md](PHASE2-BATCH1-8-CHILD-SPLIT-01.md)，依 Frozen Publishing L28、L36、L37、L47、L65、L78 與 Assembly L31 實際原文，拆解 8 個已存在的父工作 ID 為 27 個有來源錨點的子檢查。父工作 ID 保留，不得父子重複加總；這是**第一批已確認的局部拆解**，不能宣稱 Batch1–8 全部拆完或全 Repo Canonical 去重完成。Stage 2 IN PROGRESS，Stage 3/4 BLOCKED；#61 Delta 與 #58 不變。
+
+
+## Phase 2｜全量收斂第一輪：Batch1–8 與雙向追溯（2026-10-23）
+
+新增 [Batch1–8 全部 187 候選盤點](PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md)、[跨來源去重候選 07（17 群）](PHASE2-CROSS-SOURCE-DEDUPE-07.md)、[雙向追溯與 Gate 報告 08](PHASE2-BIDIRECTIONAL-VERIFICATION-08.md)。初篩 128 筆可能含複合語句，已拆解的 8 筆父候選另有 27 子項；其餘 120 筆優先做語義審查。以目前已讀登錄表首欄識別 444 種工作 ID 鍵值，Cross-source 07 所引用 55 個不同工作 ID 均能找到登錄定義（55/55），**但這不等於全量零遺失查核、最小原子化或最終唯一 Canonical 數已確立**。三個缺口仍有待驗證的部分，Phase 2 保持 IN PROGRESS、Phase3/4 BLOCKED，不重寫 Frozen Source、不 Merge、不部署。
