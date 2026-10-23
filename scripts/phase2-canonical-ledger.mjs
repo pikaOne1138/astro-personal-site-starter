@@ -635,6 +635,40 @@ Object.assign(assessedLines,{
   clauses:['Do not substitute a different layer PASS for a check that has not run']
  }
 });
+const thirdPassAtomic=[
+ ['.ai/astro-design-consultation/SKILL.md:39','STUDENT_FACING_LANGUAGE',['Keep ordinary design discussion in plain Chinese, not internal code/skill names','Explain Design Brief is not importable site config unless validated','Show engineering identifiers only on user request or real developer handoff']],
+ ['.ai/astro-design-consultation/SKILL.md:44','CONTEXTUAL_RESPONSE',['If learner has no images or testimonials offer layouts without those elements','If learner has already selected a homepage do not restart discovery','If learner requests JSON explain handoff validation']],
+ ['.ai/astro-design-consultation/SKILL.md:75','EDITORIAL_SEQUENCE',['Design follows audience/content to IA, layout, composition, optional patterns, blocks, theme, optional motion and QA']],
+ ['.ai/astro-design-consultation/SKILL.md:106','USER_OWNED_DESIGN_BRIEF',['Learner should be able to justify layout preference in plain language','Human-readable Design Brief should survive handoff to development AI']],
+ ['.ai/astro-editorial-layout-design/SKILL.md:37','LAYOUT_COMPOSITION_WORKFLOW',['Design workflow proceeds from requirements and direction through wireframe, implementation, visual checks, revisions and delivery']],
+ ['.ai/astro-editorial-layout-design/SKILL.md:48','QA_EVIDENCE_DISCLOSURE',['Delivery evidence includes design decisions, screenshots and audit report','List all unverified items honestly']],
+ ['.ai/astro-editorial-layout-design/SKILL.md:84','VISUAL_QA_REFERENCE',['Four-width visual QA reference distinguishes script, visual and manual checks']],
+ ['.ai/astro-editorial-layout-design/SKILL.md:119','HISTORICAL_BROWSER_SCOPE',['Historical Chromium-only visual testing does not establish Safari/Firefox, real-device or screen-reader verification']],
+ ['.ai/astro-launch-health-check/SKILL.md:15','CONTENT_LAUNCH_SAFETY',['Before launch examine demo content and fabricated testimonials or claims','Check real booking/payment/forms, empty articles and privacy links']],
+ ['.ai/astro-launch-health-check/SKILL.md:16','LAUNCH_TECHNICAL_SEO',['Verify deployed HTML metadata, canonical, robots and sitemap','For applicable article sites verify RSS and Pagefind after build','Check site/base and asset URLs target actual deployment, not localhost']],
+ ['.ai/astro-launch-health-check/SKILL.md:18','LAUNCH_OPERATIONS_HANDOFF',['Record actual student repo, deployment workflow and known-good SHA','Record recovery and backup limitations and external integration dependencies','Confirm domain ownership and access']],
+ ['.ai/astro-launch-health-check/SKILL.md:20','EVIDENCE_STATUS_DISCLOSURE',['Each launch check must carry PASS, FAIL, BLOCKED or NOT TESTED plus direct proof or a reason']],
+ ['.ai/astro-layout-craft/SKILL.md:16','LAYOUT_PROTOTYPE_BOUNDARY',['Homepage layout prototypes are not complete multi-page student sites','Before delivery self-host licensed images and implement required internal pages']],
+ ['.ai/astro-motion-craft/SKILL.md:25','SOURCE_LICENSE_LIMITATION',['Motion reference library is design knowledge, not automatically imported runtime','Exact reproduction requires access to authorized source ZIP and compatibility validation']],
+ ['.ai/astro-motion-craft/SKILL.md:39','MOTION_PR_APPROVAL',['Motion library changes require PR and updated registry/examples/docs','Actual build/browser QA and user approval required before merge']],
+ ['.ai/astro-motion-craft/SKILL.md:148','EXTERNAL_MOTION_DEPENDENCIES',['Prefer native CSS for simple effects','Before Motion/GSAP adoption verify external code license, dependencies, maintenance and performance']],
+ ['.ai/astro-motion-craft/SKILL.md:151','EXTERNAL_DEPENDENCY_CONSENT',['Present understandable options and receive consent before importing external motion code on PR','Build passing does not replace four viewport QA']],
+ ['.ai/astro-motion-craft/SKILL.md:159','CLIENT_ROUTER_REINITIALIZATION',['Astro ClientRouter may require reinitializing scripts after client navigation','Verify back button, keyboard focus and reduced-motion behavior after transitions']],
+ ['.ai/astro-navigation-tree-test/SKILL.md:21','ACCESSIBLE_NAV_TEST',['Verify generated desktop keyboard/mouse controls and mobile touch','Check focus, aria, Escape, reduced-motion and responsive layouts']],
+ ['.ai/astro-site-maintenance/SKILL.md:21','MAINTENANCE_RELEASE_APPROVAL',['Disclose modifications, impact and test results before user approval','Verify production after authorized merge']],
+ ['.ai/astro-site-maintenance/SKILL.md:32','DEPLOY_DIAGNOSIS',['Inspect actual Actions/deployment logs and exact commit before attributing failure to caching']],
+ ['.ai/astro-site-maintenance/SKILL.md:34','RESTORE_AUTHORIZATION',['If restore changes DNS, live article, public URL or external services, obtain informed consent beforehand']],
+ ['.ai/astro-site-maintenance/SKILL.md:35','RESTORE_REGRESSION',['After restore, rebuild and verify homepage, content, search, 404, subscriptions and CTA','Disclose restored version and remaining unknowns']],
+ ['.ai/astro-site-maintenance/SKILL.md:45','RECOVERY_BOUNDARY',['Document recoverable prior version and tested PR restoration path','Do not assume Git repository backs up external services']],
+ ['.ai/astro-site-maintenance/SKILL.md:49','TASK_TO_SKILL_SELECTION',['Read student-owned repository, not teacher research site','Choose correct page/layout/UI/content skills without bypassing Branch/build/preview/QA/consent']],
+ ['.ai/astro-site-maintenance/SKILL.md:55','MAINTENANCE_QA_EVIDENCE',['Use actual build, functional and Chromium QA as applicable','Check widths 1440,1280,768,390 and matching deployed head','Report blocked/not-tested when evidence is missing']],
+ ['.ai/url-to-frontend-replica/SKILL.md:16','REPLICA_AUTHORIZED_SCOPE',['Read AGENTS/PROJECT/skills and confirm work and deployment boundary before replication','Do not force full-site rewrite when only visual section requested']],
+ ['.ai/url-to-frontend-replica/SKILL.md:28','REPLICA_VIEWPORTS',['Compare available screenshots in desktop and mobile views, including tablet when relevant','Use 1440/1280/768/390 as final proposed checks']],
+ ['.ai/url-to-frontend-replica/SKILL.md:46','REPLICA_A11Y_CHECKS',['Check narrow-screen overflow, keyboard/focus/touch, semantics, contrast and reduced motion']],
+ ['.ai/url-to-frontend-replica/SKILL.md:47','REPLICA_VISUAL_TRUTH',['Fix largest visual and functional differences first and record unverified portions','Build green alone does not constitute visual replica acceptance']]
+];
+Object.assign(assessedLines,Object.fromEntries(thirdPassAtomic.map(([key,kind,clauses])=>
+ [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
 for(const entry of sourceReviewQueue){
  const assessment=assessedLines[entry.sourceKey];
  if(!assessment)continue;
