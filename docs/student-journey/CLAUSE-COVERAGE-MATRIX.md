@@ -595,3 +595,8 @@
 ## Phase 2｜Canonical/Alias Crosswalk 01 初步關係稽核
 
 新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md)：將 Batch9 C 的 5 個複合父來源段落拆成 **16 個可追溯的子欄位 ID**，以來源行為錨點交叉檢查 P0、Batch1–9 的重疊。已區分 `PARTIAL_OVERLAP`、`DISTINCT`，沒有把一般 CI Gate 與特指 `noindex` 規則誤判為等價，也沒有宣告任何跨批次 Canonical 合併。**103/103 是核心 Skills B 來源行映射，不等於原子義務全覆蓋、唯一規範母數或 Stage 2 PASS**；其他 A 批與來源全文待審。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED；不修改原始 Skills、不 Merge、不部署。
+
+
+## Phase 2｜Canonical/Alias Crosswalk 02：授權、Preview、索引
+
+新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-02.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-02.md)，核對 P0 的四組既有文件性 Alias 與 Batch1/2/5、Batch9A/B/C 的 **11 個概念群組**。保留 Merge/Production/DNS/刪除/覆寫的操作授權差別；Build/Artifact/Live Preview 的證據差別；Cloudflare 與 GitHub Pages 的 SITE_INDEXABLE 平台差別；以及 noindex/draft 與資料保密的差別。本輪 **0 個新核准 Canonical ID**，`CAND-*` 均為待定交叉稽核群組而非正式 ID。全量最小原子化、Skills A/B/P0 雙向追溯、全部來源文件審查仍未完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED，不改原始 Skills、不 Merge、不部署。
