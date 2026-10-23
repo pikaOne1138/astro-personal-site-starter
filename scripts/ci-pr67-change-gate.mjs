@@ -43,7 +43,7 @@ function verifiedQaBaseline(head){
   try{
    run('merge-base','--is-ancestor',baseline,sha);
    run('merge-base','--is-ancestor',sha,head);
-   const changed=run('diff','--name-only',sha,head).split('\\n').filter(Boolean);
+   const changed=run('diff','--name-only',sha,head).split('\n').filter(Boolean);
    if(!isLedgerOnlyPaths(changed))continue;
    const checks=api('repos/'+repo+'/commits/'+sha+'/check-runs?per_page=100').check_runs||[];
    if([...requiredJobs].every(name=>checks.some(c=>c.name===name&&c.status==='completed'&&c.conclusion==='success'))){
