@@ -19,10 +19,12 @@ jobs:
       mode: ${{ steps.detect.outputs.mode }}
     steps:
       - uses: actions/checkout@v4
+        if: github.event.action != 'closed'
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - id: detect
+        if: github.event.action != 'closed'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -30,9 +32,8 @@ jobs:
         run: node scripts/ci-pr67-change-gate.mjs
   preview-build:
     needs: ci-change-classifier
-    if: needs.ci-change-classifier.outputs.mode != 'ledger_only'
-    # For safety, this preview pipeline handles only branches inside this repository.
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # Keep close-event metadata for preview cleanup, even without a PR head.
+    if: github.event.pull_request.head.repo.full_name == github.repository && needs.ci-change-classifier.outputs.mode != 'ledger_only'
     runs-on: ubuntu-latest
     steps:
       - name: Write preview event metadata
