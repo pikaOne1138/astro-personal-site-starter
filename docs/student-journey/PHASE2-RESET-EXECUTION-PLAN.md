@@ -2,6 +2,17 @@
 
 > 2026-10-23。執行基線：PR #67 `feat/student-planner-draft-recovery`；Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。**這是執行方式重整，不是重做研究，也不是宣告 Phase 2 PASS。**
 
+## 0. 單一 Goal／連續執行約定（2026-10-23）
+
+**Goal：Phase 2 Zero-Loss Canonicalization PASS。** A＋B＋C＋D 不是需要逐次下令的獨立里程碑；每次可用的執行工作階段應持續處理到真正 Gate PASS、無法推進的實際阻擋，或工作階段結束。後者須如實交接，不得宣稱背景持續執行。
+
+- **唯一完成判準：** Frozen 有效義務逐項原子化並完成來源→Canonical 與 Canonical→來源雙向核對；跨來源同義與範圍差異已裁決；安全、授權、例外、平台條件無遺漏；所有有效條款都有穩定 Canonical ID；孤兒、破損、重複計數、未解衝突為零；可重跑 Gate 為 PASS。
+- **分母不可偷換：** Frozen 192 檔是來源集合；1,390 個 Legacy ID 是工作紀錄；1,793 行是啟發式規範候選；三者都不代表唯一有效義務母數。須完成逐條分類，以經裁決的有效原子義務計數，保留非規範與歷史證據的排除理由。
+- **執行循環：** 取原文 → 拆到最小可驗證義務 → 比對既有 Legacy 與 Canonical → 寫回同一 Ledger（KEEP／MERGE／PARTIAL_SPLIT／DISTINCT／NON_NORMATIVE／CONFLICT）→ 雙向驗證 → 下一項。不因小批次完成而等待使用者再次下令，也不增加平行 Batch 或 Crosswalk。
+- **真正停止條件：** 無法依 Frozen 與 #61 Delta 證據自行裁決的產品政策衝突、必要授權不足、執行環境限制、可能破壞資料的操作。普通新發現、待審增加或驗證失敗都不是停止理由。
+- **進度證據：** 每次列 Head SHA、已裁決有效原子義務／經查核有效原子義務、未裁決與衝突、未覆蓋來源、破損引用、父子重複及驗證器執行結果；不得把來源審查佇列登錄或規則分類當成語義 PASS。
+- **執行邊界不變：** PR #67 Draft；不 Merge、不部署、不改 #61 與 #58，不改 Frozen 原文或第三／四階段。Phase 2 Gate 真正 PASS 前第三／四階段維持 BLOCKED。
+
 ## 1. 為何重整
 
 `docs/student-journey/` 現有 66 份文件，其中 **59 份以 `PHASE2-` 開頭**（以重整前 #67 Head `01f36996c73b9d51c03e11e30f3bfd53bb79a2f7` 的 Git tree 為準）。原先不斷新增 Batch、Crosswalk、Audit 文檔，雖留下來源線索，卻沒有單一條款台帳，導致有更多平行工作成果需要再整合。自此停止以新編號 Crosswalk / Batch 報告作為預設推進方式。
