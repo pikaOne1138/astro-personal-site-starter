@@ -67,7 +67,8 @@ for(const row of records.values()){
 // Preserve the full Frozen line, and reject nonexistent coordinates.
 const explicitSources={
  QC:'docs/quality/QUALITY-CONTRACT.md',
- P59:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md'
+ P59:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',
+ P56:'docs/workshop/PR56-USER-JOURNEY-QA.md'
 };
 const canonicalEvidence={
  'P0-CANON-PRVIEW-MISSING':['.ai/astro-pr-preview/SKILL.md',30],
@@ -78,7 +79,7 @@ const canonicalEvidence={
 for(const row of records.values()){
  if(row.sourceRefs.some(ref=>ref.revision===frozen && ref.lineStart))continue;
  const id=row.legacyId;
- const m=id.match(/^(QC|P59)-(\d+)$/);
+ const m=id.match(/^(QC|P59|P56)-(\d+)$/);
  const labeled=id.match(/^B[1-9]-(PUB|ASM|DEP)-L(\d+)-\d+$/);
  const match=m?[explicitSources[m[1]],Number(m[2])]:
   labeled?[families[labeled[1]],Number(labeled[2])]:
