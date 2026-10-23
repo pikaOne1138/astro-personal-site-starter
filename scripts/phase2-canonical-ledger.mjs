@@ -205,6 +205,48 @@ if(process.argv[2]==='import'){
   if(!rel)throw Error('Missing reviewed relationship '+group.canonicalId);
   rel.canonicalId=group.canonicalId;rel.reviewStatus='APPROVED';
  }
+ // Explicitly source-checked P0 single-action clauses. Preserve any prior
+ // adjudication and do not equate one Frozen line with one atomic clause.
+ const directP0=[
+  ['P0-U001','Consent for the current PR version is required before merging','.ai/astro-pr-preview/SKILL.md',25,'policy'],
+  ['P0-U002','Report actual Preview URL and distinguish verified from unverified checks before asking for release approval','.ai/astro-pr-preview/SKILL.md',25,'acceptance'],
+  ['P0-U003','Do not publish production without specific student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
+  ['P0-U004','A successful build does not establish that a live Preview exists','.ai/astro-pr-preview/SKILL.md',23,'evidence'],
+  ['P0-U005','An Actions artifact must not be represented as a web-accessible live Preview','.ai/astro-pr-preview/SKILL.md',23,'evidence'],
+  ['P0-U006','Compare the deployment commit with the current PR head SHA before claiming a Preview is current','.ai/astro-pr-preview/SKILL.md',23,'acceptance'],
+  ['P0-U008','Teacher-repository CI does not establish independent student-repository acceptance','.ai/astro-pr-preview/SKILL.md',11,'evidence'],
+  ['P0-U009','Historical immutable deployment URLs may remain publicly reachable','.ai/astro-pr-preview/SKILL.md',39,'policy'],
+  ['P0-U010','Private repository status does not guarantee Preview access is private','.ai/astro-pr-preview/SKILL.md',39,'policy'],
+  ['P0-U011','Do not ask students to disclose tokens, passwords or one-time verification codes in chat','.ai/astro-pr-preview/SKILL.md',16,'policy'],
+  ['P0-U012','Do not embed credentials in committed source files or conversation text','.ai/astro-pr-preview/SKILL.md',16,'policy'],
+  ['P0-U013','Do not fabricate professional qualifications, testimonials, effects or prices','.ai/astro-site-entry/SKILL.md',18,'policy'],
+  ['P0-U014','Do not claim booking, form submission or newsletter subscriptions succeeded without configured and verified integrations','.ai/astro-site-entry/SKILL.md',18,'policy'],
+  ['P0-U015','When content facts are missing, leave them blank, explicitly pending, or clearly marked demo data','.ai/astro-site-entry/SKILL.md',18,'policy'],
+  ['P0-U016','Actual website owner must confirm factual claims; automated CI cannot substitute for factual verification','.ai/astro-site-entry/SKILL.md',18,'policy'],
+  ['P0-U020','Never remove noindex merely to make CI pass','.ai/astro-starter-deploy/SKILL.md',32,'policy'],
+  ['P0-U021','Visual QA for normal site changes covers 1440, 1280, 768 and 390 widths','.ai/astro-pr-preview/SKILL.md',24,'acceptance'],
+  ['P0-U023','Without actual visual inspection, do not claim visual QA is completed','.ai/astro-pr-preview/SKILL.md',24,'acceptance'],
+  ['P0-U030','DNS changes require student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
+  ['P0-U031','Repository deletion requires student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
+  ['P0-U032','Overwriting an existing student site requires student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy']
+ ];
+ for(let i=0;i<directP0.length;i++){
+  const [id,requirement,source,line,kind]=directP0[i],entry=byId.get(id);
+  const canonicalId='ATP-P2-'+String(i+5).padStart(4,'0');
+  const text=frozenLine(source,line);
+  if(!entry||!text||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Missing exact original evidence for '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Overwriting existing canonical '+id);
+  Object.assign(entry,{
+   canonicalId,requirement,kind,aliases:[],
+   decision:'KEEP',reviewStatus:'APPROVED',
+   applicability:['student-owned site workflow; according to source scope'],
+   conditions:['Source-specific platform and authorization conditions remain binding'],
+   exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenBlobSha:manifest[source],frozenLine:line,
+    sourceText:text,method:'DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW'}
+  });
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
