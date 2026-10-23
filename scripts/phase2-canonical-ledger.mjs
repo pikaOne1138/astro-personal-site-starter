@@ -273,11 +273,20 @@ for(const row of sourceLineInventory){
    reviewStatus:'DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING'};
  }
 }
+// Deterministic priority triage is a queue, NOT an adjudication.
+function sourcePriority(row){
+ const t=row.sourceText;
+ if(/(?:憑證|密碼|token|secret|privacy|private|授權|未經|同意|不得|禁止|安全|敏感|洩露|曝露|production|正式發布|merge|部署|noindex|indexable|DNS)/i.test(t))return 'P0_SAFETY_RELEASE';
+ if(/(?:PASS|FAIL|BLOCKED|NOT TESTED|QA|驗收|預覽|preview|Build|artifact|SHA|test|verify|驗證)/i.test(t))return 'P1_EVIDENCE_QA';
+ return 'P2_CONTENT_PROCEDURE';
+}
+for(const row of sourceLineInventory)if(!row.legacyIds.length&&row.candidateForNormativeReview)row.triagePriority=sourcePriority(row);
 const candidateLines=sourceLineInventory.filter(x=>x.candidateForNormativeReview);
 const unmappedCandidateLines=candidateLines.filter(x=>!x.legacyIds.length);
 const mappedCandidateLines=candidateLines.filter(x=>x.legacyIds.length);
 const firstReviewedUnmapped=unmappedCandidateLines.filter(x=>x.initialReview);
 const remainingUnclassified=unmappedCandidateLines.filter(x=>!x.initialReview);
+const triageCounts=Object.fromEntries(['P0_SAFETY_RELEASE','P1_EVIDENCE_QA','P2_CONTENT_PROCEDURE'].map(key=>[key,unmappedCandidateLines.filter(x=>x.triagePriority===key).length]));
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
@@ -305,6 +314,9 @@ const status={
  sourceFirstReadFailures:sourceInventoryFailures.length,
  sourceFirstClassifiedUnmapped:firstReviewedUnmapped.length,
  sourceFirstUnclassifiedUnmapped:remainingUnclassified.length,
+ sourceFirstUnmappedP0:triageCounts.P0_SAFETY_RELEASE,
+ sourceFirstUnmappedP1:triageCounts.P1_EVIDENCE_QA,
+ sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
  semanticCompleteness:'NOT_VERIFIED',
  oldFileRetirement:'NOT_AUTHORIZED',
@@ -341,7 +353,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,unmappedCandidateLines:unmappedCandidateLines,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
