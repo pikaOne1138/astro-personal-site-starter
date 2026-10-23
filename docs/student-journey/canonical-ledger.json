@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "908eb32e77cd57f48646ea0f481374bdae4ac0ae"
+        "blobSha": "c90cd59c46f3eb336bcc391d0984cd6f48bb1f72"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -17793,6 +17793,792 @@
       ],
       "parentLegacyId": null,
       "childrenLegacyIds": []
+    },
+    {
+      "legacyId": "B9C-ASM48",
+      "canonicalId": null,
+      "requirement": "PROCEDURE / ARCHITECTURE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 48,
+          "lineEnd": 48,
+          "legacyWorkId": "B9C-ASM48"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 7,
+          "rawRow": "| B9C-ASM48 | 01 先讀獨立 Home.astro 與定義；02 再讀 Prototype index.astro 與 layout-library.css；03 生成器已拷貝匹配首頁屬現況，不是新的需求 | PROCEDURE / ARCHITECTURE | [ASM L48](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L48) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM48-01",
+        "B9C-ASM48-02",
+        "B9C-ASM48-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM51",
+      "canonicalId": null,
+      "requirement": "NORMATIVE / ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 51,
+          "lineEnd": 51,
+          "legacyWorkId": "B9C-ASM51"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 8,
+          "rawRow": "| B9C-ASM51 | 01 只使用必要 Registry Blocks；02 導覽與文章歸檔須有真路由；03 聯絡及預約 URL 必須實際可用 | NORMATIVE / ACCEPTANCE | [ASM L51](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L51) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM51-01",
+        "B9C-ASM51-02",
+        "B9C-ASM51-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM52",
+      "canonicalId": null,
+      "requirement": "NORMATIVE / ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 52,
+          "lineEnd": 52,
+          "legacyWorkId": "B9C-ASM52"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 9,
+          "rawRow": "| B9C-ASM52 | 01 映射 primary/accent/background/text/focus tokens；02 文字及按鈕維持對比；03 不得盲目重新配色 | NORMATIVE / ACCEPTANCE | [ASM L52](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L52) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM52-01",
+        "B9C-ASM52-02",
+        "B9C-ASM52-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM60",
+      "canonicalId": null,
+      "requirement": "NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 60,
+          "lineEnd": 60,
+          "legacyWorkId": "B9C-ASM60"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 10,
+          "rawRow": "| B9C-ASM60 | 01 生成至獨立目錄或學生 Repo；02 不得預設覆寫研究站；03 不得預設覆寫既有學生檔案 | NORMATIVE | [ASM L60](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L60) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM60-01",
+        "B9C-ASM60-02",
+        "B9C-ASM60-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM61",
+      "canonicalId": null,
+      "requirement": "ACCEPTANCE / NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 61,
+          "lineEnd": 61,
+          "legacyWorkId": "B9C-ASM61"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 11,
+          "rawRow": "| B9C-ASM61 | 01 Build 獨立網站；02 驗證 canonical/base；03 驗證站內連結與選單；04 佔位內容不得冒充真實資料 | ACCEPTANCE / NORMATIVE | [ASM L61](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L61) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM61-01",
+        "B9C-ASM61-02",
+        "B9C-ASM61-03",
+        "B9C-ASM61-04"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM62",
+      "canonicalId": null,
+      "requirement": "ACCEPTANCE / CONSENT",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 62,
+          "lineEnd": 62,
+          "legacyWorkId": "B9C-ASM62"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 12,
+          "rawRow": "| B9C-ASM62 | 01 有真實 Preview；02 Merge 前學員同意；03 正式發布前學員同意 | ACCEPTANCE / CONSENT | [ASM L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L62) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM62-01",
+        "B9C-ASM62-02",
+        "B9C-ASM62-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM63",
+      "canonicalId": null,
+      "requirement": "PROCEDURE / ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 63,
+          "lineEnd": 63,
+          "legacyWorkId": "B9C-ASM63"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 13,
+          "rawRow": "| B9C-ASM63 | 01 參考 Deploy 與 PR Preview Skills；02 GitHub Pages Preview 需驗真；03 Cloudflare Preview 需驗真 | PROCEDURE / ACCEPTANCE | [ASM L63](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L63) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM63-01",
+        "B9C-ASM63-02",
+        "B9C-ASM63-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM64",
+      "canonicalId": null,
+      "requirement": "EVIDENCE / HANDOFF",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 64,
+          "lineEnd": 64,
+          "legacyWorkId": "B9C-ASM64"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 14,
+          "rawRow": "| B9C-ASM64 | 01 告知哪些能力實際自動化；02 告知仍需內容及 UI 調整；03 交付截圖與未完成事項 | EVIDENCE / HANDOFF | [ASM L64](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L64) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM64-01",
+        "B9C-ASM64-02",
+        "B9C-ASM64-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM67",
+      "canonicalId": null,
+      "requirement": "EXAMPLE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 67,
+          "lineEnd": 67,
+          "legacyWorkId": "B9C-ASM67"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 15,
+          "rawRow": "| B9C-ASM67 | 01 學員提示詞樣例：選 JSON、獨立 Starter、Layout 修改、PR Preview、同意後發布；此為示例，不額外新增強制門檻 | EXAMPLE | [ASM L67](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L67) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM67-01"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM77",
+      "canonicalId": null,
+      "requirement": "OPTIONAL_SCHEMA / NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 77,
+          "lineEnd": 77,
+          "legacyWorkId": "B9C-ASM77"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 16,
+          "rawRow": "| B9C-ASM77 | 01 collective team/events 選填資料結構；02 成員需 owner 核准；03 活動需確實確認；04 空資料顯示 pending；05 禁止虛構名冊、日期與可預約性 | OPTIONAL_SCHEMA / NORMATIVE | [ASM L77](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L77) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM77-01",
+        "B9C-ASM77-02",
+        "B9C-ASM77-03",
+        "B9C-ASM77-04",
+        "B9C-ASM77-05"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM78",
+      "canonicalId": null,
+      "requirement": "OPTIONAL_SCHEMA / CONDITIONAL / BOUNDARY",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 78,
+          "lineEnd": 78,
+          "legacyWorkId": "B9C-ASM78"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 17,
+          "rawRow": "| B9C-ASM78 | 01 trust-path serviceTiming 選填；02 正整數分鐘才產生比例時序與真實總長；03 缺資料顯示 pending；04 不虛構 50 分鐘；05 不是預約系統或 CRM | OPTIONAL_SCHEMA / CONDITIONAL / BOUNDARY | [ASM L78](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L78) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM78-01",
+        "B9C-ASM78-02",
+        "B9C-ASM78-03",
+        "B9C-ASM78-04",
+        "B9C-ASM78-05"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM79",
+      "canonicalId": null,
+      "requirement": "ARCHITECTURE / NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 79,
+          "lineEnd": 79,
+          "legacyWorkId": "B9C-ASM79"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 18,
+          "rawRow": "| B9C-ASM79 | 01 五款知識 Home Adapter 讀取真實已發布 Collection；02 排除 draft:true；03 Reading Atlas 讀 owner 的 reading.records 和 annualBook | ARCHITECTURE / NORMATIVE | [ASM L79](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L79) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM79-01",
+        "B9C-ASM79-02",
+        "B9C-ASM79-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-ASM80",
+      "canonicalId": null,
+      "requirement": "NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 80,
+          "lineEnd": 80,
+          "legacyWorkId": "B9C-ASM80"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 19,
+          "rawRow": "| B9C-ASM80 | 01 不重新加入已移除的裝飾替代面板；02 保留垂直學習路徑與收藏抽屜；03 保留階梯教練卡片及名冊／活動帳本；04 保留五站路徑 | NORMATIVE | [ASM L80](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L80) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-ASM80-01",
+        "B9C-ASM80-02",
+        "B9C-ASM80-03",
+        "B9C-ASM80-04"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP11",
+      "canonicalId": null,
+      "requirement": "PROCEDURE / ARCHITECTURE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 11,
+          "lineEnd": 11,
+          "legacyWorkId": "B9C-DEP11"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 20,
+          "rawRow": "| B9C-DEP11 | 01 讀學生 ZIP 的 AGENTS/Preview/Publishing Skills；02 讀學生 astro.config/package/workflows；03 deploy.yml 僅 main 人工發布、pr-check.yml 僅 Build Artifact；04 核對學生 Repo、Domain、平台，不套老師專屬工作流 | PROCEDURE / ARCHITECTURE | [DEP L11](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L11) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP11-01",
+        "B9C-DEP11-02",
+        "B9C-DEP11-03",
+        "B9C-DEP11-04"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP15",
+      "canonicalId": null,
+      "requirement": "NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 15,
+          "lineEnd": 15,
+          "legacyWorkId": "B9C-DEP15"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 21,
+          "rawRow": "| B9C-DEP15 | 01 學生獨立 ZIP 在自己新 Repo 使用；02 不 Fork/Clone 教師 Repo；03 不直接動教師展示站 main | NORMATIVE | [DEP L15](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L15) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP15-01",
+        "B9C-DEP15-02",
+        "B9C-DEP15-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP32",
+      "canonicalId": null,
+      "requirement": "SECURITY",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 32,
+          "lineEnd": 32,
+          "legacyWorkId": "B9C-DEP32"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 22,
+          "rawRow": "| B9C-DEP32 | 01 不為 CI 綠燈移除 noindex；02 未經核准不可讓 Demo／Draft 受搜尋索引 | SECURITY | [DEP L32](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L32) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP32-01",
+        "B9C-DEP32-02"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP33",
+      "canonicalId": null,
+      "requirement": "ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 33,
+          "lineEnd": 33,
+          "legacyWorkId": "B9C-DEP33"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 23,
+          "rawRow": "| B9C-DEP33 | 01 用正式域名測首頁及文章內頁；02 測標籤及全文搜尋；03 測 RSS、Sitemap、404 | ACCEPTANCE | [DEP L33](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L33) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP33-01",
+        "B9C-DEP33-02",
+        "B9C-DEP33-03"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP34",
+      "canonicalId": null,
+      "requirement": "ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 34,
+          "lineEnd": 34,
+          "legacyWorkId": "B9C-DEP34"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 24,
+          "rawRow": "| B9C-DEP34 | 01 四尺寸 1440／1280／768／390；02 手機選單；03 鍵盤；04 連結可操作 | ACCEPTANCE | [DEP L34](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L34) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP34-01",
+        "B9C-DEP34-02",
+        "B9C-DEP34-03",
+        "B9C-DEP34-04"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP35",
+      "canonicalId": null,
+      "requirement": "PROCEDURE / ACCEPTANCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 35,
+          "lineEnd": 35,
+          "legacyWorkId": "B9C-DEP35"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 25,
+          "rawRow": "| B9C-DEP35 | 01 建立測試文章；02 預覽；03 獲同意後才 Merge；04 確認真正上線 | PROCEDURE / ACCEPTANCE | [DEP L35](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L35) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP35-01",
+        "B9C-DEP35-02",
+        "B9C-DEP35-03",
+        "B9C-DEP35-04"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP36",
+      "canonicalId": null,
+      "requirement": "EVIDENCE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 36,
+          "lineEnd": 36,
+          "legacyWorkId": "B9C-DEP36"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 26,
+          "rawRow": "| B9C-DEP36 | 01 交接正式 URL；02 交接 Preview 流程；03 交接更新位置；04 交接還原方案；05 未串接服務誠實列出 | EVIDENCE | [DEP L36](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L36) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP36-01",
+        "B9C-DEP36-02",
+        "B9C-DEP36-03",
+        "B9C-DEP36-04",
+        "B9C-DEP36-05"
+      ]
+    },
+    {
+      "legacyId": "B9C-DEP40",
+      "canonicalId": null,
+      "requirement": "ARCHITECTURE / NORMATIVE",
+      "kind": "evidence",
+      "sourceRefs": [
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 40,
+          "lineEnd": 40,
+          "legacyWorkId": "B9C-DEP40"
+        }
+      ],
+      "aliases": [],
+      "applicability": [],
+      "conditions": [],
+      "exceptions": [],
+      "acceptanceCriteria": [],
+      "decision": "PENDING",
+      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "evidence": [
+        {
+          "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
+          "workingBlobSha": "5ab65eb9db88767e087ab6538d97e7b53631c30c",
+          "workingLine": 27,
+          "rawRow": "| B9C-DEP40 | 01 依平台分 GitHub Pages、Cloudflare Pages、Workers；02 研究站 Artifact/workflow_run Preview 不等於學生具備；03 Cloudflare Git Preview 須驗證連線與部署紀錄；04 不擅自變更研究站既有工作流程 | ARCHITECTURE / NORMATIVE | [DEP L40](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L40) |"
+        }
+      ],
+      "parentLegacyId": null,
+      "childrenLegacyIds": [
+        "B9C-DEP40-01",
+        "B9C-DEP40-02",
+        "B9C-DEP40-03",
+        "B9C-DEP40-04"
+      ]
     },
     {
       "legacyId": "B9C-ASM48-01",
