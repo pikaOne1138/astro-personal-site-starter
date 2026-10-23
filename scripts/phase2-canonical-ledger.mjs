@@ -680,6 +680,17 @@ for(const [file,expectedSha] of Object.entries(manifest)){
   if(actual!==expectedSha)frozenManifestErrors.push({path:file,expectedSha,actual});
  }catch(e){frozenManifestErrors.push({path:file,expectedSha,error:'FROZEN_FILE_NOT_READABLE'});}
 }
+const p0Leaves=old.records.filter(x=>/^P0-U\d{3}$/.test(x.legacyId));
+const p0Approved=p0Leaves.filter(x=>x.canonicalId&&x.reviewStatus==='APPROVED');
+const p0EvidenceDimensions=p0Leaves.filter(x=>x.reviewStatus==='EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING');
+const p0Unhandled=p0Leaves.filter(x=>!p0Approved.includes(x)&&!p0EvidenceDimensions.includes(x));
+const p0UniqueCanonical=new Set(p0Approved.map(x=>x.canonicalId)).size;
+const p0DimensionGroups=new Set(p0EvidenceDimensions.map(x=>x.acceptanceDimensionGroup)).size;
+const p0InvariantFailures=[];
+if(p0Leaves.length!==86)p0InvariantFailures.push({type:'P0_LEAF_COUNT_CHANGED',actual:p0Leaves.length});
+if(p0Approved.length+p0EvidenceDimensions.length+p0Unhandled.length!==p0Leaves.length)p0InvariantFailures.push({type:'P0_LEAF_DISPOSITION_SUM_ERROR'});
+for(const x of p0EvidenceDimensions)if(!x.atomicEvidenceText||!x.parentCanonicalCandidate||!x.sourceRefs.some(z=>z.revision===frozen))
+ p0InvariantFailures.push({type:'P0_EVIDENCE_FIELD_MISSING_SOURCE_OR_PARENT',id:x.legacyId});
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  frozenManifestIntegrityErrors:frozenManifestErrors.length,
@@ -693,6 +704,13 @@ const status={
  crossVersionReferences:crossVersion.length,
  pendingSemanticDecisions:unresolved.length,
  approvedCanonicalIds:canonicalGroups.size,
+ p0Leaves:p0Leaves.length,
+ p0ApprovedLegacyRows:p0Approved.length,
+ p0UniqueCanonicalIds:p0UniqueCanonical,
+ p0MappedAcceptanceDimensions:p0EvidenceDimensions.length,
+ p0AcceptanceDimensionGroups:p0DimensionGroups,
+ p0UnhandledLeaves:p0Unhandled.length,
+ p0InvariantFailures:p0InvariantFailures.length,
  aliasGroups:aliasPairs.length,
  documentaryRelationGroups:(old.semanticRelations||[]).length,
  documentaryMerges:(old.semanticRelations||[]).filter(x=>x.decision==='MERGE').length,
@@ -735,11 +753,12 @@ const status={
 const documentaryRelations=old.semanticRelations||[];
 const relationOrphans=documentaryRelations.filter(rel=>rel.legacyIds.some(id=>!legacyIndex.has(id)));
 const unverifiedMerges=documentaryRelations.filter(rel=>rel.decision==='MERGE'&&rel.sharedExactFrozenAnchors.length===0);
-const integrityFailures=[...frozenManifestErrors,...canonicalConsistencyErrors,...failures,...sourceLineMismatches,...relationOrphans,...unverifiedMerges];
+const integrityFailures=[...p0InvariantFailures,...frozenManifestErrors,...canonicalConsistencyErrors,...failures,...sourceLineMismatches,...relationOrphans,...unverifiedMerges];
 const failReasons=[];
 if(status.frozenManifestFiles!==192)failReasons.push('Frozen manifest is not 192 files');
 if(frozenManifestErrors.length)failReasons.push('Frozen manifest blob SHA mismatch or unreadable source');
 if(canonicalConsistencyErrors.length)failReasons.push('Canonical groups have inconsistent definitions or aliases');
+if(p0InvariantFailures.length)failReasons.push('P0 leaf counts or evidence parent mapping inconsistent');
 if(missingLegacy.length)failReasons.push('Unimported legacy IDs');
 if(failures.length)failReasons.push('Broken links or source integrity failures');
 if(missingFrozen.length)failReasons.push('Missing direct frozen or upstream anchors');
@@ -767,7 +786,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,p0InvariantFailures,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
