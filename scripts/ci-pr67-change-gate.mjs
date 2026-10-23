@@ -21,6 +21,39 @@ const allowedBaseChanges=new Set([
  '.github/workflows/deploy-pages.yml'
 ]);
 const run=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+const api=(path)=>JSON.parse(execFileSync('gh',['api',path],{encoding:'utf8',env:{...process.env,GH_TOKEN:process.env.GH_TOKEN||process.env.GITHUB_TOKEN}}));
+const requiredJobs=new Set(['preview-build','static-build','standalone-build','gallery']);
+const requiredFlows=new Set(['PR Preview Build','Verify Cloudflare Static Assets','Standalone Starter Export Check','Template Gallery QA']);
+function verifiedQaBaseline(head){
+ if(!(process.env.GH_TOKEN||process.env.GITHUB_TOKEN)||!process.env.GITHUB_REPOSITORY)return null;
+ const repo=process.env.GITHUB_REPOSITORY;
+ const runs=api('repos/'+repo+'/actions/runs?branch=feat/student-planner-draft-recovery&event=pull_request&status=success&per_page=100').workflow_runs||[];
+ const groups=new Map();
+ for(const runInfo of runs){
+  if(!requiredFlows.has(runInfo.name)||runInfo.conclusion!=='success')continue;
+  const key=runInfo.head_sha;
+  if(!groups.has(key))groups.set(key,new Set());
+  groups.get(key).add(runInfo.name);
+ }
+ // Require four actual successful heavy JOBS on one exact revision.
+ // A workflow whose classifier passed while its heavy job was skipped
+ // is NOT valid QA evidence.
+ for(const [sha,flows] of groups){
+  if(flows.size!==requiredFlows.size||!/^[a-f0-9]{40}$/.test(sha))continue;
+  try{
+   run('merge-base','--is-ancestor',baseline,sha);
+   run('merge-base','--is-ancestor',sha,head);
+   const changed=run('diff','--name-only',sha,head).split('\\n').filter(Boolean);
+   if(!isLedgerOnlyPaths(changed))continue;
+   const checks=api('repos/'+repo+'/commits/'+sha+'/check-runs?per_page=100').check_runs||[];
+   if([...requiredJobs].every(name=>checks.some(c=>c.name===name&&c.status==='completed'&&c.conclusion==='success'))){
+    console.log('Verified reusable four-suite QA baseline:',sha);
+    return sha;
+   }
+  }catch(e){console.error('QA baseline candidate rejected',sha,e.message);}
+ }
+ return null;
+}
 function classify(){
  if(process.env.PR_NUMBER!=='67')return 'full';
  const head=process.env.PR_HEAD_SHA;
@@ -33,7 +66,7 @@ function classify(){
   if(!baseFiles.every(p=>allowedBaseChanges.has(p)))return 'full';
   run('merge-base','--is-ancestor',baseline,head);
   const lines=run('diff','--name-only',baseline,head).split('\n').filter(Boolean);
-  if(isLedgerOnlyPaths(lines))return 'ledger_only';
+  if(isLedgerOnlyPaths(lines) && verifiedQaBaseline(head))return 'ledger_only';
  }catch(e){console.error('Fail closed: cannot verify baseline ancestry',e.message);}
  return 'full';
 }
