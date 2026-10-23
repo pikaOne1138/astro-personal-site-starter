@@ -40,7 +40,7 @@ jobs:
               printf '\n```\n'
             } > docs/student-journey/PHASE2-GATE-REPORT.md
             git add docs/student-journey/PHASE2-GATE-REPORT.md
-            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix(phase2): record import failure and invalidate stale metrics'
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix(phase2): record import failure and invalidate stale metrics [skip ci]'
             git push origin HEAD:feat/student-planner-draft-recovery
             exit 1
           fi
@@ -58,5 +58,5 @@ jobs:
             echo "Generated ledger unchanged"
             exit 0
           fi
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore(phase2): regenerate canonical ledger from all frozen work papers'
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore(phase2): regenerate canonical ledger from all frozen work papers [skip ci]'
           git push origin HEAD:feat/student-planner-draft-recovery
