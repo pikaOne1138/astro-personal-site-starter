@@ -44,6 +44,13 @@ jobs:
           else
             node scripts/ci-pr67-change-gate.mjs
           fi
+      - name: Regression-test ledger-only versus site-impacting classification
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ -f scripts/test-ci-pr67-change-gate.mjs ]; then
+            node --check scripts/ci-pr67-change-gate.mjs
+            node scripts/test-ci-pr67-change-gate.mjs
+          fi
   static-build:
     needs: ci-change-classifier
     if: needs.ci-change-classifier.outputs.mode != 'ledger_only'
