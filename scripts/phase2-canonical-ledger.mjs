@@ -531,6 +531,110 @@ const assessedLines={
   clauses:['Student approval required before merge, DNS changes or production publishing']
  }
 };
+// Hand-reviewed second tranche. These are source-line atomic candidates; the
+// global alias and conflict approval is still a separate gate.
+Object.assign(assessedLines,{
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:7':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'UNCOMMITTED_WORK_PROTECTION',
+  clauses:['Inspect actual working tree before edits','Protect overlapping uncommitted work before checkout or rewrite','Never silently reset hard, force-push or discard work']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:9':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'DEPLOYMENT_AND_SECRET_BOUNDARY',
+  clauses:['Push to Git-connected Production branch counts as deployment and requires consent','Never expose secrets in PUBLIC_ or frontend source','Run available check:secrets rather than trusting text instructions only']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:24':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'SKIP_AND_UNVERIFIED_FACTS',
+  clauses:['Allow skipped planning questions while continuing reversible proposals','Do not interpret skip as consent for publication','Do not fabricate qualifications, health effects, pricing, booking or client data','Keep unsafe missing facts MISSING or DO_NOT_PUBLISH']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:27':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'SCOPED_RISK_DISCOVERY',
+  clauses:['Check risk dimensions directly relevant to the requested change','Validate data destination for forms and exposed API keys for APIs','Block only high-impact affected action while evidence missing']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:28':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'QUESTION_BUDGET_SAFETY_EXCEPTION',
+  clauses:['Ask only when answer materially changes solution and cannot be verified elsewhere','Treat question count as usability budget, never an upper bound on authorization checks','Do not guess safety-critical facts because question budget is exhausted']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:74':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'REPO_AUTHORITY',
+  clauses:['Commit/push/PR only in authorized student repository','Without a remote repository do not claim an actual GitHub PR or Actions run exists']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:77':{
+  action:'KEEP_PENDING_CANONICAL',kind:'PRESERVE_UNCOMMITTED_WORK',
+  clauses:['Before reset, checkout, force push or stash, protect existing user changes and do not silently discard work']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:99':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'STUDENT_SITE_QA_COMMANDS',
+  clauses:['Run build, verify and responsive QA in the generated student site after layout/content/navigation changes','Run browser checks only when compatible Chromium dependencies are installed']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:100':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'QA_ARTIFACT_AND_LIMITATIONS',
+  clauses:['Responsive QA must cover generated HTML routes with result JSON and screenshots','Report HTTP failures, overflow, broken internal images and JS errors','Warn and disclose external-image and ambiguous navigation cases rather than claiming full verification']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:101':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'NO_TEST_GAMING',
+  clauses:['Repair observed failure with the smallest necessary change and rerun build/QA','Never remove content or weaken the test to force green checks','Do not hide broken UI or rebuild an unrelated whole page']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:103':{
+  action:'KEEP_PENDING_CANONICAL',kind:'BROWSER_QA_NOT_TESTED',
+  clauses:['Without actual browser execution mark NOT TESTED; static images alone cannot establish browser QA']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:110':{
+  action:'KEEP_PENDING_CANONICAL',kind:'PROJECT_FILE_UPGRADE_PROTECTION',
+  clauses:['Updating student ZIP/starter must not overwrite student edited PROJECT.md; compare conflicts first']
+ },
+ 'docs/student-builder-pack/START-HERE.md:24':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'STUDENT_OWNED_CONTEXT',
+  clauses:['Generated independent student site must contain PROJECT.md and AGENTS.md','Commit these context files to the student owned repo','Do not overwrite existing PROJECT on ZIP upgrade']
+ },
+ 'docs/student-builder-pack/START-HERE.md:30':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'OPTIONAL_HANDOFF_FILE',
+  clauses:['AGENT-HANDOFF.md is only required for transfer across tools or chats, not first time build','Existing site takeover must honor local PROJECT/AGENTS and current Git working tree']
+ },
+ 'docs/student-builder-pack/START-HERE.md:37':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'REAL_PREVIEW_ACCEPTANCE',
+  clauses:['Verify build and actually accessible preview','Test actual desktop/mobile content, navigation, images and search','Do not assert success for untested integration']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:13':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'GITHUB_PAGES_PREVIEW_BOUNDARY',
+  clauses:['GitHub Pages PR artifact does not imply a live Preview','Production uses authorized manual workflow_dispatch, not unapproved automatic publishing']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:15':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'ISOLATED_GITHUB_PAGES_PREVIEW',
+  clauses:['Advanced GitHub Pages PR preview requires separated trusted publisher and PR-code privilege boundary','Set dedicated PR base paths and safe cleanup','Do not copy teacher repo owner URLs or claim advanced preview installed']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:18':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'CLOUDFLARE_PREVIEW_CONFIGURATION',
+  clauses:['Connect student-owned repository only with authorization','Confirm Production branch, preview branch policy, exact deployment SHA and real URL']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:20':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'PREVIEW_BEFORE_MERGE',
+  clauses:['Verify live Preview URL and reviewed PR head alignment before requesting merge approval','Merge to configured production branch only after explicit consent']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:21':{
+  action:'KEEP_PENDING_CANONICAL',kind:'PLATFORM_SPECIFIC_DEPLOYMENT',
+  clauses:['Do not mix Cloudflare Pages, Workers assets and GitHub Pages build settings or URL shapes']
+ },
+ 'docs/quality/QUALITY-CONTRACT.md:9':{
+  action:'KEEP_PENDING_CANONICAL',kind:'NOTICE_NOT_BUILD_BLOCKER',
+  clauses:['Do not block technical builds solely for placeholder content, intentionally empty articles or deliberate experimentation']
+ },
+ 'docs/quality/QUALITY-CONTRACT.md:10':{
+  action:'KEEP_PENDING_CANONICAL',kind:'NOT_TESTED_NO_PASS',
+  clauses:['If there is no evidence for this commit, mark NOT TESTED and do not silently count as PASS']
+ },
+ 'docs/quality/PROPS-URL-CONTRACT-TARGETS.md:9':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'URL_VALIDATION_AND_FALLBACK',
+  clauses:['Allow safe internal and applicable external URL types','For optional invalid links show unavailable text or pending state','Never output a fake interaction for a required invalid link']
+ },
+ 'docs/quality/PROPS-URL-CONTRACT-TARGETS.md:13':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'SECURITY_REGRESSION_EVIDENCE',
+  clauses:['Validate that the URL validator rejects malicious input, not merely that a dead-link scanner fails','Record fixture, component, expected and actual diagnostics, checkout SHA and result']
+ },
+ 'docs/quality/PROPS-URL-CONTRACT-TARGETS.md:23':{
+  action:'KEEP_PENDING_CANONICAL',kind:'NO_CROSS_TEST_PASS_UPGRADE',
+  clauses:['Do not substitute a different layer PASS for a check that has not run']
+ }
+});
 for(const entry of sourceReviewQueue){
  const assessment=assessedLines[entry.sourceKey];
  if(!assessment)continue;
