@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是某個階段的說明與歷史背景。仍有效的規則已併入 `AGENTS.md`（「Articles and search」）與 `.ai/astro-content-publishing/SKILL.md`（中文全文搜尋驗收）。文中寫死的網址與 PR 編號已不適用。僅供歷史查閱，不再維護。
+
 # V2.8｜內容與搜尋引擎基礎設施
 
 **AI 操作規範：`.ai/astro-content-publishing/SKILL.md`。** 本文件保留為這次 V2.8 的階段說明與歷史背景；後續 AI 新增文章、調整 SEO、建置或發布，必須先讀 Skill 及其 `references/`，再檢查專案最新原始碼。

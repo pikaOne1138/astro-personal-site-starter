@@ -85,9 +85,11 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 
 **Articles and search**
 - `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
+- Research-site articles need frontmatter `title`, `description`, `publishedAt` and `category` (`tags` optional); `draft: true` keeps one out of public pages, RSS and the sitemap. The same article shown under several themes appears once in RSS. The demo articles are shared content, so a real site must choose its own canonical root.
 - Article pages are canonical at `/[kind]/[theme]/articles/`. `ArticleArchive` combines list/cards/grid, query, tags, calendar and months; legacy `explore/` redirects, retaining query and hash.
 - `ArticleViewSwitcher` is the canonical article archive renderer (list, cards, grid from the same data, real article links, optional filtering data attributes). Preserve working search and tag/calendar/month filters and responsive design.
 - Navbar: one Articles entry, a distinct Search icon, and an icon-only mobile menu (with `aria-label`) with optional social links inside the dialog. Do not add a separate "find articles" toolbar link.
+- Chinese full-text search must be verified in a real browser on the deployed Preview, not by checking that `dist/pagefind/` exists (see "Chinese full-text search" in `.ai/astro-content-publishing/SKILL.md`). A build with a non-root `ASTRO_BASE_PATH` must also work.
 - Search is built by Pagefind from all rendered static HTML after `astro build` (see `package.json`). Avoid hardcoded metadata indexes. The global `SiteSearchDialog` loads Pagefind relative to `import.meta.env.BASE_URL` and must work on GitHub Pages PR preview subpaths.
 
 ## Motion and effects
