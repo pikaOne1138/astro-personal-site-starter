@@ -29,6 +29,8 @@
 | sourceFirstUnmappedCandidateLines | 25 |
 | sourceFirstMappedCandidateLines | 177 |
 | sourceFirstReadFailures | 0 |
+| sourceFirstClassifiedUnmapped | 25 |
+| sourceFirstUnclassifiedUnmapped | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
 | oldFileRetirement | NOT_AUTHORIZED |
@@ -72,6 +74,8 @@
     "sourceFirstUnmappedCandidateLines": 25,
     "sourceFirstMappedCandidateLines": 177,
     "sourceFirstReadFailures": 0,
+    "sourceFirstClassifiedUnmapped": 25,
+    "sourceFirstUnclassifiedUnmapped": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",
     "oldFileRetirement": "NOT_AUTHORIZED",
@@ -102,7 +106,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NON_NORMATIVE",
+          "rationale": "Skill YAML description, not an independent clause",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -112,7 +121,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "BASE_URL and build verification; prohibited fabricated success",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -122,7 +136,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "GitHub Pages source/platform check and student-specific site/base",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -132,7 +151,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "Cloudflare student-repo integration and preview settings",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -142,7 +166,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "Failure-specific repair instead of indiscriminate retries",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -152,7 +181,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "Preview head SHA must match deployment head",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -162,7 +196,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE",
+          "rationale": "Disclose browser QA as pending when not executable",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -172,7 +211,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "EXAMPLE_WITH_NORMATIVE_REFERENCES",
+          "rationale": "Sample student prompt; requirements must be traced to other operative lines",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -182,7 +226,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "Historical PR Preview 404 not proof of branch outage; validate actual deployment URL",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -192,7 +241,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_CONDITION",
+          "rationale": "NOTICE exception: example content alone does not block technical builds",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -202,7 +256,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE",
+          "rationale": "NOT TESTED must not silently count as PASS",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -212,7 +271,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "ACCEPTANCE_STATUS",
+          "rationale": "BLOCKED definition; tool/environment unavailable",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -222,7 +286,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NON_NORMATIVE",
+          "rationale": "Table header only; content belongs in subsequent rows",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -232,7 +301,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_PENDING_SPLIT",
+          "rationale": "PR59 evidence authority, no expectation as evidence",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -242,7 +316,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE_CONDITION",
+          "rationale": "PR59 test scope and explicit authorization boundary",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -252,7 +331,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "ACCEPTANCE_STATUS",
+          "rationale": "NOT TESTED definition",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -262,7 +346,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "ACCEPTANCE_STATUS",
+          "rationale": "BLOCKED requires reason and unblock conditions",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -272,7 +361,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "EVIDENCE_NOT_PASS",
+          "rationale": "Historical substitute checks explicitly not EXT PASS",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -282,7 +376,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NON_NORMATIVE",
+          "rationale": "Historical CI table header only",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -292,7 +391,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "HISTORICAL_EVIDENCE",
+          "rationale": "Historical workflow run snapshot, not current requirement",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -302,7 +406,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "HISTORICAL_EVIDENCE",
+          "rationale": "Historical workflow run snapshot, not current requirement",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -312,7 +421,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "HISTORICAL_EVIDENCE",
+          "rationale": "Historical IN PROGRESS snapshot, not current status",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -322,7 +436,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE",
+          "rationale": "Time-bound snapshot must be rechecked from Actions",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
@@ -332,7 +451,12 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "PROCEDURE_CONDITIONAL",
+          "rationale": "Optional interview package and information return path",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       },
       {
         "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
@@ -342,9 +466,16 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "initialReview": {
+          "classification": "NORMATIVE",
+          "rationale": "Draft and unverified test results cannot be represented as PASS",
+          "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
+        }
       }
     ],
+    "firstReviewClassified": 25,
+    "unclassified": 0,
     "classification": "HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS"
   },
   "missingLegacy": [],
