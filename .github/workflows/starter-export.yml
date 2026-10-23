@@ -29,13 +29,18 @@ jobs:
   ci-change-classifier:
     runs-on: ubuntu-latest
     outputs:
-      mode: ${{ steps.detect.outputs.mode }}
+      mode: ${{ steps.detect.outputs.mode || steps.external.outputs.mode }}
     steps:
+      - id: external
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: echo 'mode=full' >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - id: detect
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
