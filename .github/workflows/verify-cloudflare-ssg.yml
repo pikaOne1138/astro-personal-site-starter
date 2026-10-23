@@ -21,7 +21,24 @@ permissions:
   actions: read
 
 jobs:
+  ci-change-classifier:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.detect.outputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - id: detect
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/ci-pr67-change-gate.mjs
   static-build:
+    needs: ci-change-classifier
+    if: needs.ci-change-classifier.outputs.mode != 'ledger_only'
     runs-on: ubuntu-latest
     env:
       NODE_OPTIONS: '--import=data:text/javascript,process.env.GITHUB_SHA%3Dprocess.env.QA_CHECKOUT_SHA%7C%7Cprocess.env.GITHUB_SHA'
