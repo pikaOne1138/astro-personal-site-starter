@@ -2,7 +2,7 @@
 
 > **IMPORT FAILED — latest Ledger/metrics are stale and MUST NOT be presented as current.**
 
-Failed import commit: `75db45a567b81155a9501ec973f92e74c10f32b5`
+Failed import commit: `4872bf02837aba71507100584c04bf91851d019f`
 
 ## Import error (captured from actual runner)
 
