@@ -33,6 +33,7 @@
 | sourceFirstReadFailures | 0 |
 | sourceFirstClassifiedUnmapped | 25 |
 | sourceFirstUnclassifiedUnmapped | 227 |
+| sourceFirstNotYetDisposed | 83 |
 | sourceFirstUnmappedP0 | 92 |
 | sourceFirstUnmappedP1 | 73 |
 | sourceFirstUnmappedP2 | 87 |
@@ -55,7 +56,7 @@
 
 ## Gate blockers
 - Semantic adjudication incomplete
-- Source-first potentially normative lines not mapped
+- Source-first potentially normative lines not semantically mapped (including dispositioned pending records)
 - No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
 ## Machine-verifiable diagnostics
@@ -91,6 +92,7 @@
     "sourceFirstReadFailures": 0,
     "sourceFirstClassifiedUnmapped": 25,
     "sourceFirstUnclassifiedUnmapped": 227,
+    "sourceFirstNotYetDisposed": 83,
     "sourceFirstUnmappedP0": 92,
     "sourceFirstUnmappedP1": 73,
     "sourceFirstUnmappedP2": 87,
