@@ -565,3 +565,8 @@
 ## Phase 2｜Batch 7：Publishing Lifecycle 與反向行數核對
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH7.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH7.md) 依 frozen main 對 Publishing L70、L72、L76–L81 建立 **8 行／22 個來源錨定工作候選**，包括文章發布、修改、撤回、歷史風險、交接及一般頁面職責。由 Batch1–6 ID 集合重算原已覆蓋 **50 行**，修正上一輪 49 行快照；本批後為 **58/103 行**，**45 行尚未初步原子化**。候選涉及程序、規範、證據與重疊，非 22 條新 canonical 規範；去重與全量雙向語義驗收未完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skill 不變，不 Merge、不部署。
+
+
+## Phase 2｜Core Skills B Batch 8：組站架構與內頁映射
+
+[PHASE2-CORE-SKILLS-B-ATOMIC-BATCH8.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH8.md) 在 Frozen main 上新增 Site Assembly 的 **12 個來源行、18 個候選子項**；Batch1–7 原有 58/103 行，現 **70/103 行**至少有工作候選，尚有 **33 行**需初步拆解。L37–L43 大多是元件位置與結構事實，不能直接計為獨立規範；L31 四尺寸截圖也不等於人工完成視覺驗收。跨來源 Canonical/alias 和全文雙向語義覆蓋未完成，Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skill 不修改，不 Merge、不部署。
