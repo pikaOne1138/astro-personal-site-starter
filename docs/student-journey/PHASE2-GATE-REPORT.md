@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1264 |
-| approvedCanonicalIds | 93 |
+| pendingSemanticDecisions | 1228 |
+| approvedCanonicalIds | 121 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 20 |
+| sourceFirstApprovedCanonicalLinkLines | 24 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1264,
-    "approvedCanonicalIds": 93,
+    "pendingSemanticDecisions": 1228,
+    "approvedCanonicalIds": 121,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 20,
+    "sourceFirstApprovedCanonicalLinkLines": 24,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -2007,14 +2007,14 @@
           "id": "B2-DEP43-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "須檢查 Cloudflare 工具權限、scope 與帳號"
         },
         {
           "id": "B2-DEP43-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "唯讀時由學員在 Dashboard 連接，AI 逐步引導"
         },
         {
@@ -2033,52 +2033,52 @@
         },
         {
           "id": "B2-DEP43-05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "舊 Preview URL 不可推論新 SHA"
+          "canonicalId": "ATP-P2-0100",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Old Preview URL cannot establish deployment SHA of a newer revision"
         },
         {
           "id": "B2-DEP43-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對可用的 Cloudflare 工具"
+          "canonicalId": "ATP-P2-0094",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Check which actual Cloudflare tools are available"
         },
         {
           "id": "B2-DEP43-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對工具的 Pages/Git/DNS 操作 scope"
+          "canonicalId": "ATP-P2-0095",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual Pages, Git integration and DNS permission scopes"
         },
         {
           "id": "B2-DEP43-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對實際登入的 Cloudflare 帳號"
+          "canonicalId": "ATP-P2-0096",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify the actual authenticated Cloudflare account"
         },
         {
           "id": "B2-DEP43-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "AI 只有唯讀權限時不得宣稱已完成連接"
+          "canonicalId": "ATP-P2-0097",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Read-only AI access cannot be represented as completed repository connection"
         },
         {
           "id": "B2-DEP43-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "由學員在 Dashboard 完成 GitHub Repo 連接"
+          "canonicalId": "ATP-P2-0098",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "If AI is read-only, the student connects GitHub repository through Cloudflare Dashboard"
         },
         {
           "id": "B2-DEP43-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "AI 依目前官方畫面與截圖協助操作"
+          "canonicalId": "ATP-P2-0099",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Guide student using current official Dashboard/screenshots rather than fabricated controls"
         },
         {
           "id": "DEPLOY-14",
@@ -2096,71 +2096,71 @@
           "id": "B5-PUB12-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "文字、身份、URL、圖片、專業事實由使用者提供"
         },
         {
           "id": "B5-PUB12-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "不得虛構資格、見證、價格、聯絡、電子報及預約成功"
         },
         {
           "id": "B5-PUB12-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "網站文字由使用者提供"
+          "canonicalId": "ATP-P2-0101",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Website words and article text come from the website owner"
         },
         {
           "id": "B5-PUB12-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "身分與專業事實由使用者提供"
+          "canonicalId": "ATP-P2-0102",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Identity and professional facts are provided or verified by the website owner"
         },
         {
           "id": "B5-PUB12-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "URL 與聯絡資料由使用者提供"
+          "canonicalId": "ATP-P2-0103",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Live URLs and contact details come from the website owner"
         },
         {
           "id": "B5-PUB12-01-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "圖片素材由使用者提供"
+          "canonicalId": "ATP-P2-0104",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Image assets require owner-provided or otherwise licensed sources"
         },
         {
           "id": "B5-PUB12-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得虛構資格與見證"
+          "canonicalId": "ATP-P2-0105",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not invent professional qualifications or testimonials"
         },
         {
           "id": "B5-PUB12-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得虛構價格或聯絡"
+          "canonicalId": "ATP-P2-0106",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not invent prices or contact details"
         },
         {
           "id": "B5-PUB12-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得虛構訂閱成功"
+          "canonicalId": "ATP-P2-0107",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not claim newsletter subscription succeeds without proof"
         },
         {
           "id": "B5-PUB12-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得虛構預約成功"
+          "canonicalId": "ATP-P2-0108",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not claim booking succeeded without a real integration"
         },
         {
           "id": "DES7-001",
@@ -2424,64 +2424,64 @@
           "id": "B3-PUB20-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "以學員生成專案真實 schema、navigation、scripts 為準"
         },
         {
           "id": "B3-PUB20-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "生成 Pagefind 索引不等於搜尋對話框 UI 完成"
+          "canonicalId": "ATP-P2-0112",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Pagefind build index creation does not prove search-dialog UI is assembled"
         },
         {
           "id": "B3-PUB20-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "分類／月份搜尋、OG、結構化資料未組裝不得宣稱已完成"
         },
         {
           "id": "B3-PUB20-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未組裝分類或月份搜尋 UI 不可宣稱完成"
+          "canonicalId": "ATP-P2-0113",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Do not claim category or month search UI exists unless assembled"
         },
         {
           "id": "B3-PUB20-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未組裝 OG metadata 不可宣稱完成"
+          "canonicalId": "ATP-P2-0114",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Do not claim OG metadata is configured unless implemented"
         },
         {
           "id": "B3-PUB20-03-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未組裝結構化資料不可宣稱完成"
+          "canonicalId": "ATP-P2-0115",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Do not claim structured data exists unless implemented"
         },
         {
           "id": "B3-PUB20-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "以學生實際 schema 為準"
+          "canonicalId": "ATP-P2-0109",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Use the actual generated student content schema for authoring"
         },
         {
           "id": "B3-PUB20-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "以學生實際 navigation 為準"
+          "canonicalId": "ATP-P2-0110",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Use actual generated student navigation and routes"
         },
         {
           "id": "B3-PUB20-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "以學生實際 scripts 為準"
+          "canonicalId": "ATP-P2-0111",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Use actual generated student build and verification scripts"
         },
         {
           "id": "DES7-003",
@@ -2574,57 +2574,57 @@
           "id": "B3-PUB35-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "使用真實文章正文、可及性標題與有意義連結"
         },
         {
           "id": "B3-PUB35-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "圖片須有授權及替代文字"
         },
         {
           "id": "B3-PUB35-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不在一般正式文章塞入虛構示例"
+          "canonicalId": "ATP-P2-0121",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Do not inject fictional examples or generic demo components into real articles"
         },
         {
           "id": "B3-PUB35-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "文章正文使用真實內容"
+          "canonicalId": "ATP-P2-0116",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Published article body uses factual actual content rather than fabricated placeholder prose"
         },
         {
           "id": "B3-PUB35-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "提供可及性標題"
+          "canonicalId": "ATP-P2-0117",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Published articles use accessible headings"
         },
         {
           "id": "B3-PUB35-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "使用有意義連結文字"
+          "canonicalId": "ATP-P2-0118",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Published article links use meaningful anchor text"
         },
         {
           "id": "B3-PUB35-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "圖片來源具授權"
+          "canonicalId": "ATP-P2-0119",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Published article images require suitable use rights"
         },
         {
           "id": "B3-PUB35-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "圖片有替代文字"
+          "canonicalId": "ATP-P2-0120",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Published article images include alternative text"
         },
         {
           "id": "DES7-008",
