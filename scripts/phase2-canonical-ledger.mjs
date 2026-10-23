@@ -435,6 +435,49 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:children,
    parentDisposition:'Composite requirement superseded for counting by exactly enumerated approved children, not deleted'});
  }
+ // Publishing draft leak acceptance: never equate an unrun check with PASS.
+ const leakageLeaves=[
+  ['B1-PUB56-01-S01','Run clean Astro build before draft leakage inspection'],
+  ['B1-PUB56-01-S02','Run the output draft leakage gate in the actual student site'],
+  ['B1-PUB56-02-S01','Verify withdrawn drafts do not have direct public HTML routes'],
+  ['B1-PUB56-02-S02','Verify all generated HTML is free of draft leakage'],
+  ['B1-PUB56-02-S03','Verify RSS output omits withdrawn drafts'],
+  ['B1-PUB56-02-S04','Verify sitemap output omits withdrawn drafts'],
+  ['B1-PUB56-02-S05','Verify configured search and content discovery do not expose drafts'],
+  ['B1-PUB56-03','Use a deliberately leaking negative fixture and require the draft gate to fail'],
+  ['B1-PUB56-04','If draft-leakage gate misses a leak, repair the gate instead of rewriting the QA report'],
+  ['B1-PUB56-05-S01','Extend route-aware draft leak verification for custom slugs'],
+  ['B1-PUB56-05-S02','Extend route-aware draft leak verification for nested routes'],
+  ['B1-PUB56-05-S03','Extend route-aware draft leak verification for MDX'],
+  ['B1-PUB56-05-S04','Extend route-aware draft leak verification for CMS or unconventional sources']
+ ];
+ for(let i=0;i<leakageLeaves.length;i++){
+  const [id,requirement]=leakageLeaves[i],entry=byId.get(id);
+  const source='.ai/astro-content-publishing/SKILL.md',line=56;
+  if(!entry||!frozenLine(source,line)||
+    !entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Draft leakage rule source missing: '+id);
+  const canonicalId='ATP-P2-'+String(61+i).padStart(4,'0');
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Existing draft canonical mismatch: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',
+   applicability:['Student article sites with public/draft content'],
+   conditions:i>=9?['Only if custom content routing/data source is used']:[],
+   exceptions:[],aliases:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'FROZEN_LINE_AND_ATOMIC_CHILD_SEMANTIC_REVIEW'}});
+ }
+ for(const [id,kids] of [
+  ['B1-PUB56-01',['B1-PUB56-01-S01','B1-PUB56-01-S02']],
+  ['B1-PUB56-02',Array.from({length:5},(_,i)=>'B1-PUB56-02-S0'+(i+1))],
+  ['B1-PUB56-05',Array.from({length:4},(_,i)=>'B1-PUB56-05-S0'+(i+1))]
+ ]){
+  const row=byId.get(id);
+  if(!row||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))
+   throw Error('Cannot decompose draft gate parent: '+id);
+  Object.assign(row,{decision:'PARTIAL_SPLIT',kind:'evidence',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+   parentDisposition:'Content verified from the listed atomic children; retain for historical trace only'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
