@@ -213,18 +213,7 @@ const aliasPairs=[...canonicalGroups.entries()].filter(([,v])=>v.length>1).map((
 // Source-first review inventory: this is the missing direction of the Gate.
 // Candidate detection is deliberately conservative; it is a review queue,
 // not an automated declaration that all obligations have been enumerated.
-const scopedNormativeFiles=[
- '.ai/astro-content-publishing/SKILL.md',
- '.ai/astro-site-assembly/SKILL.md',
- '.ai/astro-starter-deploy/SKILL.md',
- '.ai/astro-pr-preview/SKILL.md',
- '.ai/astro-site-entry/SKILL.md',
- 'docs/quality/QUALITY-CONTRACT.md',
- 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',
- 'docs/workshop/PR56-USER-JOURNEY-QA.md',
- 'docs/student-builder-pack/AGENT-HANDOFF.md',
- 'docs/student-builder-pack/PROJECT-TEMPLATE.md'
-];
+const scopedNormativeFiles=Object.keys(manifest).filter(p => p.startsWith('.ai/') && p.endsWith('/SKILL.md') || p.startsWith('docs/student-builder-pack/') || p.startsWith('docs/quality/') || p.startsWith('docs/workshop/') || p.startsWith('docs/qa/') || p.startsWith('docs/student-journey/ACCEPTANCE-'));
 const cues=/(必須|不得|禁止|應該|應先|須|不能|未經|確認|檢查|驗證|需|must\b|never\b|should\b|shall\b|required\b|do not\b|don't\b|verify\b|ensure\b|check\b|only\b)/i;
 const sourceLineInventory=[],sourceInventoryFailures=[];
 for(const file of scopedNormativeFiles){
@@ -307,7 +296,9 @@ const status={
  documentaryDistinct:(old.semanticRelations||[]).filter(x=>x.decision==='DISTINCT').length,
  frozenLinesReferenced:sourceCoverage.size,
  sourceFirstScopeFiles:scopedNormativeFiles.length,
+ sourceFirstScopeCoverageOfFrozenFiles:scopedNormativeFiles.length+'/'+Object.keys(manifest).length,
  sourceFirstLinesScanned:sourceLineInventory.length,
+ sourceFirstUnscannedFrozenFiles:Object.keys(manifest).filter(p=>!scopedNormativeFiles.includes(p)).length,
  sourceFirstCandidateLines:candidateLines.length,
  sourceFirstUnmappedCandidateLines:unmappedCandidateLines.length,
  sourceFirstMappedCandidateLines:mappedCandidateLines.length,
