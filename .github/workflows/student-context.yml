@@ -36,7 +36,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - name: Unit, handoff and real standalone export checks
         run: node --test scripts/test-student-project-context.mjs scripts/test-student-context-export.mjs scripts/test-interview-evaluation.mjs scripts/test-student-site-guards.mjs scripts/test-legacy-context-migration.mjs
       - name: Validate Brief-to-Starter example exports
@@ -61,6 +61,6 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
       - name: Build actual student site across Cloudflare index scenarios
         run: node scripts/test-student-index-build-matrix.mjs

@@ -51,7 +51,7 @@ const stuck='我卡住了。我現在看到的是：＿＿＿＿。我可以附�
 <form id="comfort-check" class="panel" aria-label="課前安心檢查">{checks.map((item,i)=><fieldset class="question"><legend>{i+1}. {item.q}</legend><div class="options">{item.opts.map(opt=><label><input type="radio" name={'check-'+i} value={opt}/>{opt}</label>)}</div></fieldset>)}
 <button class="btn" type="button" id="copy-check">複製我的課前情況</button><p id="copy-status" aria-live="polite" class="muted"></p></form>
 <div class="notice"><strong>不確定、需要幫忙，都不代表不能上課。</strong>你可以將勾選結果私下傳給講師；不會由本頁自動上傳或儲存。沒有文字、照片也能先討論版面或製作明確標示的草稿。</div>
-<h3>課前不必做的事</h3><p>不需要先學寫程式，也不必自己安裝架站工具、打開終端機，或先建立 GitHub 與託管帳號。只需依實際課程通知開啟指定 AI 工具；帳號、授權和發布平台會在需要時引導你。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
+<h3>課前不必做的事</h3><p>有講師帶領的課程，課前不必先建立 GitHub 或託管帳號，授權會在課堂需要時引導；若自行照指南建站，則要依前置準備頁完成帳號與授權。都不需要先學程式或自行安裝終端機工具。請確認上課指定的 AI 模式可讀寫專案、執行建置與建立 PR，純聊天模式可能不支援。</p><p>只有手機或平板也請提前告訴講師，因為完整操作是否可行，取決於上課使用的 AI 工作區。</p></section>
 <section id="faq"><h2>學員常見問題</h2><p class="muted">點開問題查看說明；可以先看與自己目前遇到的情況有關的題目。</p>{questions.map((item,i)=><details class="faq"><summary>{item.q}</summary><p>{item.a}</p></details>)}</section>
 <section id="stuck"><h2>卡住時，直接複製這段給 AI</h2><div class="quick-script" id="stuck-script">{stuck}</div><p class="muted">建議一併附上目前畫面截圖，讓 AI 看見你遇到的問題。傳送前請先遮住個人資料、帳號與驗證資訊。</p><button class="btn" id="copy-stuck" type="button">複製求助句子</button><p class="muted" id="stuck-status" aria-live="polite"></p></section>
 <section id="self-help"><h2>卡住時的自救指南</h2><p class="muted">遇到問題不必全部重做。先找出目前卡住的地方，再依序試這幾步；需要協助時，把截圖與錯誤訊息一起提供給 AI。</p><div class="self-help-list">{selfHelp.map((item,i)=><div class="self-help-item"><strong>{i+1}. {item[0]}</strong><span>{item[1]}</span></div>)}</div></section>

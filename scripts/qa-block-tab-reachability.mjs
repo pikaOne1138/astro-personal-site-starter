@@ -6,7 +6,7 @@ import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 const blocks=JSON.parse(readFileSync('src/data/blocks.registry.json','utf8'));
 const widths=[1440,390],base='http://127.0.0.1:4393',rows=[],failures=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port','4393'],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port','4393','--strictPort','--ignore-lock'],{stdio:'ignore'});
 let browser;
 function missingExpected(expected,visited){const seen=new Set(visited);return expected.filter(x=>!seen.has(x.id))}
 try{
