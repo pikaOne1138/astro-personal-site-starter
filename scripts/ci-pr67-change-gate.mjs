@@ -29,7 +29,7 @@ function classify(){
   const currentBase=process.env.PR_BASE_SHA;
   if(!/^[a-f0-9]{40}$/.test(currentBase||''))return 'full';
   run('merge-base','--is-ancestor',baseSha,currentBase);
-  const baseFiles=run('diff','--name-only',baseSha,currentBase).split('\\n').filter(Boolean);
+  const baseFiles=run('diff','--name-only',baseSha,currentBase).split('\n').filter(Boolean);
   if(!baseFiles.every(p=>allowedBaseChanges.has(p)))return 'full';
   run('merge-base','--is-ancestor',baseline,head);
   const lines=run('diff','--name-only',baseline,head).split('\n').filter(Boolean);
