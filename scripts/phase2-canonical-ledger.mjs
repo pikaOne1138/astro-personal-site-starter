@@ -811,6 +811,27 @@ if(process.argv[2]==='import'){
  Object.assign(composite,{kind:'evidence',decision:'PARTIAL_SPLIT',
   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:fidelity.map(([id])=>id),
   parentDisposition:'Composite design fidelity retained as individually scoped requirements'});
+ // Cloudflare Git static build settings: each property must be checked
+ // against the learner's actual provider configuration.
+ const cfBuild=[
+ ['B4-DEP24-01-S01','Verify Cloudflare deployment branch against actual student production configuration'],
+ ['B4-DEP24-01-S02','Verify dependency installation and build commands'],
+ ['B4-DEP24-01-S03','Verify static output directory such as dist'],
+ ['B4-DEP24-01-S04','Verify Astro site configured for actual deployment origin'],
+ ['B4-DEP24-01-S05','Verify Astro base path for the real Cloudflare route'],
+ ['B4-DEP24-02','Cloudflare base path must derive from actual domain/subpath, not blindly assumed slash']
+ ];
+ for(let i=0;i<cfBuild.length;i++){
+  const [id,requirement]=cfBuild[i],entry=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=24;
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Cloudflare deployment setting original missing '+id);
+  Object.assign(entry,{canonicalId:'ATP-P2-'+String(200+i).padStart(4,'0'),requirement,kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',
+   aliases:[],applicability:['Student site using Cloudflare Git integration'],
+   conditions:['Cloudflare hosting option selected'],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),method:'FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW'}});
+ }
+ const parent=byId.get('B4-DEP24-01');
+ if(!parent||cfBuild.slice(0,5).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Cloudflare Git composite not verified');
+ Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:cfBuild.slice(0,5).map(([id])=>id),parentDisposition:'Five actual hosting settings tracked as separate acceptance checks'});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
