@@ -223,7 +223,7 @@ if(process.argv[2]==='import'){
   ['P0-U014','Do not claim booking, form submission or newsletter subscriptions succeeded without configured and verified integrations','.ai/astro-site-entry/SKILL.md',18,'policy'],
   ['P0-U015','When content facts are missing, leave them blank, explicitly pending, or clearly marked demo data','.ai/astro-site-entry/SKILL.md',18,'policy'],
   ['P0-U016','Actual website owner must confirm factual claims; automated CI cannot substitute for factual verification','.ai/astro-site-entry/SKILL.md',18,'policy'],
-  ['P0-U020','Never remove noindex merely to make CI pass','.ai/astro-starter-deploy/SKILL.md',32,'policy'],
+  ['P0-U020','Never remove noindex merely to make CI pass','.ai/astro-starter-deploy/SKILL.md',31,'policy'],
   ['P0-U021','Visual QA for normal site changes covers 1440, 1280, 768 and 390 widths','.ai/astro-pr-preview/SKILL.md',24,'acceptance'],
   ['P0-U023','Without actual visual inspection, do not claim visual QA is completed','.ai/astro-pr-preview/SKILL.md',24,'acceptance'],
   ['P0-U030','DNS changes require student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
