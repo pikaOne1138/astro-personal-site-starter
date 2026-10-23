@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "2df8a3a9872712dca1507e177ca48a3d88df646f"
+        "blobSha": "4182d0719a1a6977e6ff728ac38234fdea128a79"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -50758,9 +50758,9 @@
     },
     {
       "legacyId": "P0-U022",
-      "canonicalId": null,
-      "requirement": "PR59 獨立學生站人工驗收另需 375",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0026",
+      "requirement": "PR59 independent student-site manual QA additionally includes 375px",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50782,12 +50782,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50797,7 +50801,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 24,
+        "sourceText": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 `noindex`、隱私資料及外部服務測試資料做檢查。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U023",
@@ -50855,9 +50866,9 @@
     },
     {
       "legacyId": "P0-U024",
-      "canonicalId": null,
-      "requirement": "變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0027",
+      "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50879,12 +50890,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50894,13 +50909,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U025",
-      "canonicalId": null,
-      "requirement": "不能保證已被第三方複製的公開內容消失",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0028",
+      "requirement": "Do not claim that already publicly copied website content can be guaranteed erased",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50922,12 +50944,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50937,13 +50963,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U026",
-      "canonicalId": null,
-      "requirement": "不得擅自破壞 QA 證據",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0029",
+      "requirement": "Do not destroy QA evidence without authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50965,12 +50998,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50980,13 +51017,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U027",
-      "canonicalId": null,
-      "requirement": "未公開草稿優先本機或受限制存取 Preview",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0030",
+      "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51008,12 +51052,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51023,13 +51071,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U028",
-      "canonicalId": null,
-      "requirement": "自動化 PASS 不足以證明內容真實或法律適用性",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0031",
+      "requirement": "Automated PASS does not prove professional claims or legal applicability in an independent student site",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51051,12 +51106,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51066,7 +51125,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 39,
+        "sourceText": "| HUMAN-05 | 上線前核對真實資格、服務價格、客戶推薦、圖片授權、預約／外部表單、隱私資訊與內容來源；不可由自動 PASS 推定真實性或法律適用性。 | NOT TESTED | 網站持有人 | 經本人確認的審查清單；不存個資或憑證 |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U029",
@@ -51275,9 +51341,9 @@
     },
     {
       "legacyId": "P0-U033",
-      "canonicalId": null,
-      "requirement": "研究 PR59 合併不等於學員站公開核准",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0032",
+      "requirement": "Completion of research PR59 does not authorize publication of an individual student site",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51299,12 +51365,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51314,7 +51384,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 72,
+        "sourceText": "- **學員網站可正式發布**：仍需該網站本人的 HUMAN 類審核及明確核准。PR #59 合併與學員網站發布是不同授權，絕不可混淆。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U034",
@@ -51527,8 +51604,8 @@
     },
     {
       "legacyId": "P0-U037",
-      "canonicalId": null,
-      "requirement": "Cloudflare URL 必須依實際平台回報",
+      "canonicalId": "ATP-P2-0033",
+      "requirement": "Cloudflare Preview URLs and associated status must come from actual platform deployment reports",
       "kind": "evidence",
       "sourceRefs": [
         {
@@ -51551,12 +51628,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51566,13 +51647,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 38,
+        "sourceText": "- 以 **Cloudflare 自己回報**的 URL、status、commit、log 驗證。不能猜 `*.pages.dev` 或把 GitHub Pages `/pr-preview/pr-N/` 路徑套過去；未啟用 Git 整合/預覽時不得聲稱有 Preview。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U038",
-      "canonicalId": null,
-      "requirement": "不猜 Pages.dev 或移植 GitHub Pages URL 規律",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0034",
+      "requirement": "Do not invent Cloudflare pages.dev URLs or copy research GitHub Pages preview path conventions",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51594,12 +51682,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51609,13 +51701,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 38,
+        "sourceText": "- 以 **Cloudflare 自己回報**的 URL、status、commit、log 驗證。不能猜 `*.pages.dev` 或把 GitHub Pages `/pr-preview/pr-N/` 路徑套過去；未啟用 Git 整合/預覽時不得聲稱有 Preview。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U039",
-      "canonicalId": null,
-      "requirement": "獨立學生 Repo 要驗證真實 PR 執行",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0035",
+      "requirement": "Student-owned independent repo requires real PR workflow run evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51637,12 +51736,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51652,13 +51755,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 22,
+        "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U040",
-      "canonicalId": null,
-      "requirement": "Pages 子路徑獨立測試",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0036",
+      "requirement": "For GitHub Pages repository subpaths validate deployed site routes and assets against real URL and SHA",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51680,12 +51790,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51695,13 +51809,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 24,
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U041",
-      "canonicalId": null,
-      "requirement": "Cloudflare 根路徑僅在選用時測試",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0037",
+      "requirement": "Run Cloudflare root-path preview tests only when Cloudflare is the chosen hosting route",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51723,12 +51844,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51738,13 +51863,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 24,
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U042",
-      "canonicalId": null,
-      "requirement": "檢查 Preview 是否可能被索引",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0038",
+      "requirement": "Check whether the deployed Preview is indexable by search engines",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51776,12 +51908,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51797,13 +51933,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 39,
+        "sourceText": "- 檢查 Preview 是否被搜尋索引、是否含尚未核准的內容；Cloudflare Preview 的正式域名、綁定與自訂網域規則依學員專案驗證。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U043",
-      "canonicalId": null,
-      "requirement": "檢查是否包含尚未核准內容",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0039",
+      "requirement": "Check Preview for private or unapproved content before disclosing its URL",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51825,12 +51968,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51840,7 +51987,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 39,
+        "sourceText": "- 檢查 Preview 是否被搜尋索引、是否含尚未核准的內容；Cloudflare Preview 的正式域名、綁定與自訂網域規則依學員專案驗證。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U044",
@@ -51978,9 +52132,9 @@
     },
     {
       "legacyId": "P0-U046",
-      "canonicalId": null,
-      "requirement": "上游變更後重新判斷證據有效性",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0040",
+      "requirement": "Re-evaluate prior test evidence when the upstream project revision changes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52002,12 +52156,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52017,7 +52175,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 16,
+        "sourceText": "每次更新必須同時記錄：測試目標／Repository、Commit SHA、實際網址或 Artifact、日期、執行者、結果與未解風險。**上游程式變更後應重新判定原有證據是否仍適用**。本檔記載「缺哪些驗收」，不儲存憑證、學員個資或敏感圖片。",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U047",
@@ -52200,9 +52365,9 @@
     },
     {
       "legacyId": "P0-U050",
-      "canonicalId": null,
-      "requirement": "需真實 Preview 與對應 SHA",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0041",
+      "requirement": "Independent external student-site acceptance requires a working Preview corresponding to exact deployment SHA",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52224,12 +52389,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52239,13 +52408,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 24,
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U051",
-      "canonicalId": null,
-      "requirement": "不得以本地模擬當線上證據",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0042",
+      "requirement": "A local simulated site is not evidence of live online deployment",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52267,12 +52443,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52282,7 +52462,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "frozenLine": 24,
+        "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |",
+        "method": "DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U052",
@@ -76432,9 +76619,9 @@
         },
         {
           "legacyId": "P0-U022",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "PR59 獨立學生站人工驗收另需 375",
+          "canonicalId": "ATP-P2-0026",
+          "reviewStatus": "APPROVED",
+          "requirement": "PR59 independent student-site manual QA additionally includes 375px",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -76836,16 +77023,16 @@
         },
         {
           "legacyId": "P0-U037",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Cloudflare URL 必須依實際平台回報",
+          "canonicalId": "ATP-P2-0033",
+          "reviewStatus": "APPROVED",
+          "requirement": "Cloudflare Preview URLs and associated status must come from actual platform deployment reports",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U038",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不猜 Pages.dev 或移植 GitHub Pages URL 規律",
+          "canonicalId": "ATP-P2-0034",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not invent Cloudflare pages.dev URLs or copy research GitHub Pages preview path conventions",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -76856,7 +77043,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:39",
@@ -76915,16 +77102,16 @@
         },
         {
           "legacyId": "P0-U042",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 Preview 是否可能被索引",
+          "canonicalId": "ATP-P2-0038",
+          "reviewStatus": "APPROVED",
+          "requirement": "Check whether the deployed Preview is indexable by search engines",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U043",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查是否包含尚未核准內容",
+          "canonicalId": "ATP-P2-0039",
+          "reviewStatus": "APPROVED",
+          "requirement": "Check Preview for private or unapproved content before disclosing its URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
@@ -77051,30 +77238,30 @@
         },
         {
           "legacyId": "P0-U024",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權",
+          "canonicalId": "ATP-P2-0027",
+          "reviewStatus": "APPROVED",
+          "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U025",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不能保證已被第三方複製的公開內容消失",
+          "canonicalId": "ATP-P2-0028",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not claim that already publicly copied website content can be guaranteed erased",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U026",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不得擅自破壞 QA 證據",
+          "canonicalId": "ATP-P2-0029",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not destroy QA evidence without authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U027",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "未公開草稿優先本機或受限制存取 Preview",
+          "canonicalId": "ATP-P2-0030",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -77085,7 +77272,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:65",
@@ -88063,9 +88250,9 @@
         },
         {
           "legacyId": "P0-U046",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "上游變更後重新判斷證據有效性",
+          "canonicalId": "ATP-P2-0040",
+          "reviewStatus": "APPROVED",
+          "requirement": "Re-evaluate prior test evidence when the upstream project revision changes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -88118,7 +88305,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22",
@@ -88212,9 +88399,9 @@
         },
         {
           "legacyId": "P0-U039",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "獨立學生 Repo 要驗證真實 PR 執行",
+          "canonicalId": "ATP-P2-0035",
+          "reviewStatus": "APPROVED",
+          "requirement": "Student-owned independent repo requires real PR workflow run evidence",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -88253,7 +88440,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:23",
@@ -88398,30 +88585,30 @@
         },
         {
           "legacyId": "P0-U040",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Pages 子路徑獨立測試",
+          "canonicalId": "ATP-P2-0036",
+          "reviewStatus": "APPROVED",
+          "requirement": "For GitHub Pages repository subpaths validate deployed site routes and assets against real URL and SHA",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U041",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Cloudflare 根路徑僅在選用時測試",
+          "canonicalId": "ATP-P2-0037",
+          "reviewStatus": "APPROVED",
+          "requirement": "Run Cloudflare root-path preview tests only when Cloudflare is the chosen hosting route",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U050",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "需真實 Preview 與對應 SHA",
+          "canonicalId": "ATP-P2-0041",
+          "reviewStatus": "APPROVED",
+          "requirement": "Independent external student-site acceptance requires a working Preview corresponding to exact deployment SHA",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U051",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不得以本地模擬當線上證據",
+          "canonicalId": "ATP-P2-0042",
+          "reviewStatus": "APPROVED",
+          "requirement": "A local simulated site is not evidence of live online deployment",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -88460,7 +88647,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:25",
@@ -88751,13 +88938,13 @@
         },
         {
           "legacyId": "P0-U028",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "自動化 PASS 不足以證明內容真實或法律適用性",
+          "canonicalId": "ATP-P2-0031",
+          "reviewStatus": "APPROVED",
+          "requirement": "Automated PASS does not prove professional claims or legal applicability in an independent student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:40",
@@ -88946,13 +89133,13 @@
         },
         {
           "legacyId": "P0-U033",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "研究 PR59 合併不等於學員站公開核准",
+          "canonicalId": "ATP-P2-0032",
+          "reviewStatus": "APPROVED",
+          "requirement": "Completion of research PR59 does not authorize publication of an individual student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:9",
