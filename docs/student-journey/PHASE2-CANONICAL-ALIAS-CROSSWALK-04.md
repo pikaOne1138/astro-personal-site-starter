@@ -7,7 +7,7 @@
 | 候選群（非正式 Canonical ID） | 對應工作 ID | Frozen 來源 | 初步判定／不得失去的限定 |
 |---|---|---|---|
 | TRUTH-SUPPLIED：身分、素材、服務事實有真實來源 | `P0-U013`、`B5-PUB12-01`、`B5-PUB12-02` | [site-entry L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L18)、[publishing L12](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-content-publishing/SKILL.md#L12) | PARTIAL_OVERLAP：一般真實性規範與由本人提供的欄位具關聯，但資格、見證、價格、聯絡、素材授權等不得合併成未列舉的籠統字句 |
-| TRUTH-FAKE-FUNCTION：不能冒充已啟用的服務 | `P0-U014`、`B5-ASM21-03`、`B9-ASM-L29-1` | [site-entry L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L18)、[assembly L21](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L21)、[assembly L29](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L29) | PARTIAL_OVERLAP：假預約／假電子報成功與缺 contact endpoint 的不可用表單是兩個實作狀態，仍須分別確認 |
+| TRUTH-FAKE-FUNCTION：不能冒充已啟用的服務 | `P0-U014`、`B5-ASM21-03`、`B8-ASM-L29-02` | [site-entry L18](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-entry/SKILL.md#L18)、[assembly L21](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L21)、[assembly L29](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L29) | PARTIAL_OVERLAP：假預約／假電子報成功與缺 contact endpoint 的不可用表單是兩個實作狀態，仍須分別確認 |
 | DEMO-PREVIEW：標明未配置內容可供視覺評估 | `B5-ASM21-01`、`B5-ASM21-02` | [assembly L21](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L21) | DISTINCT FROM PUBLISH GATE：預覽可保留 Demo／Sample；不得為了「整潔」未經學員選擇擅自刪除 |
 | DEMO-RELEASE-CHOICE：發布前逐頁揭露並由學員選擇 | `B1-ASM22-01`、`B1-ASM22-02`、`B1-ASM22-03` | [assembly L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L22) | DISTINCT：允許選擇 keep/edit/hide；已明示為 Demo 且理解影響時學員**可以選擇發布**，不是一律禁止 |
 | RELEASE-CONSENT：特定版本、範圍與 Production 行動授權 | `P0-U001`、`P0-U003`、`B1-ASM23-01`、`B1-ASM23-02`、`B1-ASM23-03`、`B1-ASM23-04` | [assembly L23](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-site-assembly/SKILL.md#L23) | PARTIAL：內容確認≠Merge/Production 授權；已告知 Demo 可被核准保留，不表示可以假造真實資格／服務 |
@@ -28,3 +28,8 @@
 ## Gate
 
 本次 **7 個候選群、9 個 Frozen source 行的局部語義裁決**；所有 SAME/PARTIAL/DISTINCT 判定尚需跨 P0/Skills A/B/上游 Delta 的全量雙向反查，且尚未產出核准的獨立規範總數。Stage 2 IN PROGRESS；Stage 3/4 BLOCKED。未修改來源 Skills、未改學員模板、未 Merge、未部署。
+
+
+## 引用更正（2026-10-23）
+
+先前 `B9-ASM-L29-1` 未於本批 Batch9 來源列中找到定義。其所敘述「缺 contact endpoint 不得冒充可用預約表單」，已在 Batch8 的 `B8-ASM-L29-02` 登錄；故本次僅更正引用 ID，來源仍是 Frozen Assembly L29，不新增義務、不抹除舊誤植紀錄。其他交叉來源仍需全量正反向語義校驗。
