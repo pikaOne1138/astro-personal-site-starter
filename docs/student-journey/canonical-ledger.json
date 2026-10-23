@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "193df6c27c92f089e718a99361fa83c6e40b2ea5"
+        "blobSha": "2719e7e7d51808afdb04c5b1d39cf93656b61b86"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -65443,19 +65443,6 @@
       "canonicalId": null
     }
   ],
-  "importErrors": [],
-  "recoveryFailures": [
-    {
-      "reason": "SEMANTIC_RELATION_ORPHAN",
-      "ids": [
-        "B9C-DEP40-03",
-        "B9A-DEP25-01"
-      ],
-      "missing": [
-        "B9A-DEP25-01"
-      ]
-    }
-  ],
   "sourceReviewQueue": [
     {
       "sourceKey": ".ai/astro-design-consultation/SKILL.md:39",
@@ -68261,6 +68248,19 @@
       "proposedAction": "PENDING_SOURCE_TO_LEDGER_MAPPING",
       "reviewStatus": "PENDING_SEMANTIC_REVIEW",
       "canonicalId": null
+    }
+  ],
+  "importErrors": [],
+  "recoveryFailures": [
+    {
+      "reason": "SEMANTIC_RELATION_ORPHAN",
+      "ids": [
+        "B9C-DEP40-03",
+        "B9A-DEP25-01"
+      ],
+      "missing": [
+        "B9A-DEP25-01"
+      ]
     }
   ]
 }
