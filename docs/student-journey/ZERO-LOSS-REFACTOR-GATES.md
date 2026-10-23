@@ -235,3 +235,8 @@
 ## Phase 2｜Batch9 Atomic C：第二輪子義務列示 33/33
 
 [PHASE2-BATCH9-ATOMIC-C.md](PHASE2-BATCH9-ATOMIC-C.md) 補列 Batch9 最後 **21 個來源行**之逐項子義務與分型，連同 Atomic A（4 行）、B（8 行），Batch9 **33/33 行已第二輪拆解**。但 C 批若干來源行仍含多個編號子項於同一表列，且 A/B/C 尚未完整合併 P0 與 Skills A 的 canonical/alias；Batch1–8 也有複合要求。**103/103 僅是來源行追溯覆蓋，33/33 僅是 Batch9 第二輪拆解，不代表全量最小原子化及 Phase 2 PASS**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED；原始 Skills 未改，不 Merge、不部署。
+
+
+## Phase 2｜Canonical/Alias Crosswalk 01 初步關係稽核
+
+新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md)：將 Batch9 C 的 5 個複合父來源段落拆成 **16 個可追溯的子欄位 ID**，以來源行為錨點交叉檢查 P0、Batch1–9 的重疊。已區分 `PARTIAL_OVERLAP`、`DISTINCT`，沒有把一般 CI Gate 與特指 `noindex` 規則誤判為等價，也沒有宣告任何跨批次 Canonical 合併。**103/103 是核心 Skills B 來源行映射，不等於原子義務全覆蓋、唯一規範母數或 Stage 2 PASS**；其他 A 批與來源全文待審。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED；不修改原始 Skills、不 Merge、不部署。
