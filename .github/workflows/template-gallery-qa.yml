@@ -10,6 +10,8 @@ on:
       - 'public/template-gallery/**'
       - '.github/workflows/template-gallery-qa.yml'
 permissions:
+  checks: read
+  actions: read
   contents: read
 jobs:
   ci-change-classifier:
@@ -23,6 +25,7 @@ jobs:
           fetch-depth: 0
       - id: detect
         env:
+          GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
