@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "5d4ea929675db5facae4bdf3e60817d6a8bc7238"
+        "blobSha": "802df7df612254211fd1441d0d63b7ea74017f33"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -52530,7 +52530,7 @@
       "legacyId": "P0-U052",
       "canonicalId": null,
       "requirement": "測試目標／Repository",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52556,8 +52556,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52567,13 +52567,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "測試目標／Repository"
     },
     {
       "legacyId": "P0-U053",
       "canonicalId": null,
       "requirement": "Commit SHA",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52609,8 +52613,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52626,13 +52630,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "Commit SHA"
     },
     {
       "legacyId": "P0-U054",
       "canonicalId": null,
       "requirement": "實際網址或 Artifact",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52668,8 +52676,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52685,13 +52693,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "實際網址或 Artifact"
     },
     {
       "legacyId": "P0-U055",
       "canonicalId": null,
       "requirement": "日期",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52717,8 +52729,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52728,13 +52740,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "日期"
     },
     {
       "legacyId": "P0-U056",
       "canonicalId": null,
       "requirement": "執行者",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52760,8 +52776,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52771,13 +52787,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "執行者"
     },
     {
       "legacyId": "P0-U057",
       "canonicalId": null,
       "requirement": "測試結果",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52803,8 +52823,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52814,13 +52834,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "測試結果"
     },
     {
       "legacyId": "P0-U058",
       "canonicalId": null,
       "requirement": "未解風險",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52846,8 +52870,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52857,13 +52881,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PR59-EVIDENCE-01",
+      "acceptanceDimensionGroup": "PR59_REPORT_FIELDS",
+      "acceptanceDimensionScope": "PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks",
+      "atomicEvidenceText": "未解風險"
     },
     {
       "legacyId": "P0-U059",
       "canonicalId": null,
       "requirement": "meta robots",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52889,8 +52917,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52900,13 +52928,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
+      "atomicEvidenceText": "meta robots"
     },
     {
       "legacyId": "P0-U060",
       "canonicalId": null,
       "requirement": "robots.txt",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52932,8 +52964,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52943,13 +52975,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
+      "atomicEvidenceText": "robots.txt"
     },
     {
       "legacyId": "P0-U061",
       "canonicalId": null,
       "requirement": "canonical",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -52985,8 +53021,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53002,13 +53038,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
+      "atomicEvidenceText": "canonical"
     },
     {
       "legacyId": "P0-U062",
       "canonicalId": null,
       "requirement": "Sitemap",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53034,8 +53074,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53045,13 +53085,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "ATP-P2-0003",
+      "acceptanceDimensionGroup": "INDEXING_ARTIFACTS",
+      "acceptanceDimensionScope": "Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap",
+      "atomicEvidenceText": "Sitemap"
     },
     {
       "legacyId": "P0-U063",
       "canonicalId": null,
       "requirement": "首頁",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53077,8 +53121,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53088,13 +53132,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "首頁"
     },
     {
       "legacyId": "P0-U064",
       "canonicalId": null,
       "requirement": "CSS／圖片",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53120,8 +53168,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53131,13 +53179,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "CSS／圖片"
     },
     {
       "legacyId": "P0-U065",
       "canonicalId": null,
       "requirement": "導航",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53173,8 +53225,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53190,13 +53242,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "導航"
     },
     {
       "legacyId": "P0-U066",
       "canonicalId": null,
       "requirement": "文章／內容頁（適用時）",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53222,8 +53278,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53233,13 +53289,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "文章／內容頁（適用時）"
     },
     {
       "legacyId": "P0-U067",
       "canonicalId": null,
       "requirement": "Pagefind（適用時）",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53265,8 +53325,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53276,13 +53336,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "Pagefind（適用時）"
     },
     {
       "legacyId": "P0-U068",
       "canonicalId": null,
       "requirement": "RSS（適用時）",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53308,8 +53372,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53319,13 +53383,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "RSS（適用時）"
     },
     {
       "legacyId": "P0-U069",
       "canonicalId": null,
       "requirement": "Sitemap",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53351,8 +53419,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53362,13 +53430,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "Sitemap"
     },
     {
       "legacyId": "P0-U070",
       "canonicalId": null,
       "requirement": "404",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53394,8 +53466,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53405,13 +53477,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "404"
     },
     {
       "legacyId": "P0-U071",
       "canonicalId": null,
       "requirement": "鍵盤操作",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53437,8 +53513,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53448,13 +53524,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "鍵盤操作"
     },
     {
       "legacyId": "P0-U072",
       "canonicalId": null,
       "requirement": "觸控操作",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53480,8 +53560,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53491,13 +53571,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "觸控操作"
     },
     {
       "legacyId": "P0-U073",
       "canonicalId": null,
       "requirement": "reduced-motion",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53523,8 +53607,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53534,13 +53618,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "reduced-motion"
     },
     {
       "legacyId": "P0-U074",
       "canonicalId": null,
       "requirement": "Preview noindex",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53566,8 +53654,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53577,13 +53665,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "Preview noindex"
     },
     {
       "legacyId": "P0-U075",
       "canonicalId": null,
       "requirement": "未公開／敏感內容",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53609,8 +53701,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53620,13 +53712,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "未公開／敏感內容"
     },
     {
       "legacyId": "P0-U076",
       "canonicalId": null,
       "requirement": "外部服務測試資料",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53652,8 +53748,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53663,13 +53759,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "QA-DETAIL-01",
+      "acceptanceDimensionGroup": "PREVIEW_QA_TARGETS",
+      "acceptanceDimensionScope": "Applicable real Preview routes, page behavior, input methods and privacy checks",
+      "atomicEvidenceText": "外部服務測試資料"
     },
     {
       "legacyId": "P0-U077",
       "canonicalId": null,
       "requirement": "Pages 子路徑資產",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53695,8 +53795,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53706,13 +53806,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
+      "atomicEvidenceText": "Pages 子路徑資產"
     },
     {
       "legacyId": "P0-U078",
       "canonicalId": null,
       "requirement": "文章／服務內頁",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53738,8 +53842,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53749,13 +53853,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
+      "atomicEvidenceText": "文章／服務內頁"
     },
     {
       "legacyId": "P0-U079",
       "canonicalId": null,
       "requirement": "導航",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53781,8 +53889,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53792,13 +53900,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
+      "atomicEvidenceText": "導航"
     },
     {
       "legacyId": "P0-U080",
       "canonicalId": null,
       "requirement": "搜尋",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53824,8 +53936,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53835,13 +53947,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
+      "atomicEvidenceText": "搜尋"
     },
     {
       "legacyId": "P0-U081",
       "canonicalId": null,
       "requirement": "canonical",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53867,8 +53983,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53878,13 +53994,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.03",
+      "acceptanceDimensionGroup": "PR59_SUBPATH_QA",
+      "acceptanceDimensionScope": "Student repository GitHub Pages subpath browser acceptance",
+      "atomicEvidenceText": "canonical"
     },
     {
       "legacyId": "P0-U082",
       "canonicalId": null,
       "requirement": "獨立 Repo URL",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53910,8 +54030,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53921,13 +54041,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
+      "atomicEvidenceText": "獨立 Repo URL"
     },
     {
       "legacyId": "P0-U083",
       "canonicalId": null,
       "requirement": "PR URL",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53953,8 +54077,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53964,13 +54088,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
+      "atomicEvidenceText": "PR URL"
     },
     {
       "legacyId": "P0-U084",
       "canonicalId": null,
       "requirement": "Workflow Run URL",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -53996,8 +54124,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -54007,13 +54135,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
+      "atomicEvidenceText": "Workflow Run URL"
     },
     {
       "legacyId": "P0-U085",
       "canonicalId": null,
       "requirement": "SHA",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -54039,8 +54171,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -54050,13 +54182,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
+      "atomicEvidenceText": "SHA"
     },
     {
       "legacyId": "P0-U086",
       "canonicalId": null,
       "requirement": "QA Artifact",
-      "kind": "evidence",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -54082,8 +54218,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -54093,7 +54229,11 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "parentCanonicalCandidate": "PROOF-003.02",
+      "acceptanceDimensionGroup": "PR59_EXT01_EVIDENCE",
+      "acceptanceDimensionScope": "Independent student repo real PR CI evidence package",
+      "atomicEvidenceText": "QA Artifact"
     },
     {
       "legacyId": "P0-CANON-PRVIEW-MISSING",
@@ -76689,98 +76829,98 @@
         {
           "legacyId": "P0-U063",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "首頁",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U064",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "CSS／圖片",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U065",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "導航",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U066",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "文章／內容頁（適用時）",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U067",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Pagefind（適用時）",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U068",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "RSS（適用時）",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U069",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Sitemap",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U070",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "404",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U071",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "鍵盤操作",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U072",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "觸控操作",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U073",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "reduced-motion",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U074",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Preview noindex",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U075",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "未公開／敏感內容",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U076",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "外部服務測試資料",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -80396,28 +80536,28 @@
         {
           "legacyId": "P0-U059",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "meta robots",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U060",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "robots.txt",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U061",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "canonical",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U062",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Sitemap",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
@@ -88313,49 +88453,49 @@
         {
           "legacyId": "P0-U052",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "測試目標／Repository",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U053",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Commit SHA",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U054",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "實際網址或 Artifact",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U055",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "日期",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U056",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "執行者",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U057",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "測試結果",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U058",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "未解風險",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
@@ -88462,35 +88602,35 @@
         {
           "legacyId": "P0-U082",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "獨立 Repo URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U083",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "PR URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U084",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Workflow Run URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U085",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "SHA",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U086",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "QA Artifact",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
@@ -88669,35 +88809,35 @@
         {
           "legacyId": "P0-U077",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "Pages 子路徑資產",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U078",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "文章／服務內頁",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U079",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "導航",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U080",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "搜尋",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "P0-U081",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING",
           "requirement": "canonical",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
