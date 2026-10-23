@@ -6,7 +6,7 @@ const port=4347,base='http://127.0.0.1:'+port;
 const groups={heroes:['H',12],sections:['S',8],lists:['L',6],rhythm:['R',6],'cta-trust':['C',8]};
 const viewports=[1440,1280,768,390],entries=[],errors=[],h01Checks=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});let browser;
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});let browser;
 try{
  let ready=false;for(let i=0;i<50;i++){try{if((await fetch(base+'/layouts/recipes/')).ok){ready=true;break}}catch{}await delay(300)}
  if(!ready)throw Error('Recipes preview did not start');

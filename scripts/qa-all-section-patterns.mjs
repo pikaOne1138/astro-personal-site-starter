@@ -5,7 +5,7 @@ import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 const registry=JSON.parse(readFileSync('src/data/section-patterns.registry.json','utf8'));
 const port=4369,base='http://127.0.0.1:'+port,ids=registry.map(x=>x.id),widths=[1440,1280,768,390],rows=[],errors=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});let browser;
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});let browser;
 try{
  let ready=false;for(let i=0;i<50;i++){try{if((await fetch(base+'/section-patterns/')).ok){ready=true;break}}catch{}await delay(300)}
  if(!ready)throw Error('Pattern preview failed to start');

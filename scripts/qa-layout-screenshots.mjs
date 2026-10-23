@@ -9,7 +9,7 @@ const widths=[1440,1280,768,390];
 const dir=process.env.LAYOUT_QA_OUT||'qa-artifacts/layouts';
 const publicMode=process.env.LAYOUT_QA_PUBLIC==='1';
 mkdirSync(dir,{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port','4328'],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port','4328','--strictPort','--ignore-lock'],{stdio:'ignore'});
 const rows=[];
 let browser;
 try {
