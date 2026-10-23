@@ -28,7 +28,8 @@ jobs:
         shell: bash
         run: |
           node scripts/phase2-canonical-ledger.mjs report || true
-          node scripts/phase2-canonical-ledger.mjs verify || true
+      - name: Fail on evidence-integrity errors (semantic Gate may stay BLOCKED)
+        run: node scripts/phase2-canonical-ledger.mjs integrity
       - name: Commit only generated ledger and gate report to PR branch
         shell: bash
         run: |
