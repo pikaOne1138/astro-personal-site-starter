@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "fd2c111249611b54d55a1efef1a07cac7ea07654"
+        "blobSha": "858acb9cea86055cfb22180d99b8e34d0f6e77fa"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -10158,9 +10158,9 @@
     },
     {
       "legacyId": "B2-DEP43-03",
-      "canonicalId": null,
-      "requirement": "不要求 Token 或假稱已部署",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0265",
+      "requirement": "Never ask a student to paste Cloudflare tokens into chat or claim a deployment succeeded without platform evidence",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -10192,12 +10192,15 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Cloudflare onboarding",
+        "Actual token and deployment evidence required"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "DISTINCT",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -10213,13 +10216,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 43,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。",
+        "method": "MANUALLY_SCOPED_CLOUDFLARE_SOURCE_LINE_REVIEW"
+      }
     },
     {
       "legacyId": "B2-DEP43-04",
-      "canonicalId": null,
-      "requirement": "Private Repo 可優先考慮，仍需部署授權",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0266",
+      "requirement": "Prefer a private GitHub repository for student onboarding while separately obtaining deployment authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -10251,12 +10261,15 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Cloudflare onboarding",
+        "Repository visibility does not authorize publication"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "DISTINCT",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -10272,7 +10285,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 43,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。",
+        "method": "MANUALLY_SCOPED_CLOUDFLARE_SOURCE_LINE_REVIEW"
+      }
     },
     {
       "legacyId": "B2-DEP43-05",
@@ -84476,16 +84496,16 @@
         },
         {
           "legacyId": "B2-DEP43-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不要求 Token 或假稱已部署",
+          "canonicalId": "ATP-P2-0265",
+          "reviewStatus": "APPROVED",
+          "requirement": "Never ask a student to paste Cloudflare tokens into chat or claim a deployment succeeded without platform evidence",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-DEP43-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Private Repo 可優先考慮，仍需部署授權",
+          "canonicalId": "ATP-P2-0266",
+          "reviewStatus": "APPROVED",
+          "requirement": "Prefer a private GitHub repository for student onboarding while separately obtaining deployment authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {

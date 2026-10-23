@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1051 |
-| approvedCanonicalIds | 245 |
+| pendingSemanticDecisions | 1049 |
+| approvedCanonicalIds | 247 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1051,
-    "approvedCanonicalIds": 245,
+    "pendingSemanticDecisions": 1049,
+    "approvedCanonicalIds": 247,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -2019,17 +2019,17 @@
         },
         {
           "id": "B2-DEP43-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不要求 Token 或假稱已部署"
+          "canonicalId": "ATP-P2-0265",
+          "kind": "policy",
+          "decision": "DISTINCT",
+          "requirement": "Never ask a student to paste Cloudflare tokens into chat or claim a deployment succeeded without platform evidence"
         },
         {
           "id": "B2-DEP43-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Private Repo 可優先考慮，仍需部署授權"
+          "canonicalId": "ATP-P2-0266",
+          "kind": "policy",
+          "decision": "DISTINCT",
+          "requirement": "Prefer a private GitHub repository for student onboarding while separately obtaining deployment authorization"
         },
         {
           "id": "B2-DEP43-05",
