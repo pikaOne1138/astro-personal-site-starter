@@ -735,6 +735,34 @@ if(process.argv[2]==='import'){
   Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
    childrenLegacyIds:kids,parentDisposition:'Composite inherited from complete approved atomic children'});
  }
+ // Deployment URL compatibility and optional collective trust data.
+ const mixedAtomic=[
+  ['B4-DEP17-01','Use Astro import.meta.env.BASE_URL for site routes and assets','.ai/astro-starter-deploy/SKILL.md',17,'procedure'],
+  ['B4-DEP17-02-S01','Verify actual canonical URL in generated production outputs','.ai/astro-starter-deploy/SKILL.md',17,'acceptance'],
+  ['B4-DEP17-02-S02','Verify actual RSS URL in generated production outputs','.ai/astro-starter-deploy/SKILL.md',17,'acceptance'],
+  ['B4-DEP17-02-S03','Verify actual Sitemap URLs','.ai/astro-starter-deploy/SKILL.md',17,'acceptance'],
+  ['B4-DEP17-02-S04','Verify robots URL and rules for actual hosting environment','.ai/astro-starter-deploy/SKILL.md',17,'acceptance'],
+  ['B4-DEP17-02-S05','Verify Open Graph absolute URLs point to actual student domain','.ai/astro-starter-deploy/SKILL.md',17,'acceptance'],
+  ['B4-DEP17-03','Replace research-site hardcoded links in exported student site','.ai/astro-starter-deploy/SKILL.md',17,'procedure'],
+  ['B9C-ASM77-01','Collective team and event content fields are optional','.ai/astro-site-assembly/SKILL.md',77,'architecture'],
+  ['B9C-ASM77-02','Display collective team-member identities only with owner verification','.ai/astro-site-assembly/SKILL.md',77,'policy'],
+  ['B9C-ASM77-03','Publish collective events only after factual confirmation','.ai/astro-site-assembly/SKILL.md',77,'policy'],
+  ['B9C-ASM77-04','When collective event/member data is absent show an explicitly pending state','.ai/astro-site-assembly/SKILL.md',77,'policy'],
+  ['B9C-ASM77-05','Never fabricate roster, date or booking availability for collective teams/events','.ai/astro-site-assembly/SKILL.md',77,'policy']
+ ];
+ for(let i=0;i<mixedAtomic.length;i++){
+  const [id,requirement,source,line,kind]=mixedAtomic[i],entry=byId.get(id),canonicalId='ATP-P2-'+String(174+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Mixed source mismatch '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Mixed ID collision '+id);
+  Object.assign(entry,{canonicalId,requirement,kind,decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:line===77?['Optional collective layout only']:['Actual student deployment configuration'],
+   conditions:line===77?['Collective team/events content enabled']:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),method:'FROZEN_LINE_PLUS_ATOMIC_RECORD'}});
+ }
+ const urlParent=byId.get('B4-DEP17-02');
+ if(!urlParent||Array.from({length:5},(_,i)=>'B4-DEP17-02-S0'+(i+1)).some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('URL parent lacking child approvals');
+ Object.assign(urlParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+  childrenLegacyIds:Array.from({length:5},(_,i)=>'B4-DEP17-02-S0'+(i+1)),parentDisposition:'Complete URL evidence carried by five separate acceptance leaves'});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
