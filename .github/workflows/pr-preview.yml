@@ -6,6 +6,8 @@ on:
 
 # PR code can build and upload artifacts, but cannot deploy Pages or write repo content.
 permissions:
+  checks: read
+  actions: read
   contents: read
 
 concurrency:
@@ -26,6 +28,7 @@ jobs:
       - id: detect
         if: github.event.action != 'closed'
         env:
+          GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
