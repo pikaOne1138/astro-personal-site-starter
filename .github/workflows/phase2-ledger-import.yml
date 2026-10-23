@@ -23,7 +23,25 @@ jobs:
         with:
           node-version: '24'
       - name: Import all 59 legacy papers and separate PR61 delta
-        run: node scripts/phase2-canonical-ledger.mjs import
+        shell: bash
+        run: |
+          if node scripts/phase2-canonical-ledger.mjs import > /tmp/phase2-import.log 2>&1; then
+            cat /tmp/phase2-import.log
+          else
+            cat /tmp/phase2-import.log
+            {
+              printf '# PR #67 | Phase 2 Gate Report\n\n'
+              printf '> **IMPORT FAILED — latest Ledger/metrics are stale and MUST NOT be presented as current.**\n\n'
+              printf 'Failed import commit: `%s`\n\n' "$GITHUB_SHA"
+              printf '## Import error (captured from actual runner)\n\n```text\n'
+              cat /tmp/phase2-import.log
+              printf '\n```\n'
+            } > docs/student-journey/PHASE2-GATE-REPORT.md
+            git add docs/student-journey/PHASE2-GATE-REPORT.md
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix(phase2): record import failure and invalidate stale metrics'
+            git push origin HEAD:feat/student-planner-draft-recovery
+            exit 1
+          fi
       - name: Record blocked gate without treating pending reviews as PASS
         shell: bash
         run: |
