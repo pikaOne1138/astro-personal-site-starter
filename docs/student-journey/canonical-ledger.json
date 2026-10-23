@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "858acb9cea86055cfb22180d99b8e34d0f6e77fa"
+        "blobSha": "d91e1a56613d65a301312312ea7792188eed5a83"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -59977,8 +59977,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-SKILLS-ATOMIC-P0.md",
@@ -59988,7 +59988,25 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B2-DEP43-01-S01",
+        "B2-DEP43-01-S02",
+        "B2-DEP43-01-S03",
+        "B2-DEP43-02-S01",
+        "B2-DEP43-02-S02",
+        "B2-DEP43-02-S03",
+        "B2-DEP43-03",
+        "B2-DEP43-04",
+        "B2-DEP43-05"
+      ],
+      "parentDisposition": "Documented Cloudflare onboarding source exhaustively mapped to nine scoped atomic clauses",
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 43,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。",
+        "method": "SOURCE_REVIEWED_COMPLETE_ONBOARDING_DECOMPOSITION"
+      }
     },
     {
       "legacyId": "DES1-001",
@@ -84560,7 +84578,7 @@
         {
           "legacyId": "DEPLOY-14",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }

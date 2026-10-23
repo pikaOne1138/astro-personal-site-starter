@@ -17,7 +17,7 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1049 |
+| pendingSemanticDecisions | 1048 |
 | approvedCanonicalIds | 247 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
@@ -94,7 +94,7 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1049,
+    "pendingSemanticDecisions": 1048,
     "approvedCanonicalIds": 247,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
@@ -2084,7 +2084,7 @@
           "id": "DEPLOY-14",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。"
         }
       ]
