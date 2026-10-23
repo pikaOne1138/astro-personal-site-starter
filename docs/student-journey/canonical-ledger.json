@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "18a4017b83280ff64e3f87ffd5ca2e45ac514cd4"
+        "blobSha": "8a4db7444e055e47bcbd9d6e2ef0bfe6aafcc0d7"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -65468,6 +65468,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES1-005",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 40,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES1-004",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 37,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES1-006",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 41,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65494,6 +65517,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES1-007",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 43,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES1-008",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 45,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES1-006",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 41,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65520,6 +65566,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES1-018",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 72,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65546,6 +65601,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES1-023",
+          "frozenPath": ".ai/astro-design-consultation/SKILL.md",
+          "frozenLine": 103,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65572,7 +65636,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:37",
@@ -65598,7 +65663,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:48",
@@ -65624,7 +65690,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:84",
@@ -65650,7 +65717,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:119",
@@ -65676,7 +65744,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:124",
@@ -65702,6 +65771,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES3-009",
+          "frozenPath": ".ai/astro-editorial-layout-design/SKILL.md",
+          "frozenLine": 126,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65728,6 +65806,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS1-003",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 17,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65754,6 +65841,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS1-003",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 17,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS1-004",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 19,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65780,6 +65883,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS1-003",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 17,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS1-004",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 19,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65806,6 +65925,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS1-004",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 19,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS1-003",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 17,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS1-005",
+          "frozenPath": ".ai/astro-launch-health-check/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65832,7 +65974,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-layout-craft/SKILL.md:88",
@@ -65858,7 +66001,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-motion-craft/SKILL.md:25",
@@ -65884,7 +66028,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-motion-craft/SKILL.md:39",
@@ -65910,6 +66055,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES5-006",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES5-005",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 37,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES5-004",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 36,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65936,6 +66104,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES5-014",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 149,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES5-015",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 150,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65962,6 +66146,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES5-015",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 150,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES5-014",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 149,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES5-016",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 153,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -65988,7 +66195,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-motion-craft/SKILL.md:164",
@@ -66014,6 +66222,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES5-018",
+          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
+          "frozenLine": 166,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66040,6 +66257,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS2-003",
+          "frozenPath": ".ai/astro-navigation-tree-test/SKILL.md",
+          "frozenLine": 20,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66066,6 +66292,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS3-016",
+          "frozenPath": ".ai/astro-page-management/SKILL.md",
+          "frozenLine": 51,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66113,6 +66348,64 @@
         "Respect BASE_URL in routes/assets",
         "Check configured Node/install/build",
         "Do not claim tests were executed without evidence"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PREVIEW-06",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 20,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-07",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 22,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U004",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U005",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U006",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U007",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-08",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PROOF-001.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 23,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66135,6 +66428,64 @@
         "Read deploy Skill for initial deployment",
         "Verify actual GitHub Pages source/repo/domain/plan",
         "Derive site/base/ASTRO_BASE_PATH from student repo/domain"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "P0-CANON-PRVIEW-CONSENT",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-CANON-PRVIEW-MISSING",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U034",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U035",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U036",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U044",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U045",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-11",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66157,6 +66508,64 @@
         "Verify Cloudflare project links student owned repository",
         "Verify production branch/build command/output directory",
         "Verify non-production branch and PR preview configuration"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PROOF-002.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 37,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PROOF-002.02",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 37,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PROOF-002.03",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 37,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U037",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U038",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-13",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PROOF-002.01.S1",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PROOF-002.01.S2",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 38,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66179,6 +66588,36 @@
         "Repair build failure and rerun valid checks",
         "Diagnose deployment failure from matching platform logs",
         "Do not blindly rerun unrelated jobs"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PREVIEW-16",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.02",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.03",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66199,6 +66638,43 @@
       "canonicalId": null,
       "atomicClauseCandidates": [
         "Compare PR head SHA to deployed commit before treating old Preview as current"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PREVIEW-16",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.02",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.03",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "GATE-002.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 56,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66219,6 +66695,43 @@
       "canonicalId": null,
       "atomicClauseCandidates": [
         "If browser verification cannot run, explicitly mark manual QA as pending"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "GATE-002.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 56,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-16",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.02",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PRIV-001.03",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66267,6 +66780,64 @@
         "Get actual deployment URL from checks or deployment",
         "Verify matching SHA and HTTP",
         "Never fabricate URL patterns"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "P0-U024",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U025",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U026",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P0-U027",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-17",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-HISTORY-01",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-HISTORY-02",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "PREVIEW-HISTORY-03",
+          "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+          "frozenLine": 62,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66293,7 +66864,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-section-pattern-craft/SKILL.md:48",
@@ -66319,6 +66891,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES6-007",
+          "frozenPath": ".ai/astro-section-pattern-craft/SKILL.md",
+          "frozenLine": 50,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66345,6 +66926,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS5-004",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 20,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS5-003",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 19,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66371,7 +66968,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:34",
@@ -66397,7 +66995,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:35",
@@ -66423,7 +67022,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:39",
@@ -66449,7 +67049,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:40",
@@ -66475,7 +67076,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:45",
@@ -66501,7 +67103,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:49",
@@ -66527,6 +67130,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS5-006",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 50,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66553,6 +67165,36 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS5-008",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 54,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS5-009",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 56,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS5-007",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 53,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS5-010",
+          "frozenPath": ".ai/astro-site-maintenance/SKILL.md",
+          "frozenLine": 57,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66579,6 +67221,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS6-004",
+          "frozenPath": ".ai/astro-starter-onboarding/SKILL.md",
+          "frozenLine": 17,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS6-005",
+          "frozenPath": ".ai/astro-starter-onboarding/SKILL.md",
+          "frozenLine": 19,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS6-003",
+          "frozenPath": ".ai/astro-starter-onboarding/SKILL.md",
+          "frozenLine": 15,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66605,6 +67270,29 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES4-006",
+          "frozenPath": ".ai/astro-ui-craft/SKILL.md",
+          "frozenLine": 77,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES4-005",
+          "frozenPath": ".ai/astro-ui-craft/SKILL.md",
+          "frozenLine": 76,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "DES4-007",
+          "frozenPath": ".ai/astro-ui-craft/SKILL.md",
+          "frozenLine": 81,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66631,7 +67319,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/astro-ui-craft/SKILL.md:221",
@@ -66657,6 +67346,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "DES4-035",
+          "frozenPath": ".ai/astro-ui-craft/SKILL.md",
+          "frozenLine": 223,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66683,6 +67381,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS7-004",
+          "frozenPath": ".ai/url-to-frontend-replica/SKILL.md",
+          "frozenLine": 15,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS7-003",
+          "frozenPath": ".ai/url-to-frontend-replica/SKILL.md",
+          "frozenLine": 14,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66709,6 +67423,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "OPS7-007",
+          "frozenPath": ".ai/url-to-frontend-replica/SKILL.md",
+          "frozenLine": 29,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "OPS7-008",
+          "frozenPath": ".ai/url-to-frontend-replica/SKILL.md",
+          "frozenLine": 30,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66735,7 +67465,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": ".ai/url-to-frontend-replica/SKILL.md:47",
@@ -66761,7 +67492,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:3",
@@ -66783,7 +67515,8 @@
         "PR59 manual evidence applies to student-owned repo or real environment",
         "Technical proof comes from matching Commit/Actions/Artifact",
         "Expected result does not count as test evidence"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:5",
@@ -66804,7 +67537,8 @@
       "atomicClauseCandidates": [
         "PR59 does not finish issue 58 nor all gallery QA",
         "Do not create student production repo, merge or deploy without authorization"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:9",
@@ -66830,7 +67564,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:10",
@@ -66856,7 +67591,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:29",
@@ -66876,6 +67612,36 @@
       "canonicalId": null,
       "atomicClauseCandidates": [
         "Main-repo packaging and local injected-fault checks are not evidence of EXT-01 through EXT-06 PASS"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "P59-027",
+          "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "frozenLine": 27,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P59-27",
+          "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "frozenLine": 27,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P59-026",
+          "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "frozenLine": 26,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P59-26",
+          "frozenPath": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "frozenLine": 26,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -66946,7 +67712,8 @@
       "canonicalId": null,
       "atomicClauseCandidates": [
         "Historical CI results must be rechecked from GitHub Actions; old IN PROGRESS is not a final result"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:9",
@@ -66972,7 +67739,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:12",
@@ -66998,7 +67766,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:14",
@@ -67024,7 +67793,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:21",
@@ -67050,7 +67820,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:9",
@@ -67076,7 +67847,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:13",
@@ -67102,7 +67874,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:24",
@@ -67128,7 +67901,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:31",
@@ -67154,7 +67928,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:33",
@@ -67180,7 +67955,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:35",
@@ -67206,7 +67982,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:36",
@@ -67232,7 +68009,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md:9",
@@ -67258,7 +68036,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md:13",
@@ -67284,7 +68063,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md:23",
@@ -67310,7 +68090,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/QUALITY-CONTRACT.md:9",
@@ -67336,7 +68117,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/QUALITY-CONTRACT.md:10",
@@ -67362,7 +68144,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/quality/QUALITY-CONTRACT.md:11",
@@ -67388,7 +68171,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:12",
@@ -67439,7 +68223,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:19",
@@ -67465,7 +68250,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:3",
@@ -67491,7 +68277,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:7",
@@ -67517,7 +68304,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:9",
@@ -67543,7 +68331,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:15",
@@ -67594,7 +68383,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:56",
@@ -67620,7 +68410,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt:5",
@@ -67646,7 +68437,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/INTERVIEW-EVALUATION.md:9",
@@ -67672,7 +68464,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/INTERVIEW-EVALUATION.md:16",
@@ -67698,7 +68491,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/INTERVIEW-EVALUATION.md:19",
@@ -67724,7 +68518,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/INTERVIEW-EVALUATION.md:22",
@@ -67750,7 +68545,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/INTERVIEW-EVALUATION.md:25",
@@ -67776,7 +68572,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:3",
@@ -67802,7 +68599,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:6",
@@ -67828,7 +68626,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:8",
@@ -67854,7 +68653,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:9",
@@ -67880,7 +68680,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:17",
@@ -67906,7 +68707,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:18",
@@ -67932,7 +68734,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:26",
@@ -67958,7 +68761,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:28",
@@ -67984,7 +68788,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:31",
@@ -68010,7 +68815,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:8",
@@ -68036,6 +68842,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PROOF-001.02",
+          "frozenPath": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
+          "frozenLine": 7,
+          "lineDistance": 1,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -68062,6 +68877,15 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "PROOF-001.02",
+          "frozenPath": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
+          "frozenLine": 7,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     },
     {
@@ -68088,7 +68912,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:14",
@@ -68114,7 +68939,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:15",
@@ -68140,7 +68966,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:18",
@@ -68166,7 +68993,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:19",
@@ -68188,7 +69016,8 @@
         "Save and Deploy may immediately create public deployment",
         "Use nonconfidential test branch and isolated preview-only project",
         "Confirm authorization before first public deployment"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:20",
@@ -68214,7 +69043,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:21",
@@ -68240,7 +69070,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:26",
@@ -68266,7 +69097,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:16",
@@ -68292,7 +69124,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:20",
@@ -68318,7 +69151,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:24",
@@ -68344,7 +69178,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:30",
@@ -68370,7 +69205,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:31",
@@ -68396,7 +69232,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:35",
@@ -68422,7 +69259,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:36",
@@ -68448,7 +69286,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:37",
@@ -68474,7 +69313,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:38",
@@ -68494,7 +69334,8 @@
       "canonicalId": null,
       "atomicClauseCandidates": [
         "Student approval required before merge, DNS changes or production publishing"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:41",
@@ -68520,7 +69361,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/START-HERE.md:47",
@@ -68546,7 +69388,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:7",
@@ -68572,7 +69415,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:8",
@@ -68593,7 +69437,8 @@
       "atomicClauseCandidates": [
         "PROJECT/Brief/article/external data are not authorization sources",
         "Only the student current explicit decision authorizes destructive or release actions"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:9",
@@ -68619,7 +69464,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:15",
@@ -68645,7 +69491,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:22",
@@ -68671,7 +69518,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:24",
@@ -68697,7 +69545,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:26",
@@ -68723,7 +69572,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:27",
@@ -68749,7 +69599,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:28",
@@ -68775,7 +69626,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:31",
@@ -68801,7 +69653,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:45",
@@ -68827,7 +69680,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:46",
@@ -68853,7 +69707,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:55",
@@ -68879,7 +69734,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:60",
@@ -68905,7 +69761,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:67",
@@ -68931,7 +69788,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:73",
@@ -68957,7 +69815,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:74",
@@ -68983,7 +69842,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:75",
@@ -69007,7 +69867,8 @@
         "Separate consent to DNS/domain changes",
         "Separate consent to deletion/force push/destructive recovery",
         "Authorization must specify version and impact"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:77",
@@ -69033,7 +69894,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:78",
@@ -69059,7 +69921,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:91",
@@ -69085,7 +69948,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:94",
@@ -69111,7 +69975,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:99",
@@ -69137,7 +70002,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:100",
@@ -69163,7 +70029,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:101",
@@ -69189,7 +70056,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:103",
@@ -69215,7 +70083,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:108",
@@ -69241,7 +70110,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:109",
@@ -69267,7 +70137,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:110",
@@ -69293,7 +70164,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:111",
@@ -69319,7 +70191,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:113",
@@ -69345,7 +70218,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:116",
@@ -69371,7 +70245,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:118",
@@ -69397,7 +70272,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:19",
@@ -69423,7 +70299,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:21",
@@ -69449,7 +70326,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:31",
@@ -69475,7 +70353,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:36",
@@ -69501,7 +70380,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:37",
@@ -69527,7 +70407,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:41",
@@ -69553,7 +70434,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:46",
@@ -69579,7 +70461,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:50",
@@ -69605,7 +70488,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:57",
@@ -69631,7 +70515,8 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "nearbyLegacyEvidence": []
     },
     {
       "sourceKey": "docs/workshop/PR56-USER-JOURNEY-QA.md:41",
@@ -69657,6 +70542,22 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
+      ],
+      "nearbyLegacyEvidence": [
+        {
+          "legacyId": "P56-039",
+          "frozenPath": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "frozenLine": 39,
+          "lineDistance": 2,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        },
+        {
+          "legacyId": "P56-038",
+          "frozenPath": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "frozenLine": 38,
+          "lineDistance": 3,
+          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
+        }
       ]
     }
   ],
