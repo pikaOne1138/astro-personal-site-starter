@@ -89,6 +89,9 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright
           npx playwright install --with-deps chromium
+      - name: Verify Starter draft recovery in real Chromium
+        if: github.event.action != 'closed'
+        run: node scripts/test-student-planner-draft.mjs
       - name: Exercise student browser QA failure fixtures
         if: github.event.action != 'closed'
         run: npm run test:student-browser
