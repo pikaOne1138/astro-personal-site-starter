@@ -605,3 +605,8 @@
 ## Upstream Delta｜PR #61（2026-10-23）
 
 新增 [UPSTREAM-DELTA-PR61.md](UPSTREAM-DELTA-PR61.md)，以 PR #61 HEAD `da65053ccc237474e1fdf8a28fcbae20fe7029c2` 的 AGENT-HANDOFF Blob `457835c2e4ae02acf889df1953d0a635511009ef` 作為 Frozen main `2d20e3ab` 以後獨立來源，建立 8 組可追溯處置（KEEP／ALIAS／PARTIAL_SPLIT、附 PARTIAL_CONFLICT）。已確認三條路徑 **不強制 Site Brief JSON**：Starter B 可以匯出、既有網站復刻 A 不預設、直接 AI 建站 C 可視需要另建。使用者明確取消永久保存初版 Brief 路徑、Hash、匯入日期；舊初版不得覆蓋學員網站現況。PROJECT-TEMPLATE L40 與 student-project-context L26 可能誘發非必要的追補義務，先保留待裁決，**本批不改模板／生成器**。#61 及 #58 都保持 Open，#67 保持 Draft，Phase 2 尚未 PASS，Phase 3/4 BLOCKED，不 Merge、不部署。
+
+
+## PR #61 Upstream Crosswalk 03｜來源校正與條款反查
+
+已將 [UPSTREAM-DELTA-PR61.md](UPSTREAM-DELTA-PR61.md) 的來源錨點校正至 PR61 真正行號：Site Brief 撤銷為 L28（而非先前誤植 L25）；新增 [PHASE2-PR61-CANONICAL-CROSSWALK-03.md](PHASE2-PR61-CANONICAL-CROSSWALK-03.md)，以 PR61 L19/L21–23/L28–33 建立可反查的 16 個子義務及 P0／Batch／學生模板關係。明確記錄三路徑不強制 Site Brief、初版 path/hash/import date 永久保留要求已撤銷、375px RWD 與人工審查證據的不可刪條件。**此為文件候選關係，不是跨全 Repo 的 Canonical PASS**；來源 PR61 仍 Open/Draft，Issue58 保留 Open。Stage2 IN PROGRESS，Stage3/4 BLOCKED；不改模板、不刪源、不 Merge、不部署。
