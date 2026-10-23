@@ -1204,9 +1204,9 @@ if(process.argv[2]==='import'){
    approvalEvidence:{frozenPath:draftSrc,frozenLine:37,frozenBlobSha:manifest[draftSrc],
     sourceText:frozenLine(draftSrc,37),method:'PUBLIC_ARCHIVE_SEPARATE_FROM_OTHER_DISCOVERY_SURFACES'}});
  }
- const parent=byId.get('B2-PUB37-01');
- if(!parent||parent.canonicalId||draftExclusion.some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Draft exclusion parent not source-checked');
- Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+ const draftExclusionParent=byId.get('B2-PUB37-01');
+ if(!draftExclusionParent||draftExclusionParent.canonicalId||draftExclusion.some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Draft exclusion parent not source-checked');
+ Object.assign(draftExclusionParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
   childrenLegacyIds:draftExclusion.map(([id])=>id),parentDisposition:'Five separate public-discovery surfaces are preserved; not a new sixth requirement'});
  const confidential=byId.get('B2-PUB37-02');
  if(!confidential||confidential.canonicalId||
