@@ -269,6 +269,55 @@ if(process.argv[2]==='import'){
     sourceText:text,method:'DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW'}
   });
  }
+ // Exact same-action aliases from prior Phase2 papers. Each pair has a
+ // matching Frozen line AND a manually checked atomic statement. Never map
+ // composite parents or narrower acceptance subconditions by proximity.
+ const semanticAliasProofs=[
+  ['B1-DEP31-01','P0-U017','.ai/astro-starter-deploy/SKILL.md',31],
+  ['B1-DEP31-02','P0-U018','.ai/astro-starter-deploy/SKILL.md',31],
+  ['B1-DEP31-04','P0-U019','.ai/astro-starter-deploy/SKILL.md',31],
+  ['B1-DEP31-04-CF','P0-U019','.ai/astro-starter-deploy/SKILL.md',31],
+  ['B1-DEP31-03-S02','P0-U048','.ai/astro-starter-deploy/SKILL.md',31],
+  ['PREVIEW-HISTORY-01','P0-U024','.ai/astro-pr-preview/SKILL.md',62],
+  ['PREVIEW-HISTORY-02','P0-U025','.ai/astro-pr-preview/SKILL.md',62],
+  ['PREVIEW-HISTORY-03','P0-U026','.ai/astro-pr-preview/SKILL.md',62],
+  ['PREVIEW-HISTORY-04','P0-U027','.ai/astro-pr-preview/SKILL.md',62],
+  ['GATE-002.01','P0-U003','.ai/astro-starter-deploy/SKILL.md',37],
+  ['GATE-002.02.S1','P0-U030','.ai/astro-starter-deploy/SKILL.md',37],
+  ['GATE-002.02.S2','P0-U031','.ai/astro-starter-deploy/SKILL.md',37],
+  ['GATE-002.02.S3','P0-U032','.ai/astro-starter-deploy/SKILL.md',37],
+  ['PROOF-001.03.S1','P0-U034','.ai/astro-pr-preview/SKILL.md',30],
+  ['PROOF-001.03.S2','P0-U035','.ai/astro-pr-preview/SKILL.md',30],
+  ['PROOF-001.03.S3','P0-U036','.ai/astro-pr-preview/SKILL.md',30],
+  ['PREVIEW-POLICY-01.S1','P0-U035','.ai/astro-pr-preview/SKILL.md',30],
+  ['PREVIEW-POLICY-01.S2','P0-U036','.ai/astro-pr-preview/SKILL.md',30]
+ ];
+ for(const [legacyId,anchorId,source,line] of semanticAliasProofs){
+  const target=byId.get(anchorId),alias=byId.get(legacyId);
+  if(!target?.canonicalId||!alias||!frozenLine(source,line)||
+    !alias.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line)||
+    !target.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Source-verified alias proof unavailable: '+legacyId+' -> '+anchorId);
+  if(alias.canonicalId&&alias.canonicalId!==target.canonicalId)
+   throw Error('Alias would overwrite prior canonical: '+legacyId);
+  const siblings=entries.filter(row=>row.canonicalId===target.canonicalId || row.legacyId===legacyId);
+  const ids=siblings.map(row=>row.legacyId);
+  for(const row of siblings){
+   const original=row.legacyId===legacyId?alias:row;
+   Object.assign(row,{canonicalId:target.canonicalId,requirement:target.requirement,
+    kind:target.kind,applicability:target.applicability,conditions:target.conditions,
+    exceptions:target.exceptions,acceptanceCriteria:target.acceptanceCriteria,
+    decision:'MERGE',reviewStatus:'APPROVED',aliases:ids.filter(id=>id!==row.legacyId),
+    approvalEvidence:row.approvalEvidence||{frozenPath:source,frozenBlobSha:manifest[source],
+      frozenLine:line,sourceText:frozenLine(source,line),
+      formerWorkingRequirement:original.requirement,
+      method:'DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE'}});
+  }
+  semanticRelations.push({legacyIds:[legacyId,anchorId],decision:'MERGE',
+   sourceWorkingPaper:'PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD',
+   scopeNote:'Exact same scoped action at immutable Frozen line; original working row preserved in evidence',
+   sharedExactFrozenAnchors:[source+':'+line],reviewStatus:'APPROVED',canonicalId:target.canonicalId});
+ }
  // P0 leaf checkboxes/evidence fields are acceptance dimensions of a
  // composite obligation, not 35 independently invented policy obligations.
  const dimensions=[
