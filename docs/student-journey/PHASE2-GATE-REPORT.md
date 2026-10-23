@@ -54,11 +54,11 @@
 | p0p1PendingSourceMapping | 0 |
 | p0p1PendingCanonicalAdjudication | 159 |
 | p0p1ClosedNonNormative | 6 |
-| p0p1DocumentaryAssessed | 15 |
-| p0p1FirstPassDisposed | 144 |
+| p0p1DocumentaryAssessed | 40 |
+| p0p1FirstPassDisposed | 119 |
 | p0p1SourceDispositionTotal | 165 |
 | p0p1NearbyLegacyEvidence | 35 |
-| p0p1AtomicSubclausesProposed | 36 |
+| p0p1AtomicSubclausesProposed | 91 |
 | p0p1RemovedQueueKeys | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
@@ -128,11 +128,11 @@
     "p0p1PendingSourceMapping": 0,
     "p0p1PendingCanonicalAdjudication": 159,
     "p0p1ClosedNonNormative": 6,
-    "p0p1DocumentaryAssessed": 15,
-    "p0p1FirstPassDisposed": 144,
+    "p0p1DocumentaryAssessed": 40,
+    "p0p1FirstPassDisposed": 119,
     "p0p1SourceDispositionTotal": 165,
     "p0p1NearbyLegacyEvidence": 35,
-    "p0p1AtomicSubclausesProposed": 36,
+    "p0p1AtomicSubclausesProposed": 91,
     "p0p1RemovedQueueKeys": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",

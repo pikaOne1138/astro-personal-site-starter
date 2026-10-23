@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "802df7df612254211fd1441d0d63b7ea74017f33"
+        "blobSha": "c0eb715b31c27530fd1fd365f6ab3b4b512dccf0"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -68759,20 +68759,16 @@
       "lineEnd": 9,
       "sourceText": "- 合法的站內絕對路徑、相對路徑、hash、HTTPS、以及適用元件的 mailto/tel 必須保持可用。無效可選連結應呈現無連結文字／未設定提示；必要連結應有明確策略，不得輸出假動作。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "URL_VALIDATION_AND_FALLBACK",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Allow safe internal and applicable external URL types",
+        "For optional invalid links show unavailable text or pending state",
+        "Never output a fake interaction for a required invalid link"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -68786,20 +68782,15 @@
       "lineEnd": 13,
       "sourceText": "每個 URL 測試需證明正確的 URL validator 拒絕不安全輸入，而不只是後續死連結掃描回傳非零。測試記錄需包含 id、元件、fixture、期望診斷、實際診斷、checkout SHA、結果。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_CONTENT_REQUIREMENT",
-      "reviewerNote": "Potential norm or context: preserve complete original; no inferred alias or parent replacement",
+      "preliminaryKind": "SECURITY_REGRESSION_EVIDENCE",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Validate that the URL validator rejects malicious input, not merely that a dead-link scanner fails",
+        "Record fixture, component, expected and actual diagnostics, checkout SHA and result"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -68813,20 +68804,14 @@
       "lineEnd": 23,
       "sourceText": "任何一層尚未執行，不得藉其他層的 PASS 升級狀態。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_CONTENT_REQUIREMENT",
-      "reviewerNote": "Potential norm or context: preserve complete original; no inferred alias or parent replacement",
+      "preliminaryKind": "NO_CROSS_TEST_PASS_UPGRADE",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Do not substitute a different layer PASS for a check that has not run"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -68840,20 +68825,14 @@
       "lineEnd": 9,
       "sourceText": "- **NOTICE**: example/placeholder content, empty articles, or deliberate experimentation; never block technical builds solely for these.",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "NOTICE_NOT_BUILD_BLOCKER",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Do not block technical builds solely for placeholder content, intentionally empty articles or deliberate experimentation"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -68867,20 +68846,14 @@
       "lineEnd": 10,
       "sourceText": "- **NOT TESTED**: no evidence at this commit; never silently count as PASS.",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "NOT_TESTED_NO_PASS",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "If there is no evidence for this commit, mark NOT TESTED and do not silently count as PASS"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69635,20 +69608,15 @@
       "lineEnd": 13,
       "sourceText": "- GitHub Pages 不因 `pull_request` + `upload-artifact` 自動提供 Live PR Preview。此專案基礎骨架只提供 read-only PR Build，正式發佈需要人工 `workflow_dispatch`；嚴禁在未獲同意前開啟或點擊 Production 部署。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "GITHUB_PAGES_PREVIEW_BOUNDARY",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "GitHub Pages PR artifact does not imply a live Preview",
+        "Production uses authorized manual workflow_dispatch, not unapproved automatic publishing"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69689,20 +69657,16 @@
       "lineEnd": 15,
       "sourceText": "- 要完全只用 GitHub Pages 做 PR Preview，必須額外建立受信任的 Publisher 工作流程，隔離 PR 不可信程式與高權限部署權限，並為預覽建立帶 PR 編號的 base path 與更新／清理機制。不能直接把老師 GitHub Actions 硬編碼 owner/repo 路徑套入學員站。基礎 ZIP 不聲稱這項進階能力已啟用。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "ISOLATED_GITHUB_PAGES_PREVIEW",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Advanced GitHub Pages PR preview requires separated trusted publisher and PR-code privilege boundary",
+        "Set dedicated PR base paths and safe cleanup",
+        "Do not copy teacher repo owner URLs or claim advanced preview installed"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69716,20 +69680,15 @@
       "lineEnd": 18,
       "sourceText": "- 經學員授權連接**學員自己的 GitHub Repo**；Preview Deployment 由非 Production branch 觸發。AI 必須確認目前的 Production branch、Branch Preview 範圍、每次部署的 Commit SHA、Preview URL。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "CLOUDFLARE_PREVIEW_CONFIGURATION",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Connect student-owned repository only with authorization",
+        "Confirm Production branch, preview branch policy, exact deployment SHA and real URL"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69766,20 +69725,15 @@
       "lineEnd": 20,
       "sourceText": "- 當 Preview Branch 的 URL 可開啟且 Head 與 PR 一致，再請學員檢查內容；取得明確同意後才 Merge 到配置好的正式分支。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "PREVIEW_BEFORE_MERGE",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Verify live Preview URL and reviewed PR head alignment before requesting merge approval",
+        "Merge to configured production branch only after explicit consent"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69793,20 +69747,14 @@
       "lineEnd": 21,
       "sourceText": "- Cloudflare Pages Preview、Cloudflare Workers 靜態資產、GitHub Pages Actions 是不同部署類型，不能混用 Build 設定或 URL 格式。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "PLATFORM_SPECIFIC_DEPLOYMENT",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Do not mix Cloudflare Pages, Workers assets and GitHub Pages build settings or URL shapes"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69901,20 +69849,16 @@
       "lineEnd": 24,
       "sourceText": "- 產出的學員**獨立網站**根目錄應有 `PROJECT.md`、`AGENTS.md`；兩者要隨網站提交到**學員自己的** Git 倉庫，供新對話、新工具接手。重新取得新版 ZIP 不得覆蓋網站現有的 PROJECT。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "STUDENT_OWNED_CONTEXT",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Generated independent student site must contain PROJECT.md and AGENTS.md",
+        "Commit these context files to the student owned repo",
+        "Do not overwrite existing PROJECT on ZIP upgrade"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -69928,20 +69872,15 @@
       "lineEnd": 30,
       "sourceText": "3. `docs/student-builder-pack/AGENT-HANDOFF.md` 只在接手既有專案、跨對話或跨代理交接時讀取；初次建站不必把它當成額外必經文件。若接手既有網站，以該站自己的 `PROJECT.md`／`AGENTS.md` 和目前 Git 工作樹為準，不得覆蓋。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "OPTIONAL_HANDOFF_FILE",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "AGENT-HANDOFF.md is only required for transfer across tools or chats, not first time build",
+        "Existing site takeover must honor local PROJECT/AGENTS and current Git working tree"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70036,20 +69975,16 @@
       "lineEnd": 37,
       "sourceText": "- 檢查 Build、實際 Preview、桌機/手機、圖片、文章、導航及搜尋。沒有實測不得稱成功。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "REAL_PREVIEW_ACCEPTANCE",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Verify build and actually accessible preview",
+        "Test actual desktop/mobile content, navigation, images and search",
+        "Do not assert success for untested integration"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70138,20 +70073,16 @@
       "lineEnd": 7,
       "sourceText": "新工作開始先在能使用終端的學員站執行 `npm run status`，查看本機現況、衝突與未提交工作。**有未提交變更不等於全部停工**：若本次修改不重疊且可保護原始資料，可以繼續；若涉及相同檔案、衝突、合併中或破壞性動作，先確認並保護原檔。禁止 reset --hard、強制推送或自動覆蓋。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_CONTENT_REQUIREMENT",
-      "reviewerNote": "Potential norm or context: preserve complete original; no inferred alias or parent replacement",
+      "preliminaryKind": "UNCOMMITTED_WORK_PROTECTION",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Inspect actual working tree before edits",
+        "Protect overlapping uncommitted work before checkout or rewrite",
+        "Never silently reset hard, force-push or discard work"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70187,20 +70118,16 @@
       "lineEnd": 9,
       "sourceText": "部署平台若連接 Cloudflare Git，自動推送正式分支可能直接公開網站：任何推送 main／Production branch 視同部署，必須先取得發布核准。金鑰不能放在前端或 PUBLIC_ 變數；可用時執行 `npm run check:secrets`，不能只相信文字提醒。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_CONTENT_REQUIREMENT",
-      "reviewerNote": "Potential norm or context: preserve complete original; no inferred alias or parent replacement",
+      "preliminaryKind": "DEPLOYMENT_AND_SECRET_BOUNDARY",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Push to Git-connected Production branch counts as deployment and requires consent",
+        "Never expose secrets in PUBLIC_ or frontend source",
+        "Run available check:secrets rather than trusting text instructions only"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70268,20 +70195,17 @@
       "lineEnd": 24,
       "sourceText": "3. **學員可說「跳過」「我不知道」「你決定」「讓 AI 發揮」**：將該題標為 `SKIPPED`（不再強迫回答），在可逆、低風險的設計／排版／示範文案範圍內，自主提出 `AI_PROPOSED` 方案並製作本地草稿／Preview。方案須清楚列出一兩個關鍵假設，並可隨時修改；**跳過不是確認、AI 發揮不是授權發布**。涉及實際證照、客戶見證、療效、服務價格、個資、外部預約連結、金鑰及發布等不可推測資料，只能標 `MISSING` 或 `DO_NOT_PUBLISH`，保留未配置狀態，不得補假資料。若卡在必要安全確認，停止該高風險操作，但可繼續其他安全的頁面草稿。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "SKIP_AND_UNVERIFIED_FACTS",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Allow skipped planning questions while continuing reversible proposals",
+        "Do not interpret skip as consent for publication",
+        "Do not fabricate qualifications, health effects, pricing, booking or client data",
+        "Keep unsafe missing facts MISSING or DO_NOT_PUBLISH"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70322,20 +70246,16 @@
       "lineEnd": 27,
       "sourceText": "6. **主動發現相關的未知風險**：只查與任務直接相關的安全、資料、內容、無障礙、SEO、預覽／發布風險。聯絡表單要查個資去向與是否真的送達；API 要查金鑰是否暴露；預約要查外部整合及資料收集；文章下架要查索引／RSS／Sitemap。對高影響未知風險先阻擋受影響操作，說明確認辦法；不要把所有可能的系統風險一次灌給學員。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "PROCEDURE_OR_ARCHITECTURE",
-      "reviewerNote": "Operational procedure or architectural contract: preserve source-specific scope",
+      "preliminaryKind": "SCOPED_RISK_DISCOVERY",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_PROCEDURE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Check risk dimensions directly relevant to the requested change",
+        "Validate data destination for forms and exposed API keys for APIs",
+        "Block only high-impact affected action while evidence missing"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70349,20 +70269,16 @@
       "lineEnd": 28,
       "sourceText": "7. **訪談判準與彈性預算**：只有「答案會讓方案走向不同、猜錯代價高、不能從既有檔案或預覽查清」時才問。單純低風險修改通常 0 題；初次草案先盡量 1–2 題，重要設計決策可延長；學員多次表示不知道時提供可撤回的暫定方案。**題數是體驗預算，絕非安全授權的上限**：任何高風險／不可逆操作若關鍵資訊不足，不能因問完配額就猜測執行。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "QUESTION_BUDGET_SAFETY_EXCEPTION",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Ask only when answer materially changes solution and cannot be verified elsewhere",
+        "Treat question count as usability budget, never an upper bound on authorization checks",
+        "Do not guess safety-critical facts because question budget is exhausted"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70565,20 +70481,15 @@
       "lineEnd": 74,
       "sourceText": "- **僅在已授權的 Repo**：Commit、Push、建立 PR、取得真實 Preview。若只有本機 Git，先保留可回復的本機 Commit；沒有遠端就沒有 GitHub PR／Actions，不得聲稱已建立。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "REPO_AUTHORITY",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Commit/push/PR only in authorized student repository",
+        "Without a remote repository do not claim an actual GitHub PR or Actions run exists"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70617,20 +70528,14 @@
       "lineEnd": 77,
       "sourceText": "- 已存在未提交的使用者工作時，不得直接 reset、checkout 覆蓋、force-push 或 stash 後遺忘；先說明衝突並保護原有工作。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "PRESERVE_UNCOMMITTED_WORK",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Before reset, checkout, force push or stash, protect existing user changes and do not silently discard work"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70725,20 +70630,15 @@
       "lineEnd": 99,
       "sourceText": "- 初次建站或修改頁面、圖片、導覽、排版後，在**學員自己的網站目錄**先執行 `npm run build && npm run verify && npm run qa:responsive`；PR 會在獨立 GitHub Actions 再執行。僅在已安裝依賴和 Chromium 的環境執行瀏覽器檢查；第一次可使用 `npx playwright install chromium`。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "STUDENT_SITE_QA_COMMANDS",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Run build, verify and responsive QA in the generated student site after layout/content/navigation changes",
+        "Run browser checks only when compatible Chromium dependencies are installed"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70752,20 +70652,16 @@
       "lineEnd": 100,
       "sourceText": "- `qa:responsive` 對已建置的實際 HTML 路由檢查桌機／平板／手機寬度，保存 `qa-artifacts/student-responsive/results.json` 與截圖，並回報 HTTP 失敗、明顯水平溢出、站內破圖或 JS 執行錯誤。外部圖片問題與無法辨識的導覽控件只警告，不可聲稱已完全驗證。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "QA_ARTIFACT_AND_LIMITATIONS",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Responsive QA must cover generated HTML routes with result JSON and screenshots",
+        "Report HTTP failures, overflow, broken internal images and JS errors",
+        "Warn and disclose external-image and ambiguous navigation cases rather than claiming full verification"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70779,20 +70675,16 @@
       "lineEnd": 101,
       "sourceText": "- 看見 FAIL 應根據路由、寬度、元素位置及截圖，做最小範圍修正，重新 Build 和 QA；**不得為了綠燈而刪除內容、降低測試嚴格度、隱藏出錯區塊或擅自重做整頁**。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "NO_TEST_GAMING",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "SPLIT_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Repair observed failure with the smallest necessary change and rerun build/QA",
+        "Never remove content or weaken the test to force green checks",
+        "Do not hide broken UI or rebuild an unrelated whole page"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70806,20 +70698,14 @@
       "lineEnd": 103,
       "sourceText": "- 沒有 Chromium／本地執行權限，或只拿到靜態截圖時，標示 `NOT TESTED`，不要報稱已執行瀏覽器 QA。學員不需要自行理解測試命令，由 AI 在有權限的環境操作並解釋結果。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "BROWSER_QA_NOT_TESTED",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Without actual browser execution mark NOT TESTED; static images alone cannot establish browser QA"
       ],
       "nearbyLegacyEvidence": []
     },
@@ -70887,20 +70773,14 @@
       "lineEnd": 110,
       "sourceText": "- 更新建站 ZIP 或 Starter 不得覆蓋學員已寫的 PROJECT.md，若有衝突先比對並詢問。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "PROJECT_FILE_UPGRADE_PROTECTION",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "Updating student ZIP/starter must not overwrite student edited PROJECT.md; compare conflicts first"
       ],
       "nearbyLegacyEvidence": []
     },
