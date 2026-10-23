@@ -1,8 +1,6 @@
-# Astro 架站工作坊｜十套 AI Skills 端到端驗證手冊 v1.0
+# Astro 架站工作坊｜AI Skills 端到端驗證手冊
 
-> **基準日期**：2026-10-08（台灣時間）  
-> **主 Repository**：https://github.com/pikaOne1138/astro-personal-site-starter  
-> **驗證基準**：PR #26 已合併，Merge Commit `b4729d29d976ce42de694f9db6f8671059c01b65`。執行時**務必重新讀取 GitHub 最新狀態**，不要把本文件當成永遠正確的版本紀錄。  
+> **主 Repository**：https://github.com/pikaOne1138/astro-personal-site-starter。執行時**務必重新讀取 GitHub 最新狀態**，不要把本文件當成已驗證的紀錄。  
 > **目標讀者**：工作坊開發者、Claude Code／Codex 等 AI Coding Agent、完全沒有程式基礎的測試學員。  
 > **狀態**：本文件是**待執行的驗證計畫與提示詞**，不是宣稱所有測試已經通過。
 
@@ -23,17 +21,17 @@
 | L2 | 實際網站驗收 | 真實瀏覽器、各尺寸、導航、搜尋、部署網址皆通過 | 非技術學員必然看得懂 |
 | L3 | 新手端到端驗收 | 一個乾淨 Repository 從需求走到發布與復原，記錄所有阻礙 | 其他所有環境自動適用 |
 
-**當前已知界線：** `/layouts/` 的 12 款是首頁方向原型，尚非 12 套完整多頁網站；`/starter/` 匯出 Site Brief JSON；`scripts/export-starter.mjs` 能建立獨立 Astro 骨架，但**不是高保真 12 版型移植器**。正式網站仍需 `astro-site-assembly` 接續設計適配。既有專案的 Pagefind 搜尋／SEO 功能，也不可在獨立骨架中未經檢查就視為已完整繼承。
+**當前已知界線：** `/layouts/` 的版型是首頁方向原型，不是完整的多頁網站；`/starter/` 匯出 Site Brief JSON；`scripts/export-starter.mjs` 能建立獨立 Astro 骨架（各版型的組裝狀態以 `src/data/layout-assembly/definitions.mjs` 為準），但**不是高保真的版型移植器**。正式網站仍需 `astro-site-assembly` 接續設計適配。既有專案的 Pagefind 搜尋／SEO 功能，也不可在獨立骨架中未經檢查就視為已完整繼承。
 
 ---
 
-## 1. 十套 Skills 與必須驗證的責任
+## 1. Skills 與必須驗證的責任
 
 | Skill（實際路徑均為 `.ai/<名稱>/SKILL.md`） | 作用 | 關鍵驗證 | 失敗訊號 |
 |---|---|---|---|
 | `astro-starter-onboarding` | 初學者需求引導、選 Layout／Theme、品牌及頁面導航、輸出 Site Brief | 問得少而準、slug 合法、導航與 CTA 合法、匯出 JSON 可用 | 猜 1A/2C 編號、把版型當配色、生成錯誤頁面 |
-| `astro-layout-craft` | 整頁資訊架構與首頁版型適配 | 來源原型結構、Hero 比例、閱讀路徑與手機重排 | 12 款都只做同一個 Hero＋三張卡 |
-| `astro-editorial-layout-design` | Hero／Sections／Lists／Rhythm／CTA 的構圖細化 | 使用 40 種配方且遵循四尺寸 QA | 無目的 Bento、套公式造成失真 |
+| `astro-layout-craft` | 整頁資訊架構與首頁版型適配 | 來源原型結構、Hero 比例、閱讀路徑與手機重排 | 所有版型都只做同一個 Hero＋三張卡 |
+| `astro-editorial-layout-design` | Hero／Sections／Lists／Rhythm／CTA 的構圖細化 | 使用編輯式配方且遵循四尺寸 QA | 無目的 Bento、套公式造成失真 |
 | `astro-ui-craft` | 品牌 Tokens、Typography、Functional Blocks、設計一致性 | 先查 Registry；對比、字體與 Blocks 有據可查 | 重複製造元件、硬編碼散落的顏色 |
 | `astro-motion-craft` | 微動畫、互動與可及性 | reduced-motion、鍵盤、觸控、無 JS 降級 | 全站亂加 fade-up 或 hover-only 資訊 |
 | `astro-content-publishing` | Content Collections、文章、SEO、RSS、Sitemap、搜尋 | Markdown 單一資料來源、draft 不公開、RSS/SEO/全文搜尋 | 使用寫死 metadata 搜尋、失效 canonical |
@@ -41,10 +39,19 @@
 | `astro-starter-deploy` | 學員 GitHub Pages 或選用 Cloudflare 部署 | 正確 site/base、正式 URL、權限、DNS、無敏感資訊 | 沿用工作坊 URL／Token、部署錯路徑 |
 | `astro-pr-preview` | Branch、PR、Actions、預覽與安全合併 | PR 預覽真實可存取；須經使用者允許才 Merge | 把 CI 當 UI QA、自動 Merge |
 | `astro-site-maintenance` | 更新、備份、回復及故障排查 | Revert PR、恢復驗證、外部資料不冒充 Git 備份 | 強制 push、無確認直接覆蓋正式站 |
+| `astro-site-entry` | 判斷建站走哪一條路（復原既有網站、使用 Starter、直接對話） | 只分流、不重寫其他 Skill 的規則；允許中途改選 | 一開始就叫學員填表、重複其他 Skill 的內容 |
+| `astro-site-from-zero` | 不經規劃器，直接對話建站 | 一次一個問題、先確認短版計畫、不把 Site Brief 當門檻 | 強迫先走規劃器、編造資料 |
+| `url-to-frontend-replica` | 復原已獲授權的既有網站前端 | 先確認權利與範圍、逐頁比對、不推測後端 | 未確認授權就復製、宣稱重建了未公開的後端 |
+| `astro-design-consultation` | 設計對話、參考站分析、Design Brief | 提供真正不同結構的方案、保留被否決的方向、不替學員確認未證實資料 | 只給換色方案、把提案寫成已確認 |
+| `astro-section-pattern-craft` | 以既有區段樣板組頁 | 依 registry 選擇、內容欄位齊全、不因缺資料而編造 | 虛構作品或見證、重複 Footer |
+| `astro-page-management` | 既有網站的新增、修改、隱藏、移動頁面 | 導覽整站一致（桌機與手機）、目的地不是 404、Sitemap 與 canonical 一致 | 只檢查新頁面、硬編碼多份選單 |
+| `astro-content-readiness` | 檢查真實內容是否齊備 | 缺的內容列出來、不編造、可選區段可省略 | 因內容少就阻擋建置、補假內容 |
+| `astro-navigation-tree-test` | 導覽可理解性測試 | 純文字樹加三個真實任務、需要真人 | 用 AI 模擬結果充當真人測試 |
+| `astro-launch-health-check` | 正式上線後的健康檢查 | 檢查真實正式網址、robots／sitemap／canonical | 把 Build 成功或提交 Sitemap 當成已收錄 |
 
 ### Skill 交接順序
 
-`onboarding → layout-craft → editorial-layout-design → ui-craft → site-assembly → content-publishing → motion-craft → pr-preview → starter-deploy → site-maintenance`
+`site-entry → （from-zero ／ url-to-frontend-replica ／ design-consultation → starter-onboarding）→ layout-craft → editorial-layout-design → section-pattern-craft → ui-craft → site-assembly → content-readiness → content-publishing → motion-craft → navigation-tree-test → pr-preview → starter-deploy → launch-health-check → site-maintenance ／ page-management`
 
 這是**測試流程的協作順序**，不是說每次只准讀一個 Skill。遇到跨層任務，Agent 須說明涉及的 Skills 與交接依據。
 
@@ -99,7 +106,7 @@
 3. 虛構資格、客戶評價、成效數據、使用者資料、場地／服務價格。
 4. 直接搬用案例網站 Logo、照片、品牌文字與客戶資料。
 5. 以 build 成功代替 1440／1280／768／390 實際畫面 QA。
-6. 將 12 個 Layout、40 個 Composition Recipes、Functional Blocks、Effects 混計。
+6. 將 Layout、Composition Recipes、Functional Blocks、Effects 混計。
 
 ---
 
@@ -135,7 +142,7 @@
 你是「Astro 架站工作坊新手端到端驗證 Agent」，不是單純的程式產生器。
 
 Repository：https://github.com/pikaOne1138/astro-personal-site-starter
-工作目標：按照《Astro 工作坊｜十套 AI Skills 端到端驗證手冊》G0–G12，驗證完全不會程式的學員是否可以從選擇 Layout、品牌色、導航，到建立獨立 Astro 網站、發布、修改與回復。
+工作目標：按照《Astro 架站工作坊｜AI Skills 端到端驗證手冊》G0–G12，驗證完全不會程式的學員是否可以從選擇 Layout、品牌色、導航，到建立獨立 Astro 網站、發布、修改與回復。
 
 你的執行規則：
 1. 每次開始先讀 GitHub 最新 main、最近 PR、AGENTS.md、對應 Skills、相關 Registry，不靠聊天記憶判定現況。
@@ -143,12 +150,12 @@ Repository：https://github.com/pikaOne1138/astro-personal-site-starter
 3. 每個關卡只做當關指定任務，先列執行計畫與依賴檔案，結束回報 PASS / FAIL / BLOCKED / NOT TESTED 與證據。
 4. 不要直接在 main 開發。Branch → PR → Build → 真實預覽 → 視覺/功能 QA → 等待使用者明確同意 → Merge。
 5. 若沒有瀏覽器、Cloudflare 授權或其他必備工具，明確回報 BLOCKED，不能用假裝點過或猜測代替。
-6. 12 款 Layout 是首頁方向原型。Site Brief 匯出器目前只是獨立 Astro 骨架，不能聲稱已完成高保真 Layout、多頁功能或 Cloudflare 正式部署。
+6. Layout 是首頁方向原型。Site Brief 匯出器目前只是獨立 Astro 骨架，不能聲稱已完成高保真 Layout、多頁功能或 Cloudflare 正式部署。
 7. 所有 Demo 文案標 Demo，不能捏造任何專業資格、客戶見證、預約、訂閱、價格或成效。
 8. 每個 Gate 回報：修改的檔案、測試命令、結果、實際 URL、截圖路徑、未測風險、下一關卡是否可開始。
 9. 不許自動 Merge、強制 Push、覆蓋正式站、刪 Repo、變更 DNS 或授權付費服務。遇到需要上述操作，先停下問我。
 
-先只執行 G0：查出目前十套 Skills、最新 main Commit、PR 狀態、匯出腳本及既有工作坊網站的部署現況，建立一份測試基準報告。G0 完成後停止，等我指示下一關。
+先只執行 G0：查出目前所有 Skills、最新 main Commit、PR 狀態、匯出腳本及既有工作坊網站的部署現況，建立一份測試基準報告。G0 完成後停止，等我指示下一關。
 ```
 
 ---
@@ -183,7 +190,7 @@ Repository：https://github.com/pikaOne1138/astro-personal-site-starter
 
 **PASS：** 學員能理解全部問題；沒有要求先懂 Astro／GitHub；有清楚的網站目標與內容缺口。
 
-## G2｜12 Layout 選擇和結構辨識
+## G2｜Layout 選擇和結構辨識
 
 **提示詞 P3**
 
@@ -206,7 +213,7 @@ Repository：https://github.com/pikaOne1138/astro-personal-site-starter
 
 請檢查規劃器輸出的 Site Brief、HEX 格式和現有 Theme Tokens。說明這個新主色將如何映射到 accent、文字、焦點、CTA，以及哪些背景/輔色不能直接套同色。產生檢查清單。
 
-不得聲稱規劃器已自動改動 12 款 Layout 的實際 CSS。需要做可讀對比驗證，尤其按鈕、連結、焦點環、深色背景上的文字。
+不得聲稱規劃器已自動改動各款 Layout 的實際 CSS。需要做可讀對比驗證，尤其按鈕、連結、焦點環、深色背景上的文字。
 ```
 
 **PASS：** JSON 合法、品牌色正確；對比可讀；知道「輸出設定」與「實際套 CSS」有差別。
@@ -485,7 +492,7 @@ P0/P1 未關閉，不應宣布「可以正式交給完全不會程式的學員�
 - 測試 B Repo / Commit / 正式 URL：
 - PR／Actions／瀏覽器證據：
 
-## 十套 Skills 驗收矩陣
+## Skills 驗收矩陣
 | Skill | L0 | L1 | L2 | L3 | 結論／缺陷編號 |
 |---|---|---|---|---|---|
 | astro-starter-onboarding | | | | | |
@@ -520,12 +527,3 @@ P0/P1 未關閉，不應宣布「可以正式交給完全不會程式的學員�
 ```
 
 ---
-
-## 11. 對目前架構的四項優先風險提醒
-
-1. **獨立 Starter 骨架與 Layout 原型仍未真正合一**：`layoutSlug` 目前不足以證明新網站沿用原型的閱讀結構。G6 是不可跳過的核心工程驗收。
-2. **匯出站內頁尚屬內容占位**：生成某個路由不代表已完成可發布的 About、服務頁、分類頁、文章/搜尋體驗。必須完成內容、連結與可及性。
-3. **展示站已有內容／搜尋系統，不等於匯出 Starter 都自動包含**：需逐項證明 RSS、Sitemap、Pagefind、canonical、robots、文章草稿與分類在新站也成立。
-4. **CI 與 Skill 文件不等於非技術使用者體驗**：最終需要全新 Repo、真人或等效瀏覽器操作者、發布／修改／復原實測，才算真正完成 0→1。
-
-**最佳下一步**：先把這份文件交給能執行 GitHub、檔案與瀏覽器操作的 Coding Agent，依 P0 執行 G0；再做 G4→G5 的可重複煙霧測試。待基本匯出確認後，將主要精力放在 G6 的高保真 Layout 適配及 G10-A 的新 Repository 實際部署。

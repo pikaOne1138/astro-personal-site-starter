@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** URL 驗證的缺口與負向注入的要求已併入 `docs/quality/open-acceptance.md`（C）與 `QUALITY-CONTRACT.md`（證據的層次）。僅供歷史查閱，不再維護。
+
 # QA v2.0｜Props 契約與 URL 護欄定點回歸
 
 本測試只宣稱覆蓋下列高風險元件，**不**代表 110 個元件的所有 Props 已驗收。

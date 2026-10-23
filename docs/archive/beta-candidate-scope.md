@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是某次 Beta 候選的範圍決定。仍有效的限制（Props 渲染 fixture 是實驗性的、人工設計品質與第一次使用的學員體驗沒測過）已併入 `docs/quality/open-acceptance.md`。僅供歷史查閱，不再維護。
+
 # PR #45 Beta candidate scope / deferred engineering QA
 
 Decision (2026-10-14): The workshop's priority is a usable independent Astro starter for non-developers, not exhaustive synthetic component fixture generation.

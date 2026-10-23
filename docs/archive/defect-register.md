@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 缺陷的狀態現在以 `docs/quality/HISTORIC-REGRESSIONS.json` 為準；「缺陷之外還要覆蓋的範圍」已併入 `docs/quality/QUALITY-CONTRACT.md`。表中的處置狀態是當時的快照。僅供歷史查閱，不再維護。
+
 # Defect and coverage register — learner starter quality
 
 Source baselines: independent student-build reports W1–W14 and N1–N20 (2026-10-12), including F00–F14 fault injection. This table is a **living audit record**, not a claim that all fixes have passed final release QA.

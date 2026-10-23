@@ -36,7 +36,7 @@
 
 ### 圖庫截圖
 
-截圖必須來自實際建置出來的 Astro 原型（不是示意圖、mockup 或別的版型），並記錄來源（ref SHA、路由、視窗、日期、工具）於 `docs/template-gallery/capture-manifest.json`。沒有截圖時顯示明確的「截圖待製作」，不放不相干的照片。
+截圖必須來自實際建置出來的 Astro 原型（不是示意圖、mockup 或別的版型），並記錄來源（ref SHA、路由、視窗、日期、工具）於 `docs/template-gallery/captured.json`（由 `scripts/capture-template-gallery.mjs` 自動寫入）。沒有截圖時顯示明確的「截圖待製作」，不放不相干的照片。
 
 ### Adapter 與匯出介面
 

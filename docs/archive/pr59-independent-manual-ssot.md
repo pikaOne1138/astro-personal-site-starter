@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 尚未完成的驗收項目已改寫併入 `docs/quality/open-acceptance.md`；其中帶時間性的 CI 結果快照已不適用。僅供歷史查閱，不再維護。
+
 # PR #59｜學員獨立網站待驗收 SSOT
 
 > **唯一事實來源（SSOT）**：本檔只追蹤 PR #59 尚需在**學員自己的 GitHub Repository／實際部署環境**或由**人類**執行的驗收。程式碼與 CI 的技術真相仍以對應 Commit、Actions、Artifact 為準。本檔不得用預期結果代替證據。

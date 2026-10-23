@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是某次縮圖盤點的驗收紀錄（Actions 連結已過期、狀態是當時的快照）。製作與驗證縮圖的做法在 `docs/template-gallery/README.md`，各版型的組裝狀態以 `src/data/layout-assembly/definitions.mjs` 為準。僅供歷史查閱，不再維護。
+
 # 25 款 Layout 縮圖盤點與驗收
 
 基底：main `a37bc3ef0469a67b25e3f6fdea448b9526815722`。PR #56 未合併，本 PR 不覆寫其變更。
