@@ -4,7 +4,7 @@ Project goal: a beginner-editable Astro starter for two architectures:
 - `knowledge`: knowledge/blog/personal publishing
 - `helper`: helper/professional service
 
-Visual themes: `paper`, `morning`, `studio`, `botanical`.
+Visual themes are defined in code, not listed here: the demo pages use `themes` in `src/data.ts`; the `/starter/` planner uses `starterThemes` in `src/data/starter-config.ts`. Read them instead of assuming a number or a list.
 
 This file is the entry point. It holds the standing rules and tells you which Skill to read for each kind of task. Detailed procedure lives in `.ai/*/SKILL.md`, not here.
 
@@ -13,12 +13,12 @@ This file is the entry point. It holds the standing rules and tells you which Sk
 1. Do not turn the project into a SaaS dashboard or CRM.
 2. Preserve static-first architecture unless the user explicitly requests a web app.
 3. UI refinement means typography, spacing, hierarchy, image treatment, motion restraint, responsive behavior, and accessibility—not adding decorative effects.
-4. Preserve all eight demo URLs (two architectures × four styles), plus the `/blocks/` gallery.
-5. Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and its `references/component-library-v1.5.md`; for V2 article features also read `references/article-exploration-v2.md`. Prioritize existing design tokens and spacing/type scales: **do not silently introduce arbitrary design values.**
+4. Do not remove or rename existing public routes (demo pages under `/[kind]/[theme]/`, `/blocks/`, `/effects/`, `/layouts/`, `/section-patterns/`, `/templates/`, `/starter/`, `/guide/`) unless the user asks. The list of routes comes from `src/pages/` and the registries, not from this file.
+5. Before designing or modifying UI, read `.ai/astro-ui-craft/SKILL.md` and its `references/component-library.md`; for article features also read `references/article-exploration.md`. Prioritize existing design tokens and spacing/type scales: **do not silently introduce arbitrary design values.**
 6. Before writing a new section, inspect `COMPONENTS.md` and `src/data/blocks.registry.json`, and reuse components under `src/components/blocks/` where suitable.
 7. Component names and Props are the interface for AI-assisted assembly; preserve backwards compatibility.
 8. Run `npm run build` before declaring completion; follow the PR Preview Skill and ask for explicit approval before merging.
-9. Always preserve the four themes, keyboard navigation, `BASE_URL`, reduced-motion behavior and the GitHub PR preview workflow.
+9. Always preserve every existing visual theme, keyboard navigation, `BASE_URL`, reduced-motion behavior and the GitHub PR preview workflow.
 
 ## Never fake it
 
@@ -29,10 +29,19 @@ This file is the entry point. It holds the standing rules and tells you which Sk
 - Do not fake content-readiness evidence, a human tree-test result or Google indexing status.
 - Keep milestone/version markers in developer docs, not public-facing pages.
 
+## Keep these files timeless
+
+Do not put version numbers, PR numbers, branch names, milestone names, dates, or counts in `AGENTS.md`, `.ai/*/SKILL.md` or their file names (for example `…-v2.md`, "added in PR #20", "41 blocks"). They go stale and then mislead the next AI. State the rule, and point to the file that holds the current facts (a registry, a data file, `package.json`). History belongs in Git and in `docs/`.
+
 ## Which Skill to read
 
 | Task | Read first |
 |---|---|
+| A student asks to build a site and the route is unclear (replica, Starter, or from scratch) | `.ai/astro-site-entry/SKILL.md` — it only routes; it picks one of the next three rows |
+| Replicate or migrate an existing site the user owns or is authorized to use | `.ai/url-to-frontend-replica/SKILL.md` |
+| Build from scratch by talking with the student, no planner first | `.ai/astro-site-from-zero/SKILL.md` |
+| Interview the student, reference-site analysis, design direction, Design Brief | `.ai/astro-design-consultation/SKILL.md`; student-facing interview and intake prompts are in `docs/student-intake/` |
+| Turn a validated Site Brief JSON into a standalone site | `.ai/astro-site-assembly/SKILL.md` |
 | Design or modify UI, tokens, Blocks | `.ai/astro-ui-craft/SKILL.md` |
 | GitHub PRs, previews, deployment, visual verification, merging | `.ai/astro-pr-preview/SKILL.md` — a dual-platform Skill: detect GitHub Pages, Cloudflare Pages or Cloudflare Workers from the student's own repository and actual deployment records. The showcase's GitHub Pages preview workflow is repository-specific, not a universal student requirement. |
 | Articles, Content Collections, SEO, Pagefind, RSS, sitemap, drafts, publication | `.ai/astro-content-publishing/SKILL.md` and its references |
@@ -71,7 +80,7 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 - `BackToTop`: use `src/components/blocks/BackToTop.astro` through `src/layouts/DemoLayout.astro`; do not copy separate scroll handlers into pages. It is hidden near the top, appears after a threshold, respects `prefers-reduced-motion`, has an accessible label, a 44+ px touch target and uses theme tokens. Reuse it in any new top-level layout. It is not an effects-library item.
 
 **Helper content**
-- Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`. It demonstrates four distinct applications across paper/bodywork, morning/counseling, studio/coaching and botanical/Reiki. Layout components stay theme-agnostic; do not reinsert vague generic filler.
+- Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`. It demonstrates distinct applications (for example bodywork, counseling, coaching and Reiki), each with its own content. Layout components stay theme-agnostic; do not reinsert vague generic filler.
 
 **Articles and search**
 - `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
@@ -85,14 +94,14 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 - Motion work MUST use `.ai/astro-motion-craft/SKILL.md` and the library under `.ai/astro-motion-craft/library/` (`README.md`, then `effect-catalog.md` and the matching recipe: `reveal-and-stagger`, `pointer-interactions` or `content-interactions`). The recipes distinguish Manus v2 ZIP source behavior from our adaptation, and unimplemented references from actual components.
 - Effects runtime lives under `src/components/effects/` (Reveal, StaggerGroup, MotionCard, ZoomImage, MagneticButton, UnderlineLink, MotionFAQ); CSS in `public/effects.css`.
 - Manus effect APIs are reference-only until explicitly implemented; do not claim they shipped. Do not treat ZIP effects or Tailwind v4 as installed. Do not introduce duplicate observers, global theme overrides or unverified animation claims.
-- Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic effects, keyboard and touch behavior, and all four themes.
+- Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic effects, keyboard and touch behavior, and every existing theme.
 - Update recipes and catalog when the motion runtime changes.
 
 ## Layout
 
 - Follow `.ai/astro-layout-craft/SKILL.md` for information architecture, section order, hero proportion and structural compositions, together with `.ai/astro-editorial-layout-design/SKILL.md`. Never invent a generic hero/cards grid if original recipes exist.
 - Layouts are structurally different native Astro homepage previews (knowledge/editorial and professional care). **Do not replace them with one template plus color variants.**
-- Ten concepts are adapted from the user's `astro-ten-site-directions.zip`; two are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
+- Most concepts are adapted from the user's `astro-ten-site-directions.zip`; the rest are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
 - The two Claude example pages are `src/pages/layouts/reading-atlas/index.astro` and `src/pages/layouts/trust-path/index.astro`; their demonstration details are explicitly fictional. The original evidence, measurements and samples are preserved under `.ai/astro-editorial-layout-design/`. Always distinguish [OBS]/[MEAS] source facts from [INF]/[NEW] advice.
 - Visual acceptance requires actual 1440/1280/768/390 screenshots in addition to the Astro build; do not claim this verification unless performed.
 

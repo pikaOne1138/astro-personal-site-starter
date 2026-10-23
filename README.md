@@ -75,7 +75,7 @@ Repo 內建：
 - `.ai/astro-ui-craft/SKILL.md`
 - `.ai/astro-ui-craft/references/`
 - `.ai/astro-ui-craft/references/raw-research/`
-- `.ai/astro-ui-craft/references/component-library-v1.5.md`
+- `.ai/astro-ui-craft/references/component-library.md`
 - `COMPONENTS.md`、`src/data/blocks.registry.json`（元件名稱、用法與索引）
 
 Skill 的任務是把 UI 生成限制在研究過的資訊架構、design tokens、CTA、微動畫、RWD、Accessibility 與 Astro 實作邊界內，避免產生典型 AI landing page。

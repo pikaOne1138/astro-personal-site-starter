@@ -70,7 +70,7 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 
 ## Typography and spacing contract (mandatory)
 **優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。**
-- Before changing typography or spacing, inspect the project's actual CSS tokens, the three-style design research, and `references/component-library-v1.5.md`.
+- Before changing typography or spacing, inspect the project's actual CSS tokens, the three-style design research, and `references/component-library.md`.
 - Reuse existing font sizes, spacing steps, font weights, line heights, radii, and transitions for the applicable component/style.
 - The established spacing steps are `4, 8, 12, 16, 24, 32, 48, 64, 96, 128px`; apply them where appropriate rather than introducing arbitrary one-off values.
 - Typography sizes are a separate scale from spacing. For the current v0.2 navbar use 16px standard links/CTA and 14px for Paper's editorial links; do not invent intermediary 15px without an explicit design decision.
@@ -84,14 +84,14 @@ Soft botanical greens, restrained natural contrast, generous whitespace, and qui
 
 ## V2 article exploration and rich-content blocks
 - Version identifiers (V1.5/V2/V3) belong in developer docs, code comments, changelog and Skill references. On public-facing demo pages, describe actual capabilities without exposing internal implementation version numbers.
-- Read `references/article-exploration-v2.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
+- Read `references/article-exploration.md` when working on article search, tags, archives, calendars, lists, foldouts, grids, callouts, tables, related reading, or carousels.
 - Use the shared `src/data/articles-v2.ts` schema and `src/site-map.ts` routes. Counts, dates, links and matches must derive from real article data.
 - `SiteSearchDialog` provides magnifying-glass full-site **navigation index** popup (site pages, articles, services) with Ctrl+K/⌘K and Esc. It must preserve site kind/theme and display real targets; it is not full-body search.
 - Current V2 `/explore/` supports metadata search, **not full-body search**. Never misrepresent its scope.
 - Maintain existing typography, spacing and motion tokens in V2 components; do not introduce arbitrary design values.
 
 ## Component library (mandatory before page assembly)
-- Read `references/component-library-v1.5.md` first for the catalog, scope, variants, and design integration rules.
+- Read `references/component-library.md` first for the catalog, scope, variants, and design integration rules.
 - Read `COMPONENTS.md` and `src/data/blocks.registry.json` for the maintained component names, use cases and registry.
 - Read the actual `src/components/blocks/*.astro` Props/source before importing or changing components. These files are the implementation source of truth; this reference is a guide, not a duplicate registry.
 - Use `public/demo.css`, `public/blocks.css`, and `public/v02.css` as applicable, maintaining the same 4 design personalities. Preserve the original six routes and the two Botanical routes.
@@ -151,7 +151,7 @@ Before handoff:
 - no accidental backend scope creep.
 
 ## Practical interactive blocks and real services
-Use `.ai/astro-ui-craft/references/article-exploration-v2.md` practical-block guidance for MobileMenu, BookingLink, ContactActions, PricingDetails, TrustInfo, MediaEmbed. Do not create fake form submissions, invented third-party appointments, testimonials or credentials. Keep GitHub Actions PR previews, and obtain user consent before merge.
+Use `.ai/astro-ui-craft/references/article-exploration.md` practical-block guidance for MobileMenu, BookingLink, ContactActions, PricingDetails, TrustInfo, MediaEmbed. Do not create fake form submissions, invented third-party appointments, testimonials or credentials. Keep GitHub Actions PR previews, and obtain user consent before merge.
 
 ## Social identity links
 Use reusable `SocialLinks.astro` for social platforms and contact identity, rather than hardcoding text links or inventing brand URLs. Accept only configured HTTPS destinations or explicitly validated mailto/tel. Include aria labels and visible keyboard focus; preserve current four themes and do not show missing profiles. `ContactActions` wraps `SocialLinks` with LINE/Email/phone when data exists. Keep icon-brand trademark/individual license considerations in component docs; avoid user-facing release numbers.

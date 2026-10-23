@@ -21,7 +21,7 @@
 
 ## 設計權威與共用規範
 - 元件介面以本文件、元件索引與 `src/components/blocks/*.astro` 實作為準。
-- 設計規格請參考 `.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library-v1.5.md`；不得任意新增不在既有字級與間距系統中的數值。
+- 設計規格請參考 `.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library.md`；不得任意新增不在既有字級與間距系統中的數值。
 
 ## V2：文章探索（4 個）、進階文章（7 個）與全站搜尋（1 個）
 
@@ -33,7 +33,7 @@
 - 統一示範資料：`src/data/articles-v2.ts`，包括 slug、標題、摘要、分類、標籤、發文日期、閱讀時間。
 - 所有月份、日曆日期、標籤數量和結果頁都以相同的文章資料產生；不存在的發文日期不可點。
 - V2 示範文章與日期都是教材，不代表真實發文記錄。正式網站應接 Astro Content Collections 或匯入文章資料。
-- AI 設計與使用契約：`.ai/astro-ui-craft/references/article-exploration-v2.md`。
+- AI 設計與使用契約：`.ai/astro-ui-craft/references/article-exploration.md`。
 
 ## AI 組裝規範
 1. 先看 `src/data/blocks.registry.json`，挑選用途相符的元件，再讀元件 `Props`。
