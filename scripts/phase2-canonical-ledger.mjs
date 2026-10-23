@@ -1135,6 +1135,33 @@ if(process.argv[2]==='import'){
    approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:original,
     method:'FULL_DOCUMENTARY_LINE_TO_ATOMIC_CHILDREN'}});
  }
+ // Article release: keep the PR/Preview sequencing obligation distinct,
+ // while a scheduled-publication example is fully covered by its leaf checks.
+ const articleRelease=byId.get('B7-PUB-L79-02');
+ const releaseSource='.ai/astro-content-publishing/SKILL.md';
+ if(!articleRelease||articleRelease.canonicalId||!frozenLine(releaseSource,79)||
+  !articleRelease.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===releaseSource&&ref.lineStart===79))
+  throw Error('Missing article release source proof');
+ Object.assign(articleRelease,{canonicalId:'ATP-P2-0258',
+  requirement:'Article publication follows Branch and PR with an actual reviewed Preview before approved Merge and Production deployment',
+  kind:'policy',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+  applicability:['Publication of student-owned articles through a Git workflow'],
+  conditions:['A real Preview is configured or any absence is explicitly disclosed; never invent live URLs'],
+  exceptions:[],acceptanceCriteria:[],
+  approvalEvidence:{frozenPath:releaseSource,frozenLine:79,frozenBlobSha:manifest[releaseSource],
+   sourceText:frozenLine(releaseSource,79),method:'EXPLICIT_ARTICLE_PUBLICATION_SEQUENCE_REVIEW'}});
+ const scheduled=byId.get('DES7-018');
+ const scheduledChildren=['B7-PUB-L78-01-S01','B7-PUB-L78-01-S02','B7-PUB-L78-01-S03',
+   'B7-PUB-L78-01-S04','B7-PUB-L78-01-S05','B7-PUB-L78-02'];
+ if(!scheduled||scheduled.canonicalId||!frozenLine(releaseSource,78)||
+   scheduledChildren.some(id=>byId.get(id)?.reviewStatus!=='APPROVED')||
+   !scheduled.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===releaseSource&&ref.lineStart===78))
+  throw Error('Scheduled publication full-line source or children missing');
+ Object.assign(scheduled,{kind:'evidence',decision:'PARTIAL_SPLIT',
+  reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:scheduledChildren,
+  parentDisposition:'Scheduling example is completely covered by five release-readiness checks and real-service truthfulness rule',
+  approvalEvidence:{frozenPath:releaseSource,frozenLine:78,frozenBlobSha:manifest[releaseSource],
+   sourceText:frozenLine(releaseSource,78),method:'SOURCE_AND_COMPLETE_REVIEWED_CHILDREN'}});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
