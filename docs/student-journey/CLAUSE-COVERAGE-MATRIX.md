@@ -600,3 +600,8 @@
 ## Phase 2｜Canonical/Alias Crosswalk 02：授權、Preview、索引
 
 新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-02.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-02.md)，核對 P0 的四組既有文件性 Alias 與 Batch1/2/5、Batch9A/B/C 的 **11 個概念群組**。保留 Merge/Production/DNS/刪除/覆寫的操作授權差別；Build/Artifact/Live Preview 的證據差別；Cloudflare 與 GitHub Pages 的 SITE_INDEXABLE 平台差別；以及 noindex/draft 與資料保密的差別。本輪 **0 個新核准 Canonical ID**，`CAND-*` 均為待定交叉稽核群組而非正式 ID。全量最小原子化、Skills A/B/P0 雙向追溯、全部來源文件審查仍未完成。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED，不改原始 Skills、不 Merge、不部署。
+
+
+## Upstream Delta｜PR #61（2026-10-23）
+
+新增 [UPSTREAM-DELTA-PR61.md](UPSTREAM-DELTA-PR61.md)，以 PR #61 HEAD `da65053ccc237474e1fdf8a28fcbae20fe7029c2` 的 AGENT-HANDOFF Blob `457835c2e4ae02acf889df1953d0a635511009ef` 作為 Frozen main `2d20e3ab` 以後獨立來源，建立 8 組可追溯處置（KEEP／ALIAS／PARTIAL_SPLIT、附 PARTIAL_CONFLICT）。已確認三條路徑 **不強制 Site Brief JSON**：Starter B 可以匯出、既有網站復刻 A 不預設、直接 AI 建站 C 可視需要另建。使用者明確取消永久保存初版 Brief 路徑、Hash、匯入日期；舊初版不得覆蓋學員網站現況。PROJECT-TEMPLATE L40 與 student-project-context L26 可能誘發非必要的追補義務，先保留待裁決，**本批不改模板／生成器**。#61 及 #58 都保持 Open，#67 保持 Draft，Phase 2 尚未 PASS，Phase 3/4 BLOCKED，不 Merge、不部署。
