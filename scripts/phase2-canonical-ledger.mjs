@@ -1116,6 +1116,25 @@ if(process.argv[2]==='import'){
      frozenBlobSha:manifest[source],method:'FULL_SOURCE_SUMMARY_TO_EXPLICIT_ATOMIC_COVERAGE'}});
   }
  }
+ // Article publication's original full-line evidence is covered by
+ // explicitly reviewed atomic checks; retain all legacy provenance.
+ const moreArticleSummaries=[
+ ['.ai/astro-content-publishing/SKILL.md',47,'DES7-013',
+  ['B6-PUB47-01-S01','B6-PUB47-01-S02','B6-PUB47-01-S03','B6-PUB47-01-S04','B6-PUB47-02','B6-PUB47-03']],
+ ['.ai/astro-content-publishing/SKILL.md',66,'DES7-016',
+  ['B6-PUB66-01-S01','B6-PUB66-01-S02','B6-PUB66-02-S01','B6-PUB66-02-S02','B6-PUB66-02-S03']]
+ ];
+ for(const [source,line,id,children] of moreArticleSummaries){
+  const row=byId.get(id),original=frozenLine(source,line);
+  if(!row||row.canonicalId||!original||children.some(k=>byId.get(k)?.reviewStatus!=='APPROVED')||
+     !row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Cannot verify complete publishing summary: '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:children,
+   parentDisposition:'Full-line source is covered by source-matched approved atomic child clauses',
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:original,
+    method:'FULL_DOCUMENTARY_LINE_TO_ATOMIC_CHILDREN'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
