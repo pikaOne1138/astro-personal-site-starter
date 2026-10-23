@@ -210,6 +210,39 @@ for(const row of old.records){
 }
 const discovered=[...records.keys()],imported=new Set(old.records.map(x=>x.legacyId)),missingLegacy=discovered.filter(x=>!imported.has(x));
 const aliasPairs=[...canonicalGroups.entries()].filter(([,v])=>v.length>1).map(([canonicalId,v])=>({canonicalId,legacyIds:v.map(x=>x.legacyId)}));
+// Source-first review inventory: this is the missing direction of the Gate.
+// Candidate detection is deliberately conservative; it is a review queue,
+// not an automated declaration that all obligations have been enumerated.
+const scopedNormativeFiles=[
+ '.ai/astro-content-publishing/SKILL.md',
+ '.ai/astro-site-assembly/SKILL.md',
+ '.ai/astro-starter-deploy/SKILL.md',
+ '.ai/astro-pr-preview/SKILL.md',
+ '.ai/astro-site-entry/SKILL.md',
+ 'docs/quality/QUALITY-CONTRACT.md',
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',
+ 'docs/workshop/PR56-USER-JOURNEY-QA.md',
+ 'docs/student-builder-pack/AGENT-HANDOFF.md',
+ 'docs/student-builder-pack/PROJECT-TEMPLATE.md'
+];
+const cues=/(必須|不得|禁止|應該|應先|須|不能|未經|確認|檢查|驗證|需|must\b|never\b|should\b|shall\b|required\b|do not\b|don't\b|verify\b|ensure\b|check\b|only\b)/i;
+const sourceLineInventory=[],sourceInventoryFailures=[];
+for(const file of scopedNormativeFiles){
+ const ls=readRevision(frozen,file);
+ if(!ls||!manifest[file]){sourceInventoryFailures.push(file);continue;}
+ for(let i=0;i<ls.length;i++){
+  const exact=ls[i],trimmed=exact.trim(),key=file+':'+(i+1);
+  if(!trimmed||/^#{1,6}\s/.test(trimmed)||/^\|(?:[-:\s|]+)\|$/.test(trimmed))continue;
+  const candidate=cues.test(trimmed),mapped=sourceCoverage.get(key);
+  sourceLineInventory.push({path:file,frozenBlobSha:manifest[file],line:i+1,sourceText:exact,
+   candidateForNormativeReview:candidate,legacyIds:mapped?[...mapped].sort():[],
+   coverageStatus:mapped?'ANCHORED_NOT_SEMANTICALLY_VERIFIED':candidate?'REVIEW_REQUIRED_UNMAPPED':'NONCANDIDATE_UNCLASSIFIED',
+   reviewStatus:'PENDING_HUMAN_CLAUSE_CLASSIFICATION'});
+ }
+}
+const candidateLines=sourceLineInventory.filter(x=>x.candidateForNormativeReview);
+const unmappedCandidateLines=candidateLines.filter(x=>!x.legacyIds.length);
+const mappedCandidateLines=candidateLines.filter(x=>x.legacyIds.length);
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
@@ -227,6 +260,12 @@ const status={
  documentaryPartialSplits:(old.semanticRelations||[]).filter(x=>x.decision==='PARTIAL_SPLIT').length,
  documentaryDistinct:(old.semanticRelations||[]).filter(x=>x.decision==='DISTINCT').length,
  frozenLinesReferenced:sourceCoverage.size,
+ sourceFirstScopeFiles:scopedNormativeFiles.length,
+ sourceFirstLinesScanned:sourceLineInventory.length,
+ sourceFirstCandidateLines:candidateLines.length,
+ sourceFirstUnmappedCandidateLines:unmappedCandidateLines.length,
+ sourceFirstMappedCandidateLines:mappedCandidateLines.length,
+ sourceFirstReadFailures:sourceInventoryFailures.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
  semanticCompleteness:'NOT_VERIFIED',
  oldFileRetirement:'NOT_AUTHORIZED',
@@ -245,6 +284,8 @@ if(parentRisks.length)failReasons.push('Parent/child canonical double-count risk
 if(crossVersion.length)failReasons.push('Unreviewed non-frozen references');
 if(orphanAliases.length)failReasons.push('Alias orphans');
 if(unresolved.length)failReasons.push('Semantic adjudication incomplete');
+if(unmappedCandidateLines.length)failReasons.push('Source-first potentially normative lines not mapped');
+if(sourceInventoryFailures.length)failReasons.push('Source-first scope files could not be read');
 if(relationOrphans.length)failReasons.push('Semantic relation orphan IDs');
 if(unverifiedMerges.length)failReasons.push('Documentary MERGE candidates lack a shared exact Frozen line');
 failReasons.push('No exhaustive clause denominator / source-to-ledger semantic coverage verified');
@@ -261,7 +302,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,unmappedCandidateLines:unmappedCandidateLines,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
