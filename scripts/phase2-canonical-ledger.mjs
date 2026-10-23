@@ -391,6 +391,50 @@ if(process.argv[2]==='import'){
     reviewStatus:'APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING',canonicalId:null});
   }
  }
+ // Phase 2 B — content publishing: canonicalize actual atomic leaves from
+ // Frozen L28, not their composite parent labels.
+ const publishingAtomic=[
+  ['B1-PUB28-01','Public article collection loader must use src/content/articles only','policy'],
+  ['B1-PUB28-02','Unpublished Markdown drafts belong under src/content/drafts, not the public articles directory','policy'],
+  ['B1-PUB28-03-S01','Approved draft publication moves Markdown into articles','procedure'],
+  ['B1-PUB28-03-S02','On publication change legacy draft:true frontmatter to draft:false','procedure'],
+  ['B1-PUB28-04-S01','Withdrawn published article moves back to drafts Collection','procedure'],
+  ['B1-PUB28-04-S02','Withdrawn article is marked draft:true','procedure'],
+  ['B1-PUB28-04-S03','Build from a clean output directory after article withdrawal','procedure'],
+  ['B1-PUB28-05','Verify actual public article route visibility after publish/withdrawal transition','acceptance'],
+  ['B1-PUB28-06-S01','Do not silently change existing public article URLs','policy'],
+  ['B1-PUB28-06-S02','Inspect student-specific routing before migrating legacy draft filtering','procedure'],
+  ['B1-PUB28-07','Draft/public folder separation is a publication control, not confidentiality protection','policy'],
+  ['B1-PUB28-08','After article state changes run actual draft-leakage gate; without running it do not report PASS','acceptance'],
+  ['B1-PUB28-09','Public article loader must never glob the entire content directory including drafts','policy']
+ ];
+ for(let i=0;i<publishingAtomic.length;i++){
+  const [id,requirement,kind]=publishingAtomic[i],entry=byId.get(id);
+  const source='.ai/astro-content-publishing/SKILL.md',line=28;
+  const canonicalId='ATP-P2-'+String(48+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||
+     !entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Missing Frozen publishing atomic child: '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Publishing canonical conflict: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind,aliases:[],decision:'KEEP',
+   reviewStatus:'APPROVED',applicability:['Student site with articles/drafts Collections'],
+   conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'FROZEN_SOURCE_PLUS_PRIOR_ATOMIC_CHILD_REVIEW'}});
+ }
+ const publishingParents=[
+  ['B1-PUB28-03',['B1-PUB28-03-S01','B1-PUB28-03-S02']],
+  ['B1-PUB28-04',['B1-PUB28-04-S01','B1-PUB28-04-S02','B1-PUB28-04-S03']],
+  ['B1-PUB28-06',['B1-PUB28-06-S01','B1-PUB28-06-S02']]
+ ];
+ for(const [id,children] of publishingParents){
+  const parent=byId.get(id);
+  if(!parent||children.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))
+   throw Error('Cannot close publishing composite parent: '+id);
+  Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:children,
+   parentDisposition:'Composite requirement superseded for counting by exactly enumerated approved children, not deleted'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
@@ -414,7 +458,10 @@ function readRevision(revision,file){
 }
 for(const row of old.records){
  const id=row.legacyId;
- if(!row.canonicalId||row.reviewStatus!=='APPROVED'||row.decision==='PENDING')unresolved.push(id);
+ if(!row.canonicalId&&row.reviewStatus==='PARENT_COVERED_BY_ATOMIC_CHILDREN'){
+  const kids=row.childrenLegacyIds||[];
+  if(!kids.length||kids.some(child=>!legacyIndex.has(child)||legacyIndex.get(child)?.reviewStatus!=='APPROVED'))failures.push({type:'INCOMPLETE_COMPOSITE_PARENT',id});
+ }else if(!row.canonicalId||row.reviewStatus!=='APPROVED'||row.decision==='PENDING')unresolved.push(id);
  if(row.canonicalId){
   if(!canonicalGroups.has(row.canonicalId))canonicalGroups.set(row.canonicalId,[]);
   canonicalGroups.get(row.canonicalId).push(row);
