@@ -1220,6 +1220,25 @@ if(process.argv[2]==='import'){
   exceptions:[],acceptanceCriteria:[],
   approvalEvidence:{frozenPath:draftSrc,frozenLine:37,frozenBlobSha:manifest[draftSrc],
    sourceText:frozenLine(draftSrc,37),method:'PR_PREVIEW_CONFIDENTIALITY_IS_DISTINCT_FROM_INDEXING'}});
+ // B2 independent Cloudflare onboarding actions, distinct from
+ // read-only scope checks and existing release approval rules.
+ const cfOnboarding=[
+  ['B2-DEP43-03','Never ask a student to paste Cloudflare tokens into chat or claim a deployment succeeded without platform evidence',
+   ['Cloudflare onboarding','Actual token and deployment evidence required']],
+  ['B2-DEP43-04','Prefer a private GitHub repository for student onboarding while separately obtaining deployment authorization',
+   ['Cloudflare onboarding','Repository visibility does not authorize publication']]
+ ];
+ for(let i=0;i<cfOnboarding.length;i++){
+  const [id,requirement,scope]=cfOnboarding[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=43;
+  if(!row||row.canonicalId||!frozenLine(source,line)||
+    !row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))
+    throw Error('Cloudflare onboarding original-source proof missing '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(265+i).padStart(4,'0'),requirement,
+   kind:'policy',decision:'DISTINCT',reviewStatus:'APPROVED',aliases:[],
+   applicability:scope,conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'MANUALLY_SCOPED_CLOUDFLARE_SOURCE_LINE_REVIEW'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
