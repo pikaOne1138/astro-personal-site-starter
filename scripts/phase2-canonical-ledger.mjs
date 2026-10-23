@@ -863,7 +863,7 @@ const status={
  p0p1ClosedNonNormative:closedNonNormative.length,
  p0p1DocumentaryAssessed:assessedQueue.length,
  p0p1FirstPassDisposed:firstPassDisposed.length,
- p0p1SourceDispositionTotal:assessedQueue.length+firstPassDisposed.length+closedNonNormative.length,
+ p0p1SourceDispositionTotal:sourceReviewQueue.filter(x=>['DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION','SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING','DOCUMENTARY_FINAL_NON_NORMATIVE','APPROVED'].includes(x.reviewStatus)).length,
  p0p1NearbyLegacyEvidence:queueWithNearbyEvidence,
  p0p1AtomicSubclausesProposed:assessedQueue.reduce((n,x)=>n+(x.atomicClauseCandidates?.length||0),0),
  p0p1RemovedQueueKeys:droppedPrevious.length,
