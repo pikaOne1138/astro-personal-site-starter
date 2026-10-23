@@ -698,6 +698,54 @@ const fourthPassAtomic=[
 ];
 Object.assign(assessedLines,Object.fromEntries(fourthPassAtomic.map(([key,kind,clauses])=>
  [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
+const fifthPassAtomic=[
+ ['.ai/astro-starter-onboarding/SKILL.md:18','STARTER_PLANNER_ONLY',['For Starter Planner JSON verify chosen section pattern ID, destination and placement','AI adapts sections to factual content and preserves layout distinctness']],
+ ['.ai/astro-ui-craft/SKILL.md:78','DESIGN_TOKEN_MAINTENANCE',['Existing hard-coded design legacy values do not authorize inventing more','Any global token cleanup belongs in separately scoped work']],
+ ['.ai/astro-ui-craft/SKILL.md:221','UI_SKILL_SCOPE',['UI skill follows already confirmed page structure and content; focus on components, tokens, interactions and cross-page consistency']],
+ ['docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:9','NOT_TESTED_STATUS',['Do not assert PASS when target environment has not been tested']],
+ ['docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:10','BLOCKED_STATUS',['BLOCKED must record authorization, environment or missing-data reason plus what would unblock it']],
+ ['docs/quality/BETA-CANDIDATE-SCOPE.md:9','TEACHER_VISUAL_APPROVAL',['Teacher must review candidate before Merge','Passing build/CI is not equivalent to manual visual approval']],
+ ['docs/quality/BETA-CANDIDATE-SCOPE.md:21','FIXED_CANDIDATE_POLICY',['Do not automatically merge or modify Production','Fixed candidate ZIP and Preview must reference exact source SHA']],
+ ['docs/quality/DEFECT-REGISTER.md:31','BLOCK_REGISTRY_EVIDENCE_LIMIT',['Registry structure check does not prove each block behavior and rendering in both site types']],
+ ['docs/quality/DEFECT-REGISTER.md:33','REPRESENTATIVE_EFFECT_TESTS',['Editorial Recipes/Effects require keyboard, reduced-motion and visible-content tests','Representative checks cannot prove every possible combination']],
+ ['docs/quality/DEFECT-REGISTER.md:35','PRODUCTION_VERIFY_WITH_AUTHORIZATION',['Actual production access is separate from simulated PR checks','Only test or change it with explicit authorization']],
+ ['docs/quality/DEFECT-REGISTER.md:36','BETA_EVIDENCE_TRIANGULATION',['Final candidate checks should align teacher CI, extracted student ZIP CI, browser QA and deployed SHA','Anything not executed remains NOT TESTED']],
+ ['docs/quality/QUALITY-CONTRACT.md:11','BLOCKED_DEFINITION',['Mark BLOCKED when tool access, unsupported platform, deployment or environment prevents verification']],
+ ['docs/student-builder-pack/ART-DIRECTION-STARTER.md:15','EXPORTER_EXISTING_SITE_SAFETY',['Export destination must be empty; never overwrite modified student site','--require-ready rejects unverified layout adapters']],
+ ['docs/student-builder-pack/ART-DIRECTION-STARTER.md:19','CONTENT_FALLBACK_BOUNDARY',['Text-first service template does not accept image or Logo input in this mode','Never publish test wording or pending data as factual service claims']],
+ ['docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:3','CROSS_MODEL_FIXTURE_ISOLATION',['Each AI tested in separate fresh conversation using equivalent isolated fixture','Evaluation pack is test specification, not actual run evidence','Prevent exposing teacher answer keys']],
+ ['docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:7','CROSS_MODEL_RUN_PROVENANCE',['Record actual tool/model/version, policy and fixture SHAs, timestamp and permissions per run','Do not assume skills were loaded without evidence']],
+ ['docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:9','AI_INSTRUCTION_ADHERENCE_TEST',['Check that model actually read AGENTS contract with safe low-risk test constraint','File existence alone does not prove agent compliance']],
+ ['docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:28','CROSS_MODEL_SCORING_EVIDENCE',['Record actual git diff, project flags, secret leaks, unauthorized pushes, CI/build and preview SHA']],
+ ['docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:56','LAYOUT_ADAPTER_CONDITIONAL_TEST',['Only after #46 adapter integration execute every supported layout','Check site.config layoutSlug agrees with PROJECT actual selected slug','Do not claim In Progress prototypes are Ready']],
+ ['docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt:5','DESIGN_ONLY_PATH_SCOPE',['Do not make PR or deploy when user only asked for design discussion','Only export Site Brief when user explicitly selected Starter Planner path']],
+ ['docs/student-builder-pack/INTERVIEW-EVALUATION.md:9','INTERVIEW_EVAL_RUN_PROVENANCE',['Record evaluator, time, tool/model/version and policy SHA per evaluation','Do not claim file access or actual operation without proof']],
+ ['docs/student-builder-pack/INTERVIEW-EVALUATION.md:16','INTERVIEW_EVAL_TRUTH_SCALE',['Evaluate whether AI invents completion and whether it separates confirmed, proposed and unverified']],
+ ['docs/student-builder-pack/INTERVIEW-EVALUATION.md:19','PROPOSED_EVALUATION_THRESHOLD',['Proposed test threshold is average at least 8, each answer at least 6 and no major security failure','Do not claim criterion passed without actually running the model tests']],
+ ['docs/student-builder-pack/INTERVIEW-EVALUATION.md:22','TEST_HARNESS_VERSUS_MODEL',['node --test checks evaluation script/schema, not real model interview quality']],
+ ['docs/student-builder-pack/INTERVIEW-EVALUATION.md:25','INDEPENDENT_MODEL_RUN_PERMISSION',['External Claude/Codex real-tool tests require separate access/authorization; mark NOT TESTED if unrun']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:3','HISTORICAL_DEPENDENCY_SCOPE',['Historical PR50 acceptance was blocked until art-direction adapter path from PR46 integrated; do not treat as current merge permission']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:6','LIVE_PR_STATE_CHECK',['Check actual current GitHub PR state and branch before any integration','Do not promote historical Draft/blocked status to live current fact']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:8','SHARED_STUDENT_FINALIZER',['Both student export routes need equivalent project/agent/secrets/CI context','Prefer one idempotent finalizer and preserve existing user files']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:9','EXPORTED_LAYOUT_EVIDENCE',['Actually exercise supported layout adapters in distributable ZIP and both site types','Verify no builder-only answer keys leak; ensure secrets and Git safety checks runnable','Distinguish Ready from unsupported prototype']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:17','READY_STATUS_EVIDENCE',['Never count an unsupported layout as tested or Ready without actual evidence']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:18','ANSWER_KEY_SECRECY',['Never package private interview evaluation answer keys into student ZIP']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:26','HISTORICAL_BUG_EVIDENCE',['Frozen exporter sequence describes mismatched PROJECT layout before adapter compose','Treat as historical defect, verify current code before claiming still unresolved']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:28','ADAPTER_FINALIZER_ORDER',['When adapter path supported, finalize PROJECT and context after actual layout compose','Do not overwrite existing student PROJECT','Compare SITE CONFIG and PROJECT layout slug against actual selected layout']],
+ ['docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md:31','PREVIEW_INDEXING_FAILSAFE',['Deny indexing on Cloudflare branch previews even if SITE_INDEXABLE=true','Verify HTML meta robots and robots.txt with unknown production branch too']],
+ ['docs/student-builder-pack/START-HERE.md:47','PROMPT_CAPABILITY_DISCLOSURE',['Before building disclose ability or permissions to read ZIP, edit files, run build, push branch PR and verify real Preview','Do not claim unavailable capabilities or publish without approval']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:19','STUDENT_PREVIEW_JOURNEY',['Preview phase requires real version-matching URL, desktop/mobile functional checks and human feedback']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:21','STUDENT_MAINTENANCE_JOURNEY',['Long-term updates use student-owned repo and current project context','Preview, confirm, publish and keep recovery record']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:31','STUDENT_REALITY_AND_PREVIEW_EXPOSURE',['Protect tokens and private client data from public site/preview','Do not fabricate qualifications, testimonials, medical effects, payment or booking success']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:36','PREVIEW_DEFINITION',['Preview is a verified working URL matching the reviewed version and content']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:37','PRODUCTION_DEFINITION',['Production changes require explicit current authorization','Build or PR success alone is not proof Production updated']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:41','AI_CAPABILITY_LIMITATION',['Chat-only AI does not necessarily have filesystem, coding or deployment tools','Learner-hosted GitHub/Cloudflare access requires learner setup or authorization']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:46','FACT_PROPOSAL_SEPARATION',['Keep confirmed decisions, AI proposals, pending fields and actual tool results separate']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:50','REAL_VISUAL_QA_BOUNDARY',['Build success is not visual acceptance','Verify actual four widths and keyboard/touch/content/navigation behavior']],
+ ['docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:57','PROGRESSIVE_STUDENT_PATH',['Learner may begin with informal design discussion and move to preview draft','Explicit release approval remains separate from request to see draft']]
+];
+Object.assign(assessedLines,Object.fromEntries(fifthPassAtomic.map(([key,kind,clauses])=>
+ [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
 for(const entry of sourceReviewQueue){
  const assessment=assessedLines[entry.sourceKey];
  if(!assessment)continue;
