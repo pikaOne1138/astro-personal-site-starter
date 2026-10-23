@@ -5,7 +5,8 @@ import {mkdtemp,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 const port=4369,origin='http://127.0.0.1:'+port;
-const server=spawn('node',['node_modules/astro/astro.js','preview','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe']});
+// Use the project's supported Astro CLI entrypoint instead of a version-specific node_modules path.
+const server=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe']});
 let logs='';server.stdout.on('data',x=>logs+=x);server.stderr.on('data',x=>logs+=x);
 let browser,temp;
 const assert=(value,label)=>{if(!value)throw new Error(label)};
