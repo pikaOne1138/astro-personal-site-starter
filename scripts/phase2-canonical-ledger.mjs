@@ -763,6 +763,30 @@ if(process.argv[2]==='import'){
  if(!urlParent||Array.from({length:5},(_,i)=>'B4-DEP17-02-S0'+(i+1)).some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('URL parent lacking child approvals');
  Object.assign(urlParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
   childrenLegacyIds:Array.from({length:5},(_,i)=>'B4-DEP17-02-S0'+(i+1)),parentDisposition:'Complete URL evidence carried by five separate acceptance leaves'});
+ // Finalize conditional helper-owned content without turning optional fields
+ // into a mandatory booking/CRM application or fabricated clinical claim.
+ const helperContentAtomic=[
+ ['B6-ASM13-01-S01','Check factual brand identity before assembly',13],
+ ['B6-ASM13-01-S02','Confirm licensed use of student images',13],
+ ['B6-ASM13-01-S03','Confirm genuine contact and booking endpoints',13],
+ ['B6-ASM13-02','Only use professional histories and qualifications actually supplied by practitioner',13],
+ ['B6-ASM13-03','Hide unconfigured external integrations or mark them explicitly unconfigured',13],
+ ['B9C-ASM78-01','Trust-path serviceTiming is optional content, not a required scheduling feature',78],
+ ['B9C-ASM78-02','Only positive integer minutes can produce proportionate service timeline and actual total',78],
+ ['B9C-ASM78-03','If service duration missing, visibly indicate pending information',78],
+ ['B9C-ASM78-04','Never fabricate a default 50-minute therapy session',78],
+ ['B9C-ASM78-05','Service timeline content is not an appointment system or CRM',78]
+ ];
+ for(let i=0;i<helperContentAtomic.length;i++){
+  const [id,requirement,line]=helperContentAtomic[i],entry=byId.get(id),source='.ai/astro-site-assembly/SKILL.md',canonicalId='ATP-P2-'+String(186+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Helper content source not exact '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:i<5?'policy':'architecture',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:line===78?['Trust-path helper layout only']:['Student site assembly with helper/contact content'],conditions:[],
+   exceptions:[],acceptanceCriteria:[],approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),method:'SOURCE_AND_ATOMIC_LEGACY_VERIFICATION'}});
+ }
+ const br=byId.get('B6-ASM13-01');
+ if(!br||Array.from({length:3},(_,i)=>'B6-ASM13-01-S0'+(i+1)).some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Content readiness parent missing');
+ Object.assign(br,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:Array.from({length:3},(_,i)=>'B6-ASM13-01-S0'+(i+1)),parentDisposition:'Three required checks carried in approved children'});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
