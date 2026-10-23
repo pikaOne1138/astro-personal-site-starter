@@ -10,7 +10,7 @@
 | `effects/ZoomImage.astro` | `effect=zoom/pan/none`；`src`、`alt`、`href`、`aspectRatio`、`position`、`loading`、`className`，pan 游標偏移約 10px/8px | 支援圖說 alt；無障礙，文字截圖禁用 pan；避免指定外站不受控素材 | 已實作 `ZoomImage.astro` |
 | `effects/UnderlineLink.astro` | `variant=grow/center/marker`、`arrow`、`external`、`className` | 與現有 a:hover / focus-visible 合併；不能完全依賴 hover | 已實作 `UnderlineLink.astro` |
 | `common/Button.astro` | `magnetic`；滑鼠輕微牽引與 shimmer | 以現有 Button 為基底加選配；不為磁吸破壞原 CTA 點擊範圍 | 已實作獨立的 `MagneticButton.astro`；原 `Button` 未修改 |
-| `common/FAQAccordion.astro` | 原生 `details/summary`、`variant=line/soft/cards`、`openFirst`、`className` | 保留本專案 FAQ 既有內容，補 variants 與瀏覽器漸進增強；避免多個同義 FAQ | 已實作 `MotionFAQ.astro`（獨立元件）；既有 FAQ 未修改 |
+| `common/FAQAccordion.astro` | 原生 `details/summary`、`variant=line/soft/cards`、`openFirst`、`className` | 保留本專案 FAQ 既有內容，補 variants 與瀏覽器漸進增強；避免多個同義 FAQ | 已實作 `MotionFAQ.astro`（效果庫內的獨立展示元件）；既有 FAQ 未修改 |
 | `blog/ReadingProgress.astro` | 顏色 `forest/warm/ink` | 本專案已實作 ReadingProgress，顏色由四套 `--accent` token 決定，不另外複製 forest palette | 已有 |
 | `common/SiteHeader.astro` | `glass={false}` 關閉模糊 | 本專案使用**不透底 sticky header**；預設不得開 glass | 已有實作符合 |
 | `src/styles/tailwind.css` | Tailwind CSS 4 + `@tailwindcss/vite`、`@theme inline`、`@source`、className 靜態掃描 | 本專案 Astro 5 + 自定 CSS tokens，**先不引入 Tailwind**。若真的需要 className 支援，用 Astro `class:list` + CSS variables；屬於獨立架構提案 | 未整合，刻意維持現況 |

@@ -10,7 +10,7 @@
 | P02 Magnetic Button | `magnetic` boolean，指標牽引幅度由移動 x 8px／y 6px 計算 | **已有** `MagneticButton.astro`；原 `Button` 沒有改 | 預設關閉；只在主要 CTA 使用，不用在表單送出等關鍵操作 |
 | I01 ZoomImage | `zoom/pan/none`，`aspectRatio`、`position`、`src`、`alt`、`href`、`className` | **已有** `ZoomImage.astro`（zoom、pan、none） | 有授權的照片使用；表格、資訊圖、文字截圖不做 pan |
 | L01 UnderlineLink | `grow/center/marker`、arrow、external、className | **已有** `UnderlineLink.astro`（grow、center、marker） | 應和現有文字連結樣式融合；保持 focus-visible |
-| F01 FAQAccordion | `line/soft/cards`、openFirst、className；原生 details | **已有** `MotionFAQ.astro`（效果庫內的獨立元件）；既有 FAQ／ArticleAccordion 沒有改，同一頁不要混用兩種 FAQ 樣式 | **增強既有**，不要多生一套 FAQ；條件支援時 CSS 高度動畫 |
+| F01 FAQAccordion | `line/soft/cards`、openFirst、className；原生 details | **已有** `MotionFAQ.astro`（效果庫內的獨立展示元件）；既有 FAQ／ArticleAccordion 沒有改。學員的單一網站依需求修改現有 FAQ，除非學員明確要新增另一種，才另開新元件 | **增強既有**，不要多生一套 FAQ；條件支援時 CSS 高度動畫 |
 | A01 ReadingProgress | `forest/warm/ink` 變體 | **已有** ReadingProgress | 仍使用既有 `--accent`，不建立第二套顏色 |
 | N01 SiteHeader glass | `glass=false` 可關閉透明磨砂 | **已有**不透底 sticky nav | 預設透明磨砂**禁止**，維持已確認的 Header 設計 |
 | T01 Tailwind tokens | `@theme inline` sage/forest/clay、`className` 靜態掃描 | **已有**四套 CSS tokens，尚未用 Tailwind v4 | **不移植 Tailwind 配置**；以 class:list、CSS vars 與既有 CSS 層級提供覆寫 |
