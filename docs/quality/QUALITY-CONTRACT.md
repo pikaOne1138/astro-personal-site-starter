@@ -19,7 +19,7 @@ This file defines **what a passing test means**. A green build by itself is not 
 5. User-facing navigation, essential controls, keyboard focus and Escape behavior work. No purely decorative text alters accessible names.
 6. Hidden skip links must be keyboard-accessible and must not be mistaken for overflowing visible content.
 7. Animation is enhancement. Readable content must not remain permanently invisible; reduced-motion works.
-8. A build success does not establish responsive quality. Review 1440, 1280, 768 and 390; add 375 for edge cases.
+8. A build success does not establish responsive quality. Review 1440, 1280, 768 and 390.
 9. Real deployed Preview and its source commit must be matched; published historical deployment URLs may remain reachable.
 10. Student starter package must stand alone. The same core output assertions run under a student-owned read-only PR CI, not only in the research repository.
 

@@ -34,7 +34,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 3. **選動效強度**：預設 `subtle`；若沒有指定，**不要**全站使用 tilt、spotlight、magnetic、parallax。
 4. **沿用四套主題**：paper/morning/studio/botanical 使用現有 `--text`, `--muted`, `--accent`, `--surface`, `--line`, `--radius` 等 CSS 變數。不要直接導入 Manus 的 forest／sage Tailwind palette 覆蓋設計；若必須使用 Tailwind v4，先確定現有 Astro 建置、CSS cascade 與依賴相容。
 5. **先檢查現有效果**：global `[data-reveal]`、`TableOfContents`、`FAQ`、`PostCard` hover、`ArticleViewSwitcher` 已有互動。可以增強，但不能雙重 observer、重複轉場或重設焦點。
-6. **在四套主題與兩類網站驗證**：375/390px、平板、桌機；觸控、滑鼠、鍵盤與 `prefers-reduced-motion:reduce`。無 JavaScript 時文字、FAQ、導覽必須可見可用。
+6. **在四套主題與兩類網站驗證**：1440／1280／768／390px；觸控、滑鼠、鍵盤與 `prefers-reduced-motion:reduce`。無 JavaScript 時文字、FAQ、導覽必須可見可用。
 7. **分支與合併**：用 GitHub PR 做小幅且可預覽的變更，更新 Registry、展示、`COMPONENTS.md`、Skill／reference；Build 成功、瀏覽器實測後請使用者確認才合併。
 
 ## 強度政策

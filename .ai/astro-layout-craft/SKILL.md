@@ -22,7 +22,7 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 4. **從既有 blocks 取資料**：`src/data/blocks.registry.json` 及 `/blocks/` 中找可重用功能；必要時定義額外 layout-specific composition，不把所有首頁都改成同一組 Hero + three cards。
 5. **再挑風格和特效**：沿用或自訂 CSS tokens，跟 `.ai/astro-motion-craft/SKILL.md` 選適合的動態；不要用炫技代替版型差異。
 6. **保持工作坊友善**：用 Astro + CSS Grid/Flex + 少量原生 JS；所有範例可靜態部署 GitHub Pages，內部連結尊重 `import.meta.env.BASE_URL`。
-7. **驗證**：375/390px、桌面，長標題不中斷、對比與鍵盤可用、減少動態、不得有偽造收費、證照、留言或預約成功。每次新增可重用版型需更新版型 data、展示站與 Skill；新元件才登錄 Block Registry。
+7. **驗證**：1440／1280／768／390px，長標題不中斷、對比與鍵盤可用、減少動態、不得有偽造收費、證照、留言或預約成功。每次新增可重用版型需更新版型 data、展示站與 Skill；新元件才登錄 Block Registry。
 
 ## 各方向應保留的**結構性差異**
 

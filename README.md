@@ -42,7 +42,7 @@ npm run preview # 預覽建置結果（全文搜尋需要先 build）
 ## 部署
 
 - **展示站以 Cloudflare Pages 為準**：專案 `personal-site-starter` 連接這個 Repo，正式分支 `main`；每個 PR 分支的 Preview 網址以 Cloudflare 在 PR 回報的為準。`wrangler.jsonc` 另外設定了 Workers 靜態資產。
-- **GitHub Pages 只在 Repo 公開時可用**：目前 `.github/workflows/` 還有 GitHub Pages 的發布與 PR 預覽（機制見 `docs/github-pr-preview-setup.md`）。這個 Repo 轉為私人後，`github.io` 就不能當展示站，這些流程也會失效，之後以 Cloudflare 為唯一的展示與預覽。
+- **本 Repo 不再用 GitHub Pages 當展示站或 PR 預覽**（轉為私人後 `github.io` 無法使用）。`.github/workflows/` 裡舊的 GitHub Pages 發布與預覽流程（機制見 `docs/github-pr-preview-setup.md`）等待移除；移除前不要依賴它。學員自己的網站仍可選 GitHub Pages 或 Cloudflare，那是學員資料包裡的 Skill 在處理。
 - 部署的實際狀態以平台的部署紀錄與可開啟的網址為準，不能只憑本地設定判斷。修改部署 Workflow、變更 DNS 或合併 PR 都需要另外核准。
 
 ## 守則

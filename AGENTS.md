@@ -19,7 +19,7 @@ This file is the entry point. It holds the standing rules and tells you which Sk
 7. Component names and Props are the interface for AI-assisted assembly; preserve backwards compatibility.
    - On a single student website, change the existing component to fit what the student needs rather than adding a near-duplicate beside it. Add a new component only when the student explicitly asks for one.
 8. Run `npm run build` before declaring completion; follow the PR Preview Skill and ask for explicit approval before merging.
-9. Always preserve every existing visual theme, keyboard navigation, `BASE_URL`, reduced-motion behavior and the GitHub PR preview workflow.
+9. Always preserve every existing visual theme, keyboard navigation, `BASE_URL`, reduced-motion behavior and the Cloudflare PR preview.
 
 ## External libraries and repositories are reference-only
 

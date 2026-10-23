@@ -409,7 +409,7 @@ Repository：https://github.com/pikaOne1138/astro-personal-site-starter
 
 ## 7. 四尺寸視覺／互動 QA 檢查表
 
-每個重要頁面至少檢查 **1440、1280、768、390 px**，必要時增加 375 px。每項留下截圖路徑與 PASS/FAIL。
+每個重要頁面至少檢查 **1440、1280、768、390 px**。每項留下截圖路徑與 PASS/FAIL。
 
 - [ ] Hero 第一屏的標題、敘述與 CTA 可見，沒有水平捲動。
 - [ ] Header、桌面選單與手機選單有清楚閱讀順序，不遮住內容。
