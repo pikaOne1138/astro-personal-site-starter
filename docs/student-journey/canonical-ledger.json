@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "4332f39ed7e6e0cc9a1081a561acfd8e4d8a2d43"
+        "blobSha": "13a5828a432cc228f5a80978947856c0d86b2f3a"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -14919,8 +14919,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14930,13 +14930,19 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B6-PUB47-01-S01",
+        "B6-PUB47-01-S02",
+        "B6-PUB47-01-S03",
+        "B6-PUB47-01-S04"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B6-PUB47-02",
-      "canonicalId": null,
-      "requirement": "連結需指向真實網站",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0126",
+      "requirement": "Publishing output links must point to the real student site",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14961,12 +14967,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14976,13 +14984,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB47-03",
-      "canonicalId": null,
-      "requirement": "RSS 不重複展示八種主題外觀的同一文章",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0127",
+      "requirement": "RSS must not duplicate eight themed demo appearances of one article",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15007,12 +15022,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15022,7 +15039,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB49-01",
@@ -15950,8 +15974,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15967,7 +15991,11 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B6-PUB66-01-S01",
+        "B6-PUB66-01-S02"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B6-PUB66-02",
@@ -16009,8 +16037,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16026,7 +16054,12 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B6-PUB66-02-S01",
+        "B6-PUB66-02-S02",
+        "B6-PUB66-02-S03"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B7-PUB-L70-01",
@@ -16443,8 +16476,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16460,7 +16493,12 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L76-01-S01",
+        "B7-PUB-L76-01-S02",
+        "B7-PUB-L76-01-S03"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B7-PUB-L76-02",
@@ -16502,8 +16540,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16519,13 +16557,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L76-02-S01",
+        "B7-PUB-L76-02-S02",
+        "B7-PUB-L76-02-S03",
+        "B7-PUB-L76-02-S04",
+        "B7-PUB-L76-02-S05"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B7-PUB-L76-03",
-      "canonicalId": null,
-      "requirement": "公開 PR Preview 可能洩露內容；敏感草稿只用受限環境預覽",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0141",
+      "requirement": "Confidential drafts use restricted Preview; public PR Previews may leak content",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16557,12 +16602,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16578,7 +16625,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L77-01",
@@ -16777,8 +16831,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16788,13 +16842,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L78-01-S01",
+        "B7-PUB-L78-01-S02",
+        "B7-PUB-L78-01-S03",
+        "B7-PUB-L78-01-S04",
+        "B7-PUB-L78-01-S05"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B7-PUB-L78-02",
-      "canonicalId": null,
-      "requirement": "沒有實際排程服務不可聲稱能定時自動發布",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0147",
+      "requirement": "Do not claim timed automatic publishing without configured real scheduling service",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16819,12 +16880,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16834,13 +16899,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-01",
-      "canonicalId": null,
-      "requirement": "發布須確認學員同意稿件",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0148",
+      "requirement": "Article must be owner-approved before publication",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16865,12 +16937,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16880,7 +16954,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-02",
@@ -16968,8 +17049,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16985,7 +17066,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L79-03-S01",
+        "B7-PUB-L79-03-S02",
+        "B7-PUB-L79-03-S03",
+        "B7-PUB-L79-03-S04",
+        "B7-PUB-L79-03-S05"
+      ],
+      "parentDisposition": "All source conditions decomposed into source-approved leaf clauses"
     },
     {
       "legacyId": "B7-PUB-L80-01",
@@ -18845,9 +18933,9 @@
     },
     {
       "legacyId": "B6-PUB47-01-S01",
-      "canonicalId": null,
-      "requirement": "檢查 sitemap.xml",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0122",
+      "requirement": "Inspect actual emitted sitemap.xml",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18869,12 +18957,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18884,13 +18974,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB47-01-S02",
-      "canonicalId": null,
-      "requirement": "檢查 rss.xml",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0123",
+      "requirement": "Inspect actual emitted rss.xml",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18912,12 +19009,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18927,13 +19026,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB47-01-S03",
-      "canonicalId": null,
-      "requirement": "檢查 robots.txt",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0124",
+      "requirement": "Inspect actual emitted robots.txt",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18955,12 +19061,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18970,13 +19078,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB47-01-S04",
-      "canonicalId": null,
-      "requirement": "檢查 404.html",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0125",
+      "requirement": "Inspect actual emitted 404.html",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -18998,12 +19113,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19013,7 +19130,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 47,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "4. Inspect `sitemap.xml`, `rss.xml`, `robots.txt`, `404.html` in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article.",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB65-03-S01",
@@ -19146,9 +19270,9 @@
     },
     {
       "legacyId": "B7-PUB-L78-01-S01",
-      "canonicalId": null,
-      "requirement": "核對文字內容",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0142",
+      "requirement": "Before scheduled publication verify actual article wording",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19170,12 +19294,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19185,13 +19313,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L78-01-S02",
-      "canonicalId": null,
-      "requirement": "核對 SEO",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0143",
+      "requirement": "Before scheduled publication verify SEO metadata",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19213,12 +19348,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19228,13 +19367,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L78-01-S03",
-      "canonicalId": null,
-      "requirement": "核對站內連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0144",
+      "requirement": "Before scheduled publication verify internal links",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19256,12 +19402,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19271,13 +19421,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L78-01-S04",
-      "canonicalId": null,
-      "requirement": "核對圖片來源",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0145",
+      "requirement": "Before scheduled publication verify legal image sources",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19299,12 +19456,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19314,13 +19475,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L78-01-S05",
-      "canonicalId": null,
-      "requirement": "核對手機 QA",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0146",
+      "requirement": "Before scheduled publication verify mobile reading experience",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19342,12 +19510,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
+      "conditions": [
+        "Publication scheduled or requested"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-01.md",
@@ -19357,7 +19529,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 78,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L31-02-S01",
@@ -24560,9 +24739,9 @@
     },
     {
       "legacyId": "B6-PUB66-01-S01",
-      "canonicalId": null,
-      "requirement": "交接異動檔案",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0128",
+      "requirement": "Article handoff includes changed files",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24584,12 +24763,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24599,13 +24780,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 66,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB66-01-S02",
-      "canonicalId": null,
-      "requirement": "交接文章公開或草稿狀態",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0129",
+      "requirement": "Article handoff includes actual public versus draft status",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24627,12 +24815,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24642,13 +24832,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 66,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB66-02-S01",
-      "canonicalId": null,
-      "requirement": "交接已執行檢查",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0130",
+      "requirement": "Article handoff includes tests actually executed",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24670,12 +24867,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24685,13 +24884,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 66,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB66-02-S02",
-      "canonicalId": null,
-      "requirement": "交接未解風險",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0131",
+      "requirement": "Article handoff discloses unresolved risks",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24713,12 +24919,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24728,13 +24936,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 66,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B6-PUB66-02-S03",
-      "canonicalId": null,
-      "requirement": "未得同意不得 Merge",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0132",
+      "requirement": "Article publishing PR must not be merged without explicit owner approval",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24756,12 +24971,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24771,7 +24988,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 66,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02-S01",
@@ -25191,9 +25415,9 @@
     },
     {
       "legacyId": "B7-PUB-L76-01-S01",
-      "canonicalId": null,
-      "requirement": "只詢問缺少的真實資料",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0133",
+      "requirement": "Draft authoring asks only for missing factual material",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25215,12 +25439,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25230,13 +25456,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-01-S02",
-      "canonicalId": null,
-      "requirement": "核對 slug",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0134",
+      "requirement": "Draft authoring verifies intended slug",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25258,12 +25491,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25273,13 +25508,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-01-S03",
-      "canonicalId": null,
-      "requirement": "核對日期",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0135",
+      "requirement": "Draft authoring verifies intended date",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25301,12 +25543,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25316,13 +25560,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-02-S01",
-      "canonicalId": null,
-      "requirement": "寫入正確實際 Collection",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0136",
+      "requirement": "Draft article is written into the correct student Content Collection",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25344,12 +25595,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25359,13 +25612,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-02-S02",
-      "canonicalId": null,
-      "requirement": "草稿不在列表",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0137",
+      "requirement": "Unpublished draft must not appear in the public article list",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25387,12 +25647,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25402,13 +25664,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-02-S03",
-      "canonicalId": null,
-      "requirement": "草稿不在 RSS",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0138",
+      "requirement": "Unpublished draft must not appear in public RSS",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25430,12 +25699,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25445,13 +25716,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-02-S04",
-      "canonicalId": null,
-      "requirement": "草稿不在 Sitemap",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0139",
+      "requirement": "Unpublished draft must not appear in the public sitemap",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25473,12 +25751,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25488,13 +25768,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-02-S05",
-      "canonicalId": null,
-      "requirement": "草稿不在搜尋",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0140",
+      "requirement": "Unpublished draft must not be discoverable in public search",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25516,12 +25803,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25531,13 +25820,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 76,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-03-S01",
-      "canonicalId": null,
-      "requirement": "發布後確認 URL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0149",
+      "requirement": "After authorized publication verify actual article URL",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25559,12 +25855,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25574,13 +25872,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-03-S02",
-      "canonicalId": null,
-      "requirement": "發布後確認列表",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0150",
+      "requirement": "After publication verify public article listing",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25602,12 +25907,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25617,13 +25924,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-03-S03",
-      "canonicalId": null,
-      "requirement": "發布後確認 RSS",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0151",
+      "requirement": "After publication verify RSS feed inclusion",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25645,12 +25959,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25660,13 +25976,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-03-S04",
-      "canonicalId": null,
-      "requirement": "發布後確認 Sitemap",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0152",
+      "requirement": "After publication verify Sitemap inclusion",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25688,12 +26011,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25703,13 +26028,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L79-03-S05",
-      "canonicalId": null,
-      "requirement": "有 Pagefind 才測索引及搜尋",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0153",
+      "requirement": "If Pagefind configured, verify actual article indexing and search behavior",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25731,12 +26063,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned article website with the feature and platform configured"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -25746,7 +26080,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 79,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。",
+        "method": "IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW"
+      }
     },
     {
       "legacyId": "B7-PUB-L80-01-S01",
@@ -69962,11 +70303,11 @@
       "lineEnd": 40,
       "sourceText": "- 模擬修改錯誤：另建 PR 還原特定更動，驗證結果，再由學員同意合併。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "SOURCE_POLICY_OR_CONDITION",
-      "reviewerNote": "Safety/release wording: preserve separate actor, operation, precondition and exception",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Illustrative recovery rehearsal example; operative approval and restore rules are separately documented",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_POLICY_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -69977,7 +70318,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-site-maintenance/SKILL.md:40",
+        "frozenBlobSha": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
+        "sourceText": "- 模擬修改錯誤：另建 PR 還原特定更動，驗證結果，再由學員同意合併。",
+        "reason": "Illustrative recovery rehearsal example; operative approval and restore rules are separately documented"
+      }
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:45",
@@ -72222,11 +72569,11 @@
       "lineEnd": 55,
       "sourceText": "| 換照片、改一行文案或 CTA | 局部修改與真實來源／連結驗證 | `.ai/astro-site-maintenance/SKILL.md`；圖片／版面需要時讀 UI Skill |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Scenario-to-Skill routing example, not an additional independent obligation",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -72237,7 +72584,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:55",
+        "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+        "sourceText": "| 換照片、改一行文案或 CTA | 局部修改與真實來源／連結驗證 | `.ai/astro-site-maintenance/SKILL.md`；圖片／版面需要時讀 UI Skill |",
+        "reason": "Scenario-to-Skill routing example, not an additional independent obligation"
+      }
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:60",
@@ -72249,11 +72602,11 @@
       "lineEnd": 60,
       "sourceText": "| 想看修改結果、可以上線了 | Preview、發布核准、部署後檢查 | `.ai/astro-pr-preview/SKILL.md`、`.ai/astro-starter-deploy/SKILL.md` |",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Scenario-to-Skill routing example pointing to existing preview and deploy rules",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -72264,7 +72617,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:60",
+        "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+        "sourceText": "| 想看修改結果、可以上線了 | Preview、發布核准、部署後檢查 | `.ai/astro-pr-preview/SKILL.md`、`.ai/astro-starter-deploy/SKILL.md` |",
+        "reason": "Scenario-to-Skill routing example pointing to existing preview and deploy rules"
+      }
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:67",
@@ -72628,11 +72987,11 @@
       "lineEnd": 113,
       "sourceText": "<!-- builder-only:start -->",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Builder-only source packaging delimiter; no independent student obligation",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -72643,7 +73002,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:113",
+        "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+        "sourceText": "<!-- builder-only:start -->",
+        "reason": "Builder-only source packaging delimiter; no independent student obligation"
+      }
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:116",
@@ -72677,11 +73042,11 @@
       "lineEnd": 118,
       "sourceText": "<!-- builder-only:end -->",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Builder-only source packaging delimiter; no independent student obligation",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -72692,7 +73057,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:118",
+        "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+        "sourceText": "<!-- builder-only:end -->",
+        "reason": "Builder-only source packaging delimiter; no independent student obligation"
+      }
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:19",
@@ -72899,20 +73270,14 @@
       "lineEnd": 41,
       "sourceText": "> 此文件為驗收依據，不代表所有檢查已完成。PR 保持 Draft，未核實的項目不可宣稱通過。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "SOURCE_CONTENT_REQUIREMENT",
-      "reviewerNote": "Potential norm or context: preserve complete original; no inferred alias or parent replacement",
+      "preliminaryKind": "QA_STATUS_TRUTH",
+      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ATOMIC_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "KEEP_PENDING_CANONICAL",
+      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
+      "atomicClauseCandidates": [
+        "The manual QA document does not prove every check has been executed; preserve Draft state and do not claim unverified checks passed"
       ],
       "nearbyLegacyEvidence": [
         {
@@ -73836,50 +74201,50 @@
         {
           "legacyId": "B6-PUB47-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "檢查 sitemap、RSS、robots、404 產物",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "連結需指向真實網站",
+          "canonicalId": "ATP-P2-0126",
+          "reviewStatus": "APPROVED",
+          "requirement": "Publishing output links must point to the real student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "RSS 不重複展示八種主題外觀的同一文章",
+          "canonicalId": "ATP-P2-0127",
+          "reviewStatus": "APPROVED",
+          "requirement": "RSS must not duplicate eight themed demo appearances of one article",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 sitemap.xml",
+          "canonicalId": "ATP-P2-0122",
+          "reviewStatus": "APPROVED",
+          "requirement": "Inspect actual emitted sitemap.xml",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 rss.xml",
+          "canonicalId": "ATP-P2-0123",
+          "reviewStatus": "APPROVED",
+          "requirement": "Inspect actual emitted rss.xml",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-01-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 robots.txt",
+          "canonicalId": "ATP-P2-0124",
+          "reviewStatus": "APPROVED",
+          "requirement": "Inspect actual emitted robots.txt",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB47-01-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查 404.html",
+          "canonicalId": "ATP-P2-0125",
+          "reviewStatus": "APPROVED",
+          "requirement": "Inspect actual emitted 404.html",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -73890,7 +74255,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:48",
@@ -74344,50 +74709,50 @@
         {
           "legacyId": "B6-PUB66-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "交接異動檔案與文章公開／草稿狀態",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "交接實際執行的檢查與未解風險；未同意不得 Merge",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "交接異動檔案",
+          "canonicalId": "ATP-P2-0128",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article handoff includes changed files",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "交接文章公開或草稿狀態",
+          "canonicalId": "ATP-P2-0129",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article handoff includes actual public versus draft status",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "交接已執行檢查",
+          "canonicalId": "ATP-P2-0130",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article handoff includes tests actually executed",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "交接未解風險",
+          "canonicalId": "ATP-P2-0131",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article handoff discloses unresolved risks",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-PUB66-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "未得同意不得 Merge",
+          "canonicalId": "ATP-P2-0132",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article publishing PR must not be merged without explicit owner approval",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -74398,7 +74763,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:72",
@@ -74439,82 +74804,82 @@
         {
           "legacyId": "B7-PUB-L76-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "「新增草稿」只追問缺少的真實材料並核對 slug／日期",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "寫入實際 Collection，確認草稿不在文章清單、RSS、Sitemap、搜尋",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "公開 PR Preview 可能洩露內容；敏感草稿只用受限環境預覽",
+          "canonicalId": "ATP-P2-0141",
+          "reviewStatus": "APPROVED",
+          "requirement": "Confidential drafts use restricted Preview; public PR Previews may leak content",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "只詢問缺少的真實資料",
+          "canonicalId": "ATP-P2-0133",
+          "reviewStatus": "APPROVED",
+          "requirement": "Draft authoring asks only for missing factual material",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對 slug",
+          "canonicalId": "ATP-P2-0134",
+          "reviewStatus": "APPROVED",
+          "requirement": "Draft authoring verifies intended slug",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-01-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對日期",
+          "canonicalId": "ATP-P2-0135",
+          "reviewStatus": "APPROVED",
+          "requirement": "Draft authoring verifies intended date",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "寫入正確實際 Collection",
+          "canonicalId": "ATP-P2-0136",
+          "reviewStatus": "APPROVED",
+          "requirement": "Draft article is written into the correct student Content Collection",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "草稿不在列表",
+          "canonicalId": "ATP-P2-0137",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished draft must not appear in the public article list",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "草稿不在 RSS",
+          "canonicalId": "ATP-P2-0138",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished draft must not appear in public RSS",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "草稿不在 Sitemap",
+          "canonicalId": "ATP-P2-0139",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished draft must not appear in the public sitemap",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L76-02-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "草稿不在搜尋",
+          "canonicalId": "ATP-P2-0140",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished draft must not be discoverable in public search",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:78",
@@ -74525,50 +74890,50 @@
         {
           "legacyId": "B7-PUB-L78-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "排定公開須先完成文字、SEO、內鏈、圖片來源與手機 QA",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "沒有實際排程服務不可聲稱能定時自動發布",
+          "canonicalId": "ATP-P2-0147",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not claim timed automatic publishing without configured real scheduling service",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對文字內容",
+          "canonicalId": "ATP-P2-0142",
+          "reviewStatus": "APPROVED",
+          "requirement": "Before scheduled publication verify actual article wording",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對 SEO",
+          "canonicalId": "ATP-P2-0143",
+          "reviewStatus": "APPROVED",
+          "requirement": "Before scheduled publication verify SEO metadata",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-01-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對站內連結",
+          "canonicalId": "ATP-P2-0144",
+          "reviewStatus": "APPROVED",
+          "requirement": "Before scheduled publication verify internal links",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-01-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對圖片來源",
+          "canonicalId": "ATP-P2-0145",
+          "reviewStatus": "APPROVED",
+          "requirement": "Before scheduled publication verify legal image sources",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L78-01-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對手機 QA",
+          "canonicalId": "ATP-P2-0146",
+          "reviewStatus": "APPROVED",
+          "requirement": "Before scheduled publication verify mobile reading experience",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -74579,7 +74944,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:79",
@@ -74589,9 +74954,9 @@
       "legacyMatches": [
         {
           "legacyId": "B7-PUB-L79-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "發布須確認學員同意稿件",
+          "canonicalId": "ATP-P2-0148",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article must be owner-approved before publication",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -74604,47 +74969,47 @@
         {
           "legacyId": "B7-PUB-L79-03",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "發布後核對 URL、清單、RSS、Sitemap、搜尋（有 Pagefind 時）",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L79-03-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "發布後確認 URL",
+          "canonicalId": "ATP-P2-0149",
+          "reviewStatus": "APPROVED",
+          "requirement": "After authorized publication verify actual article URL",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L79-03-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "發布後確認列表",
+          "canonicalId": "ATP-P2-0150",
+          "reviewStatus": "APPROVED",
+          "requirement": "After publication verify public article listing",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L79-03-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "發布後確認 RSS",
+          "canonicalId": "ATP-P2-0151",
+          "reviewStatus": "APPROVED",
+          "requirement": "After publication verify RSS feed inclusion",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L79-03-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "發布後確認 Sitemap",
+          "canonicalId": "ATP-P2-0152",
+          "reviewStatus": "APPROVED",
+          "requirement": "After publication verify Sitemap inclusion",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B7-PUB-L79-03-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "有 Pagefind 才測索引及搜尋",
+          "canonicalId": "ATP-P2-0153",
+          "reviewStatus": "APPROVED",
+          "requirement": "If Pagefind configured, verify actual article indexing and search behavior",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:80",
