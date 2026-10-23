@@ -1281,6 +1281,27 @@ if(process.argv[2]==='import'){
     frozenBlobSha:manifest[previewSource],sourceText:original,
     method:'SOURCE_LEVEL_PARAGRAPH_SEMANTIC_DECOMPOSITION'}});
  }
+ // B2: re-examine the complete Frozen preview paragraph. The original
+ // legacy rows are composites of three already-approved requirements, not
+ // three more policies just because they have separate legacy identifiers.
+ const previewPolicySource='.ai/astro-pr-preview/SKILL.md',previewPolicyLine=30;
+ const previewPolicyChildren=['PROOF-001.03.S1','PROOF-001.03.S2','PROOF-001.03.S3'];
+ const previewPolicyParents=['PREVIEW-POLICY-01','PROOF-001.01','PROOF-001.02','PROOF-001.03'];
+ if(!frozenLine(previewPolicySource,previewPolicyLine)||
+    previewPolicyChildren.some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))
+   throw Error('Missing approved atomic preview policies or Frozen text');
+ for(const id of previewPolicyParents){
+  const row=byId.get(id);
+  if(!row||row.canonicalId||!row.sourceRefs.some(ref=>
+      ref.revision===frozen&&ref.path===previewPolicySource&&ref.lineStart===previewPolicyLine))
+    throw Error('Preview documentary item not anchored at Frozen source: '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:previewPolicyChildren,
+    parentDisposition:'Original preview paragraph decomposed into GitHub Pages isolation, truthful missing URL, and student consent; no fourth policy',
+    approvalEvidence:{frozenPath:previewPolicySource,frozenLine:previewPolicyLine,
+      frozenBlobSha:manifest[previewPolicySource],sourceText:frozenLine(previewPolicySource,previewPolicyLine),
+      method:'REVIEWED_THREE_CLAUSE_SOURCE_TO_CANONICAL_COVERAGE'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
