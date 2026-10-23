@@ -418,7 +418,7 @@ function evidenceDisposition(entry){
  return ['SOURCE_CONTENT_REQUIREMENT','Potential norm or context: preserve complete original; no inferred alias or parent replacement','MAP_ATOMIC_PENDING'];
 }
 for(const entry of sourceReviewQueue){
- if(entry.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION'||entry.reviewStatus==='APPROVED'||entry.canonicalId)continue;
+ if(entry.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION'||entry.reviewStatus==='DOCUMENTARY_FINAL_NON_NORMATIVE'||entry.reviewStatus==='APPROVED'||entry.canonicalId)continue;
  const [kind,reason,action]=evidenceDisposition(entry);
  entry.preliminaryKind=kind;
  entry.proposedAction=action;
@@ -428,6 +428,31 @@ for(const entry of sourceReviewQueue){
  entry.adjudicationNeeded=['scope','normative-versus-context','atomicity','source-to-legacy-map','cross-source-alias','approval'];
 }
 const firstPassDisposed=sourceReviewQueue.filter(x=>x.reviewStatus==='SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING');
+// Explicit documentary decisions for low-ambiguity source lines.
+// These decisions eliminate only non-normative/historical rows, never a live obligation.
+const terminalSourceDecisions={
+ '.ai/astro-pr-preview/SKILL.md:3':['NON_NORMATIVE','YAML description: scope metadata, not a separate instruction'],
+ '.ai/astro-pr-preview/SKILL.md:59':['NON_NORMATIVE','Quoted sample prompt, obligations must map through operational source lines'],
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:47':['NON_NORMATIVE','Historic Action result, cannot be treated as a live acceptance requirement'],
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:49':['NON_NORMATIVE','Historic Action result, cannot be treated as a live acceptance requirement'],
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:50':['NON_NORMATIVE','Historic IN PROGRESS value, not current evidence'],
+ 'docs/quality/QUALITY-CONTRACT.md:28':['NON_NORMATIVE','Table header only, preserve its table rows'],
+ 'docs/student-builder-pack/ART-DIRECTION-STARTER.md:12':['NON_NORMATIVE','Isolated shell invocation illustrative of an existing verification command'],
+ 'docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:15':['NON_NORMATIVE','An evaluation scenario row, not a universally applicable website policy']
+};
+for(const entry of sourceReviewQueue){
+ const d=terminalSourceDecisions[entry.sourceKey];
+ if(!d)continue;
+ if(entry.canonicalId||entry.reviewStatus==='APPROVED')continue;
+ entry.preliminaryKind='NON_NORMATIVE';
+ entry.proposedAction='NON_NORMATIVE';
+ entry.decision='NON_NORMATIVE';
+ entry.reviewStatus='DOCUMENTARY_FINAL_NON_NORMATIVE';
+ entry.reviewerNote=d[1];
+ entry.dispositionEvidence={frozenSource:entry.sourceKey,frozenBlobSha:entry.sourceBlobSha,sourceText:entry.sourceText,reason:d[1]};
+ entry.atomicClauseCandidates=[];
+}
+const closedNonNormative=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_FINAL_NON_NORMATIVE');
 const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
 const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
 const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
@@ -466,7 +491,8 @@ const status={
  sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
  p0p1QueueItems:sourceReviewQueue.length,
  p0p1PendingSourceMapping:unresolvedP0P1,
- p0p1PendingCanonicalAdjudication:sourceReviewQueue.filter(x=>x.reviewStatus!=='APPROVED').length,
+ p0p1PendingCanonicalAdjudication:sourceReviewQueue.filter(x=>x.reviewStatus!=='APPROVED'&&x.reviewStatus!=='DOCUMENTARY_FINAL_NON_NORMATIVE').length,
+ p0p1ClosedNonNormative:closedNonNormative.length,
  p0p1DocumentaryAssessed:assessedQueue.length,
  p0p1FirstPassDisposed:firstPassDisposed.length,
  p0p1SourceDispositionTotal:assessedQueue.length+firstPassDisposed.length,
