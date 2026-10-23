@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Validate Ledger script syntax before any import
+        run: node --check scripts/phase2-canonical-ledger.mjs
       - name: Import all 59 legacy papers and separate PR61 delta
         shell: bash
         run: |
