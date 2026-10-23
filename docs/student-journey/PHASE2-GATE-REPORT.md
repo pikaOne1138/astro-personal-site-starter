@@ -12,7 +12,7 @@ Generated from canonical-ledger.json. No semantic approval is inferred.
 | Broken refs | 0 |
 | Pending adjudication | 1390 |
 | Import read failures | 0 |
-| No directly anchored Frozen or upstream source | 6 |
+| No directly anchored Frozen or upstream source | 0 |
 
 **Phase 2: BLOCKED**. Phase 3/4: BLOCKED.
 
@@ -22,15 +22,8 @@ Generated from canonical-ledger.json. No semantic approval is inferred.
 {
   "missing": [],
   "failures": [],
-  "missingFrozenCount": 6,
-  "missingFrozenIds": [
-    "P56-20",
-    "P56-22",
-    "P56-23",
-    "P56-31",
-    "P56-32",
-    "P56-34"
-  ],
+  "missingFrozenCount": 0,
+  "missingFrozenIds": [],
   "importErrors": [],
   "pendingSample": [
     "PREVIEW-HISTORY-01",

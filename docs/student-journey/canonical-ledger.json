@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "4cf7de90a1704eae203c5a4d7b9e7a463d8c5674"
+        "blobSha": "0af2a5a57b37e7239654d5ee8c6d56345f0eb915"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -33261,6 +33261,17 @@
           "legacyWorkId": "P56-20",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-20` | 訪談與規劃器矛盾時學員裁決，不可擅選 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 20,
+          "lineEnd": 20,
+          "legacyWorkId": "P56-20",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- 訪談摘要與規劃器設定若有實質矛盾，建站 AI 應先詢問學員，不自行選擇優先權。"
         }
       ],
       "aliases": [],
@@ -33296,6 +33307,17 @@
           "legacyWorkId": "P56-22",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-22` | 可略過訪談及 Logo 仍完成 Site Brief | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 22,
+          "lineEnd": 22,
+          "legacyWorkId": "P56-22",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- 不做訪談、不上傳 Logo，仍應可建立 Site Brief 並開始建站。"
         }
       ],
       "aliases": [],
@@ -33331,6 +33353,17 @@
           "legacyWorkId": "P56-23",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-23` | Prompt 送 AI，訪談結果才回填 Starter | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 23,
+          "lineEnd": 23,
+          "legacyWorkId": "P56-23",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- 複製提示詞是「複製給 AI 的輸入」；不是「貼回 Starter」。AI 訪談結果才貼回 Starter。"
         }
       ],
       "aliases": [],
@@ -33366,6 +33399,17 @@
           "legacyWorkId": "P56-31",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-31` | 訪談 ZIP 七份 UTF-8 文件可解壓 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 31,
+          "lineEnd": 31,
+          "legacyWorkId": "P56-31",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- [ ] Starter 04 完整訪談 ZIP 能解壓，七份 Markdown 文件完整且為 UTF-8。"
         }
       ],
       "aliases": [],
@@ -33401,6 +33445,17 @@
           "legacyWorkId": "P56-32",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-32` | 多行訪談摘要換行須在 notes 保留 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 32,
+          "lineEnd": 32,
+          "legacyWorkId": "P56-32",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- [ ] AI 訪談摘要可輸入多行，匯出 Site Brief 的 notes 保留文字與換行。"
         }
       ],
       "aliases": [],
@@ -33436,6 +33491,17 @@
           "legacyWorkId": "P56-34",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-34` | Logo/hero 上傳資料及 JSON assets 不可遺失 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+          "lineStart": 34,
+          "lineEnd": 34,
+          "legacyWorkId": "P56-34",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- [ ] Logo 圖片上傳、主視覺上傳及 Site Brief 的 assets 保留正常。"
         }
       ],
       "aliases": [],
