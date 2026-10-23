@@ -26,11 +26,11 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B1-ASM23-03` | 1 | Build 和 Preview 通過不等於發布核准 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B1-ASM23-04` | 1 | 已揭露且知情接受的 Demo 不單獨阻擋獲核准的發布 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B1-DEP31-01` | 1 | 預設 HTML noindex，robots.txt 禁止索引 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B1-DEP31-02` | 1 | 完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B1-DEP31-03` | 1 | 只在 Production 使用 SITE_INDEXABLE=true 並重新 Build、檢查 robots/canonical/Sitemap | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B1-DEP31-02` | 1 | 完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引 | FLAG | CHILD_SPLIT_02_CREATED |
+| `B1-DEP31-03` | 1 | 只在 Production 使用 SITE_INDEXABLE=true 並重新 Build、檢查 robots/canonical/Sitemap | FLAG | CHILD_SPLIT_02_CREATED |
 | `B1-DEP31-04` | 1 | Cloudflare Preview 不得共用正式站索引設定 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B1-DEP31-04-CF` | 1 | Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B1-DEP31-04-GH` | 1 | GitHub Pages Actions Variables 中 SITE_INDEXABLE 未設定視為 false；正式站審查並獲核准後才設 true 並手動執行 Production Workflow | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B1-DEP31-04-GH` | 1 | GitHub Pages Actions Variables 中 SITE_INDEXABLE 未設定視為 false；正式站審查並獲核准後才設 true 並手動執行 Production Workflow | FLAG | CHILD_SPLIT_02_CREATED |
 | `B2-PUB36-01` | 2 | 舊文章保留 slug，除非學員同意 URL 變更計畫 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B2-PUB36-02` | 2 | 真正內容修改才更新 updatedAt；不得靜默修改 publishedAt | FLAG | CHILD_SPLIT_01_CREATED |
 | `B2-PUB37-01` | 2 | Draft 不得出現在列表、歸檔、RSS、Sitemap、搜尋 | FLAG | CHILD_SPLIT_01_CREATED |
@@ -38,11 +38,11 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B2-PUB48-01` | 2 | 保留 Pagefind HTML-based 搜尋索引 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B2-PUB48-02` | 2 | 搜尋 UI 必須另外組裝及實測 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B2-PUB48-03` | 2 | 不新增硬編碼 metadata-only 全站搜尋 | — | PENDING_CROSS_SOURCE_DEDUPE |
-| `B2-ASM50-01` | 2 | Section Pattern 須先讀 Skill、Registry | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B2-ASM50-01` | 2 | Section Pattern 須先讀 Skill、Registry | FLAG | CHILD_SPLIT_02_CREATED |
 | `B2-ASM50-02` | 2 | 學員未選 Pattern 不強制加入 | — | PENDING_CROSS_SOURCE_DEDUPE |
-| `B2-ASM50-03` | 2 | 輸出 Pattern 骨架仍須真實內容與視覺移植 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B2-DEP43-01` | 2 | 須檢查 Cloudflare 工具權限、scope 與帳號 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B2-DEP43-02` | 2 | 唯讀時由學員在 Dashboard 連接，AI 逐步引導 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B2-ASM50-03` | 2 | 輸出 Pattern 骨架仍須真實內容與視覺移植 | FLAG | CHILD_SPLIT_02_CREATED |
+| `B2-DEP43-01` | 2 | 須檢查 Cloudflare 工具權限、scope 與帳號 | FLAG | CHILD_SPLIT_02_CREATED |
+| `B2-DEP43-02` | 2 | 唯讀時由學員在 Dashboard 連接，AI 逐步引導 | FLAG | CHILD_SPLIT_02_CREATED |
 | `B2-DEP43-03` | 2 | 不要求 Token 或假稱已部署 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B2-DEP43-04` | 2 | Private Repo 可優先考慮，仍需部署授權 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B2-DEP43-05` | 2 | 舊 Preview URL 不可推論新 SHA | — | PENDING_CROSS_SOURCE_DEDUPE |
@@ -51,7 +51,7 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B3-PUB14-03` | 3 | 不承諾自動 URL 保留或無縫遷移 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B3-PUB20-01` | 3 | 以學員生成專案真實 schema、navigation、scripts 為準 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B3-PUB20-02` | 3 | 生成 Pagefind 索引不等於搜尋對話框 UI 完成 | — | PENDING_CROSS_SOURCE_DEDUPE |
-| `B3-PUB20-03` | 3 | 分類／月份搜尋、OG、結構化資料未組裝不得宣稱已完成 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B3-PUB20-03` | 3 | 分類／月份搜尋、OG、結構化資料未組裝不得宣稱已完成 | FLAG | CHILD_SPLIT_02_CREATED |
 | `B3-PUB33-01` | 3 | 建立新文章先讀 schema 與現有 ID | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B3-PUB33-02` | 3 | 新文章使用唯一、穩定的 ASCII slug | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B3-PUB33-03` | 3 | 不可直接改 dist、Pagefind index 或 adapter | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
@@ -86,20 +86,20 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B4-PUB50-02` | 4 | RSS、Sitemap、canonical 絕對網址不能沿用教師 Repo 網址 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-ASM12-01` | 4 | 讀 Starter Config、Layout Directions、Blocks Registry | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-ASM12-02` | 4 | 驗證 kind/layoutSlug 一致性 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B4-ASM12-03` | 4 | 驗證 HEX、路由、CTA、導航名稱及排序 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B4-ASM12-03` | 4 | 驗證 HEX、路由、CTA、導航名稱及排序 | FLAG | CHILD_SPLIT_02_CREATED |
 | `B4-ASM28-01` | 4 | About 應採學生實際提供的 bio、purpose、approach、background | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-ASM28-02` | 4 | 不得自行虛構資格、經歷、推薦與獎項 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP16-01` | 4 | 辨認 GitHub Pages 是 Project、User 或 Custom Domain | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP16-02` | 4 | 依實際域名及 Repo 子路徑設定 Astro site/base | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP17-01` | 4 | 用 import.meta.env.BASE_URL 處理路由與資產 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B4-DEP17-02` | 4 | 核對 canonical、RSS、Sitemap、robots、OG URL | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B4-DEP17-02` | 4 | 核對 canonical、RSS、Sitemap、robots、OG URL | FLAG | CHILD_SPLIT_02_CREATED |
 | `B4-DEP17-03` | 4 | 移除研究站的硬編碼 URL | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B4-DEP18-01` | 4 | 使用 GitHub Actions Build/Deploy | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP18-02` | 4 | 不直接套用教師 showcase 的 workflow_run、Preview Cleanup、gh-pages Snapshot | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP18-03` | 4 | 學員獨立單站工作流程採最小權限 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B4-DEP20-01` | 4 | 首次 Pages、Actions 權限及 DNS 可能需學員自己設定 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B4-DEP20-02` | 4 | 未確認真實授權或部署，不可宣稱已完成 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B4-DEP24-01` | 4 | Cloudflare Git 整合須核對正式 Branch、Build、dist、site/base | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B4-DEP24-01` | 4 | Cloudflare Git 整合須核對正式 Branch、Build、dist、site/base | FLAG | CHILD_SPLIT_02_CREATED |
 | `B4-DEP24-02` | 4 | Cloudflare base 依實際根網域或子路徑判斷，不可硬套 / | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B5-PUB8-01` | 5 | 文章／SEO／RSS／搜尋相關工作使用 Publishing Skill | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B5-PUB8-02` | 5 | GitHub 發布應協同 PR Preview Skill | — | PENDING_CROSS_SOURCE_DEDUPE |
@@ -119,8 +119,8 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B5-PUB62-02` | 5 | 可能時測 Production 與實際 PR Base Build | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B5-PUB62-03` | 5 | 不得繞過失敗 Gate 換取 CI Green | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B5-PUB63-01` | 5 | 檢查實際產出文章與缺漏路由 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B5-PUB63-02` | 5 | 核對清單、標籤、月份、日期、相關文章連結 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B5-PUB63-03` | 5 | 核對文章分享、麵包屑、導航及搜尋行為 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B5-PUB63-02` | 5 | 核對清單、標籤、月份、日期、相關文章連結 | FLAG | CHILD_SPLIT_02_CREATED |
+| `B5-PUB63-03` | 5 | 核對文章分享、麵包屑、導航及搜尋行為 | FLAG | CHILD_SPLIT_02_CREATED |
 | `B5-ASM8-01` | 5 | 按任務職責參照 Onboarding、Layout、Editorial、UI、Publishing、Deploy、Maintenance Skills | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B5-ASM8-02` | 5 | 不得把設計指引當成已可執行網站 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B5-ASM21-01` | 5 | Draft／Preview 可保留已明確標示的 Demo／Sample 與未配置欄位 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
@@ -146,7 +146,7 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 | `B6-ASM13-02` | 6 | 專業履歷及資格僅能使用本人提供事實 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B6-ASM13-03` | 6 | 未配置第三方整合須隱藏或明確標示 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
 | `B6-DEP30-01` | 6 | 驗證 Build 實際產生 Pagefind 與中文 exact-zh 索引 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
-| `B6-DEP30-02` | 6 | npm run verify 應檢查索引結構、路由與草稿隔離 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
+| `B6-DEP30-02` | 6 | npm run verify 應檢查索引結構、路由與草稿隔離 | FLAG | CHILD_SPLIT_02_CREATED |
 | `B6-DEP30-03` | 6 | PR CI regressions 應包含負向故障案例 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B6-DEP30-04` | 6 | 不同 base 設定下必須重新驗證 | — | PENDING_CROSS_SOURCE_DEDUPE |
 | `B6-PUB66-01` | 6 | 交接異動檔案與文章公開／草稿狀態 | FLAG | PENDING_ATOMIC_SEMANTIC_REVIEW |
@@ -199,3 +199,8 @@ Frozen main `2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c`。本表逐筆收錄現�
 - 現存候選中 `B6-ASM11-01`、`B6-ASM11-02` 描述傳統 Starter JSON 路線，已與使用者確立的 A／B／C 三路徑形成 **conditional scope**：僅 B 或有實際使用 Site Brief 時適用，不得強迫 A/C 生成 JSON；Frozen 來源保留原貌，另見 [PR61 Delta](UPSTREAM-DELTA-PR61.md)。
 - 本表只證實 187 個條目皆有盤點欄，尚未證明其全部原文子條件已拆盡、跨文件 SAME/DIFFERENT 已裁決，或最終 canonical 母數已確認。
 - Gate：Phase 2 IN PROGRESS；3/4 BLOCKED。
+
+
+## 2026-10-23 人工語義拆解第二輪
+
+[CHILD-SPLIT-02](PHASE2-BATCH1-8-CHILD-SPLIT-02.md) 已核對 Frozen Skills 原文並拆解 **14 個父工作候選／55 子檢查**，本清單的該 14 列狀態更新為 `CHILD_SPLIT_02_CREATED`。原有 8 父／27 子為第一輪。初始 120 個標點風險待審項（不含第一輪已拆 8 項）中，這次有 14 項完成細拆，因此**初篩待審約 106 列**；仍需檢查其他候選與每項的語義最小性，不表示第二階段 Gate 通過。
