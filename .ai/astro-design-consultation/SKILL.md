@@ -24,9 +24,9 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 1. `references/conversation-playbook.md`：對話步驟與易懂的回覆方式。
 2. `references/design-brief-contract.md`：供人閱讀的 Brief 與候選選項欄位契約。
 3. `references/scenario-tests.md` 僅供**評測者／Skill 維護者**在離線評估時使用；一般學員對話、受測模型的實際作答階段**禁止讀取或搜尋**該檔。此檔含預期行為，是答案卷，不得視為正常執行上下文。
-4. `docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`：共用設計判斷來源（在分支存在時）；如本文件尚未進入當前分支，使用本 Skill 內的設計原則，不宣稱已合併。
+4. `.ai/SHARED-DESIGN-HANDOFF.md`：各設計類 Skill 共用的判斷原則、批評格式與審查面向。
 5. 純聊天工具沒有 Repo／GitHub 存取時，只能以『尚未核對版本與可用性』回覆，提供學員容易操作的下一步或請能讀專案的 AI 核對；不把原型假定為可直接產站。
-6. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；**PR47 未合併的候選**需另核對該 branch 和 readiness，不將原型標稱 ready。
+6. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；不要把 Prototype 或組裝中（in-progress）的版型說成 ready；實際狀態以 `src/data/layout-assembly/definitions.mjs` 的 `assemblyStatus` 為準。
 7. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
 
 ## 回覆節奏與學員掌控權（對話品質護欄）

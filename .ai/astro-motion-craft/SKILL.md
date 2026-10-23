@@ -1,7 +1,6 @@
 ---
 name: astro-motion-craft
 description: Design, tune and audit restrained Astro motion interactions using reusable effects, four existing theme tokens and accessibility-first performance constraints.
-version: 1
 ---
 
 # Astro Motion Craft — 動效與微互動設計 Skill
@@ -83,13 +82,14 @@ version: 1
 > Manus v2 參考資料：`manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md` 與使用者提供的 `manusCR-v2astro-editorial-care-tailwind-motion.zip`。這些是**設計研究來源**，不直接代表本 repo 的已安裝依賴或現有實作。
 
 
-## 實際可操作的特效庫（本 PR 新增）
+## 實際可操作的特效庫
 
-- 預覽網址：`/effects/`（GitHub Pages 請加上 repo BASE_URL；PR 預覽走 `/pr-preview/pr-N/effects/`）。
-- 元件來源：`src/components/effects/`，七個實際元件：`Reveal`、`StaggerGroup`、`MotionCard`、`ZoomImage`、`MagneticButton`、`UnderlineLink`、`MotionFAQ`；索引：`src/data/effects.registry.json`。
-- 六個可操作的分類：Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、磁吸／底線、可調 FAQ。可切換四套 Theme 和 off／subtle／expressive 強度，且 Reveal／Stagger 可重播。
-- **與原有 53 個 blocks 分開計數**：效果不是網站內容型區塊。後續組裝網站時優先將 effects 與既有 blocks 組合，必要時再抽象成可覆寫的 props，不要把整個展示頁複製到實站。
-- 舊文獻中標示「待移植」的效果已至少有**本 PR 版本的基本 Demo**，但並不表示與 Manus CSS、Tailwind 或所有參數完全一致。確認輸入方式、視覺與動效後才可說「正式完成」。
+- 展示頁：`/effects/`（連結要帶網站的 `BASE_URL`，Preview 子路徑下也一樣）。
+- 元件在 `src/components/effects/`，有哪些效果、變體、預設強度與觸控／減少動態策略，以 `src/data/effects.registry.json` 為準，不要在文件裡寫死數量或名稱。樣式在 `public/effects.css`。
+- 展示頁可切換四套主題與 off／subtle／expressive 強度，Reveal／Stagger 可重播。
+- **效果與網站內容型 Block 分開計數**：效果不是內容區塊，不要加進 `blocks.registry.json`。組裝網站時優先把 effects 與既有 Blocks 組合，必要時再抽成可覆寫的 props，不要把整個展示頁複製到正式站。
+- Reveal 系列使用 `data-motion-*` 屬性與自己的 observer，和 `DemoLayout` 全域的 `[data-reveal]` 是兩套屬性。**同一個元素不要同時標兩種**，也不要為同一組元素再加第三個 observer。
+- 這些元件的 CSS 是我們自己的 `public/effects.css`，不是 Manus 原始 CSS；參數與 Manus 不完全一致（見 `library/` 的 recipes）。確認輸入方式、視覺與動效都實測後，才可說「正式完成」。
 
 ## 系統動畫效果／降低動態的必要診斷
 
@@ -110,15 +110,9 @@ version: 1
 已有 `src/components/blocks/BackToTop.astro` 可重複使用；捲動顯示和返回頁首預設依照系統減少動態偏好降級。它是導航控制而非純視覺效果，應放在共用 Layout，勿在特效庫重複造一個同義的元件。
 
 
-## Layout composition is a separate layer
-Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layout-craft/SKILL.md`. Do not use motion to compensate for a weak layout; choose the content reading flow first. A subtle reveal fits only selected sections and never makes distinct website layouts identical.
+## 與版型的順序
 
-
-## 與 Claude 編輯式構圖的使用順序
-
-先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的 40 款構圖配方，最後才由本 Motion Skill 加入必要的動效。即使元件可用 Tilt/Spotlight/Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。
-
-
+先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的構圖配方，最後才由本 Skill 加入必要的動效。即使元件可用 Tilt／Spotlight／Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。輕微的 Reveal 只適合少數區段，不能讓不同版型因為同一套動效而看起來一樣。
 
 ## 動效選用決策（先問目的，再選效果）
 

@@ -20,6 +20,10 @@ This file is the entry point. It holds the standing rules and tells you which Sk
 8. Run `npm run build` before declaring completion; follow the PR Preview Skill and ask for explicit approval before merging.
 9. Always preserve every existing visual theme, keyboard navigation, `BASE_URL`, reduced-motion behavior and the GitHub PR preview workflow.
 
+## External libraries and repositories are reference-only
+
+Do not install an outside repository's Skills, packages, MCP servers or CLI, and do not copy its brand, photos, copy, paid effects or full UI implementation. Borrow abstract design principles, written in our own words. An open-source label (MIT, Apache) is not enough: check the license file by file, Astro suitability, performance, security and accessibility first, and note that a tool's license can differ from the license of the assets or effects it distributes. Any code port goes in its own branch and PR, with a static Astro build and 1440/1280/768/390 QA, and is not merged without the user's explicit confirmation. Existing lists of outside resources are `src/data/external-ui-libraries.json` and `src/data/external-motion-resources.json`.
+
 ## Never fake it
 
 - No inactive `#` submission links. Do not pretend a booking, subscription or newsletter signup exists or succeeded; without a real service, do not show a success state.

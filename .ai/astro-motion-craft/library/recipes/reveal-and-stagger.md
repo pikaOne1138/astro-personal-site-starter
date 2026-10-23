@@ -16,18 +16,13 @@ StaggerGroup 預設 step 90ms、start 0，step clamp 至 20–260，start clamp 
 
 `initializeReveals` 會檢查 `prefers-reduced-motion` 與 `IntersectionObserver`；observer threshold 0.12，rootMargin `0px 0px -8% 0px`，一次性效果會 unobserve，重播效果在離開視窗時重新 pending。
 
-## 與我們既有全域 Reveal 融合
+## 我們的實作與既有全域 Reveal 的關係
 
-1. 先開 `public/v02.css`、`src/layouts/DemoLayout.astro` 檢查既有的 `data-reveal`、observer 和 CSS。**原本已有 Reveal**，不要同時初始化 Manus 的 `scripts/reveal.ts`：雙 Observer 可能搶同一個屬性。
-2. 把 `variant` 加到既有語法，而不是全站加第二個 observer：
-   ```astro
-   <section data-reveal data-reveal-variant="fade-up" style="--reveal-delay:100ms">
-     <h2>真實區段標題</h2>
-   </section>
-   ```
-3. 只有在現有 observer 經檢查能處理新 class 或狀態時，才加 CSS variants；未實作前不得在正式 UI 宣稱七種動效均可使用。
-4. 減少動態時設 `opacity:1;transform:none;filter:none;clip-path:none`，沒有 JS 的預設 HTML 也必須可見。
-5. Stagger 的子層結構要統一：若套了新的包裝 div，原始 `:scope > [data-reveal]` 就抓不到，須適配 wrapper 或調整 query。
+1. `DemoLayout` 原本就有全域 `[data-reveal]` 與 observer（簡單淡入）。**不要再初始化 Manus 的 `scripts/reveal.ts`**，雙 observer 會搶同一個屬性。
+2. `src/components/effects/Reveal.astro` 採用另一組屬性：`data-motion-reveal`、`data-motion-once`、`--motion-delay`、`--motion-duration`，加上自己的 observer。兩套屬性不同，所以不會搶同一個元素；**不要在同一個元素同時標 `data-reveal` 和 `data-motion-reveal`**。
+3. 七種 variant 的樣式在 `public/effects.css`（`.motion-reveal--*`），不是 Manus 的 `components.css`。
+4. 減少動態、沒有 `IntersectionObserver` 或沒有 JS 時，內容必須立即可見：減少動態或 observer 缺席時直接加上可見狀態，不依賴 observer。
+5. `StaggerGroup` 只對**直接子層、且帶 `data-motion-reveal`**（也就是 `Reveal`）的元素設定 `--motion-delay`，單項延遲上限 1400ms。若在 `Reveal` 外多包一層 div，或子層不是 `Reveal`，延遲就不會生效，需調整結構。
 
 ## 推薦預設值（我們的設計決策，不是 Manus 原值）
 
