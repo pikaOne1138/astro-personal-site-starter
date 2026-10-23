@@ -119,6 +119,36 @@ relation(['B9C-DEP32-01','B5-PUB62-03'],'PARTIAL_SPLIT',cw,'Specific noindex ver
 relation(['B9C-ASM78-02','B9C-ASM78-03'],'DISTINCT',cw,'Positive duration condition differs from missing-duration fallback');
 relation(['B9C-ASM77-01','B9C-ASM77-02'],'DISTINCT',cw,'Optional schema differs from member-identity approval');
 relation(['B9C-DEP40-03','B9A-DEP25-01'],'PARTIAL_SPLIT',cw,'Cloudflare project linkage differs from URL/SHA proof');
+// Ingest existing crosswalk relationship rows (evidence only). Avoid a new parallel ledger.
+// Require both legacy IDs and explicit relation classification in the source table.
+const relationKeys=new Set(semanticRelations.map(x=>x.legacyIds.join('|')+'|'+x.decision));
+const classifyRelation=text=>{
+ if(/\b(DISTINCT|DIFFERENT_SCOPE|NOT_EQUIVALENT)\b/.test(text))return 'DISTINCT';
+ if(/\b(PARTIAL_SPLIT|PARTIAL_OVERLAP|SCOPE_OVERLAP|TEST_OVERLAP|AUTHORIZATION_SCOPE|FIELD_SCOPE_OVERLAP)\b/.test(text))return 'PARTIAL_SPLIT';
+ if(/\b(SAME_CANDIDATE|SAME_MEANING|EXACT_ALIAS)\b/.test(text))return 'MERGE';
+ return null;
+};
+for(const filename of files.filter(n=>/(CROSSWALK|DEDUPE|SEMANTIC|REVIEW)/.test(n))){
+ const filepath=dir+filename,body=fs.readFileSync(filepath,'utf8');
+ for(const [idx,rowText] of body.split('\n').entries()){
+  if(!rowText.startsWith('|'))continue;
+  const cells=rowText.split('|').slice(1,-1).map(x=>x.trim());
+  if(cells.length<3)continue;
+  const left=cells[0].match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1];
+  const right=cells[1].match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1];
+  const decision=classifyRelation(cells[2]);
+  if(!left||!right||!decision||left===right)continue;
+  if(!records.has(left)||!records.has(right)){
+   recoveryFailures.push({reason:'DOCUMENTARY_RELATION_MISSING_ID',source:filepath,line:idx+1,legacyIds:[left,right]});
+   continue;
+  }
+  const ids=[left,right].sort();
+  const key=ids.join('|')+'|'+decision;
+  if(relationKeys.has(key))continue;
+  relationKeys.add(key);
+  relation(ids,decision,filepath+'#L'+(idx+1),cells.slice(2).join(' | ').replace(/\x60/g,''));
+ }
+}
 const path=dir+'canonical-ledger.json';
 const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
