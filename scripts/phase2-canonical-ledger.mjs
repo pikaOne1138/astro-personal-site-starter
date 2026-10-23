@@ -530,6 +530,45 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
    parentDisposition:'All source children carry approved atomic acceptance criteria'});
  }
+ // Cloudflare connector capabilities: searching documentation is not
+ // proof of write access. Keep first-connection and release permissions separate.
+ const cloudflareAccessAtomic=[
+  ['B2-DEP43-01-S01','Check which actual Cloudflare tools are available'],
+  ['B2-DEP43-01-S02','Verify actual Pages, Git integration and DNS permission scopes'],
+  ['B2-DEP43-01-S03','Verify the actual authenticated Cloudflare account'],
+  ['B2-DEP43-02-S01','Read-only AI access cannot be represented as completed repository connection'],
+  ['B2-DEP43-02-S02','If AI is read-only, the student connects GitHub repository through Cloudflare Dashboard'],
+  ['B2-DEP43-02-S03','Guide student using current official Dashboard/screenshots rather than fabricated controls'],
+  ['B2-DEP43-05','Old Preview URL cannot establish deployment SHA of a newer revision']
+ ];
+ for(let i=0;i<cloudflareAccessAtomic.length;i++){
+  const [id,requirement]=cloudflareAccessAtomic[i],entry=byId.get(id);
+  const source='.ai/astro-starter-deploy/SKILL.md',line=43;
+  const canonicalId='ATP-P2-'+String(94+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||
+     !entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Cloudflare access leaf has no original source: '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Access canonical collision: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:i<3?'acceptance':'policy',
+    decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+    applicability:['Cloudflare Pages/Workers site onboarding and deployment verification'],
+    conditions:i>=3&&i<=5?['Actual AI has read-only integration or no Pages write scope']:[],
+    exceptions:[],acceptanceCriteria:[],
+    approvalEvidence:{frozenPath:source,frozenLine:line,
+      frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),
+      method:'FROZEN_SOURCE_AND_PRIOR_ATOMIC_LEAF'}});
+ }
+ for(const [id,kids] of [
+  ['B2-DEP43-01',['B2-DEP43-01-S01','B2-DEP43-01-S02','B2-DEP43-01-S03']],
+  ['B2-DEP43-02',['B2-DEP43-02-S01','B2-DEP43-02-S02','B2-DEP43-02-S03']]
+ ]){
+  const row=byId.get(id);
+  if(!row||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))
+   throw Error('Cloudflare permission composite not covered: '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+    parentDisposition:'Verified original component obligations carried by child canonical clauses'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
