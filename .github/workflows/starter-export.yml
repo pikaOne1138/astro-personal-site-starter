@@ -17,6 +17,10 @@ on:
       - 'src/pages/starter/index.astro'
       - '.github/workflows/starter-export.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   checks: read
   actions: read
