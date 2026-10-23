@@ -1162,6 +1162,43 @@ if(process.argv[2]==='import'){
   parentDisposition:'Scheduling example is completely covered by five release-readiness checks and real-service truthfulness rule',
   approvalEvidence:{frozenPath:releaseSource,frozenLine:78,frozenBlobSha:manifest[releaseSource],
    sourceText:frozenLine(releaseSource,78),method:'SOURCE_AND_COMPLETE_REVIEWED_CHILDREN'}});
+ // Article draft exclusion must include the archive; public list exclusion
+ // alone is insufficient. Treat the original composite as child coverage.
+ const draftExclusion=[
+  ['B2-PUB37-01-S01','Exclude unpublished drafts from public article listings'],
+  ['B2-PUB37-01-S02','Exclude unpublished drafts from public archives'],
+  ['B2-PUB37-01-S03','Exclude unpublished drafts from RSS/Atom feeds'],
+  ['B2-PUB37-01-S04','Exclude unpublished drafts from public sitemap'],
+  ['B2-PUB37-01-S05','Exclude unpublished drafts from static search index']
+ ];
+ const draftSrc='.ai/astro-content-publishing/SKILL.md';
+ for(let i=0;i<draftExclusion.length;i++){
+  const [id,requirement]=draftExclusion[i],row=byId.get(id);
+  if(!row||row.canonicalId||!frozenLine(draftSrc,37)||
+     !row.sourceRefs.some(x=>x.revision===frozen&&x.path===draftSrc&&x.lineStart===37))
+   throw Error('Unverified draft exclusion child '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(259+i).padStart(4,'0'),
+   requirement,kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student content site with unpublished drafts'],
+   conditions:['Public content build or release'],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:draftSrc,frozenLine:37,frozenBlobSha:manifest[draftSrc],
+    sourceText:frozenLine(draftSrc,37),method:'EXACT_FROZEN_LINE_AND_SEPARATE_PUBLIC_DISCOVERY_SURFACES'}});
+ }
+ const parent=byId.get('B2-PUB37-01');
+ if(!parent||parent.canonicalId||draftExclusion.some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Draft exclusion parent not source-checked');
+ Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+  childrenLegacyIds:draftExclusion.map(([id])=>id),parentDisposition:'Five separate public-discovery surfaces are preserved; not a new sixth requirement'});
+ const confidential=byId.get('B2-PUB37-02');
+ if(!confidential||confidential.canonicalId||
+    !confidential.sourceRefs.some(x=>x.revision===frozen&&x.path===draftSrc&&x.lineStart===37))
+  throw Error('Confidential draft source not established');
+ Object.assign(confidential,{canonicalId:'ATP-P2-0264',
+  requirement:'Confidential drafts must not be placed in public repositories or public PR Preview deployments, even when marked draft:true',
+  kind:'policy',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+  applicability:['Sites with confidential unpublished content'],conditions:['Any publicly accessible source or Preview'],
+  exceptions:[],acceptanceCriteria:[],
+  approvalEvidence:{frozenPath:draftSrc,frozenLine:37,frozenBlobSha:manifest[draftSrc],
+   sourceText:frozenLine(draftSrc,37),method:'PR_PREVIEW_CONFIDENTIALITY_IS_DISTINCT_FROM_INDEXING'}});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
