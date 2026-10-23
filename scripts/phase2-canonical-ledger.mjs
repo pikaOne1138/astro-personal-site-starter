@@ -213,7 +213,9 @@ const aliasPairs=[...canonicalGroups.entries()].filter(([,v])=>v.length>1).map((
 // Source-first review inventory: this is the missing direction of the Gate.
 // Candidate detection is deliberately conservative; it is a review queue,
 // not an automated declaration that all obligations have been enumerated.
-const scopedNormativeFiles=Object.keys(manifest).filter(p => p.startsWith('.ai/') && p.endsWith('/SKILL.md') || p.startsWith('docs/student-builder-pack/') || p.startsWith('docs/quality/') || p.startsWith('docs/workshop/') || p.startsWith('docs/qa/') || p.startsWith('docs/student-journey/ACCEPTANCE-'));
+// Read every Frozen manifest file, not only the 45 operational contract files.
+const scopedNormativeFiles=Object.keys(manifest).sort();
+const isPriorityContract=p=>p.startsWith('.ai/')&&p.endsWith('/SKILL.md')||p.startsWith('docs/student-builder-pack/')||p.startsWith('docs/quality/')||p.startsWith('docs/workshop/')||p.startsWith('docs/qa/')||p.startsWith('docs/student-journey/ACCEPTANCE-');
 const cues=/(必須|不得|禁止|應該|應先|須|不能|未經|確認|檢查|驗證|需|must\b|never\b|should\b|shall\b|required\b|do not\b|don't\b|verify\b|ensure\b|check\b|only\b)/i;
 const sourceLineInventory=[],sourceInventoryFailures=[];
 for(const file of scopedNormativeFiles){
@@ -224,7 +226,7 @@ for(const file of scopedNormativeFiles){
   if(!trimmed||/^#{1,6}\s/.test(trimmed)||/^\|(?:[-:\s|]+)\|$/.test(trimmed))continue;
   const candidate=cues.test(trimmed),mapped=sourceCoverage.get(key);
   sourceLineInventory.push({path:file,frozenBlobSha:manifest[file],line:i+1,sourceText:exact,
-   candidateForNormativeReview:candidate,legacyIds:mapped?[...mapped].sort():[],
+   candidateForNormativeReview:candidate,sourceRole:isPriorityContract(file)?'OPERATIONAL_CONTRACT':'OTHER_FROZEN_SOURCE_PENDING_FILE_CLASSIFICATION',legacyIds:mapped?[...mapped].sort():[],
    coverageStatus:mapped?'ANCHORED_NOT_SEMANTICALLY_VERIFIED':candidate?'REVIEW_REQUIRED_UNMAPPED':'NONCANDIDATE_UNCLASSIFIED',
    reviewStatus:'PENDING_HUMAN_CLAUSE_CLASSIFICATION'});
  }
@@ -290,7 +292,7 @@ const triageCounts=Object.fromEntries(['P0_SAFETY_RELEASE','P1_EVIDENCE_QA','P2_
 // Register each uncovered P0/P1 source line in the sole canonical-ledger.json.
 // This is a review candidate, not an approved clause or a replacement for the
 // exact Frozen content. It is intentionally separate from the 1,390 Legacy IDs.
-const targetedQueue=unmappedCandidateLines.filter(x=>['P0_SAFETY_RELEASE','P1_EVIDENCE_QA'].includes(x.triagePriority));
+const targetedQueue=unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'&&['P0_SAFETY_RELEASE','P1_EVIDENCE_QA'].includes(x.triagePriority));
 const priorQueue=new Map((old.sourceReviewQueue||[]).map(x=>[x.sourceKey,x]));
 const sourceReviewQueue=targetedQueue.map(x=>{
  const sourceKey=x.path+':'+x.line;
@@ -483,6 +485,8 @@ const status={
  sourceFirstUnmappedCandidateLines:unmappedCandidateLines.length,
  sourceFirstMappedCandidateLines:mappedCandidateLines.length,
  sourceFirstReadFailures:sourceInventoryFailures.length,
+ sourceFirstOperationalContractFiles:scopedNormativeFiles.filter(isPriorityContract).length,
+ sourceFirstOtherFrozenFiles:scopedNormativeFiles.filter(p=>!isPriorityContract(p)).length,
  sourceFirstClassifiedUnmapped:firstReviewedUnmapped.length,
  sourceFirstUnclassifiedUnmapped:remainingUnclassified.length,
  sourceFirstNotYetDisposed:sourceFirstNotYetDisposed.length,
@@ -535,7 +539,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
