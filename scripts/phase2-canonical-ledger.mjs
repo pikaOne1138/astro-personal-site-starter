@@ -921,6 +921,22 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:children,
    parentDisposition:'Inherited composite is covered by separately approved atomic evidence/procedure clauses'});
  }
+ // B2: authorization credentials must never cross into public artifacts.
+ const credentials=[
+  ['B9B-DEP-27-01','Cloudflare API Tokens must be handled only by the platform authorization process'],
+  ['B9B-DEP-27-02','GitHub OAuth and deployment authorization must be handled only by the platform authorization process'],
+  ['B9B-DEP-27-03','Do not store authorization credentials in source, chat, commits or publicly readable settings']
+ ];
+ for(let i=0;i<credentials.length;i++){
+  const [id,requirement]=credentials[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=27;
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))throw Error('Credential policy source invalid '+id);
+  if(row.canonicalId)throw Error('Credential policy already adjudicated '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(229+i).padStart(4,'0'),requirement,kind:'policy',
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student GitHub/Cloudflare deployment authorization'],conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'SOURCE_ATOMIC_SECURITY_BOUNDARY_REVIEW'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
