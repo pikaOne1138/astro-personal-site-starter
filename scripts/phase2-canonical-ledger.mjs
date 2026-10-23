@@ -350,6 +350,47 @@ if(process.argv[2]==='import'){
    mappedDimensions.push({legacyId:id,parent:group.parent,group:group.key});
   }
  }
+ // Canonicalization of *acceptance dimensions* across earlier work papers.
+ // These 35 proof/checklist leaf aliases remain children of five composite
+ // acceptance contracts. Never count them as 35 extra policy obligations.
+ const leafAliasGroups=[
+  {pattern:'PR59-EVIDENCE-01.S1.A',nums:[1,2,3],p0Start:52,source:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',line:16},
+  {pattern:'PR59-EVIDENCE-01.S2.A',nums:[1,2,3,4],p0Start:55,source:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',line:16},
+  {pattern:'INDEX-DETAIL-01.S3.A',nums:[1,2,3,4],p0Start:59,source:'.ai/astro-starter-deploy/SKILL.md',line:31},
+  {pattern:'QA-DETAIL-01.S1.A',nums:[1,2,3,4,5,6,7,8],p0Start:63,source:'.ai/astro-pr-preview/SKILL.md',line:24},
+  {pattern:'QA-DETAIL-01.S2.A',nums:[1,2,3],p0Start:71,source:'.ai/astro-pr-preview/SKILL.md',line:24},
+  {pattern:'QA-DETAIL-01.S3.A',nums:[1,2,3],p0Start:74,source:'.ai/astro-pr-preview/SKILL.md',line:24},
+  {pattern:'EXT-DETAIL-01.S1.A',nums:[1,2,3,4,5],p0Start:77,source:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',line:24},
+  {pattern:'PROOF-003.02.S2.A',nums:[1,2,3,4,5],p0Start:82,source:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',line:22}
+ ];
+ const dimensionAliases=[];
+ for(const group of leafAliasGroups){
+  for(const num of group.nums){
+   const id=group.pattern+num;
+   const anchorId='P0-U'+String(group.p0Start+num-1).padStart(3,'0');
+   const anchor=byId.get(anchorId),alias=byId.get(id);
+   if(!anchor||!alias||!frozenLine(group.source,group.line)||
+      ![anchor,alias].every(row=>row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===group.source&&ref.lineStart===group.line)))
+    throw Error('Acceptance dimension alias lacks original source proof: '+id);
+   if(alias.canonicalId)throw Error('Dimension already has distinct canonical '+id);
+   Object.assign(alias,{kind:'acceptance',decision:'MERGE',
+    reviewStatus:'APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING',
+    equivalentAcceptanceDimensionId:anchorId,
+    parentCanonicalCandidate:anchor.parentCanonicalCandidate,
+    acceptanceDimensionGroup:anchor.acceptanceDimensionGroup,
+    atomicEvidenceText:anchor.atomicEvidenceText,
+    approvalEvidence:{frozenPath:group.source,frozenLine:group.line,
+     frozenBlobSha:manifest[group.source],sourceText:frozenLine(group.source,group.line),
+     method:'EXACT_SOURCE_AND_IDENTICAL_EVIDENCE_FIELD'}});
+   anchor.equivalentDimensionAliases=[...(anchor.equivalentDimensionAliases||[]),id];
+   dimensionAliases.push([id,anchorId]);
+   semanticRelations.push({legacyIds:[id,anchorId],decision:'MERGE',
+    sourceWorkingPaper:'PHASE2_P0_AND_PRIOR_ATOMIC_EVIDENCE_FIELDS',
+    scopeNote:'Identical individually testable acceptance field; no extra independent policy',
+    sharedExactFrozenAnchors:[group.source+':'+group.line],
+    reviewStatus:'APPROVED_DIMENSION_EQUIVALENCE_PARENT_PENDING',canonicalId:null});
+  }
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
