@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1189 |
-| approvedCanonicalIds | 153 |
+| pendingSemanticDecisions | 1165 |
+| approvedCanonicalIds | 173 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 29 |
+| sourceFirstApprovedCanonicalLinkLines | 31 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -58,7 +58,7 @@
 | p0p1PendingCanonicalAdjudication | 140 |
 | p0p1ClosedNonNormative | 25 |
 | p0p1DocumentaryAssessed | 140 |
-| p0p1FirstPassDisposed | 5 |
+| p0p1FirstPassDisposed | 0 |
 | p0p1SourceDispositionTotal | 165 |
 | p0p1NearbyLegacyEvidence | 31 |
 | p0p1AtomicSubclausesProposed | 270 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1189,
-    "approvedCanonicalIds": 153,
+    "pendingSemanticDecisions": 1165,
+    "approvedCanonicalIds": 173,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 29,
+    "sourceFirstApprovedCanonicalLinkLines": 31,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -135,7 +135,7 @@
     "p0p1PendingCanonicalAdjudication": 140,
     "p0p1ClosedNonNormative": 25,
     "p0p1DocumentaryAssessed": 140,
-    "p0p1FirstPassDisposed": 5,
+    "p0p1FirstPassDisposed": 0,
     "p0p1SourceDispositionTotal": 165,
     "p0p1NearbyLegacyEvidence": 31,
     "p0p1AtomicSubclausesProposed": 270,
@@ -2340,59 +2340,59 @@
       "rows": [
         {
           "id": "B4-ASM12-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀 Starter Config、Layout Directions、Blocks Registry"
+          "canonicalId": "ATP-P2-0154",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Read actual Starter configuration, selected layout directions and Blocks registry before assembly"
         },
         {
           "id": "B4-ASM12-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 kind/layoutSlug 一致性"
+          "canonicalId": "ATP-P2-0155",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate student kind and selected layoutSlug association"
         },
         {
           "id": "B4-ASM12-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "驗證 HEX、路由、CTA、導航名稱及排序"
         },
         {
           "id": "B4-ASM12-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 HEX 品牌色設定"
+          "canonicalId": "ATP-P2-0156",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate HEX brand color inputs"
         },
         {
           "id": "B4-ASM12-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證選用路由"
+          "canonicalId": "ATP-P2-0157",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate configured site routes"
         },
         {
           "id": "B4-ASM12-03-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 CTA"
+          "canonicalId": "ATP-P2-0158",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate real configured primary CTA"
         },
         {
           "id": "B4-ASM12-03-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證導航名稱"
+          "canonicalId": "ATP-P2-0159",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate navigation labels"
         },
         {
           "id": "B4-ASM12-03-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證導航順序"
+          "canonicalId": "ATP-P2-0160",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Validate navigation item order"
         },
         {
           "id": "B4-ASM12-01-S01",
@@ -2708,59 +2708,59 @@
       "rows": [
         {
           "id": "B8-ASM-L17-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Exporter 在另一目錄產出獨立可執行 Astro，不修改 Showcase"
+          "canonicalId": "ATP-P2-0161",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Export an independent runnable Astro project without modifying teacher Showcase"
         },
         {
           "id": "B8-ASM-L17-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "生成所選頁面、共用導航與站點資產，不將研究站路由全數照搬"
         },
         {
           "id": "B8-ASM-L17-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "有 Adapter 時保留專屬 Home，不用通用 Hero 替代"
+          "canonicalId": "ATP-P2-0166",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Preserve selected layout-specific homepage adapter rather than substituting generic hero"
         },
         {
           "id": "B8-ASM-L17-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Phase 1 不能聲稱完整移植十二套原始構圖"
+          "canonicalId": "ATP-P2-0167",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Do not claim first-pass prototypes are fully ported multi-page sites"
         },
         {
           "id": "B8-ASM-L17-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "生成選定頁面"
+          "canonicalId": "ATP-P2-0162",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Export actual selected page routes, not teacher demonstration routes"
         },
         {
           "id": "B8-ASM-L17-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "建立共用導航"
+          "canonicalId": "ATP-P2-0163",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Export shared student navbar and responsive navigation"
         },
         {
           "id": "B8-ASM-L17-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "建立站點資產"
+          "canonicalId": "ATP-P2-0164",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Export site-specific assets and tokens"
         },
         {
           "id": "B8-ASM-L17-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得照搬全部研究站路由"
+          "canonicalId": "ATP-P2-0165",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Do not copy all teacher showcase routes into an independent student site"
         },
         {
           "id": "OPS4-003",
@@ -2778,57 +2778,57 @@
           "id": "B2-ASM50-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "Section Pattern 須先讀 Skill、Registry"
         },
         {
           "id": "B2-ASM50-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "學員未選 Pattern 不強制加入"
+          "canonicalId": "ATP-P2-0170",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Do not force a Section Pattern without learner selection or need"
         },
         {
           "id": "B2-ASM50-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "輸出 Pattern 骨架仍須真實內容與視覺移植"
         },
         {
           "id": "B2-ASM50-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "選 Section Pattern 前讀專用 Skill"
+          "canonicalId": "ATP-P2-0168",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Consult section pattern craft Skill before selecting pattern"
         },
         {
           "id": "B2-ASM50-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對 Section Pattern Registry"
+          "canonicalId": "ATP-P2-0169",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Check actual Section Pattern registry"
         },
         {
           "id": "B2-ASM50-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "匯出 Pattern 區塊只是待完善骨架"
+          "canonicalId": "ATP-P2-0171",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Exported Section Pattern shell does not constitute a finished design"
         },
         {
           "id": "B2-ASM50-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "必須補充真實內容"
+          "canonicalId": "ATP-P2-0172",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Supply actual approved content for selected Section Pattern"
         },
         {
           "id": "B2-ASM50-03-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "按原始 Pattern 完成視覺移植"
+          "canonicalId": "ATP-P2-0173",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Complete visual translation respecting original pattern and responsive rhythm"
         },
         {
           "id": "OPS4-013",

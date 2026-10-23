@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "13a5828a432cc228f5a80978947856c0d86b2f3a"
+        "blobSha": "484f390e0a232f14007fcda590c141b19202f509"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -9882,8 +9882,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -9893,13 +9893,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B2-ASM50-01-S01",
+        "B2-ASM50-01-S02"
+      ],
+      "parentDisposition": "Composite inherited from complete approved atomic children"
     },
     {
       "legacyId": "B2-ASM50-02",
-      "canonicalId": null,
-      "requirement": "學員未選 Pattern 不強制加入",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0170",
+      "requirement": "Do not force a Section Pattern without learner selection or need",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -9924,12 +9928,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -9939,7 +9947,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B2-ASM50-03",
@@ -9974,8 +9989,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -9985,7 +10000,12 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B2-ASM50-03-S01",
+        "B2-ASM50-03-S02",
+        "B2-ASM50-03-S03"
+      ],
+      "parentDisposition": "Composite inherited from complete approved atomic children"
     },
     {
       "legacyId": "B2-DEP43-01",
@@ -12442,9 +12462,9 @@
     },
     {
       "legacyId": "B4-ASM12-01",
-      "canonicalId": null,
-      "requirement": "讀 Starter Config、Layout Directions、Blocks Registry",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0154",
+      "requirement": "Read actual Starter configuration, selected layout directions and Blocks registry before assembly",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12476,12 +12496,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12497,13 +12519,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-02",
-      "canonicalId": null,
-      "requirement": "驗證 kind/layoutSlug 一致性",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0155",
+      "requirement": "Validate student kind and selected layoutSlug association",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12535,12 +12564,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12556,7 +12587,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-03",
@@ -12591,8 +12629,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12602,7 +12640,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B4-ASM12-03-S01",
+        "B4-ASM12-03-S02",
+        "B4-ASM12-03-S03",
+        "B4-ASM12-03-S04",
+        "B4-ASM12-03-S05"
+      ],
+      "parentDisposition": "Composite inherited from complete approved atomic children"
     },
     {
       "legacyId": "B4-ASM28-01",
@@ -17372,9 +17417,9 @@
     },
     {
       "legacyId": "B8-ASM-L17-01",
-      "canonicalId": null,
-      "requirement": "Exporter 在另一目錄產出獨立可執行 Astro，不修改 Showcase",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0161",
+      "requirement": "Export an independent runnable Astro project without modifying teacher Showcase",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17406,12 +17451,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17427,7 +17474,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L17-02",
@@ -17469,8 +17523,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17486,13 +17540,19 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B8-ASM-L17-02-S01",
+        "B8-ASM-L17-02-S02",
+        "B8-ASM-L17-02-S03",
+        "B8-ASM-L17-02-S04"
+      ],
+      "parentDisposition": "Composite inherited from complete approved atomic children"
     },
     {
       "legacyId": "B8-ASM-L17-03",
-      "canonicalId": null,
-      "requirement": "有 Adapter 時保留專屬 Home，不用通用 Hero 替代",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0166",
+      "requirement": "Preserve selected layout-specific homepage adapter rather than substituting generic hero",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17524,12 +17584,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17545,13 +17607,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L17-04",
-      "canonicalId": null,
-      "requirement": "Phase 1 不能聲稱完整移植十二套原始構圖",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0167",
+      "requirement": "Do not claim first-pass prototypes are fully ported multi-page sites",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17576,12 +17645,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -17591,7 +17662,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L29-01",
@@ -20603,9 +20681,9 @@
     },
     {
       "legacyId": "B2-ASM50-01-S01",
-      "canonicalId": null,
-      "requirement": "選 Section Pattern 前讀專用 Skill",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0168",
+      "requirement": "Consult section pattern craft Skill before selecting pattern",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20627,12 +20705,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20642,13 +20724,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B2-ASM50-01-S02",
-      "canonicalId": null,
-      "requirement": "核對 Section Pattern Registry",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0169",
+      "requirement": "Check actual Section Pattern registry",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20670,12 +20759,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20685,13 +20778,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B2-ASM50-03-S01",
-      "canonicalId": null,
-      "requirement": "匯出 Pattern 區塊只是待完善骨架",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0171",
+      "requirement": "Exported Section Pattern shell does not constitute a finished design",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20713,12 +20813,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20728,13 +20832,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B2-ASM50-03-S02",
-      "canonicalId": null,
-      "requirement": "必須補充真實內容",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0172",
+      "requirement": "Supply actual approved content for selected Section Pattern",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20756,12 +20867,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20771,13 +20886,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B2-ASM50-03-S03",
-      "canonicalId": null,
-      "requirement": "按原始 Pattern 完成視覺移植",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0173",
+      "requirement": "Complete visual translation respecting original pattern and responsive rhythm",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20799,12 +20921,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
+      "conditions": [
+        "Section Patterns are used or selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20814,7 +20940,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 50,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "3. **先處理 Section Patterns**：讀 `.ai/astro-section-pattern-craft/SKILL.md`、`src/data/section-patterns.registry.json`。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B3-PUB20-03-S01",
@@ -20974,9 +21107,9 @@
     },
     {
       "legacyId": "B4-ASM12-03-S01",
-      "canonicalId": null,
-      "requirement": "驗證 HEX 品牌色設定",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0156",
+      "requirement": "Validate HEX brand color inputs",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -20998,12 +21131,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21013,13 +21148,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-03-S02",
-      "canonicalId": null,
-      "requirement": "驗證選用路由",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0157",
+      "requirement": "Validate configured site routes",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21041,12 +21183,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21056,13 +21200,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-03-S03",
-      "canonicalId": null,
-      "requirement": "驗證 CTA",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0158",
+      "requirement": "Validate real configured primary CTA",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21084,12 +21235,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21099,13 +21252,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-03-S04",
-      "canonicalId": null,
-      "requirement": "驗證導航名稱",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0159",
+      "requirement": "Validate navigation labels",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21127,12 +21287,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21142,13 +21304,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-ASM12-03-S05",
-      "canonicalId": null,
-      "requirement": "驗證導航順序",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0160",
+      "requirement": "Validate navigation item order",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21170,12 +21339,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21185,7 +21356,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP17-02-S01",
@@ -26220,9 +26398,9 @@
     },
     {
       "legacyId": "B8-ASM-L17-02-S01",
-      "canonicalId": null,
-      "requirement": "生成選定頁面",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0162",
+      "requirement": "Export actual selected page routes, not teacher demonstration routes",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26244,12 +26422,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26259,13 +26439,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L17-02-S02",
-      "canonicalId": null,
-      "requirement": "建立共用導航",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0163",
+      "requirement": "Export shared student navbar and responsive navigation",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26287,12 +26474,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26302,13 +26491,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L17-02-S03",
-      "canonicalId": null,
-      "requirement": "建立站點資產",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0164",
+      "requirement": "Export site-specific assets and tokens",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26330,12 +26526,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26345,13 +26543,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L17-02-S04",
-      "canonicalId": null,
-      "requirement": "不得照搬全部研究站路由",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0165",
+      "requirement": "Do not copy all teacher showcase routes into an independent student site",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26373,12 +26578,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student Starter assembly path, applicable to chosen features"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -26388,7 +26595,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 17,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
+      }
     },
     {
       "legacyId": "B8-ASM-L29-02-S01",
@@ -70309,22 +70523,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": ".ai/astro-site-maintenance/SKILL.md:40",
         "frozenBlobSha": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
         "sourceText": "- 模擬修改錯誤：另建 PR 還原特定更動，驗證結果，再由學員同意合併。",
         "reason": "Illustrative recovery rehearsal example; operative approval and restore rules are separately documented"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:45",
@@ -72575,22 +72781,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:55",
         "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
         "sourceText": "| 換照片、改一行文案或 CTA | 局部修改與真實來源／連結驗證 | `.ai/astro-site-maintenance/SKILL.md`；圖片／版面需要時讀 UI Skill |",
         "reason": "Scenario-to-Skill routing example, not an additional independent obligation"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:60",
@@ -72608,22 +72806,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:60",
         "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
         "sourceText": "| 想看修改結果、可以上線了 | Preview、發布核准、部署後檢查 | `.ai/astro-pr-preview/SKILL.md`、`.ai/astro-starter-deploy/SKILL.md` |",
         "reason": "Scenario-to-Skill routing example pointing to existing preview and deploy rules"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:67",
@@ -72993,22 +73183,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:113",
         "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
         "sourceText": "<!-- builder-only:start -->",
         "reason": "Builder-only source packaging delimiter; no independent student obligation"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/student-builder-pack/STUDENT-AGENTS.md:116",
@@ -73048,22 +73230,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/STUDENT-AGENTS.md:118",
         "frozenBlobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
         "sourceText": "<!-- builder-only:end -->",
         "reason": "Builder-only source packaging delimiter; no independent student obligation"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md:19",
@@ -79870,58 +80044,58 @@
       "legacyMatches": [
         {
           "legacyId": "B8-ASM-L17-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Exporter 在另一目錄產出獨立可執行 Astro，不修改 Showcase",
+          "canonicalId": "ATP-P2-0161",
+          "reviewStatus": "APPROVED",
+          "requirement": "Export an independent runnable Astro project without modifying teacher Showcase",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "生成所選頁面、共用導航與站點資產，不將研究站路由全數照搬",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "有 Adapter 時保留專屬 Home，不用通用 Hero 替代",
+          "canonicalId": "ATP-P2-0166",
+          "reviewStatus": "APPROVED",
+          "requirement": "Preserve selected layout-specific homepage adapter rather than substituting generic hero",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Phase 1 不能聲稱完整移植十二套原始構圖",
+          "canonicalId": "ATP-P2-0167",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not claim first-pass prototypes are fully ported multi-page sites",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "生成選定頁面",
+          "canonicalId": "ATP-P2-0162",
+          "reviewStatus": "APPROVED",
+          "requirement": "Export actual selected page routes, not teacher demonstration routes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "建立共用導航",
+          "canonicalId": "ATP-P2-0163",
+          "reviewStatus": "APPROVED",
+          "requirement": "Export shared student navbar and responsive navigation",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "建立站點資產",
+          "canonicalId": "ATP-P2-0164",
+          "reviewStatus": "APPROVED",
+          "requirement": "Export site-specific assets and tokens",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B8-ASM-L17-02-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不得照搬全部研究站路由",
+          "canonicalId": "ATP-P2-0165",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not copy all teacher showcase routes into an independent student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -79932,7 +80106,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-site-assembly/SKILL.md:21",
@@ -80343,57 +80517,57 @@
         {
           "legacyId": "B2-ASM50-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "Section Pattern 須先讀 Skill、Registry",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "學員未選 Pattern 不強制加入",
+          "canonicalId": "ATP-P2-0170",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not force a Section Pattern without learner selection or need",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-03",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "輸出 Pattern 骨架仍須真實內容與視覺移植",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "選 Section Pattern 前讀專用 Skill",
+          "canonicalId": "ATP-P2-0168",
+          "reviewStatus": "APPROVED",
+          "requirement": "Consult section pattern craft Skill before selecting pattern",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對 Section Pattern Registry",
+          "canonicalId": "ATP-P2-0169",
+          "reviewStatus": "APPROVED",
+          "requirement": "Check actual Section Pattern registry",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-03-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "匯出 Pattern 區塊只是待完善骨架",
+          "canonicalId": "ATP-P2-0171",
+          "reviewStatus": "APPROVED",
+          "requirement": "Exported Section Pattern shell does not constitute a finished design",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-03-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "必須補充真實內容",
+          "canonicalId": "ATP-P2-0172",
+          "reviewStatus": "APPROVED",
+          "requirement": "Supply actual approved content for selected Section Pattern",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B2-ASM50-03-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "按原始 Pattern 完成視覺移植",
+          "canonicalId": "ATP-P2-0173",
+          "reviewStatus": "APPROVED",
+          "requirement": "Complete visual translation respecting original pattern and responsive rhythm",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -80404,7 +80578,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-site-assembly/SKILL.md:51",
