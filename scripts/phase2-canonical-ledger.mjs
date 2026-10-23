@@ -246,6 +246,11 @@ if(process.argv[2]==='import'){
   ,['P0-U046','Re-evaluate prior test evidence when the upstream project revision changes','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',16,'acceptance']
   ,['P0-U050','Independent external student-site acceptance requires a working Preview corresponding to exact deployment SHA','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
   ,['P0-U051','A local simulated site is not evidence of live online deployment','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
+  ,['P0-U007','Branch Preview URLs may change over time; use the deployment URL corresponding to the reviewed PR commit','.ai/astro-pr-preview/SKILL.md',23,'acceptance']
+  ,['P0-U017','New student site defaults to noindex HTML and disallowing search crawling in robots.txt','.ai/astro-starter-deploy/SKILL.md',31,'policy']
+  ,['P0-U029','Manual acceptance evidence must preserve the exact approved PR Head SHA','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',40,'evidence']
+  ,['P0-U034','GitHub Pages pull requests do not inherently create isolated live Preview deployments','.ai/astro-pr-preview/SKILL.md',30,'architecture']
+  ,['P0-U048','After approved production indexing settings change, rebuild the actual student site','.ai/astro-starter-deploy/SKILL.md',31,'procedure']
  ];
  for(let i=0;i<directP0.length;i++){
   const [id,requirement,source,line,kind]=directP0[i],entry=byId.get(id);
