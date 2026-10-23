@@ -7,6 +7,7 @@ const baseline='8afd33c69bff8771648ad71908854bd8f98565d0';
 const baseSha='369ef9f9a9605410fd6fc22a146c2b2f74e62180';
 export const allowed=new Set([
  'scripts/phase2-canonical-ledger.mjs',
+ '.github/workflows/phase2-ledger-import.yml',
  'docs/student-journey/canonical-ledger.json',
  'docs/student-journey/PHASE2-GATE-REPORT.md',
 ]);
