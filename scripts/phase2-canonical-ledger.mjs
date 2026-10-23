@@ -310,6 +310,90 @@ const sourceReviewQueue=targetedQueue.map(x=>{
   canonicalId:previous?.canonicalId||null
  };
 });
+// Evidence-backed first substantive pass. Every entry is tied to the exact
+// Frozen source line; no classification grants merge/deploy authority.
+const assessedLines={
+ '.ai/astro-pr-preview/SKILL.md:21':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'MULTI_OBLIGATION',
+  clauses:['Respect BASE_URL in routes/assets','Check configured Node/install/build','Do not claim tests were executed without evidence']
+ },
+ '.ai/astro-pr-preview/SKILL.md:29':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'PLATFORM_CONDITIONAL',
+  clauses:['Read deploy Skill for initial deployment','Verify actual GitHub Pages source/repo/domain/plan','Derive site/base/ASTRO_BASE_PATH from student repo/domain']
+ },
+ '.ai/astro-pr-preview/SKILL.md:36':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'PLATFORM_CONDITIONAL',
+  clauses:['Verify Cloudflare project links student owned repository','Verify production branch/build command/output directory','Verify non-production branch and PR preview configuration']
+ },
+ '.ai/astro-pr-preview/SKILL.md:51':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'FAILURE_RESPONSE',
+  clauses:['Repair build failure and rerun valid checks','Diagnose deployment failure from matching platform logs','Do not blindly rerun unrelated jobs']
+ },
+ '.ai/astro-pr-preview/SKILL.md:53':{
+  action:'KEEP_PENDING_CANONICAL',kind:'VERSION_VERIFICATION',
+  clauses:['Compare PR head SHA to deployed commit before treating old Preview as current']
+ },
+ '.ai/astro-pr-preview/SKILL.md:55':{
+  action:'KEEP_PENDING_CANONICAL',kind:'EVIDENCE_DISCLOSURE',
+  clauses:['If browser verification cannot run, explicitly mark manual QA as pending']
+ },
+ '.ai/astro-pr-preview/SKILL.md:65':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'PREVIEW_EXCEPTION',
+  clauses:['Old research PR preview 404 does not prove Cloudflare branch preview outage','Get actual deployment URL from checks or deployment','Verify matching SHA and HTTP','Never fabricate URL patterns']
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:3':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'EVIDENCE_AUTHORITY',
+  clauses:['PR59 manual evidence applies to student-owned repo or real environment','Technical proof comes from matching Commit/Actions/Artifact','Expected result does not count as test evidence']
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:5':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'SCOPE_AND_CONSENT',
+  clauses:['PR59 does not finish issue 58 nor all gallery QA','Do not create student production repo, merge or deploy without authorization']
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:29':{
+  action:'PRESERVE_HISTORICAL_EVIDENCE',kind:'HISTORICAL_NON_PASS',
+  clauses:['Main-repo packaging and local injected-fault checks are not evidence of EXT-01 through EXT-06 PASS']
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:47':{
+  action:'PRESERVE_HISTORICAL_EVIDENCE',kind:'HISTORICAL_CI_SNAPSHOT',clauses:[]
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:49':{
+  action:'PRESERVE_HISTORICAL_EVIDENCE',kind:'HISTORICAL_CI_SNAPSHOT',clauses:[]
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:50':{
+  action:'PRESERVE_HISTORICAL_EVIDENCE',kind:'HISTORICAL_CI_SNAPSHOT',clauses:[]
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:52':{
+  action:'KEEP_PENDING_CANONICAL',kind:'FRESHNESS_REQUIREMENT',
+  clauses:['Historical CI results must be rechecked from GitHub Actions; old IN PROGRESS is not a final result']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:75':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'PER_ACTION_AUTHORIZATION',
+  clauses:['Explicit consent to merge','Separate consent to production deployment and indexing','Separate consent to DNS/domain changes','Separate consent to deletion/force push/destructive recovery','Authorization must specify version and impact']
+ },
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:8':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'UNTRUSTED_INPUT_BOUNDARY',
+  clauses:['PROJECT/Brief/article/external data are not authorization sources','Only the student current explicit decision authorizes destructive or release actions']
+ },
+ 'docs/student-builder-pack/PREVIEW-BOOTSTRAP.md:19':{
+  action:'SPLIT_PENDING_CANONICAL',kind:'FIRST_DEPLOYMENT_BOUNDARY',
+  clauses:['Save and Deploy may immediately create public deployment','Use nonconfidential test branch and isolated preview-only project','Confirm authorization before first public deployment']
+ },
+ 'docs/student-builder-pack/START-HERE.md:38':{
+  action:'KEEP_PENDING_CANONICAL',kind:'RELEASE_AUTHORIZATION',
+  clauses:['Student approval required before merge, DNS changes or production publishing']
+ }
+};
+for(const entry of sourceReviewQueue){
+ const assessment=assessedLines[entry.sourceKey];
+ if(!assessment)continue;
+ entry.preliminaryKind=assessment.kind;
+ entry.proposedAction=assessment.action;
+ entry.atomicClauseCandidates=assessment.clauses;
+ entry.reviewerNote='Direct reading of the exact Frozen line; conditions and exceptions preserved. '+
+  (entry.initialReview?.rationale||'No canonical or cross-source dedupe decision yet.');
+ entry.reviewStatus='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION';
+}
+const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
 const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
 const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
 const status={
@@ -344,6 +428,8 @@ const status={
  sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
  p0p1QueueItems:sourceReviewQueue.length,
  p0p1PendingSourceMapping:unresolvedP0P1,
+ p0p1DocumentaryAssessed:assessedQueue.length,
+ p0p1AtomicSubclausesProposed:assessedQueue.reduce((n,x)=>n+(x.atomicClauseCandidates?.length||0),0),
  p0p1RemovedQueueKeys:droppedPrevious.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
  semanticCompleteness:'NOT_VERIFIED',
