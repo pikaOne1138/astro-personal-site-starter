@@ -215,3 +215,8 @@
 ## Phase 2｜Core Skills B Batch 8：組站架構與內頁映射
 
 [PHASE2-CORE-SKILLS-B-ATOMIC-BATCH8.md](PHASE2-CORE-SKILLS-B-ATOMIC-BATCH8.md) 在 Frozen main 上新增 Site Assembly 的 **12 個來源行、18 個候選子項**；Batch1–7 原有 58/103 行，現 **70/103 行**至少有工作候選，尚有 **33 行**需初步拆解。L37–L43 大多是元件位置與結構事實，不能直接計為獨立規範；L31 四尺寸截圖也不等於人工完成視覺驗收。跨來源 Canonical/alias 和全文雙向語義覆蓋未完成，Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skill 不修改，不 Merge、不部署。
+
+
+## Phase 2｜Core Skills B 103/103 來源行映射完成（非原子語義 PASS）
+
+[PHASE2-CORE-SKILLS-B-REMAINING-LINE-MAP.md](PHASE2-CORE-SKILLS-B-REMAINING-LINE-MAP.md) 已依 frozen main 補齊 Assembly 20 行與 Deploy 13 行。對 `PHASE2-CORE-SKILLS-FULL-LINE-B.md` 的 103 個 `SOURCE_REQUIREMENT_OR_PROCEDURE` 來源行以路徑+行號集合反向檢驗：**103/103 行至少有一個工作行 ID，missing=0、extra=0**。惟 Batch9 為「語義摘要與來源錨定」，仍包含多個複合義務、驗收欄位、架構事實及示例，**不能宣稱 103 行全部原子化、完整來源文件全量覆蓋或已建立唯一 canonical 規範母數**。下一步需再拆 Batch9 複合來源、與 P0/A 批進行 canonical/alias 去重及雙向語義稽核。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 不變、不 Merge、不部署。
