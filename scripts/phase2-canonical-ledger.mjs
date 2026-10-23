@@ -418,7 +418,7 @@ function evidenceDisposition(entry){
  return ['SOURCE_CONTENT_REQUIREMENT','Potential norm or context: preserve complete original; no inferred alias or parent replacement','MAP_ATOMIC_PENDING'];
 }
 for(const entry of sourceReviewQueue){
- if(entry.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION')continue;
+ if(entry.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION'||entry.reviewStatus==='APPROVED'||entry.canonicalId)continue;
  const [kind,reason,action]=evidenceDisposition(entry);
  entry.preliminaryKind=kind;
  entry.proposedAction=action;
@@ -431,6 +431,8 @@ const firstPassDisposed=sourceReviewQueue.filter(x=>x.reviewStatus==='SOURCE_DIS
 const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
 const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
 const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
+const outstandingLineKeys=new Set(sourceReviewQueue.filter(x=>x.reviewStatus!=='APPROVED').map(x=>x.sourceKey));
+const sourceFirstNotYetDisposed=unmappedCandidateLines.filter(x=>!x.initialReview&&!outstandingLineKeys.has(x.path+':'+x.line));
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
@@ -458,6 +460,7 @@ const status={
  sourceFirstReadFailures:sourceInventoryFailures.length,
  sourceFirstClassifiedUnmapped:firstReviewedUnmapped.length,
  sourceFirstUnclassifiedUnmapped:remainingUnclassified.length,
+ sourceFirstNotYetDisposed:sourceFirstNotYetDisposed.length,
  sourceFirstUnmappedP0:triageCounts.P0_SAFETY_RELEASE,
  sourceFirstUnmappedP1:triageCounts.P1_EVIDENCE_QA,
  sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
@@ -488,7 +491,7 @@ if(crossVersion.length)failReasons.push('Unreviewed non-frozen references');
 if(orphanAliases.length)failReasons.push('Alias orphans');
 if(unresolved.length)failReasons.push('Semantic adjudication incomplete');
 if(unresolvedP0P1)failReasons.push('P0/P1 source-to-ledger semantic mapping incomplete');
-if(unmappedCandidateLines.length)failReasons.push('Source-first potentially normative lines not mapped');
+if(unmappedCandidateLines.length)failReasons.push('Source-first potentially normative lines not semantically mapped (including dispositioned pending records)');
 if(sourceInventoryFailures.length)failReasons.push('Source-first scope files could not be read');
 if(relationOrphans.length)failReasons.push('Semantic relation orphan IDs');
 if(unverifiedMerges.length)failReasons.push('Documentary MERGE candidates lack a shared exact Frozen line');
