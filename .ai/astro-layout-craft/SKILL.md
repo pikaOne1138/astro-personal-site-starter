@@ -49,7 +49,7 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 
 ## 版面質感的強制檢查：置中畫布與留白
 
-PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路徑和課程模組在桌面橫向過度撐開。學員在比較版型時，這屬於結構性退化，不是單純換色。
+曾經把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路徑和課程模組在桌面橫向過度撐開。學員在比較版型時，這屬於結構性退化，不是單純換色。
 
 - **先測量原站的內容畫布（content container）**：大螢幕版面一般須採最大寬度（依版型約 1000–1360px）+ 左右 auto margin；絕不在未比對的情況下直接使用滿版百分比 padding 當作留白方案。
 - 例外可使用全幅背景（somatic 影像等），但主標題、文字和 CTA 仍要有受控的內層 container。
@@ -70,7 +70,7 @@ PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路
 Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-design/SKILL.md`. Its references contain ten original-site source analyses; recipes/code contains 40 exact Astro compositions. Preserve [OBS], [MEAS], [INF], [NEW] and [DEFECT] evidence levels. For novel designs, first select whole-page content structure here, then follow the editorial design composition recipes, then choose the existing UI and motion blocks. The visual lab `/layouts/recipes/` exposes five categories of live designs. Two Claude-authored examples replace the previous simplified reading-atlas and trust-path layouts; both still require visual browser QA.
 
 
-## Claude Editorial Skill 已實際整合（PR #20）
+## Claude Editorial Skill 的整合
 
 本 Skill 管整站結構／內容動線；當需要從零設計成熟的編輯式版面，**必須讀 `../astro-editorial-layout-design/SKILL.md`** 再決定 Hero、內容區塊、列表與節奏。Claude 原始研究、十站分析、40 個配方與四寬度驗收位於 `.ai/astro-editorial-layout-design/`，程式化可用的 40 個元件位於 `src/components/editorial-recipes/`；五個視覺實驗頁入口：`/layouts/recipes/`。
 

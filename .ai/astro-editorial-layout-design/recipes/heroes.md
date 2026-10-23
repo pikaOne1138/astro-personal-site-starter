@@ -1,6 +1,6 @@
 # Hero 構圖配方 ×12
 
-**每個配方都對應一個可建置的 Astro 元件**（`recipes/code/heroes/Hxx-*.astro`），已在 1440／1280／768／390 通過 `scripts/audit.mjs`（無溢出、無文字疊壓、最小字級 12px）。
+**每個配方都對應一個可建置的 Astro 元件**（`recipes/code/heroes/Hxx-*.astro`），已在 1440／1280／768／390 通過 `.ai/astro-editorial-layout-design/scripts/audit.mjs`（無溢出、無文字疊壓、最小字級 12px）。
 元件預設內容是示意；使用時**必須改結構與內容，不是只改文字與顏色**（失敗 F10）。
 
 標記：**[OBS]** 來自十款原始碼；**[NEW]** 本 Skill 新增構圖。「衍生」＝以十款的某個手法為起點，但已修正其缺陷。

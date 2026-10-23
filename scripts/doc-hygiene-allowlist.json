@@ -1,0 +1,110 @@
+[
+ {
+  "file": "AGENTS.md",
+  "rule": "pr-number",
+  "match": "PR #20",
+  "reason": "規則中的反面示範"
+ },
+ {
+  "file": "AGENTS.md",
+  "rule": "hardcoded-count",
+  "match": "41 blocks",
+  "reason": "規則中的反面示範"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/pages/articles/",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/layouts/SiteLayout.astro",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/pages/rss.xml.js",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/pages/sitemap.xml.js",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/pages/robots.txt.js",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/content/drafts/",
+  "reason": "學員自己網站的路徑，不在本 Repo"
+ },
+ {
+  "file": ".ai/astro-content-publishing/references/article-authoring.md",
+  "rule": "missing-path",
+  "match": "src/content/articles/my-first-post.md",
+  "reason": "文章檔名範例"
+ },
+ {
+  "file": ".ai/astro-site-assembly/SKILL.md",
+  "rule": "missing-path",
+  "match": "src/components/layouts/selected/Home.astro",
+  "reason": "匯出後學員網站的路徑"
+ },
+ {
+  "file": ".ai/astro-site-assembly/SKILL.md",
+  "rule": "missing-path",
+  "match": "public/audio/",
+  "reason": "匯出後學員網站的路徑"
+ },
+ {
+  "file": "docs/student-builder-pack/OWNED-MEDIA.md",
+  "rule": "missing-path",
+  "match": "public/images/",
+  "reason": "學員網站放圖片的資料夾"
+ },
+ {
+  "file": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+  "rule": "filename",
+  "match": "",
+  "reason": "待處理：改名以避免與來源檔混淆（見待辦）"
+ },
+ {
+  "file": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+  "rule": "missing-path",
+  "match": "src/styles/tailwind.css",
+  "reason": "Manus ZIP 內的來源路徑，不是本 Repo 檔案"
+ },
+ {
+  "file": ".ai/astro-motion-craft/library/recipes/content-interactions.md",
+  "rule": "missing-path",
+  "match": "",
+  "reason": "Manus ZIP 內的來源路徑，不是本 Repo 檔案"
+ },
+ {
+  "file": ".ai/astro-motion-craft/library/recipes/pointer-interactions.md",
+  "rule": "missing-path",
+  "match": "",
+  "reason": "Manus ZIP 內的來源路徑，不是本 Repo 檔案"
+ },
+ {
+  "file": ".ai/astro-motion-craft/library/recipes/reveal-and-stagger.md",
+  "rule": "missing-path",
+  "match": "",
+  "reason": "Manus ZIP 內的來源路徑，不是本 Repo 檔案"
+ },
+ {
+  "file": ".ai/astro-motion-craft/library/README.md",
+  "rule": "missing-path",
+  "match": "scripts/reveal.ts",
+  "reason": "Manus ZIP 內的來源路徑"
+ }
+]

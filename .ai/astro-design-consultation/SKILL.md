@@ -47,7 +47,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 1. `user says article/title/notes` → 直接示範內容型列表或文章構圖，客群可暫定；不要求先分類。
 2. `user says service/testimonial/practitioner` → 直接示範服務與可信度布局，不能編造證照、評語、圖片。
 3. `user says visual preference/reference` → 先拆設計特徵；未收到參考網址時請求網址或截圖，而不是網站分類。
-4. `user requests implementation/Starter JSON/PR47` → 告知當前 Skill 邊界及必須核對的 registry/schema，再交接；不可聲稱已執行。不主動提議手寫 StarterPlan JSON 或「貼回規劃器」；優先把設計決策翻譯成 `/starter/` 的欄位，讓規劃器生成與檢查。除非實際核實存在匯入入口，不得承諾可以匯入。
+4. `user requests implementation/Starter JSON/PR 或匯出完整 Starter` → 告知當前 Skill 邊界及必須核對的 registry/schema，再交接；不可聲稱已執行。不主動提議手寫 StarterPlan JSON 或「貼回規劃器」；優先把設計決策翻譯成 `/starter/` 的欄位，讓規劃器生成與檢查。除非實際核實存在匯入入口，不得承諾可以匯入。
 5. `truly ambiguous site purpose` → 只在缺了用途就無法提供有用方向時，問一次；不要把回答內容全變成門檻問題。
 
 ## 五項不可省略的判斷

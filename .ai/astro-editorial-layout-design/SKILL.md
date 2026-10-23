@@ -13,7 +13,7 @@ description: 為繁體中文知識型（部落格、專欄、教學、策展、�
 | 標記 | 意義 |
 |---|---|
 | **[OBS]** | 從十款原始碼實際讀到的 class／CSS／數值 |
-| **[MEAS]** | 用 `scripts/audit.mjs` 實測渲染結果 |
+| **[MEAS]** | 用 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 實測渲染結果 |
 | **[INF]** | 從 OBS／MEAS 歸納的規律（可能有例外） |
 | **[NEW]** | 本 Skill 額外建議（十款中不存在，通常比十款更嚴格） |
 | **[DEFECT]** | 十款中實測到的缺陷 —— **反例，不要複製** |
@@ -91,8 +91,8 @@ node path/to/scripts/audit.mjs --base http://localhost:4321 --paths /,/about --o
 ## 6. 範例（`examples/`）
 
 `examples/` 是一個可建置的 Astro 專案：
-- `src/pages/reading-almanac.astro`（閱讀年鑑：無圖年份＋12 月線格＋純 CSS 篩選＋深色年度之書帶）
-- `src/pages/trust-path.astro`（信任路徑：橫向路線帶＋脊線五站＋比例時間尺）
+- `.ai/astro-editorial-layout-design/examples/src/pages/reading-almanac.astro`（閱讀年鑑：無圖年份＋12 月線格＋純 CSS 篩選＋深色年度之書帶）
+- `.ai/astro-editorial-layout-design/examples/src/pages/trust-path.astro`（信任路徑：橫向路線帶＋脊線五站＋比例時間尺）
 - `src/pages/lab/*.astro`：40 個配方元件的實際渲染
 - 各站 `brief.md`／`direction.md`／`wireframe.md`／`DECISIONS.md`／`screenshots/`：完整走過一次工作流程，含**實際發生的修正紀錄**。
 

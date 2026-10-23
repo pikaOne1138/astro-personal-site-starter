@@ -1,7 +1,7 @@
 # 常見 AI 設計失敗（含偵測與修正）
 
 格式：**症狀 → 為什麼會發生 → 怎麼偵測（可執行）→ 修正（CSS／結構）→ 十款對照**。
-標記同 `00-evidence-legend.md`。偵測欄的指令都對應 `scripts/audit.mjs` 的輸出欄位，或需要看截圖。
+標記同 `00-evidence-legend.md`。偵測欄的指令都對應 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 的輸出欄位，或需要看截圖。
 
 ---
 
@@ -69,7 +69,7 @@
 
 - **症狀**：`astro build` 綠燈，但 390px 下 h1 孤字、nav 擠成兩行重疊、圖被裁掉主體、文字在圖上看不見。
 - **原因**：build 只驗證語法與型別。
-- **偵測**：必須跑 `scripts/audit.mjs` 並**實際看截圖**（四個寬度）。十款本身即例：build 全過，但 [MEAS] 每頁 19–37 處 <12px、手機觸控 <24px 5–11 個。
+- **偵測**：必須跑 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 並**實際看截圖**（四個寬度）。十款本身即例：build 全過，但 [MEAS] 每頁 19–37 處 <12px、手機觸控 <24px 5–11 個。
 - **修正**：把截圖檢查寫入交付門檻（`checklists/scoring.md`：未附四寬度截圖＝0 分）。
 
 ## F10 以「換色」冒充「換版型」（本 Skill 的核心禁令）
