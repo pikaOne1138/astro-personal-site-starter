@@ -15,7 +15,7 @@ for(const file of files){
   const cols=line.split('|').slice(1,-1).map(x=>x.trim());
   const id=cols[0]?.match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1] || (file === 'PHASE2-BATCH9-ATOMIC-C.md' ? cols[0]?.match(/^(B9C-[A-Z]+\d+)$/)?.[1] : null);
   if(!id||cols.length<3)return;
-  const refs=[];
+  const refs=[{path:dir+file,revision:blobSha,blobSha,lineStart:n+1,lineEnd:n+1,legacyWorkId:id,sourceLayer:'LEGACY_WORK_PAPER',sourceText:line}];
   for(const m of line.matchAll(/https:\/\/github\.com\/pikaOne1138\/astro-personal-site-starter\/blob\/([0-9a-f]{40})\/([^\s)#]+)(?:#L(\d+)(?:-L(\d+))?)?/g)){
    const p=decodeURIComponent(m[2]);
    refs.push({path:p,revision:m[1],blobSha:m[1]===frozen?manifest[p]||null:null,lineStart:m[3]?+m[3]:null,lineEnd:m[4]?+m[4]:m[3]?+m[3]:null,legacyWorkId:id});
@@ -45,11 +45,12 @@ if(process.argv[2]==='import'){
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
 if(!old)throw Error('Run import first');
-const failures=[],ids=new Set(),review=[];
+const failures=[],ids=new Set(),review=[],missingFrozen=[],frozenSeen=new Set();
 for(const r of old.records){
  if(ids.has(r.legacyId))failures.push('duplicate ID: '+r.legacyId);ids.add(r.legacyId);
  if(r.decision==='PENDING'||r.reviewStatus!=='APPROVED'||!r.canonicalId)review.push(r.legacyId);
  for(const e of r.evidence||[]){try{const data=fs.readFileSync(e.workingPath,'utf8').split('\n');if(data[e.workingLine-1]!==e.rawRow)failures.push('working row changed: '+r.legacyId);}catch{failures.push('missing working file: '+e.workingPath);}}
+ if(!(r.sourceRefs||[]).some(ref=>ref.revision===frozen || ref.sourceLayer==='UPSTREAM_DELTA'))missingFrozen.push(r.legacyId);
  for(const ref of r.sourceRefs||[]){
   if(ref.revision===frozen&&manifest[ref.path]!==ref.blobSha)failures.push('invalid frozen SHA: '+r.legacyId);
   if(!ref.lineStart)failures.push('missing line anchor: '+r.legacyId);
@@ -59,7 +60,7 @@ for(const r of old.records){
 const missing=[...records.keys()].filter(x=>!ids.has(x));
 const state=failures.length+missing.length+review.length+errors.length?'BLOCKED':'PASS';
 const report=['# Phase 2 Gate Report','', 'Generated from canonical-ledger.json. No semantic approval is inferred.','',
- '| Metric | Value |','|---|---:|','| Working Phase2 files | '+(files.length-1)+' |','| Frozen files | '+Object.keys(manifest).length+' |','| Imported legacy IDs | '+old.records.length+' |','| Discovered legacy IDs | '+records.size+' |','| Unimported IDs | '+missing.length+' |','| Broken refs | '+failures.length+' |','| Pending adjudication | '+review.length+' |','| Import read failures | '+errors.length+' |','',
- '**Phase 2: '+state+'**. Phase 3/4: BLOCKED.','', '## Failures','', '~~~json',JSON.stringify({missing,failures,importErrors:errors,pendingSample:review.slice(0,20)},null,2),'~~~',''].join('\n');
+ '| Metric | Value |','|---|---:|','| Working Phase2 files | '+(files.length-1)+' |','| Frozen files | '+Object.keys(manifest).length+' |','| Imported legacy IDs | '+old.records.length+' |','| Discovered legacy IDs | '+records.size+' |','| Unimported IDs | '+missing.length+' |','| Broken refs | '+failures.length+' |','| Pending adjudication | '+review.length+' |','| Import read failures | '+errors.length+' |','| No directly anchored Frozen or upstream source | '+missingFrozen.length+' |','',
+ '**Phase 2: '+state+'**. Phase 3/4: BLOCKED.','', '## Failures','', '~~~json',JSON.stringify({missing,failures,missingFrozenCount:missingFrozen.length,missingFrozenSample:missingFrozen.slice(0,50),importErrors:errors,pendingSample:review.slice(0,20)},null,2),'~~~',''].join('\n');
 if(process.argv[2]==='report')fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
 console.log(report);if(state!=='PASS')process.exitCode=1;
