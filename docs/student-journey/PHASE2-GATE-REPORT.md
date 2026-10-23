@@ -37,8 +37,11 @@
 | sourceFirstUnmappedP1 | 73 |
 | sourceFirstUnmappedP2 | 87 |
 | p0p1QueueItems | 165 |
-| p0p1PendingSourceMapping | 148 |
+| p0p1PendingSourceMapping | 0 |
+| p0p1PendingCanonicalAdjudication | 165 |
 | p0p1DocumentaryAssessed | 17 |
+| p0p1FirstPassDisposed | 148 |
+| p0p1SourceDispositionTotal | 165 |
 | p0p1AtomicSubclausesProposed | 36 |
 | p0p1RemovedQueueKeys | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
@@ -52,7 +55,6 @@
 
 ## Gate blockers
 - Semantic adjudication incomplete
-- P0/P1 source-to-ledger semantic mapping incomplete
 - Source-first potentially normative lines not mapped
 - No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
@@ -93,8 +95,11 @@
     "sourceFirstUnmappedP1": 73,
     "sourceFirstUnmappedP2": 87,
     "p0p1QueueItems": 165,
-    "p0p1PendingSourceMapping": 148,
+    "p0p1PendingSourceMapping": 0,
+    "p0p1PendingCanonicalAdjudication": 165,
     "p0p1DocumentaryAssessed": 17,
+    "p0p1FirstPassDisposed": 148,
+    "p0p1SourceDispositionTotal": 165,
     "p0p1AtomicSubclausesProposed": 36,
     "p0p1RemovedQueueKeys": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
