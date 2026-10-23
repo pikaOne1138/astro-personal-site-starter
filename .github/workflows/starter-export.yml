@@ -34,7 +34,15 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: node scripts/ci-pr67-change-gate.mjs
+        shell: bash
+        run: |
+          # PR #67 predates this classifier; load its trusted main copy after merge.
+          if git cat-file -e origin/main:scripts/ci-pr67-change-gate.mjs 2>/dev/null; then
+            git show origin/main:scripts/ci-pr67-change-gate.mjs > /tmp/ci-pr67-change-gate.mjs
+            node /tmp/ci-pr67-change-gate.mjs
+          else
+            node scripts/ci-pr67-change-gate.mjs
+          fi
   standalone-build:
     needs: ci-change-classifier
     if: needs.ci-change-classifier.outputs.mode != 'ledger_only'
