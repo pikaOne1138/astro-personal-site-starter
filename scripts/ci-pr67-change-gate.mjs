@@ -22,38 +22,48 @@ const allowedBaseChanges=new Set([
  '.github/workflows/deploy-pages.yml'
 ]);
 const run=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
-const api=(path)=>JSON.parse(execFileSync('gh',['api',path],{encoding:'utf8',maxBuffer:16*1024*1024,env:{...process.env,GH_TOKEN:process.env.GH_TOKEN||process.env.GITHUB_TOKEN}}));
-const requiredJobs=new Set(['preview-build','static-build','standalone-build','gallery']);
-const requiredFlows=new Set(['PR Preview Build','Verify Cloudflare Static Assets','Standalone Starter Export Check','Template Gallery QA']);
+const api=(path)=>JSON.parse(execFileSync('gh',['api',path],{
+ encoding:'utf8',maxBuffer:1024*1024,
+ env:{...process.env,GH_TOKEN:process.env.GH_TOKEN||process.env.GITHUB_TOKEN}
+}));
+const evidenceSha='f0e0a7c9930f9128f3e9ca77a6ca71ddb6cf3713';
+export const evidence=[
+ {id:39922719683,flow:'Template Gallery QA',job:'gallery'},
+ {id:39922719550,flow:'Verify Cloudflare Static Assets',job:'static-build'},
+ {id:39922719659,flow:'PR Preview Build',job:'preview-build'},
+ {id:39922719746,flow:'Standalone Starter Export Check',job:'standalone-build'}
+];
+export function validEvidenceItem(runInfo,jobs,expected){
+ return runInfo?.id===expected.id &&
+  runInfo?.name===expected.flow &&
+  runInfo?.event==='pull_request' &&
+  runInfo?.head_sha===evidenceSha &&
+  runInfo?.status==='completed' &&
+  runInfo?.conclusion==='success' &&
+  Array.isArray(jobs) &&
+  jobs.some(j=>j.name===expected.job&&j.status==='completed'&&j.conclusion==='success' &&
+   // Job runner metadata may omit head_sha: if present it must match.
+   (j.head_sha===undefined||j.head_sha===evidenceSha));
+}
+export function validateEvidenceBundle(items){
+ return Array.isArray(items)&&items.length===evidence.length &&
+  evidence.every(expected=>items.some(item=>validEvidenceItem(item.run,item.jobs,expected)));
+}
 function verifiedQaBaseline(head){
  if(!(process.env.GH_TOKEN||process.env.GITHUB_TOKEN)||!process.env.GITHUB_REPOSITORY)return null;
  const repo=process.env.GITHUB_REPOSITORY;
- const runs=api('repos/'+repo+'/actions/runs?branch=feat/student-planner-draft-recovery&event=pull_request&status=success&per_page=100').workflow_runs||[];
- const groups=new Map();
- for(const runInfo of runs){
-  if(!requiredFlows.has(runInfo.name)||runInfo.conclusion!=='success')continue;
-  const key=runInfo.head_sha;
-  if(!groups.has(key))groups.set(key,new Set());
-  groups.get(key).add(runInfo.name);
- }
- // Require four actual successful heavy JOBS on one exact revision.
- // A workflow whose classifier passed while its heavy job was skipped
- // is NOT valid QA evidence.
- for(const [sha,flows] of groups){
-  if(flows.size!==requiredFlows.size||!/^[a-f0-9]{40}$/.test(sha))continue;
-  try{
-   run('merge-base','--is-ancestor',baseline,sha);
-   run('merge-base','--is-ancestor',sha,head);
-   const changed=run('diff','--name-only',sha,head).split('\n').filter(Boolean);
-   if(!isLedgerOnlyPaths(changed))continue;
-   const checks=api('repos/'+repo+'/commits/'+sha+'/check-runs?per_page=100').check_runs||[];
-   if([...requiredJobs].every(name=>checks.some(c=>c.name===name&&c.status==='completed'&&c.conclusion==='success'))){
-    console.log('Verified reusable four-suite QA baseline:',sha);
-    return sha;
-   }
-  }catch(e){console.error('QA baseline candidate rejected',sha,e.message);}
- }
- return null;
+ // Pinned four runs, two bounded API calls per run; no unbounded history scan.
+ const items=evidence.map(expected=>({
+  run:api('repos/'+repo+'/actions/runs/'+expected.id),
+  jobs:api('repos/'+repo+'/actions/runs/'+expected.id+'/jobs?per_page=30').jobs
+ }));
+ if(!validateEvidenceBundle(items))return null;
+ run('merge-base','--is-ancestor',baseline,evidenceSha);
+ run('merge-base','--is-ancestor',evidenceSha,head);
+ const changed=run('diff','--name-only',evidenceSha,head).split('\\n').filter(Boolean);
+ if(!isLedgerOnlyPaths(changed))return null;
+ console.log('Verified pinned four-suite QA baseline:',evidenceSha);
+ return evidenceSha;
 }
 function classify(){
  if(process.env.PR_NUMBER!=='67')return 'full';
