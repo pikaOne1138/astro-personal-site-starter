@@ -525,6 +525,34 @@ for(const entry of sourceReviewQueue){
   .slice(0,8).map(x=>({legacyId:x.id,frozenPath:entry.sourcePath,frozenLine:x.line,lineDistance:x.distance,
    interpretation:'PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE'}));
 }
+// Source-first candidate-to-legacy comparison with reproducible documentary
+// evidence. Line proximity alone is never an alias and never closes a clause.
+const legacyByExactAnchor=new Map();
+for(const legacy of old.records){
+ for(const ref of legacy.sourceRefs||[]){
+  if(ref.revision!==frozen||!ref.lineStart)continue;
+  const key=ref.path+':'+ref.lineStart;
+  if(!legacyByExactAnchor.has(key))legacyByExactAnchor.set(key,[]);
+  legacyByExactAnchor.get(key).push(legacy);
+ }
+}
+const frozenCandidateLinks=[];
+for(const line of sourceLineInventory){
+ if(!line.candidateForNormativeReview)continue;
+ const key=line.path+':'+line.line;
+ const linked=legacyByExactAnchor.get(key)||[];
+ const nearest=linked.map(x=>({legacyId:x.legacyId,canonicalId:x.canonicalId,
+  reviewStatus:x.reviewStatus,requirement:x.requirement,
+  relationship:'EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE'}));
+ frozenCandidateLinks.push({sourceKey:key,sourceText:line.sourceText,frozenBlobSha:line.frozenBlobSha,
+  sourceRole:line.sourceRole,legacyMatches:nearest,
+  sourceCoverageState:nearest.some(x=>x.canonicalId&&x.reviewStatus==='APPROVED')?
+   'CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING':
+   nearest.length?'LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING':
+   'UNREFERENCED_SOURCE_LINE_REQUIRES_REVIEW'});
+}
+const candidateLinksExact= frozenCandidateLinks.filter(x=>x.legacyMatches.length).length;
+const candidateLinksWithApprovedCanonical=frozenCandidateLinks.filter(x=>x.legacyMatches.some(y=>y.canonicalId&&y.reviewStatus==='APPROVED')).length;
 const queueWithNearbyEvidence=sourceReviewQueue.filter(x=>x.nearbyLegacyEvidence?.length).length;
 const closedNonNormative=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_FINAL_NON_NORMATIVE');
 const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
@@ -580,6 +608,8 @@ const status={
  sourceFirstLinesScanned:sourceLineInventory.length,
  sourceFirstUnscannedFrozenFiles:Object.keys(manifest).filter(p=>!scopedNormativeFiles.includes(p)).length,
  sourceFirstCandidateLines:candidateLines.length,
+ sourceFirstExactLegacyLinkLines:candidateLinksExact,
+ sourceFirstApprovedCanonicalLinkLines:candidateLinksWithApprovedCanonical,
  sourceFirstUnmappedCandidateLines:unmappedCandidateLines.length,
  sourceFirstMappedCandidateLines:mappedCandidateLines.length,
  sourceFirstReadFailures:sourceInventoryFailures.length,
@@ -648,6 +678,7 @@ const report=[
 ].join('\n');
 if(process.argv[2]==='report'){
  old.sourceReviewQueue=sourceReviewQueue;
+ old.sourceFirstCandidateLinks=frozenCandidateLinks;
  fs.writeFileSync(dir+'canonical-ledger.json',JSON.stringify(old,null,2)+'\n');
  fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
 }
