@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是學員專案脈絡（`PROJECT.md`／`AGENTS.md`）的草稿規格，已實作於 `scripts/student-project-context.mjs` 與 `docs/student-builder-pack/STUDENT-AGENTS.md`、`PROJECT-TEMPLATE.md`。它是開發者規格，不該隨學員 ZIP 出貨，現已移出。僅供歷史查閱，不再維護。
+
 # ATP Portable Project Context — implementation contract
 
 Status: Draft specification. This document describes student-owned websites, not the ATP research showcase.

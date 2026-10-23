@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 三道關卡的順序、回報格式與提示詞已併入 `docs/student-builder-pack/START-HERE.md`（學員會讀到）。僅供歷史查閱，不再維護。
+
 # 學員網站的三道品質關卡｜AI Skills 使用指南
 
 本文件將三個 **程序性 QA Skills** 接到原有架站工作坊，但不替代 Layout、Blocks、Section Patterns、Onboarding、Site Assembly、Deploy 等既有 Skills，也不新增功能性 UI。

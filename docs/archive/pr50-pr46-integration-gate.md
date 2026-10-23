@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是 PR #50 合併前的整合關卡。其要求（兩條匯出路徑共用同一個學員網站收尾程序、組裝後才寫入 `PROJECT.md`、Cloudflare Preview 一律 noindex、學員內容狀態）都已實作並合併；仍有效的驗證教訓在 `docs/layout/layout-assembly.md`。它原本放在會進學員 ZIP 的資料夾，現已移出。僅供歷史查閱，不再維護。
+
 # PR #50 — Mandatory integration gate after PR #46
 
 > **BLOCKING FOR MERGE:** Do not merge PR #50 based only on the main-path Starter exporter or current CI. PR #46 maintains the expanded **25-layout Art Direction / Layout-to-Starter adapter path**. Once #46 is merged (or its final code is integrated into this branch), verify this separate path before approving #50.

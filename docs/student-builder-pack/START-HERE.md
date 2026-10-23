@@ -3,11 +3,15 @@
 本包給 AI 讀取；學員不用安裝 Node、CLI，也不需要老師的 GitHub Repository 權限。
 
 ## 選擇建站入口（先選一條，不需三條都走）
-有三種方式開始；完整分工見 `docs/student-builder-pack/THREE-WAYS-TO-BUILD.md`，AI 先讀 `.ai/astro-site-entry/SKILL.md` 判斷：
+有三種方式開始，AI 先讀 `.ai/astro-site-entry/SKILL.md` 判斷（它只負責分流，不重寫技術規則）：
 - **A 復刻既有網站**：提供本人擁有或已授權的來源網站網址，AI 依 `.ai/url-to-frontend-replica/SKILL.md` 盤點並重建；不強制使用 Starter 規劃器。
 - **B 使用 ATP Starter**：有意挑選版型、品牌與頁面，依下方原有流程產生 Site Brief JSON、上傳資料包，由 Exporter 組站。
 - **C AI 直接訪談建站**：用白話告訴 AI 想做什麼，由 `.ai/astro-site-from-zero/SKILL.md` 一次問一題，自行整理計畫與建立網站；**不用先產生 Site Brief JSON**。
-ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類型可以討論但不保證已有 Ready Starter。文章型網站保留 Content Collections 以支援日後持續新增與維護。
+ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類型可以討論，但不保證已有 Ready Starter。文章型網站保留 Content Collections，以支援日後持續新增與維護。
+
+- **Site Brief JSON 不是每條路線的門檻**：B 的匯出器需要有效 JSON；A 可從盤點來源網站開始；C 由 AI 訪談、先確認簡短文字計畫，只有要用 ATP 匯出器時才轉成 JSON。
+- **功能範圍**：以 Astro 個人網站為主。付款、預約、會員、CRM 要用授權的外部服務或另案評估，不宣稱免費 Starter 已提供後端。
+- **三條路共通**：都要遵守安全、內容真實性、Git PR、真實 Preview，並在使用者明確同意後才正式發布。每條路都需要實際建置、RWD／連結／互動檢查，來源 Skill 不等於完成網站。
 
 ## B 路線：使用 Starter 時的原本流程
 
@@ -32,10 +36,22 @@ ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類�
 
 ## AI 要做的事
 - ZIP 有必要的 `.ai/` Skills、Layout 原始構圖、Blocks／Effects／Editorial 配方、相關 CSS、Registry 和 `scripts/export-starter.mjs`；請優先在**本 ZIP** 讀取，不要求學員 Fork/Clone 研究 Repo。
-- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；先讀 `docs/student-builder-pack/EXPANDED-LAYOUTS.md`：25 個方向可由主匯出器組裝，新增十三款為 in-progress Adapter，不能當成 25 款 Ready；AI 仍須完成真實內容、必要內頁與四尺寸目視驗收。
+- 使用學員 JSON 生成獨立 Astro 專案並完成所選版型與內頁的適配；先讀 `docs/student-builder-pack/EXPANDED-LAYOUTS.md`。哪些版型可由主匯出器組裝、各自的組裝狀態，以 ZIP 內 `BUILDER-PACK-VERSION.json` 的 `layoutSlugs`、`layoutStatuses` 與 `src/data/layout-assembly/definitions.mjs` 的 `assemblyStatus` 為準；非 Ready 的版型不能當成已驗收。AI 仍須完成真實內容、必要內頁與四尺寸目視驗收。
 - 以 `.ai/astro-pr-preview/SKILL.md` 分流 GitHub Pages 或 Cloudflare 的預覽與發布。配置、金鑰、網域須使用學員自己的帳號和 Repo。
 - 檢查 Build、實際 Preview、桌機/手機、圖片、文章、導航及搜尋。沒有實測不得稱成功。
 - 未經學員明確允許，不 Merge PR、不切換 DNS、不發布正式環境。
+
+## 三道品質關卡（程序性檢查，不是自動通過）
+
+1. **規劃完成後：內容準備度**，讀 `.ai/astro-content-readiness/SKILL.md`。依選定頁面與 Section Patterns 的 `required`／`optional`，列出真實可用的內容與缺口；可以先不放未完成的區段，不捏造文章、見證或資格。
+2. **導覽定稿前：導覽可理解性**，讀 `.ai/astro-navigation-tree-test/SKILL.md`。把導覽轉成純文字樹，給三個真實的找資料任務，由真正不熟悉網站的人測試；沒有真人測試結果不得標為通過。
+3. **網站真正公開後：發布健康檢查**，讀 `.ai/astro-launch-health-check/SKILL.md`。驗證實際的正式網址、內容、連結、canonical／robots／sitemap；Build 成功不代表已驗證發布，提交 Sitemap 不代表已收錄。
+
+每道檢查都回報：目標、狀態（PASS／FAIL／BLOCKED／NOT TESTED）、證據、發現的問題、下一步。不能用 AI 模擬結果充當真人測試，沒有證據就標 NOT TESTED。
+
+可以直接對 AI 說：
+
+> 請先讀專案 AGENTS.md 與相關既有 Skills，再依序讀 astro-content-readiness、astro-navigation-tree-test、astro-launch-health-check。用我的 Site Brief、真實文章／服務資料與預覽站作為檢查對象。先做內容準備度和導覽樹測試規劃；只有我提供正式網址且網站已真正發布，才執行上線健康檢查。全部用 PASS／FAIL／BLOCKED／NOT TESTED 與證據回報，不要虛構測試結果，不要自動合併或發布。
 
 ## 預期交付
 學員自己擁有的 Repo、真實 Preview 網址、待補內容清單、部署驗證紀錄與安全更新方式。

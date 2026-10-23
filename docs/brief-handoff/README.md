@@ -1,4 +1,4 @@
-# ATP｜Design Brief → Starter 交接規則（Task 5＋6）
+# ATP｜Design Brief → Starter 交接規則
 
 ## 目的與邊界
 本流程保留兩份既有資料契約，不發明第三種 JSON：

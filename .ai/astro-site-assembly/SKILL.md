@@ -30,7 +30,7 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 - Long CJK copy, absent media and variable article counts are normal student inputs. Keep family composition while adjusting responsive constraints; don't replace it with a generic template.
 - The standalone export workflow's `student-visual-qa` artifact captures generated homepage/inner pages at 1440, 1280, 768, and 390. Review actual captures for art direction; passing a build or absence of overflow does not guarantee source-prototype fidelity.
 
-## Existing full-site Design Family contract (PR #46)
+## Existing full-site Design Family contract
 
 The student exporter now includes the selected independent homepage AND family-specific interior components. Do not replace them with a generic hero or universal interior page.
 

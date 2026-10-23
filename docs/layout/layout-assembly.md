@@ -80,6 +80,9 @@ Preview 部署不等於核可。**不能把前一個 Head 的綠燈當成新 Hea
 - **自訂頁頁尾要實測前景／背景對比（至少 4.5）**，深色品牌曾出現淺字淺底。
 - **音訊測試用合法檔案**（例如一秒靜音 WAV），並實際 muted play／pause；格式無效的測試檔會造成誤判。
 - **不要出現 `href="#"` 的假連結**；沒有正式聯絡設定時，禁用寄信 CTA。
+- **學員網站的 `PROJECT.md` 要在版型 Adapter 組裝完成之後才寫入。** 曾有主匯出器先用暫代的版型 slug 建骨架並先寫 `PROJECT.md`，結果 `PROJECT.md` 記錄了錯的版型，而 `site.config.json` 後來才被修正。現在兩條匯出路徑共用同一個收尾程序 `finalizeStudentSite`，在 Adapter 組裝、真正的 `layoutSlug` 確定後只執行一次；`check:context` 比對 `PROJECT.md` 與 `site.config.json` 的版型。重跑時不得覆蓋學員已有的 `PROJECT.md`。
+- **Cloudflare 的分支預覽要一律 noindex**，即使 `SITE_INDEXABLE=true` 也一樣（HTML meta 與 `robots.txt` 都要檢查）。
+- **評測用的答案與測試包不能出貨給學員。** 它們放在 `docs/interview-evaluation/`，打包程式會排除並有洩漏檢查。
 
 ## 仍需人工完成的驗收（尚未簽核）
 
