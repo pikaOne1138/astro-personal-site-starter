@@ -17,7 +17,7 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1044 |
+| pendingSemanticDecisions | 1040 |
 | approvedCanonicalIds | 247 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
@@ -33,7 +33,7 @@
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
 | sourceAnchorMultiIdGroups | 157 |
-| sourceAnchorUnresolvedGroups | 135 |
+| sourceAnchorUnresolvedGroups | 133 |
 | sourceFirstScopeFiles | 192 |
 | frozenFileRoleCounts | {"ACTIVE_REFERENCE_OR_RULE_CANDIDATE":30,"OPERATIVE_CONTRACT_OR_QA_RECORD":45,"DESIGN_REFERENCE_OR_EXAMPLE":30,"UNCLASSIFIED_FROZEN_SOURCE":27,"HISTORICAL_PROJECT_EVIDENCE":23,"RESEARCH_OR_FIXTURE":37} |
 | sourceFirstScopeCoverageOfFrozenFiles | 192/192 |
@@ -94,7 +94,7 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1044,
+    "pendingSemanticDecisions": 1040,
     "approvedCanonicalIds": 247,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
@@ -110,7 +110,7 @@
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
     "sourceAnchorMultiIdGroups": 157,
-    "sourceAnchorUnresolvedGroups": 135,
+    "sourceAnchorUnresolvedGroups": 133,
     "sourceFirstScopeFiles": 192,
     "frozenFileRoleCounts": "{\"ACTIVE_REFERENCE_OR_RULE_CANDIDATE\":30,\"OPERATIVE_CONTRACT_OR_QA_RECORD\":45,\"DESIGN_REFERENCE_OR_EXAMPLE\":30,\"UNCLASSIFIED_FROZEN_SOURCE\":27,\"HISTORICAL_PROJECT_EVIDENCE\":23,\"RESEARCH_OR_FIXTURE\":37}",
     "sourceFirstScopeCoverageOfFrozenFiles": "192/192",
@@ -1382,147 +1382,6 @@
       ]
     },
     {
-      "sourceKey": ".ai/astro-pr-preview/SKILL.md:30",
-      "rows": [
-        {
-          "id": "PREVIEW-POLICY-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "變更部署架構需學員同意；沒有隔離 Preview 時應明說無 Live PR URL"
-        },
-        {
-          "id": "PROOF-001.01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE"
-        },
-        {
-          "id": "PROOF-001.02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE"
-        },
-        {
-          "id": "PROOF-001.03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "PARTIAL"
-        },
-        {
-          "id": "PROOF-001.03.S2",
-          "canonicalId": "ATP-P2-0001",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
-        },
-        {
-          "id": "PROOF-001.03.S3",
-          "canonicalId": "ATP-P2-0002",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain student consent before changing preview or deployment architecture."
-        },
-        {
-          "id": "PROOF-001.03.S1",
-          "canonicalId": "ATP-P2-0046",
-          "kind": "architecture",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments"
-        },
-        {
-          "id": "PREVIEW-POLICY-01.S1",
-          "canonicalId": "ATP-P2-0001",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
-        },
-        {
-          "id": "PREVIEW-POLICY-01.S2",
-          "canonicalId": "ATP-P2-0002",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain student consent before changing preview or deployment architecture."
-        },
-        {
-          "id": "P0-U034",
-          "canonicalId": "ATP-P2-0046",
-          "kind": "architecture",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments"
-        },
-        {
-          "id": "P0-U035",
-          "canonicalId": "ATP-P2-0001",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
-        },
-        {
-          "id": "P0-U036",
-          "canonicalId": "ATP-P2-0002",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain student consent before changing preview or deployment architecture."
-        },
-        {
-          "id": "P0-U044",
-          "canonicalId": "ATP-P2-0001",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
-        },
-        {
-          "id": "P0-U045",
-          "canonicalId": "ATP-P2-0002",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain student consent before changing preview or deployment architecture."
-        },
-        {
-          "id": "P0-CANON-PRVIEW-MISSING",
-          "canonicalId": "ATP-P2-0001",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
-        },
-        {
-          "id": "P0-CANON-PRVIEW-CONSENT",
-          "canonicalId": "ATP-P2-0002",
-          "kind": "policy",
-          "decision": "MERGE",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain student consent before changing preview or deployment architecture."
-        },
-        {
-          "id": "PREVIEW-11",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PARTIAL_SPLIT",
-          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
-          "requirement": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
-        }
-      ]
-    },
-    {
       "sourceKey": ".ai/astro-starter-deploy/SKILL.md:37",
       "rows": [
         {
@@ -1864,24 +1723,24 @@
           "id": "PROOF-001.01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "decision": "PARTIAL_SPLIT",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "DIRECT_CANDIDATE"
         },
         {
           "id": "PROOF-001.02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "decision": "PARTIAL_SPLIT",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "DIRECT_CANDIDATE"
         },
         {
           "id": "PROOF-001.03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "decision": "PARTIAL_SPLIT",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "PARTIAL"
         },
         {
@@ -2032,91 +1891,6 @@
           "decision": "PENDING",
           "reviewStatus": "PENDING_SEMANTIC_REVIEW",
           "requirement": "**學員生成專案**：讀該專案的 site.config.json、package.json、astro.config.mjs、src/content.config.ts、src/content/articles/、src/pages/articles/、src/layouts/SiteLayout.astro、src/pages/rss.xml.js、src/pages/sitemap.xml.js、src/pages/robots.txt.js。以實際schema、navigation和scripts為準；最新生成骨架的 npm run build 已包含 Pagefind 索引和 search/exact-zh.json；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。"
-        }
-      ]
-    },
-    {
-      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:19",
-      "rows": [
-        {
-          "id": "PROOF-001.01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE"
-        },
-        {
-          "id": "PROOF-001.02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE"
-        },
-        {
-          "id": "PROOF-001.03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "PARTIAL"
-        },
-        {
-          "id": "B9B-DEP-19-01",
-          "canonicalId": "ATP-P2-0253",
-          "kind": "policy",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Create feature branch and PR, then execute configured CI before release"
-        },
-        {
-          "id": "B9B-DEP-19-02",
-          "canonicalId": "ATP-P2-0254",
-          "kind": "policy",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "A real isolated GitHub Pages PR Preview must be configured and accessible before claiming it exists"
-        },
-        {
-          "id": "B9B-DEP-19-03",
-          "canonicalId": "ATP-P2-0255",
-          "kind": "policy",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Obtain explicit student approval before Merge or Production deployment"
-        },
-        {
-          "id": "B9B-DEP-19-04",
-          "canonicalId": "ATP-P2-0256",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "After authorized deployment verify actual pages, search and links"
-        },
-        {
-          "id": "B9B-DEP-19-05",
-          "canonicalId": "ATP-P2-0257",
-          "kind": "policy",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Local build output does not count as an accessible remote Preview"
-        },
-        {
-          "id": "B9-DEP-L19-1",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PARTIAL_SPLIT",
-          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
-          "requirement": "Branch→PR→CI→可開 Preview→同意→Merge→部署→線上驗證；GitHub Pages Preview 必須隔離可訪問；本地 Build 不等於 Preview"
-        },
-        {
-          "id": "DEPLOY-06",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PARTIAL_SPLIT",
-          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
-          "requirement": "5. 操作：Branch → PR → CI Build → 預覽可開啟 → 學員同意 → Merge → 正式 Deploy → 實際頁面/搜尋/連結驗證。GitHub Pages 的 PR Preview 必須有實際隔離與可訪問路徑，不能把本地 Build 當線上預覽。"
         }
       ]
     },
@@ -4026,6 +3800,96 @@
           "decision": "PENDING",
           "reviewStatus": "PENDING_SEMANTIC_REVIEW",
           "requirement": "核對 canonical 值"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:11",
+      "rows": [
+        {
+          "id": "PROOF-003.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-003.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-003.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "P0-U008",
+          "canonicalId": "ATP-P2-0011",
+          "kind": "evidence",
+          "decision": "KEEP",
+          "reviewStatus": "APPROVED",
+          "requirement": "Teacher-repository CI does not establish independent student-repository acceptance"
+        },
+        {
+          "id": "PREVIEW-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "目前研究展示 Repo 剛好**雙平台部署**：GitHub Pages 的自訂 Actions 預覽與 Cloudflare Pages 的 Git 整合預覽均曾在 PR #40 回報成功。這是本 Repo 的證據，**不是**任何新學員 Repo 自動具備雙套預覽。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:16",
+      "rows": [
+        {
+          "id": "PRIV-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "P0-U011",
+          "canonicalId": "ATP-P2-0014",
+          "kind": "policy",
+          "decision": "KEEP",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not ask students to disclose tokens, passwords or one-time verification codes in chat"
+        },
+        {
+          "id": "P0-U012",
+          "canonicalId": "ATP-P2-0015",
+          "kind": "policy",
+          "decision": "KEEP",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not embed credentials in committed source files or conversation text"
+        },
+        {
+          "id": "PREVIEW-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "3. 確認正式分支、PR 分支、是否有可用的公開或受保護 Preview、部署帳號權限、Repo Public/Private、Astro site／base。若學生不知道，逐步引導查看，不要求分享 Token、密碼或個人憑證。"
         }
       ]
     }
