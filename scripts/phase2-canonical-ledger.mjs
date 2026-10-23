@@ -287,6 +287,31 @@ const mappedCandidateLines=candidateLines.filter(x=>x.legacyIds.length);
 const firstReviewedUnmapped=unmappedCandidateLines.filter(x=>x.initialReview);
 const remainingUnclassified=unmappedCandidateLines.filter(x=>!x.initialReview);
 const triageCounts=Object.fromEntries(['P0_SAFETY_RELEASE','P1_EVIDENCE_QA','P2_CONTENT_PROCEDURE'].map(key=>[key,unmappedCandidateLines.filter(x=>x.triagePriority===key).length]));
+// Register each uncovered P0/P1 source line in the sole canonical-ledger.json.
+// This is a review candidate, not an approved clause or a replacement for the
+// exact Frozen content. It is intentionally separate from the 1,390 Legacy IDs.
+const targetedQueue=unmappedCandidateLines.filter(x=>['P0_SAFETY_RELEASE','P1_EVIDENCE_QA'].includes(x.triagePriority));
+const priorQueue=new Map((old.sourceReviewQueue||[]).map(x=>[x.sourceKey,x]));
+const sourceReviewQueue=targetedQueue.map(x=>{
+ const sourceKey=x.path+':'+x.line;
+ const previous=priorQueue.get(sourceKey);
+ const status=x.initialReview?.classification||'UNCLASSIFIED_CANDIDATE';
+ const isHistorical=/^\|.*(?:PASS|IN PROGRESS|NOT TESTED|Actions Run)/i.test(x.sourceText);
+ const isSample=/^\s*(?:「|>|description:)/.test(x.sourceText);
+ return {
+  sourceKey,origin:'FROZEN_SOURCE',sourcePath:x.path,sourceBlobSha:x.frozenBlobSha,
+  frozenCommit:frozen,lineStart:x.line,lineEnd:x.line,sourceText:x.sourceText,
+  priority:x.triagePriority,
+  preliminaryKind:previous?.preliminaryKind||x.initialReview?.classification||(isHistorical?'HISTORICAL_EVIDENCE_CANDIDATE':isSample?'EXAMPLE_OR_META_CANDIDATE':'NORMATIVE_REVIEW_REQUIRED'),
+  reviewerNote:previous?.reviewerNote||x.initialReview?.rationale||'Unmapped original line: check atomic subclauses, scope, exceptions and cross-source aliases.',
+  matchingLegacyIds:previous?.matchingLegacyIds||[],
+  proposedAction:previous?.proposedAction||'PENDING_SOURCE_TO_LEDGER_MAPPING',
+  reviewStatus:previous?.reviewStatus||'PENDING_SEMANTIC_REVIEW',
+  canonicalId:previous?.canonicalId||null
+ };
+});
+const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
+const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
@@ -317,6 +342,9 @@ const status={
  sourceFirstUnmappedP0:triageCounts.P0_SAFETY_RELEASE,
  sourceFirstUnmappedP1:triageCounts.P1_EVIDENCE_QA,
  sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
+ p0p1QueueItems:sourceReviewQueue.length,
+ p0p1PendingSourceMapping:unresolvedP0P1,
+ p0p1RemovedQueueKeys:droppedPrevious.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
  semanticCompleteness:'NOT_VERIFIED',
  oldFileRetirement:'NOT_AUTHORIZED',
@@ -335,6 +363,7 @@ if(parentRisks.length)failReasons.push('Parent/child canonical double-count risk
 if(crossVersion.length)failReasons.push('Unreviewed non-frozen references');
 if(orphanAliases.length)failReasons.push('Alias orphans');
 if(unresolved.length)failReasons.push('Semantic adjudication incomplete');
+if(unresolvedP0P1)failReasons.push('P0/P1 source-to-ledger semantic mapping incomplete');
 if(unmappedCandidateLines.length)failReasons.push('Source-first potentially normative lines not mapped');
 if(sourceInventoryFailures.length)failReasons.push('Source-first scope files could not be read');
 if(relationOrphans.length)failReasons.push('Semantic relation orphan IDs');
@@ -358,7 +387,11 @@ const report=[
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
 ].join('\n');
-if(process.argv[2]==='report')fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
+if(process.argv[2]==='report'){
+ old.sourceReviewQueue=sourceReviewQueue;
+ fs.writeFileSync(dir+'canonical-ledger.json',JSON.stringify(old,null,2)+'\n');
+ fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
+}
 console.log(report);
 if(process.argv[2]!=='report'&&process.argv[2]!=='verify')throw Error('Usage: import | verify | report');
 process.exitCode=1;
