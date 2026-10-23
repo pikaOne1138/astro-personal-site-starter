@@ -295,3 +295,8 @@
 ## Phase 2｜子工作 ID 正反向結構核對 09
 
 新增 [PHASE2-CHILD-REVERSE-TRACE-AUDIT-09.md](PHASE2-CHILD-REVERSE-TRACE-AUDIT-09.md)：三輪 Batch1–8 Child Split 合計 **50 個不重複父工作 ID／169 個不重複子工作 ID**，全部父 ID 可在 187 筆 Inventory 找到；並回讀 Frozen Publishing L28/L56、Deploy L31、Assembly L31/L11 對照不得遺失的條件與例外。**本輪只確認子 ID 唯一、父 ID 存在及指定來源語義的局部核對；不能據此宣稱 187 筆全量語義等價、跨來源去重或唯一 Canonical 母數 PASS。** Phase2 IN PROGRESS，Stage3/4 BLOCKED。
+
+
+## Phase 2｜跨來源引用實際修復 10
+
+新增 [PHASE2-CROSSWALK-REFERENCE-REPAIR-10.md](PHASE2-CROSSWALK-REFERENCE-REPAIR-10.md)；發現 Crosswalk 04 將 Frozen Assembly L29 錯誤寫成不存在的 `B9-ASM-L29-1`，已依 Batch1–8 定義修正為 `B8-ASM-L29-02`，保留勘誤追溯。並確認 9 個 Batch9 Remaining Line Map ID 與 3 個 Batch9-C 新子 ID 的存在性。本次**限定引用核對，不是完整 192 檔、全 58 份 Phase2 文件或所有 Crosswalk ID 的雙向 Gate PASS**。Phase2 持續，Stage3/4 BLOCKED。
