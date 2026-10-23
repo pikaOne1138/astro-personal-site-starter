@@ -19,8 +19,8 @@
 | approvedCanonicalIds | 0 |
 | aliasGroups | 0 |
 | documentaryRelationGroups | 18 |
-| documentaryMerges | 5 |
-| documentaryPartialSplits | 8 |
+| documentaryMerges | 4 |
+| documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
@@ -34,7 +34,6 @@
 
 ## Gate blockers
 - Semantic adjudication incomplete
-- Documentary MERGE candidates lack a shared exact Frozen line
 - No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
 ## Machine-verifiable diagnostics
@@ -56,8 +55,8 @@
     "approvedCanonicalIds": 0,
     "aliasGroups": 0,
     "documentaryRelationGroups": 18,
-    "documentaryMerges": 5,
-    "documentaryPartialSplits": 8,
+    "documentaryMerges": 4,
+    "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
@@ -177,7 +176,7 @@
         "B2-PUB48-02",
         "B3-PUB20-02"
       ],
-      "decision": "MERGE",
+      "decision": "PARTIAL_SPLIT",
       "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L7",
       "scopeNote": "SAME_CANDIDATE | 同一 Publishing Skill L20 與 L48 都說索引產生不等於搜尋 UI 已完成，但前者是生成專案現況、後者是組裝驗收要求；不能刪掉兩個 source | 保留兩來源，核對主詞與驗收差異後才決定共用 canonical",
       "sharedExactFrozenAnchors": [],
@@ -314,20 +313,7 @@
     }
   ],
   "relationOrphans": [],
-  "unverifiedMerges": [
-    {
-      "legacyIds": [
-        "B2-PUB48-02",
-        "B3-PUB20-02"
-      ],
-      "decision": "MERGE",
-      "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L7",
-      "scopeNote": "SAME_CANDIDATE | 同一 Publishing Skill L20 與 L48 都說索引產生不等於搜尋 UI 已完成，但前者是生成專案現況、後者是組裝驗收要求；不能刪掉兩個 source | 保留兩來源，核對主詞與驗收差異後才決定共用 canonical",
-      "sharedExactFrozenAnchors": [],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
-    }
-  ]
+  "unverifiedMerges": []
 }
 ~~~
 

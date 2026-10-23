@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "b1e393dd720ca877f95c69463c67bd1b60d4da1a"
+        "blobSha": "abe89bb37d5fc508e90e3c3caabdc4c51724e4f1"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -9044,7 +9044,7 @@
           "otherLegacyIds": [
             "B3-PUB20-02"
           ],
-          "decision": "MERGE",
+          "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L7"
         }
       ]
@@ -9803,7 +9803,7 @@
           "otherLegacyIds": [
             "B2-PUB48-02"
           ],
-          "decision": "MERGE",
+          "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L7"
         }
       ]
@@ -65307,7 +65307,7 @@
         "B2-PUB48-02",
         "B3-PUB20-02"
       ],
-      "decision": "MERGE",
+      "decision": "PARTIAL_SPLIT",
       "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L7",
       "scopeNote": "SAME_CANDIDATE | 同一 Publishing Skill L20 與 L48 都說索引產生不等於搜尋 UI 已完成，但前者是生成專案現況、後者是組裝驗收要求；不能刪掉兩個 source | 保留兩來源，核對主詞與驗收差異後才決定共用 canonical",
       "sharedExactFrozenAnchors": [],
