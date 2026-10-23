@@ -12464,7 +12464,7 @@
       "legacyId": "B4-ASM12-01",
       "canonicalId": "ATP-P2-0154",
       "requirement": "Read actual Starter configuration, selected layout directions and Blocks registry before assembly",
-      "kind": "procedure",
+      "kind": "evidence",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12502,8 +12502,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
-      "reviewStatus": "APPROVED",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -12519,14 +12519,19 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": [],
+      "childrenLegacyIds": [
+        "B4-ASM12-01-S01",
+        "B4-ASM12-01-S02",
+        "B4-ASM12-01-S03"
+      ],
       "approvalEvidence": {
         "frozenPath": ".ai/astro-site-assembly/SKILL.md",
         "frozenLine": 12,
         "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
         "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
         "method": "FROZEN_SOURCE_AND_ATOMIC_WORK_ITEM_REVIEW"
-      }
+      },
+      "parentDisposition": "Every original sub-check retained as a separately sourced clause"
     },
     {
       "legacyId": "B4-ASM12-02",
@@ -15872,9 +15877,9 @@
     },
     {
       "legacyId": "B6-DEP30-01",
-      "canonicalId": null,
-      "requirement": "驗證 Build 實際產生 Pagefind 與中文 exact-zh 索引",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0214",
+      "requirement": "Verify actual build emitted Pagefind and exact-zh search index",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15906,12 +15911,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15927,7 +15936,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-DEP30-02",
@@ -15962,8 +15978,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15973,13 +15989,18 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B6-DEP30-02-S01",
+        "B6-DEP30-02-S02",
+        "B6-DEP30-02-S03"
+      ],
+      "parentDisposition": "Every original sub-check retained as a separately sourced clause"
     },
     {
       "legacyId": "B6-DEP30-03",
-      "canonicalId": null,
-      "requirement": "PR CI regressions 應包含負向故障案例",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0218",
+      "requirement": "Use a deliberately failing fixture to check CI regression gate catches a real defect",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16004,12 +16025,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16019,13 +16044,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-DEP30-04",
-      "canonicalId": null,
-      "requirement": "不同 base 設定下必須重新驗證",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0219",
+      "requirement": "Revalidate the output when deployment base path changes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16050,12 +16082,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16065,7 +16101,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-PUB66-01",
@@ -22453,9 +22496,9 @@
     },
     {
       "legacyId": "B6-DEP30-02-S01",
-      "canonicalId": null,
-      "requirement": "npm run verify 檢查索引結構",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0215",
+      "requirement": "Verify generated search index structure",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22477,12 +22520,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22492,13 +22539,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-DEP30-02-S02",
-      "canonicalId": null,
-      "requirement": "npm run verify 檢查路由",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0216",
+      "requirement": "Verify generated route integrity",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22520,12 +22574,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22535,13 +22593,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-DEP30-02-S03",
-      "canonicalId": null,
-      "requirement": "npm run verify 檢查草稿隔離",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0217",
+      "requirement": "Verify drafts remain excluded from search/discovery indexes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22563,12 +22628,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
+      "conditions": [
+        "Actual output has configured Pagefind/exact-zh functionality"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -22578,7 +22647,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 30,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 現行獨立 Starter 的 `npm run build` 包含 Pagefind 與中文 exact-zh 索引；`npm run verify` 要求兩份索引存在、結構有效及路由／草稿隔離正確。學員 PR CI 另執行 `npm run test:regressions`，確認已知故障注入會 FAIL。不同 `base` 下仍須重新驗證。",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B1-PUB28-03-S01",
@@ -23940,9 +24016,9 @@
     },
     {
       "legacyId": "B4-ASM12-01-S01",
-      "canonicalId": null,
-      "requirement": "讀 Starter Config",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0211",
+      "requirement": "Consult the actual Starter config before assembly",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23964,12 +24040,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23979,13 +24057,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B4-ASM12-01-S02",
-      "canonicalId": null,
-      "requirement": "讀 Layout Directions",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0212",
+      "requirement": "Consult the existing layout-directions registry before assembly",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24007,12 +24092,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24022,13 +24109,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B4-ASM12-01-S03",
-      "canonicalId": null,
-      "requirement": "讀 Blocks Registry",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0213",
+      "requirement": "Consult the existing Blocks registry before assembly",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24050,12 +24144,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site using matching export or search functionality"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24065,7 +24161,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 12,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "2. Read `src/data/starter-config.ts`, `src/data/layout-directions.json` and existing Blocks Registry. Validate kind/slug association, HEX color, routes, CTA, navigation names and order.",
+        "method": "EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B4-DEP18-02-S01",
@@ -82736,55 +82839,55 @@
       "legacyMatches": [
         {
           "legacyId": "B6-DEP30-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證 Build 實際產生 Pagefind 與中文 exact-zh 索引",
+          "canonicalId": "ATP-P2-0214",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify actual build emitted Pagefind and exact-zh search index",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "npm run verify 應檢查索引結構、路由與草稿隔離",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "PR CI regressions 應包含負向故障案例",
+          "canonicalId": "ATP-P2-0218",
+          "reviewStatus": "APPROVED",
+          "requirement": "Use a deliberately failing fixture to check CI regression gate catches a real defect",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不同 base 設定下必須重新驗證",
+          "canonicalId": "ATP-P2-0219",
+          "reviewStatus": "APPROVED",
+          "requirement": "Revalidate the output when deployment base path changes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "npm run verify 檢查索引結構",
+          "canonicalId": "ATP-P2-0215",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify generated search index structure",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "npm run verify 檢查路由",
+          "canonicalId": "ATP-P2-0216",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify generated route integrity",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B6-DEP30-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "npm run verify 檢查草稿隔離",
+          "canonicalId": "ATP-P2-0217",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify drafts remain excluded from search/discovery indexes",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-starter-deploy/SKILL.md:31",

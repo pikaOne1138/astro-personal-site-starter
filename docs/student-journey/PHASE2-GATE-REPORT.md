@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1123 |
-| approvedCanonicalIds | 210 |
+| pendingSemanticDecisions | 1114 |
+| approvedCanonicalIds | 219 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 36 |
+| sourceFirstApprovedCanonicalLinkLines | 37 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1123,
-    "approvedCanonicalIds": 210,
+    "pendingSemanticDecisions": 1114,
+    "approvedCanonicalIds": 219,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 36,
+    "sourceFirstApprovedCanonicalLinkLines": 37,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -2341,8 +2341,8 @@
         {
           "id": "B4-ASM12-01",
           "canonicalId": "ATP-P2-0154",
-          "kind": "procedure",
-          "decision": "KEEP",
+          "kind": "evidence",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "Read actual Starter configuration, selected layout directions and Blocks registry before assembly"
         },
         {
@@ -2396,24 +2396,24 @@
         },
         {
           "id": "B4-ASM12-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀 Starter Config"
+          "canonicalId": "ATP-P2-0211",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Consult the actual Starter config before assembly"
         },
         {
           "id": "B4-ASM12-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀 Layout Directions"
+          "canonicalId": "ATP-P2-0212",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Consult the existing layout-directions registry before assembly"
         },
         {
           "id": "B4-ASM12-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀 Blocks Registry"
+          "canonicalId": "ATP-P2-0213",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Consult the existing Blocks registry before assembly"
         }
       ]
     },
@@ -3961,52 +3961,52 @@
       "rows": [
         {
           "id": "B6-DEP30-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證 Build 實際產生 Pagefind 與中文 exact-zh 索引"
+          "canonicalId": "ATP-P2-0214",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual build emitted Pagefind and exact-zh search index"
         },
         {
           "id": "B6-DEP30-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "npm run verify 應檢查索引結構、路由與草稿隔離"
         },
         {
           "id": "B6-DEP30-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "PR CI regressions 應包含負向故障案例"
+          "canonicalId": "ATP-P2-0218",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Use a deliberately failing fixture to check CI regression gate catches a real defect"
         },
         {
           "id": "B6-DEP30-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不同 base 設定下必須重新驗證"
+          "canonicalId": "ATP-P2-0219",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Revalidate the output when deployment base path changes"
         },
         {
           "id": "B6-DEP30-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "npm run verify 檢查索引結構"
+          "canonicalId": "ATP-P2-0215",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify generated search index structure"
         },
         {
           "id": "B6-DEP30-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "npm run verify 檢查路由"
+          "canonicalId": "ATP-P2-0216",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify generated route integrity"
         },
         {
           "id": "B6-DEP30-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "npm run verify 檢查草稿隔離"
+          "canonicalId": "ATP-P2-0217",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify drafts remain excluded from search/discovery indexes"
         }
       ]
     },
