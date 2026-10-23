@@ -80,7 +80,7 @@ h1 em{display:block;padding-left:.6em}
 figure{grid-column:9/-1;grid-row:2/4;transform:rotate(2deg)}
 ```
 **算寬公式**：每個詞組寬度 ≈ 字數 × 字級(px) 必須 ≤ 標題欄寬。1440 視窗：8 欄 ≈ 795px、10vw = 144px → 詞組 ≤ 5 字。超過就拆成兩個詞組（陣列元素）。
-**常見失敗**：詞組 5 字 × 176px(11rem) = 880px > 795px，詞組在內部被硬斷成「把一／個問題」（本 Skill 開發時實際發生，已改字級上限為 9rem）。
+**常見失敗**：詞組 5 字 × 176px(11rem) = 880px > 795px，詞組在內部被硬斷成「把一／個問題」（實際發生過，所以字級上限為 9rem）。
 **程式**：`code/heroes/H02-offset-stagger.astro`
 
 ---

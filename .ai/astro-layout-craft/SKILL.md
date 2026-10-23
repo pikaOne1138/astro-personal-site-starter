@@ -19,12 +19,12 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 1. **問用途先於顏色**：知識／部落格（長文、觀察、課程、策展、Podcast、年度整理），或助人／專業服務（專業說明、關係陪伴、身體工作、行動教練、多人團隊、信任流程）。
 2. **比較兩款真實不同的閱讀路線**：例如 field-notes「邊注→觀察圖→按日期記事」和 learning-lab「學習路線→勾選進度→單元」，不是把 Header 顏色換掉。
 3. **先畫首頁 wireframe**：寫 5–7 段由上而下的區塊目的、首屏資訊重點、桌面欄數、手機順序、CTA 導向。
-4. **從既有 blocks 取資料**：`src/data/blocks.registry.json` 及 `/blocks/` 中找可重用功能；必要時定義額外 layout-specific composition，不把 12 個首頁都改成同一組 Hero + three cards。
+4. **從既有 blocks 取資料**：`src/data/blocks.registry.json` 及 `/blocks/` 中找可重用功能；必要時定義額外 layout-specific composition，不把所有首頁都改成同一組 Hero + three cards。
 5. **再挑風格和特效**：沿用或自訂 CSS tokens，跟 `.ai/astro-motion-craft/SKILL.md` 選適合的動態；不要用炫技代替版型差異。
 6. **保持工作坊友善**：用 Astro + CSS Grid/Flex + 少量原生 JS；所有範例可靜態部署 GitHub Pages，內部連結尊重 `import.meta.env.BASE_URL`。
 7. **驗證**：375/390px、桌面，長標題不中斷、對比與鍵盤可用、減少動態、不得有偽造收費、證照、留言或預約成功。每次新增可重用版型需更新版型 data、展示站與 Skill；新元件才登錄 Block Registry。
 
-## 十二款方向：應保留的**結構性差異**
+## 各方向應保留的**結構性差異**
 
 | Slug | 先展示什麼 | 特徵模組 | 禁忌 |
 |---|---|---|---|

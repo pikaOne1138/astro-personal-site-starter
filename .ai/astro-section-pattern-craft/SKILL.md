@@ -38,9 +38,9 @@ description: Discover, select and customize ready-to-use Astro section patterns 
 ## 給學員的提示詞
 「請看 `/section-patterns/`，我選 `featured-work`（或 `trust-service-path`）。把這段加到我的＿＿頁、＿＿區段後。保留我選的 Layout 與品牌風格，先列需要我提供的真實內容，再以現有 Blocks 組成。完成 PR 和四尺寸 QA 後給我預覽，不要自動合併。」
 
-## 新增十三款 Adapter 的可執行契約
+## 擴充版型 Adapter 的可執行契約
 
-`subject-atlas`、`practice-compass` 與十一款 expanded Adapter 的選用區段須提供真實 `content`；先讀 `docs/student-builder-pack/SECTION-PATTERNS.md`。首頁支援 `after-intro`，各選用頁支援 `page-end`，未知位置或缺必要資料會拒絕匯出。不要把規劃器的選取紀錄當成完成內容，也不要把任意位置文字默默改為頁尾。文章精選用 `articleSlugs` 綁已發布集合，不複製草稿資料。
+`subject-atlas`、`practice-compass` 與 `expanded/` Adapter 的選用區段須提供真實 `content`；先讀 `docs/student-builder-pack/SECTION-PATTERNS.md`。首頁支援 `after-intro`，各選用頁支援 `page-end`，未知位置或缺必要資料會拒絕匯出。不要把規劃器的選取紀錄當成完成內容，也不要把任意位置文字默默改為頁尾。文章精選用 `articleSlugs` 綁已發布集合，不複製草稿資料。
 
 
 ## 共用設計判斷

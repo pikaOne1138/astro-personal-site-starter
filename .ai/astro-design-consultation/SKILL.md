@@ -11,7 +11,7 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 - `knowledge`：個人知識、部落格、生活紀錄、專業文章、創作者內容基地。
 - `helper`：諮商、心理、催眠、療癒、身體工作、身心靈、教練、顧問等個人專業服務。
 
-目標：學員能用自然語言表達喜歡與不喜歡，了解兩到三種真正不同的構圖路徑，選出可解釋的方向，產生**可供現有 Astro Skills 後續實作**的 Design Brief。**本 Skill 不建立網站、不編輯 PR46/PR47、不進行部署或匯出完整 Starter。**
+目標：學員能用自然語言表達喜歡與不喜歡，了解兩到三種真正不同的構圖路徑，選出可解釋的方向，產生**可供現有 Astro Skills 後續實作**的 Design Brief。**本 Skill 不建立網站、不修改既有網站的程式、不進行部署或匯出完整 Starter。**
 
 ## 何時啟動
 - 「想要一個好看、不要像模板的網站」「我喜歡這些參考網站但說不出原因」。

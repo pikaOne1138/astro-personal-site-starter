@@ -1,6 +1,6 @@
 # 自有 Logo、圖片與段落標題（AI 接手用）
 
-本契約適用於新增十三款 Adapter；各款仍是 in-progress，不能因能產站就宣稱 Ready。原十二款沿用原有媒體契約。
+本契約適用於擴充版型的 Adapter；能產站不等於 Ready，狀態以 `assemblyStatus` 為準。基本版型沿用原有媒體契約。
 
 ## 輸入
 
