@@ -1,6 +1,6 @@
 # 學員專用 AI 建站規範（AGENTS.md）
 
-> 對象是**學員自己的 Astro 個人網站**，而不是老師的研究展示 Repo。學員可以用自然語言提出需求，不需要學會 Git／CLI 指令。你必須確認目前可用的檔案、終端、Git、GitHub 和瀏覽器權限；沒有能力不能假裝已執行。
+> 對象是**學員自己的 Astro 個人網站**。學員可以用自然語言提出需求，不需要學會 Git／CLI 指令。你必須確認目前可用的檔案、終端、Git、GitHub 和瀏覽器權限；沒有能力不能假裝已執行。
 
 ## 機械式安全檢查與資料來源信任
 
@@ -32,8 +32,8 @@
 
 ### 何時轉交其他 Skill
 - 初次建站需求與可用內容：`.ai/astro-starter-onboarding/SKILL.md`。
-- 設計方向、參考站、抽象感受變成可選擇的構圖方案：若倉庫已有 `.ai/astro-design-consultation/SKILL.md`，閱讀它；尚未安裝時使用既有 Layout／Editorial Skills，不宣稱已讀不存在的檔案。
-- 實作、維護、發布：依下表選擇對應專業 Skill。訪談只處理意圖與決策，不重做 PR #49 的設計研究與諮詢方法。
+- 設計方向、參考站、抽象感受變成可選擇的構圖方案：`.ai/astro-design-consultation/SKILL.md`。
+- 實作、維護、發布：依下表選擇對應專業 Skill。訪談只處理意圖與決策，設計方法交給上述 Skill。
 
 ### 簡短訪談與風險情境
 | 學員說法 | 下一步 |
@@ -73,9 +73,8 @@
 - **可自主**：在已授權工作空間檢查檔案／Repo、研究、規劃、建立隔離 Branch、修改指定範圍、執行本機 Build 和測試。
 - **僅在已授權的 Repo**：Commit、Push、建立 PR、取得真實 Preview。若只有本機 Git，先保留可回復的本機 Commit；沒有遠端就沒有 GitHub PR／Actions，不得聲稱已建立。
 - **須取得明確核准**：Merge、Production 部署、啟用搜尋引擎索引、DNS／公開網域變更、刪除內容或 Repo、強制推送／重寫歷史、破壞性復原。核准必須指向實際版本與影響範圍；不能把「幫我改一下」當成發布授權。
-- **日常安全流程**：現況和影響分析 → 最小變更 → Git diff／Build／回歸 → PR（適用時）→ 實際 Preview → 學員看過並明確同意 → Merge／發布 → 正式站實測。
+- **日常流程**：更新與復原依 `.ai/astro-site-maintenance/SKILL.md`，預覽與發布依 `.ai/astro-pr-preview/SKILL.md`。
 - 已存在未提交的使用者工作時，不得直接 reset、checkout 覆蓋、force-push 或 stash 後遺忘；先說明衝突並保護原有工作。
-- 研究展示網站的 GitHub Pages Workflow 和 URL **不得搬成學員的部署設定**；依自己 Repo 的 GitHub Pages、Cloudflare Pages 或 Workers 實際紀錄選擇程序。
 
 ## 修改範圍、真實性與品質護欄
 
@@ -89,9 +88,8 @@
 
 1. 先對照需求檢查 `git diff`，確認沒有無關重構；確保舊頁、導航、公開文章、草稿隔離、搜尋、RSS、Sitemap、SEO 和真實 CTA 不意外退化。
 2. 執行實際可用的 Build、測試和 CI。UI 修改需依任務檢查 1440、1280、768、390，並區分「已產生截圖」與「有人真正檢視畫面」；鍵盤、觸控、reduced-motion 亦需合適驗證。
-3. 只有真正可開啟並對應當前 Commit 的 Preview 才可交付；Build artifact 或猜測網址不是 Preview。
-4. 給學員可理解的結果：改了什麼、哪些沒有改、真實預覽連結、PASS／FAIL／BLOCKED／NOT TESTED、風險、下一步及還原方式。
-5. **不得擅自 Merge、正式發布或宣稱未做過的 QA 已經通過。**
+3. 給學員可理解的結果：改了什麼、哪些沒有改、真實預覽連結、PASS／FAIL／BLOCKED／NOT TESTED、風險、下一步及還原方式。
+4. **不得擅自 Merge、正式發布或宣稱未做過的 QA 已經通過。**
 
 
 ## 學員網站防跑版檢查（匯出後的獨立 Repo）
@@ -113,16 +111,6 @@
 <!-- builder-only:start -->
 ## 交付包與環境注意事項
 
-本 ZIP 提供必要的 `.ai/` Skills、可重用版型和 Blocks、`scripts/export-starter.mjs`、`PROJECT-TEMPLATE.md`、`START-HERE.md`、`AGENT-HANDOFF.md`；學員另提供規劃器匯出的 Site Brief JSON。不要 Fork／修改老師 Repo，也不要將老師的示範素材當成已獲授權的正式網站素材。AI 缺少 Node／Git／雲端或瀏覽器能力時，必須如實告知替代流程，不要求完全新手自己猜 CLI 指令。
+本 ZIP 提供必要的 `.ai/` Skills、可重用版型和 Blocks、`scripts/export-starter.mjs`、`COMPONENTS.md`、`PROJECT-TEMPLATE.md`、`START-HERE.md`、`AGENT-HANDOFF.md`；學員另提供規劃器匯出的 Site Brief JSON。這份 ZIP 是唯一必要的網站程式來源，不必 Fork、Clone 或申請讀取老師的研究 Repo，也不要將老師的示範素材當成已獲授權的正式網站素材。研究範例與展示程式只是創作素材，不能直接視為學員已完成的網站。先閱讀 `START-HERE.md`，接手既有專案時再讀 `AGENT-HANDOFF.md`。AI 缺少 Node／Git／雲端或瀏覽器能力時，必須如實告知替代流程，不要求完全新手自己猜 CLI 指令。
 
 <!-- builder-only:end -->
-
-## 交付包及版型的最新事實
-
-## 交付包是唯一必要的網站程式來源
-這份 ZIP 包含 `.ai/` 下的設計與操作 Skills 及其附件、`src/` 的可重用示範元件／版型／資料、`public/` 的相關 CSS、`scripts/export-starter.mjs` 網站骨架產生器，以及 `COMPONENTS.md`。學員另外上傳 `/starter/` 產生的 Site Brief JSON。**不必 Fork、Clone 或申請讀取老師的研究 Repo**。
-
-研究範例與展示程式僅是創作素材，不能直接視為學員已完成網站。先閱讀 `START-HERE.md` 及 `AGENT-HANDOFF.md`。
-
-
-25 個 Layout 方向包括原十二款及新增十三款 in-progress Adapter。以 `src/data/layout-assembly/definitions.mjs` 和 `docs/student-builder-pack/EXPANDED-LAYOUTS.md` 核對實際 Renderer、支援範圍及 Ready 狀態；不要宣稱 25 款全部已完成設計驗收。

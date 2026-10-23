@@ -118,12 +118,4 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 
 ## Learner maintenance (existing student websites)
 
-When the user modifies an **existing student website**, inspect the student's actual repo and choose Skills by intent rather than rerunning the starter generator. The research repository is not the student's codebase; do not overwrite the student site with a newly exported scaffold.
-
-- Add/change/hide/remove a page or navigation: `.ai/astro-page-management/SKILL.md` (mandatory whole-site desktop/mobile navigation consistency and destination checks).
-- Local layout/section adjustment: `.ai/astro-layout-craft/SKILL.md`, `.ai/astro-editorial-layout-design/SKILL.md`.
-- Add/revise a Block or component: `.ai/astro-ui-craft/SKILL.md` and the existing Blocks Registry before inventing code.
-- Add/edit/draft/publish/unpublish articles: `.ai/astro-content-publishing/SKILL.md`.
-- General maintenance/recovery: `.ai/astro-site-maintenance/SKILL.md`.
-
-Always preserve existing URL/content and use Feature Branch → Build → real PR Preview → relevant page×viewport QA → learner approval → Merge/deploy. A single new page looking correct does not prove navigation was updated everywhere.
+The research repository is not the student's codebase. When asked to change an **existing student website**, inspect the student's actual repo and pick Skills by intent using the routing table in `docs/student-builder-pack/STUDENT-AGENTS.md`; do not rerun the starter generator or overwrite the student site with a newly exported scaffold. Preserve existing URLs and content, and use Feature Branch → Build → real PR Preview → page×viewport QA → learner approval → Merge/deploy. One new page looking correct does not prove navigation was updated everywhere (see `.ai/astro-page-management/SKILL.md`).
