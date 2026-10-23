@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1040 |
-| approvedCanonicalIds | 247 |
+| pendingSemanticDecisions | 1039 |
+| approvedCanonicalIds | 248 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -33,7 +33,7 @@
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
 | sourceAnchorMultiIdGroups | 157 |
-| sourceAnchorUnresolvedGroups | 133 |
+| sourceAnchorUnresolvedGroups | 132 |
 | sourceFirstScopeFiles | 192 |
 | frozenFileRoleCounts | {"ACTIVE_REFERENCE_OR_RULE_CANDIDATE":30,"OPERATIVE_CONTRACT_OR_QA_RECORD":45,"DESIGN_REFERENCE_OR_EXAMPLE":30,"UNCLASSIFIED_FROZEN_SOURCE":27,"HISTORICAL_PROJECT_EVIDENCE":23,"RESEARCH_OR_FIXTURE":37} |
 | sourceFirstScopeCoverageOfFrozenFiles | 192/192 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1040,
-    "approvedCanonicalIds": 247,
+    "pendingSemanticDecisions": 1039,
+    "approvedCanonicalIds": 248,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -110,7 +110,7 @@
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
     "sourceAnchorMultiIdGroups": 157,
-    "sourceAnchorUnresolvedGroups": 133,
+    "sourceAnchorUnresolvedGroups": 132,
     "sourceFirstScopeFiles": 192,
     "frozenFileRoleCounts": "{\"ACTIVE_REFERENCE_OR_RULE_CANDIDATE\":30,\"OPERATIVE_CONTRACT_OR_QA_RECORD\":45,\"DESIGN_REFERENCE_OR_EXAMPLE\":30,\"UNCLASSIFIED_FROZEN_SOURCE\":27,\"HISTORICAL_PROJECT_EVIDENCE\":23,\"RESEARCH_OR_FIXTURE\":37}",
     "sourceFirstScopeCoverageOfFrozenFiles": "192/192",
@@ -1511,107 +1511,6 @@
           "decision": "PARTIAL_SPLIT",
           "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**"
-        }
-      ]
-    },
-    {
-      "sourceKey": ".ai/astro-content-publishing/SKILL.md:70",
-      "rows": [
-        {
-          "id": "B7-PUB-L70-01",
-          "canonicalId": "ATP-P2-0085",
-          "kind": "procedure",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Authorized article creation requires only a Markdown file and not manual TypeScript arrays"
-        },
-        {
-          "id": "B7-PUB-L70-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PARTIAL_SPLIT",
-          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
-          "requirement": "公開文章在路由、文章頁、標籤與日期、相關連結及搜尋可見"
-        },
-        {
-          "id": "B7-PUB-L70-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PARTIAL_SPLIT",
-          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
-          "requirement": "RSS、Sitemap、Metadata、Preview Index 策略一致"
-        },
-        {
-          "id": "B7-PUB-L70-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "桌機與手機可正確閱讀及導覽，不得虛構發布成功"
-        },
-        {
-          "id": "B7-PUB-L70-02-S01",
-          "canonicalId": "ATP-P2-0086",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article is reachable through a public route"
-        },
-        {
-          "id": "B7-PUB-L70-02-S02",
-          "canonicalId": "ATP-P2-0087",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article has a reachable detail page"
-        },
-        {
-          "id": "B7-PUB-L70-02-S03",
-          "canonicalId": "ATP-P2-0088",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article is correctly discoverable through tags and dates"
-        },
-        {
-          "id": "B7-PUB-L70-02-S04",
-          "canonicalId": "ATP-P2-0089",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article appears in relevant related-article links"
-        },
-        {
-          "id": "B7-PUB-L70-02-S05",
-          "canonicalId": "ATP-P2-0090",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article is discoverable through configured search"
-        },
-        {
-          "id": "B7-PUB-L70-03-S01",
-          "canonicalId": "ATP-P2-0091",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "RSS and Sitemap reflect the published article state"
-        },
-        {
-          "id": "B7-PUB-L70-03-S02",
-          "canonicalId": "ATP-P2-0092",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Published article metadata remains consistent with source"
-        },
-        {
-          "id": "B7-PUB-L70-03-S03",
-          "canonicalId": "ATP-P2-0093",
-          "kind": "acceptance",
-          "decision": "KEEP",
-          "reviewStatus": "APPROVED",
-          "requirement": "Preview indexing configuration is appropriate to the actual deployment environment"
         }
       ]
     },
@@ -3890,6 +3789,51 @@
           "decision": "PENDING",
           "reviewStatus": "PENDING_SEMANTIC_REVIEW",
           "requirement": "3. 確認正式分支、PR 分支、是否有可用的公開或受保護 Preview、部署帳號權限、Repo Public/Private、Astro site／base。若學生不知道，逐步引導查看，不要求分享 Token、密碼或個人憑證。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:23",
+      "rows": [
+        {
+          "id": "B1-ASM23-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "正式發布必須核准特定的目前版本"
+        },
+        {
+          "id": "B1-ASM23-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "正式發布必須核准變更範圍與 Production 行動"
+        },
+        {
+          "id": "B1-ASM23-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "Build 和 Preview 通過不等於發布核准"
+        },
+        {
+          "id": "B1-ASM23-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "已揭露且知情接受的 Demo 不單獨阻擋獲核准的發布"
+        },
+        {
+          "id": "OPS4-006",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "requirement": "- **Publication gate:** require explicit approval for the specific current version, scope and production action; preview and Build do not constitute that approval. Acknowledged placeholder content alone does not block a user-approved release."
         }
       ]
     }

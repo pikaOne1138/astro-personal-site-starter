@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "6e38c583704f6d5a0c939e5843294c643178ed8c"
+        "blobSha": "58ac24051018fdbd909f44e1c10d3a96ad28e028"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -16575,9 +16575,9 @@
     },
     {
       "legacyId": "B7-PUB-L70-04",
-      "canonicalId": null,
-      "requirement": "桌機與手機可正確閱讀及導覽，不得虛構發布成功",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0267",
+      "requirement": "A newly published article must be readable and navigable on real desktop and mobile routes",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16609,12 +16609,18 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student sites publishing articles"
+      ],
+      "conditions": [
+        "Actual pages and responsive rendering exist"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Check desktop and mobile article text and routing"
+      ],
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16630,7 +16636,19 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "relatedCanonicalCandidates": [
+        "ATP-P2-0093"
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "residualClause": "Never claim a publishing success or execution evidence that did not occur",
+        "residualDisposition": "Existing release and truthful status policies require subsequent cross-source equivalence proof",
+        "method": "SPLIT_MOBILE_READABILITY_FROM_RELEASE_STATUS_NO_FALSE_MERGE"
+      }
     },
     {
       "legacyId": "B7-PUB-L72-01",
