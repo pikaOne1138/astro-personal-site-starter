@@ -58,6 +58,7 @@ Do not put version numbers, PR numbers, branch names, milestone names, dates, or
 | Student-owned GitHub Pages / optional Cloudflare deployment | `.ai/astro-starter-deploy/SKILL.md` |
 | Safe updates, backups, recovery | `.ai/astro-site-maintenance/SKILL.md` |
 | Multi-block page sections, `/section-patterns/` | `.ai/astro-section-pattern-craft/SKILL.md` and `src/data/section-patterns.registry.json` |
+| Planning a new Block, or evaluating an outside component kit. Not for students. | `docs/component-backlog.md` (candidates not built yet, rules for evaluating outside kits) |
 | Maintaining THIS repo's layout definitions, adapters and readiness states. Not for students. | `docs/layout/layout-assembly.md` |
 | Whole-page layout, section order, hero | `.ai/astro-layout-craft/SKILL.md` **and** `.ai/astro-editorial-layout-design/SKILL.md` |
 | Motion, effects, animation | `.ai/astro-motion-craft/SKILL.md`, then `.ai/astro-motion-craft/library/README.md` |

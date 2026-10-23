@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是當時的規劃與比對。其中規劃的元件都已實作並登錄；尚未做的候選與評估外部套件的準則已併入 `docs/component-backlog.md`。僅供歷史查閱，不再維護。
+
 # Manus Component Kit × 現有 Astro 元件庫｜V2.5 第二批決策矩陣
 
 > 2026-10-08。資料來源：使用者上傳的 `manusCR-astro-component-kit.zip`（69 個 ZIP entries，44 個 `.astro` component files）、`manusCR-README.md`、`manusCR-COMPONENT_CATALOG.md`；對照本專案 `main` 的 `src/data/blocks.registry.json`（42 元件）。此外參考原始跨 AI 研究。**此文件是比對／工作規格，不代表 Manus Demo 站已通過瀏覽器驗收。**
