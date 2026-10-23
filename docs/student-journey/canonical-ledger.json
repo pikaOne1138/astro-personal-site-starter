@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "a5c7da85acda815422f4455d437113b1003f3a1a"
+        "blobSha": "00a8327c2259e7a2e112d16cc6d7d521f6dd0352"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -15579,6 +15579,17 @@
           "legacyWorkId": "B7-PUB-L77-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B7-PUB-L77-01` | 7 | 修改舊文章時保留 slug／publishedAt | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 77,
+          "lineEnd": 77,
+          "legacyWorkId": "B7-PUB-L77-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **編輯舊文章**：「修改＿＿文章中的＿＿，網址不要改。」保留既有 slug／publishedAt，若 schema 有 updatedAt 且內容真的變更才更新；提供原文與改動差異。"
         }
       ],
       "aliases": [],
@@ -15732,6 +15743,17 @@
           "legacyWorkId": "B7-PUB-L78-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B7-PUB-L78-01` | 7 | 排定公開須先完成文字、SEO、內鏈、圖片來源與手機 QA | FLAG | CHILD_SPLIT_01_CREATED |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 78,
+          "lineEnd": 78,
+          "legacyWorkId": "B7-PUB-L78-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。"
         }
       ],
       "aliases": [],
@@ -15767,6 +15789,17 @@
           "legacyWorkId": "B7-PUB-L78-02",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B7-PUB-L78-02` | 7 | 沒有實際排程服務不可聲稱能定時自動發布 | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 78,
+          "lineEnd": 78,
+          "legacyWorkId": "B7-PUB-L78-02",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。"
         }
       ],
       "aliases": [],
@@ -15802,6 +15835,17 @@
           "legacyWorkId": "B7-PUB-L79-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B7-PUB-L79-01` | 7 | 發布須確認學員同意稿件 | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 79,
+          "lineEnd": 79,
+          "legacyWorkId": "B7-PUB-L79-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。"
         }
       ],
       "aliases": [],
@@ -15837,6 +15881,17 @@
           "legacyWorkId": "B7-PUB-L79-02",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B7-PUB-L79-02` | 7 | Branch／PR 經 Preview 驗收後再 Merge／Production | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 79,
+          "lineEnd": 79,
+          "legacyWorkId": "B7-PUB-L79-02",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **發布**：先確認稿件已獲學員同意，由 Branch／PR 經 Preview 驗收後再 Merge／Production；驗證文章網址、列表、RSS、Sitemap 與搜尋（若有 Pagefind）。"
         }
       ],
       "aliases": [],
@@ -16403,6 +16458,17 @@
           "legacyWorkId": "B8-ASM-L17-04",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L17-04` | 8 | Phase 1 不能聲稱完整移植十二套原始構圖 | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 17,
+          "lineEnd": 17,
+          "legacyWorkId": "B8-ASM-L17-04",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "`node scripts/export-starter.mjs <site-brief.json> <output-directory>` generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent `Home.astro` when `adapter` is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**."
         }
       ],
       "aliases": [],
@@ -16438,6 +16504,17 @@
           "legacyWorkId": "B8-ASM-L29-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L29-01` | 8 | 服務資料只能使用學生提供的 scope／exclusions／method／firstVisit 等真實欄位 | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 29,
+          "lineEnd": 29,
+          "legacyWorkId": "B8-ASM-L29-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- All six helper families accept `serviceFacts.scope`, `exclusions`, `method`, `firstVisit`, `duration`, `price`, `cancellation`, `qualification`, and `contact`; fields not supplied remain visibly unconfigured. A missing contact endpoint must not appear as a working booking form."
         }
       ],
       "aliases": [],
@@ -16725,6 +16802,17 @@
           "legacyWorkId": "B8-ASM-L31-02",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L31-02` | 8 | 人工對照 Art Direction；Build PASS／無 Overflow 不代表忠實度 | FLAG | CHILD_SPLIT_01_CREATED |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 31,
+          "lineEnd": 31,
+          "legacyWorkId": "B8-ASM-L31-02",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- The standalone export workflow's `student-visual-qa` artifact captures generated homepage/inner pages at 1440, 1280, 768, and 390. Review actual captures for art direction; passing a build or absence of overflow does not guarantee source-prototype fidelity."
         }
       ],
       "aliases": [],
@@ -16996,6 +17084,17 @@
           "legacyWorkId": "B8-ASM-L40-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L40-01` | 8 | 一般內頁使用家族 DesignInterior 元件 | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 40,
+          "lineEnd": 40,
+          "legacyWorkId": "B8-ASM-L40-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- Other ordinary interiors: `src/data/layout-assembly/DesignInterior.astro`."
         }
       ],
       "aliases": [],
@@ -17031,6 +17130,17 @@
           "legacyWorkId": "B8-ASM-L41-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L41-01` | 8 | About 使用 AboutSections | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 41,
+          "lineEnd": 41,
+          "legacyWorkId": "B8-ASM-L41-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- About: `src/data/layout-assembly/AboutSections.astro`."
         }
       ],
       "aliases": [],
@@ -17066,6 +17176,17 @@
           "legacyWorkId": "B8-ASM-L42-01",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B8-ASM-L42-01` | 8 | 助人服務使用 ServiceSections | — | PENDING_CROSS_SOURCE_DEDUPE |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 42,
+          "lineEnd": 42,
+          "legacyWorkId": "B8-ASM-L42-01",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- Helper service: `src/data/layout-assembly/ServiceSections.astro`."
         }
       ],
       "aliases": [],
@@ -32174,6 +32295,17 @@
           "legacyWorkId": "QC-15",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-15` | 路由／本地資產以及選單、Hero CTA、Section Patterns、頁腳、Sitemap 都要遵守自訂路徑 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 15,
+          "lineEnd": 15,
+          "legacyWorkId": "QC-15",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "1. Every internal link to a generated page or local asset resolves; a custom page path must be respected by navigation, hero CTAs, section patterns, footers and sitemap."
         }
       ],
       "aliases": [],
@@ -32209,6 +32341,17 @@
           "legacyWorkId": "QC-16",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-16` | 未公開 Markdown 必須從 HTML、discovery、RSS、Sitemap、搜尋 JSON 排除，新發布面需明確 gate | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 16,
+          "lineEnd": 16,
+          "legacyWorkId": "QC-16",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "2. Unpublished Markdown stays out of public HTML routes, discovery pages, RSS, sitemap and public searchable JSON; new publishing surfaces require an explicit gate."
         }
       ],
       "aliases": [],
@@ -32244,6 +32387,17 @@
           "legacyWorkId": "QC-18",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-18` | 表單、預約、資格、見證與電子報需真正整合及真實資料，不能演示成功 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 18,
+          "lineEnd": 18,
+          "legacyWorkId": "QC-18",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "4. No form, booking link, qualification, recommendation or newsletter is presented as successfully functioning without the actual integration and truthful data."
         }
       ],
       "aliases": [],
@@ -32279,6 +32433,17 @@
           "legacyWorkId": "QC-22",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-22` | 1440/1280/768/390 檢查，375 為邊界案例；Build 不代表 RWD | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 22,
+          "lineEnd": 22,
+          "legacyWorkId": "QC-22",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "8. A build success does not establish responsive quality. Review 1440, 1280, 768 and 390; add 375 for edge cases."
         }
       ],
       "aliases": [],
@@ -32314,6 +32479,17 @@
           "legacyWorkId": "QC-23",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-23` | 真正部署的 Preview 須對應 Commit；歷史部署 URL 可仍可訪問 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 23,
+          "lineEnd": 23,
+          "legacyWorkId": "QC-23",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "9. Real deployed Preview and its source commit must be matched; published historical deployment URLs may remain reachable."
         }
       ],
       "aliases": [],
@@ -32349,6 +32525,17 @@
           "legacyWorkId": "QC-39",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-39` | 重現修正前失敗＋修正後正常＋故障注入應被擋＋適用時學員匯出成功 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 39,
+          "lineEnd": 39,
+          "legacyWorkId": "QC-39",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- Each defect is not VERIFIED until: a pre-fix failure is reproducible, the post-fix normal fixture passes, an injected fault fails the intended gate, and the generated learner export passes where applicable."
         }
       ],
       "aliases": [],
@@ -32384,6 +32571,17 @@
           "legacyWorkId": "QC-46",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `QC-46` | 高優先缺陷完成、檢查器誤判排除、教師與學員 CI、ZIP 黑箱、最新 CF Preview 視覺 QA；低優先例外標 DEFERRED | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/quality/QUALITY-CONTRACT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+          "lineStart": 46,
+          "lineEnd": 46,
+          "legacyWorkId": "QC-46",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "Do **not** claim complete acceptance until all high-priority defects are verified, no critical checker false positives/negatives remain, teacher and exported-student CI both pass, the actual ZIP is black-box exercised, and the latest Cloudflare Preview receives visual QA. Known low-priority exceptions must be listed as DEFERRED. Unknown or missing evidence is NOT TESTED."
         }
       ],
       "aliases": [],
@@ -32419,6 +32617,17 @@
           "legacyWorkId": "P59-22",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-22` | EXT-01 知識型獨立 Repo PR 必含 regressions/Build/Verify/Secrets/Context/Playwright RWD/Artifact | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 22,
+          "lineEnd": 22,
+          "legacyWorkId": "P59-22",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-01 | 從學員 ZIP／Exporter 產生知識型獨立專案，推到**測試用學員 Repo**，開 PR 後 `pr-check.yml` 能自動觸發，順序包含 regressions、Build、Verify、Secrets／Context、Playwright RWD，並上傳 QA Artifact。 | NOT TESTED | 經使用者允許建立／使用隔離測試 Repo；AI 執行 | 學員 Repo URL、PR URL、Workflow Run URL、SHA、Artifact |"
         }
       ],
       "aliases": [],
@@ -32454,6 +32663,17 @@
           "legacyWorkId": "P59-23",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-23` | EXT-02 助人者同條件，另驗證服務頁與手機選單 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 23,
+          "lineEnd": 23,
+          "legacyWorkId": "P59-23",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-02 | 助人者型獨立專案進行同樣的真實 PR Workflow 驗證；保留既有安全與未公開內容護欄。 | NOT TESTED | 同 EXT-01 | 同 EXT-01，另含助人者路由／手機選單證據 |"
         }
       ],
       "aliases": [],
@@ -32489,6 +32709,17 @@
           "legacyWorkId": "P59-24",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-24` | EXT-03 GitHub Pages 子路徑線上 Preview、asset、canonical、路由與 SHA | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 24,
+          "lineEnd": 24,
+          "legacyWorkId": "P59-24",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-03 | GitHub Pages **Repository 子路徑**：實際 Preview、資產、文章／服務內頁、導航、搜尋與 canonical 等路徑配置可用，且能對應確切 SHA；不可將本地模擬當成線上部署。 | NOT TESTED | 需隔離測試 Repo 的 Pages 授權／配置 | 公開或受控測試 URL、部署 SHA、實際瀏覽器結果 |"
         }
       ],
       "aliases": [],
@@ -32524,6 +32755,17 @@
           "legacyWorkId": "P59-25",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-25` | EXT-04 Cloudflare 根路徑 Preview、資源和 SHA，不能使用正式 Production 當驗證 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 25,
+          "lineEnd": 25,
+          "legacyWorkId": "P59-25",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-04 | Cloudflare Pages／Workers **根路徑**（如選用）：實際分支 Preview、路由、圖片、搜尋資產可載入；不使用正式 Production 部署。 | NOT TESTED | 需已授權的測試環境；並非所有學員都必須選 Cloudflare | Preview URL、deployment SHA、瀏覽器報告 |"
         }
       ],
       "aliases": [],
@@ -32559,6 +32801,17 @@
           "legacyWorkId": "P59-26",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-26` | EXT-05 Branch Protection／Rulesets 真有 Required 且故障會阻止 Merge | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 26,
+          "lineEnd": 26,
+          "legacyWorkId": "P59-26",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-05 | 真實學員 Repo 的 Branch Protection／Rulesets 是否將必要檢查列為 Required；失敗時是否擋 Merge。不能用 Workflow 存在推論已有保護。 | NOT TESTED | 使用者／Repo 管理者核准並實測設定 | Ruleset 設定記錄、測試 PR／失敗 check、SHA |"
         }
       ],
       "aliases": [],
@@ -32594,6 +32847,17 @@
           "legacyWorkId": "P59-27",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-27` | EXT-06 學員修改後對應新的 Commit 重跑 QA、Artifact，不用舊證據 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 27,
+          "lineEnd": 27,
+          "legacyWorkId": "P59-27",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| EXT-06 | 模擬學員在自己 Repo 用 AI 修改頁面後，重跑 PR QA；確認報告與 Artifact 對應**修改後** Commit，不會使用舊版結果。 | NOT TESTED | 需測試 Repo；AI 修改測試資料 | 兩個 Commit、兩次 Run、修復前後報告 |"
         }
       ],
       "aliases": [],
@@ -32629,6 +32893,17 @@
           "legacyWorkId": "P59-35",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-35` | HUMAN-01 知識站五尺寸及首頁／索引／文章內頁人工視覺 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 35,
+          "lineEnd": 35,
+          "legacyWorkId": "P59-35",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-01 | 知識型網站在 1440／1280／768／390／375 五尺寸目視檢查首頁、文章列表與文章內頁；閱讀動線、字體與圖片比例合理，沒有明顯遮擋。 | NOT TESTED | 使用者或指定設計驗收者；需要實際學生 Preview／截圖 | 版本 SHA、五尺寸截圖、審查意見 |"
         }
       ],
       "aliases": [],
@@ -32664,6 +32939,17 @@
           "legacyWorkId": "P59-36",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-36` | HUMAN-02 助人站五尺寸及首頁／服務／FAQ／關於／聯絡人工視覺 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 36,
+          "lineEnd": 36,
+          "legacyWorkId": "P59-36",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-02 | 助人者型網站在五尺寸目視檢查首頁、服務、FAQ、關於、聯絡等頁；內容可信、CTA 明確、手機操作合理。 | NOT TESTED | 同上 | SHA、截圖、審查意見 |"
         }
       ],
       "aliases": [],
@@ -32699,6 +32985,17 @@
           "legacyWorkId": "P59-37",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-37` | HUMAN-03 真實圖片字型品牌配色長繁體內容，不能因與 Demo 不同判失敗 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 37,
+          "lineEnd": 37,
+          "legacyWorkId": "P59-37",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-03 | 學員替換真實圖片、字型、品牌配色與較長的繁體中文內容後，檢視 Hero 焦點、文字留白、表格與狀態；不得以與 Demo 不同為失敗理由。 | NOT TESTED | 實際學員素材或經確認可使用的測試素材 | 替換前後截圖、調整說明 |"
         }
       ],
       "aliases": [],
@@ -32734,6 +33031,17 @@
           "legacyWorkId": "P59-38",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-38` | HUMAN-04 手機鍵盤操作導覽/FAQ/CTA，記錄尚未由自動化發現的選單 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 38,
+          "lineEnd": 38,
+          "legacyWorkId": "P59-38",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-04 | 以手機／鍵盤實際走訪導航、FAQ、CTA 等操作，確認操作結果符合意圖；自動化未辨識的自訂選單要記錄補測。 | NOT TESTED | 人工或指定評審；實際 Preview | 裝置／瀏覽器、步驟、結果、問題截圖 |"
         }
       ],
       "aliases": [],
@@ -32769,6 +33077,17 @@
           "legacyWorkId": "P59-39",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-39` | HUMAN-05 真實資歷價格見證媒體授權隱私及整合，真人確認 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 39,
+          "lineEnd": 39,
+          "legacyWorkId": "P59-39",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-05 | 上線前核對真實資格、服務價格、客戶推薦、圖片授權、預約／外部表單、隱私資訊與內容來源；不可由自動 PASS 推定真實性或法律適用性。 | NOT TESTED | 網站持有人 | 經本人確認的審查清單；不存個資或憑證 |"
         }
       ],
       "aliases": [],
@@ -32804,6 +33123,17 @@
           "legacyWorkId": "P59-40",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-40` | HUMAN-06 確切 PR SHA Preview 與網站持有人明確同意 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 40,
+          "lineEnd": 40,
+          "legacyWorkId": "P59-40",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "| HUMAN-06 | 對準備交付或 Merge 的**確切 PR Commit** 看過真實 Preview，並由網站持有人明確同意；無同意不得合併或發布。 | NOT TESTED | 網站持有人 | PR SHA、Preview URL、明確核准紀錄 |"
         }
       ],
       "aliases": [],
@@ -32839,6 +33169,17 @@
           "legacyWorkId": "P59-70",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-70` | PR59 主 Repo CI 可通過而 EXT/HUMAN 仍未測，需揭露，不得暗示學員端已驗收 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 70,
+          "lineEnd": 70,
+          "legacyWorkId": "P59-70",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **PR #59 工程層進入最終審查**：本 Repo 必要 CI 在當前 Commit 通過，學員 Exporter、腳本與 Workflow 封裝有自動化證據；此時 EXT／HUMAN 項目可以仍為 NOT TESTED，但必須在此 SSOT 明確披露，不可宣稱「真實學員 Repo／人工視覺已驗收」。"
         }
       ],
       "aliases": [],
@@ -32874,6 +33215,17 @@
           "legacyWorkId": "P59-72",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P59-72` | PR59 本身 Merge ≠ 學員獨立網站發佈授權 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+          "lineStart": 72,
+          "lineEnd": 72,
+          "legacyWorkId": "P59-72",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **學員網站可正式發布**：仍需該網站本人的 HUMAN 類審核及明確核准。PR #59 合併與學員網站發布是不同授權，絕不可混淆。"
         }
       ],
       "aliases": [],
@@ -32909,6 +33261,17 @@
           "legacyWorkId": "P56-20",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-20` | 訪談與規劃器矛盾時學員裁決，不可擅選 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 20,
+          "lineEnd": 20,
+          "legacyWorkId": "P56-20",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；最新生成骨架的 `npm run build` 已包含 Pagefind 索引和 `search/exact-zh.json`；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。"
         }
       ],
       "aliases": [],
@@ -32944,6 +33307,17 @@
           "legacyWorkId": "P56-22",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-22` | 可略過訪談及 Logo 仍完成 Site Brief | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 22,
+          "lineEnd": 22,
+          "legacyWorkId": "P56-22",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "**離線參考來源**：ZIP的 `src/data/articles-v2.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。"
         }
       ],
       "aliases": [],
@@ -33049,6 +33423,17 @@
           "legacyWorkId": "P56-32",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-32` | 多行訪談摘要換行須在 notes 保留 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 32,
+          "lineEnd": 32,
+          "legacyWorkId": "P56-32",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "1. Ask for the content/goal only when it cannot be derived; do not invent an author's story. Confirm the intended slug and public/draft status when publishing details are uncertain."
         }
       ],
       "aliases": [],
@@ -33084,6 +33469,17 @@
           "legacyWorkId": "P56-34",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-34` | Logo/hero 上傳資料及 JSON assets 不可遺失 | **PENDING_CROSSCHECK** |"
+        },
+        {
+          "path": ".ai/astro-content-publishing/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+          "lineStart": 34,
+          "lineEnd": 34,
+          "legacyWorkId": "P56-34",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "3. Required frontmatter由實際schema決定；生成骨架為 `title`, `description`, `publishedAt`，`draft`與`tags`可選。研究範例另有 `category`。 Optional: `updatedAt`, `tags`, `readingMinutes`, `draft`, `cover` plus mandatory `coverAlt` when a cover is set, `canonicalURL` if needed."
         }
       ],
       "aliases": [],
@@ -48902,6 +49298,17 @@
           "legacyWorkId": "B9-ASM-L29-1",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `B9-ASM-L29-1` | 來源行地圖不是完整 Batch9 義務定義，且本輪所讀首欄無此 ID | `SOURCE_ID_RECHECK`，回 `REMAINING-LINE-MAP` 和來源 L29 核對 |"
+        },
+        {
+          "path": ".ai/astro-site-assembly/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+          "lineStart": 29,
+          "lineEnd": 29,
+          "legacyWorkId": "B9-ASM-L29-1",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- All six helper families accept `serviceFacts.scope`, `exclusions`, `method`, `firstVisit`, `duration`, `price`, `cancellation`, `qualification`, and `contact`; fields not supplied remain visibly unconfigured. A missing contact endpoint must not appear as a working booking form."
         }
       ],
       "aliases": [],
@@ -52811,6 +53218,17 @@
           "legacyWorkId": "P0-CANON-PRVIEW-MISSING",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P0-CANON-PRVIEW-MISSING` | `P0-U035`、`P0-U044` | SAME_MEANING | 同一 GitHub Pages 缺可用隔離 Preview 時的如實回報義務；沒有就不得宣稱有線上 Preview | astro-pr-preview/SKILL.md L30 | 學員自己 Repo／GitHub Pages；需先核查 Workflow 或外部 Hosting | DOCUMENTARY_CONSOLIDATION_ONLY |"
+        },
+        {
+          "path": ".ai/astro-pr-preview/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+          "lineStart": 30,
+          "lineEnd": 30,
+          "legacyWorkId": "P0-CANON-PRVIEW-MISSING",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
         }
       ],
       "aliases": [],
@@ -52846,6 +53264,17 @@
           "legacyWorkId": "P0-CANON-PRVIEW-CONSENT",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P0-CANON-PRVIEW-CONSENT` | `P0-U036`、`P0-U045` | SAME_MEANING | 同一設置／變更隔離 Preview 部署架構前取得學員同意的義務 | astro-pr-preview/SKILL.md L30 | 僅針對部署架構變更，不等於所有本地 Build 需另獲批准 | DOCUMENTARY_CONSOLIDATION_ONLY |"
+        },
+        {
+          "path": ".ai/astro-pr-preview/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+          "lineStart": 30,
+          "lineEnd": 30,
+          "legacyWorkId": "P0-CANON-PRVIEW-CONSENT",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
         }
       ],
       "aliases": [],
@@ -52881,6 +53310,17 @@
           "legacyWorkId": "P0-CANON-INDEX-ENABLE",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P0-CANON-INDEX-ENABLE` | `P0-U018`、`P0-U047` | SAME_MEANING | 經內容、實際預覽、安全與授權驗收且學員同意，僅正式部署環境啟用 SITE_INDEXABLE=true | astro-starter-deploy/SKILL.md L31 | 另保留重新 Build、檢查 meta/robots/canonical/sitemap 與 GitHub Pages variables 行為 | DOCUMENTARY_CONSOLIDATION_ONLY |"
+        },
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 31,
+          "lineEnd": 31,
+          "legacyWorkId": "P0-CANON-INDEX-ENABLE",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。"
         }
       ],
       "aliases": [],
@@ -52916,6 +53356,17 @@
           "legacyWorkId": "P0-CANON-PREVIEW-INDEX",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P0-CANON-PREVIEW-INDEX` | `P0-U019`、`P0-U049` | SAME_MEANING | Cloudflare Preview 不能沿用正式站 SITE_INDEXABLE=true 設定 | astro-starter-deploy/SKILL.md L31 | 不得擴大成所有平台都有同一個環境變數機制 | DOCUMENTARY_CONSOLIDATION_ONLY |"
+        },
+        {
+          "path": ".ai/astro-starter-deploy/SKILL.md",
+          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+          "lineStart": 31,
+          "lineEnd": 31,
+          "legacyWorkId": "P0-CANON-PREVIEW-INDEX",
+          "sourceLayer": "FROZEN_SOURCE",
+          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
+          "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。"
         }
       ],
       "aliases": [],
