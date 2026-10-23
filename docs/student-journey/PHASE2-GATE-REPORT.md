@@ -30,6 +30,8 @@
 | sourceFirstLinesScanned | 14222 |
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
+| sourceFirstExactLegacyLinkLines | 421 |
+| sourceFirstApprovedCanonicalLinkLines | 2 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -95,6 +97,8 @@
     "sourceFirstLinesScanned": 14222,
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
+    "sourceFirstExactLegacyLinkLines": 421,
+    "sourceFirstApprovedCanonicalLinkLines": 2,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
