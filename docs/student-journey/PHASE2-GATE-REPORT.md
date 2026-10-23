@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1382 |
-| approvedCanonicalIds | 4 |
+| pendingSemanticDecisions | 1361 |
+| approvedCanonicalIds | 25 |
 | aliasGroups | 4 |
 | documentaryRelationGroups | 18 |
 | documentaryMerges | 4 |
@@ -31,7 +31,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 2 |
+| sourceFirstApprovedCanonicalLinkLines | 9 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -84,8 +84,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1382,
-    "approvedCanonicalIds": 4,
+    "pendingSemanticDecisions": 1361,
+    "approvedCanonicalIds": 25,
     "aliasGroups": 4,
     "documentaryRelationGroups": 18,
     "documentaryMerges": 4,
@@ -98,7 +98,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 2,
+    "sourceFirstApprovedCanonicalLinkLines": 9,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
