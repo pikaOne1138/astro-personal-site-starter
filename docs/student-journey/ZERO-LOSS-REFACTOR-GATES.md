@@ -260,3 +260,8 @@
 ## Phase 2｜Crosswalk 04：內容真實性／Demo／Draft 的來源裁決
 
 新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-04.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-04.md)，回讀 Frozen main 之 site-entry L18、publishing L12/L28/L37/L58、assembly L21/L22/L23/L29，共 **9 個確實核對來源行／7 個語義群**。區分 Demo 可在 Preview 保留、正式發布前應揭露並讓學員選 keep/edit/hide、不得偽造資格或假功能、特定版本的 Merge/Production 授權，以及文章 draft release Gate 與歷史 Git/Preview 洩漏的保密風險。所有來源追溯和語義重疊均只算本批局部證據，不宣稱完整 Canonical 去重或 Stage 2 PASS。#61 Delta 維持獨立，Frozen baseline 不改；Stage 3/4 BLOCKED，不 Merge、不部署。
+
+
+## Phase 2｜Crosswalk 05：Layout／Blocks／Motion／Visual QA
+
+新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-05.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-05.md)：直接核對 Frozen Assembly 九行（45/48/49/51/52/54/57/61/64）、Layout 三行（9/47/79）、Motion 四行（35/38/66/119），合計 16 個不重複來源行，整理 10 個待定義語義群。把結構忠實度、Registry 功能 Block、Token、動效 fallback、四尺寸視覺 QA、互動可用性與獨立學員網站測試分開。**Layout/Motion 的新原子 ID 尚未完成；本輪僅跨來源候選映射，不是全量去重 PASS**。Stage 2 持續；3/4 BLOCKED。#61 與 #58 不變；原始 Skills、Template、生成器不改。
