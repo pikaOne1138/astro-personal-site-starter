@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 const port=4369,origin='http://127.0.0.1:'+port;
 // Use the project's supported Astro CLI entrypoint instead of a version-specific node_modules path.
-const server=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe']});
+const server=spawn(process.platform==='win32'?'npm.cmd':'npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:['ignore','pipe','pipe'],detached:process.platform!=='win32'});
 let logs='';server.stdout.on('data',x=>logs+=x);server.stderr.on('data',x=>logs+=x);
 let browser,temp;
 const assert=(value,label)=>{if(!value)throw new Error(label)};
@@ -39,4 +39,15 @@ try{
  await page.waitForLoadState('load');
  assert(await page.locator('[name=siteName]').inputValue()==='我的個人網站','clear draft did not restore defaults');
  console.log('PASS student draft reload / Site Brief import / clear');
-}finally{await browser?.close();server.kill('SIGTERM');if(temp)await rm(temp,{recursive:true,force:true});}
+}finally{
+ await browser?.close();
+ // npm creates a shell/child Astro process; killing npm alone leaves Astro
+ // holding the inherited stdout/stderr pipes open and hangs this Node test.
+ if(server.pid){
+  if(process.platform==='win32')server.kill('SIGTERM');
+  else {try{process.kill(-server.pid,'SIGTERM');}catch(e){if(e.code!=='ESRCH')throw e;}}
+ }
+ server.stdout.destroy();
+ server.stderr.destroy();
+ if(temp)await rm(temp,{recursive:true,force:true});
+}
