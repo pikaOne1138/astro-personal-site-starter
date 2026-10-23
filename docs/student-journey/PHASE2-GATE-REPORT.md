@@ -1,51 +1,73 @@
-# Phase 2 Gate Report
+# PR #67 | Phase 2 Gate Report
 
-Generated from canonical-ledger.json. No semantic approval is inferred.
+> Generated, non-normative report. Frozen baseline and canonical ledger remain the only source evidence/decision authority. Mechanical traceability is not semantic coverage.
 
-| Metric | Value |
+| Metric | Result |
 |---|---:|
-| Working Phase2 files | 61 |
-| Frozen files | 192 |
-| Imported legacy IDs | 1390 |
-| Discovered legacy IDs | 1390 |
-| Unimported IDs | 0 |
-| Broken refs | 0 |
-| Pending adjudication | 1390 |
-| Import read failures | 0 |
-| No directly anchored Frozen or upstream source | 0 |
+| frozenManifestFiles | 192 |
+| workingFiles | 62 |
+| discoveredLegacyIds | 1390 |
+| importedLegacyIds | 1390 |
+| missingLegacyIds | 0 |
+| brokenReferences | 0 |
+| frozenTextMismatches | 0 |
+| noFrozenOrUpstreamAnchor | 0 |
+| unmatchedAliases | 0 |
+| parentDoubleCountRisks | 0 |
+| crossVersionReferences | 0 |
+| pendingSemanticDecisions | 1390 |
+| approvedCanonicalIds | 0 |
+| aliasGroups | 0 |
+| frozenLinesReferenced | 670 |
+| unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
+| semanticCompleteness | NOT_VERIFIED |
+| oldFileRetirement | NOT_AUTHORIZED |
+| stage2 | BLOCKED |
+| stage3 | BLOCKED |
+| stage4 | BLOCKED |
 
-**Phase 2: BLOCKED**. Phase 3/4: BLOCKED.
+**Phase 2: BLOCKED. Phase 3 / 4: BLOCKED.**
 
-## Failures
+## Gate blockers
+- Semantic adjudication incomplete
+- No exhaustive clause denominator / source-to-ledger semantic coverage verified
 
+## Machine-verifiable diagnostics
 ~~~json
 {
-  "missing": [],
+  "counts": {
+    "frozenManifestFiles": 192,
+    "workingFiles": 62,
+    "discoveredLegacyIds": 1390,
+    "importedLegacyIds": 1390,
+    "missingLegacyIds": 0,
+    "brokenReferences": 0,
+    "frozenTextMismatches": 0,
+    "noFrozenOrUpstreamAnchor": 0,
+    "unmatchedAliases": 0,
+    "parentDoubleCountRisks": 0,
+    "crossVersionReferences": 0,
+    "pendingSemanticDecisions": 1390,
+    "approvedCanonicalIds": 0,
+    "aliasGroups": 0,
+    "frozenLinesReferenced": 670,
+    "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
+    "semanticCompleteness": "NOT_VERIFIED",
+    "oldFileRetirement": "NOT_AUTHORIZED",
+    "stage2": "BLOCKED",
+    "stage3": "BLOCKED",
+    "stage4": "BLOCKED"
+  },
+  "missingLegacy": [],
+  "missingFrozen": [],
   "failures": [],
-  "missingFrozenCount": 0,
-  "missingFrozenIds": [],
-  "importErrors": [],
-  "pendingSample": [
-    "PREVIEW-HISTORY-01",
-    "PREVIEW-HISTORY-02",
-    "PREVIEW-HISTORY-03",
-    "PREVIEW-HISTORY-04",
-    "PREVIEW-POLICY-01",
-    "PR59-EVIDENCE-01",
-    "PR59-EVIDENCE-02",
-    "INDEX-DETAIL-01",
-    "QA-DETAIL-01",
-    "EXT-DETAIL-01",
-    "GATE-001.01",
-    "GATE-001.02",
-    "GATE-001.03",
-    "GATE-002.01",
-    "GATE-002.02",
-    "GATE-002.03",
-    "PROOF-001.01",
-    "PROOF-001.02",
-    "PROOF-001.03",
-    "PROOF-002.01"
-  ]
+  "sourceLineMismatches": [],
+  "orphanAliases": [],
+  "parentRisks": [],
+  "crossVersion": [],
+  "aliases": []
 }
 ~~~
+
+## Document retirement
+No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.
