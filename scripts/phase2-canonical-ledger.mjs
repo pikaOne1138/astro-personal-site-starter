@@ -155,6 +155,56 @@ const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
  const oldById=new Map((old?.records||[]).map(x=>[x.legacyId,x]));
  const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,sourceRefs:x.sourceRefs.length?x.sourceRefs:previous.sourceRefs,canonicalId:previous.canonicalId,decision:previous.decision,reviewStatus:previous.reviewStatus,kind:previous.kind,aliases:previous.aliases,applicability:previous.applicability,conditions:previous.conditions,exceptions:previous.exceptions,acceptanceCriteria:previous.acceptanceCriteria}:x;});
+ // Four exact-source, independently checked P0 aliases. Never infer merges
+ // from proximity. Frozen text and the P0 register identify the same action.
+ const approvedPairs=[
+  {canonicalId:'ATP-P2-0001',ids:['P0-U035','P0-U044'],
+   requirement:'When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.',
+   kind:'policy',applicability:['student-owned GitHub Pages without functioning isolated PR preview'],
+   conditions:['No verified student PR Preview deployment exists'],exceptions:[],
+   acceptanceCriteria:['No Live URL claimed without real deployment evidence'],
+   frozenPath:'.ai/astro-pr-preview/SKILL.md',line:30},
+  {canonicalId:'ATP-P2-0002',ids:['P0-U036','P0-U045'],
+   requirement:'Obtain student consent before changing preview or deployment architecture.',
+   kind:'policy',applicability:['student preview infrastructure change'],
+   conditions:['Proposed installation or alteration of Preview hosting/workflow'],exceptions:[],
+   acceptanceCriteria:['Specific student approval precedes architecture modification'],
+   frozenPath:'.ai/astro-pr-preview/SKILL.md',line:30},
+  {canonicalId:'ATP-P2-0003',ids:['P0-U018','P0-U047'],
+   requirement:'Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild.',
+   kind:'policy',applicability:['approved student Production environment'],
+   conditions:['Content/Preview/security/consent gates completed'],exceptions:['Never on Cloudflare Preview'],
+   acceptanceCriteria:['Production-only flag with verified robots/meta/canonical/sitemap after rebuild'],
+   frozenPath:'.ai/astro-starter-deploy/SKILL.md',line:31},
+  {canonicalId:'ATP-P2-0004',ids:['P0-U019','P0-U049'],
+   requirement:'Do not share the approved production search-indexing flag with Cloudflare Preview environments.',
+   kind:'policy',applicability:['Cloudflare Preview versus Production indexing isolation'],
+   conditions:['Student uses Cloudflare Preview'],exceptions:[],
+   acceptanceCriteria:['Preview indexing remains disabled regardless of production approval'],
+   frozenPath:'.ai/astro-starter-deploy/SKILL.md',line:31}
+ ];
+ const byId=new Map(entries.map(x=>[x.legacyId,x]));
+ for(const group of approvedPairs){
+  const lineText=frozenLine(group.frozenPath,group.line);
+  const linked=group.ids.map(id=>byId.get(id));
+  if(!lineText||!manifest[group.frozenPath]||linked.some(x=>!x)||
+      linked.some(x=>!x.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===group.frozenPath&&ref.lineStart===group.line))){
+   throw Error('Canonical evidence check failed for '+group.canonicalId);
+  }
+  for(const entry of linked){
+   if(entry.canonicalId&&entry.canonicalId!==group.canonicalId)throw Error('Canonical decision conflict for '+entry.legacyId);
+   Object.assign(entry,{canonicalId:group.canonicalId,requirement:group.requirement,
+    kind:group.kind,aliases:group.ids.filter(id=>id!==entry.legacyId),
+    applicability:group.applicability,conditions:group.conditions,exceptions:group.exceptions,
+    acceptanceCriteria:group.acceptanceCriteria,decision:'MERGE',reviewStatus:'APPROVED',
+    approvalEvidence:{frozenPath:group.frozenPath,frozenBlobSha:manifest[group.frozenPath],
+      frozenLine:group.line,sourceText:lineText,
+      method:'DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW'}});
+  }
+  const rel=semanticRelations.find(x=>x.legacyIds.length===2&&group.ids.every(id=>x.legacyIds.includes(id))&&x.decision==='MERGE');
+  if(!rel)throw Error('Missing reviewed relationship '+group.canonicalId);
+  rel.canonicalId=group.canonicalId;rel.reviewStatus='APPROVED';
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
