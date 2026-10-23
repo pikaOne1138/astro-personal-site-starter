@@ -575,3 +575,8 @@
 ## Phase 2｜Core Skills B 103/103 來源行映射完成（非原子語義 PASS）
 
 [PHASE2-CORE-SKILLS-B-REMAINING-LINE-MAP.md](PHASE2-CORE-SKILLS-B-REMAINING-LINE-MAP.md) 已依 frozen main 補齊 Assembly 20 行與 Deploy 13 行。對 `PHASE2-CORE-SKILLS-FULL-LINE-B.md` 的 103 個 `SOURCE_REQUIREMENT_OR_PROCEDURE` 來源行以路徑+行號集合反向檢驗：**103/103 行至少有一個工作行 ID，missing=0、extra=0**。惟 Batch9 為「語義摘要與來源錨定」，仍包含多個複合義務、驗收欄位、架構事實及示例，**不能宣稱 103 行全部原子化、完整來源文件全量覆蓋或已建立唯一 canonical 規範母數**。下一步需再拆 Batch9 複合來源、與 P0/A 批進行 canonical/alias 去重及雙向語義稽核。Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；原始 Skills 不變、不 Merge、不部署。
+
+
+## Phase 2｜Batch9 複合來源語義拆解 A
+
+[PHASE2-BATCH9-ATOMIC-A.md](PHASE2-BATCH9-ATOMIC-A.md) 對已映射的 Assembly L57/L70/L73 與 Deploy L25 四個來源行進一步拆出 **19 個分類候選**，保留父來源與具體作用條件，並建立與 P0/前批的 SAME_CANDIDATE、PARTIAL_OVERLAP 關係。Batch9 仍有 29 行尚未同程度細拆；**103/103 是來源行映射，不是全量原子化、唯一 Canonical 規範分母或 Phase 2 PASS**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skills 未改，不 Merge、不部署。
