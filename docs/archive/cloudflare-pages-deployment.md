@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 設定步驟已併入 `.ai/astro-starter-deploy/SKILL.md`（Cloudflare 路線）。僅供歷史查閱，不再維護。
+
 # Cloudflare Pages｜workshop default static deployment
 
 For new students, use the **Pages** link at the bottom of Cloudflare's Create application screen ("前往 Pages"), then Connect to GitHub.

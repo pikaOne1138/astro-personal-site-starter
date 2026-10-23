@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 內容已併入 `docs/github-pr-preview-setup.md`（「長期同步」一節）。僅供歷史查閱，不再維護。
+
 # PR 預覽長期同步維護
 
 每次正式 GitHub Pages 部署（main push、PR Preview Build 完成或手動執行），`scripts/reconcile-pr-previews.mjs` 都會：

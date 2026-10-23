@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 設定步驟已併入 `.ai/astro-starter-deploy/SKILL.md`（Cloudflare 路線）；其中「Node.js 22.19+」已過時，以 `package.json` 的 `engines` 為準。僅供歷史查閱。
+
 # Cloudflare Workers Static Assets deployment
 
 This is an **additional** deployment target. GitHub Pages and its PR-preview workflow remain unchanged.

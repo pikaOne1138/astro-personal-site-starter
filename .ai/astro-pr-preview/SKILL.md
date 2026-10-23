@@ -8,7 +8,7 @@ description: Safely build, verify, preview, and release student-owned Astro site
 ## 目的
 本 Skill 提供**學員自己的 Repository** 可重複使用的 Branch → PR → Build → Preview → 人工驗收 → 核准 Merge → Production 工作流程。**同時支援 GitHub Pages 與 Cloudflare**，不假設任一平台為唯一正解。搭配 `.ai/astro-starter-deploy/SKILL.md`（首次部署／網域／設定）及 `.ai/astro-site-maintenance/SKILL.md`（後續維護）。
 
-目前研究展示 Repo 剛好**雙平台部署**：GitHub Pages 的自訂 Actions 預覽與 Cloudflare Pages 的 Git 整合預覽均曾在 PR #40 回報成功。這是本 Repo 的證據，**不是**任何新學員 Repo 自動具備雙套預覽。
+研究展示 Repo 的預覽機制是特例（GitHub Pages 自訂 Actions 加上 Cloudflare Pages Git 整合），**不是**任何新學員 Repo 自動具備的能力。
 
 ## Step 0｜先辨識環境，不能猜
 1. 讀學員 Repo 的 `AGENTS.md`、`README.md`、`astro.config.mjs`、`package.json`、`.github/workflows/`，與其本人確認的正式網址；再核對 GitHub Pages Settings 或 Cloudflare Dashboard／PR 的真實部署紀錄。
@@ -28,8 +28,8 @@ description: Safely build, verify, preview, and release student-owned Astro site
 ## Route A｜GitHub Pages
 - 初次部署閱讀 `astro-starter-deploy`；確認 GitHub Pages 的 Source、Repo 類型、自訂網域與適用方案，`site`、`base` 及 `ASTRO_BASE_PATH` 隨**學員** Repo/網域調整。
 - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。
-- **本研究 Repo 特例（不可原封不動搬給學員）**：`.github/workflows/pr-preview.yml` 以只讀權限產生 `preview-event`／`preview-site` Artifacts；可信任的 `.github/workflows/deploy-pages.yml` 在預覽建置成功後整合並透過 `actions/deploy-pages` 發布，在真實 HTML 驗證後留言 `/astro-personal-site-starter/pr-preview/pr-N/`。其 `workflow_run`、snapshot `gh-pages`、Reconcile 與固定路徑皆為展示 Repo 的部署設計。
-- 只有學員 Repo **確實使用相同架構** 時才依 `references/deployment-recovery.md` 排查 GitHub Pages 特定 Workflow；不可把研究 Repo 的固定 owner、repo 名稱及 bot URL 當學員的網址。
+- 學員 Repo 的生成骨架附 `pr-check.yml`（只讀，只檢查編譯與 Artifact，不能據此說「預覽網址已部署」）與 `deploy.yml`（只允許 main 人工觸發的正式發布）。要在 GitHub Pages 上有獨立 PR 預覽，必須另外建立受信任的 Publisher 工作流程：隔離 PR 不可信程式與高權限部署權限、為預覽建立帶 PR 編號的 base path，並有更新與清理機制。不要把老師 Repo 的 Workflow、固定 owner／repo 名稱或機器人網址套給學員；基礎骨架不聲稱這項進階能力已啟用。
+- 可行的最低路線：學員若已連上 Cloudflare Pages，可用獨立的 preview-only 專案（或現有專案的 branch preview）取得可打開的預覽，核准後再選用 GitHub Pages 正式發布。兩個平台是各自的資源，需學員自己完成授權。
 - Fork PR 不可跳過原先只允許同 Repo branch 的權限限制。
 
 ## Route B｜Cloudflare Pages（Git 整合）
@@ -37,6 +37,7 @@ description: Safely build, verify, preview, and release student-owned Astro site
 - 有啟用 Preview 時，Cloudflare 會在 GitHub PR 的 Check/Comment 或 Cloudflare Deployments 提供真實網址。可能同時有**特定部署版本** URL 和**分支最新版本** URL；審核某個 PR commit 時優先看與 head SHA 對應的部署，分支 URL 可能隨後續提交更新。
 - 以 **Cloudflare 自己回報**的 URL、status、commit、log 驗證。不能猜 `*.pages.dev` 或把 GitHub Pages `/pr-preview/pr-N/` 路徑套過去；未啟用 Git 整合/預覽時不得聲稱有 Preview。
 - 檢查 Preview 是否被搜尋索引、是否含尚未核准的內容；Cloudflare Preview 的正式域名、綁定與自訂網域規則依學員專案驗證。
+- 第一次建立專案按 **Save and Deploy** 就可能產生第一個公開可瀏覽的部署：事前明確告知，並用不含私密資料的無品牌測試初始分支建立 preview-only 專案；完成權限與預覽測試後，才設定正式 Production 路線。
 
 ## Route C｜Cloudflare Workers Static Assets
 - `wrangler.jsonc` 的 `assets.directory` 只能證明 Workers 靜態資產的設定意圖，**不能保證 Pages Git Preview 或 Workers branch preview 存在**。
@@ -49,11 +50,14 @@ description: Safely build, verify, preview, and release student-owned Astro site
 
 ## 故障與完成標準
 - PR Build 失敗：修復程式並重新建立有效檢查；部署失敗：依對應平台 Log 診斷，勿無差別重跑。
+- 若部署使用 GitHub Pages Actions，先看真實的 Run／Job 日誌分辨失敗階段：建置、組裝、上傳、發布或線上驗證。若出現 `Multiple artifacts named "github-pages"`，不要再 Re-run 該 Job（同一 Run 的 artifact 已重複），改由 PR 分支的新 commit 產生新 Run。OIDC `Request timeout` 先檢查 `pages: write`、`id-token: write` 權限，並辨認是否為暫時性服務問題。
 - Preview URL 沒出現：先查 Git 整合／分支與權限／Workflow 是否真的支援，而不是直接猜網址。
 - Preview 舊版：比較 PR head SHA 與部署 commit，更新到最新 head 再驗證。
 - 原始碼 Public 不代表未發布 Preview 可忽略隱私；Private 不代表預覽網站只限授權者。
 - 若無法執行瀏覽器驗證，明確標註待人工 QA。
 - 永遠先取得學員批准才合併與發布，不虛報功能、資格、表單、預約或部署成功。
+- 向初學者說明失敗時只講三件事：壞在哪一關、AI 要做什麼、怎樣才算成功（Build 成功 ＋ 部署成功 ＋ 最新預覽網址打得開且內容一致 ＋ 學員看過畫面）。
+- 回報時必須列出：學員 Repo URL、PR URL、Head SHA；該次 Build 的 Actions URL 與狀態；Preview 託管服務、真實可開啟的預覽網址、對應的 Commit SHA 與實際檢查的頁面／裝置；Production branch、人工授權 Gate，以及學員是否已明確同意正式發布。缺少帳號授權或尚未配置預覽時標為「尚未完成」，不可杜撰網址。
 
 ## 給學員的通用提示詞
 「請先查看我自己的 GitHub Repository 與實際使用的託管平台（GitHub Pages、Cloudflare Pages 或 Workers），依 astro-pr-preview 與 astro-starter-deploy Skill 修改網站。建立 Branch 和 PR，檢查 Build，找到**平台真正產生、對應最新 Commit**的預覽網址給我，確認電腦與手機畫面；我明確同意後才合併與發布。不要把教學研究 Repo 的預覽網址當成我的網站。」
@@ -61,5 +65,5 @@ description: Safely build, verify, preview, and release student-owned Astro site
 ## 不可變 Preview 與資料生命週期
 在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。
 
-## 工作坊內部測試預覽入口
+## 預覽網址不可寫死或拼接
 舊的 `/pr-preview/pr-N/` 研究 Repo 靜態路徑可能回 404；這不證明分支 Cloudflare Preview 本身失效。請到 GitHub PR 的實際 Checks／Deployment 取得目前有效的 Branch/Deployment URL、核對 SHA 與 HTTP，再告知學員。不要寫死或憑規律拼接 URL。正式學員指南請使用工作坊最新確認的入口，避免給已失效的版本網址。

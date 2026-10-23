@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 屬於老師 Repo 的內容已併入 `docs/github-pr-preview-setup.md`（「故障排查與恢復」一節），學員適用的部分已併入 `.ai/astro-pr-preview/SKILL.md`。原本放在學員 Skill 內，但它引用不會進學員 ZIP 的文件。僅供歷史查閱。
+
 # GitHub Pages／PR Preview 故障排除與恢復操作
 
 > 適用：本倉庫的 `PR Preview Build`（`.github/workflows/pr-preview.yml`）與 `Deploy Astro to GitHub Pages`（`.github/workflows/deploy-pages.yml`）。

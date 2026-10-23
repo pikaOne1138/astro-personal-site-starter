@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 內容已併入 `.ai/astro-pr-preview/SKILL.md`；原檔沒有任何地方引用。僅供歷史查閱。
+
 # 學員網站：安全預覽與正式發布（Preview-first）
 
 本檔是 AI 建站用的部署分流指引。**Build 成功、Artifact、正式 Production 都不是 PR Preview。** 學員未明確同意前，不可合併或正式發布。

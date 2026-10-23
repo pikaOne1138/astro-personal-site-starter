@@ -44,6 +44,7 @@ Do not put version numbers, PR numbers, branch names, milestone names, dates, or
 | Turn a validated Site Brief JSON into a standalone site | `.ai/astro-site-assembly/SKILL.md` |
 | Design or modify UI, tokens, Blocks | `.ai/astro-ui-craft/SKILL.md` |
 | GitHub PRs, previews, deployment, visual verification, merging | `.ai/astro-pr-preview/SKILL.md` — a dual-platform Skill: detect GitHub Pages, Cloudflare Pages or Cloudflare Workers from the student's own repository and actual deployment records. The showcase's GitHub Pages preview workflow is repository-specific, not a universal student requirement. |
+| Maintaining THIS repo's own GitHub Pages preview pipeline (workflows, reconcile, recovery). Not for students. | `docs/github-pr-preview-setup.md` |
 | Articles, Content Collections, SEO, Pagefind, RSS, sitemap, drafts, publication | `.ai/astro-content-publishing/SKILL.md` and its references |
 | Interactive planner at `/starter/` | `src/data/starter-config.ts`, `src/pages/starter/index.astro`, `.ai/astro-starter-onboarding/SKILL.md` |
 | Content readiness after choosing pages/Section Patterns | `.ai/astro-content-readiness/SKILL.md` |
