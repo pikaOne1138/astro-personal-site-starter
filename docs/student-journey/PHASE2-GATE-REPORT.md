@@ -15,9 +15,9 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1390 |
-| approvedCanonicalIds | 0 |
-| aliasGroups | 0 |
+| pendingSemanticDecisions | 1382 |
+| approvedCanonicalIds | 4 |
+| aliasGroups | 4 |
 | documentaryRelationGroups | 18 |
 | documentaryMerges | 4 |
 | documentaryPartialSplits | 9 |
@@ -78,9 +78,9 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1390,
-    "approvedCanonicalIds": 0,
-    "aliasGroups": 0,
+    "pendingSemanticDecisions": 1382,
+    "approvedCanonicalIds": 4,
+    "aliasGroups": 4,
     "documentaryRelationGroups": 18,
     "documentaryMerges": 4,
     "documentaryPartialSplits": 9,
@@ -3483,7 +3483,36 @@
   "orphanAliases": [],
   "parentRisks": [],
   "crossVersion": [],
-  "aliases": [],
+  "aliases": [
+    {
+      "canonicalId": "ATP-P2-0003",
+      "legacyIds": [
+        "P0-U018",
+        "P0-U047"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0004",
+      "legacyIds": [
+        "P0-U019",
+        "P0-U049"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0001",
+      "legacyIds": [
+        "P0-U035",
+        "P0-U044"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0002",
+      "legacyIds": [
+        "P0-U036",
+        "P0-U045"
+      ]
+    }
+  ],
   "documentaryRelations": [
     {
       "legacyIds": [
@@ -3496,8 +3525,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-pr-preview/SKILL.md:30"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
     },
     {
       "legacyIds": [
@@ -3510,8 +3539,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-pr-preview/SKILL.md:30"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
     },
     {
       "legacyIds": [
@@ -3524,8 +3553,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-starter-deploy/SKILL.md:31"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0003"
     },
     {
       "legacyIds": [
@@ -3538,8 +3567,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-starter-deploy/SKILL.md:31"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
     },
     {
       "legacyIds": [

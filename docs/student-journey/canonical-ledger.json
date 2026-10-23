@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "8a4db7444e055e47bcbd9d6e2ef0bfe6aafcc0d7"
+        "blobSha": "605d6a5d40100155c6448d7820e5bc2859c2ea38"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -50317,9 +50317,9 @@
     },
     {
       "legacyId": "P0-U018",
-      "canonicalId": null,
-      "requirement": "SITE_INDEXABLE=true 僅正式且獲同意之環境",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0003",
+      "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50350,13 +50350,23 @@
           "sourceText": "| `P0-U018` | `P0-U047` | SAME_CANDIDATE | 正式發布取得同意才啟用索引，需保留重建及正式環境條件 | HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
-      "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "aliases": [
+        "P0-U047"
+      ],
+      "applicability": [
+        "approved student Production environment"
+      ],
+      "conditions": [
+        "Content/Preview/security/consent gates completed"
+      ],
+      "exceptions": [
+        "Never on Cloudflare Preview"
+      ],
+      "acceptanceCriteria": [
+        "Production-only flag with verified robots/meta/canonical/sitemap after rebuild"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50381,13 +50391,20 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U019",
-      "canonicalId": null,
-      "requirement": "Cloudflare Preview 不可使用正式索引設定",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0004",
+      "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50418,13 +50435,21 @@
           "sourceText": "| `P0-U019` | `P0-U049` | SAME_CANDIDATE | Cloudflare Preview 不應套用正式站 indexable 設定 | HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U049"
+      ],
+      "applicability": [
+        "Cloudflare Preview versus Production indexing isolation"
+      ],
+      "conditions": [
+        "Student uses Cloudflare Preview"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Preview indexing remains disabled regardless of production approval"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -50449,7 +50474,14 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U020",
@@ -51098,9 +51130,9 @@
     },
     {
       "legacyId": "P0-U035",
-      "canonicalId": null,
-      "requirement": "未設好時須回報不存在 Live URL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0001",
+      "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51131,13 +51163,21 @@
           "sourceText": "| `P0-U035` | `P0-U044` | SAME_CANDIDATE | GitHub Pages 未設定可用 PR Preview 時必須如實告知；保留來源場景 | HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U044"
+      ],
+      "applicability": [
+        "student-owned GitHub Pages without functioning isolated PR preview"
+      ],
+      "conditions": [
+        "No verified student PR Preview deployment exists"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "No Live URL claimed without real deployment evidence"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51162,13 +51202,20 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U036",
-      "canonicalId": null,
-      "requirement": "修改預覽架構需同意",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0002",
+      "requirement": "Obtain student consent before changing preview or deployment architecture.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51199,13 +51246,21 @@
           "sourceText": "| `P0-U036` | `P0-U045` | SAME_CANDIDATE | 變更／新增預覽部署方法前須同意 | HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U045"
+      ],
+      "applicability": [
+        "student preview infrastructure change"
+      ],
+      "conditions": [
+        "Proposed installation or alteration of Preview hosting/workflow"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Specific student approval precedes architecture modification"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51230,7 +51285,14 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U037",
@@ -51551,9 +51613,9 @@
     },
     {
       "legacyId": "P0-U044",
-      "canonicalId": null,
-      "requirement": "缺 Live Preview 必須明示",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0001",
+      "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51574,13 +51636,21 @@
           "legacyWorkId": "P0-U044"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U035"
+      ],
+      "applicability": [
+        "student-owned GitHub Pages without functioning isolated PR preview"
+      ],
+      "conditions": [
+        "No verified student PR Preview deployment exists"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "No Live URL claimed without real deployment evidence"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51599,13 +51669,20 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U045",
-      "canonicalId": null,
-      "requirement": "新增 Preview 部署方法須學員同意",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0002",
+      "requirement": "Obtain student consent before changing preview or deployment architecture.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51626,13 +51703,21 @@
           "legacyWorkId": "P0-U045"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U036"
+      ],
+      "applicability": [
+        "student preview infrastructure change"
+      ],
+      "conditions": [
+        "Proposed installation or alteration of Preview hosting/workflow"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Specific student approval precedes architecture modification"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51651,7 +51736,14 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U046",
@@ -51698,9 +51790,9 @@
     },
     {
       "legacyId": "P0-U047",
-      "canonicalId": null,
-      "requirement": "核准後只在正式環境設定 indexable",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0003",
+      "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51721,13 +51813,23 @@
           "legacyWorkId": "P0-U047"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
-      "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "aliases": [
+        "P0-U018"
+      ],
+      "applicability": [
+        "approved student Production environment"
+      ],
+      "conditions": [
+        "Content/Preview/security/consent gates completed"
+      ],
+      "exceptions": [
+        "Never on Cloudflare Preview"
+      ],
+      "acceptanceCriteria": [
+        "Production-only flag with verified robots/meta/canonical/sitemap after rebuild"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51746,7 +51848,14 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U048",
@@ -51793,9 +51902,9 @@
     },
     {
       "legacyId": "P0-U049",
-      "canonicalId": null,
-      "requirement": "Preview 不共用正式 indexable 設定",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0004",
+      "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51816,13 +51925,21 @@
           "legacyWorkId": "P0-U049"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U019"
+      ],
+      "applicability": [
+        "Cloudflare Preview versus Production indexing isolation"
+      ],
+      "conditions": [
+        "Student uses Cloudflare Preview"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Preview indexing remains disabled regardless of production approval"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
@@ -51841,7 +51958,14 @@
           "decision": "MERGE",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "method": "DIRECT_FROZEN_LINE_PLUS_P0_DOCUMENTARY_SAME_ACTION_REVIEW"
+      }
     },
     {
       "legacyId": "P0-U050",
@@ -65217,8 +65341,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-pr-preview/SKILL.md:30"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
     },
     {
       "legacyIds": [
@@ -65231,8 +65355,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-pr-preview/SKILL.md:30"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
     },
     {
       "legacyIds": [
@@ -65245,8 +65369,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-starter-deploy/SKILL.md:31"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0003"
     },
     {
       "legacyIds": [
@@ -65259,8 +65383,8 @@
       "sharedExactFrozenAnchors": [
         ".ai/astro-starter-deploy/SKILL.md:31"
       ],
-      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
-      "canonicalId": null
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
     },
     {
       "legacyIds": [
