@@ -1155,6 +1155,7 @@ const fifthPassAtomic=[
 ];
 Object.assign(assessedLines,Object.fromEntries(fifthPassAtomic.map(([key,kind,clauses])=>
  [key,{action:clauses.length>1?'SPLIT_PENDING_CANONICAL':'KEEP_PENDING_CANONICAL',kind,clauses}])));
+assessedLines['docs/workshop/PR56-USER-JOURNEY-QA.md:41']={action:'KEEP_PENDING_CANONICAL',kind:'QA_STATUS_TRUTH',clauses:['The manual QA document does not prove every check has been executed; preserve Draft state and do not claim unverified checks passed']};
 for(const entry of sourceReviewQueue){
  const assessment=assessedLines[entry.sourceKey];
  if(!assessment)continue;
@@ -1229,6 +1230,13 @@ Object.assign(terminalSourceDecisions,{
  'docs/quality/DEFECT-REGISTER.md:9':['NON_NORMATIVE','Historical defect register status row with linked acceptance targets'],
  'docs/quality/DEFECT-REGISTER.md:13':['NON_NORMATIVE','Historical W6 issue disposition; warning policy needs distinct Frozen operative source'],
  'docs/quality/DEFECT-REGISTER.md:24':['NON_NORMATIVE','Historical N19 implementation state, not proof of present runtime acceptance']
+});
+Object.assign(terminalSourceDecisions,{
+ '.ai/astro-site-maintenance/SKILL.md:40':['NON_NORMATIVE','Illustrative recovery rehearsal example; operative approval and restore rules are separately documented'],
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:55':['NON_NORMATIVE','Scenario-to-Skill routing example, not an additional independent obligation'],
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:60':['NON_NORMATIVE','Scenario-to-Skill routing example pointing to existing preview and deploy rules'],
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:113':['NON_NORMATIVE','Builder-only source packaging delimiter; no independent student obligation'],
+ 'docs/student-builder-pack/STUDENT-AGENTS.md:118':['NON_NORMATIVE','Builder-only source packaging delimiter; no independent student obligation']
 });
 for(const entry of sourceReviewQueue){
  const d=terminalSourceDecisions[entry.sourceKey];
