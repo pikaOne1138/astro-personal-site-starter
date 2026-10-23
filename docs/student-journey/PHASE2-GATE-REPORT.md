@@ -17,7 +17,7 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1339 |
+| pendingSemanticDecisions | 1321 |
 | approvedCanonicalIds | 47 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
@@ -26,9 +26,9 @@
 | p0AcceptanceDimensionGroups | 5 |
 | p0UnhandledLeaves | 0 |
 | p0InvariantFailures | 0 |
-| aliasGroups | 4 |
-| documentaryRelationGroups | 18 |
-| documentaryMerges | 4 |
+| aliasGroups | 15 |
+| documentaryRelationGroups | 36 |
+| documentaryMerges | 22 |
 | documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
@@ -94,7 +94,7 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1339,
+    "pendingSemanticDecisions": 1321,
     "approvedCanonicalIds": 47,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
@@ -103,9 +103,9 @@
     "p0AcceptanceDimensionGroups": 5,
     "p0UnhandledLeaves": 0,
     "p0InvariantFailures": 0,
-    "aliasGroups": 4,
-    "documentaryRelationGroups": 18,
-    "documentaryMerges": 4,
+    "aliasGroups": 15,
+    "documentaryRelationGroups": 36,
+    "documentaryMerges": 22,
     "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
@@ -244,17 +244,17 @@
         },
         {
           "id": "B1-DEP31-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "預設 HTML noindex，robots.txt 禁止索引"
+          "canonicalId": "ATP-P2-0044",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "New student site defaults to noindex HTML and disallowing search crawling in robots.txt"
         },
         {
           "id": "B1-DEP31-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引"
+          "canonicalId": "ATP-P2-0003",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild."
         },
         {
           "id": "B1-DEP31-03",
@@ -265,17 +265,17 @@
         },
         {
           "id": "B1-DEP31-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Cloudflare Preview 不得共用正式站索引設定"
+          "canonicalId": "ATP-P2-0004",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments."
         },
         {
           "id": "B1-DEP31-04-CF",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數"
+          "canonicalId": "ATP-P2-0004",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments."
         },
         {
           "id": "B1-DEP31-04-GH",
@@ -328,10 +328,10 @@
         },
         {
           "id": "B1-DEP31-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "變更正式索引設定後重新 Build"
+          "canonicalId": "ATP-P2-0047",
+          "kind": "procedure",
+          "decision": "MERGE",
+          "requirement": "After approved production indexing settings change, rebuild the actual student site"
         },
         {
           "id": "B1-DEP31-03-S03",
@@ -407,7 +407,7 @@
           "id": "P0-U017",
           "canonicalId": "ATP-P2-0044",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "New student site defaults to noindex HTML and disallowing search crawling in robots.txt"
         },
         {
@@ -442,7 +442,7 @@
           "id": "P0-U048",
           "canonicalId": "ATP-P2-0047",
           "kind": "procedure",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "After approved production indexing settings change, rebuild the actual student site"
         },
         {
@@ -1511,44 +1511,44 @@
         },
         {
           "id": "PROOF-001.03.S2",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "SAME_CANDIDATE"
+          "canonicalId": "ATP-P2-0001",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
         },
         {
           "id": "PROOF-001.03.S3",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "SAME_CANDIDATE"
+          "canonicalId": "ATP-P2-0002",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Obtain student consent before changing preview or deployment architecture."
         },
         {
           "id": "PROOF-001.03.S1",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+          "canonicalId": "ATP-P2-0046",
+          "kind": "architecture",
+          "decision": "MERGE",
+          "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments"
         },
         {
           "id": "PREVIEW-POLICY-01.S1",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+          "canonicalId": "ATP-P2-0001",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
         },
         {
           "id": "PREVIEW-POLICY-01.S2",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+          "canonicalId": "ATP-P2-0002",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Obtain student consent before changing preview or deployment architecture."
         },
         {
           "id": "P0-U034",
           "canonicalId": "ATP-P2-0046",
           "kind": "architecture",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments"
         },
         {
@@ -1607,10 +1607,10 @@
       "rows": [
         {
           "id": "GATE-002.01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "DIRECT_CANDIDATE"
+          "canonicalId": "ATP-P2-0007",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not publish production without specific student authorization"
         },
         {
           "id": "GATE-002.02",
@@ -1628,24 +1628,24 @@
         },
         {
           "id": "GATE-002.02.S1",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+          "canonicalId": "ATP-P2-0023",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "DNS changes require student authorization"
         },
         {
           "id": "GATE-002.02.S2",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+          "canonicalId": "ATP-P2-0024",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Repository deletion requires student authorization"
         },
         {
           "id": "GATE-002.02.S3",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+          "canonicalId": "ATP-P2-0025",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Overwriting an existing student site requires student authorization"
         },
         {
           "id": "B9B-DEP-37-01",
@@ -1686,28 +1686,28 @@
           "id": "P0-U003",
           "canonicalId": "ATP-P2-0007",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Do not publish production without specific student authorization"
         },
         {
           "id": "P0-U030",
           "canonicalId": "ATP-P2-0023",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "DNS changes require student authorization"
         },
         {
           "id": "P0-U031",
           "canonicalId": "ATP-P2-0024",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Repository deletion requires student authorization"
         },
         {
           "id": "P0-U032",
           "canonicalId": "ATP-P2-0025",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Overwriting an existing student site requires student authorization"
         },
         {
@@ -1916,31 +1916,31 @@
       "rows": [
         {
           "id": "PREVIEW-HISTORY-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "刪除舊部署、歷史檢查、Cloudflare Access 需額外明確授權"
+          "canonicalId": "ATP-P2-0027",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization"
         },
         {
           "id": "PREVIEW-HISTORY-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "第三方已複製的內容不可保證全部消失"
+          "canonicalId": "ATP-P2-0028",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not claim that already publicly copied website content can be guaranteed erased"
         },
         {
           "id": "PREVIEW-HISTORY-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得擅自破壞 QA 證據"
+          "canonicalId": "ATP-P2-0029",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not destroy QA evidence without authorization"
         },
         {
           "id": "PREVIEW-HISTORY-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未公開草稿優先本機或受限制預覽"
+          "canonicalId": "ATP-P2-0030",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments"
         },
         {
           "id": "PRIV-001.01",
@@ -1967,28 +1967,28 @@
           "id": "P0-U024",
           "canonicalId": "ATP-P2-0027",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization"
         },
         {
           "id": "P0-U025",
           "canonicalId": "ATP-P2-0028",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Do not claim that already publicly copied website content can be guaranteed erased"
         },
         {
           "id": "P0-U026",
           "canonicalId": "ATP-P2-0029",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Do not destroy QA evidence without authorization"
         },
         {
           "id": "P0-U027",
           "canonicalId": "ATP-P2-0030",
           "kind": "policy",
-          "decision": "KEEP",
+          "decision": "MERGE",
           "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments"
         },
         {
@@ -8834,22 +8834,45 @@
   "crossVersion": [],
   "aliases": [
     {
-      "canonicalId": "ATP-P2-0003",
+      "canonicalId": "ATP-P2-0027",
       "legacyIds": [
-        "P0-U018",
-        "P0-U047"
+        "PREVIEW-HISTORY-01",
+        "P0-U024"
       ]
     },
     {
-      "canonicalId": "ATP-P2-0004",
+      "canonicalId": "ATP-P2-0028",
       "legacyIds": [
-        "P0-U019",
-        "P0-U049"
+        "PREVIEW-HISTORY-02",
+        "P0-U025"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0029",
+      "legacyIds": [
+        "PREVIEW-HISTORY-03",
+        "P0-U026"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0030",
+      "legacyIds": [
+        "PREVIEW-HISTORY-04",
+        "P0-U027"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0007",
+      "legacyIds": [
+        "GATE-002.01",
+        "P0-U003"
       ]
     },
     {
       "canonicalId": "ATP-P2-0001",
       "legacyIds": [
+        "PROOF-001.03.S2",
+        "PREVIEW-POLICY-01.S1",
         "P0-U035",
         "P0-U044"
       ]
@@ -8857,8 +8880,69 @@
     {
       "canonicalId": "ATP-P2-0002",
       "legacyIds": [
+        "PROOF-001.03.S3",
+        "PREVIEW-POLICY-01.S2",
         "P0-U036",
         "P0-U045"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0023",
+      "legacyIds": [
+        "GATE-002.02.S1",
+        "P0-U030"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0024",
+      "legacyIds": [
+        "GATE-002.02.S2",
+        "P0-U031"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0025",
+      "legacyIds": [
+        "GATE-002.02.S3",
+        "P0-U032"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0046",
+      "legacyIds": [
+        "PROOF-001.03.S1",
+        "P0-U034"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0044",
+      "legacyIds": [
+        "B1-DEP31-01",
+        "P0-U017"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0003",
+      "legacyIds": [
+        "B1-DEP31-02",
+        "P0-U018",
+        "P0-U047"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0004",
+      "legacyIds": [
+        "B1-DEP31-04",
+        "B1-DEP31-04-CF",
+        "P0-U019",
+        "P0-U049"
+      ]
+    },
+    {
+      "canonicalId": "ATP-P2-0047",
+      "legacyIds": [
+        "B1-DEP31-03-S02",
+        "P0-U048"
       ]
     }
   ],
@@ -9098,6 +9182,258 @@
       "sharedExactFrozenAnchors": [],
       "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
       "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-01",
+        "P0-U017"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0044"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-02",
+        "P0-U018"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0003"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-04",
+        "P0-U019"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-04-CF",
+        "P0-U019"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-03-S02",
+        "P0-U048"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0047"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-01",
+        "P0-U024"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0027"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-02",
+        "P0-U025"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0028"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-03",
+        "P0-U026"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0029"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-04",
+        "P0-U027"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0030"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.01",
+        "P0-U003"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0007"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S1",
+        "P0-U030"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0023"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S2",
+        "P0-U031"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0024"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S3",
+        "P0-U032"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0025"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S1",
+        "P0-U034"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0046"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S2",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S3",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-POLICY-01.S1",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-POLICY-01.S2",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
     }
   ],
   "relationOrphans": [],

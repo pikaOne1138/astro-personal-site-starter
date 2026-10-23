@@ -455,9 +455,9 @@
   "records": [
     {
       "legacyId": "PREVIEW-HISTORY-01",
-      "canonicalId": null,
-      "requirement": "刪除舊部署、歷史檢查、Cloudflare Access 需額外明確授權",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0027",
+      "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -498,13 +498,19 @@
           "sourceText": "| `PREVIEW-HISTORY-01` | 變更歷史部署、檢查歷史或設定 Cloudflare Access，需額外明確授權 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U024"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -526,13 +532,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "formerWorkingRequirement": "刪除舊部署、歷史檢查、Cloudflare Access 需額外明確授權",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PREVIEW-HISTORY-02",
-      "canonicalId": null,
-      "requirement": "第三方已複製的內容不可保證全部消失",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0028",
+      "requirement": "Do not claim that already publicly copied website content can be guaranteed erased",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -573,13 +587,19 @@
           "sourceText": "| `PREVIEW-HISTORY-02` | 不能保證已被第三方複製的公開內容消失 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U025"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -601,13 +621,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "formerWorkingRequirement": "第三方已複製的內容不可保證全部消失",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PREVIEW-HISTORY-03",
-      "canonicalId": null,
-      "requirement": "不得擅自破壞 QA 證據",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0029",
+      "requirement": "Do not destroy QA evidence without authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -648,13 +676,19 @@
           "sourceText": "| `PREVIEW-HISTORY-03` | 不得擅自破壞 QA 證據 | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U026"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -676,13 +710,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "formerWorkingRequirement": "不得擅自破壞 QA 證據",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PREVIEW-HISTORY-04",
-      "canonicalId": null,
-      "requirement": "未公開草稿優先本機或受限制預覽",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0030",
+      "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -723,13 +765,19 @@
           "sourceText": "| `PREVIEW-HISTORY-04` | 未公開草稿優先本機或受限制存取 Preview | [.ai/astro-pr-preview/SKILL.md:L62](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L62) | DIRECT: SOURCE_LINE_CHECKED, HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U027"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V2.md",
@@ -751,7 +799,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 62,
+        "sourceText": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。",
+        "formerWorkingRequirement": "未公開草稿優先本機或受限制預覽",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PREVIEW-POLICY-01",
@@ -1502,9 +1558,9 @@
     },
     {
       "legacyId": "GATE-002.01",
-      "canonicalId": null,
-      "requirement": "DIRECT_CANDIDATE",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0007",
+      "requirement": "Do not publish production without specific student authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V3.md",
@@ -1551,13 +1607,19 @@
           "sourceText": "| `GATE-002.01` | 未同意不得正式發布 | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)；[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L72](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L72)；[.ai/astro-pr-preview/SKILL.md:L56](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L56) | SOURCE_VERIFIED, SEMANTICS_PENDING |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U003"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-BIDIRECTIONAL-V3.md",
@@ -1573,7 +1635,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 37,
+        "sourceText": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**",
+        "formerWorkingRequirement": "DIRECT_CANDIDATE",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "GATE-002.02",
@@ -5219,9 +5289,9 @@
     },
     {
       "legacyId": "PROOF-001.03.S2",
-      "canonicalId": null,
-      "requirement": "SAME_CANDIDATE",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0001",
+      "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5262,13 +5332,23 @@
           "sourceText": "| `PROOF-001.03.S2` | 未設好時須回報不存在 Live URL | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE | - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。 |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PREVIEW-POLICY-01.S1",
+        "P0-U035",
+        "P0-U044"
+      ],
+      "applicability": [
+        "student-owned GitHub Pages without functioning isolated PR preview"
+      ],
+      "conditions": [
+        "No verified student PR Preview deployment exists"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "No Live URL claimed without real deployment evidence"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5290,13 +5370,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "SAME_CANDIDATE",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PROOF-001.03.S3",
-      "canonicalId": null,
-      "requirement": "SAME_CANDIDATE",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0002",
+      "requirement": "Obtain student consent before changing preview or deployment architecture.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5337,13 +5425,23 @@
           "sourceText": "| `PROOF-001.03.S3` | 修改預覽架構需同意 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE | - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。 |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PREVIEW-POLICY-01.S2",
+        "P0-U036",
+        "P0-U045"
+      ],
+      "applicability": [
+        "student preview infrastructure change"
+      ],
+      "conditions": [
+        "Proposed installation or alteration of Preview hosting/workflow"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Specific student approval precedes architecture modification"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-LEAF-DECOMPOSITION.md",
@@ -5365,7 +5463,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "SAME_CANDIDATE",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PROOF-003.03.S1",
@@ -5503,9 +5609,9 @@
     },
     {
       "legacyId": "GATE-002.02.S1",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0023",
+      "requirement": "DNS changes require student authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5536,13 +5642,19 @@
           "sourceText": "| `GATE-002.02.S1` | 未經同意不得更動 DNS | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE | - **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。** |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U030"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5558,13 +5670,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 37,
+        "sourceText": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**",
+        "formerWorkingRequirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "GATE-002.02.S2",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0024",
+      "requirement": "Repository deletion requires student authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5595,13 +5715,19 @@
           "sourceText": "| `GATE-002.02.S2` | 未經同意不得刪 Repo | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE | - **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。** |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U031"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5617,13 +5743,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 37,
+        "sourceText": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**",
+        "formerWorkingRequirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "GATE-002.02.S3",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0025",
+      "requirement": "Overwriting an existing student site requires student authorization",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5654,13 +5788,19 @@
           "sourceText": "| `GATE-002.02.S3` | 未經同意不得覆寫網站 | [.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37) | DIRECT_CANDIDATE | - **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。** |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U032"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5676,7 +5816,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 37,
+        "sourceText": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**",
+        "formerWorkingRequirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "GATE-002.03.S1",
@@ -5739,9 +5887,9 @@
     },
     {
       "legacyId": "PROOF-001.03.S1",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0046",
+      "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5772,13 +5920,19 @@
           "sourceText": "| `PROOF-001.03.S1` | GitHub Pages PR 無天然隔離 Preview | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE | - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。 |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U034"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -5794,7 +5948,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PROOF-002.01.S1",
@@ -6211,9 +6373,9 @@
     },
     {
       "legacyId": "PREVIEW-POLICY-01.S1",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0001",
+      "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -6244,13 +6406,23 @@
           "sourceText": "| `PREVIEW-POLICY-01.S1` | 缺 Live Preview 必須明示 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE | - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。 |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PROOF-001.03.S2",
+        "P0-U035",
+        "P0-U044"
+      ],
+      "applicability": [
+        "student-owned GitHub Pages without functioning isolated PR preview"
+      ],
+      "conditions": [
+        "No verified student PR Preview deployment exists"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "No Live URL claimed without real deployment evidence"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -6266,13 +6438,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PREVIEW-POLICY-01.S2",
-      "canonicalId": null,
-      "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0002",
+      "requirement": "Obtain student consent before changing preview or deployment architecture.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -6303,13 +6483,23 @@
           "sourceText": "| `PREVIEW-POLICY-01.S2` | 新增 Preview 部署方法須學員同意 | [.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30) | DIRECT_CANDIDATE | - **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。 |"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "PROOF-001.03.S3",
+        "P0-U036",
+        "P0-U045"
+      ],
+      "applicability": [
+        "student preview infrastructure change"
+      ],
+      "conditions": [
+        "Proposed installation or alteration of Preview hosting/workflow"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Specific student approval precedes architecture modification"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-ATOMIC-PARTIAL-SPLIT.md",
@@ -6325,7 +6515,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-pr-preview/SKILL.md",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "frozenLine": 30,
+        "sourceText": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。",
+        "formerWorkingRequirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "PR59-EVIDENCE-01.S1",
@@ -8327,9 +8525,9 @@
     },
     {
       "legacyId": "B1-DEP31-01",
-      "canonicalId": null,
-      "requirement": "預設 HTML noindex，robots.txt 禁止索引",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0044",
+      "requirement": "New student site defaults to noindex HTML and disallowing search crawling in robots.txt",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8360,13 +8558,19 @@
           "legacyWorkId": "B1-DEP31-01"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U017"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8382,13 +8586,21 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "formerWorkingRequirement": "預設 HTML noindex，robots.txt 禁止索引",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "B1-DEP31-02",
-      "canonicalId": null,
-      "requirement": "完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0003",
+      "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8422,13 +8634,24 @@
           "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
-      "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "aliases": [
+        "P0-U018",
+        "P0-U047"
+      ],
+      "applicability": [
+        "approved student Production environment"
+      ],
+      "conditions": [
+        "Content/Preview/security/consent gates completed"
+      ],
+      "exceptions": [
+        "Never on Cloudflare Preview"
+      ],
+      "acceptanceCriteria": [
+        "Production-only flag with verified robots/meta/canonical/sitemap after rebuild"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8453,7 +8676,15 @@
           "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L12"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "formerWorkingRequirement": "完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "B1-DEP31-03",
@@ -8503,9 +8734,9 @@
     },
     {
       "legacyId": "B1-DEP31-04",
-      "canonicalId": null,
-      "requirement": "Cloudflare Preview 不得共用正式站索引設定",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0004",
+      "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8549,13 +8780,23 @@
           "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "B1-DEP31-04-CF",
+        "P0-U019",
+        "P0-U049"
+      ],
+      "applicability": [
+        "Cloudflare Preview versus Production indexing isolation"
+      ],
+      "conditions": [
+        "Student uses Cloudflare Preview"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Preview indexing remains disabled regardless of production approval"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8593,13 +8834,21 @@
           "decision": "PARTIAL_SPLIT",
           "sourceWorkingPaper": "docs/student-journey/PHASE2-CORE-SKILLS-B-CROSS-BATCH-DEDUPE.md#L15"
         }
-      ]
+      ],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "formerWorkingRequirement": "Cloudflare Preview 不得共用正式站索引設定",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "B1-DEP31-04-CF",
-      "canonicalId": null,
-      "requirement": "Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0004",
+      "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8630,13 +8879,23 @@
           "legacyWorkId": "B1-DEP31-04-CF"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "B1-DEP31-04",
+        "P0-U019",
+        "P0-U049"
+      ],
+      "applicability": [
+        "Cloudflare Preview versus Production indexing isolation"
+      ],
+      "conditions": [
+        "Student uses Cloudflare Preview"
+      ],
       "exceptions": [],
-      "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "acceptanceCriteria": [
+        "Preview indexing remains disabled regardless of production approval"
+      ],
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -8652,7 +8911,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "formerWorkingRequirement": "Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "B1-DEP31-04-GH",
@@ -18843,9 +19110,9 @@
     },
     {
       "legacyId": "B1-DEP31-03-S02",
-      "canonicalId": null,
-      "requirement": "變更正式索引設定後重新 Build",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0047",
+      "requirement": "After approved production indexing settings change, rebuild the actual student site",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -18866,13 +19133,19 @@
           "legacyWorkId": "B1-DEP31-03-S02"
         }
       ],
-      "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "aliases": [
+        "P0-U048"
+      ],
+      "applicability": [
+        "student-owned site workflow; according to source scope"
+      ],
+      "conditions": [
+        "Source-specific platform and authorization conditions remain binding"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "MERGE",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -18882,7 +19155,15 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "frozenLine": 31,
+        "sourceText": "- **預設不索引**：新骨架的 HTML 加上 `noindex`，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 `SITE_INDEXABLE=true` 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 `deploy.yml` 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 `SITE_INDEXABLE`（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 `true`，再手動執行正式發布 Workflow。",
+        "formerWorkingRequirement": "變更正式索引設定後重新 Build",
+        "method": "DIRECT_FROZEN_SOURCE_AND_PRIOR_ATOMIC_ROW_SEMANTIC_EQUIVALENCE"
+      }
     },
     {
       "legacyId": "B1-DEP31-03-S03",
@@ -49695,7 +49976,9 @@
           "sourceText": "| `P0-U003` | `P0-U033` | AUTHORIZATION_SCOPE | 學員正式發布授權與 PR59 研究合併權限不得混淆 | HUMAN_REVIEW_PENDING |"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "GATE-002.01"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -49704,7 +49987,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -50473,7 +50756,9 @@
           "legacyWorkId": "P0-U017"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "B1-DEP31-01"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -50482,7 +50767,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -50538,6 +50823,7 @@
         }
       ],
       "aliases": [
+        "B1-DEP31-02",
         "P0-U047"
       ],
       "applicability": [
@@ -50623,6 +50909,8 @@
         }
       ],
       "aliases": [
+        "B1-DEP31-04",
+        "B1-DEP31-04-CF",
         "P0-U049"
       ],
       "applicability": [
@@ -50911,7 +51199,9 @@
           "legacyWorkId": "P0-U024"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "PREVIEW-HISTORY-01"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -50920,7 +51210,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -50965,7 +51255,9 @@
           "legacyWorkId": "P0-U025"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "PREVIEW-HISTORY-02"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -50974,7 +51266,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51019,7 +51311,9 @@
           "legacyWorkId": "P0-U026"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "PREVIEW-HISTORY-03"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51028,7 +51322,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51073,7 +51367,9 @@
           "legacyWorkId": "P0-U027"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "PREVIEW-HISTORY-04"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51082,7 +51378,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51235,7 +51531,9 @@
           "legacyWorkId": "P0-U030"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "GATE-002.02.S1"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51244,7 +51542,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51289,7 +51587,9 @@
           "legacyWorkId": "P0-U031"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "GATE-002.02.S2"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51298,7 +51598,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51343,7 +51643,9 @@
           "legacyWorkId": "P0-U032"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "GATE-002.02.S3"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51352,7 +51654,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51451,7 +51753,9 @@
           "legacyWorkId": "P0-U034"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "PROOF-001.03.S1"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -51460,7 +51764,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -51516,6 +51820,8 @@
         }
       ],
       "aliases": [
+        "PROOF-001.03.S2",
+        "PREVIEW-POLICY-01.S1",
         "P0-U044"
       ],
       "applicability": [
@@ -51599,6 +51905,8 @@
         }
       ],
       "aliases": [
+        "PROOF-001.03.S3",
+        "PREVIEW-POLICY-01.S2",
         "P0-U045"
       ],
       "applicability": [
@@ -52066,6 +52374,8 @@
         }
       ],
       "aliases": [
+        "PROOF-001.03.S2",
+        "PREVIEW-POLICY-01.S1",
         "P0-U035"
       ],
       "applicability": [
@@ -52133,6 +52443,8 @@
         }
       ],
       "aliases": [
+        "PROOF-001.03.S3",
+        "PREVIEW-POLICY-01.S2",
         "P0-U036"
       ],
       "applicability": [
@@ -52254,6 +52566,7 @@
         }
       ],
       "aliases": [
+        "B1-DEP31-02",
         "P0-U018"
       ],
       "applicability": [
@@ -52322,7 +52635,9 @@
           "legacyWorkId": "P0-U048"
         }
       ],
-      "aliases": [],
+      "aliases": [
+        "B1-DEP31-03-S02"
+      ],
       "applicability": [
         "student-owned site workflow; according to source scope"
       ],
@@ -52331,7 +52646,7 @@
       ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "KEEP",
+      "decision": "MERGE",
       "reviewStatus": "APPROVED",
       "evidence": [
         {
@@ -52377,6 +52692,8 @@
         }
       ],
       "aliases": [
+        "B1-DEP31-04",
+        "B1-DEP31-04-CF",
         "P0-U019"
       ],
       "applicability": [
@@ -66178,6 +66495,258 @@
       "sharedExactFrozenAnchors": [],
       "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
       "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-01",
+        "P0-U017"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0044"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-02",
+        "P0-U018"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0003"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-04",
+        "P0-U019"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-04-CF",
+        "P0-U019"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0004"
+    },
+    {
+      "legacyIds": [
+        "B1-DEP31-03-S02",
+        "P0-U048"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0047"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-01",
+        "P0-U024"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0027"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-02",
+        "P0-U025"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0028"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-03",
+        "P0-U026"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0029"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-HISTORY-04",
+        "P0-U027"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:62"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0030"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.01",
+        "P0-U003"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0007"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S1",
+        "P0-U030"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0023"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S2",
+        "P0-U031"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0024"
+    },
+    {
+      "legacyIds": [
+        "GATE-002.02.S3",
+        "P0-U032"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:37"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0025"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S1",
+        "P0-U034"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0046"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S2",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "PROOF-001.03.S3",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-POLICY-01.S1",
+        "P0-U035"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0001"
+    },
+    {
+      "legacyIds": [
+        "PREVIEW-POLICY-01.S2",
+        "P0-U036"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "PHASE2_P0_AND_PRIOR_BATCH_ATOMIC_RECORD",
+      "scopeNote": "Exact same scoped action at immutable Frozen line; original working row preserved in evidence",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "APPROVED",
+      "canonicalId": "ATP-P2-0002"
     }
   ],
   "sourceReviewQueue": [
@@ -76334,37 +76903,37 @@
         },
         {
           "legacyId": "PROOF-001.03.S2",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "SAME_CANDIDATE",
+          "canonicalId": "ATP-P2-0001",
+          "reviewStatus": "APPROVED",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-001.03.S3",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "SAME_CANDIDATE",
+          "canonicalId": "ATP-P2-0002",
+          "reviewStatus": "APPROVED",
+          "requirement": "Obtain student consent before changing preview or deployment architecture.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PROOF-001.03.S1",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+          "canonicalId": "ATP-P2-0046",
+          "reviewStatus": "APPROVED",
+          "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PREVIEW-POLICY-01.S1",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+          "canonicalId": "ATP-P2-0001",
+          "reviewStatus": "APPROVED",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PREVIEW-POLICY-01.S2",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)",
+          "canonicalId": "ATP-P2-0002",
+          "reviewStatus": "APPROVED",
+          "requirement": "Obtain student consent before changing preview or deployment architecture.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -76689,30 +77258,30 @@
       "legacyMatches": [
         {
           "legacyId": "PREVIEW-HISTORY-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "刪除舊部署、歷史檢查、Cloudflare Access 需額外明確授權",
+          "canonicalId": "ATP-P2-0027",
+          "reviewStatus": "APPROVED",
+          "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PREVIEW-HISTORY-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "第三方已複製的內容不可保證全部消失",
+          "canonicalId": "ATP-P2-0028",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not claim that already publicly copied website content can be guaranteed erased",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PREVIEW-HISTORY-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不得擅自破壞 QA 證據",
+          "canonicalId": "ATP-P2-0029",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not destroy QA evidence without authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "PREVIEW-HISTORY-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "未公開草稿優先本機或受限制預覽",
+          "canonicalId": "ATP-P2-0030",
+          "reviewStatus": "APPROVED",
+          "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -79630,16 +80199,16 @@
         },
         {
           "legacyId": "B1-DEP31-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "預設 HTML noindex，robots.txt 禁止索引",
+          "canonicalId": "ATP-P2-0044",
+          "reviewStatus": "APPROVED",
+          "requirement": "New student site defaults to noindex HTML and disallowing search crawling in robots.txt",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-DEP31-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引",
+          "canonicalId": "ATP-P2-0003",
+          "reviewStatus": "APPROVED",
+          "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -79651,16 +80220,16 @@
         },
         {
           "legacyId": "B1-DEP31-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Cloudflare Preview 不得共用正式站索引設定",
+          "canonicalId": "ATP-P2-0004",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B1-DEP31-04-CF",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數",
+          "canonicalId": "ATP-P2-0004",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments.",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -79714,9 +80283,9 @@
         },
         {
           "legacyId": "B1-DEP31-03-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "變更正式索引設定後重新 Build",
+          "canonicalId": "ATP-P2-0047",
+          "reviewStatus": "APPROVED",
+          "requirement": "After approved production indexing settings change, rebuild the actual student site",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -80072,9 +80641,9 @@
       "legacyMatches": [
         {
           "legacyId": "GATE-002.01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE",
+          "canonicalId": "ATP-P2-0007",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not publish production without specific student authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -80093,23 +80662,23 @@
         },
         {
           "legacyId": "GATE-002.02.S1",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+          "canonicalId": "ATP-P2-0023",
+          "reviewStatus": "APPROVED",
+          "requirement": "DNS changes require student authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "GATE-002.02.S2",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+          "canonicalId": "ATP-P2-0024",
+          "reviewStatus": "APPROVED",
+          "requirement": "Repository deletion requires student authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "GATE-002.02.S3",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)",
+          "canonicalId": "ATP-P2-0025",
+          "reviewStatus": "APPROVED",
+          "requirement": "Overwriting an existing student site requires student authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -88591,9 +89160,9 @@
       "legacyMatches": [
         {
           "legacyId": "GATE-002.01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "DIRECT_CANDIDATE",
+          "canonicalId": "ATP-P2-0007",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not publish production without specific student authorization",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
