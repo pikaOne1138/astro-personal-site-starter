@@ -290,3 +290,8 @@
 ## Phase 2｜Batch1–8 剩餘 106 候選深化（2026-10-23）
 
 [逐列語義初裁](PHASE2-BATCH1-8-REMAINING-SEMANTIC-REVIEW.md) 已將前一輪剩餘 106 項分成 43 個單一條款含屬性、35 個條件性／架構事項、28 個真正待細拆的父候選；[CHILD-SPLIT-03](PHASE2-BATCH1-8-CHILD-SPLIT-03.md) 已把後者建立 **87 個子檢查 ID**，並更新 [187 項 Inventory](PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md)。前三輪合計 8+14+28=**50 個父候選**有拆解紀錄，27+55+87=**169 個子檢查 ID**。這些數字描述追溯顆粒度，非唯一 Canonical 義務；43+35 分類也仍須全量來源與跨表反向驗證。Phase 2 IN PROGRESS、Stage3/4 BLOCKED，原始文件不改、不 Merge、不部署。
+
+
+## Phase 2｜子工作 ID 正反向結構核對 09
+
+新增 [PHASE2-CHILD-REVERSE-TRACE-AUDIT-09.md](PHASE2-CHILD-REVERSE-TRACE-AUDIT-09.md)：三輪 Batch1–8 Child Split 合計 **50 個不重複父工作 ID／169 個不重複子工作 ID**，全部父 ID 可在 187 筆 Inventory 找到；並回讀 Frozen Publishing L28/L56、Deploy L31、Assembly L31/L11 對照不得遺失的條件與例外。**本輪只確認子 ID 唯一、父 ID 存在及指定來源語義的局部核對；不能據此宣稱 187 筆全量語義等價、跨來源去重或唯一 Canonical 母數 PASS。** Phase2 IN PROGRESS，Stage3/4 BLOCKED。
