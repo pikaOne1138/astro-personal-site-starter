@@ -832,6 +832,27 @@ if(process.argv[2]==='import'){
  const parent=byId.get('B4-DEP24-01');
  if(!parent||cfBuild.slice(0,5).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Cloudflare Git composite not verified');
  Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:cfBuild.slice(0,5).map(([id])=>id),parentDisposition:'Five actual hosting settings tracked as separate acceptance checks'});
+ // GitHub Actions isolation contract for independent student repositories.
+ const workflowRules=[
+  ['B4-DEP18-01','Use student-owned Actions workflows for build and deploy'],
+  ['B4-DEP18-02-S01','Do not assume teacher showcase workflow_run is available in the student repository'],
+  ['B4-DEP18-02-S02','Do not assume teacher preview cleanup exists in the student repository'],
+  ['B4-DEP18-02-S03','Do not assume teacher gh-pages snapshots exist in the student repository'],
+  ['B4-DEP18-03','Use least-privilege workflow permissions']
+ ];
+ for(let i=0;i<workflowRules.length;i++){
+  const [id,requirement]=workflowRules[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=18;
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))throw Error('Missing frozen workflow rule '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(206+i).padStart(4,'0'),requirement,kind:'policy',decision:'KEEP',
+   reviewStatus:'APPROVED',aliases:[],applicability:['Independent student GitHub Actions workflows'],
+   conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),
+   method:'SOURCE_AND_ATOMIC_WORKFLOW_REVIEW'}});
+ }
+ const workflowParent=byId.get('B4-DEP18-02');
+ if(!workflowParent||workflowRules.slice(1,4).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Workflow children incomplete');
+ Object.assign(workflowParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+   childrenLegacyIds:workflowRules.slice(1,4).map(([id])=>id)});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
