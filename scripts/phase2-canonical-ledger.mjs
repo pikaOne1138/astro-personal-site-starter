@@ -609,6 +609,7 @@ const status={
 const documentaryRelations=old.semanticRelations||[];
 const relationOrphans=documentaryRelations.filter(rel=>rel.legacyIds.some(id=>!legacyIndex.has(id)));
 const unverifiedMerges=documentaryRelations.filter(rel=>rel.decision==='MERGE'&&rel.sharedExactFrozenAnchors.length===0);
+const integrityFailures=[...frozenManifestErrors,...canonicalConsistencyErrors,...failures,...sourceLineMismatches,...relationOrphans,...unverifiedMerges];
 const failReasons=[];
 if(status.frozenManifestFiles!==192)failReasons.push('Frozen manifest is not 192 files');
 if(frozenManifestErrors.length)failReasons.push('Frozen manifest blob SHA mismatch or unreadable source');
@@ -651,5 +652,9 @@ if(process.argv[2]==='report'){
  fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
 }
 console.log(report);
-if(process.argv[2]!=='report'&&process.argv[2]!=='verify')throw Error('Usage: import | verify | report');
-process.exitCode=1;
+if(process.argv[2]==='integrity'){
+ console.log(JSON.stringify({integrityFailures:integrityFailures.length,missingLegacy:missingLegacy.length,missingFrozen:missingFrozen.length,importErrors:errors.length,frozenReadFailures:sourceInventoryFailures.length},null,2));
+ process.exitCode=integrityFailures.length||missingLegacy.length||missingFrozen.length||errors.length||sourceInventoryFailures.length?1:0;
+}else if(process.argv[2]==='verify'||process.argv[2]==='report'){
+ process.exitCode=1; // Semantic Gate remains blocked while obligations are not adjudicated.
+}else throw Error('Usage: import | integrity | verify | report');
