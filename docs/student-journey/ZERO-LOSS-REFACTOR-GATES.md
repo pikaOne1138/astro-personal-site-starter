@@ -225,3 +225,8 @@
 ## Phase 2｜Batch9 複合來源語義拆解 A
 
 [PHASE2-BATCH9-ATOMIC-A.md](PHASE2-BATCH9-ATOMIC-A.md) 對已映射的 Assembly L57/L70/L73 與 Deploy L25 四個來源行進一步拆出 **19 個分類候選**，保留父來源與具體作用條件，並建立與 P0/前批的 SAME_CANDIDATE、PARTIAL_OVERLAP 關係。Batch9 仍有 29 行尚未同程度細拆；**103/103 是來源行映射，不是全量原子化、唯一 Canonical 規範分母或 Phase 2 PASS**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED。原始 Skills 未改，不 Merge、不部署。
+
+
+## Phase 2｜Batch9 Atomic B：授權與部署複合條款
+
+[PHASE2-BATCH9-ATOMIC-B.md](PHASE2-BATCH9-ATOMIC-B.md) 從 Batch9 另取 8 個凍結來源行拆成 31 個分類子候選，涉及 Layout 保真、真實 URL、四尺寸 QA、GitHub Pages Preview、Cloudflare 自訂域名、憑證及 Merge/DNS/覆蓋授權；加上 Atomic A 既有 4 行，Batch9 **12/33 行已進一步細拆**，21 行仍待。來源映射總數仍 103/103，但語義去重、規範與證據欄位分型和跨文件雙向驗收未完成，不得宣布 Phase 2 PASS。Phase 3/4 BLOCKED；原始 Skills 不修改、不合併、不部署。
