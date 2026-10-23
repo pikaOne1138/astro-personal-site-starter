@@ -787,6 +787,30 @@ if(process.argv[2]==='import'){
  const br=byId.get('B6-ASM13-01');
  if(!br||Array.from({length:3},(_,i)=>'B6-ASM13-01-S0'+(i+1)).some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Content readiness parent missing');
  Object.assign(br,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:Array.from({length:3},(_,i)=>'B6-ASM13-01-S0'+(i+1)),parentDisposition:'Three required checks carried in approved children'});
+ // Prototype-specific art direction is conditional, not a universal layout
+ // contract for all student sites.
+ const fidelity=[
+  ['B9C-ASM80-01','Do not reintroduce removed decorative substitute panels when adapting an original prototype'],
+  ['B9C-ASM80-02','Preserve source-specific vertical learning path and collection drawers'],
+  ['B9C-ASM80-03','Preserve stepped coaching cards and roster/event ledger where selected'],
+  ['B9C-ASM80-04','Preserve the original five-stop trust journey where selected']
+ ];
+ for(let i=0;i<fidelity.length;i++){
+  const [id,requirement]=fidelity[i],entry=byId.get(id),source='.ai/astro-site-assembly/SKILL.md',line=80;
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Prototype fidelity original missing: '+id);
+  Object.assign(entry,{canonicalId:'ATP-P2-'+String(196+i).padStart(4,'0'),
+   requirement,kind:'architecture',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Only when selected layout prototype originally contains the named pattern'],
+   conditions:['Selected layout requires faithful prototype adaptation'],exceptions:[],
+   acceptanceCriteria:[],approvalEvidence:{frozenPath:source,frozenLine:line,
+   frozenBlobSha:manifest[source],sourceText:frozenLine(source,line),
+   method:'FROZEN_SOURCE_AND_ATOMIC_PROTOTYPE_FIDELITY_REVIEW'}});
+ }
+ const composite=byId.get('B9C-ASM80');
+ if(!composite||fidelity.some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Prototype fidelity children incomplete');
+ Object.assign(composite,{kind:'evidence',decision:'PARTIAL_SPLIT',
+  reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:fidelity.map(([id])=>id),
+  parentDisposition:'Composite design fidelity retained as individually scoped requirements'});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
