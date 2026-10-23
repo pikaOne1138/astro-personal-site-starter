@@ -6,6 +6,8 @@
 |---|---:|
 | frozenManifestFiles | 192 |
 | workingFiles | 62 |
+| frozenManifestIntegrityErrors | 0 |
+| canonicalConsistencyErrors | 0 |
 | discoveredLegacyIds | 1390 |
 | importedLegacyIds | 1390 |
 | missingLegacyIds | 0 |
@@ -69,6 +71,8 @@
   "counts": {
     "frozenManifestFiles": 192,
     "workingFiles": 62,
+    "frozenManifestIntegrityErrors": 0,
+    "canonicalConsistencyErrors": 0,
     "discoveredLegacyIds": 1390,
     "importedLegacyIds": 1390,
     "missingLegacyIds": 0,
@@ -119,6 +123,8 @@
     "stage3": "BLOCKED",
     "stage4": "BLOCKED"
   },
+  "frozenManifestErrors": [],
+  "canonicalConsistencyErrors": [],
   "sourceFirst": {
     "scopeFiles": [
       ".ai/SHARED-DESIGN-HANDOFF.md",
