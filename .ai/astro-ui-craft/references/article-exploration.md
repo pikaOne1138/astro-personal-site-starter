@@ -1,101 +1,50 @@
-# Astro Blocks V2 — Article Discovery & Rich Content Reference
+# 文章探索與閱讀元件
 
-> This reference extends V1.5. Read `COMPONENTS.md`, `src/data/blocks.registry.json`, and actual component Props before assembly.
+> 先讀 `COMPONENTS.md`、`src/data/blocks.registry.json` 與元件實際的 Props。這份只講文章探索、清單、搜尋與閱讀排版的設計與驗收準則。
 
-## Added capabilities (12 blocks)
+## 文章探索
 
-### Article discovery
-- `ArticleSearch` — GET form with query parameter `q`
-- `TagCloud` — linkable tags with usage counts (`tag`)
-- `ArchiveMonths` — months and article counts (`month`)
-- `PostCalendar` — Monday-first calendar with clickable publication dates (`date`)
+- `ArticleSearch`：GET 表單，查詢參數 `q`，比對標題、摘要、分類、標籤。
+- `TagCloud`：可連結的標籤與使用次數（`tag`）。
+- `ArchiveMonths`：月份與文章數（`month`）。
+- `PostCalendar`：週一起算的月曆，只有有發文的日期可點（`date`）。
+- `q`、`tag`、`month`、`date` 都是 URL 參數，讓每個探索狀態都能被連結。月份數、標籤數、日曆日期與可見結果，都要來自同一份資料。
+- `ArticleViewSwitcher` 把同一組文章切換為列表、卡片、網格（用 `aria-pressed` 按鈕，在用戶端切換），保留 URL 篩選行為。不要把三種版面做成一樣的卡片網格。
+- `ArticleArchive` 在 `/[kind]/[theme]/articles/` 組合上述元件；舊的 `explore/` 會轉址並保留查詢參數。
 
-### Full-site search
-- `SiteSearchDialog` — accessible native `dialog` modal. Magnifying-glass icon in navbar; keyboard shortcuts `Ctrl+K` and `⌘K`; Esc closes; searches current website's *page titles, descriptions, article metadata, and service names*. Results link to actual routes and preserve current theme/kind. It is **not full-text page-body search** and must never be described as such.
-- Keep the dedicated `/[kind]/[theme]/explore/` page for article filters, tags, month and calendar. They serve different tasks.
-- Search dialog must be opaque, keyboard-accessible and focus trapped by native `showModal()`. Use existing design tokens, do not put a translucent overlay in the sticky header.
+## 全站搜尋
 
-### Article body
-- `ArticleAccordion` — native accessible `details/summary` foldout with slot.
-- `ArticleList` — numbered or bulleted list based on items.
-- `ArticleGrid` — two-/three-column layouts for side-by-side explanations, using slots.
-- `ArticleCallout` — note / tip / warning in an **editorial footnote/sidenote** treatment: subtle top/bottom rules, clear hierarchy, no generic gray filled rounded card or thick colored left rail. Meaning must be conveyed in text, not color alone.
-- `ArticleComparison` — captioned comparison tables using headers and rows.
-- `RelatedArticles` — genuine internal related-post links.
-- `ContentCarousel` — horizontal scroll-snap cards with actual next/previous controls, keyboard scrolling and reduced-motion handling.
+`SiteSearchDialog` 是可存取的原生 `dialog`：導覽列的放大鏡圖示、`Ctrl+K`／`⌘K` 開啟、`Esc` 關閉，用 `showModal()` 取得焦點陷阱。搜尋由 Pagefind 在 `astro build` 後對公開靜態 HTML 建立的全文索引提供，所以 `astro dev` 沒有索引時要明確說明，不能假裝搜尋成功。要使用 `BASE_URL`，在 PR 預覽子路徑下也要能運作。搜尋對話框要不透明，用既有 tokens，不要在 sticky 導覽列放半透明遮罩。
 
-## Data contract
+## 資料
 
-`src/data/articles-v2.ts` is the **single workshop sample dataset**, with:
-- `slug` (unique stable URL identifier)
-- `title`, `excerpt`
-- `category` (one primary classification)
-- `tags` (multiple)
-- `publishedAt` (YYYY-MM-DD)
-- `readingMinutes`
+- 文章的唯一來源是 Astro Content Collection（`src/content/articles/`）；`src/data/articles-v2.ts` 只是給既有 Demo 用的相容層，不是新增文章的地方。
+- 示範用的文章與發文日期是教材，不代表真實的發文記錄。換成真實網站時，每個網站用一套日期慣例，區分發布日與更新日，並保留 SEO 的 canonical 網址與實際的 slug 歷史（遷移 WordPress 內容時尤其重要）。
+- 靜態優先：不用自訂伺服器、資料庫或帳號。
 
-`src/site-map.ts` derives article route generation from it. The standalone library browsing interface is `/explore/`; each full demo also owns `/{kind}/{theme}/explore/` with links to its **own** article pages, displaying real links to the generated `/knowledge/paper/articles/:slug/` example route. The sample articles and publication dates are *fixtures*, not claims of genuine published posts.
+## 文章內文元件
 
-Use one date/time convention per real site and distinguish published from updated dates. SEO canonical URLs and actual slug histories must be preserved when migrating WordPress content.
+- `ArticleAccordion`：原生 `details/summary` 的摺疊，有 slot。
+- `ArticleList`：依 items 產生編號或項目符號清單。
+- `ArticleGrid`：兩欄或三欄並排說明，使用 slot。
+- `ArticleCallout`：note／tip／warning，採**編輯式腳註／旁注**處理：細的上下線、清楚的層級；不要灰底圓角卡，也不要粗色左邊條；意思要用文字傳達，不能只靠顏色。
+- `ArticleComparison`：有圖說、表頭與列的比較表。
+- `RelatedArticles`：真實的站內相關連結。
+- `ContentCarousel`：橫向 scroll-snap 卡片，有真正的上一個／下一個控制、鍵盤捲動，並處理 reduced-motion。
 
-## Search/archives implementation
+## 導覽列的遮罩規則
 
-- Search is a **client-side index over metadata** (title, excerpt, category, tags), not yet a full-body or multilingual ranked search engine.
-- `q`, `tag`, `month`, `date` are URL parameters for linkable discovery states.
-- Month counts, tag counts, calendar dates and visible results all derive from the same data set.
-- Static-first: no custom server, database, or account.
-- For a real larger site, replace fixtures with Astro Content Collections and consider build-time full-content indexing (e.g. Pagefind) in a separate iteration rather than pretending fixture search is universal full-text search.
+文章探索頁會在 sticky 導覽列下方捲動。四個主題的導覽列**都必須有完全不透明的底**（包含 Botanical 與 Morning）。不要依賴透明或模糊的半透明底，否則搜尋欄或頁面文字會透出到導覽標籤後面。要在頁面頂端、捲到一半、以及搜尋欄經過導覽列時截圖確認 z 軸順序與手機 CTA 可見。
 
-## Design constraints
+## 設計限制
 
-Inherit the established four design personalities and type/spacing tokens. **優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。**
+沿用既有的視覺人格與字級、間距 tokens。**優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。** 不要為初學者引入外部執行環境、複雜的搜尋後端或文章編輯器。手機上，歸檔與日曆堆疊在結果下方；用語意化的標題與連結，日期控制項要可聚焦；搜尋與日期導覽不能依賴假連結。
 
-Avoid launching an external runtime, complex search backend, or article editor for beginner workshop users. On mobile, archives and calendar stack below the results. Use semantic headings, links and focusable date controls. Keep date navigation and search useful without fabricated links.
+## 驗收
 
-## QA
-
-- Search q matches title/category/tags/summary and shows an empty state.
-- Clicking a tag/month/calendar date selects exactly matching articles and updates result count.
-- Month calendar aligns Monday first, correct number of days, only published dates clickable.
-- Every article result opens a real generated article URL.
-- PR-specific BASE_URL works for CSS and every internal link.
-- Two site architectures × four design personalities and original V1.5 block gallery remain intact.
-- Build succeeds; preview URL is verified before claiming success.
-
-## Full-site demo integration
-All eight `{knowledge,helper} × {paper,morning,studio,botanical}` demo sites use `/[kind]/[theme]/explore/`. The `SiteNav.astro` **找文章** link is real and visible on mobile. Each demo's article list links to theme-specific detail pages and its tag/date chips return to its own explorer. Article pages demonstrate accordion, list, callout, grid, comparison table, content carousel, and related articles. Demo data remains illustrative. Keep original routes and global `/explore/` working.
-
-## Sticky navigation overlay rule
-The V2 explorer scrolls below a sticky SiteNav. Each of the four themes **must have a fully opaque navigation backing** (including Botanical and Morning). Do not rely on transparent backgrounds or blurred translucent surfaces where search fields or page text can become visible behind nav labels. Verify screenshots at page top, halfway down, and scrolled with search field crossing navigation; confirm z-order and mobile CTA visibility.
-
-## Practical website blocks (V2.5 internal milestone; do not put version tags on visitor pages)
-- `MobileMenu`: native dialog; pass an array of real navigation links. Esc, backdrop click, focus return, keyboard access. Mobile displays hamburger; never show decorative MENU without working navigation.
-- `BookingLink`: optional `href` (HTTPS external booking) or `embedUrl`; never pretend to submit unconfigured forms. Default is a clear unavailable state; always review external provider privacy.
-- `ContactActions`: optional email, phone, LINE link. Validate and omit invalid/unconfigured options; show clear unavailable state instead of dead links.
-- `PricingDetails`: cost, duration, mode and terms; do not invent amounts, cancellation policy, insurance or credentials.
-- `TrustInfo`: verifiable credentials, regions, format, real privacy URL and service scope/limitations. Never invent testimonials or crisis resources; provide correct region-specific information only when configured.
-- `MediaEmbed`: YouTube via youtube-nocookie and optional HTML audio; for podcasts or unsupported platforms use an explicit external link; all videos have title, lazy loading and responsive 16:9 layout. Avoid autoplay.
-- Every new block stays inside functional categories in /blocks/, in `blocks.registry.json`, and appears in at least one real demo route; do not make disconnected showcase-only blocks. Keep theme tokens, RWD and screenreader focus behavior.
-
-### SocialLinks component
-- `SocialLinks` displays curated social identity links as icon-only or icon+label; can be placed under shared navigation/footers, about profiles or contact sections.
-- Supported platform keys: instagram, facebook, threads, youtube, line, github, linkedin, x, tiktok, pinterest, discord, telegram, spotify, email, phone, website, rss.
-- `items:[{platform,href,label?}]`, `showLabels`, `size`. `previewPlatforms` is only for the block gallery and must not pretend to contain real working profiles.
-- Simple Icons pinned v16 SVG CDN (brand-specific trademark policies apply); contact/generic SVG is inlined. Never expose arbitrary off-domain URL schemes, do not fabricate accounts. For production privacy/reliability, optionally self-host selected brand icons.
-
-
-### Practical block additions: feat/v2-5-reading-sharing
-Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress.
-文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
-Components are configurable Astro blocks, no heavy frontend framework dependency. Required: real route targets or explicit unconfigured state, keyboard focus, 375/390px responsive layout, SSR-readable content, reduced-motion, external-service transparency. Article URL handling must respect GitHub Pages BASE_URL.
-
-## Practical component batch feat/v2-5-resources-newsletter
-Add ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup. 可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。 Preserve Astro static build, four theme tokens, BASE_URL, actual links, keyboard focus, mobile and reduced-motion. Keep functional block gallery and registry aligned; no automatic merge or fabricated user-facing content.
-
-
-## Helper content examples
-`src/data/helper-content.ts` defines distinct demos for bodywork, counseling psychology, coaching and Reiki. These are content profiles, not restrictions on design themes. Never invent credentials or medical claims. `PractitionerCard` and `ServiceFit` are registered reusable blocks.
-
-
-### Switchable article archive patterns
-`ArticleViewSwitcher` accepts `items` (article records with slug/title/excerpt/category/tags/publishedAt/readingMinutes), `articleBase`, `exploreBase`, `defaultView` and `filterable`. Use for both `/[kind]/[theme]/articles/` and `/explore/`, retaining URL-based search/filter behavior. Do not style all three as the same grid of identical cards. Accessible aria-pressed buttons switch list/cards/grid client-side. The reading/search dialog remains separate from the archive page.
+- 搜尋 `q` 會比對標題／分類／標籤／摘要，沒有結果時有空狀態。
+- 點標籤、月份或日曆日期，會選出完全相符的文章並更新結果數。
+- 月曆週一起算、天數正確、只有已發布的日期可點。
+- 每個文章結果都開啟真實產生的文章網址。
+- 在 PR 預覽的 `BASE_URL` 下，CSS 與每個站內連結都正常。
+- 建置成功，並確認預覽網址後才宣稱成功。

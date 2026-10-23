@@ -1,66 +1,38 @@
-# Astro Blocks V1.5 — Component Library Reference
+# 元件庫：風格契約與組裝參考
 
-> The actual component interfaces are maintained in `COMPONENTS.md`, `src/data/blocks.registry.json`, and `src/components/blocks/*.astro`. This is a **design and assembly reference** for the `astro-ui-craft` Skill; never treat this file as a substitute for verifying the current source.
+> 元件的介面由 `COMPONENTS.md`、`src/data/blocks.registry.json` 與 `src/components/blocks/*.astro` 維護。這份是 `astro-ui-craft` 的**設計與組裝參考**，不能取代查證目前的原始碼。
 
-## Product scope
+## 範圍
 
-Two website architectures, four visual personalities:
-- Knowledge / Blog: writing, article exploration, topics, authors, reading, long-term SEO content.
-- Helper / Professional: professionals offering one-to-one services, consultations, coaching, counseling, bodywork, healing.
-- Paper & Ink (`paper`): editorial, restrained rules and paper-like surfaces.
-- Morning Light (`morning`): soft cream, warm and reassuring rounded layouts.
-- Quiet Studio (`studio`): precise rhythm, sober typography, structured information.
-- Botanical Calm (`botanical`): soft botanical green, gentle organic warmth.
+兩種網站架構，搭配不同的視覺人格；另外 `/blocks/` 是一個可操作的元件圖庫。有哪些元件、屬於哪一類，以 registry 為準，不要在這裡列清單或寫數量。
 
-**2 × 4 = 8 complete site demos**, plus a separate `/blocks/` live component gallery.
+變化的方式：`HeroSplit` 與 `ImageText` 用 `reversed` 反轉圖文順序；`FeatureGrid` 用 `columns` 切換欄數；`HeroCentered`、`HeroImage`、`HeroSplit` 是三種不同的 Hero 構圖。視覺人格由 `<html data-theme="…">` 搭配既有 CSS tokens 控制，不要另建平行的、互不相干的硬編碼樣式。
 
-## V1.5 reusable components (23)
-
-| Area | Components |
-| --- | --- |
-| Shared (4) | `Button`, `SectionHeading`, `SiteHeader`, `SiteFooter` |
-| Hero (3) | `HeroSplit`, `HeroCentered`, `HeroImage` |
-| Content (4) | `ImageText`, `FeatureGrid`, `Stats`, `CTASection` |
-| Knowledge / Blog (6) | `PostCard`, `PostGrid`, `FeaturedPost`, `CategoryLinks`, `TableOfContents`, `AuthorBox` |
-| Helper (6) | `ServiceCard`, `AboutProfile`, `ProcessSteps`, `Testimonial`, `FAQ`, `ContactSection` |
-
-Layout variants in V1.5:
-- `HeroSplit` and `ImageText`: reverse image/text order with `reversed`.
-- `FeatureGrid`: two or three columns with `columns`.
-- `HeroCentered`, `HeroImage`, `HeroSplit`: three distinct hero compositions.
-- Design personality is controlled through `<html data-theme="...">`, using the existing CSS tokens. Avoid parallel, unrelated hard-coded styling systems.
-
-## Mandatory style contract
+## 風格契約（必須遵守）
 
 **優先遵守既定字級與間距系統，AI 不應隨意引入新的設計數值。**
 
-- Reuse established styles from the project and the research-backed design specification.
-- Spacing steps: `4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128px`. Do not mistake these spacing steps for a typography scale.
-- Current multipage navigation decisions: normal links and CTA are `16px`; Paper editorial links are `14px`.
-- Favor legible typography and clear focus states; keep mobile navigation reachable and usable.
-- Do not invent intermediate font sizes (for example, `15px`) just for a small visual tweak; if a genuinely new token is needed, document reason and ask before modifying design system.
-- Motion: gentle hover, reveals, and feedback; respect `prefers-reduced-motion`; avoid effects that overshadow content.
-- Audit contrast and reading width for all four themes.
+- 沿用專案與研究支持的既有樣式。
+- 間距階：`4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128px`。這是間距，不是字級尺度。
+- 導覽列的字級以現有 CSS 為準。不要為了小小的視覺調整發明中間字級（例如 `15px`）；真的需要新 token 時，記下理由並先詢問。
+- 字要好讀、focus 要清楚；手機導覽要找得到、用得到。
+- 動效：溫和的 hover、進場與回饋；尊重 `prefers-reduced-motion`；不要讓效果搶過內容。
+- 四個主題都要檢查對比與閱讀行寬。
 
-## AI assembly steps
+## AI 組裝步驟
 
-1. Determine whether the user wants a Knowledge or Helper website and select a personality.
-2. Choose a documented composition from the existing blocks. Read `src/data/blocks.registry.json` and actual `Props`.
-3. Assemble Astro pages and provide meaningful content and real hrefs. Do not publish `#` placeholders as functional booking/forms or synthetic testimonials as real endorsements.
-4. Reuse `SiteNav.astro` and existing site-map for multipage routing; use components/blocks for new sections, without replacing working routes.
-5. Use `import.meta.env.BASE_URL` for internal links/assets so both production and PR preview work.
-6. Run build; send GitHub PR preview for human review before merge, as described by `.ai/astro-pr-preview/SKILL.md`.
+1. 判斷是知識或助人者網站，並選一個視覺人格。
+2. 從既有 Blocks 選出有文件的組合。讀 `src/data/blocks.registry.json` 與實際的 `Props`。
+3. 組頁面時給有意義的內容與真實的 href。不要把 `#` 佔位發布成可用的預約或表單，也不要把合成的見證當成真實推薦。
+4. 多頁路由重用 `SiteNav.astro` 與既有的 site-map；新區段用 components／blocks，不要取代能運作的路由。
+5. 站內連結與資產用 `import.meta.env.BASE_URL`，讓正式站與 PR 預覽都能用。
+6. 執行建置；合併前把 PR 預覽交給人審閱，流程見 `.ai/astro-pr-preview/SKILL.md`。
 
-## Reference hierarchy
+## 參考的優先順序
 
-1. Executable components and source CSS (`src/components/blocks/*.astro`, `public/demo.css`, `public/blocks.css`, `public/v02.css`)
-2. Component interface documentation: `COMPONENTS.md` + `src/data/blocks.registry.json`
-3. Research/design authority: existing `.ai/astro-ui-craft/references/` research and workshop style specification
-4. This summary as a navigational reference, not an independent source of invented props or design values
+1. 可執行的元件與原始 CSS（`src/components/blocks/*.astro`、`public/demo.css`、`public/blocks.css`、`public/v02.css`）。
+2. 元件介面文件：`COMPONENTS.md` 加 `src/data/blocks.registry.json`。
+3. 設計依據：`.ai/astro-ui-craft/SKILL.md` 與工作坊的風格規格。
+4. 這份摘要只是導覽性質的參考，不是獨立的、自創 props 或設計數值的來源。
 
-## Deferred
-
-- V2: search, carousel, advanced article features.
-- V3: automated component recommendation and autonomous page assembly engine.
-
-Neither belongs to the V1.5 baseline without a separate request.
+沒有另外要求時，不要引入自動組裝引擎或 AI 自動選元件的推薦機制。
