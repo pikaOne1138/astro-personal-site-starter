@@ -478,6 +478,58 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
    parentDisposition:'Content verified from the listed atomic children; retain for historical trace only'});
  }
+ // Verify actual article output and discovery surfaces. Existing child IDs
+ // are individual acceptance dimensions; the historical parent is not counted.
+ const articleAcceptance=[
+  ['B5-PUB63-01-S01','Generated public article routes exist',63],
+  ['B5-PUB63-01-S02','No expected article route is missing',63],
+  ['B5-PUB63-02-S01','Article listing links navigate to actual pages',63],
+  ['B5-PUB63-02-S02','Article tag links work',63],
+  ['B5-PUB63-02-S03','Article month links work',63],
+  ['B5-PUB63-02-S04','Article calendar/date links work',63],
+  ['B5-PUB63-02-S05','Related-article links work',63],
+  ['B5-PUB63-03-S01','Article sharing interactions actually work',63],
+  ['B5-PUB63-03-S02','Article breadcrumb navigation works',63],
+  ['B5-PUB63-03-S03','Previous and next article navigation works',63],
+  ['B5-PUB63-03-S04','Configured article search actually finds matching content',63],
+  ['B7-PUB-L70-01','Authorized article creation requires only a Markdown file and not manual TypeScript arrays',70],
+  ['B7-PUB-L70-02-S01','Published article is reachable through a public route',70],
+  ['B7-PUB-L70-02-S02','Published article has a reachable detail page',70],
+  ['B7-PUB-L70-02-S03','Published article is correctly discoverable through tags and dates',70],
+  ['B7-PUB-L70-02-S04','Published article appears in relevant related-article links',70],
+  ['B7-PUB-L70-02-S05','Published article is discoverable through configured search',70],
+  ['B7-PUB-L70-03-S01','RSS and Sitemap reflect the published article state',70],
+  ['B7-PUB-L70-03-S02','Published article metadata remains consistent with source',70],
+  ['B7-PUB-L70-03-S03','Preview indexing configuration is appropriate to the actual deployment environment',70]
+ ];
+ for(let i=0;i<articleAcceptance.length;i++){
+  const [id,requirement,line]=articleAcceptance[i],entry=byId.get(id);
+  const source='.ai/astro-content-publishing/SKILL.md',canonicalId='ATP-P2-'+String(74+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||
+     !entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Article acceptance original coordinate missing: '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Article acceptance ID conflict: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:id==='B7-PUB-L70-01'?'procedure':'acceptance',
+    decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+    applicability:['Student site with implemented article content'],
+    conditions:[],exceptions:[],acceptanceCriteria:[],
+    approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+      sourceText:frozenLine(source,line),method:'EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM'}});
+ }
+ for(const [id,kids] of [
+  ['B5-PUB63-01',['B5-PUB63-01-S01','B5-PUB63-01-S02']],
+  ['B5-PUB63-02',Array.from({length:5},(_,i)=>'B5-PUB63-02-S0'+(i+1))],
+  ['B5-PUB63-03',Array.from({length:4},(_,i)=>'B5-PUB63-03-S0'+(i+1))],
+  ['B7-PUB-L70-02',Array.from({length:5},(_,i)=>'B7-PUB-L70-02-S0'+(i+1))],
+  ['B7-PUB-L70-03',Array.from({length:3},(_,i)=>'B7-PUB-L70-03-S0'+(i+1))]
+ ]){
+  const entry=byId.get(id);
+  if(!entry||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))
+   throw Error('Article composite coverage incomplete '+id);
+  Object.assign(entry,{decision:'PARTIAL_SPLIT',kind:'evidence',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+   parentDisposition:'All source children carry approved atomic acceptance criteria'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
