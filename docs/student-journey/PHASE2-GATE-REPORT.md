@@ -1,35 +1,36 @@
 # PR #67｜Phase 2 Gate Report
 
-> Initial import snapshot at commit `2d0931131cadadf929eec9f901e8b4a5cb9123c2`. This is a truthful **pre-validation snapshot**, not the output of a completed local `node scripts/phase2-canonical-ledger.mjs report` run. Regenerate with the committed script after checking out PR #67.
+> Execution snapshot for Work Package A, 2026-10-23. This is a recorded status, **not** an executed full verification result. Run the committed verifier against a full local checkout to regenerate it.
 
-| Metric | Observed |
-|---|---:|
-| Frozen baseline expected | 192 text files |
-| Phase2 work documents expected | 59 |
-| Sources initially ingested | 4 work documents |
-| Imported unique legacy IDs | 349 |
-| Review-pending records | 349 |
-| Records with no parsed source reference | 191 |
-| Parsed source references without line anchor | 0 |
-| Child relationship candidates | 72 |
-| Frozen Blob SHA verification | NOT RUN |
-| Full 59-document legacy-ID discovery | NOT RUN |
-| Source-to-ledger exhaustive coverage | NOT RUN |
-| Ledger-to-frozen-source verification | NOT RUN |
-| Unresolved semantic conflicts | NOT YET ENUMERATED |
+| Measure | Current status |
+|---|---|
+| Frozen baseline | 192 text file manifest entries imported |
+| Phase2 working source documents in plan | 59 |
+| Legacy work papers mechanically ingested | 27 (including PR61 Delta) |
+| Unique imported legacy work IDs | 1,022 |
+| Canonical IDs approved | 0 |
+| Semantic adjudications approved | 0 |
+| Unreviewed items | 1,022 |
+| Exhaustive uncovered source clauses | NOT VERIFIED |
+| Broken source references | NOT VERIFIED (must check full repository) |
+| Unresolved semantic conflicts | NOT FULLY ENUMERATED |
+| Import read failures | 0 for the 27 successfully read files; other files pending |
+| Source SHA and anchor verification | NOT EXECUTED in repository checkout |
 
-**Gate: BLOCKED / NOT VERIFIED**. Phase 3 and Phase 4 are BLOCKED.
+**Phase 2 Gate: BLOCKED. Phase 3 / Phase 4: BLOCKED.**
 
-The imported count is a count of legacy work identifiers, **not** the number of unique normative requirements. No canonicalId has been approved, and no candidate can be called semantically adjudicated.
+The 1,022 imported IDs are legacy work records and must not be reported as 1,022 unique obligations. Neither absence of a parsed reference nor matching words establishes a semantic determination. No legacy file or Frozen Source was deleted, migrated or rewritten.
 
-The frozen inventory must be supplied by the importer from `SOURCE-BASELINE-2026-10-22.md`; the seed ledger does not claim that the source file hashes are verified. PR #61 remains a separate delta version layer. The historical Phase2 papers, Frozen Source, source Skills and templates were not modified.
+## Reproducible verification
 
-## Reproduce
+From a checkout of the PR #67 branch:
 
-```bash
+~~~bash
 node scripts/phase2-canonical-ledger.mjs import
 node scripts/phase2-canonical-ledger.mjs verify
 node scripts/phase2-canonical-ledger.mjs report
-```
+~~~
 
-The verify/report stage deliberately returns nonzero while semantic review is pending or integrity checks fail. It must not be used to bypass the Phase 2 gate.
+The importer rereads all Phase2 working files to discover records. Full verification requires an actual checkout with the Frozen commit available. This session could not run Git due to blocked DNS access to github.com, and did not claim a green check. The large JSON ledger also exceeded the connector's full-file fetch response; incremental remote updates stopped to avoid silent data loss.
+
+The PR remains Draft, not merged. PR #61 and Issue #58 unchanged. No production deployment authorized.
