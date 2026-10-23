@@ -63,6 +63,37 @@ for(const row of records.values()){
   sourceLayer:'FROZEN_SOURCE',sourceInference:'ENCODED_BATCH_ID_VERIFIED_AGAINST_FROZEN_LINE',
   sourceText:original});
 }
+// Additional legacy formats store the original source coordinates in their IDs.
+// Preserve the full Frozen line, and reject nonexistent coordinates.
+const explicitSources={
+ QC:'docs/quality/QUALITY-CONTRACT.md',
+ P59:'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',
+ P56:'.ai/astro-content-publishing/SKILL.md'
+};
+const canonicalEvidence={
+ 'P0-CANON-PRVIEW-MISSING':['.ai/astro-pr-preview/SKILL.md',30],
+ 'P0-CANON-PRVIEW-CONSENT':['.ai/astro-pr-preview/SKILL.md',30],
+ 'P0-CANON-INDEX-ENABLE':['.ai/astro-starter-deploy/SKILL.md',31],
+ 'P0-CANON-PREVIEW-INDEX':['.ai/astro-starter-deploy/SKILL.md',31]
+};
+for(const row of records.values()){
+ if(row.sourceRefs.some(ref=>ref.revision===frozen && ref.lineStart))continue;
+ const id=row.legacyId;
+ const m=id.match(/^(QC|P59|P56)-(\d+)$/);
+ const labeled=id.match(/^B[1-9]-(PUB|ASM|DEP)-L(\d+)-\d+$/);
+ const match=m?[explicitSources[m[1]],Number(m[2])]:
+  labeled?[families[labeled[1]],Number(labeled[2])]:
+  canonicalEvidence[id]||null;
+ if(!match)continue;
+ const [source,line]=match,original=frozenLine(source,line);
+ if(!original||!manifest[source]){
+  recoveryFailures.push({legacyId:id,source,line,reason:'referenced original line unavailable'});
+  continue;
+ }
+ row.sourceRefs.push({path:source,revision:frozen,blobSha:manifest[source],
+  lineStart:line,lineEnd:line,legacyWorkId:id,sourceLayer:'FROZEN_SOURCE',
+  sourceInference:'LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE',sourceText:original});
+}
 const path=dir+'canonical-ledger.json';
 const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
