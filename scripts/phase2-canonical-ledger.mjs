@@ -269,6 +269,38 @@ if(process.argv[2]==='import'){
     sourceText:text,method:'DIRECT_SOURCE_AND_P0_ATOMIC_DOCUMENTARY_REVIEW'}
   });
  }
+ // P0 leaf checkboxes/evidence fields are acceptance dimensions of a
+ // composite obligation, not 35 independently invented policy obligations.
+ const dimensions=[
+  {key:'PR59_REPORT_FIELDS',ids:[52,53,54,55,56,57,58],
+   parent:'PR59-EVIDENCE-01',scope:'PR59 evidence record: target, commit, URL/artifact, date, actor, result, unresolved risks'},
+  {key:'INDEXING_ARTIFACTS',ids:[59,60,61,62],
+   parent:'ATP-P2-0003',scope:'Production indexing after authorized build: meta robots, robots.txt, canonical and sitemap'},
+  {key:'PREVIEW_QA_TARGETS',ids:[63,64,65,66,67,68,69,70,71,72,73,74,75,76],
+   parent:'QA-DETAIL-01',scope:'Applicable real Preview routes, page behavior, input methods and privacy checks'},
+  {key:'PR59_SUBPATH_QA',ids:[77,78,79,80,81],
+   parent:'PROOF-003.03',scope:'Student repository GitHub Pages subpath browser acceptance'},
+  {key:'PR59_EXT01_EVIDENCE',ids:[82,83,84,85,86],
+   parent:'PROOF-003.02',scope:'Independent student repo real PR CI evidence package'}
+ ];
+ const mappedDimensions=[];
+ for(const group of dimensions){
+  for(const num of group.ids){
+   const id='P0-U'+String(num).padStart(3,'0');
+   const entry=byId.get(id);
+   if(!entry||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.lineStart))
+    throw Error('Evidence field Frozen source missing: '+id);
+   if(entry.canonicalId)throw Error('Leaf evidence field already assigned a distinct canonical: '+id);
+   entry.kind=entry.kind==='evidence'?'acceptance':entry.kind;
+   entry.decision='PARTIAL_SPLIT';
+   entry.reviewStatus='EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING';
+   entry.parentCanonicalCandidate=group.parent;
+   entry.acceptanceDimensionGroup=group.key;
+   entry.acceptanceDimensionScope=group.scope;
+   entry.atomicEvidenceText=entry.requirement;
+   mappedDimensions.push({legacyId:id,parent:group.parent,group:group.key});
+  }
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
