@@ -3,7 +3,7 @@ import DemoLayout from '../layouts/DemoLayout.astro';
 import SiteNav from './SiteNav.astro';
 import { kindMeta, themeMeta, type Kind, type Theme } from '../data';
 import { detailPages, type PageId } from '../site-map';
-import { articlesV2 } from '../data/articles-v2';
+import { articlesV2 } from '../data/articles-adapter';
 import BookingLink from './blocks/BookingLink.astro';
 import ContactActions from './blocks/ContactActions.astro';
 import PricingDetails from './blocks/PricingDetails.astro';
@@ -44,7 +44,7 @@ const practice=helperPractice[theme];
 const journal=knowledgePractice[theme];
 ---
 <DemoLayout title={`${pageTitle[page]} · ${kind==='helper'?practice.specialty:k.label} · ${t.zh}`} description={kind==='helper'?practice.intro:journal.intro} theme={theme} kind={kind}>
-  {page==='articles'&&<link rel="stylesheet" href={base+"blocks-v2.css"}/>}
+  {page==='articles'&&<link rel="stylesheet" href={base+"article-explorer.css"}/>}
   <div class="page-shell">
     <SiteNav kind={kind} theme={theme} current={page} />
     <main class="v02-page">

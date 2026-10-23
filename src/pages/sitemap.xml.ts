@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { articlesV2 } from '../data/articles-v2';
+import { articlesV2 } from '../data/articles-adapter';
 import { kinds, themes } from '../data';
 import { pageMap } from '../site-map';
 import directions from '../data/layout-directions.json';

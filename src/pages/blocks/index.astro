@@ -56,7 +56,7 @@ import ContactActions from '../../components/blocks/ContactActions.astro';
 import PricingDetails from '../../components/blocks/PricingDetails.astro';
 import TrustInfo from '../../components/blocks/TrustInfo.astro';
 import MediaEmbed from '../../components/blocks/MediaEmbed.astro';
-import { articlesV2 } from '../../data/articles-v2';
+import { articlesV2 } from '../../data/articles-adapter';
 const base=import.meta.env.BASE_URL;
 const posts=[{title:'把生活寫成自己的知識地圖',category:'個人寫作',excerpt:'從一個小小的觀察開始，整理值得長期留下的想法。',href:'#posts'},{title:'一篇值得重讀的閱讀筆記',category:'閱讀',excerpt:'不求寫得很多，只求每次回來，都能找到一點啟發。',href:'#posts'},{title:'建立自己的內容基地',category:'方法',excerpt:'用簡單的架構，讓每篇內容都有清楚的去處。',href:'#posts'}];
 const services=[{title:'一對一陪伴',description:'從你目前的困擾與期待出發，找到可以安心探索的方向。'},{title:'主題工作坊',description:'用清晰易懂的練習，讓新的覺察落在日常生活裡。'},{title:'線上諮詢',description:'以有彈性的方式進行，適合無法到場的合作需求。'}];
@@ -65,7 +65,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
 ---
 <DemoLayout title="網站元件展示庫" description={`可讓 AI 自由組裝的網站元件庫：${blockRegistry.length} 個元件、四套配色、兩類網站範例`}>
 <link rel="stylesheet" href={`${base}blocks.css`} />
-<link rel="stylesheet" href={`${base}blocks-v2.css`} />
+<link rel="stylesheet" href={`${base}article-explorer.css`} />
 <main class="ab-gallery" id="top">
   <header class="ab-gallery-header">
     <DesignLibraryNav current="blocks" />

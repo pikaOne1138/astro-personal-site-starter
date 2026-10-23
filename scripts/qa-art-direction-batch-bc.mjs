@@ -1,7 +1,7 @@
 import {chromium} from 'playwright';
 import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
-const layouts=JSON.parse(readFileSync('docs/art-direction/pr47-layout-handoff-registry.json','utf8')).items;
-const additions=layouts.filter(x=>x.origin==='pr47-new-11');
+const layouts=JSON.parse(readFileSync('docs/art-direction/layout-handoff-registry.json','utf8')).items;
+const additions=layouts.filter(x=>x.origin==='expanded');
 const viewports=[390,768,1280,1440];
 const base=process.env.QA_BASE_URL||'http://127.0.0.1:4321/';
 const out='qa-artifacts/art-direction/batch-bc';mkdirSync(out,{recursive:true});
@@ -9,7 +9,7 @@ const browser=await chromium.launch({headless:true});const records=[];
 const asHref=p=>new URL(p.replace(/^\//,''),base).toString();
 try {
  for(const item of layouts) {
-  const paths=item.origin==='pr47-new-11'?[item.prototype.home,item.prototype.archive,item.prototype.detail,item.prototype.about]:[item.prototype.home];
+  const paths=item.origin==='expanded'?[item.prototype.home,item.prototype.archive,item.prototype.detail,item.prototype.about]:[item.prototype.home];
   for(const route of paths)for(const width of viewports){
    const page=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce',deviceScaleFactor:1});
    const result={slug:item.slug,kind:item.kind,origin:item.origin,route,width,issues:[],warnings:[]};
@@ -46,7 +46,7 @@ try {
     if(m.nonfunctionalLinks||m.brokenAnchors.length)result.issues.push('broken-page-links');
     if(m.tinyControls)result.warnings.push('small-clickable-targets:'+m.tinyControls);
     if(m.brokenImages.length)result.warnings.push('remote-or-missing-images:'+m.brokenImages.length);
-    if(item.origin==='pr47-new-11'&&!m.nav)result.issues.push('missing-navigation');
+    if(item.origin==='expanded'&&!m.nav)result.issues.push('missing-navigation');
     await page.screenshot({path:out+'/'+item.slug+'-'+route.replaceAll('/','_')+'-'+width+'.png',fullPage:true,animations:'disabled'});
    }catch(e){result.issues.push(String(e))}
    records.push(result);await page.close();

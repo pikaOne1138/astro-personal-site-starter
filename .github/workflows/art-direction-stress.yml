@@ -1,16 +1,18 @@
-name: PR47 Batch B C Full-site Review
+name: Art Direction Stress QA
 on:
   pull_request:
     paths:
       - 'src/pages/layouts/**'
-      - 'docs/art-direction/pr47-layout-handoff-registry.json'
-      - 'scripts/qa-pr47-batch-bc.mjs'
-      - '.github/workflows/pr47-batch-bc.yml'
+      - 'src/data/art-direction-layout-content.json'
+      - 'src/data/art-direction-content.ts'
+      - 'scripts/qa-art-direction-interiors.mjs'
+      - 'scripts/qa-art-direction-stress.mjs'
+      - '.github/workflows/art-direction-stress.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  review:
+  stress-qa:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -22,19 +24,20 @@ jobs:
       - run: npm install --no-save --package-lock=false playwright
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - name: Local Astro preview
+      - name: Serve independent local preview
         run: |
-          nohup npm run preview -- --host 127.0.0.1 --port 4321 >/tmp/astro-preview.log 2>&1 &
+          nohup npm run preview -- --host 127.0.0.1 --port 4321 > /tmp/astro-preview.log 2>&1 &
           for i in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:4321/ >/dev/null; then exit 0; fi
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then exit 0; fi
             sleep 2
           done
           cat /tmp/astro-preview.log
           exit 1
-      - run: node scripts/qa-pr47-batch-bc.mjs
+      - name: Stress no content, single entry, and long CJK with JS disabled
+        run: node scripts/qa-art-direction-stress.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pr47-batch-bc-232-screenshots
-          path: qa-artifacts/art-direction/batch-bc/
+          name: art-direction-stress-captures
+          path: qa-artifacts/art-direction/interior-qa/
           retention-days: 14

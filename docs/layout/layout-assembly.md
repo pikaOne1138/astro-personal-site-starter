@@ -10,7 +10,7 @@
 |---|---|
 | 有哪些版型原型 | `src/data/layout-directions.json` 及 `src/pages/layouts/` |
 | 哪些版型可匯出、組裝狀態 | `src/data/layout-assembly/definitions.mjs`（`assemblyStatus`、`adapter`） |
-| 版型交接清單（slug、客群、結構辨識、QA 證據分級） | `docs/art-direction/pr47-layout-handoff-registry.json`，由 `scripts/verify-pr47-layout-handoff.mjs` 檢查 |
+| 版型交接清單（slug、客群、結構辨識、QA 證據分級） | `docs/art-direction/layout-handoff-registry.json`，由 `scripts/verify-art-direction-layout-handoff.mjs` 檢查 |
 | 獨立 Adapter 的定義 | `src/data/art-direction-definitions/*.json`、`scripts/art-direction-adapters.mjs` |
 | 學員可選的區段樣板 | `src/data/section-patterns.registry.json` |
 

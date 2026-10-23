@@ -1,5 +1,5 @@
 import { kinds, themes, type Kind, type Theme } from './data';
-import { articlesV2 } from './data/articles-v2';
+import { articlesV2 } from './data/articles-adapter';
 
 export type PageId =
   | 'articles' | 'topics' | 'start-here' | 'about' | 'resources'

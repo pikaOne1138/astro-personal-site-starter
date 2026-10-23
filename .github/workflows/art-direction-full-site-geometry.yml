@@ -1,12 +1,12 @@
-name: PR47 Full-site Navigation Geometry
+name: Art Direction Full-site Navigation Geometry
 on:
   pull_request:
     paths:
       - 'src/pages/layouts/subject-atlas/**'
       - 'src/pages/layouts/practice-compass/**'
       - 'src/components/art-direction/PrototypeNav.astro'
-      - 'scripts/qa-pr47-full-site-geometry.mjs'
-      - '.github/workflows/pr47-full-site-geometry.yml'
+      - 'scripts/qa-art-direction-full-site-geometry.mjs'
+      - '.github/workflows/art-direction-full-site-geometry.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -32,10 +32,10 @@ jobs:
           done
           cat /tmp/astro-preview.log
           exit 1
-      - run: node scripts/qa-pr47-full-site-geometry.mjs
+      - run: node scripts/qa-art-direction-full-site-geometry.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pr47-two-sites-full-route-geometry
+          name: art-direction-full-route-geometry
           path: qa-artifacts/art-direction/full-site-consistency/
           retention-days: 14
