@@ -23,11 +23,10 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 ## 使用前閱讀（按需；不要一次全讀）
 1. `references/conversation-playbook.md`：對話步驟與易懂的回覆方式。
 2. `references/design-brief-contract.md`：供人閱讀的 Brief 與候選選項欄位契約。
-3. `references/scenario-tests.md` 僅供**評測者／Skill 維護者**在離線評估時使用；一般學員對話、受測模型的實際作答階段**禁止讀取或搜尋**該檔。此檔含預期行為，是答案卷，不得視為正常執行上下文。
-4. `.ai/SHARED-DESIGN-HANDOFF.md`：各設計類 Skill 共用的判斷原則、批評格式與審查面向。
-5. 純聊天工具沒有 Repo／GitHub 存取時，只能以『尚未核對版本與可用性』回覆，提供學員容易操作的下一步或請能讀專案的 AI 核對；不把原型假定為可直接產站。
-6. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；不要把 Prototype 或組裝中（in-progress）的版型說成 ready；實際狀態以 `src/data/layout-assembly/definitions.mjs` 的 `assemblyStatus` 為準。
-7. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
+3. `.ai/SHARED-DESIGN-HANDOFF.md`：各設計類 Skill 共用的判斷原則、批評格式與審查面向。
+4. 純聊天工具沒有 Repo／GitHub 存取時，只能以『尚未核對版本與可用性』回覆，提供學員容易操作的下一步或請能讀專案的 AI 核對；不把原型假定為可直接產站。
+5. 涉及站內現有版型才讀 `src/data/layout-directions.json`、`.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`；不要把 Prototype 或組裝中（in-progress）的版型說成 ready；實際狀態以 `src/data/layout-assembly/definitions.mjs` 的 `assemblyStatus` 為準。
+6. 涉及共用元件才讀 `src/data/blocks.registry.json` / `COMPONENTS.md`；涉及 Section Patterns 讀 `src/data/section-patterns.registry.json` 與 `.ai/astro-section-pattern-craft/SKILL.md`；涉及動效讀 `.ai/astro-motion-craft/SKILL.md`；涉及 Starter JSON 讀 `.ai/astro-starter-onboarding/SKILL.md` 並遵守既有 Site Brief schema。
 
 ## 回覆節奏與學員掌控權（對話品質護欄）
 - **第一則與每輪回覆**：通常先用 1–2 句摘要理解，直接回應當前問題，再提出至多**一個獨立的決策問題**。不能用『另外／順便／以及』或括號再索取第二、第三項資料；不是只限制問號數量，而是限制實際要學員回答的事項。真實文章標題或服務名稱可以留到下一輪收集。簡短詢問不需搭配千字長文，除非學員要求詳細比較。
@@ -95,12 +94,11 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 - 沒有經使用者明確批准，不 Merge、不部署 Production。
 
 ## 外部 Repo / PR 查核備援
-- 查詢 PR #46、#47 等現況時先用可用的 GitHub 工具。若 REST API 無權限，但有 clone / git 存取，可執行 `git ls-remote origin refs/pull/N/head`、`git fetch --depth 1 origin refs/pull/N/head` 取得實際 SHA 與內容；**僅在實際執行成功才回報已核對**，否則標 `not-verified`。不得用猜測版本替代核對。
+- 需要查某個 PR 或分支的現況時，先用可用的 GitHub 工具。若 REST API 無權限，但有 clone / git 存取，可執行 `git ls-remote origin refs/pull/N/head`、`git fetch --depth 1 origin refs/pull/N/head` 取得實際 SHA 與內容；**僅在實際執行成功才回報已核對**，否則標 `not-verified`。不得用猜測版本替代核對。
 
 ## 測試與不可冒稱的驗證
-- `references/scenario-tests.md` 是 scenario fixtures；`references/dialogue-quality-review.md` 是人工桌面模擬的診斷紀錄，不是獨立模型 benchmark。
-- 不可宣稱在未執行獨立 Agent 的情況下「13/13 模型實測通過」。任何測試應標明：模擬 / 真正 Agent / 真人學員；測試時間、版本、逐輪文字、評估者及失敗情境。
-- 對話品質與使用者滿意度不同：必須另做真實多輪對話與學員可理解性驗證，才能聲稱 P2 達到實用可靠程度。
+- 不可宣稱在未執行獨立 Agent 的情況下「模型實測通過」。任何測試應標明：模擬 / 真正 Agent / 真人學員；測試時間、版本、逐輪文字、評估者及失敗情境。
+- 對話品質與使用者滿意度不同：必須另做真實多輪對話與學員可理解性驗證，才能聲稱這個 Skill 達到實用可靠程度。
 
 ## 成功定義
 學員可以不用設計術語回答「這個方案比較像我，因為首頁先出現文章而非一張巨型照片」，且能將人類可讀 Design Brief 交給下一階段 AI。優先驗證對話是否真的能幫助選擇，而非產出選項數量。
