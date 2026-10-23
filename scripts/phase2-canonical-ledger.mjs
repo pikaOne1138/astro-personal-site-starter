@@ -979,6 +979,31 @@ if(process.argv[2]==='import'){
   if(row.canonicalId){row.childrenLegacyIds=[...new Set([...(row.childrenLegacyIds||[]),...kids])];row.atomicChecklistIds=kids;}
   else Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids});
  }
+ // B2: direct source evidence for release safety clauses without extending
+ // approval to any broader action not named in the Frozen source.
+ const sourceSafety=[
+ ['B9C-DEP32-01','Never disable noindex merely to force a CI PASS','.ai/astro-starter-deploy/SKILL.md',32],
+ ['B9C-DEP32-02','Never allow unapproved demo or draft content to be indexed','.ai/astro-starter-deploy/SKILL.md',32],
+ ['B9B-DEP-37-01','Explicit student consent precedes merging a release','.ai/astro-starter-deploy/SKILL.md',37],
+ ['B9B-DEP-37-02','Explicit student consent precedes repository deletion','.ai/astro-starter-deploy/SKILL.md',37],
+ ['B9B-DEP-37-03','Explicit student consent precedes DNS changes','.ai/astro-starter-deploy/SKILL.md',37],
+ ['B9B-DEP-37-04','Explicit student consent precedes overwriting an existing student site','.ai/astro-starter-deploy/SKILL.md',37]
+ ];
+ for(let i=0;i<sourceSafety.length;i++){
+  const [id,requirement,source,line]=sourceSafety[i],row=byId.get(id);
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))
+   throw Error('Unverifiable safety source '+id);
+  if(row.canonicalId)throw Error('Safety clause prior canonical exists '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(247+i).padStart(4,'0'),requirement,kind:'policy',
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],applicability:['Student public deployment/release'],
+   conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,sourceText:frozenLine(source,line),
+    frozenBlobSha:manifest[source],method:'EXACT_SOURCE_AND_ATOMIC_POLICY_REVIEW'}});
+ }
+ const safetyParent=byId.get('B9C-DEP32');
+ if(!safetyParent||sourceSafety.slice(0,2).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Safety composite incomplete');
+ Object.assign(safetyParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+  childrenLegacyIds:sourceSafety.slice(0,2).map(([id])=>id)});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
