@@ -1258,6 +1258,27 @@ if(process.argv[2]==='import'){
    approvalEvidence:{frozenPath:onboardSource,frozenLine:onboardLine,
      frozenBlobSha:manifest[onboardSource],sourceText:frozenLine(onboardSource,onboardLine),
      method:'SOURCE_REVIEWED_COMPLETE_ONBOARDING_DECOMPOSITION'}});
+ // Preserve full original GitHub Pages Preview and immutable-preview safety
+ // paragraphs as documentary coverage of separately approved requirements.
+ const previewParagraphs=[
+  {id:'PREVIEW-11',line:30,kids:['PROOF-001.03.S1','PROOF-001.03.S2','PROOF-001.03.S3']},
+  {id:'PREVIEW-17',line:62,kids:['PREVIEW-HISTORY-01','PREVIEW-HISTORY-02',
+    'PREVIEW-HISTORY-03','PREVIEW-HISTORY-04']}
+ ];
+ const previewSource='.ai/astro-pr-preview/SKILL.md';
+ for(const {id,line,kids} of previewParagraphs){
+  const row=byId.get(id),original=frozenLine(previewSource,line);
+  if(!row||row.canonicalId||!original||
+    !row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===previewSource&&ref.lineStart===line)||
+    kids.some(k=>byId.get(k)?.reviewStatus!=='APPROVED'))
+    throw Error('Preview paragraph not fully accounted by approved children '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+   parentDisposition:'Frozen Preview policy paragraph traced to reviewed scoped atomic obligations',
+   approvalEvidence:{frozenPath:previewSource,frozenLine:line,
+    frozenBlobSha:manifest[previewSource],sourceText:original,
+    method:'SOURCE_LEVEL_PARAGRAPH_SEMANTIC_DECOMPOSITION'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
