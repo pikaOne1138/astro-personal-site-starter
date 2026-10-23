@@ -532,8 +532,34 @@ const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x
 const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
 const outstandingLineKeys=new Set(sourceReviewQueue.filter(x=>x.reviewStatus!=='APPROVED').map(x=>x.sourceKey));
 const sourceFirstNotYetDisposed=unmappedCandidateLines.filter(x=>!x.initialReview&&!outstandingLineKeys.has(x.path+':'+x.line));
+// Zero-loss integrity checks must not be confused with semantic PASS.
+const canonicalConsistencyErrors=[];
+for(const [cid,rows] of canonicalGroups){
+ const claimed=new Set(rows.map(x=>x.legacyId));
+ const distinctStatements=new Set(rows.map(x=>JSON.stringify({
+  requirement:x.requirement,kind:x.kind,applicability:x.applicability||[],
+  conditions:x.conditions||[],exceptions:x.exceptions||[],acceptanceCriteria:x.acceptanceCriteria||[]
+ })));
+ if(distinctStatements.size>1)canonicalConsistencyErrors.push({canonicalId:cid,reason:'DIVERGENT_CANONICAL_DEFINITIONS'});
+ for(const row of rows){
+  if(row.decision==='MERGE' && !rows.every(other=>other===row||(row.aliases||[]).includes(other.legacyId)))
+   canonicalConsistencyErrors.push({canonicalId:cid,legacyId:row.legacyId,reason:'MISSING_RECIPROCAL_ALIAS'});
+  for(const alias of row.aliases||[]){
+   if(!claimed.has(alias))canonicalConsistencyErrors.push({canonicalId:cid,legacyId:row.legacyId,alias,reason:'CROSS_GROUP_ALIAS'});
+  }
+ }
+}
+const frozenManifestErrors=[];
+for(const [file,expectedSha] of Object.entries(manifest)){
+ try{
+  const actual=execFileSync('git',['rev-parse',frozen+':'+file],{encoding:'utf8'}).trim();
+  if(actual!==expectedSha)frozenManifestErrors.push({path:file,expectedSha,actual});
+ }catch(e){frozenManifestErrors.push({path:file,expectedSha,error:'FROZEN_FILE_NOT_READABLE'});}
+}
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
+ frozenManifestIntegrityErrors:frozenManifestErrors.length,
+ canonicalConsistencyErrors:canonicalConsistencyErrors.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
  missingLegacyIds:missingLegacy.length,brokenReferences:failures.length,
  frozenTextMismatches:sourceLineMismatches.length,
@@ -585,6 +611,8 @@ const relationOrphans=documentaryRelations.filter(rel=>rel.legacyIds.some(id=>!l
 const unverifiedMerges=documentaryRelations.filter(rel=>rel.decision==='MERGE'&&rel.sharedExactFrozenAnchors.length===0);
 const failReasons=[];
 if(status.frozenManifestFiles!==192)failReasons.push('Frozen manifest is not 192 files');
+if(frozenManifestErrors.length)failReasons.push('Frozen manifest blob SHA mismatch or unreadable source');
+if(canonicalConsistencyErrors.length)failReasons.push('Canonical groups have inconsistent definitions or aliases');
 if(missingLegacy.length)failReasons.push('Unimported legacy IDs');
 if(failures.length)failReasons.push('Broken links or source integrity failures');
 if(missingFrozen.length)failReasons.push('Missing direct frozen or upstream anchors');
@@ -612,7 +640,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
