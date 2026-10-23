@@ -393,6 +393,41 @@ for(const entry of sourceReviewQueue){
   (entry.initialReview?.rationale||'No canonical or cross-source dedupe decision yet.');
  entry.reviewStatus='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION';
 }
+// Complete the documented P0/P1 source-line disposition pass.
+// Each disposition is a *source inventory* decision, not proof of an approved
+// canonical requirement. Keep an explicit cross-source verification blocker.
+function evidenceDisposition(entry){
+ const line=entry.sourceText.trim(),path=entry.sourcePath;
+ if(/^description:|^<!-- builder-only:|^npm run verify$/.test(line)||
+    /^共用可攜判斷依據：/.test(line))return ['NON_NORMATIVE_METADATA','Skill description, marker, example command or documentation pointer','RETAIN_AS_EVIDENCE'];
+ if(/^「|^> 請|^> 幫我|^> 「|^\| UX-|^\| 「|^學員可以不用設計術語回答/.test(line))
+   return ['EXAMPLE_NOT_INDEPENDENT_OBLIGATION','Example, suggested language or scenario; do not create new norm from example','RETAIN_AS_EXAMPLE'];
+ if(/(?:Actions Run \d+|historic failing workflow|IN PROGRESS（最後查詢時）|is historical|目前為|已完成的替代性自動檢查)/i.test(line))
+   return ['HISTORICAL_EVIDENCE','Time-specific evidence is not a present PASS and must remain source traceable','RETAIN_HISTORICAL_NOT_PASS'];
+ if(path.includes('DEFECT-REGISTER')&&/^\|/.test(line))
+   return ['HISTORICAL_STATUS_OR_ACCEPTANCE','Historical defect state: distinguish historical result from forward requirement','REVIEW_APPLICABILITY'];
+ if(/^[-\d]+\.|^[\-*] |^\|/.test(line)||/^\d+\./.test(line)){
+   if(/(?:未經|同意|不得|禁止|private|secret|token|授權|merge|production|公開|DNS|刪除)/i.test(line))
+     return ['SOURCE_POLICY_OR_CONDITION','Safety/release wording: preserve separate actor, operation, precondition and exception','MAP_ATOMIC_POLICY_PENDING'];
+   if(/(?:驗證|檢查|測試|QA|PASS|FAIL|NOT TESTED|verify|test|build|preview|SHA|截圖|瀏覽器)/i.test(line))
+     return ['ACCEPTANCE_OR_EVIDENCE_REQUIREMENT','Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary','MAP_ACCEPTANCE_PENDING'];
+   return ['PROCEDURE_OR_ARCHITECTURE','Operational procedure or architectural contract: preserve source-specific scope','MAP_PROCEDURE_PENDING'];
+ }
+ if(/^(?:但|若|如果|只有|不能|需要|不應|不必|請)/.test(line))
+   return ['CONDITIONAL_SOURCE_CLAUSE','Conditional clause: applicability and exceptions cannot be lost','MAP_CONDITIONAL_PENDING'];
+ return ['SOURCE_CONTENT_REQUIREMENT','Potential norm or context: preserve complete original; no inferred alias or parent replacement','MAP_ATOMIC_PENDING'];
+}
+for(const entry of sourceReviewQueue){
+ if(entry.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION')continue;
+ const [kind,reason,action]=evidenceDisposition(entry);
+ entry.preliminaryKind=kind;
+ entry.proposedAction=action;
+ entry.reviewerNote=reason;
+ entry.reviewStatus='SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING';
+ entry.atomicClauseCandidates=[];
+ entry.adjudicationNeeded=['scope','normative-versus-context','atomicity','source-to-legacy-map','cross-source-alias','approval'];
+}
+const firstPassDisposed=sourceReviewQueue.filter(x=>x.reviewStatus==='SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING');
 const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
 const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
 const unresolvedP0P1=sourceReviewQueue.filter(x=>x.proposedAction==='PENDING_SOURCE_TO_LEDGER_MAPPING').length;
@@ -428,7 +463,10 @@ const status={
  sourceFirstUnmappedP2:triageCounts.P2_CONTENT_PROCEDURE,
  p0p1QueueItems:sourceReviewQueue.length,
  p0p1PendingSourceMapping:unresolvedP0P1,
+ p0p1PendingCanonicalAdjudication:sourceReviewQueue.filter(x=>x.reviewStatus!=='APPROVED').length,
  p0p1DocumentaryAssessed:assessedQueue.length,
+ p0p1FirstPassDisposed:firstPassDisposed.length,
+ p0p1SourceDispositionTotal:assessedQueue.length+firstPassDisposed.length,
  p0p1AtomicSubclausesProposed:assessedQueue.reduce((n,x)=>n+(x.atomicClauseCandidates?.length||0),0),
  p0p1RemovedQueueKeys:droppedPrevious.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
