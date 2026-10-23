@@ -229,6 +229,23 @@ if(process.argv[2]==='import'){
   ['P0-U030','DNS changes require student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
   ['P0-U031','Repository deletion requires student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy'],
   ['P0-U032','Overwriting an existing student site requires student authorization','.ai/astro-starter-deploy/SKILL.md',37,'policy']
+  ,['P0-U022','PR59 independent student-site manual QA additionally includes 375px','.ai/astro-pr-preview/SKILL.md',24,'acceptance']
+  ,['P0-U024','Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization','.ai/astro-pr-preview/SKILL.md',62,'policy']
+  ,['P0-U025','Do not claim that already publicly copied website content can be guaranteed erased','.ai/astro-pr-preview/SKILL.md',62,'policy']
+  ,['P0-U026','Do not destroy QA evidence without authorization','.ai/astro-pr-preview/SKILL.md',62,'policy']
+  ,['P0-U027','Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments','.ai/astro-pr-preview/SKILL.md',62,'policy']
+  ,['P0-U028','Automated PASS does not prove professional claims or legal applicability in an independent student site','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',39,'acceptance']
+  ,['P0-U033','Completion of research PR59 does not authorize publication of an individual student site','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',72,'policy']
+  ,['P0-U037','Cloudflare Preview URLs and associated status must come from actual platform deployment reports','.ai/astro-pr-preview/SKILL.md',38,'evidence']
+  ,['P0-U038','Do not invent Cloudflare pages.dev URLs or copy research GitHub Pages preview path conventions','.ai/astro-pr-preview/SKILL.md',38,'policy']
+  ,['P0-U039','Student-owned independent repo requires real PR workflow run evidence','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',22,'acceptance']
+  ,['P0-U040','For GitHub Pages repository subpaths validate deployed site routes and assets against real URL and SHA','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
+  ,['P0-U041','Run Cloudflare root-path preview tests only when Cloudflare is the chosen hosting route','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
+  ,['P0-U042','Check whether the deployed Preview is indexable by search engines','.ai/astro-pr-preview/SKILL.md',39,'acceptance']
+  ,['P0-U043','Check Preview for private or unapproved content before disclosing its URL','.ai/astro-pr-preview/SKILL.md',39,'acceptance']
+  ,['P0-U046','Re-evaluate prior test evidence when the upstream project revision changes','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',16,'acceptance']
+  ,['P0-U050','Independent external student-site acceptance requires a working Preview corresponding to exact deployment SHA','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
+  ,['P0-U051','A local simulated site is not evidence of live online deployment','docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md',24,'acceptance']
  ];
  for(let i=0;i<directP0.length;i++){
   const [id,requirement,source,line,kind]=directP0[i],entry=byId.get(id);
