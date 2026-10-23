@@ -60,7 +60,7 @@ function verifiedQaBaseline(head){
  if(!validateEvidenceBundle(items))return null;
  run('merge-base','--is-ancestor',baseline,evidenceSha);
  run('merge-base','--is-ancestor',evidenceSha,head);
- const changed=run('diff','--name-only',evidenceSha,head).split('\\n').filter(Boolean);
+ const changed=run('diff','--name-only',evidenceSha,head).split('\n').filter(Boolean);
  if(!isLedgerOnlyPaths(changed))return null;
  console.log('Verified pinned four-suite QA baseline:',evidenceSha);
  return evidenceSha;
