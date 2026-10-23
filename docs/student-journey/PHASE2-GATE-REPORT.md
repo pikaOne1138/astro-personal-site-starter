@@ -33,6 +33,9 @@
 | sourceFirstReadFailures | 0 |
 | sourceFirstClassifiedUnmapped | 25 |
 | sourceFirstUnclassifiedUnmapped | 227 |
+| sourceFirstUnmappedP0 | 92 |
+| sourceFirstUnmappedP1 | 73 |
+| sourceFirstUnmappedP2 | 87 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
 | oldFileRetirement | NOT_AUTHORIZED |
@@ -80,6 +83,9 @@
     "sourceFirstReadFailures": 0,
     "sourceFirstClassifiedUnmapped": 25,
     "sourceFirstUnclassifiedUnmapped": 227,
+    "sourceFirstUnmappedP0": 92,
+    "sourceFirstUnmappedP1": 73,
+    "sourceFirstUnmappedP2": 87,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",
     "oldFileRetirement": "NOT_AUTHORIZED",
@@ -136,6 +142,11 @@
       "docs/workshop/PR56-USER-JOURNEY-QA.md"
     ],
     "readFailures": [],
+    "triageCounts": {
+      "P0_SAFETY_RELEASE": 92,
+      "P1_EVIDENCE_QA": 73,
+      "P2_CONTENT_PROCEDURE": 87
+    },
     "unmappedCandidateLines": [
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -145,7 +156,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -155,7 +167,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -165,7 +178,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -175,7 +189,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -185,7 +200,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -195,7 +211,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -205,7 +222,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -215,7 +233,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-design-consultation/SKILL.md",
@@ -225,7 +244,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -235,7 +255,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -245,7 +266,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -255,7 +277,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -265,7 +288,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -275,7 +299,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -285,7 +310,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-editorial-layout-design/SKILL.md",
@@ -295,7 +321,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -305,7 +332,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -315,7 +343,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -325,7 +354,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -335,7 +365,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -345,7 +376,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-launch-health-check/SKILL.md",
@@ -355,7 +387,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-layout-craft/SKILL.md",
@@ -365,7 +398,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-layout-craft/SKILL.md",
@@ -375,7 +409,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-layout-craft/SKILL.md",
@@ -385,7 +420,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-layout-craft/SKILL.md",
@@ -395,7 +431,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -405,7 +442,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -415,7 +453,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -425,7 +464,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -435,7 +475,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -445,7 +486,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -455,7 +497,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -465,7 +508,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -475,7 +519,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -485,7 +530,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -495,7 +541,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -505,7 +552,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -515,7 +563,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -525,7 +574,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -535,7 +585,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -545,7 +596,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-motion-craft/SKILL.md",
@@ -555,7 +607,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-navigation-tree-test/SKILL.md",
@@ -565,7 +618,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-navigation-tree-test/SKILL.md",
@@ -575,7 +629,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -585,7 +640,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -595,7 +651,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -605,7 +662,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -615,7 +673,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -625,7 +684,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-page-management/SKILL.md",
@@ -635,7 +695,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -650,7 +711,8 @@
           "classification": "NON_NORMATIVE",
           "rationale": "Skill YAML description, not an independent clause",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -665,7 +727,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "BASE_URL and build verification; prohibited fabricated success",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -680,7 +743,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "GitHub Pages source/platform check and student-specific site/base",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -695,7 +759,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "Cloudflare student-repo integration and preview settings",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -710,7 +775,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "Failure-specific repair instead of indiscriminate retries",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -725,7 +791,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "Preview head SHA must match deployment head",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -740,7 +807,8 @@
           "classification": "NORMATIVE",
           "rationale": "Disclose browser QA as pending when not executable",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -755,7 +823,8 @@
           "classification": "EXAMPLE_WITH_NORMATIVE_REFERENCES",
           "rationale": "Sample student prompt; requirements must be traced to other operative lines",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-pr-preview/SKILL.md",
@@ -770,7 +839,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "Historical PR Preview 404 not proof of branch outage; validate actual deployment URL",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-section-pattern-craft/SKILL.md",
@@ -780,7 +850,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-section-pattern-craft/SKILL.md",
@@ -790,7 +861,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-section-pattern-craft/SKILL.md",
@@ -800,7 +872,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-section-pattern-craft/SKILL.md",
@@ -810,7 +883,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-section-pattern-craft/SKILL.md",
@@ -820,7 +894,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -830,7 +905,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -840,7 +916,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -850,7 +927,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -860,7 +938,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -870,7 +949,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -880,7 +960,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -890,7 +971,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -900,7 +982,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -910,7 +993,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -920,7 +1004,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -930,7 +1015,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -940,7 +1026,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-site-maintenance/SKILL.md",
@@ -950,7 +1037,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-starter-onboarding/SKILL.md",
@@ -960,7 +1048,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-starter-onboarding/SKILL.md",
@@ -970,7 +1059,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -980,7 +1070,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -990,7 +1081,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1000,7 +1092,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1010,7 +1103,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1020,7 +1114,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1030,7 +1125,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1040,7 +1136,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1050,7 +1147,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/astro-ui-craft/SKILL.md",
@@ -1060,7 +1158,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1070,7 +1169,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1080,7 +1180,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1090,7 +1191,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1100,7 +1202,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1110,7 +1213,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1120,7 +1224,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": ".ai/url-to-frontend-replica/SKILL.md",
@@ -1130,7 +1235,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1145,7 +1251,8 @@
           "classification": "NORMATIVE_PENDING_SPLIT",
           "rationale": "PR59 evidence authority, no expectation as evidence",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1160,7 +1267,8 @@
           "classification": "NORMATIVE_CONDITION",
           "rationale": "PR59 test scope and explicit authorization boundary",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1175,7 +1283,8 @@
           "classification": "ACCEPTANCE_STATUS",
           "rationale": "NOT TESTED definition",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1190,7 +1299,8 @@
           "classification": "ACCEPTANCE_STATUS",
           "rationale": "BLOCKED requires reason and unblock conditions",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1205,7 +1315,8 @@
           "classification": "EVIDENCE_NOT_PASS",
           "rationale": "Historical substitute checks explicitly not EXT PASS",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1220,7 +1331,8 @@
           "classification": "NON_NORMATIVE",
           "rationale": "Historical CI table header only",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1235,7 +1347,8 @@
           "classification": "HISTORICAL_EVIDENCE",
           "rationale": "Historical workflow run snapshot, not current requirement",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1250,7 +1363,8 @@
           "classification": "HISTORICAL_EVIDENCE",
           "rationale": "Historical workflow run snapshot, not current requirement",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1265,7 +1379,8 @@
           "classification": "HISTORICAL_EVIDENCE",
           "rationale": "Historical IN PROGRESS snapshot, not current status",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
@@ -1280,7 +1395,8 @@
           "classification": "NORMATIVE",
           "rationale": "Time-bound snapshot must be rechecked from Actions",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
@@ -1290,7 +1406,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
@@ -1300,7 +1417,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
@@ -1310,7 +1428,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
@@ -1320,7 +1439,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1330,7 +1450,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1340,7 +1461,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1350,7 +1472,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1360,7 +1483,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1370,7 +1494,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1380,7 +1505,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1390,7 +1516,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1400,7 +1527,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1410,7 +1538,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/DEFECT-REGISTER.md",
@@ -1420,7 +1549,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md",
@@ -1430,7 +1560,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md",
@@ -1440,7 +1571,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md",
@@ -1450,7 +1582,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -1465,7 +1598,8 @@
           "classification": "NORMATIVE_CONDITION",
           "rationale": "NOTICE exception: example content alone does not block technical builds",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -1480,7 +1614,8 @@
           "classification": "NORMATIVE",
           "rationale": "NOT TESTED must not silently count as PASS",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -1495,7 +1630,8 @@
           "classification": "ACCEPTANCE_STATUS",
           "rationale": "BLOCKED definition; tool/environment unavailable",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/quality/QUALITY-CONTRACT.md",
@@ -1510,7 +1646,8 @@
           "classification": "NON_NORMATIVE",
           "rationale": "Table header only; content belongs in subsequent rows",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/ART-DIRECTION-STARTER.md",
@@ -1520,7 +1657,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/ART-DIRECTION-STARTER.md",
@@ -1530,7 +1668,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/ART-DIRECTION-STARTER.md",
@@ -1540,7 +1679,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1550,7 +1690,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1560,7 +1701,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1570,7 +1712,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1580,7 +1723,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1590,7 +1734,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1600,7 +1745,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1610,7 +1756,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1620,7 +1767,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
@@ -1630,7 +1778,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt",
@@ -1640,7 +1789,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt",
@@ -1650,7 +1800,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1660,7 +1811,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1670,7 +1822,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1680,7 +1833,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1690,7 +1844,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1700,7 +1855,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1710,7 +1866,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1720,7 +1877,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1730,7 +1888,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1740,7 +1899,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
@@ -1750,7 +1910,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1760,7 +1921,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1770,7 +1932,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1780,7 +1943,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1790,7 +1954,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1800,7 +1965,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1810,7 +1976,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1820,7 +1987,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1830,7 +1998,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1840,7 +2009,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
@@ -1850,7 +2020,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1860,7 +2031,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1870,7 +2042,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1880,7 +2053,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1890,7 +2064,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1900,7 +2075,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1910,7 +2086,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1920,7 +2097,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1930,7 +2108,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1940,7 +2119,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
@@ -1950,7 +2130,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -1960,7 +2141,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -1970,7 +2152,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -1980,7 +2163,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -1990,7 +2174,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2000,7 +2185,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2010,7 +2196,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2020,7 +2207,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2030,7 +2218,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2040,7 +2229,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2050,7 +2240,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2060,7 +2251,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2070,7 +2262,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2080,7 +2273,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2090,7 +2284,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/START-HERE.md",
@@ -2100,7 +2295,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2110,7 +2306,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2120,7 +2317,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2130,7 +2328,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2140,7 +2339,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2150,7 +2350,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2160,7 +2361,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2170,7 +2372,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2180,7 +2383,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2190,7 +2394,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2200,7 +2405,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2210,7 +2416,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2220,7 +2427,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2230,7 +2438,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2240,7 +2449,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2250,7 +2460,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2260,7 +2471,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2270,7 +2482,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2280,7 +2493,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2290,7 +2504,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2300,7 +2515,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2310,7 +2526,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2320,7 +2537,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2330,7 +2548,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2340,7 +2559,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2350,7 +2570,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2360,7 +2581,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2370,7 +2592,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2380,7 +2603,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2390,7 +2614,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2400,7 +2625,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2410,7 +2636,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2420,7 +2647,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2430,7 +2658,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2440,7 +2669,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2450,7 +2680,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2460,7 +2691,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2470,7 +2702,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2480,7 +2713,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2490,7 +2724,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2500,7 +2735,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2510,7 +2746,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2520,7 +2757,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2530,7 +2768,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2540,7 +2779,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2550,7 +2790,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2560,7 +2801,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2570,7 +2812,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2580,7 +2823,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2590,7 +2834,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
@@ -2600,7 +2845,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2610,7 +2856,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2620,7 +2867,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2630,7 +2878,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2640,7 +2889,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2650,7 +2900,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2660,7 +2911,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2670,7 +2922,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2680,7 +2933,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2690,7 +2944,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2700,7 +2955,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2710,7 +2966,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2720,7 +2977,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P1_EVIDENCE_QA"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2730,7 +2988,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2740,7 +2999,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P0_SAFETY_RELEASE"
       },
       {
         "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
@@ -2750,7 +3010,8 @@
         "candidateForNormativeReview": true,
         "legacyIds": [],
         "coverageStatus": "REVIEW_REQUIRED_UNMAPPED",
-        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION"
+        "reviewStatus": "PENDING_HUMAN_CLAUSE_CLASSIFICATION",
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
@@ -2765,7 +3026,8 @@
           "classification": "PROCEDURE_CONDITIONAL",
           "rationale": "Optional interview package and information return path",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P2_CONTENT_PROCEDURE"
       },
       {
         "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
@@ -2780,7 +3042,8 @@
           "classification": "NORMATIVE",
           "rationale": "Draft and unverified test results cannot be represented as PASS",
           "reviewStatus": "DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING"
-        }
+        },
+        "triagePriority": "P1_EVIDENCE_QA"
       }
     ],
     "firstReviewClassified": 25,
