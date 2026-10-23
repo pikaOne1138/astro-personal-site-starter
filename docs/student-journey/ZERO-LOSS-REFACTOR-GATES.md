@@ -285,3 +285,8 @@
 ## Phase 2｜Batch1–8 進一步原文查核（2026-10-23）
 
 本輪直接核對 Frozen Deploy L17/L24/L31/L43、Assembly L12/L50、Publishing L20/L63 等來源，新增 [CHILD-SPLIT-02](PHASE2-BATCH1-8-CHILD-SPLIT-02.md)：**14 個複合父候選／55 個獨立可追溯驗收子項**。此前第一輪為 8 父／27 子，故累計本兩輪 **22 個父候選／82 個子項 ID**（不含 Batch9）。[187 候選 Inventory](PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md) 已同步標記第二輪 14 筆。初始 128 筆標點初篩僅為人工審查優先度，現在其中 22 筆有拆解紀錄，另約 106 筆仍需語義核實。子項非 Canonical 數量，候選有狀態／驗收／例外，父子不可雙重計數。**Phase 2 IN PROGRESS，Phase 3/4 BLOCKED；不刪來源，不 Merge，不部署。**
+
+
+## Phase 2｜Batch1–8 剩餘 106 候選深化（2026-10-23）
+
+[逐列語義初裁](PHASE2-BATCH1-8-REMAINING-SEMANTIC-REVIEW.md) 已將前一輪剩餘 106 項分成 43 個單一條款含屬性、35 個條件性／架構事項、28 個真正待細拆的父候選；[CHILD-SPLIT-03](PHASE2-BATCH1-8-CHILD-SPLIT-03.md) 已把後者建立 **87 個子檢查 ID**，並更新 [187 項 Inventory](PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md)。前三輪合計 8+14+28=**50 個父候選**有拆解紀錄，27+55+87=**169 個子檢查 ID**。這些數字描述追溯顆粒度，非唯一 Canonical 義務；43+35 分類也仍須全量來源與跨表反向驗證。Phase 2 IN PROGRESS、Stage3/4 BLOCKED，原始文件不改、不 Merge、不部署。
