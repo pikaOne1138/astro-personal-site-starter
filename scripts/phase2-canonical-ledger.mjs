@@ -103,22 +103,105 @@ if(process.argv[2]==='import'){
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
 if(!old)throw Error('Run import first');
-const failures=[],ids=new Set(),review=[],missingFrozen=[],frozenSeen=new Set();
-for(const r of old.records){
- if(ids.has(r.legacyId))failures.push('duplicate ID: '+r.legacyId);ids.add(r.legacyId);
- if(r.decision==='PENDING'||r.reviewStatus!=='APPROVED'||!r.canonicalId)review.push(r.legacyId);
- for(const e of r.evidence||[]){try{const data=fs.readFileSync(e.workingPath,'utf8').split('\n');if(data[e.workingLine-1]!==e.rawRow)failures.push('working row changed: '+r.legacyId);}catch{failures.push('missing working file: '+e.workingPath);}}
- if(!(r.sourceRefs||[]).some(ref=>ref.revision===frozen || ref.sourceLayer==='UPSTREAM_DELTA'))missingFrozen.push(r.legacyId);
- for(const ref of r.sourceRefs||[]){
-  if(ref.revision===frozen&&manifest[ref.path]!==ref.blobSha)failures.push('invalid frozen SHA: '+r.legacyId);
-  if(!ref.lineStart)failures.push('missing line anchor: '+r.legacyId);
- }
- if(r.parentLegacyId&&!ids.has(r.parentLegacyId)&&!old.records.some(x=>x.legacyId===r.parentLegacyId))failures.push('orphan parent: '+r.legacyId);
+const failures=[],missingFrozen=[],unresolved=[],parentRisks=[],sourceLineMismatches=[],crossVersion=[],orphanAliases=[],canonicalGroups=new Map();
+const sourceCoverage=new Map(), legacyIndex=new Map();
+for(const row of old.records){
+ if(legacyIndex.has(row.legacyId))failures.push({type:'DUPLICATE_LEGACY_ID',id:row.legacyId});
+ legacyIndex.set(row.legacyId,row);
 }
-const missing=[...records.keys()].filter(x=>!ids.has(x));
-const state=failures.length+missing.length+missingFrozen.length+review.length+errors.length?'BLOCKED':'PASS';
-const report=['# Phase 2 Gate Report','', 'Generated from canonical-ledger.json. No semantic approval is inferred.','',
- '| Metric | Value |','|---|---:|','| Working Phase2 files | '+(files.length-1)+' |','| Frozen files | '+Object.keys(manifest).length+' |','| Imported legacy IDs | '+old.records.length+' |','| Discovered legacy IDs | '+records.size+' |','| Unimported IDs | '+missing.length+' |','| Broken refs | '+failures.length+' |','| Pending adjudication | '+review.length+' |','| Import read failures | '+errors.length+' |','| No directly anchored Frozen or upstream source | '+missingFrozen.length+' |','',
- '**Phase 2: '+state+'**. Phase 3/4: BLOCKED.','', '## Failures','', '~~~json',JSON.stringify({missing,failures,missingFrozenCount:missingFrozen.length,missingFrozenIds:missingFrozen,importErrors:errors,pendingSample:review.slice(0,20)},null,2),'~~~',''].join('\n');
+const sourceCache=new Map();
+function readRevision(revision,file){
+ const k=revision+':'+file;
+ if(sourceCache.has(k))return sourceCache.get(k);
+ let source=null;
+ try{
+  if(revision===frozen)source=execFileSync('git',['show',k],{encoding:'utf8',maxBuffer:12*1024*1024}).split(/\r?\n/);
+  else if(fs.existsSync(file))source=fs.readFileSync(file,'utf8').split(/\r?\n/);
+ }catch{}
+ sourceCache.set(k,source);return source;
+}
+for(const row of old.records){
+ const id=row.legacyId;
+ if(!row.canonicalId||row.reviewStatus!=='APPROVED'||row.decision==='PENDING')unresolved.push(id);
+ if(row.canonicalId){
+  if(!canonicalGroups.has(row.canonicalId))canonicalGroups.set(row.canonicalId,[]);
+  canonicalGroups.get(row.canonicalId).push(row);
+ }
+ if(row.parentLegacyId&&!legacyIndex.has(row.parentLegacyId))failures.push({type:'ORPHAN_PARENT',id,parent:row.parentLegacyId});
+ if(row.parentLegacyId&&row.canonicalId&&legacyIndex.get(row.parentLegacyId)?.canonicalId===row.canonicalId)parentRisks.push(id);
+ for(const alias of row.aliases||[])if(typeof alias==='string'&&!legacyIndex.has(alias))orphanAliases.push({id,alias});
+ for(const e of row.evidence||[]){
+  const ls=readRevision('working',e.workingPath);
+  if(!ls||ls[e.workingLine-1]!==e.rawRow)failures.push({type:'WORK_PAPER_CHANGED',id,path:e.workingPath,line:e.workingLine});
+ }
+ let direct=false;
+ for(const ref of row.sourceRefs||[]){
+  const isFrozen=ref.revision===frozen;
+  if(!isFrozen&&ref.sourceLayer!=='UPSTREAM_DELTA'&&ref.sourceLayer!=='LEGACY_WORK_PAPER'&&ref.revision?.length===40)crossVersion.push({id,path:ref.path,revision:ref.revision});
+  if(isFrozen){
+   if(!manifest[ref.path]||manifest[ref.path]!==ref.blobSha)failures.push({type:'FROZEN_BLOB_SHA_MISMATCH',id,path:ref.path});
+   const ls=readRevision(frozen,ref.path);
+   if(!ls||!ref.lineStart||!ref.lineEnd||ref.lineEnd>ls.length)failures.push({type:'FROZEN_LINE_INVALID',id,path:ref.path,line:ref.lineStart});
+   else {
+    if(ref.sourceText&&ref.sourceText!==ls[ref.lineStart-1])sourceLineMismatches.push({id,path:ref.path,line:ref.lineStart});
+    direct=true;
+    const k=ref.path+':'+ref.lineStart; if(!sourceCoverage.has(k))sourceCoverage.set(k,new Set());sourceCoverage.get(k).add(id);
+   }
+  }else if(ref.sourceLayer==='UPSTREAM_DELTA')direct=true;
+  if(!ref.lineStart)failures.push({type:'UNANCHORED_REF',id,path:ref.path});
+ }
+ if(!direct)missingFrozen.push(id);
+}
+const discovered=[...records.keys()],imported=new Set(old.records.map(x=>x.legacyId)),missingLegacy=discovered.filter(x=>!imported.has(x));
+const aliasPairs=[...canonicalGroups.entries()].filter(([,v])=>v.length>1).map(([canonicalId,v])=>({canonicalId,legacyIds:v.map(x=>x.legacyId)}));
+const status={
+ frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
+ discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
+ missingLegacyIds:missingLegacy.length,brokenReferences:failures.length,
+ frozenTextMismatches:sourceLineMismatches.length,
+ noFrozenOrUpstreamAnchor:missingFrozen.length,
+ unmatchedAliases:orphanAliases.length,
+ parentDoubleCountRisks:parentRisks.length,
+ crossVersionReferences:crossVersion.length,
+ pendingSemanticDecisions:unresolved.length,
+ approvedCanonicalIds:canonicalGroups.size,
+ aliasGroups:aliasPairs.length,
+ frozenLinesReferenced:sourceCoverage.size,
+ unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
+ semanticCompleteness:'NOT_VERIFIED',
+ oldFileRetirement:'NOT_AUTHORIZED',
+ stage2:'BLOCKED',stage3:'BLOCKED',stage4:'BLOCKED'
+};
+const failReasons=[];
+if(status.frozenManifestFiles!==192)failReasons.push('Frozen manifest is not 192 files');
+if(missingLegacy.length)failReasons.push('Unimported legacy IDs');
+if(failures.length)failReasons.push('Broken links or source integrity failures');
+if(missingFrozen.length)failReasons.push('Missing direct frozen or upstream anchors');
+if(sourceLineMismatches.length)failReasons.push('Frozen text mismatches');
+if(parentRisks.length)failReasons.push('Parent/child canonical double-count risk');
+if(crossVersion.length)failReasons.push('Unreviewed non-frozen references');
+if(orphanAliases.length)failReasons.push('Alias orphans');
+if(unresolved.length)failReasons.push('Semantic adjudication incomplete');
+failReasons.push('No exhaustive clause denominator / source-to-ledger semantic coverage verified');
+const report=[
+ '# PR #67 | Phase 2 Gate Report','',
+ '> Generated, non-normative report. Frozen baseline and canonical ledger remain the only source evidence/decision authority. Mechanical traceability is not semantic coverage.','',
+ '| Metric | Result |','|---|---:|',
+ ...Object.entries(status).map(([k,v])=>'| '+k+' | '+String(v)+' |'),
+ '',
+ '**Phase 2: BLOCKED. Phase 3 / 4: BLOCKED.**',
+ '',
+ '## Gate blockers',
+ ...failReasons.map(x=>'- '+x),
+ '',
+ '## Machine-verifiable diagnostics',
+ '~~~json',
+ JSON.stringify({counts:status,missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30)},null,2),
+ '~~~','',
+ '## Document retirement',
+ 'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
+].join('\n');
 if(process.argv[2]==='report')fs.writeFileSync(dir+'PHASE2-GATE-REPORT.md',report);
-console.log(report);if(state!=='PASS')process.exitCode=1;
+console.log(report);
+if(process.argv[2]!=='report'&&process.argv[2]!=='verify')throw Error('Usage: import | verify | report');
+process.exitCode=1;
