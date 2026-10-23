@@ -1,0 +1,41 @@
+name: PR67 Phase2 Canonical Import
+on:
+  push:
+    branches:
+      - feat/student-planner-draft-recovery
+    paths:
+      - scripts/phase2-canonical-ledger.mjs
+      - .github/workflows/phase2-ledger-import.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-work-papers:
+    if: github.repository == 'pikaOne1138/astro-personal-site-starter' && github.ref == 'refs/heads/feat/student-planner-draft-recovery'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/student-planner-draft-recovery
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Import all 59 legacy papers and separate PR61 delta
+        run: node scripts/phase2-canonical-ledger.mjs import
+      - name: Record blocked gate without treating pending reviews as PASS
+        shell: bash
+        run: |
+          node scripts/phase2-canonical-ledger.mjs report || true
+          node scripts/phase2-canonical-ledger.mjs verify || true
+      - name: Commit only generated ledger and gate report to PR branch
+        shell: bash
+        run: |
+          git add docs/student-journey/canonical-ledger.json docs/student-journey/PHASE2-GATE-REPORT.md
+          if git diff --cached --quiet; then
+            echo "Generated ledger unchanged"
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore(phase2): regenerate canonical ledger from all frozen work papers'
+          git push origin HEAD:feat/student-planner-draft-recovery
