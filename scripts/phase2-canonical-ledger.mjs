@@ -155,7 +155,7 @@ const old=fs.existsSync(path)?JSON.parse(fs.readFileSync(path,'utf8')):null;
 if(process.argv[2]==='import'){
  const oldById=new Map((old?.records||[]).map(x=>[x.legacyId,x]));
  const entries=[...records.values()].map(x=>{const previous=oldById.get(x.legacyId);return previous?{...x,sourceRefs:x.sourceRefs.length?x.sourceRefs:previous.sourceRefs,canonicalId:previous.canonicalId,decision:previous.decision,reviewStatus:previous.reviewStatus,kind:previous.kind,aliases:previous.aliases,applicability:previous.applicability,conditions:previous.conditions,exceptions:previous.exceptions,acceptanceCriteria:previous.acceptanceCriteria}:x;});
- fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,importErrors:errors,recoveryFailures},null,2)+'\n');
+ fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceFirstReview:firstReview,importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
 if(!old)throw Error('Run import first');
@@ -240,9 +240,55 @@ for(const file of scopedNormativeFiles){
    reviewStatus:'PENDING_HUMAN_CLAUSE_CLASSIFICATION'});
  }
 }
+// First evidence-based classification of uncovered source lines.
+// Review notes describe original line scope; these are not approved Canonical clauses.
+const firstReview={
+ '.ai/astro-pr-preview/SKILL.md':{
+  3:['NON_NORMATIVE','Skill YAML description, not an independent clause'],
+  21:['NORMATIVE_PENDING_SPLIT','BASE_URL and build verification; prohibited fabricated success'],
+  29:['NORMATIVE_PENDING_SPLIT','GitHub Pages source/platform check and student-specific site/base'],
+  36:['NORMATIVE_PENDING_SPLIT','Cloudflare student-repo integration and preview settings'],
+  51:['NORMATIVE_PENDING_SPLIT','Failure-specific repair instead of indiscriminate retries'],
+  53:['NORMATIVE_PENDING_SPLIT','Preview head SHA must match deployment head'],
+  55:['NORMATIVE','Disclose browser QA as pending when not executable'],
+  59:['EXAMPLE_WITH_NORMATIVE_REFERENCES','Sample student prompt; requirements must be traced to other operative lines'],
+  65:['NORMATIVE_PENDING_SPLIT','Historical PR Preview 404 not proof of branch outage; validate actual deployment URL']
+ },
+ 'docs/quality/QUALITY-CONTRACT.md':{
+  9:['NORMATIVE_CONDITION','NOTICE exception: example content alone does not block technical builds'],
+  10:['NORMATIVE','NOT TESTED must not silently count as PASS'],
+  11:['ACCEPTANCE_STATUS','BLOCKED definition; tool/environment unavailable'],
+  28:['NON_NORMATIVE','Table header only; content belongs in subsequent rows']
+ },
+ 'docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md':{
+  3:['NORMATIVE_PENDING_SPLIT','PR59 evidence authority, no expectation as evidence'],
+  5:['NORMATIVE_CONDITION','PR59 test scope and explicit authorization boundary'],
+  9:['ACCEPTANCE_STATUS','NOT TESTED definition'],
+  10:['ACCEPTANCE_STATUS','BLOCKED requires reason and unblock conditions'],
+  29:['EVIDENCE_NOT_PASS','Historical substitute checks explicitly not EXT PASS'],
+  44:['NON_NORMATIVE','Historical CI table header only'],
+  47:['HISTORICAL_EVIDENCE','Historical workflow run snapshot, not current requirement'],
+  49:['HISTORICAL_EVIDENCE','Historical workflow run snapshot, not current requirement'],
+  50:['HISTORICAL_EVIDENCE','Historical IN PROGRESS snapshot, not current status'],
+  52:['NORMATIVE','Time-bound snapshot must be rechecked from Actions']
+ },
+ 'docs/workshop/PR56-USER-JOURNEY-QA.md':{
+  15:['PROCEDURE_CONDITIONAL','Optional interview package and information return path'],
+  41:['NORMATIVE','Draft and unverified test results cannot be represented as PASS']
+ }
+};
+for(const row of sourceLineInventory){
+ const classification=firstReview[row.path]?.[row.line];
+ if(classification&&!row.legacyIds.length){
+  row.initialReview={classification:classification[0],rationale:classification[1],
+   reviewStatus:'DOCUMENTARY_CLASSIFIED_PENDING_CLAUSE_MAPPING'};
+ }
+}
 const candidateLines=sourceLineInventory.filter(x=>x.candidateForNormativeReview);
 const unmappedCandidateLines=candidateLines.filter(x=>!x.legacyIds.length);
 const mappedCandidateLines=candidateLines.filter(x=>x.legacyIds.length);
+const firstReviewedUnmapped=unmappedCandidateLines.filter(x=>x.initialReview);
+const remainingUnclassified=unmappedCandidateLines.filter(x=>!x.initialReview);
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  discoveredLegacyIds:discovered.length,importedLegacyIds:old.records.length,
@@ -266,6 +312,8 @@ const status={
  sourceFirstUnmappedCandidateLines:unmappedCandidateLines.length,
  sourceFirstMappedCandidateLines:mappedCandidateLines.length,
  sourceFirstReadFailures:sourceInventoryFailures.length,
+ sourceFirstClassifiedUnmapped:firstReviewedUnmapped.length,
+ sourceFirstUnclassifiedUnmapped:remainingUnclassified.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
  semanticCompleteness:'NOT_VERIFIED',
  oldFileRetirement:'NOT_AUTHORIZED',
@@ -302,7 +350,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,unmappedCandidateLines:unmappedCandidateLines,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,unmappedCandidateLines:unmappedCandidateLines,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
