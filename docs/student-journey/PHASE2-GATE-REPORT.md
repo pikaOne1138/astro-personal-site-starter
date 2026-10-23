@@ -19,6 +19,13 @@
 | crossVersionReferences | 0 |
 | pendingSemanticDecisions | 1339 |
 | approvedCanonicalIds | 47 |
+| p0Leaves | 86 |
+| p0ApprovedLegacyRows | 51 |
+| p0UniqueCanonicalIds | 47 |
+| p0MappedAcceptanceDimensions | 35 |
+| p0AcceptanceDimensionGroups | 5 |
+| p0UnhandledLeaves | 0 |
+| p0InvariantFailures | 0 |
 | aliasGroups | 4 |
 | documentaryRelationGroups | 18 |
 | documentaryMerges | 4 |
@@ -86,6 +93,13 @@
     "crossVersionReferences": 0,
     "pendingSemanticDecisions": 1339,
     "approvedCanonicalIds": 47,
+    "p0Leaves": 86,
+    "p0ApprovedLegacyRows": 51,
+    "p0UniqueCanonicalIds": 47,
+    "p0MappedAcceptanceDimensions": 35,
+    "p0AcceptanceDimensionGroups": 5,
+    "p0UnhandledLeaves": 0,
+    "p0InvariantFailures": 0,
     "aliasGroups": 4,
     "documentaryRelationGroups": 18,
     "documentaryMerges": 4,
@@ -127,6 +141,7 @@
     "stage3": "BLOCKED",
     "stage4": "BLOCKED"
   },
+  "p0InvariantFailures": [],
   "frozenManifestErrors": [],
   "canonicalConsistencyErrors": [],
   "sourceFirst": {
