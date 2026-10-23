@@ -270,3 +270,8 @@
 ## 本輪後續補正｜Batch9-C 的 72 個子條件 ID
 
 [PHASE2-BATCH9-C-CHILD-ID-REGISTER.md](PHASE2-BATCH9-C-CHILD-ID-REGISTER.md) 已將原 Batch9-C 的 **21 父行／72 個原有編號子條件** 各配一個獨立可反查的工作 ID（如 `B9C-DEP40-01`、`B9C-ASM77-03`），修復本輪發現的 `CHILD_ID_NOT_MINTED` 類型缺口。原父列與 Frozen source 均保留；原文子條件仍需要進一步分拆複合語義，**72 不是唯一 Canonical 數，Phase 2 仍 IN PROGRESS**。已記錄的其他跨表關係還須全量存在性及正反向驗證，Stage 3/4 BLOCKED。
+
+
+## Phase 2｜Batch 1–8 原子化補正（2026-10-23）
+
+新增 [PHASE2-BATCH1-8-CHILD-SPLIT-01.md](PHASE2-BATCH1-8-CHILD-SPLIT-01.md)，依 Frozen Publishing L28、L36、L37、L47、L65、L78 與 Assembly L31 實際原文，拆解 8 個已存在的父工作 ID 為 27 個有來源錨點的子檢查。父工作 ID 保留，不得父子重複加總；這是**第一批已確認的局部拆解**，不能宣稱 Batch1–8 全部拆完或全 Repo Canonical 去重完成。Stage 2 IN PROGRESS，Stage 3/4 BLOCKED；#61 Delta 與 #58 不變。
