@@ -273,6 +273,8 @@ if(process.argv[2]==='import'){
  // matching Frozen line AND a manually checked atomic statement. Never map
  // composite parents or narrower acceptance subconditions by proximity.
  const semanticAliasProofs=[
+  ['P0-CANON-INDEX-ENABLE','P0-U018','.ai/astro-starter-deploy/SKILL.md',31],
+  ['P0-CANON-PREVIEW-INDEX','P0-U019','.ai/astro-starter-deploy/SKILL.md',31],
   ['B1-DEP31-01','P0-U017','.ai/astro-starter-deploy/SKILL.md',31],
   ['B1-DEP31-02','P0-U018','.ai/astro-starter-deploy/SKILL.md',31],
   ['B1-DEP31-04','P0-U019','.ai/astro-starter-deploy/SKILL.md',31],
