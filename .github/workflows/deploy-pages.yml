@@ -51,7 +51,7 @@ jobs:
             exit 0
           fi
           mkdir -p /tmp/preview-gate
-          gh run download "$RUN_ID" --name preview-event --dir /tmp/preview-gate
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name preview-event --dir /tmp/preview-gate
           ACTION="$(node -e "const e=require('/tmp/preview-gate/event.json'); if(!Number.isSafeInteger(e.number)||e.number<1||!['opened','reopened','synchronize','closed'].includes(e.action))process.exit(1); process.stdout.write(e.action)")"
           if [ "$ACTION" = "closed" ] || grep -Fxq 'preview-site' <<< "$ARTIFACTS"; then
             echo "eligible=true" >> "$GITHUB_OUTPUT"
