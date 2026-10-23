@@ -1004,6 +1004,26 @@ if(process.argv[2]==='import'){
  if(!safetyParent||sourceSafety.slice(0,2).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Safety composite incomplete');
  Object.assign(safetyParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
   childrenLegacyIds:sourceSafety.slice(0,2).map(([id])=>id)});
+ // B2: GitHub Pages release sequence and isolation preconditions.
+ // The platform-specific Preview step is not satisfied by a local artifact.
+ const pagesFlow=[
+ ['B9B-DEP-19-01','Create feature branch and PR, then execute configured CI before release'],
+ ['B9B-DEP-19-02','A real isolated GitHub Pages PR Preview must be configured and accessible before claiming it exists'],
+ ['B9B-DEP-19-03','Obtain explicit student approval before Merge or Production deployment'],
+ ['B9B-DEP-19-04','After authorized deployment verify actual pages, search and links'],
+ ['B9B-DEP-19-05','Local build output does not count as an accessible remote Preview']
+ ];
+ for(let i=0;i<pagesFlow.length;i++){
+  const [id,requirement]=pagesFlow[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=19;
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))
+   throw Error('Pages flow source unverified '+id);
+  if(row.canonicalId)throw Error('Pages flow already decided '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(253+i).padStart(4,'0'),requirement,
+   kind:i===3?'acceptance':'policy',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student using GitHub Pages hosting option'],conditions:[],exceptions:[],
+   acceptanceCriteria:[],approvalEvidence:{frozenPath:source,frozenLine:line,sourceText:frozenLine(source,line),
+    frozenBlobSha:manifest[source],method:'IMMUTABLE_SOURCE_AND_PREEXISTING_ATOMIC_WORK_ITEM'}});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
