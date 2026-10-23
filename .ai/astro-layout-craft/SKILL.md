@@ -8,12 +8,11 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 
 **版型（Layout）** 是整個網站如何安排內容：首頁區塊先後、欄位比例、視覺重心、瀏覽節奏、如何抵達 CTA；不等於紙墨／晨光／靜室／植感等 Design Tokens。既有 `astro-ui-craft` 負責網站區塊，`astro-motion-craft` 負責動效，本 Skill 負責**資訊動線與整體排版**。
 
-## 來源與誠實標註
+## 現況與界線
 
-- Manus 10 個原型：使用者上傳 `astro-ten-site-directions.zip`，原生原型位於 `src/pages/directions/knowledge/*` 與 `src/pages/directions/care/*`。本 Repo `/layouts/` 根據其不同資訊架構改寫了 10 款 Astro 示範，**不是逐字不變的 ZIP 原始碼**。
-- Claude `Claude-AstroTmplateResearch.md` 與 `Astro 架站工作坊｜三種網站風格設計規格.md` 是研究與設計規格，**並未交付兩個獨立可執行版型原始碼**。`reading-atlas` 與 `trust-path` 是我們依其研究新增的 2 款版型設計。
-- 檔案 `src/data/layout-directions.json` 管理十二款；`src/pages/layouts/index.astro` 比較入口，`src/pages/layouts/<slug>/index.astro` 內各有獨立 DOM 結構，`public/layout-library.css` 各有不同的布局，而非換色切換。
-- 現階段為首頁排版**原型展示**，不是每款都有文章內頁、預約後端、完整網站部署。原型的來源圖片暫參考使用者上架的 Manus 圖片 URL；若做成可交付學員的獨立模板，需將已授權的圖片改為自託管並補完整頁面。
+- `src/data/layout-directions.json` 管理版型清單；`src/pages/layouts/index.astro` 是比較入口，`src/pages/layouts/<slug>/index.astro` 各有獨立的 DOM 結構，`public/layout-library.css` 各有不同的布局，不是換色切換。
+- `/layouts/` 展示的是首頁排版**原型**，不是每款都有文章內頁、預約後端或完整網站部署。
+- 原型的示範圖片可能引用遠端網址；做成學員的獨立網站時，要改用已授權或自託管的圖片，並補齊必要的內頁。
 
 ## 必須遵循的組裝步驟
 

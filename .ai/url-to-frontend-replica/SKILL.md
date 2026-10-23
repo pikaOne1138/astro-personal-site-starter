@@ -5,7 +5,7 @@ description: "從使用者提供的網址，盤點並忠實重建有權使用的
 
 # URL-to-Frontend Replica｜既有網站的授權前端重建
 
-> 本 Skill 依使用者提供的新版 URL-to-Frontend Replica Skill 整理納入 ATP。用途是第三種「已有網站」入口，**不等同於**選 ATP Layout 的 Starter 組站，也不等同於 Astro Site From Zero。
+> 用途是「已有網站」的入口，**不等同於**選 ATP Layout 的 Starter 組站，也不等同於 Astro Site From Zero。
 >
 > ATP 主要支援知識／部落格及助人者／專業服務網站。其他網站類型可先做範圍評估，但須明確說明 ATP 現有 Starter、元件與內容架構未必提供完整支援，不得以研究展示原型冒充 Ready Starter。
 

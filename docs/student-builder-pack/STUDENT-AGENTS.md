@@ -109,8 +109,5 @@
 - 在新 AI 工具或新對話接手時，依 `PROJECT.md` 的意圖與 Git／程式的現況重新驗證，不依賴舊聊天記憶。
 
 <!-- builder-only:start -->
-## 交付包與環境注意事項
-
-本 ZIP 提供必要的 `.ai/` Skills、可重用版型和 Blocks、`scripts/export-starter.mjs`、`COMPONENTS.md`、`PROJECT-TEMPLATE.md`、`START-HERE.md`、`AGENT-HANDOFF.md`；學員另提供規劃器匯出的 Site Brief JSON。這份 ZIP 是唯一必要的網站程式來源，不必 Fork、Clone 或申請讀取老師的研究 Repo，也不要將老師的示範素材當成已獲授權的正式網站素材。研究範例與展示程式只是創作素材，不能直接視為學員已完成的網站。先閱讀 `START-HERE.md`，接手既有專案時再讀 `AGENT-HANDOFF.md`。AI 缺少 Node／Git／雲端或瀏覽器能力時，必須如實告知替代流程，不要求完全新手自己猜 CLI 指令。
-
+本資料包的入口是 `START-HERE.md`；接手既有專案時再讀 `AGENT-HANDOFF.md`。AI 缺少 Node／Git／雲端或瀏覽器能力時，必須如實告知替代流程，不要求完全新手自己猜 CLI 指令。
 <!-- builder-only:end -->

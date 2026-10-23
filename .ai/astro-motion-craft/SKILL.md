@@ -17,9 +17,9 @@ description: Design, tune and audit restrained Astro motion interactions using r
 - 原始檔路徑、版本對照：[`references/manus-v2-motion-map.md`](./references/manus-v2-motion-map.md)
 
 **資料等級標示**：
-1. 「Manus 原始碼確認」為使用者提供的 ZIP 檔案中可核對的 Props 與 JS；
+1. 「Manus 原始碼確認」為 `library/source-snapshots/` 與 recipe 中可核對的 Props 與 JS；
 2. 「本專案建議／recipe」為我們依現有四套主題重新設計的融合方案；
-3. 「已實作」只以本 GitHub 分支實際存在的元件與網站展示為準。
+3. 「已實作」只以專案裡實際存在的元件與網站展示為準。
 
 這個 library 是**實作知識庫**，不是自動引入外部程式碼的 runtime。新的 AI Agent 若無法直接存取原始 ZIP，仍能按 library 的參數與源檔路徑做受限的可重用實作；需要完整逐字移植前則需再次取得原 ZIP 並核對授權與相容性。
 
@@ -79,7 +79,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 
 > 參考庫是常駐的設計資產，新增效果、修正既有效果時，也要回填 `library/effect-catalog.md` 的狀態與對應 recipe。
 
-> Manus v2 參考資料：`manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md` 與使用者提供的 `manusCR-v2astro-editorial-care-tailwind-motion.zip`。這些是**設計研究來源**，不直接代表本 repo 的已安裝依賴或現有實作。
+> Manus v2 的資料是**設計參考**，不代表專案已安裝它的依賴或實作。
 
 
 ## 實際可操作的特效庫

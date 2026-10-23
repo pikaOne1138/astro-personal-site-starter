@@ -4,7 +4,7 @@ description: Start a maintainable Astro website by talking with a non-coder dire
 ---
 # Astro Site from Zero｜直接對話建站
 
-> 取自 Manus 提供的「Astro Site from Zero」流程要點，接到 ATP 現有的技術與維護護欄；是「從自然語言開始」的入口，而非另一套 Starter 生成器。
+> 這是「從自然語言開始」的入口，而不是另一套 Starter 生成器。
 
 ## 模式先行
 檢查工作區、既有 Repo／未提交變更及工具能力：可否讀寫檔案、執行 Astro Build、看實際瀏覽器、建立 Git Branch／PR、獲取預覽。能力齊全採 Build Mode；能力缺乏採 Guided Mode，一次引導學員一個動作，不宣稱做過沒做的事情。
