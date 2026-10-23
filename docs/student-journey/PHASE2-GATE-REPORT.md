@@ -2,26 +2,20 @@
 
 > **IMPORT FAILED — latest Ledger/metrics are stale and MUST NOT be presented as current.**
 
-Failed import commit: `434dea493c16855b49a60096e0af42eb84231d5e`
+Failed import commit: `75db45a567b81155a9501ec973f92e74c10f32b5`
 
 ## Import error (captured from actual runner)
 
 ```text
-file:///home/runner/work/astro-personal-site-starter/astro-personal-site-starter/scripts/phase2-canonical-ledger.mjs:1207
- const parent=byId.get('B2-PUB37-01');
-       ^
+file:///home/runner/work/astro-personal-site-starter/astro-personal-site-starter/scripts/phase2-canonical-ledger.mjs:907
+  if(row.canonicalId)throw Error('Deployment B2 already canonicalized: '+id);
+                           ^
 
-SyntaxError: Identifier 'parent' has already been declared
-    at compileSourceTextModule (node:internal/modules/esm/utils:319:16)
-    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:89:18)
-    at #translate (node:internal/modules/esm/loader:438:20)
-    at afterLoad (node:internal/modules/esm/loader:506:29)
-    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:511:12)
-    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:564:36)
-    at afterResolve (node:internal/modules/esm/loader:611:52)
-    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:617:12)
-    at node:internal/modules/esm/loader:636:32
-    at TracingChannel.tracePromise (node:diagnostics_channel:362:14)
+Error: Deployment B2 already canonicalized: B9C-DEP36-01
+    at file:///home/runner/work/astro-personal-site-starter/astro-personal-site-starter/scripts/phase2-canonical-ledger.mjs:907:28
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
 
 Node.js v24.21.0
 
