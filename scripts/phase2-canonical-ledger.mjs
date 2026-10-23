@@ -853,6 +853,40 @@ if(process.argv[2]==='import'){
  if(!workflowParent||workflowRules.slice(1,4).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Workflow children incomplete');
  Object.assign(workflowParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
    childrenLegacyIds:workflowRules.slice(1,4).map(([id])=>id)});
+ // B2: preserve original assembled-site verification details separately
+ // from the composite historical work item; do not double count the parent.
+ const freshB2=[
+  ['B4-ASM12-01-S01','Consult the actual Starter config before assembly','.ai/astro-site-assembly/SKILL.md',12],
+  ['B4-ASM12-01-S02','Consult the existing layout-directions registry before assembly','.ai/astro-site-assembly/SKILL.md',12],
+  ['B4-ASM12-01-S03','Consult the existing Blocks registry before assembly','.ai/astro-site-assembly/SKILL.md',12],
+  ['B6-DEP30-01','Verify actual build emitted Pagefind and exact-zh search index','.ai/astro-starter-deploy/SKILL.md',30],
+  ['B6-DEP30-02-S01','Verify generated search index structure','.ai/astro-starter-deploy/SKILL.md',30],
+  ['B6-DEP30-02-S02','Verify generated route integrity','.ai/astro-starter-deploy/SKILL.md',30],
+  ['B6-DEP30-02-S03','Verify drafts remain excluded from search/discovery indexes','.ai/astro-starter-deploy/SKILL.md',30],
+  ['B6-DEP30-03','Use a deliberately failing fixture to check CI regression gate catches a real defect','.ai/astro-starter-deploy/SKILL.md',30],
+  ['B6-DEP30-04','Revalidate the output when deployment base path changes','.ai/astro-starter-deploy/SKILL.md',30]
+ ];
+ for(let i=0;i<freshB2.length;i++){
+  const [id,requirement,source,line]=freshB2[i],entry=byId.get(id),canonicalId='ATP-P2-'+String(211+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||!entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Unverified source coordinate '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Canonical collision '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',
+    applicability:['Student site using matching export or search functionality'],
+    conditions:line===30?['Actual output has configured Pagefind/exact-zh functionality']:[],
+    exceptions:[],acceptanceCriteria:[],aliases:[],
+    approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+     sourceText:frozenLine(source,line),method:'EXACT_FROZEN_LINE_AND_EXISTING_ATOMIC_WORK_ITEM'}});
+ }
+ for(const [id,kids] of [
+   ['B4-ASM12-01',['B4-ASM12-01-S01','B4-ASM12-01-S02','B4-ASM12-01-S03']],
+   ['B6-DEP30-02',['B6-DEP30-02-S01','B6-DEP30-02-S02','B6-DEP30-02-S03']]
+ ]){
+  const parent=byId.get(id);
+  if(!parent||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))throw Error('B2 composite not fully reviewed: '+id);
+  Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+   childrenLegacyIds:kids,parentDisposition:'Every original sub-check retained as a separately sourced clause'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
