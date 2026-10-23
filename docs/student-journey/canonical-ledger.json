@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "0706fd78a9f2ed1e997a9d60e04d13754692aa26"
+        "blobSha": "18a4017b83280ff64e3f87ffd5ca2e45ac514cd4"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -66084,22 +66084,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": ".ai/astro-pr-preview/SKILL.md:3",
         "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
         "sourceText": "description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform.",
         "reason": "YAML description: scope metadata, not a separate instruction"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:21",
@@ -66245,22 +66237,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": ".ai/astro-pr-preview/SKILL.md:59",
         "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
         "sourceText": "「請先查看我自己的 GitHub Repository 與實際使用的託管平台（GitHub Pages、Cloudflare Pages 或 Workers），依 astro-pr-preview 與 astro-starter-deploy Skill 修改網站。建立 Branch 和 PR，檢查 Build，找到**平台真正產生、對應最新 Commit**的預覽網址給我，確認電腦與手機畫面；我明確同意後才合併與發布。不要把教學研究 Repo 的預覽網址當成我的網站。」",
         "reason": "Quoted sample prompt, obligations must map through operational source lines"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:65",
@@ -67422,22 +67406,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:12",
         "frozenBlobSha": "0b0b3870098f56dcaefc6d486ec789364b0b5ef1",
         "sourceText": "npm run verify",
         "reason": "Isolated shell invocation illustrative of an existing verification command"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:15",
@@ -67585,22 +67561,14 @@
       "proposedAction": "NON_NORMATIVE",
       "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": [],
-      "adjudicationNeeded": [
-        "scope",
-        "normative-versus-context",
-        "atomicity",
-        "source-to-legacy-map",
-        "cross-source-alias",
-        "approval"
-      ],
       "decision": "NON_NORMATIVE",
       "dispositionEvidence": {
         "frozenSource": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:15",
         "frozenBlobSha": "d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9",
         "sourceText": "| UX-S01 | 「首頁第二段有錯字，改成我這句」 | 不追問即可改，執行局部驗證 | 強制填完 Site Brief；自行發 Production |",
         "reason": "An evaluation scenario row, not a universally applicable website policy"
-      }
+      },
+      "atomicClauseCandidates": []
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:28",
