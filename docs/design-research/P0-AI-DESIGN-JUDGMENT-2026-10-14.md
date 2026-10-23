@@ -130,7 +130,7 @@ Rubric 不產生憑空美學統分，也不直接把第三方前端 Repo 的自�
 - Motion Primitives: https://github.com/ibelick/motion-primitives
 - Cursify: https://github.com/ui-layouts/cursify
 - Trickle: https://github.com/akaieuan/trickle-UI-kit
-- ATP: `AGENTS.md`, `.ai/astro-ui-craft/SKILL.md`, `.ai/astro-layout-craft/SKILL.md`, `.ai/astro-editorial-layout-design/SKILL.md`, `.ai/astro-motion-craft/SKILL.md`, `docs/art-direction/PR47-HANDOFF.md`.
+- ATP: `AGENTS.md`, `.ai/astro-ui-craft/SKILL.md`, `.ai/astro-layout-craft/SKILL.md`, `.ai/astro-editorial-layout-design/SKILL.md`, `.ai/astro-motion-craft/SKILL.md`, `docs/archive/art-direction/PR47-HANDOFF.md`.
 
 ## 9. 外部內容轉用政策
 
