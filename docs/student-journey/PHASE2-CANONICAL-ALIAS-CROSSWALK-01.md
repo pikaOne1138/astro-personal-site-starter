@@ -32,7 +32,7 @@
 
 | A | B | 判定 | 不得遺失的適用範圍 |
 |---|---|---|---|
-| B9C-DEP32-01 | B5-PUB62-03 | SAME_CANDIDATE | 一者特指 noindex，一者概括 CI Gate；完整合併前需保留差異 |
+| B9C-DEP32-01 | B5-PUB62-03 | PARTIAL_OVERLAP | 一者特指 noindex，一者概括 CI Gate，不能直接合併或互相取代 |
 | B9C-DEP32-02 | P0-CANON-INDEX-ENABLE | PARTIAL_OVERLAP | P0 明確要求內容、安全、預覽及 Owner 同意後，僅 Production 可開索引 |
 | B9C-DEP40-02 | P0-CANON-PRVIEW-MISSING | PARTIAL_OVERLAP | 教師 Workflow 不能當學生 Preview，與學生實際無 Preview 時如實回報不同 |
 | B9C-DEP40-03 | B9A-DEP25-01 | PARTIAL_OVERLAP | Cloudflare Git 專案連線和實際 Preview URL／SHA 是獨立證據 |
@@ -41,7 +41,7 @@
 | B9C-DEP36-01 | B9-ASM-L64-1 | PARTIAL_OVERLAP | URL/Preview 交接與自動生成／UI 待辦交接的證據欄位不同 |
 | B9C-ASM77-01 | B9C-ASM77-02 | DISTINCT | 選填 Schema 不是團隊成員身份核准政策 |
 
-上述 SAME_CANDIDATE 僅代表值得合併審查，**不是**人工正式裁決；對於 noindex 特指條件，不可因概括 CI Gate 條款而抹除。
+表中的 PARTIAL_OVERLAP 與 DISTINCT 都屬初判，**沒有任何一組可直接視為正式 Canonical 合併**；對於 noindex 特指條件，不可因概括 CI Gate 條款而抹除。
 
 ## C. 零遺失 Gate
 
