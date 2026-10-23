@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "987170f71a62ae8f228129eaf180af712d24efcc"
+        "blobSha": "613a8c95803ac1c1fab7aed1f1f34ec5e4cfef77"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -92955,6 +92955,1352 @@
       "sourceRole": "OTHER_FROZEN_SOURCE_PENDING_FILE_CLASSIFICATION",
       "legacyMatches": [],
       "sourceCoverageState": "UNREFERENCED_SOURCE_LINE_REQUIRES_REVIEW"
+    }
+  ],
+  "frozenFileRoleInventory": [
+    {
+      "path": ".ai/astro-content-publishing/references/article-authoring.md",
+      "blobSha": "a07954e06bc12ec15da7d2ce0bf299e0e84b3f2f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-publishing/references/seo-and-release-checklist.md",
+      "blobSha": "6f67b332aacde6e01e0d5d1cd84267c8d0d72735",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-publishing/SKILL.md",
+      "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-readiness/SKILL.md",
+      "blobSha": "f7a3b255189adb996fed03099896cababc1ec208",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/conversation-playbook.md",
+      "blobSha": "995e4b8237a90cd89101ebbacc69247cba56a9a4",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/cross-model-review-v3.md",
+      "blobSha": "014cc186904f3901a0589be75c164bcdd894df2a",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/design-brief-contract.md",
+      "blobSha": "361af99ba82c8db03315feec88c00e44b373fc39",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/dialogue-quality-retest-v2.md",
+      "blobSha": "1fff66c0990ac6515bfaf115afd0dcf4903faef7",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/dialogue-quality-review.md",
+      "blobSha": "26337b958573f37d388c37e6831c066e4b323fe2",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/scenario-tests.md",
+      "blobSha": "7c9080c3e790e17eeb9b7ae798d62836f260b8e3",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/SKILL.md",
+      "blobSha": "a9e8de73f26b72499f1372b605a348665e41fa08",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/diversity-check.md",
+      "blobSha": "b781b3a503ce3f79702ae94f226b4493a33bad77",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/scoring.md",
+      "blobSha": "c4b8b2802c23a24fb227ea059126cd8cf89b9ae7",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/visual-qa.md",
+      "blobSha": "c52d149e5e77787e32161f5ce245967eff9f9dcc",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/brief.md",
+      "blobSha": "4a57d226b53eaba1b2104d3f2c005bc75b7cb65d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/DECISIONS.md",
+      "blobSha": "0e2de60e707520dc4752199caf092634e62b4fe6",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/direction.md",
+      "blobSha": "00cf3272b2d89ce7f8fa0359c697999137bdb84d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/wireframe.md",
+      "blobSha": "56f4d542b6a919e85e8b88acf3eeddf0fb327d16",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/brief.md",
+      "blobSha": "7e984ab6150bc4ed5aa071a1c09dcf1768fbe57d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/DECISIONS.md",
+      "blobSha": "4231e903698505bc71c74bca14606aa8ebe00971",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/direction.md",
+      "blobSha": "4ecbd43d7bec41f95d61740aee343cb10f72099a",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/wireframe.md",
+      "blobSha": "10da0e808b5ae529d19a00915fd719052cd78dbe",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/README.md",
+      "blobSha": "9b9c82db052fede821f7910b0ed79610cfd1be5a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/cta-trust.md",
+      "blobSha": "8901779067b87c2e0d26285cd88a2383e3aa95e2",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/heroes.md",
+      "blobSha": "2ef3652e01c796a5ab291fba975941bf170c6c91",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/lists.md",
+      "blobSha": "8928e4038eb3a6a190b927e97aff39714036ddfd",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/rhythm.md",
+      "blobSha": "02ff7a0af801871f53c84ad12f7a474826932ca1",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/sections.md",
+      "blobSha": "dbfcf0b3fae9c21c464d475ed52b7217c2da2a68",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/00-evidence-legend.md",
+      "blobSha": "8ef9d8d7efb0f5ccbd3ff2b36b14c879a3783623",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/01-cross-site-patterns.md",
+      "blobSha": "b89c8088f3cd28dd6b5ac0a5f5d36ee958c062d2",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/02-design-tokens.md",
+      "blobSha": "06c0dfb75b8417aae467dca1914be577049c3a22",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/03-ai-failure-modes.md",
+      "blobSha": "48b7c83ea377efc96976f8a1460322a11de94e8b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/04-workflow.md",
+      "blobSha": "d150cacd2b04c10d56bebd0068065db6b5cd9c4a",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/01-field-notes.md",
+      "blobSha": "9f0d70680b638cb2790845e3d586652e649ec2ff",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/02-essayist.md",
+      "blobSha": "096f23b16794022cd7bd5ad657e9df8e75cb0225",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/03-learning-lab.md",
+      "blobSha": "f1142cd4617615f2e5f2537c6254b519eade8cf5",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/04-curator.md",
+      "blobSha": "2a65678b602bd6d4bb8f92b3daaa171b7f1d0ad7",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/05-radio-letter.md",
+      "blobSha": "9df415864cd9be93caca26914d4ef860005b924b",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/06-clinician.md",
+      "blobSha": "25e576f5f64528fcbc94262a07abaa6bb244e496",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/07-companion.md",
+      "blobSha": "3453f167c7564cc5d858529c16b5ed2ee3518ac0",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/08-somatic.md",
+      "blobSha": "9c461a39ce5a88c7efb5bc887788e6b64df2012d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/09-coach.md",
+      "blobSha": "ddefae78301ddedcc84a693094b44bf4de562d50",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/10-collective.md",
+      "blobSha": "971b0846f68f29b1c40ee668073890752842b014",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/SKILL.md",
+      "blobSha": "c14edf53f2f69d47d2465e3b30bd159c759a8279",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-launch-health-check/SKILL.md",
+      "blobSha": "074060c27edae6ff2e3a5444bf241c8913f4d9b4",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md",
+      "blobSha": "a21eec142f3354b1fae074a54551dcb394495112",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-layout-craft/SKILL.md",
+      "blobSha": "2c148dd24e89a38d0c6026c1f8cb12c257a54bb9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/effect-catalog.md",
+      "blobSha": "a27fa515c98ac275f1b3eeb2f5b96d312e04b9cf",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/README.md",
+      "blobSha": "cf3a2df89633e8e6b55fa95381a753bb915a3cff",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/content-interactions.md",
+      "blobSha": "d70b24cf1aa6963907be41550ee65c79930676fe",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/pointer-interactions.md",
+      "blobSha": "c6c0ee66f0324f542b691b4baa15f00ef194d8ee",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/reveal-and-stagger.md",
+      "blobSha": "ca5e9c8982facf311c91f2ec96bd1ecd0b14ffb3",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Button.astro.txt",
+      "blobSha": "ab35655cd30b950e2bab09dcd0ffd7e09aaa471d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/components.effects.css.txt",
+      "blobSha": "17c5467f4dc5ed8a0335927d403d6312dae556f7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/FAQAccordion.astro.txt",
+      "blobSha": "58daaf09109a373b82581c12583fd40cc68c6355",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/MotionCard.astro.txt",
+      "blobSha": "8cef963c991ba04cdaa83834d388ed3bba20f9d8",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Reveal.astro.txt",
+      "blobSha": "147a8e05fc8a10e12ac6070252d3db8bdfd33dec",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/reveal.ts.txt",
+      "blobSha": "528a558bdf683f8972844366ec26fedfd06bb967",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/StaggerGroup.astro.txt",
+      "blobSha": "8ce5dfc1765ae244034dce9c2ba7c7b9da96daf7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/UnderlineLink.astro.txt",
+      "blobSha": "063f220b050d224f5ca564465f7aeb97b647509d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/ZoomImage.astro.txt",
+      "blobSha": "a949d3f1cedd52869dc68de327e3424e3881f48f",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+      "blobSha": "f290bea4de07df2065adace8f0f18f0d60c309fb",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/SKILL.md",
+      "blobSha": "39ed33b76ccbd67abf2032f9c655165cf6dfbdf9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-navigation-tree-test/SKILL.md",
+      "blobSha": "64c4597eb034fcaac226e9bd18a188683b311ea5",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-page-management/SKILL.md",
+      "blobSha": "64878b45861ab912d917e20d4bc8be92bb64adc8",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-pr-preview/references/deployment-recovery.md",
+      "blobSha": "e17482c55599f3aaf806d0296e9a40ad6bcfcf1f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-pr-preview/SKILL.md",
+      "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-section-pattern-craft/SKILL.md",
+      "blobSha": "4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-assembly/SKILL.md",
+      "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-entry/SKILL.md",
+      "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-from-zero/SKILL.md",
+      "blobSha": "8224afcff166a8864326f2eff33cd8f718706eee",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-maintenance/SKILL.md",
+      "blobSha": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-starter-deploy/SKILL.md",
+      "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-starter-onboarding/SKILL.md",
+      "blobSha": "54dad8192d899b42b3e495280e916838fe0ebdd6",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/docs/research-log.md",
+      "blobSha": "60c717ce70552e4f25d789b21ad6493ed7517aad",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/00-source-map.md",
+      "blobSha": "63e94940a3d05bfd833d9f887a65cd6499e493af",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/01-design-principles.md",
+      "blobSha": "c8f4ea6c929349061e933faea4d7a1851fea517e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/02-architecture.md",
+      "blobSha": "59ba415f6fc9e4f5ca3dc3c990963798f4abb9e8",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/03-pattern-library.md",
+      "blobSha": "67384dd98f85d946c19b669955eea61836da1da0",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/04-visual-systems.md",
+      "blobSha": "c5d449625c209d361bdb18a209f0c84d397d9c2e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/05-motion.md",
+      "blobSha": "e527efaaee21ce3df533c6d30848a077bf040b6b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/06-cta-content.md",
+      "blobSha": "0ed86766ced3dfa843858ab400fa0a5984fe834e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/07-article-service-pages.md",
+      "blobSha": "f39fe940ad3da7f4a77496796f65e6e76ece1443",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/08-responsive-accessibility.md",
+      "blobSha": "888cf83b56c439e2f7bc9df65b33f49f6eebaf08",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/09-quality-gates.md",
+      "blobSha": "93237c5d3a78dd3e879d511bb2a68cf24c8aadfc",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/article-exploration-v2.md",
+      "blobSha": "999d857a3a774bb429d7eb2ae1294d94e876634b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/component-library-v1.5.md",
+      "blobSha": "281bcddef7bb4385a143d38b4a21ff6a95e913b3",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-00_總覽與方法.md",
+      "blobSha": "03ad4d943d9ce6a8240e81752d4ef5f20e330bc6",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-01A_案例池_知識部落格_01-10.md",
+      "blobSha": "40c59bf23d6c7a7fcb58bc67f58d75c19a9dac06",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-01B_案例池_知識部落格_11-20.md",
+      "blobSha": "3a716bdf5d6250c882beb100bbff22cf2e9e68b6",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-02A_案例池_助人者_01-10.md",
+      "blobSha": "14e6e2cc4a7d9c94c010581f8cf60ef2c6d57671",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-02B_案例池_助人者_11-20.md",
+      "blobSha": "3ccab6be12a9a7a353d2e5201324aace45ab9d1e",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-03_Top10精選.md",
+      "blobSha": "5fd9a6a43bd2a61937cbf155fabd1f6827f6801f",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-04_Pattern分析_導航與首頁.md",
+      "blobSha": "1bb22f9b071d6deaf8672cfda40fcd35ad6f48c7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-05_Pattern分析_CSS動畫CTA文章頁.md",
+      "blobSha": "c2a967731111d9d821c148b98e2060cf1b941d71",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-06_模板DesignBrief與融合建議.md",
+      "blobSha": "14d1a2ebd66beb798cfa1f4d0d9d90a0c211efeb",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/Claude-AstroTmplateResearch.md",
+      "blobSha": "576d32a7c98aa446e0883f7621799575396b8f66",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/Claude-三種網站風格設計規格.md",
+      "blobSha": "1c3b2c15b28a27fb5c3c808c2efefa622b7ca4c5",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/gemini-AstroTmplateResearch.md",
+      "blobSha": "6a99c10184c988d0995b4dc23c6836f0f7514883",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/grok-AstroTmplateResearch.md",
+      "blobSha": "e33430f33ddc1c7cec618e003b294fe47b946068",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/mistral-AstroTmplateResearch.md",
+      "blobSha": "7d065e9a6846f19bfd9f1f6449f1155dc61d469d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/perplexity-AstroTmplateResearch.md",
+      "blobSha": "6eb93f1975402d0e5ad955b5243167f5ee77a58d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gemini3.0Flash-AstroTmplateResearch.md",
+      "blobSha": "d5c36ee6fb6b376363a30ca93c6c0cc159cb448a",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gpt5.4nano-AstroTmplateResearch.md",
+      "blobSha": "6eda0522bb01feeb481aabe552d99970f4865d59",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gpt6.1Sol-AstroTmplateResearch.md",
+      "blobSha": "5836e382fd176f70e62525dbc8dd0c4e137b64a4",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md",
+      "blobSha": "903caf2bedf649b5f570d7bea0a3c1f1a6397494",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/SKILL.md",
+      "blobSha": "70ceabb3ad04551d544133854667e7df7bbf659f",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/SHARED-DESIGN-HANDOFF.md",
+      "blobSha": "b4483fc6939a11987e63dfa74520f4b290fda997",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/url-to-frontend-replica/SKILL.md",
+      "blobSha": "858bc69db2ba46d3074a2e10d9f9d8390f668b3b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "AGENTS.md",
+      "blobSha": "fc4678117367b93ec179f5b3f6455ba5cffb768f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "COMPONENTS.md",
+      "blobSha": "ef507931858188077b63da7524f566ed220d8f9c",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/09-2-differentiation-audit.md",
+      "blobSha": "1f46ff8eff7abcbc03b16687b09cb82e3831346d",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/articles/legacy-draft.md",
+      "blobSha": "f4e968a3737ae4cff9065b7e5d6cbf9da9880c6d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/articles/real-note.md",
+      "blobSha": "8d4fa1d0041040e8f0e2222e9ef2828ff914d03c",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/drafts/private-note.md",
+      "blobSha": "04fcb316816dbc79b65fc4ddd875ad69c57c6956",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/INDEPENDENT-ADAPTERS.md",
+      "blobSha": "9b9bd564019f05428ed102cee26fd3159c1651f7",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-BATCH-A-VISUAL-REVIEW.md",
+      "blobSha": "40f3be2ba461076e0ab273c5ac70d9ad9c7e5589",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-BATCH-BC-REVIEW.md",
+      "blobSha": "775ced303039f4afbdcd9c06673264d8ccc33e88",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-CONTENT-CONTRACT-11.md",
+      "blobSha": "c9fdd062cbcb4b9b5e28fef5991d025f4488f6be",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-EXPANSION-MATRIX.md",
+      "blobSha": "9e32965a4c1a55f11304fb716353120cdcb4315f",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-HANDOFF.md",
+      "blobSha": "ea7f46b2a505f44cbd30b954bf07ba625ea51714",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-MANUAL-QA-CHECKLIST.md",
+      "blobSha": "7570a1c1c0ea8b62fe26c64c77c28e49454664f7",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-P0-NEUTRAL-AUDIT.md",
+      "blobSha": "bbed6617dc60de634d5d2f99b3e77b70b6071ba0",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md",
+      "blobSha": "1419617bba0e94eb5feded51f5f8843478dc2e66",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-PHASE2-INTERIOR-QA.md",
+      "blobSha": "a4dc84270c20c092a378db8a789e348ef39d8fe4",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-PHASE3-HANDOFF.md",
+      "blobSha": "3b7a2a37bfae483a9ef9d37b2ceb6d699aeb87c3",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/astro-skills-end-to-end-validation-v1.md",
+      "blobSha": "6083f3088b5649af0357b1f6e8027d74c84d9fb3",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/brief-handoff/README.md",
+      "blobSha": "cf5da0ffa9311026afa3bb811a0694d2bc34d11a",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/cloudflare-pages-deployment.md",
+      "blobSha": "e9f29e824872033a56eeffcbd756e1fa653d3b0d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/cloudflare-workers-static-assets.md",
+      "blobSha": "562a3d73fc6db4113606f3efbe7dcb78755475a6",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md",
+      "blobSha": "b319cfc9655058e154f3044d3a23da77b02ecb37",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/github-pr-preview-setup.md",
+      "blobSha": "306c75684642f698ddaf078af4c7a31694c1549c",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/CONTENT-INPUTS-THREE-LAYOUTS.md",
+      "blobSha": "c0a273de67417e3b319700db3667e220304ef9f3",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/LAYOUT-DEFINITION-CONTRACT-v1.md",
+      "blobSha": "6ea68d39144dd245f8b79898302f95406153b721",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-ACCEPTANCE-2026-10-15.md",
+      "blobSha": "7c5ea1f72b8184deef1998f1373fcac962e898ee",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-HANDOFF.md",
+      "blobSha": "9f9f43a68182187a2a2ac6ce9ab660005cc8a80c",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-OWNED-MEDIA-2026-10-15.md",
+      "blobSha": "e13ee9786f5f4c7def199f525ba01ab8ec6c4deb",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-PR47-INTEGRATION-HANDOFF.md",
+      "blobSha": "54d7d0ca37419b2581c9880af4fade869e283bb2",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-RESUMED-QA-2026-10-15.md",
+      "blobSha": "956657575e76263fb35d31f681ee7cfe6b9a7461",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-SECTION-PATTERNS-2026-10-15.md",
+      "blobSha": "ac92e15f2d251c822a6668673b66bfc5782d192e",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/TWELVE-ASSEMBLY-READINESS.md",
+      "blobSha": "a2bd66fff5c701a58bd9b72179d3501835617763",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/manus-component-gap-v2-5-part2.md",
+      "blobSha": "3988c1060b9beb8ab34628224ae2a2359f6be04a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/pr-preview-reconciliation.md",
+      "blobSha": "dff6a2e6f07b739ef0d82bb0ece59cb902d5be97",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/pr-preview-smoke-test.md",
+      "blobSha": "3c923c756e11a181bd08f8f1c5553018d06e6440",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+      "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
+      "blobSha": "bd48a96da49937bfab1fe514fd43e3ae338ebe31",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/DEFECT-REGISTER.md",
+      "blobSha": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md",
+      "blobSha": "4acdcbf65a7e196f3b27d17a68dd3a615da36579",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/QUALITY-CONTRACT.md",
+      "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/research-gap-matrix-v2-5.md",
+      "blobSha": "a88ed8599e1e516e03b8b3227512f54ed190577d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/AGENT-HANDOFF.md",
+      "blobSha": "5005e7599a211906f63b002daf93b9ce5651fa46",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/ART-DIRECTION-STARTER.md",
+      "blobSha": "0b0b3870098f56dcaefc6d486ec789364b0b5ef1",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
+      "blobSha": "d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt",
+      "blobSha": "8b2887ba4c236bf7aeab03f3ba8c52caa9b6af6b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/EXPANDED-LAYOUTS.md",
+      "blobSha": "8fe4c3ea3ed6b3523d868056ef570391eb4fe09a",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
+      "blobSha": "1067b605a73632df9cd6baaa51b9378bb318196d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/MEDIA-REPLACEMENT.md",
+      "blobSha": "5b5d9f200801e88235465701339c515189f11bef",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/OWNED-MEDIA.md",
+      "blobSha": "8ca0a4b51be64469d640bec52f89c0ac63695bf9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PORTABLE-PROJECT-CONTEXT-SPEC.md",
+      "blobSha": "f3083e04248f3c92dd4d4f15729d90f098d99168",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
+      "blobSha": "d63f96a0652559bdcdc04de5049d018cec8dd4c6",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
+      "blobSha": "a5dba72bf9a0779bacc4a3f21328060803e6a290",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PROJECT-TEMPLATE.md",
+      "blobSha": "84706560890654922fa671c2749c5b9bd48d5889",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/README.md",
+      "blobSha": "7e8e676951c7104af42b76a11e9113ccf9ecc30b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/SECTION-PATTERNS.md",
+      "blobSha": "7fb9d7457cbf054675fb62e29f20f45fcd2d6820",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/START-BUILD-PROMPT.txt",
+      "blobSha": "72766d4280a141d50af660d3c55a88ab8796cb4f",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/START-HERE.md",
+      "blobSha": "bcd508e4901701a6b6ae55ce19ba63b6e2c47a8a",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
+      "blobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/THREE-WAYS-TO-BUILD.md",
+      "blobSha": "9154d8bdf9bc13acda894543c12c9c8639e98d66",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/UPSTREAM-SOURCES.md",
+      "blobSha": "53acadfa6cc6d61ea8504aa9bc55076a057ab20d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/01-AI-訪談主持人.md",
+      "blobSha": "b14088ae85ee9bfce8a0cc691969a4c4fa2c5df2",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/02-網站定位與個人介紹.md",
+      "blobSha": "2cd591bf4070d498efb63f0cccf7affa2bcb6328",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/03-內容準備-二選一.md",
+      "blobSha": "09a235231055a52d87b7baea492f284a8c9d4a5f",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/04-圖片與發布準備.md",
+      "blobSha": "6e99528c26a57c9ac4a40205a9937b9ce25754b7",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/05-AI-品牌識別與圖片共創.md",
+      "blobSha": "82c038c799b74bdebdaf6d1ddddb8ee880ddac6d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/06-Logo與圖片設計研究.md",
+      "blobSha": "2a3fde90d097d619110be123a8441b9579c5925e",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/README.md",
+      "blobSha": "0883b659f92a64d9509c1208b3863ca470d1d86a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-site-building-flow-with-section-patterns.md",
+      "blobSha": "0741c9aa67f6617f6a29f6368229f98b457bd710",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-three-quality-gates.md",
+      "blobSha": "6a7a4eacaf8fd5af65cb286c7c6c694f8f46e116",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/template-gallery/ACCEPTANCE-25.md",
+      "blobSha": "822690afd1cac1f0f93c914f3a8058d5ecd4ba0b",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/template-gallery/README.md",
+      "blobSha": "01ddef8b4267522e3ef7a47eaf9aa9ad82a117db",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/v0.2-collaboration.md",
+      "blobSha": "d098cda82550c2896b442a3d8eab440c45b2d500",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/v2-8-content-and-seo.md",
+      "blobSha": "11c740b02c979590cc5f9d8a56d520001fd2b47c",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
+      "blobSha": "06d50e4464d4be87cfb942ad929918c8e5d8002d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+      "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "public/robots.txt",
+      "blobSha": "dc06b580653cde2b4ce5ad3977e77f99142b6d41",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "README.md",
+      "blobSha": "6a3606f3423c99bf857cd785c54008944d52edfa",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/astro-starter-notes.md",
+      "blobSha": "f9d7aa95a9e3a55fac1f154286b5f695aedb78f0",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/homepage-is-a-lobby.md",
+      "blobSha": "6db2f55701ae8b9d76121ba14c342f5dd1c9f871",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/make-complex-things-clear.md",
+      "blobSha": "48f78c70a8aac055dd14b981808cbe9d59efb3be",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/one-good-article.md",
+      "blobSha": "b506cb1a4c3915968ea3217301aa66842062b83c",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/organize-knowledge.md",
+      "blobSha": "2d17dbb9968cbace67bc509a80e93949ecb6c9ed",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/quiet-writing.md",
+      "blobSha": "458f1d8fe7f8f41a764ebd4ca84790c4d26a785a",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
     }
   ]
 }

@@ -32,7 +32,10 @@
 | documentaryPartialSplits | 9 |
 | documentaryDistinct | 5 |
 | frozenLinesReferenced | 670 |
+| sourceAnchorMultiIdGroups | 157 |
+| sourceAnchorUnresolvedGroups | 157 |
 | sourceFirstScopeFiles | 192 |
+| frozenFileRoleCounts | {"ACTIVE_REFERENCE_OR_RULE_CANDIDATE":30,"OPERATIVE_CONTRACT_OR_QA_RECORD":45,"DESIGN_REFERENCE_OR_EXAMPLE":30,"UNCLASSIFIED_FROZEN_SOURCE":27,"HISTORICAL_PROJECT_EVIDENCE":23,"RESEARCH_OR_FIXTURE":37} |
 | sourceFirstScopeCoverageOfFrozenFiles | 192/192 |
 | sourceFirstLinesScanned | 14222 |
 | sourceFirstUnscannedFrozenFiles | 0 |
@@ -106,7 +109,10 @@
     "documentaryPartialSplits": 9,
     "documentaryDistinct": 5,
     "frozenLinesReferenced": 670,
+    "sourceAnchorMultiIdGroups": 157,
+    "sourceAnchorUnresolvedGroups": 157,
     "sourceFirstScopeFiles": 192,
+    "frozenFileRoleCounts": "{\"ACTIVE_REFERENCE_OR_RULE_CANDIDATE\":30,\"OPERATIVE_CONTRACT_OR_QA_RECORD\":45,\"DESIGN_REFERENCE_OR_EXAMPLE\":30,\"UNCLASSIFIED_FROZEN_SOURCE\":27,\"HISTORICAL_PROJECT_EVIDENCE\":23,\"RESEARCH_OR_FIXTURE\":37}",
     "sourceFirstScopeCoverageOfFrozenFiles": "192/192",
     "sourceFirstLinesScanned": 14222,
     "sourceFirstUnscannedFrozenFiles": 0,
@@ -141,6 +147,5324 @@
     "stage3": "BLOCKED",
     "stage4": "BLOCKED"
   },
+  "sourceAnchorGroupsToReview": [
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:31",
+      "rows": [
+        {
+          "id": "INDEX-DETAIL-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核准後重建並檢查 meta robots/robots/canonical/sitemap，GitHub Actions Variable 的缺省行為"
+        },
+        {
+          "id": "INDEX-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S3.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "INDEX-DETAIL-01.S3"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S3.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "INDEX-DETAIL-01.S3"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S3.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "INDEX-DETAIL-01.S3"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S3.A4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "INDEX-DETAIL-01.S3"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31)"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31)"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31)"
+        },
+        {
+          "id": "INDEX-DETAIL-01.S4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L31](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L31)"
+        },
+        {
+          "id": "B1-DEP31-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "預設 HTML noindex，robots.txt 禁止索引"
+        },
+        {
+          "id": "B1-DEP31-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "完成內容、Preview、資安與授權驗收且學員明確同意後才可開啟正式站索引"
+        },
+        {
+          "id": "B1-DEP31-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "只在 Production 使用 SITE_INDEXABLE=true 並重新 Build、檢查 robots/canonical/Sitemap"
+        },
+        {
+          "id": "B1-DEP31-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Cloudflare Preview 不得共用正式站索引設定"
+        },
+        {
+          "id": "B1-DEP31-04-CF",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Cloudflare Preview 的 SITE_INDEXABLE 應維持與正式站隔離；與 B1-DEP31-04 同源，為範圍說明，不另行計數"
+        },
+        {
+          "id": "B1-DEP31-04-GH",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "GitHub Pages Actions Variables 中 SITE_INDEXABLE 未設定視為 false；正式站審查並獲核准後才設 true 並手動執行 Production Workflow"
+        },
+        {
+          "id": "B1-DEP31-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "內容驗收完成"
+        },
+        {
+          "id": "B1-DEP31-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "真實 Preview 驗收完成"
+        },
+        {
+          "id": "B1-DEP31-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "安全驗收完成"
+        },
+        {
+          "id": "B1-DEP31-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "授權驗收完成"
+        },
+        {
+          "id": "B1-DEP31-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "學員明確同意開放索引"
+        },
+        {
+          "id": "B1-DEP31-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "只在正式環境設定 SITE_INDEXABLE=true"
+        },
+        {
+          "id": "B1-DEP31-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "變更正式索引設定後重新 Build"
+        },
+        {
+          "id": "B1-DEP31-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 meta robots"
+        },
+        {
+          "id": "B1-DEP31-03-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 robots.txt"
+        },
+        {
+          "id": "B1-DEP31-03-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 canonical"
+        },
+        {
+          "id": "B1-DEP31-03-S06",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 Sitemap"
+        },
+        {
+          "id": "B1-DEP31-04-GH-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "GitHub Actions Variables 未設定 SITE_INDEXABLE 時視為 false"
+        },
+        {
+          "id": "B1-DEP31-04-GH-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "正式站審查與學員同意後才可設定 true"
+        },
+        {
+          "id": "B1-DEP31-04-GH-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "正式索引開放後手動執行 Production Workflow"
+        },
+        {
+          "id": "B1-DEP31-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "HTML 預設 noindex"
+        },
+        {
+          "id": "B1-DEP31-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "robots.txt 預設禁止索引"
+        },
+        {
+          "id": "B1-DEP31-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NOT_APPLICABLE"
+        },
+        {
+          "id": "P0-U017",
+          "canonicalId": "ATP-P2-0044",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "New student site defaults to noindex HTML and disallowing search crawling in robots.txt"
+        },
+        {
+          "id": "P0-U018",
+          "canonicalId": "ATP-P2-0003",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild."
+        },
+        {
+          "id": "P0-U019",
+          "canonicalId": "ATP-P2-0004",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments."
+        },
+        {
+          "id": "P0-U020",
+          "canonicalId": "ATP-P2-0020",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Never remove noindex merely to make CI pass"
+        },
+        {
+          "id": "P0-U047",
+          "canonicalId": "ATP-P2-0003",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Only after content, live Preview, security and authorization review, and explicit student approval, set SITE_INDEXABLE=true for production only and rebuild."
+        },
+        {
+          "id": "P0-U048",
+          "canonicalId": "ATP-P2-0047",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "After approved production indexing settings change, rebuild the actual student site"
+        },
+        {
+          "id": "P0-U049",
+          "canonicalId": "ATP-P2-0004",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Do not share the approved production search-indexing flag with Cloudflare Preview environments."
+        },
+        {
+          "id": "P0-U059",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "meta robots"
+        },
+        {
+          "id": "P0-U060",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "robots.txt"
+        },
+        {
+          "id": "P0-U061",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "canonical"
+        },
+        {
+          "id": "P0-U062",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Sitemap"
+        },
+        {
+          "id": "P0-CANON-INDEX-ENABLE",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_MEANING"
+        },
+        {
+          "id": "P0-CANON-PREVIEW-INDEX",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_MEANING"
+        },
+        {
+          "id": "DEPLOY-11",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- **預設不索引**：新骨架的 HTML 加上 noindex，robots.txt 拒絕索引。完成內容、實際 Preview、資安與授權驗收後，必須由學員明確同意，才只在**正式部署環境**設定 SITE_INDEXABLE=true 並重新 Build；驗證 meta robots、robots.txt、canonical 與 Sitemap。Cloudflare Preview 不可共用此設定；GitHub Pages 的學員 deploy.yml 會讀取 Repo Settings → Secrets and variables → Actions → Variables 中的 SITE_INDEXABLE（未設定視為 false），僅在正式站審核完成且學員明確同意後設定 true，再手動執行正式發布 Workflow。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:24",
+      "rows": [
+        {
+          "id": "QA-DETAIL-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "需測 Pagefind/RSS/Sitemap/404/鍵盤/觸控/reduced-motion/noindex/隱私資料"
+        },
+        {
+          "id": "QA-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "QA-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "QA-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A5",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A6",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A7",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S1.A8",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S1"
+        },
+        {
+          "id": "QA-DETAIL-01.S2.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S2"
+        },
+        {
+          "id": "QA-DETAIL-01.S2.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S2"
+        },
+        {
+          "id": "QA-DETAIL-01.S2.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S2"
+        },
+        {
+          "id": "QA-DETAIL-01.S3.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S3"
+        },
+        {
+          "id": "QA-DETAIL-01.S3.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S3"
+        },
+        {
+          "id": "QA-DETAIL-01.S3.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "QA-DETAIL-01.S3"
+        },
+        {
+          "id": "QA-DETAIL-01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24)"
+        },
+        {
+          "id": "QA-DETAIL-01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24)"
+        },
+        {
+          "id": "QA-DETAIL-01.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L24)"
+        },
+        {
+          "id": "P0-U021",
+          "canonicalId": "ATP-P2-0021",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Visual QA for normal site changes covers 1440, 1280, 768 and 390 widths"
+        },
+        {
+          "id": "P0-U022",
+          "canonicalId": "ATP-P2-0026",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "PR59 independent student-site manual QA additionally includes 375px"
+        },
+        {
+          "id": "P0-U023",
+          "canonicalId": "ATP-P2-0022",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Without actual visual inspection, do not claim visual QA is completed"
+        },
+        {
+          "id": "P0-U063",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "首頁"
+        },
+        {
+          "id": "P0-U064",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "CSS／圖片"
+        },
+        {
+          "id": "P0-U065",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "導航"
+        },
+        {
+          "id": "P0-U066",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "文章／內容頁（適用時）"
+        },
+        {
+          "id": "P0-U067",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Pagefind（適用時）"
+        },
+        {
+          "id": "P0-U068",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "RSS（適用時）"
+        },
+        {
+          "id": "P0-U069",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Sitemap"
+        },
+        {
+          "id": "P0-U070",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "404"
+        },
+        {
+          "id": "P0-U071",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "鍵盤操作"
+        },
+        {
+          "id": "P0-U072",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "觸控操作"
+        },
+        {
+          "id": "P0-U073",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "reduced-motion"
+        },
+        {
+          "id": "P0-U074",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Preview noindex"
+        },
+        {
+          "id": "P0-U075",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "未公開／敏感內容"
+        },
+        {
+          "id": "P0-U076",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "外部服務測試資料"
+        },
+        {
+          "id": "PREVIEW-09",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "5. 開啟並驗證 Preview：首頁、CSS/圖片、導航、文章/內容頁、Pagefind、RSS、Sitemap、404；對 UI 檢查 1440／1280／768／390、鍵盤、觸控與 reduced-motion。對 Preview 的 noindex、隱私資料及外部服務測試資料做檢查。"
+        }
+      ]
+    },
+    {
+      "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:24",
+      "rows": [
+        {
+          "id": "EXT-DETAIL-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "子路徑需檢查 canonical、assets、文章/服務路由、導航、搜尋、部署 SHA"
+        },
+        {
+          "id": "PROOF-003.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-003.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-003.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EXT-DETAIL-01.S1"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EXT-DETAIL-01.S1"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EXT-DETAIL-01.S1"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1.A4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EXT-DETAIL-01.S1"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1.A5",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EXT-DETAIL-01.S1"
+        },
+        {
+          "id": "PROOF-003.03.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL_OVERLAP"
+        },
+        {
+          "id": "PROOF-003.03.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24)"
+        },
+        {
+          "id": "EXT-DETAIL-01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24)"
+        },
+        {
+          "id": "EXT-DETAIL-01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24)"
+        },
+        {
+          "id": "EXT-DETAIL-01.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L24](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L24)"
+        },
+        {
+          "id": "P59-024",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "\\"
+        },
+        {
+          "id": "P59-24",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "**PENDING_CROSSCHECK**"
+        },
+        {
+          "id": "P0-U040",
+          "canonicalId": "ATP-P2-0036",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "For GitHub Pages repository subpaths validate deployed site routes and assets against real URL and SHA"
+        },
+        {
+          "id": "P0-U041",
+          "canonicalId": "ATP-P2-0037",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Run Cloudflare root-path preview tests only when Cloudflare is the chosen hosting route"
+        },
+        {
+          "id": "P0-U050",
+          "canonicalId": "ATP-P2-0041",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Independent external student-site acceptance requires a working Preview corresponding to exact deployment SHA"
+        },
+        {
+          "id": "P0-U051",
+          "canonicalId": "ATP-P2-0042",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "A local simulated site is not evidence of live online deployment"
+        },
+        {
+          "id": "P0-U077",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Pages 子路徑資產"
+        },
+        {
+          "id": "P0-U078",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "文章／服務內頁"
+        },
+        {
+          "id": "P0-U079",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "導航"
+        },
+        {
+          "id": "P0-U080",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "搜尋"
+        },
+        {
+          "id": "P0-U081",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "canonical"
+        }
+      ]
+    },
+    {
+      "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:16",
+      "rows": [
+        {
+          "id": "PR59-EVIDENCE-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "測試證據需記目標/SHA/URL/日期/執行者/風險，版本變動需重估"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S1.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S1"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S1.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S1"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S1.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S1"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S2.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S2"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S2.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S2"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S2.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S2"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S2.A4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR59-EVIDENCE-01.S2"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16)"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16)"
+        },
+        {
+          "id": "PR59-EVIDENCE-01.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L16](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L16)"
+        },
+        {
+          "id": "P0-U046",
+          "canonicalId": "ATP-P2-0040",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Re-evaluate prior test evidence when the upstream project revision changes"
+        },
+        {
+          "id": "P0-U052",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "測試目標／Repository"
+        },
+        {
+          "id": "P0-U053",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Commit SHA"
+        },
+        {
+          "id": "P0-U054",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "實際網址或 Artifact"
+        },
+        {
+          "id": "P0-U055",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "日期"
+        },
+        {
+          "id": "P0-U056",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "執行者"
+        },
+        {
+          "id": "P0-U057",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "測試結果"
+        },
+        {
+          "id": "P0-U058",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "未解風險"
+        }
+      ]
+    },
+    {
+      "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:22",
+      "rows": [
+        {
+          "id": "PROOF-003.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-003.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-003.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-003.02.S2.A1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROOF-003.02.S2"
+        },
+        {
+          "id": "PROOF-003.02.S2.A2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROOF-003.02.S2"
+        },
+        {
+          "id": "PROOF-003.02.S2.A3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROOF-003.02.S2"
+        },
+        {
+          "id": "PROOF-003.02.S2.A4",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROOF-003.02.S2"
+        },
+        {
+          "id": "PROOF-003.02.S2.A5",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROOF-003.02.S2"
+        },
+        {
+          "id": "PROOF-003.02.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L22)"
+        },
+        {
+          "id": "PROOF-003.02.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L22](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L22)"
+        },
+        {
+          "id": "P59-022",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "\\"
+        },
+        {
+          "id": "P59-22",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "**PENDING_CROSSCHECK**"
+        },
+        {
+          "id": "P0-U039",
+          "canonicalId": "ATP-P2-0035",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Student-owned independent repo requires real PR workflow run evidence"
+        },
+        {
+          "id": "P0-U082",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "獨立 Repo URL"
+        },
+        {
+          "id": "P0-U083",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "PR URL"
+        },
+        {
+          "id": "P0-U084",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "Workflow Run URL"
+        },
+        {
+          "id": "P0-U085",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "SHA"
+        },
+        {
+          "id": "P0-U086",
+          "canonicalId": null,
+          "kind": "acceptance",
+          "decision": "PARTIAL_SPLIT",
+          "requirement": "QA Artifact"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:28",
+      "rows": [
+        {
+          "id": "B1-PUB28-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "公開文章只來自 articles Collection"
+        },
+        {
+          "id": "B1-PUB28-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "草稿存放於 drafts 而非 articles"
+        },
+        {
+          "id": "B1-PUB28-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布時移入 articles 並將舊 draft:true 改為 false"
+        },
+        {
+          "id": "B1-PUB28-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "撤回時移回 drafts、設 draft:true 並清空舊輸出重新 Build"
+        },
+        {
+          "id": "B1-PUB28-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "每次轉換檢查公開文章路由"
+        },
+        {
+          "id": "B1-PUB28-06",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不可靜默改網址；舊站 legacy 過濾須先檢查路由再遷移"
+        },
+        {
+          "id": "B1-PUB28-07",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "資料夾隔離是發布控制不是保密控制"
+        },
+        {
+          "id": "B1-PUB28-08",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "變更後實際執行草稿外洩 Gate；未執行不能 PASS"
+        },
+        {
+          "id": "B1-PUB28-09",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "公開 Loader 僅限 articles，不得 glob 全內容目錄"
+        },
+        {
+          "id": "B1-PUB28-04-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "將已發布文章移回 drafts Collection"
+        },
+        {
+          "id": "B1-PUB28-04-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "將撤稿文章設為 draft:true"
+        },
+        {
+          "id": "B1-PUB28-04-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "從乾淨輸出目錄重新 Build"
+        },
+        {
+          "id": "B1-PUB28-06-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得靜默修改公開 URL"
+        },
+        {
+          "id": "B1-PUB28-06-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "遷移舊站 legacy draft 過濾前先查實際路由"
+        },
+        {
+          "id": "B1-PUB28-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布核准文章移入 articles"
+        },
+        {
+          "id": "B1-PUB28-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "舊 draft:true 改為 false"
+        },
+        {
+          "id": "DES7-004",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Use src/content/articles/ as the **only public article Collection source** and src/content/drafts/ as an excluded unpublished workspace. New drafts go in drafts/, not articles/. Publication moves approved Markdown into articles/ **and changes any legacy draft: true to draft: false**; withdrawal moves it back, sets draft: true, and rebuilds from a clean output directory. Check actual public route visibility after each transition. Never change URLs silently. Preserve existing legacy draft: true filtering for older student websites, but migrate only after examining site-specific routing. The separation is a release boundary, **not a confidentiality boundary**: public GitHub histories and older deployments may reveal drafts. After every change run the actual output draft-leakage gate; no gate, no PASS. Confirm the public article loader is scoped to src/content/articles/; do not glob all content directories."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:56",
+      "rows": [
+        {
+          "id": "B1-PUB56-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "文章修改後須乾淨 Build 並對實際學員站執行 Gate"
+        },
+        {
+          "id": "B1-PUB56-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查草稿直接 HTML 路由、全部 HTML、RSS、Sitemap 及搜尋發現介面"
+        },
+        {
+          "id": "B1-PUB56-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "負向故障注入應被驗證器偵測為 FAIL"
+        },
+        {
+          "id": "B1-PUB56-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證器漏報必須修 Gate，不能修報告"
+        },
+        {
+          "id": "B1-PUB56-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "自訂 slug、巢狀路由、MDX、CMS 等須另外擴展 route-aware 驗證"
+        },
+        {
+          "id": "B1-PUB56-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "執行乾淨 Build"
+        },
+        {
+          "id": "B1-PUB56-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "在實際學員站執行 draft leak gate"
+        },
+        {
+          "id": "B1-PUB56-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查草稿直接 HTML 路由"
+        },
+        {
+          "id": "B1-PUB56-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查所有生成 HTML"
+        },
+        {
+          "id": "B1-PUB56-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 RSS"
+        },
+        {
+          "id": "B1-PUB56-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 Sitemap"
+        },
+        {
+          "id": "B1-PUB56-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查已配置搜尋與內容發現介面"
+        },
+        {
+          "id": "B1-PUB56-05-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "自訂 slug 使用 route-aware 驗證"
+        },
+        {
+          "id": "B1-PUB56-05-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "巢狀路由使用 route-aware 驗證"
+        },
+        {
+          "id": "B1-PUB56-05-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "MDX 使用 route-aware 驗證"
+        },
+        {
+          "id": "B1-PUB56-05-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "CMS 或非常規來源使用 route-aware 驗證"
+        },
+        {
+          "id": "DES7-014",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "When articles are created, edited, drafted, or withdrawn, run node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR> **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:30",
+      "rows": [
+        {
+          "id": "PREVIEW-POLICY-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "變更部署架構需學員同意；沒有隔離 Preview 時應明說無 Live PR URL"
+        },
+        {
+          "id": "PROOF-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-001.03.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.03.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.03.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+        },
+        {
+          "id": "PREVIEW-POLICY-01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+        },
+        {
+          "id": "PREVIEW-POLICY-01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L30](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L30)"
+        },
+        {
+          "id": "P0-U034",
+          "canonicalId": "ATP-P2-0046",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "GitHub Pages pull requests do not inherently create isolated live Preview deployments"
+        },
+        {
+          "id": "P0-U035",
+          "canonicalId": "ATP-P2-0001",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
+        },
+        {
+          "id": "P0-U036",
+          "canonicalId": "ATP-P2-0002",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Obtain student consent before changing preview or deployment architecture."
+        },
+        {
+          "id": "P0-U044",
+          "canonicalId": "ATP-P2-0001",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "When student GitHub Pages has no installed safe PR preview workflow or external preview hosting, explicitly report that no live preview URL exists; never fabricate one."
+        },
+        {
+          "id": "P0-U045",
+          "canonicalId": "ATP-P2-0002",
+          "kind": "policy",
+          "decision": "MERGE",
+          "requirement": "Obtain student consent before changing preview or deployment architecture."
+        },
+        {
+          "id": "P0-CANON-PRVIEW-MISSING",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_MEANING"
+        },
+        {
+          "id": "P0-CANON-PRVIEW-CONSENT",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SAME_MEANING"
+        },
+        {
+          "id": "PREVIEW-11",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- **GitHub Pages 不會因為建立 PR 就天然產生獨立 Preview URL。** 必須先檢查學員 Repo 是否真的安裝安全的 PR 預覽 Workflow／外部 Preview Hosting；沒有就回報「尚無線上 Preview」，不要捏造網址。可以先 Build/檢查 PR 再協助設定適用的隔離 Preview，必須經學員同意變更部署架構。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:37",
+      "rows": [
+        {
+          "id": "GATE-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "GATE-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "GATE-002.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "GATE-002.02.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+        },
+        {
+          "id": "GATE-002.02.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+        },
+        {
+          "id": "GATE-002.02.S3",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-starter-deploy/SKILL.md:L37](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-starter-deploy/SKILL.md#L37)"
+        },
+        {
+          "id": "B9B-DEP-37-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9B-DEP-37-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9B-DEP-37-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9B-DEP-37-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9-DEP-L37-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "沒有明確同意不得 Merge、刪 Repo、改 DNS 或覆蓋網站"
+        },
+        {
+          "id": "P0-U003",
+          "canonicalId": "ATP-P2-0007",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not publish production without specific student authorization"
+        },
+        {
+          "id": "P0-U030",
+          "canonicalId": "ATP-P2-0023",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "DNS changes require student authorization"
+        },
+        {
+          "id": "P0-U031",
+          "canonicalId": "ATP-P2-0024",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Repository deletion requires student authorization"
+        },
+        {
+          "id": "P0-U032",
+          "canonicalId": "ATP-P2-0025",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Overwriting an existing student site requires student authorization"
+        },
+        {
+          "id": "DEPLOY-13",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- **不得在沒有學員明確同意時 Merge、刪除 Repo、變更 DNS 或覆蓋網站。**"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:63",
+      "rows": [
+        {
+          "id": "B5-PUB63-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查實際產出文章與缺漏路由"
+        },
+        {
+          "id": "B5-PUB63-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對清單、標籤、月份、日期、相關文章連結"
+        },
+        {
+          "id": "B5-PUB63-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對文章分享、麵包屑、導航及搜尋行為"
+        },
+        {
+          "id": "B5-PUB63-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證列表連結"
+        },
+        {
+          "id": "B5-PUB63-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證標籤連結"
+        },
+        {
+          "id": "B5-PUB63-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證月份連結"
+        },
+        {
+          "id": "B5-PUB63-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證日期/日曆連結"
+        },
+        {
+          "id": "B5-PUB63-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證相關文章連結"
+        },
+        {
+          "id": "B5-PUB63-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證分享功能"
+        },
+        {
+          "id": "B5-PUB63-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證麵包屑"
+        },
+        {
+          "id": "B5-PUB63-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證文章導航"
+        },
+        {
+          "id": "B5-PUB63-03-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證搜尋實際行為"
+        },
+        {
+          "id": "B5-PUB63-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查生成文章頁"
+        },
+        {
+          "id": "B5-PUB63-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查缺漏路由"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:70",
+      "rows": [
+        {
+          "id": "B7-PUB-L70-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "經授權新增文章可用單一 Markdown 檔完成，不必維護 TypeScript 陣列"
+        },
+        {
+          "id": "B7-PUB-L70-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "公開文章在路由、文章頁、標籤與日期、相關連結及搜尋可見"
+        },
+        {
+          "id": "B7-PUB-L70-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "RSS、Sitemap、Metadata、Preview Index 策略一致"
+        },
+        {
+          "id": "B7-PUB-L70-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "桌機與手機可正確閱讀及導覽，不得虛構發布成功"
+        },
+        {
+          "id": "B7-PUB-L70-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "文章公開路由可見"
+        },
+        {
+          "id": "B7-PUB-L70-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "文章內頁可見"
+        },
+        {
+          "id": "B7-PUB-L70-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "標籤與日期可用"
+        },
+        {
+          "id": "B7-PUB-L70-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "相關文章連結可用"
+        },
+        {
+          "id": "B7-PUB-L70-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "搜尋可發現文章"
+        },
+        {
+          "id": "B7-PUB-L70-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "RSS 與 Sitemap 實際更新"
+        },
+        {
+          "id": "B7-PUB-L70-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Metadata 一致"
+        },
+        {
+          "id": "B7-PUB-L70-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Preview 索引設定符合環境"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:62",
+      "rows": [
+        {
+          "id": "PREVIEW-HISTORY-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "刪除舊部署、歷史檢查、Cloudflare Access 需額外明確授權"
+        },
+        {
+          "id": "PREVIEW-HISTORY-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "第三方已複製的內容不可保證全部消失"
+        },
+        {
+          "id": "PREVIEW-HISTORY-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得擅自破壞 QA 證據"
+        },
+        {
+          "id": "PREVIEW-HISTORY-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未公開草稿優先本機或受限制預覽"
+        },
+        {
+          "id": "PRIV-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PRIV-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "P0-U024",
+          "canonicalId": "ATP-P2-0027",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Deleting historical preview deployments, reviewing exposure history or configuring Cloudflare Access requires separate explicit authorization"
+        },
+        {
+          "id": "P0-U025",
+          "canonicalId": "ATP-P2-0028",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not claim that already publicly copied website content can be guaranteed erased"
+        },
+        {
+          "id": "P0-U026",
+          "canonicalId": "ATP-P2-0029",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not destroy QA evidence without authorization"
+        },
+        {
+          "id": "P0-U027",
+          "canonicalId": "ATP-P2-0030",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Unpublished drafts should use local or restricted-access previews rather than unrestricted public deployments"
+        },
+        {
+          "id": "PREVIEW-17",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "在公開 Pages Preview 展示過的內容，即使新 Commit 將文章移回 drafts，先前的不可變部署網址仍可能被存取；公開 GitHub Commit／fork／快取也可能留下原文。對未公開草稿，優先本機或受限制存取的預覽，不把「發布準備」解釋成已獲授權對全網公開。AI 可以在使用者**另外明確授權**後協助刪除舊部署、檢查歷史或考慮 Cloudflare Access，但不保證已被第三方複製的內容消失，也不得擅自破壞 QA 證據。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:43",
+      "rows": [
+        {
+          "id": "B2-DEP43-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "須檢查 Cloudflare 工具權限、scope 與帳號"
+        },
+        {
+          "id": "B2-DEP43-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "唯讀時由學員在 Dashboard 連接，AI 逐步引導"
+        },
+        {
+          "id": "B2-DEP43-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不要求 Token 或假稱已部署"
+        },
+        {
+          "id": "B2-DEP43-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Private Repo 可優先考慮，仍需部署授權"
+        },
+        {
+          "id": "B2-DEP43-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "舊 Preview URL 不可推論新 SHA"
+        },
+        {
+          "id": "B2-DEP43-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對可用的 Cloudflare 工具"
+        },
+        {
+          "id": "B2-DEP43-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對工具的 Pages/Git/DNS 操作 scope"
+        },
+        {
+          "id": "B2-DEP43-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對實際登入的 Cloudflare 帳號"
+        },
+        {
+          "id": "B2-DEP43-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "AI 只有唯讀權限時不得宣稱已完成連接"
+        },
+        {
+          "id": "B2-DEP43-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "由學員在 Dashboard 完成 GitHub Repo 連接"
+        },
+        {
+          "id": "B2-DEP43-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "AI 依目前官方畫面與截圖協助操作"
+        },
+        {
+          "id": "DEPLOY-14",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:12",
+      "rows": [
+        {
+          "id": "B5-PUB12-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "文字、身份、URL、圖片、專業事實由使用者提供"
+        },
+        {
+          "id": "B5-PUB12-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得虛構資格、見證、價格、聯絡、電子報及預約成功"
+        },
+        {
+          "id": "B5-PUB12-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "網站文字由使用者提供"
+        },
+        {
+          "id": "B5-PUB12-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "身分與專業事實由使用者提供"
+        },
+        {
+          "id": "B5-PUB12-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "URL 與聯絡資料由使用者提供"
+        },
+        {
+          "id": "B5-PUB12-01-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "圖片素材由使用者提供"
+        },
+        {
+          "id": "B5-PUB12-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得虛構資格與見證"
+        },
+        {
+          "id": "B5-PUB12-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得虛構價格或聯絡"
+        },
+        {
+          "id": "B5-PUB12-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得虛構訂閱成功"
+        },
+        {
+          "id": "B5-PUB12-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得虛構預約成功"
+        },
+        {
+          "id": "DES7-001",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Help a person with no coding background publish and maintain their own knowledge/blog or helper/professional-service website using AI. **The user supplies the words, identity, URLs, images, and professional facts.** Never invent article history, qualifications, testimonials, prices, contacts, newsletter success, or booked appointments."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:76",
+      "rows": [
+        {
+          "id": "B7-PUB-L76-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "「新增草稿」只追問缺少的真實材料並核對 slug／日期"
+        },
+        {
+          "id": "B7-PUB-L76-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "寫入實際 Collection，確認草稿不在文章清單、RSS、Sitemap、搜尋"
+        },
+        {
+          "id": "B7-PUB-L76-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "公開 PR Preview 可能洩露內容；敏感草稿只用受限環境預覽"
+        },
+        {
+          "id": "B7-PUB-L76-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "只詢問缺少的真實資料"
+        },
+        {
+          "id": "B7-PUB-L76-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 slug"
+        },
+        {
+          "id": "B7-PUB-L76-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對日期"
+        },
+        {
+          "id": "B7-PUB-L76-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "寫入正確實際 Collection"
+        },
+        {
+          "id": "B7-PUB-L76-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "草稿不在列表"
+        },
+        {
+          "id": "B7-PUB-L76-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "草稿不在 RSS"
+        },
+        {
+          "id": "B7-PUB-L76-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "草稿不在 Sitemap"
+        },
+        {
+          "id": "B7-PUB-L76-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "草稿不在搜尋"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:23",
+      "rows": [
+        {
+          "id": "PROOF-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-002.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "P0-U004",
+          "canonicalId": "ATP-P2-0008",
+          "kind": "evidence",
+          "decision": "KEEP",
+          "requirement": "A successful build does not establish that a live Preview exists"
+        },
+        {
+          "id": "P0-U005",
+          "canonicalId": "ATP-P2-0009",
+          "kind": "evidence",
+          "decision": "KEEP",
+          "requirement": "An Actions artifact must not be represented as a web-accessible live Preview"
+        },
+        {
+          "id": "P0-U006",
+          "canonicalId": "ATP-P2-0010",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Compare the deployment commit with the current PR head SHA before claiming a Preview is current"
+        },
+        {
+          "id": "P0-U007",
+          "canonicalId": "ATP-P2-0043",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Branch Preview URLs may change over time; use the deployment URL corresponding to the reviewed PR commit"
+        },
+        {
+          "id": "PREVIEW-08",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "4. 根據下方**已確認的平台**取得真實 Preview 網址；比對部署使用的 commit/SHA 是否為 PR 最新 head。Build 綠燈不等於預覽網站可用。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:12",
+      "rows": [
+        {
+          "id": "B4-ASM12-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀 Starter Config、Layout Directions、Blocks Registry"
+        },
+        {
+          "id": "B4-ASM12-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 kind/layoutSlug 一致性"
+        },
+        {
+          "id": "B4-ASM12-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 HEX、路由、CTA、導航名稱及排序"
+        },
+        {
+          "id": "B4-ASM12-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 HEX 品牌色設定"
+        },
+        {
+          "id": "B4-ASM12-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證選用路由"
+        },
+        {
+          "id": "B4-ASM12-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 CTA"
+        },
+        {
+          "id": "B4-ASM12-03-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證導航名稱"
+        },
+        {
+          "id": "B4-ASM12-03-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證導航順序"
+        },
+        {
+          "id": "B4-ASM12-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀 Starter Config"
+        },
+        {
+          "id": "B4-ASM12-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀 Layout Directions"
+        },
+        {
+          "id": "B4-ASM12-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀 Blocks Registry"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:20",
+      "rows": [
+        {
+          "id": "B3-PUB20-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "以學員生成專案真實 schema、navigation、scripts 為準"
+        },
+        {
+          "id": "B3-PUB20-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "生成 Pagefind 索引不等於搜尋對話框 UI 完成"
+        },
+        {
+          "id": "B3-PUB20-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "分類／月份搜尋、OG、結構化資料未組裝不得宣稱已完成"
+        },
+        {
+          "id": "B3-PUB20-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未組裝分類或月份搜尋 UI 不可宣稱完成"
+        },
+        {
+          "id": "B3-PUB20-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未組裝 OG metadata 不可宣稱完成"
+        },
+        {
+          "id": "B3-PUB20-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未組裝結構化資料不可宣稱完成"
+        },
+        {
+          "id": "B3-PUB20-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "以學生實際 schema 為準"
+        },
+        {
+          "id": "B3-PUB20-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "以學生實際 navigation 為準"
+        },
+        {
+          "id": "B3-PUB20-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "以學生實際 scripts 為準"
+        },
+        {
+          "id": "DES7-003",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "**學員生成專案**：讀該專案的 site.config.json、package.json、astro.config.mjs、src/content.config.ts、src/content/articles/、src/pages/articles/、src/layouts/SiteLayout.astro、src/pages/rss.xml.js、src/pages/sitemap.xml.js、src/pages/robots.txt.js。以實際schema、navigation和scripts為準；最新生成骨架的 npm run build 已包含 Pagefind 索引和 search/exact-zh.json；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:19",
+      "rows": [
+        {
+          "id": "PROOF-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "B9B-DEP-19-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROCEDURE"
+        },
+        {
+          "id": "B9B-DEP-19-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9B-DEP-19-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROCEDURE"
+        },
+        {
+          "id": "B9B-DEP-19-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "ACCEPTANCE"
+        },
+        {
+          "id": "B9B-DEP-19-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "BOUNDARY"
+        },
+        {
+          "id": "B9-DEP-L19-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Branch→PR→CI→可開 Preview→同意→Merge→部署→線上驗證；GitHub Pages Preview 必須隔離可訪問；本地 Build 不等於 Preview"
+        },
+        {
+          "id": "DEPLOY-06",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "5. 操作：Branch → PR → CI Build → 預覽可開啟 → 學員同意 → Merge → 正式 Deploy → 實際頁面/搜尋/連結驗證。GitHub Pages 的 PR Preview 必須有實際隔離與可訪問路徑，不能把本地 Build 當線上預覽。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:35",
+      "rows": [
+        {
+          "id": "B3-PUB35-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "使用真實文章正文、可及性標題與有意義連結"
+        },
+        {
+          "id": "B3-PUB35-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "圖片須有授權及替代文字"
+        },
+        {
+          "id": "B3-PUB35-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不在一般正式文章塞入虛構示例"
+        },
+        {
+          "id": "B3-PUB35-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "文章正文使用真實內容"
+        },
+        {
+          "id": "B3-PUB35-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "提供可及性標題"
+        },
+        {
+          "id": "B3-PUB35-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "使用有意義連結文字"
+        },
+        {
+          "id": "B3-PUB35-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "圖片來源具授權"
+        },
+        {
+          "id": "B3-PUB35-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "圖片有替代文字"
+        },
+        {
+          "id": "DES7-008",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "4. Put the actual article in the Markdown body, with accessible headings, meaningful link text, licensed images and image alt. Do not inject fake examples or generic component demonstrations into an ordinary article."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:39",
+      "rows": [
+        {
+          "id": "PRIV-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PRIV-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-001.01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L39)"
+        },
+        {
+          "id": "PRIV-001.01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L39](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L39)"
+        },
+        {
+          "id": "P0-U009",
+          "canonicalId": "ATP-P2-0012",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Historical immutable deployment URLs may remain publicly reachable"
+        },
+        {
+          "id": "P0-U010",
+          "canonicalId": "ATP-P2-0013",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Private repository status does not guarantee Preview access is private"
+        },
+        {
+          "id": "P0-U042",
+          "canonicalId": "ATP-P2-0038",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Check whether the deployed Preview is indexable by search engines"
+        },
+        {
+          "id": "P0-U043",
+          "canonicalId": "ATP-P2-0039",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Check Preview for private or unapproved content before disclosing its URL"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:17",
+      "rows": [
+        {
+          "id": "B8-ASM-L17-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Exporter 在另一目錄產出獨立可執行 Astro，不修改 Showcase"
+        },
+        {
+          "id": "B8-ASM-L17-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "生成所選頁面、共用導航與站點資產，不將研究站路由全數照搬"
+        },
+        {
+          "id": "B8-ASM-L17-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "有 Adapter 時保留專屬 Home，不用通用 Hero 替代"
+        },
+        {
+          "id": "B8-ASM-L17-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Phase 1 不能聲稱完整移植十二套原始構圖"
+        },
+        {
+          "id": "B8-ASM-L17-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "生成選定頁面"
+        },
+        {
+          "id": "B8-ASM-L17-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "建立共用導航"
+        },
+        {
+          "id": "B8-ASM-L17-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "建立站點資產"
+        },
+        {
+          "id": "B8-ASM-L17-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得照搬全部研究站路由"
+        },
+        {
+          "id": "OPS4-003",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "node scripts/export-starter.mjs <site-brief.json> <output-directory> generates a separate, runnable Astro site scaffold from approved JSON. It does **not** mutate the showcase. It generates valid homepage, only selected interior routes, shared navbar/mobile nav, branded CSS variables, article content collection, RSS/sitemap/robots and GitHub Pages workflow. Do not pretend this command perfectly ports the twelve original page compositions; phase 1 uses the matching layout-specific independent Home.astro when adapter is present. Preserve it and improve content/interior pages as needed; **do not replace it with a generic Hero or restart assembly**."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:50",
+      "rows": [
+        {
+          "id": "B2-ASM50-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Section Pattern 須先讀 Skill、Registry"
+        },
+        {
+          "id": "B2-ASM50-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "學員未選 Pattern 不強制加入"
+        },
+        {
+          "id": "B2-ASM50-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "輸出 Pattern 骨架仍須真實內容與視覺移植"
+        },
+        {
+          "id": "B2-ASM50-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "選 Section Pattern 前讀專用 Skill"
+        },
+        {
+          "id": "B2-ASM50-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 Section Pattern Registry"
+        },
+        {
+          "id": "B2-ASM50-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "匯出 Pattern 區塊只是待完善骨架"
+        },
+        {
+          "id": "B2-ASM50-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "必須補充真實內容"
+        },
+        {
+          "id": "B2-ASM50-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "按原始 Pattern 完成視覺移植"
+        },
+        {
+          "id": "OPS4-013",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "3. **先處理 Section Patterns**：讀 .ai/astro-section-pattern-craft/SKILL.md、src/data/section-patterns.registry.json。請學員列出想用的 Pattern ID、放置頁面、前後順序、真實資料；未選擇則不強制加入。StarterPlan v1 已可存放 Pattern 選擇；匯出器可呈現對應的待完善區段與不同頁腳樣式，但這仍是骨架，必須提供真實內容並按原始 Pattern 做完整視覺移植。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-entry/SKILL.md:18",
+      "rows": [
+        {
+          "id": "TRUTH-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "P0-U013",
+          "canonicalId": "ATP-P2-0016",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not fabricate professional qualifications, testimonials, effects or prices"
+        },
+        {
+          "id": "P0-U014",
+          "canonicalId": "ATP-P2-0017",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not claim booking, form submission or newsletter subscriptions succeeded without configured and verified integrations"
+        },
+        {
+          "id": "P0-U015",
+          "canonicalId": "ATP-P2-0018",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "When content facts are missing, leave them blank, explicitly pending, or clearly marked demo data"
+        },
+        {
+          "id": "P0-U016",
+          "canonicalId": "ATP-P2-0019",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Actual website owner must confirm factual claims; automated CI cannot substitute for factual verification"
+        },
+        {
+          "id": "ENTRY-07",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- 只使用真實已確認的經歷、證照、服務、聯絡方式、見證與授權素材；沒有資料就空缺、標示 Demo 或待設定，不做假功能。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:17",
+      "rows": [
+        {
+          "id": "B4-DEP17-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "用 import.meta.env.BASE_URL 處理路由與資產"
+        },
+        {
+          "id": "B4-DEP17-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 canonical、RSS、Sitemap、robots、OG URL"
+        },
+        {
+          "id": "B4-DEP17-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "移除研究站的硬編碼 URL"
+        },
+        {
+          "id": "B4-DEP17-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 canonical"
+        },
+        {
+          "id": "B4-DEP17-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 RSS"
+        },
+        {
+          "id": "B4-DEP17-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 Sitemap"
+        },
+        {
+          "id": "B4-DEP17-02-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 robots"
+        },
+        {
+          "id": "B4-DEP17-02-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 OG URL"
+        },
+        {
+          "id": "DEPLOY-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "3. 使用 import.meta.env.BASE_URL 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:32",
+      "rows": [
+        {
+          "id": "INDEX-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "INDEX-001.04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "B9C-DEP32",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SECURITY"
+        },
+        {
+          "id": "B9C-DEP32-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不為 CI 綠燈移除 noindex"
+        },
+        {
+          "id": "B9C-DEP32-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未經核准不可讓 Demo／Draft 受搜尋索引"
+        },
+        {
+          "id": "B9-DEP-L32-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得為 CI PASS 移除 noindex；Demo 和 Draft 未經核准不得對搜尋引擎開放"
+        },
+        {
+          "id": "DEPLOY-12",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- 不得為了讓 CI 通過而移除 noindex，也不得在尚未核准時把 Demo／草稿對搜尋引擎開放。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:47",
+      "rows": [
+        {
+          "id": "B6-PUB47-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 sitemap、RSS、robots、404 產物"
+        },
+        {
+          "id": "B6-PUB47-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "連結需指向真實網站"
+        },
+        {
+          "id": "B6-PUB47-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "RSS 不重複展示八種主題外觀的同一文章"
+        },
+        {
+          "id": "B6-PUB47-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 sitemap.xml"
+        },
+        {
+          "id": "B6-PUB47-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 rss.xml"
+        },
+        {
+          "id": "B6-PUB47-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 robots.txt"
+        },
+        {
+          "id": "B6-PUB47-01-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "檢查 404.html"
+        },
+        {
+          "id": "DES7-013",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "4. Inspect sitemap.xml, rss.xml, robots.txt, 404.html in the built output. Links must point to real site URLs; RSS should not duplicate all eight thematic appearances of one article."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:66",
+      "rows": [
+        {
+          "id": "B6-PUB66-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接異動檔案與文章公開／草稿狀態"
+        },
+        {
+          "id": "B6-PUB66-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接實際執行的檢查與未解風險；未同意不得 Merge"
+        },
+        {
+          "id": "B6-PUB66-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接異動檔案"
+        },
+        {
+          "id": "B6-PUB66-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接文章公開或草稿狀態"
+        },
+        {
+          "id": "B6-PUB66-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接已執行檢查"
+        },
+        {
+          "id": "B6-PUB66-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接未解風險"
+        },
+        {
+          "id": "B6-PUB66-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未得同意不得 Merge"
+        },
+        {
+          "id": "DES7-016",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "5. Hand off with changed files, example article path, public/draft status, actual checks and remaining risks. **Never merge without explicit user approval.**"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:78",
+      "rows": [
+        {
+          "id": "B7-PUB-L78-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "排定公開須先完成文字、SEO、內鏈、圖片來源與手機 QA"
+        },
+        {
+          "id": "B7-PUB-L78-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "沒有實際排程服務不可聲稱能定時自動發布"
+        },
+        {
+          "id": "B7-PUB-L78-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對文字內容"
+        },
+        {
+          "id": "B7-PUB-L78-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 SEO"
+        },
+        {
+          "id": "B7-PUB-L78-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對站內連結"
+        },
+        {
+          "id": "B7-PUB-L78-01-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對圖片來源"
+        },
+        {
+          "id": "B7-PUB-L78-01-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對手機 QA"
+        },
+        {
+          "id": "DES7-018",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:79",
+      "rows": [
+        {
+          "id": "B7-PUB-L79-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布須確認學員同意稿件"
+        },
+        {
+          "id": "B7-PUB-L79-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Branch／PR 經 Preview 驗收後再 Merge／Production"
+        },
+        {
+          "id": "B7-PUB-L79-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布後核對 URL、清單、RSS、Sitemap、搜尋（有 Pagefind 時）"
+        },
+        {
+          "id": "B7-PUB-L79-03-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布後確認 URL"
+        },
+        {
+          "id": "B7-PUB-L79-03-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布後確認列表"
+        },
+        {
+          "id": "B7-PUB-L79-03-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布後確認 RSS"
+        },
+        {
+          "id": "B7-PUB-L79-03-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "發布後確認 Sitemap"
+        },
+        {
+          "id": "B7-PUB-L79-03-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "有 Pagefind 才測索引及搜尋"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-pr-preview/SKILL.md:38",
+      "rows": [
+        {
+          "id": "PROOF-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "PROOF-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-002.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PROOF-002.01.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L38](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L38)"
+        },
+        {
+          "id": "PROOF-002.01.S2",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[.ai/astro-pr-preview/SKILL.md:L38](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/.ai/astro-pr-preview/SKILL.md#L38)"
+        },
+        {
+          "id": "P0-U037",
+          "canonicalId": "ATP-P2-0033",
+          "kind": "evidence",
+          "decision": "KEEP",
+          "requirement": "Cloudflare Preview URLs and associated status must come from actual platform deployment reports"
+        },
+        {
+          "id": "P0-U038",
+          "canonicalId": "ATP-P2-0034",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not invent Cloudflare pages.dev URLs or copy research GitHub Pages preview path conventions"
+        },
+        {
+          "id": "PREVIEW-13",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- 以 **Cloudflare 自己回報**的 URL、status、commit、log 驗證。不能猜 *.pages.dev 或把 GitHub Pages /pr-preview/pr-N/ 路徑套過去；未啟用 Git 整合/預覽時不得聲稱有 Preview。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:77",
+      "rows": [
+        {
+          "id": "B9C-ASM77",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "OPTIONAL_SCHEMA / NORMATIVE"
+        },
+        {
+          "id": "B9C-ASM77-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "collective team/events 選填資料結構"
+        },
+        {
+          "id": "B9C-ASM77-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "成員需 owner 核准"
+        },
+        {
+          "id": "B9C-ASM77-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "活動需確實確認"
+        },
+        {
+          "id": "B9C-ASM77-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "空資料顯示 pending"
+        },
+        {
+          "id": "B9C-ASM77-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "禁止虛構名冊、日期與可預約性"
+        },
+        {
+          "id": "B9-ASM-L77-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "collective 的 team/events 欄位可選；僅使用本人批准的人員和確認活動；空清單標待設定，不捏造日期/可預約性"
+        },
+        {
+          "id": "OPS4-020",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- collective may accept team: [{name, role, bio}] and events: [{title, description, date: \"YYYY-MM-DD\", url: \"https://…\"}]. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates."
+        }
+      ]
+    },
+    {
+      "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:39",
+      "rows": [
+        {
+          "id": "PR59-EVIDENCE-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不可由自動 PASS 推定法律適用性"
+        },
+        {
+          "id": "TRUTH-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "P59-039",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "\\"
+        },
+        {
+          "id": "P59-39",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "**PENDING_CROSSCHECK**"
+        },
+        {
+          "id": "P0-U028",
+          "canonicalId": "ATP-P2-0031",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Automated PASS does not prove professional claims or legal applicability in an independent student site"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-content-publishing/SKILL.md:37",
+      "rows": [
+        {
+          "id": "B2-PUB37-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在列表、歸檔、RSS、Sitemap、搜尋"
+        },
+        {
+          "id": "B2-PUB37-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "公開 PR Preview 可能曝光草稿；機密資料不能上傳公開 repo 或 preview"
+        },
+        {
+          "id": "B2-PUB37-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在公開文章列表"
+        },
+        {
+          "id": "B2-PUB37-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在公開歸檔"
+        },
+        {
+          "id": "B2-PUB37-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在 RSS/feed"
+        },
+        {
+          "id": "B2-PUB37-01-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在 Sitemap"
+        },
+        {
+          "id": "B2-PUB37-01-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Draft 不得出現在靜態搜尋結果"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:13",
+      "rows": [
+        {
+          "id": "B6-ASM13-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對品牌、圖片權利、真實聯絡與預約方式"
+        },
+        {
+          "id": "B6-ASM13-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "專業履歷及資格僅能使用本人提供事實"
+        },
+        {
+          "id": "B6-ASM13-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未配置第三方整合須隱藏或明確標示"
+        },
+        {
+          "id": "B6-ASM13-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對品牌真實資料"
+        },
+        {
+          "id": "B6-ASM13-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對圖片授權"
+        },
+        {
+          "id": "B6-ASM13-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對真實聯絡與預約方式"
+        },
+        {
+          "id": "OPS4-002",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "3. Check content readiness: real brand name, copyright-safe image assets, real contact/booking addresses, bios/qualifications only if provided. Unconfigured external integrations stay hidden or explicitly unconfigured."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:78",
+      "rows": [
+        {
+          "id": "B9C-ASM78",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "OPTIONAL_SCHEMA / CONDITIONAL / BOUNDARY"
+        },
+        {
+          "id": "B9C-ASM78-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "trust-path serviceTiming 選填"
+        },
+        {
+          "id": "B9C-ASM78-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "正整數分鐘才產生比例時序與真實總長"
+        },
+        {
+          "id": "B9C-ASM78-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "缺資料顯示 pending"
+        },
+        {
+          "id": "B9C-ASM78-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不虛構 50 分鐘"
+        },
+        {
+          "id": "B9C-ASM78-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不是預約系統或 CRM"
+        },
+        {
+          "id": "B9-ASM-L78-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "trust-path serviceTiming 為可選欄位；正整數分鐘才可計算比例與總長；缺值顯示待設定；不可假造 50 分鐘或當成預約/CRM"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-assembly/SKILL.md:80",
+      "rows": [
+        {
+          "id": "B9C-ASM80",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "NORMATIVE"
+        },
+        {
+          "id": "B9C-ASM80-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不重新加入已移除的裝飾替代面板"
+        },
+        {
+          "id": "B9C-ASM80-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "保留垂直學習路徑與收藏抽屜"
+        },
+        {
+          "id": "B9C-ASM80-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "保留階梯教練卡片及名冊／活動帳本"
+        },
+        {
+          "id": "B9C-ASM80-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "保留五站路徑"
+        },
+        {
+          "id": "B9-ASM-L80-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不得加回已移除的裝飾替代面板；保留不同版型學習路徑、收藏抽屜、教練階梯卡、活動名冊與五站路線"
+        },
+        {
+          "id": "OPS4-021",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route."
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-site-from-zero/SKILL.md:25",
+      "rows": [
+        {
+          "id": "PRIV-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "TRUTH-001.04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "ZERO-09",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "禁止假履歷、證照、評價、服務成效、價格、訂閱／預約成功、可工作的表單、部署完成或公開網址。預覽有可能公開，無法保證有權限控制。不要在聊天中要求帳密、Token 或驗證碼。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:11",
+      "rows": [
+        {
+          "id": "B9C-DEP11",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PROCEDURE / ARCHITECTURE"
+        },
+        {
+          "id": "B9C-DEP11-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀學生 ZIP 的 AGENTS/Preview/Publishing Skills"
+        },
+        {
+          "id": "B9C-DEP11-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀學生 astro.config/package/workflows"
+        },
+        {
+          "id": "B9C-DEP11-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "deploy.yml 僅 main 人工發布、pr-check.yml 僅 Build Artifact"
+        },
+        {
+          "id": "B9C-DEP11-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對學生 Repo、Domain、平台，不套老師專屬工作流"
+        },
+        {
+          "id": "B9-DEP-L11-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀離線 AGENTS、Preview、Publishing Skill，再讀學生專案 config/package/workflows；分清手動正式 deploy 與只讀 PR Artifact；核對學生 Repo、網域與平台"
+        },
+        {
+          "id": "DEPLOY-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "讀取離線包的 AGENTS.md、.ai/astro-pr-preview/SKILL.md、.ai/astro-content-publishing/SKILL.md，再讀**學員生成專案**的 astro.config.mjs、package.json 與實際 .github/workflows/。生成器提供 deploy.yml（只允許main人工觸發正式發布）和 pr-check.yml（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:18",
+      "rows": [
+        {
+          "id": "B4-DEP18-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "使用 GitHub Actions Build/Deploy"
+        },
+        {
+          "id": "B4-DEP18-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不直接套用教師 showcase 的 workflow_run、Preview Cleanup、gh-pages Snapshot"
+        },
+        {
+          "id": "B4-DEP18-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "學員獨立單站工作流程採最小權限"
+        },
+        {
+          "id": "B4-DEP18-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不套用展示站 workflow_run"
+        },
+        {
+          "id": "B4-DEP18-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不套用 Preview Cleanup"
+        },
+        {
+          "id": "B4-DEP18-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不套用 gh-pages Snapshot"
+        },
+        {
+          "id": "DEPLOY-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 workflow_run、預覽清理與 gh-pages 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:24",
+      "rows": [
+        {
+          "id": "B4-DEP24-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Cloudflare Git 整合須核對正式 Branch、Build、dist、site/base"
+        },
+        {
+          "id": "B4-DEP24-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Cloudflare base 依實際根網域或子路徑判斷，不可硬套 /"
+        },
+        {
+          "id": "B4-DEP24-01-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對正式部署分支"
+        },
+        {
+          "id": "B4-DEP24-01-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對依賴安裝與 Build 命令"
+        },
+        {
+          "id": "B4-DEP24-01-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對靜態 dist 輸出設定"
+        },
+        {
+          "id": "B4-DEP24-01-S04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 Astro site"
+        },
+        {
+          "id": "B4-DEP24-01-S05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "核對 Astro base"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:27",
+      "rows": [
+        {
+          "id": "PRIV-002.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "PRIV-002.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "B9B-DEP-27-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SECURITY"
+        },
+        {
+          "id": "B9B-DEP-27-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SECURITY"
+        },
+        {
+          "id": "B9B-DEP-27-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "SECURITY"
+        },
+        {
+          "id": "B9-DEP-L27-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "Token、OAuth 和部署授權只走平台授權流程，不得放入程式碼、聊天、Commit、公用設定"
+        },
+        {
+          "id": "DEPLOY-10",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "5. Cloudflare API Token、GitHub OAuth 或部署授權只在平台授權流程處理，不存入程式碼、聊天訊息、Commit 或公用設定。"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:30",
+      "rows": [
+        {
+          "id": "B6-DEP30-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "驗證 Build 實際產生 Pagefind 與中文 exact-zh 索引"
+        },
+        {
+          "id": "B6-DEP30-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "npm run verify 應檢查索引結構、路由與草稿隔離"
+        },
+        {
+          "id": "B6-DEP30-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PR CI regressions 應包含負向故障案例"
+        },
+        {
+          "id": "B6-DEP30-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "不同 base 設定下必須重新驗證"
+        },
+        {
+          "id": "B6-DEP30-02-S01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "npm run verify 檢查索引結構"
+        },
+        {
+          "id": "B6-DEP30-02-S02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "npm run verify 檢查路由"
+        },
+        {
+          "id": "B6-DEP30-02-S03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "npm run verify 檢查草稿隔離"
+        }
+      ]
+    },
+    {
+      "sourceKey": ".ai/astro-starter-deploy/SKILL.md:36",
+      "rows": [
+        {
+          "id": "B9C-DEP36",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "EVIDENCE"
+        },
+        {
+          "id": "B9C-DEP36-01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接正式 URL"
+        },
+        {
+          "id": "B9C-DEP36-02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接 Preview 流程"
+        },
+        {
+          "id": "B9C-DEP36-03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接更新位置"
+        },
+        {
+          "id": "B9C-DEP36-04",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接還原方案"
+        },
+        {
+          "id": "B9C-DEP36-05",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "未串接服務誠實列出"
+        },
+        {
+          "id": "B9-DEP-L36-1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "交接正式網址、Preview 流程、內容更新位置、還原方式及未串接服務"
+        }
+      ]
+    },
+    {
+      "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:40",
+      "rows": [
+        {
+          "id": "GATE-001.01",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "GATE-001.02",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "DIRECT_CANDIDATE"
+        },
+        {
+          "id": "GATE-001.03",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "PARTIAL"
+        },
+        {
+          "id": "GATE-001.03.S1",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "[docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:L40](https://github.com/pikaOne1138/astro-personal-site-starter/blob/2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c/docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md#L40)"
+        },
+        {
+          "id": "P59-040",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "\\"
+        },
+        {
+          "id": "P59-40",
+          "canonicalId": null,
+          "kind": "evidence",
+          "decision": "PENDING",
+          "requirement": "**PENDING_CROSSCHECK**"
+        },
+        {
+          "id": "P0-U029",
+          "canonicalId": "ATP-P2-0045",
+          "kind": "evidence",
+          "decision": "KEEP",
+          "requirement": "Manual acceptance evidence must preserve the exact approved PR Head SHA"
+        }
+      ]
+    }
+  ],
+  "frozenFileRoleInventory": [
+    {
+      "path": ".ai/astro-content-publishing/references/article-authoring.md",
+      "blobSha": "a07954e06bc12ec15da7d2ce0bf299e0e84b3f2f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-publishing/references/seo-and-release-checklist.md",
+      "blobSha": "6f67b332aacde6e01e0d5d1cd84267c8d0d72735",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-publishing/SKILL.md",
+      "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-content-readiness/SKILL.md",
+      "blobSha": "f7a3b255189adb996fed03099896cababc1ec208",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/conversation-playbook.md",
+      "blobSha": "995e4b8237a90cd89101ebbacc69247cba56a9a4",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/cross-model-review-v3.md",
+      "blobSha": "014cc186904f3901a0589be75c164bcdd894df2a",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/design-brief-contract.md",
+      "blobSha": "361af99ba82c8db03315feec88c00e44b373fc39",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/dialogue-quality-retest-v2.md",
+      "blobSha": "1fff66c0990ac6515bfaf115afd0dcf4903faef7",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/dialogue-quality-review.md",
+      "blobSha": "26337b958573f37d388c37e6831c066e4b323fe2",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/references/scenario-tests.md",
+      "blobSha": "7c9080c3e790e17eeb9b7ae798d62836f260b8e3",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-design-consultation/SKILL.md",
+      "blobSha": "a9e8de73f26b72499f1372b605a348665e41fa08",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/diversity-check.md",
+      "blobSha": "b781b3a503ce3f79702ae94f226b4493a33bad77",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/scoring.md",
+      "blobSha": "c4b8b2802c23a24fb227ea059126cd8cf89b9ae7",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/checklists/visual-qa.md",
+      "blobSha": "c52d149e5e77787e32161f5ce245967eff9f9dcc",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/brief.md",
+      "blobSha": "4a57d226b53eaba1b2104d3f2c005bc75b7cb65d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/DECISIONS.md",
+      "blobSha": "0e2de60e707520dc4752199caf092634e62b4fe6",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/direction.md",
+      "blobSha": "00cf3272b2d89ce7f8fa0359c697999137bdb84d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/reading-almanac/wireframe.md",
+      "blobSha": "56f4d542b6a919e85e8b88acf3eeddf0fb327d16",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/brief.md",
+      "blobSha": "7e984ab6150bc4ed5aa071a1c09dcf1768fbe57d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/DECISIONS.md",
+      "blobSha": "4231e903698505bc71c74bca14606aa8ebe00971",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/direction.md",
+      "blobSha": "4ecbd43d7bec41f95d61740aee343cb10f72099a",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/examples/trust-path/wireframe.md",
+      "blobSha": "10da0e808b5ae529d19a00915fd719052cd78dbe",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/README.md",
+      "blobSha": "9b9c82db052fede821f7910b0ed79610cfd1be5a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/cta-trust.md",
+      "blobSha": "8901779067b87c2e0d26285cd88a2383e3aa95e2",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/heroes.md",
+      "blobSha": "2ef3652e01c796a5ab291fba975941bf170c6c91",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/lists.md",
+      "blobSha": "8928e4038eb3a6a190b927e97aff39714036ddfd",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/rhythm.md",
+      "blobSha": "02ff7a0af801871f53c84ad12f7a474826932ca1",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/recipes/sections.md",
+      "blobSha": "dbfcf0b3fae9c21c464d475ed52b7217c2da2a68",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/00-evidence-legend.md",
+      "blobSha": "8ef9d8d7efb0f5ccbd3ff2b36b14c879a3783623",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/01-cross-site-patterns.md",
+      "blobSha": "b89c8088f3cd28dd6b5ac0a5f5d36ee958c062d2",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/02-design-tokens.md",
+      "blobSha": "06c0dfb75b8417aae467dca1914be577049c3a22",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/03-ai-failure-modes.md",
+      "blobSha": "48b7c83ea377efc96976f8a1460322a11de94e8b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/04-workflow.md",
+      "blobSha": "d150cacd2b04c10d56bebd0068065db6b5cd9c4a",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/01-field-notes.md",
+      "blobSha": "9f0d70680b638cb2790845e3d586652e649ec2ff",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/02-essayist.md",
+      "blobSha": "096f23b16794022cd7bd5ad657e9df8e75cb0225",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/03-learning-lab.md",
+      "blobSha": "f1142cd4617615f2e5f2537c6254b519eade8cf5",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/04-curator.md",
+      "blobSha": "2a65678b602bd6d4bb8f92b3daaa171b7f1d0ad7",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/05-radio-letter.md",
+      "blobSha": "9df415864cd9be93caca26914d4ef860005b924b",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/06-clinician.md",
+      "blobSha": "25e576f5f64528fcbc94262a07abaa6bb244e496",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/07-companion.md",
+      "blobSha": "3453f167c7564cc5d858529c16b5ed2ee3518ac0",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/08-somatic.md",
+      "blobSha": "9c461a39ce5a88c7efb5bc887788e6b64df2012d",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/09-coach.md",
+      "blobSha": "ddefae78301ddedcc84a693094b44bf4de562d50",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/references/site-analysis/10-collective.md",
+      "blobSha": "971b0846f68f29b1c40ee668073890752842b014",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-editorial-layout-design/SKILL.md",
+      "blobSha": "c14edf53f2f69d47d2465e3b30bd159c759a8279",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-launch-health-check/SKILL.md",
+      "blobSha": "074060c27edae6ff2e3a5444bf241c8913f4d9b4",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md",
+      "blobSha": "a21eec142f3354b1fae074a54551dcb394495112",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-layout-craft/SKILL.md",
+      "blobSha": "2c148dd24e89a38d0c6026c1f8cb12c257a54bb9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/effect-catalog.md",
+      "blobSha": "a27fa515c98ac275f1b3eeb2f5b96d312e04b9cf",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/README.md",
+      "blobSha": "cf3a2df89633e8e6b55fa95381a753bb915a3cff",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/content-interactions.md",
+      "blobSha": "d70b24cf1aa6963907be41550ee65c79930676fe",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/pointer-interactions.md",
+      "blobSha": "c6c0ee66f0324f542b691b4baa15f00ef194d8ee",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/recipes/reveal-and-stagger.md",
+      "blobSha": "ca5e9c8982facf311c91f2ec96bd1ecd0b14ffb3",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Button.astro.txt",
+      "blobSha": "ab35655cd30b950e2bab09dcd0ffd7e09aaa471d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/components.effects.css.txt",
+      "blobSha": "17c5467f4dc5ed8a0335927d403d6312dae556f7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/FAQAccordion.astro.txt",
+      "blobSha": "58daaf09109a373b82581c12583fd40cc68c6355",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/MotionCard.astro.txt",
+      "blobSha": "8cef963c991ba04cdaa83834d388ed3bba20f9d8",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Reveal.astro.txt",
+      "blobSha": "147a8e05fc8a10e12ac6070252d3db8bdfd33dec",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/reveal.ts.txt",
+      "blobSha": "528a558bdf683f8972844366ec26fedfd06bb967",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/StaggerGroup.astro.txt",
+      "blobSha": "8ce5dfc1765ae244034dce9c2ba7c7b9da96daf7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/UnderlineLink.astro.txt",
+      "blobSha": "063f220b050d224f5ca564465f7aeb97b647509d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/library/source-snapshots/manus-v2/ZoomImage.astro.txt",
+      "blobSha": "a949d3f1cedd52869dc68de327e3424e3881f48f",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+      "blobSha": "f290bea4de07df2065adace8f0f18f0d60c309fb",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-motion-craft/SKILL.md",
+      "blobSha": "39ed33b76ccbd67abf2032f9c655165cf6dfbdf9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-navigation-tree-test/SKILL.md",
+      "blobSha": "64c4597eb034fcaac226e9bd18a188683b311ea5",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-page-management/SKILL.md",
+      "blobSha": "64878b45861ab912d917e20d4bc8be92bb64adc8",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-pr-preview/references/deployment-recovery.md",
+      "blobSha": "e17482c55599f3aaf806d0296e9a40ad6bcfcf1f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-pr-preview/SKILL.md",
+      "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-section-pattern-craft/SKILL.md",
+      "blobSha": "4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-assembly/SKILL.md",
+      "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-entry/SKILL.md",
+      "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-from-zero/SKILL.md",
+      "blobSha": "8224afcff166a8864326f2eff33cd8f718706eee",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-site-maintenance/SKILL.md",
+      "blobSha": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-starter-deploy/SKILL.md",
+      "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-starter-onboarding/SKILL.md",
+      "blobSha": "54dad8192d899b42b3e495280e916838fe0ebdd6",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/docs/research-log.md",
+      "blobSha": "60c717ce70552e4f25d789b21ad6493ed7517aad",
+      "role": "DESIGN_REFERENCE_OR_EXAMPLE",
+      "reason": "Recipe, case study or reference may contain techniques, not universal student obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/00-source-map.md",
+      "blobSha": "63e94940a3d05bfd833d9f887a65cd6499e493af",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/01-design-principles.md",
+      "blobSha": "c8f4ea6c929349061e933faea4d7a1851fea517e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/02-architecture.md",
+      "blobSha": "59ba415f6fc9e4f5ca3dc3c990963798f4abb9e8",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/03-pattern-library.md",
+      "blobSha": "67384dd98f85d946c19b669955eea61836da1da0",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/04-visual-systems.md",
+      "blobSha": "c5d449625c209d361bdb18a209f0c84d397d9c2e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/05-motion.md",
+      "blobSha": "e527efaaee21ce3df533c6d30848a077bf040b6b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/06-cta-content.md",
+      "blobSha": "0ed86766ced3dfa843858ab400fa0a5984fe834e",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/07-article-service-pages.md",
+      "blobSha": "f39fe940ad3da7f4a77496796f65e6e76ece1443",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/08-responsive-accessibility.md",
+      "blobSha": "888cf83b56c439e2f7bc9df65b33f49f6eebaf08",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/09-quality-gates.md",
+      "blobSha": "93237c5d3a78dd3e879d511bb2a68cf24c8aadfc",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/article-exploration-v2.md",
+      "blobSha": "999d857a3a774bb429d7eb2ae1294d94e876634b",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/component-library-v1.5.md",
+      "blobSha": "281bcddef7bb4385a143d38b4a21ff6a95e913b3",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-00_總覽與方法.md",
+      "blobSha": "03ad4d943d9ce6a8240e81752d4ef5f20e330bc6",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-01A_案例池_知識部落格_01-10.md",
+      "blobSha": "40c59bf23d6c7a7fcb58bc67f58d75c19a9dac06",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-01B_案例池_知識部落格_11-20.md",
+      "blobSha": "3a716bdf5d6250c882beb100bbff22cf2e9e68b6",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-02A_案例池_助人者_01-10.md",
+      "blobSha": "14e6e2cc4a7d9c94c010581f8cf60ef2c6d57671",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-02B_案例池_助人者_11-20.md",
+      "blobSha": "3ccab6be12a9a7a353d2e5201324aace45ab9d1e",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-03_Top10精選.md",
+      "blobSha": "5fd9a6a43bd2a61937cbf155fabd1f6827f6801f",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-04_Pattern分析_導航與首頁.md",
+      "blobSha": "1bb22f9b071d6deaf8672cfda40fcd35ad6f48c7",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-05_Pattern分析_CSS動畫CTA文章頁.md",
+      "blobSha": "c2a967731111d9d821c148b98e2060cf1b941d71",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/arenaAgent-06_模板DesignBrief與融合建議.md",
+      "blobSha": "14d1a2ebd66beb798cfa1f4d0d9d90a0c211efeb",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/Claude-AstroTmplateResearch.md",
+      "blobSha": "576d32a7c98aa446e0883f7621799575396b8f66",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/Claude-三種網站風格設計規格.md",
+      "blobSha": "1c3b2c15b28a27fb5c3c808c2efefa622b7ca4c5",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/gemini-AstroTmplateResearch.md",
+      "blobSha": "6a99c10184c988d0995b4dc23c6836f0f7514883",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/grok-AstroTmplateResearch.md",
+      "blobSha": "e33430f33ddc1c7cec618e003b294fe47b946068",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/mistral-AstroTmplateResearch.md",
+      "blobSha": "7d065e9a6846f19bfd9f1f6449f1155dc61d469d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/perplexity-AstroTmplateResearch.md",
+      "blobSha": "6eb93f1975402d0e5ad955b5243167f5ee77a58d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gemini3.0Flash-AstroTmplateResearch.md",
+      "blobSha": "d5c36ee6fb6b376363a30ca93c6c0cc159cb448a",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gpt5.4nano-AstroTmplateResearch.md",
+      "blobSha": "6eda0522bb01feeb481aabe552d99970f4865d59",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-gpt6.1Sol-AstroTmplateResearch.md",
+      "blobSha": "5836e382fd176f70e62525dbc8dd0c4e137b64a4",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md",
+      "blobSha": "903caf2bedf649b5f570d7bea0a3c1f1a6397494",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/astro-ui-craft/SKILL.md",
+      "blobSha": "70ceabb3ad04551d544133854667e7df7bbf659f",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/SHARED-DESIGN-HANDOFF.md",
+      "blobSha": "b4483fc6939a11987e63dfa74520f4b290fda997",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": ".ai/url-to-frontend-replica/SKILL.md",
+      "blobSha": "858bc69db2ba46d3074a2e10d9f9d8390f668b3b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "AGENTS.md",
+      "blobSha": "fc4678117367b93ec179f5b3f6455ba5cffb768f",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "COMPONENTS.md",
+      "blobSha": "ef507931858188077b63da7524f566ed220d8f9c",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/09-2-differentiation-audit.md",
+      "blobSha": "1f46ff8eff7abcbc03b16687b09cb82e3831346d",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/articles/legacy-draft.md",
+      "blobSha": "f4e968a3737ae4cff9065b7e5d6cbf9da9880c6d",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/articles/real-note.md",
+      "blobSha": "8d4fa1d0041040e8f0e2222e9ef2828ff914d03c",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/fixtures/content/drafts/private-note.md",
+      "blobSha": "04fcb316816dbc79b65fc4ddd875ad69c57c6956",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/INDEPENDENT-ADAPTERS.md",
+      "blobSha": "9b9bd564019f05428ed102cee26fd3159c1651f7",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-BATCH-A-VISUAL-REVIEW.md",
+      "blobSha": "40f3be2ba461076e0ab273c5ac70d9ad9c7e5589",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-BATCH-BC-REVIEW.md",
+      "blobSha": "775ced303039f4afbdcd9c06673264d8ccc33e88",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-CONTENT-CONTRACT-11.md",
+      "blobSha": "c9fdd062cbcb4b9b5e28fef5991d025f4488f6be",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-EXPANSION-MATRIX.md",
+      "blobSha": "9e32965a4c1a55f11304fb716353120cdcb4315f",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-HANDOFF.md",
+      "blobSha": "ea7f46b2a505f44cbd30b954bf07ba625ea51714",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-MANUAL-QA-CHECKLIST.md",
+      "blobSha": "7570a1c1c0ea8b62fe26c64c77c28e49454664f7",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-P0-NEUTRAL-AUDIT.md",
+      "blobSha": "bbed6617dc60de634d5d2f99b3e77b70b6071ba0",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md",
+      "blobSha": "1419617bba0e94eb5feded51f5f8843478dc2e66",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-PHASE2-INTERIOR-QA.md",
+      "blobSha": "a4dc84270c20c092a378db8a789e348ef39d8fe4",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/art-direction/PR47-PHASE3-HANDOFF.md",
+      "blobSha": "3b7a2a37bfae483a9ef9d37b2ceb6d699aeb87c3",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/astro-skills-end-to-end-validation-v1.md",
+      "blobSha": "6083f3088b5649af0357b1f6e8027d74c84d9fb3",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/brief-handoff/README.md",
+      "blobSha": "cf5da0ffa9311026afa3bb811a0694d2bc34d11a",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/cloudflare-pages-deployment.md",
+      "blobSha": "e9f29e824872033a56eeffcbd756e1fa653d3b0d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/cloudflare-workers-static-assets.md",
+      "blobSha": "562a3d73fc6db4113606f3efbe7dcb78755475a6",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md",
+      "blobSha": "b319cfc9655058e154f3044d3a23da77b02ecb37",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/github-pr-preview-setup.md",
+      "blobSha": "306c75684642f698ddaf078af4c7a31694c1549c",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/CONTENT-INPUTS-THREE-LAYOUTS.md",
+      "blobSha": "c0a273de67417e3b319700db3667e220304ef9f3",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/LAYOUT-DEFINITION-CONTRACT-v1.md",
+      "blobSha": "6ea68d39144dd245f8b79898302f95406153b721",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-ACCEPTANCE-2026-10-15.md",
+      "blobSha": "7c5ea1f72b8184deef1998f1373fcac962e898ee",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-HANDOFF.md",
+      "blobSha": "9f9f43a68182187a2a2ac6ce9ab660005cc8a80c",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-OWNED-MEDIA-2026-10-15.md",
+      "blobSha": "e13ee9786f5f4c7def199f525ba01ab8ec6c4deb",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-PR47-INTEGRATION-HANDOFF.md",
+      "blobSha": "54d7d0ca37419b2581c9880af4fade869e283bb2",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-RESUMED-QA-2026-10-15.md",
+      "blobSha": "956657575e76263fb35d31f681ee7cfe6b9a7461",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/PR46-SECTION-PATTERNS-2026-10-15.md",
+      "blobSha": "ac92e15f2d251c822a6668673b66bfc5782d192e",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/layout/TWELVE-ASSEMBLY-READINESS.md",
+      "blobSha": "a2bd66fff5c701a58bd9b72179d3501835617763",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/manus-component-gap-v2-5-part2.md",
+      "blobSha": "3988c1060b9beb8ab34628224ae2a2359f6be04a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/pr-preview-reconciliation.md",
+      "blobSha": "dff6a2e6f07b739ef0d82bb0ece59cb902d5be97",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/pr-preview-smoke-test.md",
+      "blobSha": "3c923c756e11a181bd08f8f1c5553018d06e6440",
+      "role": "HISTORICAL_PROJECT_EVIDENCE",
+      "reason": "Time-bound implementation/acceptance evidence, requires current applicability review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
+      "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/BETA-CANDIDATE-SCOPE.md",
+      "blobSha": "bd48a96da49937bfab1fe514fd43e3ae338ebe31",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/DEFECT-REGISTER.md",
+      "blobSha": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/PROPS-URL-CONTRACT-TARGETS.md",
+      "blobSha": "4acdcbf65a7e196f3b27d17a68dd3a615da36579",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/quality/QUALITY-CONTRACT.md",
+      "blobSha": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/research-gap-matrix-v2-5.md",
+      "blobSha": "a88ed8599e1e516e03b8b3227512f54ed190577d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/AGENT-HANDOFF.md",
+      "blobSha": "5005e7599a211906f63b002daf93b9ce5651fa46",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/ART-DIRECTION-STARTER.md",
+      "blobSha": "0b0b3870098f56dcaefc6d486ec789364b0b5ef1",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md",
+      "blobSha": "d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt",
+      "blobSha": "8b2887ba4c236bf7aeab03f3ba8c52caa9b6af6b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/EXPANDED-LAYOUTS.md",
+      "blobSha": "8fe4c3ea3ed6b3523d868056ef570391eb4fe09a",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/INTERVIEW-EVALUATION.md",
+      "blobSha": "1067b605a73632df9cd6baaa51b9378bb318196d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/MEDIA-REPLACEMENT.md",
+      "blobSha": "5b5d9f200801e88235465701339c515189f11bef",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/OWNED-MEDIA.md",
+      "blobSha": "8ca0a4b51be64469d640bec52f89c0ac63695bf9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PORTABLE-PROJECT-CONTEXT-SPEC.md",
+      "blobSha": "f3083e04248f3c92dd4d4f15729d90f098d99168",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md",
+      "blobSha": "d63f96a0652559bdcdc04de5049d018cec8dd4c6",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md",
+      "blobSha": "a5dba72bf9a0779bacc4a3f21328060803e6a290",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/PROJECT-TEMPLATE.md",
+      "blobSha": "84706560890654922fa671c2749c5b9bd48d5889",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/README.md",
+      "blobSha": "7e8e676951c7104af42b76a11e9113ccf9ecc30b",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/SECTION-PATTERNS.md",
+      "blobSha": "7fb9d7457cbf054675fb62e29f20f45fcd2d6820",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/START-BUILD-PROMPT.txt",
+      "blobSha": "72766d4280a141d50af660d3c55a88ab8796cb4f",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/START-HERE.md",
+      "blobSha": "bcd508e4901701a6b6ae55ce19ba63b6e2c47a8a",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/STUDENT-AGENTS.md",
+      "blobSha": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/THREE-WAYS-TO-BUILD.md",
+      "blobSha": "9154d8bdf9bc13acda894543c12c9c8639e98d66",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-builder-pack/UPSTREAM-SOURCES.md",
+      "blobSha": "53acadfa6cc6d61ea8504aa9bc55076a057ab20d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/01-AI-訪談主持人.md",
+      "blobSha": "b14088ae85ee9bfce8a0cc691969a4c4fa2c5df2",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/02-網站定位與個人介紹.md",
+      "blobSha": "2cd591bf4070d498efb63f0cccf7affa2bcb6328",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/03-內容準備-二選一.md",
+      "blobSha": "09a235231055a52d87b7baea492f284a8c9d4a5f",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/04-圖片與發布準備.md",
+      "blobSha": "6e99528c26a57c9ac4a40205a9937b9ce25754b7",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/05-AI-品牌識別與圖片共創.md",
+      "blobSha": "82c038c799b74bdebdaf6d1ddddb8ee880ddac6d",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/06-Logo與圖片設計研究.md",
+      "blobSha": "2a3fde90d097d619110be123a8441b9579c5925e",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-intake/README.md",
+      "blobSha": "0883b659f92a64d9509c1208b3863ca470d1d86a",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-site-building-flow-with-section-patterns.md",
+      "blobSha": "0741c9aa67f6617f6a29f6368229f98b457bd710",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/student-three-quality-gates.md",
+      "blobSha": "6a7a4eacaf8fd5af65cb286c7c6c694f8f46e116",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/template-gallery/ACCEPTANCE-25.md",
+      "blobSha": "822690afd1cac1f0f93c914f3a8058d5ecd4ba0b",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/template-gallery/README.md",
+      "blobSha": "01ddef8b4267522e3ef7a47eaf9aa9ad82a117db",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/v0.2-collaboration.md",
+      "blobSha": "d098cda82550c2896b442a3d8eab440c45b2d500",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/v2-8-content-and-seo.md",
+      "blobSha": "11c740b02c979590cc5f9d8a56d520001fd2b47c",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md",
+      "blobSha": "06d50e4464d4be87cfb942ad929918c8e5d8002d",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "docs/workshop/PR56-USER-JOURNEY-QA.md",
+      "blobSha": "67f691c0578ec123735cc8d2c345248c478d0694",
+      "role": "OPERATIVE_CONTRACT_OR_QA_RECORD",
+      "reason": "Operational source; inspect each obligation and historical status",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "public/robots.txt",
+      "blobSha": "dc06b580653cde2b4ce5ad3977e77f99142b6d41",
+      "role": "UNCLASSIFIED_FROZEN_SOURCE",
+      "reason": "Review function and normative authority before applying source line obligations",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "README.md",
+      "blobSha": "6a3606f3423c99bf857cd785c54008944d52edfa",
+      "role": "ACTIVE_REFERENCE_OR_RULE_CANDIDATE",
+      "reason": "May contain active conventions; must undergo source-to-ledger review",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/astro-starter-notes.md",
+      "blobSha": "f9d7aa95a9e3a55fac1f154286b5f695aedb78f0",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/homepage-is-a-lobby.md",
+      "blobSha": "6db2f55701ae8b9d76121ba14c342f5dd1c9f871",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/make-complex-things-clear.md",
+      "blobSha": "48f78c70a8aac055dd14b981808cbe9d59efb3be",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/one-good-article.md",
+      "blobSha": "b506cb1a4c3915968ea3217301aa66842062b83c",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/organize-knowledge.md",
+      "blobSha": "2d17dbb9968cbace67bc509a80e93949ecb6c9ed",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    },
+    {
+      "path": "src/content/articles/quiet-writing.md",
+      "blobSha": "458f1d8fe7f8f41a764ebd4ca84790c4d26a785a",
+      "role": "RESEARCH_OR_FIXTURE",
+      "reason": "Raw research, copied source snapshot, or demonstration content; not automatically binding policy",
+      "reviewStatus": "DOCUMENTARY_SCOPE_CANDIDATE_NOT_FINAL_EXCLUSION"
+    }
+  ],
   "p0InvariantFailures": [],
   "frozenManifestErrors": [],
   "canonicalConsistencyErrors": [],
