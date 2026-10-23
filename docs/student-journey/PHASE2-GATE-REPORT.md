@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1289 |
-| approvedCanonicalIds | 73 |
+| pendingSemanticDecisions | 1264 |
+| approvedCanonicalIds | 93 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 19 |
+| sourceFirstApprovedCanonicalLinkLines | 20 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1289,
-    "approvedCanonicalIds": 73,
+    "pendingSemanticDecisions": 1264,
+    "approvedCanonicalIds": 93,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 19,
+    "sourceFirstApprovedCanonicalLinkLines": 20,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -1726,99 +1726,99 @@
           "id": "B5-PUB63-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "檢查實際產出文章與缺漏路由"
         },
         {
           "id": "B5-PUB63-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "核對清單、標籤、月份、日期、相關文章連結"
         },
         {
           "id": "B5-PUB63-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "核對文章分享、麵包屑、導航及搜尋行為"
         },
         {
           "id": "B5-PUB63-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證列表連結"
+          "canonicalId": "ATP-P2-0076",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article listing links navigate to actual pages"
         },
         {
           "id": "B5-PUB63-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證標籤連結"
+          "canonicalId": "ATP-P2-0077",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article tag links work"
         },
         {
           "id": "B5-PUB63-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證月份連結"
+          "canonicalId": "ATP-P2-0078",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article month links work"
         },
         {
           "id": "B5-PUB63-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證日期/日曆連結"
+          "canonicalId": "ATP-P2-0079",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article calendar/date links work"
         },
         {
           "id": "B5-PUB63-02-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證相關文章連結"
+          "canonicalId": "ATP-P2-0080",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Related-article links work"
         },
         {
           "id": "B5-PUB63-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證分享功能"
+          "canonicalId": "ATP-P2-0081",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article sharing interactions actually work"
         },
         {
           "id": "B5-PUB63-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證麵包屑"
+          "canonicalId": "ATP-P2-0082",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Article breadcrumb navigation works"
         },
         {
           "id": "B5-PUB63-03-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證文章導航"
+          "canonicalId": "ATP-P2-0083",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Previous and next article navigation works"
         },
         {
           "id": "B5-PUB63-03-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "驗證搜尋實際行為"
+          "canonicalId": "ATP-P2-0084",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Configured article search actually finds matching content"
         },
         {
           "id": "B5-PUB63-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查生成文章頁"
+          "canonicalId": "ATP-P2-0074",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Generated public article routes exist"
         },
         {
           "id": "B5-PUB63-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "檢查缺漏路由"
+          "canonicalId": "ATP-P2-0075",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "No expected article route is missing"
         }
       ]
     },
@@ -1827,23 +1827,23 @@
       "rows": [
         {
           "id": "B7-PUB-L70-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "經授權新增文章可用單一 Markdown 檔完成，不必維護 TypeScript 陣列"
+          "canonicalId": "ATP-P2-0085",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Authorized article creation requires only a Markdown file and not manual TypeScript arrays"
         },
         {
           "id": "B7-PUB-L70-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "公開文章在路由、文章頁、標籤與日期、相關連結及搜尋可見"
         },
         {
           "id": "B7-PUB-L70-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "RSS、Sitemap、Metadata、Preview Index 策略一致"
         },
         {
@@ -1855,59 +1855,59 @@
         },
         {
           "id": "B7-PUB-L70-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "文章公開路由可見"
+          "canonicalId": "ATP-P2-0086",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article is reachable through a public route"
         },
         {
           "id": "B7-PUB-L70-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "文章內頁可見"
+          "canonicalId": "ATP-P2-0087",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article has a reachable detail page"
         },
         {
           "id": "B7-PUB-L70-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "標籤與日期可用"
+          "canonicalId": "ATP-P2-0088",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article is correctly discoverable through tags and dates"
         },
         {
           "id": "B7-PUB-L70-02-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "相關文章連結可用"
+          "canonicalId": "ATP-P2-0089",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article appears in relevant related-article links"
         },
         {
           "id": "B7-PUB-L70-02-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "搜尋可發現文章"
+          "canonicalId": "ATP-P2-0090",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article is discoverable through configured search"
         },
         {
           "id": "B7-PUB-L70-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "RSS 與 Sitemap 實際更新"
+          "canonicalId": "ATP-P2-0091",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "RSS and Sitemap reflect the published article state"
         },
         {
           "id": "B7-PUB-L70-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Metadata 一致"
+          "canonicalId": "ATP-P2-0092",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Published article metadata remains consistent with source"
         },
         {
           "id": "B7-PUB-L70-03-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Preview 索引設定符合環境"
+          "canonicalId": "ATP-P2-0093",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Preview indexing configuration is appropriate to the actual deployment environment"
         }
       ]
     },

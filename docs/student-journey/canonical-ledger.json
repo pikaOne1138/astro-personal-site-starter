@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "723c3576b4518ec11dfcb0bbcc72d62e73d49fbe"
+        "blobSha": "5093fef8cad447b58a7decd80e6572a5e18dbbc5"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -14257,8 +14257,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14274,7 +14274,11 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B5-PUB63-01-S01",
+        "B5-PUB63-01-S02"
+      ],
+      "parentDisposition": "All source children carry approved atomic acceptance criteria"
     },
     {
       "legacyId": "B5-PUB63-02",
@@ -14309,8 +14313,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14320,7 +14324,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B5-PUB63-02-S01",
+        "B5-PUB63-02-S02",
+        "B5-PUB63-02-S03",
+        "B5-PUB63-02-S04",
+        "B5-PUB63-02-S05"
+      ],
+      "parentDisposition": "All source children carry approved atomic acceptance criteria"
     },
     {
       "legacyId": "B5-PUB63-03",
@@ -14355,8 +14366,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -14366,7 +14377,13 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B5-PUB63-03-S01",
+        "B5-PUB63-03-S02",
+        "B5-PUB63-03-S03",
+        "B5-PUB63-03-S04"
+      ],
+      "parentDisposition": "All source children carry approved atomic acceptance criteria"
     },
     {
       "legacyId": "B5-ASM8-01",
@@ -15945,9 +15962,9 @@
     },
     {
       "legacyId": "B7-PUB-L70-01",
-      "canonicalId": null,
-      "requirement": "經授權新增文章可用單一 Markdown 檔完成，不必維護 TypeScript 陣列",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0085",
+      "requirement": "Authorized article creation requires only a Markdown file and not manual TypeScript arrays",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -15979,12 +15996,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16000,7 +16019,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02",
@@ -16042,8 +16068,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16059,7 +16085,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L70-02-S01",
+        "B7-PUB-L70-02-S02",
+        "B7-PUB-L70-02-S03",
+        "B7-PUB-L70-02-S04",
+        "B7-PUB-L70-02-S05"
+      ],
+      "parentDisposition": "All source children carry approved atomic acceptance criteria"
     },
     {
       "legacyId": "B7-PUB-L70-03",
@@ -16101,8 +16134,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -16118,7 +16151,12 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B7-PUB-L70-03-S01",
+        "B7-PUB-L70-03-S02",
+        "B7-PUB-L70-03-S03"
+      ],
+      "parentDisposition": "All source children carry approved atomic acceptance criteria"
     },
     {
       "legacyId": "B7-PUB-L70-04",
@@ -21247,9 +21285,9 @@
     },
     {
       "legacyId": "B5-PUB63-02-S01",
-      "canonicalId": null,
-      "requirement": "驗證列表連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0076",
+      "requirement": "Article listing links navigate to actual pages",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21271,12 +21309,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21286,13 +21326,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-02-S02",
-      "canonicalId": null,
-      "requirement": "驗證標籤連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0077",
+      "requirement": "Article tag links work",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21314,12 +21361,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21329,13 +21378,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-02-S03",
-      "canonicalId": null,
-      "requirement": "驗證月份連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0078",
+      "requirement": "Article month links work",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21357,12 +21413,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21372,13 +21430,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-02-S04",
-      "canonicalId": null,
-      "requirement": "驗證日期/日曆連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0079",
+      "requirement": "Article calendar/date links work",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21400,12 +21465,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21415,13 +21482,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-02-S05",
-      "canonicalId": null,
-      "requirement": "驗證相關文章連結",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0080",
+      "requirement": "Related-article links work",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21443,12 +21517,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21458,13 +21534,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-03-S01",
-      "canonicalId": null,
-      "requirement": "驗證分享功能",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0081",
+      "requirement": "Article sharing interactions actually work",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21486,12 +21569,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21501,13 +21586,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-03-S02",
-      "canonicalId": null,
-      "requirement": "驗證麵包屑",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0082",
+      "requirement": "Article breadcrumb navigation works",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21529,12 +21621,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21544,13 +21638,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-03-S03",
-      "canonicalId": null,
-      "requirement": "驗證文章導航",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0083",
+      "requirement": "Previous and next article navigation works",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21572,12 +21673,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21587,13 +21690,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-03-S04",
-      "canonicalId": null,
-      "requirement": "驗證搜尋實際行為",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0084",
+      "requirement": "Configured article search actually finds matching content",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21615,12 +21725,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21630,7 +21742,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-DEP30-02-S01",
@@ -23780,9 +23899,9 @@
     },
     {
       "legacyId": "B5-PUB63-01-S01",
-      "canonicalId": null,
-      "requirement": "檢查生成文章頁",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0074",
+      "requirement": "Generated public article routes exist",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23804,12 +23923,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23819,13 +23940,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B5-PUB63-01-S02",
-      "canonicalId": null,
-      "requirement": "檢查缺漏路由",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0075",
+      "requirement": "No expected article route is missing",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23847,12 +23975,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -23862,7 +23992,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 63,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "2. Verify generated Markdown content, no missing routes, actual list/tag/month/calendar/related links and search behavior; also verify article share, breadcrumbs and navigation.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B6-PUB64-01-S01",
@@ -24339,9 +24476,9 @@
     },
     {
       "legacyId": "B7-PUB-L70-02-S01",
-      "canonicalId": null,
-      "requirement": "文章公開路由可見",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0086",
+      "requirement": "Published article is reachable through a public route",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24363,12 +24500,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24378,13 +24517,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02-S02",
-      "canonicalId": null,
-      "requirement": "文章內頁可見",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0087",
+      "requirement": "Published article has a reachable detail page",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24406,12 +24552,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24421,13 +24569,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02-S03",
-      "canonicalId": null,
-      "requirement": "標籤與日期可用",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0088",
+      "requirement": "Published article is correctly discoverable through tags and dates",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24449,12 +24604,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24464,13 +24621,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02-S04",
-      "canonicalId": null,
-      "requirement": "相關文章連結可用",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0089",
+      "requirement": "Published article appears in relevant related-article links",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24492,12 +24656,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24507,13 +24673,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-02-S05",
-      "canonicalId": null,
-      "requirement": "搜尋可發現文章",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0090",
+      "requirement": "Published article is discoverable through configured search",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24535,12 +24708,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24550,13 +24725,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-03-S01",
-      "canonicalId": null,
-      "requirement": "RSS 與 Sitemap 實際更新",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0091",
+      "requirement": "RSS and Sitemap reflect the published article state",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24578,12 +24760,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24593,13 +24777,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-03-S02",
-      "canonicalId": null,
-      "requirement": "Metadata 一致",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0092",
+      "requirement": "Published article metadata remains consistent with source",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24621,12 +24812,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24636,13 +24829,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L70-03-S03",
-      "canonicalId": null,
-      "requirement": "Preview 索引設定符合環境",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0093",
+      "requirement": "Preview indexing configuration is appropriate to the actual deployment environment",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24664,12 +24864,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student site with implemented article content"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24679,7 +24881,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-content-publishing/SKILL.md",
+        "frozenLine": 70,
+        "frozenBlobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+        "sourceText": "An authorized new article can be created as one Markdown file without editing TypeScript arrays, and a published article appears on an existing public URL, in article views, tags and dates, related links and site search. RSS, sitemap, metadata and preview index policy remain consistent. The article is readable and correctly routed at desktop and mobile sizes; no fictional claims or simulated publishing success.",
+        "method": "EXACT_FROZEN_LINE_AND_ATOMIC_WORK_ITEM"
+      }
     },
     {
       "legacyId": "B7-PUB-L76-01-S01",
@@ -73678,103 +73887,103 @@
         {
           "legacyId": "B5-PUB63-01",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "檢查實際產出文章與缺漏路由",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "核對清單、標籤、月份、日期、相關文章連結",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-03",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "核對文章分享、麵包屑、導航及搜尋行為",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證列表連結",
+          "canonicalId": "ATP-P2-0076",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article listing links navigate to actual pages",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證標籤連結",
+          "canonicalId": "ATP-P2-0077",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article tag links work",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證月份連結",
+          "canonicalId": "ATP-P2-0078",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article month links work",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證日期/日曆連結",
+          "canonicalId": "ATP-P2-0079",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article calendar/date links work",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-02-S05",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證相關文章連結",
+          "canonicalId": "ATP-P2-0080",
+          "reviewStatus": "APPROVED",
+          "requirement": "Related-article links work",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-03-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證分享功能",
+          "canonicalId": "ATP-P2-0081",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article sharing interactions actually work",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-03-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證麵包屑",
+          "canonicalId": "ATP-P2-0082",
+          "reviewStatus": "APPROVED",
+          "requirement": "Article breadcrumb navigation works",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-03-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證文章導航",
+          "canonicalId": "ATP-P2-0083",
+          "reviewStatus": "APPROVED",
+          "requirement": "Previous and next article navigation works",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-03-S04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "驗證搜尋實際行為",
+          "canonicalId": "ATP-P2-0084",
+          "reviewStatus": "APPROVED",
+          "requirement": "Configured article search actually finds matching content",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-01-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查生成文章頁",
+          "canonicalId": "ATP-P2-0074",
+          "reviewStatus": "APPROVED",
+          "requirement": "Generated public article routes exist",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B5-PUB63-01-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "檢查缺漏路由",
+          "canonicalId": "ATP-P2-0075",
+          "reviewStatus": "APPROVED",
+          "requirement": "No expected article route is missing",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-content-publishing/SKILL.md:65",
