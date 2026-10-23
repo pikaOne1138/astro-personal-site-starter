@@ -2066,3 +2066,5 @@ if(process.argv[2]==='integrity'){
 }else if(process.argv[2]==='verify'||process.argv[2]==='report'){
  process.exitCode=1; // Semantic Gate remains blocked while obligations are not adjudicated.
 }else throw Error('Usage: import | integrity | verify | report');
+
+// PR67 CI regression probe: ledger-only source change; no website behavior change.
