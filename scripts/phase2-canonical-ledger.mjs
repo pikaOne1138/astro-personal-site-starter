@@ -853,6 +853,29 @@ if(process.argv[2]==='import'){
  if(!workflowParent||workflowRules.slice(1,4).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Workflow children incomplete');
  Object.assign(workflowParent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
    childrenLegacyIds:workflowRules.slice(1,4).map(([id])=>id)});
+ // B2: source-exact publishing acceptance from earlier atomized subclauses.
+ const extraB2=[
+  ['B6-PUB47-01-S01','Inspect actual published sitemap XML',47],
+  ['B6-PUB47-01-S02','Inspect actual RSS XML',47],
+  ['B6-PUB47-01-S03','Inspect actual robots rules',47],
+  ['B6-PUB47-01-S04','Inspect actual 404 output',47],
+  ['B6-PUB47-02','Published links must use real target URLs',47],
+  ['B6-PUB47-03','RSS must not duplicate theme demos as independent articles',47]
+ ];
+ for(let i=0;i<extraB2.length;i++){
+  const [id,requirement,line]=extraB2[i],row=byId.get(id),src='.ai/astro-content-publishing/SKILL.md';
+  if(!row||!frozenLine(src,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===src&&x.lineStart===line))throw Error('Missing B2 Frozen anchor '+id);
+  if(row.canonicalId&&row.canonicalId!=='ATP-P2-'+String(211+i).padStart(4,'0'))throw Error('Prior canonical decision '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(211+i).padStart(4,'0'),requirement,
+   kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student site content publication'],conditions:[],exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:src,frozenLine:line,frozenBlobSha:manifest[src],sourceText:frozenLine(src,line),
+   method:'DIRECT_FROZEN_SOURCE_AND_ATOMIC_ROW'}});
+ }
+ const summary=byId.get('B6-PUB47-01');
+ if(!summary||extraB2.slice(0,4).some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('B2 parent not fully covered');
+ Object.assign(summary,{decision:'PARTIAL_SPLIT',kind:'evidence',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+  childrenLegacyIds:extraB2.slice(0,4).map(([id])=>id)});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
