@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "023cf02a3408395c6f91bcc7bbc398534bc51cdd"
+        "blobSha": "2bb3e5138944997d2eddb609f6d9cf72c8789085"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -13305,7 +13305,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B9C-DEP32-01"
+          ],
+          "decision": "PARTIAL_SPLIT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B5-PUB63-01",
@@ -28021,7 +28030,16 @@
         }
       ],
       "parentLegacyId": "B9C-ASM77",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B9C-ASM77-02"
+          ],
+          "decision": "DISTINCT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B9C-ASM77-02",
@@ -28064,7 +28082,16 @@
         }
       ],
       "parentLegacyId": "B9C-ASM77",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B9C-ASM77-01"
+          ],
+          "decision": "DISTINCT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B9C-ASM77-03",
@@ -28279,7 +28306,16 @@
         }
       ],
       "parentLegacyId": "B9C-ASM78",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B9C-ASM78-03"
+          ],
+          "decision": "DISTINCT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B9C-ASM78-03",
@@ -28322,7 +28358,16 @@
         }
       ],
       "parentLegacyId": "B9C-ASM78",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B9C-ASM78-02"
+          ],
+          "decision": "DISTINCT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B9C-ASM78-04",
@@ -29053,7 +29098,16 @@
         }
       ],
       "parentLegacyId": "B9C-DEP32",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "B5-PUB62-03"
+          ],
+          "decision": "PARTIAL_SPLIT",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md"
+        }
+      ]
     },
     {
       "legacyId": "B9C-DEP32-02",
@@ -50171,7 +50225,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U047"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U019",
@@ -50230,7 +50293,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U049"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U020",
@@ -50934,7 +51006,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U044"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U036",
@@ -50993,7 +51074,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U045"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U037",
@@ -51353,7 +51443,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U035"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U045",
@@ -51396,7 +51495,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U036"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U046",
@@ -51482,7 +51590,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U018"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U048",
@@ -51568,7 +51685,16 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "semanticRelations": [
+        {
+          "otherLegacyIds": [
+            "P0-U019"
+          ],
+          "decision": "MERGE",
+          "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md"
+        }
+      ]
     },
     {
       "legacyId": "P0-U050",
@@ -64891,5 +65017,115 @@
       "childrenLegacyIds": []
     }
   ],
-  "importErrors": []
+  "semanticRelations": [
+    {
+      "legacyIds": [
+        "P0-U035",
+        "P0-U044"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
+      "scopeNote": "Same Frozen preview SKILL L30, missing GitHub Pages Preview reporting",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "P0-U036",
+        "P0-U045"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
+      "scopeNote": "Same Frozen preview SKILL L30, consent before Preview architecture changes",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-pr-preview/SKILL.md:30"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "P0-U018",
+        "P0-U047"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
+      "scopeNote": "Same Frozen deploy SKILL L31, production indexing only with approval",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "P0-U019",
+        "P0-U049"
+      ],
+      "decision": "MERGE",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-P0-UNIQUE-ID-WORKING-REGISTER.md",
+      "scopeNote": "Same Frozen deploy SKILL L31, Cloudflare Preview index settings isolated",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-starter-deploy/SKILL.md:31"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "B9C-DEP32-01",
+        "B5-PUB62-03"
+      ],
+      "decision": "PARTIAL_SPLIT",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md",
+      "scopeNote": "Specific noindex versus broader CI release gate",
+      "sharedExactFrozenAnchors": [],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "B9C-ASM78-02",
+        "B9C-ASM78-03"
+      ],
+      "decision": "DISTINCT",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md",
+      "scopeNote": "Positive duration condition differs from missing-duration fallback",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-site-assembly/SKILL.md:78"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    },
+    {
+      "legacyIds": [
+        "B9C-ASM77-01",
+        "B9C-ASM77-02"
+      ],
+      "decision": "DISTINCT",
+      "sourceWorkingPaper": "docs/student-journey/PHASE2-CANONICAL-ALIAS-CROSSWALK-01.md",
+      "scopeNote": "Optional schema differs from member-identity approval",
+      "sharedExactFrozenAnchors": [
+        ".ai/astro-site-assembly/SKILL.md:77"
+      ],
+      "reviewStatus": "DOCUMENTARY_EVIDENCE_REVIEWED_PENDING_APPROVAL",
+      "canonicalId": null
+    }
+  ],
+  "importErrors": [],
+  "recoveryFailures": [
+    {
+      "reason": "SEMANTIC_RELATION_ORPHAN",
+      "ids": [
+        "B9C-DEP40-03",
+        "B9A-DEP25-01"
+      ],
+      "missing": [
+        "B9A-DEP25-01"
+      ]
+    }
+  ]
 }
