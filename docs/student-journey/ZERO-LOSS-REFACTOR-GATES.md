@@ -255,3 +255,8 @@
 ## PR #61 Upstream Crosswalk 03｜來源校正與條款反查
 
 已將 [UPSTREAM-DELTA-PR61.md](UPSTREAM-DELTA-PR61.md) 的來源錨點校正至 PR61 真正行號：Site Brief 撤銷為 L28（而非先前誤植 L25）；新增 [PHASE2-PR61-CANONICAL-CROSSWALK-03.md](PHASE2-PR61-CANONICAL-CROSSWALK-03.md)，以 PR61 L19/L21–23/L28–33 建立可反查的 16 個子義務及 P0／Batch／學生模板關係。明確記錄三路徑不強制 Site Brief、初版 path/hash/import date 永久保留要求已撤銷、375px RWD 與人工審查證據的不可刪條件。**此為文件候選關係，不是跨全 Repo 的 Canonical PASS**；來源 PR61 仍 Open/Draft，Issue58 保留 Open。Stage2 IN PROGRESS，Stage3/4 BLOCKED；不改模板、不刪源、不 Merge、不部署。
+
+
+## Phase 2｜Crosswalk 04：內容真實性／Demo／Draft 的來源裁決
+
+新增 [PHASE2-CANONICAL-ALIAS-CROSSWALK-04.md](PHASE2-CANONICAL-ALIAS-CROSSWALK-04.md)，回讀 Frozen main 之 site-entry L18、publishing L12/L28/L37/L58、assembly L21/L22/L23/L29，共 **9 個確實核對來源行／7 個語義群**。區分 Demo 可在 Preview 保留、正式發布前應揭露並讓學員選 keep/edit/hide、不得偽造資格或假功能、特定版本的 Merge/Production 授權，以及文章 draft release Gate 與歷史 Git/Preview 洩漏的保密風險。所有來源追溯和語義重疊均只算本批局部證據，不宣稱完整 Canonical 去重或 Stage 2 PASS。#61 Delta 維持獨立，Frozen baseline 不改；Stage 3/4 BLOCKED，不 Merge、不部署。
