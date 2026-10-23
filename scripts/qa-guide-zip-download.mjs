@@ -7,12 +7,14 @@ const port=4340,base='http://127.0.0.1:'+port;
 const dir='qa-artifacts/quality';mkdirSync(dir,{recursive:true});
 const expected='dist/AI-建站資料包.zip';
 if(!existsSync(expected))throw Error('Missing actual built guide ZIP at '+expected);
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:['ignore','pipe','pipe']});
+let previewOutput='';
+for (const stream of [server.stdout,server.stderr]) stream.on('data',chunk=>{previewOutput=(previewOutput+chunk.toString()).slice(-12000)});
 let browser;
 try{
  let ready=false;
  for(let i=0;i<50;i++){try{if((await fetch(base+'/guide/')).ok){ready=true;break}}catch{}await wait(300)}
- if(!ready)throw Error('Guide preview server did not start');
+ if(!ready)throw Error('Guide preview server did not start: '+JSON.stringify({exitCode:server.exitCode,output:previewOutput}));
  browser=await chromium.launch({headless:true});
  const page=await browser.newPage({acceptDownloads:true,viewport:{width:1280,height:900}});
  const navigation=await page.goto(base+'/guide/',{waitUntil:'domcontentloaded'});

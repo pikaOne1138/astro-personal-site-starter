@@ -62,6 +62,7 @@ add('docs/student-builder-pack/PROJECT-TEMPLATE.md', 'PROJECT-TEMPLATE.md');
 add('docs/student-builder-pack/UPSTREAM-SOURCES.md', 'REFERENCE-NOTES.md');
 add('docs/student-builder-pack/START-HERE.md', 'START-HERE.md');
 add('docs/student-builder-pack/AGENT-HANDOFF.md', 'AGENT-HANDOFF.md');
+add('docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md', 'RELEASE-APPROVAL-PROMPT.md');
 add('docs/student-builder-pack/README.md', 'README.md');
 /* Exclude internal project research prose and non-distribution artifacts.
    The portable kit intentionally retains source examples and skill references,

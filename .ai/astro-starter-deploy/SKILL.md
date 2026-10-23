@@ -11,6 +11,13 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。
 
 
+## 第一次部署：先確認是否已經公開
+1. 先辨識學員自己的 Repo 是否已完成任何 Production 部署。沒有的話，不得以「先確認 Preview 才按首次 Save and Deploy」當成通用流程，因為首次連接 Production branch 可能立即公開站點。
+2. 明白說明第一個可能被公開的版本是什麼。若學員還不願公開真正內容，使用經學員允許的安全初始化內容與獨立 Preview 專案／分支策略；不要把沒有密碼保護的 Preview 說成私人站。
+3. 先確認 Cloudflare Pages 或 Workers 產品種類、Git 授權、Production branch、build command、dist、部署環境變數。用學員帳號實際介面核對，遇到授權門檻由講師／Computer Use／截圖陪跑，不要求私密 Token。
+4. 取得真實 PR Head SHA 和平台回報的 Preview Deployment URL，核對部署 SHA 且可由學員瀏覽器開啟；若平台無 Preview，先停止，提出安全替代驗收，不准拿正式站冒充。
+5. 人工核准只針對指定版本與發布影響；正式部署後依 `.ai/astro-launch-health-check/SKILL.md` 核查正式 URL、內容、RWD、robots／canonical／sitemap、功能與還原。學員正式發布指令單一來源：研究 Repo 的 `docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md`（匯出資料包根目錄為 `RELEASE-APPROVAL-PROMPT.md`）。網頁指南讀同一來源；文件本身不是同意，必須由學員針對本次版本親自送出。
+
 ## A｜GitHub Pages（學員可選）
 1. 在學員自己的新Repository使用ZIP匯出的獨立專案；不Fork/Clone老師Repo。不可在展示 Repo 的 main 上直接修改學員資料。
 2. 確認 GitHub Pages 的 Repository 站、使用者站或自訂網域；據此設定 Astro `site` 與 `base`。Repository 子路徑應匹配倉庫名稱，自訂網域通常不需要原 Repo 子路徑；以 GitHub Pages 實際設定為準。

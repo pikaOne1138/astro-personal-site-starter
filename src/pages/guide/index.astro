@@ -3,6 +3,7 @@ import WorkshopNav from '../../components/WorkshopNav.astro';
 import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
 const assembledLayoutCount=layoutDefinitions.filter(layout=>layout.adapter).length;
 import startBuildPrompt from '../../../docs/student-builder-pack/START-BUILD-PROMPT.txt?raw';
+import releaseApprovalPrompt from '../../../docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md?raw';
 const routePrompts=[
 '我已上傳「AI-replica-skill-pack.zip」，想將我擁有或已獲授權的網站以 Astro 重建。原網站網址：【貼上網址】。請先讀 START-HERE.md 與復刻 Skill，實際盤點首頁、文章、分類、深層頁面、圖片、手機版和互動，列出可還原與無法取得之處。請先確認你有檔案操作、網站建置和真實預覽能力，再提出重建計畫。一次只問一個必要問題。完成後提供對應最新 Commit 的可開啟預覽網址；未經我同意，不得合併或正式發布。',
 '我已上傳「AI-from-zero-skill-pack.zip」，想直接和 AI 討論並建立自己的 Astro 網站。我不會寫程式，也不需要先填規劃器或製作 Site Brief JSON。請先讀 START-HERE.md 和 astro-site-from-zero Skill，確認你能否操作檔案、建置與預覽。接著用白話一次問我一個重要問題，有足夠資訊就整理網站方向讓我確認，之後建立可長期維護的網站。完成後提供實際可開啟、對應最新 Commit 的預覽；我同意前不要合併或正式發布。'
@@ -12,8 +13,8 @@ const link=(path:string)=>base+path.replace(/^\//,'');
 const steps=[
 {n:'01',name:'完成網站規劃並下載 Site Brief',intro:'先在 Starter 選擇版型、品牌與頁面，整理要交給建站 AI 的網站需求。AI 需求訪談與 Logo 設計都在 Starter 第 04 步選用；不需要可跳過。',you:['進入 Starter，選擇版型、填寫已知的網站資訊','若有進行 AI 訪談，將 AI 整理的文字摘要貼回 Starter 第 04 步的「AI 訪談結果」欄位','確認 Starter 的選擇與訪談摘要，在第 07 步下載 Site Brief JSON（my-astro-site-plan.json）'],ai:''},
 {n:'02',name:'下載完整建站包，交給 AI',intro:'下載下方的 AI 建站資料包 ZIP，連同 Starter 產生的 Site Brief JSON 一起交給具備專案操作能力的 AI，再複製正式建站提示詞。若有做過訪談，文字摘要已在 Site Brief 裡，不用再提供訪談包。',you:['先將 Starter 下載的 Site Brief JSON 提供給建站 AI','點下方按鈕下載 AI 建站資料包 ZIP，連同 Site Brief 交給同一個建站 AI','貼上「開始建站」提示詞'],ai:''},
-{n:'03',name:'AI 製作網站',intro:'AI 建立網站後，打開預覽連結查看。',you:['請 AI 告訴你下一步要確認什麼','收到網站預覽連結後，實際打開看首頁、About 與文章／服務頁'],ai:''},
-{n:'04',name:'讓網站可以預覽',intro:'沿用前置準備選定的發布方式，取得網站預覽網址。',you:['依 AI 提示在託管平台完成必要的連接與授權','打開 AI 提供的網址，看圖文與連結是否正常'],ai:''},
+{n:'03',name:'AI 製作網站',intro:'AI 先產生網站、執行建置與建立 PR；沒有真實預覽時先看建置結果，接續第 04 步取得預覽。',you:['請 AI 告訴你下一步要確認什麼','收到網站預覽連結後，實際打開看首頁、About 與文章／服務頁'],ai:''},
+{n:'04',name:'讓網站可以預覽',intro:'首次建立託管專案可能公開初始化版本；先確認發布影響，再取得與 PR 最新 Commit 對應的真實預覽網址。',you:['依 AI 提示在託管平台完成必要的連接與授權','打開 AI 提供的網址，看圖文與連結是否正常'],ai:''},
 {n:'05',name:'提出修改意見',intro:'截圖告訴 AI 需要修改的地方。',you:['用手機和電腦看實際頁面','截圖圈出問題、說明希望改成什麼','重開更新後的預覽連結確認'],ai:''},
 {n:'06',name:'確認後正式發布',intro:'確認內容、圖片與連結後再發布。',you:['檢查網站資訊、主要按鈕、文章／服務與手機畫面','確認沒有不願公開的資料','滿意後再明確同意發布'],ai:''},
 {n:'07',name:'上線後更新網站',intro:'更新內容時，先預覽再發布。',you:['收藏自己的正式網址與 GitHub 倉庫網址','下次修改時先請 AI 提供預覽，不直接覆蓋正式站'],ai:''}
@@ -34,7 +35,8 @@ const prompts=[
 <WorkshopNav current="build" />
 <main class="wrap"><p class="small">SITE BUILDING / 全程網頁操作</p><h1>開始建置自己的網站</h1><p class="lead">先選一種適合你的建站方式。不必三種都做；後續檢查預覽、修改與正式發布的流程相同。</p>
 <p><a href={link('guide/faq/')}>第一次使用有困難？先看課前安心檢查與常見問題 →</a></p>
-<div class="route-grid" role="group" aria-label="選擇建站方式">
+<details class="card"><summary><strong>開始前：AI 工具與費用要準備什麼？</strong></summary><p>本指南需要具備專案檔案讀寫、Astro Build、GitHub Branch／PR 和真實預覽能力的 AI 工作模式；一般只回答文字的聊天模式不一定能完成。正式課程應以講師已端到端驗證的工具及入口為準；其他工具先通過能力測試再開始。</p><p>費用請分開看：AI 訂閱可能需要付費，GitHub 與 Cloudflare 有適用條件的免費方案；自訂網域通常需另購買及續費。第三方表單、預約、電子報或超過免費額度的服務可能另計。此處不保證所有使用情境永遠免費，付款前請核對官方方案。</p><p>課堂有講師協助時不要求課前完成平台授權；自行建站則依 <a href={link('guide/prepare/')}>前置準備</a>操作。無法完成授權可先整理 Site Brief，不要勉強公開正式網站。</p></details>
+ <div class="route-grid" role="group" aria-label="選擇建站方式">
 <button class="route-choice" type="button" data-route="replica" aria-pressed="false"><strong>我已經有網站，想重新製作</strong><span>提供自己擁有或獲授權的網站網址，請 AI 重建版面與深層內容。</span></button>
 <button class="route-choice" type="button" data-route="starter" aria-pressed="true"><strong>我想先看設計、挑喜歡的版型</strong><span>使用 ATP Starter 規劃器，挑選版型與品牌。</span></button>
 <button class="route-choice" type="button" data-route="chat" aria-pressed="false"><strong>我想直接跟 AI 討論</strong><span>不必先填規劃器，從一句話開始讓 AI 陪你規劃。</span></button>
@@ -59,12 +61,13 @@ const prompts=[
 {i===3 && <Fragment><div class="two"><div><strong>Cloudflare Pages</strong><p>B 路線：保留私人原始碼、方便預覽。</p><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer">打開 Cloudflare ↗</a></div><div><strong>GitHub Pages</strong><p>A 路線：簡單免費，原始碼公開。</p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">打開 GitHub ↗</a></div></div><p><a href={link("guide/prepare/#hosting")}>查看 A／B 發布方式設定步驟 →</a></p><div class="prompt"><div class="prompt-head"><strong>{prompts[1].title}</strong><button class="button alt copy" type="button" data-prompt="1">複製提示詞</button></div><p>{prompts[1].text}</p></div></Fragment>}
 {i===4 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div></Fragment>}
 {i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div></Fragment>}
+{i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>我已確認，正式授權發布</strong><button class="button alt" type="button" id="copy-release">複製正式發布指令</button></div><p>請先檢查上方清單。只有你親自送出下方指令，才表示授權 AI 發布這一次確認的版本。</p><details><summary>查看正式發布指令全文</summary><p>{releaseApprovalPrompt}</p></details></div></Fragment>}
 {i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
 </section>)}
 <section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
 <section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p>請 AI 提供你自己網站的 GitHub Repository 網址，進入該 Repo 的 <strong>Pull requests</strong> 和 <strong>Actions</strong>。不需要進入老師的研究 Repo。</p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
 </main><footer>個人網站建置指南 · <a href={link('guide/prepare/')}>前置準備</a></footer>
-<script is:inline define:vars={{prompts:prompts.map(x=>x.text),routePrompts,siteBase:base}}>
+<script is:inline define:vars={{prompts:prompts.map(x=>x.text),routePrompts,siteBase:base,releaseApprovalPrompt}}>
 const choices=[...document.querySelectorAll('[data-route]')];
 function chooseRoute(which){
  for(const b of choices)b.setAttribute('aria-pressed',String(b.dataset.route===which));
@@ -79,6 +82,7 @@ document.querySelectorAll('.route-copy').forEach(b=>b.addEventListener('click',a
 const tasks=[...document.querySelectorAll('[data-task]')];
 function refresh(){let n=tasks.filter(x=>x.checked).length;document.getElementById('progress').textContent='完成 '+n+' / '+tasks.length+' 項'}
 tasks.forEach(x=>{try{x.checked=localStorage.getItem('workshop-guide-v2-'+x.dataset.task)==='1'}catch{}x.addEventListener('change',()=>{try{localStorage.setItem('workshop-guide-v2-'+x.dataset.task,x.checked?'1':'0')}catch{}refresh()})});refresh();
+document.getElementById('copy-release')?.addEventListener('click',async()=>{const b=document.getElementById('copy-release');try{await navigator.clipboard.writeText(releaseApprovalPrompt);b.textContent='已複製，請確認後自行送出';}catch{b.textContent='無法複製，請展開文字手動選取';}});
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompts[Number(b.dataset.prompt)]);b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製提示詞',1500)}));
 let packCommit='';
 fetch(siteBase+'builder-pack-version.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('manifest unavailable');return r.json()}).then(info=>{

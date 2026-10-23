@@ -6,7 +6,7 @@ import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 const blocks=JSON.parse(readFileSync('src/data/blocks.registry.json','utf8'));
 const port=4392,base='http://127.0.0.1:'+port,viewports=[1440,390],rows=[],faults=[];
 mkdirSync('qa-artifacts/quality',{recursive:true});
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});
 let browser;
 function findFailures(rows){
  return rows.flatMap(row=>row.controls.flatMap(c=>{

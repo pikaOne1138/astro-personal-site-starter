@@ -6,7 +6,7 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 const port=4358,base='http://127.0.0.1:'+port,dir='qa-artifacts/quality';
 mkdirSync(dir,{recursive:true});
 const cases=[['paper','數位工具'],['morning','動畫與漫畫'],['studio','人際關係'],['botanical','城市散步']];
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:'ignore'});
 let browser;
 const rows=[],errors=[];
 try{
