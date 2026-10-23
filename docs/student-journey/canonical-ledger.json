@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "00a8327c2259e7a2e112d16cc6d7d521f6dd0352"
+        "blobSha": "4cf7de90a1704eae203c5a4d7b9e7a463d8c5674"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -33261,17 +33261,6 @@
           "legacyWorkId": "P56-20",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-20` | 訪談與規劃器矛盾時學員裁決，不可擅選 | **PENDING_CROSSCHECK** |"
-        },
-        {
-          "path": ".ai/astro-content-publishing/SKILL.md",
-          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
-          "lineStart": 20,
-          "lineEnd": 20,
-          "legacyWorkId": "P56-20",
-          "sourceLayer": "FROZEN_SOURCE",
-          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
-          "sourceText": "**學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；最新生成骨架的 `npm run build` 已包含 Pagefind 索引和 `search/exact-zh.json`；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。"
         }
       ],
       "aliases": [],
@@ -33307,17 +33296,6 @@
           "legacyWorkId": "P56-22",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-22` | 可略過訪談及 Logo 仍完成 Site Brief | **PENDING_CROSSCHECK** |"
-        },
-        {
-          "path": ".ai/astro-content-publishing/SKILL.md",
-          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
-          "lineStart": 22,
-          "lineEnd": 22,
-          "legacyWorkId": "P56-22",
-          "sourceLayer": "FROZEN_SOURCE",
-          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
-          "sourceText": "**離線參考來源**：ZIP的 `src/data/articles-v2.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。"
         }
       ],
       "aliases": [],
@@ -33423,17 +33401,6 @@
           "legacyWorkId": "P56-32",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-32` | 多行訪談摘要換行須在 notes 保留 | **PENDING_CROSSCHECK** |"
-        },
-        {
-          "path": ".ai/astro-content-publishing/SKILL.md",
-          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
-          "lineStart": 32,
-          "lineEnd": 32,
-          "legacyWorkId": "P56-32",
-          "sourceLayer": "FROZEN_SOURCE",
-          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
-          "sourceText": "1. Ask for the content/goal only when it cannot be derived; do not invent an author's story. Confirm the intended slug and public/draft status when publishing details are uncertain."
         }
       ],
       "aliases": [],
@@ -33469,17 +33436,6 @@
           "legacyWorkId": "P56-34",
           "sourceLayer": "LEGACY_WORK_PAPER",
           "sourceText": "| `P56-34` | Logo/hero 上傳資料及 JSON assets 不可遺失 | **PENDING_CROSSCHECK** |"
-        },
-        {
-          "path": ".ai/astro-content-publishing/SKILL.md",
-          "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
-          "lineStart": 34,
-          "lineEnd": 34,
-          "legacyWorkId": "P56-34",
-          "sourceLayer": "FROZEN_SOURCE",
-          "sourceInference": "LEGACY_ID_COORDINATE_VERIFIED_AGAINST_FROZEN_LINE",
-          "sourceText": "3. Required frontmatter由實際schema決定；生成骨架為 `title`, `description`, `publishedAt`，`draft`與`tags`可選。研究範例另有 `category`。 Optional: `updatedAt`, `tags`, `readingMinutes`, `draft`, `cover` plus mandatory `coverAlt` when a cover is set, `canonicalURL` if needed."
         }
       ],
       "aliases": [],
