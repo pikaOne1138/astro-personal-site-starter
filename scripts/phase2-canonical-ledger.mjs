@@ -1302,6 +1302,25 @@ if(process.argv[2]==='import'){
       frozenBlobSha:manifest[previewPolicySource],sourceText:frozenLine(previewPolicySource,previewPolicyLine),
       method:'REVIEWED_THREE_CLAUSE_SOURCE_TO_CANONICAL_COVERAGE'}});
  }
+ // The final article paragraph contains two independently checkable
+ // obligations: real desktop/mobile reading behavior and truthful release
+ // status. Do not merge them on the shared source coordinate.
+ const articleSource='.ai/astro-content-publishing/SKILL.md',articleLine=70;
+ const articleRow=byId.get('B7-PUB-L70-04');
+ if(!articleRow||articleRow.canonicalId||!frozenLine(articleSource,articleLine)||
+   !articleRow.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===articleSource&&ref.lineStart===articleLine))
+  throw Error('Cannot verify article mobile/release source');
+ Object.assign(articleRow,{canonicalId:'ATP-P2-0267',
+  requirement:'A newly published article must be readable and navigable on real desktop and mobile routes',
+  kind:'acceptance',decision:'PARTIAL_SPLIT',reviewStatus:'APPROVED',aliases:[],
+  applicability:['Student sites publishing articles'],conditions:['Actual pages and responsive rendering exist'],
+  exceptions:[],acceptanceCriteria:['Check desktop and mobile article text and routing'],
+  relatedCanonicalCandidates:['ATP-P2-0093'],
+  approvalEvidence:{frozenPath:articleSource,frozenLine:articleLine,frozenBlobSha:manifest[articleSource],
+   sourceText:frozenLine(articleSource,articleLine),
+   residualClause:'Never claim a publishing success or execution evidence that did not occur',
+   residualDisposition:'Existing release and truthful status policies require subsequent cross-source equivalence proof',
+   method:'SPLIT_MOBILE_READABILITY_FROM_RELEASE_STATUS_NO_FALSE_MERGE'}});
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
