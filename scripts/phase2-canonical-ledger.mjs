@@ -621,6 +621,74 @@ if(process.argv[2]==='import'){
    reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
    parentDisposition:'Individual approved child obligations preserve complete composite source'});
  }
+ // Publish workflow: actual built outputs, handoff, draft creation,
+ // schedule readiness and verified post-publish links.
+ const laterPublishingAtomic=[
+  ['B6-PUB47-01-S01','Inspect actual emitted sitemap.xml',47],
+  ['B6-PUB47-01-S02','Inspect actual emitted rss.xml',47],
+  ['B6-PUB47-01-S03','Inspect actual emitted robots.txt',47],
+  ['B6-PUB47-01-S04','Inspect actual emitted 404.html',47],
+  ['B6-PUB47-02','Publishing output links must point to the real student site',47],
+  ['B6-PUB47-03','RSS must not duplicate eight themed demo appearances of one article',47],
+  ['B6-PUB66-01-S01','Article handoff includes changed files',66],
+  ['B6-PUB66-01-S02','Article handoff includes actual public versus draft status',66],
+  ['B6-PUB66-02-S01','Article handoff includes tests actually executed',66],
+  ['B6-PUB66-02-S02','Article handoff discloses unresolved risks',66],
+  ['B6-PUB66-02-S03','Article publishing PR must not be merged without explicit owner approval',66],
+  ['B7-PUB-L76-01-S01','Draft authoring asks only for missing factual material',76],
+  ['B7-PUB-L76-01-S02','Draft authoring verifies intended slug',76],
+  ['B7-PUB-L76-01-S03','Draft authoring verifies intended date',76],
+  ['B7-PUB-L76-02-S01','Draft article is written into the correct student Content Collection',76],
+  ['B7-PUB-L76-02-S02','Unpublished draft must not appear in the public article list',76],
+  ['B7-PUB-L76-02-S03','Unpublished draft must not appear in public RSS',76],
+  ['B7-PUB-L76-02-S04','Unpublished draft must not appear in the public sitemap',76],
+  ['B7-PUB-L76-02-S05','Unpublished draft must not be discoverable in public search',76],
+  ['B7-PUB-L76-03','Confidential drafts use restricted Preview; public PR Previews may leak content',76],
+  ['B7-PUB-L78-01-S01','Before scheduled publication verify actual article wording',78],
+  ['B7-PUB-L78-01-S02','Before scheduled publication verify SEO metadata',78],
+  ['B7-PUB-L78-01-S03','Before scheduled publication verify internal links',78],
+  ['B7-PUB-L78-01-S04','Before scheduled publication verify legal image sources',78],
+  ['B7-PUB-L78-01-S05','Before scheduled publication verify mobile reading experience',78],
+  ['B7-PUB-L78-02','Do not claim timed automatic publishing without configured real scheduling service',78],
+  ['B7-PUB-L79-01','Article must be owner-approved before publication',79],
+  ['B7-PUB-L79-03-S01','After authorized publication verify actual article URL',79],
+  ['B7-PUB-L79-03-S02','After publication verify public article listing',79],
+  ['B7-PUB-L79-03-S03','After publication verify RSS feed inclusion',79],
+  ['B7-PUB-L79-03-S04','After publication verify Sitemap inclusion',79],
+  ['B7-PUB-L79-03-S05','If Pagefind configured, verify actual article indexing and search behavior',79]
+ ];
+ for(let i=0;i<laterPublishingAtomic.length;i++){
+  const [id,requirement,line]=laterPublishingAtomic[i],entry=byId.get(id);
+  const source='.ai/astro-content-publishing/SKILL.md';
+  const canonicalId='ATP-P2-'+String(122+i).padStart(4,'0');
+  if(!entry||!frozenLine(source,line)||
+     !entry.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))
+   throw Error('Later publishing source coordinate invalid: '+id);
+  if(entry.canonicalId&&entry.canonicalId!==canonicalId)throw Error('Later publishing canonical collision: '+id);
+  Object.assign(entry,{canonicalId,requirement,kind:id.endsWith('03')&&line===66?'policy':'acceptance',
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student-owned article website with the feature and platform configured'],
+   conditions:line===78?['Publication scheduled or requested']:[],
+   exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'IMMUTABLE_SOURCE_AND_ATOMIC_LEAF_REVIEW'}});
+ }
+ for(const [id,kids] of [
+  ['B6-PUB47-01',Array.from({length:4},(_,i)=>'B6-PUB47-01-S0'+(i+1))],
+  ['B6-PUB66-01',Array.from({length:2},(_,i)=>'B6-PUB66-01-S0'+(i+1))],
+  ['B6-PUB66-02',Array.from({length:3},(_,i)=>'B6-PUB66-02-S0'+(i+1))],
+  ['B7-PUB-L76-01',Array.from({length:3},(_,i)=>'B7-PUB-L76-01-S0'+(i+1))],
+  ['B7-PUB-L76-02',Array.from({length:5},(_,i)=>'B7-PUB-L76-02-S0'+(i+1))],
+  ['B7-PUB-L78-01',Array.from({length:5},(_,i)=>'B7-PUB-L78-01-S0'+(i+1))],
+  ['B7-PUB-L79-03',Array.from({length:5},(_,i)=>'B7-PUB-L79-03-S0'+(i+1))]
+ ]){
+  const row=byId.get(id);
+  if(!row||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))
+   throw Error('Later publishing composite missing children: '+id);
+  Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids,
+   parentDisposition:'All source conditions decomposed into source-approved leaf clauses'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
