@@ -887,6 +887,40 @@ if(process.argv[2]==='import'){
   Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
    childrenLegacyIds:kids,parentDisposition:'Every original sub-check retained as a separately sourced clause'});
  }
+ // B2: distinguish deployment handoff evidence from operating procedure.
+ const deploymentB2=[
+  ['B9C-DEP36-01','Handoff contains the real production URL',36,'acceptance'],
+  ['B9C-DEP36-02','Handoff explains actual student Preview procedure',36,'acceptance'],
+  ['B9C-DEP36-03','Handoff identifies content update location in the student site',36,'acceptance'],
+  ['B9C-DEP36-04','Handoff explains a recoverable restore path',36,'acceptance'],
+  ['B9C-DEP36-05','Handoff explicitly discloses external services not connected',36,'acceptance'],
+  ['B9C-DEP11-01','Read student ZIP AGENTS and relevant Preview/Publishing skills before deployment',11,'procedure'],
+  ['B9C-DEP11-02','Inspect actual student Astro config, package and Actions workflows',11,'procedure'],
+  ['B9C-DEP11-03','Distinguish manual production deploy workflow from PR build artifact workflow',11,'architecture'],
+  ['B9C-DEP11-04','Verify student repository, hosting platform and actual domain rather than teacher workflows',11,'policy']
+ ];
+ for(let i=0;i<deploymentB2.length;i++){
+  const [id,requirement,line,kind]=deploymentB2[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md';
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===source&&ref.lineStart===line))throw Error('Deployment B2 Frozen trace missing '+id);
+  if(row.canonicalId)throw Error('Deployment B2 already canonicalized: '+id);
+  Object.assign(row,{canonicalId:'ATP-P2-'+String(220+i).padStart(4,'0'),requirement,kind,
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student-owned site deployment or delivery'],
+   conditions:line===11?['Read settings from actual exported student project, not fixed teacher demo']:[],
+   exceptions:[],acceptanceCriteria:[],
+   approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
+    sourceText:frozenLine(source,line),method:'FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE'}});
+ }
+ for(const [id,children] of [
+  ['B9C-DEP36',deploymentB2.slice(0,5).map(x=>x[0])],
+  ['B9C-DEP11',deploymentB2.slice(5).map(x=>x[0])]
+ ]){
+  const parent=byId.get(id);
+  if(!parent||children.some(k=>byId.get(k)?.reviewStatus!=='APPROVED'))throw Error('Deployment parent children not complete '+id);
+  Object.assign(parent,{kind:'evidence',decision:'PARTIAL_SPLIT',
+   reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:children,
+   parentDisposition:'Inherited composite is covered by separately approved atomic evidence/procedure clauses'});
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
