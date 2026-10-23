@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validateScenarios,evaluate} from './evaluate-interview-results.mjs';
 import {readFileSync} from 'node:fs';
-const fixture=JSON.parse(readFileSync(new URL('../docs/student-builder-pack/interview-scenarios.json',import.meta.url),'utf8'));
+const fixture=JSON.parse(readFileSync(new URL('../docs/interview-evaluation/interview-scenarios.json',import.meta.url),'utf8'));
 const metadata={model:'test-model',provider:'test-only',environment:'test fixture',timestamp:'2026-10-15',policyCommit:'example-sha',reviewer:'fixture author'};
 const responses=()=>fixture.scenarios.map(s=>({id:s.id,response:'fixture response only',reason:'fixture human assessment only',scores:{intent:2,interview:2,risk:2,truth:2,clarity:2},critical_failure:false}));
 test('scenario schema and diversity',()=>{assert.equal(validateScenarios().count,16);assert.equal(new Set(fixture.scenarios.map(s=>s.kind)).size,2)});

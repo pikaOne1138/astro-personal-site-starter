@@ -1325,7 +1325,7 @@
       },
       "scenario": {
         "status": "NOT TESTED",
-        "evidence": ".ai/astro-design-consultation/references/scenario-tests.md"
+        "evidence": "docs/interview-evaluation/design-consultation/scenario-tests.md"
       }
     },
     ".ai/astro-content-publishing/SKILL.md": {

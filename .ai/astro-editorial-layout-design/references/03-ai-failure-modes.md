@@ -1,7 +1,7 @@
 # 常見 AI 設計失敗（含偵測與修正）
 
 格式：**症狀 → 為什麼會發生 → 怎麼偵測（可執行）→ 修正（CSS／結構）→ 十款對照**。
-標記同 `00-evidence-legend.md`。偵測欄的指令都對應 `scripts/audit.mjs` 的輸出欄位，或需要看截圖。
+標記同 `00-evidence-legend.md`。偵測欄的指令都對應 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 的輸出欄位，或需要看截圖。
 
 ---
 
@@ -69,7 +69,7 @@
 
 - **症狀**：`astro build` 綠燈，但 390px 下 h1 孤字、nav 擠成兩行重疊、圖被裁掉主體、文字在圖上看不見。
 - **原因**：build 只驗證語法與型別。
-- **偵測**：必須跑 `scripts/audit.mjs` 並**實際看截圖**（四個寬度）。十款本身即例：build 全過，但 [MEAS] 每頁 19–37 處 <12px、手機觸控 <24px 5–11 個。
+- **偵測**：必須跑 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 並**實際看截圖**（四個寬度）。十款本身即例：build 全過，但 [MEAS] 每頁 19–37 處 <12px、手機觸控 <24px 5–11 個。
 - **修正**：把截圖檢查寫入交付門檻（`checklists/scoring.md`：未附四寬度截圖＝0 分）。
 
 ## F10 以「換色」冒充「換版型」（本 Skill 的核心禁令）
@@ -101,7 +101,7 @@
 ## F14 scoped CSS 特異性陷阱：`div + div` 的邊框無法被媒體查詢覆寫
 
 - **症狀**：桌機 4 欄、手機 2 欄時，用 `li + li{border-left:…}` 做分隔線，再用媒體查詢 `li:nth-child(3){border-left:0}` 重設，**重設失效**，第 3 格仍有左線與左 padding。
-- **原因**：Astro scoped CSS 會替每個複合選擇器加屬性選擇器：`.stats div + div` 編譯為 `.stats[data-astro-cid] div[data-astro-cid]+div[data-astro-cid]`（特異性 0,4,2），高於 `…div[data-astro-cid]:nth-child(3)`（0,4,1）。本 Skill 開發時 H11 即如此（`audit` 全綠，目視 390 才發現）。
+- **原因**：Astro scoped CSS 會替每個複合選擇器加屬性選擇器：`.stats div + div` 編譯為 `.stats[data-astro-cid] div[data-astro-cid]+div[data-astro-cid]`（特異性 0,4,2），高於 `…div[data-astro-cid]:nth-child(3)`（0,4,1）。H11 即曾如此（`audit` 全綠，目視 390 才發現）。
 - **偵測**：目視手機的欄式分隔線；`getComputedStyle(cell).borderLeftWidth`。
 - **修正**：用 **`gap:1px` ＋ 容器背景色 ＝ 線格**（格子自帶底色）；padding 用 `:nth-child(2n+1)` 等同特異性選擇器重設。避免依賴 `+` 兄弟選擇器做可被覆寫的邊框。
 - **十款對照**：十款同樣是 scoped，但 `.co-how-row article+article`、`.cu-object-row article+article` 在媒體查詢內是用**同一個 `+` 選擇器**重設（特異性相同、後者勝），所以沒中招。
@@ -113,7 +113,7 @@
 - **偵測**：把元件放進 ≤ 46rem 與 ≤ 22rem 的容器各看一次（`examples/src/pages/trust-path.astro` 即為測試）。
 - **修正**：內部用 `grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))` 這類「不看視窗」的寫法，或 `@container`；列內項目用 `display:grid` 上下排列而非 `space-between` 橫排。
 
-## F16 audit 全綠 ≠ 視覺通過（本 Skill 開發中的 3 個實例）
+## F16 audit 全綠 ≠ 視覺通過（3 個實例）
 
 | 實例 | audit 結果 | 實際畫面 |
 |---|---|---|

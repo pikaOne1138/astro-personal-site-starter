@@ -8,7 +8,7 @@
 ## 內容
 
 ```
-astro-editorial-layout-skill/
+.ai/astro-editorial-layout-design/
 ├─ SKILL.md                      ← 入口：硬規則、工作流程、配方選擇、驗收
 ├─ README.md                     ← 本檔
 ├─ references/
@@ -36,7 +36,7 @@ astro-editorial-layout-skill/
 
 ## 快速開始
 
-### 看範例（需要 Node.js ≥ 22.19）
+### 看範例（Node 版本需求見專案 `package.json` 的 `engines`）
 ```bash
 cd examples
 npm install
@@ -68,23 +68,12 @@ node scripts/audit.mjs --base http://localhost:4321 --paths /,/about --out ./aud
 | **從案例歸納的設計原則** | 標 [INF]，並寫支持案例數（N/10） | 「背景掛根容器」10/10；「雙聲標題」10/10 |
 | **本 Skill 額外提出的建議** | 標 [NEW] | 12px 字級下限、44px 觸控、H11／H12 配方、`gap:1px` 線格、token 重映射 |
 
-## 本 Skill 做過的驗證（以及沒做的）
+## 限制
 
-**做過**
-- 十款：`astro build` ＋ Playwright（Chromium 1200）四寬度 × 十頁，共 40 次量測與整頁截圖；逐款讀完全部原始碼。
-- 40 個配方元件：全部渲染於 `examples` 的 lab 頁，四寬度 audit 無水平溢出、無文字疊壓、最小字級 12px、無對比失敗；逐一目視 Hero 配方，修正了開發中發現的多項問題（見各 `DECISIONS.md` 與 `03-ai-failure-modes.md` F14–F16）。
-- 兩個新站（閱讀年鑑、信任路徑）依 8 步工作流程完成，audit 全綠，並附實際發生的修正紀錄。
-
-**沒做**
-- Safari／Firefox／真機／螢幕閱讀器。
-- 十款並未被「正式評分」；`scoring.md` 末段只說明它們依本規則會在哪些類別被扣分。
-- 沒有使用任何外部圖片素材；範例以 CSS／SVG 繪製視覺。
-
-## 發現（十款的真實狀況）
-
-- 優點：**40 次量測零水平捲動**、背景掛根容器、構圖語彙多樣、誠實佔位。
-- 缺陷：**每頁 19–37 處 <12px 文字（最小 7.7–9.6px）**、手機觸控目標大量 <24px、CJK 大標 `letter-spacing −.07～−.11em` 造成字形接觸、手動 `<br/>` 產生孤字（田野筆記 390「解。」、清晰臨床 390「麼。」、長文書房 h2「案？」）、深色面板上 kicker 對比約 1.4:1。
-  → 本 Skill 把這些列為「不要複製」，並以 [NEW] 閾值取代。
+- 沒有在 Safari／Firefox／真機／螢幕閱讀器驗證。
+- 十款並未被正式評分；`checklists/scoring.md` 末段只說明它們依規則會在哪些類別被扣分。
+- 範例沒有使用外部圖片素材，以 CSS／SVG 繪製視覺。
+- 十款的實測缺陷（<12px 文字、觸控目標、CJK 字形接觸、孤字、低對比）見 `references/00-evidence-legend.md`；本 Skill 把它們列為「不要複製」，並以 [NEW] 閾值取代。
 
 ## 授權與資料
 

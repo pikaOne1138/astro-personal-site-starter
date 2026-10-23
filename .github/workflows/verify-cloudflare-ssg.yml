@@ -118,6 +118,8 @@ jobs:
       - name: Verify 15 Skill frontmatter and references
         id: skillsource
         run: node scripts/verify-skill-contracts.mjs
+      - name: Check AI-read docs stay timeless
+        run: node scripts/check-doc-hygiene.mjs
       - name: Fault-inject missing asset QA declarations
         run: node scripts/test-quality-coverage-regressions.mjs
       - name: Enforce registered asset QA ownership and write quality dashboard

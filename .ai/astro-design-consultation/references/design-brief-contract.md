@@ -25,7 +25,7 @@
 ## Brief 與 Starter 的隔離
 - 本 Brief 是**意圖描述**，不同於站點建置輸入。
 - 不保證現在已存在已選版型的全部內頁或已接入 Exporter。
-- PR47 分支中的 prototype / adapter / registry 可能尚未 ready；不得標成學員可以直接部署的整套網站。
+- 尚未 ready 的 prototype / adapter / registry 可能尚未 ready；不得標成學員可以直接部署的整套網站。
 - 若未來產出真正 `StarterPlan` JSON，只能先獨立讀當時的 `src/data/starter-config.ts`，並通過 validator。不要塞未定義的 `designDirection` / `alternatives` 到既有 JSON 格式。
 
 ## 極簡交付例（示意；不是學員真實資料）

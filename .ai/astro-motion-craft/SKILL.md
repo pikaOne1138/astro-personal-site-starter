@@ -1,7 +1,6 @@
 ---
 name: astro-motion-craft
 description: Design, tune and audit restrained Astro motion interactions using reusable effects, four existing theme tokens and accessibility-first performance constraints.
-version: 1
 ---
 
 # Astro Motion Craft — 動效與微互動設計 Skill
@@ -18,9 +17,9 @@ version: 1
 - 原始檔路徑、版本對照：[`references/manus-v2-motion-map.md`](./references/manus-v2-motion-map.md)
 
 **資料等級標示**：
-1. 「Manus 原始碼確認」為使用者提供的 ZIP 檔案中可核對的 Props 與 JS；
+1. 「Manus 原始碼確認」為 `library/source-snapshots/` 與 recipe 中可核對的 Props 與 JS；
 2. 「本專案建議／recipe」為我們依現有四套主題重新設計的融合方案；
-3. 「已實作」只以本 GitHub 分支實際存在的元件與網站展示為準。
+3. 「已實作」只以專案裡實際存在的元件與網站展示為準。
 
 這個 library 是**實作知識庫**，不是自動引入外部程式碼的 runtime。新的 AI Agent 若無法直接存取原始 ZIP，仍能按 library 的參數與源檔路徑做受限的可重用實作；需要完整逐字移植前則需再次取得原 ZIP 並核對授權與相容性。
 
@@ -35,7 +34,7 @@ version: 1
 3. **選動效強度**：預設 `subtle`；若沒有指定，**不要**全站使用 tilt、spotlight、magnetic、parallax。
 4. **沿用四套主題**：paper/morning/studio/botanical 使用現有 `--text`, `--muted`, `--accent`, `--surface`, `--line`, `--radius` 等 CSS 變數。不要直接導入 Manus 的 forest／sage Tailwind palette 覆蓋設計；若必須使用 Tailwind v4，先確定現有 Astro 建置、CSS cascade 與依賴相容。
 5. **先檢查現有效果**：global `[data-reveal]`、`TableOfContents`、`FAQ`、`PostCard` hover、`ArticleViewSwitcher` 已有互動。可以增強，但不能雙重 observer、重複轉場或重設焦點。
-6. **在四套主題與兩類網站驗證**：375/390px、平板、桌機；觸控、滑鼠、鍵盤與 `prefers-reduced-motion:reduce`。無 JavaScript 時文字、FAQ、導覽必須可見可用。
+6. **在四套主題與兩類網站驗證**：1440／1280／768／390px；觸控、滑鼠、鍵盤與 `prefers-reduced-motion:reduce`。無 JavaScript 時文字、FAQ、導覽必須可見可用。
 7. **分支與合併**：用 GitHub PR 做小幅且可預覽的變更，更新 Registry、展示、`COMPONENTS.md`、Skill／reference；Build 成功、瀏覽器實測後請使用者確認才合併。
 
 ## 強度政策
@@ -80,16 +79,17 @@ version: 1
 
 > 參考庫是常駐的設計資產，新增效果、修正既有效果時，也要回填 `library/effect-catalog.md` 的狀態與對應 recipe。
 
-> Manus v2 參考資料：`manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md` 與使用者提供的 `manusCR-v2astro-editorial-care-tailwind-motion.zip`。這些是**設計研究來源**，不直接代表本 repo 的已安裝依賴或現有實作。
+> Manus v2 的資料是**設計參考**，不代表專案已安裝它的依賴或實作。
 
 
-## 實際可操作的特效庫（本 PR 新增）
+## 實際可操作的特效庫
 
-- 預覽網址：`/effects/`（GitHub Pages 請加上 repo BASE_URL；PR 預覽走 `/pr-preview/pr-N/effects/`）。
-- 元件來源：`src/components/effects/`，七個實際元件：`Reveal`、`StaggerGroup`、`MotionCard`、`ZoomImage`、`MagneticButton`、`UnderlineLink`、`MotionFAQ`；索引：`src/data/effects.registry.json`。
-- 六個可操作的分類：Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、磁吸／底線、可調 FAQ。可切換四套 Theme 和 off／subtle／expressive 強度，且 Reveal／Stagger 可重播。
-- **與原有 53 個 blocks 分開計數**：效果不是網站內容型區塊。後續組裝網站時優先將 effects 與既有 blocks 組合，必要時再抽象成可覆寫的 props，不要把整個展示頁複製到實站。
-- 舊文獻中標示「待移植」的效果已至少有**本 PR 版本的基本 Demo**，但並不表示與 Manus CSS、Tailwind 或所有參數完全一致。確認輸入方式、視覺與動效後才可說「正式完成」。
+- 展示頁：`/effects/`（連結要帶網站的 `BASE_URL`，Preview 子路徑下也一樣）。
+- 元件在 `src/components/effects/`，有哪些效果、變體、預設強度與觸控／減少動態策略，以 `src/data/effects.registry.json` 為準，不要在文件裡寫死數量或名稱。樣式在 `public/effects.css`。
+- 展示頁可切換四套主題與 off／subtle／expressive 強度，Reveal／Stagger 可重播。
+- **效果與網站內容型 Block 分開計數**：效果不是內容區塊，不要加進 `blocks.registry.json`。組裝網站時優先把 effects 與既有 Blocks 組合，必要時再抽成可覆寫的 props，不要把整個展示頁複製到正式站。
+- Reveal 系列使用 `data-motion-*` 屬性與自己的 observer，和 `DemoLayout` 全域的 `[data-reveal]` 是兩套屬性。**同一個元素不要同時標兩種**，也不要為同一組元素再加第三個 observer。
+- 這些元件的 CSS 是我們自己的 `public/effects.css`，不是 Manus 原始 CSS；參數與 Manus 不完全一致（見 `library/` 的 recipes）。確認輸入方式、視覺與動效都實測後，才可說「正式完成」。
 
 ## 系統動畫效果／降低動態的必要診斷
 
@@ -110,15 +110,9 @@ version: 1
 已有 `src/components/blocks/BackToTop.astro` 可重複使用；捲動顯示和返回頁首預設依照系統減少動態偏好降級。它是導航控制而非純視覺效果，應放在共用 Layout，勿在特效庫重複造一個同義的元件。
 
 
-## Layout composition is a separate layer
-Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layout-craft/SKILL.md`. Do not use motion to compensate for a weak layout; choose the content reading flow first. A subtle reveal fits only selected sections and never makes distinct website layouts identical.
+## 與版型的順序
 
-
-## 與 Claude 編輯式構圖的使用順序
-
-先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的 40 款構圖配方，最後才由本 Motion Skill 加入必要的動效。即使元件可用 Tilt/Spotlight/Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。
-
-
+先選 `astro-layout-craft` 的整頁動線，再參照 `astro-editorial-layout-design` 的構圖配方，最後才由本 Skill 加入必要的動效。即使元件可用 Tilt／Spotlight／Reveal，也不得藉動效掩蓋內容結構薄弱或字級留白問題。輕微的 Reveal 只適合少數區段，不能讓不同版型因為同一套動效而看起來一樣。
 
 ## 動效選用決策（先問目的，再選效果）
 
@@ -159,12 +153,9 @@ Twelve structural directions live at `/layouts/`, with their own `.ai/astro-layo
 - 頁面切換先評估 Astro 官方 `astro:transitions` 的 `ClientRouter`、`transition:animate`；啟用後需驗證 client-side navigation 下既有 script 的初始化時機、返回鍵、焦點與 reduced motion，並非只加一段 CSS 就完成。
 
 
-## 跨 Skill 共用設計判斷（Task 4）
+## 共用設計判斷
 
-共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。
+共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
 
 本 Skill 職責：依內容意圖提供有目的、克制的微動效；不得用動畫掩蓋結構問題，須支援 reduced-motion。
 
-交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
-
-必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

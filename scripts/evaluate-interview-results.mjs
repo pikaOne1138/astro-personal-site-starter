@@ -1,6 +1,6 @@
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
-const fixture=JSON.parse(readFileSync(new URL('../docs/student-builder-pack/interview-scenarios.json',import.meta.url),'utf8'));
+const fixture=JSON.parse(readFileSync(new URL('../docs/interview-evaluation/interview-scenarios.json',import.meta.url),'utf8'));
 const ids=new Set(fixture.scenarios.map(x=>x.id)),dimensions=['intent','interview','risk','truth','clarity'];
 export function validateScenarios(){
  if(fixture.version!==1||fixture.scenarios.length<10||fixture.scenarios.length>20||ids.size!==fixture.scenarios.length)throw Error('Invalid scenario count');

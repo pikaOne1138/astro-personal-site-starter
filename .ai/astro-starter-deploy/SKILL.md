@@ -29,6 +29,11 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 ## B｜GitHub + Cloudflare（學員可選）
 1. 先詢問使用 Cloudflare Pages 還是 Workers 靜態資產，確認目前供應商支援方式與限制。優先靜態網站，避免無必要的 SSR/後端。
 2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。
+   - **Pages**：新學員從 Cloudflare 建立畫面底部的 **Pages** 連結（「前往 Pages」）→ Connect to GitHub；選學員自己的 Repo 與正式 branch（通常 `main`）；Framework preset 選 **Astro**；Build command `npm run build`；Build output directory `dist`；Root directory 為 Repo 根目錄。
+   - **Workers 靜態資產**：Deploy command 用 `npx wrangler deploy --config wrangler.jsonc`（明確指定 `--config`，避免換目錄時被框架自動偵測）；不要填 `bun run build` 當 deploy command，因為建置已依專案設定完成。`wrangler.jsonc` 要宣告 `assets.directory: "./dist"`；學員骨架預設沒有這個檔案，新增前要先取得學員同意。靜態站不需要 Cloudflare adapter、SSR、KV 或 `nodejs_compat`。
+   - Node.js 版本要符合專案 Astro 版本的需求（看專案 `package.json` 與 Astro 文件），不要沿用其他專案寫死的版本號。
+   - 不要手動編輯或提交 `dist/`。部署後用 Cloudflare 回報的實際網址確認首頁、RSS（若有）、sitemap、canonical／OG、資產、搜尋與 404。
+   - `site` 要等於實際對外的網域（含暫時的 `workers.dev` 或 `pages.dev`，若那就是公開網址）；之後更動網域要重新建置。Preview 環境不應被索引。
 3. 確認 PR 分支是否提供 Preview、預覽網域是否需要 `noindex`、是否洩露未公開內容；不假設 Cloudflare Preview 和 GitHub Pages Preview 設定相同。
 4. 自訂網域時，確認 DNS、HTTPS、生效網址、canonical、RSS、Sitemap、搜尋索引及跳轉；對需要額外 Cloudflare 規則的功能逐項驗證。不要承諾完整 WordPress 301 遷移。
 5. Cloudflare API Token、GitHub OAuth 或部署授權只在平台授權流程處理，不存入程式碼、聊天訊息、Commit 或公用設定。

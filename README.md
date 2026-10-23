@@ -1,201 +1,53 @@
 # Astro Personal Site Starter
 
-這個 Repository 是 Astro 架站工作坊的**設計研究展示站與獨立網站 Starter 開發來源**，不是學員應直接 Fork 後發布的個人網站。
+Astro 架站工作坊的**設計研究展示站，以及學員獨立網站 Starter 的開發來源**。學員不需要 Fork 這個 Repo：學員在 `/starter/` 規劃，取得建站資料包，交給 AI 在**自己的** GitHub Repository 建站。
 
-## 部署與 PR 預覽現況（2026-10-10 核對）
+目標：給零程式背景的學員一個可理解、可改、可部署、UI 有設計品質的 Astro 個人網站起點。不是 SaaS、CRM 或完整商業後台。
 
-- **GitHub Pages（既有）**：`.github/workflows/deploy-pages.yml` 仍會在 `main` 更新時發布展示站；`.github/workflows/pr-preview.yml` 建置同一 Repo 內的 PR，並由 Pages 部署 Workflow 合併到 `/pr-preview/pr-N/`。只有成功部署並驗證實際 HTML 後，才會在 PR 留預覽連結。
-- **Cloudflare（已具備靜態資產設定）**：`wrangler.jsonc` 宣告 `assets.directory: "./dist"`；`astro.config.mjs` 預設 `base: /`，適合以根路徑託管。此 Repo 未內建 Cloudflare Git 部署 GitHub Actions Workflow；由 Cloudflare 端連接 GitHub 的專案設定、部署紀錄及 Preview 網址須在 Cloudflare Dashboard 查證。
-- **Cloudflare Preview**：若 Git 整合已啟用分支／PR 預覽，請以 Cloudflare 在該 Commit／PR 回報的真實 Preview URL 驗收；不要套用 GitHub Pages 的 `/pr-preview/pr-N/` 路徑，也不要在沒有部署證據時宣稱可預覽。
-- **兩條流程並存**：目前不能把 GitHub Pages Workflow 當成 Cloudflare 發布流程，也不能把 Cloudflare 原生 Preview 當成 `astro-pr-preview` Skill 已經支援的功能。要停用 GitHub Pages，需另行調整 Pages 設定／Workflow；修改 README 本身不會停用部署。
-- **`.ai/astro-pr-preview/SKILL.md`**：已分別說明 GitHub Pages、Cloudflare Pages Git 預覽與 Workers Static Assets 的驗證流程。依學員實際使用的平台查證部署 Check、URL 和 SHA；不得套用研究站的特殊 Preview 路徑，未經明確同意不可 Merge。
+展示站（Cloudflare Pages）：https://personal-site-starter.pages.dev/
 
-`npm run build` 會執行 Astro、robots、Pagefind、額外搜尋及輸出驗證；部署的實際站點狀態以平台部署紀錄及可開啟網址為準，不能只憑本地設定判定成功。
+## 這個 Repo 有什麼
 
-學員第一次請 AI 建站的**唯一正式提示詞**位於 `docs/student-builder-pack/START-BUILD-PROMPT.txt`；網站 `/guide/` 的「開始建站」按鈕直接讀取此檔，ZIP 的 `START-HERE.md` 亦引用它，避免出現不同版本。
+| 路徑 | 內容 |
+|---|---|
+| `src/pages/` | 展示站頁面：各主題的 Demo（`/[kind]/[theme]/`）、`/blocks/`、`/effects/`、`/layouts/`、`/section-patterns/`、`/templates/`、`/starter/` 規劃器、`/guide/` 學員指南 |
+| `src/components/`、`src/data/` | 元件與資料。**有哪些元件、特效、版型、區段樣板，以 `src/data/` 底下的 registry 為準**（`blocks.registry.json`、`effects.registry.json`、`layout-directions.json`、`section-patterns.registry.json`） |
+| `AGENTS.md` | 在這個 Repo 工作的 AI 要遵守的規則，以及該讀哪個 Skill |
+| `COMPONENTS.md` | Blocks 的使用介面與規範 |
+| `.ai/` | AI Skills 與參考資料；**會隨學員資料包出貨** |
+| `docs/student-builder-pack/`、`docs/student-intake/` | 學員資料包的文件與訪談包；**會出貨** |
+| `docs/`（其餘） | 老師端文件，不出貨。例如 `layout/layout-assembly.md`（版型組裝）、`github-pr-preview-setup.md`（本 Repo 的預覽機制）、`component-backlog.md`、`quality/`（品質契約與尚未完成的驗收）、`workshop/student-flow.md`（學員流程設計）、`interview-evaluation/`（評測資料，含答案）、`archive/`（已取代的文件） |
+| `scripts/` | 建置、驗證與 QA 腳本；`build-student-pack.mjs` 產生學員資料包 |
 
-## 研究展示與學生交付分離
+## 學員流程
 
-展示站包含 **2 種內容架構 × 4 種 Visual Themes**、12 個首頁 Layout 方向、40 個 Editorial Composition Recipes，以及分開維護的 Blocks／Effects。Layout 原型不等於完整多頁網站。
+1. 在 `/starter/` 選擇網站方向、版型、品牌、導覽與內容，下載 Site Brief JSON。
+2. 在 `/guide/` 下載建站資料包，並複製**唯一正式的起始提示詞**（來源是 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，`/guide/` 的按鈕直接讀取這個檔）。
+3. 把 Site Brief 與資料包交給能讀寫檔案、執行建置並經授權操作 GitHub 的 AI。
+4. AI 在學員自己的 Repo 建立 Branch 與 PR，經過實際存在的 Preview，學員確認後才合併與發布。
 
-學員建議流程：`/starter/` 規劃 → 匯出 Site Brief JSON → 依 `.ai/astro-starter-onboarding/SKILL.md`、`.ai/astro-site-assembly/SKILL.md` 產生獨立 Astro 網站 → 建立**自己的** GitHub Repository（不必 Fork 此研究 Repo）→ GitHub Pages 或 Cloudflare 部署 → 依 `.ai/astro-starter-deploy/SKILL.md` 驗收。匯出腳本產生可運作骨架後，仍需針對所選 Layout 完成真實內容與視覺適配；不能宣稱一次匯出就得到完整 12 款網站。
+匯出器產生的是可運作的網站骨架；真實內容、版型適配與視覺驗收還要接著完成。學員資料包的入口是 `docs/student-builder-pack/START-HERE.md`。
 
-## Live demo（既有 GitHub Pages 路徑）
-
-以下是 Repo 記錄的 GitHub Pages 網址。若 Pages 停用或展示正式切換到 Cloudflare，須再以實際部署成功的 Cloudflare URL 更新此區，**不可直接假定 Cloudflare 公開網域**。
-
-首頁：
-- https://pikaOne1138.github.io/astro-personal-site-starter/
-
-### A｜知識／部落格
-
-- Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/paper/
-- Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/morning/
-- Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/studio/
-- Botanical Calm：https://pikaOne1138.github.io/astro-personal-site-starter/knowledge/botanical/
-
-### B｜助人者／個人專業服務
-
-- Paper & Ink：https://pikaOne1138.github.io/astro-personal-site-starter/helper/paper/
-- Morning Light：https://pikaOne1138.github.io/astro-personal-site-starter/helper/morning/
-- Quiet Studio：https://pikaOne1138.github.io/astro-personal-site-starter/helper/studio/
-- Botanical Calm：https://pikaOne1138.github.io/astro-personal-site-starter/helper/botanical/
-
-### 元件庫
-
-- Astro Blocks V1.5：https://pikaOne1138.github.io/astro-personal-site-starter/blocks/
-
-## 文章與搜尋系統
-
-- 文章主要入口：`/[kind]/[theme]/articles/`；文章索引支援列表、卡片、網格與標籤、日期、月份瀏覽。
-- 全站全文搜尋以 Pagefind 對實際輸出的靜態 HTML 建立索引；`npm run build` 才會產生索引，本機 `astro dev` 不等同正式搜尋環境。
-- `/explore/` 為早期研究／相容路由，不能當成唯一正式文章入口。
-- 文章資料、RSS、Sitemap、SEO 與發布狀態請遵循 `.ai/astro-content-publishing/SKILL.md`。
-
-## Architecture
-
-這不是 8 套互不相干的網站，而是：
-
-- **2 種內容架構**
-  - Knowledge / Blog：內容探索、閱讀、分類、訂閱
-  - Helper / Professional：信任、服務、流程、FAQ、預約 CTA
-- **4 種視覺人格**
-  - **Paper & Ink 紙墨**：編輯感、襯線、細線、紙張感
-  - **Morning Light 晨光**：暖奶油、大圓角、柔光、有機感
-  - **Quiet Studio 靜室**：大量留白、精準格線、單一深綠強調
-  - **Botanical Calm 植感**：柔和自然、低飽和綠與留白
-
-8 個公開網址由同一個 Astro 元件與資料層產生，方便工作坊示範「結構 × 視覺系統」的組合，而不是維護 8 份獨立程式碼。
-
-## AI design brain
-
-Repo 內建：
-
-- `AGENTS.md`
-- `.ai/astro-ui-craft/SKILL.md`
-- `.ai/astro-ui-craft/references/`
-- `.ai/astro-ui-craft/references/raw-research/`
-- `.ai/astro-ui-craft/references/component-library-v1.5.md`
-- `COMPONENTS.md`、`src/data/blocks.registry.json`（元件名稱、用法與索引）
-
-Skill 的任務是把 UI 生成限制在研究過的資訊架構、design tokens、CTA、微動畫、RWD、Accessibility 與 Astro 實作邊界內，避免產生典型 AI landing page。
-
-## Workshop flow
-
-1. 在 `/starter/` 選擇知識／部落格或助人者網站、Layout、Theme、導覽與真實內容需求。
-2. 匯出 Site Brief JSON；依 `astro-site-assembly` 產生獨立網站骨架並以所選 Layout 做必要的設計移植。
-3. 學員建立自己的 GitHub Repository，**不需要 Fork 本研究 Repo**。
-4. 選擇 GitHub Pages 或 Cloudflare 作為自己的發布平台；確認 Astro site/base、網域及資產網址。
-5. 在學員 Repo 建立 Branch + PR，先經過 Build 及該部署平台**實際存在**的 Preview。
-6. 學員確認桌機／手機畫面及功能後才 Merge，並驗證正式部署；後續更新遵循 `astro-site-maintenance`。
-
-## Local
+## 本機開發
 
 ```bash
 npm install
 npm run dev
-npm run build
+npm run build   # 靜態輸出在 dist/
+npm run preview # 預覽建置結果（全文搜尋需要先 build）
 ```
 
-## Deploy
+`npm run build` 會執行 Astro、Pagefind 全文索引、額外的搜尋索引與輸出驗證。全站搜尋由 Pagefind 在建置後對靜態 HTML 建立索引，所以 `astro dev` 沒有全文搜尋。
 
-```bash
-npm install
-npm run build
-# 靜態輸出：dist/
-```
+## 部署
 
-- **GitHub Pages 展示**：`.github/workflows/deploy-pages.yml` 用 GitHub Actions 發布，設定 `ASTRO_BASE_PATH=/astro-personal-site-starter` 與 `ASTRO_SITE_URL=https://pikaone1138.github.io`。
-- **GitHub Pages PR Preview**：`.github/workflows/pr-preview.yml` 建置 PR；可信任的 Pages 部署 Workflow 發布後才在 PR 註明實際預覽網址。詳見 `.ai/astro-pr-preview/SKILL.md`。
-- **Cloudflare**：`wrangler.jsonc` 設定 Workers static assets 的 `dist/` 路徑；若採 Cloudflare Pages Git 整合，請按 Pages 的建置輸出設定部署。兩種 Cloudflare 產品的 Preview URL 和 Git 整合行為須依實際專案核對，不能混用。
-- **正式環境設定**：`astro.config.mjs` 支援 `ASTRO_SITE_URL`、`CF_PAGES_URL` 與 `ASTRO_BASE_PATH`；自訂網域、canonical、robots、Pagefind、RSS、Sitemap 和資產 BASE_URL 必須在正式網址驗證。
-- **安全護欄**：修改部署 Workflow、停用站點、變更 DNS 或合併 PR，都需要另外核准；本文僅描述現況，不代表已調整任何託管設定。
+- **展示站以 Cloudflare Pages 為準**：專案 `personal-site-starter` 連接這個 Repo，正式分支 `main`；每個 PR 分支的 Preview 網址以 Cloudflare 在 PR 回報的為準。`wrangler.jsonc` 另外設定了 Workers 靜態資產。
+- **本 Repo 不再用 GitHub Pages 當展示站或 PR 預覽**（轉為私人後 `github.io` 無法使用）。`.github/workflows/` 裡舊的 GitHub Pages 發布與預覽流程（機制見 `docs/github-pr-preview-setup.md`）等待移除；移除前不要依賴它。學員自己的網站仍可選 GitHub Pages 或 Cloudflare，那是學員資料包裡的 Skill 在處理。
+- 部署的實際狀態以平台的部署紀錄與可開啟的網址為準，不能只憑本地設定判斷。修改部署 Workflow、變更 DNS 或合併 PR 都需要另外核准。
 
-## Project goal
+## 守則
 
-這個 repo 的目標不是做 SaaS、CRM 或完整商業後台，而是提供零程式背景學員一個：
-
-**可理解、可改、可部署、UI 有設計品質的 Astro 個人網站起點。**
-
-
-### 可操作的導覽／服務／媒體共用元件
-
-元件庫目前 42 個 Astro blocks。新增手機導覽 `MobileMenu`、預約串接 `BookingLink`、LINE/Email/電話 `ContactActions`、服務資訊 `PricingDetails`、專業／政策 `TrustInfo`、影片與音訊 `MediaEmbed`。
-
-目前 Demo 是**教材示範資料**，尚未設定使用者自己的預約平台、訂閱系統、專業資格與隱私政策。未配置的元件應呈現明確的未設定狀態，不得假裝成功送出、預約或提供專業服務。真實連結請由網站擁有者自行設定。
-
-
-### 社群圖示與連結
-
-`SocialLinks.astro` 可放在頁尾、個人介紹、聯絡頁或社群入口。支援 Instagram、Facebook、Threads、YouTube、LINE、GitHub、LinkedIn、X、TikTok、Pinterest、Discord、Telegram、Spotify、Email、電話、網站與 RSS。圖示由 Simple Icons 固定 v16 版本的 SVG CDN 提供；通用信封／電話／網站使用內嵌 SVG。未填連結不顯示，無須帳號或 JS 追蹤。正式上線時確認外部 CDN 可用性和各品牌商標政策；可改為自託管 SVG。
-
-
-### 元件補完：Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress
-
-文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。 此分支元件庫總數 46 個，新增的積木均在功能分類展示，實際網站亦有示範入口；正式部署需依真正內容配置第三方服務。
-
-
-## V2.5 B resources
-New blocks: ResourceCard, ResourceLibrary, LeadMagnetCard and NewsletterSignup. No fake subscription submissions. Align Registry and Gallery, and configure actual external endpoints.
-
-## 功能元件：PractitionerCard、ServiceFit
-讓專業者呈現服務資格、地區、合作方式與適合度；不虛構證照、資格、見證或危機資訊。 此分支登錄元件共 44 個，正式部署仍需設定真實內容。
-
-
-### 助人者示範文案（四種實務情境）
-
-四款助人者示範網站分別採用：紙墨＝身體工作、晨光＝諮商心理、靜室＝教練、植感＝靈氣。內容統一存於 `src/data/helper-content.ts`，分別配置首頁介紹、適合對象、服務卡、初訪流程、服務頁與 FAQ。這是**內容示範情境**，不是把職業與樣式綁死；正式客製可在任何視覺主題使用任何專業的資料。示範不聲稱持有心理師資格、不能保證身體或靈氣療效，沒有接通真實預約。
-
-
-### 三種文章索引與精簡手機導覽
-
-`ArticleViewSwitcher` 可以把同一組文章切換為編輯式列表、內容卡片或密集網格，整合在所有八款 Demo 的文章列表與文章探索頁，並可保留標籤／月份／日期搜尋功能。手機頂部僅留漢堡圖示與放大鏡，全站文章清單在「文章」，進階工具位於「文章探索」。元件總數由 `blocks.registry.json` 自動驅動展示文案；開發中功能必須先走 PR 預覽。
-
-
-### 全站內文搜尋與單一文章索引
-
-正式建置改為 `astro build && pagefind --site dist`，使用免費 Pagefind 產生靜態全文索引；不用外部後端服務。全站放大鏡可查詢網站公開靜態 HTML 的實際文字（關於、服務、FAQ、文章等），並維持 GitHub Pages 正式／PR Preview 的不同 BASE_URL；搜尋索引隨每次重新建置更新。本機 `astro dev` 不自動生成 Pagefind 索引，需先 `npm run build` 並以 `npm run preview` 測試全文搜尋。
-
-`/[kind]/[theme]/articles/` 是唯一主要文章索引，直接提供列表／卡片／網格、搜尋、標籤、月份與日期工具；舊 `explore/` 會保留搜尋參數轉往文章索引。頁首改成精簡「文章」。
-
-### 動效調整 Skill
-
-`.ai/astro-motion-craft/SKILL.md` 與其 `references/manus-v2-motion-map.md` 記錄 Manus v2 提供的 Reveal 七種模式、Stagger、Tilt／Spotlight、Zoom／Pan、magnetic Button、UnderlineLink、FAQ variants 與 Tailwind className 相容策略。注意：**此 PR 只新增可供 AI 使用的規範，不代表上述所有特效元件已移植**。現有四套 Theme CSS 與 reduced-motion 保持優先，需另外透過實作 PR 逐項移植。
-
-
-### 動效參考庫（Manus v2 × 現有 Astro）
-
-`.ai/astro-motion-craft/library/` 已建立跨 AI 可重複利用的特效參考庫：`effect-catalog.md` 對照現有元件與 Manus v2，`recipes/` 提供 Reveal／Stagger、卡片 Tilt／Spotlight／磁吸 CTA，以及 Zoom／Pan、連結底線、FAQ 展開的源碼行為、參數與整合方法。新的 `.ai/astro-motion-craft/SKILL.md` 會先讀資料庫，再依不同風格與使用情境選擇效果。**這些是實作參考與決策規格，不代表相關特效全部已經加到目前的網站。** 原四套主題 CSS 不被 Manus Tailwind 配置覆蓋。
-
-
-### 獨立特效庫（可操作 Demo）
-
-`/effects/` 是元件庫 `/blocks/` 旁的特效展示站。七個可重複運用的 Astro effects，涵蓋七種 Reveal、Stagger、Tilt／Spotlight、圖片 Zoom／Pan、Magnetic Button、三種動態底線及可調 FAQ；依六類 Demo 排列。能切換紙墨／晨光／靜室／植感，及關閉／輕柔／鮮明動態，進場與群組有重播按鈕。效果和網站內容元件**分開計數**：網站元件仍由 `blocks.registry.json` 決定，特效使用 `effects.registry.json`，源碼 `src/components/effects/`，CSS `public/effects.css`。Motion Skill 已加入這套元件與 Manus 參考庫的整合指引，預覽建置與實際操作須分別驗收。
-
-
-### 返回頁首共用元件
-
-`BackToTop.astro` 已加入 `DemoLayout`，適用八款示範網站、文章與展示頁。捲動 420px 後右下角出現箭頭，單擊回到頂端；手機安全邊距、鍵盤可操作，系統減少動態時停用平滑捲動。這是可重用網站元件，登錄在 54 個 blocks 內，不重複計入動效庫。
-
-
-## 第三座展示庫：網站版型庫（Layout Library）
-
-**[/layouts/](https://pikaOne1138.github.io/astro-personal-site-starter/layouts/)** 與 `/blocks/`、`/effects/` 並列，但有不同職責。版型庫是 12 種真正不同的整頁資訊架構、內容順序與閱讀動線，不是舊有四套紙墨／晨光／靜室／植感的換色範例。
-
-- 知識內容 6 款：田野筆記、長文書房、學習實驗室、收藏者目錄、聲音通信、閱讀年鑑。
-- 助人專業 6 款：清晰臨床、溫柔陪伴、身體與節律、實作型教練、共好工作室、信任路徑。
-- 前 10 款由使用者上傳 `astro-ten-site-directions.zip` 的十款 Astro 原型做結構性改寫；後兩款依 Claude 研究與三種風格規格的構想另行設計，不是 Claude 原始碼。
-- 檔案：`src/data/layout-directions.json`（全部資料）、`src/pages/layouts/index.astro`（比較）、`src/pages/layouts/[slug].astro`（12 款各自的首頁 DOM）、`public/layout-gallery.css`、`public/layout-library.css`。新增 AI Skill：`.ai/astro-layout-craft/SKILL.md`。
-- **內容原型非完整正式網站**：實際文章資料庫、預約服務、團隊成員與影音節目需後續設定。方向範例的展示圖片暫以使用者已上架的 Manus 圖片網址提供；未來發給學員的獨立模板應先確定授權並改為自託管。
-- 版型是一個不同層級的概念，**不計入**網站 blocks 與 motion effects 登錄元件數量。
-
-## Claude editorial design Skill + interactive composition gallery
-
-`/layouts/recipes/` demonstrates 40 Astro compositions across five live recipe labs. These are design recipes, separate from website functionality Blocks (54) and Motion Effects (7). The imported editorial Skill is at `.ai/astro-editorial-layout-design/` with ten-site source analysis, 40 Astro source recipes, design failure cases, four-viewport QA checklists and Chromium audit script. The site layouts `reading-atlas` and `trust-path` now use the full original Claude prototype source rather than our simplified AI imitations. Prototype claims, certifications and book statistics are example data and must not be presented as real services. Browser visual QA is still needed before merging.
-
-
-### Claude Editorial Skill ＋ 40 個構圖配方
-
-`/layouts/recipes/` 提供五類真正渲染的 Astro 配方（Hero 12、內容分區 8、列表 6、視覺節奏 6、CTA／信任 8），原始 ID 保留 H01–H12、S01–S08、L01–L06、R01–R06、C01–C08。原始 Claude 設計規則、十站逆向、對照評分、人工驗收與自動化腳本收在 `.ai/astro-editorial-layout-design/`；網站實際引用 `src/components/editorial-recipes/` 下的 Astro 元件。配方展示為版型庫的分支，與 54 個功能元件、7 個動效元件分開計數。
-
-閱讀年鑑與信任路徑已以 Claude ZIP 的完整 Astro 站型取代此前手工簡化版，並繼承 GitHub Pages 的 BASE_URL 與 Astro 5 相容的組件路徑。**CI 編譯通過不代表 4 寬度的視覺人工驗收完成**；仍需按 Skill 驗收。
+- 保持靜態優先，不自行加入 CRM、會員、金流或預約後台。
+- 不虛構資格、見證、價格，也不讓未設定的表單、預約、訂閱看起來可用。
+- 修改前先讀 `AGENTS.md`，改 UI 前先讀 `.ai/astro-ui-craft/SKILL.md`。
+- 合併前要有實際的 Preview 與使用者的明確同意。

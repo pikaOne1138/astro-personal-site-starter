@@ -8,24 +8,23 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 
 **版型（Layout）** 是整個網站如何安排內容：首頁區塊先後、欄位比例、視覺重心、瀏覽節奏、如何抵達 CTA；不等於紙墨／晨光／靜室／植感等 Design Tokens。既有 `astro-ui-craft` 負責網站區塊，`astro-motion-craft` 負責動效，本 Skill 負責**資訊動線與整體排版**。
 
-## 來源與誠實標註
+## 現況與界線
 
-- Manus 10 個原型：使用者上傳 `astro-ten-site-directions.zip`，原生原型位於 `src/pages/directions/knowledge/*` 與 `src/pages/directions/care/*`。本 Repo `/layouts/` 根據其不同資訊架構改寫了 10 款 Astro 示範，**不是逐字不變的 ZIP 原始碼**。
-- Claude `Claude-AstroTmplateResearch.md` 與 `Astro 架站工作坊｜三種網站風格設計規格.md` 是研究與設計規格，**並未交付兩個獨立可執行版型原始碼**。`reading-atlas` 與 `trust-path` 是我們依其研究新增的 2 款版型設計。
-- 檔案 `src/data/layout-directions.json` 管理十二款；`src/pages/layouts/index.astro` 比較入口，`src/pages/layouts/<slug>/index.astro` 內各有獨立 DOM 結構，`public/layout-library.css` 各有不同的布局，而非換色切換。
-- 現階段為首頁排版**原型展示**，不是每款都有文章內頁、預約後端、完整網站部署。原型的來源圖片暫參考使用者上架的 Manus 圖片 URL；若做成可交付學員的獨立模板，需將已授權的圖片改為自託管並補完整頁面。
+- `src/data/layout-directions.json` 管理版型清單；`src/pages/layouts/index.astro` 是比較入口，`src/pages/layouts/<slug>/index.astro` 各有獨立的 DOM 結構，`public/layout-library.css` 各有不同的布局，不是換色切換。
+- `/layouts/` 展示的是首頁排版**原型**，不是每款都有文章內頁、預約後端或完整網站部署。
+- 原型的示範圖片可能引用遠端網址；做成學員的獨立網站時，要改用已授權或自託管的圖片，並補齊必要的內頁。
 
 ## 必須遵循的組裝步驟
 
 1. **問用途先於顏色**：知識／部落格（長文、觀察、課程、策展、Podcast、年度整理），或助人／專業服務（專業說明、關係陪伴、身體工作、行動教練、多人團隊、信任流程）。
 2. **比較兩款真實不同的閱讀路線**：例如 field-notes「邊注→觀察圖→按日期記事」和 learning-lab「學習路線→勾選進度→單元」，不是把 Header 顏色換掉。
 3. **先畫首頁 wireframe**：寫 5–7 段由上而下的區塊目的、首屏資訊重點、桌面欄數、手機順序、CTA 導向。
-4. **從既有 blocks 取資料**：`src/data/blocks.registry.json` 及 `/blocks/` 中找可重用功能；必要時定義額外 layout-specific composition，不把 12 個首頁都改成同一組 Hero + three cards。
+4. **從既有 blocks 取資料**：`src/data/blocks.registry.json` 及 `/blocks/` 中找可重用功能；必要時定義額外 layout-specific composition，不把所有首頁都改成同一組 Hero + three cards。
 5. **再挑風格和特效**：沿用或自訂 CSS tokens，跟 `.ai/astro-motion-craft/SKILL.md` 選適合的動態；不要用炫技代替版型差異。
 6. **保持工作坊友善**：用 Astro + CSS Grid/Flex + 少量原生 JS；所有範例可靜態部署 GitHub Pages，內部連結尊重 `import.meta.env.BASE_URL`。
-7. **驗證**：375/390px、桌面，長標題不中斷、對比與鍵盤可用、減少動態、不得有偽造收費、證照、留言或預約成功。每次新增可重用版型需更新版型 data、展示站與 Skill；新元件才登錄 Block Registry。
+7. **驗證**：1440／1280／768／390px，長標題不中斷、對比與鍵盤可用、減少動態、不得有偽造收費、證照、留言或預約成功。每次新增可重用版型需更新版型 data、展示站與 Skill；新元件才登錄 Block Registry。
 
-## 十二款方向：應保留的**結構性差異**
+## 各方向應保留的**結構性差異**
 
 | Slug | 先展示什麼 | 特徵模組 | 禁忌 |
 |---|---|---|---|
@@ -50,7 +49,7 @@ description: Select, deconstruct and adapt distinctive Astro page compositions, 
 
 ## 版面質感的強制檢查：置中畫布與留白
 
-PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路徑和課程模組在桌面橫向過度撐開。學員在比較版型時，這屬於結構性退化，不是單純換色。
+曾經把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路徑和課程模組在桌面橫向過度撐開。學員在比較版型時，這屬於結構性退化，不是單純換色。
 
 - **先測量原站的內容畫布（content container）**：大螢幕版面一般須採最大寬度（依版型約 1000–1360px）+ 左右 auto margin；絕不在未比對的情況下直接使用滿版百分比 padding 當作留白方案。
 - 例外可使用全幅背景（somatic 影像等），但主標題、文字和 CTA 仍要有受控的內層 container。
@@ -64,15 +63,14 @@ PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路
 - **第一選項是移植原始 DOM、CSS 和互動**，而不是用自己的 `.lay-hero`、`.lay-cards` 重新編排。只做 GitHub Pages BASE_URL、圖片位置與 Astro 版本相容的必要轉換。
 - 將每款原始版型的 CSS 保留為相對獨立的 styles（例如 `companion-source.css`、`learning-lab-source.css`），避免共用 `layout-library.css` 覆寫它特有的構圖。
 - 每款的全頁背景與實際內容畫布是兩個不同層級；避免讓背景也被 max-width 裁成窄島，亦不能以滿版背景替代應有的閱讀留白。
-- 合併前檢查 `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` 的「是否已完整對照原稿」欄位；對照未完成的款式不能當作「12 款已復刻完成」。
-- 使用者已多次指出「Learning Lab 步驟圓點壓字」「Companion 背景被裁窄島」。這些屬原始碼可避免的問題；先讀源碼，不准再靠猜測調 CSS。
+- 調整某款版型的 CSS 前，先讀它自己的原始碼，不要靠猜測調整。
 
 ## Claude Editorial Layout Design Skill
 
 Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-design/SKILL.md`. Its references contain ten original-site source analyses; recipes/code contains 40 exact Astro compositions. Preserve [OBS], [MEAS], [INF], [NEW] and [DEFECT] evidence levels. For novel designs, first select whole-page content structure here, then follow the editorial design composition recipes, then choose the existing UI and motion blocks. The visual lab `/layouts/recipes/` exposes five categories of live designs. Two Claude-authored examples replace the previous simplified reading-atlas and trust-path layouts; both still require visual browser QA.
 
 
-## Claude Editorial Skill 已實際整合（PR #20）
+## Claude Editorial Skill 的整合
 
 本 Skill 管整站結構／內容動線；當需要從零設計成熟的編輯式版面，**必須讀 `../astro-editorial-layout-design/SKILL.md`** 再決定 Hero、內容區塊、列表與節奏。Claude 原始研究、十站分析、40 個配方與四寬度驗收位於 `.ai/astro-editorial-layout-design/`，程式化可用的 40 個元件位於 `src/components/editorial-recipes/`；五個視覺實驗頁入口：`/layouts/recipes/`。
 
@@ -83,12 +81,9 @@ Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-desi
 當學員說「調整首頁第二段」「移動圖片」「改手機排列」時，先讀**學員自己的現況**、對應頁面與 Layout，再量測/截圖原始版，列出需變更的區段、受影響共用元件、手機重排；以最小 diff 修改，不重跑 Site Brief 生成器覆蓋已完成內容。保留原有品牌、頁面結構及 URL，不讓局部需求演變成全站換版。共用 Header/Nav 的變動需要同步查每個頁面，新增/移動頁面交 `astro-page-management`。至少 1440、1280、768、390px 比較 before/after，檢查長中文標題、焦點、版心寬度與溢出。修改完必須 Branch → PR → 真實 Preview → 學員確認 → 才合併。
 
 
-## 跨 Skill 共用設計判斷（Task 4）
+## 共用設計判斷
 
-共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。
+共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
 
 本 Skill 職責：依 Brief 已確認的資訊架構決定整頁閱讀動線；Layout 是結構，不是視覺主題。
 
-交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
-
-必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

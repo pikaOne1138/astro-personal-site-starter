@@ -5,7 +5,7 @@
 | 標記 | 意義 | 可信度 |
 |---|---|---|
 | **[OBS]** | 直接讀自十款原始碼（`src/pages/layouts/*/index.astro`、`src/layouts/DirectionLayout.astro`）。會附 class、CSS 屬性與數值。 | 事實 |
-| **[MEAS]** | 用 `scripts/audit.mjs`（Playwright + Chromium 1200）在 `astro preview` 上於 1440／1280／768／390 實測的渲染結果。 | 事實（量測當下） |
+| **[MEAS]** | 用 `.ai/astro-editorial-layout-design/scripts/audit.mjs`（Playwright + Chromium 1200）在 `astro preview` 上於 1440／1280／768／390 實測的渲染結果。 | 事實（量測當下） |
 | **[INF]** | 從 [OBS]/[MEAS] 歸納出的規律或設計原則。有可能是巧合，已標註支持它的案例數。 | 推論 |
 | **[NEW]** | 本 Skill 額外提出的建議（含閾值、配方、驗收標準）。**十款原始碼中不存在或不遵守。** | 建議 |
 | **[DEFECT]** | 在十款原始碼／畫面中實測到的缺陷。是「不要複製」的反例，不是準則。 | 事實（缺陷） |

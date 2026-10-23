@@ -13,7 +13,7 @@ description: 為繁體中文知識型（部落格、專欄、教學、策展、�
 | 標記 | 意義 |
 |---|---|
 | **[OBS]** | 從十款原始碼實際讀到的 class／CSS／數值 |
-| **[MEAS]** | 用 `scripts/audit.mjs` 實測渲染結果 |
+| **[MEAS]** | 用 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 實測渲染結果 |
 | **[INF]** | 從 OBS／MEAS 歸納的規律（可能有例外） |
 | **[NEW]** | 本 Skill 額外建議（十款中不存在，通常比十款更嚴格） |
 | **[DEFECT]** | 十款中實測到的缺陷 —— **反例，不要複製** |
@@ -62,6 +62,7 @@ description: 為繁體中文知識型（部落格、專欄、教學、策展、�
 **選擇順序**：先答「這位站長要被怎樣信任？」→ 選 Hero → 選 2–3 個內容分區（不同隱喻）→ 選列表 → 選節奏 → 選 CTA／信任。
 **用法**：把 `recipes/code/tokens.css` 的變數在你的站覆寫；把配方 `.astro` 複製到 `src/components/` 後**改結構與內容**（直接只換文字＝違反規則 1）。
 所有配方元件以 `var(--ed-*, 後備值)` 讀取 tokens，不匯入 tokens 也能渲染。
+在已有 `public/demo.css` 或學員自己 tokens 的網站裡，**不要再並存第二套 token**：把 `--ed-*` 映射到專案既有 tokens（顏色、間距、字體），並遵守 `.ai/astro-ui-craft/SKILL.md` 的「不隨意新增設計數值」；本 Skill 的 12px 字級下限與中文正文 ≥15px 是**底線**，不是新增中間字級的許可。
 
 ## 4. 參考資料地圖（按需讀，不要一次全讀）
 
@@ -90,8 +91,8 @@ node path/to/scripts/audit.mjs --base http://localhost:4321 --paths /,/about --o
 ## 6. 範例（`examples/`）
 
 `examples/` 是一個可建置的 Astro 專案：
-- `src/pages/reading-almanac.astro`（閱讀年鑑：無圖年份＋12 月線格＋純 CSS 篩選＋深色年度之書帶）
-- `src/pages/trust-path.astro`（信任路徑：橫向路線帶＋脊線五站＋比例時間尺）
+- `.ai/astro-editorial-layout-design/examples/src/pages/reading-almanac.astro`（閱讀年鑑：無圖年份＋12 月線格＋純 CSS 篩選＋深色年度之書帶）
+- `.ai/astro-editorial-layout-design/examples/src/pages/trust-path.astro`（信任路徑：橫向路線帶＋脊線五站＋比例時間尺）
 - `src/pages/lab/*.astro`：40 個配方元件的實際渲染
 - 各站 `brief.md`／`direction.md`／`wireframe.md`／`DECISIONS.md`／`screenshots/`：完整走過一次工作流程，含**實際發生的修正紀錄**。
 
@@ -119,12 +120,9 @@ import R05 from '../../recipes/code/rhythm/R05-voice-heading.astro';
 - 驗證只在 Chromium（Windows）執行；未測 Safari／Firefox／真機／螢幕閱讀器。字體為系統字體堆疊，換環境需重新截圖確認 CJK 斷行。
 - 對比檢查略過背景圖／漸層上的文字與 `aria-hidden` 元素；文字疊壓為 bounding box 啟發式，需目視複核。
 
-## 跨 Skill 共用設計判斷（Task 4）
+## 共用設計判斷
 
-共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。
+共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
 
 本 Skill 職責：沿用 Layout 與 Brief 的內容次序，安排 Hero、Section、清單和手機閱讀節奏，不能重新引入已否決的構圖。
 
-交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
-
-必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

@@ -1,6 +1,6 @@
 # Hero 構圖配方 ×12
 
-**每個配方都對應一個可建置的 Astro 元件**（`recipes/code/heroes/Hxx-*.astro`），已在 1440／1280／768／390 通過 `scripts/audit.mjs`（無溢出、無文字疊壓、最小字級 12px）。
+**每個配方都對應一個可建置的 Astro 元件**（`recipes/code/heroes/Hxx-*.astro`），已在 1440／1280／768／390 通過 `.ai/astro-editorial-layout-design/scripts/audit.mjs`（無溢出、無文字疊壓、最小字級 12px）。
 元件預設內容是示意；使用時**必須改結構與內容，不是只改文字與顏色**（失敗 F10）。
 
 標記：**[OBS]** 來自十款原始碼；**[NEW]** 本 Skill 新增構圖。「衍生」＝以十款的某個手法為起點，但已修正其缺陷。
@@ -80,7 +80,7 @@ h1 em{display:block;padding-left:.6em}
 figure{grid-column:9/-1;grid-row:2/4;transform:rotate(2deg)}
 ```
 **算寬公式**：每個詞組寬度 ≈ 字數 × 字級(px) 必須 ≤ 標題欄寬。1440 視窗：8 欄 ≈ 795px、10vw = 144px → 詞組 ≤ 5 字。超過就拆成兩個詞組（陣列元素）。
-**常見失敗**：詞組 5 字 × 176px(11rem) = 880px > 795px，詞組在內部被硬斷成「把一／個問題」（本 Skill 開發時實際發生，已改字級上限為 9rem）。
+**常見失敗**：詞組 5 字 × 176px(11rem) = 880px > 795px，詞組在內部被硬斷成「把一／個問題」（實際發生過，所以字級上限為 9rem）。
 **程式**：`code/heroes/H02-offset-stagger.astro`
 
 ---

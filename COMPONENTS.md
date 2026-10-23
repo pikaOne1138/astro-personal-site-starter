@@ -1,49 +1,36 @@
-# Astro Blocks · V2
+# Astro Blocks 元件庫
 
-這是給 Astro 架站工作坊使用的可重用元件庫，**不是拖曳編輯器**。AI 應從 `src/components/blocks/` 引入元件，在 Astro 頁面裡自由組合。展示站：`/blocks/`。
+給 Astro 架站工作坊使用的可重用元件庫，**不是拖曳編輯器**。AI 從 `src/components/blocks/` 引入元件，在 Astro 頁面裡組合。展示站：`/blocks/`。
 
-## 版本邊界
-- V1：23 個核心元件（共用 4、Hero 3、內容 4、部落格 6、助人者 6），可自由組裝
-- V1.5：四套配色（paper / morning / studio / botanical）、多版型（3 種 Hero、2/3 欄特色、左右反轉）、簡約 hover/reveal 動畫、RWD、reduced motion
-- V2 已加入：文章 metadata 搜尋、標籤雲、月份列表、文章日曆、輪播與進階文章元件；完整文章內文全文檢索尚未實作
-- V3 未納入：AI 自動選元件的搜尋/推薦引擎；V1.5 僅提供供 AI 閱讀的 registry 和簡單組裝指引
+## 事實來源
 
-## 元件展示分類原則
+- **有哪些元件、屬於哪一類、適用哪些主題**：`src/data/blocks.registry.json`（`id`、`name`、`category`、`path`、`keywords`、`compatibleWith`、`themes`）。**數量與清單請讀 registry，不要在文件裡寫死。**
+- **元件介面（Props）**：以 `src/components/blocks/*.astro` 的實作為準。
+- **設計規格**：`.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library.md`；不得新增不在既有字級與間距系統中的數值。
+- 公開的 `/blocks/` 以使用情境分類（導覽與共用、首頁主視覺、內容呈現、文章探索與清單、文章閱讀與排版、服務與信任、完整範例），registry 的 `category` 欄是 `common`、`hero`、`content`、`blog`、`professional`、`article`。元件的版本資訊只放在 registry、註解或開發者文件，不放在這裡或對外頁面。
 
-公開 `/blocks/` 以使用情境分類，而非開發版本：導覽與共用、首頁主視覺、內容呈現、文章探索與清單、文章閱讀與排版、服務與信任、完整範例。`SiteSearchDialog` 屬於導覽與共用；`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar` 屬於文章探索；`TableOfContents`、`AuthorBox` 與文章排版元件屬於文章閱讀。元件版本只保留在 registry、文件或註解。
+## 不屬於 Blocks 的東西
 
-## 元件名錄
-- **common**：`Button`、`SectionHeading`、`SiteHeader`、`SiteFooter`
-- **hero**：`HeroSplit`、`HeroCentered`、`HeroImage`
-- **content**：`ImageText`、`FeatureGrid`、`Stats`、`CTASection`
-- **blog**：`PostCard`、`PostGrid`、`FeaturedPost`、`CategoryLinks`、`TableOfContents`、`AuthorBox`
-- **professional**：`ServiceCard`、`AboutProfile`、`ProcessSteps`、`Testimonial`、`FAQ`、`ContactSection`
+這些各有自己的清單，**不要加進 `blocks.registry.json`，也不要和 Blocks 混著計數**。
 
-## 設計權威與共用規範
-- 元件介面以本文件、元件索引與 `src/components/blocks/*.astro` 實作為準。
-- 設計規格請參考 `.ai/astro-ui-craft/SKILL.md` 與 `.ai/astro-ui-craft/references/component-library-v1.5.md`；不得任意新增不在既有字級與間距系統中的數值。
+| 是什麼 | 在哪裡 |
+|---|---|
+| 特效（Reveal、Stagger、Tilt 等動效元件） | `/effects/`、`src/components/effects/`、`src/data/effects.registry.json`；規則見 `.ai/astro-motion-craft/SKILL.md` |
+| 區段樣板（由多個 Block 組成的區段） | `/section-patterns/`、`src/data/section-patterns.registry.json` |
+| 首頁版型（結構不同的首頁原型） | `/layouts/`、`src/data/layout-directions.json` |
+| 編輯式構圖配方 | `/layouts/recipes/`、`src/components/editorial-recipes/`；脈絡見 `.ai/astro-editorial-layout-design/` |
 
-## V2：文章探索（4 個）、進階文章（7 個）與全站搜尋（1 個）
-
-- 文章探索：`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar`
-- 全站搜尋：`SiteSearchDialog`，可在導覽列使用放大鏡開啟、`Ctrl+K`／`⌘K` 呼叫、`Esc` 關閉；依當前 Demo 架構索引頁面、文章、助人者服務，搜尋頁面標題／摘要／分類／關鍵詞，不等同全文檢索。
-- 進階文章：`ArticleAccordion`、`ArticleList`、`ArticleGrid`、`ArticleCallout`、`ArticleComparison`、`RelatedArticles`、`ContentCarousel`
-- 範例：`/explore/`，可以搜尋標題、摘要、分類、標籤，並按月份與指定日期找文章。
-- 完整網站整合：`/knowledge/{theme}/explore/` 與 `/helper/{theme}/explore/`，八款 Demo 導覽列都有「找文章」，並連到該風格的文章頁；文章內文示範 Accordion／List／Grid／Callout／Comparison／Carousel／RelatedArticles。
-- 統一示範資料：`src/data/articles-v2.ts`，包括 slug、標題、摘要、分類、標籤、發文日期、閱讀時間。
-- 所有月份、日曆日期、標籤數量和結果頁都以相同的文章資料產生；不存在的發文日期不可點。
-- V2 示範文章與日期都是教材，不代表真實發文記錄。正式網站應接 Astro Content Collections 或匯入文章資料。
-- AI 設計與使用契約：`.ai/astro-ui-craft/references/article-exploration-v2.md`。
+選擇順序：先挑版型與構圖（資訊結構），再挑功能 Block，最後才加動效。
 
 ## AI 組裝規範
-1. 先看 `src/data/blocks.registry.json`，挑選用途相符的元件，再讀元件 `Props`。
-2. 保留原本六個 Demo 路徑，並維護新增加的兩個植感 Demo 路徑（共八個）。第四套配色新增為 `knowledge/botanical/` 與 `helper/botanical/`。
-3. 用現有 Astro Props 傳入資料；元件本身不包含 CMS、會員、資料庫、金流或真正的預約系統。
-4. `PostGrid` 接收 `posts`；`FeatureGrid`、`Stats`、`ProcessSteps`、`FAQ` 接收 `items`。
-5. `HeroSplit`、`ImageText` 使用 `reversed` 切換左右；`FeatureGrid` 使用 `columns={2}` 或 `columns={3}`。
-6. 必須提供真實的連結和內容；展示用 `#` 連結以及示例見證不能作為正式內容發布。
-7. 頁面讀取 `public/demo.css` 與 `public/blocks.css`；在 `<html data-theme="paper">` 切換配色。
-8. 維持無障礙、手機版以及 `prefers-reduced-motion`。完成後必須執行 `npm run build`。
+
+1. 先看 `src/data/blocks.registry.json`，挑用途相符的元件，再讀元件 `Props`。
+2. 用現有 Astro Props 傳入資料。元件本身不包含 CMS、會員、資料庫、金流或真正的預約系統。
+3. 資料形狀：`PostGrid` 接 `posts`；`FeatureGrid`、`Stats`、`ProcessSteps`、`FAQ` 接 `items`。`HeroSplit`、`ImageText` 用 `reversed` 切換左右；`FeatureGrid` 用 `columns={2}` 或 `columns={3}`。
+4. 要提供真實的連結和內容。展示用 `#` 連結與示例見證不能當正式內容發布。
+5. 頁面讀取 `public/demo.css` 與 `public/blocks.css`；在 `<html data-theme="…">` 切換主題。
+6. 維持無障礙、手機版與 `prefers-reduced-motion`。完成後執行 `npm run build`。
+7. 學員的單一網站要改元件時，依需求修改現有元件，不要在旁邊另造近似的複本；學員明確要新增時才另開。
 
 ## 使用範例
 
@@ -65,99 +52,38 @@ import FAQ from '../components/blocks/FAQ.astro';
 <FAQ items={[{question:"如何開始？", answer:"可以先填寫聯絡表單。"}]} />
 ```
 
-## 網站範例
-- 知識／部落格：`/knowledge/{theme}/`
-- 助人者／專業服務：`/helper/{theme}/`
+## 依賴外部資料或服務的元件
 
-兩種架構各有四種配色，共八個網址，沿用原有 Demo 的共用架構；展示站元件可逐步引入新的自訂頁面。
+這些元件**不能假裝**服務存在：沒設定就隱藏或明示「未設定」，不輸出假連結，也不顯示成功狀態。
 
-## 真正可使用的導覽、媒體與服務資訊元件
-
-| 元件 | 用途與必要設定 |
+| 元件 | 必要設定與行為 |
 |---|---|
-| `MobileMenu` | 手機展開選單，`links:[{label,href}]`；Escape 關閉並返回焦點 |
-| `BookingLink` | 外部排程 `href` 或支援 HTTPS 的 `embedUrl`；未設定時不假裝能預約 |
-| `ContactActions` | 選配 `email`、`phone`、`lineUrl`；會略過無效網址 |
-| `PricingDetails` | `items:[{name,price?,duration?,format?,note?}]` 與免責說明 |
-| `TrustInfo` | 可驗證的身分／資格／服務地區／政策／隱私；不產生假數據 |
-| `SocialLinks` | `items:[{platform,href,label?}]`；支援社群品牌圖示與 email／phone／website／RSS。`showLabels` 顯示文字，`previewPlatforms` 只顯示不可點擊圖示樣板；空網址不輸出連結。外部品牌圖示使用 Simple Icons v16（固定版本 CDN，需留意商標與個別授權）。 |
-| `MediaEmbed` | `type:'youtube'|'audio'|'podcast'`、`url`、`title`、`caption`；YouTube/音訊直接嵌入、未支援 Podcast 提供外部連結 |
+| `MobileMenu` | `links:[{label,href}]`；Escape 關閉並返回焦點；可接收與桌面共用的 `socialLinks` |
+| `BookingLink` | 外部排程 `href` 或 HTTPS 的 `embedUrl`；未設定時不假裝能預約 |
+| `ContactActions` | 選配 `email`、`phone`、`lineUrl`；略過無效網址 |
+| `PricingDetails` | `items:[{name,price?,duration?,format?,note?}]` 與免責說明；未知值不填 |
+| `TrustInfo` | 可驗證的身分、資格、服務地區、政策、隱私；不產生假數據。危機與求助資訊要依地區與專業情境設定，不硬編號碼（不要把其他地區的緊急電話貼進來） |
+| `PractitionerCard`、`ServiceFit` | 專業者的資格、地區、合作方式，以及適合／不適合與界線；不虛構證照、見證或危機資訊 |
+| `SocialLinks` | `items:[{platform,href,label?}]`，支援社群平台圖示與 email／phone／website／RSS。`showLabels` 顯示文字；`previewPlatforms` 只顯示不可點的圖示樣板；空網址不輸出連結。品牌圖示來自固定版本的 Simple Icons CDN（版本寫在元件原始碼），留意商標與個別授權。**這是帳號入口，不是文章分享** |
+| `MediaEmbed` | `type:'youtube'｜'audio'｜'podcast'`、`url`、`title`、`caption`；YouTube 與音訊直接嵌入，未支援的 Podcast 提供外部連結 |
+| `NewsletterSignup` | `href`（外部訂閱服務，必須是 HTTPS）、選配 `title`、`description`、`frequency`、`privacyUrl`；沒有有效的 `href` 就不能顯示可訂閱的樣子或送出成功 |
+| `ResourceCard`、`ResourceLibrary`、`LeadMagnetCard` | 資源網址必須是真實可設定的連結 |
+| `ArticleShare` | Props `url`、`title`。分享的是**當前文章**：LINE、Facebook、Email、複製網址。`url` 必須是完整的 HTTPS 網址且含網站實際的 `BASE_URL`，否則不輸出任何分享入口；複製失敗時會顯示可手動複製的網址 |
 
-六個元件已依用途列入 `/blocks/`；最新 Registry 為 42 個。請在紙墨／晨光／靜室／植感、375/390px 手機尺寸與鍵盤操作下逐一驗收。
+## 文章相關元件
 
-### 精緻導覽列（Header SocialLinks）
+- `Breadcrumbs`、`ArticleNavigation`（上一篇／下一篇，要處理第一篇與最後一篇的邊界）、`ReadingProgress`（只針對實際文章區域）：連結都要指向存在的頁面。
+- `ArticleViewSwitcher` 是可重用的文章索引：必填 `items`、`articleBase`；選配 `exploreBase`、`defaultView='list'｜'cards'｜'grid'`、`controls`、`filterable`、`label`。三種版面共用同一份資料與網址；手機降為單欄；搜尋、標籤、日期篩選在文章頁以 `data-article` 作用於同一組文章，切換版面不破壞篩選。
+- `ArticleArchive` 是頁級組合（不另計為 Block），把 `ArticleViewSwitcher`、`ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar` 結合在文章頁；舊的 `explore/` 保留轉址。
+- `ArticleSearch`、`TagCloud`、`ArchiveMonths`、`PostCalendar` 依同一份文章資料產生；不存在的發文日期不可點。示範文章與日期是教材，不代表真實發文記錄；正式網站要接 Astro Content Collections。
+- `SiteSearchDialog` 在 build 後由 Pagefind 對公開靜態 HTML 建立全文索引；搜尋資源與結果網址以 `BASE_URL` 設定，所以在 PR 預覽子路徑下也要能運作。沒有建置索引時（例如 `astro dev`）要明確說明，不假裝搜尋成功。
 
-`SiteNav.astro` 已組合 `SiteSearchDialog`、細線分隔符、`SocialLinks`。`socialLinks` props 可以自訂平台與網址；預設 Demo 使用可查證的 GitHub 專案與展示網站，避免虛構個人 IG／YouTube。桌面視窗顯示小圖示，窄屏時收起社群列，保留手機導覽與搜尋。社群圖示使用 SVG mask 跟隨各 Theme 的前景色與 hover accent；不加上彩色社群方塊，也不使用假連結。可設定空陣列 `socialLinks={[]}` 完全隱藏。
+## 導覽列與頁面共用元件
 
-手機導覽列的 `MobileMenu` 會接收相同 `socialLinks`，在彈出選單主連結後、分隔線下展示可點擊社群圖示，桌面版仍顯示在搜尋旁。兩端共用資料，不應維護兩份不同帳號設定。
+- `SiteNav.astro` 組合了 `SiteSearchDialog`、細線分隔與 `SocialLinks`。`socialLinks` props 可自訂平台與網址，設為 `[]` 可完全隱藏。預設 Demo 只放可查證的 GitHub 專案與展示網站，**不虛構個人社群帳號**。
+- 手機寬度只留漢堡圖示與全站搜尋放大鏡（要有可存取的名稱），「文章」是主要導覽項目；社群連結放在彈出選單主連結之後。桌面與手機共用同一份 `socialLinks`，不要維護兩份帳號設定。
+- `BackToTop.astro`：`threshold=420`、`label='返回頁首'`、`bottom='24px'`、`right='24px'`、`className`。已放進共用的 `src/layouts/DemoLayout.astro`，新的頂層 Layout 要重用它，不要在各頁複製捲動處理。遵守 `prefers-reduced-motion`，鍵盤可聚焦。
 
+## 助人者示範內容
 
-## 本批新增元件（內部開發里程碑）
-
-Breadcrumbs、ArticleNavigation、ArticleShare、ReadingProgress。
-
-文章頁 Breadcrumbs、上一篇／下一篇、LINE／Facebook／Email／剪貼簿分享、實際文章區域的閱讀進度。不能將 SocialLinks 當成文章分享。
-
-元件登錄至 `src/data/blocks.registry.json`（此 PR 分支共 46 個），在 `/blocks/` 依**功能與使用場景**展示，並接入八款 Demo 共用的實際頁面。請務必執行 GitHub PR Preview 驗收（手機 375／390px、鍵盤、連結與未設定狀態）。
-
-## ResourceCard、ResourceLibrary、LeadMagnetCard、NewsletterSignup
-可設定真實資源網址；沒有電子報服務不得假裝表單已成功送出。
-皆已在 /blocks/ 功能分類展示、同步 registry，並接入 Demo 站。須以 GitHub PR Preview 測試手機與鍵盤。
-
-## PractitionerCard、ServiceFit
-讓專業者呈現服務資格、地區、合作方式與適合度；不虛構證照、資格、見證或危機資訊。
-皆已在 /blocks/ 功能分類展示、同步 registry，並接入 Demo 站。須以 GitHub PR Preview 測試手機與鍵盤。
-
-
-### 助人者四種示範內容（與主題解耦）
-
-`src/data/helper-content.ts` 定義 `helperPractice[theme]` 示範資料：paper 身體工作、morning 諮商心理、studio 教練、botanical 靈氣。各自有首頁定位、專業服務卡、三步驟流程、FAQ、服務適配與界線、預約文案。元件依 Props 自由引用，不應把這四種專業固化成只能用某個設計主題。所有名稱、資格、費用、實際治療與預約需由網站持有人核實與設定。
-
-
-## ArticleViewSwitcher：文章列表／卡片／網格
-
-`ArticleViewSwitcher.astro` 是可重複使用的文章索引元件（本分支 Registry 53 個）。必填 `items`、`articleBase`；選配 `exploreBase`、`defaultView='list'|'cards'|'grid'`、`controls`、`filterable`。列表為細線編輯式清單；卡片為寬鬆兩欄；網格為三欄密集索引。三種共享同樣資料與文章 URL，手機降為單欄；搜尋／標籤／日期篩選在 explore 頁以 `data-article` 作用於同一組文章，切換排版不破壞篩選。頁面 JS 僅控制展開的視覺模式，不讀取後端。元件展示在 /blocks/ 的「文章探索與清單」。
-
-導航列在手機寬度僅呈現漢堡圖示與全站搜尋放大鏡（含可存取名稱），「文章」作為主要導覽項目；進階篩選另列「文章探索」。原本額外的「找文章」文字控制已移除，CTA 留在手機選單內；社群連結保留於彈出選單最下方。
-
-
-## 單一文章入口與真正的全站搜尋
-
-全站放大鏡 `SiteSearchDialog` 改由 Pagefind 在 build 後對公開靜態 HTML 建全文索引；閱讀到的所有頁面文字可被搜尋，而不只搜尋資料陣列的 `title/excerpt`。`npm run build` 會生成 `dist/pagefind/`；正式站與 PR preview 以 `BASE_URL` 設定正確的搜尋資源與結果網址。若未 build index（如 `astro dev`）會給出明確說明，不應假裝搜尋成功。
-
-`ArticleArchive` 是頁級組合（不另計 Registry block），將 `ArticleViewSwitcher`、`ArticleSearch`、`TagCloud`、`ArchiveMonths` 和 `PostCalendar` 結合至 `/articles/`。舊 `/explore/` 保留相容跳轉，不維護另一套重複文章頁。
-
-## 可配置動態
-
-動態設計規則由 `.ai/astro-motion-craft/SKILL.md` 維護。Manus v2 動態目前是參考候選（Reveal variants、Stagger、MotionCard tilt/spotlight、ZoomImage、UnderlineLink、Button magnetic、FAQ variants），不能宣稱已全數加入本 Registry；請按 Skill 的設計目的、減少動態、觸控與鍵盤測試要求實作。
-
-
-## 可重用動效參考庫與 Skill
-
-讀取 `.ai/astro-motion-craft/library/README.md` 進入特效型錄與三份 source-grounded recipes。來源為上傳 Manus v2 ZIP 的 Effects / Button / FAQ 原始碼，與本專案既有 `data-reveal`、卡片 hover、FAQ/Link/Button 等功能交叉對照。元件若尚未在本專案實作，不計入 `blocks.registry.json` 的正式元件數；日後移植需先經 Motion Skill 強度政策、觸控/reduced-motion/no-JS 規範與 PR preview 驗收。
-
-
-## 特效庫／效果元件（獨立於網站積木）
-
-可試用入口：`/effects/`。效果檔案：`src/components/effects/{Reveal,StaggerGroup,MotionCard,ZoomImage,MagneticButton,UnderlineLink,MotionFAQ}.astro`；登錄：`src/data/effects.registry.json`；樣式 `public/effects.css`。支持 Reveal variant/delay/duration/once、Stagger step/start、MotionCard tilt/spotlight/tiltMax、ZoomImage effect/alt/caption、MagneticButton href、UnderlineLink variant、MotionFAQ items/variant/openFirst。七個效果**不計入**網站內容元件數量。新頁面應先查 Motion Skill 和 `library/effect-catalog.md`，避免全站濫用動畫。功能驗收需操作、鍵盤、觸控、降低動態與四種 theme。
-
-
-## BackToTop｜返回頁首（共用元件）
-
-`src/components/blocks/BackToTop.astro`：`threshold=420`（捲動超過多少 px 後顯示）、`label='返回頁首'`、`bottom='24px'`、`right='24px'`、`className`。已放進共用 `DemoLayout.astro`，因此所有使用此 Layout 的網站與元件／特效展示頁都會自動出現，不需要每一頁重複實例化。右下角懸浮、手機 safe-area、鍵盤可聚焦；遵守 `prefers-reduced-motion`，必要時以非平滑捲動返回頁首。Registry 新增 BackToTop 後為 54 個網站內容元件（特效庫 7 個 effects 分開計數）。
-
-
-## Layout Library｜獨立版型與閱讀動線
-
-學生參考 `/layouts/`：十二種版型原型，六種知識內容及六種助人專業。資料 `src/data/layout-directions.json`；預覽頁 `src/pages/layouts/[slug].astro`；樣式 `public/layout-library.css`，不依賴原本四套主題切換。新增構圖 Skill `.ai/astro-layout-craft/SKILL.md`；先挑資訊結構，再由 `/blocks/` 挑功能區塊、`/effects/` 挑互動效果。
-
-注意：Manus 十款版型按照原 ZIP 各自讀取架構後**重新整合**，不宣稱和原 Astro 7+Tailwind 專案逐行相同。Claude 二款為根據研究的延伸設計。12 款的首頁原型不等於 12 個完整多頁網站，也不在 Block Registry 另計元件。
-
-## Editorial design composition recipes
-
-Use `/layouts/recipes/` to explore original Claude recipe IDs H01–H12, S01–S08, L01–L06, R01–R06 and C01–C08. Exact editable Astro component source is in `.ai/astro-editorial-layout-design/recipes/code/`. Do not count these 40 visual compositions as extra functional Blocks or effects. Read the Editorial Skill for context and the visual QA requirements before creating a new layout.
-
-
-## Editorial Composition Recipes（另外 40 款，不是功能 blocks）
-
-專屬入口：`/layouts/recipes/`。元件：`src/components/editorial-recipes/`，分 12 Hero、8 Sections、6 Lists、6 Rhythm、8 CTA/Trust。Claude 原始研究與實例：`.ai/astro-editorial-layout-design/`。先從設計配方決定構圖，再選網站功能 blocks（原本 54 個）、微互動 effects（原本 7 個）。不能把 40 個配方計入既有 54+7 之內，避免學員混淆元件、構圖、版型三個層次。
+`src/data/helper-content.ts` 是助人者行銷與 FAQ 示範文案的唯一來源，包含身體工作、諮商心理、教練、靈氣四種各自不同的應用（首頁定位、服務卡、流程、FAQ、服務適配與界線、預約文案）。元件依 Props 引用這些資料，不要把某個專業固定綁在某個主題上。所有名稱、資格、費用、實際療程與預約都要由網站持有人核實與設定，不要重新塞回空泛的通用文案。

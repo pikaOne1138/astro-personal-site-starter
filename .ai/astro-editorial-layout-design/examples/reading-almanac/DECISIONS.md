@@ -30,7 +30,7 @@
 最接近 #01 田野筆記（紀錄型＋書卷襯線），旋鈕 ①②④⑤⑥⑦ 皆不同（共 6 項，見 `direction.md`）。
 **沒有複製的東西**：沒有拱形圖、邊注欄、ledger 列、白框相片、印章、硬陰影、貼紙；hero 為十款原始碼不存在的「無圖數字」構圖。
 
-## 驗收結果（`scripts/audit.mjs`，最終版）
+## 驗收結果（`.ai/astro-editorial-layout-design/scripts/audit.mjs`，最終版）
 
 | 寬度 | hScroll | spill | h1 | minFont | <12px | 疊壓 | 對比失敗 | 觸控 <44 |
 |---|---|---|---|---|---|---|---|---|

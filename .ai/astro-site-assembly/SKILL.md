@@ -30,7 +30,7 @@ Follow `astro-starter-onboarding` for needs/layout/navigation, `astro-layout-cra
 - Long CJK copy, absent media and variable article counts are normal student inputs. Keep family composition while adjusting responsive constraints; don't replace it with a generic template.
 - The standalone export workflow's `student-visual-qa` artifact captures generated homepage/inner pages at 1440, 1280, 768, and 390. Review actual captures for art direction; passing a build or absence of overflow does not guarantee source-prototype fidelity.
 
-## Existing full-site Design Family contract (PR #46)
+## Existing full-site Design Family contract
 
 The student exporter now includes the selected independent homepage AND family-specific interior components. Do not replace them with a generic hero or universal interior page.
 
@@ -72,9 +72,10 @@ When adding `SiteSearchDialog`, inspect its actual data contract before use. The
 ## 自訂頁面網址
 導航條目的 `id` 是穩定識別符；選填的 `path` 是人能閱讀的相對 URL（例如 `start-here/tools/`），不代表另建 CMS／後台。若有 `path`，頁面生成、共用導覽、麵包屑、Sitemap、輸出檢查應使用同一個網址；沒有則以 `id + '/'` 作預設。確認實際 HTML 與 Preview 路由一致，勿改動既有已發布網址而不考慮 redirect。
 
-## Prototype-native optional owned content (PR #46)
+## Prototype-native optional owned content
 
 - `collective` may accept `team: [{name, role, bio}]` and `events: [{title, description, date: "YYYY-MM-DD", url: "https://…"}]`. Only use owner-approved member identities and confirmed events. Empty arrays show pending states, never fictional rosters, availability or event dates.
 - `trust-path` may accept `serviceTiming: [{label, minutes}]`. Positive integer minutes produce the proportional source timeline and real total; missing timing shows pending information instead of inventing a 50-minute session. These are optional page content fields, not a scheduling system or CRM.
+- `radio-letter` accepts `media.episodeAudioPath` (a local path such as `/audio/my-first-episode.mp3`) and `media.episodeTranscript: [{time, text}]`. Show native `<audio controls>` only when the owner supplied an audio file; the exporter validates and copies `public/audio/` assets found beside the Site Brief and fails closed on a missing file. Third-party streaming URLs are not accepted. Audio does not generate speech, captions or a transcript: timestamps and text come from the owner, who must have the right to publish them. With no audio, the page says playback is not configured instead of showing a fake player.
 - Five knowledge Home adapters use actual published Content Collection entries for recent/featured/learning/collection/program-note previews and exclude `draft: true`; Reading Atlas uses owner-supplied `reading.records` and `annualBook` in its month cells, book band and seasonal index.
 - Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.
