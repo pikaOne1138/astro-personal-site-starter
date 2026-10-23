@@ -937,34 +937,35 @@ if(process.argv[2]==='import'){
    approvalEvidence:{frozenPath:source,frozenLine:line,frozenBlobSha:manifest[source],
     sourceText:frozenLine(source,line),method:'SOURCE_ATOMIC_SECURITY_BOUNDARY_REVIEW'}});
  }
- // B2: atomic production search-indexing conditions. Keep readiness checks,
- // build flags, observable outputs and GitHub-specific defaults distinct.
+ // B2: source-reviewed indexing acceptance dimensions are attached to
+ // existing canonical policy, not falsely counted as 15 new obligations.
  const indexChecks=[
- ['B1-DEP31-02-S01','Confirm actual content review before enabling production indexing'],
- ['B1-DEP31-02-S02','Confirm real deployment Preview review before enabling indexing'],
- ['B1-DEP31-02-S03','Confirm security review before enabling indexing'],
- ['B1-DEP31-02-S04','Confirm release authorization review before enabling indexing'],
- ['B1-DEP31-02-S05','Require explicit student decision to permit search indexing'],
- ['B1-DEP31-03-S01','Set SITE_INDEXABLE=true only in approved production environment'],
- ['B1-DEP31-03-S03','Verify emitted production meta robots after indexing change'],
- ['B1-DEP31-03-S04','Verify emitted production robots.txt after indexing change'],
- ['B1-DEP31-03-S05','Verify production canonical URLs after indexing change'],
- ['B1-DEP31-03-S06','Verify production Sitemap after indexing change'],
- ['B1-DEP31-04-GH-S01','Treat unset GitHub Actions SITE_INDEXABLE variable as false'],
- ['B1-DEP31-04-GH-S02','Require student approval before enabling GitHub production indexing'],
- ['B1-DEP31-04-GH-S03','Run the authorized production workflow after indexing settings change'],
- ['B1-DEP31-01-S01','Default new student HTML to noindex'],
- ['B1-DEP31-01-S02','Default new student robots.txt to disallow crawling']
+ ['B1-DEP31-02-S01','Content accepted before enabling indexing','ATP-P2-0003'],
+ ['B1-DEP31-02-S02','Real Preview accepted before enabling indexing','ATP-P2-0003'],
+ ['B1-DEP31-02-S03','Security reviewed before enabling indexing','ATP-P2-0003'],
+ ['B1-DEP31-02-S04','Release authorization reviewed before enabling indexing','ATP-P2-0003'],
+ ['B1-DEP31-02-S05','Student explicitly approves indexing','ATP-P2-0003'],
+ ['B1-DEP31-03-S01','Indexing flag enabled only for Production','ATP-P2-0003'],
+ ['B1-DEP31-03-S03','Check emitted meta robots','ATP-P2-0003'],
+ ['B1-DEP31-03-S04','Check emitted robots.txt','ATP-P2-0003'],
+ ['B1-DEP31-03-S05','Check emitted canonical','ATP-P2-0003'],
+ ['B1-DEP31-03-S06','Check emitted sitemap','ATP-P2-0003'],
+ ['B1-DEP31-04-GH-S01','GitHub SITE_INDEXABLE unset means false','ATP-P2-0003'],
+ ['B1-DEP31-04-GH-S02','GitHub indexing requires explicit approval','ATP-P2-0003'],
+ ['B1-DEP31-04-GH-S03','Run authorized Production workflow','ATP-P2-0003'],
+ ['B1-DEP31-01-S01','Default HTML has noindex','ATP-P2-0044'],
+ ['B1-DEP31-01-S02','Default robots.txt disallows crawling','ATP-P2-0044']
  ];
- for(let i=0;i<indexChecks.length;i++){
-  const [id,requirement]=indexChecks[i],row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=31;
-  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))throw Error('Missing indexing source '+id);
-  if(row.canonicalId)throw Error('Already canonical: '+id);
-  Object.assign(row,{canonicalId:'ATP-P2-'+String(232+i).padStart(4,'0'),requirement,kind:'acceptance',
-    decision:'KEEP',reviewStatus:'APPROVED',aliases:[],applicability:['Student-site production indexing control'],
-    conditions:id.includes('-GH-')?['GitHub Pages Actions hosting path']:[],exceptions:[],
-    acceptanceCriteria:[],approvalEvidence:{frozenPath:source,frozenLine:line,sourceText:frozenLine(source,line),
-    frozenBlobSha:manifest[source],method:'FROZEN_SOURCE_PLUS_ATOMIC_INDEXING_SUBCLAUSE'}});
+ for(const [id,detail,parent] of indexChecks){
+  const row=byId.get(id),source='.ai/astro-starter-deploy/SKILL.md',line=31;
+  if(!row||!frozenLine(source,line)||!row.sourceRefs.some(x=>x.revision===frozen&&x.path===source&&x.lineStart===line))
+   throw Error('Missing indexing source '+id);
+  if(row.canonicalId&&row.canonicalId!==parent)throw Error('Index detail conflicts with canonical '+id);
+  Object.assign(row,{canonicalId:null,kind:'acceptance',decision:'PARTIAL_SPLIT',
+   reviewStatus:'EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING',
+   parentCanonicalCandidate:parent,atomicEvidenceText:detail,
+   acceptanceDimensionGroup:'PRODUCTION_INDEXING_CHECKLIST',
+   acceptanceDimensionScope:'Sub-check; do not count as separate policy obligation'});
  }
  for(const [id,kids] of [
   ['B1-DEP31-02',indexChecks.slice(0,5).map(x=>x[0])],
@@ -973,11 +974,12 @@ if(process.argv[2]==='import'){
   ['B1-DEP31-01',indexChecks.slice(13,15).map(x=>x[0])]
  ]){
   const row=byId.get(id);
-  if(!row||kids.some(child=>byId.get(child)?.reviewStatus!=='APPROVED'))throw Error('Index parent missing atomic child '+id);
-  // Already canonical parent retains its distinct obligation; checklist
-  // decomposition is recorded but does not replace approved parent identity.
-  if(row.canonicalId){row.childrenLegacyIds=[...new Set([...(row.childrenLegacyIds||[]),...kids])];row.atomicChecklistIds=kids;}
-  else Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',childrenLegacyIds:kids});
+  if(!row||kids.some(child=>!byId.has(child)))throw Error('Index parent missing child '+id);
+  if(row.canonicalId)row.atomicChecklistIds=kids;
+  else Object.assign(row,{kind:'acceptance',decision:'PARTIAL_SPLIT',
+   reviewStatus:'EVIDENCE_DIMENSION_MAPPED_PARENT_ADJUDICATION_PENDING',
+   parentCanonicalCandidate:id==='B1-DEP31-01'?'ATP-P2-0044':'ATP-P2-0003',
+   childrenLegacyIds:kids,atomicEvidenceText:'Composite checklist; retain each original item'});
  }
  // B2: direct source evidence for release safety clauses without extending
  // approval to any broader action not named in the Frozen source.
