@@ -91,6 +91,21 @@
 2. UI 修改要區分「已產生截圖」與「有人真正檢視畫面」。
 3. **不得擅自 Merge、正式發布或宣稱未做過的 QA 已經通過。**
 
+### 驗收總表：做完什麼事，要驗哪些項目
+
+| 做完的事 | 至少要驗 | 讀這個 Skill |
+|---|---|---|
+| 一般修改（文字、圖片、頁面、元件） | Build；`npm run verify`；`npm run qa:responsive`；1440／1280／768／390 四個寬度；鍵盤與手機；原有功能沒壞 | `astro-site-maintenance` |
+| 新增、隱藏或改名頁面與選單 | 桌機、手機選單與所有頁面一致；每個目的地都能開 | `astro-page-management` |
+| 選好頁面與區段樣板、準備組站 | 每頁有真實內容或明確標示待補；不編造資格、價格、見證 | `astro-content-readiness` |
+| 規劃好選單名稱與層級 | 用真人做樹狀測試；沒有真人結果就標 `NOT TESTED` | `astro-navigation-tree-test` |
+| 新增、發布、撤回文章 | 草稿不外洩到網頁、RSS、Sitemap、搜尋；中文全文搜尋在真實瀏覽器可用 | `astro-content-publishing` |
+| 提 PR、給學員看預覽 | 預覽網址真的打得開，且對應 PR 最新版本；平台實際回報的網址；不是 Actions 產物 | `astro-pr-preview` |
+| 部署、設定網域、決定是否讓搜尋引擎收錄 | 正式網址與 HTTPS；預設不收錄，學員明確同意才開；改 DNS 要另外授權 | `astro-starter-deploy` |
+| 網站已上線 | 正式網站的連結、基本 SEO、搜尋、404、備份與還原方式；不宣稱已被 Google 收錄 | `astro-launch-health-check` |
+
+每一項都回報 PASS／FAIL／BLOCKED／NOT TESTED 並附證據；沒做過就是 `NOT TESTED`，不是 PASS。
+
 ## 學員網站防跑版檢查（匯出後的獨立 Repo）
 
 - 初次建站或修改頁面、圖片、導覽、排版後，在**學員自己的網站目錄**先執行 `npm run build && npm run verify && npm run qa:responsive`；PR 會在獨立 GitHub Actions 再執行。僅在已安裝依賴和 Chromium 的環境執行瀏覽器檢查；第一次可使用 `npx playwright install chromium`。
