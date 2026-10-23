@@ -1172,17 +1172,37 @@ if(process.argv[2]==='import'){
   ['B2-PUB37-01-S05','Exclude unpublished drafts from static search index']
  ];
  const draftSrc='.ai/astro-content-publishing/SKILL.md';
+ const equivalentDraftRequirements=[
+  'B7-PUB-L76-02-S02',null,'B7-PUB-L76-02-S03',
+  'B7-PUB-L76-02-S04','B7-PUB-L76-02-S05'
+ ];
  for(let i=0;i<draftExclusion.length;i++){
   const [id,requirement]=draftExclusion[i],row=byId.get(id);
   if(!row||row.canonicalId||!frozenLine(draftSrc,37)||
      !row.sourceRefs.some(x=>x.revision===frozen&&x.path===draftSrc&&x.lineStart===37))
    throw Error('Unverified draft exclusion child '+id);
-  Object.assign(row,{canonicalId:'ATP-P2-'+String(259+i).padStart(4,'0'),
-   requirement,kind:'acceptance',decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
-   applicability:['Student content site with unpublished drafts'],
-   conditions:['Public content build or release'],exceptions:[],acceptanceCriteria:[],
+  const targetId=equivalentDraftRequirements[i];
+  if(targetId){
+   const target=byId.get(targetId);
+   if(!target?.canonicalId||target.reviewStatus!=='APPROVED')
+    throw Error('Previously approved equivalent draft test missing '+targetId);
+   const group=entries.filter(x=>x.canonicalId===target.canonicalId||x.legacyId===id);
+   const ids=group.map(x=>x.legacyId);
+   for(const related of group){
+    Object.assign(related,{canonicalId:target.canonicalId,requirement:target.requirement,
+     kind:target.kind,decision:'MERGE',reviewStatus:'APPROVED',
+     applicability:target.applicability,conditions:target.conditions,
+     exceptions:target.exceptions,acceptanceCriteria:target.acceptanceCriteria,
+     aliases:ids.filter(x=>x!==related.legacyId),
+     approvalEvidence:related.approvalEvidence||{frozenPath:draftSrc,frozenLine:37,
+      frozenBlobSha:manifest[draftSrc],sourceText:frozenLine(draftSrc,37),
+      method:'MANUALLY_MATCHED_DRAFT_PUBLIC_DISCOVERY_SURFACE'}});
+   }
+  }else Object.assign(row,{canonicalId:'ATP-P2-0259',requirement,kind:'acceptance',
+   decision:'KEEP',reviewStatus:'APPROVED',aliases:[],
+   applicability:['Student content site with unpublished drafts'],conditions:[],exceptions:[],acceptanceCriteria:[],
    approvalEvidence:{frozenPath:draftSrc,frozenLine:37,frozenBlobSha:manifest[draftSrc],
-    sourceText:frozenLine(draftSrc,37),method:'EXACT_FROZEN_LINE_AND_SEPARATE_PUBLIC_DISCOVERY_SURFACES'}});
+    sourceText:frozenLine(draftSrc,37),method:'PUBLIC_ARCHIVE_SEPARATE_FROM_OTHER_DISCOVERY_SURFACES'}});
  }
  const parent=byId.get('B2-PUB37-01');
  if(!parent||parent.canonicalId||draftExclusion.some(([id])=>byId.get(id)?.reviewStatus!=='APPROVED'))throw Error('Draft exclusion parent not source-checked');
