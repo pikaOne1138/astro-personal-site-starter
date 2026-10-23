@@ -22,7 +22,7 @@ const allowedBaseChanges=new Set([
  '.github/workflows/deploy-pages.yml'
 ]);
 const run=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
-const api=(path)=>JSON.parse(execFileSync('gh',['api',path],{encoding:'utf8',env:{...process.env,GH_TOKEN:process.env.GH_TOKEN||process.env.GITHUB_TOKEN}}));
+const api=(path)=>JSON.parse(execFileSync('gh',['api',path],{encoding:'utf8',maxBuffer:16*1024*1024,env:{...process.env,GH_TOKEN:process.env.GH_TOKEN||process.env.GITHUB_TOKEN}}));
 const requiredJobs=new Set(['preview-build','static-build','standalone-build','gallery']);
 const requiredFlows=new Set(['PR Preview Build','Verify Cloudflare Static Assets','Standalone Starter Export Check','Template Gallery QA']);
 function verifiedQaBaseline(head){
