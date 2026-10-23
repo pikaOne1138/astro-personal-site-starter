@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1321 |
-| approvedCanonicalIds | 47 |
+| pendingSemanticDecisions | 1305 |
+| approvedCanonicalIds | 60 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 17 |
+| sourceFirstApprovedCanonicalLinkLines | 18 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1321,
-    "approvedCanonicalIds": 47,
+    "pendingSemanticDecisions": 1305,
+    "approvedCanonicalIds": 60,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 17,
+    "sourceFirstApprovedCanonicalLinkLines": 18,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -1235,115 +1235,115 @@
       "rows": [
         {
           "id": "B1-PUB28-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "公開文章只來自 articles Collection"
+          "canonicalId": "ATP-P2-0048",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Public article collection loader must use src/content/articles only"
         },
         {
           "id": "B1-PUB28-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "草稿存放於 drafts 而非 articles"
+          "canonicalId": "ATP-P2-0049",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Unpublished Markdown drafts belong under src/content/drafts, not the public articles directory"
         },
         {
           "id": "B1-PUB28-03",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "發布時移入 articles 並將舊 draft:true 改為 false"
         },
         {
           "id": "B1-PUB28-04",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "撤回時移回 drafts、設 draft:true 並清空舊輸出重新 Build"
         },
         {
           "id": "B1-PUB28-05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "每次轉換檢查公開文章路由"
+          "canonicalId": "ATP-P2-0055",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify actual public article route visibility after publish/withdrawal transition"
         },
         {
           "id": "B1-PUB28-06",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "不可靜默改網址；舊站 legacy 過濾須先檢查路由再遷移"
         },
         {
           "id": "B1-PUB28-07",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "資料夾隔離是發布控制不是保密控制"
+          "canonicalId": "ATP-P2-0058",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Draft/public folder separation is a publication control, not confidentiality protection"
         },
         {
           "id": "B1-PUB28-08",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "變更後實際執行草稿外洩 Gate；未執行不能 PASS"
+          "canonicalId": "ATP-P2-0059",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "After article state changes run actual draft-leakage gate; without running it do not report PASS"
         },
         {
           "id": "B1-PUB28-09",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "公開 Loader 僅限 articles，不得 glob 全內容目錄"
+          "canonicalId": "ATP-P2-0060",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Public article loader must never glob the entire content directory including drafts"
         },
         {
           "id": "B1-PUB28-04-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "將已發布文章移回 drafts Collection"
+          "canonicalId": "ATP-P2-0052",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Withdrawn published article moves back to drafts Collection"
         },
         {
           "id": "B1-PUB28-04-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "將撤稿文章設為 draft:true"
+          "canonicalId": "ATP-P2-0053",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Withdrawn article is marked draft:true"
         },
         {
           "id": "B1-PUB28-04-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "從乾淨輸出目錄重新 Build"
+          "canonicalId": "ATP-P2-0054",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Build from a clean output directory after article withdrawal"
         },
         {
           "id": "B1-PUB28-06-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不得靜默修改公開 URL"
+          "canonicalId": "ATP-P2-0056",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not silently change existing public article URLs"
         },
         {
           "id": "B1-PUB28-06-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "遷移舊站 legacy draft 過濾前先查實際路由"
+          "canonicalId": "ATP-P2-0057",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Inspect student-specific routing before migrating legacy draft filtering"
         },
         {
           "id": "B1-PUB28-03-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "發布核准文章移入 articles"
+          "canonicalId": "ATP-P2-0050",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Approved draft publication moves Markdown into articles"
         },
         {
           "id": "B1-PUB28-03-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "舊 draft:true 改為 false"
+          "canonicalId": "ATP-P2-0051",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "On publication change legacy draft:true frontmatter to draft:false"
         },
         {
           "id": "DES7-004",
