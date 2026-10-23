@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1129 |
-| approvedCanonicalIds | 205 |
+| pendingSemanticDecisions | 1123 |
+| approvedCanonicalIds | 210 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 35 |
+| sourceFirstApprovedCanonicalLinkLines | 36 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1129,
-    "approvedCanonicalIds": 205,
+    "pendingSemanticDecisions": 1123,
+    "approvedCanonicalIds": 210,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 35,
+    "sourceFirstApprovedCanonicalLinkLines": 36,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -3799,45 +3799,45 @@
       "rows": [
         {
           "id": "B4-DEP18-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "使用 GitHub Actions Build/Deploy"
+          "canonicalId": "ATP-P2-0206",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Use student-owned Actions workflows for build and deploy"
         },
         {
           "id": "B4-DEP18-02",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "不直接套用教師 showcase 的 workflow_run、Preview Cleanup、gh-pages Snapshot"
         },
         {
           "id": "B4-DEP18-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "學員獨立單站工作流程採最小權限"
+          "canonicalId": "ATP-P2-0210",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Use least-privilege workflow permissions"
         },
         {
           "id": "B4-DEP18-02-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不套用展示站 workflow_run"
+          "canonicalId": "ATP-P2-0207",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not assume teacher showcase workflow_run is available in the student repository"
         },
         {
           "id": "B4-DEP18-02-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不套用 Preview Cleanup"
+          "canonicalId": "ATP-P2-0208",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not assume teacher preview cleanup exists in the student repository"
         },
         {
           "id": "B4-DEP18-02-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不套用 gh-pages Snapshot"
+          "canonicalId": "ATP-P2-0209",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Do not assume teacher gh-pages snapshots exist in the student repository"
         },
         {
           "id": "DEPLOY-05",

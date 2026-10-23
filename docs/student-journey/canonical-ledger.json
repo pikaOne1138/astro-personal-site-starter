@@ -13063,9 +13063,9 @@
     },
     {
       "legacyId": "B4-DEP18-01",
-      "canonicalId": null,
-      "requirement": "使用 GitHub Actions Build/Deploy",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0206",
+      "requirement": "Use student-owned Actions workflows for build and deploy",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13097,12 +13097,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Independent student GitHub Actions workflows"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13118,7 +13120,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 18,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。",
+        "method": "SOURCE_AND_ATOMIC_WORKFLOW_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP18-02",
@@ -13160,8 +13169,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13177,13 +13186,17 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B4-DEP18-02-S01",
+        "B4-DEP18-02-S02",
+        "B4-DEP18-02-S03"
+      ]
     },
     {
       "legacyId": "B4-DEP18-03",
-      "canonicalId": null,
-      "requirement": "學員獨立單站工作流程採最小權限",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0210",
+      "requirement": "Use least-privilege workflow permissions",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13208,12 +13221,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Independent student GitHub Actions workflows"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13223,7 +13238,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 18,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。",
+        "method": "SOURCE_AND_ATOMIC_WORKFLOW_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP20-01",
@@ -24047,9 +24069,9 @@
     },
     {
       "legacyId": "B4-DEP18-02-S01",
-      "canonicalId": null,
-      "requirement": "不套用展示站 workflow_run",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0207",
+      "requirement": "Do not assume teacher showcase workflow_run is available in the student repository",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24071,12 +24093,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Independent student GitHub Actions workflows"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24086,13 +24110,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 18,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。",
+        "method": "SOURCE_AND_ATOMIC_WORKFLOW_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP18-02-S02",
-      "canonicalId": null,
-      "requirement": "不套用 Preview Cleanup",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0208",
+      "requirement": "Do not assume teacher preview cleanup exists in the student repository",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24114,12 +24145,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Independent student GitHub Actions workflows"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24129,13 +24162,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 18,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。",
+        "method": "SOURCE_AND_ATOMIC_WORKFLOW_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP18-02-S03",
-      "canonicalId": null,
-      "requirement": "不套用 gh-pages Snapshot",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0209",
+      "requirement": "Do not assume teacher gh-pages snapshots exist in the student repository",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24157,12 +24197,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Independent student GitHub Actions workflows"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-03.md",
@@ -24172,7 +24214,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 18,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。",
+        "method": "SOURCE_AND_ATOMIC_WORKFLOW_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP20-01-S01",
@@ -82388,44 +82437,44 @@
       "legacyMatches": [
         {
           "legacyId": "B4-DEP18-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "使用 GitHub Actions Build/Deploy",
+          "canonicalId": "ATP-P2-0206",
+          "reviewStatus": "APPROVED",
+          "requirement": "Use student-owned Actions workflows for build and deploy",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP18-02",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "不直接套用教師 showcase 的 workflow_run、Preview Cleanup、gh-pages Snapshot",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP18-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "學員獨立單站工作流程採最小權限",
+          "canonicalId": "ATP-P2-0210",
+          "reviewStatus": "APPROVED",
+          "requirement": "Use least-privilege workflow permissions",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP18-02-S01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不套用展示站 workflow_run",
+          "canonicalId": "ATP-P2-0207",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not assume teacher showcase workflow_run is available in the student repository",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP18-02-S02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不套用 Preview Cleanup",
+          "canonicalId": "ATP-P2-0208",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not assume teacher preview cleanup exists in the student repository",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B4-DEP18-02-S03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不套用 gh-pages Snapshot",
+          "canonicalId": "ATP-P2-0209",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not assume teacher gh-pages snapshots exist in the student repository",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -82436,7 +82485,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-starter-deploy/SKILL.md:19",
