@@ -454,6 +454,28 @@ for(const entry of sourceReviewQueue){
  entry.dispositionEvidence={frozenSource:entry.sourceKey,frozenBlobSha:entry.sourceBlobSha,sourceText:entry.sourceText,reason:d[1]};
  entry.atomicClauseCandidates=[];
 }
+// Cross-reference suggestions are evidence discovery, not MERGE decisions.
+// Rank candidates only when they point to the same Frozen file near a clause.
+const sameFileLegacy=new Map();
+for(const item of old.records){
+ for(const ref of item.sourceRefs||[]){
+  if(ref.revision!==frozen||!ref.lineStart)continue;
+  if(!sameFileLegacy.has(ref.path))sameFileLegacy.set(ref.path,[]);
+  sameFileLegacy.get(ref.path).push({id:item.legacyId,line:ref.lineStart,source:ref.sourceText||''});
+ }
+}
+for(const entry of sourceReviewQueue){
+ if(entry.reviewStatus==='DOCUMENTARY_FINAL_NON_NORMATIVE')continue;
+ const candidates=(sameFileLegacy.get(entry.sourcePath)||[])
+  .map(x=>({...x,distance:Math.abs(x.line-entry.lineStart)}))
+  .filter(x=>x.distance<=3)
+  .sort((a,b)=>a.distance-b.distance||a.id.localeCompare(b.id));
+ const dedup=new Set();
+ entry.nearbyLegacyEvidence=candidates.filter(x=>{if(dedup.has(x.id))return false;dedup.add(x.id);return true;})
+  .slice(0,8).map(x=>({legacyId:x.id,frozenPath:entry.sourcePath,frozenLine:x.line,lineDistance:x.distance,
+   interpretation:'PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE'}));
+}
+const queueWithNearbyEvidence=sourceReviewQueue.filter(x=>x.nearbyLegacyEvidence?.length).length;
 const closedNonNormative=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_FINAL_NON_NORMATIVE');
 const assessedQueue=sourceReviewQueue.filter(x=>x.reviewStatus==='DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION');
 const droppedPrevious=[...priorQueue.keys()].filter(k=>!sourceReviewQueue.some(x=>x.sourceKey===k));
@@ -499,7 +521,8 @@ const status={
  p0p1ClosedNonNormative:closedNonNormative.length,
  p0p1DocumentaryAssessed:assessedQueue.length,
  p0p1FirstPassDisposed:firstPassDisposed.length,
- p0p1SourceDispositionTotal:assessedQueue.length+firstPassDisposed.length,
+ p0p1SourceDispositionTotal:assessedQueue.length+firstPassDisposed.length+closedNonNormative.length,
+ p0p1NearbyLegacyEvidence:queueWithNearbyEvidence,
  p0p1AtomicSubclausesProposed:assessedQueue.reduce((n,x)=>n+(x.atomicClauseCandidates?.length||0),0),
  p0p1RemovedQueueKeys:droppedPrevious.length,
  unexaminedFrozenNormativeClauses:'NOT_ESTABLISHED',
