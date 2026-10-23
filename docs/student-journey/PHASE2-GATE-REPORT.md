@@ -39,10 +39,11 @@
 | sourceFirstUnmappedP2 | 87 |
 | p0p1QueueItems | 165 |
 | p0p1PendingSourceMapping | 0 |
-| p0p1PendingCanonicalAdjudication | 165 |
-| p0p1DocumentaryAssessed | 17 |
+| p0p1PendingCanonicalAdjudication | 159 |
+| p0p1ClosedNonNormative | 6 |
+| p0p1DocumentaryAssessed | 15 |
 | p0p1FirstPassDisposed | 148 |
-| p0p1SourceDispositionTotal | 165 |
+| p0p1SourceDispositionTotal | 163 |
 | p0p1AtomicSubclausesProposed | 36 |
 | p0p1RemovedQueueKeys | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
@@ -98,10 +99,11 @@
     "sourceFirstUnmappedP2": 87,
     "p0p1QueueItems": 165,
     "p0p1PendingSourceMapping": 0,
-    "p0p1PendingCanonicalAdjudication": 165,
-    "p0p1DocumentaryAssessed": 17,
+    "p0p1PendingCanonicalAdjudication": 159,
+    "p0p1ClosedNonNormative": 6,
+    "p0p1DocumentaryAssessed": 15,
     "p0p1FirstPassDisposed": 148,
-    "p0p1SourceDispositionTotal": 165,
+    "p0p1SourceDispositionTotal": 163,
     "p0p1AtomicSubclausesProposed": 36,
     "p0p1RemovedQueueKeys": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",

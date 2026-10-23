@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "1df0ff3f1491a247ed070316055b75b0bb117a15"
+        "blobSha": "0706fd78a9f2ed1e997a9d60e04d13754692aa26"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -66078,11 +66078,11 @@
       "lineEnd": 3,
       "sourceText": "description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform.",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "YAML description: scope metadata, not a separate instruction",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66092,7 +66092,14 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-pr-preview/SKILL.md:3",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform.",
+        "reason": "YAML description: scope metadata, not a separate instruction"
+      }
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:21",
@@ -66232,11 +66239,11 @@
       "lineEnd": 59,
       "sourceText": "「請先查看我自己的 GitHub Repository 與實際使用的託管平台（GitHub Pages、Cloudflare Pages 或 Workers），依 astro-pr-preview 與 astro-starter-deploy Skill 修改網站。建立 Branch 和 PR，檢查 Build，找到**平台真正產生、對應最新 Commit**的預覽網址給我，確認電腦與手機畫面；我明確同意後才合併與發布。不要把教學研究 Repo 的預覽網址當成我的網站。」",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "EXAMPLE_NOT_INDEPENDENT_OBLIGATION",
-      "reviewerNote": "Example, suggested language or scenario; do not create new norm from example",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Quoted sample prompt, obligations must map through operational source lines",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EXAMPLE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66246,7 +66253,14 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-pr-preview/SKILL.md:59",
+        "frozenBlobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+        "sourceText": "「請先查看我自己的 GitHub Repository 與實際使用的託管平台（GitHub Pages、Cloudflare Pages 或 Workers），依 astro-pr-preview 與 astro-starter-deploy Skill 修改網站。建立 Branch 和 PR，檢查 Build，找到**平台真正產生、對應最新 Commit**的預覽網址給我，確認電腦與手機畫面；我明確同意後才合併與發布。不要把教學研究 Repo 的預覽網址當成我的網站。」",
+        "reason": "Quoted sample prompt, obligations must map through operational source lines"
+      }
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:65",
@@ -66890,13 +66904,20 @@
       "lineEnd": 47,
       "sourceText": "| Art Direction Independent Adapter Check | PASS（同 Commit） | [Actions Run 39444544952](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544952) |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_CI_SNAPSHOT",
-      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historic Action result, cannot be treated as a live acceptance requirement",
       "matchingLegacyIds": [],
-      "proposedAction": "PRESERVE_HISTORICAL_EVIDENCE",
-      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": []
+      "atomicClauseCandidates": [],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:47",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| Art Direction Independent Adapter Check | PASS（同 Commit） | [Actions Run 39444544952](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544952) |",
+        "reason": "Historic Action result, cannot be treated as a live acceptance requirement"
+      }
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:49",
@@ -66908,13 +66929,20 @@
       "lineEnd": 49,
       "sourceText": "| Verify Cloudflare Static Assets | PASS（同 Commit） | [Actions Run 39444544959](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544959) |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_CI_SNAPSHOT",
-      "reviewerNote": "Direct reading of the exact Frozen line; conditions and exceptions preserved. No canonical or cross-source dedupe decision yet.",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historic Action result, cannot be treated as a live acceptance requirement",
       "matchingLegacyIds": [],
-      "proposedAction": "PRESERVE_HISTORICAL_EVIDENCE",
-      "reviewStatus": "DOCUMENTARY_ATOMIC_REVIEW_PENDING_CROSS_SOURCE_ADJUDICATION",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
-      "atomicClauseCandidates": []
+      "atomicClauseCandidates": [],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:49",
+        "frozenBlobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+        "sourceText": "| Verify Cloudflare Static Assets | PASS（同 Commit） | [Actions Run 39444544959](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/39444544959) |",
+        "reason": "Historic Action result, cannot be treated as a live acceptance requirement"
+      }
     },
     {
       "sourceKey": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md:52",
@@ -67388,11 +67416,11 @@
       "lineEnd": 12,
       "sourceText": "npm run verify",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Isolated shell invocation illustrative of an existing verification command",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67402,7 +67430,14 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:12",
+        "frozenBlobSha": "0b0b3870098f56dcaefc6d486ec789364b0b5ef1",
+        "sourceText": "npm run verify",
+        "reason": "Isolated shell invocation illustrative of an existing verification command"
+      }
     },
     {
       "sourceKey": "docs/student-builder-pack/ART-DIRECTION-STARTER.md:15",
@@ -67544,11 +67579,11 @@
       "lineEnd": 15,
       "sourceText": "| UX-S01 | 「首頁第二段有錯字，改成我這句」 | 不追問即可改，執行局部驗證 | 強制填完 Site Brief；自行發 Production |",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "EXAMPLE_NOT_INDEPENDENT_OBLIGATION",
-      "reviewerNote": "Example, suggested language or scenario; do not create new norm from example",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "An evaluation scenario row, not a universally applicable website policy",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EXAMPLE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67558,7 +67593,14 @@
         "source-to-legacy-map",
         "cross-source-alias",
         "approval"
-      ]
+      ],
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:15",
+        "frozenBlobSha": "d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9",
+        "sourceText": "| UX-S01 | 「首頁第二段有錯字，改成我這句」 | 不追問即可改，執行局部驗證 | 強制填完 Site Brief；自行發 Production |",
+        "reason": "An evaluation scenario row, not a universally applicable website policy"
+      }
     },
     {
       "sourceKey": "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md:28",
