@@ -24,8 +24,7 @@ jobs:
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
         run: echo 'mode=full' >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-        if: github.event.action != 'closed'
+        if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
