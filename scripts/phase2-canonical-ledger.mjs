@@ -136,7 +136,8 @@ for(const filename of files.filter(n=>/(CROSSWALK|DEDUPE|SEMANTIC|REVIEW)/.test(
   if(cells.length<3)continue;
   const left=cells[0].match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1];
   const right=cells[1].match(/^\x60([A-Z][A-Z0-9_.-]*\d[A-Z0-9_.-]*)\x60$/)?.[1];
-  const decision=classifyRelation(cells[2]);
+  const initialDecision=classifyRelation(cells[2]);
+  const decision=initialDecision==='MERGE' && /(?:不能刪掉兩個|驗收差異後才決定|核對主詞)/.test(cells.slice(3).join(' '))?'PARTIAL_SPLIT':initialDecision;
   if(!left||!right||!decision||left===right)continue;
   if(!records.has(left)||!records.has(right)){
    recoveryFailures.push({reason:'DOCUMENTARY_RELATION_MISSING_ID',source:filepath,line:idx+1,legacyIds:[left,right]});
