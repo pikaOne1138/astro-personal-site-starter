@@ -585,3 +585,8 @@
 ## Phase 2｜Batch9 Atomic B：授權與部署複合條款
 
 [PHASE2-BATCH9-ATOMIC-B.md](PHASE2-BATCH9-ATOMIC-B.md) 從 Batch9 另取 8 個凍結來源行拆成 31 個分類子候選，涉及 Layout 保真、真實 URL、四尺寸 QA、GitHub Pages Preview、Cloudflare 自訂域名、憑證及 Merge/DNS/覆蓋授權；加上 Atomic A 既有 4 行，Batch9 **12/33 行已進一步細拆**，21 行仍待。來源映射總數仍 103/103，但語義去重、規範與證據欄位分型和跨文件雙向驗收未完成，不得宣布 Phase 2 PASS。Phase 3/4 BLOCKED；原始 Skills 不修改、不合併、不部署。
+
+
+## Phase 2｜Batch9 Atomic C：第二輪子義務列示 33/33
+
+[PHASE2-BATCH9-ATOMIC-C.md](PHASE2-BATCH9-ATOMIC-C.md) 補列 Batch9 最後 **21 個來源行**之逐項子義務與分型，連同 Atomic A（4 行）、B（8 行），Batch9 **33/33 行已第二輪拆解**。但 C 批若干來源行仍含多個編號子項於同一表列，且 A/B/C 尚未完整合併 P0 與 Skills A 的 canonical/alias；Batch1–8 也有複合要求。**103/103 僅是來源行追溯覆蓋，33/33 僅是 Batch9 第二輪拆解，不代表全量最小原子化及 Phase 2 PASS**。Phase 2 IN PROGRESS；Phase 3/4 BLOCKED；原始 Skills 未改，不 Merge、不部署。
