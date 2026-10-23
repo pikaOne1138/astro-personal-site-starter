@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 這是某次把原型移植成 Astro 頁面時的來源對照與驗證紀錄，內容已過期（含已刪除的檔案、遠端圖片網址與當時未完成的驗證）。目前的版型現況見 `.ai/astro-layout-craft/SKILL.md` 與 `docs/layout/layout-assembly.md`。僅供歷史查閱，不再維護。
+
 # Layout source audit｜PR #20
 
 ## Manus 原始程式移植：10 / 10

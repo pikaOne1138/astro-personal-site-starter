@@ -63,8 +63,7 @@ PR #20 曾把 Manus Learning Lab 的兩側留白取消，導致 Hero、學習路
 - **第一選項是移植原始 DOM、CSS 和互動**，而不是用自己的 `.lay-hero`、`.lay-cards` 重新編排。只做 GitHub Pages BASE_URL、圖片位置與 Astro 版本相容的必要轉換。
 - 將每款原始版型的 CSS 保留為相對獨立的 styles（例如 `companion-source.css`、`learning-lab-source.css`），避免共用 `layout-library.css` 覆寫它特有的構圖。
 - 每款的全頁背景與實際內容畫布是兩個不同層級；避免讓背景也被 max-width 裁成窄島，亦不能以滿版背景替代應有的閱讀留白。
-- 合併前檢查 `.ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md` 的「是否已完整對照原稿」欄位；對照未完成的款式不能當作「12 款已復刻完成」。
-- 使用者已多次指出「Learning Lab 步驟圓點壓字」「Companion 背景被裁窄島」。這些屬原始碼可避免的問題；先讀源碼，不准再靠猜測調 CSS。
+- 調整某款版型的 CSS 前，先讀它自己的原始碼，不要靠猜測調整。
 
 ## Claude Editorial Layout Design Skill
 
