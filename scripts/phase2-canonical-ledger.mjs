@@ -1065,6 +1065,34 @@ if(process.argv[2]==='import'){
      sourceText:original,method:'EXPLICIT_COMPOSITE_COVERAGE_AND_SCOPE_REVIEW'}});
   }
  }
+ // B2: previously written aggregate notes are documentary parents, not
+ // additional policies. Explicitly prove complete action-by-action coverage.
+ const releaseCompositeSets=[
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:27,ids:['B9-DEP-L27-1','DEPLOY-10'],
+   children:['B9B-DEP-27-01','B9B-DEP-27-02','B9B-DEP-27-03']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:32,ids:['B9-DEP-L32-1','DEPLOY-12'],
+   children:['B9C-DEP32-01','B9C-DEP32-02']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:37,ids:['B9-DEP-L37-1','DEPLOY-13'],
+   children:['B9B-DEP-37-01','B9B-DEP-37-02','B9B-DEP-37-03','B9B-DEP-37-04']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:19,ids:['B9-DEP-L19-1','DEPLOY-06'],
+   children:['B9B-DEP-19-01','B9B-DEP-19-02','B9B-DEP-19-03','B9B-DEP-19-04','B9B-DEP-19-05']},
+  {source:'.ai/astro-starter-deploy/SKILL.md',line:18,ids:['B4-DEP18-02','DEPLOY-05'],
+   children:['B4-DEP18-01','B4-DEP18-02-S01','B4-DEP18-02-S02','B4-DEP18-02-S03','B4-DEP18-03']}
+ ];
+ for(const group of releaseCompositeSets){
+  const source=frozenLine(group.source,group.line);
+  if(!source||group.children.some(id=>byId.get(id)?.reviewStatus!=='APPROVED'))
+   throw Error('Release documentary parent lacks approved source-checked children '+group.source+':'+group.line);
+  for(const id of group.ids){
+   const row=byId.get(id);
+   if(!row||row.canonicalId||!row.sourceRefs.some(ref=>ref.revision===frozen&&ref.path===group.source&&ref.lineStart===group.line))
+    throw Error('Release source for documentary parent not proven '+id);
+   Object.assign(row,{kind:'evidence',decision:'PARTIAL_SPLIT',reviewStatus:'PARENT_COVERED_BY_ATOMIC_CHILDREN',
+    childrenLegacyIds:group.children,parentDisposition:'Original summary covered by exact, independently approved atomic actions',
+    approvalEvidence:{frozenPath:group.source,frozenLine:group.line,sourceText:source,
+      frozenBlobSha:manifest[group.source],method:'SOURCE_VERIFIED_COMPOSITE_TO_COMPLETE_ATOMIC_ACTIONS'}});
+  }
+ }
  fs.writeFileSync(path,JSON.stringify({schemaVersion:1,frozenCommit:frozen,authority:'PROVISIONAL',upstreamDelta:{pr:61,separateVersionLayer:true},sourceManifest:{frozen:manifest,working:inventory},records:entries,semanticRelations,sourceReviewQueue:old?.sourceReviewQueue||[],importErrors:errors,recoveryFailures},null,2)+'\n');
  console.log(JSON.stringify({imported:entries.length,sourceFiles:files.length,errors:errors.length}));process.exit();
 }
