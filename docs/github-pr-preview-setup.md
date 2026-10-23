@@ -1,6 +1,6 @@
 # 老師 Repo｜GitHub Pages PR 預覽基礎設施
 
-> 對象：維護這個研究展示 Repo 的人。**這份文件不會進學員 ZIP。** 學員自己網站的預覽與發布流程是 `.ai/astro-pr-preview/SKILL.md`；學員的 Repo 不會自動具備這裡描述的 Workflow，不能把這裡的固定 owner、repo 名稱或機器人網址搬給學員。
+> 對象：維護這個研究展示 Repo 的人。**這份文件不會進學員 ZIP。** 這套機制只在 Repo 公開時能用：Repo 轉為私人後，GitHub Pages 的展示與 PR 預覽會失效，之後以 Cloudflare Pages 為唯一的展示與預覽（見 `README.md`）；到時這份文件與相關 Workflow 要一起退場。 學員自己網站的預覽與發布流程是 `.ai/astro-pr-preview/SKILL.md`；學員的 Repo 不會自動具備這裡描述的 Workflow，不能把這裡的固定 owner、repo 名稱或機器人網址搬給學員。
 
 ## 目標
 

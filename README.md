@@ -4,7 +4,7 @@ Astro 架站工作坊的**設計研究展示站，以及學員獨立網站 Start
 
 目標：給零程式背景的學員一個可理解、可改、可部署、UI 有設計品質的 Astro 個人網站起點。不是 SaaS、CRM 或完整商業後台。
 
-展示站：https://pikaOne1138.github.io/astro-personal-site-starter/
+展示站（Cloudflare Pages）：https://personal-site-starter.pages.dev/
 
 ## 這個 Repo 有什麼
 
@@ -41,8 +41,8 @@ npm run preview # 預覽建置結果（全文搜尋需要先 build）
 
 ## 部署
 
-- **GitHub Pages**：展示站與 PR 預覽由 GitHub Actions 發布，機制見 `docs/github-pr-preview-setup.md`。
-- **Cloudflare**：`wrangler.jsonc` 設定靜態資產；Preview 網址以 Cloudflare 回報的為準，不要套用 GitHub Pages 的路徑。
+- **展示站以 Cloudflare Pages 為準**：專案 `personal-site-starter` 連接這個 Repo，正式分支 `main`；每個 PR 分支的 Preview 網址以 Cloudflare 在 PR 回報的為準。`wrangler.jsonc` 另外設定了 Workers 靜態資產。
+- **GitHub Pages 只在 Repo 公開時可用**：目前 `.github/workflows/` 還有 GitHub Pages 的發布與 PR 預覽（機制見 `docs/github-pr-preview-setup.md`）。這個 Repo 轉為私人後，`github.io` 就不能當展示站，這些流程也會失效，之後以 Cloudflare 為唯一的展示與預覽。
 - 部署的實際狀態以平台的部署紀錄與可開啟的網址為準，不能只憑本地設定判斷。修改部署 Workflow、變更 DNS 或合併 PR 都需要另外核准。
 
 ## 守則
