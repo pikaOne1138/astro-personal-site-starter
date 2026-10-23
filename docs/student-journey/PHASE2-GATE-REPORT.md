@@ -37,7 +37,9 @@
 | sourceFirstUnmappedP1 | 73 |
 | sourceFirstUnmappedP2 | 87 |
 | p0p1QueueItems | 165 |
-| p0p1PendingSourceMapping | 165 |
+| p0p1PendingSourceMapping | 148 |
+| p0p1DocumentaryAssessed | 17 |
+| p0p1AtomicSubclausesProposed | 36 |
 | p0p1RemovedQueueKeys | 0 |
 | unexaminedFrozenNormativeClauses | NOT_ESTABLISHED |
 | semanticCompleteness | NOT_VERIFIED |
@@ -91,7 +93,9 @@
     "sourceFirstUnmappedP1": 73,
     "sourceFirstUnmappedP2": 87,
     "p0p1QueueItems": 165,
-    "p0p1PendingSourceMapping": 165,
+    "p0p1PendingSourceMapping": 148,
+    "p0p1DocumentaryAssessed": 17,
+    "p0p1AtomicSubclausesProposed": 36,
     "p0p1RemovedQueueKeys": 0,
     "unexaminedFrozenNormativeClauses": "NOT_ESTABLISHED",
     "semanticCompleteness": "NOT_VERIFIED",
