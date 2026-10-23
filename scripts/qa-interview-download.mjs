@@ -7,13 +7,15 @@ import {join} from 'node:path';
 const port=4351,base='http://127.0.0.1:'+port,dir='qa-artifacts/quality';
 mkdirSync(dir,{recursive:true});
 const files=['README.md','01-AI-訪談主持人.md','02-網站定位與個人介紹.md','03-內容準備-二選一.md','04-圖片與發布準備.md','05-AI-品牌識別與圖片共創.md','06-Logo與圖片設計研究.md'];
-const server=spawn('npm',['run','preview','--','--host','127.0.0.1','--port',String(port)],{stdio:'ignore'});
+const server=spawn('./node_modules/.bin/astro',['preview','--host','127.0.0.1','--port',String(port),'--strictPort','--ignore-lock'],{stdio:['ignore','pipe','pipe']});
 const temp=mkdtempSync(join(tmpdir(),'intake-download-'));
+let previewOutput='';
+for (const stream of [server.stdout,server.stderr]) stream.on('data',chunk=>{previewOutput=(previewOutput+chunk.toString()).slice(-12000)});
 let browser;
 try{
  let ready=false;
  for(let i=0;i<50;i++){try{if((await fetch(base+'/starter/')).ok){ready=true;break}}catch{}await wait(300)}
- if(!ready)throw Error('Starter preview unavailable');
+ if(!ready)throw Error('Starter preview unavailable: '+JSON.stringify({exitCode:server.exitCode,output:previewOutput}));
  browser=await chromium.launch({headless:true});
  const page=await browser.newPage({acceptDownloads:true,viewport:{width:390,height:844}});
  const response=await page.goto(base+'/starter/',{waitUntil:'domcontentloaded',timeout:20000});
