@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "c0eb715b31c27530fd1fd365f6ab3b4b512dccf0"
+        "blobSha": "6189488c445c514178a231a2c5133a6af7036e7d"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -66359,11 +66359,11 @@
       "lineEnd": 111,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Link to shared Design Handoff and teacher research files, not an independent obligation",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66374,7 +66374,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-design-consultation/SKILL.md:111",
+        "frozenBlobSha": "a9e8de73f26b72499f1372b605a348665e41fa08",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Link to shared Design Handoff and teacher research files, not an independent obligation"
+      }
     },
     {
       "sourceKey": ".ai/astro-editorial-layout-design/SKILL.md:37",
@@ -66494,11 +66500,11 @@
       "lineEnd": 124,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Documentation pointer to shared handoff and research, not an atomic requirement",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66509,15 +66515,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": [
-        {
-          "legacyId": "DES3-009",
-          "frozenPath": ".ai/astro-editorial-layout-design/SKILL.md",
-          "frozenLine": 126,
-          "lineDistance": 2,
-          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
-        }
-      ]
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-editorial-layout-design/SKILL.md:124",
+        "frozenBlobSha": "c14edf53f2f69d47d2465e3b30bd159c759a8279",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Documentation pointer to shared handoff and research, not an atomic requirement"
+      }
     },
     {
       "sourceKey": ".ai/astro-launch-health-check/SKILL.md:15",
@@ -66724,11 +66728,11 @@
       "lineEnd": 88,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Reference-only path to shared and teacher research material",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66739,7 +66743,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-layout-craft/SKILL.md:88",
+        "frozenBlobSha": "2c148dd24e89a38d0c6026c1f8cb12c257a54bb9",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Reference-only path to shared and teacher research material"
+      }
     },
     {
       "sourceKey": ".ai/astro-motion-craft/SKILL.md:25",
@@ -66945,11 +66955,11 @@
       "lineEnd": 164,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Reference-only shared material pointer",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -66960,15 +66970,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": [
-        {
-          "legacyId": "DES5-018",
-          "frozenPath": ".ai/astro-motion-craft/SKILL.md",
-          "frozenLine": 166,
-          "lineDistance": 2,
-          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
-        }
-      ]
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-motion-craft/SKILL.md:164",
+        "frozenBlobSha": "39ed33b76ccbd67abf2032f9c655165cf6dfbdf9",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Reference-only shared material pointer"
+      }
     },
     {
       "sourceKey": ".ai/astro-navigation-tree-test/SKILL.md:21",
@@ -67015,11 +67023,11 @@
       "lineEnd": 54,
       "sourceText": "> 幫我在現有網站新增「＿＿」頁，內容目的是＿＿，請先確認它適合放在主選單、子選單還是只當內部連結。不要重做整個網站。請使用現有共用導航，並檢查首頁、所有舊內頁、新頁面、文章/服務頁的桌機與手機選單有沒有同步。建 PR 和可開啟的 Preview，做四種寬度測試；先給我看，未經我同意不要合併或發布。",
       "priority": "P0_SAFETY_RELEASE",
-      "preliminaryKind": "EXAMPLE_NOT_INDEPENDENT_OBLIGATION",
-      "reviewerNote": "Example, suggested language or scenario; do not create new norm from example",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Quoted example student prompt, not an additional independent approval rule",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EXAMPLE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67030,15 +67038,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": [
-        {
-          "legacyId": "OPS3-016",
-          "frozenPath": ".ai/astro-page-management/SKILL.md",
-          "frozenLine": 51,
-          "lineDistance": 3,
-          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
-        }
-      ]
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-page-management/SKILL.md:54",
+        "frozenBlobSha": "64878b45861ab912d917e20d4bc8be92bb64adc8",
+        "sourceText": "> 幫我在現有網站新增「＿＿」頁，內容目的是＿＿，請先確認它適合放在主選單、子選單還是只當內部連結。不要重做整個網站。請使用現有共用導航，並檢查首頁、所有舊內頁、新頁面、文章/服務頁的桌機與手機選單有沒有同步。建 PR 和可開啟的 Preview，做四種寬度測試；先給我看，未經我同意不要合併或發布。",
+        "reason": "Quoted example student prompt, not an additional independent approval rule"
+      }
     },
     {
       "sourceKey": ".ai/astro-pr-preview/SKILL.md:3",
@@ -67587,11 +67593,11 @@
       "lineEnd": 39,
       "sourceText": "「請看 `/section-patterns/`，我選 `featured-work`（或 `trust-service-path`）。把這段加到我的＿＿頁、＿＿區段後。保留我選的 Layout 與品牌風格，先列需要我提供的真實內容，再以現有 Blocks 組成。完成 PR 和四尺寸 QA 後給我預覽，不要自動合併。」",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "EXAMPLE_NOT_INDEPENDENT_OBLIGATION",
-      "reviewerNote": "Example, suggested language or scenario; do not create new norm from example",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Quoted example student prompt; actual QA and approval obligations reside in operative instructions",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EXAMPLE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67602,7 +67608,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-section-pattern-craft/SKILL.md:39",
+        "frozenBlobSha": "4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3",
+        "sourceText": "「請看 `/section-patterns/`，我選 `featured-work`（或 `trust-service-path`）。把這段加到我的＿＿頁、＿＿區段後。保留我選的 Layout 與品牌風格，先列需要我提供的真實內容，再以現有 Blocks 組成。完成 PR 和四尺寸 QA 後給我預覽，不要自動合併。」",
+        "reason": "Quoted example student prompt; actual QA and approval obligations reside in operative instructions"
+      }
     },
     {
       "sourceKey": ".ai/astro-section-pattern-craft/SKILL.md:48",
@@ -67614,11 +67626,11 @@
       "lineEnd": 48,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Shared handoff and teacher research reference",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67629,15 +67641,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": [
-        {
-          "legacyId": "DES6-007",
-          "frozenPath": ".ai/astro-section-pattern-craft/SKILL.md",
-          "frozenLine": 50,
-          "lineDistance": 2,
-          "interpretation": "PROXIMITY_ONLY_NOT_SEMANTIC_EQUIVALENCE"
-        }
-      ]
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-section-pattern-craft/SKILL.md:48",
+        "frozenBlobSha": "4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Shared handoff and teacher research reference"
+      }
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:21",
@@ -67772,11 +67782,11 @@
       "lineEnd": 39,
       "sourceText": "- 修改一段首頁文案 → 建立 PR → 確認預覽 → 合併發布。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "PROCEDURE_OR_ARCHITECTURE",
-      "reviewerNote": "Operational procedure or architectural contract: preserve source-specific scope",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Illustrative maintenance example, not independent normative instruction",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_PROCEDURE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -67787,7 +67797,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-site-maintenance/SKILL.md:39",
+        "frozenBlobSha": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
+        "sourceText": "- 修改一段首頁文案 → 建立 PR → 確認預覽 → 合併發布。",
+        "reason": "Illustrative maintenance example, not independent normative instruction"
+      }
     },
     {
       "sourceKey": ".ai/astro-site-maintenance/SKILL.md:40",
@@ -68042,11 +68058,11 @@
       "lineEnd": 219,
       "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "NON_NORMATIVE_METADATA",
-      "reviewerNote": "Skill description, marker, example command or documentation pointer",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Reference to handoff and optional teacher research",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_AS_EVIDENCE",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68057,7 +68073,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": ".ai/astro-ui-craft/SKILL.md:219",
+        "frozenBlobSha": "70ceabb3ad04551d544133854667e7df7bbf659f",
+        "sourceText": "共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。",
+        "reason": "Reference to handoff and optional teacher research"
+      }
     },
     {
       "sourceKey": ".ai/astro-ui-craft/SKILL.md:221",
@@ -68489,11 +68511,11 @@
       "lineEnd": 12,
       "sourceText": "- `scripts/qa-generate-props-render-fixtures.mjs` and `scripts/qa-verify-props-render-fixtures.mjs` are **experimental**. The separately added `qa-props-render.yml` workflow was removed from PR #45 because its generated `S02-fit-pair` input omitted nested `items` arrays. This is a fixture generator error, not evidence the actual component is broken. The historic failing workflow run 38424430647 remains in Actions records. No complete 476-Props runtime acceptance is claimed.",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_EVIDENCE",
-      "reviewerNote": "Time-specific evidence is not a present PASS and must remain source traceable",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historical experimental workflow/fixture defect snapshot, not current component failure",
       "matchingLegacyIds": [],
-      "proposedAction": "RETAIN_HISTORICAL_NOT_PASS",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68504,7 +68526,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/quality/BETA-CANDIDATE-SCOPE.md:12",
+        "frozenBlobSha": "bd48a96da49937bfab1fe514fd43e3ae338ebe31",
+        "sourceText": "- `scripts/qa-generate-props-render-fixtures.mjs` and `scripts/qa-verify-props-render-fixtures.mjs` are **experimental**. The separately added `qa-props-render.yml` workflow was removed from PR #45 because its generated `S02-fit-pair` input omitted nested `items` arrays. This is a fixture generator error, not evidence the actual component is broken. The historic failing workflow run 38424430647 remains in Actions records. No complete 476-Props runtime acceptance is claimed.",
+        "reason": "Historical experimental workflow/fixture defect snapshot, not current component failure"
+      }
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:14",
@@ -68516,11 +68544,11 @@
       "lineEnd": 14,
       "sourceText": "- Manual design quality and real first-time human learner usability remain untested. AI-driven E2E and extracted ZIP checks are already available; do not rerun the full suite without material code changes.",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "ACCEPTANCE_OR_EVIDENCE_REQUIREMENT",
-      "reviewerNote": "Evidence criteria: retain target platform, exact SHA and NOT TESTED boundary",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Time-bound report of not-yet-run learner usability checks; recheck state rather than canonize result",
       "matchingLegacyIds": [],
-      "proposedAction": "MAP_ACCEPTANCE_PENDING",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68531,7 +68559,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/quality/BETA-CANDIDATE-SCOPE.md:14",
+        "frozenBlobSha": "bd48a96da49937bfab1fe514fd43e3ae338ebe31",
+        "sourceText": "- Manual design quality and real first-time human learner usability remain untested. AI-driven E2E and extracted ZIP checks are already available; do not rerun the full suite without material code changes.",
+        "reason": "Time-bound report of not-yet-run learner usability checks; recheck state rather than canonize result"
+      }
     },
     {
       "sourceKey": "docs/quality/BETA-CANDIDATE-SCOPE.md:21",
@@ -68570,11 +68604,11 @@
       "lineEnd": 9,
       "sourceText": "| W1/W2/W13/W14 | Guide, Cloudflare preview permissions and historical links | Existing guide/Skill changes | Real CF /guide and prepare walk-through; don't infer Preview URL or erase immutable deployment |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_STATUS_OR_ACCEPTANCE",
-      "reviewerNote": "Historical defect state: distinguish historical result from forward requirement",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historical defect register status row with linked acceptance targets",
       "matchingLegacyIds": [],
-      "proposedAction": "REVIEW_APPLICABILITY",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68585,7 +68619,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/quality/DEFECT-REGISTER.md:9",
+        "frozenBlobSha": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+        "sourceText": "| W1/W2/W13/W14 | Guide, Cloudflare preview permissions and historical links | Existing guide/Skill changes | Real CF /guide and prepare walk-through; don't infer Preview URL or erase immutable deployment |",
+        "reason": "Historical defect register status row with linked acceptance targets"
+      }
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:13",
@@ -68597,11 +68637,11 @@
       "lineEnd": 13,
       "sourceText": "| W6 | Placeholders | COVERED | Notice not blocking build; never police learner's article length or quality |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_STATUS_OR_ACCEPTANCE",
-      "reviewerNote": "Historical defect state: distinguish historical result from forward requirement",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historical W6 issue disposition; warning policy needs distinct Frozen operative source",
       "matchingLegacyIds": [],
-      "proposedAction": "REVIEW_APPLICABILITY",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68612,7 +68652,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/quality/DEFECT-REGISTER.md:13",
+        "frozenBlobSha": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+        "sourceText": "| W6 | Placeholders | COVERED | Notice not blocking build; never police learner's article length or quality |",
+        "reason": "Historical W6 issue disposition; warning policy needs distinct Frozen operative source"
+      }
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:24",
@@ -68624,11 +68670,11 @@
       "lineEnd": 24,
       "sourceText": "| N19 | Student CI | IMPLEMENTED | Generated npm run verify checks output/drafts and build includes link gate; teacher independently exercises it |",
       "priority": "P1_EVIDENCE_QA",
-      "preliminaryKind": "HISTORICAL_STATUS_OR_ACCEPTANCE",
-      "reviewerNote": "Historical defect state: distinguish historical result from forward requirement",
+      "preliminaryKind": "NON_NORMATIVE",
+      "reviewerNote": "Historical N19 implementation state, not proof of present runtime acceptance",
       "matchingLegacyIds": [],
-      "proposedAction": "REVIEW_APPLICABILITY",
-      "reviewStatus": "SOURCE_DISPOSITION_COMPLETE_SEMANTIC_ALIAS_PENDING",
+      "proposedAction": "NON_NORMATIVE",
+      "reviewStatus": "DOCUMENTARY_FINAL_NON_NORMATIVE",
       "canonicalId": null,
       "atomicClauseCandidates": [],
       "adjudicationNeeded": [
@@ -68639,7 +68685,13 @@
         "cross-source-alias",
         "approval"
       ],
-      "nearbyLegacyEvidence": []
+      "decision": "NON_NORMATIVE",
+      "dispositionEvidence": {
+        "frozenSource": "docs/quality/DEFECT-REGISTER.md:24",
+        "frozenBlobSha": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+        "sourceText": "| N19 | Student CI | IMPLEMENTED | Generated npm run verify checks output/drafts and build includes link gate; teacher independently exercises it |",
+        "reason": "Historical N19 implementation state, not proof of present runtime acceptance"
+      }
     },
     {
       "sourceKey": "docs/quality/DEFECT-REGISTER.md:31",
