@@ -1,36 +1,121 @@
-# PR #67｜Phase 2 Gate Report
+# Phase 2 Gate Report
 
-> Execution snapshot for Work Package A, 2026-10-23. This is a recorded status, **not** an executed full verification result. Run the committed verifier against a full local checkout to regenerate it.
+Generated from canonical-ledger.json. No semantic approval is inferred.
 
-| Measure | Current status |
-|---|---|
-| Frozen baseline | 192 text file manifest entries imported |
-| Phase2 working source documents in plan | 59 |
-| Legacy work papers mechanically ingested | 27 (including PR61 Delta) |
-| Unique imported legacy work IDs | 1,022 |
-| Canonical IDs approved | 0 |
-| Semantic adjudications approved | 0 |
-| Unreviewed items | 1,022 |
-| Exhaustive uncovered source clauses | NOT VERIFIED |
-| Broken source references | NOT VERIFIED (must check full repository) |
-| Unresolved semantic conflicts | NOT FULLY ENUMERATED |
-| Import read failures | 0 for the 27 successfully read files; other files pending |
-| Source SHA and anchor verification | NOT EXECUTED in repository checkout |
+| Metric | Value |
+|---|---:|
+| Working Phase2 files | 61 |
+| Frozen files | 192 |
+| Imported legacy IDs | 1369 |
+| Discovered legacy IDs | 1369 |
+| Unimported IDs | 0 |
+| Broken refs | 72 |
+| Pending adjudication | 1369 |
+| Import read failures | 0 |
 
-**Phase 2 Gate: BLOCKED. Phase 3 / Phase 4: BLOCKED.**
+**Phase 2: BLOCKED**. Phase 3/4: BLOCKED.
 
-The 1,022 imported IDs are legacy work records and must not be reported as 1,022 unique obligations. Neither absence of a parsed reference nor matching words establishes a semantic determination. No legacy file or Frozen Source was deleted, migrated or rewritten.
+## Failures
 
-## Reproducible verification
-
-From a checkout of the PR #67 branch:
-
-~~~bash
-node scripts/phase2-canonical-ledger.mjs import
-node scripts/phase2-canonical-ledger.mjs verify
-node scripts/phase2-canonical-ledger.mjs report
+~~~json
+{
+  "missing": [],
+  "failures": [
+    "orphan parent: B9C-ASM48-01",
+    "orphan parent: B9C-ASM48-02",
+    "orphan parent: B9C-ASM48-03",
+    "orphan parent: B9C-ASM51-01",
+    "orphan parent: B9C-ASM51-02",
+    "orphan parent: B9C-ASM51-03",
+    "orphan parent: B9C-ASM52-01",
+    "orphan parent: B9C-ASM52-02",
+    "orphan parent: B9C-ASM52-03",
+    "orphan parent: B9C-ASM60-01",
+    "orphan parent: B9C-ASM60-02",
+    "orphan parent: B9C-ASM60-03",
+    "orphan parent: B9C-ASM61-01",
+    "orphan parent: B9C-ASM61-02",
+    "orphan parent: B9C-ASM61-03",
+    "orphan parent: B9C-ASM61-04",
+    "orphan parent: B9C-ASM62-01",
+    "orphan parent: B9C-ASM62-02",
+    "orphan parent: B9C-ASM62-03",
+    "orphan parent: B9C-ASM63-01",
+    "orphan parent: B9C-ASM63-02",
+    "orphan parent: B9C-ASM63-03",
+    "orphan parent: B9C-ASM64-01",
+    "orphan parent: B9C-ASM64-02",
+    "orphan parent: B9C-ASM64-03",
+    "orphan parent: B9C-ASM67-01",
+    "orphan parent: B9C-ASM77-01",
+    "orphan parent: B9C-ASM77-02",
+    "orphan parent: B9C-ASM77-03",
+    "orphan parent: B9C-ASM77-04",
+    "orphan parent: B9C-ASM77-05",
+    "orphan parent: B9C-ASM78-01",
+    "orphan parent: B9C-ASM78-02",
+    "orphan parent: B9C-ASM78-03",
+    "orphan parent: B9C-ASM78-04",
+    "orphan parent: B9C-ASM78-05",
+    "orphan parent: B9C-ASM79-01",
+    "orphan parent: B9C-ASM79-02",
+    "orphan parent: B9C-ASM79-03",
+    "orphan parent: B9C-ASM80-01",
+    "orphan parent: B9C-ASM80-02",
+    "orphan parent: B9C-ASM80-03",
+    "orphan parent: B9C-ASM80-04",
+    "orphan parent: B9C-DEP11-01",
+    "orphan parent: B9C-DEP11-02",
+    "orphan parent: B9C-DEP11-03",
+    "orphan parent: B9C-DEP11-04",
+    "orphan parent: B9C-DEP15-01",
+    "orphan parent: B9C-DEP15-02",
+    "orphan parent: B9C-DEP15-03",
+    "orphan parent: B9C-DEP32-01",
+    "orphan parent: B9C-DEP32-02",
+    "orphan parent: B9C-DEP33-01",
+    "orphan parent: B9C-DEP33-02",
+    "orphan parent: B9C-DEP33-03",
+    "orphan parent: B9C-DEP34-01",
+    "orphan parent: B9C-DEP34-02",
+    "orphan parent: B9C-DEP34-03",
+    "orphan parent: B9C-DEP34-04",
+    "orphan parent: B9C-DEP35-01",
+    "orphan parent: B9C-DEP35-02",
+    "orphan parent: B9C-DEP35-03",
+    "orphan parent: B9C-DEP35-04",
+    "orphan parent: B9C-DEP36-01",
+    "orphan parent: B9C-DEP36-02",
+    "orphan parent: B9C-DEP36-03",
+    "orphan parent: B9C-DEP36-04",
+    "orphan parent: B9C-DEP36-05",
+    "orphan parent: B9C-DEP40-01",
+    "orphan parent: B9C-DEP40-02",
+    "orphan parent: B9C-DEP40-03",
+    "orphan parent: B9C-DEP40-04"
+  ],
+  "importErrors": [],
+  "pendingSample": [
+    "PREVIEW-HISTORY-01",
+    "PREVIEW-HISTORY-02",
+    "PREVIEW-HISTORY-03",
+    "PREVIEW-HISTORY-04",
+    "PREVIEW-POLICY-01",
+    "PR59-EVIDENCE-01",
+    "PR59-EVIDENCE-02",
+    "INDEX-DETAIL-01",
+    "QA-DETAIL-01",
+    "EXT-DETAIL-01",
+    "GATE-001.01",
+    "GATE-001.02",
+    "GATE-001.03",
+    "GATE-002.01",
+    "GATE-002.02",
+    "GATE-002.03",
+    "PROOF-001.01",
+    "PROOF-001.02",
+    "PROOF-001.03",
+    "PROOF-002.01"
+  ]
+}
 ~~~
-
-The importer rereads all Phase2 working files to discover records. Full verification requires an actual checkout with the Frozen commit available. This session could not run Git due to blocked DNS access to github.com, and did not claim a green check. The large JSON ledger also exceeded the connector's full-file fetch response; incremental remote updates stopped to avoid silent data loss.
-
-The PR remains Draft, not merged. PR #61 and Issue #58 unchanged. No production deployment authorized.
