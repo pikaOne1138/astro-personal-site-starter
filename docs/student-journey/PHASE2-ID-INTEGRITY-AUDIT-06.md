@@ -31,3 +31,8 @@
 4. PR #61 的 Post-frozen Delta 分開計數並註明何時生效；#58 為總驗收 Issue，不因本輪文檔檢查關閉。
 
 Stage 2 **IN PROGRESS**；Stage 3/4 **BLOCKED**。未改 Frozen 來源、Skill、Builder Template、生成器或生產部署；#67 保持 Draft，#61/#58 維持 Open。
+
+
+## 本輪後續補正｜Batch9-C 的 72 個子條件 ID
+
+[PHASE2-BATCH9-C-CHILD-ID-REGISTER.md](PHASE2-BATCH9-C-CHILD-ID-REGISTER.md) 已將原 Batch9-C 的 **21 父行／72 個原有編號子條件** 各配一個獨立可反查的工作 ID（如 `B9C-DEP40-01`、`B9C-ASM77-03`），修復本輪發現的 `CHILD_ID_NOT_MINTED` 類型缺口。原父列與 Frozen source 均保留；原文子條件仍需要進一步分拆複合語義，**72 不是唯一 Canonical 數，Phase 2 仍 IN PROGRESS**。已記錄的其他跨表關係還須全量存在性及正反向驗證，Stage 3/4 BLOCKED。
