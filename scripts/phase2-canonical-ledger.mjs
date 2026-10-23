@@ -942,6 +942,22 @@ if(p0Leaves.length!==86)p0InvariantFailures.push({type:'P0_LEAF_COUNT_CHANGED',a
 if(p0Approved.length+p0EvidenceDimensions.length+p0Unhandled.length!==p0Leaves.length)p0InvariantFailures.push({type:'P0_LEAF_DISPOSITION_SUM_ERROR'});
 for(const x of p0EvidenceDimensions)if(!x.atomicEvidenceText||!x.parentCanonicalCandidate||!x.sourceRefs.some(z=>z.revision===frozen))
  p0InvariantFailures.push({type:'P0_EVIDENCE_FIELD_MISSING_SOURCE_OR_PARENT',id:x.legacyId});
+// Group inherited IDs by exact original Frozen coordinate for the next
+// semantic de-duplication pass. Shared line is review priority, NOT equality.
+const anchorGroups=new Map();
+for(const item of old.records){
+ for(const ref of item.sourceRefs||[]){
+  if(ref.revision!==frozen||!ref.lineStart)continue;
+  const key=ref.path+':'+ref.lineStart;
+  if(!anchorGroups.has(key))anchorGroups.set(key,new Map());
+  anchorGroups.get(key).set(item.legacyId,{id:item.legacyId,canonicalId:item.canonicalId,
+   kind:item.kind,decision:item.decision,requirement:item.requirement});
+ }
+}
+const multipleAnchorGroups=[...anchorGroups.entries()].filter(([,v])=>v.size>=2)
+ .map(([sourceKey,v])=>({sourceKey,rows:[...v.values()]}))
+ .sort((a,b)=>b.rows.length-a.rows.length||a.sourceKey.localeCompare(b.sourceKey));
+const pendingMultipleAnchorGroups=multipleAnchorGroups.filter(x=>x.rows.some(y=>!y.canonicalId));
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  frozenManifestIntegrityErrors:frozenManifestErrors.length,
@@ -968,6 +984,8 @@ const status={
  documentaryPartialSplits:(old.semanticRelations||[]).filter(x=>x.decision==='PARTIAL_SPLIT').length,
  documentaryDistinct:(old.semanticRelations||[]).filter(x=>x.decision==='DISTINCT').length,
  frozenLinesReferenced:sourceCoverage.size,
+ sourceAnchorMultiIdGroups:multipleAnchorGroups.length,
+ sourceAnchorUnresolvedGroups:pendingMultipleAnchorGroups.length,
  sourceFirstScopeFiles:scopedNormativeFiles.length,
  frozenFileRoleCounts:JSON.stringify(roleCount),
  sourceFirstScopeCoverageOfFrozenFiles:scopedNormativeFiles.length+'/'+Object.keys(manifest).length,
@@ -1038,7 +1056,7 @@ const report=[
  '',
  '## Machine-verifiable diagnostics',
  '~~~json',
- JSON.stringify({counts:status,frozenFileRoleInventory,p0InvariantFailures,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
+ JSON.stringify({counts:status,sourceAnchorGroupsToReview:pendingMultipleAnchorGroups.slice(0,45),frozenFileRoleInventory,p0InvariantFailures,frozenManifestErrors,canonicalConsistencyErrors,sourceFirst:{scopeFiles:scopedNormativeFiles,readFailures:sourceInventoryFailures,triageCounts,unmappedCandidateLines:unmappedCandidateLines.filter(x=>x.sourceRole==='OPERATIONAL_CONTRACT'),otherFrozenUnmappedCount:unmappedCandidateLines.filter(x=>x.sourceRole!=='OPERATIONAL_CONTRACT').length,firstReviewClassified:firstReviewedUnmapped.length,unclassified:remainingUnclassified.length,classification:'HEURISTIC_REVIEW_REQUIRED_NOT_PROVEN_OBLIGATIONS'},missingLegacy,missingFrozen,failures:failures.slice(0,100),sourceLineMismatches:sourceLineMismatches.slice(0,100),orphanAliases:orphanAliases.slice(0,100),parentRisks:parentRisks.slice(0,100),crossVersion:crossVersion.slice(0,100),aliases:aliasPairs.slice(0,30),documentaryRelations:old.semanticRelations||[],relationOrphans,unverifiedMerges},null,2),
  '~~~','',
  '## Document retirement',
  'No archival/move/delete plan is authorized until semantic review, complete bidirectional source coverage, zero defects and explicit user approval. The 1,390 legacy IDs are not canonical obligations.',''
