@@ -61,8 +61,17 @@ const pages=[
 <div class="prompt">我正在連接 AI 和 GitHub，完全不懂這個畫面。請看我附的截圖，先確認目前在哪個設定頁，再一次只教我下一步要點哪裡、點完會看到什麼。如果畫面跟你說的不一樣，請叫我再截圖，不要猜測。不要要求我提供密碼、Token 或驗證碼，也不要擅自修改 main 或發布網站。</div>
 </div>
 <aside><strong>排錯：</strong>AI 看得到 Repository 卻不能寫，先查工具模式和 App 權限；AI 找不到新 Repo，先回 GitHub Installed Apps 檢查 Only select repositories 是否已加入並儲存。若授權按鈕與教學不同，請截圖給 AI，不要猜。</aside></section>
-<section id="hosting"><h2>04｜選擇網站發布方式</h2><div class="hosting-hint" id="hosting-hint" role="status"><strong>請先選擇 A 或 B</strong><span>點選下方卡片，查看對應設定步驟。</span></div><p class="hosting-advice"><strong>建議從一開始就選 Private（私人）建站，並使用 Cloudflare Pages。先公開再改私人，過去被複製、索引或下載的內容不能保證消失。</strong> 免費 GitHub Pages 需要公開倉庫；想用私人倉庫搭配 GitHub Pages，須符合付費方案資格。Cloudflare Pages 支援私人倉庫，網站仍可公開瀏覽。</p><div class="steps hosting-choices" role="group" aria-label="選擇網站發布方式"><button type="button" class="hosting-choice" data-hosting="github" aria-pressed="false"><strong>A｜GitHub Pages</strong><small>想簡單免費，可以接受原始碼公開。</small></button><button type="button" class="hosting-choice" data-hosting="cloudflare" aria-pressed="false"><strong>B｜Cloudflare Pages</strong><small>希望原始碼留在私人倉庫，並方便預覽修改。</small></button></div></section>
+<section id="hosting"><h2>04｜選擇網站發布方式</h2><div class="hosting-hint" id="hosting-hint" role="status"><strong>請先選擇 A 或 B</strong><span>點選下方卡片，查看對應設定步驟。</span></div><p class="hosting-advice"><strong>建議從一開始就選 Private（私人）建站，並使用 Cloudflare Pages。先公開再改私人，過去被複製、索引或下載的內容不能保證消失。</strong> 免費 GitHub Pages 需要公開倉庫；想用私人倉庫搭配 GitHub Pages，須符合付費方案資格。Cloudflare Pages 支援私人倉庫，網站仍可公開瀏覽。</p><div class="card" id="link-check"><h3>發布前：先確認三條連線</h3>
+<ol>
+<li><strong>AI ↔ GitHub：</strong>AI 才能在你的倉庫建立網站、分支和 PR（第 03 步）。</li>
+<li><strong>GitHub ↔ Cloudflare：</strong>Cloudflare 才能取得你的原始碼來建置（B 路線第二步）。</li>
+<li><strong>AI ↔ Cloudflare：</strong>AI 才能查看部署、協助設定與排錯（B 路線第一步）。</li>
+</ol>
+<p>少任何一條，就會卡在部署。選 A（GitHub Pages）只需要第 1 條；但 GitHub Pages <strong>沒有內建的 PR 預覽</strong>，要預覽得另外設定，比較麻煩，想方便預覽請選 B。</p>
+<p>每個 AI 的連線與操作能力不同（有的能操作瀏覽器、有的只能讀寫檔案）。把下面的提示詞貼給 AI，由它先檢查自己做得到什麼，再決定替你做，或是請你截圖一步步帶你。</p>
+<button type="button" class="button secondary" id="copy-link-check">複製連線檢查提示詞</button><div class="prompt" id="link-check-prompt">請先只檢查、不要建立或變更任何東西，並分別回答「可以／只有唯讀／需要我進一步授權／無法確認」：1) 你能否連到我的 GitHub 倉庫，讀取內容、建立分支與 PR；2) Cloudflare 是否已能從我的 GitHub 倉庫取得原始碼（若我選 B 路線）；3) 你能否連到我的 Cloudflare 帳號，查看 Pages 專案與部署；4) 你能否直接操作瀏覽器（computer use）。如果某一條做不到，請告訴我缺什麼，並改用「我截圖、你一次指引一步」的方式。每遇到公開網站、改網域或正式發布，先停下來等我同意；不要要求我貼密碼、Token 或驗證碼。</div></div><div class="steps hosting-choices" role="group" aria-label="選擇網站發布方式"><button type="button" class="hosting-choice" data-hosting="github" aria-pressed="false"><strong>A｜GitHub Pages</strong><small>想簡單免費，可以接受原始碼公開。</small></button><button type="button" class="hosting-choice" data-hosting="cloudflare" aria-pressed="false"><strong>B｜Cloudflare Pages</strong><small>希望原始碼留在私人倉庫，並方便預覽修改。</small></button></div></section>
 <section id="github-pages" class="hosting-instructions" hidden><h2>A｜GitHub Pages：設定步驟</h2>
+<p class="fine">GitHub Pages 沒有內建的 PR 預覽，要預覽得另外設定（例如搭配 Cloudflare），比較麻煩。</p>
 <div class="card"><h3>GitHub Pages 連接網站：照著操作</h3>
 <ol>
 <li>開啟 <a href="https://github.com/repos" target="_blank" rel="noopener noreferrer">GitHub 我的倉庫清單 ↗</a>，找到這次建立的網站倉庫並點進去。也可以在 GitHub 頁面右上角點 <strong>All repositories</strong>（倉庫圖示），從清單開啟。</li>
@@ -125,5 +134,6 @@ const hostingButtons=[...document.querySelectorAll('[data-hosting]')];
 function selectHosting(choice){for(const b of hostingButtons)b.setAttribute('aria-pressed',String(b.dataset.hosting===choice));document.getElementById('github-pages').hidden=choice!=='github';document.getElementById('cloudflare-instructions').hidden=choice!=='cloudflare';document.getElementById('hosting-hint').hidden=choice==='github'||choice==='cloudflare';}
 hostingButtons.forEach(b=>b.addEventListener('click',()=>selectHosting(b.dataset.hosting)));
 selectHosting(null);
+document.getElementById('copy-link-check')?.addEventListener('click',async()=>{const b=document.getElementById('copy-link-check');try{await navigator.clipboard.writeText(document.getElementById('link-check-prompt')?.textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製連線檢查提示詞',1800)});
 document.getElementById('copy-github')?.addEventListener('click',async()=>{const b=document.getElementById('copy-github');try{await navigator.clipboard.writeText(document.getElementById('github-prompt')?.textContent||'');b.textContent='已複製'}catch{b.textContent='請手動選取'}setTimeout(()=>b.textContent='複製 GitHub 截圖陪跑提示詞',1800)});</script>
 </body></html>
