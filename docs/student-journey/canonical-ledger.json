@@ -7,7 +7,200 @@
     "separateVersionLayer": true
   },
   "sourceManifest": {
-    "frozen": {},
+    "frozen": {
+      ".ai/astro-content-publishing/references/article-authoring.md": "a07954e06bc12ec15da7d2ce0bf299e0e84b3f2f",
+      ".ai/astro-content-publishing/references/seo-and-release-checklist.md": "6f67b332aacde6e01e0d5d1cd84267c8d0d72735",
+      ".ai/astro-content-publishing/SKILL.md": "6dc13d9e2bc4d1e4dabf16e8d012ea04787e7298",
+      ".ai/astro-content-readiness/SKILL.md": "f7a3b255189adb996fed03099896cababc1ec208",
+      ".ai/astro-design-consultation/references/conversation-playbook.md": "995e4b8237a90cd89101ebbacc69247cba56a9a4",
+      ".ai/astro-design-consultation/references/cross-model-review-v3.md": "014cc186904f3901a0589be75c164bcdd894df2a",
+      ".ai/astro-design-consultation/references/design-brief-contract.md": "361af99ba82c8db03315feec88c00e44b373fc39",
+      ".ai/astro-design-consultation/references/dialogue-quality-retest-v2.md": "1fff66c0990ac6515bfaf115afd0dcf4903faef7",
+      ".ai/astro-design-consultation/references/dialogue-quality-review.md": "26337b958573f37d388c37e6831c066e4b323fe2",
+      ".ai/astro-design-consultation/references/scenario-tests.md": "7c9080c3e790e17eeb9b7ae798d62836f260b8e3",
+      ".ai/astro-design-consultation/SKILL.md": "a9e8de73f26b72499f1372b605a348665e41fa08",
+      ".ai/astro-editorial-layout-design/checklists/diversity-check.md": "b781b3a503ce3f79702ae94f226b4493a33bad77",
+      ".ai/astro-editorial-layout-design/checklists/scoring.md": "c4b8b2802c23a24fb227ea059126cd8cf89b9ae7",
+      ".ai/astro-editorial-layout-design/checklists/visual-qa.md": "c52d149e5e77787e32161f5ce245967eff9f9dcc",
+      ".ai/astro-editorial-layout-design/examples/reading-almanac/brief.md": "4a57d226b53eaba1b2104d3f2c005bc75b7cb65d",
+      ".ai/astro-editorial-layout-design/examples/reading-almanac/DECISIONS.md": "0e2de60e707520dc4752199caf092634e62b4fe6",
+      ".ai/astro-editorial-layout-design/examples/reading-almanac/direction.md": "00cf3272b2d89ce7f8fa0359c697999137bdb84d",
+      ".ai/astro-editorial-layout-design/examples/reading-almanac/wireframe.md": "56f4d542b6a919e85e8b88acf3eeddf0fb327d16",
+      ".ai/astro-editorial-layout-design/examples/trust-path/brief.md": "7e984ab6150bc4ed5aa071a1c09dcf1768fbe57d",
+      ".ai/astro-editorial-layout-design/examples/trust-path/DECISIONS.md": "4231e903698505bc71c74bca14606aa8ebe00971",
+      ".ai/astro-editorial-layout-design/examples/trust-path/direction.md": "4ecbd43d7bec41f95d61740aee343cb10f72099a",
+      ".ai/astro-editorial-layout-design/examples/trust-path/wireframe.md": "10da0e808b5ae529d19a00915fd719052cd78dbe",
+      ".ai/astro-editorial-layout-design/README.md": "9b9c82db052fede821f7910b0ed79610cfd1be5a",
+      ".ai/astro-editorial-layout-design/recipes/cta-trust.md": "8901779067b87c2e0d26285cd88a2383e3aa95e2",
+      ".ai/astro-editorial-layout-design/recipes/heroes.md": "2ef3652e01c796a5ab291fba975941bf170c6c91",
+      ".ai/astro-editorial-layout-design/recipes/lists.md": "8928e4038eb3a6a190b927e97aff39714036ddfd",
+      ".ai/astro-editorial-layout-design/recipes/rhythm.md": "02ff7a0af801871f53c84ad12f7a474826932ca1",
+      ".ai/astro-editorial-layout-design/recipes/sections.md": "dbfcf0b3fae9c21c464d475ed52b7217c2da2a68",
+      ".ai/astro-editorial-layout-design/references/00-evidence-legend.md": "8ef9d8d7efb0f5ccbd3ff2b36b14c879a3783623",
+      ".ai/astro-editorial-layout-design/references/01-cross-site-patterns.md": "b89c8088f3cd28dd6b5ac0a5f5d36ee958c062d2",
+      ".ai/astro-editorial-layout-design/references/02-design-tokens.md": "06c0dfb75b8417aae467dca1914be577049c3a22",
+      ".ai/astro-editorial-layout-design/references/03-ai-failure-modes.md": "48b7c83ea377efc96976f8a1460322a11de94e8b",
+      ".ai/astro-editorial-layout-design/references/04-workflow.md": "d150cacd2b04c10d56bebd0068065db6b5cd9c4a",
+      ".ai/astro-editorial-layout-design/references/site-analysis/01-field-notes.md": "9f0d70680b638cb2790845e3d586652e649ec2ff",
+      ".ai/astro-editorial-layout-design/references/site-analysis/02-essayist.md": "096f23b16794022cd7bd5ad657e9df8e75cb0225",
+      ".ai/astro-editorial-layout-design/references/site-analysis/03-learning-lab.md": "f1142cd4617615f2e5f2537c6254b519eade8cf5",
+      ".ai/astro-editorial-layout-design/references/site-analysis/04-curator.md": "2a65678b602bd6d4bb8f92b3daaa171b7f1d0ad7",
+      ".ai/astro-editorial-layout-design/references/site-analysis/05-radio-letter.md": "9df415864cd9be93caca26914d4ef860005b924b",
+      ".ai/astro-editorial-layout-design/references/site-analysis/06-clinician.md": "25e576f5f64528fcbc94262a07abaa6bb244e496",
+      ".ai/astro-editorial-layout-design/references/site-analysis/07-companion.md": "3453f167c7564cc5d858529c16b5ed2ee3518ac0",
+      ".ai/astro-editorial-layout-design/references/site-analysis/08-somatic.md": "9c461a39ce5a88c7efb5bc887788e6b64df2012d",
+      ".ai/astro-editorial-layout-design/references/site-analysis/09-coach.md": "ddefae78301ddedcc84a693094b44bf4de562d50",
+      ".ai/astro-editorial-layout-design/references/site-analysis/10-collective.md": "971b0846f68f29b1c40ee668073890752842b014",
+      ".ai/astro-editorial-layout-design/SKILL.md": "c14edf53f2f69d47d2465e3b30bd159c759a8279",
+      ".ai/astro-launch-health-check/SKILL.md": "074060c27edae6ff2e3a5444bf241c8913f4d9b4",
+      ".ai/astro-layout-craft/LAYOUT_SOURCE_AUDIT.md": "a21eec142f3354b1fae074a54551dcb394495112",
+      ".ai/astro-layout-craft/SKILL.md": "2c148dd24e89a38d0c6026c1f8cb12c257a54bb9",
+      ".ai/astro-motion-craft/library/effect-catalog.md": "a27fa515c98ac275f1b3eeb2f5b96d312e04b9cf",
+      ".ai/astro-motion-craft/library/README.md": "cf3a2df89633e8e6b55fa95381a753bb915a3cff",
+      ".ai/astro-motion-craft/library/recipes/content-interactions.md": "d70b24cf1aa6963907be41550ee65c79930676fe",
+      ".ai/astro-motion-craft/library/recipes/pointer-interactions.md": "c6c0ee66f0324f542b691b4baa15f00ef194d8ee",
+      ".ai/astro-motion-craft/library/recipes/reveal-and-stagger.md": "ca5e9c8982facf311c91f2ec96bd1ecd0b14ffb3",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Button.astro.txt": "ab35655cd30b950e2bab09dcd0ffd7e09aaa471d",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/components.effects.css.txt": "17c5467f4dc5ed8a0335927d403d6312dae556f7",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/FAQAccordion.astro.txt": "58daaf09109a373b82581c12583fd40cc68c6355",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/MotionCard.astro.txt": "8cef963c991ba04cdaa83834d388ed3bba20f9d8",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/Reveal.astro.txt": "147a8e05fc8a10e12ac6070252d3db8bdfd33dec",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/reveal.ts.txt": "528a558bdf683f8972844366ec26fedfd06bb967",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/StaggerGroup.astro.txt": "8ce5dfc1765ae244034dce9c2ba7c7b9da96daf7",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/UnderlineLink.astro.txt": "063f220b050d224f5ca564465f7aeb97b647509d",
+      ".ai/astro-motion-craft/library/source-snapshots/manus-v2/ZoomImage.astro.txt": "a949d3f1cedd52869dc68de327e3424e3881f48f",
+      ".ai/astro-motion-craft/references/manus-v2-motion-map.md": "f290bea4de07df2065adace8f0f18f0d60c309fb",
+      ".ai/astro-motion-craft/SKILL.md": "39ed33b76ccbd67abf2032f9c655165cf6dfbdf9",
+      ".ai/astro-navigation-tree-test/SKILL.md": "64c4597eb034fcaac226e9bd18a188683b311ea5",
+      ".ai/astro-page-management/SKILL.md": "64878b45861ab912d917e20d4bc8be92bb64adc8",
+      ".ai/astro-pr-preview/references/deployment-recovery.md": "e17482c55599f3aaf806d0296e9a40ad6bcfcf1f",
+      ".ai/astro-pr-preview/SKILL.md": "411c091674981f0f600b4154df085ad3cb9d8ca7",
+      ".ai/astro-section-pattern-craft/SKILL.md": "4ca56d61367ee68f7efaefad5b11ec5af0a0d1d3",
+      ".ai/astro-site-assembly/SKILL.md": "d7d78ef65952a00ca5704153b672830e4d28386e",
+      ".ai/astro-site-entry/SKILL.md": "b141f9c57e7810a9d4b39d161ec96973504e84db",
+      ".ai/astro-site-from-zero/SKILL.md": "8224afcff166a8864326f2eff33cd8f718706eee",
+      ".ai/astro-site-maintenance/SKILL.md": "e10010c421b143a26bd5d48f9ad4e2eee90159ab",
+      ".ai/astro-starter-deploy/SKILL.md": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+      ".ai/astro-starter-onboarding/SKILL.md": "54dad8192d899b42b3e495280e916838fe0ebdd6",
+      ".ai/astro-ui-craft/docs/research-log.md": "60c717ce70552e4f25d789b21ad6493ed7517aad",
+      ".ai/astro-ui-craft/references/00-source-map.md": "63e94940a3d05bfd833d9f887a65cd6499e493af",
+      ".ai/astro-ui-craft/references/01-design-principles.md": "c8f4ea6c929349061e933faea4d7a1851fea517e",
+      ".ai/astro-ui-craft/references/02-architecture.md": "59ba415f6fc9e4f5ca3dc3c990963798f4abb9e8",
+      ".ai/astro-ui-craft/references/03-pattern-library.md": "67384dd98f85d946c19b669955eea61836da1da0",
+      ".ai/astro-ui-craft/references/04-visual-systems.md": "c5d449625c209d361bdb18a209f0c84d397d9c2e",
+      ".ai/astro-ui-craft/references/05-motion.md": "e527efaaee21ce3df533c6d30848a077bf040b6b",
+      ".ai/astro-ui-craft/references/06-cta-content.md": "0ed86766ced3dfa843858ab400fa0a5984fe834e",
+      ".ai/astro-ui-craft/references/07-article-service-pages.md": "f39fe940ad3da7f4a77496796f65e6e76ece1443",
+      ".ai/astro-ui-craft/references/08-responsive-accessibility.md": "888cf83b56c439e2f7bc9df65b33f49f6eebaf08",
+      ".ai/astro-ui-craft/references/09-quality-gates.md": "93237c5d3a78dd3e879d511bb2a68cf24c8aadfc",
+      ".ai/astro-ui-craft/references/article-exploration-v2.md": "999d857a3a774bb429d7eb2ae1294d94e876634b",
+      ".ai/astro-ui-craft/references/component-library-v1.5.md": "281bcddef7bb4385a143d38b4a21ff6a95e913b3",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-00_總覽與方法.md": "03ad4d943d9ce6a8240e81752d4ef5f20e330bc6",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-01A_案例池_知識部落格_01-10.md": "40c59bf23d6c7a7fcb58bc67f58d75c19a9dac06",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-01B_案例池_知識部落格_11-20.md": "3a716bdf5d6250c882beb100bbff22cf2e9e68b6",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-02A_案例池_助人者_01-10.md": "14e6e2cc4a7d9c94c010581f8cf60ef2c6d57671",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-02B_案例池_助人者_11-20.md": "3ccab6be12a9a7a353d2e5201324aace45ab9d1e",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-03_Top10精選.md": "5fd9a6a43bd2a61937cbf155fabd1f6827f6801f",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-04_Pattern分析_導航與首頁.md": "1bb22f9b071d6deaf8672cfda40fcd35ad6f48c7",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-05_Pattern分析_CSS動畫CTA文章頁.md": "c2a967731111d9d821c148b98e2060cf1b941d71",
+      ".ai/astro-ui-craft/references/raw-research/arenaAgent-06_模板DesignBrief與融合建議.md": "14d1a2ebd66beb798cfa1f4d0d9d90a0c211efeb",
+      ".ai/astro-ui-craft/references/raw-research/Claude-AstroTmplateResearch.md": "576d32a7c98aa446e0883f7621799575396b8f66",
+      ".ai/astro-ui-craft/references/raw-research/Claude-三種網站風格設計規格.md": "1c3b2c15b28a27fb5c3c808c2efefa622b7ca4c5",
+      ".ai/astro-ui-craft/references/raw-research/gemini-AstroTmplateResearch.md": "6a99c10184c988d0995b4dc23c6836f0f7514883",
+      ".ai/astro-ui-craft/references/raw-research/grok-AstroTmplateResearch.md": "e33430f33ddc1c7cec618e003b294fe47b946068",
+      ".ai/astro-ui-craft/references/raw-research/mistral-AstroTmplateResearch.md": "7d065e9a6846f19bfd9f1f6449f1155dc61d469d",
+      ".ai/astro-ui-craft/references/raw-research/perplexity-AstroTmplateResearch.md": "6eb93f1975402d0e5ad955b5243167f5ee77a58d",
+      ".ai/astro-ui-craft/references/raw-research/tenbin-gemini3.0Flash-AstroTmplateResearch.md": "d5c36ee6fb6b376363a30ca93c6c0cc159cb448a",
+      ".ai/astro-ui-craft/references/raw-research/tenbin-gpt5.4nano-AstroTmplateResearch.md": "6eda0522bb01feeb481aabe552d99970f4865d59",
+      ".ai/astro-ui-craft/references/raw-research/tenbin-gpt6.1Sol-AstroTmplateResearch.md": "5836e382fd176f70e62525dbc8dd0c4e137b64a4",
+      ".ai/astro-ui-craft/references/raw-research/tenbin-sonnet5.5-AstroTmplateResearch.md": "903caf2bedf649b5f570d7bea0a3c1f1a6397494",
+      ".ai/astro-ui-craft/SKILL.md": "70ceabb3ad04551d544133854667e7df7bbf659f",
+      ".ai/SHARED-DESIGN-HANDOFF.md": "b4483fc6939a11987e63dfa74520f4b290fda997",
+      ".ai/url-to-frontend-replica/SKILL.md": "858bc69db2ba46d3074a2e10d9f9d8390f668b3b",
+      "AGENTS.md": "fc4678117367b93ec179f5b3f6455ba5cffb768f",
+      "COMPONENTS.md": "ef507931858188077b63da7524f566ed220d8f9c",
+      "docs/art-direction/09-2-differentiation-audit.md": "1f46ff8eff7abcbc03b16687b09cb82e3831346d",
+      "docs/art-direction/fixtures/content/articles/legacy-draft.md": "f4e968a3737ae4cff9065b7e5d6cbf9da9880c6d",
+      "docs/art-direction/fixtures/content/articles/real-note.md": "8d4fa1d0041040e8f0e2222e9ef2828ff914d03c",
+      "docs/art-direction/fixtures/content/drafts/private-note.md": "04fcb316816dbc79b65fc4ddd875ad69c57c6956",
+      "docs/art-direction/INDEPENDENT-ADAPTERS.md": "9b9bd564019f05428ed102cee26fd3159c1651f7",
+      "docs/art-direction/PR47-BATCH-A-VISUAL-REVIEW.md": "40f3be2ba461076e0ab273c5ac70d9ad9c7e5589",
+      "docs/art-direction/PR47-BATCH-BC-REVIEW.md": "775ced303039f4afbdcd9c06673264d8ccc33e88",
+      "docs/art-direction/PR47-CONTENT-CONTRACT-11.md": "c9fdd062cbcb4b9b5e28fef5991d025f4488f6be",
+      "docs/art-direction/PR47-EXPANSION-MATRIX.md": "9e32965a4c1a55f11304fb716353120cdcb4315f",
+      "docs/art-direction/PR47-HANDOFF.md": "ea7f46b2a505f44cbd30b954bf07ba625ea51714",
+      "docs/art-direction/PR47-MANUAL-QA-CHECKLIST.md": "7570a1c1c0ea8b62fe26c64c77c28e49454664f7",
+      "docs/art-direction/PR47-P0-NEUTRAL-AUDIT.md": "bbed6617dc60de634d5d2f99b3e77b70b6071ba0",
+      "docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md": "1419617bba0e94eb5feded51f5f8843478dc2e66",
+      "docs/art-direction/PR47-PHASE2-INTERIOR-QA.md": "a4dc84270c20c092a378db8a789e348ef39d8fe4",
+      "docs/art-direction/PR47-PHASE3-HANDOFF.md": "3b7a2a37bfae483a9ef9d37b2ceb6d699aeb87c3",
+      "docs/astro-skills-end-to-end-validation-v1.md": "6083f3088b5649af0357b1f6e8027d74c84d9fb3",
+      "docs/brief-handoff/README.md": "cf5da0ffa9311026afa3bb811a0694d2bc34d11a",
+      "docs/cloudflare-pages-deployment.md": "e9f29e824872033a56eeffcbd756e1fa653d3b0d",
+      "docs/cloudflare-workers-static-assets.md": "562a3d73fc6db4113606f3efbe7dcb78755475a6",
+      "docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md": "b319cfc9655058e154f3044d3a23da77b02ecb37",
+      "docs/github-pr-preview-setup.md": "306c75684642f698ddaf078af4c7a31694c1549c",
+      "docs/layout/CONTENT-INPUTS-THREE-LAYOUTS.md": "c0a273de67417e3b319700db3667e220304ef9f3",
+      "docs/layout/LAYOUT-DEFINITION-CONTRACT-v1.md": "6ea68d39144dd245f8b79898302f95406153b721",
+      "docs/layout/PR46-ACCEPTANCE-2026-10-15.md": "7c5ea1f72b8184deef1998f1373fcac962e898ee",
+      "docs/layout/PR46-HANDOFF.md": "9f9f43a68182187a2a2ac6ce9ab660005cc8a80c",
+      "docs/layout/PR46-OWNED-MEDIA-2026-10-15.md": "e13ee9786f5f4c7def199f525ba01ab8ec6c4deb",
+      "docs/layout/PR46-PR47-INTEGRATION-HANDOFF.md": "54d7d0ca37419b2581c9880af4fade869e283bb2",
+      "docs/layout/PR46-RESUMED-QA-2026-10-15.md": "956657575e76263fb35d31f681ee7cfe6b9a7461",
+      "docs/layout/PR46-SECTION-PATTERNS-2026-10-15.md": "ac92e15f2d251c822a6668673b66bfc5782d192e",
+      "docs/layout/TWELVE-ASSEMBLY-READINESS.md": "a2bd66fff5c701a58bd9b72179d3501835617763",
+      "docs/manus-component-gap-v2-5-part2.md": "3988c1060b9beb8ab34628224ae2a2359f6be04a",
+      "docs/pr-preview-reconciliation.md": "dff6a2e6f07b739ef0d82bb0ece59cb902d5be97",
+      "docs/pr-preview-smoke-test.md": "3c923c756e11a181bd08f8f1c5553018d06e6440",
+      "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
+      "docs/quality/BETA-CANDIDATE-SCOPE.md": "bd48a96da49937bfab1fe514fd43e3ae338ebe31",
+      "docs/quality/DEFECT-REGISTER.md": "6e50d8ef1ef51af017f7d8384aa8fb164800167c",
+      "docs/quality/PROPS-URL-CONTRACT-TARGETS.md": "4acdcbf65a7e196f3b27d17a68dd3a615da36579",
+      "docs/quality/QUALITY-CONTRACT.md": "a93641ed257d4f1a3855acd6081c88f3f1366031",
+      "docs/research-gap-matrix-v2-5.md": "a88ed8599e1e516e03b8b3227512f54ed190577d",
+      "docs/student-builder-pack/AGENT-HANDOFF.md": "5005e7599a211906f63b002daf93b9ce5651fa46",
+      "docs/student-builder-pack/ART-DIRECTION-STARTER.md": "0b0b3870098f56dcaefc6d486ec789364b0b5ef1",
+      "docs/student-builder-pack/CROSS-MODEL-E2E-TEST-PACK.md": "d95a1fb86e9db724ad3d21fc4a9a5f03e2863da9",
+      "docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt": "8b2887ba4c236bf7aeab03f3ba8c52caa9b6af6b",
+      "docs/student-builder-pack/EXPANDED-LAYOUTS.md": "8fe4c3ea3ed6b3523d868056ef570391eb4fe09a",
+      "docs/student-builder-pack/INTERVIEW-EVALUATION.md": "1067b605a73632df9cd6baaa51b9378bb318196d",
+      "docs/student-builder-pack/MEDIA-REPLACEMENT.md": "5b5d9f200801e88235465701339c515189f11bef",
+      "docs/student-builder-pack/OWNED-MEDIA.md": "8ca0a4b51be64469d640bec52f89c0ac63695bf9",
+      "docs/student-builder-pack/PORTABLE-PROJECT-CONTEXT-SPEC.md": "f3083e04248f3c92dd4d4f15729d90f098d99168",
+      "docs/student-builder-pack/PR50-PR46-INTEGRATION-GATE.md": "d63f96a0652559bdcdc04de5049d018cec8dd4c6",
+      "docs/student-builder-pack/PREVIEW-BOOTSTRAP.md": "a5dba72bf9a0779bacc4a3f21328060803e6a290",
+      "docs/student-builder-pack/PROJECT-TEMPLATE.md": "84706560890654922fa671c2749c5b9bd48d5889",
+      "docs/student-builder-pack/README.md": "7e8e676951c7104af42b76a11e9113ccf9ecc30b",
+      "docs/student-builder-pack/SECTION-PATTERNS.md": "7fb9d7457cbf054675fb62e29f20f45fcd2d6820",
+      "docs/student-builder-pack/START-BUILD-PROMPT.txt": "72766d4280a141d50af660d3c55a88ab8796cb4f",
+      "docs/student-builder-pack/START-HERE.md": "bcd508e4901701a6b6ae55ce19ba63b6e2c47a8a",
+      "docs/student-builder-pack/STUDENT-AGENTS.md": "e771e2b5177f40ba0b376d2ab86fa2945cfe51a9",
+      "docs/student-builder-pack/THREE-WAYS-TO-BUILD.md": "9154d8bdf9bc13acda894543c12c9c8639e98d66",
+      "docs/student-builder-pack/UPSTREAM-SOURCES.md": "53acadfa6cc6d61ea8504aa9bc55076a057ab20d",
+      "docs/student-intake/01-AI-訪談主持人.md": "b14088ae85ee9bfce8a0cc691969a4c4fa2c5df2",
+      "docs/student-intake/02-網站定位與個人介紹.md": "2cd591bf4070d498efb63f0cccf7affa2bcb6328",
+      "docs/student-intake/03-內容準備-二選一.md": "09a235231055a52d87b7baea492f284a8c9d4a5f",
+      "docs/student-intake/04-圖片與發布準備.md": "6e99528c26a57c9ac4a40205a9937b9ce25754b7",
+      "docs/student-intake/05-AI-品牌識別與圖片共創.md": "82c038c799b74bdebdaf6d1ddddb8ee880ddac6d",
+      "docs/student-intake/06-Logo與圖片設計研究.md": "2a3fde90d097d619110be123a8441b9579c5925e",
+      "docs/student-intake/README.md": "0883b659f92a64d9509c1208b3863ca470d1d86a",
+      "docs/student-site-building-flow-with-section-patterns.md": "0741c9aa67f6617f6a29f6368229f98b457bd710",
+      "docs/student-three-quality-gates.md": "6a7a4eacaf8fd5af65cb286c7c6c694f8f46e116",
+      "docs/template-gallery/ACCEPTANCE-25.md": "822690afd1cac1f0f93c914f3a8058d5ecd4ba0b",
+      "docs/template-gallery/README.md": "01ddef8b4267522e3ef7a47eaf9aa9ad82a117db",
+      "docs/v0.2-collaboration.md": "d098cda82550c2896b442a3d8eab440c45b2d500",
+      "docs/v2-8-content-and-seo.md": "11c740b02c979590cc5f9d8a56d520001fd2b47c",
+      "docs/workshop/AI-BUILDING-PARTNER-JOURNEY.md": "06d50e4464d4be87cfb942ad929918c8e5d8002d",
+      "docs/workshop/PR56-USER-JOURNEY-QA.md": "67f691c0578ec123735cc8d2c345248c478d0694",
+      "public/robots.txt": "dc06b580653cde2b4ce5ad3977e77f99142b6d41",
+      "README.md": "6a3606f3423c99bf857cd785c54008944d52edfa",
+      "src/content/articles/astro-starter-notes.md": "f9d7aa95a9e3a55fac1f154286b5f695aedb78f0",
+      "src/content/articles/homepage-is-a-lobby.md": "6db2f55701ae8b9d76121ba14c342f5dd1c9f871",
+      "src/content/articles/make-complex-things-clear.md": "48f78c70a8aac055dd14b981808cbe9d59efb3be",
+      "src/content/articles/one-good-article.md": "b506cb1a4c3915968ea3217301aa66842062b83c",
+      "src/content/articles/organize-knowledge.md": "2d17dbb9968cbace67bc509a80e93949ecb6c9ed",
+      "src/content/articles/quiet-writing.md": "458f1d8fe7f8f41a764ebd4ca84790c4d26a785a"
+    },
     "working": [
       {
         "path": "docs/student-journey/UPSTREAM-DELTA-PR61.md",
@@ -37,7 +230,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 48,
           "lineEnd": 48,
           "legacyWorkId": "B9C-ASM48-01"
@@ -70,7 +263,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 48,
           "lineEnd": 48,
           "legacyWorkId": "B9C-ASM48-02"
@@ -103,7 +296,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 48,
           "lineEnd": 48,
           "legacyWorkId": "B9C-ASM48-03"
@@ -136,7 +329,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 51,
           "lineEnd": 51,
           "legacyWorkId": "B9C-ASM51-01"
@@ -169,7 +362,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 51,
           "lineEnd": 51,
           "legacyWorkId": "B9C-ASM51-02"
@@ -202,7 +395,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 51,
           "lineEnd": 51,
           "legacyWorkId": "B9C-ASM51-03"
@@ -235,7 +428,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 52,
           "lineEnd": 52,
           "legacyWorkId": "B9C-ASM52-01"
@@ -268,7 +461,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 52,
           "lineEnd": 52,
           "legacyWorkId": "B9C-ASM52-02"
@@ -301,7 +494,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 52,
           "lineEnd": 52,
           "legacyWorkId": "B9C-ASM52-03"
@@ -334,7 +527,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 60,
           "lineEnd": 60,
           "legacyWorkId": "B9C-ASM60-01"
@@ -367,7 +560,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 60,
           "lineEnd": 60,
           "legacyWorkId": "B9C-ASM60-02"
@@ -400,7 +593,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 60,
           "lineEnd": 60,
           "legacyWorkId": "B9C-ASM60-03"
@@ -433,7 +626,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 61,
           "lineEnd": 61,
           "legacyWorkId": "B9C-ASM61-01"
@@ -466,7 +659,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 61,
           "lineEnd": 61,
           "legacyWorkId": "B9C-ASM61-02"
@@ -499,7 +692,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 61,
           "lineEnd": 61,
           "legacyWorkId": "B9C-ASM61-03"
@@ -532,7 +725,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 61,
           "lineEnd": 61,
           "legacyWorkId": "B9C-ASM61-04"
@@ -565,7 +758,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "B9C-ASM62-01"
@@ -598,7 +791,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "B9C-ASM62-02"
@@ -631,7 +824,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "B9C-ASM62-03"
@@ -664,7 +857,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 63,
           "lineEnd": 63,
           "legacyWorkId": "B9C-ASM63-01"
@@ -697,7 +890,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 63,
           "lineEnd": 63,
           "legacyWorkId": "B9C-ASM63-02"
@@ -730,7 +923,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 63,
           "lineEnd": 63,
           "legacyWorkId": "B9C-ASM63-03"
@@ -763,7 +956,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 64,
           "lineEnd": 64,
           "legacyWorkId": "B9C-ASM64-01"
@@ -796,7 +989,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 64,
           "lineEnd": 64,
           "legacyWorkId": "B9C-ASM64-02"
@@ -829,7 +1022,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 64,
           "lineEnd": 64,
           "legacyWorkId": "B9C-ASM64-03"
@@ -862,7 +1055,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 67,
           "lineEnd": 67,
           "legacyWorkId": "B9C-ASM67-01"
@@ -895,7 +1088,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 77,
           "lineEnd": 77,
           "legacyWorkId": "B9C-ASM77-01"
@@ -928,7 +1121,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 77,
           "lineEnd": 77,
           "legacyWorkId": "B9C-ASM77-02"
@@ -961,7 +1154,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 77,
           "lineEnd": 77,
           "legacyWorkId": "B9C-ASM77-03"
@@ -994,7 +1187,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 77,
           "lineEnd": 77,
           "legacyWorkId": "B9C-ASM77-04"
@@ -1027,7 +1220,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 77,
           "lineEnd": 77,
           "legacyWorkId": "B9C-ASM77-05"
@@ -1060,7 +1253,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 78,
           "lineEnd": 78,
           "legacyWorkId": "B9C-ASM78-01"
@@ -1093,7 +1286,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 78,
           "lineEnd": 78,
           "legacyWorkId": "B9C-ASM78-02"
@@ -1126,7 +1319,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 78,
           "lineEnd": 78,
           "legacyWorkId": "B9C-ASM78-03"
@@ -1159,7 +1352,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 78,
           "lineEnd": 78,
           "legacyWorkId": "B9C-ASM78-04"
@@ -1192,7 +1385,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 78,
           "lineEnd": 78,
           "legacyWorkId": "B9C-ASM78-05"
@@ -1225,7 +1418,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 79,
           "lineEnd": 79,
           "legacyWorkId": "B9C-ASM79-01"
@@ -1258,7 +1451,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 79,
           "lineEnd": 79,
           "legacyWorkId": "B9C-ASM79-02"
@@ -1291,7 +1484,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 79,
           "lineEnd": 79,
           "legacyWorkId": "B9C-ASM79-03"
@@ -1324,7 +1517,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 80,
           "lineEnd": 80,
           "legacyWorkId": "B9C-ASM80-01"
@@ -1357,7 +1550,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 80,
           "lineEnd": 80,
           "legacyWorkId": "B9C-ASM80-02"
@@ -1390,7 +1583,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 80,
           "lineEnd": 80,
           "legacyWorkId": "B9C-ASM80-03"
@@ -1423,7 +1616,7 @@
         {
           "path": ".ai/astro-site-assembly/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
           "lineStart": 80,
           "lineEnd": 80,
           "legacyWorkId": "B9C-ASM80-04"
@@ -1456,7 +1649,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 11,
           "lineEnd": 11,
           "legacyWorkId": "B9C-DEP11-01"
@@ -1489,7 +1682,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 11,
           "lineEnd": 11,
           "legacyWorkId": "B9C-DEP11-02"
@@ -1522,7 +1715,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 11,
           "lineEnd": 11,
           "legacyWorkId": "B9C-DEP11-03"
@@ -1555,7 +1748,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 11,
           "lineEnd": 11,
           "legacyWorkId": "B9C-DEP11-04"
@@ -1588,7 +1781,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 15,
           "lineEnd": 15,
           "legacyWorkId": "B9C-DEP15-01"
@@ -1621,7 +1814,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 15,
           "lineEnd": 15,
           "legacyWorkId": "B9C-DEP15-02"
@@ -1654,7 +1847,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 15,
           "lineEnd": 15,
           "legacyWorkId": "B9C-DEP15-03"
@@ -1687,7 +1880,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 32,
           "lineEnd": 32,
           "legacyWorkId": "B9C-DEP32-01"
@@ -1720,7 +1913,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 32,
           "lineEnd": 32,
           "legacyWorkId": "B9C-DEP32-02"
@@ -1753,7 +1946,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 33,
           "lineEnd": 33,
           "legacyWorkId": "B9C-DEP33-01"
@@ -1786,7 +1979,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 33,
           "lineEnd": 33,
           "legacyWorkId": "B9C-DEP33-02"
@@ -1819,7 +2012,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 33,
           "lineEnd": 33,
           "legacyWorkId": "B9C-DEP33-03"
@@ -1852,7 +2045,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 34,
           "lineEnd": 34,
           "legacyWorkId": "B9C-DEP34-01"
@@ -1885,7 +2078,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 34,
           "lineEnd": 34,
           "legacyWorkId": "B9C-DEP34-02"
@@ -1918,7 +2111,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 34,
           "lineEnd": 34,
           "legacyWorkId": "B9C-DEP34-03"
@@ -1951,7 +2144,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 34,
           "lineEnd": 34,
           "legacyWorkId": "B9C-DEP34-04"
@@ -1984,7 +2177,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 35,
           "lineEnd": 35,
           "legacyWorkId": "B9C-DEP35-01"
@@ -2017,7 +2210,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 35,
           "lineEnd": 35,
           "legacyWorkId": "B9C-DEP35-02"
@@ -2050,7 +2243,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 35,
           "lineEnd": 35,
           "legacyWorkId": "B9C-DEP35-03"
@@ -2083,7 +2276,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 35,
           "lineEnd": 35,
           "legacyWorkId": "B9C-DEP35-04"
@@ -2116,7 +2309,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 36,
           "lineEnd": 36,
           "legacyWorkId": "B9C-DEP36-01"
@@ -2149,7 +2342,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 36,
           "lineEnd": 36,
           "legacyWorkId": "B9C-DEP36-02"
@@ -2182,7 +2375,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 36,
           "lineEnd": 36,
           "legacyWorkId": "B9C-DEP36-03"
@@ -2215,7 +2408,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 36,
           "lineEnd": 36,
           "legacyWorkId": "B9C-DEP36-04"
@@ -2248,7 +2441,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 36,
           "lineEnd": 36,
           "legacyWorkId": "B9C-DEP36-05"
@@ -2281,7 +2474,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 40,
           "lineEnd": 40,
           "legacyWorkId": "B9C-DEP40-01"
@@ -2314,7 +2507,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 40,
           "lineEnd": 40,
           "legacyWorkId": "B9C-DEP40-02"
@@ -2347,7 +2540,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 40,
           "lineEnd": 40,
           "legacyWorkId": "B9C-DEP40-03"
@@ -2380,7 +2573,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 40,
           "lineEnd": 40,
           "legacyWorkId": "B9C-DEP40-04"
@@ -6901,7 +7094,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 25,
           "lineEnd": 25,
           "legacyWorkId": "P0-U001"
@@ -6934,7 +7127,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 25,
           "lineEnd": 25,
           "legacyWorkId": "P0-U002"
@@ -6967,7 +7160,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 37,
           "lineEnd": 37,
           "legacyWorkId": "P0-U003"
@@ -7006,7 +7199,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 23,
           "lineEnd": 23,
           "legacyWorkId": "P0-U004"
@@ -7039,7 +7232,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 23,
           "lineEnd": 23,
           "legacyWorkId": "P0-U005"
@@ -7072,7 +7265,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 23,
           "lineEnd": 23,
           "legacyWorkId": "P0-U006"
@@ -7111,7 +7304,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 23,
           "lineEnd": 23,
           "legacyWorkId": "P0-U007"
@@ -7144,7 +7337,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 11,
           "lineEnd": 11,
           "legacyWorkId": "P0-U008"
@@ -7177,7 +7370,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 39,
           "lineEnd": 39,
           "legacyWorkId": "P0-U009"
@@ -7210,7 +7403,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 39,
           "lineEnd": 39,
           "legacyWorkId": "P0-U010"
@@ -7243,7 +7436,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U011"
@@ -7276,7 +7469,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U012"
@@ -7309,7 +7502,7 @@
         {
           "path": ".ai/astro-site-entry/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
           "lineStart": 18,
           "lineEnd": 18,
           "legacyWorkId": "P0-U013"
@@ -7342,7 +7535,7 @@
         {
           "path": ".ai/astro-site-entry/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
           "lineStart": 18,
           "lineEnd": 18,
           "legacyWorkId": "P0-U014"
@@ -7375,7 +7568,7 @@
         {
           "path": ".ai/astro-site-entry/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
           "lineStart": 18,
           "lineEnd": 18,
           "legacyWorkId": "P0-U015"
@@ -7408,7 +7601,7 @@
         {
           "path": ".ai/astro-site-entry/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "b141f9c57e7810a9d4b39d161ec96973504e84db",
           "lineStart": 18,
           "lineEnd": 18,
           "legacyWorkId": "P0-U016"
@@ -7441,7 +7634,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U017"
@@ -7474,7 +7667,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U018"
@@ -7513,7 +7706,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U019"
@@ -7552,7 +7745,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U020"
@@ -7585,7 +7778,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U021"
@@ -7618,7 +7811,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U022"
@@ -7651,7 +7844,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U023"
@@ -7684,7 +7877,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "P0-U024"
@@ -7717,7 +7910,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "P0-U025"
@@ -7750,7 +7943,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "P0-U026"
@@ -7783,7 +7976,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 62,
           "lineEnd": 62,
           "legacyWorkId": "P0-U027"
@@ -7816,7 +8009,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 39,
           "lineEnd": 39,
           "legacyWorkId": "P0-U028"
@@ -7849,7 +8042,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 40,
           "lineEnd": 40,
           "legacyWorkId": "P0-U029"
@@ -7882,7 +8075,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 37,
           "lineEnd": 37,
           "legacyWorkId": "P0-U030"
@@ -7915,7 +8108,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 37,
           "lineEnd": 37,
           "legacyWorkId": "P0-U031"
@@ -7948,7 +8141,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 37,
           "lineEnd": 37,
           "legacyWorkId": "P0-U032"
@@ -7981,7 +8174,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 72,
           "lineEnd": 72,
           "legacyWorkId": "P0-U033"
@@ -8014,7 +8207,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 30,
           "lineEnd": 30,
           "legacyWorkId": "P0-U034"
@@ -8047,7 +8240,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 30,
           "lineEnd": 30,
           "legacyWorkId": "P0-U035"
@@ -8086,7 +8279,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 30,
           "lineEnd": 30,
           "legacyWorkId": "P0-U036"
@@ -8125,7 +8318,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 38,
           "lineEnd": 38,
           "legacyWorkId": "P0-U037"
@@ -8158,7 +8351,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 38,
           "lineEnd": 38,
           "legacyWorkId": "P0-U038"
@@ -8191,7 +8384,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U039"
@@ -8224,7 +8417,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U040"
@@ -8257,7 +8450,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U041"
@@ -8290,7 +8483,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 39,
           "lineEnd": 39,
           "legacyWorkId": "P0-U042"
@@ -8329,7 +8522,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 39,
           "lineEnd": 39,
           "legacyWorkId": "P0-U043"
@@ -8362,7 +8555,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 30,
           "lineEnd": 30,
           "legacyWorkId": "P0-U044"
@@ -8395,7 +8588,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 30,
           "lineEnd": 30,
           "legacyWorkId": "P0-U045"
@@ -8428,7 +8621,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U046"
@@ -8461,7 +8654,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U047"
@@ -8494,7 +8687,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U048"
@@ -8527,7 +8720,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U049"
@@ -8560,7 +8753,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U050"
@@ -8593,7 +8786,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U051"
@@ -8626,7 +8819,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U052"
@@ -8659,7 +8852,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U053"
@@ -8698,7 +8891,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U054"
@@ -8737,7 +8930,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U055"
@@ -8770,7 +8963,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U056"
@@ -8803,7 +8996,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U057"
@@ -8836,7 +9029,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 16,
           "lineEnd": 16,
           "legacyWorkId": "P0-U058"
@@ -8869,7 +9062,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U059"
@@ -8902,7 +9095,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U060"
@@ -8935,7 +9128,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U061"
@@ -8974,7 +9167,7 @@
         {
           "path": ".ai/astro-starter-deploy/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
           "lineStart": 31,
           "lineEnd": 31,
           "legacyWorkId": "P0-U062"
@@ -9007,7 +9200,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U063"
@@ -9040,7 +9233,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U064"
@@ -9073,7 +9266,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U065"
@@ -9112,7 +9305,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U066"
@@ -9145,7 +9338,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U067"
@@ -9178,7 +9371,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U068"
@@ -9211,7 +9404,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U069"
@@ -9244,7 +9437,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U070"
@@ -9277,7 +9470,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U071"
@@ -9310,7 +9503,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U072"
@@ -9343,7 +9536,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U073"
@@ -9376,7 +9569,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U074"
@@ -9409,7 +9602,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U075"
@@ -9442,7 +9635,7 @@
         {
           "path": ".ai/astro-pr-preview/SKILL.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "411c091674981f0f600b4154df085ad3cb9d8ca7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U076"
@@ -9475,7 +9668,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U077"
@@ -9508,7 +9701,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U078"
@@ -9541,7 +9734,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U079"
@@ -9574,7 +9767,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U080"
@@ -9607,7 +9800,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 24,
           "lineEnd": 24,
           "legacyWorkId": "P0-U081"
@@ -9640,7 +9833,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U082"
@@ -9673,7 +9866,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U083"
@@ -9706,7 +9899,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U084"
@@ -9739,7 +9932,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U085"
@@ -9772,7 +9965,7 @@
         {
           "path": "docs/qa/PR59-INDEPENDENT-MANUAL-SSOT.md",
           "revision": "2d20e3ab2e87b52a954d26a64d621d25a2c8ac0c",
-          "blobSha": null,
+          "blobSha": "62e7406a9fb784c6d6b192982eb5b83911f359d7",
           "lineStart": 22,
           "lineEnd": 22,
           "legacyWorkId": "P0-U086"
