@@ -4,7 +4,7 @@
     "src/data/layout-directions.json",
     "src/data/art-direction-definitions/subject-atlas.json",
     "src/data/art-direction-definitions/practice-compass.json",
-    "docs/art-direction/PR47-EXPANSION-MATRIX.md"
+    "docs/archive/art-direction/PR47-EXPANSION-MATRIX.md"
   ],
   "scope": "art-direction inventory; not an input to PR46 gallery or generator",
   "counts": {
@@ -21,9 +21,9 @@
     "prototype-configurable": "editable prototype, not production Starter"
   },
   "evidence": {
-    "neutral": "docs/art-direction/PR47-P0-VERIFICATION-2026-10-14.md",
-    "content": "docs/art-direction/PR47-CONTENT-CONTRACT-11.md",
-    "interiors": "docs/art-direction/PR47-PHASE2-INTERIOR-QA.md"
+    "neutral": "docs/archive/art-direction/PR47-P0-VERIFICATION-2026-10-14.md",
+    "content": "docs/archive/art-direction/PR47-CONTENT-CONTRACT-11.md",
+    "interiors": "docs/archive/art-direction/PR47-PHASE2-INTERIOR-QA.md"
   },
   "items": [
     {

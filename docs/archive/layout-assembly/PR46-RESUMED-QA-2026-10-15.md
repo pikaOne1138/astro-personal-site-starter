@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR46｜恢復執行後的 CTA 與品牌驗收
 
 本輪程式：`119dae09adf1187578f9cfb9ef851b01bc6c23f5`。保持 Draft，不 Merge、不修改 Production／DNS。

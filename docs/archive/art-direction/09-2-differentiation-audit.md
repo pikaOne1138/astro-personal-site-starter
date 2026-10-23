@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # 09.2 Art Direction differentiation audit and parallel handoff
 
 Baseline main: `26acf168b90a7d672d9468c7489e8095cf060683` (PR #45). Contract v1: `398e08270277af68ce6ab5f4e62267eff75abe52` on the parallel assembly branch; not present on baseline main. Evidence is [OBS] GitHub source and original ten-site ZIP review; [INF] design assessment; [NEW] proposed original layouts. Browser screenshots have **not** been captured; all 12 below were audited by reading Astro DOM and CSS, **not** by claiming 12 true visual browser sessions.

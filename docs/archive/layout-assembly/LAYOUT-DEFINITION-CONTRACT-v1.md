@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 契約與就緒狀態已併入 `docs/layout/layout-assembly.md`；原文件含已過期的平行分支分工說明。僅供歷史查閱，不再維護。
+
 # Layout Definition Contract v1 — Visual Template → Independent Astro Starter
 
 Status: **versioned interface, implementation progress is tracked separately**. Owner: `feat/visual-template-assembly` (Starter Planner, Gallery, Export, Adapter, Renderer). Parallel Art Direction branch owns **original layout prototypes**, not this generator contract.

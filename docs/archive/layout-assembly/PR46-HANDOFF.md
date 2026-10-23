@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR #46 接手／驗收記錄
 
 > **目前工作入口：[#47 合併後的 main 整合與 25 款 Starter 擴充](PR46-PR47-INTEGRATION-HANDOFF.md)。原十二款保留限定驗收基準；25 款皆已接線，最新回歸及 CTA 修正見 [恢復後驗收](PR46-RESUMED-QA-2026-10-15.md)，新增十三款仍未核可 Ready。以下歷史證據不等於 25 款 Ready。**

@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47｜P0 中性版型視覺與獨立 Adapter 驗證（2026-10-14）
 
 ## 可重現證據

@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47｜人工驗收批次 A：五組高相似結構（第一輪）
 
 檢查日期：2026-10-14。基準截圖來源為 [Art Direction Neutral Visual Evidence](https://github.com/pikaOne1138/astro-personal-site-starter/actions/runs/38584660984)，對應 commit `09673fbe`。確認使用者已自行檢視 25 款，並表示整體大致可以區分。這不是重做設計研究或宣稱所有 UI 完成驗收。

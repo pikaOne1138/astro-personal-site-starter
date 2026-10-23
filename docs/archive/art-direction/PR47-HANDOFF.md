@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47 接手入口｜09.2 Art Direction + Template Expansion
 
 ## 批次 B／C 審查更新（2026-10-14）

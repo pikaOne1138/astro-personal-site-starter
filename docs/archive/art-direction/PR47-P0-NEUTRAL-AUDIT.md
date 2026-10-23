@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR47 P0｜25 方向中性內容與結構差異稽核（source-only）
 
 檢查基準：2026-10-14，原有 12 款 + PR47 原有 2 款 + 新增 11 款，共 25 個方向。此表根據 layout-craft 定義、PR47 研究矩陣與 Astro 原始碼的主要 DOM / Grid 規則；不是瀏覽器截圖或人工盲測。中性資料在 `neutral-comparison-fixture.json`，同客群共用配色、字體、標題、三篇文章或一項服務，並有空資料情境。**Fixture 已建立，但尚未全數實際注入 25 款 renderer；不得把下表當視覺 QA PASS。**

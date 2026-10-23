@@ -1,4 +1,4 @@
-# PR46：新增十三款的正式 Starter 接線
+# 新增十三款的正式 Starter 接線
 
 這是既有 AI Builder Pack／主 Starter Export 的擴充，不是新產生器。`src/data/layout-assembly/definitions.mjs` 合併原十二款與 `expansion-directions.json` 的十三款。新增十三款為 **in-progress Adapter**，不是 Ready；`--require-ready` 仍拒絕它們。
 
@@ -8,7 +8,7 @@ AI 讀取學員的 Site Brief，使用 `scripts/export-starter.mjs <brief.json> 
 
 學員仍走規劃器 → JSON → 既有 Builder Pack ZIP → 官方提示詞 → AI 建自己的 Repository → Preview → 核准部署，不需要親自執行以上指令。
 
-| PR47 原型契約 | 正式 Site Brief／輸出 |
+| 原型契約 | 正式 Site Brief／輸出 |
 |---|---|
 | siteName | `brand.name` |
 | primaryCta.label／pageId | 新十一款原生 Navbar 與首頁主要行動，依 navigation 的實際 path 解析；兩款既有 Adapter 保留其 Header 行動。巢狀自訂頁及 BASE_URL 不改成原型固定網址 |

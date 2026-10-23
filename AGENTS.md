@@ -53,6 +53,7 @@ Do not put version numbers, PR numbers, branch names, milestone names, dates, or
 | Student-owned GitHub Pages / optional Cloudflare deployment | `.ai/astro-starter-deploy/SKILL.md` |
 | Safe updates, backups, recovery | `.ai/astro-site-maintenance/SKILL.md` |
 | Multi-block page sections, `/section-patterns/` | `.ai/astro-section-pattern-craft/SKILL.md` and `src/data/section-patterns.registry.json` |
+| Maintaining THIS repo's layout definitions, adapters and readiness states. Not for students. | `docs/layout/layout-assembly.md` |
 | Whole-page layout, section order, hero | `.ai/astro-layout-craft/SKILL.md` **and** `.ai/astro-editorial-layout-design/SKILL.md` |
 | Motion, effects, animation | `.ai/astro-motion-craft/SKILL.md`, then `.ai/astro-motion-craft/library/README.md` |
 | Add/change/hide/remove a page or navigation on an existing student site | `.ai/astro-page-management/SKILL.md` |
@@ -107,6 +108,7 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 - Most concepts are adapted from the user's `astro-ten-site-directions.zip`; the rest are original extrapolations based on Claude research (not Claude-completed website source). Remote demo photos temporarily refer to user-published Manus assets; make content/licensing self-contained before selling templates.
 - The two Claude example pages are `src/pages/layouts/reading-atlas/index.astro` and `src/pages/layouts/trust-path/index.astro`; their demonstration details are explicitly fictional. The original evidence, measurements and samples are preserved under `.ai/astro-editorial-layout-design/`. Always distinguish [OBS]/[MEAS] source facts from [INF]/[NEW] advice.
 - Visual acceptance requires actual 1440/1280/768/390 screenshots in addition to the Astro build; do not claim this verification unless performed.
+- A layout is `Starter Ready` only with an independent build, human visual review of exported desktop and phone pages, and working routes. Keep CI, the platform Preview SHA and URL, and human review as separate evidence; never reuse a previous head's green. Readiness is read from `src/data/layout-assembly/definitions.mjs`, not stated in docs.
 
 ## Learner maintenance (existing student websites)
 

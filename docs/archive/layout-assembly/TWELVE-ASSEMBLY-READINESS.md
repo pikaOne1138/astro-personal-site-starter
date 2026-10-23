@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 當時十二款的狀態快照，已過期。現行狀態以 `src/data/layout-assembly/definitions.mjs` 的 `assemblyStatus` 為準；規則已併入 `docs/layout/layout-assembly.md`。僅供歷史查閱，不再維護。
+
 # Twelve layout assembly status (PR #46)
 
 This ledger intentionally distinguishes **code integration** from **design approval**. Images in `public/template-gallery` are screenshots of the *original showcase prototypes*, not screenshots of the assembled student exports.

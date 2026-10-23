@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR46｜新增十三款的自有圖片、Logo 與段落標題
 
 基準：`5a5727f8a64ba14a176375c4bacf5d023e15bb4e`；四項 Actions 已成功。這是同一主匯出器及既有 Builder Pack 的延伸，沒有另開產包器、後台或 QA 平台。保持 Draft，不 Merge、不修改 Production／DNS。

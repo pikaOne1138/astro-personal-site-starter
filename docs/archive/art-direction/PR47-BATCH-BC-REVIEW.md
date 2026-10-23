@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47｜批次 B＋C 設計驗收／收斂報告
 
 日期：2026-10-14。此文件記錄實際瀏覽器自動量測、原貌截圖抽查與缺陷修正。**自動成功 ≠ 逐張美術人工簽核**。PR 保持 Draft；不 Merge、Production、不改 PR46。

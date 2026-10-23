@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47｜25 款 Art Direction 擴充矩陣
 更新：2026-10-14。本文件是施工清單，不是驗收報告。PR 維持 Draft。只修改本 PR 自有的 Layout prototype、文件、後續自有定義；#46 Gallery／Starter Generator／主 Adapter 不在範圍內。
 

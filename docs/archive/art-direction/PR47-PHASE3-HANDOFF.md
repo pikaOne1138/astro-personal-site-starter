@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # PR #47 第三階段｜25 Layout Definition 與 PR #46 交接
 
 更新：2026-10-14。這是 PR47 Art Direction 的交付規格，**不是 25 套完整學生網站**。維持 Draft；不得在這份文件中授權 Merge、Production 或 PR46 主 Generator 修改。

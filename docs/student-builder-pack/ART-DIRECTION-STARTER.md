@@ -16,6 +16,6 @@ npm run verify
 
 文章放在輸出專案的 src/content/articles/；草稿放 src/content/drafts/。文章 frontmatter topics 使用 site.config.json 的 artDirection.topics 中已設定的 slug。
 
-可設定服務範圍、serviceFacts、FAQ、contact、pageContent；目前為文字優先版型，不接受圖片或 Logo 輸入。不得把測試文案或待設定資料當正式服務發布。
+可設定服務範圍、serviceFacts、FAQ、contact、pageContent；這兩款以文字為主；Logo 與圖片是選用，依 `OWNED-MEDIA.md` 使用本地路徑或 Site Brief 的 `assets`，不接受內嵌的 data URL。不得把測試文案或待設定資料當正式服務發布。
 
-兩套現階段以專用命令匯出，Gallery／主要規劃器接線仍是後續整合工作。
+這兩款也能由主匯出器 `scripts/export-starter.mjs` 依版型 slug 匯出（它會委派上面的命令）；上面的專用命令適合單獨測試。

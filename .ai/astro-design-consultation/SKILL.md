@@ -106,12 +106,9 @@ description: Guide zero-code Astro workshop students through an evidence-based d
 學員可以不用設計術語回答「這個方案比較像我，因為首頁先出現文章而非一張巨型照片」，且能將人類可讀 Design Brief 交給下一階段 AI。優先驗證對話是否真的能幫助選擇，而非產出選項數量。
 
 
-## 跨 Skill 共用設計判斷（Task 4）
+## 共用設計判斷
 
-共用可攜判斷依據：`.ai/SHARED-DESIGN-HANDOFF.md`（學生 ZIP 內隨附，按需閱讀）。老師 Repo 額外研究來源：`docs/design-research/P0-AI-DESIGN-JUDGMENT-2026-10-14.md`，學生 ZIP 不需依賴它。
+共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
 
 本 Skill 職責：先辨識已確認的事實、偏好、否定方向與未決事項；輸出可接手的 Brief，不替學員確認未證實資料。
 
-交接前保持以下不可倒退的約束：Structure before decoration；Content shapes composition；Layout ≠ Theme；分清 user-provided / observed / inferred / proposed / missing；真正不同方案需有結構差異；1440/1280/768/390 的響應式與鍵盤、reduced-motion 規劃不得憑空宣稱已驗收；不虛構證照、見證、照片、價格、預約或功能。上游已確認的設計目的、拒絕方案理由、結構選擇和未決事項必須保留；若要修改先提出理由並請學員確認。
-
-必要時按任務閱讀其他相關 Skill，不要循環要求先讀完全部 Skills，也不要把本研究文件視為新的 Layout、Block、Section Pattern 或現成網站。

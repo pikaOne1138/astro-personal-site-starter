@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** Reading Atlas、Trust Path 的欄位已在 `.ai/astro-site-assembly/SKILL.md`；Radio Letter 的音訊與逐字稿欄位已併入該 Skill。僅供歷史查閱，不再維護。
+
 # Starter content inputs: Reading Atlas, Radio Letter, Trust Path
 
 These inputs extend **existing** `StarterPlan v1` and travel into the standalone project's `site.config.json`. They do not create a CMS, booking engine, upload server or new app backend.

@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR #46｜2026-10-15 實際驗收
 
 此記錄更新 PR46-HANDOFF.md 的歷史離線狀態。分支保持 Draft；不 Merge、不部署 Production。驗收對象是既有 Starter Export 匯出的獨立學員網站，不以老師的 Prototype gallery 代替交付網站。

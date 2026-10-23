@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** PR 當時的交接、審查與 QA 紀錄。仍有效的規則與尚未簽核的人工驗收清單已併入 `docs/layout/layout-assembly.md`。結構辨識與 QA 證據分級的機器可讀版本是 `docs/art-direction/pr47-layout-handoff-registry.json`。僅供歷史查閱，不再維護。
+
 # Subject Atlas／Practice Compass：獨立組裝與本輪邊界
 
 > 2026-10-14 目標校正：本文件只描述已實作的技術組裝，不是 PR B 的完整目標。PR B 要擴充同用途、同內容仍可辨識不同結構的版型與內頁；不要求每款有不同用途。最新研究與擴充 brief 見 `research-reset-2026-10-14.html`，候選清單見 `template-expansion-research.json`。本輪截圖驗收仍延期，候選不算已交付。

@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR46｜main 整合與 25 款正式 Starter 接手
 
 ## 2026-10-15 自有媒體與可編輯標題（目前入口）

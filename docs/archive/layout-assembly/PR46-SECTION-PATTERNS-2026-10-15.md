@@ -1,3 +1,5 @@
+> **已封存（2026-10-23）。** 某一輪 CI 與驗收的紀錄（Run、Artifact 編號與截圖連結已過期）。仍有效的契約已在 `docs/layout/layout-assembly.md`，學員端契約在 `docs/student-builder-pack/` 的 `EXPANDED-LAYOUTS.md`、`SECTION-PATTERNS.md`、`OWNED-MEDIA.md`。僅供歷史查閱，不再維護。
+
 # PR46｜新增十三款非頁腳 Section Patterns
 
 本輪沿用單一 Site Brief → Builder Pack → 既有匯出器流程，新增十三款維持 Adapter / in-progress。PR 保持 Draft；沒有 Merge、Production 或 DNS 變更。
