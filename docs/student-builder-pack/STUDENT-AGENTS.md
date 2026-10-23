@@ -109,5 +109,5 @@
 - 在新 AI 工具或新對話接手時，依 `PROJECT.md` 的意圖與 Git／程式的現況重新驗證，不依賴舊聊天記憶。
 
 <!-- builder-only:start -->
-本資料包的入口是 `START-HERE.md`；接手既有專案時再讀 `AGENT-HANDOFF.md`。AI 缺少 Node／Git／雲端或瀏覽器能力時，必須如實告知替代流程，不要求完全新手自己猜 CLI 指令。
+本資料包的入口是 `START-HERE.md`；接手既有專案時再讀 `AGENT-HANDOFF.md`。
 <!-- builder-only:end -->
