@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "86d3f875d6d5d99656c4a5970cf8985bdfe5f6f8"
+        "blobSha": "074f2ec339a26d70e39cfb6991a4d205a4dd3f08"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -13376,8 +13376,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13387,13 +13387,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [
+        "B4-DEP24-01-S01",
+        "B4-DEP24-01-S02",
+        "B4-DEP24-01-S03",
+        "B4-DEP24-01-S04",
+        "B4-DEP24-01-S05"
+      ],
+      "parentDisposition": "Five actual hosting settings tracked as separate acceptance checks"
     },
     {
       "legacyId": "B4-DEP24-02",
-      "canonicalId": null,
-      "requirement": "Cloudflare base 依實際根網域或子路徑判斷，不可硬套 /",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0205",
+      "requirement": "Cloudflare base path must derive from actual domain/subpath, not blindly assumed slash",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13425,12 +13432,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CANDIDATE-INVENTORY.md",
@@ -13446,7 +13457,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B5-PUB8-01",
@@ -21675,9 +21693,9 @@
     },
     {
       "legacyId": "B4-DEP24-01-S01",
-      "canonicalId": null,
-      "requirement": "核對正式部署分支",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0200",
+      "requirement": "Verify Cloudflare deployment branch against actual student production configuration",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21699,12 +21717,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21714,13 +21736,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP24-01-S02",
-      "canonicalId": null,
-      "requirement": "核對依賴安裝與 Build 命令",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0201",
+      "requirement": "Verify dependency installation and build commands",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21742,12 +21771,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21757,13 +21790,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP24-01-S03",
-      "canonicalId": null,
-      "requirement": "核對靜態 dist 輸出設定",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0202",
+      "requirement": "Verify static output directory such as dist",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21785,12 +21825,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21800,13 +21844,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP24-01-S04",
-      "canonicalId": null,
-      "requirement": "核對 Astro site",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0203",
+      "requirement": "Verify Astro site configured for actual deployment origin",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21828,12 +21879,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21843,13 +21898,20 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B4-DEP24-01-S05",
-      "canonicalId": null,
-      "requirement": "核對 Astro base",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0204",
+      "requirement": "Verify Astro base path for the real Cloudflare route",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21871,12 +21933,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student site using Cloudflare Git integration"
+      ],
+      "conditions": [
+        "Cloudflare hosting option selected"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH1-8-CHILD-SPLIT-02.md",
@@ -21886,7 +21952,14 @@
         }
       ],
       "parentLegacyId": null,
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 24,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。",
+        "method": "FROZEN_SOURCE_AND_LEGACY_ATOMIC_REVIEW"
+      }
     },
     {
       "legacyId": "B5-PUB63-02-S01",
@@ -28740,8 +28813,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
@@ -28756,7 +28829,8 @@
         "B9C-ASM80-02",
         "B9C-ASM80-03",
         "B9C-ASM80-04"
-      ]
+      ],
+      "parentDisposition": "Composite design fidelity retained as individually scoped requirements"
     },
     {
       "legacyId": "B9C-DEP11",
@@ -30954,9 +31028,9 @@
     },
     {
       "legacyId": "B9C-ASM80-01",
-      "canonicalId": null,
-      "requirement": "不重新加入已移除的裝飾替代面板",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0196",
+      "requirement": "Do not reintroduce removed decorative substitute panels when adapting an original prototype",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30978,12 +31052,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Only when selected layout prototype originally contains the named pattern"
+      ],
+      "conditions": [
+        "Selected layout requires faithful prototype adaptation"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -30993,13 +31071,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM80",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 80,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_PROTOTYPE_FIDELITY_REVIEW"
+      }
     },
     {
       "legacyId": "B9C-ASM80-02",
-      "canonicalId": null,
-      "requirement": "保留垂直學習路徑與收藏抽屜",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0197",
+      "requirement": "Preserve source-specific vertical learning path and collection drawers",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31021,12 +31106,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Only when selected layout prototype originally contains the named pattern"
+      ],
+      "conditions": [
+        "Selected layout requires faithful prototype adaptation"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31036,13 +31125,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM80",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 80,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_PROTOTYPE_FIDELITY_REVIEW"
+      }
     },
     {
       "legacyId": "B9C-ASM80-03",
-      "canonicalId": null,
-      "requirement": "保留階梯教練卡片及名冊／活動帳本",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0198",
+      "requirement": "Preserve stepped coaching cards and roster/event ledger where selected",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31064,12 +31160,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Only when selected layout prototype originally contains the named pattern"
+      ],
+      "conditions": [
+        "Selected layout requires faithful prototype adaptation"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31079,13 +31179,20 @@
         }
       ],
       "parentLegacyId": "B9C-ASM80",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 80,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_PROTOTYPE_FIDELITY_REVIEW"
+      }
     },
     {
       "legacyId": "B9C-ASM80-04",
-      "canonicalId": null,
-      "requirement": "保留五站路徑",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0199",
+      "requirement": "Preserve the original five-stop trust journey where selected",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31107,12 +31214,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Only when selected layout prototype originally contains the named pattern"
+      ],
+      "conditions": [
+        "Selected layout requires faithful prototype adaptation"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31122,7 +31233,14 @@
         }
       ],
       "parentLegacyId": "B9C-ASM80",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-site-assembly/SKILL.md",
+        "frozenLine": 80,
+        "frozenBlobSha": "d7d78ef65952a00ca5704153b672830e4d28386e",
+        "sourceText": "- Do not re-add the removed decorative replacement panels to simulate original Prototype fidelity. Preserve the source-specific vertical learning path, collection drawers, stepped coaching cards, roster/event ledger and five-stop route.",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_PROTOTYPE_FIDELITY_REVIEW"
+      }
     },
     {
       "legacyId": "B9C-DEP11-01",
@@ -81244,36 +81362,36 @@
         {
           "legacyId": "B9C-ASM80",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "NORMATIVE",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM80-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "不重新加入已移除的裝飾替代面板",
+          "canonicalId": "ATP-P2-0196",
+          "reviewStatus": "APPROVED",
+          "requirement": "Do not reintroduce removed decorative substitute panels when adapting an original prototype",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM80-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "保留垂直學習路徑與收藏抽屜",
+          "canonicalId": "ATP-P2-0197",
+          "reviewStatus": "APPROVED",
+          "requirement": "Preserve source-specific vertical learning path and collection drawers",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM80-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "保留階梯教練卡片及名冊／活動帳本",
+          "canonicalId": "ATP-P2-0198",
+          "reviewStatus": "APPROVED",
+          "requirement": "Preserve stepped coaching cards and roster/event ledger where selected",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-ASM80-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "保留五站路徑",
+          "canonicalId": "ATP-P2-0199",
+          "reviewStatus": "APPROVED",
+          "requirement": "Preserve the original five-stop trust journey where selected",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -81291,7 +81409,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-site-entry/SKILL.md:10",

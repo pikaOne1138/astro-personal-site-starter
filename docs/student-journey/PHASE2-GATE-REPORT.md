@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1141 |
-| approvedCanonicalIds | 195 |
+| pendingSemanticDecisions | 1129 |
+| approvedCanonicalIds | 205 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 34 |
+| sourceFirstApprovedCanonicalLinkLines | 35 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1141,
-    "approvedCanonicalIds": 195,
+    "pendingSemanticDecisions": 1129,
+    "approvedCanonicalIds": 205,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 34,
+    "sourceFirstApprovedCanonicalLinkLines": 35,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -3639,36 +3639,36 @@
           "id": "B9C-ASM80",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "NORMATIVE"
         },
         {
           "id": "B9C-ASM80-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "不重新加入已移除的裝飾替代面板"
+          "canonicalId": "ATP-P2-0196",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Do not reintroduce removed decorative substitute panels when adapting an original prototype"
         },
         {
           "id": "B9C-ASM80-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "保留垂直學習路徑與收藏抽屜"
+          "canonicalId": "ATP-P2-0197",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Preserve source-specific vertical learning path and collection drawers"
         },
         {
           "id": "B9C-ASM80-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "保留階梯教練卡片及名冊／活動帳本"
+          "canonicalId": "ATP-P2-0198",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Preserve stepped coaching cards and roster/event ledger where selected"
         },
         {
           "id": "B9C-ASM80-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "保留五站路徑"
+          "canonicalId": "ATP-P2-0199",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Preserve the original five-stop trust journey where selected"
         },
         {
           "id": "B9-ASM-L80-1",
@@ -3855,50 +3855,50 @@
           "id": "B4-DEP24-01",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "Cloudflare Git 整合須核對正式 Branch、Build、dist、site/base"
         },
         {
           "id": "B4-DEP24-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "Cloudflare base 依實際根網域或子路徑判斷，不可硬套 /"
+          "canonicalId": "ATP-P2-0205",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Cloudflare base path must derive from actual domain/subpath, not blindly assumed slash"
         },
         {
           "id": "B4-DEP24-01-S01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對正式部署分支"
+          "canonicalId": "ATP-P2-0200",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify Cloudflare deployment branch against actual student production configuration"
         },
         {
           "id": "B4-DEP24-01-S02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對依賴安裝與 Build 命令"
+          "canonicalId": "ATP-P2-0201",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify dependency installation and build commands"
         },
         {
           "id": "B4-DEP24-01-S03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對靜態 dist 輸出設定"
+          "canonicalId": "ATP-P2-0202",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify static output directory such as dist"
         },
         {
           "id": "B4-DEP24-01-S04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對 Astro site"
+          "canonicalId": "ATP-P2-0203",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify Astro site configured for actual deployment origin"
         },
         {
           "id": "B4-DEP24-01-S05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對 Astro base"
+          "canonicalId": "ATP-P2-0204",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Verify Astro base path for the real Cloudflare route"
         }
       ]
     },
