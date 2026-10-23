@@ -17,8 +17,8 @@
 | unmatchedAliases | 0 |
 | parentDoubleCountRisks | 0 |
 | crossVersionReferences | 0 |
-| pendingSemanticDecisions | 1114 |
-| approvedCanonicalIds | 219 |
+| pendingSemanticDecisions | 1103 |
+| approvedCanonicalIds | 228 |
 | p0Leaves | 86 |
 | p0ApprovedLegacyRows | 51 |
 | p0UniqueCanonicalIds | 47 |
@@ -41,7 +41,7 @@
 | sourceFirstUnscannedFrozenFiles | 0 |
 | sourceFirstCandidateLines | 1793 |
 | sourceFirstExactLegacyLinkLines | 421 |
-| sourceFirstApprovedCanonicalLinkLines | 37 |
+| sourceFirstApprovedCanonicalLinkLines | 38 |
 | sourceFirstUnmappedCandidateLines | 1372 |
 | sourceFirstMappedCandidateLines | 421 |
 | sourceFirstReadFailures | 0 |
@@ -94,8 +94,8 @@
     "unmatchedAliases": 0,
     "parentDoubleCountRisks": 0,
     "crossVersionReferences": 0,
-    "pendingSemanticDecisions": 1114,
-    "approvedCanonicalIds": 219,
+    "pendingSemanticDecisions": 1103,
+    "approvedCanonicalIds": 228,
     "p0Leaves": 86,
     "p0ApprovedLegacyRows": 51,
     "p0UniqueCanonicalIds": 47,
@@ -118,7 +118,7 @@
     "sourceFirstUnscannedFrozenFiles": 0,
     "sourceFirstCandidateLines": 1793,
     "sourceFirstExactLegacyLinkLines": 421,
-    "sourceFirstApprovedCanonicalLinkLines": 37,
+    "sourceFirstApprovedCanonicalLinkLines": 38,
     "sourceFirstUnmappedCandidateLines": 1372,
     "sourceFirstMappedCandidateLines": 421,
     "sourceFirstReadFailures": 0,
@@ -3747,36 +3747,36 @@
           "id": "B9C-DEP11",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "PROCEDURE / ARCHITECTURE"
         },
         {
           "id": "B9C-DEP11-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀學生 ZIP 的 AGENTS/Preview/Publishing Skills"
+          "canonicalId": "ATP-P2-0225",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Read student ZIP AGENTS and relevant Preview/Publishing skills before deployment"
         },
         {
           "id": "B9C-DEP11-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "讀學生 astro.config/package/workflows"
+          "canonicalId": "ATP-P2-0226",
+          "kind": "procedure",
+          "decision": "KEEP",
+          "requirement": "Inspect actual student Astro config, package and Actions workflows"
         },
         {
           "id": "B9C-DEP11-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "deploy.yml 僅 main 人工發布、pr-check.yml 僅 Build Artifact"
+          "canonicalId": "ATP-P2-0227",
+          "kind": "architecture",
+          "decision": "KEEP",
+          "requirement": "Distinguish manual production deploy workflow from PR build artifact workflow"
         },
         {
           "id": "B9C-DEP11-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "核對學生 Repo、Domain、平台，不套老師專屬工作流"
+          "canonicalId": "ATP-P2-0228",
+          "kind": "policy",
+          "decision": "KEEP",
+          "requirement": "Verify student repository, hosting platform and actual domain rather than teacher workflows"
         },
         {
           "id": "B9-DEP-L11-1",
@@ -4017,43 +4017,43 @@
           "id": "B9C-DEP36",
           "canonicalId": null,
           "kind": "evidence",
-          "decision": "PENDING",
+          "decision": "PARTIAL_SPLIT",
           "requirement": "EVIDENCE"
         },
         {
           "id": "B9C-DEP36-01",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "交接正式 URL"
+          "canonicalId": "ATP-P2-0220",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Handoff contains the real production URL"
         },
         {
           "id": "B9C-DEP36-02",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "交接 Preview 流程"
+          "canonicalId": "ATP-P2-0221",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Handoff explains actual student Preview procedure"
         },
         {
           "id": "B9C-DEP36-03",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "交接更新位置"
+          "canonicalId": "ATP-P2-0222",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Handoff identifies content update location in the student site"
         },
         {
           "id": "B9C-DEP36-04",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "交接還原方案"
+          "canonicalId": "ATP-P2-0223",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Handoff explains a recoverable restore path"
         },
         {
           "id": "B9C-DEP36-05",
-          "canonicalId": null,
-          "kind": "evidence",
-          "decision": "PENDING",
-          "requirement": "未串接服務誠實列出"
+          "canonicalId": "ATP-P2-0224",
+          "kind": "acceptance",
+          "decision": "KEEP",
+          "requirement": "Handoff explicitly discloses external services not connected"
         },
         {
           "id": "B9-DEP-L36-1",

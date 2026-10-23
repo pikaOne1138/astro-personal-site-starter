@@ -360,7 +360,7 @@
       },
       {
         "path": "docs/student-journey/PHASE2-GATE-REPORT.md",
-        "blobSha": "e0663e39757e4e2d5c42d257444f144649798efe"
+        "blobSha": "b2c94a16003648b6bdac5405eaae49f27b454815"
       },
       {
         "path": "docs/student-journey/PHASE2-ID-INTEGRITY-AUDIT-06.md",
@@ -29014,8 +29014,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
@@ -29030,7 +29030,8 @@
         "B9C-DEP11-02",
         "B9C-DEP11-03",
         "B9C-DEP11-04"
-      ]
+      ],
+      "parentDisposition": "Inherited composite is covered by separately approved atomic evidence/procedure clauses"
     },
     {
       "legacyId": "B9C-DEP15",
@@ -29298,8 +29299,8 @@
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "PARTIAL_SPLIT",
+      "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-ATOMIC-C.md",
@@ -29315,7 +29316,8 @@
         "B9C-DEP36-03",
         "B9C-DEP36-04",
         "B9C-DEP36-05"
-      ]
+      ],
+      "parentDisposition": "Inherited composite is covered by separately approved atomic evidence/procedure clauses"
     },
     {
       "legacyId": "B9C-DEP40",
@@ -31396,9 +31398,9 @@
     },
     {
       "legacyId": "B9C-DEP11-01",
-      "canonicalId": null,
-      "requirement": "讀學生 ZIP 的 AGENTS/Preview/Publishing Skills",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0225",
+      "requirement": "Read student ZIP AGENTS and relevant Preview/Publishing skills before deployment",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31420,12 +31422,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
+      "conditions": [
+        "Read settings from actual exported student project, not fixed teacher demo"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31435,13 +31441,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP11",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 11,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP11-02",
-      "canonicalId": null,
-      "requirement": "讀學生 astro.config/package/workflows",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0226",
+      "requirement": "Inspect actual student Astro config, package and Actions workflows",
+      "kind": "procedure",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31463,12 +31476,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
+      "conditions": [
+        "Read settings from actual exported student project, not fixed teacher demo"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31478,13 +31495,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP11",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 11,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP11-03",
-      "canonicalId": null,
-      "requirement": "deploy.yml 僅 main 人工發布、pr-check.yml 僅 Build Artifact",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0227",
+      "requirement": "Distinguish manual production deploy workflow from PR build artifact workflow",
+      "kind": "architecture",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31506,12 +31530,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
+      "conditions": [
+        "Read settings from actual exported student project, not fixed teacher demo"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31521,13 +31549,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP11",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 11,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP11-04",
-      "canonicalId": null,
-      "requirement": "核對學生 Repo、Domain、平台，不套老師專屬工作流",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0228",
+      "requirement": "Verify student repository, hosting platform and actual domain rather than teacher workflows",
+      "kind": "policy",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31549,12 +31584,16 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
-      "conditions": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
+      "conditions": [
+        "Read settings from actual exported student project, not fixed teacher demo"
+      ],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -31564,7 +31603,14 @@
         }
       ],
       "parentLegacyId": "B9C-DEP11",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 11,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "讀取離線包的 `AGENTS.md`、`.ai/astro-pr-preview/SKILL.md`、`.ai/astro-content-publishing/SKILL.md`，再讀**學員生成專案**的 `astro.config.mjs`、`package.json` 與實際 `.github/workflows/`。生成器提供 `deploy.yml`（只允許main人工觸發正式發布）和 `pr-check.yml`（只讀Build Artifact）；不要尋找老師專用deploy-pages/pr-preview檔案。先確認自己的Repository／網域與託管平台；不可沿用老師owner/repo。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP15-01",
@@ -32265,9 +32311,9 @@
     },
     {
       "legacyId": "B9C-DEP36-01",
-      "canonicalId": null,
-      "requirement": "交接正式 URL",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0220",
+      "requirement": "Handoff contains the real production URL",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32289,12 +32335,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32304,13 +32352,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP36",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 36,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 提供「正式網址、預覽流程、更新位置、還原方式、未串接服務」交接清單。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP36-02",
-      "canonicalId": null,
-      "requirement": "交接 Preview 流程",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0221",
+      "requirement": "Handoff explains actual student Preview procedure",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32332,12 +32387,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32347,13 +32404,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP36",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 36,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 提供「正式網址、預覽流程、更新位置、還原方式、未串接服務」交接清單。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP36-03",
-      "canonicalId": null,
-      "requirement": "交接更新位置",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0222",
+      "requirement": "Handoff identifies content update location in the student site",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32375,12 +32439,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32390,13 +32456,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP36",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 36,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 提供「正式網址、預覽流程、更新位置、還原方式、未串接服務」交接清單。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP36-04",
-      "canonicalId": null,
-      "requirement": "交接還原方案",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0223",
+      "requirement": "Handoff explains a recoverable restore path",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32418,12 +32491,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32433,13 +32508,20 @@
         }
       ],
       "parentLegacyId": "B9C-DEP36",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 36,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 提供「正式網址、預覽流程、更新位置、還原方式、未串接服務」交接清單。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP36-05",
-      "canonicalId": null,
-      "requirement": "未串接服務誠實列出",
-      "kind": "evidence",
+      "canonicalId": "ATP-P2-0224",
+      "requirement": "Handoff explicitly discloses external services not connected",
+      "kind": "acceptance",
       "sourceRefs": [
         {
           "path": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32461,12 +32543,14 @@
         }
       ],
       "aliases": [],
-      "applicability": [],
+      "applicability": [
+        "Student-owned site deployment or delivery"
+      ],
       "conditions": [],
       "exceptions": [],
       "acceptanceCriteria": [],
-      "decision": "PENDING",
-      "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+      "decision": "KEEP",
+      "reviewStatus": "APPROVED",
       "evidence": [
         {
           "workingPath": "docs/student-journey/PHASE2-BATCH9-C-CHILD-ID-REGISTER.md",
@@ -32476,7 +32560,14 @@
         }
       ],
       "parentLegacyId": "B9C-DEP36",
-      "childrenLegacyIds": []
+      "childrenLegacyIds": [],
+      "approvalEvidence": {
+        "frozenPath": ".ai/astro-starter-deploy/SKILL.md",
+        "frozenLine": 36,
+        "frozenBlobSha": "0354681c6c6217310d5d858d3bddbdffe3911f49",
+        "sourceText": "- 提供「正式網址、預覽流程、更新位置、還原方式、未串接服務」交接清單。",
+        "method": "FROZEN_SOURCE_AND_ATOMIC_LEGACY_CLAUSE"
+      }
     },
     {
       "legacyId": "B9C-DEP40-01",
@@ -82381,36 +82472,36 @@
         {
           "legacyId": "B9C-DEP11",
           "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
+          "reviewStatus": "PARENT_COVERED_BY_ATOMIC_CHILDREN",
           "requirement": "PROCEDURE / ARCHITECTURE",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-DEP11-01",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "讀學生 ZIP 的 AGENTS/Preview/Publishing Skills",
+          "canonicalId": "ATP-P2-0225",
+          "reviewStatus": "APPROVED",
+          "requirement": "Read student ZIP AGENTS and relevant Preview/Publishing skills before deployment",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-DEP11-02",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "讀學生 astro.config/package/workflows",
+          "canonicalId": "ATP-P2-0226",
+          "reviewStatus": "APPROVED",
+          "requirement": "Inspect actual student Astro config, package and Actions workflows",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-DEP11-03",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "deploy.yml 僅 main 人工發布、pr-check.yml 僅 Build Artifact",
+          "canonicalId": "ATP-P2-0227",
+          "reviewStatus": "APPROVED",
+          "requirement": "Distinguish manual production deploy workflow from PR build artifact workflow",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
           "legacyId": "B9C-DEP11-04",
-          "canonicalId": null,
-          "reviewStatus": "PENDING_SEMANTIC_REVIEW",
-          "requirement": "核對學生 Repo、Domain、平台，不套老師專屬工作流",
+          "canonicalId": "ATP-P2-0228",
+          "reviewStatus": "APPROVED",
+          "requirement": "Verify student repository, hosting platform and actual domain rather than teacher workflows",
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         },
         {
@@ -82428,7 +82519,7 @@
           "relationship": "EXACT_SOURCE_LINE_NOT_PROOF_OF_SEMANTIC_COVERAGE"
         }
       ],
-      "sourceCoverageState": "LEGACY_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
+      "sourceCoverageState": "CANONICAL_REFERENCES_EXIST_CLAUSE_COMPLETENESS_PENDING"
     },
     {
       "sourceKey": ".ai/astro-starter-deploy/SKILL.md:16",
