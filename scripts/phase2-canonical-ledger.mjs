@@ -1942,13 +1942,13 @@ for(const item of old.records){
   const key=ref.path+':'+ref.lineStart;
   if(!anchorGroups.has(key))anchorGroups.set(key,new Map());
   anchorGroups.get(key).set(item.legacyId,{id:item.legacyId,canonicalId:item.canonicalId,
-   kind:item.kind,decision:item.decision,requirement:item.requirement});
+   kind:item.kind,decision:item.decision,reviewStatus:item.reviewStatus,requirement:item.requirement});
  }
 }
 const multipleAnchorGroups=[...anchorGroups.entries()].filter(([,v])=>v.size>=2)
  .map(([sourceKey,v])=>({sourceKey,rows:[...v.values()]}))
  .sort((a,b)=>b.rows.length-a.rows.length||a.sourceKey.localeCompare(b.sourceKey));
-const pendingMultipleAnchorGroups=multipleAnchorGroups.filter(x=>x.rows.some(y=>!y.canonicalId));
+const pendingMultipleAnchorGroups=multipleAnchorGroups.filter(x=>x.rows.some(y=>!y.canonicalId&&y.reviewStatus!=='PARENT_COVERED_BY_ATOMIC_CHILDREN'));
 const status={
  frozenManifestFiles:Object.keys(manifest).length,workingFiles:files.length,
  frozenManifestIntegrityErrors:frozenManifestErrors.length,
