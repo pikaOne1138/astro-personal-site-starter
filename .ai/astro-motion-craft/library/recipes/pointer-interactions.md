@@ -1,9 +1,11 @@
 # Recipe P01–P02｜Tilt／Spotlight／Magnetic
 
-## 來源（Manus v2 ZIP 原始檔）
-- `src/components/effects/MotionCard.astro`
-- `src/components/common/Button.astro`
-- `src/styles/components.css` `.motion-card`、`.magnetic-button`、`.button`
+## Manus 來源（參考專案的檔案，快照在 `library/source-snapshots/manus-source/`）
+- Manus: `src/components/effects/MotionCard.astro`（`MotionCard.astro.txt`）
+- Manus: `src/components/common/Button.astro`（`Button.astro.txt`）
+- Manus: `src/styles/components.css` 的 `.motion-card`、`.magnetic-button`、`.button`（`components.effects.css.txt`）
+
+我們自己的版本：`src/components/effects/MotionCard.astro`、`MagneticButton.astro`。
 
 ## Manus 原始碼確認
 

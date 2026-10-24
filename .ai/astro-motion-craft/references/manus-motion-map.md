@@ -1,8 +1,8 @@
-# Manus v2：動效 API 與本專案整合對照
+# Manus：動效 API 與本專案整合對照
 
-來源：使用者提供的 Manus v2 README、Catalog 和 ZIP 內 component 源碼（2026-10-08）。此文件描述**參考專案**的 API；「現況」欄記錄我們對應的元件，實際以 `src/components/effects/` 為準。新增前以實際原始碼、Props 與授權逐項檢查。
+來源：使用者提供的 Manus 專案 README、元件目錄與元件原始碼（快照見 `library/source-snapshots/manus-source/`）。「原始檔」欄是 Manus 專案內的路徑，與我們同名的元件不是同一個檔案。此文件描述**參考專案**的 API；「現況」欄記錄我們對應的元件，實際以 `src/components/effects/` 為準。新增前以實際原始碼、Props 與授權逐項檢查。
 
-| 原始檔 | Manus v2 參數／限制 | 本專案建議 | 現況 |
+| Manus 原始檔 | Manus 參數／限制 | 本專案建議 | 現況 |
 |---|---|---|---|
 | `effects/Reveal.astro` | `variant=fade-up/fade/soft-zoom/blur-up/slide-left/slide-right/clip-up`；`delay` 0–1400ms；`duration` 350–1400ms；`once`；`className` | 把現有 global `data-reveal` 整理為可用 variants，或建立封裝但不得啟動雙 observer；預設 subtle | 已實作 `src/components/effects/Reveal.astro`，七種 variant，使用 `data-motion-*`；全域 `data-reveal` 另保留 |
 | `effects/StaggerGroup.astro` | `step` 20–260ms；`start` 0–1200ms；只管直接子層 `[data-reveal]`，累積延遲上限 1600ms | 建議每組 3–6 項且總延遲 ≤ 600ms；超過直接顯示 | 已實作 `StaggerGroup.astro` |

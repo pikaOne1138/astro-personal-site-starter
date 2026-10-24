@@ -1,12 +1,14 @@
 # Recipe R01–R02｜Reveal + Stagger
 
-## 來源（Manus v2 ZIP 原始檔）
+## Manus 來源（參考專案的檔案，快照在 `library/source-snapshots/manus-source/`）
 
-- `src/components/effects/Reveal.astro`
-- `src/components/effects/StaggerGroup.astro`
-- `src/scripts/reveal.ts`
-- `src/styles/components.css` 中 `.reveal--*`、`.reveal-pending`、`.reveal-in`
-- Catalog 動態與微互動 §Reveal/Stagger
+- Manus: `src/components/effects/Reveal.astro`（`Reveal.astro.txt`）
+- Manus: `src/components/effects/StaggerGroup.astro`（`StaggerGroup.astro.txt`）
+- Manus: `src/scripts/reveal.ts`（`reveal.ts.txt`）
+- Manus: `src/styles/components.css` 中 `.reveal--*`、`.reveal-pending`、`.reveal-in`（`components.effects.css.txt`）
+- Manus 元件目錄的「動態與微互動」Reveal／Stagger 段
+
+我們自己的版本：`src/components/effects/Reveal.astro`、`StaggerGroup.astro`。
 
 ### Manus 行為（忠於原始碼）
 

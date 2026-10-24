@@ -1,6 +1,6 @@
-# 動效型錄：Manus v2 × 現有 Astro 元件
+# 動效型錄：Manus × 現有 Astro 元件
 
-「本專案現況」欄的事實來源是 `src/data/effects.registry.json` 與 `src/components/effects/`，文件可能落後，以程式碼為準。Manus API 與原始行為依使用者提供的 ZIP 實際檔案核對；以下「建議」則是本專案新設計決策。
+「本專案現況」欄的事實來源是 `src/data/effects.registry.json` 與 `src/components/effects/`，文件可能落後，以程式碼為準。Manus API 與原始行為依 `library/source-snapshots/manus-source/` 的快照核對；以下「建議」則是本專案新設計決策。
 
 | ID | Manus 原始 Props／行為 | 本專案現況 | 方案與強度 |
 |---|---|---|---|

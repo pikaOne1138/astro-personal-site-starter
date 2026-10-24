@@ -7,7 +7,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 
 ## 必讀：特效參考庫（不是只有一份 Skill 文件）
 
-本專案維護 `library/`，把 Manus v2 原始檔案的實際 API、數值、行為與我們現有 Astro 元件放在一起。**每次要寫動效程式前，必須先讀庫內的對應 recipe，不能只根據效果名稱猜測。**
+本專案維護 `library/`，把 Manus 原始檔案的實際 API、數值、行為與我們現有 Astro 元件放在一起。**每次要寫動效程式前，必須先讀庫內的對應 recipe，不能只根據效果名稱猜測。**
 
 - 入口：[`library/README.md`](./library/README.md)
 - 完整現況／Manus 來源／設計分工：[`library/effect-catalog.md`](./library/effect-catalog.md)
@@ -21,7 +21,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 2. 「本專案建議／recipe」為我們依現有四套主題重新設計的融合方案；
 3. 「已實作」只以專案裡實際存在的元件與網站展示為準。
 
-這個 library 是**實作知識庫**，不是自動引入外部程式碼的 runtime。新的 AI Agent 若無法直接存取原始 ZIP，仍能按 library 的參數與源檔路徑做受限的可重用實作；需要完整逐字移植前則需再次取得原 ZIP 並核對授權與相容性。
+這個 library 是**實作知識庫**，不是自動引入外部程式碼的 runtime。新的 AI Agent 若無法取得 Manus 原專案，仍能按 library 的參數與源檔路徑做受限的可重用實作；需要完整逐字移植前則需再次取得原專案 並核對授權與相容性。
 
 ## 何時使用
 
@@ -79,7 +79,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 
 > 參考庫是常駐的設計資產，新增效果、修正既有效果時，也要回填 `library/effect-catalog.md` 的狀態與對應 recipe。
 
-> Manus v2 的資料是**設計參考**，不代表專案已安裝它的依賴或實作。
+> Manus 的資料是**設計參考**，不代表專案已安裝它的依賴或實作。
 
 
 ## 實際可操作的特效庫
