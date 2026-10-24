@@ -15,7 +15,7 @@ try{
  put('site.config.json',JSON.stringify({site:'https://example.com',base:'/',navigation:[],brand:{name:'Fixture'}}));
  put('dist/index.html',page(''));
  put('dist/404.html',page('404.html'));
- put('dist/robots.txt','User-agent: *\\nAllow: /\\nSitemap: '+url+'sitemap.xml\\n');
+ put('dist/robots.txt','User-agent: *\nAllow: /\nSitemap: '+url+'sitemap.xml\n');
  put('dist/sitemap.xml','<urlset><url><loc>'+url+'</loc></url></urlset>');
  put('dist/rss.xml','<rss version="2.0"><channel><link>'+url+'</link></channel></rss>');
  assert.equal(run({}).ok,false,'placeholder origin must fail');
