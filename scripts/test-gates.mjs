@@ -3,7 +3,9 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
-import {loadGateConfig,gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,runGates,visibleText} from './gates.mjs';
+import {loadGateConfig,gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateApproval,gatePublishPath,gateLinks,gateEnvironment,runGates,visibleText} from './gates.mjs';
+import {validateState,readState} from './site-state.mjs';
+import {inspectEnvironment,needsRecheck} from './preflight.mjs';
 
 const gc=loadGateConfig('.');
 const url='https://site.example.org/';
@@ -80,8 +82,64 @@ try{
  assert.equal(gateDrafts(ctx(empty,'release')).status,'NOT TESTED');
  // aggregate exit contract: offline optional-free fixtures, preview does not block on WARN only
  r=mk({kind:'helper',site:'https://example.com'},'<main>尚未提供</main>');
- const preview=runGates({root:r,mode:'preview',env:{}});
+ const preview=await runGates({root:r,mode:'preview',env:{}});
  assert.ok(preview.results.find(x=>x.id==='G-01').status==='WARN'&&preview.results.find(x=>x.id==='G-02').status==='WARN');
- const release=runGates({root:r,mode:'release',env:{}});assert.equal(release.exitCode,1);assert.ok(release.results.some(x=>x.id==='G-02'&&x.status==='FAIL'));
- console.log('Gates G-01..G-05, G-09 fixtures PASS (machine checks only; content truth and human approval are not proven).');
+ const release=await runGates({root:r,mode:'release',env:{}});assert.equal(release.exitCode,1);assert.ok(release.results.some(x=>x.id==='G-02'&&x.status==='FAIL'));
+
+ // ---- batch 4: G-06 approval evidence in a real temp git repo
+ const gitIn=(cwd,...a)=>{const o=spawnSync('git',a,{cwd,encoding:'utf8'});assert.equal(o.status,0,a.join(' ')+o.stderr);return o.stdout.trim();};
+ r=mk(good,'<main></main>',{'src/a.txt':'one\n','PROJECT.md':'# p\n'});
+ gitIn(r,'init','-q');gitIn(r,'config','user.email','t@t');gitIn(r,'config','user.name','t');
+ gitIn(r,'add','-A');gitIn(r,'commit','-qm','approved version');
+ const approved=gitIn(r,'rev-parse','HEAD');
+ const rel=(extra={})=>({...ctx(r,'release',{RELEASE_APPROVED_URL:url,...extra}),results:[]});
+ assert.equal(gateApproval(ctx(r,'preview')),null,'approval gate is release-only');
+ g=gateApproval(rel({RELEASE_APPROVED_SHA:approved,RELEASE_SHA:approved}));assert.equal(g.status,'PASS');assert.match(g.evidence.join(),/cannot authenticate consent/);
+ g=gateApproval(rel({}));assert.equal(g.status,'FAIL');assert.match(g.learnerMessage,/核准紀錄/);
+ g=gateApproval(rel({RELEASE_APPROVED_SHA:'abc'}));assert.equal(g.status,'FAIL','non-40-hex SHA is not an approval');
+ g=gateApproval({...rel({RELEASE_APPROVED_SHA:approved,RELEASE_SHA:approved}),env:{SITE_URL:url,RELEASE_APPROVED_SHA:approved,RELEASE_SHA:approved,RELEASE_APPROVED_URL:'https://other.example.net/'}});assert.equal(g.status,'FAIL','approved URL must be the production URL');
+ // record-only commit after approval (the approval record itself adds a commit): equivalent
+ writeFileSync(join(r,'site-state.json'),JSON.stringify({version:1,stage:'approved',approvedSha:approved,approvalBasis:'學員說「這版可以」'}));
+ writeFileSync(join(r,'PROJECT.md'),'# p\n更新紀錄\n');
+ gitIn(r,'add','-A');gitIn(r,'commit','-qm','record approval');
+ const head=gitIn(r,'rev-parse','HEAD');
+ g=gateApproval(rel({RELEASE_APPROVED_SHA:approved,RELEASE_SHA:head}));assert.equal(g.status,'PASS');assert.match(g.evidence.join(),/only record files changed/);
+ // content commit after approval: blocked, files named
+ writeFileSync(join(r,'src/a.txt'),'two\n');gitIn(r,'add','-A');gitIn(r,'commit','-qm','content change');
+ const head2=gitIn(r,'rev-parse','HEAD');
+ g=gateApproval(rel({RELEASE_APPROVED_SHA:approved,RELEASE_SHA:head2}));assert.equal(g.status,'FAIL');assert.match(g.evidence.join(),/src\/a\.txt/);assert.match(g.learnerMessage,/不一樣/);
+ // unknown commit (squash merge where the PR head is not fetched): NOT TESTED, blocking, never accepted on declaration
+ g=gateApproval(rel({RELEASE_APPROVED_SHA:'f'.repeat(40),RELEASE_SHA:head2}));assert.equal(g.status,'NOT TESTED');assert.equal(g.blocking,true);
+ assert.deepEqual(validateState({version:1,approvedSha:approved}).length>0,true,'approvedSha without basis is rejected');
+ // ---- G-07 publish path
+ const stateFile=(o)=>writeFileSync(join(r,'site-state.json'),JSON.stringify({version:1,...o}));
+ const passApproval=[{id:'G-06',status:'PASS'}],failApproval=[{id:'G-06',status:'FAIL'}];
+ stateFile({});assert.equal(gatePublishPath({...rel(),results:passApproval}).status,'NOT TESTED','platform not recorded');
+ stateFile({deploy:{platform:'cloudflare-pages'}});assert.equal(gatePublishPath({...rel(),results:passApproval}).status,'NOT TESTED','auto-deploy unknown is not a pass');
+ stateFile({deploy:{platform:'cloudflare-pages',autoDeployProduction:true,productionBranch:'main'}});
+ g=gatePublishPath({...rel(),results:failApproval});assert.equal(g.status,'FAIL');assert.match(g.learnerMessage,/自動公開/);
+ assert.equal(gatePublishPath({...rel(),results:passApproval}).status,'PASS');
+ stateFile({deploy:{platform:'cloudflare-pages',autoDeployProduction:false}});assert.equal(gatePublishPath({...rel(),results:failApproval}).status,'PASS','manual promotion path is safe even without approval yet');
+ mkdirSync(join(r,'.github/workflows'),{recursive:true});writeFileSync(join(r,'.github/workflows/deploy.yml'),'on:\n  push:\n    branches: [main]\njobs:\n  d:\n    steps:\n      - uses: actions/deploy-pages@v4\n');
+ stateFile({deploy:{platform:'github-pages'}});
+ assert.equal(gatePublishPath({...rel(),results:failApproval}).status,'FAIL','push-to-main Pages deploy without approval blocks');
+ assert.equal(gatePublishPath({...rel(),results:passApproval}).status,'PASS');
+ assert.equal(gatePublishPath(ctx(r,'preview')),null);
+ // ---- G-08 environment report: unknown is never reported as pass; recheck on environment change
+ const env1=inspectEnvironment(r);assert.equal(env1.capabilities.workflowPush,'unknown');assert.equal(env1.capabilities.deployConnected,'unknown');assert.ok(env1.routes.length>=2);
+ assert.equal(needsRecheck(null,r).recheck,true);
+ assert.equal(needsRecheck({capabilities:{checkedAt:env1.checkedAt,environmentId:env1.environmentId}},r).recheck,false);
+ assert.equal(needsRecheck({capabilities:{checkedAt:env1.checkedAt,environmentId:'other'}},r).recheck,true);
+ stateFile({capabilities:{checkedAt:env1.checkedAt,environmentId:'other'}});
+ g=gateEnvironment(ctx(r,'release'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);
+ // ---- G-10 external links with an injected fetch: 4xx warns, offline is NOT TESTED, neither blocks
+ const linkSite=mk(good,'<main><a href="https://alive.example.org/">a</a><a href="https://gone.example.org/">b</a></main>');
+ const lc=(f)=>({...ctx(linkSite,'release'),fetchImpl:f});
+ g=await gateLinks(lc(async u=>({status:u.includes('gone')?404:200})));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);assert.match(g.evidence.join(),/gone\.example\.org.*404/);
+ g=await gateLinks(lc(async()=>{throw new TypeError('fetch failed');}));assert.equal(g.status,'NOT TESTED');assert.equal(g.blocking,false,'offline must not fail a local build');
+ g=await gateLinks(lc(async()=>({status:200})));assert.equal(g.status,'PASS');assert.match(g.evidence.join(),/does not prove/);
+ assert.equal(await gateLinks(ctx(linkSite,'preview')),null,'link checks are release or opt-in only');
+ const full=await runGates({root:linkSite,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
+ assert.ok(full.results.find(x=>x.id==='G-10').blocking===false);
+ console.log('Gates G-01..G-10 fixtures PASS (machine checks only; content truth and human approval are not proven).');
 }finally{for(const d of dirs)rmSync(d,{recursive:true,force:true});}

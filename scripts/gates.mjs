@@ -3,6 +3,8 @@ import {join,resolve,relative} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {inspectRelease} from './verify-release-readiness.mjs';
 import {scanSecrets} from './check-secrets.mjs';
+import {readState,validateState} from './site-state.mjs';
+import {needsRecheck} from './preflight.mjs';
 
 // Machine gates. Each result: {id,name,status,blocking,evidence,learnerMessage}.
 // status is PASS | FAIL | WARN | NOT TESTED; blocking is separate so an optional NOT TESTED never fails an offline build.
@@ -139,28 +141,117 @@ export function gateDrafts(ctx){
  const out=join(root,'scripts/verify-site-output.mjs');
  const script=existsSync(out)?out:join(here,'verify-site-output.mjs');
  const run=spawnSync(process.execPath,[script,'--student-site',root],{cwd:root,encoding:'utf8',env});
- if(run.status===0)return result('G-09','草稿與預覽不外洩','PASS',{mode,evidence:['verify-site-output: drafts, sitemap, RSS, search index and preview noindex checks passed']});
+ const indexing=mode==='release'?inspectRelease({root,env,approvalRequired:false}).errors.filter(e=>e.startsWith('INDEXING')):[];
+ if(run.status===0&&!indexing.length)return result('G-09','草稿與預覽不外洩','PASS',{mode,evidence:['verify-site-output: drafts, sitemap, RSS, search index and preview noindex checks passed','noindex is not access control: a public preview URL is not private']});
+ if(run.status===0)return result('G-09','草稿與預覽不外洩','FAIL',{mode,evidence:indexing,learnerMessage:'網站的索引設定和你要的公開狀態不一致（該擋搜尋引擎卻沒擋，或該公開卻被擋）。請先不要發布。'});
  const lines=(run.stderr||run.stdout||'').split('\n').filter(Boolean);
  return result('G-09','草稿與預覽不外洩','FAIL',{mode,evidence:lines.slice(0,5),learnerMessage:'有不該公開的內容（例如草稿）出現在公開的頁面、搜尋或訂閱裡。請先不要發布。'});
 }
 
+const git=(args,root)=>{const r=spawnSync('git',args,{cwd:root,encoding:'utf8'});return r.status===0?r.stdout.trim():null;};
+const RECORD_ONLY=[/^site-state\.json$/,/^PROJECT\.md$/,/^qa-artifacts\//];
+
+export function gateReleaseTech(ctx){
+ const {root,mode,env}=ctx;
+ if(mode!=='release')return null;
+ const rel=inspectRelease({root,env,approvalRequired:false});
+ const errs=rel.errors.filter(e=>/^(ROBOTS|SITEMAP|RSS|PREVIEW|DIST|BASE_URL)/.test(e));
+ return result('R-01','發布技術檢查（robots、sitemap、RSS、平台分支）',errs.length?'FAIL':'PASS',{mode,evidence:errs,learnerMessage:errs.length?'網站的搜尋引擎設定或網址清單有問題，現在發布會讓別人找不到或找錯地方。':''});
+}
+
+// G-06: approval evidence. Identical SHAs pass; different SHAs pass only when git shows nothing but record files changed.
+// An AI saying "same version" is never enough, and neither is a SHA that merely looks plausible.
 export function gateApproval(ctx){
  const {root,mode,env}=ctx;
  if(mode!=='release')return null;
- const rel=inspectRelease({root,env,approvalRequired:true});
- const errs=rel.errors.filter(e=>e.startsWith('APPROVAL')||e.startsWith('INDEXING')||e.startsWith('ROBOTS')||e.startsWith('SITEMAP')||e.startsWith('RSS')||e.startsWith('PREVIEW')||e.startsWith('DIST'));
- return result('G-06','核准版本（宣告比對）',errs.length?'FAIL':'PASS',{mode,evidence:errs.length?errs:['declared SHA/URL match; a human must still approve this exact version'],
-  learnerMessage:errs.length?'你之前看過並同意的版本，和現在要發布的版本對不上，或網站的索引與網址設定有問題。請重新看一次最新預覽再決定。':''});
+ const {state,error}=readState(root);
+ const evidence=[];
+ if(error)return result('G-06','核准版本',  'FAIL',{mode,evidence:[error],learnerMessage:'核准紀錄檔壞掉了，請請 AI 修復後再發布。'});
+ const problems=state?validateState(state):[];
+ const approved=env.RELEASE_APPROVED_SHA||state?.approvedSha||'';
+ const current=env.RELEASE_SHA||git(['rev-parse','HEAD'],root)||'';
+ const rel=inspectRelease({root,env,approvalRequired:false});
+ const approvedUrl=env.RELEASE_APPROVED_URL||state?.approvedUrl||'';
+ const msg='你之前看過並同意的版本，和現在要發布的版本不一樣（中間又有修改）。請重新看一次最新預覽再決定。';
+ if(problems.length)return result('G-06','核准版本','FAIL',{mode,evidence:problems,learnerMessage:'核准紀錄不完整，請請 AI 補齊後再發布。'});
+ if(!/^[0-9a-f]{40}$/.test(approved))return result('G-06','核准版本','FAIL',{mode,evidence:['no approved SHA recorded (RELEASE_APPROVED_SHA or site-state.json approvedSha)'],learnerMessage:'還沒有你對某個版本的核准紀錄。請先看過最新預覽，明確同意後再發布。'});
+ if(!/^[0-9a-f]{40}$/.test(current))return result('G-06','核准版本','NOT TESTED',{mode,evidence:['current commit unknown: set RELEASE_SHA or run inside the git repository']});
+ if(!rel.site||approvedUrl!==rel.site)evidence.push('APPROVAL: approved URL must equal the production URL '+(rel.site||'(unresolved)'));
+ if(evidence.length)return result('G-06','核准版本','FAIL',{mode,evidence,learnerMessage:'你核准的網址和現在要發布的網址不一樣。請確認要發布的正式網址後再決定。'});
+ if(approved===current)return result('G-06','核准版本','PASS',{mode,evidence:['approved SHA equals release SHA '+current.slice(0,7),'a person must still have approved this exact version; this check cannot authenticate consent']});
+ const have=sha=>git(['cat-file','-e',sha+'^{commit}'],root)!==null||spawnSync('git',['cat-file','-e',sha+'^{commit}'],{cwd:root}).status===0;
+ if(!have(approved)||!have(current))return result('G-06','核准版本','NOT TESTED',{mode,evidence:['cannot compare '+approved.slice(0,7)+' with '+current.slice(0,7)+': a commit is missing locally (fetch the PR head); differing SHAs are not accepted on declaration alone']});
+ const names=(git(['diff','--name-only',approved,current],root)||'').split('\n').filter(Boolean);
+ const changed=names.filter(n=>!RECORD_ONLY.some(re=>re.test(n)));
+ if(changed.length)return result('G-06','核准版本','FAIL',{mode,evidence:['content changed after approval: '+changed.slice(0,10).join(', ')+(changed.length>10?' …':'')],learnerMessage:msg});
+ return result('G-06','核准版本','PASS',{mode,evidence:['SHA differs ('+approved.slice(0,7)+' → '+current.slice(0,7)+') but only record files changed: '+(names.join(', ')||'none'),'a person must still have approved the approved version']});
 }
 
-export function runGates({root='.',mode='preview',env=process.env}={}){
+// G-07: does publishing happen as a side effect of merging/pushing, and is the approval gate in front of it?
+// No platform API is called (no credentials): the platform facts come from site-state.json deploy, which the learner confirmed or a read-only query supplied.
+export function gatePublishPath(ctx){
+ const {root,mode,results}=ctx;
+ if(mode!=='release')return null;
+ const {state}=readState(root);
+ const deploy=state?.deploy;
+ const approval=(results||[]).find(r=>r.id==='G-06');
+ const approvalOk=approval?.status==='PASS';
+ if(!deploy?.platform)return result('G-07','發布通路',  'NOT TESTED',{mode,evidence:['deploy.platform not recorded in site-state.json; the hosting platform and its production-branch policy were not checked']});
+ const wfDir=join(root,'.github/workflows');
+ let pushDeploy=false;
+ if(existsSync(wfDir))for(const f of readdirSync(wfDir)){const t=readFileSync(join(wfDir,f),'utf8');if(/\bon:[\s\S]*?push:[\s\S]*?branches:[\s\S]*?\b(main|master)\b/.test(t)&&/deploy-pages|pages deploy|wrangler|cloudflare/i.test(t))pushDeploy=true;}
+ if(deploy.platform==='github-pages'){
+  if(!existsSync(wfDir))return result('G-07','發布通路','NOT TESTED',{mode,evidence:['no workflow found; cannot tell how GitHub Pages publishes']});
+  return approvalOk?result('G-07','發布通路','PASS',{mode,evidence:[pushDeploy?'pushing to the main branch publishes; the approval gate (G-06) passed for this version':'no push-triggered deploy workflow found']}):
+   result('G-07','發布通路',pushDeploy?'FAIL':'PASS',{mode,evidence:[pushDeploy?'pushing to main publishes this site but G-06 did not pass':'no push-triggered deploy workflow found'],learnerMessage:pushDeploy?'合併或推送就會直接公開網站，但這個版本還沒有你的核准。請先完成核准再合併。':''});
+ }
+ if(deploy.autoDeployProduction===undefined||deploy.autoDeployProduction===null)return result('G-07','發布通路','NOT TESTED',{mode,evidence:['deploy.autoDeployProduction unknown: could not confirm whether connecting or pushing publishes to production (needs the platform settings or a read-only query)']});
+ if(deploy.autoDeployProduction&&!approvalOk)return result('G-07','發布通路','FAIL',{mode,evidence:['platform auto-deploys production on push/merge and G-06 did not pass for this version','production branch: '+(deploy.productionBranch||'unknown')],learnerMessage:'平台會在合併或推送時自動公開網站，但這個版本還沒有你的核准。請先完成核准，或先把正式分支設成不會自動發布。'});
+ return result('G-07','發布通路','PASS',{mode,evidence:[deploy.autoDeployProduction?'auto-deploy is on and the approval gate passed for this version':'production publishing is a separate, manual step','state checked at '+(deploy.checkedAt||'unknown time')+' ('+(deploy.source||'unknown source')+'); re-check if the platform connection changed']});
+}
+
+export function gateEnvironment(ctx){
+ const {root,mode}=ctx;
+ const {state}=readState(root);
+ const r=needsRecheck(state,root);
+ return result('G-08','環境能力報告',r.recheck?'WARN':'PASS',{mode,required:false,evidence:[r.reason+(r.recheck?'; run npm run preflight -- --write':''),state?.capabilities?.checkedAt?'last checked '+state.capabilities.checkedAt:'never checked'],
+  learnerMessage:r.recheck?'還沒做過（或環境已改變）的環境檢查。請請 AI 先跑環境檢查，再照結果選路線。':''});
+}
+
+// G-10: external links. Warnings only; "unreachable" (offline sandbox) is NOT TESTED and never blocks.
+export async function gateLinks(ctx){
+ const {root,mode,fetchImpl=globalThis.fetch,checkLinks,config}=ctx;
+ if(mode!=='release'&&!checkLinks)return null;
+ const dist=join(root,'dist');
+ if(!existsSync(dist))return result('G-10','外部連結存活','NOT TESTED',{mode,required:false,evidence:['dist/ missing']});
+ const own=(()=>{try{return new URL(config?.site||'https://invalid.invalid').hostname;}catch{return '';}})();
+ const urls=new Set();
+ for(const f of listHtml(dist))for(const m of readFileSync(f,'utf8').matchAll(/<a\b[^>]*\bhref=["'](https?:\/\/[^"']+)["']/gi)){try{const u=new URL(m[1].replaceAll('&amp;','&'));if(u.hostname!==own&&!/^(www\.)?(w3\.org)$/.test(u.hostname))urls.add(u.href);}catch{}}
+ const list=[...urls].slice(0,30);
+ if(!list.length)return result('G-10','外部連結存活','PASS',{mode,required:false,evidence:['no external links']});
+ const bad=[],unreachable=[];let ok=0;
+ for(const u of list){
+  try{
+   const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),8000);
+   let res=await fetchImpl(u,{method:'HEAD',redirect:'follow',signal:ctl.signal});
+   if(res.status===405||res.status===403)res=await fetchImpl(u,{method:'GET',redirect:'follow',signal:ctl.signal});
+   clearTimeout(t);
+   if(res.status>=400)bad.push(u+' → '+res.status);else ok++;
+  }catch(e){unreachable.push(u+' ('+(e.name||'error')+')');}
+ }
+ if(ok===0&&bad.length===0)return result('G-10','外部連結存活','NOT TESTED',{mode,required:false,evidence:['no response from any external link (offline or blocked network)',...unreachable.slice(0,5)]});
+ if(bad.length)return result('G-10','外部連結存活','WARN',{mode,required:false,evidence:[...bad,...unreachable.map(u=>'unreachable '+u),'200/3xx does not prove a booking or contact link actually works'],learnerMessage:'有外部連結打不開：'+bad.slice(0,3).join('；')+'。請確認 LINE、預約或社群連結還有效。'});
+ return result('G-10','外部連結存活','PASS',{mode,required:false,evidence:[ok+' links responded (200/3xx), '+unreachable.length+' unreachable','200/3xx does not prove a booking or contact link actually works']});
+}
+
+export async function runGates({root='.',mode='preview',env=process.env,fetchImpl,checkLinks=false}={}){
  root=resolve(root);
  const gc=loadGateConfig(root),config=readConfig(root);
- const ctx={root,mode,env,config,gc};
  const results=[];
- for(const gate of [gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateApproval]){
-  try{const r=gate(ctx);if(r)results.push(r);}
-  catch(e){results.push({id:gate.name,name:gate.name,status:'NOT TESTED',blocking:mode==='release',evidence:['gate error: '+e.message],learnerMessage:''});}
+ const ctx={root,mode,env,config,gc,results,fetchImpl,checkLinks};
+ for(const gate of [gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateReleaseTech,gateApproval,gatePublishPath,gateLinks,gateEnvironment]){
+  try{const r=await gate(ctx);if(r)results.push(r);}
+  catch(e){results.push({id:gate.name,name:gate.name,status:'NOT TESTED',blocking:mode==='release'&&gate!==gateLinks&&gate!==gateEnvironment,evidence:['gate error: '+e.message],learnerMessage:''});}
  }
  const blocking=results.some(r=>r.blocking);
  return {mode,results,blocking,exitCode:blocking?1:0};
@@ -175,10 +266,10 @@ export function summarize({mode,results}){
 if(process.argv[1]&&resolve(process.argv[1])===resolve(new URL(import.meta.url).pathname)){
  const args=process.argv.slice(2);
  const mode=args.includes('--mode')?args[args.indexOf('--mode')+1]:'preview';
- if(!['preview','release'].includes(mode)){console.error('Usage: gates.mjs [--mode preview|release] [root]');process.exit(2);}
+ if(!['preview','release'].includes(mode)){console.error('Usage: gates.mjs [--mode preview|release] [--check-links] [root]');process.exit(2);}
  const rootArg=args.find((a,i)=>!a.startsWith('--')&&args[i-1]!=='--mode')||'.';
  try{
-  const out=runGates({root:rootArg,mode});
+  const out=await runGates({root:rootArg,mode,checkLinks:args.includes('--check-links')});
   mkdirSync(join(resolve(rootArg),'qa-artifacts'),{recursive:true});
   writeFileSync(join(resolve(rootArg),'qa-artifacts/gates-result.json'),JSON.stringify({mode:out.mode,results:out.results},null,2)+'\n');
   console.log(summarize(out));

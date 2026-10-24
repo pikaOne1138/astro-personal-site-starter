@@ -17,7 +17,7 @@ try {
     'src/data/section-patterns.registry.json','src/pages/layouts/index.astro',
     'scripts/export-starter.mjs','scripts/verify-student-navigation.mjs','src/components','public/layout-library.css',
     'public/multipage-nav.css','public/effects-sample.svg','public/robots.txt',
-    'scripts/verify-site-output.mjs','scripts/verify-release-readiness.mjs','scripts/gates.mjs','scripts/gates.config.json','scripts/test-release-readiness.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
+    'scripts/verify-site-output.mjs','scripts/verify-release-readiness.mjs','scripts/gates.mjs','scripts/gates.config.json','scripts/site-state.mjs','scripts/preflight.mjs','scripts/test-release-readiness.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
   // Both the built website and the downloadable ZIP must declare the same source version.
