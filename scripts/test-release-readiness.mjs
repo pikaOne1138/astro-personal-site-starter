@@ -28,6 +28,15 @@ try{
  put('dist/index.html',page('', 'index, follow',false));
  assert.equal(run({SITE_URL:url}).ok,false,'missing OG URL must fail');
  put('dist/index.html',page(''));
+ put('dist/index.html',page('')+'<form method="post"><button>Send</button></form>');
+ assert.equal(run({SITE_URL:url}).ok,false,'unconfigured POST form must fail');
+ put('dist/index.html',page('')+'<form method="post" action="https://forms.example.org/submit"><button>Send</button></form>');
+ assert.equal(run({SITE_URL:url}).ok,true,'configured external form must pass technical check');
+ put('dist/index.html',page('')+'<a href="#">預約服務</a>');
+ assert.equal(run({SITE_URL:url}).ok,false,'placeholder booking CTA must fail');
+ put('dist/index.html',page('')+'<a href="https://booking.example.org/">預約服務</a>');
+ assert.equal(run({SITE_URL:url}).ok,true,'external booking link is not blocked');
+ put('dist/index.html',page(''));
  put('dist/sitemap.xml','<urlset><url><loc>https://wrong.example.net/</loc></url></urlset>');
  assert.equal(run({SITE_URL:url}).ok,false,'foreign sitemap must fail');
  console.log('Release gate regression fixtures PASS (negative and positive technical checks; no human release approval claimed).');
