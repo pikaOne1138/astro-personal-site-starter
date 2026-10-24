@@ -21,6 +21,7 @@ try{
  assert.equal(run({}).ok,false,'placeholder origin must fail');
  assert.ok(run({}).errors.some(s=>s.includes('RELEASE_URL')));
  assert.equal(run({SITE_URL:url}).ok,true,'valid origin, aligned outputs and declared approval must pass technical gate');
+ assert.match(run({SITE_URL:url}).services.booking,/not configured/,'unconfigured booking must not be reported as operational');
  assert.equal(run({SITE_URL:url,RELEASE_APPROVED_SHA:'b'.repeat(40)}).ok,false,'stale approval must fail');
  assert.equal(run({SITE_URL:url,SITE_INDEXABLE:'false'}).ok,false,'robots/indexability contradiction must fail');
  assert.equal(run({SITE_URL:url,CF_PAGES:'1',CF_PAGES_BRANCH:'preview-branch'}).ok,false,'Cloudflare branch preview must fail');
