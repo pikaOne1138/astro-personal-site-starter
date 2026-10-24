@@ -1,4 +1,5 @@
 ---
+import {demoSiteCount, themeCount} from '../../data/library-counts';
 import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 import blockRegistry from '../../data/blocks.registry.json';
@@ -63,7 +64,7 @@ const services=[{title:'一對一陪伴',description:'從你目前的困擾與�
 const steps=[{title:'先認識彼此',description:'簡短了解需求，確認服務方式是否適合。'},{title:'共同釐清方向',description:'討論期待、界線與可能的合作步驟。'},{title:'開始合作',description:'依照雙方節奏進行，也保留調整空間。'}];
 const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡單說明你的需求，初次討論時再一起釐清。'},{question:'可以先了解流程再決定嗎？',answer:'當然可以。先閱讀服務介紹，確認適合再預約。'}];
 ---
-<DemoLayout title="網站元件展示庫" description={`可讓 AI 自由組裝的網站元件庫：${blockRegistry.length} 個元件、四套配色、兩類網站範例`}>
+<DemoLayout title="網站元件展示庫" description={`可讓 AI 自由組裝的網站元件庫：${blockRegistry.length} 個元件、${themeCount} 套配色、兩類網站範例`}>
 <link rel="stylesheet" href={`${base}blocks.css`} />
 <link rel="stylesheet" href={`${base}article-explorer.css`} />
 <main class="ab-gallery" id="top">
@@ -72,7 +73,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     <p class="ab-eyebrow" style="margin-top:32px">WEBSITE DESIGN · COMPONENT LIBRARY</p>
     <h1>挑一塊喜歡的，讓 AI 幫你組成網站。</h1>
     <p>這裡展示真正可重用的網站元件。記下英文名稱交給 AI，也可以直接描述你要的畫面。</p>
-    <p>依網站使用情境探索 {blockRegistry.length} 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換四套配色，直接體驗互動效果。</p>
+    <p>依網站使用情境探索 {blockRegistry.length} 個可重用元件：從首頁、文章搜尋與閱讀排版，到專業服務與聯絡入口。可切換{themeCount} 套配色，直接體驗互動效果。</p>
     <div class="ab-gallery-links"><a href="#common">導覽與共用</a><a href="#hero">首頁主視覺</a><a href="#content">內容呈現</a><a href="#blog">文章探索與清單</a><a href="#reading">文章閱讀與排版</a><a href="#professional">服務與信任</a><a href="#examples">完整範例</a></div>
     <div class="ab-gallery-theme" aria-label="元件配色預覽">
       <span>預覽配色：</span>
@@ -104,11 +105,11 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
     </div>
     <div class="ab-demo">
       <div class="ab-demo-label"><strong>SiteSearchDialog</strong><span>放大鏡／全站搜尋／Ctrl+K 或 ⌘K</span></div>
-      <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；八款完整網站的導航列皆已安裝。</p>
+      <p>點擊放大鏡即可開啟搜尋視窗。這裡示範紙墨知識站的頁面與文章索引；{demoSiteCount} 款完整網站的導航列皆已安裝。</p>
       <SiteSearchDialog kind="knowledge" theme="paper" />
     </div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>BackToTop</strong><span>長頁通用的「返回頁首」浮動按鈕</span></div><p>這一頁右下角已經實際使用：往下捲動超過 420px 就會出現向上箭頭。點擊後返回頁首，系統選擇「減少動態」時不使用平滑捲動。四套主題、桌機與手機都共用。</p><p class="practical-caption">由共用 DemoLayout 自動加入，不需在每一頁重複放按鈕；可指定顯示門檻、無障礙名稱與位置。</p></div>
-    <div class="ab-demo"><div class="ab-demo-label"><strong>MobileMenu</strong><span>手機用可展開導覽（請縮小視窗測試）</span></div><p>八款完整網站的手機導覽列已改用此元件；支援開關、Esc 及鍵盤焦點。</p><div class="practical-gallery-mobile"><MobileMenu links={[{label:'知識首頁',href:base+'knowledge/paper/'},{label:'文章探索',href:base+'knowledge/paper/explore/'},{label:'聯絡與預約',href:base+'helper/paper/booking/'}]}/></div></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>BackToTop</strong><span>長頁通用的「返回頁首」浮動按鈕</span></div><p>這一頁右下角已經實際使用：往下捲動超過 420px 就會出現向上箭頭。點擊後返回頁首，系統選擇「減少動態」時不使用平滑捲動。{themeCount} 套主題、桌機與手機都共用。</p><p class="practical-caption">由共用 DemoLayout 自動加入，不需在每一頁重複放按鈕；可指定顯示門檻、無障礙名稱與位置。</p></div>
+    <div class="ab-demo"><div class="ab-demo-label"><strong>MobileMenu</strong><span>手機用可展開導覽（請縮小視窗測試）</span></div><p>{demoSiteCount} 款完整網站的手機導覽列已改用此元件；支援開關、Esc 及鍵盤焦點。</p><div class="practical-gallery-mobile"><MobileMenu links={[{label:'知識首頁',href:base+'knowledge/paper/'},{label:'文章探索',href:base+'knowledge/paper/explore/'},{label:'聯絡與預約',href:base+'helper/paper/booking/'}]}/></div></div>
     <div class="ab-demo">
       <div class="ab-demo-label"><strong>SocialLinks</strong><span>社群圖示／圖示＋名稱連結</span></div>
       <p>可組合 Instagram、Facebook、Threads、LINE、YouTube、TikTok、LinkedIn、Discord、Telegram、Spotify、Email、電話、GitHub、X、Pinterest、網站及 RSS。第一行純預覽，不會跳轉到虛構帳號；第二行是真實專案連結。</p>
@@ -186,7 +187,7 @@ const faq=[{question:'第一次聯絡需要準備什麼？',answer:'可以先簡
   </section>
 
   <section id="examples" class="ab-category">
-    <h2 class="ab-category-title">07 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、四套配色。八個完整網站 Demo 均保留。</p>
+    <h2 class="ab-category-title">07 / 完整網站範例</h2><p class="ab-category-intro">元件組裝後的完整網站：兩種網站任務、{themeCount} 套配色。{demoSiteCount} 個完整網站 Demo 均保留。</p>
     <div class="ab-grid ab-cols-2">
       <div class="ab-feature"><p class="ab-eyebrow">A / KNOWLEDGE</p><h3>知識／部落格</h3><p>文章、分類、閱讀與作者介紹的完整入口。</p><a class="ab-text-link" href={`${base}knowledge/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}knowledge/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}knowledge/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}knowledge/botanical/`}>植感 →</a></div>
       <div class="ab-feature"><p class="ab-eyebrow">B / PROFESSIONAL</p><h3>助人者／專業服務</h3><p>認識、服務、流程、常見問題與聯絡方式。</p><a class="ab-text-link" href={`${base}helper/paper/`}>紙墨 →</a>　<a class="ab-text-link" href={`${base}helper/morning/`}>晨光 →</a>　<a class="ab-text-link" href={`${base}helper/studio/`}>靜室 →</a>　<a class="ab-text-link" href={`${base}helper/botanical/`}>植感 →</a></div>

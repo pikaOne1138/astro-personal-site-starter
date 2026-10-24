@@ -1,4 +1,5 @@
 ---
+import {layoutCounts} from '../../data/library-counts';
 import intakeReadme from '../../../docs/student-intake/README.md?raw';
 import intakeHost from '../../../docs/student-intake/01-AI-訪談主持人.md?raw';
 import intakeAbout from '../../../docs/student-intake/02-網站定位與個人介紹.md?raw';
@@ -32,7 +33,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <form id="starter-form">
 <section class="step" aria-labelledby="step-kind"><div class="step-head"><span>01</span><div><h2 id="step-kind">網站用途與版型</h2><p>先看首頁縮圖，或到視覺圖鑑比較桌機與手機。不必一次決定所有細節。若已從版型庫選好設計，會自動帶入所選版型；需要比較其他方向可回到版型庫。</p></div></div>
 <fieldset class="kind-choice"><legend>我想建立的是</legend><label><input type="radio" name="kind" value="knowledge" checked/> 知識／部落格</label><label><input type="radio" name="kind" value="helper"/> 助人者／專業服務</label></fieldset>
-<p>第一次建站可以先從「田野筆記」或「清晰臨床」研究設計方向；兩者也需實際驗收，並非保證已完整上線。全部 25 款仍可自由比較與選用。</p><p><a href={base+'layouts/'}>查看全部 25 種網站版型 ↗</a></p><div class="layout-grid" id="layout-grid">
+<p>第一次建站可以先從「田野筆記」或「清晰臨床」研究設計方向；兩者也需實際驗收，並非保證已完整上線。全部 {layoutCounts.total} 款仍可自由比較與選用。</p><p><a href={base+'layouts/'}>查看全部 {layoutCounts.total} 種網站版型 ↗</a></p><div class="layout-grid" id="layout-grid">
 {directions.map((item,i)=>(<div class="layout-option" data-kind={item.kind}>{<picture><source media="(max-width:600px)" srcset={base+item.screenshots.mobile.slice(1)}/><img src={base+item.screenshots.desktop.slice(1)} alt={item.title+' Astro 首頁實際縮圖'} width="1440" height="900" loading="lazy"/></picture>}<label><input type="radio" name="layout" value={item.slug} checked={i===0}/><span class="layout-id">{item.kind==='knowledge'?'A':'B'}{String(directions.filter(x=>x.kind===item.kind).findIndex(x=>x.slug===item.slug)+1).padStart(2,'0')}</span><strong>{item.title}</strong><span class="assembly-status">{statusBySlug[item.slug]==='ready'?'可組裝起點（仍需 AI 驗收）':statusBySlug[item.slug]==='in-progress'?'可組裝，部分內頁需 AI 補齊':'設計原型，非完整網站'}</span><small>{item.structure}</small><span>{item.description}</span></label><a href={base+'layouts/'+item.slug+'/'} target="_blank" rel="noopener noreferrer">完整首頁預覽 ↗</a></div>))}
 </div></section>
 

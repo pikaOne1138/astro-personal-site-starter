@@ -5,7 +5,7 @@ interface Props { kind: Kind; }
 const { kind } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
-<div class="showcase-demo-grid" aria-label={kind === 'knowledge' ? '知識與部落格的四種風格' : '助人與專業服務的四種風格'}>
+<div class="showcase-demo-grid" aria-label={kind === 'knowledge' ? `知識與部落格的 ${themes.length} 種風格` : `助人與專業服務的 ${themes.length} 種風格`}>
   {themes.map((theme) => <a class={`demo-card theme-${theme}`} href={`${base}${kind}/${theme}/`}>
     <div class="demo-swatch"><span></span><span></span><span></span></div>
     <small>{themeMeta[theme].label}</small>

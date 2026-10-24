@@ -1,4 +1,5 @@
 ---
+import {demoSiteCount, themeCount} from '../../data/library-counts';
 import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import externalMotionResources from '../../data/external-motion-resources.json';
 import DemoLayout from '../../layouts/DemoLayout.astro';
@@ -20,7 +21,7 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
     <header class="fx-hero">
       <p class="fx-kicker">DESIGN SYSTEM / INTERACTIONS</p>
       <h1>讓細節有感，<br/>而不喧賓奪主。</h1>
-      <p>這裡是可實際操作的 網站特效庫。移動滑鼠、點擊切換、向下捲動，感受不同互動的節奏；同一組效果能套用四套主題，並尊重手機觸控與減少動態設定。</p>
+      <p>這裡是可實際操作的 網站特效庫。移動滑鼠、點擊切換、向下捲動，感受不同互動的節奏；同一組效果能套用{themeCount} 套主題，並尊重手機觸控與減少動態設定。</p>
     </header>
     <div class="fx-controls" aria-label="特效示範控制">
       <div class="fx-control-group" role="group" aria-label="切換示範主題"><span>預覽風格</span>
@@ -209,8 +210,8 @@ const faqItems=[{question:'特效會讓手機網站變慢嗎？',answer:'這組�
       }));
     </script>
     <footer class="fx-bottom">
-      <p>這些 Demo 供模板組裝與動效研究使用；正式網站不必全部啟用。使用 <strong>Motion Skill</strong> 選擇場景與強度，預設尊重裝置設定與四套視覺主題。</p>
-      <p><a href={base+'blocks/'}>返回元件庫 ↗</a>　<a href={base}>探索八款完整網站 ↗</a></p>
+      <p>這些 Demo 供模板組裝與動效研究使用；正式網站不必全部啟用。使用 <strong>Motion Skill</strong> 選擇場景與強度，預設尊重裝置設定與{themeCount} 套視覺主題。</p>
+      <p><a href={base+'blocks/'}>返回元件庫 ↗</a>　<a href={base}>探索{demoSiteCount} 款完整網站 ↗</a></p>
     </footer>
   </main>
   <script>
