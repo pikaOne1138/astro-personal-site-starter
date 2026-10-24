@@ -53,3 +53,9 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 
 ## 工具權限與首次連接
 AI 能搜尋 Cloudflare 文件或查看 Workers，不代表它擁有 Pages 專案寫入、DNS 或 Git 整合權限。先檢查可用工具、scope 與帳號；若僅唯讀，改由學員在 Cloudflare Dashboard 依最新官方畫面完成 Pages → GitHub 倉庫連接，AI 使用截圖一步一步陪同，而不是要求 Token 或宣稱已部署。Private GitHub Repo 應優先考慮；預覽與正式發布仍需學員授權。不可將舊 Preview URL 推測為新 SHA 的證據。
+
+## 外部 AI 權限、首次公開與人工接手
+
+先依 `docs/student-builder-pack/AI-PROVIDER-COMPATIBILITY.md` 做能力確認。ZIP 不是 Git Repository，不得為了讓 AI 呼叫 `git status` 將 `.git` 內嵌 ZIP：可用本機 Git 就在學員工作區初始化／連接自己的 Repo；只能用 GitHub API 就直接操作學員 Repo Branch／PR。若 Workflow 403，檢查 App 的 Workflows 權限，停止受阻寫入並讓有權限的人審閱、手動提交；不得視為已啟用 CI。
+
+Cloudflare Pages 第一次 GitHub 連接／Save and Deploy **可能立即公開 Production branch**，即使未設定自訂網域；在確認分支內容、正式／預覽環境、可見性及學員對首次公開的明確授權前，不按部署。`qa-production-disabled` 不是已驗證的通用方案，不能要求使用不存在的分支。唯讀 Cloudflare 工具只能檢查，需由學員在 Dashboard 人工完成寫入。詳細 Preview 證據與核准門檻仍由 `astro-pr-preview` 規定，不另抄 QA Checklist。

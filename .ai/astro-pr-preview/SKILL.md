@@ -67,3 +67,7 @@ description: Safely build, verify, preview, and release student-owned Astro site
 
 ## 預覽網址不可寫死或拼接
 舊的 `/pr-preview/pr-N/` 研究 Repo 靜態路徑可能回 404；這不證明分支 Cloudflare Preview 本身失效。請到 GitHub PR 的實際 Checks／Deployment 取得目前有效的 Branch/Deployment URL、核對 SHA 與 HTTP，再告知學員。不要寫死或憑規律拼接 URL。正式學員指南請使用工作坊最新確認的入口，避免給已失效的版本網址。
+
+## AI 工具不足時的降級與證據
+
+開始操作 Branch／PR／Actions／Preview 前，先按 `docs/student-builder-pack/AI-PROVIDER-COMPATIBILITY.md` 核對 AI 具備的是本機 Git／CLI、GitHub API、Workflow 寫入或僅 Cloudflare 唯讀。沒有本機 Git 就不得執行 `git status`；GitHub API 能寫檔仍不代表能寫 `.github/workflows/`。Workflow 寫入 403 應保留一般檔案 Draft PR，檢查 App Workflows 權限並交由學員授權或人工審閱提交；沒有真實部署 URL＋SHA 一律 `NOT TESTED`／`BLOCKED`。不新增另一套 QA 清單。
