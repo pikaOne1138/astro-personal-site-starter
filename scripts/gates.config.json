@@ -1,0 +1,83 @@
+{
+  "placeholders": {
+    "strong": [
+      "尚未提供",
+      "待填",
+      "待站長",
+      "待設定",
+      "Lorem ipsum"
+    ],
+    "weak": [
+      "TODO",
+      "TBD",
+      "example.com"
+    ],
+    "allow": []
+  },
+  "serviceFacts": {
+    "helper": {
+      "required": [
+        {
+          "key": "scope",
+          "label": "服務範圍"
+        },
+        {
+          "key": "format",
+          "aliases": [
+            "method"
+          ],
+          "label": "進行方式"
+        },
+        {
+          "key": "duration",
+          "label": "時長"
+        },
+        {
+          "key": "price",
+          "label": "費用"
+        },
+        {
+          "key": "cancellation",
+          "label": "取消與改期"
+        },
+        {
+          "key": "credentials",
+          "aliases": [
+            "qualification"
+          ],
+          "label": "專業資格／年資"
+        }
+      ],
+      "recommended": [
+        {
+          "key": "exclusions",
+          "label": "不適合的情況"
+        },
+        {
+          "key": "firstVisit",
+          "label": "第一次來會發生什麼"
+        },
+        {
+          "key": "hygiene",
+          "label": "環境與衛生"
+        }
+      ]
+    },
+    "knowledge": {
+      "required": [],
+      "recommended": []
+    }
+  },
+  "successPhrases": [
+    "送出成功",
+    "預約成功",
+    "預約完成",
+    "已成功送出",
+    "訂閱成功",
+    "感謝您的預約"
+  ],
+  "secretsAllowPaths": [
+    "scripts/test-student-site-guards.mjs",
+    "scripts/test-gates.mjs"
+  ]
+}

@@ -263,6 +263,8 @@ assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].re
  '<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/><meta property="og:url" content={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/>'
 );
 assets['scripts/verify-release-readiness.mjs']=readFileSync(new URL('./verify-release-readiness.mjs',import.meta.url),'utf8');
+assets['scripts/gates.mjs']=readFileSync(new URL('./gates.mjs',import.meta.url),'utf8');
+assets['scripts/gates.config.json']=readFileSync(new URL('./gates.config.json',import.meta.url),'utf8');
 assets['scripts/test-release-readiness.mjs']=readFileSync(new URL('./test-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-site-output.mjs','verify-site-output.mjs');
@@ -272,7 +274,10 @@ assets['scripts/clean-build.mjs']=`import {rmSync} from 'node:fs';
 for(const directory of ['dist','.astro','node_modules/.astro'])rmSync(new URL('../'+directory+'/',import.meta.url),{recursive:true,force:true});
 `;
 pkg.scripts.build='node scripts/clean-build.mjs && astro build && pagefind --site dist --root-selector "[data-pagefind-body]" && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
-pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
+pkg.scripts['verify:output']='node scripts/verify-site-output.mjs --student-site .';
+pkg.scripts.verify='node scripts/gates.mjs --mode preview';
+pkg.scripts['gate:preview']='node scripts/gates.mjs --mode preview';
+pkg.scripts['gate:release']='node scripts/gates.mjs --mode release';
 pkg.scripts['verify:release']='node scripts/verify-release-readiness.mjs .';
 pkg.scripts['test:release']='node scripts/test-release-readiness.mjs';
 pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs && node scripts/test-release-readiness.mjs';
