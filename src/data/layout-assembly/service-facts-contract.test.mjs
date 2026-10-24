@@ -33,4 +33,12 @@ const contactModes=resolveServiceFacts({fields:{contact:{value:'demo@example.com
 assert.equal(contactModes.contact,'');
 assert.equal(resolveServiceFacts({presentation:{mode:'published'},fields:{scope:{value:'未確認項目',status:'demo',display:'pending'}}}).items.length,0);
 
+// Odd item counts (e.g. three custom fields on top of four required ones) must not leave an empty grid cell;
+// the clinician grid paints gaps with currentColor, so a hole renders as a solid block.
+for(const family of ['clinical-facts','collective-protocol'])
+ assert.ok(source.includes('.'+family+(family==='clinical-facts'?'>div':' article')+':last-child:nth-child(odd){grid-column:1/-1}'),family+' must span an odd last item');
+// Trust-path nodes are centred on the rail and must stay inside the viewport at tablet and phone widths.
+assert.ok(source.includes('.trust-service-path{list-style:none;margin:3rem 0 3rem 1.8rem'),'trust-path rail needs a left margin for its nodes');
+assert.ok(source.includes('.trust-service-path{padding-left:1rem;margin-left:1.3rem}'),'trust-path mobile rail needs a left margin');
+
 console.log('ServiceFacts data-driven contract tests passed');
