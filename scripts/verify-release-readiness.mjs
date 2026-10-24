@@ -48,7 +48,7 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   const links=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1].replaceAll('&amp;','&'));
   if(!links.length)errors.push('SITEMAP: no entries');
   for(const loc of links)if(!loc.startsWith(expected))errors.push('SITEMAP: foreign URL '+loc);
-  for(const href of canonicalUrls)if(!links.includes(href)&&!href.endsWith('/404/'))errors.push('SITEMAP: canonical not listed '+href);
+  for(const href of canonicalUrls)if(!links.includes(href)&&!href.endsWith('/404/')&&!href.endsWith('/404.html'))errors.push('SITEMAP: canonical not listed '+href);
  }
  if(!/^User-agent: \*$/m.test(robots))errors.push('ROBOTS: missing user agent');
  if(env.SITE_INDEXABLE==='true'){
