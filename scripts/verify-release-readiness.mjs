@@ -56,10 +56,17 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
  }else{
   if(!/^Disallow: \/$/m.test(robots))errors.push('INDEXING: nonindexable release must disallow crawling');
  }
+ // A declared endpoint is not proof that an external provider is live. Absence is explicit.
+ const serviceStatuses={
+  contact: config.contactUrl||config.serviceFacts?.contact?'declared — manual delivery verification required':'not configured in known fields — check rendered site manually',
+  booking: config.bookingUrl?'declared — manual booking flow verification required':'not configured in known fields — check rendered site manually',
+  form: config.formUrl?'declared — manual submission/privacy verification required':'not configured in known fields — check rendered site manually'
+ };
  // There is no reliable way to infer that a third-party booking or contact endpoint works.
  const values=[config.serviceFacts?.contact,config.primaryCta?.url,config.bookingUrl,config.contactUrl,config.formUrl].filter(Boolean);
  for(const value of values)if(typeof value==='string'&&/example\.com|localhost|^#$|TODO|待設定/i.test(value))errors.push('SERVICE: placeholder contact/booking endpoint '+value);
- manual.push('Confirm that contact, booking, forms and newsletter links are configured and truly submit to owned services; any unavailable feature must be hidden or clearly labeled.');
+ for(const [kind,status] of Object.entries(serviceStatuses))manual.push('SERVICE '+kind+': '+status);
+ manual.push('Verify real contact/booking/form delivery; hide or clearly label unconfigured features. Newsletter is also unverified.');
  manual.push('Review real content, qualifications, prices, testimonials, licensing, privacy, media permissions and responsive behavior. None of these are proven by this script.');
  manual.push('Verify hosting platform Production/Preview branch policies and an independent live Preview. Cloudflare Git connection can deploy before this command runs.');
  if(approvalRequired){
@@ -70,7 +77,7 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   if(!expected||approvedUrl!==expected)errors.push('APPROVAL: RELEASE_APPROVED_URL must match production site/base URL');
   manual.push('The declared SHA/URL match is machine-checked, but a human owner must independently approve this exact version and publication impact. CI cannot authenticate consent.');
  }
- return {ok:errors.length===0,errors,manual,site:expected,indexable:env.SITE_INDEXABLE==='true'};
+ return {ok:errors.length===0,errors,manual,services:serviceStatuses,site:expected,indexable:env.SITE_INDEXABLE==='true'};
 }
 if(process.argv[1]&&resolve(process.argv[1])===resolve(new URL(import.meta.url).pathname)){
  const result=inspectRelease({root:process.argv[2]||'.'});
