@@ -29,7 +29,7 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   if(!canonical){errors.push('CANONICAL: missing '+name);continue}
   let parsed;
   try{parsed=new URL(canonical)}catch{errors.push('CANONICAL: invalid '+name);continue}
-  if(expected&&!parsed.href.startsWith(expected))errors.push('CANONICAL: wrong site/base '+name);
+  if(expected&&(parsed.origin!==url.origin||!parsed.pathname.startsWith(new URL(expected).pathname)))errors.push('CANONICAL: wrong site/base '+name);
   canonicalUrls.add(parsed.href);
   const og=head.match(/<meta\b[^>]*property=["']og:url["'][^>]*>/i)?.[0].match(/content=["']([^"']+)["']/i)?.[1];
   if(!og)errors.push('OG_URL: missing og:url '+name);
@@ -47,7 +47,7 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   if(!rss.includes(expected))errors.push('RSS: site URL mismatch');
   const links=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1].replaceAll('&amp;','&'));
   if(!links.length)errors.push('SITEMAP: no entries');
-  for(const loc of links)if(!loc.startsWith(expected))errors.push('SITEMAP: foreign URL '+loc);
+  for(const loc of links){try{const u=new URL(loc);if(u.origin!==url.origin||!u.pathname.startsWith(new URL(expected).pathname))errors.push('SITEMAP: foreign URL '+loc)}catch{errors.push('SITEMAP: invalid URL '+loc)}}
   for(const href of canonicalUrls)if(!links.includes(href)&&!href.endsWith('/404/')&&!href.endsWith('/404.html'))errors.push('SITEMAP: canonical not listed '+href);
  }
  if(!/^User-agent: \*$/m.test(robots))errors.push('ROBOTS: missing user agent');
@@ -55,6 +55,24 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   if(!/^Allow: \/$/m.test(robots)||/^Disallow: \/$/m.test(robots))errors.push('INDEXING: robots.txt blocks production');
  }else{
   if(!/^Disallow: \/$/m.test(robots))errors.push('INDEXING: nonindexable release must disallow crawling');
+ }
+ // HTML safety scan: fail closed for actual submission controls lacking a usable target.
+ const serviceAlerts=[];
+ for(const file of html){
+  const name=relative(dist,file).replaceAll('\\\\','/');
+  const body=readFileSync(file,'utf8');
+  for(const match of body.matchAll(/<form\\b([^>]*)>/gi)){
+   const attrs=match[1],action=attrs.match(/\\baction=["']([^"']*)["']/i)?.[1]?.trim();
+   const method=attrs.match(/\\bmethod=["']([^"']*)["']/i)?.[1]?.toLowerCase()||'get';
+   if(method==='post'&&(!action||action==='#'||/example\\.com|localhost|TODO|待設定/i.test(action)))errors.push('SERVICE_FORM: unconfigured POST form '+name);
+   if(action&&/^(javascript:|data:)/i.test(action))errors.push('SERVICE_FORM: unsafe action '+name);
+  }
+  for(const m of body.matchAll(/<a\\b([^>]*)>([\\s\\S]*?)<\\/a>/gi)){
+   const attrs=m[1],label=m[2].replace(/<[^>]*>/g,'').trim();
+   if(!/(預約|聯絡|報名|送出|訂閱|book(?:ing)?|contact|subscribe|submit)/i.test(label))continue;
+   const href=attrs.match(/\\bhref=["']([^"']*)["']/i)?.[1]?.trim();
+   if(href&&(/^(javascript:|data:)/i.test(href)||href==='#'||/example\\.com|localhost|TODO|待設定/i.test(href)))errors.push('SERVICE_CTA: placeholder/unsafe action '+name+' '+label.slice(0,30));
+  }
  }
  // A declared endpoint is not proof that an external provider is live. Absence is explicit.
  const serviceStatuses={
