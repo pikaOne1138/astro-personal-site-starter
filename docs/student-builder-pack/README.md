@@ -8,6 +8,7 @@
 1. 從 `/starter/` 下載自己網站的 Site Brief JSON。
 2. 從 `/guide/` 下載此 ZIP。
 3. 把兩份檔案交給可存取檔案且能操作 GitHub 的 AI，使用 `/guide/` 的「開始建站」按鈕複製**唯一正式起始提示詞**（來源為 `docs/student-builder-pack/START-BUILD-PROMPT.txt`），不要使用另一套簡化提示詞。
+   （C 路線不用 Site Brief JSON，起始提示詞為 `START-INTERVIEW-PROMPT.txt`，見 `START-HERE.md`。）
 
 主匯出器能組裝哪些版型、各自的組裝狀態，以 `BUILDER-PACK-VERSION.json` 與 `definitions.mjs` 為準；非 Ready 的版型不能當成已驗收。AI 應依 `layoutSlug`、`definitions.mjs` 的 engine 與 `docs/student-builder-pack/EXPANDED-LAYOUTS.md` 選擇對應 Renderer。產生的網站是 Beta 第一版，AI 仍需按真實內容補齊必要內頁、圖片與服務資訊，並和學員一起確認、預覽及部署；ZIP 下載本身不是網站發布。
 
