@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "test:student-safety": "node scripts/test-student-responsive-pack.mjs",
     "test:student-browser": "node scripts/test-student-responsive-browser.mjs",
-    "test:student-responsive-e2e": "node scripts/test-student-responsive-e2e.mjs"
+    "test:student-responsive-e2e": "node scripts/test-student-responsive-e2e.mjs",
+    "test:release": "node scripts/test-release-readiness.mjs"
   },
   "dependencies": {
     "astro": "^7.4.2"
