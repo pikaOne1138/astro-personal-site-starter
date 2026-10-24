@@ -232,6 +232,7 @@ assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("con
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
 assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-site-output.mjs',import.meta.url),'utf8');
+assets['scripts/verify-release-readiness.mjs']=readFileSync(new URL('./verify-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-site-output.mjs','verify-site-output.mjs');
 const pkg=JSON.parse(assets['package.json']);
@@ -241,6 +242,7 @@ for(const directory of ['dist','.astro','node_modules/.astro'])rmSync(new URL('.
 `;
 pkg.scripts.build='node scripts/clean-build.mjs && astro build && pagefind --site dist --root-selector "[data-pagefind-body]" && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
 pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
+pkg.scripts['verify:release']='node scripts/verify-release-readiness.mjs .';
 pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs';
 pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};
 assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
