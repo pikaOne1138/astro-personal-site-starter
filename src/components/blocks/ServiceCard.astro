@@ -1,5 +1,7 @@
 ---
 interface Props {title:string;description:string;meta?:string;href?:string;}
+import {safeHref} from './safe-href';
 const {title,description,meta='個人服務',href='#contact'}=Astro.props;
+const link=safeHref(href);
 ---
-<article class="ab-service"><span class="ab-eyebrow">{meta}</span><h3>{title}</h3><p>{description}</p><a class="ab-text-link" href={href}>了解服務 ↗</a></article>
+<article class="ab-service"><span class="ab-eyebrow">{meta}</span><h3>{title}</h3><p>{description}</p>{link&&<a class="ab-text-link" href={link}>了解服務 ↗</a>}</article>

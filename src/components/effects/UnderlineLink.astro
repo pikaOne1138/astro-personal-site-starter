@@ -1,5 +1,8 @@
 ---
 interface Props {href:string;variant?:'grow'|'center'|'marker';external?:boolean;className?:string;}
+import {safeHref} from '../blocks/safe-href';
 const {href,variant='grow',external=false,className=''}=Astro.props;
+const link=safeHref(href);
+const Tag=link?'a':'span';
 ---
-<a class:list={['motion-underline','motion-underline--'+variant,className]} href={href} target={external?'_blank':undefined} rel={external?'noopener noreferrer':undefined}><slot/>{external&&<span class="sr-only">（另開新視窗）</span>}</a>
+<Tag class:list={['motion-underline','motion-underline--'+variant,className]} href={link} target={link&&external?'_blank':undefined} rel={link&&external?'noopener noreferrer':undefined}><slot/>{link&&external&&<span class="sr-only">（另開新視窗）</span>}</Tag>

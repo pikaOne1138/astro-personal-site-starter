@@ -34,7 +34,7 @@
 
 這些是檢查過程中發現、尚未處理的問題，**不要宣稱已解決**。
 
-- **URL 欄位沒有統一驗證。** `LeadMagnetCard` 與 `ResourceCard` 會檢查連結（拒絕 `//host` 這類 scheme-relative 網址）；但 `Button`、`ServiceCard`、`CTASection`、`FeatureGrid` 與 `UnderlineLink` 直接把呼叫者傳入的 `href` 輸出，沒有驗證。目前沒有針對 `javascript:`、`data:`、`vbscript:`、`//` 的定點回歸測試。要補時，每個 URL 測試都要證明 validator 本身拒絕不安全輸入（不只是後續的死連結掃描回傳非零），並保留合法的站內絕對路徑、相對路徑、hash、HTTPS 與（適用元件的）mailto／tel。
+- **URL 欄位的驗證只涵蓋「連結」，不涵蓋全部輸入。** `Button`、`ServiceCard`、`CTASection`、`FeatureGrid` 與 `UnderlineLink` 現在經過共用的 `safeHref`（`src/components/blocks/safe-href.ts`）：只接受站內路徑、頁內錨點、`https`、`mailto`、`tel`；其他值（`javascript:`、`data:`、`vbscript:`、`//host`、控制字元、引號）不產生連結，改輸出純文字。`scripts/test-block-href-guard.mjs` 驗證守衛本身會拒絕這些輸入，也驗證五個元件確實使用它；這不是每個元件的完整渲染測試。`LeadMagnetCard` 與 `ResourceCard` 仍用各自較嚴格的規則（只接受 `https`，拒絕 `http`），兩套規則尚未合併。
 - **Props 的 render fixture 是實驗性的。** `scripts/qa-generate-props-render-fixtures.mjs` 與 `scripts/qa-verify-props-render-fixtures.mjs` 產生的輸入曾漏掉巢狀的 `items`，那是 fixture 產生器的錯，不是元件壞了。沒有任何「全部 Props 的執行期驗收」被宣稱。
 - **歷史缺陷的修復前後對照不完整。** `HISTORIC-REGRESSIONS.json` 記錄的歷史缺陷，其「目前 commit 的證據」與「原始修復前失敗、修復後通過」是兩件事；後者並非全部補齊。
 - **人工設計品質與第一次使用的真人學員體驗都沒有測過。** 已有的 AI 端到端與解壓 ZIP 檢查可用，沒有重大程式變更時不要重跑完整套件。
