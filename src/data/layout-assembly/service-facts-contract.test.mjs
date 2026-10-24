@@ -22,4 +22,15 @@ assert.equal(unsafe.items.filter(x=>x.state==='real').length,0);
 assert.equal(unsafe.items.some(x=>x.id==='unknown'),false);
 assert.equal(unsafe.items.some(x=>x.id==='venue'),false);
 assert.equal(resolveServiceFacts({presentation:{missing:'hide'}}).items.length,0);
+
+const allFamilies=['clinician','companion','somatic','coach','collective','trust-path'];
+for(const family of allFamilies){
+ assert.ok(source.includes("family==='"+family+"'"),family+' service composition must remain distinct');
+}
+assert.ok(source.includes('const questions=resolved.questions'),'FAQ must use same resolved data as services');
+assert.ok(source.includes('const items=resolved.items'),'Services must use resolved data');
+const contactModes=resolveServiceFacts({fields:{contact:{value:'demo@example.com',status:'demo'}}});
+assert.equal(contactModes.contact,'');
+assert.equal(resolveServiceFacts({presentation:{mode:'published'},fields:{scope:{value:'未確認項目',status:'demo',display:'pending'}}}).items.length,0);
+
 console.log('ServiceFacts data-driven contract tests passed');
