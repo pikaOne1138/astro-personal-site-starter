@@ -38,6 +38,8 @@ for (const path of [
   'public/effects-sample.svg',
   'public/robots.txt',
   'scripts/verify-site-output.mjs',
+  'scripts/verify-release-readiness.mjs',
+  'scripts/test-release-readiness.mjs',
   'scripts/qa-student-responsive.mjs',
   'scripts/export-starter.mjs',
   'scripts/student-project-context.mjs',

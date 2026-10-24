@@ -5,11 +5,12 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/build-student-pack.mjs && node scripts/verify-route-skill-packs.mjs && node scripts/build-atp-experiments.mjs && astro build && node scripts/write-robots.mjs && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/verify-site-output.mjs",
+    "build": "node scripts/test-release-readiness.mjs && node scripts/build-student-pack.mjs && node scripts/verify-route-skill-packs.mjs && node scripts/build-atp-experiments.mjs && astro build && node scripts/write-robots.mjs && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/verify-site-output.mjs",
     "preview": "astro preview",
     "test:student-safety": "node scripts/test-student-responsive-pack.mjs",
     "test:student-browser": "node scripts/test-student-responsive-browser.mjs",
-    "test:student-responsive-e2e": "node scripts/test-student-responsive-e2e.mjs"
+    "test:student-responsive-e2e": "node scripts/test-student-responsive-e2e.mjs",
+    "test:release": "node scripts/test-release-readiness.mjs"
   },
   "dependencies": {
     "astro": "^7.4.2"

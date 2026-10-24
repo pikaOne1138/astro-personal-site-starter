@@ -112,6 +112,15 @@ assets['.github/workflows/deploy.yml']=[
 'name: Publish approved student Astro site',
 'on:',
 '  workflow_dispatch:',
+'    inputs:',
+'      approved_sha:',
+'        description: Exact reviewed main commit SHA (40 hex)',
+'        required: true',
+'        type: string',
+'      approved_url:',
+'        description: Exact reviewed production URL including base path',
+'        required: true',
+'        type: string',
 'permissions:',
 '  contents: read',
 '  pages: write',
@@ -140,6 +149,14 @@ assets['.github/workflows/deploy.yml']=[
 '        env:',
 '          SITE_URL: \u0024{{ steps.pages.outputs.origin }}',
 '          ASTRO_BASE_PATH: \u0024{{ steps.pages.outputs.base_path }}',
+'      - name: Release technical gate (not a substitute for human approval)',
+'        run: npm run verify:release',
+'        env:',
+'          SITE_URL: \u0024{{ steps.pages.outputs.origin }}',
+'          ASTRO_BASE_PATH: \u0024{{ steps.pages.outputs.base_path }}',
+'          RELEASE_SHA: \u0024{{ github.sha }}',
+'          RELEASE_APPROVED_SHA: \u0024{{ inputs.approved_sha }}',
+'          RELEASE_APPROVED_URL: \u0024{{ inputs.approved_url }}',
 '      - uses: actions/upload-pages-artifact@v3',
 '        with:',
 '          path: dist',
@@ -232,6 +249,13 @@ assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("con
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
 assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-site-output.mjs',import.meta.url),'utf8');
+// The built page's public sharing URL must track its canonical rather than an example origin.
+assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace(
+ '<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/>',
+ '<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/><meta property="og:url" content={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/>'
+);
+assets['scripts/verify-release-readiness.mjs']=readFileSync(new URL('./verify-release-readiness.mjs',import.meta.url),'utf8');
+assets['scripts/test-release-readiness.mjs']=readFileSync(new URL('./test-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-site-output.mjs','verify-site-output.mjs');
 const pkg=JSON.parse(assets['package.json']);
@@ -241,7 +265,9 @@ for(const directory of ['dist','.astro','node_modules/.astro'])rmSync(new URL('.
 `;
 pkg.scripts.build='node scripts/clean-build.mjs && astro build && pagefind --site dist --root-selector "[data-pagefind-body]" && node scripts/build-exact-search.mjs && node scripts/audit-generated-links.mjs dist';
 pkg.scripts.verify='node scripts/verify-site-output.mjs --student-site .';
-pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs';
+pkg.scripts['verify:release']='node scripts/verify-release-readiness.mjs .';
+pkg.scripts['test:release']='node scripts/test-release-readiness.mjs';
+pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs && node scripts/test-release-readiness.mjs';
 pkg.devDependencies={...pkg.devDependencies,pagefind:'^1.5.0'};
 assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
 // Export the actual selected homepage adapter as independent source, not a generic homepage with a layout class.
