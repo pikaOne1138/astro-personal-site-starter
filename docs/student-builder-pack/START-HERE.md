@@ -63,3 +63,7 @@ ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類�
 > 請先確認：你能讀取我上傳的 ZIP 與 JSON 嗎？能在你的執行環境建立、修改檔案並執行 Astro Build 嗎？能經我授權寫入**我自己的** GitHub Repository、建立 Branch／Pull Request 嗎？能提供我真的打得開的測試網址，並檢查手機與電腦畫面嗎？請用「可以／需要我授權／無法做到」逐項回答，不能用猜的，也不要直接發布。
 
 若 AI 缺少這些能力，請改用支援專案檔案、GitHub 連接、雲端建置與瀏覽器的工作模式，或請老師協助選擇工具。**不要因為模型說會寫程式，就認定它真的能部署網站。**
+
+## 跨 AI／GitHub／Cloudflare 卡關時
+
+若 AI 沒有本機 Git、只能呼叫 GitHub API、寫 Workflow 遇到 403、Cloudflare 只有讀取權限，或不能建立真實 Preview，先讀 [跨 AI 相容性與人工交接](AI-PROVIDER-COMPATIBILITY.md)。先確認能力再操作；**不要把 Git 資料夾塞進 ZIP**，也不要因為 Cloudflare 有連接按鈕就直接首次部署。三條建站路線仍以 `astro-site-entry` 為準；Preview 與發布程序仍以 `astro-pr-preview`／`astro-starter-deploy` 為準。
