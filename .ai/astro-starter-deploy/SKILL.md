@@ -20,7 +20,7 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 
 ## A｜GitHub Pages（學員可選）
 1. 在學員自己的新Repository使用ZIP匯出的獨立專案；不Fork/Clone老師Repo。不可在展示 Repo 的 main 上直接修改學員資料。
-2. 確認 GitHub Pages 的 Repository 站、使用者站或自訂網域；據此設定 Astro `site` 與 `base`。Repository 子路徑應匹配倉庫名稱，自訂網域通常不需要原 Repo 子路徑；以 GitHub Pages 實際設定為準。
+2. 確認 GitHub Pages 的 Repository 站、使用者站或自訂網域；據此設定 Astro `site` 與 `base`。匯出站的 `.github/workflows/deploy.yml` 已用 `actions/configure-pages` 自動把網站網址與路徑前綴帶進建置（環境變數 `SITE_URL`、`ASTRO_BASE_PATH`），通常不必手動改 `site.config.json`。Repository 子路徑應匹配倉庫名稱，自訂網域通常不需要原 Repo 子路徑；以 GitHub Pages 實際設定為準。
 3. 使用 `import.meta.env.BASE_URL` 處理路由及資產。檢查 canonical、RSS、Sitemap、robots、OG URL；從研究站複製的硬編碼網址必須替換。
 4. 使用 GitHub Actions Build/Deploy。不得假設展示站 `workflow_run`、預覽清理與 `gh-pages` 快照設計可以原封不動搬到新 Repo；安全地為單站裁切工作流程，權限採最小化。
 5. 操作：Branch → PR → CI Build → 預覽可開啟 → 學員同意 → Merge → 正式 Deploy → 實際頁面/搜尋/連結驗證。GitHub Pages 的 PR Preview 必須有實際隔離與可訪問路徑，不能把本地 Build 當線上預覽。
@@ -28,7 +28,7 @@ description: Help non-coders independently deploy an Astro personal site to GitH
 
 ## B｜GitHub + Cloudflare（學員可選）
 1. 先詢問使用 Cloudflare Pages 還是 Workers 靜態資產，確認目前供應商支援方式與限制。優先靜態網站，避免無必要的 SSR/後端。
-2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。
+2. 連接 GitHub Repository，設定正式 branch、安裝與建置命令（例如 `npm run build`）、靜態輸出 `dist`、Astro `site` 與 `base`。匯出站的 `site` 讀環境變數 `SITE_URL`，沒設時改用 Cloudflare 提供的 `CF_PAGES_URL`；所以正式網址或自訂網域要在 Cloudflare 的環境變數設定 `SITE_URL`。通常根網域的 base 是 `/`；以實際子路徑和 Cloudflare 專案設定為準。
    - **Pages**：新學員從 Cloudflare 建立畫面底部的 **Pages** 連結（「前往 Pages」）→ Connect to GitHub；選學員自己的 Repo 與正式 branch（通常 `main`）；Framework preset 選 **Astro**；Build command `npm run build`；Build output directory `dist`；Root directory 為 Repo 根目錄。
    - **Workers 靜態資產**：Deploy command 用 `npx wrangler deploy --config wrangler.jsonc`（明確指定 `--config`，避免換目錄時被框架自動偵測）；不要填 `bun run build` 當 deploy command，因為建置已依專案設定完成。`wrangler.jsonc` 要宣告 `assets.directory: "./dist"`；學員骨架預設沒有這個檔案，新增前要先取得學員同意。靜態站不需要 Cloudflare adapter、SSR、KV 或 `nodejs_compat`。
    - Node.js 版本要符合專案 Astro 版本的需求（看專案 `package.json` 與 Astro 文件），不要沿用其他專案寫死的版本號。

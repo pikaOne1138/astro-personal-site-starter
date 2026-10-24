@@ -3,6 +3,9 @@ import {join,resolve,dirname,relative,extname} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 export function auditLinks(dist,base='/'){
+ // GitHub's configure-pages reports the prefix without a trailing slash (/repo); Astro's BASE_URL has one (/repo/).
+ if(!base.startsWith('/'))base='/'+base;
+ if(!base.endsWith('/'))base+='/';
  const root=resolve(dist),failures=[];
  const pages=[];
  function walk(dir){for(const e of readdirSync(dir,{withFileTypes:true})){const p=join(dir,e.name);if(e.isDirectory())walk(p);else if(e.name.endsWith('.html'))pages.push(p)}}
