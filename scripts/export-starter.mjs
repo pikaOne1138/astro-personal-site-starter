@@ -264,6 +264,8 @@ assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].re
 );
 assets['scripts/verify-release-readiness.mjs']=readFileSync(new URL('./verify-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/gates.mjs']=readFileSync(new URL('./gates.mjs',import.meta.url),'utf8');
+assets['scripts/site-state.mjs']=readFileSync(new URL('./site-state.mjs',import.meta.url),'utf8');
+assets['scripts/preflight.mjs']=readFileSync(new URL('./preflight.mjs',import.meta.url),'utf8');
 assets['scripts/gates.config.json']=readFileSync(new URL('./gates.config.json',import.meta.url),'utf8');
 assets['scripts/test-release-readiness.mjs']=readFileSync(new URL('./test-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
@@ -278,6 +280,7 @@ pkg.scripts['verify:output']='node scripts/verify-site-output.mjs --student-site
 pkg.scripts.verify='node scripts/gates.mjs --mode preview';
 pkg.scripts['gate:preview']='node scripts/gates.mjs --mode preview';
 pkg.scripts['gate:release']='node scripts/gates.mjs --mode release';
+pkg.scripts.preflight='node scripts/preflight.mjs';
 pkg.scripts['verify:release']='node scripts/verify-release-readiness.mjs .';
 pkg.scripts['test:release']='node scripts/test-release-readiness.mjs';
 pkg.scripts['test:regressions']='node scripts/test-generated-link-audit.mjs && node scripts/test-site-output-regressions.mjs && node scripts/test-release-readiness.mjs';

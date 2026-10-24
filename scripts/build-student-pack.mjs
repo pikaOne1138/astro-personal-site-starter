@@ -45,6 +45,8 @@ for (const path of [
   'scripts/check-start-record.mjs',
   'scripts/gates.mjs',
   'scripts/gates.config.json',
+  'scripts/site-state.mjs',
+  'scripts/preflight.mjs',
   'scripts/test-gates.mjs',
   'scripts/student-project-context.mjs',
   'scripts/site-status.mjs',
