@@ -23,6 +23,18 @@ try{
  writeFileSync(join(root,'index.html'),'<a href="https://example.org/safe">External secure link</a><a href="mailto:hello@example.org">Email</a><img src="data:image/png;base64,AA==">');
  const allowed=auditLinks(root);
  record('N5','allowed HTTPS, mailto and image data URL',allowed.failures.length===0,allowed.failures);
+ mkdirSync(join(root,'tools'),{recursive:true});
+ writeFileSync(join(root,'index.html'),'<a href="/my-site/tools/">Under prefix</a><a href="/my-site/">Home</a>');
+ writeFileSync(join(root,'tools/index.html'),'<a href="/my-site/">Home</a>');
+ for(const prefix of ['/my-site','/my-site/']){
+  const underPrefix=auditLinks(root,prefix);
+  record('N5','links under path prefix '+prefix+' accepted',underPrefix.failures.length===0,underPrefix.failures);
+ }
+ writeFileSync(join(root,'index.html'),'<a href="/my-site/missing/">Broken under prefix</a>');
+ const brokenUnderPrefix=auditLinks(root,'/my-site');
+ record('N5','broken link under path prefix without trailing slash rejected',brokenUnderPrefix.failures.length===1&&brokenUnderPrefix.failures[0].includes('/my-site/missing/'),brokenUnderPrefix.failures);
+ rmSync(join(root,'tools'),{recursive:true,force:true});
+ writeFileSync(join(root,'index.html'),'<a href="/start-here/tools/">Works</a>');
  const attacks=[
   ['javascript scheme','<a href="javascript:alert(1)">Unsafe</a>'],
   ['entity-escaped javascript scheme','<a href="java&#x73;cript:alert(1)">Unsafe</a>'],

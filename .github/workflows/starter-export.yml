@@ -45,6 +45,8 @@ jobs:
           STUDENT_VISUAL_CAPTURE: '1'
           STUDENT_VISUAL_OUT: student-visual
         run: node scripts/verify-starter-export.mjs
+      - name: Verify exported site takes its URL and path prefix from the hosting platform
+        run: node scripts/test-student-deploy-config.mjs
       - name: Upload assembled learner screenshot gallery
         if: always()
         uses: actions/upload-artifact@v4
