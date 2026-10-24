@@ -66,4 +66,4 @@ ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類�
 
 ## 跨 AI／GitHub／Cloudflare 卡關時
 
-若 AI 沒有本機 Git、只能呼叫 GitHub API、寫 Workflow 遇到 403、Cloudflare 只有讀取權限，或不能建立真實 Preview，先讀 [跨 AI 相容性與人工交接](AI-PROVIDER-COMPATIBILITY.md)。先確認能力再操作；**不要把 Git 資料夾塞進 ZIP**，也不要因為 Cloudflare 有連接按鈕就直接首次部署。三條建站路線仍以 `astro-site-entry` 為準；Preview 與發布程序仍以 `astro-pr-preview`／`astro-starter-deploy` 為準。
+若 AI 沒有本機 Git、只能呼叫 GitHub API、寫 Workflow 遇到 403、Cloudflare 只有讀取權限，或不能建立真實 Preview，先讀 跨 AI 相容性文件 `docs/student-builder-pack/AI-PROVIDER-COMPATIBILITY.md`（ZIP 與原始倉庫皆保留此路徑；[在原始倉庫閱讀](./AI-PROVIDER-COMPATIBILITY.md)）。先確認能力再操作；**不要把 Git 資料夾塞進 ZIP**，也不要因為 Cloudflare 有連接按鈕就直接首次部署。三條建站路線仍以 `astro-site-entry` 為準；Preview 與發布程序仍以 `astro-pr-preview`／`astro-starter-deploy` 為準。
