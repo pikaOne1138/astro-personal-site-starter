@@ -1,34 +1,27 @@
 ---
 import config from '../../../../site.config.json';
 import FAQ from '../../blocks/FAQ.astro';
+import {resolveServiceFacts} from './service-facts-contract.mjs';
 const {mode='services'}=Astro.props;
 const family=config.layoutSlug;
-const facts=config.serviceFacts??{};
-const has=(key)=>typeof facts[key]==='string'&&facts[key].trim();
-const items=[
- {id:'scope',label:'服務範圍',detail:has('scope')?facts.scope:'待站長提供真實服務項目與適合對象'},
- {id:'exclusions',label:'服務界線',detail:has('exclusions')?facts.exclusions:'待站長確認哪些問題不在服務範圍內'},
- {id:'method',label:'合作方式',detail:has('method')?facts.method:'待站長說明實際合作或面談方式'},
- {id:'duration',label:'時間',detail:has('duration')?facts.duration:'尚未提供'},
- {id:'price',label:'費用',detail:has('price')?facts.price:'尚未提供'},
- {id:'cancellation',label:'取消方式',detail:has('cancellation')?facts.cancellation:'尚未提供'},
- {id:'firstVisit',label:'第一次聯絡',detail:has('firstVisit')?facts.firstVisit:'待站長說明第一次接觸流程'},
- {id:'qualification',label:'專業資格',detail:has('qualification')?facts.qualification:'待站長提供可查證資訊'}
-];
-const questions=items.filter(x=>['scope','exclusions','duration','price','firstVisit','cancellation'].includes(x.id)).map(x=>({question:x.label,answer:x.detail}));
+const resolved=resolveServiceFacts(config.serviceFacts);
+const items=resolved.items;
+const questions=resolved.questions;
+const fact=id=>items.find(x=>x.id===id);
+
 ---
 <div class="service-composition" data-service-family={family}>
   {mode==='services'?<Fragment>
   <p class="service-preface">SERVICES / FACTS BEFORE DECISIONS</p>
-  <div class="service-header"><h2>在聯絡之前，先了解服務。</h2><p>這一頁只呈現站長提供並確認的資料。尚未設定的欄位明確標示，不代表提供未列出的服務。</p></div>
+  <div class="service-header"><h2>在聯絡之前，先了解服務。</h2><p>這一頁只呈現站長提供並確認的資料。待設定項目僅供預覽確認，不代表提供未列出的服務。</p></div>
   {family==='clinician'&&<dl class="clinical-facts">{items.map((item,i)=><div><dt><b>{String(i+1).padStart(2,'0')}</b>{item.label}</dt><dd>{item.detail}</dd></div>)}</dl>}
   {family==='companion'&&<div class="companion-letters">{items.map((item,i)=><section><span>LETTER {String(i+1).padStart(2,'0')}</span><h3>{item.label}</h3><p>{item.detail}</p></section>)}</div>}
   {family==='somatic'&&<div class="somatic-sequences">{items.map((item,i)=><section><div class="somatic-number">{String(i+1).padStart(2,'0')}</div><div><h3>{item.label}</h3><p>{item.detail}</p></div></section>)}</div>}
   {family==='coach'&&<ol class="coach-sprints">{items.map((item,i)=><li><span>MOVE {String(i+1).padStart(2,'0')}</span><div><h3>{item.label}</h3><p>{item.detail}</p></div></li>)}</ol>}
   {family==='collective'&&<div class="collective-protocol">{items.map((item,i)=><article><span>PROTOCOL / {String(i+1).padStart(2,'0')}</span><h3>{item.label}</h3><p>{item.detail}</p></article>)}</div>}
   {family==='trust-path'&&<ol class="trust-service-path">{items.map((item,i)=><li><div class="trust-path-node">{String(i+1).padStart(2,'0')}</div><div><h3>{item.label}</h3><p>{item.detail}</p></div></li>)}</ol>}
-  </Fragment>:mode==='faq'?<div class="service-questions"><p class="service-preface">BEFORE YOU DECIDE</p><p>回答沿用站長提供的服務資訊；缺少資料時標示待設定。</p><FAQ items={questions}/></div>:<div class="service-first-contact"><p class="service-preface">FIRST CONTACT / YOUR CHOICE</p><h2>先了解，再決定是否聯絡。</h2><div><h3>第一次聯絡</h3><p>{has('firstVisit')?facts.firstVisit:'初次聯絡流程尚未設定。'}</p></div><div><h3>合作方式與界線</h3><p>{has('method')?facts.method:'合作方式尚未設定。'}</p><p>{has('exclusions')?facts.exclusions:'服務界線尚未設定。'}</p></div></div>}
-  {has('contact')?<div class="service-contact"><h2>一般聯絡方式</h2><p>{facts.contact}</p><small>此處只提供聯絡資訊，並未建立或確認預約。</small></div>:<p class="service-pending">聯絡資訊尚未設定；正式發布前請站長確認。</p>}
+  </Fragment>:mode==='faq'?<div class="service-questions"><p class="service-preface">BEFORE YOU DECIDE</p><p>回答沿用站長提供的服務資訊；選填資訊未提供時會依設定隱藏。</p><FAQ items={questions}/></div>:<div class="service-first-contact"><p class="service-preface">FIRST CONTACT / YOUR CHOICE</p><h2>先了解，再決定是否聯絡。</h2>{fact('firstVisit')&&<div><h3>第一次聯絡</h3><p>{fact('firstVisit').detail}</p></div>}{(fact('method')||fact('exclusions'))&&<div><h3>合作方式與界線</h3>{fact('method')&&<p>{fact('method').detail}</p>}{fact('exclusions')&&<p>{fact('exclusions').detail}</p>}</div>}</div>}
+  {resolved.contact?<div class="service-contact"><h2>一般聯絡方式</h2><p>{resolved.contact}</p><small>此處只提供聯絡資訊，並未建立或確認預約。</small></div>:resolved.contactPending&&<p class="service-pending">{resolved.contactPending}</p>}
 </div>
 <style>
 .service-composition{margin:2rem 0 0;--line:color-mix(in srgb,currentColor 28%,transparent)}
