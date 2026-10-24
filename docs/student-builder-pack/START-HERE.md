@@ -23,6 +23,12 @@ ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類�
 
 C 路線的唯一正式起始提示詞是 `docs/student-builder-pack/START-INTERVIEW-PROMPT.txt`（`/guide/` 的「從對話開始」可複製）。它自包含，不假設 AI 已讀本 ZIP，所以純聊天 AI 也能先完成訪談與理解確認單。AI 能讀本 ZIP 時，再依 `.ai/astro-site-from-zero/SKILL.md` 的核心題庫、確認單與逐題保存進行。換對話後要續接，必須讓 AI 讀到 `INTERVIEW-NOTES.md`／`PROJECT.md`，或由學員貼回進度摘要；只貼開場提示詞無法恢復先前的答案。
 
+## 維護與說明卡
+
+- 維護既有網站的唯一正式起始提示詞是 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt`（`/guide/` 第 07 步），流程見 `.ai/astro-site-maintenance/SKILL.md`。
+- 給學員看的訪談說明卡是 `docs/student-builder-pack/INTERVIEW-GUIDE.md`，`/guide/` 直接讀取同一份。
+- 首次組站使用 ATP 匯出器時，A、C 路線先寫好 `需求理解確認紀錄`，並以 `--require-start-record` 檢查（G-00，見 from-zero Skill）；B 路線以學員下載的 Site Brief 為依據。這只證明有留痕，不證明真人同意。
+
 ## 可選：先討論設計，不立即建站
 
 若還不確定網站方向，可先使用同一份 ZIP 中 `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt`，從 `/guide/` 複製「先討論網站設計」提示詞給能讀取檔案的 AI。這階段不需要 Site Brief JSON，也不用先安裝額外 Skill；AI 依 `AGENTS.md` 與 `astro-design-consultation` 討論，完成 Design Brief 後再回到 `/starter/` 進入原本建站流程。不能讀 ZIP 或 `.ai/` 的純聊天 AI 不應宣稱已載入 Skill。
