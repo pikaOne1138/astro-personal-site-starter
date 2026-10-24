@@ -101,9 +101,9 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 
 ## Motion and effects
 
-- Motion work MUST use `.ai/astro-motion-craft/SKILL.md` and the library under `.ai/astro-motion-craft/library/` (`README.md`, then `effect-catalog.md` and the matching recipe: `reveal-and-stagger`, `pointer-interactions` or `content-interactions`). The recipes distinguish Manus v2 ZIP source behavior from our adaptation, and unimplemented references from actual components.
+- Motion work MUST use `.ai/astro-motion-craft/SKILL.md` and the library under `.ai/astro-motion-craft/library/` (`README.md`, then `effect-catalog.md` and the matching recipe: `reveal-and-stagger`, `pointer-interactions` or `content-interactions`). The recipes distinguish Manus source behavior from our adaptation, and unimplemented references from actual components.
 - Effects runtime lives under `src/components/effects/` (Reveal, StaggerGroup, MotionCard, ZoomImage, MagneticButton, UnderlineLink, MotionFAQ); CSS in `public/effects.css`.
-- Manus effect APIs are reference-only until explicitly implemented; do not claim they shipped. Do not treat ZIP effects or Tailwind v4 as installed. Do not introduce duplicate observers, global theme overrides or unverified animation claims.
+- Manus effect APIs are reference-only until explicitly implemented; do not claim they shipped. Do not treat Manus effects or Tailwind v4 as installed. Do not introduce duplicate observers, global theme overrides or unverified animation claims.
 - Preserve no-JS visible content, reduced-motion/static fallbacks, pointer-fine-only 3D/spotlight/pan/magnetic effects, keyboard and touch behavior, and every existing theme.
 - Update recipes and catalog when the motion runtime changes.
 

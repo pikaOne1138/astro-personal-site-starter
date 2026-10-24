@@ -66,9 +66,25 @@ for (const file of files) {
   });
 }
 
+// Public page copy must not name a PR either: a visitor sees it, and it goes stale.
+const walkSrc = (p, out = []) => {
+  const abs = join(root, p);
+  if (!existsSync(abs)) return out;
+  if (statSync(abs).isDirectory()) readdirSync(abs).forEach((f) => walkSrc(join(p, f), out));
+  else if (/\.(astro|ts)$/.test(p)) out.push(p);
+  return out;
+};
+const srcFiles = walkSrc('src');
+for (const file of srcFiles) {
+  readFileSync(join(root, file), 'utf8').split('\n').forEach((line, i) => {
+    const m = line.match(rules[0][1]);
+    if (m && !allowed(file, 'pr-number', line)) problems.push([file, i + 1, 'pr-number', `PR 編號：${m[0]}`]);
+  });
+}
+
 if (problems.length) {
   for (const [f, l, id, msg] of problems) console.log(`${f}${l ? ':' + l : ''} [${id}] ${msg}`);
-  console.log(`\n${problems.length} 個問題（掃描 ${files.length} 份文件）`);
+  console.log(`\n${problems.length} 個問題（掃描 ${files.length} 份文件、${srcFiles.length} 份原始碼）`);
   process.exit(1);
 }
-console.log(`doc hygiene OK（掃描 ${files.length} 份文件）`);
+console.log(`doc hygiene OK（掃描 ${files.length} 份文件、${srcFiles.length} 份原始碼）`);

@@ -125,6 +125,8 @@ jobs:
       - name: Verify resource URL Props security fixtures
         id: resourceprops
         run: node scripts/test-resource-url-props.mjs
+      - name: Verify shared link guard on block components
+        run: node scripts/test-block-href-guard.mjs
       - name: Install Chromium for 12-layout visual QA
         id: chromium
         if: always()

@@ -1,10 +1,12 @@
 # Recipe I01、L01、F01｜ZoomImage／UnderlineLink／FAQ
 
-## Manus v2 原始來源
-- `src/components/effects/ZoomImage.astro`
-- `src/components/effects/UnderlineLink.astro`
-- `src/components/common/FAQAccordion.astro`
-- `src/styles/components.css`
+## Manus 來源（參考專案的檔案，快照在 `library/source-snapshots/manus-source/`）
+- Manus: `src/components/effects/ZoomImage.astro`（`ZoomImage.astro.txt`）
+- Manus: `src/components/effects/UnderlineLink.astro`（`UnderlineLink.astro.txt`）
+- Manus: `src/components/common/FAQAccordion.astro`（`FAQAccordion.astro.txt`）
+- Manus: `src/styles/components.css`（`components.effects.css.txt`）
+
+我們自己的版本：`src/components/effects/ZoomImage.astro`、`UnderlineLink.astro`、`MotionFAQ.astro`。
 
 ## ZoomImage
 

@@ -28,6 +28,7 @@
 2. 用現有 Astro Props 傳入資料。元件本身不包含 CMS、會員、資料庫、金流或真正的預約系統。
 3. 資料形狀：`PostGrid` 接 `posts`；`FeatureGrid`、`Stats`、`ProcessSteps`、`FAQ` 接 `items`。`HeroSplit`、`ImageText` 用 `reversed` 切換左右；`FeatureGrid` 用 `columns={2}` 或 `columns={3}`。
 4. 要提供真實的連結和內容。展示用 `#` 連結與示例見證不能當正式內容發布。
+   - `Button`、`ServiceCard`、`CTASection`、`FeatureGrid`、`UnderlineLink` 的 `href` 只接受站內路徑、頁內錨點、`https`、`mailto`、`tel`；其他值（例如 `javascript:`、`//host`）不會產生連結，只輸出純文字。
 5. 頁面讀取 `public/demo.css` 與 `public/blocks.css`；在 `<html data-theme="…">` 切換主題。
 6. 維持無障礙、手機版與 `prefers-reduced-motion`。完成後執行 `npm run build`。
 7. 學員的單一網站要改元件時，依需求修改現有元件，不要在旁邊另造近似的複本；學員明確要新增時才另開。
