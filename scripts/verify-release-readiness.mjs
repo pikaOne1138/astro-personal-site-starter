@@ -57,7 +57,6 @@ export function inspectRelease({root='.',env=process.env,approvalRequired=true}=
   if(!/^Disallow: \/$/m.test(robots))errors.push('INDEXING: nonindexable release must disallow crawling');
  }
  // HTML safety scan: fail closed for actual submission controls lacking a usable target.
- const serviceAlerts=[];
  for(const file of html){
   const name=relative(dist,file).replaceAll('\\\\','/');
   const body=readFileSync(file,'utf8');
