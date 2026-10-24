@@ -232,6 +232,11 @@ assets['src/pages/robots.txt.js']=assets['src/pages/robots.txt.js'].replace("con
 assets['scripts/build-exact-search.mjs']=readFileSync(new URL('./build-student-search-index.mjs',import.meta.url),'utf8');
 assets['scripts/audit-generated-links.mjs']=readFileSync(new URL('./audit-generated-links.mjs',import.meta.url),'utf8');
 assets['scripts/verify-site-output.mjs']=readFileSync(new URL('./verify-site-output.mjs',import.meta.url),'utf8');
+// The built page's public sharing URL must track its canonical rather than an example origin.
+assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace(
+ '<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/>',
+ '<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/><meta property="og:url" content={new URL(Astro.url.pathname,Astro.site??Astro.url).href}/>'
+);
 assets['scripts/verify-release-readiness.mjs']=readFileSync(new URL('./verify-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-site-output.mjs','verify-site-output.mjs');
