@@ -19,6 +19,10 @@ ATP 主要提供知識／部落格及助人者／專業服務兩類；其他類�
 2. 在同一段 AI 對話上傳 Site Brief JSON 與本 ZIP。
 3. 到工作坊網站 `/guide/` 按「開始建站」提示詞的複製按鈕，或打開本 ZIP 中的 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，把**原文**貼給 AI。這是唯一正式起始提示詞；不需要自己在不同 README 中拼湊或改寫。
 
+## C 路線：訪談啟動提示詞
+
+C 路線的唯一正式起始提示詞是 `docs/student-builder-pack/START-INTERVIEW-PROMPT.txt`（`/guide/` 的「從對話開始」可複製）。它自包含，不假設 AI 已讀本 ZIP，所以純聊天 AI 也能先完成訪談與理解確認單。AI 能讀本 ZIP 時，再依 `.ai/astro-site-from-zero/SKILL.md` 的核心題庫、確認單與逐題保存進行。換對話後要續接，必須讓 AI 讀到 `INTERVIEW-NOTES.md`／`PROJECT.md`，或由學員貼回進度摘要；只貼開場提示詞無法恢復先前的答案。
+
 ## 可選：先討論設計，不立即建站
 
 若還不確定網站方向，可先使用同一份 ZIP 中 `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt`，從 `/guide/` 複製「先討論網站設計」提示詞給能讀取檔案的 AI。這階段不需要 Site Brief JSON，也不用先安裝額外 Skill；AI 依 `AGENTS.md` 與 `astro-design-consultation` 討論，完成 Design Brief 後再回到 `/starter/` 進入原本建站流程。不能讀 ZIP 或 `.ai/` 的純聊天 AI 不應宣稱已載入 Skill。

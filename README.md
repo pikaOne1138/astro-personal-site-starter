@@ -23,6 +23,7 @@ Astro 架站工作坊的**設計研究展示站，以及學員獨立網站 Start
 
 1. 在 `/starter/` 選擇網站方向、版型、品牌、導覽與內容，下載 Site Brief JSON。
 2. 在 `/guide/` 下載建站資料包，並複製**唯一正式的起始提示詞**（來源是 `docs/student-builder-pack/START-BUILD-PROMPT.txt`，`/guide/` 的按鈕直接讀取這個檔）。
+   走 C 路線（直接與 AI 訪談）則複製 `docs/student-builder-pack/START-INTERVIEW-PROMPT.txt`（`/guide/` 的「從對話開始」讀取同一個檔），它不需要先上傳資料包。
 3. 把 Site Brief 與資料包交給能讀寫檔案、執行建置並經授權操作 GitHub 的 AI。
 4. AI 在學員自己的 Repo 建立 Branch 與 PR，經過實際存在的 Preview，學員確認後才合併與發布。
 
