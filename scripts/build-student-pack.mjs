@@ -42,6 +42,7 @@ for (const path of [
   'scripts/test-release-readiness.mjs',
   'scripts/qa-student-responsive.mjs',
   'scripts/export-starter.mjs',
+  'scripts/check-start-record.mjs',
   'scripts/student-project-context.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',

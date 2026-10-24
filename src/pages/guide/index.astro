@@ -4,6 +4,9 @@ import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
 const assembledLayoutCount=layoutDefinitions.filter(layout=>layout.adapter).length;
 import startBuildPrompt from '../../../docs/student-builder-pack/START-BUILD-PROMPT.txt?raw';
 import startInterviewPrompt from '../../../docs/student-builder-pack/START-INTERVIEW-PROMPT.txt?raw';
+import startMaintenancePrompt from '../../../docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt?raw';
+import interviewGuide from '../../../docs/student-builder-pack/INTERVIEW-GUIDE.md?raw';
+const interviewPoints=interviewGuide.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l)).map(l=>l.replace(/^\d+\.\s*/,''));
 import releaseApprovalPrompt from '../../../docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md?raw';
 const routePrompts=[
 '我已上傳「AI-replica-skill-pack.zip」，想將我擁有或已獲授權的網站以 Astro 重建。原網站網址：【貼上網址】。請先讀 START-HERE.md 與復刻 Skill，實際盤點首頁、文章、分類、深層頁面、圖片、手機版和互動，列出可還原與無法取得之處。請先確認你有檔案操作、網站建置和真實預覽能力，再提出重建計畫。一次只問一個必要問題。完成後提供對應最新 Commit 的可開啟預覽網址；未經我同意，不得合併或正式發布。',
@@ -25,7 +28,7 @@ const prompts=[
 {title:'請 AI 引導連接網站託管',text:'我想把這個網站放上網路，使用【Cloudflare Pages／GitHub Pages】。請依我眼前的網站畫面，一次教我按一個步驟。碰到畫面不一樣就請我截圖，不要猜測按鈕位置。程式設定由你處理；每一步請告訴我完成後應看到什麼。先取得可打開的測試網址，不要擅自發布正式版本。'},
 {title:'請 AI 幫我修正畫面',text:'這是我的網站預覽連結：【貼網址】。這是我想修改的地方：【用自己的話描述，也可以附截圖】。請只修改這次提到的問題，保留原本選擇的設計風格。修好後給我新的預覽連結，並用白話告訴我改了什麼。先不要合併或發布。'},
 {title:'請 AI 進行上線前檢查',text:'我正在確認網站能不能正式公開。請替我檢查頁面、圖片、連結、搜尋、手機畫面與不應公開的資料。請用「正常／有問題／需要我親自看」三類白話回報，並提供預覽網址。我還沒有同意合併或發布，請先等我確認。'},
-{title:'請 AI 幫我日後更新',text:'我想修改自己已上線的網站：【說明想改什麼】。請先製作一份不影響目前正式網站的預覽版本，提供網址讓我查看。確認沒問題再問我是否同意發布。'}
+{title:'請 AI 幫我日後更新',text:startMaintenancePrompt.trim()}
 
 ];
 ---
@@ -51,7 +54,8 @@ const prompts=[
 <h2>從對話開始建自己的網站</h2><p>不知道設計、網站名稱或需要哪些頁面都沒關係。AI 會一次問一個問題，先整理需求再製作。<strong>不需要 Site Brief JSON。</strong></p>
 <ol><li>複製下方提示詞，貼給任何 AI 聊天；不需要先上傳檔案就能開始訪談。</li><li>AI 問完會給你一張「理解確認單」，你說「對，可以開始」它才會動手；不對就直接告訴它哪裡不對。</li><li>要讓 AI 真的建站時，再下載下方 Skill ZIP 交給有專案操作能力的 AI。</li></ol>
 <p><a class="button" href={link('AI-from-zero-skill-pack.zip')} download>下載直接對話 Skill ZIP ↓</a></p>
-<div class="prompt"><div class="prompt-head"><strong>開始和 AI 討論網站</strong><button class="button alt route-copy" type="button" data-route-prompt="1">複製提示詞</button></div><p>{routePrompts[1]}</p></div></section>
+<div class="prompt"><div class="prompt-head"><strong>開始和 AI 討論網站</strong><button class="button alt route-copy" type="button" data-route-prompt="1">複製提示詞</button></div><p>{routePrompts[1]}</p></div>
+<div class="card"><h3>你會經歷什麼</h3><ol>{interviewPoints.map(x=><li>{x}</li>)}</ol></div></section>
 <div id="starter-route" class="starter-only"><p class="lead">選用現有 Starter，依序選版型、下載 Site Brief 與完整建站包，再交給 AI。</p><p><a class="button alt" href={link('guide/prepare/')}>我還沒準備好，先去前置準備 →</a></p>
 </div><nav class="quick" aria-label="步驟快速跳轉">{steps.map(x=><a href={'#step-'+x.n}>{x.n} {x.name}</a>)}</nav>
 {steps.map((st,i)=><section class={'section'+(i<2?' starter-only':'')} id={'step-'+st.n}><div class="section-head"><span class="number">{st.n}</span><h2>{st.name}</h2></div><p>{st.intro}</p>

@@ -3,8 +3,16 @@ import {resolve,join,dirname} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {finalizeStudentSite} from './student-project-context.mjs';
 import {getLayoutDefinition} from '../src/data/layout-assembly/definitions.mjs';
+import {checkStartRecordFile} from './check-start-record.mjs';
 const [input,dest]=process.argv.slice(2);
 if(!input||!dest)throw Error('Usage: node scripts/export-starter.mjs plan.json output-dir');
+// G-00: first-time assembly needs a confirmation record. Route B may omit the flag (the downloaded Site Brief is its basis); routes A and C pass the record file. Maintenance of an existing site never runs the exporter.
+const startFlag=process.argv.indexOf('--require-start-record');
+if(startFlag>=0){
+ const gate=checkStartRecordFile(process.argv[startFlag+1]||'PROJECT.md');
+ if(!gate.ok){console.error('G-00 開工紀錄 FAIL：'+gate.learnerMessage);for(const e of gate.errors)console.error('  '+e);process.exit(1);}
+ console.log('G-00 開工紀錄 PASS：路線 '+gate.route+'，'+gate.recordStatus+(gate.confirmedAt?'，'+gate.confirmedAt:''));
+}
 const plan=JSON.parse(readFileSync(resolve(input),'utf8'));
 const selected=getLayoutDefinition(plan.layoutSlug,plan.kind);
 if(selected?.adapter?.engine){

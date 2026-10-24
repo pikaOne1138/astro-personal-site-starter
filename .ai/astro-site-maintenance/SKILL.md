@@ -4,6 +4,9 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 ---
 # Astro Site Maintenance｜更新、備份與復原
 
+## 學員的維護啟動儀式
+學員用 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt`（`/guide/` 第 07 步可複製，唯一正式版本）開新對話時，依序：(1) 先讀學員站的 `PROJECT.md`、狀態與真實工作樹，用白話報告「網站現在是什麼、網址、上次改了什麼」，讀不到就明說；(2) 一次問一個「這次要改什麼」；(3) 動手前複述「將修改 A、會影響 B、不會動 C」，學員說好才做；(4) 做完提供不影響正式站的預覽，並把變更寫回 `PROJECT.md`。學員已用具體文字說清楚、可逆的小修改（例如「價格改為 2,000 元」）可直接做並給預覽，不再索取相同授權；範圍不明或有連帶影響才補問。維護不重跑匯出器，也不受首次組站的 G-00 開工紀錄影響。正式發布仍需針對該版本的明確核准。
+
 ## 用途
 學員說「改首頁、寫文章、上傳圖片、修壞網站、恢復昨天版本、換電腦」時使用。與 `astro-content-publishing`、`astro-pr-preview`、`astro-starter-deploy` 分工，不自建 CMS、資料庫或會員後台。
 

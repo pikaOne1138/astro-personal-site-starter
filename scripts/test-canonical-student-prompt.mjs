@@ -19,12 +19,26 @@ if(!start.includes('START-INTERVIEW-PROMPT.txt'))errors.push('ZIP START-HERE doe
 if(!repoReadme.includes('START-INTERVIEW-PROMPT.txt'))errors.push('Research README missing interview prompt reference');
 const fromZero=readFileSync('.ai/astro-site-from-zero/SKILL.md','utf8');
 for(const phrase of ['核心題庫','理解確認單與硬停點','逐題保存與續接','INTERVIEW-NOTES.md','學員明確略過'])if(!fromZero.includes(phrase))errors.push('from-zero Skill missing '+phrase);
+const maintPath='docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt';
+const maint=readFileSync(maintPath,'utf8').trim();
+if(maint.length<150||maint.length>400)errors.push('Maintenance prompt length out of range: '+maint.length);
+for(const phrase of ['PROJECT.md','一次只問一個問題','我將修改','不影響正式網站','不要合併或發布','密碼'])if(!maint.includes(phrase))errors.push('Maintenance prompt missing '+phrase);
+if(!guide.includes("import startMaintenancePrompt from '../../../docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt?raw'")||!guide.includes('startMaintenancePrompt.trim()'))errors.push('Guide maintenance step does not read maintenance prompt');
+if(!guide.includes("INTERVIEW-GUIDE.md?raw"))errors.push('Guide does not read the interview guide card');
+if(!start.includes('START-MAINTENANCE-PROMPT.txt')||!start.includes('INTERVIEW-GUIDE.md'))errors.push('START-HERE does not register maintenance prompt and guide card');
+if(!repoReadme.includes('START-MAINTENANCE-PROMPT.txt'))errors.push('Research README missing maintenance prompt reference');
+const guideCard=readFileSync('docs/student-builder-pack/INTERVIEW-GUIDE.md','utf8');
+if(guideCard.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l)).length!==5)errors.push('Interview guide card must have exactly five numbered points');
+if(/PR|commit|JSON/.test(guideCard))errors.push('Interview guide card must stay free of technical terms');
+if(/貼同一句開場白就能/.test(guideCard))errors.push('Interview guide card promises resume from opener alone');
+const maintSkill=readFileSync('.ai/astro-site-maintenance/SKILL.md','utf8');
+if(!maintSkill.includes('START-MAINTENANCE-PROMPT.txt'))errors.push('Maintenance Skill does not reference the maintenance prompt');
 let archive='NOT TESTED';
 const pkg='public/AI-建站資料包.zip';
 if(existsSync(pkg)){
  const bytes=readFileSync(pkg);
  const foundName=bytes.includes(Buffer.from(canonicalPath,'utf8'));
- const foundText=bytes.includes(Buffer.from(canonical,'utf8'))&&bytes.includes(Buffer.from(interview,'utf8'));
+ const foundText=bytes.includes(Buffer.from(canonical,'utf8'))&&bytes.includes(Buffer.from(interview,'utf8'))&&bytes.includes(Buffer.from(maint,'utf8'));
  archive=foundName&&foundText?'PASS':'FAIL';
  if(archive==='FAIL')errors.push('N20 actual delivered ZIP does not contain canonical prompt bytes');
 }
