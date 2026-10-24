@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import {resolveServiceFacts} from './service-facts-contract.mjs';
+import {readFileSync} from 'node:fs';
+const source=readFileSync(new URL('./ServiceSections.astro',import.meta.url),'utf8');
+const contract=source.split('// BEGIN SERVICE_FACTS_CONTRACT')[1]?.split('// END SERVICE_FACTS_CONTRACT')[0];
+assert.ok(contract,'ServiceFacts contract embedded in exported component');
+const {resolveServiceFacts}=await import('data:text/javascript,'+encodeURIComponent(contract+'\nexport {resolveServiceFacts};'));
 const legacy={scope:'按摩放鬆',exclusions:'不提供醫療診斷',method:'現場服務',duration:'60 分鐘',price:'NT$ 1200',cancellation:'提前一天',firstVisit:'以電子郵件聯絡',contact:'hello@example.com'};
 const all=resolveServiceFacts(legacy);
 assert.equal(all.items.length,7);
