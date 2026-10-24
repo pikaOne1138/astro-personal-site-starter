@@ -1,13 +1,13 @@
-name: PR47 Layout Handoff Contract
+name: Art Direction Layout Handoff Contract
 on:
   pull_request:
     paths:
-      - 'docs/art-direction/pr47-layout-handoff-registry.json'
+      - 'docs/art-direction/layout-handoff-registry.json'
       - 'src/data/layout-directions.json'
       - 'src/data/art-direction-definitions/**'
       - 'src/pages/layouts/**'
-      - 'scripts/verify-pr47-layout-handoff.mjs'
-      - '.github/workflows/pr47-layout-handoff.yml'
+      - 'scripts/verify-art-direction-layout-handoff.mjs'
+      - '.github/workflows/art-direction-layout-handoff.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,4 +20,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node scripts/verify-pr47-layout-handoff.mjs
+      - run: node scripts/verify-art-direction-layout-handoff.mjs

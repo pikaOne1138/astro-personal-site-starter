@@ -91,7 +91,7 @@ Registries are the source of truth. **Do not hardcode their counts** in code, do
 - Source of truth for helper marketing and FAQ copy: `src/data/helper-content.ts`. It demonstrates distinct applications (for example bodywork, counseling, coaching and Reiki), each with its own content. Layout components stay theme-agnostic; do not reinsert vague generic filler.
 
 **Articles and search**
-- `src/content/articles/` is the source of truth; `src/data/articles-v2.ts` is a derived compatibility adapter, not a place to add articles.
+- `src/content/articles/` is the source of truth; `src/data/articles-adapter.ts` is a derived compatibility adapter, not a place to add articles.
 - Research-site articles need frontmatter `title`, `description`, `publishedAt` and `category` (`tags` optional); `draft: true` keeps one out of public pages, RSS and the sitemap. The same article shown under several themes appears once in RSS. The demo articles are shared content, so a real site must choose its own canonical root.
 - Article pages are canonical at `/[kind]/[theme]/articles/`. `ArticleArchive` combines list/cards/grid, query, tags, calendar and months; legacy `explore/` redirects, retaining query and hash.
 - `ArticleViewSwitcher` is the canonical article archive renderer (list, cards, grid from the same data, real article links, optional filtering data attributes). Preserve working search and tag/calendar/month filters and responsive design.

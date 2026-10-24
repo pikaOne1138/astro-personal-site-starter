@@ -25,45 +25,7 @@ permissions:
   actions: read
 
 jobs:
-  ci-change-classifier:
-    runs-on: ubuntu-latest
-    outputs:
-      mode: ${{ steps.detect.outputs.mode || steps.external.outputs.mode }}
-    steps:
-      - id: external
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
-        run: echo 'mode=full' >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v4
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
-      - id: detect
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        shell: bash
-        run: |
-          # PR #67 predates this classifier; load its trusted main copy after merge.
-          if git cat-file -e origin/main:scripts/ci-pr67-change-gate.mjs 2>/dev/null; then
-            git show origin/main:scripts/ci-pr67-change-gate.mjs > /tmp/ci-pr67-change-gate.mjs
-            node /tmp/ci-pr67-change-gate.mjs
-          else
-            node scripts/ci-pr67-change-gate.mjs
-          fi
-      - name: Regression-test ledger-only versus site-impacting classification
-        if: github.event_name == 'pull_request'
-        run: |
-          if [ -f scripts/test-ci-pr67-change-gate.mjs ]; then
-            node --check scripts/ci-pr67-change-gate.mjs
-            node scripts/test-ci-pr67-change-gate.mjs
-          fi
   static-build:
-    needs: ci-change-classifier
-    if: needs.ci-change-classifier.outputs.mode != 'ledger_only'
     runs-on: ubuntu-latest
     env:
       NODE_OPTIONS: '--import=data:text/javascript,process.env.GITHUB_SHA%3Dprocess.env.QA_CHECKOUT_SHA%7C%7Cprocess.env.GITHUB_SHA'

@@ -262,7 +262,7 @@
       "slug": "subject-atlas",
       "kind": "knowledge",
       "name": "主題標本室",
-      "origin": "pr47-existing-2",
+      "origin": "art-direction-adapter",
       "structuralIdentity": "typographic manifesto → topic rail → uneven directory → latest note → archive",
       "prototype": {
         "home": "/layouts/subject-atlas/",
@@ -289,7 +289,7 @@
       "slug": "practice-compass",
       "kind": "helper",
       "name": "服務羅盤",
-      "origin": "pr47-existing-2",
+      "origin": "art-direction-adapter",
       "structuralIdentity": "prologue → choose situation → verify fit → transparency → FAQ",
       "prototype": {
         "home": "/layouts/practice-compass/",
@@ -317,7 +317,7 @@
       "slug": "sidebar-journal",
       "kind": "knowledge",
       "name": "側欄日誌",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "主文時間流＋作者右側欄",
       "nearestLayout": "field-notes",
       "prototype": {
@@ -344,7 +344,7 @@
       "slug": "editorial-frontpage",
       "kind": "knowledge",
       "name": "個人刊物",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "頭條 7:5＋次級文章",
       "nearestLayout": "essayist",
       "prototype": {
@@ -371,7 +371,7 @@
       "slug": "card-journal",
       "kind": "knowledge",
       "name": "卡片刊物",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "等權重文章格網",
       "nearestLayout": "curator",
       "prototype": {
@@ -398,7 +398,7 @@
       "slug": "visual-stories",
       "kind": "knowledge",
       "name": "影像故事",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "左右交替的圖片／圖說",
       "nearestLayout": "curator",
       "prototype": {
@@ -425,7 +425,7 @@
       "slug": "compact-dispatch",
       "kind": "knowledge",
       "name": "極簡短箋",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "緊湊日期列表",
       "nearestLayout": "reading-atlas",
       "prototype": {
@@ -452,7 +452,7 @@
       "slug": "split-reader",
       "kind": "knowledge",
       "name": "雙欄閱讀台",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "主文預告 5:7＋右側索引",
       "nearestLayout": "essayist",
       "prototype": {
@@ -479,7 +479,7 @@
       "slug": "portrait-profile",
       "kind": "helper",
       "name": "人物名片",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "肖像／身分 4:7＋服務",
       "nearestLayout": "companion",
       "prototype": {
@@ -506,7 +506,7 @@
       "slug": "service-catalogue",
       "kind": "helper",
       "name": "服務目錄",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "服務規格表＋可比較條目",
       "nearestLayout": "coach",
       "prototype": {
@@ -533,7 +533,7 @@
       "slug": "studio-chapters",
       "kind": "helper",
       "name": "工作室章節",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "章節目錄＋方法閱讀",
       "nearestLayout": "somatic",
       "prototype": {
@@ -560,7 +560,7 @@
       "slug": "editorial-practice",
       "kind": "helper",
       "name": "觀點服務誌",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "主張文章 7:4＋側記",
       "nearestLayout": "coach",
       "prototype": {
@@ -587,7 +587,7 @@
       "slug": "question-led-practice",
       "kind": "helper",
       "name": "問答對話",
-      "origin": "pr47-new-11",
+      "origin": "expanded",
       "structuralIdentity": "問答雙欄 3:8",
       "nearestLayout": "trust-path",
       "prototype": {

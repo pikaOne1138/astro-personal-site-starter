@@ -5,7 +5,7 @@
 ## 來源與資料層級
 
 - **Manus v2 一手來源**：使用者上傳 `manusCR-v2astro-editorial-care-tailwind-motion.zip`；配套 `manusCR-v2README.md`、`manusCR-v2COMPONENT_CATALOG.md`。
-- **現行專案實作**：`src/components/blocks/`、`src/components/DemoPage.astro`、`src/components/MultiPage.astro`、`public/v02.css`、`public/blocks-v2.css` 等。請以當前 branch 的程式碼為最終事實。
+- **現行專案實作**：`src/components/blocks/`、`src/components/DemoPage.astro`、`src/components/MultiPage.astro`、`public/multipage-nav.css`、`public/article-explorer.css` 等。請以當前 branch 的程式碼為最終事實。
 - **本參考庫的 recipes**：為了與既有四套 Theme 相容而寫的**適配建議**；不是 Manus 原始碼的逐字副本，也不是已驗證功能。
 - **使用者保留的檔案**：原 ZIP 才是原始程式碼全文；本 Repo 不把原 ZIP 複製成 runtime 的重複元件，避免變成 Astro 5／7、Tailwind／CSS token 雙架構。
 

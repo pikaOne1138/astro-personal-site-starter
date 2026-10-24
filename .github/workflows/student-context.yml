@@ -4,7 +4,7 @@ on:
     paths:
       - 'scripts/export-starter.mjs'
       - 'scripts/export-art-direction-starter.mjs'
-      - 'scripts/verify-v2-8-output.mjs'
+      - 'scripts/verify-site-output.mjs'
       - '.ai/**'
       - 'scripts/student-project-context.mjs'
       - 'scripts/test-student-project-context.mjs'

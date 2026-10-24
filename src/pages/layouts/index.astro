@@ -3,7 +3,7 @@ import DesignLibraryNav from '../../components/DesignLibraryNav.astro';
 import originals from '../../data/layout-directions.json';
 import {layoutDefinitions} from '../../data/layout-assembly/definitions.mjs';
 const directions=layoutDefinitions.filter(d=>originals.some(o=>o.slug===d.slug)).map(d=>({...originals.find(o=>o.slug===d.slug),...d}));
-import handoff from '../../../docs/art-direction/pr47-layout-handoff-registry.json';
+import handoff from '../../../docs/art-direction/layout-handoff-registry.json';
 const extensions=handoff.items.filter(item=>item.origin!=='main-12');
 const base=import.meta.env.BASE_URL;
 const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / EDITORIAL',description:'不一定從文章卡片開始。試著比較田野觀察、長篇閱讀、課程路徑、策展收藏、聲音內容與年度主題索引的閱讀方法。'},{kind:'helper',label:'助人者與專業服務',en:'CARE / PROFESSIONAL',description:'清晰的專業說明、溫柔的故事入口、身體感受、行動導向教練、多人工作室，以及訪客優先的信任路徑。'}];
@@ -38,9 +38,9 @@ const sections=[{kind:'knowledge',label:'知識與內容網站',en:'KNOWLEDGE / 
    <div class="additional-grid">{extensions.filter(item=>item.kind===kind).map((item,i)=><article class="additional-card">
     <a class="additional-link" href={base+'layouts/'+item.slug+'/'} aria-label={'開啟'+item.name+'的獨立首頁原型'}>
      <div class="additional-preview"><picture><source media="(max-width:600px)" srcset={base+'template-gallery/'+item.slug+'-mobile.webp'}/><img src={base+'template-gallery/'+item.slug+'-desktop.webp'} width="1440" height="900" loading="lazy" alt={item.name+' Astro 首頁實際截圖'}/></picture></div>
-     <div class="additional-copy"><span class="additional-label">{item.origin==='pr47-existing-2'?'獨立 Adapter 已有技術驗證':'多頁原型／內容契約已接線'}</span><h4>{item.name}</h4><p>{item.structuralIdentity}</p><span class="additional-slug">{item.slug}</span></div>
+     <div class="additional-copy"><span class="additional-label">{item.origin==='art-direction-adapter'?'獨立 Adapter 已有技術驗證':'多頁原型／內容契約已接線'}</span><h4>{item.name}</h4><p>{item.structuralIdentity}</p><span class="additional-slug">{item.slug}</span></div>
     </a><a class="layout-select-cta" href={base+'starter/?layout='+encodeURIComponent(item.slug)+'&kind='+item.kind}>選用此版型並開始規劃 →</a>
-    {item.origin==='pr47-new-11'&&<nav aria-label={item.name+'其他頁面'}><a href={base+item.prototype.archive.slice(1)}>索引 ↗</a><a href={base+item.prototype.detail.slice(1)}>詳情 ↗</a><a href={base+item.prototype.about.slice(1)}>About ↗</a></nav>}
+    {item.origin==='expanded'&&<nav aria-label={item.name+'其他頁面'}><a href={base+item.prototype.archive.slice(1)}>索引 ↗</a><a href={base+item.prototype.detail.slice(1)}>詳情 ↗</a><a href={base+item.prototype.about.slice(1)}>About ↗</a></nav>}
    </article>)}</div>
   </div>)}
  </section>

@@ -4,14 +4,14 @@ import ArticleSearch from '../../components/blocks/ArticleSearch.astro';
 import TagCloud from '../../components/blocks/TagCloud.astro';
 import ArchiveMonths from '../../components/blocks/ArchiveMonths.astro';
 import PostCalendar from '../../components/blocks/PostCalendar.astro';
-import { articlesV2, articleTags, articleMonths } from '../../data/articles-v2';
+import { articlesV2, articleTags, articleMonths } from '../../data/articles-adapter';
 const base=import.meta.env.BASE_URL;
 const root=base+'explore/';
 const articleRoot=base+'knowledge/paper/articles/';
 ---
 <DemoLayout title="文章探索 · 網站元件" description="實際運作的文章搜尋、標籤雲、月份索引與日期日曆">
   <link rel="stylesheet" href={base+'blocks.css'} />
-  <link rel="stylesheet" href={base+'blocks-v2.css'} />
+  <link rel="stylesheet" href={base+'article-explorer.css'} />
   <main class="ab-gallery v2-explorer">
     <header class="ab-gallery-header">
       <a class="ab-gallery-back" href={base+'blocks/'}>← 返回元件庫</a>

@@ -16,8 +16,8 @@ try {
     'src/data/layout-directions.json','src/data/blocks.registry.json',
     'src/data/section-patterns.registry.json','src/pages/layouts/index.astro',
     'scripts/export-starter.mjs','scripts/verify-student-navigation.mjs','src/components','public/layout-library.css',
-    'public/v02.css','public/effects-sample.svg','public/robots.txt',
-    'scripts/verify-v2-8-output.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
+    'public/multipage-nav.css','public/effects-sample.svg','public/robots.txt',
+    'scripts/verify-site-output.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];
   for(const path of required)if(!existsSync(join(root,path)))throw Error('Missing ZIP dependency: '+path);
   // Both the built website and the downloadable ZIP must declare the same source version.
@@ -78,7 +78,7 @@ try {
         if(!/^User-agent: \*$/m.test(robots)||!/^Sitemap: https?:\/\//m.test(robots)||robots.includes('\\n'))throw Error('Invalid robots lines');
         if(rss.includes('qa-draft')||sitemap.includes('qa-draft')||existsSync(join(site,'dist/articles/qa-draft/index.html')))throw Error('Draft leaked');
         if(kind==='knowledge'&&(!rss.includes('qa-public')||!sitemap.includes('qa-public')||!existsSync(join(site,'dist/articles/qa-public/index.html'))))throw Error('Public article missing');
-        execFileSync(process.execPath,[join(root,'scripts/verify-v2-8-output.mjs'),'--student-site',site],{stdio:'inherit'});
+        execFileSync(process.execPath,[join(root,'scripts/verify-site-output.mjs'),'--student-site',site],{stdio:'inherit'});
 
       }
     }

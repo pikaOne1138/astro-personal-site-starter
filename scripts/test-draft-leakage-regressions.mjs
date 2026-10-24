@@ -17,7 +17,7 @@ try{
  put('dist/robots.txt','User-agent: *\nSitemap: https://example.com/sitemap.xml\n');
  put('dist/pagefind/pagefind.js','/* QA Pagefind fixture */');
  put('dist/search/exact-zh.json',JSON.stringify({version:1,docs:[]}));
- const run=()=>spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8'});
+ const run=()=>spawnSync(process.execPath,['scripts/verify-site-output.mjs','--student-site',root],{encoding:'utf8'});
  const cases=[];
  const expect=(name,ok,signature)=>{
   if(!ok&&!signature)throw Error('Negative test must identify the actual violated contract: '+name);
@@ -42,7 +42,7 @@ try{
  put('dist/index.html',html('Public home'));
  expect('F09 restored preview noindex',true);
  put('dist/index.html',html('Public home').replace('content="noindex, nofollow, noarchive"','content="index, follow"'));
- const approved=spawnSync(process.execPath,['scripts/verify-v2-8-output.mjs','--student-site',root],{encoding:'utf8',env:{...process.env,SITE_INDEXABLE:'true'}});
+ const approved=spawnSync(process.execPath,['scripts/verify-site-output.mjs','--student-site',root],{encoding:'utf8',env:{...process.env,SITE_INDEXABLE:'true'}});
  if(approved.status!==0)throw Error('F09 approved indexable production must PASS: '+approved.stdout+' '+approved.stderr);
  console.log('F09 explicitly approved production indexing: PASS');
  cases.push({name:'F09 approved production indexing',caseId:'F09',expected:'PASS',exitCode:approved.status,statusMatches:true,signatureMatches:true,pass:true});

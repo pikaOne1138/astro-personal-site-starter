@@ -19,9 +19,9 @@ This skill does **not** implement WordPress migration, a CMS, a database, subscr
 
 **學員生成專案**：讀該專案的 `site.config.json`、`package.json`、`astro.config.mjs`、`src/content.config.ts`、`src/content/articles/`、`src/pages/articles/`、`src/layouts/SiteLayout.astro`、`src/pages/rss.xml.js`、`src/pages/sitemap.xml.js`、`src/pages/robots.txt.js`。以實際schema、navigation和scripts為準；最新生成骨架的 `npm run build` 已包含 Pagefind 索引和 `search/exact-zh.json`；但預設未組裝搜尋對話框 UI、分類／月份搜尋或OG／結構化資料，不得宣稱這些 UI 已完成。需使用時，先讀現有元件與實際建置流程，再組裝及測試。
 
-**離線參考來源**：ZIP的 `src/data/articles-v2.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。
+**離線參考來源**：ZIP的 `src/data/articles-adapter.ts`、`src/site-map.ts`、`src/components/ArticleArchive.astro`、`src/layouts/DemoLayout.astro`、`src/pages/rss.xml.ts` 是研究範例，不是學員既定路由。不要照搬八個Demo或要求學員取得研究Repo。
 
-驗證生成專案：先在生成目錄跑 `npm run build`，再從本ZIP執行 `node scripts/verify-v2-8-output.mjs --student-site /absolute/path/to/generated-site`。無flag的模式只供完整研究站使用。發布前讀 `.ai/astro-pr-preview/SKILL.md`。
+驗證生成專案：先在生成目錄跑 `npm run build`，再從本ZIP執行 `node scripts/verify-site-output.mjs --student-site /absolute/path/to/generated-site`。無flag的模式只供完整研究站使用。發布前讀 `.ai/astro-pr-preview/SKILL.md`。
 
 ## Public vs draft source folders (student Starter)
 
@@ -53,7 +53,7 @@ See `references/seo-and-release-checklist.md`.
 
 ## Mandatory draft leakage gate
 
-When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-v2-8-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.
+When articles are created, edited, drafted, or withdrawn, run `node <STUDENT_ZIP>/scripts/verify-site-output.mjs --student-site <ABSOLUTE_STUDENT_DIR>` **after a clean Astro build**, against the actual student site. Check draft direct HTML routes and all generated HTML, RSS, sitemap, and configured client search/discovery surfaces. Run a negative fixture where a draft is deliberately leaked; if the checker cannot detect it, mark FAIL and fix the gate, not the report. The bundled audit supports simple flat filename-based article routes; custom slugs, nested routes, MDX, CMS content, or unusual data sources need an explicit route-aware extension and must not be marked universally verified.
 
 A prior public deployment, public PR preview, Git history, or immutable deployment artifact may continue exposing a withdrawn draft. Noindex and draft flags do not protect secrets. Always report this limitation.
 

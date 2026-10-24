@@ -13,7 +13,7 @@
 - [ ] The independent student site's `npm run build` already creates the Pagefind index and `search/exact-zh.json`, but the search dialog UI is not assembled by default. Verify the index covers the actual built HTML, and do not claim search works for visitors until a search UI is installed and tested in a real browser.
 
 ## Validation
-- [ ] Run `npm run build` inside the independent student site. For the learner export, run `node <EXTRACTED_STUDENT_PACK>/scripts/verify-v2-8-output.mjs --student-site <STUDENT_SITE_DIR>`; the verifier's default mode tests the **research display site** and is not applicable to student sites.
+- [ ] Run `npm run build` inside the independent student site. For the learner export, run `node <EXTRACTED_STUDENT_PACK>/scripts/verify-site-output.mjs --student-site <STUDENT_SITE_DIR>`; the verifier's default mode tests the **research display site** and is not applicable to student sites.
 - [ ] Validate learner config using `SITE_URL` and `ASTRO_BASE_PATH` (the exported project's supported variables), including a project subpath when publishing under GitHub Pages.
 - [ ] Verify production and preview meta/noindex separately
 - [ ] Test only article features **actually installed in the student site**: published list/details and drafts are baseline. List/cards/grid switching, tags, month, calendar, related, share, and the search UI are optional integrations; verify each only after it has been installed and configured.

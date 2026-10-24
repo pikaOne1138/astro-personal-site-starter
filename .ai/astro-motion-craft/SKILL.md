@@ -14,7 +14,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 - Reveal + Stagger：[`library/recipes/reveal-and-stagger.md`](./library/recipes/reveal-and-stagger.md)
 - Tilt / Spotlight / Magnetic：[`library/recipes/pointer-interactions.md`](./library/recipes/pointer-interactions.md)
 - ZoomImage / UnderlineLink / FAQ：[`library/recipes/content-interactions.md`](./library/recipes/content-interactions.md)
-- 原始檔路徑、版本對照：[`references/manus-v2-motion-map.md`](./references/manus-v2-motion-map.md)
+- 原始檔路徑、版本對照：[`references/manus-motion-map.md`](./references/manus-motion-map.md)
 
 **資料等級標示**：
 1. 「Manus 原始碼確認」為 `library/source-snapshots/` 與 recipe 中可核對的 Props 與 JS；
@@ -25,11 +25,11 @@ description: Design, tune and audit restrained Astro motion interactions using r
 
 ## 何時使用
 
-使用者要求：網站「更精緻」、滾動出場、Stagger、3D Tilt／Spotlight、圖片 Zoom／Pan、磁吸 CTA、連結底線、FAQ 展開動態；或要求減少動畫、提高易讀性、維持手機效能。此 Skill 是設計與工程**規格**；不可宣稱本專案已實作所有 Manus 效果。參照 `references/manus-v2-motion-map.md` 中逐項實作對照。
+使用者要求：網站「更精緻」、滾動出場、Stagger、3D Tilt／Spotlight、圖片 Zoom／Pan、磁吸 CTA、連結底線、FAQ 展開動態；或要求減少動畫、提高易讀性、維持手機效能。此 Skill 是設計與工程**規格**；不可宣稱本專案已實作所有 Manus 效果。參照 `references/manus-motion-map.md` 中逐項實作對照。
 
 ## 步驟（必須依序）
 
-1. **讀來源與現況**：先讀 `library/README.md`、`library/effect-catalog.md` 和相關 recipe；再查 `src/data/blocks.registry.json`、`src/components/`、`public/v02.css`、`public/blocks*.css`、`.ai/astro-ui-craft/SKILL.md`；不要把 Manus 原始檔名誤認為本專案已安裝。確認頁面是知識／部落格或身體工作、諮商心理、教練、靈氣等助人者。
+1. **讀來源與現況**：先讀 `library/README.md`、`library/effect-catalog.md` 和相關 recipe；再查 `src/data/blocks.registry.json`、`src/components/`、`public/multipage-nav.css`、`public/blocks*.css`、`.ai/astro-ui-craft/SKILL.md`；不要把 Manus 原始檔名誤認為本專案已安裝。確認頁面是知識／部落格或身體工作、諮商心理、教練、靈氣等助人者。
 2. **定義動作目的**：每個效果必須完成至少一項目的：建立層級、提示可操作性、協助閱讀、降低資訊密度、清楚回饋。無目的不加。
 3. **選動效強度**：預設 `subtle`；若沒有指定，**不要**全站使用 tilt、spotlight、magnetic、parallax。
 4. **沿用四套主題**：paper/morning/studio/botanical 使用現有 `--text`, `--muted`, `--accent`, `--surface`, `--line`, `--radius` 等 CSS 變數。不要直接導入 Manus 的 forest／sage Tailwind palette 覆蓋設計；若必須使用 Tailwind v4，先確定現有 Astro 建置、CSS cascade 與依賴相容。

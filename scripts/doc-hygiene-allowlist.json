@@ -72,13 +72,13 @@
   "reason": "學員網站放圖片的資料夾"
  },
  {
-  "file": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+  "file": ".ai/astro-motion-craft/references/manus-motion-map.md",
   "rule": "filename",
   "match": "",
   "reason": "待處理：改名以避免與來源檔混淆（見待辦）"
  },
  {
-  "file": ".ai/astro-motion-craft/references/manus-v2-motion-map.md",
+  "file": ".ai/astro-motion-craft/references/manus-motion-map.md",
   "rule": "missing-path",
   "match": "src/styles/tailwind.css",
   "reason": "Manus ZIP 內的來源路徑，不是本 Repo 檔案"

@@ -18,7 +18,7 @@
 
 ## 資料
 
-- 文章的唯一來源是 Astro Content Collection（`src/content/articles/`）；`src/data/articles-v2.ts` 只是給既有 Demo 用的相容層，不是新增文章的地方。
+- 文章的唯一來源是 Astro Content Collection（`src/content/articles/`）；`src/data/articles-adapter.ts` 只是給既有 Demo 用的相容層，不是新增文章的地方。
 - 示範用的文章與發文日期是教材，不代表真實的發文記錄。換成真實網站時，每個網站用一套日期慣例，區分發布日與更新日，並保留 SEO 的 canonical 網址與實際的 slug 歷史（遷移 WordPress 內容時尤其重要）。
 - 靜態優先：不用自訂伺服器、資料庫或帳號。
 

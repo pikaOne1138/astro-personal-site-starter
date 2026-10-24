@@ -30,7 +30,7 @@
 
 ## 參考的優先順序
 
-1. 可執行的元件與原始 CSS（`src/components/blocks/*.astro`、`public/demo.css`、`public/blocks.css`、`public/v02.css`）。
+1. 可執行的元件與原始 CSS（`src/components/blocks/*.astro`、`public/demo.css`、`public/blocks.css`、`public/multipage-nav.css`）。
 2. 元件介面文件：`COMPONENTS.md` 加 `src/data/blocks.registry.json`。
 3. 設計依據：`.ai/astro-ui-craft/SKILL.md` 與工作坊的風格規格。
 4. 這份摘要只是導覽性質的參考，不是獨立的、自創 props 或設計數值的來源。
