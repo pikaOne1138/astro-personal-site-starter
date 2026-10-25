@@ -1,0 +1,1914 @@
+{
+ "rows": [
+  {
+   "slug": "field-notes",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/field-notes/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/field-notes/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 5,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 3,
+    "fontLiteral": 8,
+    "radiusLiteral": 3,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 6,
+     "local:field-*": 9
+    },
+    "localTokenDefs": {
+     "local:field-*": 4
+    },
+    "declarations": 173,
+    "samples": [
+     "src/data/layout-assembly/field-notes/Home.astro background:radial-gradient(ellipse 24% 40% at 63% 47%,transparent 60%,r",
+     "src/data/layout-assembly/field-notes/Home.astro color:#234032"
+    ],
+    "distinctColorsInUse": 4
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 17,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 2,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:fn-*": 9
+    },
+    "localTokenDefs": {
+     "local:fn-*": 3
+    },
+    "declarations": 175,
+    "samples": [
+     "src/pages/layouts/field-notes/index.astro border-bottom:1px solid #c8c6b7",
+     "src/pages/layouts/field-notes/index.astro color:#55574b",
+     "src/pages/layouts/field-notes/index.astro color:#55564a"
+    ],
+    "distinctColorsInUse": 12
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "essayist",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/essayist/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/essayist/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 4,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 3,
+    "fontLiteral": 6,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 8,
+     "local:essay-*": 9,
+     "global": 2
+    },
+    "localTokenDefs": {
+     "local:essay-*": 2
+    },
+    "declarations": 156,
+    "samples": [
+     "src/data/layout-assembly/essayist/Home.astro background:linear-gradient(140deg,#cfbea9,#eee6d7 58%,#b0a28e)",
+     "src/data/layout-assembly/essayist/Home.astro color:#564a3a"
+    ],
+    "distinctColorsInUse": 4
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 12,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:es-*": 13
+    },
+    "localTokenDefs": {
+     "local:es-*": 3
+    },
+    "declarations": 169,
+    "samples": [
+     "src/pages/layouts/essayist/index.astro border-bottom:1px solid #cfc9bd",
+     "src/pages/layouts/essayist/index.astro color:#555",
+     "src/pages/layouts/essayist/index.astro color:#646057"
+    ],
+    "distinctColorsInUse": 11
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "learning-lab",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/learning-lab/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/learning-lab/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 14,
+    "colorLiteralInLocalToken": 2,
+    "colorFallback": 2,
+    "fontLiteral": 14,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 3,
+     "local:ll-*": 28
+    },
+    "localTokenDefs": {
+     "local:ll-*": 4
+    },
+    "declarations": 250,
+    "samples": [
+     "src/data/layout-assembly/learning-lab/Home.astro background:#45a667",
+     "src/data/layout-assembly/learning-lab/Home.astro color:white",
+     "src/data/layout-assembly/learning-lab/Home.astro color:#536080"
+    ],
+    "distinctColorsInUse": 12
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 14,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 13,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:ll-*": 24
+    },
+    "localTokenDefs": {
+     "local:ll-*": 4
+    },
+    "declarations": 221,
+    "samples": [
+     "src/pages/layouts/learning-lab/index.astro background:#45a667",
+     "src/pages/layouts/learning-lab/index.astro color:white",
+     "src/pages/layouts/learning-lab/index.astro color:#536080"
+    ],
+    "distinctColorsInUse": 12
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "curator",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/curator/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/curator/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 21,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 1,
+    "fontLiteral": 17,
+    "radiusLiteral": 0,
+    "shadowLiteral": 2,
+    "varRefs": {
+     "other": 2,
+     "local:cu-*": 19
+    },
+    "localTokenDefs": {
+     "local:cu-*": 4
+    },
+    "declarations": 250,
+    "samples": [
+     "src/data/layout-assembly/curator/Home.astro border-bottom:1px solid #c8c0bb",
+     "src/data/layout-assembly/curator/Home.astro color:#575052",
+     "src/data/layout-assembly/curator/Home.astro color:#655a60"
+    ],
+    "distinctColorsInUse": 16
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 21,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 16,
+    "radiusLiteral": 0,
+    "shadowLiteral": 2,
+    "varRefs": {
+     "local:cu-*": 16
+    },
+    "localTokenDefs": {
+     "local:cu-*": 4
+    },
+    "declarations": 216,
+    "samples": [
+     "src/pages/layouts/curator/index.astro border-bottom:1px solid #c8c0bb",
+     "src/pages/layouts/curator/index.astro color:#575052",
+     "src/pages/layouts/curator/index.astro color:#655a60"
+    ],
+    "distinctColorsInUse": 16
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "radio-letter",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/radio-letter/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/radio-letter/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 34,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 3,
+    "fontLiteral": 8,
+    "radiusLiteral": 0,
+    "shadowLiteral": 2,
+    "varRefs": {
+     "other": 15,
+     "global": 1
+    },
+    "localTokenDefs": {
+     "global": 1
+    },
+    "declarations": 281,
+    "samples": [
+     "src/data/layout-assembly/radio-letter/Home.astro background:#14222a",
+     "src/data/layout-assembly/radio-letter/Home.astro color:#f5e5cf",
+     "src/data/layout-assembly/radio-letter/Home.astro border-bottom:1px solid #81939a"
+    ],
+    "distinctColorsInUse": 25
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 15,
+    "colorLiteralInLocalToken": 5,
+    "colorFallback": 0,
+    "fontLiteral": 15,
+    "radiusLiteral": 1,
+    "shadowLiteral": 1,
+    "varRefs": {
+     "local:ra-*": 30,
+     "other": 2,
+     "ed-*": 4
+    },
+    "localTokenDefs": {
+     "local:ra-*": 6,
+     "ed-*": 2
+    },
+    "declarations": 233,
+    "samples": [
+     "src/pages/layouts/radio-letter/index.astro border-bottom:1px solid #34404c",
+     "src/pages/layouts/radio-letter/index.astro box-shadow:0 0 14px #ff936480",
+     "src/pages/layouts/radio-letter/index.astro color:#c0c9cf"
+    ],
+    "distinctColorsInUse": 9
+   },
+   "chrome": {
+    "colorLiteralInUse": 1,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "reading-atlas",
+   "kind": "knowledge",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/reading-atlas/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/reading-atlas/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 27,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 5,
+    "fontLiteral": 8,
+    "radiusLiteral": 0,
+    "shadowLiteral": 1,
+    "varRefs": {
+     "other": 16,
+     "global": 3,
+     "local:atlas-*": 4
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "local:atlas-*": 3
+    },
+    "declarations": 283,
+    "samples": [
+     "src/data/layout-assembly/reading-atlas/Home.astro background:#e8e4d8",
+     "src/data/layout-assembly/reading-atlas/Home.astro color:#3e463d",
+     "src/data/layout-assembly/reading-atlas/Home.astro background:repeating-linear-gradient(90deg,transparent 0 7.9%,#a4aaa0 8"
+    ],
+    "distinctColorsInUse": 14
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 9,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 0,
+    "radiusLiteral": 0,
+    "shadowLiteral": 2,
+    "varRefs": {
+     "ed-*": 64
+    },
+    "localTokenDefs": {
+     "ed-*": 3
+    },
+    "declarations": 227,
+    "samples": [
+     "src/pages/layouts/reading-atlas/index.astro color:#c9d4d2",
+     "src/pages/layouts/reading-atlas/index.astro background:#1d6b66",
+     "src/pages/layouts/reading-atlas/index.astro color:#fff"
+    ],
+    "distinctColorsInUse": 6
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "clinician",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/clinician/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/clinician/about/index.astro",
+    "src/pages/layouts/clinician/index.astro",
+    "src/pages/layouts/clinician/services/index.astro",
+    "src/pages/layouts/clinician/services/individual/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 24,
+    "colorLiteralInLocalToken": 1,
+    "colorFallback": 3,
+    "fontLiteral": 4,
+    "radiusLiteral": 1,
+    "shadowLiteral": 2,
+    "varRefs": {
+     "other": 6,
+     "local:clinical-*": 12
+    },
+    "localTokenDefs": {
+     "local:clinical-*": 3
+    },
+    "declarations": 204,
+    "samples": [
+     "src/data/layout-assembly/clinician/Home.astro color:#53666b",
+     "src/data/layout-assembly/clinician/Home.astro color:#fff",
+     "src/data/layout-assembly/clinician/Home.astro color:#52646b"
+    ],
+    "distinctColorsInUse": 19
+   },
+   "prototype": {
+    "files": 4,
+    "colorLiteralInUse": 29,
+    "colorLiteralInLocalToken": 10,
+    "colorFallback": 0,
+    "fontLiteral": 25,
+    "radiusLiteral": 2,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 18,
+     "local:cl-*": 22
+    },
+    "localTokenDefs": {
+     "global": 6,
+     "local:cl-*": 4
+    },
+    "declarations": 442,
+    "samples": [
+     "src/pages/layouts/clinician/about/index.astro background:#f4f7f5",
+     "src/pages/layouts/clinician/about/index.astro color:#496b78",
+     "src/pages/layouts/clinician/about/index.astro background:#e7ece5"
+    ],
+    "distinctColorsInUse": 18
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "companion",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/companion/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/companion/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 4,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 3,
+    "fontLiteral": 5,
+    "radiusLiteral": 1,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 8,
+     "local:companion-*": 9,
+     "global": 4
+    },
+    "localTokenDefs": {
+     "local:companion-*": 2
+    },
+    "declarations": 139,
+    "samples": [
+     "src/data/layout-assembly/companion/Home.astro background:radial-gradient(ellipse at 67% 36%,#e5c3a8 0 14%,transparent",
+     "src/data/layout-assembly/companion/Home.astro color:#805a4c"
+    ],
+    "distinctColorsInUse": 4
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 30,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 2,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:co-*": 5
+    },
+    "localTokenDefs": {
+     "local:co-*": 4
+    },
+    "declarations": 187,
+    "samples": [
+     "src/pages/layouts/companion/index.astro border-bottom:1px solid #e4d3c7",
+     "src/pages/layouts/companion/index.astro color:#705149",
+     "src/pages/layouts/companion/index.astro color:#8f554a"
+    ],
+    "distinctColorsInUse": 19
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "somatic",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/somatic/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/somatic/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 8,
+    "colorFallback": 2,
+    "fontLiteral": 3,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 9,
+     "brand-*": 1,
+     "global": 2,
+     "local:somatic-*": 43
+    },
+    "localTokenDefs": {
+     "local:somatic-*": 14
+    },
+    "declarations": 151,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 30,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:so-*": 4
+    },
+    "localTokenDefs": {
+     "local:so-*": 4
+    },
+    "declarations": 169,
+    "samples": [
+     "src/pages/layouts/somatic/index.astro background:#e8e6dc",
+     "src/pages/layouts/somatic/index.astro color:#283128",
+     "src/pages/layouts/somatic/index.astro color:white"
+    ],
+    "distinctColorsInUse": 24
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "coach",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/coach/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/coach/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 23,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 15,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 24,
+     "global": 1
+    },
+    "localTokenDefs": {
+     "global": 1
+    },
+    "declarations": 241,
+    "samples": [
+     "src/data/layout-assembly/coach/Home.astro background:linear-gradient(130deg,#eed35f,#f37443 55%,#1e3c55)",
+     "src/data/layout-assembly/coach/Home.astro background:#dae8e5",
+     "src/data/layout-assembly/coach/Home.astro background:#f1eadb"
+    ],
+    "distinctColorsInUse": 16
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 17,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 13,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:ma-*": 21
+    },
+    "localTokenDefs": {
+     "local:ma-*": 4
+    },
+    "declarations": 229,
+    "samples": [
+     "src/pages/layouts/coach/index.astro color:white",
+     "src/pages/layouts/coach/index.astro color:#5e6880",
+     "src/pages/layouts/coach/index.astro color:#4e5975"
+    ],
+    "distinctColorsInUse": 13
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "collective",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/collective/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/collective/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 32,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 7,
+    "fontLiteral": 7,
+    "radiusLiteral": 1,
+    "shadowLiteral": 1,
+    "varRefs": {
+     "other": 18,
+     "global": 1
+    },
+    "localTokenDefs": {
+     "global": 1
+    },
+    "declarations": 233,
+    "samples": [
+     "src/data/layout-assembly/collective/Home.astro background:linear-gradient(45deg,#dfb5a4 0 25%,#b8d4d0 25% 50%,#e4d08a ",
+     "src/data/layout-assembly/collective/Home.astro background:#efdfd3",
+     "src/data/layout-assembly/collective/Home.astro background:#fbf7ed"
+    ],
+    "distinctColorsInUse": 24
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 27,
+    "colorLiteralInLocalToken": 5,
+    "colorFallback": 0,
+    "fontLiteral": 12,
+    "radiusLiteral": 2,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:cg-*": 16
+    },
+    "localTokenDefs": {
+     "local:cg-*": 5
+    },
+    "declarations": 246,
+    "samples": [
+     "src/pages/layouts/collective/index.astro border-bottom:1px solid #d7d3c9",
+     "src/pages/layouts/collective/index.astro color:#4d5c76",
+     "src/pages/layouts/collective/index.astro color:white"
+    ],
+    "distinctColorsInUse": 19
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {},
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "trust-path",
+   "kind": "helper",
+   "engine": "prototype-adapter",
+   "exportedFiles": [
+    "src/data/layout-assembly/trust-path/Home.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/trust-path/index.astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 49,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 5,
+    "fontLiteral": 6,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 17,
+     "global": 1,
+     "local:station-*": 2,
+     "local:route-*": 1
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "local:station-*": 3
+    },
+    "declarations": 387,
+    "samples": [
+     "src/data/layout-assembly/trust-path/Home.astro background:#f5f4ee",
+     "src/data/layout-assembly/trust-path/Home.astro background:#213c3b",
+     "src/data/layout-assembly/trust-path/Home.astro color:white"
+    ],
+    "distinctColorsInUse": 21
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 18,
+    "colorLiteralInLocalToken": 1,
+    "colorFallback": 0,
+    "fontLiteral": 0,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "ed-*": 65,
+     "other": 4
+    },
+    "localTokenDefs": {
+     "ed-*": 2
+    },
+    "declarations": 271,
+    "samples": [
+     "src/pages/layouts/trust-path/index.astro color:#f0b27a",
+     "src/pages/layouts/trust-path/index.astro color:#f0b27a",
+     "src/pages/layouts/trust-path/index.astro background:#f0b27a"
+    ],
+    "distinctColorsInUse": 11
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 3,
+    "varRefs": {
+     "chrome-*": 1
+    },
+    "localTokenDefs": {
+     "chrome-*": 3
+    }
+   }
+  },
+  {
+   "slug": "subject-atlas",
+   "kind": "knowledge",
+   "engine": "art-direction",
+   "exportedFiles": [
+    "src/data/art-direction-adapters/subject-atlas/Home.astro",
+    "src/data/art-direction-adapters/subject-atlas/pages/about/index.astro",
+    "src/data/art-direction-adapters/subject-atlas/pages/articles/[slug].astro",
+    "src/data/art-direction-adapters/subject-atlas/pages/articles/index.astro",
+    "src/data/art-direction-adapters/subject-atlas/pages/topics/[slug].astro",
+    "src/data/art-direction-adapters/subject-atlas/pages/topics/index.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/subject-atlas/about/index.astro",
+    "src/pages/layouts/subject-atlas/articles/index.astro",
+    "src/pages/layouts/subject-atlas/articles/sample.astro",
+    "src/pages/layouts/subject-atlas/index.astro",
+    "src/pages/layouts/subject-atlas/topics/[slug].astro"
+   ],
+   "exported": {
+    "files": 6,
+    "colorLiteralInUse": 1,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 10,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 23,
+     "other": 1
+    },
+    "localTokenDefs": {},
+    "declarations": 169,
+    "samples": [
+     "src/data/art-direction-adapters/subject-atlas/Home.astro color:white"
+    ],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 5,
+    "colorLiteralInUse": 46,
+    "colorLiteralInLocalToken": 6,
+    "colorFallback": 0,
+    "fontLiteral": 27,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 8,
+     "other": 11
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 4
+    },
+    "declarations": 449,
+    "samples": [
+     "src/pages/layouts/subject-atlas/about/index.astro border-bottom:1px solid #bec4b8",
+     "src/pages/layouts/subject-atlas/about/index.astro border-top:1px solid #bec4b8",
+     "src/pages/layouts/subject-atlas/about/index.astro border-top:1px solid #bec4b8"
+    ],
+    "distinctColorsInUse": 5
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "practice-compass",
+   "kind": "helper",
+   "engine": "art-direction",
+   "exportedFiles": [
+    "src/data/art-direction-adapters/practice-compass/Home.astro",
+    "src/data/art-direction-adapters/practice-compass/pages/about/index.astro",
+    "src/data/art-direction-adapters/practice-compass/pages/contact.astro",
+    "src/data/art-direction-adapters/practice-compass/pages/faq.astro",
+    "src/data/art-direction-adapters/practice-compass/pages/privacy.astro",
+    "src/data/art-direction-adapters/practice-compass/pages/services.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/practice-compass/about/index.astro",
+    "src/pages/layouts/practice-compass/contact/index.astro",
+    "src/pages/layouts/practice-compass/faq/index.astro",
+    "src/pages/layouts/practice-compass/index.astro",
+    "src/pages/layouts/practice-compass/privacy/index.astro",
+    "src/pages/layouts/practice-compass/services/index.astro"
+   ],
+   "exported": {
+    "files": 6,
+    "colorLiteralInUse": 4,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 9,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 29,
+     "other": 1
+    },
+    "localTokenDefs": {},
+    "declarations": 169,
+    "samples": [
+     "src/data/art-direction-adapters/practice-compass/Home.astro color:#fff!important",
+     "src/data/art-direction-adapters/practice-compass/Home.astro border-top:1px solid #85938c",
+     "src/data/art-direction-adapters/practice-compass/Home.astro color:#d8dfd9"
+    ],
+    "distinctColorsInUse": 4
+   },
+   "prototype": {
+    "files": 6,
+    "colorLiteralInUse": 59,
+    "colorLiteralInLocalToken": 12,
+    "colorFallback": 0,
+    "fontLiteral": 30,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 16,
+     "other": 20
+    },
+    "localTokenDefs": {
+     "global": 4,
+     "other": 8
+    },
+    "declarations": 608,
+    "samples": [
+     "src/pages/layouts/practice-compass/about/index.astro border-bottom:1px solid #bec4b8",
+     "src/pages/layouts/practice-compass/about/index.astro border-top:1px solid #bec4b8",
+     "src/pages/layouts/practice-compass/about/index.astro border-top:1px solid #bec4b8"
+    ],
+    "distinctColorsInUse": 12
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "sidebar-journal",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/sidebar-journal/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/sidebar-journal/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 6,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 14,
+     "local:j-*": 12,
+     "other": 8
+    },
+    "localTokenDefs": {
+     "local:j-*": 3
+    },
+    "declarations": 216,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 5,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 14,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "local:j-*": 12
+    },
+    "localTokenDefs": {
+     "local:j-*": 3
+    },
+    "declarations": 183,
+    "samples": [
+     "src/pages/layouts/sidebar-journal/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/sidebar-journal/[...page].astro color:#355747",
+     "src/pages/layouts/sidebar-journal/[...page].astro background:#e7ece5"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "editorial-frontpage",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/editorial-frontpage/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/editorial-frontpage/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 1,
+    "colorFallback": 0,
+    "fontLiteral": 4,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 17,
+     "other": 16
+    },
+    "localTokenDefs": {
+     "other": 1
+    },
+    "declarations": 210,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 2,
+    "colorFallback": 0,
+    "fontLiteral": 15,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 5
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "other": 1
+    },
+    "declarations": 177,
+    "samples": [
+     "src/pages/layouts/editorial-frontpage/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/editorial-frontpage/[...page].astro color:#58645a",
+     "src/pages/layouts/editorial-frontpage/[...page].astro background:#e7ece5"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "card-journal",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/card-journal/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/card-journal/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 29,
+     "other": 8
+    },
+    "localTokenDefs": {
+     "global": 1
+    },
+    "declarations": 177,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 10,
+    "colorLiteralInLocalToken": 2,
+    "colorFallback": 0,
+    "fontLiteral": 15,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 9
+    },
+    "localTokenDefs": {
+     "global": 2
+    },
+    "declarations": 145,
+    "samples": [
+     "src/pages/layouts/card-journal/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/card-journal/[...page].astro color:#58645a",
+     "src/pages/layouts/card-journal/[...page].astro color:#58645a"
+    ],
+    "distinctColorsInUse": 5
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "visual-stories",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/visual-stories/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/visual-stories/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 6
+    },
+    "localTokenDefs": {
+     "other": 1,
+     "global": 1
+    },
+    "declarations": 161,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 129,
+    "samples": [
+     "src/pages/layouts/visual-stories/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/visual-stories/[...page].astro outline:3px solid #355747",
+     "src/pages/layouts/visual-stories/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "compact-dispatch",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/compact-dispatch/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/compact-dispatch/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 6
+    },
+    "localTokenDefs": {
+     "other": 1,
+     "global": 1
+    },
+    "declarations": 161,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 129,
+    "samples": [
+     "src/pages/layouts/compact-dispatch/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/compact-dispatch/[...page].astro outline:3px solid #355747",
+     "src/pages/layouts/compact-dispatch/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "split-reader",
+   "kind": "knowledge",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/split-reader/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/split-reader/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 6
+    },
+    "localTokenDefs": {
+     "other": 1,
+     "global": 1
+    },
+    "declarations": 161,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 129,
+    "samples": [
+     "src/pages/layouts/split-reader/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/split-reader/[...page].astro outline:3px solid #355747",
+     "src/pages/layouts/split-reader/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "portrait-profile",
+   "kind": "helper",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/portrait-profile/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/portrait-profile/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 1,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 4,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 13
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "other": 2
+    },
+    "declarations": 212,
+    "samples": [
+     "src/data/layout-assembly/expanded/portrait-profile/Page.astro border:1px solid #aab9ac"
+    ],
+    "distinctColorsInUse": 1
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 4,
+    "colorFallback": 0,
+    "fontLiteral": 10,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "other": 7,
+     "global": 11
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 2
+    },
+    "declarations": 178,
+    "samples": [
+     "src/pages/layouts/portrait-profile/[...page].astro color:#355747",
+     "src/pages/layouts/portrait-profile/[...page].astro border:1px solid #aab9ac",
+     "src/pages/layouts/portrait-profile/[...page].astro color:#355747"
+    ],
+    "distinctColorsInUse": 2
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "service-catalogue",
+   "kind": "helper",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/service-catalogue/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/service-catalogue/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 5,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 24,
+     "other": 8
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "other": 1
+    },
+    "declarations": 208,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 4,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 13,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 173,
+    "samples": [
+     "src/pages/layouts/service-catalogue/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/service-catalogue/[...page].astro color:#496251",
+     "src/pages/layouts/service-catalogue/[...page].astro color:#f4f1e8!important"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "studio-chapters",
+   "kind": "helper",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/studio-chapters/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/studio-chapters/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 6,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 17,
+     "other": 11
+    },
+    "localTokenDefs": {
+     "other": 2
+    },
+    "declarations": 180,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 4,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 10,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 4,
+     "other": 7
+    },
+    "localTokenDefs": {
+     "global": 1,
+     "other": 2
+    },
+    "declarations": 146,
+    "samples": [
+     "src/pages/layouts/studio-chapters/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/studio-chapters/[...page].astro color:#496251",
+     "src/pages/layouts/studio-chapters/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 2
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "editorial-practice",
+   "kind": "helper",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/editorial-practice/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/editorial-practice/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 6
+    },
+    "localTokenDefs": {
+     "other": 1,
+     "global": 1
+    },
+    "declarations": 163,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 129,
+    "samples": [
+     "src/pages/layouts/editorial-practice/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/editorial-practice/[...page].astro outline:3px solid #355747",
+     "src/pages/layouts/editorial-practice/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  },
+  {
+   "slug": "question-led-practice",
+   "kind": "helper",
+   "engine": "native-expansion",
+   "exportedFiles": [
+    "src/data/layout-assembly/expanded/question-led-practice/Page.astro"
+   ],
+   "prototypeFiles": [
+    "src/pages/layouts/question-led-practice/[...page].astro"
+   ],
+   "exported": {
+    "files": 1,
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "colorFallback": 0,
+    "fontLiteral": 7,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 20,
+     "other": 6
+    },
+    "localTokenDefs": {
+     "other": 1,
+     "global": 1
+    },
+    "declarations": 171,
+    "samples": [],
+    "distinctColorsInUse": 0
+   },
+   "prototype": {
+    "files": 1,
+    "colorLiteralInUse": 3,
+    "colorLiteralInLocalToken": 3,
+    "colorFallback": 0,
+    "fontLiteral": 11,
+    "radiusLiteral": 0,
+    "shadowLiteral": 0,
+    "varRefs": {
+     "global": 10,
+     "other": 2
+    },
+    "localTokenDefs": {
+     "global": 2,
+     "other": 1
+    },
+    "declarations": 137,
+    "samples": [
+     "src/pages/layouts/question-led-practice/[...page].astro background:#f4f1e8",
+     "src/pages/layouts/question-led-practice/[...page].astro outline:3px solid #355747",
+     "src/pages/layouts/question-led-practice/[...page].astro color:#496251"
+    ],
+    "distinctColorsInUse": 3
+   },
+   "chrome": {
+    "colorLiteralInUse": 0,
+    "colorLiteralInLocalToken": 0,
+    "varRefs": {},
+    "localTokenDefs": {}
+   }
+  }
+ ],
+ "shared": [
+  {
+   "file": "src/data/layout-assembly/DesignInterior.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 36,
+   "colorFallback": 0,
+   "fontLiteral": 8,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "global": 2,
+    "other": 6,
+    "local:fp-*": 30
+   },
+   "localTokenDefs": {
+    "local:fp-*": 40
+   },
+   "declarations": 223,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/layout-assembly/ServiceSections.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 14,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "other": 7,
+    "global": 3
+   },
+   "localTokenDefs": {
+    "global": 1
+   },
+   "declarations": 176,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/layout-assembly/AboutSections.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 30,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "local:about-*": 6,
+    "other": 8
+   },
+   "localTokenDefs": {
+    "local:about-*": 1
+   },
+   "declarations": 289,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/layout-assembly/ArticleArchive.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 17,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "other": 2
+   },
+   "localTokenDefs": {},
+   "declarations": 141,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/layout-assembly/ArticleDetail.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 18,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "other": 22,
+    "global": 1
+   },
+   "localTokenDefs": {
+    "other": 1
+   },
+   "declarations": 206,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/layout-assembly/DesignChrome.css",
+   "files": 1,
+   "colorLiteralInUse": 5,
+   "colorLiteralInLocalToken": 36,
+   "colorFallback": 0,
+   "fontLiteral": 5,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "global": 2,
+    "other": 5,
+    "chrome-*": 19
+   },
+   "localTokenDefs": {
+    "chrome-*": 42
+   },
+   "declarations": 160,
+   "samples": [
+    "src/data/layout-assembly/DesignChrome.css color:white",
+    "src/data/layout-assembly/DesignChrome.css border-bottom:1px solid #edab73",
+    "src/data/layout-assembly/DesignChrome.css color:#222"
+   ],
+   "distinctColorsInUse": 3
+  },
+  {
+   "file": "src/styles/editorial-tokens.css",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 8,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {
+    "ed-*": 19
+   },
+   "declarations": 19,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/layouts/DirectionLayout.astro",
+   "files": 1,
+   "colorLiteralInUse": 3,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 2,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 22,
+   "samples": [
+    "src/layouts/DirectionLayout.astro outline:3px solid #d34f38",
+    "src/layouts/DirectionLayout.astro background:#fff",
+    "src/layouts/DirectionLayout.astro color:#111"
+   ],
+   "distinctColorsInUse": 3
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/components/ContentPatterns.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "global": 11,
+    "other": 4
+   },
+   "localTokenDefs": {
+    "global": 3
+   },
+   "declarations": 59,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/components/OwnerImage.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "other": 3
+   },
+   "localTokenDefs": {},
+   "declarations": 18,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/layouts/SiteLayout.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 2,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/pages/[...page].astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 0,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/pages/search.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 0,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/data/art-direction-adapters/shared/site.css",
+   "files": 1,
+   "colorLiteralInUse": 2,
+   "colorLiteralInLocalToken": 5,
+   "colorFallback": 0,
+   "fontLiteral": 3,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {
+    "global": 23,
+    "other": 4
+   },
+   "localTokenDefs": {
+    "global": 5,
+    "other": 2
+   },
+   "declarations": 142,
+   "samples": [
+    "src/data/art-direction-adapters/shared/site.css background:white",
+    "src/data/art-direction-adapters/shared/site.css color:#111"
+   ],
+   "distinctColorsInUse": 1
+  },
+  {
+   "file": "src/components/blocks/BackToTop.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 0,
+   "samples": [],
+   "distinctColorsInUse": 0
+  },
+  {
+   "file": "src/components/blocks/FAQ.astro",
+   "files": 1,
+   "colorLiteralInUse": 0,
+   "colorLiteralInLocalToken": 0,
+   "colorFallback": 0,
+   "fontLiteral": 0,
+   "radiusLiteral": 0,
+   "shadowLiteral": 0,
+   "varRefs": {},
+   "localTokenDefs": {},
+   "declarations": 0,
+   "samples": [],
+   "distinctColorsInUse": 0
+  }
+ ],
+ "exporterSiteCss": {
+  "bytes": 1600,
+  "declarations": 59,
+  "colorLiteralInUse": 4,
+  "colorLiteralInLocalToken": 3,
+  "fontLiteral": 1,
+  "radiusLiteral": 1,
+  "shadowLiteral": 0,
+  "varRefs": {
+   "global": 9
+  },
+  "localTokenDefs": {
+   "global": 4
+  }
+ }
+}
