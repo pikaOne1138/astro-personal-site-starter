@@ -53,6 +53,8 @@ test('design-change contract tells the AI which layer to edit and forbids bypass
   assert.match(agents, /行內樣式（`style=""`）、`!important` 或任意字面值/);
   assert.match(agents, /這次改了哪一層/);
   assert.match(agents, /受影響頁面清單/);
+  assert.match(agents, /G-11/);
+  assert.match(agents, /design-fixed/);
   for (const row of ['森林綠','更圓潤','卡片的陰影淡一點','首頁按鈕要大一點','另一種首頁排版','手機版選單','全域值只為全站需求而改','沒有合適的 Token','clear-sans']) assert.ok(agents.includes(row), 'missing layer mapping: ' + row);
 });
 

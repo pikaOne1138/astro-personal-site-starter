@@ -100,7 +100,7 @@
 
 ## 7. 字面值例外（供 D-T5 的 G-11 允許清單採用，提案）
 
-主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`，原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。插圖以 `color-mix()` 由 Token 推導，使場景一起換色；D-T3 已在 clinician 的 `clinical-art` 場景驗證可行（場景隨色票換色、無寫死色），因此 `illustration` 例外目前沒有實際使用者，保留給確實無法推導的場景。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
+主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`（註記套用在緊接其後的第一條宣告；G-11 認得這個格式），原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。插圖以 `color-mix()` 由 Token 推導，使場景一起換色；D-T3 已在 clinician 的 `clinical-art` 場景驗證可行（場景隨色票換色、無寫死色），因此 `illustration` 例外目前沒有實際使用者，保留給確實無法推導的場景。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
 
 ## 8. 檔案三分法歸類
 

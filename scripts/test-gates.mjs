@@ -3,7 +3,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
-import {loadGateConfig,gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateApproval,gatePublishPath,gateLinks,gateEnvironment,runGates,visibleText} from './gates.mjs';
+import {loadGateConfig,gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateApproval,gatePublishPath,gateLinks,gateEnvironment,gateDesign,runGates,visibleText} from './gates.mjs';
 import {validateState,readState} from './site-state.mjs';
 import {inspectEnvironment,needsRecheck} from './preflight.mjs';
 
@@ -141,5 +141,48 @@ try{
  assert.equal(await gateLinks(ctx(linkSite,'preview')),null,'link checks are release or opt-in only');
  const full=await runGates({root:linkSite,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
  assert.ok(full.results.find(x=>x.id==='G-10').blocking===false);
- console.log('Gates G-01..G-10 fixtures PASS (machine checks only; content truth and human approval are not proven).');
+ // ---- G-11 design consistency: hardcoded theme colours (above the shipped baseline) and palette contrast
+ const dsite=(files,config={})=>mk({brand:{palette:{primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'}},...config},'<main></main>',files);
+ const dctx=(root,mode,gcOver)=>({...ctx(root,mode),gc:{...gc,design:{...gc.design,...gcOver}}});
+ const baselineOf=(files)=>JSON.stringify({version:1,files});
+ // no source folder: the literal scan is not run; an untestable optional check never blocks
+ g=gateDesign(dctx(mk({...good,brand:undefined},'<main></main>'),'release'));assert.equal(g.status,'NOT TESTED');assert.equal(g.blocking,false);
+ // clean site and the normal ways of writing colour that must NOT be flagged (G-02 lesson)
+ r=dsite({
+  'src/components/Ok.astro':'<a href="#top" class="a">#fff #2563eb in text</a>\n<style>\n.a{color:var(--color-content);background:color-mix(in srgb,var(--color-primary) 20%,transparent);border:1px solid currentColor}\n.b::after{content:"#2026 white";background:url(#grad)}\n.c{box-shadow:0 2px 4px #0003;background:rgba(255,255,255,.4);border-color:rgb(0 0 0 / .1)}\n</style>',
+  'public/tokens.css':':root{--color-primary:#355747;--x:white}',
+  'public/theme.css':':root{--brand-primary:#245E50}',
+  'design-baseline.json':baselineOf({})});dirs.push(r);
+ for(const m of ['preview','release']){g=gateDesign(dctx(r,m));assert.equal(g.status,'PASS',m+' '+JSON.stringify(g.evidence));assert.equal(g.blocking,false);}
+ // a literal #2563eb in a component: WARN in preview, FAIL (blocking) in release, with file and line
+ r=dsite({'src/components/Card.astro':'<div class="card"></div>\n<style>\n.card{\n  background:#2563eb;\n}\n</style>','design-baseline.json':baselineOf({})});dirs.push(r);
+ g=gateDesign(dctx(r,'preview'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);assert.match(g.evidence.join('\n'),/src\/components\/Card\.astro:4 background: #2563eb/);assert.match(g.learnerMessage,/Token/);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.equal(g.blocking,true);
+ // shipped literals within the baseline do not block; one more does
+ const lit=n=>'<style>\n'+Array.from({length:n},(_,i)=>'.x'+i+'{color:#a1b2c3}').join('\n')+'\n</style>';
+ r=dsite({'src/components/Old.astro':lit(2),'design-baseline.json':baselineOf({'src/components/Old.astro':2})});dirs.push(r);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'PASS');assert.match(g.evidence.join(),/within the recorded baseline/);
+ r=dsite({'src/components/Old.astro':lit(3),'design-baseline.json':baselineOf({'src/components/Old.astro':2})});dirs.push(r);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.match(g.evidence.join(),/3 found, 2 allowed/);
+ // strict mode (design.baseline=false): every literal is a violation; missing baseline file is a non-blocking WARN, never a silent pass
+ g=gateDesign(dctx(dsite({'src/components/Old.astro':lit(1),'design-baseline.json':baselineOf({'src/components/Old.astro':1})}),'release',{baseline:false}));assert.equal(g.status,'FAIL');
+ r=dsite({'src/components/Old.astro':lit(1)});dirs.push(r);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);assert.match(g.evidence.join(),/no design-baseline\.json/);
+ // exemptions: design-fixed annotation with a known reason, allowlist entry with a reason; unknown reason or allowlist without reason do not exempt
+ r=dsite({'src/components/Logo.astro':'<style>\n/* design-fixed: brand-logo */\n.logo{fill:#d9262c}\n</style>','design-baseline.json':baselineOf({})});dirs.push(r);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'PASS');assert.match(g.evidence.join(),/exempted/);
+ r=dsite({'src/components/Logo.astro':'<style>\n/* design-fixed: because */\n.logo{fill:#d9262c}\n</style>','design-baseline.json':baselineOf({})});dirs.push(r);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.match(g.evidence.join(),/unknown reason "because"/);
+ r=dsite({'src/components/Embed.astro':'<style>\n.e{background:#112233}\n</style>','design-baseline.json':baselineOf({})});dirs.push(r);
+ assert.equal(gateDesign(dctx(r,'release',{allowlist:[{file:'src/components/Embed.astro',match:'#112233',reason:'第三方嵌入'}]})).status,'PASS');
+ assert.equal(gateDesign(dctx(r,'release',{allowlist:[{file:'src/components/Embed.astro',match:'#112233'}]})).status,'FAIL','allowlist entries need a reason');
+ // palette contrast: names and numbers of the failing pairs (release FAIL, preview WARN)
+ r=dsite({'src/components/Ok.astro':'<p>ok</p>','design-baseline.json':baselineOf({})},{brand:{palette:{primary:'#cccccc',secondary:'#dddddd',accent:'#eeeeee',background:'#ffffff',text:'#9a9a9a'}}});dirs.push(r);
+ g=gateDesign(dctx(r,'preview'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.equal(g.blocking,true);
+ assert.match(g.evidence.join('\n'),/內文色／背景: 2\.8\d?:1 \(needs 4\.5:1\)/);assert.match(g.evidence.join('\n'),/主色／背景: 1\.6\d?:1 \(needs 3:1\)/);assert.match(g.learnerMessage,/對比不夠/);
+ // runGates carries G-11 and the blocking exit code in release
+ const dfull=await runGates({root:r,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
+ assert.equal(dfull.results.find(x=>x.id==='G-11').status,'FAIL');assert.ok(dfull.blocking);
+ console.log('Gates G-01..G-11 fixtures PASS (machine checks only; content truth and human approval are not proven).');
 }finally{for(const d of dirs)rmSync(d,{recursive:true,force:true});}

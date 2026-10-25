@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// D-T1 盤點（百分比圓角如 50%、40% 40% 12% 12% 視為形狀幾何，不算主題圓角）：逐版型掃描設計字面值（色值／字體／圓角／陰影）與 Token 消費。
-// 唯讀報告工具；匯出函式 scanCss 供之後的 G-11 關卡重用（不另建平行掃描器）。
+// D-T1 盤點：逐版型掃描設計字面值（色值／字體／圓角／陰影）與 Token 消費。
+// 唯讀報告工具；掃描器本體在 design-scan.mjs，與 G-11 關卡、試點守門共用（不另建平行掃描器）。
+// 百分比圓角（50%、40% 40% 12% 12%）視為形狀幾何，不算主題圓角；半透明純黑／純白疊色不算主題色。
 // 用法：node scripts/audit-design-values.mjs [--json out.json] [--md out.md]
 import {readFileSync,readdirSync,statSync,existsSync,writeFileSync} from 'node:fs';
 import {join,relative} from 'node:path';
@@ -9,66 +10,8 @@ import {layoutDefinitions} from '../src/data/layout-assembly/definitions.mjs';
 
 const root=fileURLToPath(new URL('..',import.meta.url)).replace(/\/$/,'');
 
-const HEX=/#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])/g;
-const FUNC=/\b(?:rgba?|hsla?|hwb|oklch|oklab|lab|lch)\(/gi;
-const NAMED=/(?<![\w-])(?:white|black)(?![\w-])/gi;
-const COLOR_PROPS=/^(?:color|background(?:-color|-image)?|border(?:-(?:top|right|bottom|left))?(?:-color)?|outline(?:-color)?|fill|stroke|stop-color|caret-color|accent-color|text-decoration(?:-color)?|box-shadow|text-shadow|column-rule(?:-color)?)$/;
-
-// 取出 CSS 片段：.css 整檔；.astro 取 <style> 區塊、style="" 屬性與 SVG 顏色屬性。
-export function extractCss(file,text){
- if(file.endsWith('.css'))return [{kind:'css',text}];
- const parts=[];
- for(const m of text.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi))parts.push({kind:'style-block',text:m[1]});
- const noStyle=text.replace(/<style\b[\s\S]*?<\/style>/gi,'');
- for(const m of noStyle.matchAll(/\bstyle=(?:"([^"]*)"|'([^']*)')/g))parts.push({kind:'inline-style',text:'x{'+(m[1]??m[2])+'}'});
- for(const m of noStyle.matchAll(/\b(fill|stroke|stop-color)=["'](#[0-9a-fA-F]{3,8})["']/g))parts.push({kind:'svg-attr',text:'x{'+m[1]+':'+m[2]+'}'});
- return parts;
-}
-
-const stripFallbacks=v=>{ // var(--x, fallback)：fallback 內的字面值另計
- const fb=[];
- const out=v.replace(/var\(\s*--[\w-]+\s*,((?:[^()]|\([^()]*\))*)\)/g,(_,f)=>{fb.push(f);return 'var(--fb)';});
- return {value:out,fallbacks:fb};
-};
-const count=(re,s)=>(s.match(re)||[]).length;
-
-export function scanCss(css){
- const r={colorLiteralInUse:[],colorLiteralInLocalToken:[],colorFallback:0,fontLiteral:[],radiusLiteral:[],shadowLiteral:[],
-  varRefs:{},localTokenDefs:{},declarations:0};
- const clean=css.replace(/\/\*[\s\S]*?\*\//g,'');
- const re=/([a-zA-Z-]+)\s*:\s*([^;{}]*?)\s*(?=[;}])/g;
- let m;
- while((m=re.exec(clean))){
-  const prop=m[1].toLowerCase();
-  const raw=m[2];
-  if(!raw||/^[\d.]+$/.test(raw)&&!prop.startsWith('--'))continue;
-  r.declarations++;
-  // 字串內容（content:"#2026"）與 url(#id) 不是顏色，先拿掉再數字面值
- const {value,fallbacks}=stripFallbacks(raw.replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g,'""').replace(/url\([^)]*\)/g,'url()'));
-  r.colorFallback+=fallbacks.reduce((n,f)=>n+count(HEX,f)+count(FUNC,f),0);
-  for(const v of value.matchAll(/var\(\s*(--[\w-]+)/g)){const ns=nsOf(v[1]);r.varRefs[ns]=(r.varRefs[ns]||0)+1;}
-  const line=clean.slice(0,m.index).split('\n').length;
-  const isLocalToken=prop.startsWith('--');
-  const hasVar=/var\(/.test(value);
-  const nColor=count(HEX,value)+count(FUNC,value)+(isLocalToken||COLOR_PROPS.test(prop)?count(NAMED,value):0);
-  if(isLocalToken){
-   const ns=nsOf(prop);r.localTokenDefs[ns]=(r.localTokenDefs[ns]||0)+1;
-   if(nColor)r.colorLiteralInLocalToken.push({prop,value:raw.slice(0,60),line,n:nColor});
-  }else if(nColor)r.colorLiteralInUse.push({prop,value:raw.slice(0,60),line,n:nColor,colors:[...(value.match(HEX)||[]).map(c=>c.toLowerCase())]});
-  if(!isLocalToken){
-   if((prop==='font-family'||prop==='font')&&!hasVar)r.fontLiteral.push({prop,value:raw.slice(0,60),line});
-   if(/^border(-(top|bottom)-(left|right))?-radius$/.test(prop)&&!hasVar&&!/^(0|0px|inherit|0 0 0 0)$/.test(raw)&&!raw.includes('%'))r.radiusLiteral.push({prop,value:raw.slice(0,40),line});
-   if(/^(box|text)-shadow$/.test(prop)&&!hasVar&&raw!=='none')r.shadowLiteral.push({prop,value:raw.slice(0,60),line});
-  }
- }
- return r;
-}
-function nsOf(name){
- if(/^--(brand|ed|chrome)-/.test(name))return name.match(/^--(brand|ed|chrome)-/)[1]+'-*';
- if(/^--(color|font|radius|space|width|shadow)-|^--image-filter$/.test(name))return 'global';
- if(/^--(bg|ink|line|accent|heading|text|surface|muted|radius|brand)$/.test(name))return 'global';
- const m=name.match(/^--([a-z]+)-/);return m?'local:'+m[1]+'-*':'other';
-}
+import {scanCss,extractCss} from './design-scan.mjs';
+export {scanCss,extractCss};
 
 const walk=(p,out=[])=>{const abs=join(root,p);if(!existsSync(abs))return out;
  if(statSync(abs).isDirectory())for(const f of readdirSync(abs).sort())walk(join(p,f),out);

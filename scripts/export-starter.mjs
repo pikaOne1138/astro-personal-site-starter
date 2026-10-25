@@ -5,6 +5,7 @@ import {finalizeStudentSite} from './student-project-context.mjs';
 import {getLayoutDefinition} from '../src/data/layout-assembly/definitions.mjs';
 import {checkStartRecordFile} from './check-start-record.mjs';
 import {themeCss} from './theme-css.mjs';
+import {writeDesignBaseline} from './design-scan.mjs';
 const [input,dest]=process.argv.slice(2);
 if(!input||!dest)throw Error('Usage: node scripts/export-starter.mjs plan.json output-dir');
 // G-00: first-time assembly needs a confirmation record. Route B may omit the flag (the downloaded Site Brief is its basis); routes A and C pass the record file. Maintenance of an existing site never runs the exporter.
@@ -268,6 +269,8 @@ assets['scripts/gates.mjs']=readFileSync(new URL('./gates.mjs',import.meta.url),
 assets['scripts/site-state.mjs']=readFileSync(new URL('./site-state.mjs',import.meta.url),'utf8');
 assets['scripts/preflight.mjs']=readFileSync(new URL('./preflight.mjs',import.meta.url),'utf8');
 assets['scripts/gates.config.json']=readFileSync(new URL('./gates.config.json',import.meta.url),'utf8');
+assets['scripts/design-scan.mjs']=readFileSync(new URL('./design-scan.mjs',import.meta.url),'utf8');
+assets['scripts/theme-css.mjs']=readFileSync(new URL('./theme-css.mjs',import.meta.url),'utf8');
 assets['scripts/test-release-readiness.mjs']=readFileSync(new URL('./test-release-readiness.mjs',import.meta.url),'utf8');
 assets['scripts/test-generated-link-audit.mjs']=readFileSync(new URL('./test-generated-link-audit.mjs',import.meta.url),'utf8');
 assets['scripts/test-site-output-regressions.mjs']=readFileSync(new URL('./test-draft-leakage-regressions.mjs',import.meta.url),'utf8').replaceAll('verify-site-output.mjs','verify-site-output.mjs');
@@ -352,4 +355,6 @@ if(!process.argv.includes('--defer-student-context')){
  finalizeStudentSite(root,plan);
  cpSync(new URL('../.ai/',import.meta.url),join(root,'.ai'),{recursive:true,force:false,errorOnExist:true});
 }
+// G-11：記下出廠時各檔案的寫死色數量（之後只有新增的才算違規）。
+writeDesignBaseline(root);
 console.log('Generated independent Astro scaffold:',root,'pages:',nav.map(x=>x.id));

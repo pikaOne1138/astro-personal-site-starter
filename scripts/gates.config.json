@@ -79,5 +79,17 @@
   "secretsAllowPaths": [
     "scripts/test-student-site-guards.mjs",
     "scripts/test-gates.mjs"
-  ]
+  ],
+  "design": {
+    "baseline": true,
+    "dirs": [
+      "src",
+      "public"
+    ],
+    "exclude": [
+      "public/tokens.css",
+      "public/theme.css"
+    ],
+    "allowlist": []
+  }
 }

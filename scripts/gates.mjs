@@ -5,6 +5,8 @@ import {inspectRelease} from './verify-release-readiness.mjs';
 import {scanSecrets} from './check-secrets.mjs';
 import {readState,validateState} from './site-state.mjs';
 import {needsRecheck} from './preflight.mjs';
+import {scanSourceTree,readDesignBaseline,compareToBaseline,writeDesignBaseline,BASELINE_FILE} from './design-scan.mjs';
+import {contrastPairs} from './theme-css.mjs';
 
 // Machine gates. Each result: {id,name,status,blocking,evidence,learnerMessage}.
 // status is PASS | FAIL | WARN | NOT TESTED; blocking is separate so an optional NOT TESTED never fails an offline build.
@@ -159,6 +161,49 @@ export function gateReleaseTech(ctx){
  return result('R-01','發布技術檢查（robots、sitemap、RSS、平台分支）',errs.length?'FAIL':'PASS',{mode,evidence:errs,learnerMessage:errs.length?'網站的搜尋引擎設定或網址清單有問題，現在發布會讓別人找不到或找錯地方。':''});
 }
 
+// G-11: design consistency. (1) hardcoded theme colours outside the token files, (2) palette contrast.
+// Violation = a literal colour above the per-file count recorded at export (design-baseline.json), so layouts that
+// are not tokenised yet are not blocked for what they shipped with. design.baseline=false makes every literal a violation.
+export function gateDesign(ctx){
+ const {root,mode,config,gc}=ctx;
+ const cfg={baseline:true,dirs:['src','public'],exclude:['public/tokens.css','public/theme.css'],allowlist:[],...(gc.design||{})};
+ const violation=mode==='release'?'FAIL':'WARN';
+ const problems=[],notes=[],messages=[];
+ let tested=0;
+ // (1) literal colours
+ const hasSource=cfg.dirs.some(d=>existsSync(join(root,d)));
+ if(hasSource){
+  tested++;
+  const found=scanSourceTree(root,cfg);
+  const baseline=cfg.baseline===false?null:readDesignBaseline(root);
+  if(cfg.baseline!==false&&!baseline){
+   if(found.total)notes.push('no '+BASELINE_FILE+': cannot tell shipped literals from new ones, '+found.total+' literal colours found (run node scripts/gates.mjs --write-design-baseline to record them)');
+  }else{
+   const cmp=compareToBaseline(found,baseline);
+   for(const v of cmp.violations){
+    const shown=v.items.slice(0,6).map(i=>v.file+':'+i.line+' '+i.prop+': '+i.value);
+    problems.push('hardcoded colour above baseline in '+v.file+' ('+v.count+' found, '+v.baseline+' allowed): '+shown.join(' | ')+(v.items.length>6?' …':''));
+   }
+   if(cmp.violations.length)messages.push('網站裡有新寫死的顏色（沒有透過設計 Token）。之後改色票時這些地方不會跟著變。請讓元件讀 Token，或在確有必要時加上 design-fixed 註記並說明原因。');
+   const legacy=cmp.legacy.reduce((a,b)=>a+b.count,0);
+   if(legacy)notes.push(legacy+' shipped hardcoded colours in '+cmp.legacy.length+' files are within the recorded baseline (layout not tokenised yet)');
+  }
+  for(const f of Object.entries(found.files))for(const b of f[1].badAnnotations)problems.push('design-fixed annotation with unknown reason "'+b.reason+'" at '+f[0]+':'+b.line);
+  const ex=Object.values(found.files).reduce((a,b)=>a+b.exempted.length,0);
+  if(ex)notes.push(ex+' literal colours exempted by design-fixed annotation or allowlist');
+ }else notes.push('no src/ or public/ folder: literal colour scan not run');
+ // (2) palette contrast
+ if(config?.brand){
+  tested++;
+  const bad=contrastPairs(config.brand).filter(p=>!p.ok);
+  for(const p of bad)problems.push('low contrast '+p.name+': '+p.ratio+':1 (needs '+p.min+':1) '+p.fg+' on '+p.bg+' — '+p.usage);
+  if(bad.length)messages.push('色票裡有搭配的對比不夠（'+bad.map(p=>p.name+' '+p.ratio+':1').join('、')+'），部分訪客會看不清楚。請換一組對比足夠的顏色。');
+ }else notes.push('site.config.json has no brand block: palette contrast not checked');
+ if(!tested)return result('G-11','設計一致性','NOT TESTED',{mode,required:false,evidence:notes});
+ if(problems.length)return result('G-11','設計一致性',violation,{mode,evidence:[...problems,...notes],learnerMessage:messages.join('')});
+ return result('G-11','設計一致性',notes.some(n=>n.startsWith('no '+BASELINE_FILE))?'WARN':'PASS',{mode,evidence:notes});
+}
+
 // G-06: approval evidence. Identical SHAs pass; different SHAs pass only when git shows nothing but record files changed.
 // An AI saying "same version" is never enough, and neither is a SHA that merely looks plausible.
 export function gateApproval(ctx){
@@ -249,7 +294,7 @@ export async function runGates({root='.',mode='preview',env=process.env,fetchImp
  const gc=loadGateConfig(root),config=readConfig(root);
  const results=[];
  const ctx={root,mode,env,config,gc,results,fetchImpl,checkLinks};
- for(const gate of [gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateReleaseTech,gateApproval,gatePublishPath,gateLinks,gateEnvironment]){
+ for(const gate of [gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateDesign,gateReleaseTech,gateApproval,gatePublishPath,gateLinks,gateEnvironment]){
   try{const r=await gate(ctx);if(r)results.push(r);}
   catch(e){results.push({id:gate.name,name:gate.name,status:'NOT TESTED',blocking:mode==='release'&&gate!==gateLinks&&gate!==gateEnvironment,evidence:['gate error: '+e.message],learnerMessage:''});}
  }
@@ -265,8 +310,9 @@ export function summarize({mode,results}){
 
 if(process.argv[1]&&resolve(process.argv[1])===resolve(new URL(import.meta.url).pathname)){
  const args=process.argv.slice(2);
+ if(args.includes('--write-design-baseline')){const dir=resolve(args.find((a,i)=>!a.startsWith('--')&&args[i-1]!=='--mode')||'.');const r=writeDesignBaseline(dir,loadGateConfig(dir).design||{});console.log('design baseline written: '+r.total+' literal colours in '+Object.keys(r.files).length+' files');process.exit(0);}
  const mode=args.includes('--mode')?args[args.indexOf('--mode')+1]:'preview';
- if(!['preview','release'].includes(mode)){console.error('Usage: gates.mjs [--mode preview|release] [--check-links] [root]');process.exit(2);}
+ if(!['preview','release'].includes(mode)){console.error('Usage: gates.mjs [--mode preview|release] [--check-links] [--write-design-baseline] [root]');process.exit(2);}
  const rootArg=args.find((a,i)=>!a.startsWith('--')&&args[i-1]!=='--mode')||'.';
  try{
   const out=await runGates({root:rootArg,mode,checkLinks:args.includes('--check-links')});
