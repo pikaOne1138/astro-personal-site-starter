@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 學員站主題輸入：site.config.json 的 brand → public/theme.css（:root 的 --brand-* 輸入變數）。
 // site.config.json 是唯一真相；theme.css 是由它產生的檔案，不要手改。
-// 語意 Token（--atp-*）與舊名別名在 public/tokens.css，由這些輸入推導。
+// 語意 Token（--color-* 等）與舊名別名在 public/tokens.css，由這些輸入推導。
 // 匯出器在匯出時呼叫 themeCss()；學員站在 predev／prebuild 重新產生（npm run sync:theme）。
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';

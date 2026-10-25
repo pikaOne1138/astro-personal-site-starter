@@ -5,74 +5,74 @@
  * 輸入：學員的色票與字體偏好來自 site.config.json，由 SiteLayout 在 :root 寫入
  *       --brand-primary / -secondary / -accent / -background / -text / -on-primary
  *       --brand-heading-font / --brand-body-font / --brand-image-filter。
- * 本檔只做兩件事：把輸入整理成「角色命名」的 --atp-* Token，並保留舊名作為別名。
- * 元件與版型只讀 --atp-*（或別名），不得在本檔以外寫主題字面值。
+ * 本檔只做兩件事：把輸入整理成「角色命名」的通用 Token（--color-*、--font-*、--radius-*、--space-*、--width-*、--shadow-*、--image-filter），並保留舊名作為別名。
+ * 元件與版型只讀這些 Token（或別名），不得在本檔以外寫主題字面值。
  * 名稱即 API：已發布的名稱不得改名或刪除；要改只能新增，舊名留別名並公告淘汰期。
  */
 :root{
   /* 色彩 */
-  --atp-color-primary:var(--brand-primary,#355747);
-  --atp-color-on-primary:var(--brand-on-primary,#fff);
-  --atp-color-secondary:var(--brand-secondary,var(--atp-color-primary));
-  --atp-color-accent:var(--brand-accent,var(--atp-color-primary));
-  --atp-color-surface:var(--brand-background,#f7f5f0);
-  --atp-color-content:var(--brand-text,#28231f);
-  --atp-color-content-muted:color-mix(in srgb,var(--atp-color-content) 75%,var(--atp-color-surface));
-  --atp-color-surface-alt:color-mix(in srgb,var(--atp-color-content) 6%,var(--atp-color-surface));
-  --atp-color-line:color-mix(in srgb,var(--atp-color-content) 20%,var(--atp-color-surface));
-  --atp-color-inverse-surface:var(--atp-color-content);
-  --atp-color-on-inverse:var(--atp-color-surface);
-  --atp-color-on-inverse-muted:color-mix(in srgb,var(--atp-color-surface) 78%,var(--atp-color-content));
-  --atp-color-focus:var(--atp-color-primary);
+  --color-primary:var(--brand-primary,#355747);
+  --color-on-primary:var(--brand-on-primary,#fff);
+  --color-secondary:var(--brand-secondary,var(--color-primary));
+  --color-accent:var(--brand-accent,var(--color-primary));
+  --color-surface:var(--brand-background,#f7f5f0);
+  --color-content:var(--brand-text,#28231f);
+  --color-content-muted:color-mix(in srgb,var(--color-content) 75%,var(--color-surface));
+  --color-surface-alt:color-mix(in srgb,var(--color-content) 6%,var(--color-surface));
+  --color-line:color-mix(in srgb,var(--color-content) 20%,var(--color-surface));
+  --color-inverse-surface:var(--color-content);
+  --color-on-inverse:var(--color-surface);
+  --color-on-inverse-muted:color-mix(in srgb,var(--color-surface) 78%,var(--color-content));
+  --color-focus:var(--color-primary);
 
   /* 字體（字族；字級與行高屬版型層，不進全域 Token） */
-  --atp-font-heading:var(--brand-heading-font,Georgia,"Noto Serif TC",serif);
-  --atp-font-body:var(--brand-body-font,system-ui,"Noto Sans TC",sans-serif);
-  --atp-font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --atp-image-filter:var(--brand-image-filter,none);
+  --font-heading:var(--brand-heading-font,Georgia,"Noto Serif TC",serif);
+  --font-body:var(--brand-body-font,system-ui,"Noto Sans TC",sans-serif);
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --image-filter:var(--brand-image-filter,none);
 
   /* 圓角 */
-  --atp-radius-sm:.25rem;
-  --atp-radius-md:8px;
-  --atp-radius-lg:1rem;
-  --atp-radius-pill:999px;
+  --radius-sm:.25rem;
+  --radius-md:8px;
+  --radius-lg:1rem;
+  --radius-pill:999px;
 
   /* 間距與寬度（8px 基準） */
-  --atp-space-1:.5rem;
-  --atp-space-2:1rem;
-  --atp-space-3:1.5rem;
-  --atp-space-4:2rem;
-  --atp-space-5:3rem;
-  --atp-space-6:5rem;
-  --atp-section:clamp(4rem,8vw,6rem);
-  --atp-gutter:clamp(1rem,4vw,4rem);
-  --atp-width-wide:1320px;
-  --atp-width-mid:1120px;
-  --atp-width-read:36rem;
+  --space-1:.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2rem;
+  --space-5:3rem;
+  --space-6:5rem;
+  --space-section:clamp(4rem,8vw,6rem);
+  --space-gutter:clamp(1rem,4vw,4rem);
+  --width-wide:1320px;
+  --width-mid:1120px;
+  --width-read:36rem;
 
   /* 陰影（顏色由內容色混出，換色時一起變） */
-  --atp-shadow-sm:0 1px 2px color-mix(in srgb,var(--atp-color-content) 10%,transparent);
-  --atp-shadow-md:0 4px 12px color-mix(in srgb,var(--atp-color-content) 14%,transparent);
-  --atp-shadow-lg:0 12px 32px color-mix(in srgb,var(--atp-color-content) 18%,transparent);
-  --atp-shadow-hard:12px 12px 0 color-mix(in srgb,var(--atp-color-content) 20%,transparent);
+  --shadow-sm:0 1px 2px color-mix(in srgb,var(--color-content) 10%,transparent);
+  --shadow-md:0 4px 12px color-mix(in srgb,var(--color-content) 14%,transparent);
+  --shadow-lg:0 12px 32px color-mix(in srgb,var(--color-content) 18%,transparent);
+  --shadow-hard:12px 12px 0 color-mix(in srgb,var(--color-content) 20%,transparent);
 
   /* 舊名別名（已隨匯出站發布，視同 API；不得刪除） */
-  --brand:var(--atp-color-primary);
-  --accent:var(--atp-color-primary);
-  --ink:var(--atp-color-content);
-  --bg:var(--atp-color-surface);
-  --line:var(--atp-color-line);
-  --heading:var(--atp-color-content);
-  --text:var(--atp-color-content);
-  --surface:var(--atp-color-surface);
-  --muted:var(--atp-color-content-muted);
-  --radius:var(--atp-radius-md);
-  --ed-ink:var(--atp-color-content);
-  --ed-ink-2:var(--atp-color-content-muted);
-  --ed-accent:var(--atp-color-primary);
-  --ed-accent-deco:var(--atp-color-secondary);
-  --ed-panel:var(--atp-color-surface);
-  --ed-line:var(--atp-color-line);
-  --ed-gutter:var(--atp-gutter);
-  --ed-wide:var(--atp-width-wide);
+  --brand:var(--color-primary);
+  --accent:var(--color-primary);
+  --ink:var(--color-content);
+  --bg:var(--color-surface);
+  --line:var(--color-line);
+  --heading:var(--color-content);
+  --text:var(--color-content);
+  --surface:var(--color-surface);
+  --muted:var(--color-content-muted);
+  --radius:var(--radius-md);
+  --ed-ink:var(--color-content);
+  --ed-ink-2:var(--color-content-muted);
+  --ed-accent:var(--color-primary);
+  --ed-accent-deco:var(--color-secondary);
+  --ed-panel:var(--color-surface);
+  --ed-line:var(--color-line);
+  --ed-gutter:var(--space-gutter);
+  --ed-wide:var(--width-wide);
 }

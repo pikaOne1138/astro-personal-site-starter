@@ -46,7 +46,7 @@ try{
  console.log('N12 Pagefind selector excludes 404/nonsearchable pages: PASS');
  cases.push({id:'N12',name:'Pagefind excludes nonsearchable/404',expected:'PASS',passed:true});
  const tokens=readFileSync(join(dir,'public/tokens.css'),'utf8');
- if(!['--ed-ink:var(--atp-color-content)','--ed-ink-2:var(--atp-color-content-muted)','--ed-accent:var(--atp-color-primary)','--ed-line:var(--atp-color-line)'].every(x=>tokens.includes(x)))throw Error('N13 Block/Editorial shared token bridge missing');
+ if(!['--ed-ink:var(--color-content)','--ed-ink-2:var(--color-content-muted)','--ed-accent:var(--color-primary)','--ed-line:var(--color-line)'].every(x=>tokens.includes(x)))throw Error('N13 Block/Editorial shared token bridge missing');
  console.log('N13 learner token aliases are mapped to brand theme: PASS');
  cases.push({id:'N13',name:'Learner design token aliases',expected:'PASS',passed:true});
  const workflow=readFileSync(join(dir,'.github/workflows/pr-check.yml'),'utf8');

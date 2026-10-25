@@ -64,6 +64,7 @@ export function scanCss(css){
 }
 function nsOf(name){
  if(/^--(brand|ed|chrome)-/.test(name))return name.match(/^--(brand|ed|chrome)-/)[1]+'-*';
+ if(/^--(color|font|radius|space|width|shadow)-|^--image-filter$/.test(name))return 'global';
  if(/^--(bg|ink|line|accent|heading|text|surface|muted|radius|brand)$/.test(name))return 'global';
  const m=name.match(/^--([a-z]+)-/);return m?'local:'+m[1]+'-*':'other';
 }
