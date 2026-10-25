@@ -66,6 +66,8 @@
 
 反白區塊直接取 content／surface 互換：只要 content／surface 這組色過對比，反白組合就必然過，學員不必另外提供第六、第七個顏色。
 
+G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五組：內文色／背景 4.5、次要文字／背景 4.5、主色上的文字／主色 4.5、主色／背景 3、強調色／背景 3。強調色只用在非文字的點綴（色塊、線條、插圖），所以門檻是 3:1，且不得拿來當文字色；沒有設定強調色時 `--color-accent` 退回主色，不另外檢查。**輔色（`--color-secondary`）沒有配對檢查**：它只經 `--ed-accent-deco` 用在裝飾線、邊框與插圖底色，不是文字色也不是表面色；若日後有版型把輔色放在文字或有意義的圖形上，再補這一組。
+
 ### 字體、圖片
 `--font-heading`、`--font-body`（由 `brand.typography` 決定預設）、`--font-mono`（固定）、`--image-filter`（由 `brand.imageStyle` 決定）。
 
@@ -100,7 +102,7 @@
 
 ## 7. 字面值例外（供 D-T5 的 G-11 允許清單採用，提案）
 
-主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`（註記套用在緊接其後的第一條宣告；G-11 認得這個格式），原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。插圖以 `color-mix()` 由 Token 推導，使場景一起換色；D-T3 已在 clinician 的 `clinical-art` 場景驗證可行（場景隨色票換色、無寫死色），因此 `illustration` 例外目前沒有實際使用者，保留給確實無法推導的場景。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
+主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`（G-11 認得這個格式。涵蓋範圍：註記放在一條規則〔選擇器或 `@media` 等 at-rule〕前，涵蓋該規則 `{}` 內的所有宣告；放在單一宣告前〔含規則 `{` 之後的第一個宣告〕，只涵蓋緊接的那一個宣告；**不提供檔案層級涵蓋**，太寬），原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。插圖以 `color-mix()` 由 Token 推導，使場景一起換色；D-T3 已在 clinician 的 `clinical-art` 場景驗證可行（場景隨色票換色、無寫死色），因此 `illustration` 例外目前沒有實際使用者，保留給確實無法推導的場景。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
 
 ## 8. 檔案三分法歸類
 

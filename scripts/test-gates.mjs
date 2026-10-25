@@ -5,6 +5,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {loadGateConfig,gateUrl,gatePlaceholders,gateServiceFacts,gateContact,gateSecrets,gateDrafts,gateApproval,gatePublishPath,gateLinks,gateEnvironment,gateDesign,runGates,visibleText} from './gates.mjs';
 import {validateState,readState} from './site-state.mjs';
+import {contrastPairs} from './theme-css.mjs';
 import {inspectEnvironment,needsRecheck} from './preflight.mjs';
 
 const gc=loadGateConfig('.');
@@ -142,7 +143,7 @@ try{
  const full=await runGates({root:linkSite,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
  assert.ok(full.results.find(x=>x.id==='G-10').blocking===false);
  // ---- G-11 design consistency: hardcoded theme colours (above the shipped baseline) and palette contrast
- const dsite=(files,config={})=>mk({brand:{palette:{primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'}},...config},'<main></main>',files);
+ const dsite=(files,config={})=>mk({brand:{palette:{primary:'#245E50',secondary:'#58776C',accent:'#8A6A3F',background:'#F7F8F4',text:'#1F2924'}},...config},'<main></main>',files);
  const dctx=(root,mode,gcOver)=>({...ctx(root,mode),gc:{...gc,design:{...gc.design,...gcOver}}});
  const baselineOf=(files)=>JSON.stringify({version:1,files});
  // no source folder: the literal scan is not run; an untestable optional check never blocks
@@ -176,11 +177,31 @@ try{
  r=dsite({'src/components/Embed.astro':'<style>\n.e{background:#112233}\n</style>','design-baseline.json':baselineOf({})});dirs.push(r);
  assert.equal(gateDesign(dctx(r,'release',{allowlist:[{file:'src/components/Embed.astro',match:'#112233',reason:'第三方嵌入'}]})).status,'PASS');
  assert.equal(gateDesign(dctx(r,'release',{allowlist:[{file:'src/components/Embed.astro',match:'#112233'}]})).status,'FAIL','allowlist entries need a reason');
+ // design-fixed scope: before a rule it covers every declaration in that rule (and only that rule); before one declaration it covers only that declaration; an unknown reason never exempts
+ const lits=(css,over)=>{const x=dsite({'src/components/S.astro':'<style>\n'+css+'\n</style>','design-baseline.json':baselineOf({})});dirs.push(x);return gateDesign(dctx(x,'release',over));};
+ g=lits('/* design-fixed: page-custom */\n.btn{--o:#c2410c;color:#ffffff;background:#111827}');assert.equal(g.status,'PASS',JSON.stringify(g.evidence));assert.match(g.evidence.join(),/3 literal colours exempted/);
+ g=lits('/* design-fixed: page-custom */\n.btn{--o:#c2410c;color:#ffffff}\n.other{color:#123456}');assert.equal(g.status,'FAIL');assert.match(g.evidence.join('\n'),/S\.astro:4 color: #123456/);assert.doesNotMatch(g.evidence.join('\n'),/#c2410c|#ffffff/,'next rule is flagged, the annotated rule is not');
+ g=lits('/* design-fixed: page-custom */\n@media(min-width:600px){.a{color:#0a0b0c}.b{color:#0d0e0f}}\n.c{color:#abcdef}');assert.equal(g.status,'FAIL');assert.match(g.evidence.join('\n'),/#abcdef/);assert.doesNotMatch(g.evidence.join('\n'),/#0a0b0c|#0d0e0f/,'an at-rule annotation covers the rules inside it');
+ g=lits('.btn{\n/* design-fixed: page-custom */\n--o:#c2410c;\ncolor:#ffffff}');assert.equal(g.status,'FAIL');assert.match(g.evidence.join('\n'),/S\.astro:5 color: #ffffff/);assert.doesNotMatch(g.evidence.join('\n'),/#c2410c/,'a declaration-level annotation covers that declaration only');
+ g=lits('/* design-fixed: because */\n.btn{color:#ffffff;background:#111827}');assert.equal(g.status,'FAIL');assert.match(g.evidence.join('\n'),/unknown reason "because"/);assert.match(g.evidence.join('\n'),/#ffffff/);assert.match(g.evidence.join('\n'),/#111827/,'unknown reason exempts nothing in the rule');
  // palette contrast: names and numbers of the failing pairs (release FAIL, preview WARN)
  r=dsite({'src/components/Ok.astro':'<p>ok</p>','design-baseline.json':baselineOf({})},{brand:{palette:{primary:'#cccccc',secondary:'#dddddd',accent:'#eeeeee',background:'#ffffff',text:'#9a9a9a'}}});dirs.push(r);
  g=gateDesign(dctx(r,'preview'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);
  g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.equal(g.blocking,true);
  assert.match(g.evidence.join('\n'),/內文色／背景: 2\.8\d?:1 \(needs 4\.5:1\)/);assert.match(g.evidence.join('\n'),/主色／背景: 1\.6\d?:1 \(needs 3:1\)/);assert.match(g.learnerMessage,/對比不夠/);
+ // accent/background: only the accent is weak here, so only it is named, with its number; no accent set means no extra pair
+ r=dsite({'src/components/Ok.astro':'<p>ok</p>','design-baseline.json':baselineOf({})},{brand:{palette:{primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'}}});dirs.push(r);
+ g=gateDesign(dctx(r,'preview'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);
+ g=gateDesign(dctx(r,'release'));assert.equal(g.status,'FAIL');assert.equal(g.blocking,true);
+ assert.match(g.evidence.join('\n'),/low contrast 強調色／背景: 2\.38:1 \(needs 3:1\) #C49B70 on #F7F8F4/);assert.equal(g.evidence.filter(e=>e.startsWith('low contrast')).length,1,'only the accent pair fails');assert.match(g.learnerMessage,/強調色／背景 2\.38:1/);
+ const afull=await runGates({root:r,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
+ assert.equal(afull.results.find(x=>x.id==='G-11').status,'FAIL','runGates: a weak accent alone blocks release');assert.match(afull.results.find(x=>x.id==='G-11').evidence.join(),/強調色／背景/);assert.ok(afull.blocking);
+ const acc=(a,bg='#F7F8F4')=>contrastPairs({palette:{primary:'#245E50',secondary:'#58776C',accent:a,background:bg,text:'#1F2924'}}).find(p=>p.name==='強調色／背景');
+ assert.equal(acc('#8A6A3F').ok,true);assert.equal(acc('#8A6A3F').min,3);assert.equal(acc(undefined),undefined,'no accent: --color-accent falls back to the primary, which has its own pair');
+ assert.equal(contrastPairs({palette:{primary:'#245E50',background:'#F7F8F4',text:'#1F2924'}}).length,4);
+ // boundary: the same pair passes just above 3:1 and fails just below
+ const edge=contrastPairs({palette:{primary:'#245E50',accent:'#949494',background:'#ffffff',text:'#1F2924'}}).find(p=>p.name==='強調色／背景');assert.equal(edge.ok,true);assert.ok(edge.ratio>=3&&edge.ratio<3.1);
+ assert.equal(contrastPairs({palette:{primary:'#245E50',accent:'#999999',background:'#ffffff',text:'#1F2924'}}).find(p=>p.name==='強調色／背景').ok,false);
  // runGates carries G-11 and the blocking exit code in release
  const dfull=await runGates({root:r,mode:'release',env:{SITE_URL:url},fetchImpl:async()=>{throw new TypeError('offline');}});
  assert.equal(dfull.results.find(x=>x.id==='G-11').status,'FAIL');assert.ok(dfull.blocking);
