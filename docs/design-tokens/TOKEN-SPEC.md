@@ -141,7 +141,28 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 
 ## 10. 已知限制與缺口
 
-1. **匯出殼不一致（D-T3 批 1 發現）。** art-direction（2 款）與 native-expansion（11 款）的匯出殼（`SiteLayout`）只定義 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`／`--line`／`--serif`（由 `brand.palette` 在殼內寫入），**沒有載入 `tokens.css`／`theme.css`**，所以 L1 語意 Token（`--color-*`、`--font-*`、`--radius-*` 等）在這 13 款不存在。批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）因此以殼變數推導（`color-mix()` 混 `--ink`／`--bg`／`--panel`），換色同樣一處改、全站一致；但字族（mono／sans）與反白區塊的語意角色（`inverse-*`）無 Token 可用，字族字面值保留，待殼補上 Token 後再轉。殼是否改為載入 `tokens.css`（同時要處理 `--accent` 等舊名在殼內與別名層意義不同的問題）需要另案決定，不隨批 1 順手改。
+1. **殼版型（art-direction 2＋native-expansion 11，共用 `src/data/art-direction-adapters/shared/`）。** 階段 1 已完成：殼的 `SiteLayout` 依序連結 `tokens.css`、`theme.css`、`site.css`，所以 L1 語意 Token 在這 13 款可用；**沒有改任何語意**——殼自己的 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`（由 `brand.palette` 在 `<html style>` 寫入）與 `--line`／`--serif`（`site.css`）照舊。**注意：殼內的 `--accent` ＝ `palette.accent`，與第 5 節別名層的 `--accent`（＝primary）意義不同**；殼的行內變數勝出，所以在這 13 款讀 `var(--accent)` 得到的是強調色。`test-shell-tokens.mjs`（靜態）與 `verify-starter-export` FULL（建置後算出值）把這件事固定下來。別名外洩（tokens 的舊名別名在殼上多出定義）另案處理：pikaOne1138/ai-workbench#22，把別名拆成獨立檔，排階段 2 之前。階段 2（排在批 3 之後，與 D-T7 一起）才會統一 `--accent`、把殼的 `site.css` 與行內變數改讀 Token，並把 13 款的字族 Token 化；在那之前，批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）仍以殼變數推導，字族 mono／sans 保留字面值。
 2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 家族字面色覆蓋：reading-atlas、clinician（D-T3 試點）與 field-notes、essayist、companion、somatic（批 1）已轉換；其餘 6 款在批 2、批 3。
 3. 無色票（`palette` 缺省）的舊計畫，`--color-line` 由 content／surface 推導，與先前固定的 `#dad4c9` 略有不同；有色票的匯出站與先前逐元素一致（見 Issue #17 的對照證據）。
 4. 與先前行為的一個實質差異：改 `site.config.json` 的 `brand.palette` 後，重新 `npm run build`（或 `npm run sync:theme`）就會換色；先前色票在匯出時被寫死進 `site.css`，只改 config 不會生效。
+
+## 11. 共用元件的宿主契約（階段 1）
+
+共用元件（`StudentNavigation`、`SelectedPatterns`、家族元件）曾直接引用全域 Token（`--color-*`）或 L0 輸入（`--brand-*`）。這假設宿主一定提供它們；殼宿主（見第 10 節）在載入 `tokens.css` 之前沒有，宣告整條無效，載入之後才突然生效（休眠啟用）。契約改為：**共用元件只引用自己的元件變數 `--student-<元件>-*`，值由宿主在 `component-contract.css` 宣告**。
+
+| 元件變數 | 用途 | prototype 宿主的值 | 殼宿主的值（＝現況效果） |
+| --- | --- | --- | --- |
+| `--student-nav-menu-bg`／`-fg`／`-border`／`-shadow` | 導覽子選單的底色、字色、邊框（整條 shorthand）、陰影 | `--color-surface`／`--color-content`／`1px solid --color-line`／內容色 9% 陰影 | `transparent`／`inherit`／`none`／`none` |
+| `--student-nav-hover-bg` | 導覽連結 hover 底色 | 內容色 8% 淡底 | `transparent` |
+| `--student-pattern-bg`、`--student-pattern-rule` | 區段樣板的底色與頂線（整條 shorthand） | `--color-surface`、`3px solid --color-primary` | `transparent`、`none` |
+| `--student-footer-rule` | 頁尾頂線（整條 shorthand） | `2px solid --color-primary` | `none` |
+| `--student-footer-editorial-bg`／`-professional-bg`／`-professional-fg`／`-minimal-bg` | 三種頁尾的底色與字色 | `--color-surface-alt`／`--color-inverse-surface`／`--color-on-inverse`／`--color-surface` | `transparent`／`transparent`／`inherit`／`transparent` |
+
+| `--student-family-heading-font`／`-body-font`／`-accent` | 家族元件（`DesignInterior`、`ArticleArchive`、`ArticleDetail`、`ServiceSections`、`AboutSections`；殼版型的文章列表／內頁會用到）的標題字族、內文字族、強調色 | `var(--brand-heading-font,Georgia,serif)`／`var(--brand-body-font,system-ui,sans-serif)`／`var(--brand-primary,var(--brand))` | `Georgia,serif`／`system-ui,sans-serif`／`var(--brand)`（宣告在 `body`，因為殼變數寫在 `<body style>`） |
+
+- 兩個宿主檔：prototype 在 `src/styles/component-contract.css`，殼在 `src/data/art-direction-adapters/shared/component-contract.css`，匯出後都是 `public/component-contract.css`，由各自的 `SiteLayout` 在 `theme.css` 之後、`site.css` 之前連結。**宣告集中在這兩個檔，不散在 13 款版型 CSS。**
+- 殼宿主的值等於殼現在的實際效果（這些裝飾在殼上目前不出現），**不是新設計**；要讓殼也有這些裝飾是階段 2 的決定，屆時只改這份檔的值。
+- 為什麼不是覆寫壓制：沒有在殼上加任何「把效果壓回去」的選擇器。共用元件的 CSS 與宿主的值各自單一來源，契約變數是明文介面；兩個宿主對同一個介面宣告各自的值。
+- 這些是 L2 元件變數，不是全域 Token：不進第 4 節詞彙表，不受第 6 節「名稱即 API」的全域規則約束，但名稱視同元件的公開介面（共用元件新增引用就必須在兩個宿主檔同步宣告，`scripts/test-shell-vars.mjs` 會檢查）。
+- 機器檢查：`scripts/audit-shell-vars.mjs`（建置後 dist 的全部 `var(--*)` 引用分 A 休眠啟用／B 同名碰撞／C 仍未定義；A 必須為空，B、C 只准白名單）與其動態版（同一份 dist 不載入 Token 時，每個引用 Token 專屬變數的元素都必須已有值），併入 `npm run build` 的測試與 `verify-starter-export` FULL。
+

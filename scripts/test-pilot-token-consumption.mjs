@@ -100,6 +100,8 @@ try{
       const r=scanFile(f,readFileSync(join(site,f),'utf8'));
       assert.deepEqual([r.colorInUse,r.colorInLocalToken,r.colorFallback],[0,0,0],`${slug} 匯出的 ${f} 仍有寫死色`);
     }
+    // 宿主契約：共用元件的 --student-* 變數由這份檔宣告，SiteLayout 必須連結它（殼版型與 prototype 版型都一樣）
+    assert.ok(existsSync(join(site,'public/component-contract.css'))&&readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8').includes("href={base+'component-contract.css'}"),`${slug} 匯出站缺宿主契約 component-contract.css 或沒連結`);
     // 新匯出站的 G-11 在 release 不得一開始就因「超出基準」而失敗（殼版型曾因基準寫在被換掉的 surrogate 上而全部誤報）
     const g11=gateDesign({root:site,mode:'release',config:{},gc:loadGateConfig(site)});
     assert.ok(g11.status!=='FAIL'&&!g11.evidence.some(e=>/above baseline/.test(e)),`${slug} 新匯出站的 G-11 一開始就超出基準：${g11.evidence.slice(0,3).join(' | ')}`);

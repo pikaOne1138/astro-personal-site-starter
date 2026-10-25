@@ -6,6 +6,10 @@ import {execFileSync} from 'node:child_process';
 import layouts from '../src/data/layout-directions.json' with {type:'json'};
 import headingFields from '../src/data/layout-assembly/expanded/heading-fields.json' with {type:'json'};
 import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
+import {checkShellSource,checkShellRuntime,selfTestShellRuntime} from './shell-token-check.mjs';
+import {auditDist,assertShellVars,auditReferencedRuntime,selfTestAuditRuntime,temporaryUsed} from './audit-shell-vars.mjs';
+await selfTestShellRuntime();
+await selfTestAuditRuntime();
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 function assertStudentContext(site,expectedSlug){
  const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
@@ -485,6 +489,8 @@ try{
     const {slug,kind}=layout,native=layout.engine==='native-expansion';
     const plan=JSON.parse(readFileSync('docs/art-direction/fixtures/'+(kind==='knowledge'?'subject-atlas':'practice-compass')+'.json','utf8'));
     plan.layoutSlug=slug;
+    // 殼的 --accent（palette.accent）與 tokens.css 的別名 --accent（primary）意義不同；用 accent≠primary 的色票才分辨得出載入後有沒有被改掉。
+    plan.brand={...plan.brand,primaryColor:'#245E50',palette:{primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'}};
     if(native){
       delete plan.contentDirectory;
       plan.about={bio:'QA 本人提供的自我介紹',purpose:'QA 寫作目的',approach:'QA 工作方式',background:'QA 背景尚未核實'};
@@ -515,6 +521,14 @@ try{
     const build=()=>execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
     execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});build();
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
+    checkShellSource(site);
+    // 休眠／碰撞掃描：建置後實際載入的 CSS，A 類（載入 Token 才生效的引用）必須為空
+    {const audit=auditDist(join(site,'dist'),readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8'));assertShellVars(audit,slug);
+     const temp=temporaryUsed(audit);if(temp.length)console.log('NOTICE '+slug+' 使用暫時白名單（須由後續案移除）：'+temp.join('、'));}
+    {const tokenCss=readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8');
+     const rt=await auditReferencedRuntime(join(site,'dist'),tokenCss);
+     if(rt.violations.length)throw Error(slug+' 載入 Token 後會被啟用的引用（沒有 Token 時算不出值）：'+rt.violations.slice(0,6).map(v=>v.selector+' '+v.name+' @'+v.route+' '+v.width).join('；'));}
+    await checkShellRuntime(join(site,'dist'),plan.brand.palette,{probe:slug==='practice-compass'?{selector:'.fit-grid article:last-child',prop:'borderTopColor'}:undefined});
     let routes=kind==='knowledge'?['','articles/',native?'articles/owned-note/':'articles/real-note/','topics/','topics/method/','about/','search/']:['','services/','about/','faq/','contact/','privacy/','search/'];
     if(native&&kind==='helper')routes.push('services/owned-service/','services/second-service/','articles/','articles/owned-note/');
     routes.push('guides/first/');

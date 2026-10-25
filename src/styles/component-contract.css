@@ -1,0 +1,26 @@
+/*
+ * component-contract.css — 共用元件的宿主契約（prototype 宿主；殼宿主另有一份同名檔，值不同）
+ *
+ * 共用元件（StudentNavigation、SelectedPatterns）不直接引用全域 Token，只引用下面這些元件變數；
+ * 值由宿主在這裡宣告，所以共用元件不再假設宿主一定提供 --color-*（殼宿主在 tokens 載入前沒有，曾造成休眠宣告）。
+ * 命名：--student-<元件>-*，前綴與元件 class 一致（TOKEN-SPEC §3：元件專屬值走 L2，不進全域 Token）。
+ * 這份的值等於各宣告原本直接寫的 Token 表達式，所以畫面與先前逐元素一致。
+ * 名稱即契約：共用元件新增引用就必須在兩個宿主檔都宣告（scripts/test-shell-vars.mjs 會檢查）。
+ */
+:root{
+  --student-nav-menu-bg:var(--color-surface);
+  --student-nav-menu-fg:var(--color-content);
+  --student-nav-menu-border:1px solid var(--color-line);
+  --student-nav-menu-shadow:0 14px 28px color-mix(in srgb,var(--color-content) 9%,transparent);
+  --student-nav-hover-bg:color-mix(in srgb,var(--color-content) 8%,transparent);
+  --student-pattern-bg:var(--color-surface);
+  --student-pattern-rule:3px solid var(--color-primary);
+  --student-footer-rule:2px solid var(--color-primary);
+  --student-footer-editorial-bg:var(--color-surface-alt);
+  --student-footer-professional-bg:var(--color-inverse-surface);
+  --student-footer-professional-fg:var(--color-on-inverse);
+  --student-footer-minimal-bg:var(--color-surface);
+  --student-family-heading-font:var(--brand-heading-font,Georgia,serif);
+  --student-family-body-font:var(--brand-body-font,system-ui,sans-serif);
+  --student-family-accent:var(--brand-primary,var(--brand));
+}
