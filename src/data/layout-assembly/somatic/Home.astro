@@ -23,29 +23,29 @@ const action=base+(nav?.path??'services/');
  * post-prototype overrides: edit the original selector below.
  */
 .body-shell {
-  --somatic-brand: var(--brand-primary, var(--accent, #58746f));
-  --somatic-accent: var(--brand-accent, var(--accent, var(--somatic-brand)));
-  --somatic-page: var(--bg, color-mix(in srgb, var(--somatic-brand) 8%, white));
-  --somatic-ink: var(--text, #283128);
-  --somatic-hero: color-mix(in srgb, var(--somatic-brand) 78%, #151b19);
-  --somatic-hero-deep: color-mix(in srgb, var(--somatic-hero) 65%, #0c1010);
-  --somatic-hero-soft: color-mix(in srgb, var(--somatic-brand) 48%, #bdbaa1);
-  --somatic-on-dark: #fffaf1;
-  --somatic-on-dark-muted: #f1ecdf;
-  --somatic-on-dark-accent: color-mix(in srgb, var(--somatic-accent) 38%, #fff3db);
-  --somatic-section: color-mix(in srgb, var(--somatic-brand) 73%, #1c241e);
+  --somatic-brand: var(--color-primary);
+  --somatic-accent: var(--color-accent);
+  --somatic-page: var(--color-surface);
+  --somatic-ink: var(--color-content);
+  --somatic-hero: color-mix(in srgb, var(--somatic-brand) 78%, var(--color-inverse-surface));
+  --somatic-hero-deep: color-mix(in srgb, var(--somatic-hero) 65%, var(--color-inverse-surface));
+  --somatic-hero-soft: color-mix(in srgb, var(--somatic-brand) 52%, var(--color-secondary));
+  --somatic-on-dark: var(--color-on-inverse);
+  --somatic-on-dark-muted: var(--color-on-inverse-muted);
+  --somatic-on-dark-accent: color-mix(in srgb, var(--somatic-accent) 38%, var(--color-on-inverse));
+  --somatic-section: color-mix(in srgb, var(--somatic-brand) 73%, var(--color-inverse-surface));
   --somatic-section-border: color-mix(in srgb, var(--somatic-on-dark) 30%, transparent);
   --somatic-muted: color-mix(in srgb, var(--somatic-ink) 75%, var(--somatic-page));
-  --somatic-line: var(--line, color-mix(in srgb, var(--somatic-ink) 25%, transparent));
+  --somatic-line: var(--color-line);
   background: var(--somatic-page);
   color: var(--somatic-ink);
-  font-family: var(--brand-body-font, var(--body, system-ui, sans-serif));
+  font-family: var(--font-body);
   min-width: 0;
   max-width: 100%;
 }
 .body-shell *, .body-shell *::before, .body-shell *::after { box-sizing: border-box; }
 .body-shell a:focus-visible { outline: 3px solid var(--somatic-on-dark-accent); outline-offset: 4px; }
-.body-kicker, .body-section-tag { font: .7rem ui-monospace, monospace; letter-spacing: .1em; }
+.body-kicker, .body-section-tag { font: .7rem var(--font-mono); letter-spacing: .1em; }
 .body-hero {
   position: relative;
   isolation: isolate;
@@ -70,7 +70,7 @@ const action=base+(nav?.path??'services/');
 .body-hero h1 {
   margin: 0;
   max-width: 12ch;
-  font: 400 clamp(4.2rem, 10.3vw, 10rem)/1.08 var(--brand-heading-font, var(--heading, Georgia, serif));
+  font: 400 clamp(4.2rem, 10.3vw, 10rem)/1.08 var(--font-heading);
   letter-spacing: -.04em;
   overflow-wrap: break-word;
   word-break: normal;
@@ -83,7 +83,7 @@ const action=base+(nav?.path??'services/');
 .body-intro { max-width: 460px; font-size: 1.08rem; line-height: 1.85; color: var(--somatic-on-dark-muted); }
 .body-cta { display: inline-block; margin-top: 1.5rem; border-bottom: 2px solid var(--somatic-on-dark-accent); padding: .6rem 0; color: var(--somatic-on-dark); text-decoration: none; }
 .body-hero .body-figure { position: absolute; inset: 0; margin: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.body-hero .body-figure img { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--brand-image-filter, none); }
+.body-hero .body-figure img { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--image-filter); }
 .body-hero .body-figure:has(img)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--somatic-hero-deep) 80%, transparent), color-mix(in srgb, var(--somatic-hero-deep) 42%, transparent) 54%, transparent); }
 .body-hero .body-figure:not(:has(img)) { display: none; }
 .body-hero figcaption { display: none; }
@@ -97,8 +97,8 @@ const action=base+(nav?.path??'services/');
   margin: 0 auto;
   padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 5vw, 5rem);
 }
-.body-transition > p:first-child { font: .7rem ui-monospace, monospace; letter-spacing: .14em; }
-.body-transition blockquote { margin: 0; color: var(--somatic-brand); font: 400 clamp(1.7rem, 3.7vw, 3.4rem)/1.35 var(--brand-heading-font, var(--heading, Georgia, serif)); letter-spacing: -.035em; overflow-wrap: break-word; line-break: strict; }
+.body-transition > p:first-child { font: .7rem var(--font-mono); letter-spacing: .14em; }
+.body-transition blockquote { margin: 0; color: var(--somatic-brand); font: 400 clamp(1.7rem, 3.7vw, 3.4rem)/1.35 var(--font-heading); letter-spacing: -.035em; overflow-wrap: break-word; line-break: strict; }
 .body-transition > p:last-child { font-size: .9rem; line-height: 1.85; }
 .body-section-list {
   display: grid;
@@ -110,14 +110,14 @@ const action=base+(nav?.path??'services/');
 }
 .body-section { min-width: 0; padding: 1.6rem 0; border-bottom: 1px solid var(--somatic-section-border); }
 .body-section:nth-child(1) { grid-row: span 2; }
-.body-section h2 { margin: 0; font: 400 clamp(1.75rem, 3vw, 3rem)/1.2 var(--brand-heading-font, var(--heading, Georgia, serif)); color: var(--somatic-on-dark-accent); overflow-wrap: break-word; }
+.body-section h2 { margin: 0; font: 400 clamp(1.75rem, 3vw, 3rem)/1.2 var(--font-heading); color: var(--somatic-on-dark-accent); overflow-wrap: break-word; }
 .body-section p { max-width: 65ch; line-height: 1.85; overflow-wrap: break-word; }
 .body-section a { color: var(--somatic-on-dark); }
 .body-section-list #arrival h2 { font-size: clamp(2.5rem, 5vw, 5rem); max-width: 12ch; line-height: 1.15; }
 .body-source-anchors { list-style: none; padding: 0; margin: 2rem 0; }
 .body-source-anchors li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1rem; border-top: 1px solid var(--somatic-section-border); padding: 1.5rem 0; }
-.body-source-anchors li > span { font: .75rem ui-monospace, monospace; }
-.body-source-anchors h3 { margin: 0; font: 400 1.25rem/1.4 var(--brand-heading-font, var(--heading, Georgia, serif)); }
+.body-source-anchors li > span { font: .75rem var(--font-mono); }
+.body-source-anchors h3 { margin: 0; font: 400 1.25rem/1.4 var(--font-heading); }
 .body-source-sessions {
   display: grid;
   grid-template-columns: .75fr minmax(0, 1.25fr);

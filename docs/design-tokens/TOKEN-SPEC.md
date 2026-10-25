@@ -137,9 +137,11 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 
 未對應到的只剩場景插圖一類；其他用途都落在現有角色內，沒有需要新增全域名稱。
 
+批 1（field-notes、essayist、companion、somatic）沿用同一份詞彙，沒有新增全域名稱。版型插圖與漸層的推導寫法：用 `color-mix(in srgb, <角色> N%, var(--color-surface))` 在 primary／secondary／accent 之間取不同角色混色，保留多色感而不收斂成單一色調；深色區塊取 `inverse-surface`／`on-inverse`（somatic 的主視覺與頁首）；等寬字用 `--font-mono`、標題字用 `--font-heading`。
+
 ## 10. 已知限制與缺口
 
-1. **art-direction 兩款（subject-atlas、practice-compass）不在本次範圍。** 它們由 `export-art-direction-starter.mjs` 匯出，`shared/site.css` 自帶固定 `:root` 色票，匯出器完全不讀 `brand.palette`（盤點時發現）。這兩款目前連色票換色入口都沒有，需另案處理，不隨 D-T2 順手改。
-2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 仍以家族字面色覆蓋 Token，在 D-T3 處理。
+1. **匯出殼不一致（D-T3 批 1 發現）。** art-direction（2 款）與 native-expansion（11 款）的匯出殼（`SiteLayout`）只定義 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`／`--line`／`--serif`（由 `brand.palette` 在殼內寫入），**沒有載入 `tokens.css`／`theme.css`**，所以 L1 語意 Token（`--color-*`、`--font-*`、`--radius-*` 等）在這 13 款不存在。批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）因此以殼變數推導（`color-mix()` 混 `--ink`／`--bg`／`--panel`），換色同樣一處改、全站一致；但字族（mono／sans）與反白區塊的語意角色（`inverse-*`）無 Token 可用，字族字面值保留，待殼補上 Token 後再轉。殼是否改為載入 `tokens.css`（同時要處理 `--accent` 等舊名在殼內與別名層意義不同的問題）需要另案決定，不隨批 1 順手改。
+2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 家族字面色覆蓋：reading-atlas、clinician（D-T3 試點）與 field-notes、essayist、companion、somatic（批 1）已轉換；其餘 6 款在批 2、批 3。
 3. 無色票（`palette` 缺省）的舊計畫，`--color-line` 由 content／surface 推導，與先前固定的 `#dad4c9` 略有不同；有色票的匯出站與先前逐元素一致（見 Issue #17 的對照證據）。
 4. 與先前行為的一個實質差異：改 `site.config.json` 的 `brand.palette` 後，重新 `npm run build`（或 `npm run sync:theme`）就會換色；先前色票在匯出時被寫死進 `site.css`，只改 config 不會生效。

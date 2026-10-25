@@ -5,6 +5,7 @@ import {tmpdir} from 'node:os';
 import {normalizeExpandedPatterns} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
 import {finalizeStudentSite} from './student-project-context.mjs';
+import {writeDesignBaseline} from './design-scan.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
 if(args.some(x=>x.startsWith('--')&&!['--require-ready','--allow-in-progress'].includes(x))||positional.length!==2)throw Error('Usage: node scripts/export-art-direction-starter.mjs plan.json empty-output-dir --allow-in-progress');
@@ -82,6 +83,8 @@ try{
   writeFileSync(join(generated,'src/pages/topics/index.astro'),readFileSync(join(generated,'src/pages/topics/index.astro'),'utf8').replace("const posts=await getCollection('articles',({data})=>!data.draft);","const posts=await getCollection('articles',({data})=>!data.draft);for(const entry of posts)for(const topic of entry.data.topics)if(!config.artDirection.topics.some(t=>t.slug===topic))throw Error('Unknown topic '+topic+' in '+entry.id);"));
  }
  finalizeStudentSite(generated,{...plan,layoutSlug:adapter.slug,navigation:settings.navigation??navigation});
+ // 殼（SiteLayout）與版型檔在這裡才定案；surrogate 匯出時寫的 design-baseline.json 對應的是被換掉的檔案，G-11 會誤報，所以以最終內容重寫。
+ writeDesignBaseline(generated);
  cpSync(new URL('../.ai/',import.meta.url),join(generated,'.ai'),{recursive:true,force:false,errorOnExist:true});
  mkdirSync(dirname(root),{recursive:true});if(existsSync(root))rmSync(root,{recursive:true});renameSync(generated,root);
  console.log('Independent Art Direction adapter exported:',adapter.slug,root,'Assembly in Progress; screenshots deferred');
