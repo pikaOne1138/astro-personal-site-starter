@@ -54,7 +54,7 @@ export function finalizeStudentSite(directory,plan,options={}){
  const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
- for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs','theme-css.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));

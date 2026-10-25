@@ -4,6 +4,7 @@ import {spawnSync} from 'node:child_process';
 import {finalizeStudentSite} from './student-project-context.mjs';
 import {getLayoutDefinition} from '../src/data/layout-assembly/definitions.mjs';
 import {checkStartRecordFile} from './check-start-record.mjs';
+import {themeCss} from './theme-css.mjs';
 const [input,dest]=process.argv.slice(2);
 if(!input||!dest)throw Error('Usage: node scripts/export-starter.mjs plan.json output-dir');
 // G-00: first-time assembly needs a confirmation record. Route B may omit the flag (the downloaded Site Brief is its basis); routes A and C pass the record file. Maintenance of an existing site never runs the exporter.
@@ -325,22 +326,17 @@ if(hasAssemblyAdapter){
   '<article class="interior prose"><h1>{entry.data.title}</h1><p>{entry.data.description}</p><Content/></article>',
   '<ArticleDetail entry={entry} previous={previous} next={next}><Content/></ArticleDetail>');
 }
+assets['public/tokens.css']=readFileSync(new URL('../src/styles/tokens.css',import.meta.url),'utf8');
+assets['public/theme.css']=themeCss(settings.brand);
+assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'tokens.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>");
+pkg.scripts['sync:theme']='node scripts/theme-css.mjs';
+pkg.scripts.predev='node scripts/theme-css.mjs';
+pkg.scripts.prebuild='node scripts/theme-css.mjs';
+assets['package.json']=JSON.stringify(pkg,null,2)+'\n';
 for(const [path,body] of Object.entries(assets)){
   if(path.startsWith('src/pages/articles/')&&!nav.some(x=>x.id==='articles'))continue;
-  let actual=path==='public/site.css'?body.replace('BRAND_HEX',settings.brand.primaryColor):body;
-  if(path==='public/site.css'&&settings.brand.palette){
-    const colors=settings.brand.palette;
-    actual=actual.replace('--ink:#28231f','--ink:'+colors.text).replace('--bg:#f7f5f0','--bg:'+colors.background).replace('--line:#dad4c9','--line:color-mix(in srgb, '+colors.text+' 20%, '+colors.background+')');
-    actual+='\n:root{--brand-primary:'+colors.primary+';--brand-secondary:'+colors.secondary+';--brand-accent:'+colors.accent+';--brand-background:'+colors.background+';--brand-text:'+colors.text+';}\n';
-  }
-  if(path==='public/site.css')actual+='\n:root{--brand-primary:'+settings.brand.primaryColor+';--accent:var(--brand-primary,var(--brand));--heading:var(--ink);--text:var(--ink);--surface:var(--bg);--muted:color-mix(in srgb,var(--ink) 75%,var(--bg));--radius:8px;--ed-ink:var(--heading);--ed-ink-2:var(--muted);--ed-accent:var(--accent);--ed-accent-deco:var(--brand-secondary,var(--accent));--ed-panel:var(--surface);--ed-line:var(--line);--ed-gutter:clamp(1rem,4vw,4rem);--ed-wide:1320px;}\n';
-  if(path==='public/site.css'){
-    const serif='"Noto Serif TC",Georgia,serif';
-    const sans='"Noto Sans TC",system-ui,sans-serif';
-    const font=typography==='clear-sans'?sans:serif;
-    const photoFilter=imageStyle==='documentary'?'saturate(.68) contrast(1.07)':imageStyle==='minimal'?'saturate(.45)':'none';
-    actual+='\n:root{--brand-heading-font:'+font+';--brand-body-font:'+sans+';--brand-image-filter:'+photoFilter+';}\n';
-  }
+  // 主題輸入與語意 Token 已移到 public/theme.css（由 site.config.json 產生）與 public/tokens.css；site.css 不再自帶 :root 色票。
+  let actual=path==='public/site.css'?body.replace(/^:root\{--brand:BRAND_HEX;[^}]*\}/,''):body;
   if(path==='public/site.css'){
     // Only the shared site chrome receives these rules. Never restyle editorial
     // headers, footers or navigation that belong to an independent layout.
