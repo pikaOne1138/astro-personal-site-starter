@@ -100,7 +100,7 @@
 
 ## 7. 字面值例外（供 D-T5 的 G-11 允許清單採用，提案）
 
-主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`，原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。建議插圖也盡量以 `color-mix()` 由 Token 推導，使場景一起換色；是否例外由 D-T3 在 clinician 的 `clinical-art` 場景實測後決定。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
+主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`，原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。插圖以 `color-mix()` 由 Token 推導，使場景一起換色；D-T3 已在 clinician 的 `clinical-art` 場景驗證可行（場景隨色票換色、無寫死色），因此 `illustration` 例外目前沒有實際使用者，保留給確實無法推導的場景。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
 
 ## 8. 檔案三分法歸類
 
@@ -118,7 +118,7 @@
 
 ## 9. 驗收：兩款不同性質版型共用同一份詞彙
 
-完成定義：任取兩款性質不同的 Layout，能共用同一份詞彙而不需新增版型專屬全域名稱。以兩款試點（reading-atlas 知識型、clinician 助人者型）讀其 `<style>` 規則，逐一對應的結果如下；這是**靜態對照**，真正的「零字面值」證據在 D-T3。
+完成定義：任取兩款性質不同的 Layout，能共用同一份詞彙而不需新增版型專屬全域名稱。以兩款試點（reading-atlas 知識型、clinician 助人者型）讀其 `<style>` 規則，逐一對應的結果如下；這是**靜態對照**，D-T3 已完成：兩款試點的字面值為 0，見 `D-T3-pilot-report.md`。
 
 | 現有字面值的用途 | 對應 Token |
 | --- | --- |

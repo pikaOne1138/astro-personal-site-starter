@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// D-T1 盤點：逐版型掃描設計字面值（色值／字體／圓角／陰影）與 Token 消費。
+// D-T1 盤點（百分比圓角如 50%、40% 40% 12% 12% 視為形狀幾何，不算主題圓角）：逐版型掃描設計字面值（色值／字體／圓角／陰影）與 Token 消費。
 // 唯讀報告工具；匯出函式 scanCss 供之後的 G-11 關卡重用（不另建平行掃描器）。
 // 用法：node scripts/audit-design-values.mjs [--json out.json] [--md out.md]
 import {readFileSync,readdirSync,statSync,existsSync,writeFileSync} from 'node:fs';
@@ -43,7 +43,8 @@ export function scanCss(css){
   const raw=m[2];
   if(!raw||/^[\d.]+$/.test(raw)&&!prop.startsWith('--'))continue;
   r.declarations++;
-  const {value,fallbacks}=stripFallbacks(raw);
+  // 字串內容（content:"#2026"）與 url(#id) 不是顏色，先拿掉再數字面值
+ const {value,fallbacks}=stripFallbacks(raw.replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g,'""').replace(/url\([^)]*\)/g,'url()'));
   r.colorFallback+=fallbacks.reduce((n,f)=>n+count(HEX,f)+count(FUNC,f),0);
   for(const v of value.matchAll(/var\(\s*(--[\w-]+)/g)){const ns=nsOf(v[1]);r.varRefs[ns]=(r.varRefs[ns]||0)+1;}
   const line=clean.slice(0,m.index).split('\n').length;
@@ -56,7 +57,7 @@ export function scanCss(css){
   }else if(nColor)r.colorLiteralInUse.push({prop,value:raw.slice(0,60),line,n:nColor,colors:[...(value.match(HEX)||[]).map(c=>c.toLowerCase())]});
   if(!isLocalToken){
    if((prop==='font-family'||prop==='font')&&!hasVar)r.fontLiteral.push({prop,value:raw.slice(0,60),line});
-   if(/^border(-(top|bottom)-(left|right))?-radius$/.test(prop)&&!hasVar&&!/^(0|0px|inherit|50%|0 0 0 0)$/.test(raw))r.radiusLiteral.push({prop,value:raw.slice(0,40),line});
+   if(/^border(-(top|bottom)-(left|right))?-radius$/.test(prop)&&!hasVar&&!/^(0|0px|inherit|0 0 0 0)$/.test(raw)&&!raw.includes('%'))r.radiusLiteral.push({prop,value:raw.slice(0,40),line});
    if(/^(box|text)-shadow$/.test(prop)&&!hasVar&&raw!=='none')r.shadowLiteral.push({prop,value:raw.slice(0,60),line});
   }
  }
