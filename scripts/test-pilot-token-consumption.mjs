@@ -43,7 +43,7 @@ assert.ok(dirty.colorLiteralInUse.flatMap(x=>x.colors||[]).includes('#2563eb'),'
 
 // 已轉換版型的守門。D-T3 試點（reading-atlas、clinician）＋批 1（field-notes、essayist、companion、somatic、subject-atlas、
 // practice-compass、portrait-profile、editorial-frontpage）。名單只增不減：新版型轉換完成後加進來。
-const PROTOTYPE=['reading-atlas','clinician','field-notes','essayist','companion','somatic'];
+const PROTOTYPE=['reading-atlas','clinician','field-notes','essayist','companion','somatic','learning-lab','curator','coach'];
 // art-direction 與 native-expansion 的匯出殼（SiteLayout）只定義 --brand／--ink／--bg／--panel／--accent／--serif，沒有載入 tokens.css
 // （D-T3 批 1 發現的缺口，見 Issue #17）。這些版型暫時以殼的變數推導，守門先護欄色彩／圓角／陰影；字族（mono／sans 字面值）等殼補上 Token 後再納入。
 const SHELL_BASED={'subject-atlas':'src/data/art-direction-adapters/subject-atlas','practice-compass':'src/data/art-direction-adapters/practice-compass',
@@ -91,7 +91,7 @@ try{
     about:{bio:'介紹',purpose:'a',approach:'b',background:'c'},notes:'',
     sectionPatterns:SHELL.includes(slug)?[]:[...(kind==='knowledge'?[{patternId:'featured-work',targetPage:'/',insertAfter:'首頁介紹後'}]:[{patternId:'trust-service-path',targetPage:'services',insertAfter:'服務介紹後'}]),{patternId:'footer-professional',targetPage:'site-wide',insertAfter:'所有頁面底部'}],
     ...(kind==='helper'?{serviceFacts:{scope:'協助',exclusions:'不提供醫療診斷',method:'先討論',firstVisit:'先閱讀',duration:'依方案',price:'待站長確認',cancellation:'依政策',qualification:'尚未提供',contact:'正式聯絡頁'}}:{})});
-  for(const [slug,kind] of [['reading-atlas','knowledge'],['clinician','helper'],['field-notes','knowledge'],['essayist','knowledge'],['companion','helper'],['somatic','helper'],['subject-atlas','knowledge'],['practice-compass','helper'],['portrait-profile','helper'],['editorial-frontpage','knowledge']]){
+  for(const [slug,kind] of [['reading-atlas','knowledge'],['clinician','helper'],['field-notes','knowledge'],['essayist','knowledge'],['companion','helper'],['somatic','helper'],['learning-lab','knowledge'],['curator','knowledge'],['coach','helper'],['subject-atlas','knowledge'],['practice-compass','helper'],['portrait-profile','helper'],['editorial-frontpage','knowledge']]){
     const plan=join(tmp,slug+'.json'),site=join(tmp,slug);
     writeFileSync(plan,JSON.stringify(mkPlan(kind,slug)));
     execFileSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,plan,site,'--defer-student-context'],{stdio:'pipe'});
@@ -111,4 +111,4 @@ try{
     }
   }
 }finally{rmSync(tmp,{recursive:true,force:true});}
-console.log('token consumption guard: PASS（試點 2 款＋批 1 共 8 款：0 處寫死色／圓角／陰影（prototype 6 款含字族）；另 13 款殼變數版型色彩／圓角／陰影為 0；誤判與漏抓 fixture 通過）');
+console.log('token consumption guard: PASS（試點 2 款＋批 1 共 8 款＋批 2 共 3 款：0 處寫死色／圓角／陰影（prototype 9 款含字族）；另 13 款殼變數版型色彩／圓角／陰影為 0；誤判與漏抓 fixture 通過）');

@@ -139,10 +139,12 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 
 批 1（field-notes、essayist、companion、somatic）沿用同一份詞彙，沒有新增全域名稱。版型插圖與漸層的推導寫法：用 `color-mix(in srgb, <角色> N%, var(--color-surface))` 在 primary／secondary／accent 之間取不同角色混色，保留多色感而不收斂成單一色調；深色區塊取 `inverse-surface`／`on-inverse`（somatic 的主視覺與頁首）；等寬字用 `--font-mono`、標題字用 `--font-heading`。
 
+批 2（learning-lab、curator、coach）同樣沒有新增全域名稱。個性色採政策 A：色塊與漸層由色票角色推導——coach 的主視覺與步驟卡在 primary／secondary／accent 之間混色，learning-lab 的單元色塊取 primary／accent／secondary 的 `color-mix()`，curator 的金色取 `color-mix(accent 70%, content)`；反白區塊取 `inverse-surface`／`on-inverse`。
+
 ## 10. 已知限制與缺口
 
 1. **殼版型（art-direction 2＋native-expansion 11，共用 `src/data/art-direction-adapters/shared/`）。** 階段 1 已完成：殼的 `SiteLayout` 依序連結 `tokens.css`、`theme.css`、`site.css`，所以 L1 語意 Token 在這 13 款可用；**沒有改任何語意**——殼自己的 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`（由 `brand.palette` 在 `<html style>` 寫入）與 `--line`／`--serif`（`site.css`）照舊。**注意：殼內的 `--accent` ＝ `palette.accent`，與第 5 節別名層的 `--accent`（＝primary）意義不同**；殼的行內變數勝出，所以在這 13 款讀 `var(--accent)` 得到的是強調色。`test-shell-tokens.mjs`（靜態）與 `verify-starter-export` FULL（建置後算出值）把這件事固定下來。別名外洩（tokens 的舊名別名在殼上多出定義）另案處理：pikaOne1138/ai-workbench#22，把別名拆成獨立檔，排階段 2 之前。階段 2（排在批 3 之後，與 D-T7 一起）才會統一 `--accent`、把殼的 `site.css` 與行內變數改讀 Token，並把 13 款的字族 Token 化；在那之前，批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）仍以殼變數推導，字族 mono／sans 保留字面值。
-2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 家族字面色覆蓋：reading-atlas、clinician（D-T3 試點）與 field-notes、essayist、companion、somatic（批 1）已轉換；其餘 6 款在批 2、批 3。
+2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 家族字面色覆蓋：reading-atlas、clinician（D-T3 試點）與 field-notes、essayist、companion、somatic（批 1）已轉換；learning-lab、curator、coach（批 2）已轉換；其餘 3 款（radio-letter、collective、trust-path）在批 3。
 3. 無色票（`palette` 缺省）的舊計畫，`--color-line` 由 content／surface 推導，與先前固定的 `#dad4c9` 略有不同；有色票的匯出站與先前逐元素一致（見 Issue #17 的對照證據）。
 4. 與先前行為的一個實質差異：改 `site.config.json` 的 `brand.palette` 後，重新 `npm run build`（或 `npm run sync:theme`）就會換色；先前色票在匯出時被寫死進 `site.css`，只改 config 不會生效。
 
