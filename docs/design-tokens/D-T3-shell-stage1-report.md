@@ -64,7 +64,9 @@ StudentNavigation 與 SelectedPatterns 原本直接引用宿主不一定提供�
 | 對照組 | 同建置自比：殼 0、prototype 0；異色票（A vs D）574 差異，偵測器沒有失靈 |
 | 具體值抽查（old／new 並排） | 子選單底／字／框／陰影、hover 底、頁尾：prototype 與殼各取樣皆 IDENTICAL（prototype 有裝飾值，殼為 transparent／none，兩邊修前後一致） |
 
-**需要作者知道的一個非渲染差異：** 13 款殼版型上有 **41,304 個元素值的自訂屬性 `--text`、`--muted`** 在載入後新增定義（tokens 的舊名別名在 `:root`）。它們不是算出的渲染屬性、沒有任何渲染差異；原因與安全性見第 1 節 B 表：殼上唯一的引用者（樣板元件）一律在 `.pattern-slot` 內，容器內有自己的定義；動態檢查（擋掉 Token 的狀態下每個引用元素都已有值）在 13 款全頁（含文章頁）為 0 違規（修前 11 個名稱違規）。若作者的標準涵蓋自訂屬性層級，需要的是前述替代機制或在殼宿主檔對這兩個名稱做重設宣告（後者形同覆寫，我不建議），請裁示；我沒有自行宣布例外。
+**作者裁示（`--text`／`--muted`）：** 標準以算出樣式為準，未被引用的自訂屬性多出定義不計為差異，不擋本 PR；別名外洩另開後續案（pikaOne1138/ai-workbench#22），以「別名拆成獨立檔」的系統修法處理，排階段 2 之前；不接受殼宿主重設覆寫，也不接受白名單永久保留。因此 `audit-shell-vars.mjs` 的 `--text`／`--muted` 白名單標為**暫時**（`TEMPORARY_B`，指向 #22），測試要求有追蹤編號、FULL 會列出，#22 完成時必須移除。
+
+原先的說明（保留供對照）：13 款殼版型上，自訂屬性 `--text`、`--muted` 在載入後新增定義（41,304 個元素值，tokens 的舊名別名在 `:root`）。不是渲染屬性、沒有任何渲染差異；殼上唯一的引用者（樣板元件）一律在 `.pattern-slot` 內，容器內有自己的定義；動態檢查在 13 款全頁（含文章頁）為 0 違規。
 
 ## 4. `--accent` 專測、完整 CI 與其他驗收
 - **`--accent` 專測：** 靜態（13 款新匯出站）：連結順序 tokens → theme → 宿主契約 → site，`SiteLayout` 仍以 `--accent:${palette.accent}` 寫入；故意破壞對照 4 項（拿掉 tokens 連結、順序顛倒、拿掉宿主契約連結、`--accent` 改成 primary）都失敗。動態（FULL 建置後瀏覽器算出值）：`<body>` 上 `--accent` ＝ palette.accent、`--brand` ＝ primary、`--color-primary`／`--color-accent` 已載入；practice-compass 殼元件 `.fit-grid article:last-child` 的邊框讀到 palette.accent；檢查器自我測試含負向對照。

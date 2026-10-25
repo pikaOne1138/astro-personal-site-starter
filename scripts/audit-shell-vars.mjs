@@ -20,6 +20,14 @@ export const KNOWN_B={
   '--text':'樣板容器 .pattern-slot（ContentPatterns，殼上每個區段樣板都在裡面）定義為 var(--ink)；容器內勝出。tokens 另在 :root 提供同名別名，所以容器外「多出」定義；容器外沒有引用者（動態檢查證明）',
   '--muted':'同 --text：.pattern-slot 內定義為 ink 與 bg 的混色；容器內勝出',
 };
+// 暫時白名單：不是語意上合理的同名，而是別名外洩（tokens 的舊名別名在殼上多出定義）。作者裁示不得永久保留，
+// 由後續案以「別名拆成獨立檔」移除（pikaOne1138/ai-workbench#22，排階段 2 之前）。測試會要求每個暫時項目都有追蹤編號；
+// 後續案完成時必須把這個表清空，並從 KNOWN_B 移除對應名稱。
+export const TEMPORARY_B={
+  '--text':'pikaOne1138/ai-workbench#22',
+  '--muted':'pikaOne1138/ai-workbench#22',
+};
+
 // C：沒有宿主定義、也不由 Token 提供的名稱。必須是「元素行內才會提供」且引用處有後備值的選用參數。
 export const OPTIONAL_C={
   '--owner-fit':'OwnerImage 的選用參數，引用處 var(--owner-fit,cover)',
@@ -97,6 +105,7 @@ export function siteSlug(dist){const h=join(dist,'index.html');const m=existsSyn
 export function auditDist(dist,tokenCss){return classify(corpusFromDist(dist),tokenCss,{slug:siteSlug(dist)});}
 
 // 政策：A 必須為空；B 只准白名單；C 只准白名單且引用處都有後備值。
+export const temporaryUsed=result=>result.B.filter(x=>TEMPORARY_B[x.name]).map(x=>x.name+' → '+TEMPORARY_B[x.name]);
 export function assertShellVars(result,label=''){
   const w=label?label+'：':'';
   assert.deepEqual(result.A.map(x=>x.name),[],w+'休眠啟用（引用了宿主沒定義、載入 Token 後才定義的變數）：'+result.A.map(x=>x.name+'（'+x.files.join('、')+'）').join('；'));

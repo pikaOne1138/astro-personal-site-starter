@@ -7,7 +7,7 @@ import layouts from '../src/data/layout-directions.json' with {type:'json'};
 import headingFields from '../src/data/layout-assembly/expanded/heading-fields.json' with {type:'json'};
 import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
 import {checkShellSource,checkShellRuntime,selfTestShellRuntime} from './shell-token-check.mjs';
-import {auditDist,assertShellVars,auditReferencedRuntime,selfTestAuditRuntime} from './audit-shell-vars.mjs';
+import {auditDist,assertShellVars,auditReferencedRuntime,selfTestAuditRuntime,temporaryUsed} from './audit-shell-vars.mjs';
 await selfTestShellRuntime();
 await selfTestAuditRuntime();
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
@@ -523,7 +523,8 @@ try{
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     checkShellSource(site);
     // 休眠／碰撞掃描：建置後實際載入的 CSS，A 類（載入 Token 才生效的引用）必須為空
-    assertShellVars(auditDist(join(site,'dist'),readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8')),slug);
+    {const audit=auditDist(join(site,'dist'),readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8'));assertShellVars(audit,slug);
+     const temp=temporaryUsed(audit);if(temp.length)console.log('NOTICE '+slug+' 使用暫時白名單（須由後續案移除）：'+temp.join('、'));}
     {const tokenCss=readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8');
      const rt=await auditReferencedRuntime(join(site,'dist'),tokenCss);
      if(rt.violations.length)throw Error(slug+' 載入 Token 後會被啟用的引用（沒有 Token 時算不出值）：'+rt.violations.slice(0,6).map(v=>v.selector+' '+v.name+' @'+v.route+' '+v.width).join('；'));}

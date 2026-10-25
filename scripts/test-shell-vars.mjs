@@ -2,7 +2,7 @@
 // 殼版型變數掃描（audit-shell-vars.mjs）與宿主契約的測試：含對照組（故意放的未定義／休眠引用必須抓得到）。
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {classify,assertShellVars,declaredIn,referencesIn,stripOtherFamilyRules} from './audit-shell-vars.mjs';
+import {classify,assertShellVars,declaredIn,referencesIn,stripOtherFamilyRules,TEMPORARY_B,KNOWN_B,temporaryUsed} from './audit-shell-vars.mjs';
 
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const tokens=read('src/styles/tokens.css')+'\n:root{--brand-primary:#000;--brand-text:#111}';
@@ -30,6 +30,9 @@ const stripped=stripOtherFamilyRules(famCss,'mine');
 assert.ok(!stripped.includes('reading-atlas')&&!stripped.includes('coach')&&stripped.includes('mine')&&stripped.includes('.plain'),'家族規則剝除錯誤：'+stripped);
 r=classify(mk(famCss),tokens,{slug:'mine'});assert.deepEqual(r.A.map(x=>x.name),['--color-primary','--color-surface'],'只該剩本站與一般規則的引用');
 r=classify(mk(famCss),tokens,{});assert.ok(r.A.length>=4,'不帶 slug 時不剝除（保守）');
+// 暫時白名單不得永久保留：每個暫時項目必須在 KNOWN_B 內、帶追蹤編號，且會被列出
+for(const [n,ref] of Object.entries(TEMPORARY_B)){assert.ok(KNOWN_B[n],'暫時項目 '+n+' 不在 KNOWN_B');assert.match(ref,/^pikaOne1138\/ai-workbench#\d+$/,'暫時項目 '+n+' 缺追蹤編號');}
+assert.deepEqual(temporaryUsed(classify(mk('.pattern-slot{--text:#222;--muted:#333}'),tokens)),['--muted → '+TEMPORARY_B['--muted'],'--text → '+TEMPORARY_B['--text']],'暫時項目要被列出');
 // 解析器
 assert.deepEqual([...declaredIn('a{--x:1;color:red}b{--y :2}')].sort(),['--x','--y']);
 assert.equal(referencesIn('a{c:var(--a)}b{c:var(--b,1)}').get('--a').fallback,false);
