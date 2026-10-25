@@ -79,7 +79,7 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 
 ## 5. 舊名別名（視同已發布 API）
 
-下列名稱已隨匯出站發布，AI 與既有站都在用，**不得刪除、不得改義**；它們在 `tokens.css` 內是新名的別名，值與先前一致。
+下列名稱已隨匯出站發布，AI 與既有站都在用，**不得刪除、不得改義**；它們是新名的別名，值與先前一致。**別名定義在獨立檔 `legacy-aliases.css`（匯出站為 `public/legacy-aliases.css`），不在 `tokens.css`**（ai-workbench#22）：12 款 prototype 版型的匯出站依序連結 `tokens.css` → `legacy-aliases.css` → `theme.css`；殼版型（13 款）自己有 `--brand`／`--ink`／`--bg`／`--accent`／`--line` 等，只連結 `tokens.css`，不連結也不出貨別名檔，所以 `tokens.css` 在殼上只新增 L1 名稱，自訂屬性層級沒有多出的定義。
 
 | 舊名 | 等於 |
 | --- | --- |
@@ -113,8 +113,11 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 | `site.config.json`（`brand` 區塊） | 學員資產 | 永不覆蓋 |
 | `public/theme.css` | 衍生檔（由學員資產產生） | 任何時候可由 `site.config.json` 重新產生，不進差異預覽 |
 | `public/tokens.css` | 共用檔 | 升級走差異預覽＋學員核准 |
+| `public/legacy-aliases.css` | 共用檔（只有 prototype 宿主有） | 升級走差異預覽＋學員核准；**必須和 `tokens.css` 一起升級**（見下） |
 | `scripts/theme-css.mjs` | 系統檔 | 可替換 |
 | 共用版型元件與 CSS（`design-family.css`、`DesignInterior` 等） | 共用檔 | 升級走差異預覽＋學員核准 |
+
+**升級既有匯出站時的別名檔（ai-workbench#22）。** 拆檔前匯出的 prototype 站，舊名別名寫在自己的 `public/tokens.css` 內，`SiteLayout.astro` 沒有連結別名檔。這些站**不必變動就能正常運作**；但差異預覽若把 `tokens.css` 換成新版（別名已移出），必須同一批核准三件事，缺一就會讓 `var(--brand)`、`var(--ink)`、`var(--line)` 等舊名失效：(1) 新增 `public/legacy-aliases.css`；(2) `SiteLayout.astro` 在 `tokens.css` 之後、`theme.css` 之前加一條 `<link rel="stylesheet" href={base+'legacy-aliases.css'}/>`；(3) 換上新版 `tokens.css`。殼版型的既有站不需要別名檔。新匯出站由 `verify-starter-export` 檢查連結順序、別名檔內容，以及 `tokens.css` 不再定義任何舊名（`shell-token-check.mjs` 的 `checkPrototypeSource`／`checkShellSource`）。
 
 與工單的差異（依工單要求指出）：工單補充判斷 3 建議「共用元件屬系統檔」，但銷售頁結論 2.4 節把「版型元件與 CSS」列為共用檔。本規範採後者，因為學員可能改過元件；系統檔只限不含學員編輯的腳本與工具。待作者確認。
 
@@ -145,7 +148,7 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 
 ## 10. 已知限制與缺口
 
-1. **殼版型（art-direction 2＋native-expansion 11，共用 `src/data/art-direction-adapters/shared/`）。** 階段 1 已完成：殼的 `SiteLayout` 依序連結 `tokens.css`、`theme.css`、`site.css`，所以 L1 語意 Token 在這 13 款可用；**沒有改任何語意**——殼自己的 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`（由 `brand.palette` 在 `<html style>` 寫入）與 `--line`／`--serif`（`site.css`）照舊。**注意：殼內的 `--accent` ＝ `palette.accent`，與第 5 節別名層的 `--accent`（＝primary）意義不同**；殼的行內變數勝出，所以在這 13 款讀 `var(--accent)` 得到的是強調色。`test-shell-tokens.mjs`（靜態）與 `verify-starter-export` FULL（建置後算出值）把這件事固定下來。別名外洩（tokens 的舊名別名在殼上多出定義）另案處理：pikaOne1138/ai-workbench#22，把別名拆成獨立檔，排階段 2 之前。階段 2（排在批 3 之後，與 D-T7 一起）才會統一 `--accent`、把殼的 `site.css` 與行內變數改讀 Token，並把 13 款的字族 Token 化；在那之前，批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）仍以殼變數推導，字族 mono／sans 保留字面值。
+1. **殼版型（art-direction 2＋native-expansion 11，共用 `src/data/art-direction-adapters/shared/`）。** 階段 1 已完成：殼的 `SiteLayout` 依序連結 `tokens.css`、`theme.css`、`site.css`，所以 L1 語意 Token 在這 13 款可用；**沒有改任何語意**——殼自己的 `--brand`／`--ink`／`--bg`／`--panel`／`--accent`（由 `brand.palette` 在 `<html style>` 寫入）與 `--line`／`--serif`（`site.css`）照舊。**注意：殼內的 `--accent` ＝ `palette.accent`，與第 5 節別名層的 `--accent`（＝primary）意義不同**；殼的行內變數勝出，所以在這 13 款讀 `var(--accent)` 得到的是強調色。`test-shell-tokens.mjs`（靜態）與 `verify-starter-export` FULL（建置後算出值）把這件事固定下來。別名外洩（tokens 的舊名別名在殼上多出定義）已修：舊名別名拆到 `legacy-aliases.css`，殼不連結（ai-workbench#22，見第 5 節），`audit-shell-vars.mjs` 的 B 類不再有任何白名單。階段 2（排在批 3 之後，與 D-T7 一起）才會統一 `--accent`、把殼的 `site.css` 與行內變數改讀 Token，並把 13 款的字族 Token 化；在那之前，批 1 的 4 款（subject-atlas、practice-compass、portrait-profile、editorial-frontpage）仍以殼變數推導，字族 mono／sans 保留字面值。
 2. 12 款最初版型的 `DesignChrome.css`／`DesignInterior.astro` 家族字面色覆蓋：reading-atlas、clinician（D-T3 試點）與 field-notes、essayist、companion、somatic（批 1）已轉換；learning-lab、curator、coach（批 2）與 radio-letter、collective、trust-path（批 3）已轉換；12 款最初版型全數完成。
 3. 無色票（`palette` 缺省）的舊計畫，`--color-line` 由 content／surface 推導，與先前固定的 `#dad4c9` 略有不同；有色票的匯出站與先前逐元素一致（見 Issue #17 的對照證據）。
 4. 與先前行為的一個實質差異：改 `site.config.json` 的 `brand.palette` 後，重新 `npm run build`（或 `npm run sync:theme`）就會換色；先前色票在匯出時被寫死進 `site.css`，只改 config 不會生效。

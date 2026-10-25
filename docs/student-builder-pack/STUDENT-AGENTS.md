@@ -107,7 +107,7 @@
 | 層 | 在哪裡 | 能改什麼 |
 | --- | --- | --- |
 | 輸入層 | `site.config.json` 的 `brand`（`palette` 五色、`typography`、`imageStyle`） | 換色、換字體預設、圖片風格。這是唯一真相；`public/theme.css` 由它產生（`npm run sync:theme`，開發與建置時自動執行），**不要手改 `public/theme.css`** |
-| Token 層 | `public/tokens.css` | 角色命名的設計值：`--color-*`、`--font-*`、`--radius-*`、`--space-*`、`--width-*`、`--shadow-*`、`--image-filter`。只改「值」；名稱視為對外介面，**不改名、不刪除、不自創新的全域名稱**；舊名（`--bg`、`--ink`、`--line`、`--brand-*` 等）是別名，保留 |
+| Token 層 | `public/tokens.css` | 角色命名的設計值：`--color-*`、`--font-*`、`--radius-*`、`--space-*`、`--width-*`、`--shadow-*`、`--image-filter`。只改「值」；名稱視為對外介面，**不改名、不刪除、不自創新的全域名稱**；舊名（`--bg`、`--ink`、`--line`、`--brand-*` 等）是別名，保留；別名定義在獨立檔 `public/legacy-aliases.css`（由 `SiteLayout.astro` 在 `tokens.css` 之後連結），不要把它們搬回 `tokens.css`、也不要刪除該檔或它的連結 |
 | 元件／版型層 | `src/components/layouts/selected/` 與共用元件 | 共用結構與 Variant。版型專屬的值用帶該版型前綴的區域變數，且必須由 Token 推導（`var(--color-primary)`、`color-mix()`），不得寫字面值 |
 | 頁面層 | 單一頁面或專用元件 | 只影響該頁的個別客製；不回寫共用元件 |
 

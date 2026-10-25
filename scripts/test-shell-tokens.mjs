@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
-import {checkShellSource} from './shell-token-check.mjs';
+import {checkShellSource,checkPrototypeSource} from './shell-token-check.mjs';
 
 const SHELL=[['subject-atlas','knowledge'],['practice-compass','helper'],['sidebar-journal','knowledge'],['editorial-frontpage','knowledge'],['card-journal','knowledge'],['visual-stories','knowledge'],['compact-dispatch','knowledge'],['split-reader','knowledge'],['portrait-profile','helper'],['service-catalogue','helper'],['studio-chapters','helper'],['editorial-practice','helper'],['question-led-practice','helper']];
 const pal={primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'};
@@ -30,5 +30,21 @@ try{
   expectFail('拿掉宿主契約連結',orig.replace("<link rel=\"stylesheet\" href={base+'component-contract.css'}/>",''));
   expectFail('殼的 --accent 被改成 primary',orig.replace('--accent:${palette.accent}','--accent:${palette.primary}'));
   checkShellSource(first);
+  // 殼若被放回別名檔（連結或檔案）、或 tokens.css 又定義舊名，都必須被抓到
+  const aliasFile=join(first,'public/legacy-aliases.css'),tokFile=join(first,'public/tokens.css'),tokOrig=readFileSync(tokFile,'utf8');
+  writeFileSync(aliasFile,':root{--text:var(--color-content)}');try{assert.throws(()=>checkShellSource(first),undefined,'殼出貨別名檔');}finally{rmSync(aliasFile);}
+  expectFail('殼連結別名檔',orig.replace("<link rel=\"stylesheet\" href={base+'theme.css'}/>","<link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/>"));
+  writeFileSync(tokFile,tokOrig+':root{--text:var(--color-content)}');try{assert.throws(()=>checkShellSource(first),undefined,'tokens.css 又定義舊名');}finally{writeFileSync(tokFile,tokOrig);}
+  checkShellSource(first);
+  // prototype 宿主：別名檔存在、順序正確、tokens.css 無別名；拿掉任何一項都要被抓到
+  const pf=join(tmp,'proto.json'),proto=join(tmp,'proto');writeFileSync(pf,JSON.stringify(plan('reading-atlas','knowledge')));
+  execFileSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,pf,proto,'--defer-student-context'],{stdio:'pipe'});
+  checkPrototypeSource(proto);
+  const pl=join(proto,'src/layouts/SiteLayout.astro'),po=readFileSync(pl,'utf8');
+  const pFail=(label,m)=>{writeFileSync(pl,m);try{assert.throws(()=>checkPrototypeSource(proto),undefined,label);}finally{writeFileSync(pl,po);}};
+  pFail('prototype 沒連結別名檔',po.replace("<link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/>",''));
+  pFail('prototype 別名檔連結在 tokens 之前',po.replace("<link rel=\"stylesheet\" href={base+'tokens.css'}/><link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/>","<link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/><link rel=\"stylesheet\" href={base+'tokens.css'}/>"));
+  const pa=join(proto,'public/legacy-aliases.css'),pao=readFileSync(pa,'utf8');writeFileSync(pa,':root{--ink:var(--color-content)}');try{assert.throws(()=>checkPrototypeSource(proto),undefined,'別名檔缺舊名');}finally{writeFileSync(pa,pao);}
+  checkPrototypeSource(proto);
 }finally{rmSync(tmp,{recursive:true,force:true});}
-console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的 --accent 仍是 palette.accent；負向對照 4 項）');
+console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的 --accent 仍是 palette.accent；負向對照 4 項；別名檔只在 prototype 宿主出貨、殼宿主與 tokens.css 皆無別名，負向對照 6 項）');
