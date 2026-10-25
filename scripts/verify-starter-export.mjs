@@ -269,11 +269,11 @@ try{
       assertStudentContext(themedSite,JSON.parse(readFileSync(themedPlan,'utf8')).layoutSlug);
       if(!existsSync(join(themedSite,'public/images/my-field.png')))throw Error('Licensed image was not copied to independent starter');
       const themedHome=readFileSync(join(themedSite,'src/components/layouts/selected/Home.astro'),'utf8');
-      const themedCss=readFileSync(join(themedSite,'public/site.css'),'utf8');
+      const themedCss=readFileSync(join(themedSite,'public/theme.css'),'utf8');
       if(!themedHome.includes('heroImagePath')||!themedCss.includes('--brand-image-filter:saturate(.68)')||!themedCss.includes('--brand-heading-font:"Noto Sans TC"'))
         throw Error('Brand font and licensed local image configuration not bound to assembled output');
     }
-    const generatedCss=readFileSync(join(site,'public/site.css'),'utf8');
+    const generatedCss=readFileSync(join(site,'public/theme.css'),'utf8');
     if(!generatedCss.includes('--brand-secondary:#58776C')||!generatedCss.includes('--brand-background:#F7F8F4'))throw Error('Generated palette tokens are missing');
     if(!existsSync(join(site,'src/pages/index.astro'))||!existsSync(join(site,'astro.config.mjs')))throw Error('Missing generated website');
     const navigation=readFileSync(join(site,'src/components/StudentNavigation.astro'),'utf8');
