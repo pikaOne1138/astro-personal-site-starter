@@ -26,8 +26,9 @@ try{
   const layoutFile=join(first,'src/layouts/SiteLayout.astro'),orig=readFileSync(layoutFile,'utf8');
   const expectFail=(label,mutated)=>{writeFileSync(layoutFile,mutated);try{assert.throws(()=>checkShellSource(first),undefined,label);}finally{writeFileSync(layoutFile,orig);}};
   expectFail('拿掉 tokens.css 連結',orig.replace("<link rel=\"stylesheet\" href={base+'tokens.css'}/>",''));
-  expectFail('連結順序顛倒（site.css 在 theme.css 前）',orig.replace("<link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/>"));
+  expectFail('連結順序顛倒（site.css 在 theme.css 前）',orig.replace("<link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/>"));
+  expectFail('拿掉宿主契約連結',orig.replace("<link rel=\"stylesheet\" href={base+'component-contract.css'}/>",''));
   expectFail('殼的 --accent 被改成 primary',orig.replace('--accent:${palette.accent}','--accent:${palette.primary}'));
   checkShellSource(first);
 }finally{rmSync(tmp,{recursive:true,force:true});}
-console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的 --accent 仍是 palette.accent；負向對照 3 項）');
+console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的 --accent 仍是 palette.accent；負向對照 4 項）');

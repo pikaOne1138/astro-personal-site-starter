@@ -12,7 +12,7 @@ export const artDirectionAdapters = [
  settings.layoutAdapter={id:adapter.slug,version:adapter.version,assemblyStatus:'in-progress',visualReview:'deferred',supportedPages:adapter.requiredPages};
  put(root,'site.config.json',JSON.stringify(settings,null,2)+'\n');
  // Generated sources use only local imports, never the research repository.
- cpSync(new URL('shared/',sources),join(root,'src'),{recursive:true,filter:source=>!String(source).endsWith('/site.css')});
+ cpSync(new URL('shared/',sources),join(root,'src'),{recursive:true,filter:source=>!/\/(site|component-contract)\.css$/.test(String(source))});
  if(['subject-atlas','practice-compass'].includes(adapter.slug))cpSync(new URL(adapter.slug+'/',sources),join(root,'src'),{recursive:true,filter:source=>!String(source).endsWith('/Home.astro')});
  if(['subject-atlas','practice-compass'].includes(adapter.slug))put(root,'src/components/layouts/'+adapter.slug+'/Home.astro',readFileSync(new URL(adapter.slug+'/Home.astro',sources),'utf8'));
  put(root,'src/pages/index.astro',`---\nimport config from '../../site.config.json';\nimport SiteLayout from '../layouts/SiteLayout.astro';\nimport Home from '../components/layouts/${adapter.slug}/Home.astro';\n---\n<SiteLayout title={config.brand.name}><Home /></SiteLayout>\n`);
@@ -28,6 +28,7 @@ export const artDirectionAdapters = [
  // Button and FeatureGrid import the shared link guard, so it must ship with them.
  put(root,'src/components/blocks/safe-href.ts',readFileSync(new URL('../src/components/blocks/safe-href.ts',import.meta.url),'utf8'));
  const css=readFileSync(new URL('shared/site.css',sources),'utf8');put(root,'public/site.css',css);
+ put(root,'public/component-contract.css',readFileSync(new URL('shared/component-contract.css',sources),'utf8'));
  // Preserve the existing full-text build and safety gates; add real discovered topic routes.
  const sitemap=readFileSync(join(root,'src/pages/sitemap.xml.js'),'utf8');
  put(root,'src/pages/sitemap.xml.js',sitemap.replace("const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];","const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];\n if(config.kind==='knowledge') for(const topic of config.artDirection.topics) paths.push((config.navigation.find(x=>x.id==='topics')?.path??'topics/')+topic.slug+'/');"));

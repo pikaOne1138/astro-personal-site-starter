@@ -30,10 +30,10 @@ const ctaPage=navigation.find(item=>item.id===config.primaryCta?.pageId);
 .student-navigation>a,.student-navigation__group>summary{display:flex;align-items:center;gap:8px;min-height:44px;padding:9px 11px;border-radius:6px;text-decoration:none;cursor:pointer;list-style:none}
 .student-navigation summary::-webkit-details-marker{display:none}
 .student-navigation__group{position:relative}
-.student-navigation__submenu{position:absolute;z-index:30;top:100%;left:0;display:grid;gap:2px;min-width:210px;max-width:320px;padding:8px;background:var(--color-surface);color:var(--color-content);border:1px solid var(--color-line);border-radius:10px;box-shadow:0 14px 28px color-mix(in srgb,var(--color-content) 9%,transparent)}
+.student-navigation__submenu{position:absolute;z-index:30;top:100%;left:0;display:grid;gap:2px;min-width:210px;max-width:320px;padding:8px;background:var(--student-nav-menu-bg);color:var(--student-nav-menu-fg);border:var(--student-nav-menu-border);border-radius:10px;box-shadow:var(--student-nav-menu-shadow)}
 .student-navigation__group:not([open]) .student-navigation__submenu{display:none}
 .student-navigation__submenu a{display:block;min-height:44px;padding:10px 12px;border-radius:6px;text-decoration:none}
-.student-navigation a:hover,.student-navigation summary:hover{background:color-mix(in srgb,var(--color-content) 8%,transparent)}
+.student-navigation a:hover,.student-navigation summary:hover{background:var(--student-nav-hover-bg)}
 .student-nav-wrap :is(a,summary,button):focus-visible{outline:3px solid var(--brand,currentColor);outline-offset:3px}
 .student-navigation__cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 12px;border:1px solid currentColor;border-radius:6px;font-weight:700;max-width:100%;overflow-wrap:anywhere;text-decoration:none}
 @media(max-width:740px){

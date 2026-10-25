@@ -1,0 +1,25 @@
+/*
+ * component-contract.css — 共用元件的宿主契約（殼宿主：art-direction／native-expansion 共 13 款）
+ *
+ * 殼版型目前的實際效果是「共用元件的這些裝飾（選單底與框、hover 底、樣板與頁尾的底色與頂線）都不出現」
+ * （原本引用的 --color-* 在殼不存在，宣告無效）。階段 1 的契約是保持這個效果：值等於現況，不是新設計。
+ * 要讓殼版型也有這些裝飾，是階段 2 的決定；那時只改這份檔的值，不必動共用元件。
+ * 與 prototype 宿主的 src/styles/component-contract.css 變數名稱必須一致。
+ */
+:root{
+  --student-nav-menu-bg:transparent;
+  --student-nav-menu-fg:inherit;
+  --student-nav-menu-border:none;
+  --student-nav-menu-shadow:none;
+  --student-nav-hover-bg:transparent;
+  --student-pattern-bg:transparent;
+  --student-pattern-rule:none;
+  --student-footer-rule:none;
+  --student-footer-editorial-bg:transparent;
+  --student-footer-professional-bg:transparent;
+  --student-footer-professional-fg:inherit;
+  --student-footer-minimal-bg:transparent;
+  --student-family-heading-font:Georgia,serif;
+  --student-family-body-font:system-ui,sans-serif;
+}
+body{--student-family-accent:var(--brand)}

@@ -10,11 +10,11 @@ import assert from 'node:assert/strict';
 export function checkShellSource(site){
   const layout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
   const at=h=>layout.indexOf("href={base+'"+h+"'}");
-  const [t,th,s]=['tokens.css','theme.css','site.css'].map(at);
-  assert.ok(t>=0&&th>t&&s>th,'SiteLayout 必須依序連結 tokens.css、theme.css、site.css');
+  const [t,th,cc,s]=['tokens.css','theme.css','component-contract.css','site.css'].map(at);
+  assert.ok(t>=0&&th>t&&cc>th&&s>cc,'SiteLayout 必須依序連結 tokens.css、theme.css、component-contract.css、site.css');
   assert.ok(layout.includes('--accent:${palette.accent}'),'殼的 --accent 必須仍是 palette.accent');
   assert.ok(layout.includes('--brand:${palette.primary}')&&layout.includes('--ink:${palette.text}')&&layout.includes('--bg:${palette.background}'),'殼的 --brand／--ink／--bg 必須仍由 palette 寫入');
-  for(const f of ['public/tokens.css','public/theme.css','public/site.css'])assert.ok(existsSync(join(site,f)),f+' 不存在');
+  for(const f of ['public/tokens.css','public/theme.css','public/component-contract.css','public/site.css'])assert.ok(existsSync(join(site,f)),f+' 不存在');
   assert.ok(/prebuild/.test(readFileSync(join(site,'package.json'),'utf8')),'prebuild 必須重產 theme.css');
 }
 
