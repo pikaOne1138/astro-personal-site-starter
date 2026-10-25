@@ -43,6 +43,7 @@ for (const path of [
   'scripts/qa-student-responsive.mjs',
   'scripts/export-starter.mjs',
   'scripts/theme-css.mjs',
+  'scripts/design-scan.mjs',
   'scripts/check-start-record.mjs',
   'scripts/gates.mjs',
   'scripts/gates.config.json',
