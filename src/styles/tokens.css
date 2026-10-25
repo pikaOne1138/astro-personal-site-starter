@@ -43,7 +43,7 @@
   --space-3:1.5rem;
   --space-4:2rem;
   --space-5:3rem;
-  --space-6:5rem;
+  --space-6:4rem;
   --space-section:clamp(4rem,8vw,6rem);
   --space-gutter:clamp(1rem,4vw,4rem);
   --width-wide:1320px;

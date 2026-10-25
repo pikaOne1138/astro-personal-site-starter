@@ -71,7 +71,7 @@
 
 ### 圓角、間距、寬度、陰影
 - 圓角：`--radius-sm`（.25rem）、`-md`（8px）、`-lg`（1rem）、`-pill`（999px）
-- 間距：`--space-1` … `-6`（.5／1／1.5／2／3／5 rem）、`--space-section`、`--space-gutter`
+- 間距：`--space-1` … `-6`（.5／1／1.5／2／3／4 rem＝8／16／24／32／48／64px，落在 astro-ui-craft 的既定間距階內）、`--space-section`、`--space-gutter`
 - 寬度：`--width-wide`（1320px）、`-mid`（1120px）、`-read`（36rem）
 - 陰影：`--shadow-sm`／`-md`／`-lg`／`-hard`；陰影色由 content 混出，換色時一起變。
 
@@ -100,7 +100,7 @@
 
 ## 7. 字面值例外（供 D-T5 的 G-11 允許清單採用，提案）
 
-主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`，原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）。建議插圖也盡量以 `color-mix()` 由 Token 推導，使場景一起換色；是否例外由 D-T3 在 clinician 的 `clinical-art` 場景實測後決定。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
+主題字面值只允許出現在：(a) `tokens.css` 本身；(b) 帶註記的固定值：`/* design-fixed: <原因> */`，原因限 `brand-logo`（品牌標誌）、`third-party-embed`（第三方嵌入）、`illustration`（手繪場景，不隨主題變）、`page-custom`（學員明確要求且已確認的單一元件或單頁顏色，只寫在該處的一個區域變數）。建議插圖也盡量以 `color-mix()` 由 Token 推導，使場景一起換色；是否例外由 D-T3 在 clinician 的 `clinical-art` 場景實測後決定。透明度黑（`rgb(0 0 0 / x)`）與 `transparent`、`currentColor`、`inherit` 不算主題色。
 
 ## 8. 檔案三分法歸類
 

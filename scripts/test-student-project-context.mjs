@@ -45,6 +45,17 @@ test('different AI handoff has project context and environment safeguards', () =
   assert.match(template,/換 AI、換電腦或開新對話/);
 });
 
+test('design-change contract tells the AI which layer to edit and forbids bypassing tokens', () => {
+  assert.match(agents, /設計修改：先判斷改哪一層/);
+  assert.match(agents, /優先修改設計 Token/);
+  assert.match(agents, /禁止在不同元件中重複寫死主題值/);
+  assert.match(agents, /不要手改 `public\/theme\.css`/);
+  assert.match(agents, /行內樣式（`style=""`）、`!important` 或任意字面值/);
+  assert.match(agents, /這次改了哪一層/);
+  assert.match(agents, /受影響頁面清單/);
+  for (const row of ['森林綠','更圓潤','卡片的陰影淡一點','首頁按鈕要大一點','另一種首頁排版','手機版選單','全域值只為全站需求而改','沒有合適的 Token','clear-sans']) assert.ok(agents.includes(row), 'missing layer mapping: ' + row);
+});
+
 test('interview contract asks only essential question, checks unknown risks and stops questioning', () => {
   assert.match(agents, /每輪只問一個最重要的問題/);
   assert.match(agents, /停止規則/);
