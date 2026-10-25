@@ -93,7 +93,7 @@
 
 設計事實只有一處，和網站的內容事實（`serviceFacts`）是同一個原則。修改前先判斷需求屬於哪一層，再動手。
 
-**機器檢查（G-11）**：`npm run verify` 會掃描 `src/` 與 `public/` 中新增的寫死色（超過匯出時記在 `design-baseline.json` 的數量），並檢查色票對比。看到警告就依本節把值改為讀 Token；確有必要的固定色（品牌標誌、第三方嵌入、插畫、學員確認過的單頁顏色）才在宣告前加 `/* design-fixed: brand-logo|third-party-embed|illustration|page-custom */` 並說明原因。轉換完某個版型後，用 `node scripts/gates.mjs --write-design-baseline` 更新基準。
+**機器檢查（G-11）**：`npm run verify` 會掃描 `src/` 與 `public/` 中新增的寫死色（超過匯出時記在 `design-baseline.json` 的數量），並檢查色票對比。看到警告就依本節把值改為讀 Token；確有必要的固定色（品牌標誌、第三方嵌入、插畫、學員確認過的單頁顏色）才加 `/* design-fixed: brand-logo|third-party-embed|illustration|page-custom */` 並說明原因。註記放在一條 CSS 規則前，涵蓋該規則內的所有宣告；放在單一宣告前，只涵蓋那一個宣告；沒有整個檔案的涵蓋，下一條規則的寫死值仍會被警告。原因寫錯（不在清單內）不豁免。強調色（`brand.palette.accent`）只用在點綴色塊與線條，不要拿來當文字色；色票對比檢查會要求強調色對背景至少 3:1。轉換完某個版型後，用 `node scripts/gates.mjs --write-design-baseline` 更新基準。
 
 **四條規則**
 

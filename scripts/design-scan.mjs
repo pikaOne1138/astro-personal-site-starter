@@ -62,7 +62,26 @@ function nsOf(name){
  const m=name.match(/^--([a-z]+)-/);return m?'local:'+m[1]+'-*':'other';
 }
 
-// 註記 /* design-fixed: <原因> */ 豁免緊接在後面的第一條宣告；原因必須在 FIXED_REASONS 內，否則不豁免並列入 badAnnotations。
+// 註記 /* design-fixed: <原因> */ 的涵蓋範圍：
+//   - 放在一條 CSS 規則（選擇器或 @media 等 at-rule）前：涵蓋該規則 {} 內的所有宣告（含巢狀規則）；
+//   - 放在單一宣告前（包含規則 { 之後的第一個宣告）：只涵蓋緊接在後的那一個宣告；
+//   - 沒有檔案層級的涵蓋。
+// 原因必須在 FIXED_REASONS 內，否則不豁免並列入 badAnnotations。
+// 找註記後面第一個結構字元（; { }），略過字串與括號（url(data:…;base64) 內的 ; 不算）。
+function annotationRange(clean,from){
+ let i=from,paren=0,quote=null;
+ for(;i<clean.length;i++){
+  const c=clean[i];
+  if(quote){if(c==='\\')i++;else if(c===quote)quote=null;continue;}
+  if(c==='"'||c==="'"){quote=c;continue;}
+  if(c==='(')paren++;else if(c===')')paren=Math.max(0,paren-1);
+  else if(!paren&&(c===';'||c==='{'||c==='}'))break;
+ }
+ if(clean[i]!=='{')return {from,to:i,scope:'declaration'};
+ let depth=0,j=i;
+ for(;j<clean.length;j++){if(clean[j]==='{')depth++;else if(clean[j]==='}'&&--depth===0)break;}
+ return {from:i,to:j,scope:'rule'};
+}
 export function scanCss(css){
  const r={colorLiteralInUse:[],colorLiteralInLocalToken:[],colorFallback:0,fontLiteral:[],radiusLiteral:[],shadowLiteral:[],
   exempted:[],badAnnotations:[],neutralOverlays:0,varRefs:{},localTokenDefs:{},declarations:0};
@@ -72,18 +91,19 @@ export function scanCss(css){
   if(a)notes.push({end:idx+all.length,reason:a[1],line:lineOf(css,idx)});
   return blank(all);
  });
+ for(const n of notes){
+  Object.assign(n,annotationRange(clean,n.end));
+  if(!FIXED_REASONS.includes(n.reason))r.badAnnotations.push({line:n.line,reason:n.reason});
+ }
  const re=/([a-zA-Z-]+)\s*:\s*([^;{}]*?)\s*(?=[;}])/g;
- let m,noteIdx=0;
+ let m;
  while((m=re.exec(clean))){
   const prop=m[1].toLowerCase();
   const raw=m[2];
   if(!raw||/^[\d.]+$/.test(raw)&&!prop.startsWith('--'))continue;
   r.declarations++;
-  let exemptReason=null;
-  if(noteIdx<notes.length&&notes[noteIdx].end<=m.index){
-   const n=notes[noteIdx++];
-   if(FIXED_REASONS.includes(n.reason))exemptReason=n.reason;else r.badAnnotations.push({line:n.line,reason:n.reason});
-  }
+  const covering=notes.find(n=>FIXED_REASONS.includes(n.reason)&&m.index>=n.from&&m.index<=n.to);
+  const exemptReason=covering?covering.reason:null;
   // 字串內容（content:"#2026"）與 url(#id) 不是顏色，先拿掉再數字面值
   const {value,fallbacks}=stripFallbacks(raw.replace(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g,'""').replace(/url\([^)]*\)/g,'url()'));
   const line=lineOf(clean,m.index);

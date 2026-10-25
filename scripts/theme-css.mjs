@@ -15,6 +15,9 @@ const luminance=h=>.2126*channel(h,1)+.7152*channel(h,3)+.0722*channel(h,5);
 export const contrastRatio=(a,b)=>{const [x,y]=[luminance(a),luminance(b)].sort((m,n)=>n-m);return (x+.05)/(y+.05);};
 
 // G-11 色票對比：與 tokens.css 的推導一致（次要文字＝內容色 75% 混背景；主色上的文字＝黑白中對比較高者）。
+// 強調色（--color-accent）只用在非文字的點綴（色塊、線條、插圖），所以和主色／背景一樣用 3:1，不能拿來當文字色。
+// 輔色（--color-secondary）不做配對：它只經 --ed-accent-deco 用在裝飾線與邊框，不是文字也不是表面色（理由見 ai-workbench Issue #17）。
+// 沒有設定強調色時 --color-accent 會退回主色，不需要另外檢查。
 const rgbOf=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
 const hexOf=c=>'#'+c.map(v=>Math.round(v).toString(16).padStart(2,'0')).join('');
 const DEFAULTS={primary:'#355747',background:'#F7F5F0',text:'#28231F'};
@@ -30,6 +33,7 @@ export function contrastPairs(brand={}){
   pair('次要文字／背景',muted,bg,4.5,'日期、說明文字'),
   pair('主色／主色上的文字',onPrimary,primary,4.5,'按鈕與主色區塊上的文字'),
   pair('主色／背景',primary,bg,3,'焦點外框、連結強調（非文字元件）'),
+  ...(HEX.test(pal.accent||'')?[pair('強調色／背景',pal.accent,bg,3,'點綴色塊與線條（非文字用途）')]:[]),
  ];
 }
 
