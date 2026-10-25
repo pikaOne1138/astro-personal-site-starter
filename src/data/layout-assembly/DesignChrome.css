@@ -9,10 +9,10 @@ body[data-site-family]>header nav a{font-size:.85rem;text-underline-offset:.4em}
 body[data-site-family]>header nav a:hover{text-decoration-thickness:2px}
 body[data-site-family]>footer{border-top:1px solid color-mix(in srgb,var(--chrome-text) 25%,transparent);font-size:.78rem;letter-spacing:.06em}
 body[data-site-family]>header .button{background:var(--chrome-accent);color:var(--chrome-on-accent,white);border-radius:0}
-body[data-site-family="field-notes"]{--chrome-panel:#f4f0df;--chrome-text:#34463d;--chrome-accent:#8d522f}
+body[data-site-family="field-notes"]{--chrome-panel:color-mix(in srgb,var(--color-accent) 10%,var(--color-surface));--chrome-text:color-mix(in srgb,var(--color-content) 88%,var(--color-primary));--chrome-accent:var(--color-primary);--chrome-on-accent:var(--color-on-primary)}
 body[data-site-family="field-notes"]>header{border-top:5px solid var(--chrome-accent)}
 body[data-site-family="field-notes"]>header .brand{font-style:italic}
-body[data-site-family="essayist"]{--chrome-panel:#f3efe7;--chrome-text:#26231f;--chrome-accent:#8b3529}
+body[data-site-family="essayist"]{--chrome-panel:var(--color-surface-alt);--chrome-text:var(--color-content);--chrome-accent:var(--color-primary);--chrome-on-accent:var(--color-on-primary)}
 body[data-site-family="essayist"]>header{border-top:1px solid var(--chrome-text)}
 body[data-site-family="essayist"]>header .brand{font-size:clamp(1.3rem,2.5vw,2rem);text-transform:uppercase;letter-spacing:-.06em}
 body[data-site-family="learning-lab"]{--chrome-panel:#f9f4d7;--chrome-text:#182f91;--chrome-accent:#182f91}
@@ -28,9 +28,9 @@ body[data-site-family="reading-atlas"]{--chrome-panel:var(--color-surface-alt);-
 body[data-site-family="reading-atlas"]>header .brand{letter-spacing:-.06em}
 body[data-site-family="clinician"]{--chrome-panel:var(--color-surface);--chrome-text:var(--color-content);--chrome-accent:var(--color-primary);--chrome-on-accent:var(--color-on-primary)}
 body[data-site-family="clinician"]>header .brand{font-family:var(--font-body);font-weight:600}
-body[data-site-family="companion"]{--chrome-panel:#f6ede6;--chrome-text:#55453c;--chrome-accent:#985e69}
+body[data-site-family="companion"]{--chrome-panel:color-mix(in srgb,var(--color-secondary) 10%,var(--color-surface));--chrome-text:color-mix(in srgb,var(--color-content) 90%,var(--color-accent));--chrome-accent:var(--color-primary);--chrome-on-accent:var(--color-on-primary)}
 body[data-site-family="companion"]>header .brand{font-style:italic;font-weight:400}
-body[data-site-family="somatic"]{--chrome-panel:#243e31;--chrome-text:#efecda;--chrome-accent:#8e6f40}
+body[data-site-family="somatic"]{--chrome-panel:var(--color-inverse-surface);--chrome-text:var(--color-on-inverse);--chrome-accent:var(--color-on-inverse);--chrome-on-accent:var(--color-inverse-surface)}
 body[data-site-family="somatic"]>header .brand{font-weight:400;letter-spacing:.03em}
 body[data-site-family="coach"]{--chrome-panel:#e7e9e3;--chrome-text:#17338b;--chrome-accent:#c64a28}
 body[data-site-family="coach"]>header{border-bottom:5px solid var(--chrome-accent)}
