@@ -49,7 +49,9 @@ description: Design, build, refine, or audit polished Astro sites for knowledge/
 - **Quiet Studio**：近白的暖灰、精準的格線、無襯線為主、單一強調色、細邊框、結構化的服務與內容資訊。
 - **Botanical Calm**：柔和的植物綠、克制的自然對比、大量留白、安靜的有機暖意。
 
-沿用 `public/demo.css` 裡既有的 tokens，不要自己另創色票。主題要在字體、幾何與動態上有差別，不能只換顏色。Tokens 涵蓋背景、surface、文字、muted、邊框、強調色、圓角、陰影、時間與 easing。
+沿用 `public/demo.css` 裡既有的 tokens，不要自己另創色票。
+
+學員站（匯出後的獨立網站）的設計值以 `public/tokens.css` 與 `site.config.json` 的 `brand` 為準；改哪一層、禁止繞過 Token 與回報格式，見學員 `AGENTS.md` 的「設計修改」一節。本 Skill 不重複定義那些規則，避免兩處講法不一致。主題要在字體、幾何與動態上有差別，不能只換顏色。Tokens 涵蓋背景、surface、文字、muted、邊框、強調色、圓角、陰影、時間與 easing。
 
 ## 字級與間距契約（必須遵守）
 

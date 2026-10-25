@@ -106,5 +106,29 @@
   "rule": "missing-path",
   "match": "scripts/reveal.ts",
   "reason": "Manus ZIP 內的來源路徑"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": "public/theme.css",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 tokens.css／theme-css.mjs 產生）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": "public/tokens.css",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 tokens.css／theme-css.mjs 產生）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": "src/components/layouts/selected/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 tokens.css／theme-css.mjs 產生）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/SKILL.md",
+  "rule": "missing-path",
+  "match": "public/tokens.css",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 tokens.css／theme-css.mjs 產生）"
  }
 ]
