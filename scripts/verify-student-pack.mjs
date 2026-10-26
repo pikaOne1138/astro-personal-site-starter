@@ -15,7 +15,7 @@ try {
     '.ai/astro-site-assembly/SKILL.md','.ai/astro-editorial-layout-design/SKILL.md',
     'src/data/layout-directions.json','src/data/blocks.registry.json',
     'src/data/section-patterns.registry.json','src/pages/layouts/index.astro',
-    'scripts/export-starter.mjs','scripts/theme-css.mjs','scripts/design-scan.mjs','src/styles/tokens.css','src/styles/legacy-aliases.css','scripts/verify-student-navigation.mjs','src/components','public/layout-library.css',
+    'scripts/export-starter.mjs','scripts/theme-css.mjs','scripts/design-scan.mjs','src/styles/tokens.css','src/styles/legacy-aliases.css','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','scripts/audit-css-resolution.mjs','scripts/audit-shell-vars.mjs','scripts/shell-token-check.mjs','scripts/css-resolution-classification.json','scripts/verify-student-navigation.mjs','src/components','public/layout-library.css',
     'public/multipage-nav.css','public/effects-sample.svg','public/robots.txt',
     'scripts/verify-site-output.mjs','scripts/verify-release-readiness.mjs','scripts/gates.mjs','scripts/gates.config.json','scripts/site-state.mjs','scripts/preflight.mjs','scripts/test-release-readiness.mjs','scripts/build-student-search-index.mjs','scripts/test-generated-link-audit.mjs','docs/student-intake/01-AI-訪談主持人.md'
   ];

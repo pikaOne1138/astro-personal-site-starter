@@ -31,6 +31,22 @@ const guideCard=readFileSync('docs/student-builder-pack/INTERVIEW-GUIDE.md','utf
 if(guideCard.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l)).length!==5)errors.push('Interview guide card must have exactly five numbered points');
 if(/PR|commit|JSON/.test(guideCard))errors.push('Interview guide card must stay free of technical terms');
 if(/貼同一句開場白就能/.test(guideCard))errors.push('Interview guide card promises resume from opener alone');
+// D-T7：「改設計三種程度」說明卡與學員 AGENTS 的講法一致，沒有第二套分類
+const custCard=readFileSync('docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','utf8');
+const studentAgents=readFileSync('docs/student-builder-pack/STUDENT-AGENTS.md','utf8');
+const custPoints=custCard.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l));
+if(custPoints.length!==3)errors.push('Customization card must have exactly three numbered points, got '+custPoints.length);
+const custLabels=custPoints.map(l=>(l.match(/\*\*(.+?)\*\*/)||[])[1]);
+if(custLabels.some(x=>!x))errors.push('Every customization point must start with a bold label');
+for(const label of custLabels)if(label&&!studentAgents.includes('| '+label+' |'))errors.push('STUDENT-AGENTS lane table is missing the card label: '+label);
+if(!studentAgents.includes('CUSTOMIZATION-GUIDE.md'))errors.push('STUDENT-AGENTS does not point to the customization card');
+const laneRows=studentAgents.split(/\r?\n/).filter(l=>custLabels.some(x=>x&&l.startsWith('| '+x+' |')));
+if(laneRows.length!==3)errors.push('STUDENT-AGENTS must have exactly one table row per card label, got '+laneRows.length);
+if(!/\| S \|/.test(laneRows[0]||'')||!/\| M \|/.test(laneRows[1]||'')||!/\| M（/.test(laneRows[2]||''))errors.push('Customization lanes must be S, M, M(H) in card order');
+if(/PR|commit|JSON|Token|Variant|CSS/.test(custCard))errors.push('Customization card must stay free of technical terms');
+if(/一鍵換風格|一鍵換成/.test(custCard.replace(/不是一鍵換風格/g,''))||/一鍵換風格/.test(studentAgents.replace(/不等於「一鍵換風格」/g,'')))errors.push('Docs must not promise one-click style change');
+if(!guide.includes('CUSTOMIZATION-GUIDE.md?raw'))errors.push('Guide does not read the customization card');
+if(!start.includes('CUSTOMIZATION-GUIDE.md'))errors.push('START-HERE does not register the customization card');
 const maintSkill=readFileSync('.ai/astro-site-maintenance/SKILL.md','utf8');
 if(!maintSkill.includes('START-MAINTENANCE-PROMPT.txt'))errors.push('Maintenance Skill does not reference the maintenance prompt');
 let archive='NOT TESTED';

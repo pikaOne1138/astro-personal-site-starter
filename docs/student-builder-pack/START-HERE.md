@@ -27,6 +27,7 @@ C 路線的唯一正式起始提示詞是 `docs/student-builder-pack/START-INTER
 
 - 維護既有網站的唯一正式起始提示詞是 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt`（`/guide/` 第 07 步），流程見 `.ai/astro-site-maintenance/SKILL.md`。
 - 給學員看的訪談說明卡是 `docs/student-builder-pack/INTERVIEW-GUIDE.md`，`/guide/` 直接讀取同一份。
+- 給學員看的「改設計有三種程度」說明卡是 `docs/student-builder-pack/CUSTOMIZATION-GUIDE.md`，`/guide/` 直接讀取同一份；`AGENTS.md` 的「S／M／H 任務車道」用同樣的三句話。
 - 首次組站使用 ATP 匯出器時，A、C 路線先寫好 `需求理解確認紀錄`，並以 `--require-start-record` 檢查（G-00，見 from-zero Skill）；B 路線以學員下載的 Site Brief 為依據。這只證明有留痕，不證明真人同意。
 
 ## 可選：先討論設計，不立即建站
