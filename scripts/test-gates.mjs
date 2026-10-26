@@ -33,11 +33,11 @@ try{
  // G-02 placeholder scanning: strong tokens everywhere, weak tokens not inside articles/code
  let r=mk(good,'<main><p>費用：尚未提供</p></main>');
  let g=gatePlaceholders(ctx(r,'preview'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);assert.match(g.learnerMessage,/還有 1 處內容沒填/);
- g=gatePlaceholders(ctx(r,'release'));assert.equal(g.status,'FAIL');assert.equal(g.blocking,true);
+ g=gatePlaceholders(ctx(r,'release'));assert.equal(g.status,'WARN');assert.equal(g.blocking,false);
  r=mk(good,'<main><article><p>教學：把網址改成 example.com，TODO 清單留給自己。</p></article><pre>TODO example.com</pre><code>TBD</code><script>var t="待填"</script></main>');
  assert.equal(gatePlaceholders(ctx(r,'release')).status,'PASS','articles, code and scripts that mention tokens must not block');
  r=mk(good,'<main><p>請洽 example.com 的客服</p></main>');
- assert.equal(gatePlaceholders(ctx(r,'release')).status,'FAIL','a page that shows example.com outside an article is a leftover');
+ assert.equal(gatePlaceholders(ctx(r,'release')).status,'WARN','a page that shows example.com outside an article is a leftover (listed, not blocking)');
  assert.ok(!gc.placeholders.strong.includes('')&&!gc.placeholders.weak.includes(''),'no empty-string placeholder');
  assert.match(visibleText('<p>a</p><script>x</script><code>c</code>'),/^a$/);
  // dist missing => NOT TESTED, blocking only in release
@@ -85,7 +85,10 @@ try{
  r=mk({kind:'helper',site:'https://example.com'},'<main>尚未提供</main>');
  const preview=await runGates({root:r,mode:'preview',env:{}});
  assert.ok(preview.results.find(x=>x.id==='G-01').status==='WARN'&&preview.results.find(x=>x.id==='G-02').status==='WARN');
- const release=await runGates({root:r,mode:'release',env:{}});assert.equal(release.exitCode,1);assert.ok(release.results.some(x=>x.id==='G-02'&&x.status==='FAIL'));
+ const release=await runGates({root:r,mode:'release',env:{}});assert.equal(release.exitCode,1,'G-01 still blocks release');{const g2=release.results.find(x=>x.id==='G-02');assert.equal(g2.status,'WARN','G-02 never blocks, even in release');assert.equal(g2.blocking,false);assert.ok(g2.evidence.length&&g2.learnerMessage.includes('站長決定'));}
+ // G-02 alone in release: lists every hit, exit stays 0 on the placeholder alone
+ r=mk({kind:'helper',site:'https://shop.example.org'},'<main><p>費用：尚未提供</p><p>年資：待設定</p></main>');
+ {const g2=gatePlaceholders(ctx(r,'release'));assert.equal(g2.status,'WARN');assert.equal(g2.blocking,false);assert.equal(g2.evidence.length,2);assert.ok(g2.learnerMessage.includes('2 處'));}
 
  // ---- batch 4: G-06 approval evidence in a real temp git repo
  const gitIn=(cwd,...a)=>{const o=spawnSync('git',a,{cwd,encoding:'utf8'});assert.equal(o.status,0,a.join(' ')+o.stderr);return o.stdout.trim();};
