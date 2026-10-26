@@ -6,7 +6,9 @@ import startBuildPrompt from '../../../docs/student-builder-pack/START-BUILD-PRO
 import startInterviewPrompt from '../../../docs/student-builder-pack/START-INTERVIEW-PROMPT.txt?raw';
 import startMaintenancePrompt from '../../../docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt?raw';
 import interviewGuide from '../../../docs/student-builder-pack/INTERVIEW-GUIDE.md?raw';
+import customizationGuide from '../../../docs/student-builder-pack/CUSTOMIZATION-GUIDE.md?raw';
 const interviewPoints=interviewGuide.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l)).map(l=>l.replace(/^\d+\.\s*/,''));
+const customizationPoints=customizationGuide.split(/\r?\n/).filter(l=>/^\d+\.\s/.test(l)).map(l=>l.replace(/^\d+\.\s*/,''));
 import releaseApprovalPrompt from '../../../docs/student-builder-pack/RELEASE-APPROVAL-PROMPT.md?raw';
 const routePrompts=[
 '我已上傳「AI-replica-skill-pack.zip」，想將我擁有或已獲授權的網站以 Astro 重建。原網站網址：【貼上網址】。請先讀 START-HERE.md 與復刻 Skill，實際盤點首頁、文章、分類、深層頁面、圖片、手機版和互動，列出可還原與無法取得之處。請先確認你有檔案操作、網站建置和真實預覽能力，再提出重建計畫。一次只問一個必要問題。完成後提供對應最新 Commit 的可開啟預覽網址；未經我同意，不得合併或正式發布。',
@@ -67,7 +69,7 @@ const prompts=[
 {i===4 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[2].title}</strong><button class="button alt copy" type="button" data-prompt="2">複製提示詞</button></div><p>{prompts[2].text}</p></div></Fragment>}
 {i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[3].title}</strong><button class="button alt copy" type="button" data-prompt="3">複製提示詞</button></div><p>{prompts[3].text}</p></div></Fragment>}
 {i===5 && <Fragment><div class="prompt"><div class="prompt-head"><strong>我已確認，正式授權發布</strong><button class="button alt" type="button" id="copy-release">複製正式發布指令</button></div><p>請先檢查上方清單。只有你親自送出下方指令，才表示授權 AI 發布這一次確認的版本。</p><details><summary>查看正式發布指令全文</summary><p>{releaseApprovalPrompt}</p></details></div></Fragment>}
-{i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div></Fragment>}
+{i===6 && <Fragment><div class="prompt"><div class="prompt-head"><strong>{prompts[4].title}</strong><button class="button alt copy" type="button" data-prompt="4">複製提示詞</button></div><p>{prompts[4].text}</p></div><div class="card"><h3>改設計，有三種程度</h3><ol>{customizationPoints.map(x=><li set:html={x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')}/>)}</ol></div></Fragment>}
 </section>)}
 <section class="section"><h2>看不懂畫面，怎麼辦？</h2><p>把你現在看到的網頁截圖傳給 AI，告訴它「請照這張畫面，一次只教我下一個要按的按鈕。」</p><div class="note">截圖前遮住密碼、驗證碼與私人資料。</div></section>
 <section class="last"><h2>GitHub 常用頁面</h2><p><strong>Pull requests</strong> 查看修改，<strong>Actions</strong> 查看建置。</p><p>請 AI 提供你自己網站的 GitHub Repository 網址，進入該 Repo 的 <strong>Pull requests</strong> 和 <strong>Actions</strong>。不需要進入老師的研究 Repo。</p><p class="small">請 AI 提供你的網站 PR 與 Actions 連結。</p><p id="progress" aria-live="polite"></p></section>
