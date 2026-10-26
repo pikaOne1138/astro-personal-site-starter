@@ -60,9 +60,10 @@ export function gatePlaceholders(ctx){
   }
  }
  if(!hits.length)return result('G-02','佔位文字','PASS',{mode});
- const summary=hits.slice(0,5).map(h=>h.page+'「'+h.context+'」').join('；');
- return result('G-02','佔位文字',mode==='release'?'FAIL':'WARN',{mode,evidence:hits.map(h=>h.page+': '+h.token+' → '+h.context),
-  learnerMessage:'還有 '+hits.length+' 處內容沒填：'+summary+'。這些會被訪客直接看到，請先補齊，或把該欄位改成不公開。'});
+ // Policy (author, 2026-10-26): publishing with unfilled content is the site owner's call, so G-02 never blocks; release lists every hit.
+ const shown=hits.slice(0,30),summary=shown.map(h=>h.page+'「'+h.context+'」').join('；')+(hits.length>shown.length?'；…另有 '+(hits.length-shown.length)+' 處':'');
+ return result('G-02','佔位文字','WARN',{mode,evidence:hits.map(h=>h.page+': '+h.token+' → '+h.context),
+  learnerMessage:'還有 '+hits.length+' 處內容沒填：'+summary+'。這些會被訪客直接看到；要不要先補齊或改成不公開，由站長決定（不會擋下發布）。'});
 }
 
 const aliasKeys=f=>[f.key,...(f.aliases||[])];
