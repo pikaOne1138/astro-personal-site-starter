@@ -34,7 +34,7 @@ const ctaPage=navigation.find(item=>item.id===config.primaryCta?.pageId);
 .student-navigation__group:not([open]) .student-navigation__submenu{display:none}
 .student-navigation__submenu a{display:block;min-height:44px;padding:10px 12px;border-radius:6px;text-decoration:none}
 .student-navigation a:hover,.student-navigation summary:hover{background:var(--student-nav-hover-bg)}
-.student-nav-wrap :is(a,summary,button):focus-visible{outline:3px solid var(--brand,currentColor);outline-offset:3px}
+.student-nav-wrap :is(a,summary,button):focus-visible{outline:3px solid var(--student-nav-focus-ring,currentColor);outline-offset:3px}
 .student-navigation__cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 12px;border:1px solid currentColor;border-radius:6px;font-weight:700;max-width:100%;overflow-wrap:anywhere;text-decoration:none}
 @media(max-width:740px){
   .student-nav-wrap{flex-wrap:wrap;width:100%}

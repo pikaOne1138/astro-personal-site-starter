@@ -1,6 +1,6 @@
 /* Student-site design family chrome: common navigation behavior, distinct art direction. */
 body[data-site-family]{
- --chrome-panel:var(--bg);--chrome-text:var(--ink);--chrome-accent:var(--brand-primary,var(--brand));
+ --chrome-panel:var(--color-surface);--chrome-text:var(--color-content);--chrome-accent:var(--color-primary);
 }
 body[data-site-family]>header,body[data-site-family]>footer{background:var(--chrome-panel);color:var(--chrome-text)}
 body[data-site-family]>header{border-bottom:1px solid color-mix(in srgb,var(--chrome-text) 25%,transparent);position:relative}
@@ -65,7 +65,7 @@ body[data-site-family] :is(.family-page,.story-frame,.about-composition,.service
 }
 
 /* Explicit palettes override native family colors, preserving geometry. */
-body[data-site-family][data-brand-palette="custom"]{--chrome-panel:var(--brand-background,var(--bg));--chrome-text:var(--brand-text,var(--ink));--chrome-accent:var(--brand-primary,var(--brand))}
+body[data-site-family][data-brand-palette="custom"]{--chrome-panel:var(--color-surface);--chrome-text:var(--color-content);--chrome-accent:var(--color-primary)}
 body[data-site-family]>header .brand{max-width:100%;text-wrap:balance}
 body[data-site-family]>header .button{background:var(--chrome-text);color:var(--chrome-panel);border-color:var(--chrome-text);display:inline-flex;align-items:center;min-height:44px}
 body[data-site-family]>header nav a{font-size:.875rem}
