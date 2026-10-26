@@ -31,7 +31,7 @@ const [masthead,subtitle]=families[family]??['THE SITE',''];
   <div class="family-ending"><span>{masthead}</span><span>— {config.brand.name}</span></div>
 </div>
 <style>
-.family-page{--fp-bg:var(--bg);--fp-ink:var(--ink);--fp-accent:var(--student-family-accent);--fp-rule:color-mix(in srgb,var(--fp-ink) 27%,transparent);background:var(--fp-bg);color:var(--fp-ink);padding:clamp(2rem,5vw,5.5rem) clamp(1rem,4vw,4rem);font-family:var(--student-family-body-font);min-height:72vh}
+.family-page{--fp-bg:var(--color-surface);--fp-ink:var(--color-content);--fp-accent:var(--student-family-accent);--fp-rule:color-mix(in srgb,var(--fp-ink) 27%,transparent);background:var(--fp-bg);color:var(--fp-ink);padding:clamp(2rem,5vw,5.5rem) clamp(1rem,4vw,4rem);font-family:var(--student-family-body-font);min-height:72vh}
 .family-topline,.family-overline,.family-ending{display:flex;justify-content:space-between;gap:1rem;text-transform:uppercase;letter-spacing:.13em;font:600 .7rem/1.5 ui-monospace,monospace}
 .family-topline{border-bottom:1px solid var(--fp-rule);padding-bottom:1rem}
 .family-layout{display:grid;grid-template-columns:minmax(0,100px) minmax(0,1fr) minmax(0,155px);gap:clamp(1rem,3.8vw,4rem);max-width:1400px;margin:0 auto;padding:clamp(2rem,5vw,5rem) 0}

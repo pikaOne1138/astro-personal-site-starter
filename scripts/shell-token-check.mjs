@@ -1,6 +1,7 @@
 // 殼版型（art-direction／native-expansion 共用的 SiteLayout）載入語意 Token 後的檢查。
-// 階段 1 只加載 tokens.css 與 theme.css，不改任何語意：殼自己的 --brand／--ink／--bg／--panel／--accent 仍由 brand.palette 寫入，
-// 其中 --accent 是 palette.accent，不是 tokens.css 別名層的 --accent（＝primary）。這個檢查把這件事固定下來。
+// 階段 1 加載 tokens.css 與 theme.css；階段 2 統一語意：殼不再有私有的 --brand／--ink／--bg／--panel／--accent／--serif（SiteLayout 不再寫
+// <body style>，site.css 的 :root 只留 --line 的 L2 派生），殼 CSS 一律讀 L1 Token。強調色是 --color-accent（＝palette.accent，不是 primary）；
+// 舊名別名的 --accent（＝primary）不載入殼。這個檢查把這件事固定下來。
 import {readFileSync,existsSync} from 'node:fs';
 import {join,resolve,sep} from 'node:path';
 import {createServer} from 'node:http';
@@ -20,8 +21,10 @@ export function checkShellSource(site){
   const at=h=>layout.indexOf("href={base+'"+h+"'}");
   const [t,th,cc,s]=['tokens.css','theme.css','component-contract.css','site.css'].map(at);
   assert.ok(t>=0&&th>t&&cc>th&&s>cc,'SiteLayout 必須依序連結 tokens.css、theme.css、component-contract.css、site.css');
-  assert.ok(layout.includes('--accent:${palette.accent}'),'殼的 --accent 必須仍是 palette.accent');
-  assert.ok(layout.includes('--brand:${palette.primary}')&&layout.includes('--ink:${palette.text}')&&layout.includes('--bg:${palette.background}'),'殼的 --brand／--ink／--bg 必須仍由 palette 寫入');
+  // 階段 2：殼不得再寫私有的設計變數（<body style> 與 site.css :root 都不行），否則 Token 與殼會再次出現兩套語意
+  assert.ok(!/style=\{variables\}|--(?:brand|ink|bg|panel|accent|serif):\$\{/.test(layout),'殼的 SiteLayout 不得再用 <body style> 寫入私有設計變數（--brand／--ink／--bg／--panel／--accent／--serif）');
+  const siteDecl=declaredIn(readFileSync(join(site,'public/site.css'),'utf8'));
+  assert.deepEqual(['--brand','--ink','--bg','--panel','--accent','--serif'].filter(n=>siteDecl.has(n)),[],'殼的 site.css 不得宣告私有設計變數，請改讀 L1 Token');
   for(const f of ['public/tokens.css','public/theme.css','public/component-contract.css','public/site.css'])assert.ok(existsSync(join(site,f)),f+' 不存在');
   assert.ok(/prebuild/.test(readFileSync(join(site,'package.json'),'utf8')),'prebuild 必須重產 theme.css');
   assert.ok(!layout.includes('legacy-aliases.css'),'殼宿主不得連結 legacy-aliases.css');
@@ -42,6 +45,7 @@ export function checkPrototypeSource(site){
 }
 
 // 動態：建置後的 dist 在瀏覽器中的算出值。palette 需含不同於 primary 的 accent，才有辨識力。
+// 階段 2：強調色讀 --color-accent（＝palette.accent）；body 上不得再有 --brand／--ink／--bg／--panel／--accent／--serif。
 export async function checkShellRuntime(dist,palette,{route='',probe}={}){
   assert.ok(palette?.accent&&palette.accent.toLowerCase()!==palette.primary.toLowerCase(),'檢查用色票的 accent 必須不同於 primary');
   const root=resolve(dist);
@@ -60,19 +64,17 @@ export async function checkShellRuntime(dist,palette,{route='',probe}={}){
     const page=await browser.newPage();
     await page.goto('http://localhost:'+server.address().port+'/'+route);
     const got=await page.evaluate(({probe})=>{
-      // 殼把 palette 寫在 <body style>，殼元件（body 之下）讀到的是 body 上的算出值；Token 在 :root。
       const v=(n,el=document.body)=>getComputedStyle(el).getPropertyValue(n).trim().toLowerCase();
-      const out={accent:v('--accent'),brand:v('--brand'),colorPrimary:v('--color-primary'),colorAccent:v('--color-accent'),tokensLoaded:v('--space-2',document.documentElement)!==''};
+      const out={privateVars:['--brand','--ink','--bg','--panel','--accent','--serif'].filter(n=>v(n)!==''),colorPrimary:v('--color-primary'),colorAccent:v('--color-accent'),tokensLoaded:v('--space-2',document.documentElement)!==''};
       if(probe){const e=document.querySelector(probe.selector);out.probe=e?getComputedStyle(e)[probe.prop]:null;}
       return out;
     },{probe});
     const hex=h=>{const n=parseInt(h.slice(1),16);return `rgb(${n>>16&255}, ${n>>8&255}, ${n&255})`;};
     const norm=s=>{if(!s)return s;s=s.trim().toLowerCase();return s.startsWith('#')?s:s;};
-    assert.equal(norm(got.accent),palette.accent.toLowerCase(),'殼的 --accent 載入 tokens.css 後必須仍是 palette.accent，實際：'+got.accent);
-    assert.notEqual(norm(got.accent),norm(got.colorPrimary),'--accent 不得變成 primary');
-    assert.equal(norm(got.brand),palette.primary.toLowerCase(),'殼的 --brand 必須仍是 palette.primary');
-    assert.equal(norm(got.colorPrimary),palette.primary.toLowerCase(),'tokens.css 已載入：--color-primary 必須等於 palette.primary');
-    assert.equal(norm(got.colorAccent),palette.accent.toLowerCase(),'tokens.css 已載入：--color-accent 必須等於 palette.accent');
+    assert.deepEqual(got.privateVars,[],'殼的 body 不得再有私有設計變數，實際：'+got.privateVars.join('、'));
+    assert.notEqual(norm(got.colorAccent),norm(got.colorPrimary),'--color-accent 不得變成 primary');
+    assert.equal(norm(got.colorPrimary),palette.primary.toLowerCase(),'--color-primary 必須等於 palette.primary');
+    assert.equal(norm(got.colorAccent),palette.accent.toLowerCase(),'--color-accent 必須等於 palette.accent');
     assert.ok(got.tokensLoaded,'tokens.css 未載入（--space-2 不存在）');
     if(probe)assert.equal(got.probe,hex(palette.accent),'殼元件（'+probe.selector+'）的 '+probe.prop+' 必須讀到 palette.accent，實際：'+got.probe);
     return got;
@@ -81,22 +83,24 @@ export async function checkShellRuntime(dist,palette,{route='',probe}={}){
 
 // 檢查器自己的負向／正向對照（需要瀏覽器）：accent 被換成 primary 時必須失敗，維持 palette.accent 時必須通過。
 export async function selfTestShellRuntime(){
-  const {mkdtempSync,mkdirSync,writeFileSync,rmSync}=await import('node:fs');
+  const {mkdtempSync,writeFileSync,rmSync}=await import('node:fs');
   const {tmpdir}=await import('node:os');
   const palette={primary:'#245E50',secondary:'#58776C',accent:'#C49B70',background:'#F7F8F4',text:'#1F2924'};
-  const mk=accentValue=>{
+  const mk=({themeAccent=palette.accent,bodyStyle=''}={})=>{
     const dir=mkdtempSync(join(tmpdir(),'shell-token-selftest-'));
-    writeFileSync(join(dir,'tokens.css'),':root{--color-primary:var(--brand-primary);--color-accent:var(--brand-accent,var(--color-primary));--space-2:1rem;--accent:var(--color-primary)}');
-    writeFileSync(join(dir,'theme.css'),`:root{--brand-primary:${palette.primary};--brand-accent:${palette.accent}}`);
-    writeFileSync(join(dir,'site.css'),'p{color:#000}');
-    writeFileSync(join(dir,'index.html'),`<!doctype html><html><head><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/theme.css"><link rel="stylesheet" href="/site.css"></head><body style="--brand:${palette.primary};--ink:${palette.text};--bg:${palette.background};--accent:${accentValue};"><p>x</p></body></html>`);
+    writeFileSync(join(dir,'tokens.css'),':root{--color-primary:var(--brand-primary);--color-accent:var(--brand-accent,var(--color-primary));--space-2:1rem}');
+    writeFileSync(join(dir,'theme.css'),`:root{--brand-primary:${palette.primary};--brand-accent:${themeAccent}}`);
+    writeFileSync(join(dir,'site.css'),'p{color:var(--color-accent)}');
+    writeFileSync(join(dir,'index.html'),`<!doctype html><html><head><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/theme.css"><link rel="stylesheet" href="/site.css"></head><body${bodyStyle?` style="${bodyStyle}"`:''}><p>x</p></body></html>`);
     return dir;
   };
-  const good=mk(palette.accent),bad=mk(palette.primary);
+  const good=mk(),badAccent=mk({themeAccent:palette.primary}),badPrivate=mk({bodyStyle:`--accent:${palette.accent}`});
   try{
-    await checkShellRuntime(good,palette);
-    let failed=false;
-    try{await checkShellRuntime(bad,palette);}catch{failed=true;}
-    assert.ok(failed,'檢查器自我測試：--accent 被換成 primary 時應該失敗，卻通過了');
-  }finally{rmSync(good,{recursive:true,force:true});rmSync(bad,{recursive:true,force:true});}
+    await checkShellRuntime(good,palette,{probe:{selector:'p',prop:'color'}});
+    for(const [label,dir] of [['accent 被換成 primary',badAccent],['body 又出現私有變數',badPrivate]]){
+      let failed=false;
+      try{await checkShellRuntime(dir,palette);}catch{failed=true;}
+      assert.ok(failed,'檢查器自我測試：'+label+'時應該失敗，卻通過了');
+    }
+  }finally{for(const d of [good,badAccent,badPrivate])rmSync(d,{recursive:true,force:true});}
 }

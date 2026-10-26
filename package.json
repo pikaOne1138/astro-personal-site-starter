@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/test-release-readiness.mjs && node scripts/test-start-record.mjs && node scripts/test-gates.mjs && node scripts/test-pilot-token-consumption.mjs && node scripts/test-shell-tokens.mjs && node scripts/test-shell-vars.mjs && node scripts/build-student-pack.mjs && node scripts/verify-route-skill-packs.mjs && node scripts/build-atp-experiments.mjs && astro build && node scripts/write-robots.mjs && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/verify-site-output.mjs",
+    "build": "node scripts/test-release-readiness.mjs && node scripts/test-start-record.mjs && node scripts/test-gates.mjs && node scripts/test-pilot-token-consumption.mjs && node scripts/test-shell-tokens.mjs && node scripts/test-shell-vars.mjs && node scripts/test-css-resolution.mjs && node scripts/build-student-pack.mjs && node scripts/verify-route-skill-packs.mjs && node scripts/build-atp-experiments.mjs && astro build && node scripts/write-robots.mjs && pagefind --site dist --root-selector main && node scripts/build-exact-search.mjs && node scripts/verify-site-output.mjs",
     "preview": "astro preview",
+    "test:css-resolution": "node scripts/test-css-resolution.mjs",
     "test:student-safety": "node scripts/test-student-responsive-pack.mjs",
     "test:student-browser": "node scripts/test-student-responsive-browser.mjs",
     "test:student-responsive-e2e": "node scripts/test-student-responsive-e2e.mjs",

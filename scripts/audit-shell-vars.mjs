@@ -1,11 +1,12 @@
-// 殼版型的 CSS 變數引用掃描（階段 1 休眠／碰撞檢查）。
+// 殼版型的 CSS 變數引用掃描。
 // 對「實際會載入、會用到」的 CSS（建置後 dist 的所有 html 內嵌 <style>、style=""、連結的 css，不含 tokens.css／theme.css）
-// 掃出全部 var(--*) 引用，對照宿主在載入 Token 之前就有定義的變數（殼自身行內變數、site.css、component-contract.css、版型自己的區域變數），
-// 再對照 tokens.css／theme.css 會新增定義的變數，分成三類：
-//   A 休眠啟用：有引用、宿主沒定義、tokens／theme 有定義 → 載入 Token 後原本無效的宣告會突然生效（畫面改變）。必須為空。
-//   B 同名碰撞：宿主與 tokens／theme 都有宣告 → 勝出者必須是宿主（body 行內變數、site.css 的 :root 在 tokens 之後、元件區域變數）。只准白名單內的名稱。
+// 掃出全部 var(--*) 引用，對照宿主自己定義的變數（site.css、component-contract.css、版型與樣板容器的區域變數），
+// 再對照 tokens.css／theme.css 定義的變數，分成三類：
+//   A 引用 Token：有引用、宿主沒定義、tokens／theme 有定義。階段 2 起殼以 L1 Token 為來源，所以這是正常狀態，只列出不當缺陷
+//     （階段 1 時它是「休眠啟用」缺陷，那時殼不依賴 Token）。
+//   B 同名碰撞：宿主與 tokens／theme 都有宣告 → 沒有白名單，必須為空（舊名別名已拆到 legacy-aliases.css，殼不連結，見 ai-workbench#22）。
 //   C 仍未定義：引用在載入 Token 後依然沒有定義 → 只准白名單內的「有後備值的選用參數」。
-// 這是靜態、以名稱為單位的檢查；作用域層級（區域變數在子樹外被引用）由 cmp 逐元素算出值比對補上，見階段 1 報告。
+// 這是靜態、以名稱為單位的檢查；作用域層級（區域變數在子樹外被引用，例如舊的 :root --line 引用 body 才有的變數）由 cmp 逐元素算出值比對補上，見階段 2 報告。
 import {readFileSync,existsSync,readdirSync,statSync} from 'node:fs';
 import {join} from 'node:path';
 import assert from 'node:assert/strict';
@@ -89,93 +90,11 @@ export function classify(corpus,tokenCss,{slug}={}){
 export function siteSlug(dist){const h=join(dist,'index.html');const m=existsSync(h)&&readFileSync(h,'utf8').match(/data-site-family="([^"]+)"/);return m?m[1]:undefined;}
 export function auditDist(dist,tokenCss){return classify(corpusFromDist(dist),tokenCss,{slug:siteSlug(dist)});}
 
-// 政策：A 必須為空；B 必須為空（沒有白名單）；C 只准白名單且引用處都有後備值。
+// 政策（階段 2）：殼本來就以 L1 Token 為來源，所以 A（引用了 tokens.css 才定義的名稱）不再是缺陷，只當資訊列出；B 必須為空（沒有白名單）；C 只准白名單且引用處都有後備值。
+// （階段 1 的「A 必須為空」與動態的休眠啟用檢查已移除：階段 2 之後，沒有 Token 殼就不成立，由連結順序與算出值檢查把關。）
 export function assertShellVars(result,label=''){
   const w=label?label+'：':'';
-  assert.deepEqual(result.A.map(x=>x.name),[],w+'休眠啟用（引用了宿主沒定義、載入 Token 後才定義的變數）：'+result.A.map(x=>x.name+'（'+x.files.join('、')+'）').join('；'));
   assert.deepEqual(result.B.map(x=>x.name),[],w+'同名碰撞（宿主與 tokens.css 定義同一個名稱）：'+result.B.map(x=>x.name).join('、'));
   const badC=result.C.filter(x=>!OPTIONAL_C[x.name]||!x.fallbackOnly);
   assert.deepEqual(badC.map(x=>x.name),[],w+'仍未定義的引用：'+badC.map(x=>x.name+'（'+x.files.join('、')+'）').join('；'));
-}
-
-// ---- 動態：以「不載入 tokens.css／theme.css」的同一份 dist 為基準（＝載入前的實際狀態），
-// 找出「引用了 Token 才有的變數、而該元素在沒有 Token 時算不出值」的元素。這能抓到靜態名稱掃描看不到的作用域問題
-// （例如 --text 只在版型根元素內有區域定義，根元素外的引用在載入 Token 後會突然生效）。
-// 規則：樣式表裡含 var(--名稱) 的每條規則（--名稱 ∈ tokens／theme 定義的名稱），其選擇器（去掉 :hover／:focus／偽元素）選到的每個元素，
-// 在沒有 Token 的狀態下該名稱必須已有值；沒有 → 該元素會在載入 Token 後被啟用。
-import {createServer} from 'node:http';
-import {resolve,sep} from 'node:path';
-const MIME={'.html':'text/html;charset=utf-8','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml','.json':'application/json'};
-export async function auditReferencedRuntime(dist,tokenCss,{routes}={}){
-  const root=resolve(dist);
-  const names=[...declaredIn(tokenCss)];
-  const server=createServer((q,res)=>{
-    let f=resolve(root,'.'+decodeURIComponent(q.url.split('?')[0]));
-    if(f!==root&&!f.startsWith(root+sep)){res.statusCode=403;return res.end();}
-    if(existsSync(f)&&statSync(f).isDirectory())f=join(f,'index.html');
-    if(!existsSync(f)){res.statusCode=404;return res.end();}
-    res.setHeader('content-type',MIME[f.slice(f.lastIndexOf('.'))]||'application/octet-stream');res.end(readFileSync(f));
-  });
-  await new Promise(r=>server.listen(0,r));
-  const {chromium}=await import('playwright');
-  const browser=await chromium.launch({headless:true});
-  const violations=[];let elements=0,pages=0;
-  try{
-    const list=routes??['',...walk(root).filter(f=>f.endsWith('/index.html')).map(f=>f.slice(root.length+1,-'index.html'.length)).filter(r=>r&&!r.startsWith('_astro')&&!r.startsWith('pagefind'))];
-    for(const route of list){
-      for(const width of [1440,390]){
-        const page=await browser.newPage({viewport:{width,height:900}});
-        await page.route(/\/(tokens|theme)\.css(\?|$)/,r=>r.abort());
-        await page.goto('http://localhost:'+server.address().port+'/'+route);
-        const found=await page.evaluate(names=>{
-          const set=new Set(names),out=[],seen=new Set();let count=0;
-          const visit=(rules)=>{for(const rule of rules){
-            if(rule.cssRules&&!rule.selectorText){visit(rule.cssRules);continue;}
-            if(!rule.selectorText||!rule.style)continue;
-            const used=new Set();
-            for(let i=0;i<rule.style.length;i++){const v=rule.style.getPropertyValue(rule.style[i]);for(const m of v.matchAll(/var\(\s*(--[a-zA-Z0-9-]+)/g))if(set.has(m[1]))used.add(m[1]);}
-            // 原始文字（custom property 的值不會出現在 style[i] 迴圈外的情況）
-            for(const m of rule.cssText.matchAll(/var\(\s*(--[a-zA-Z0-9-]+)/g))if(set.has(m[1]))used.add(m[1]);
-            if(!used.size)continue;
-            for(const sel of rule.selectorText.split(',')){
-              const base=sel.replace(/::?(hover|focus|focus-visible|focus-within|active|before|after|first-letter|first-line|placeholder|marker|selection)\b/g,'').trim();
-              let els;try{els=document.querySelectorAll(base||'*')}catch(e){continue}
-              for(const el of els){count++;const cs=getComputedStyle(el);
-                for(const n of used){if(cs.getPropertyValue(n).trim()===''){const key=sel+'|'+n;if(!seen.has(key)){seen.add(key);out.push({selector:sel.trim().slice(0,90),name:n});}}}}
-            }
-          }};
-          for(const sheet of document.styleSheets){try{visit(sheet.cssRules)}catch(e){}}
-          return {out,count};
-        },names);
-        violations.push(...found.out.map(v=>({...v,route:'/'+route,width})));elements+=found.count;pages++;
-        await page.close();
-      }
-    }
-  }finally{await browser.close();server.close();}
-  const uniq=new Map();for(const v of violations)uniq.set(v.selector+'|'+v.name,v);
-  return {violations:[...uniq.values()],elements,pages};
-}
-
-// 檢查器自己的對照組（需要瀏覽器）：Token 才有的引用要抓到；宿主有定義就放行；區域定義在子樹外的引用要抓到。
-export async function selfTestAuditRuntime(){
-  const {mkdtempSync,mkdirSync,writeFileSync,rmSync}=await import('node:fs');
-  const {tmpdir}=await import('node:os');
-  const tok=':root{--color-content:#111;--text:var(--color-content)}';
-  const mk=(css,body)=>{const d=mkdtempSync(join(tmpdir(),'audit-runtime-'));
-    writeFileSync(join(d,'tokens.css'),tok);writeFileSync(join(d,'theme.css'),':root{--brand-primary:#000}');writeFileSync(join(d,'site.css'),css);
-    writeFileSync(join(d,'index.html'),'<!doctype html><html><head><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/theme.css"><link rel="stylesheet" href="/site.css"></head><body>'+body+'</body></html>');return d;};
-  const dirs=[];
-  try{
-    // 1 休眠啟用：引用 Token 才有的名稱，宿主沒定義
-    let d=mk('a:hover{background:var(--color-content)}','<a href="#">x</a>');dirs.push(d);
-    let r=await auditReferencedRuntime(d,tok);assert.ok(r.violations.some(v=>v.name==='--color-content'),'對照組：休眠啟用沒被抓到');
-    // 2 宿主定義了契約變數 → 放行
-    d=mk(':root{--hover:transparent}a:hover{background:var(--hover)}','<a href="#">x</a>');dirs.push(d);
-    r=await auditReferencedRuntime(d,tok);assert.deepEqual(r.violations,[],'對照組：有宿主定義卻被誤抓');
-    // 3 區域定義只在子樹內：子樹內放行、子樹外的引用要抓到（--text 的情況）
-    d=mk('.scope{--text:#222}.inside,.outside{color:var(--text)}','<div class="scope"><p class="inside">a</p></div><p class="outside">b</p>');dirs.push(d);
-    r=await auditReferencedRuntime(d,tok);assert.deepEqual(r.violations.map(v=>v.selector+'|'+v.name),['.outside|--text'],'對照組：子樹外引用應被抓到');
-    d=mk('.scope{--text:#222}.inside{color:var(--text)}','<div class="scope"><p class="inside">a</p></div>');dirs.push(d);
-    r=await auditReferencedRuntime(d,tok);assert.deepEqual(r.violations,[],'對照組：子樹內引用不應被抓');
-  }finally{for(const x of dirs)rmSync(x,{recursive:true,force:true});}
 }

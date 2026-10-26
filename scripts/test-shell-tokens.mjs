@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 殼版型階段 1：13 款（art-direction 2＋native-expansion 11）的新匯出站載入 tokens.css／theme.css，且殼自己的變數語意不變。
+// 殼版型階段 1：13 款（art-direction 2＋native-expansion 11）的新匯出站載入 tokens.css／theme.css，且殼不再有私有設計變數（階段 2），一律讀 L1 Token。
 // 這裡只做不需要瀏覽器的靜態檢查（含負向對照）；建置後的算出值檢查在 verify-starter-export（FULL）與其自我測試。
 import {mkdtempSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
@@ -28,7 +28,8 @@ try{
   expectFail('拿掉 tokens.css 連結',orig.replace("<link rel=\"stylesheet\" href={base+'tokens.css'}/>",''));
   expectFail('連結順序顛倒（site.css 在 theme.css 前）',orig.replace("<link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'site.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/>"));
   expectFail('拿掉宿主契約連結',orig.replace("<link rel=\"stylesheet\" href={base+'component-contract.css'}/>",''));
-  expectFail('殼的 --accent 被改成 primary',orig.replace('--accent:${palette.accent}','--accent:${palette.primary}'));
+  expectFail('殼又在 <body style> 寫入私有 --accent',orig.replace('<body ','<body style={`--accent:${config.brand.palette?.accent}`} '));
+  {const sf=join(first,'public/site.css'),so=readFileSync(sf,'utf8');writeFileSync(sf,':root{--brand:#000}'+so);try{assert.throws(()=>checkShellSource(first),undefined,'殼 site.css 又宣告私有 --brand');}finally{writeFileSync(sf,so);}}
   checkShellSource(first);
   // 殼若被放回別名檔（連結或檔案）、或 tokens.css 又定義舊名，都必須被抓到
   const aliasFile=join(first,'public/legacy-aliases.css'),tokFile=join(first,'public/tokens.css'),tokOrig=readFileSync(tokFile,'utf8');
@@ -47,4 +48,4 @@ try{
   const pa=join(proto,'public/legacy-aliases.css'),pao=readFileSync(pa,'utf8');writeFileSync(pa,':root{--ink:var(--color-content)}');try{assert.throws(()=>checkPrototypeSource(proto),undefined,'別名檔缺舊名');}finally{writeFileSync(pa,pao);}
   checkPrototypeSource(proto);
 }finally{rmSync(tmp,{recursive:true,force:true});}
-console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的 --accent 仍是 palette.accent；負向對照 4 項；別名檔只在 prototype 宿主出貨、殼宿主與 tokens.css 皆無別名，負向對照 6 項）');
+console.log('shell tokens: PASS（13 款殼版型新匯出站：tokens.css→theme.css→site.css 依序載入，殼的強調色是 --color-accent＝palette.accent，私有 --brand／--ink／--bg／--panel／--accent／--serif 已移除；負向對照 5 項；別名檔只在 prototype 宿主出貨、殼宿主與 tokens.css 皆無別名，負向對照 6 項）');
