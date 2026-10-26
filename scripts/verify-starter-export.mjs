@@ -8,7 +8,9 @@ import headingFields from '../src/data/layout-assembly/expanded/heading-fields.j
 import expansion from '../src/data/layout-assembly/expansion-directions.json' with {type:'json'};
 import {checkShellSource,checkPrototypeSource,checkShellRuntime,selfTestShellRuntime} from './shell-token-check.mjs';
 import {auditDist,assertShellVars} from './audit-shell-vars.mjs';
+import {auditSite,assertCssResolutionClean,selfTestCssResolution} from './audit-css-resolution.mjs';
 await selfTestShellRuntime();
+await selfTestCssResolution();
 const root=mkdtempSync(join(tmpdir(),'astro-starter-test-'));
 function assertStudentContext(site,expectedSlug){
  const config=JSON.parse(readFileSync(join(site,'site.config.json'),'utf8'));
@@ -407,6 +409,7 @@ try{
       execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
       execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
       await captureStudentSite(slug,kind,site);
+      await auditSite(site,{label:'prototype:'+slug}); // CSS 結算層級稽核：靜態＋換色票傳播（修前的 --line 凍結類缺陷必須在這裡失敗）
       if(kind==='helper')for(const route of ['faq','booking','first-visit']){const routeHtml=readFileSync(join(site,'dist',route,'index.html'),'utf8');if(!routeHtml.includes('data-service-family="'+slug+'"'))throw Error('Lost helper '+route+' family: '+slug);if(slug!=='trust-path'&&!routeHtml.includes(route==='faq'?'協助來訪者釐清實際工作與生活選擇':'先閱讀服務說明，再用公開聯絡方式詢問'))throw Error('Lost true facts in '+slug+' '+route);}
       const html=readFileSync(join(site,'dist/index.html'),'utf8');
       if(!html.includes('data-assembled-layout="'+slug+'"'))throw Error('Lost assembled '+slug+' DOM');
@@ -522,6 +525,7 @@ try{
     execFileSync('npm',['install','--no-audit','--no-fund'],{cwd:site,stdio:'inherit'});build();
     execFileSync('npm',['run','verify'],{cwd:site,stdio:'inherit'});
     checkShellSource(site);
+    await auditSite(site,{label:'shell:'+slug});
     // 休眠／碰撞掃描：建置後實際載入的 CSS，A 類（載入 Token 才生效的引用）必須為空
     {const audit=auditDist(join(site,'dist'),readFileSync(join(site,'public/tokens.css'),'utf8')+'\n'+readFileSync(join(site,'public/theme.css'),'utf8'));assertShellVars(audit,slug);}
     await checkShellRuntime(join(site,'dist'),plan.brand.palette,{probe:slug==='practice-compass'?{selector:'.fit-grid article:last-child',prop:'borderTopColor'}:undefined});
@@ -598,6 +602,7 @@ try{
     execFileSync('npm',['run','build'],{cwd:site,stdio:'inherit'});
     await captureStudentSite(slug,kind,site,{variant:'owned-portrait',routes:['','about/'],imageCheck:{fit:'contain',position:'50% 100%',heading:Object.keys(headingFields[slug]).length>0}});
   }
+  assertCssResolutionClean({reportFile:process.env.CSS_RESOLUTION_REPORT});
   console.log('Starter exporter checks passed: twelve established assemblies; FULL mode adds thirteen in-progress adapters');
 }finally{
  if(visualEnabled){

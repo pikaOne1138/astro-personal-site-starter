@@ -174,3 +174,8 @@ G-11 的色票對比檢查（`theme-css.mjs` 的 `contrastPairs`）目前有五�
 - 這些是 L2 元件變數，不是全域 Token：不進第 4 節詞彙表，不受第 6 節「名稱即 API」的全域規則約束，但名稱視同元件的公開介面（共用元件新增引用就必須在兩個宿主檔同步宣告，`scripts/test-shell-vars.mjs` 會檢查）。
 - 機器檢查：`scripts/audit-shell-vars.mjs`（建置後 dist 的全部 `var(--*)` 引用分 A 引用 Token／B 同名碰撞／C 仍未定義；階段 2 起殼以 L1 Token 為來源，A 只列出不算缺陷，B 必須為空（沒有白名單），C 只准白名單的有後備值選用參數）。階段 1 的動態「不載入 Token 時每個引用元素都已有值」檢查已移除——殼現在依賴 Token，改由連結順序（`shell-token-check.mjs`）、建置後算出值（FULL）與逐元素比對把關。併入 `npm run build` 的測試與 `verify-starter-export` FULL。
 
+## 12. CSS 結算層級（公式型自訂屬性的規則與稽核）
+
+自訂屬性在**宣告它的元素**結算，並以結算後的值往下繼承。所以：**公式型自訂屬性（值含 `var()`／`color-mix()`）的宣告層不得高於它任一原料變數的注入／覆寫層**。層級：`:root`／`html`＝root，`body`＝body，其餘＝element。違反時，上層需求改了（換色票）、公式卻在較高層用舊值結算，下層改不到——殼階段 1 的 `--line` 就是這樣凍結的。修法二擇一：把原料的注入點移到公式的層級或更高（殼的做法：色票由 `theme.css` 在 `:root` 提供），或把公式移到原料的層級；**不准用釘字面值或 `design-fixed` 保留凍結行為**。
+
+稽核：`scripts/audit-css-resolution.mjs`——靜態（公式宣告層高於原料覆寫層即嫌疑）與動態（同站換色票重建後，源自 `var()` 的可見顏色跨色票不變即嫌疑）。分類檔 `scripts/css-resolution-classification.json` 只收「刻意固定」與「裝飾不存在」，需理由與追蹤編號；真漏必須修。說明、對 `main` 的對照組與完整清單見 `D-T-css-resolution-audit-report.md`。
