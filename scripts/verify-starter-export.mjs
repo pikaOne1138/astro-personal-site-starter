@@ -181,7 +181,7 @@ async function captureStudentSite(slug,kind,site,scenario={}){
     errors.push(...compositionIssues);
     if(scenario.brandCheck){
       const brand=await page.evaluate(()=>{const canvas=document.querySelector('[data-native-page]');return {background:getComputedStyle(canvas).backgroundColor,ink:getComputedStyle(canvas).color,font:getComputedStyle(document.querySelector('main h1')).fontFamily};});
-      if(brand.background!=='rgb(23, 38, 52)'||brand.ink!=='rgb(240, 245, 251)'||!brand.font.includes('Arial'))errors.push('Native Site Brief brand tokens not applied: '+JSON.stringify(brand));
+      if(brand.background!=='rgb(23, 38, 52)'||brand.ink!=='rgb(240, 245, 251)'||!brand.font.includes('Noto Sans TC')||/serif/i.test(brand.font.replace(/sans-serif/gi,'')))errors.push('Native Site Brief brand tokens not applied: '+JSON.stringify(brand));
     }
     const check=await page.evaluate(()=>({
       overflow:document.documentElement.scrollWidth>innerWidth+2,
