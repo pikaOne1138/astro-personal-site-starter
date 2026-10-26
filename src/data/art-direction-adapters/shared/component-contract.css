@@ -1,26 +1,28 @@
 /*
  * component-contract.css — 共用元件的宿主契約（殼宿主：art-direction／native-expansion 共 13 款）
  *
- * 殼版型目前的實際效果是「共用元件的這些裝飾（選單底與框、hover 底、樣板與頁尾的底色與頂線）都不出現」
- * （原本引用的 --color-* 在殼不存在，宣告無效）。這份契約保持這個效果：裝飾值是中性值，不是新設計。
- * 要讓殼版型也有這些裝飾，是設計決定（待作者）；那時只改這份檔的值，不必動共用元件。
+ * 殼的裝飾（選單底與框、hover 底、樣板區段的主色頂線、頁尾頂線與底色）全部由學員色票派生：
+ * 只讀 L1 語意 Token（--color-primary／surface／content／inverse…），不寫任何色碼，
+ * 所以換色票時整個外框跟著變色，形狀（框、陰影、線寬）固定。設計說明見 docs/design-tokens/D-T-shell-decor-report.md。
+ * 宣告層：下列公式與它們的原料（theme.css 的色票、site.css 的 --line）都在 :root，層級相同（TOKEN-SPEC §12）；
+ * 若日後把任一原料改成在 body／元素上注入，必須同時把這裡的公式移到同層或更低層，稽核（audit-css-resolution）會擋。
  * 階段 2：字族與強調色／焦點環改讀 L1 Token（殼自己的 --brand／--ink／--bg／--panel／--accent／--serif 已移除）。
- * 與 prototype 宿主的 src/styles/component-contract.css 變數名稱必須一致。
+ * 與 prototype 宿主的 src/styles/component-contract.css 變數名稱必須一致（值不同：框線讀 --color-line（與 prototype 相同，不讀版型可能局部覆寫的 --line），hover 底帶主色淡染、樣板為頂線而非底色）。
  */
 :root{
-  --student-nav-menu-bg:transparent;
-  --student-nav-menu-fg:inherit;
-  --student-nav-menu-border:none;
-  --student-nav-menu-shadow:none;
-  --student-nav-hover-bg:transparent;
+  --student-nav-menu-bg:var(--color-surface);
+  --student-nav-menu-fg:var(--color-content);
+  --student-nav-menu-border:1px solid var(--color-line);
+  --student-nav-menu-shadow:0 14px 28px color-mix(in srgb,var(--color-content) 9%,transparent);
+  --student-nav-hover-bg:color-mix(in srgb,var(--color-primary) 10%,transparent);
   --student-nav-focus-ring:var(--color-primary);
-  --student-pattern-bg:transparent;
-  --student-pattern-rule:none;
-  --student-footer-rule:none;
-  --student-footer-editorial-bg:transparent;
-  --student-footer-professional-bg:transparent;
-  --student-footer-professional-fg:inherit;
-  --student-footer-minimal-bg:transparent;
+  --student-pattern-bg:var(--color-surface);
+  --student-pattern-rule:3px solid var(--color-primary);
+  --student-footer-rule:2px solid var(--color-primary);
+  --student-footer-editorial-bg:color-mix(in srgb,var(--color-primary) 10%,var(--color-surface));
+  --student-footer-professional-bg:var(--color-inverse-surface);
+  --student-footer-professional-fg:var(--color-on-inverse);
+  --student-footer-minimal-bg:var(--color-surface);
   --student-family-heading-font:var(--font-heading);
   --student-family-body-font:var(--font-body);
   --student-family-accent:var(--color-primary);

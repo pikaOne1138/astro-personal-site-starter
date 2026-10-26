@@ -70,7 +70,18 @@ assert.ok(used.size>=10,'共用元件應該用到 ≥10 個契約變數：'+used
 for(const n of used){assert.ok(proto.has(n),'prototype 宿主契約缺 '+n);assert.ok(shell.has(n),'殼宿主契約缺 '+n);}
 assert.deepEqual([...proto].sort(),[...shell].sort(),'兩個宿主契約檔宣告的名稱必須一致');
 for(const n of proto)assert.ok(used.has(n),'契約宣告了沒人用的變數 '+n);
-// 殼宿主的值：裝飾必須是「無效果」的中性值；字族、強調色、焦點環讀 L1 Token（階段 2）
-const neutral=/^(transparent|inherit|none|var\(--font-heading\)|var\(--font-body\)|var\(--color-primary\))$/;  // 階段 2：裝飾值維持中性（transparent／inherit／none）；字族、強調色、焦點環讀 L1 Token
-for(const m of read('src/data/art-direction-adapters/shared/component-contract.css').matchAll(/(--student-[a-z-]+)\s*:\s*([^;}]+)/g))assert.ok(neutral.test(m[2].trim()),'殼宿主契約的 '+m[1]+' 必須是中性值或殼現況的等值，實際：'+m[2]);
-console.log('shell vars: PASS（掃描分類 A／B／C 對照組、元件只引用契約變數、兩個宿主契約一致且殼宿主為中性值）');
+// 殼宿主的值（裝飾設計案）：每個值必須由 Token 派生——只能引用 L1 語意 Token（--color-*／--font-*），
+// 不得出現色碼、rgb()／hsl()／色名；且至少有一部分值不是中性（裝飾真的存在）。
+const shellContract=read('src/data/art-direction-adapters/shared/component-contract.css').replace(/\/\*[\s\S]*?\*\//g,'');
+const decl=[...shellContract.matchAll(/(--student-[a-z-]+)\s*:\s*([^;}]+)/g)].map(m=>[m[1],m[2].trim()]);
+const literalColor=/#[0-9a-fA-F]{3,8}\b|\b(?:rgb|rgba|hsl|hsla|oklch|oklab|lab|lch)\(|\b(?:white|black|red|green|blue|gray|grey|orange|yellow|purple)\b/;
+const allowedVar=/^--(?:color-[a-z-]+|font-[a-z-]+)$/;
+const neutralValue=/^(transparent|inherit|none)$/;
+for(const [n,v] of decl){
+  assert.ok(!literalColor.test(v),'殼宿主契約的 '+n+' 不得釘字面色：'+v);
+  for(const m of v.matchAll(/var\((--[a-z-]+)/g))assert.ok(allowedVar.test(m[1]),'殼宿主契約的 '+n+' 只能讀 L1 Token，實際讀 '+m[1]);
+}
+assert.ok(decl.filter(([n,v])=>/-(?:menu-bg|menu-border|menu-shadow|hover-bg|pattern-bg|pattern-rule|footer-rule|editorial-bg|professional-bg|minimal-bg)$/.test(n)||/footer-(?:rule|editorial-bg|professional-bg|minimal-bg)/.test(n)).every(([n,v])=>!neutralValue.test(v)),'殼的裝飾值不得再是中性值（選單、hover、樣板、頁尾裝飾必須存在）');
+// 負向對照：釘色碼與讀私有變數都必須被上面的規則擋下
+assert.ok(literalColor.test('1px solid #ccc')&&literalColor.test('rgb(0 0 0 / .1)')&&!allowedVar.test('--brand')&&!literalColor.test('color-mix(in srgb,var(--color-primary) 10%,transparent)'),'殼裝飾檢查的對照組');
+console.log('shell vars: PASS（掃描分類 A／B／C 對照組、元件只引用契約變數、兩個宿主契約一致、殼裝飾值全由 Token 派生且不釘字面色）');

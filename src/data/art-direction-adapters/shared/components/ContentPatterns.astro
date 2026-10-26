@@ -22,8 +22,8 @@ const action=value=>value?{label:value.label,href:value.url??base+config.navigat
 </div>}
 <style is:global>
 /* Embedded Patterns inherit their owning canvas. No global Blocks/gallery styles. */
-.pattern-slot{--text:var(--color-content);--muted:color-mix(in srgb,var(--color-content) 70%,var(--color-surface));--accent:var(--color-primary);min-width:0;width:100%;color:var(--color-content);background:var(--color-surface)}
-.pattern-slot .sp-section,.pattern-slot .sp-trust{width:100%;max-width:none;margin:0;padding:48px 0;border-top:1px solid var(--line)}
+.pattern-slot{--text:var(--color-content);--muted:color-mix(in srgb,var(--color-content) 70%,var(--color-surface));--accent:var(--color-primary);min-width:0;width:100%;color:var(--color-content);background:var(--student-pattern-bg)}
+.pattern-slot .sp-section,.pattern-slot .sp-trust{width:100%;max-width:none;margin:0;padding:48px 0;border-top:var(--student-pattern-rule)}
 .pattern-slot .sp-heading,.pattern-slot .sp-trust__heading{max-width:65ch;margin-bottom:32px}
 .pattern-slot .sp-heading h2,.pattern-slot .sp-trust__heading h2{font:400 clamp(28px,4vw,48px)/1.3 var(--font-heading);margin:8px 0;text-wrap:balance}
 .pattern-slot p,.pattern-slot li,.pattern-slot dd{font-size:16px;line-height:1.85;overflow-wrap:anywhere}
