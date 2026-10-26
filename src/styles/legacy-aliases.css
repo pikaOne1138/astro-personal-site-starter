@@ -1,0 +1,31 @@
+/*
+ * legacy-aliases.css — 舊名別名（已隨匯出站發布，視同 API；名稱不得改名或刪除）
+ * 規範：docs/design-tokens/TOKEN-SPEC.md §5
+ *
+ * 從 tokens.css 拆出（ai-workbench#22）：別名只在「以舊名撰寫」的宿主有意義。
+ * 載入順序：tokens.css → legacy-aliases.css → theme.css → component-contract.css → site.css。
+ * 連結它的宿主：12 款 prototype 版型的匯出站。殼版型（art-direction 與 native-expansion 共 13 款）有自己的
+ * --brand／--ink／--bg／--panel／--accent／--serif／--line，不連結本檔——這樣 tokens.css 在殼上只新增 L1 名稱，
+ * 不會在殼的自訂屬性層級留下多出的定義。
+ * 本檔只能寫「舊名 → L1 Token」的別名，不得出現字面值；因此不需要列入 G-11 的掃描排除清單（gates.config.json），照一般來源檔掃描。
+ */
+:root{
+  --brand:var(--color-primary);
+  --accent:var(--color-primary);
+  --ink:var(--color-content);
+  --bg:var(--color-surface);
+  --line:var(--color-line);
+  --heading:var(--color-content);
+  --text:var(--color-content);
+  --surface:var(--color-surface);
+  --muted:var(--color-content-muted);
+  --radius:var(--radius-md);
+  --ed-ink:var(--color-content);
+  --ed-ink-2:var(--color-content-muted);
+  --ed-accent:var(--color-primary);
+  --ed-accent-deco:var(--color-secondary);
+  --ed-panel:var(--color-surface);
+  --ed-line:var(--color-line);
+  --ed-gutter:var(--space-gutter);
+  --ed-wide:var(--width-wide);
+}

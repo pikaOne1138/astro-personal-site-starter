@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,cpSync,existsSync,rmSync} from 'node:fs';
 import {join} from 'node:path';
 import {nativeLayoutAdapters,composeNative} from './native-layout-adapters.mjs';
 const sources=new URL('../src/data/art-direction-adapters/',import.meta.url);
@@ -29,6 +29,8 @@ export const artDirectionAdapters = [
  put(root,'src/components/blocks/safe-href.ts',readFileSync(new URL('../src/components/blocks/safe-href.ts',import.meta.url),'utf8'));
  const css=readFileSync(new URL('shared/site.css',sources),'utf8');put(root,'public/site.css',css);
  put(root,'public/component-contract.css',readFileSync(new URL('shared/component-contract.css',sources),'utf8'));
+ // 殼宿主只拿 tokens.css 的 L1 Token；舊名別名檔（legacy-aliases.css）只屬於以舊名撰寫的 prototype 宿主（ai-workbench#22）。
+ rmSync(join(root,'public/legacy-aliases.css'),{force:true});
  // Preserve the existing full-text build and safety gates; add real discovered topic routes.
  const sitemap=readFileSync(join(root,'src/pages/sitemap.xml.js'),'utf8');
  put(root,'src/pages/sitemap.xml.js',sitemap.replace("const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];","const paths=['',...config.navigation.map(x=>x.path??x.id+'/')];\n if(config.kind==='knowledge') for(const topic of config.artDirection.topics) paths.push((config.navigation.find(x=>x.id==='topics')?.path??'topics/')+topic.slug+'/');"));

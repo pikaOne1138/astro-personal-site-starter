@@ -330,9 +330,10 @@ if(hasAssemblyAdapter){
   '<ArticleDetail entry={entry} previous={previous} next={next}><Content/></ArticleDetail>');
 }
 assets['public/tokens.css']=readFileSync(new URL('../src/styles/tokens.css',import.meta.url),'utf8');
+assets['public/legacy-aliases.css']=readFileSync(new URL('../src/styles/legacy-aliases.css',import.meta.url),'utf8');
 assets['public/theme.css']=themeCss(settings.brand);
 assets['public/component-contract.css']=readFileSync(new URL('../src/styles/component-contract.css',import.meta.url),'utf8');
-assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'tokens.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>");
+assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'tokens.css'}/><link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>");
 pkg.scripts['sync:theme']='node scripts/theme-css.mjs';
 pkg.scripts.predev='node scripts/theme-css.mjs';
 pkg.scripts.prebuild='node scripts/theme-css.mjs';

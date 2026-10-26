@@ -130,5 +130,11 @@
   "rule": "missing-path",
   "match": "public/tokens.css",
   "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 tokens.css／theme-css.mjs 產生）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": "public/legacy-aliases.css",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 legacy-aliases.css 產生；ai-workbench#22）"
  }
 ]

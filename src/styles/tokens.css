@@ -5,9 +5,10 @@
  * 輸入：學員的色票與字體偏好來自 site.config.json，由 SiteLayout 在 :root 寫入
  *       --brand-primary / -secondary / -accent / -background / -text / -on-primary
  *       --brand-heading-font / --brand-body-font / --brand-image-filter。
- * 本檔只做兩件事：把輸入整理成「角色命名」的通用 Token（--color-*、--font-*、--radius-*、--space-*、--width-*、--shadow-*、--image-filter），並保留舊名作為別名。
+ * 本檔只做一件事：把輸入整理成「角色命名」的通用 Token（--color-*、--font-*、--radius-*、--space-*、--width-*、--shadow-*、--image-filter）。
+ * 舊名別名（--brand、--ink、--text 等）已拆到 legacy-aliases.css（ai-workbench#22）：只有以舊名撰寫的 prototype 宿主連結它；殼宿主只拿這裡的 L1 Token。
  * 元件與版型只讀這些 Token（或別名），不得在本檔以外寫主題字面值。
- * 名稱即 API：已發布的名稱不得改名或刪除；要改只能新增，舊名留別名並公告淘汰期。
+ * 名稱即 API：已發布的名稱不得改名或刪除；要改只能新增，舊名留別名（在 legacy-aliases.css）並公告淘汰期。
  */
 :root{
   /* 色彩 */
@@ -55,24 +56,4 @@
   --shadow-md:0 4px 12px color-mix(in srgb,var(--color-content) 14%,transparent);
   --shadow-lg:0 12px 32px color-mix(in srgb,var(--color-content) 18%,transparent);
   --shadow-hard:12px 12px 0 color-mix(in srgb,var(--color-content) 20%,transparent);
-
-  /* 舊名別名（已隨匯出站發布，視同 API；不得刪除） */
-  --brand:var(--color-primary);
-  --accent:var(--color-primary);
-  --ink:var(--color-content);
-  --bg:var(--color-surface);
-  --line:var(--color-line);
-  --heading:var(--color-content);
-  --text:var(--color-content);
-  --surface:var(--color-surface);
-  --muted:var(--color-content-muted);
-  --radius:var(--radius-md);
-  --ed-ink:var(--color-content);
-  --ed-ink-2:var(--color-content-muted);
-  --ed-accent:var(--color-primary);
-  --ed-accent-deco:var(--color-secondary);
-  --ed-panel:var(--color-surface);
-  --ed-line:var(--color-line);
-  --ed-gutter:var(--space-gutter);
-  --ed-wide:var(--width-wide);
 }

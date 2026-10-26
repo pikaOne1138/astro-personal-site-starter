@@ -5,6 +5,14 @@ import {readFileSync,existsSync} from 'node:fs';
 import {join,resolve,sep} from 'node:path';
 import {createServer} from 'node:http';
 import assert from 'node:assert/strict';
+import {declaredIn} from './audit-shell-vars.mjs';
+
+// 舊名別名（legacy-aliases.css，ai-workbench#22）：tokens.css 不得定義；只有 prototype 宿主連結與出貨，殼宿主兩者皆無。
+const aliasNames=()=>[...declaredIn(readFileSync(new URL('../src/styles/legacy-aliases.css',import.meta.url),'utf8'))];
+function tokensHaveNoAliases(site){
+  const defs=declaredIn(readFileSync(join(site,'public/tokens.css'),'utf8'));
+  assert.deepEqual(aliasNames().filter(n=>defs.has(n)),[],'public/tokens.css 不得定義舊名別名（應在 legacy-aliases.css）');
+}
 
 // 靜態：匯出站原始碼。連結順序＝tokens → theme → site；殼仍以 palette 寫入行內變數；theme.css／tokens.css 檔案存在。
 export function checkShellSource(site){
@@ -16,6 +24,21 @@ export function checkShellSource(site){
   assert.ok(layout.includes('--brand:${palette.primary}')&&layout.includes('--ink:${palette.text}')&&layout.includes('--bg:${palette.background}'),'殼的 --brand／--ink／--bg 必須仍由 palette 寫入');
   for(const f of ['public/tokens.css','public/theme.css','public/component-contract.css','public/site.css'])assert.ok(existsSync(join(site,f)),f+' 不存在');
   assert.ok(/prebuild/.test(readFileSync(join(site,'package.json'),'utf8')),'prebuild 必須重產 theme.css');
+  assert.ok(!layout.includes('legacy-aliases.css'),'殼宿主不得連結 legacy-aliases.css');
+  assert.ok(!existsSync(join(site,'public/legacy-aliases.css')),'殼宿主不得出貨 legacy-aliases.css');
+  tokensHaveNoAliases(site);
+}
+
+// 靜態：prototype 宿主。連結順序＝tokens → legacy-aliases → theme → component-contract → site；別名檔存在且定義全部舊名。
+export function checkPrototypeSource(site){
+  const layout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
+  const at=h=>layout.indexOf("href={base+'"+h+"'}");
+  const [t,a,th,cc,s]=['tokens.css','legacy-aliases.css','theme.css','component-contract.css','site.css'].map(at);
+  assert.ok(t>=0&&a>t&&th>a&&cc>th&&s>cc,'SiteLayout 必須依序連結 tokens.css、legacy-aliases.css、theme.css、component-contract.css、site.css');
+  assert.ok(existsSync(join(site,'public/legacy-aliases.css')),'public/legacy-aliases.css 不存在');
+  const defs=declaredIn(readFileSync(join(site,'public/legacy-aliases.css'),'utf8'));
+  assert.deepEqual(aliasNames().filter(n=>!defs.has(n)),[],'legacy-aliases.css 缺舊名');
+  tokensHaveNoAliases(site);
 }
 
 // 動態：建置後的 dist 在瀏覽器中的算出值。palette 需含不同於 primary 的 accent，才有辨識力。
