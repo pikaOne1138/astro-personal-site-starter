@@ -1398,6 +1398,16 @@
         "evidence": ""
       }
     },
+    ".ai/astro-offer-landing/SKILL.md": {
+      "contract": {
+        "status": "NOT TESTED",
+        "evidence": ".ai/astro-offer-landing/SKILL.md"
+      },
+      "scenario": {
+        "status": "NOT TESTED",
+        "evidence": ""
+      }
+    },
     ".ai/astro-page-management/SKILL.md": {
       "contract": {
         "status": "NOT TESTED",
