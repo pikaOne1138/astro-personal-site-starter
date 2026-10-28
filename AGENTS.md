@@ -63,6 +63,7 @@ Do not put version numbers, PR numbers, branch names, milestone names, dates, or
 | Whole-page layout, section order, hero | `.ai/astro-layout-craft/SKILL.md` **and** `.ai/astro-editorial-layout-design/SKILL.md` |
 | Motion, effects, animation | `.ai/astro-motion-craft/SKILL.md`, then `.ai/astro-motion-craft/library/README.md` |
 | Add/change/hide/remove a page or navigation on an existing student site | `.ai/astro-page-management/SKILL.md` |
+| Build or review a single-offer landing page (sell one course, workshop, service package, download, or waitlist) | `.ai/astro-offer-landing/SKILL.md` |
 
 The three quality-gate Skills are procedural checks used **in addition to** the existing workflow, not implemented UI features. The planner exports a Site Brief, **not** a deployed or fully assembled independent site; layout selection, brand visual tokens and navigation plans must remain distinct. Deployment and maintenance Skills must not silently alter the research showcase deployment.
 
