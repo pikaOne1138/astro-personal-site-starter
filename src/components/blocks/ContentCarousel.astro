@@ -1,10 +1,16 @@
 ---
-interface Props {title?:string;}
-const {title='內容輪播'}=Astro.props;
+// dots / sideArrows 預設關閉，既有用法（標題列上一個／下一個按鈕）不變。
+interface Props {title?:string;dots?:boolean;sideArrows?:boolean;}
+const {title='內容輪播',dots=false,sideArrows=false}=Astro.props;
 ---
-<section class="v2-carousel" aria-label={title}>
-<div class="v2-carousel-top"><h3>{title}</h3><div class="v2-carousel-controls"><button type="button" data-prev aria-label="向前瀏覽">←</button><button type="button" data-next aria-label="向後瀏覽">→</button></div></div>
+<section class:list={['v2-carousel',{'v2-carousel--side':sideArrows}]} aria-label={title} data-dots={dots?'true':undefined}>
+<div class="v2-carousel-top"><h3>{title}</h3>{!sideArrows&&<div class="v2-carousel-controls"><button type="button" data-prev aria-label="向前瀏覽">←</button><button type="button" data-next aria-label="向後瀏覽">→</button></div>}</div>
+<div class="v2-carousel-stage">
+{sideArrows&&<button type="button" class="v2-carousel-side v2-carousel-side--prev" data-prev aria-label="向前瀏覽">←</button>}
 <div class="v2-carousel-track" tabindex="0" aria-label={title}><slot /></div>
+{sideArrows&&<button type="button" class="v2-carousel-side v2-carousel-side--next" data-next aria-label="向後瀏覽">→</button>}
+</div>
+{dots&&<div class="v2-carousel-dots" role="group" aria-label={title+'：選擇項目'} hidden></div>}
 </section>
 <script>
 document.querySelectorAll<HTMLElement>('.v2-carousel').forEach(carousel=>{
@@ -13,8 +19,34 @@ carousel.dataset.ready='true';
 const track=carousel.querySelector<HTMLElement>('.v2-carousel-track');
 if(!track)return;
 const step=()=>Math.max(track.clientWidth*0.8,200);
-const behavior=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth';
-carousel.querySelector('[data-prev]')?.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:behavior==='smooth'?'smooth':'instant'}));
-carousel.querySelector('[data-next]')?.addEventListener('click',()=>track.scrollBy({left:step(),behavior:behavior==='smooth'?'smooth':'instant'}));
+const reduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const behavior=()=>reduced()?'instant':'smooth';
+// 有圓點時箭頭一次移動一項；否則維持原本約 80% 寬度的捲動。
+let byItem:((dir:number)=>void)|null=null;
+carousel.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(-1):track.scrollBy({left:-step(),behavior:behavior()})));
+carousel.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(1):track.scrollBy({left:step(),behavior:behavior()})));
+const dotBox=carousel.querySelector<HTMLElement>('.v2-carousel-dots');
+if(!dotBox)return;
+const items=Array.from(track.children) as HTMLElement[];
+if(items.length<2)return;
+dotBox.hidden=false;
+const buttons=items.map((item,i)=>{
+ const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','第 '+(i+1)+' 項，共 '+items.length+' 項');
+ b.addEventListener('click',()=>track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()}));
+ dotBox.append(b);return b;
+});
+let frame=0,current=0;
+const goTo=(i:number)=>{const item=items[Math.max(0,Math.min(items.length-1,i))];track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()})};
+byItem=dir=>goTo(current+dir);
+const sync=()=>{frame=0;
+ const left=track.scrollLeft;let best=0,gap=Infinity;
+ items.forEach((item,i)=>{const d=Math.abs(item.offsetLeft-track.offsetLeft-left);if(d<gap){gap=d;best=i}});
+ if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)best=items.length-1;
+ current=best;
+ buttons.forEach((b,i)=>{if(i===best)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')});
+};
+track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync)},{passive:true});
+window.addEventListener('resize',sync);
+sync();
 });
 </script>

@@ -21,6 +21,7 @@ try{
   ['disabled target',p=>p.targetPage='missing'],['draft direct link',p=>p.content.articleSlugs=['../draft']],
   ['unavailable action',p=>p.content.action={label:'QA',pageId:'missing'}],['incompatible trust',p=>p.patternId='trust-service-path']
  ])check('pattern rejects '+name,()=>{const p=structuredClone(pattern);change(p);assert.throws(()=>normalizeExpandedPatterns([p],'knowledge',nav));});
+ check('missing content can be skipped on request and stays an explicit error otherwise',()=>{const p=structuredClone(pattern);delete p.content;assert.throws(()=>normalizeExpandedPatterns([p],'knowledge',nav),/--skip-patterns-without-content/);assert.deepEqual(normalizeExpandedPatterns([p],'knowledge',nav,{skipMissingContent:true}),[]);});
  check('pattern rejects article references without an article page',()=>assert.throws(()=>normalizeExpandedPatterns([{...pattern,content:{title:'QA',articleSlugs:['owned-note']}}],'helper',nav.filter(n=>n.id!=='articles'))));
  check('trust pattern requires both fit boundaries',()=>assert.throws(()=>normalizeExpandedPatterns([{patternId:'trust-service-path',targetPage:'/',insertAfter:'page-end',content:{title:'QA',description:'QA',suitable:['QA']}}],'helper',nav)));
  check('pattern normalizes planner position and preserves real content',()=>{const p=structuredClone(pattern);p.insertAfter='主要內容之後';assert.equal(normalizeExpandedPatterns([p],'knowledge',nav)[0].insertAfter,'page-end');});

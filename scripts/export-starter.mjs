@@ -19,7 +19,7 @@ const plan=JSON.parse(readFileSync(resolve(input),'utf8'));
 const selected=getLayoutDefinition(plan.layoutSlug,plan.kind);
 if(selected?.adapter?.engine){
  if(process.argv.includes('--require-ready'))throw Error('Layout has no Ready approval: '+plan.layoutSlug);
- const result=spawnSync(process.execPath,[new URL('./export-art-direction-starter.mjs',import.meta.url).pathname,input,dest,'--allow-in-progress'],{stdio:'inherit'});
+ const result=spawnSync(process.execPath,[new URL('./export-art-direction-starter.mjs',import.meta.url).pathname,input,dest,'--allow-in-progress',...process.argv.filter(x=>x==='--skip-patterns-without-content')],{stdio:'inherit'});
  process.exit(result.status??1);
 }
 const layouts=JSON.parse(readFileSync(new URL('../src/data/layout-directions.json',import.meta.url),'utf8'));

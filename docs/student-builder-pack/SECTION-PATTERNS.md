@@ -2,7 +2,7 @@
 
 此契約適用 subject-atlas、practice-compass，以及 `expanded/` 目錄下的 Adapter。支援區段不會讓它們成為 Ready（以 `assemblyStatus` 為準）。基本版型的既有規劃交接不變。
 
-規劃器匯出的 `sectionPatterns` 仍是選用清單。AI 組站前應先補齊每個選用區段的 `content`，不要直接把缺資料的 Brief 當成已完成網站。若尚未準備作品或服務資料，可先移除該選填 Pattern，照常匯出與建置空網站；待資料就緒再加入，不必為了通過建置而編造內容。這些欄位也會保存在匯出網站的 `site.config.json`，後續可直接修改該檔；不要重新匯出覆蓋既有網站。
+規劃器匯出的 `sectionPatterns` 仍是選用清單。AI 組站前應先補齊每個選用區段的 `content`，不要直接把缺資料的 Brief 當成已完成網站。若尚未準備作品或服務資料，匯出器會停下並詢問：回去補，或加 `--skip-patterns-without-content` 略過缺內容的區段、照常匯出與建置（在互動終端機會直接詢問）；也可先自行移除該選填 Pattern。待資料就緒再加入，不必為了通過建置而編造內容。這些欄位也會保存在匯出網站的 `site.config.json`，後續可直接修改該檔；不要重新匯出覆蓋既有網站。
 
 ## 位置與頁面
 

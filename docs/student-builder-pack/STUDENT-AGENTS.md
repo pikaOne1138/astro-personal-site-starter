@@ -18,6 +18,15 @@
 3. 以自然語言歸納任務目標、最小修改範圍、不可被破壞的舊行為與可驗證的完成條件。需求模糊或會影響已確認決策時，先提出少量、必要的問題。
 4. 查現有 Components／Registry 與路由，不重複造輪子、不直接重跑 Starter 生成器覆蓋已有網站。
 
+### 新增功能或元件前的強制盤點（輪播、篩選、手風琴、導覽、卡片等）
+
+學員說「加一個 X」時，**寫任何新元件之前**必須先做，並在回覆第一段回報：
+
+1. 用關鍵字（中英文，例如 輪播／carousel／滑動）搜尋 `src/data/blocks.registry.json` 的 `keywords`、`name`，以及 `src/components/`、`src/components/effects/` 與 `src/data/section-patterns.registry.json`；只讀 `COMPONENTS.md` 不夠，清單以 registry 為準。
+2. 回報格式：**找到哪些候選 → 各自能否滿足需求（資料介面、無 JavaScript、鍵盤、手機、減少動態）→ 缺什麼 → 決定**。
+3. 決定的優先順序：直接使用 → 修改既有元件補上缺口（保持原 Props 相容）→ 都不行才新增，並寫下為何不行。學員站依 `AGENTS.md` 規則，不在旁邊新增近似重複的元件。
+4. 沒做這步、或回報裡沒有候選清單，就不算完成。
+
 ## 需求訪談、工程語意轉譯與「未知的未知」風險檢查
 
 **不要把不精確的形容詞直接翻譯成程式碼。** 先判斷這句人話背後的成果、訪客、用途、風險、需要的證據，再決定「先問、先提案、還是直接做」。訪談不是填寫制式長問卷，而是可隨網站成長反覆使用的協作技能。
@@ -62,7 +71,7 @@
 | 想做一頁賣課程／服務，或收報名／名單 | 落地頁的銷售論述、證據與 CTA | `.ai/astro-offer-landing/SKILL.md`、`.ai/astro-content-readiness/SKILL.md` |
 | 寫文章、修改文章、下架草稿 | 內容發布、搜尋／RSS／Sitemap 回歸 | `.ai/astro-content-publishing/SKILL.md` |
 | 改顏色、字體、圓角、陰影，或卡片／按鈕的外觀 | 先判斷改哪一層（改一處、全站一致） | 本檔「設計修改」一節、`.ai/astro-ui-craft/SKILL.md` |
-| 新增功能或元件 | 先找既有 Block，再補實作 | `.ai/astro-ui-craft/SKILL.md`、Blocks Registry |
+| 新增功能或元件 | 先做上面的「強制盤點」，找既有 Block，再補實作 | `.ai/astro-ui-craft/SKILL.md`、Blocks Registry |
 | 網站壞掉了、回到先前版本 | 根因調查、備份、可稽核修復 | `.ai/astro-site-maintenance/SKILL.md` |
 | 想看修改結果、可以上線了 | Preview、發布核准、部署後檢查 | `.ai/astro-pr-preview/SKILL.md`、`.ai/astro-starter-deploy/SKILL.md` |
 
@@ -192,6 +201,10 @@
 ## PROJECT.md 的生命週期
 
 - 第一次網站討論就建立預設初稿，未知欄位保留「待確認」；逐步更新，不要求學員一次寫完整規格。
+- 新增文章若用到網站設定裡登記的分類、主題或標籤，要同步在設定登記，並先 `npm run build` 確認；Build 失敗時用學員聽得懂的話說明是哪篇文章缺什麼，並自己補好，不要把 frontmatter 與設定的關係丟給學員。
+- 規劃器勾選的選用區段（例如精選內容展示）若沒有真實內容，不要編造，也不要卡住：匯出器會停下並列出缺內容的區段。把兩條路用白話問學員：回去補內容，或先略過直接組站（重跑時加 `--skip-patterns-without-content`，之後隨時可在 `site.config.json` 補上）。學員沒回答前不要自行略過。
+- 空的 GitHub Repo（沒有第一筆 commit）無法建立分支與 PR：先用白話告訴學員「倉庫是空的，需要先建立一份 README」，由學員自己建立或明確授權 AI 只建立 README。
+- 回報驗證時分開寫：自動測試、實際瀏覽器檢查、未測項目；Build 成功、平台部署成功、預覽網址對應目前 PR 版本是三件不同的事，全部確認前不可說「預覽已完成」。
 - Site Brief JSON 是初次規劃的結構化資料；真實實作以程式與 Git 為準，不得把已選 Layout 視為所有內頁已完成。
 - 有新的長期品牌、受眾、版型、頁面、部署決策時，提出 PROJECT.md 變更；只做小幅視覺調整不需每次追加工作日誌。
 - 更新建站 ZIP 或 Starter 不得覆蓋學員已寫的 PROJECT.md，若有衝突先比對並詢問。
