@@ -1,14 +1,26 @@
 ---
-// dots / sideArrows 預設關閉，既有用法（標題列上一個／下一個按鈕）不變。
-interface Props {title?:string;dots?:boolean;sideArrows?:boolean;}
-const {title='內容輪播',dots=false,sideArrows=false}=Astro.props;
+// 通用輪播：內容來源（slot 或 items）、版型（cards／hero）、箭頭位置、圓點、到頭循環或停止，皆由 Props 決定。
+// dots / sideArrows 為既有 Props，預設關閉、行為相容；sideArrows 等同 arrows="side"。
+interface CarouselItem {title:string;href:string;image?:string;imageAlt?:string;excerpt?:string;}
+interface Props {
+ title?:string;
+ items?:CarouselItem[];
+ variant?:'cards'|'hero';
+ arrows?:'top'|'side'|'none';
+ dots?:boolean;
+ sideArrows?:boolean;
+ loop?:boolean;
+}
+const {title='內容輪播',items,variant='cards',dots=false,sideArrows=false,loop=false}=Astro.props;
+const arrows=Astro.props.arrows??(sideArrows?'side':'top');
+const hasItems=Array.isArray(items)&&items.length>0;
 ---
-<section class:list={['v2-carousel',{'v2-carousel--side':sideArrows}]} aria-label={title} data-dots={dots?'true':undefined}>
-<div class="v2-carousel-top"><h3>{title}</h3>{!sideArrows&&<div class="v2-carousel-controls"><button type="button" data-prev aria-label="向前瀏覽">←</button><button type="button" data-next aria-label="向後瀏覽">→</button></div>}</div>
+<section class:list={['v2-carousel',{'v2-carousel--side':arrows==='side','v2-carousel--hero':variant==='hero'}]} aria-label={title} data-dots={dots?'true':undefined} data-loop={loop?'true':undefined} data-variant={variant}>
+<div class="v2-carousel-top"><h3>{title}</h3>{arrows==='top'&&<div class="v2-carousel-controls"><button type="button" data-prev aria-label="向前瀏覽">←</button><button type="button" data-next aria-label="向後瀏覽">→</button></div>}</div>
 <div class="v2-carousel-stage">
-{sideArrows&&<button type="button" class="v2-carousel-side v2-carousel-side--prev" data-prev aria-label="向前瀏覽">←</button>}
-<div class="v2-carousel-track" tabindex="0" aria-label={title}><slot /></div>
-{sideArrows&&<button type="button" class="v2-carousel-side v2-carousel-side--next" data-next aria-label="向後瀏覽">→</button>}
+{arrows==='side'&&<button type="button" class="v2-carousel-side v2-carousel-side--prev" data-prev aria-label="向前瀏覽">←</button>}
+<div class="v2-carousel-track" tabindex="0" aria-label={title}>{hasItems?items!.map(item=><article class="v2-carousel-item"><a class="v2-carousel-card" href={item.href}>{item.image&&<img src={item.image} alt={item.imageAlt??''} loading="lazy"/>}<span class="v2-carousel-card-body"><strong>{item.title}</strong>{item.excerpt&&<span>{item.excerpt}</span>}<span class="v2-carousel-card-more" aria-hidden="true">→</span></span></a></article>):<slot />}</div>
+{arrows==='side'&&<button type="button" class="v2-carousel-side v2-carousel-side--next" data-next aria-label="向後瀏覽">→</button>}
 </div>
 {dots&&<div class="v2-carousel-dots" role="group" aria-label={title+'：選擇項目'} hidden></div>}
 </section>
@@ -18,32 +30,49 @@ if(carousel.dataset.ready)return;
 carousel.dataset.ready='true';
 const track=carousel.querySelector<HTMLElement>('.v2-carousel-track');
 if(!track)return;
-const step=()=>Math.max(track.clientWidth*0.8,200);
+const items=Array.from(track.children) as HTMLElement[];
+const prevBtns=Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-prev]'));
+const nextBtns=Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-next]'));
+if(items.length<2){prevBtns.concat(nextBtns).forEach(b=>b.hidden=true);return;}
+const loop=carousel.dataset.loop==='true';
+const byItem=carousel.dataset.dots==='true'||carousel.dataset.variant==='hero';
 const reduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const behavior=()=>reduced()?'instant':'smooth';
-// 有圓點時箭頭一次移動一項；否則維持原本約 80% 寬度的捲動。
-let byItem:((dir:number)=>void)|null=null;
-carousel.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(-1):track.scrollBy({left:-step(),behavior:behavior()})));
-carousel.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(1):track.scrollBy({left:step(),behavior:behavior()})));
+const step=()=>Math.max(track.clientWidth*0.8,200);
+const maxScroll=()=>Math.max(track.scrollWidth-track.clientWidth,0);
+const itemLeft=(i:number)=>items[i].offsetLeft-track.offsetLeft;
+// 目前位置＝第一個可見項（右緣已進入可視範圍的第一項）；捲到底不再強制對應最後一項。
+const currentIndex=()=>{const left=track.scrollLeft;for(let i=0;i<items.length;i++){if(itemLeft(i)+items[i].offsetWidth>left+4)return i;}return items.length-1;};
+const goTo=(i:number)=>{const target=loop?((i%items.length)+items.length)%items.length:Math.max(0,Math.min(items.length-1,i));track.scrollTo({left:itemLeft(target),behavior:behavior()});};
+prevBtns.forEach(b=>b.addEventListener('click',()=>{
+ if(byItem){goTo(currentIndex()-1);return;}
+ if(loop&&track.scrollLeft<=2){track.scrollTo({left:track.scrollWidth,behavior:behavior()});return;}
+ track.scrollBy({left:-step(),behavior:behavior()});
+}));
+nextBtns.forEach(b=>b.addEventListener('click',()=>{
+ if(byItem){goTo(currentIndex()+1);return;}
+ if(loop&&track.scrollLeft>=maxScroll()-2){track.scrollTo({left:0,behavior:behavior()});return;}
+ track.scrollBy({left:step(),behavior:behavior()});
+}));
 const dotBox=carousel.querySelector<HTMLElement>('.v2-carousel-dots');
-if(!dotBox)return;
-const items=Array.from(track.children) as HTMLElement[];
-if(items.length<2)return;
-dotBox.hidden=false;
-const buttons=items.map((item,i)=>{
- const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','第 '+(i+1)+' 項，共 '+items.length+' 項');
- b.addEventListener('click',()=>track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()}));
- dotBox.append(b);return b;
-});
-let frame=0,current=0;
-const goTo=(i:number)=>{const item=items[Math.max(0,Math.min(items.length-1,i))];track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()})};
-byItem=dir=>goTo(current+dir);
+let dotBtns:HTMLButtonElement[]=[];
+if(dotBox){
+ dotBox.hidden=false;
+ dotBtns=items.map((item,i)=>{
+  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','第 '+(i+1)+' 項，共 '+items.length+' 項');
+  b.addEventListener('click',()=>track.scrollTo({left:itemLeft(i),behavior:behavior()}));
+  dotBox.append(b);return b;
+ });
+}
+let frame=0;
 const sync=()=>{frame=0;
- const left=track.scrollLeft;let best=0,gap=Infinity;
- items.forEach((item,i)=>{const d=Math.abs(item.offsetLeft-track.offsetLeft-left);if(d<gap){gap=d;best=i}});
- if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)best=items.length-1;
- current=best;
- buttons.forEach((b,i)=>{if(i===best)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')});
+ const current=currentIndex();
+ dotBtns.forEach((b,i)=>{if(i===current)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
+ if(!loop){
+  const atStart=track.scrollLeft<=2,atEnd=track.scrollLeft>=maxScroll()-2;
+  prevBtns.forEach(b=>b.disabled=byItem?current===0:atStart);
+  nextBtns.forEach(b=>b.disabled=atEnd);
+ }
 };
 track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync)},{passive:true});
 window.addEventListener('resize',sync);

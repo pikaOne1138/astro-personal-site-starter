@@ -30,7 +30,7 @@
 - `ArticleCallout`：note／tip／warning，採**編輯式腳註／旁注**處理：細的上下線、清楚的層級；不要灰底圓角卡，也不要粗色左邊條；意思要用文字傳達，不能只靠顏色。
 - `ArticleComparison`：有圖說、表頭與列的比較表。
 - `RelatedArticles`：真實的站內相關連結。
-- `ContentCarousel`：橫向 scroll-snap 卡片，有真正的上一個／下一個控制、鍵盤捲動，並處理 reduced-motion。
+- `ContentCarousel`：通用輪播。橫向 scroll-snap，有真正的上一個／下一個控制、鍵盤捲動，並處理 reduced-motion。內容有兩種給法：用 slot 自己放卡片，或用 `items` 傳入 `{title, href, image?, imageAlt?, excerpt?}` 由元件渲染（挑哪些文章由頁面層決定：最新、指定清單、某主題、有封面優先，都在頁面層組好陣列再傳入，元件不直接讀 Content Collection）。版型 `variant` 可選 `cards`（多卡橫滑）或 `hero`（單張大圖＋標題）；`arrows` 可選 `top`／`side`／`none`（舊 `sideArrows` 相容）；`dots` 顯示位置圓點（對應第一個可見項）；`loop` 決定到頭行為：預設停止並停用邊界箭頭，`loop` 時最後一項的下一個回到第一項。少於兩項時自動隱藏控制。
 
 ## 導覽列的遮罩規則
 

@@ -664,7 +664,11 @@
     "path": "src/components/blocks/ContentCarousel.astro",
     "keywords": [
       "輪播",
-      "水平滑動"
+      "水平滑動",
+      "文章輪播",
+      "精選輪播",
+      "循環",
+      "大圖輪播"
     ],
     "compatibleWith": [
       "knowledge",

@@ -99,6 +99,19 @@
 .v2-carousel-dots button::before{content:"";width:10px;height:10px;border-radius:999px;background:var(--line)}
 .v2-carousel-dots button[aria-current]::before{background:var(--accent)}
 .v2-carousel button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.v2-carousel button:disabled{opacity:.35;cursor:default}
+.v2-carousel-track>.v2-carousel-item{padding:0;overflow:hidden}
+.v2-carousel-card{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.v2-carousel-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.v2-carousel-card-body{display:flex;flex-direction:column;gap:8px;padding:16px 24px}
+.v2-carousel-card-body strong{font:600 20px/1.35 var(--heading)}
+.v2-carousel-card-body span{color:var(--muted)}
+.v2-carousel-card-more{color:var(--accent);font-size:20px}
+.v2-carousel--hero .v2-carousel-track>*{flex-basis:100%}
+.v2-carousel--hero .v2-carousel-card{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch}
+.v2-carousel--hero .v2-carousel-card img{height:100%;aspect-ratio:auto}
+.v2-carousel--hero .v2-carousel-card-body{justify-content:center;padding:24px}
+@media(max-width:600px){.v2-carousel--hero .v2-carousel-card{grid-template-columns:1fr}.v2-carousel--hero .v2-carousel-card img{aspect-ratio:16/9;height:auto}}
 
 /* V2 content inside each of the eight full-site demos */
 .v2-article-meta-links{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 32px}
