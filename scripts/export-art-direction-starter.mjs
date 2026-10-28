@@ -2,13 +2,13 @@ import {readFileSync,writeFileSync,mkdtempSync,existsSync,readdirSync,renameSync
 import {resolve,join,dirname} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
-import {normalizeExpandedPatterns} from './expanded-section-patterns.mjs';
+import {normalizeExpandedPatterns,MissingPatternContentError} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
 import {finalizeStudentSite} from './student-project-context.mjs';
 import {writeDesignBaseline} from './design-scan.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
-if(args.some(x=>x.startsWith('--')&&!['--require-ready','--allow-in-progress'].includes(x))||positional.length!==2)throw Error('Usage: node scripts/export-art-direction-starter.mjs plan.json empty-output-dir --allow-in-progress');
+if(args.some(x=>x.startsWith('--')&&!['--require-ready','--allow-in-progress','--skip-patterns-without-content'].includes(x))||positional.length!==2)throw Error('Usage: node scripts/export-art-direction-starter.mjs plan.json empty-output-dir --allow-in-progress');
 const [input,dest]=positional;const plan=JSON.parse(readFileSync(resolve(input),'utf8'));
 const adapter=artDirectionAdapters.find(a=>a.slug===plan.layoutSlug&&a.kind===plan.kind);
 if(!adapter)throw Error('Unsupported Art Direction slug/kind');
@@ -42,7 +42,19 @@ for(const [id,label,path] of essentials){const existing=navigation.find(x=>x.id=
 for(const item of navigation)if(item.enabled){item.path=item.path??item.id+'/';if(essentials.some(([id,,path])=>item.id!==id&&item.path===path))throw Error('Reserved essential route collision');if(item.path==='topics/'&&plan.kind==='helper')throw Error('Topics route requires knowledge adapter');}
 if(plan.kind==='helper'&&navigation.some(x=>x.enabled&&x.path.startsWith('topics/')))throw Error('Helper adapter has no topic renderer');
 if(navigation.some(x=>x.enabled&&x.path.startsWith('topics/')&&x.path!=='topics/'))throw Error('Topic detail paths are reserved');
-const sectionPatterns=normalizeExpandedPatterns(plan.sectionPatterns,plan.kind,navigation);
+let sectionPatterns;
+try{sectionPatterns=normalizeExpandedPatterns(plan.sectionPatterns,plan.kind,navigation,{skipMissingContent:args.includes('--skip-patterns-without-content')})}
+catch(error){
+ if(!(error instanceof MissingPatternContentError))throw error;
+ // 互動終端機：直接問「回去補」還是「先略過」；非互動（AI 代跑）則停下，由 AI 轉問學員後帶旗標重跑。
+ if(!(process.stdin.isTTY&&process.stdout.isTTY))throw error;
+ const {createInterface}=await import('node:readline/promises');
+ const rl=createInterface({input:process.stdin,output:process.stdout});
+ const answer=(await rl.question('\n'+error.message+'\n\n輸入 1 = 回去補內容（結束，不組站）；輸入 2 = 先略過這些區段，直接組站：')).trim();rl.close();
+ if(answer!=='2')throw error;
+ sectionPatterns=normalizeExpandedPatterns(plan.sectionPatterns,plan.kind,navigation,{skipMissingContent:true});
+}
+if(args.includes('--skip-patterns-without-content')||sectionPatterns.length!==(plan.sectionPatterns||[]).length)console.warn('提醒：沒有內容的選用區段已略過，網站照常組出；補上 content 後可再加入（site.config.json 的 sectionPatterns）。');
 
 const rawServices=plan.services??[];
 if(!Array.isArray(rawServices)||rawServices.length>50)throw Error('Invalid services');

@@ -1,14 +1,20 @@
 // Expanded adapters retain the existing StarterPlan selection and Block interfaces.
 // Only deterministic composition slots are accepted; arbitrary prose is not ignored.
-export function normalizeExpandedPatterns(selections,kind,navigation){
+export class MissingPatternContentError extends Error{
+ constructor(patterns){
+  super('這些區段還沒有內容（'+patterns.join('、')+'）。請二選一：1) 回去在 Site Brief 的 sectionPatterns 補上 content（標題、說明、文章或作品）；2) 先略過這些區段直接組站（加上 --skip-patterns-without-content），之後隨時可在 site.config.json 補上。不要編造內容。詳見 docs/student-builder-pack/SECTION-PATTERNS.md');
+  this.name='MissingPatternContentError';this.patterns=patterns;
+ }
+}
+export function normalizeExpandedPatterns(selections,kind,navigation,options={}){
  if(selections===undefined)return [];
  if(!Array.isArray(selections)||selections.length>40)throw Error('Invalid sectionPatterns');
  const text=(value,label,max=5000)=>{if(typeof value!=='string'||!value.trim()||value.length>max||/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(value))throw Error('Invalid pattern '+label);return value.trim()};
  const strings=(value,label,required=false)=>{if(value===undefined&&!required)return [];if(!Array.isArray(value)||value.length>20||required&&!value.length)throw Error('Invalid pattern '+label);return value.map(v=>text(v,label))};
  const https=value=>{let u;try{u=new URL(text(value,'HTTPS URL',2000))}catch{throw Error('Pattern links require HTTPS URLs without credentials')};if(u.protocol!=='https:'||u.username||u.password)throw Error('Pattern links require HTTPS URLs without credentials');return u.href};
  const action=value=>{if(value===undefined)return undefined;if(!value||Boolean(value.pageId)===Boolean(value.url))throw Error('Pattern action requires exactly one pageId or URL');const label=text(value.label,'action label',120);if(value.pageId){if(!navigation.some(n=>n.enabled&&n.id===value.pageId))throw Error('Pattern action page must be enabled');return {label,pageId:value.pageId}}return {label,url:https(value.url)}};
- const seen=new Set();let footers=0;
- return selections.map(p=>{
+ const seen=new Set();let footers=0;const missing=[];
+ const result=selections.map(p=>{
   if(!p||typeof p.patternId!=='string')throw Error('Invalid pattern selection');
   const key=p.patternId+'@'+p.targetPage;if(seen.has(key))throw Error('Duplicate pattern selection');seen.add(key);
   if(p.patternId.startsWith('footer-')){if(!['footer-minimal','footer-editorial','footer-professional'].includes(p.patternId)||p.targetPage!=='site-wide'||++footers>1)throw Error('Invalid footer pattern');text(p.insertAfter,'footer position',180);return p;}
@@ -17,7 +23,7 @@ export function normalizeExpandedPatterns(selections,kind,navigation){
   const aliases={'主要內容之後':'page-end','首頁介紹後':'after-intro','首頁自介後':'after-intro'};
   const position=aliases[p.insertAfter]??p.insertAfter;
   if(!['page-end','after-intro'].includes(position)||position==='after-intro'&&p.targetPage!=='/')throw Error('Pattern insertAfter must be page-end (主要內容之後), or after-intro on the homepage');
-  const c=p.content;if(!c||typeof c!=='object'||Array.isArray(c))throw Error('Pattern '+p.patternId+' requires real content（此區段還沒有內容）。請二選一：1) 在 Site Brief 的 sectionPatterns 補上 content（標題、說明、文章或作品）；2) 先從 sectionPatterns 移除此項，之後再加。不要編造內容。詳見 docs/student-builder-pack/SECTION-PATTERNS.md');
+  const c=p.content;if(!c||typeof c!=='object'||Array.isArray(c)){missing.push(p.patternId);return null}
   const content={title:text(c.title,'title',200),description:c.description===undefined?'':text(c.description,'description'),action:action(c.action)};
   if(p.patternId==='featured-work'){
    if(c.items!==undefined&&(!Array.isArray(c.items)||c.items.length>6))throw Error('Pattern items must contain up to six works');
@@ -34,4 +40,6 @@ export function normalizeExpandedPatterns(selections,kind,navigation){
   }
   return {patternId:p.patternId,targetPage:p.targetPage,insertAfter:position,content};
  });
+ if(missing.length&&!options.skipMissingContent)throw new MissingPatternContentError(missing);
+ return result.filter(Boolean);
 }
