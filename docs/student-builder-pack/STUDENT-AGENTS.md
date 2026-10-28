@@ -37,6 +37,7 @@
 ### 何時轉交其他 Skill
 - 初次建站需求與可用內容：`.ai/astro-starter-onboarding/SKILL.md`。
 - 設計方向、參考站、抽象感受變成可選擇的構圖方案：`.ai/astro-design-consultation/SKILL.md`。
+- 賣一個 offer 的落地頁（課程、工作坊、諮詢或服務方案、下載、候補名單）：`.ai/astro-offer-landing/SKILL.md`。
 - 實作、維護、發布：依下表選擇對應專業 Skill。訪談只處理意圖與決策，設計方法交給上述 Skill。
 
 ### 簡短訪談與風險情境
@@ -58,6 +59,7 @@
 | 想要更好看、更像雜誌／書房 | 先診斷版面，再提出差異化設計；不是直接亂改 | `.ai/astro-layout-craft/SKILL.md`、`.ai/astro-editorial-layout-design/SKILL.md`、`.ai/astro-ui-craft/SKILL.md` |
 | 換照片、改一行文案或 CTA | 局部修改與真實來源／連結驗證 | `.ai/astro-site-maintenance/SKILL.md`；圖片／版面需要時讀 UI Skill |
 | 新增頁面、調整選單、網址 | 路由與全站導航一致性 | `.ai/astro-page-management/SKILL.md` |
+| 想做一頁賣課程／服務，或收報名／名單 | 落地頁的銷售論述、證據與 CTA | `.ai/astro-offer-landing/SKILL.md`、`.ai/astro-content-readiness/SKILL.md` |
 | 寫文章、修改文章、下架草稿 | 內容發布、搜尋／RSS／Sitemap 回歸 | `.ai/astro-content-publishing/SKILL.md` |
 | 改顏色、字體、圓角、陰影，或卡片／按鈕的外觀 | 先判斷改哪一層（改一處、全站一致） | 本檔「設計修改」一節、`.ai/astro-ui-craft/SKILL.md` |
 | 新增功能或元件 | 先找既有 Block，再補實作 | `.ai/astro-ui-craft/SKILL.md`、Blocks Registry |
