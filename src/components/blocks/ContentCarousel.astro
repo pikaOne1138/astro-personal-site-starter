@@ -21,8 +21,10 @@ if(!track)return;
 const step=()=>Math.max(track.clientWidth*0.8,200);
 const reduced=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const behavior=()=>reduced()?'instant':'smooth';
-carousel.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:behavior()})));
-carousel.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>track.scrollBy({left:step(),behavior:behavior()})));
+// 有圓點時箭頭一次移動一項；否則維持原本約 80% 寬度的捲動。
+let byItem:((dir:number)=>void)|null=null;
+carousel.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(-1):track.scrollBy({left:-step(),behavior:behavior()})));
+carousel.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>byItem?byItem(1):track.scrollBy({left:step(),behavior:behavior()})));
 const dotBox=carousel.querySelector<HTMLElement>('.v2-carousel-dots');
 if(!dotBox)return;
 const items=Array.from(track.children) as HTMLElement[];
@@ -33,11 +35,14 @@ const buttons=items.map((item,i)=>{
  b.addEventListener('click',()=>track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()}));
  dotBox.append(b);return b;
 });
-let frame=0;
+let frame=0,current=0;
+const goTo=(i:number)=>{const item=items[Math.max(0,Math.min(items.length-1,i))];track.scrollTo({left:item.offsetLeft-track.offsetLeft,behavior:behavior()})};
+byItem=dir=>goTo(current+dir);
 const sync=()=>{frame=0;
  const left=track.scrollLeft;let best=0,gap=Infinity;
  items.forEach((item,i)=>{const d=Math.abs(item.offsetLeft-track.offsetLeft-left);if(d<gap){gap=d;best=i}});
  if(track.scrollLeft+track.clientWidth>=track.scrollWidth-2)best=items.length-1;
+ current=best;
  buttons.forEach((b,i)=>{if(i===best)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')});
 };
 track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(sync)},{passive:true});
