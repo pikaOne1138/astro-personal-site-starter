@@ -136,5 +136,155 @@
   "rule": "missing-path",
   "match": "public/legacy-aliases.css",
   "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 legacy-aliases.css 產生；ai-workbench#22）"
+ },
+ {
+  "file": "COMPONENTS.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-motion-craft/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-motion-craft/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/data/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-motion-craft/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/styles/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-motion-craft/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/README.md",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-assembly/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-from-zero/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-maintenance/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-maintenance/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/data/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-maintenance/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/components/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-site-maintenance/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/README.md",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/article-exploration.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/article-exploration.md",
+  "rule": "missing-path",
+  "match": ".ai/library/data/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/article-exploration.md",
+  "rule": "missing-path",
+  "match": ".ai/library/styles/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/article-exploration.md",
+  "rule": "missing-path",
+  "match": ".ai/library/README.md",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/component-library.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/component-library.md",
+  "rule": "missing-path",
+  "match": ".ai/library/data/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/component-library.md",
+  "rule": "missing-path",
+  "match": ".ai/library/styles/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/astro-ui-craft/references/component-library.md",
+  "rule": "missing-path",
+  "match": ".ai/library/README.md",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": ".ai/url-to-frontend-replica/SKILL.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": "docs/student-builder-pack/LIBRARY-README.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": ".ai/library/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": ".ai/library/data/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": ".ai/library/components/",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
+ },
+ {
+  "file": "docs/student-builder-pack/STUDENT-AGENTS.md",
+  "rule": "missing-path",
+  "match": ".ai/library/README.md",
+  "reason": "學員自己網站的路徑，不在本 Repo（匯出時由 installComponentLibrary 組裝）"
  }
 ]

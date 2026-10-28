@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync,copyFileSync,cpSync} from 'node:fs';
 import {resolve,join,dirname} from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {finalizeStudentSite} from './student-project-context.mjs';
+import {finalizeStudentSite,installComponentLibrary} from './student-project-context.mjs';
 import {getLayoutDefinition} from '../src/data/layout-assembly/definitions.mjs';
 import {checkStartRecordFile} from './check-start-record.mjs';
 import {themeCss} from './theme-css.mjs';
@@ -356,6 +356,7 @@ for(const [path,body] of Object.entries(assets)){
 if(!process.argv.includes('--defer-student-context')){
  finalizeStudentSite(root,plan);
  cpSync(new URL('../.ai/',import.meta.url),join(root,'.ai'),{recursive:true,force:false,errorOnExist:true});
+ installComponentLibrary(root);
 }
 // G-11：記下出廠時各檔案的寫死色數量（之後只有新增的才算違規）。
 writeDesignBaseline(root);

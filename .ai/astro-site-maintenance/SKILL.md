@@ -23,6 +23,9 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 4. 執行 Build、程式測試及連結/搜尋檢查，PR Preview 的網址必須真的可打開。對視覺變更檢查桌機與手機。
 5. 列出本次修改、可能影響、測試結果；等學員確認後合併，再驗證正式發布。
 
+## 新增功能先查元件庫（不要先自己寫）
+學員說「加一個 X」（輪播、篩選、手風琴、新卡片排法等）時，先照 `AGENTS.md` 的強制盤點查本站 `.ai/library/`：registry 在 `.ai/library/data/`、元件在 `.ai/library/components/`，那是跟著本站交付的備用零件架。架上有合用的，依 `.ai/library/README.md` 的步驟複製進 `src/components/`、補上需要的 CSS 再使用；架上和 `src/` 都查無，才自己寫，並在回報裡說明查過哪些地方、為何不能用。不要直接從 `.ai/library/` import。
+
 ## 工作流程 B｜備份
 1. 確認 Repo 所有應納入備份的內容已 Commit／Push：程式、Markdown、設定、合法使用的圖片和 public 資產。
 2. 建議使用 GitHub Repository 的完整 Git clone 或定期匯出封存作為第二份副本；備份位置應獨立於單一電腦，並有訪問權限管理。

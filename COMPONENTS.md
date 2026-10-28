@@ -2,6 +2,8 @@
 
 給 Astro 架站工作坊使用的可重用元件庫，**不是拖曳編輯器**。AI 從 `src/components/blocks/` 引入元件，在 Astro 頁面裡組合。展示站：`/blocks/`。
 
+交付給學員站時，整座元件庫（blocks、effects、patterns、三份 registry 與共用 CSS）會由匯出器組裝進學員站的 `.ai/library/` 作為備用零件架，學員日後新增功能時先從架上採用；組裝與採用規則以 `docs/student-builder-pack/LIBRARY-README.md` 為準，本 repo 內的原始碼仍是唯一真相，不另存一份複本。
+
 ## 事實來源
 
 - **有哪些元件、屬於哪一類、適用哪些主題**：`src/data/blocks.registry.json`（`id`、`name`、`category`、`path`、`keywords`、`compatibleWith`、`themes`）。**數量與清單請讀 registry，不要在文件裡寫死。**

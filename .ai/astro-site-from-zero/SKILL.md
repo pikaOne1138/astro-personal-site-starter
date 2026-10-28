@@ -15,7 +15,7 @@ description: Start a maintainable Astro website by talking with a non-coder dire
 3. 停止訪談後送出「理解確認單」並**停下**（見「理解確認單與硬停點」）。學員明確同意前不匯出、不寫程式、不建 Repo。
 4. 確認後，只需要 Markdown 摘要即可開工；若適合既有 ATP Exporter，才由 AI 把確認過的資訊映射到 `src/data/starter-config.ts` 的 Site Brief JSON，沒有使用 Exporter 就不強制 JSON。設計與實作按需讀 `.ai/astro-design-consultation/SKILL.md`、`.ai/astro-ui-craft/SKILL.md`、`.ai/astro-layout-craft/SKILL.md`，但不要求學員逐一選 Layout、Section Patterns、Blocks 或動效。優先使用有權使用的真實素材；缺少時明確保留待設定。
 5. 以可維護的 Astro 靜態網站為預設；按需共用元件，不任意加入 SSR、React、CMS、資料庫。**對持續寫文章、主題分類、長期 SEO／搜尋的知識型網站，優先採 Content Collections**；因為課後還要新增與維護內容，不只做第一次首頁。極小且無結構化內容的單頁站可不用。
-6. 讀 `.ai/astro-content-publishing/SKILL.md` 處理文章，`.ai/astro-pr-preview/SKILL.md` 做 Branch、PR、Build 和真實 Preview；QA 至少檢查桌機、手機、連結、主要互動、可及性及 reduced-motion，未實測不得聲稱完成。
+6. 讀 `.ai/astro-content-publishing/SKILL.md` 處理文章，`.ai/astro-pr-preview/SKILL.md` 做 Branch、PR、Build 和真實 Preview；QA 至少檢查桌機、手機、連結、主要互動、可及性及 reduced-motion，未實測不得聲稱完成。交付的網站必須帶有備用元件庫 `.ai/library/`：有用 ATP Exporter 時由匯出器自動組裝；手工組站時，照 `docs/student-builder-pack/LIBRARY-README.md` 的結構，從建站包的 `src/components/`、`src/data/` 與 `public/` CSS 整批複製組裝，不得省略。
 7. 學員確認內容和目前版本後，才依 `.ai/astro-starter-deploy/SKILL.md` 執行獲授權的正式部署；在學員自己的 `PROJECT.md` 留下決策與後續維護資訊。
 
 ## 核心題庫

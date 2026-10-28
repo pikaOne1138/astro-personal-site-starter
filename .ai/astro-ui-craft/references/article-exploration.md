@@ -1,6 +1,7 @@
 # 文章探索與閱讀元件
 
 > 先讀 `COMPONENTS.md`、`src/data/blocks.registry.json` 與元件實際的 Props。這份只講文章探索、清單、搜尋與閱讀排版的設計與驗收準則。
+> 在學員站內，元件庫位於 `.ai/library/`（registry 在 `.ai/library/data/`、CSS 在 `.ai/library/styles/`），採用時先複製進 `src/components/` 再使用，步驟見 `.ai/library/README.md`。
 
 ## 文章探索
 
