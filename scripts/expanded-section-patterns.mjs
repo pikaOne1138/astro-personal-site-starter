@@ -17,7 +17,7 @@ export function normalizeExpandedPatterns(selections,kind,navigation){
   const aliases={'主要內容之後':'page-end','首頁介紹後':'after-intro','首頁自介後':'after-intro'};
   const position=aliases[p.insertAfter]??p.insertAfter;
   if(!['page-end','after-intro'].includes(position)||position==='after-intro'&&p.targetPage!=='/')throw Error('Pattern insertAfter must be page-end (主要內容之後), or after-intro on the homepage');
-  const c=p.content;if(!c||typeof c!=='object'||Array.isArray(c))throw Error('Pattern '+p.patternId+' requires real content; see docs/student-builder-pack/SECTION-PATTERNS.md');
+  const c=p.content;if(!c||typeof c!=='object'||Array.isArray(c))throw Error('Pattern '+p.patternId+' requires real content（此區段還沒有內容）。請二選一：1) 在 Site Brief 的 sectionPatterns 補上 content（標題、說明、文章或作品）；2) 先從 sectionPatterns 移除此項，之後再加。不要編造內容。詳見 docs/student-builder-pack/SECTION-PATTERNS.md');
   const content={title:text(c.title,'title',200),description:c.description===undefined?'':text(c.description,'description'),action:action(c.action)};
   if(p.patternId==='featured-work'){
    if(c.items!==undefined&&(!Array.isArray(c.items)||c.items.length>6))throw Error('Pattern items must contain up to six works');

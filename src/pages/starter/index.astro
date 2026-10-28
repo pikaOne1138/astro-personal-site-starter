@@ -116,7 +116,7 @@ const themes=[{id:'paper',title:'紙墨',description:'編輯感與深色文字'}
 <p>{x.id==='featured-work'?'適合首頁：先介紹這一區，再放 2–3 篇精選文章、作品或專題，最後提供「查看更多」入口。不是填數字或憑空聲稱成果。':x.purpose}</p>
 <p class="pattern-anatomy"><strong>這一段包含：</strong>{x.composition.join(' → ')}</p>
 <a class="pattern-example-link" href={base+'section-patterns/#'+x.id} target="_blank" rel="noopener noreferrer">查看完整區段與所需資料 ↗</a>
-<div class="pattern-config" hidden><label>放在哪頁<select class="pattern-page" aria-label={x.title+'要放在哪頁'}></select></label><label>放置位置<input class="pattern-position" maxlength="180" placeholder="例如：作者介紹之後" value="主要內容之後"/></label></div>
+<div class="pattern-config" hidden><p class="pattern-content-note">提醒：這個區段需要真實內容（標題、說明、2–3 篇文章或作品）。規劃器不填內容；組站時 AI 會向你要，或先不放、等資料備妥再加。</p><label>放在哪頁<select class="pattern-page" aria-label={x.title+'要放在哪頁'}></select></label><label>放置位置<input class="pattern-position" maxlength="180" placeholder="例如：作者介紹之後" value="主要內容之後"/></label></div>
 </div>)}
 </div>
 <div class="footer-picker" aria-labelledby="footer-picker-title">
@@ -586,6 +586,7 @@ restoreDraft();
 .pattern-option>label{display:flex;align-items:center;gap:10px}
 .pattern-config{display:grid;gap:14px;margin-top:18px}
 .pattern-config label{display:grid;gap:6px;font-size:14px}
+.pattern-content-note{margin:0;font-size:14px}
 .pattern-config input,.pattern-config select{width:100%;min-width:0;padding:10px;border:1px solid #bdb3a5;border-radius:8px;font:inherit;background:var(--white)}
 @media(max-width:650px){.pattern-options{grid-template-columns:1fr}}
 </style>

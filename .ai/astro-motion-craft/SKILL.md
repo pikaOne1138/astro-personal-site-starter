@@ -145,6 +145,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 - 請先給學員能理解的比較與建議，取得同意後才在 Branch + PR 引入外部程式；Build 通過仍須四個視口實際 QA。
 
 - Animate.css 現行官方標示 Hippocratic License 2.1；Hover.css 對商業及再散布用途有不同授權條件。外部範例只作連結與研究，**不得把其 CSS 原碼直接編入會分發給學員的 Starter**，除非逐項完成適用授權確認。
+- 需要輪播時，先查 `src/data/blocks.registry.json` 的 `content-carousel`（`ContentCarousel`，橫向 scroll-snap 加上一個／下一個按鈕）。缺少圓點、兩側箭頭等需求時，先擴充它並保持 Props 相容，不要另做近似元件。
 - Splide 屬於可操作的輪播元件候選，應歸 Blocks／UI Craft 的評估流程，**不是 Motion Effect 計數項目**。靜態內容優先列表或 CSS scroll-snap；非必要不要加自動輪播，自動輪播時要提供暫停控制、鍵盤與減少動態支援。
 - AOS 是 scroll-triggered reveal，不等於完整 parallax；我們已有 Reveal／Stagger，先檢查重疊。
 
