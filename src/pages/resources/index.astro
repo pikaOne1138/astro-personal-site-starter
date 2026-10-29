@@ -23,6 +23,18 @@ const resources = [
     linkLabel: '瀏覽動效示範 ↗',
     docsLabel: '查看效果與提示詞 ↗',
     prompt: '請先查看 KittenJam Motion Library：https://kittenjam-motion-library.vercel.app/ ，依我指定的效果名稱或編號，評估是否適合我的 Astro 個人網站。先確認該效果的實際行為、技術需求與授權，並檢查網站是否已有同類動效，不要直接安裝未知套件或照搬原始程式碼。提出低強度的實作方式，保持文字可讀、鍵盤可用、手機合理降級，支援 prefers-reduced-motion，無 JavaScript 時內容仍可見。任何修改先走 Branch 與 PR，由我確認後再合併。'
+  },
+  {
+    id: 'claude-seo',
+    category: 'SEO／網站經營',
+    title: 'Claude SEO — 網站 SEO 全面健檢',
+    description: '讓 AI 對已上線的網站做一次完整健檢：技術設定、頁面結構、結構化資料與內容，一次列出問題清單與修復的優先順序。跟 SEO Coach 的陪跑學習不同，這支適合先找出「全站有哪些問題」、再決定要修什麼的人。',
+    threshold: '門檻：<strong>只能在 Claude Code 裡</strong>使用（其他 AI 工具不行）；需要 Python 環境；全面健檢會同時啟動多個 AI 代理，比較耗用 AI 額度，建議先小範圍試跑。',
+    audience: '適合：網站已上線一陣子、想做一次全面檢查的網站主人',
+    url: 'https://github.com/AgriciDaniel/claude-seo',
+    docs: 'https://github.com/AgriciDaniel/claude-seo#readme',
+    docsLabel: '查看使用說明（英文） ↗',
+    prompt: '請幫我閱讀並評估這個 GitHub 專案的 Claude SEO 是否適合我的網站：https://github.com/AgriciDaniel/claude-seo 。先確認一件事：這支 Skill 只能在 Claude Code 裡使用，如果我現在用的不是 Claude Code，請直接告訴我不適用，並改推薦我用本站延伸資源裡的 SEO Coach，不要勉強安裝。如果適用，先說明安裝位置、必要的檔案與權限，以及全面健檢大約會耗用多少 AI 額度，再協助我安裝並驗證 Skill 可以使用。健檢只做讀取與報告：只能檢查已公開的網址，先針對單一頁面或小範圍試跑，把問題清單與修復優先順序給我確認。不要擅自改動我的網站、不要啟用任何需要付費或 API 金鑰的第三方服務、不要用它大量產生新頁面，也不要部署正式版本。任何修改先走 Branch 與 PR，由我確認後再合併。'
   }
 ];
 ---
@@ -44,7 +56,7 @@ const resources = [
     .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--green)}.lead{max-width:730px;font-size:18px}.muted{color:var(--muted)}
     .resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:18px;margin-top:34px}
     .resource-card{display:flex;flex-direction:column;gap:12px;background:#fffefa;border:1px solid var(--line);border-radius:12px;padding:26px;min-width:0}
-    .resource-card h2,.resource-card p{margin:0}.resource-card h2{font-size:23px}
+    .resource-card h2,.resource-card p{margin:0}.resource-card :global(strong){background:#fff4e9;color:#b47848;padding:0 .25em;border-radius:4px}.resource-card h2{font-size:23px}
     .tag{align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px;color:var(--green)}
     .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:10px}
     .button{font:inherit;cursor:pointer;background:var(--green);color:white;text-decoration:none;border:1px solid var(--green);border-radius:7px;padding:9px 14px;display:inline-block}
@@ -64,7 +76,8 @@ const resources = [
       <span class="tag">{resource.category}</span>
       <h2>{resource.title}</h2>
       <p>{resource.description}</p>
-      <p class="muted">{resource.audience}</p>
+      {resource.threshold && <p class="muted" set:html={resource.threshold} />}
+      <p class="muted" set:html={resource.audience} />
       <div class="actions">
         <a class="button" href={resource.url} target="_blank" rel="noopener noreferrer">{resource.linkLabel ?? "GitHub 專案 ↗"}</a>
         <a class="button alt" href={resource.docs} target="_blank" rel="noopener noreferrer">{resource.docsLabel ?? "繁體中文介紹 ↗"}</a>
