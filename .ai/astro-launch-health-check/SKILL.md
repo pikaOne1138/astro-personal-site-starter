@@ -1,6 +1,6 @@
 ---
 name: astro-launch-health-check
-description: Check a beginner-owned Astro site's public deployment, indexability and maintenance readiness without asserting Google indexing or search ranking.
+description: Check a beginner-owned Astro site's public deployment, indexability and maintenance readiness without asserting Google indexing or search ranking. Not for pre-release builds or previews (use astro-pr-preview) or for promising search rankings.
 ---
 # Astro Launch Health Check｜發布後健康檢查
 

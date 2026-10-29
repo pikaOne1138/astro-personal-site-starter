@@ -1,6 +1,6 @@
 ---
 name: astro-page-management
-description: Add, revise, hide, move or retire pages in an existing independent Astro website with shared navigation consistency, route checks, redirects, SEO and safe PR previews.
+description: Add, revise, hide, move or retire pages in an existing independent Astro website with shared navigation consistency, route checks, redirects, SEO and safe PR previews. Not for writing or publishing articles (use astro-content-publishing) or for visual redesign (use astro-ui-craft).
 ---
 # Astro Page Management｜既有網站的頁面管理
 

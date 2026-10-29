@@ -99,6 +99,8 @@
 - **僅在已授權的 Repo**：Commit、Push、建立 PR、取得真實 Preview。若只有本機 Git，先保留可回復的本機 Commit；沒有遠端就沒有 GitHub PR／Actions，不得聲稱已建立。
 - **須取得明確核准**：Merge、Production 部署、啟用搜尋引擎索引、DNS／公開網域變更、刪除內容或 Repo、強制推送／重寫歷史、破壞性復原。核准必須指向實際版本與影響範圍；不能把「幫我改一下」當成發布授權。
 - **日常流程**：更新與復原依 `.ai/astro-site-maintenance/SKILL.md`，預覽與發布依 `.ai/astro-pr-preview/SKILL.md`。
+- **讀寫邊界**：各 Skill 的步驟標有【讀】或【寫】。【讀】只檢查、盤點、建置與測試，不改原始檔、不提交、不推送；【寫】才改檔、提交、推送、合併或部署。複審與盤點只做【讀】。
+- **失敗上限**：同一做法失敗兩次就停手，白話告訴學員試過什麼、卡在哪，等學員決定；不要第三次重試同一做法。
 - 已存在未提交的使用者工作時，不得直接 reset、checkout 覆蓋、force-push 或 stash 後遺忘；先說明衝突並保護原有工作。
 
 ## 修改範圍、真實性與品質護欄
@@ -183,7 +185,7 @@
 | 新增、隱藏或改名頁面與選單 | 桌機、手機選單與所有頁面一致；每個目的地都能開 | `astro-page-management` |
 | 選好頁面與區段樣板、準備組站 | 每頁有真實內容或明確標示待補；不編造資格、價格、見證 | `astro-content-readiness` |
 | 規劃好選單名稱與層級 | 用真人做樹狀測試；沒有真人結果就標 `NOT TESTED` | `astro-navigation-tree-test` |
-| 新增、發布、撤回文章 | 草稿不外洩到網頁、RSS、Sitemap、搜尋；中文全文搜尋在真實瀏覽器可用 | `astro-content-publishing` |
+| 新增、發布、撤回文章 | 草稿不外洩到網頁、RSS、Sitemap、搜尋；中文全文搜尋在真實瀏覽器可用；交給學員核准前做過獨立複審與宣稱清查（無出處的高風險說法不留） | `astro-content-publishing` |
 | 提 PR、給學員看預覽 | 預覽網址真的打得開，且對應 PR 最新版本；平台實際回報的網址；不是 Actions 產物 | `astro-pr-preview` |
 | 部署、設定網域、決定是否讓搜尋引擎收錄 | 正式網址與 HTTPS；預設不收錄，學員明確同意才開；改 DNS 要另外授權 | `astro-starter-deploy` |
 | 網站已上線 | 正式網站的連結、基本 SEO、搜尋、404、備份與還原方式；不宣稱已被 Google 收錄 | `astro-launch-health-check` |

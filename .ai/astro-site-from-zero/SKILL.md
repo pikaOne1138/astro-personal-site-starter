@@ -1,6 +1,6 @@
 ---
 name: astro-site-from-zero
-description: Start a maintainable Astro website by talking with a non-coder directly, without first requiring an ATP Starter planner or Site Brief JSON.
+description: Start a maintainable Astro website by talking with a non-coder directly, without first requiring an ATP Starter planner or Site Brief JSON. Not for maintaining an existing student site (use astro-site-maintenance) or when a validated Site Brief already exists (use astro-site-assembly).
 ---
 # Astro Site from Zero｜直接對話建站
 

@@ -1,6 +1,6 @@
 ---
 name: astro-navigation-tree-test
-description: Validate a student's Astro navigation information architecture with beginner-friendly task-based tree tests and accessible two-level menu checks.
+description: Validate a student's Astro navigation information architecture with beginner-friendly task-based tree tests and accessible two-level menu checks. Not for building pages or changing routes (use astro-page-management), it only tests the menu structure.
 ---
 # Astro Navigation Tree Test｜導航可理解性測試
 

@@ -1,6 +1,6 @@
 ---
 name: astro-starter-onboarding
-description: Help beginner students select an Astro layout, configure brand colors and plan pages and navigation through the /starter/ planner, then hand a validated Site Brief to an AI developer.
+description: Help beginner students select an Astro layout, configure brand colors and plan pages and navigation through the /starter/ planner, then hand a validated Site Brief to an AI developer. Not for building the site itself (use astro-site-assembly) or for interview-led starts (use astro-site-from-zero).
 ---
 # Astro Starter Onboarding
 

@@ -1,6 +1,6 @@
 ---
 name: astro-content-readiness
-description: Check whether a beginner has the real content required for a selected Astro Layout, page or Section Pattern, without inventing works, claims or working actions.
+description: Check whether a beginner has the real content required for a selected Astro Layout, page or Section Pattern, without inventing works, claims or working actions. Not for writing the missing content or judging visual design, it only checks that real content exists.
 ---
 # Astro Content Readiness｜內容準備度檢查
 

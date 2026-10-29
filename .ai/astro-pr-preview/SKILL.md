@@ -1,6 +1,6 @@
 ---
 name: astro-pr-preview
-description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform.
+description: Safely build, verify, preview, and release student-owned Astro sites with GitHub PRs on either GitHub Pages or Cloudflare Pages/Workers, choosing the actual configured hosting platform. Not for deciding what to change, and not for first-time hosting setup of a student site (use astro-starter-deploy).
 ---
 
 # Astro PR Preview & Safe Release｜學員雙平台預覽與安全發布
