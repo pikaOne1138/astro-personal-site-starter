@@ -1,6 +1,6 @@
 ---
 name: astro-ui-craft
-description: Design, build, refine, or audit polished Astro sites for knowledge/blog and helper/professional-service workshop archetypes.
+description: Design, build, refine, or audit polished Astro sites for knowledge/blog and helper/professional-service workshop archetypes. Not for adding pages or navigation (use astro-page-management), publishing articles or deployment.
 ---
 
 # Astro UI Craft

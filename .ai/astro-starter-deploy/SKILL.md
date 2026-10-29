@@ -1,6 +1,6 @@
 ---
 name: astro-starter-deploy
-description: Help non-coders independently deploy an Astro personal site to GitHub Pages or optional Cloudflare, including repository, domain, base URL and preview checks without silently reconfiguring the research showcase.
+description: Help non-coders independently deploy an Astro personal site to GitHub Pages or optional Cloudflare, including repository, domain, base URL and preview checks without silently reconfiguring the research showcase. Not for routine edits to a site that is already deployed (use astro-site-maintenance).
 ---
 # Astro Starter Deploy｜獨立網站部署
 

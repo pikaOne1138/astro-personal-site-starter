@@ -1,6 +1,6 @@
 ---
 name: astro-design-consultation
-description: Guide zero-code Astro workshop students through an evidence-based design conversation, reference-site analysis, genuinely distinct layout alternatives and an actionable Design Brief without modifying or deploying a site.
+description: Guide zero-code Astro workshop students through an evidence-based design conversation, reference-site analysis, genuinely distinct layout alternatives and an actionable Design Brief without modifying or deploying a site. Not for editing, building or deploying a site, it stops at the Design Brief.
 ---
 
 # Astro Design Consultation｜網站設計對話顧問

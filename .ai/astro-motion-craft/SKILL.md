@@ -1,6 +1,6 @@
 ---
 name: astro-motion-craft
-description: Design, tune and audit restrained Astro motion interactions using reusable effects, four existing theme tokens and accessibility-first performance constraints.
+description: Design, tune and audit restrained Astro motion interactions using reusable effects, four existing theme tokens and accessibility-first performance constraints. Not for static layout or content changes, and not for adding decoration nobody asked for.
 ---
 
 # Astro Motion Craft — 動效與微互動設計 Skill

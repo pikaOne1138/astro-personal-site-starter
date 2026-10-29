@@ -1,6 +1,6 @@
 ---
 name: astro-site-entry
-description: Route a novice's site-building request to the appropriate ATP workflow: authorized replica, existing ATP Starter, or direct AI-led Astro building without requiring a planner first.
+description: Route a novice's site-building request to the appropriate ATP workflow: authorized replica, existing ATP Starter, or direct AI-led Astro building without requiring a planner first. Not for doing the build itself, it only routes to the next workflow.
 ---
 # ATP 建站總入口｜三條路，單一維護護欄
 

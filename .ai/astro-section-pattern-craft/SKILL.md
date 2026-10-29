@@ -1,6 +1,6 @@
 ---
 name: astro-section-pattern-craft
-description: Discover, select and customize ready-to-use Astro section patterns built from existing Blocks, without mistaking sections for full layouts or inventing source content.
+description: Discover, select and customize ready-to-use Astro section patterns built from existing Blocks, without mistaking sections for full layouts or inventing source content. Not for whole-site layout choices (use astro-layout-craft) or for changing a single Block.
 ---
 # Astro Section Pattern Craft｜區段組合樣板
 

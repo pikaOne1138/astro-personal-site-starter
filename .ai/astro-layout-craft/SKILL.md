@@ -1,6 +1,6 @@
 ---
 name: astro-layout-craft
-description: Select, deconstruct and adapt distinctive Astro page compositions, choosing structural reading flows before brand colors or component effects.
+description: Select, deconstruct and adapt distinctive Astro page compositions, choosing structural reading flows before brand colors or component effects. Not for editing a single component or token (use astro-ui-craft) or for adding and removing pages (use astro-page-management).
 ---
 # Astro Layout Craft｜版型設計與組裝 Skill
 

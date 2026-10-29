@@ -1,6 +1,6 @@
 ---
 name: astro-site-assembly
-description: Convert a validated /starter/ Site Brief JSON into a standalone Astro website scaffold, integrate layout/brand/navigation/content, and verify before GitHub or Cloudflare deployment.
+description: Convert a validated /starter/ Site Brief JSON into a standalone Astro website scaffold, integrate layout/brand/navigation/content, and verify before GitHub or Cloudflare deployment. Not for starting without a validated Site Brief (use astro-site-from-zero) or for maintaining an already built site.
 ---
 # Astro Site Assembly｜把學員規劃變成獨立網站
 
