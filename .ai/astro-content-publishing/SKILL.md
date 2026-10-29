@@ -56,7 +56,7 @@ See `references/seo-and-release-checklist.md`.
 Before showing an article or substantial page text to the student for approval to publish (not for typo-level S-lane edits):
 
 1. 【讀】Run the claim check in `references/claim-check.md` on every claim that needs proof. High-risk claims with no good source do not stay in the text.
-2. 【讀】Run the independent review in `references/independent-review.md`, read-only, against the fixed checklist, and state how independent it was. The last line of its report is `可交付：是／否（原因）`, and `是` requires the explicit line `阻擋項：0`.
+2. 【讀】Run the independent review in `references/independent-review.md`, read-only, against the fixed checklist, and open the report with the three facts that set its independence level (did it write the draft, did it watch it being written, how the review was started), not a self-chosen level. The last line of its report is `可交付：是／否（原因）` with nothing after it, and `是` requires the explicit line `阻擋項：0`.
 3. 【寫】Only the author fixes findings. After any change, review the changed parts again. If the same fix fails twice, stop, say plainly where it is stuck and wait for the student.
 4. The student still decides. Their approval of a specific version is what the release gate compares against; do not add a parallel approval mechanism.
 
