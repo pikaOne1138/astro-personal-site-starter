@@ -29,7 +29,8 @@ const resources = [
     category: 'SEO／網站經營',
     title: 'Claude SEO — 網站 SEO 全面健檢',
     description: '讓 AI 對已上線的網站做一次完整健檢：技術設定、頁面結構、結構化資料與內容，一次列出問題清單與修復的優先順序。跟 SEO Coach 的陪跑學習不同，這支適合先找出「全站有哪些問題」、再決定要修什麼的人。',
-    audience: '門檻：<strong>只能在 Claude Code 裡</strong>使用（其他 AI 工具不行）；需要 Python 環境；全面健檢會同時啟動多個 AI 代理，比較耗用 AI 額度，建議先小範圍試跑。適合：網站已上線一陣子、想做一次全面檢查的網站主人',
+    threshold: '門檻：<strong>只能在 Claude Code 裡</strong>使用（其他 AI 工具不行）；需要 Python 環境；全面健檢會同時啟動多個 AI 代理，比較耗用 AI 額度，建議先小範圍試跑。',
+    audience: '適合：網站已上線一陣子、想做一次全面檢查的網站主人',
     url: 'https://github.com/AgriciDaniel/claude-seo',
     docs: 'https://github.com/AgriciDaniel/claude-seo#readme',
     docsLabel: '查看使用說明（英文） ↗',
@@ -75,6 +76,7 @@ const resources = [
       <span class="tag">{resource.category}</span>
       <h2>{resource.title}</h2>
       <p>{resource.description}</p>
+      {resource.threshold && <p class="muted" set:html={resource.threshold} />}
       <p class="muted" set:html={resource.audience} />
       <div class="actions">
         <a class="button" href={resource.url} target="_blank" rel="noopener noreferrer">{resource.linkLabel ?? "GitHub 專案 ↗"}</a>
