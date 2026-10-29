@@ -1,4 +1,4 @@
-import { readFileSync, existsSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, mkdirSync, copyFileSync, cpSync } from 'node:fs';
 import { join } from 'node:path';
 
 const clean = (value, fallback = '待確認') => {
@@ -46,6 +46,36 @@ export function installProjectContext(directory, plan, options = {}) {
   writeFileSync(projectPath, renderStudentProject(template, plan), { flag: 'wx' });
   writeFileSync(agentsPath, agents.replace(/<!-- builder-only:start -->[\s\S]*?<!-- builder-only:end -->/g,'').replace(/本 ZIP/g,'學員的原始建站資料包').replace(/PROJECT-TEMPLATE\.md/g,'PROJECT.md').replace(/scripts\/export-starter\.mjs/g,'網站原始碼'), { flag: 'wx' });
   return { projectPath, agentsPath };
+}
+
+/**
+ * Install the spare component library into a student site at `.ai/library/`,
+ * the same delivery path as the `.ai` skills: copied wholesale from the source
+ * of truth in `src/`/`public/`, at export time only — nothing is duplicated in
+ * this repo. Shelf layout keeps the components' relative geometry intact
+ * (effects/patterns import `../blocks/...`; one block type-imports `../../data`,
+ * which resolves to the shelf's `data.ts`). Must be called AFTER the site's
+ * `.ai` directory exists: the exporters copy `.ai` with `errorOnExist:true`,
+ * which throws if `.ai` was created first.
+ */
+export function installComponentLibrary(directory){
+  const lib = join(directory, '.ai', 'library');
+  if (!existsSync(join(directory, '.ai'))) throw new Error('installComponentLibrary requires the site .ai directory to exist; copy .ai first');
+  if (existsSync(lib)) throw new Error('Refusing to overwrite existing .ai/library; review changes manually');
+  for (const dir of ['blocks','effects','patterns']) {
+    cpSync(new URL('../src/components/' + dir + '/', import.meta.url), join(lib, 'components', dir), { recursive: true, force: false, errorOnExist: true });
+  }
+  mkdirSync(join(lib, 'data'), { recursive: true });
+  for (const file of ['blocks.registry.json','effects.registry.json','section-patterns.registry.json']) {
+    copyFileSync(new URL('../src/data/' + file, import.meta.url), join(lib, 'data', file));
+  }
+  copyFileSync(new URL('../src/data.ts', import.meta.url), join(lib, 'data.ts'));
+  mkdirSync(join(lib, 'styles'), { recursive: true });
+  for (const file of ['blocks.css','article-explorer.css','multipage-nav.css','effects.css']) {
+    copyFileSync(new URL('../public/' + file, import.meta.url), join(lib, 'styles', file));
+  }
+  copyFileSync(new URL('../docs/student-builder-pack/LIBRARY-README.md', import.meta.url), join(lib, 'README.md'));
+  return lib;
 }
 
 /** Install runtime guards only into a newly generated, independently owned site. */

@@ -85,7 +85,7 @@ description: Design, tune and audit restrained Astro motion interactions using r
 ## 實際可操作的特效庫
 
 - 展示頁：`/effects/`（連結要帶網站的 `BASE_URL`，Preview 子路徑下也一樣）。
-- 元件在 `src/components/effects/`，有哪些效果、變體、預設強度與觸控／減少動態策略，以 `src/data/effects.registry.json` 為準，不要在文件裡寫死數量或名稱。樣式在 `public/effects.css`。
+- 元件在 `src/components/effects/`，有哪些效果、變體、預設強度與觸控／減少動態策略，以 `src/data/effects.registry.json` 為準，不要在文件裡寫死數量或名稱。樣式在 `public/effects.css`。在學員站內，元件庫位於 `.ai/library/`（registry 在 `.ai/library/data/`、CSS 在 `.ai/library/styles/`），採用時先複製進 `src/components/` 再使用，步驟見 `.ai/library/README.md`。
 - 展示頁可切換四套主題與 off／subtle／expressive 強度，Reveal／Stagger 可重播。
 - **效果與網站內容型 Block 分開計數**：效果不是內容區塊，不要加進 `blocks.registry.json`。組裝網站時優先把 effects 與既有 Blocks 組合，必要時再抽成可覆寫的 props，不要把整個展示頁複製到正式站。
 - Reveal 系列使用 `data-motion-*` 屬性與自己的 observer，和 `DemoLayout` 全域的 `[data-reveal]` 是兩套屬性。**同一個元素不要同時標兩種**，也不要為同一組元素再加第三個 observer。

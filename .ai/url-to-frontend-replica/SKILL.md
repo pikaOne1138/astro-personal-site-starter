@@ -51,6 +51,7 @@ description: "從使用者提供的網址，盤點並忠實重建有權使用的
 - 依 `.ai/astro-pr-preview/SKILL.md` 與 `.ai/astro-starter-deploy/SKILL.md`：Branch → PR → Build → 真實 Preview（檢查 Commit SHA）→ 使用者驗收 → 明確同意 → Merge／Production；不得自動合併。
 - 交付完成的來源／目標路由對照表、已發現／完成／未完成頁數、實測 viewport、互動狀態、替代素材、不可存取及後端依賴項。不得聲稱未驗證的頁面或功能已完成。
 - 依需求接續 `.ai/astro-content-publishing/SKILL.md`、`.ai/astro-site-maintenance/SKILL.md`，確保建站完成後仍能維護與新增內容。
+- 交付的網站必須帶有備用元件庫 `.ai/library/`：照 `docs/student-builder-pack/LIBRARY-README.md` 的結構，從建站包的 `src/components/`、`src/data/` 與 `public/` CSS 整批複製組裝，不得省略。
 
 ## 與 ATP 其他路線的關係
 

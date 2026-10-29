@@ -22,9 +22,9 @@
 
 學員說「加一個 X」時，**寫任何新元件之前**必須先做，並在回覆第一段回報：
 
-1. 用關鍵字（中英文，例如 輪播／carousel／滑動）搜尋 `src/data/blocks.registry.json` 的 `keywords`、`name`，以及 `src/components/`、`src/components/effects/` 與 `src/data/section-patterns.registry.json`；只讀 `COMPONENTS.md` 不夠，清單以 registry 為準。
+1. 用關鍵字（中英文，例如 輪播／carousel／滑動）搜尋 `src/data/blocks.registry.json` 的 `keywords`、`name`，以及 `src/components/`、`src/components/effects/` 與 `src/data/section-patterns.registry.json`；只讀 `COMPONENTS.md` 不夠，清單以 registry 為準。在學員站內工作時，元件庫在本站 `.ai/library/`：改用 `.ai/library/data/` 的三份 registry 與 `.ai/library/components/` 盤點，不要因為 `src/` 裡沒有就認定不存在。
 2. 回報格式：**找到哪些候選 → 各自能否滿足需求（資料介面、無 JavaScript、鍵盤、手機、減少動態）→ 缺什麼 → 決定**。
-3. 決定的優先順序：直接使用 → 修改既有元件補上缺口（保持原 Props 相容）→ 都不行才新增，並寫下為何不行。學員站依 `AGENTS.md` 規則，不在旁邊新增近似重複的元件。
+3. 決定的優先順序：直接使用 → 修改既有元件補上缺口（保持原 Props 相容）→ 都不行才新增，並寫下為何不行。學員站依 `AGENTS.md` 規則，不在旁邊新增近似重複的元件。採用 `.ai/library/` 架上元件時，先依 `.ai/library/README.md` 的步驟複製進 `src/components/`、補上需要的 CSS，再 import 使用；不要直接從 `.ai/library/` import。
 4. 沒做這步、或回報裡沒有候選清單，就不算完成。
 
 ## 需求訪談、工程語意轉譯與「未知的未知」風險檢查

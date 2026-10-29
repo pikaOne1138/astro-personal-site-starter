@@ -1,6 +1,7 @@
 # 元件庫：風格契約與組裝參考
 
 > 元件的介面由 `COMPONENTS.md`、`src/data/blocks.registry.json` 與 `src/components/blocks/*.astro` 維護。這份是 `astro-ui-craft` 的**設計與組裝參考**，不能取代查證目前的原始碼。
+> 在學員站內，元件庫位於 `.ai/library/`（registry 在 `.ai/library/data/`、CSS 在 `.ai/library/styles/`），採用時先複製進 `src/components/` 再使用，步驟見 `.ai/library/README.md`。
 
 ## 範圍
 

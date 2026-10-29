@@ -4,7 +4,7 @@ import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {normalizeExpandedPatterns,MissingPatternContentError} from './expanded-section-patterns.mjs';
 import {artDirectionAdapters} from './art-direction-adapters.mjs';
-import {finalizeStudentSite} from './student-project-context.mjs';
+import {finalizeStudentSite,installComponentLibrary} from './student-project-context.mjs';
 import {writeDesignBaseline} from './design-scan.mjs';
 const args=process.argv.slice(2),strict=args.includes('--require-ready'),allowed=args.includes('--allow-in-progress');
 const positional=args.filter(x=>!x.startsWith('--'));
@@ -98,6 +98,7 @@ try{
  // 殼（SiteLayout）與版型檔在這裡才定案；surrogate 匯出時寫的 design-baseline.json 對應的是被換掉的檔案，G-11 會誤報，所以以最終內容重寫。
  writeDesignBaseline(generated);
  cpSync(new URL('../.ai/',import.meta.url),join(generated,'.ai'),{recursive:true,force:false,errorOnExist:true});
+ installComponentLibrary(generated);
  mkdirSync(dirname(root),{recursive:true});if(existsSync(root))rmSync(root,{recursive:true});renameSync(generated,root);
  console.log('Independent Art Direction adapter exported:',adapter.slug,root,'Assembly in Progress; screenshots deferred');
 }finally{rmSync(workspace,{recursive:true,force:true})}

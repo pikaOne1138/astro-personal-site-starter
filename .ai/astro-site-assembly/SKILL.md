@@ -57,6 +57,7 @@ Preserve article collections, navigation data, SEO, RSS, sitemap, Pagefind and e
 `StarterPlan.navigation` supports custom page IDs (`page-*`) and `parentId` for a second level. The exporter generates an accessible `<details>` based submenu; test desktop keyboard opening, phone tap, and parent/child routes. Do not treat the research site's flat `SiteNav` and `MobileMenu` as already upgraded. Large menus may need a distinct mega-menu pattern and separate visual QA; no third level by default.
 
 ## Delivery gates
+- **元件庫交付**：匯出器會把備用元件庫整批組裝進學員站的 `.ai/library/`（結構與採用方式以 `docs/student-builder-pack/LIBRARY-README.md` 為準，來源是建站包的 `src/components/`、`src/data/` 與 `public/` CSS）。交付前確認 `.ai/library/` 在位且內容完整；若是手工組站（未經匯出器），必須照同一結構親手組裝，不得省略——學員日後維護時的新增功能要靠這座架子找現成元件。
 - Generate into a **different** directory or student's own new repository. Never overwrite the research showcase or existing student files by default.
 - Build standalone output and check correct canonical, URL base, internal links, selected menus and honest content placeholders.
 - Preview then ask student for explicit confirmation before merging or publishing.
