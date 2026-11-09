@@ -291,7 +291,16 @@
       "routes": [
         "feature"
       ],
-      "noExporter": true
+      "noExporter": true,
+      "state": {
+        "availableSkills": []
+      },
+      "unavailableSkills": [
+        "astro-site-maintenance",
+        "astro-page-management",
+        "astro-ui-craft"
+      ],
+      "usedSkills": []
     },
     {
       "name": "unknown choices first menu",
