@@ -43,4 +43,24 @@ for(const [group,items] of Object.entries(OPTIONS)){
 }
 assert.equal(FIRST_LAYER.length,3);
 console.log('PASS executable deterministic routing contract',total,'fixtures');
+
+assert.match(guide,/data-prompt="4"/,'guide maintenance copy button must target canonical prompt');
+assert.match(guide,/text:startMaintenancePrompt\.trim\(\)/,'guide must render imported prompt unchanged');
+assert.match(guide,/navigator\.clipboard\.writeText\(prompts\[Number\(b\.dataset\.prompt\)\]\)/,
+ 'copy action must copy displayed canonical prompt');
+assert.match(prompt,/也允許我用自然語言改變任務/,'prompt must support plain-text chat without UI controls');
+const followup=routeIntent('我今天想處理網站');
+assert.equal(followup.type,'first-menu');
+const designChoice=routeIntent('②',{menuLayer:'first'});
+assert.equal(designChoice.type,'second-menu');
+assert.equal(designChoice.layer,'improve');
+assert.equal(designChoice.options.length,6);
+assert.equal(routeIntent('③',{menuLayer:'improve'}).routes[0].id,'candidates');
+const newChoice=routeIntent('①',{menuLayer:'first'});
+assert.deepEqual(newChoice.options.map(x=>x.technical),['C','B','A']);
+assert.equal(routeIntent('我想新增一篇文章').type,'direct');
+const switched=routeIntent('幫我發表一篇文章',{menuLayer:'improve',confirmed:{brand:'已確認品牌'}});
+assert.deepEqual(switched.confirmed,{brand:'已確認品牌'});
+console.log('PASS /guide/ canonical copy-path + plain-text learner-turn handoff contract');
+
 console.log('NOT TESTED: genuine model conversation; deterministic examples are not model behavior.');
