@@ -48,7 +48,7 @@ const IMPROVE=new Set(OPTIONS.improve.map(x=>x.id)),MAINTAIN=new Set(OPTIONS.mai
 const findOption=id=>Object.entries(OPTIONS).flatMap(([group,items])=>items.map(item=>({...item,group}))).find(x=>x.id===id);
 const uniq=x=>[...new Set(x)];
 const menu=layer=>({type:layer==='first'?'first-menu':'second-menu',layer,options:layer==='first'?FIRST_LAYER:OPTIONS[layer],routes:[],skills:[],preserveContext:true});
-export function routeIntent(message,{menuLayer=null,confirmed={},hasRepoAccess=false}={}){
+export function routeIntent(message,{menuLayer=null,confirmed={},hasRepoAccess=false,availableSkills=null}={}){
   const input=String(message||'').trim();
   if(menuLayer==='first' && /^[123一二三①②③]$/.test(input)){
     const number={'1':0,'一':0,'①':0,'2':1,'二':1,'②':1,'3':2,'三':2,'③':2}[input];
@@ -57,21 +57,25 @@ export function routeIntent(message,{menuLayer=null,confirmed={},hasRepoAccess=f
   if(menuLayer && menuLayer!=='first' && /^[1-6一二三四五六①②③④⑤⑥]$/.test(input)){
     const number={'1':0,'一':0,'①':0,'2':1,'二':1,'②':1,'3':2,'三':2,'③':2,'4':3,'四':3,'④':3,'5':4,'五':4,'⑤':4,'6':5,'六':5,'⑥':5}[input];
     const item=OPTIONS[menuLayer]?.[number];
-    if(item)return result([item.id],confirmed,hasRepoAccess);
+    if(item)return result([item.id],confirmed,hasRepoAccess,availableSkills);
   }
   const ids=RULES.filter(([,pattern])=>pattern.test(input)).map(([id])=>id);
-  if(ids.length)return result(ids,confirmed,hasRepoAccess);
+  if(ids.length)return result(ids,confirmed,hasRepoAccess,availableSkills);
   if(/想.{0,8}(建|做).{0,8}網站|個人網站/.test(input))return menu('new');
   if(/改善.{0,8}網站|修改網站|改網站/.test(input))return menu('improve');
   return menu('first');
 }
-function result(ids,confirmed,hasRepoAccess){
+function result(ids,confirmed,hasRepoAccess,availableSkills){
   const routes=uniq(ids).map(findOption).filter(Boolean);
   const skills=uniq(routes.flatMap(x=>x.skills));
   const existing=routes.some(x=>x.group!=='new');
+  const suggestedSkills=existing?uniq(['astro-site-maintenance',...skills]):skills;
+  const unavailableSkills=Array.isArray(availableSkills)?suggestedSkills.filter(x=>!availableSkills.includes(x)):[];
   return {
     type:'direct',routes:routes.map(({id,group,technical})=>({id,group,...(technical?{technical}:{})})),
-    skills:existing?uniq(['astro-site-maintenance',...skills]):skills,
+    skills:suggestedSkills,
+    unavailableSkills,
+    usedSkills:[], // suggestions are never evidence of actual invocation
     needsRepo:existing && !hasRepoAccess, // discussion may still proceed without access
     canDiscussWithoutRepo:true,
     noExporter:existing,
