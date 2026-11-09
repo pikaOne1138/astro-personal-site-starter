@@ -1,6 +1,6 @@
 ---
 name: astro-site-entry
-description: Route a novice's natural-language website request across new builds, design improvements, maintenance, publishing and recovery; show two-layer choices only when intent is unclear. Delegates to existing Skills without doing their work.
+description: Route a novice's natural-language website request across new builds, design improvements, maintenance, publishing and recovery; show two-layer choices only when intent is unclear. Not for implementing designs, editing a site, or publishing; delegates execution to existing specialist Skills.
 ---
 # ATP 建站總入口｜三條路，單一維護護欄
 
