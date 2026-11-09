@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "disclaimer": "Deterministic contract fixtures only; not actual AI model dialogue validation",
+  "cases": [
+    {
+      "name": "T1 direct image size",
+      "message": "幫我改首頁照片大小",
+      "type": "direct",
+      "routes": [
+        "local-ui"
+      ],
+      "skills": [
+        "astro-ui-craft"
+      ],
+      "noExporter": true
+    },
+    {
+      "name": "direct precise second image",
+      "message": "把第二段照片放大",
+      "type": "direct",
+      "routes": [
+        "local-ui"
+      ]
+    },
+    {
+      "name": "T2 ambiguous first menu",
+      "message": "我今天想處理網站",
+      "type": "first-menu",
+      "options": [
+        "new",
+        "improve",
+        "maintain"
+      ]
+    },
+    {
+      "name": "T2 select design layer",
+      "message": "②",
+      "state": {
+        "menuLayer": "first"
+      },
+      "type": "second-menu",
+      "layer": "improve",
+      "options": [
+        "design-audit",
+        "reference",
+        "candidates",
+        "local-ui",
+        "brand",
+        "motion"
+      ]
+    },
+    {
+      "name": "T2 select design health check",
+      "message": "①",
+      "state": {
+        "menuLayer": "improve"
+      },
+      "type": "direct",
+      "routes": [
+        "design-audit"
+      ]
+    },
+    {
+      "name": "T2 select maintenance layer",
+      "message": "③",
+      "state": {
+        "menuLayer": "first"
+      },
+      "type": "second-menu",
+      "layer": "maintain",
+      "options": [
+        "content",
+        "feature",
+        "repair",
+        "preview",
+        "restore"
+      ]
+    },
+    {
+      "name": "new generic route menu",
+      "message": "我想做一個個人網站",
+      "type": "second-menu",
+      "layer": "new",
+      "options": [
+        "from-zero",
+        "starter",
+        "replica"
+      ]
+    },
+    {
+      "name": "new A existing website",
+      "message": "我已經有一個網站想搬過來",
+      "type": "direct",
+      "routes": [
+        "replica"
+      ],
+      "technical": "A",
+      "noExporter": false
+    },
+    {
+      "name": "new B template",
+      "message": "我想用 ATP 現成版型",
+      "type": "direct",
+      "routes": [
+        "starter"
+      ],
+      "technical": "B"
+    },
+    {
+      "name": "new C interview",
+      "message": "想從零開始讓 AI 訪談",
+      "type": "direct",
+      "routes": [
+        "from-zero"
+      ],
+      "technical": "C"
+    },
+    {
+      "name": "new menu C",
+      "message": "①",
+      "state": {
+        "menuLayer": "new"
+      },
+      "type": "direct",
+      "routes": [
+        "from-zero"
+      ],
+      "technical": "C"
+    },
+    {
+      "name": "new menu B",
+      "message": "②",
+      "state": {
+        "menuLayer": "new"
+      },
+      "type": "direct",
+      "routes": [
+        "starter"
+      ],
+      "technical": "B"
+    },
+    {
+      "name": "new menu A",
+      "message": "③",
+      "state": {
+        "menuLayer": "new"
+      },
+      "type": "direct",
+      "routes": [
+        "replica"
+      ],
+      "technical": "A"
+    },
+    {
+      "name": "T5 design audit",
+      "message": "首頁看起來很普通",
+      "type": "direct",
+      "routes": [
+        "design-audit"
+      ]
+    },
+    {
+      "name": "T5 reference",
+      "message": "我喜歡這個網站的感覺",
+      "type": "direct",
+      "routes": [
+        "reference"
+      ]
+    },
+    {
+      "name": "T5 candidates",
+      "message": "給我三種不同首頁",
+      "type": "direct",
+      "routes": [
+        "candidates"
+      ]
+    },
+    {
+      "name": "T5 local block",
+      "message": "把第二段照片放大",
+      "type": "direct",
+      "routes": [
+        "local-ui"
+      ]
+    },
+    {
+      "name": "T5 brand",
+      "message": "網站想更有個人風格",
+      "type": "direct",
+      "routes": [
+        "brand"
+      ]
+    },
+    {
+      "name": "T5 motion",
+      "message": "想讓網站更有動態感",
+      "type": "direct",
+      "routes": [
+        "motion"
+      ]
+    },
+    {
+      "name": "content publish",
+      "message": "幫我發表一篇文章",
+      "type": "direct",
+      "routes": [
+        "content"
+      ]
+    },
+    {
+      "name": "add FAQ",
+      "message": "幫我新增 FAQ",
+      "type": "direct",
+      "routes": [
+        "feature"
+      ]
+    },
+    {
+      "name": "website outage",
+      "message": "網站打不開",
+      "type": "direct",
+      "routes": [
+        "repair"
+      ]
+    },
+    {
+      "name": "version rollback",
+      "message": "幫我恢復昨天的版本",
+      "type": "direct",
+      "routes": [
+        "restore"
+      ]
+    },
+    {
+      "name": "compound design and mobile bug",
+      "message": "我的首頁不好看，而且手機版跑掉",
+      "type": "direct",
+      "routes": [
+        "repair",
+        "design-audit"
+      ],
+      "noExporter": true
+    },
+    {
+      "name": "T3 change task from design to article",
+      "message": "幫我發表一篇文章",
+      "state": {
+        "menuLayer": "improve",
+        "confirmed": {
+          "layout": "田野筆記",
+          "rejected": [
+            "大圖 Hero"
+          ]
+        }
+      },
+      "type": "direct",
+      "routes": [
+        "content"
+      ],
+      "confirmed": {
+        "layout": "田野筆記",
+        "rejected": [
+          "大圖 Hero"
+        ]
+      }
+    },
+    {
+      "name": "T4 existing site safe",
+      "message": "把第二段照片放大",
+      "state": {
+        "hasRepoAccess": true
+      },
+      "type": "direct",
+      "noExporter": true,
+      "needsRepo": false
+    },
+    {
+      "name": "no GitHub permission",
+      "message": "首頁看起來很普通",
+      "state": {
+        "hasRepoAccess": false
+      },
+      "type": "direct",
+      "needsRepo": true,
+      "canDiscussWithoutRepo": true
+    },
+    {
+      "name": "Skill unavailable still route, no false use claim",
+      "message": "幫我新增 FAQ",
+      "type": "direct",
+      "routes": [
+        "feature"
+      ],
+      "noExporter": true
+    },
+    {
+      "name": "unknown choices first menu",
+      "message": "不知道",
+      "type": "first-menu"
+    },
+    {
+      "name": "ambiguous modification second menu",
+      "message": "我想修改網站",
+      "type": "second-menu",
+      "layer": "improve"
+    }
+  ]
+}
