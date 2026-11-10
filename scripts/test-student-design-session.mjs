@@ -4,6 +4,12 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {applyCommand,loadSession,renderHandoff,sessionPath} from './design-session.mjs';
 
+const generator=readFileSync(new URL('./student-project-context.mjs',import.meta.url),'utf8');
+const packBuilder=readFileSync(new URL('./build-student-pack.mjs',import.meta.url),'utf8');
+assert.ok(generator.includes("'design-session.mjs'"),'standalone exporter must install design tool');
+assert.ok(generator.includes("'design:session':'node scripts/design-session.mjs'"),'student site must expose CLI script');
+assert.ok(packBuilder.includes("'scripts/design-session.mjs'"),'ZIP must ship the same source tool');
+
 const root=mkdtempSync(join(tmpdir(),'atp-design-session-'));
 try{
  mkdirSync(join(root,'.ai'),{recursive:true});
