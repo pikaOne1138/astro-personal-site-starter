@@ -2,7 +2,7 @@
 // Compare *actual* browser QA screenshots from two independently rendered builds.
 // This cannot create candidates, simulate screenshots, or assert aesthetic quality.
 import {readFileSync,writeFileSync,mkdirSync,copyFileSync,existsSync} from 'node:fs';
-import {resolve,join,basename,dirname} from 'node:path';
+import {resolve,join,sep} from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
@@ -32,6 +32,9 @@ function loadQa(folder){
 }
 const isGood=row=>row.status===200&&!row.overflow&&!(row.brokenLocalImages||[]).length&&!(row.errors||[]).length;
 export function compareBrowserEvidence({before,after,out,widths=REQUIRED_WIDTHS,paths=null}){
+ const target=resolve(out),beforeRoot=resolve(before),afterRoot=resolve(after);
+ if(existsSync(target))fail('Output already exists; use a new directory to preserve evidence');
+ if([beforeRoot,afterRoot].some(p=>target===p||target.startsWith(p+sep)))fail('Output must not be inside source QA evidence');
  const first=loadQa(before),second=loadQa(after);
  const a=new Map(first.rows.map(r=>[r.path+'@'+r.width,r]));
  const b=new Map(second.rows.map(r=>[r.path+'@'+r.width,r]));
