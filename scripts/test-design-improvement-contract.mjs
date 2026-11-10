@@ -18,6 +18,16 @@ for(const [skill,terms] of links){
 }
 for(const name of ['設計健檢','參考網站改造','多種設計候選','局部區塊微調','品牌視覺改造','互動與動態精修'])if(!shared.includes(name))errors.push('missing mode '+name);
 assert.deepEqual(errors,[],'six-mode Skill linkage');
+
+const entry=read('.ai/astro-site-entry/SKILL.md');
+const handoff=read('.ai/SHARED-DESIGN-HANDOFF.md');
+assert.ok(entry.includes('不預先展開第二層細項'),'first menu must remain compact');
+assert.ok(entry.includes('不要另創第三份選單'),'avoid choice overload');
+assert.ok(handoff.includes('不是秘密、也不是禁語'),'Skill terminology is public, not prohibited');
+assert.ok(handoff.includes('不要把理解這些名稱當作操作前提'),'no jargon prerequisite');
+assert.ok(shared.includes('簡單線框'),'structural comparison has visual fallback');
+assert.ok(shared.includes('已確認')&&shared.includes('已否決（含理由）')&&shared.includes('待確認'),'portable decision handoff');
+
 const base={
  mode:'local-ui',site:'https://example.test',scope:'首頁第二段圖片',
  preserved:'文章 URL、表單目的地、主導航',
