@@ -19,17 +19,19 @@ function qa(dir,sha){
  for(const width of REQUIRED_WIDTHS){
   rows.push({path:'/',width,status:200,overflow:false,brokenLocalImages:[],errors:[]});
   fakePng(join(dir,'home-'+width+'.png'),width);
+  rows.push({path:'/services/',width,status:200,overflow:false,brokenLocalImages:[],errors:[]});
+  fakePng(join(dir,'services--'+width+'.png'),width);
  }
  writeFileSync(join(dir,'results.json'),JSON.stringify({sourceCommit:sha,rows}));
 }
 try{
  qa(before,'a'.repeat(40));qa(after,'b'.repeat(40));
- let r=compareBrowserEvidence({before,after,out,paths:['/']});
- assert.equal(r.screenshots.length,4);
+ let r=compareBrowserEvidence({before,after,out,paths:['/','/services/']});
+ assert.equal(r.screenshots.length,8);
  assert.equal(r.aestheticReview,'NOT TESTED');
  assert.equal(r.beforeCommit,'a'.repeat(40));
  assert.ok(existsSync(join(out,'index.html')));
- assert.equal((readFileSync(join(out,'index.html'),'utf8').match(/<section>/g)||[]).length,4);
+ assert.equal((readFileSync(join(out,'index.html'),'utf8').match(/<section>/g)||[]).length,8);
  const first=r.screenshots[0];
  assert.ok(first.before.sha256&&first.after.sha256);
  assert.ok(existsSync(join(out,first.beforeFile))&&existsSync(join(out,first.afterFile)));
