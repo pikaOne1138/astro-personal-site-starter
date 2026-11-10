@@ -53,6 +53,7 @@ for (const path of [
   'scripts/student-project-context.mjs',
   'scripts/design-session.mjs',
   'scripts/design-compare.mjs',
+  'scripts/design-worktrees.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',
   'scripts/check-project-context.mjs',
