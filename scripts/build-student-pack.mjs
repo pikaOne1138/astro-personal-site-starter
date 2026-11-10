@@ -51,6 +51,7 @@ for (const path of [
   'scripts/preflight.mjs',
   'scripts/test-gates.mjs',
   'scripts/student-project-context.mjs',
+  'scripts/design-session.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',
   'scripts/check-project-context.mjs',
