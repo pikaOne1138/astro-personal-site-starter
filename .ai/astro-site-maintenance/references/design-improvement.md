@@ -31,6 +31,16 @@
 
 內容保存在學員工作目錄的 `.ai` 資料夾下的 `design-session.json`，**只表示當前設計會話狀態**。不會更改版型、圖檔、原始碼、已發布內容或正式分支，不會自動寫入 `PROJECT.md`；只有學員確認為長期規則，AI 才依現有維護程序核對後更新 `PROJECT.md`。此檔可由學員自行決定是否保留於私有版本控制，但不能存個資、憑證或未獲授權的來源素材。若站點沒有此腳本或 AI 無法操作終端機，回退至上方的純文字三欄交接摘要，不要求學員為此額外安裝工具。
 
+## 多個候選方案的獨立工作區
+
+針對既有學員網站真正製作不同 Layout 候選時，AI 可使用隨網站匯出的 `scripts/design-worktrees.mjs` 建立 Git worktree。這是 Git 的**隔離版程式工作目錄**，不是設計生成器：
+
+`node scripts/design-worktrees.mjs create --id editorial --dir "../candidate-editorial"`
+
+此命令只在學員自己的 Git Repo 執行，從**已提交的 HEAD** 建立本地 `design/editorial` 分支及新工作目錄，不推送 GitHub、不部署、不合併。原網站若有尚未提交的程式變更，會拒絕建立候選；已有候選資料夾與同名分支也會拒絕覆蓋。可用 `node scripts/design-worktrees.mjs list` 查看候選工作目錄。
+
+AI 接著才依 Layout、Editorial 與 UI Skills **實際修改候選工作目錄中的 Astro 頁面**，用學員真實內容分別 Build 並在可用的隔離預覽環境檢查。每個候選都要記錄其 Git SHA、真實頁面／四寬度截圖與主要取捨。若沒有真實畫面，只能稱設計草案。學員選定候選後，仍須用既有 PR Preview、安全修改及核准流程整合，**不能因候選被選中就直接 Merge 或發布**。不需要多方案的局部小改，不必額外建立 worktree。
+
 ## 真實畫面的修改前後比較
 
 已有的 `npm run qa:responsive` 是 Playwright 真實瀏覽器截圖來源，輸出資料夾內含 `results.json` 與各頁 1440／1280／768／390 等尺寸的 PNG。AI 要比較修改前後時，必須**先分別在兩個版本完成真正的 QA 截圖**、保留兩份不覆寫的資料夾，再在學員網站工作目錄執行：
