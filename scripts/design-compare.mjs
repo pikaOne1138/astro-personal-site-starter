@@ -13,7 +13,7 @@ const text=(value,name)=>{
  return value.trim();
 };
 const esc=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-const keyFor=p=>(p.replace(/^\\//,'')||'home').replace(/[^a-z0-9-]/g,'-').slice(0,100);
+const keyFor=p=>(p.replace(/^[/]/,'')||'home').replace(/[^a-z0-9-]/g,'-').slice(0,100);
 const screenshot=(folder,p,width)=>join(folder,keyFor(p)+'-'+width+'.png');
 function pngDimensions(file,width){
  if(!existsSync(file))fail('Missing screenshot: '+file);
