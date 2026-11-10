@@ -19,6 +19,18 @@
 ## 沒有 Repository 存取時的續接摘要
 若目前只有純聊天環境，學員要暫停、換對話或換 AI 時，可提供短短三欄的**可複製交接摘要**：「已確認」「已否決（含理由）」「待確認」，保留目前任務與網站來源的已知／未知狀態。這是交給下次對話的文字，**不代表已經寫入網站 Repo、永久記憶或建置完成**。不必每一輪都輸出，也不在學員未要求時強迫整理正式 Design Brief。
 
+## 學員網站的本地設計決策紀錄
+
+學員若已有獨立匯出的網站，AI 可在**學員自己的網站工作目錄**使用 `scripts/design-session.mjs`（`npm run design:session -- <command>`）。這是選用的本地決策紀錄，不是新網頁編輯器，也不需要讓零程式學員自己輸入 CLI：
+
+- 初次使用：`node scripts/design-session.mjs init --site "我的網站" --scope "首頁設計"`。若既有紀錄存在會拒絕覆寫。
+- 新增候選：`node scripts/design-session.mjs add --id editorial --title "編輯雜誌" --first "文章標題先行" --flow "文章目錄與主題列表" --mobile "單欄閱讀" --tradeoff "較少圖片"`。每案要有真正不同的結構資料；資料欄位存在不代表差異已實測。
+- 保留既有功能：`node scripts/design-session.mjs preserve --text "文章網址與聯絡表單不變"`。
+- 學員明確選定：`node scripts/design-session.mjs choose --id editorial --reason "學員希望文章優先"`；否決用 `reject --id editorial --reason "學員不喜歡這個閱讀動線"`。沒有學員實際決定時不可自行執行選定、否決。
+- 只記錄對話決策：`note --type confirmed|rejected|pending --text "內容"`。換對話前用 `handoff` 產生白話可複製摘要；用 `show` 讀既有狀態。
+
+內容保存在學員工作目錄的 `.ai/design-session.json`，**只表示當前設計會話狀態**。不會更改版型、圖檔、原始碼、已發布內容或正式分支，不會自動寫入 `PROJECT.md`；只有學員確認為長期規則，AI 才依現有維護程序核對後更新 `PROJECT.md`。此檔可由學員自行決定是否保留於私有版本控制，但不能存個資、憑證或未獲授權的來源素材。若站點沒有此腳本或 AI 無法操作終端機，回退至上方的純文字三欄交接摘要，不要求學員為此額外安裝工具。
+
 ## 六種任務各自要做什麼
 
 | 學員意圖 | 主要工作 | 最少交付 | 不應做的事 |
