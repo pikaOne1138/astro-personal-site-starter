@@ -3,6 +3,7 @@
 // merges, exports a Starter or changes the website's published source.
 import {readFileSync,writeFileSync,existsSync,mkdirSync,renameSync,rmSync} from 'node:fs';
 import {join,resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const HELP = `Usage: node scripts/design-session.mjs <command> [--key "value"]
   init     --site "..." --scope "..."          create local session (never overwrite)
@@ -147,4 +148,4 @@ export function runCli(argv=process.argv.slice(2)){
   return 0;
  }catch(e){process.stderr.write('Design session: '+e.message+'\n');return 1;}
 }
-if(process.argv[1]&&resolve(process.argv[1])===resolve(new URL(import.meta.url).pathname))process.exitCode=runCli();
+if(process.argv[1]&&resolve(process.argv[1])===resolve(fileURLToPath(import.meta.url)))process.exitCode=runCli();
