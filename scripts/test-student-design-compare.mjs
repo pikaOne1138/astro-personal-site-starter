@@ -35,7 +35,7 @@ try{
  const first=r.screenshots[0];
  assert.ok(first.before.sha256&&first.after.sha256);
  assert.ok(existsSync(join(out,first.beforeFile))&&existsSync(join(out,first.afterFile)));
- assert.throws(()=>compareBrowserEvidence({before,after,out:join(tmp,'missing'),paths:['/services/']}),/missing before\/after|No matching rendered/);
+ assert.throws(()=>compareBrowserEvidence({before,after,out:join(tmp,'missing'),paths:['/unavailable/']}),/missing before\/after|No matching rendered/);
  unlinkSync(join(after,'home-390.png'));
  assert.throws(()=>compareBrowserEvidence({before,after,out:join(tmp,'invalid'),paths:['/']}),/Missing screenshot/);
  console.log('PASS evidence comparison with synthetic PNG fixtures and negative missing-file case');
