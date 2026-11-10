@@ -27,7 +27,7 @@ try{
  assert.equal(current.publicationApproved,false);
  assert.equal(current.options.find(x=>x.id==='gallery').status,'rejected');
  const summary=renderHandoff(current);
- for(const text of ['已確認','已否決（含理由）','待確認','不修改的部分','精選文章標題','學員明確選定','不代表']){
+ for(const text of ['已確認','已否決（含理由）','待確認','不修改的部分','精選文章標題','學員明確選定','未授權合併']){
   assert.ok(summary.includes(text),text);
  }
  applyCommand(root,'reject',{id:'editorial',reason:'學員改變主意'});
