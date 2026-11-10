@@ -126,7 +126,7 @@ import R05 from '../../recipes/code/rhythm/R05-voice-heading.astro';
 
 **健檢輸出**：按主焦點、閱讀動線、中文標題斷行、留白、圖片主體與裁切、手機重排、信任資訊及功能完整性逐項檢查；每一問題採「畫面證據→訪客後果→原因假說→最小修改→如何驗證」，區分 [OBS]、[MEAS]、[INF] 與 [NEW]。給學員優先選擇要修的地方，不為提高分數任意改動已確認的設計。
 
-**候選與前後比較**：候選方案與現站必須固定內容和測試寬度，另記 Hero／欄比／Section／列表／手機順序的實際差異；修改後只以對應 HEAD 與真實渲染截圖宣稱「有畫面證據」。比對需包含內頁、長中文標題及無圖情境；單純生成漂亮 Hero，不代表整站完成。既有 `checklists/visual-qa.md` 與 `scripts/audit.mjs` 是驗收依據，腳本 PASS 不代表人工看過構圖。
+**候選與前後比較**：候選方案與現站必須固定內容和測試寬度，另記 Hero／欄比／Section／列表／手機順序的實際差異；修改後只以對應 HEAD 與真實渲染截圖宣稱「有畫面證據」。比對需包含內頁、長中文標題及無圖情境；單純生成漂亮 Hero，不代表整站完成。既有 `.ai/astro-editorial-layout-design/checklists/visual-qa.md` 與 `.ai/astro-editorial-layout-design/scripts/audit.mjs` 是驗收依據，腳本 PASS 不代表人工看過構圖。
 
 共同交接規則參照 `.ai/astro-site-maintenance/references/design-improvement.md`；本 Skill 不代替 Layout 再選整頁結構，也不代替 UI 修改元件。
 
