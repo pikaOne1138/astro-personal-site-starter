@@ -36,3 +36,7 @@
 設計討論、實際修改、技術建置、線上 Preview 與視覺驗收是五種不同狀態。
 
 每次有原始碼變更，至少回報：變更範圍、已確認／未確認事項、實際改動、保留不動的部分、各測試 PASS／FAIL／BLOCKED／NOT TESTED、截圖的版本／尺寸、真實 Preview URL／SHA、恢復方式以及等待學員確認的決定。可看候選方案要有可訪問的真實渲染，不能用文字草稿宣稱已交付。
+
+## 可重跑的驗收證據檢查（選用）
+
+本資料包另附 `.ai/astro-site-maintenance/references/design-review-evidence.mjs`，提供不依賴第三方套件的 `validateDesignReview(report)`。它檢查六種模式、觀察／影響／假說／修正／驗證欄位、Build／Preview／視覺狀態、四尺寸前後截圖與核准欄位。**只有存在真實證據才允許把相應狀態標為 PASS**；缺資料標 `NOT TESTED` 而非憑空補值。此檢查只驗證紀錄形狀與必要證據欄位，不檢查圖片真假、預覽是否真的可達、視覺是否漂亮，也不能替代人工審閱或學員發布核准。
