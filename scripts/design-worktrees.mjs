@@ -16,22 +16,6 @@ const ensureRepo=root=>{
  if(resolve(root)!==resolve(repo))throw Error('Run from the top of the student repository');
  return repo;
 };
-export function createCandidate({root,slug,destination}){
- const repo=ensureRepo(root);
- const id=requireSlug(slug);
- if(!destination)throw Error('An explicit --dir is required; no folder is selected automatically');
- const target=resolve(repo,destination);
- if(target===repo||target.startsWith(repo+sep))throw Error('Candidate folder must be outside the existing site');
- if(existsSync(target))throw Error('Candidate path already exists; refusing to overwrite it');
- // A separate worktree is anchored at committed HEAD, not uncommitted edits.
- // Local untracked design-session state is allowed: it is explicitly NOT copied.
- const changes=execute(repo,'status','--porcelain','--untracked-files=all').split('\n').filter(Boolean);
- const dirty=changes.filter(line=>!line.endsWith(' .ai/design-session.json') && !line.endsWith(' .ai\\design-session.json'));
- if(dirty.length)throw Error('Uncommitted site changes present; review/commit your baseline first: '+dirty.slice(0,5).join(', '));
- const name='design/'+id;
- execute(repo,'show-ref','--verify','--quiet','refs/heads/'+name);
- throw Error('Branch already exists: '+name);
-}
 export function createSafeCandidate({root,slug,destination}){
  const repo=ensureRepo(root);
  const id=requireSlug(slug);
