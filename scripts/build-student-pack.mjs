@@ -51,6 +51,13 @@ for (const path of [
   'scripts/preflight.mjs',
   'scripts/test-gates.mjs',
   'scripts/student-project-context.mjs',
+  'scripts/design-session.mjs',
+  'scripts/design-compare.mjs',
+  'scripts/design-worktrees.mjs',
+  'scripts/design-adopt.mjs',
+  'scripts/design-project-sync.mjs',
+  'scripts/design-qa.mjs',
+  'scripts/design-scope.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',
   'scripts/check-project-context.mjs',
@@ -138,6 +145,7 @@ function zip(items) {
 mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
+if(!entries.has('docs/student-builder-pack/HEALTH-CHECK-PROMPT.md'))throw Error('Missing student health check prompt');
 if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
 
 
