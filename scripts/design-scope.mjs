@@ -7,7 +7,7 @@ import {join,resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {MODES} from '../.ai/astro-site-maintenance/references/design-review-evidence.mjs';
 
-const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8'}).trim();
+const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8'}).trimEnd();
 const slug=s=>typeof s==='string'&&/^[a-z][a-z0-9-]{0,39}$/.test(s);
 const safePath=s=>typeof s==='string'&&s!==''&&!s.startsWith('/')&&!s.includes('\\')&&
  !s.split('/').some(p=>p==='..'||p==='.'||p==='')&&!s.includes('\0');
