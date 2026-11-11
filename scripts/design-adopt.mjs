@@ -36,7 +36,7 @@ export function inspectAdoption({root,id,paths}){
   if(!changed.includes(p))throw Error('Path is not a candidate change: '+p);
  }
  const changes=trim(cwd,'diff','--name-status',head,branch,'--',...paths).split('\n').filter(Boolean);
- if(changes.some(line=>/^[DR]/.test(line)))throw Error('Deletes and renames require a separate explicit review; refusing automatic adoption');
+ if(changes.some(line=>/^[ADR]/.test(line)))throw Error('Added, deleted and renamed files require separate review; selective adoption handles tracked modifications only');
  const patch=run(cwd,['diff','--binary',head,branch,'--',...paths]);
  if(!patch.trim())throw Error('Selected candidate files produce no changes');
  // execFileSync with piped stdin below verifies the exact in-memory patch.
