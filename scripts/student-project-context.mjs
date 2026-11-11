@@ -84,12 +84,12 @@ export function finalizeStudentSite(directory,plan,options={}){
  const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
- for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs','theme-css.mjs','design-session.mjs','design-compare.mjs','design-worktrees.mjs','design-adopt.mjs','design-project-sync.mjs','design-qa.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs','theme-css.mjs','design-session.mjs','design-compare.mjs','design-worktrees.mjs','design-adopt.mjs','design-project-sync.mjs','design-qa.mjs','design-scope.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));
  pkg.devDependencies={...pkg.devDependencies,playwright:'^1.56.0'};
- pkg.scripts={...pkg.scripts,'qa:responsive':'node scripts/qa-student-responsive.mjs',status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs','check:context':'node scripts/check-project-context.mjs','design:session':'node scripts/design-session.mjs','design:compare':'node scripts/design-compare.mjs','design:candidate':'node scripts/design-worktrees.mjs','design:adopt':'node scripts/design-adopt.mjs','design:project':'node scripts/design-project-sync.mjs','design:qa':'node scripts/design-qa.mjs'};
+ pkg.scripts={...pkg.scripts,'qa:responsive':'node scripts/qa-student-responsive.mjs',status:'node scripts/site-status.mjs','check:secrets':'node scripts/check-secrets.mjs','check:context':'node scripts/check-project-context.mjs','design:session':'node scripts/design-session.mjs','design:compare':'node scripts/design-compare.mjs','design:candidate':'node scripts/design-worktrees.mjs','design:adopt':'node scripts/design-adopt.mjs','design:project':'node scripts/design-project-sync.mjs','design:qa':'node scripts/design-qa.mjs','design:scope':'node scripts/design-scope.mjs'};
  writeFileSync(pkgPath,JSON.stringify(pkg,null,2)+'\n');
  const wf=join(directory,'.github/workflows/pr-check.yml');
  if(existsSync(wf)){
