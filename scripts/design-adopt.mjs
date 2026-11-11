@@ -71,7 +71,7 @@ export function undoAdoption({root,id}){
  if(trim(cwd,'branch','--show-current')==='main'||trim(cwd,'branch','--show-current')==='master')throw Error('Refusing rollback on production branch');
  if(trim(cwd,'rev-parse','HEAD')!==record.base)throw Error('HEAD changed since adoption; manual review required');
  if(trim(cwd,'rev-parse','design/'+id)!==record.candidateSha)throw Error('Candidate changed since adoption');
- const dirty=trim(cwd,'status','--porcelain','--untracked-files=all').split('\n').filter(x=>x&&!x.endsWith('.ai/design-session.json')&&!x.includes('qa-artifacts/'));
+ const dirty=run(cwd,['status','--porcelain','--untracked-files=all']).trimEnd().split('\n').filter(x=>x&&!x.endsWith('.ai/design-session.json')&&!x.includes('qa-artifacts/'));
  if(dirty.some(line=>!record.paths.includes(line.slice(3))))throw Error('Other uncommitted changes exist; refusing rollback: '+JSON.stringify(dirty));
  const current=run(cwd,['diff','--binary',record.base,'--',...record.paths]);
  const hash=createHash('sha256').update(current).digest('hex');
