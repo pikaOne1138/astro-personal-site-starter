@@ -6,7 +6,7 @@ description: Safely build, verify, preview, and release student-owned Astro site
 # Astro PR Preview & Safe Release｜學員雙平台預覽與安全發布
 
 ## 目的
-本 Skill 提供**學員自己的 Repository** 可重複使用的 Branch → PR → Build → Preview → 人工驗收 → 核准 Merge → Production 工作流程。**同時支援 GitHub Pages 與 Cloudflare**，不假設任一平台為唯一正解。搭配 `.ai/astro-starter-deploy/SKILL.md`（首次部署／網域／設定）及 `.ai/astro-site-maintenance/SKILL.md`（後續維護）。
+本 Skill 提供**學員自己的 Repository** 可重複使用的 Branch → PR → Build → Preview → AI 實際視覺與功能檢查 → 網站擁有者核准 Merge → Production 工作流程。**同時支援 GitHub Pages 與 Cloudflare**，不假設任一平台為唯一正解。搭配 `.ai/astro-starter-deploy/SKILL.md`（首次部署／網域／設定）及 `.ai/astro-site-maintenance/SKILL.md`（後續維護）。
 
 研究展示 Repo 的預覽機制是特例（GitHub Pages 自訂 Actions 加上 Cloudflare Pages Git 整合），**不是**任何新學員 Repo 自動具備的能力。
 
