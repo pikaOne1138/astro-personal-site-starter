@@ -17,7 +17,7 @@ try{
  git(site,'config','user.email','atp-test@example.invalid');
  git(site,'config','user.name','ATP test');
  mkdirSync(join(site,'src'));
- const project='# PROJECT.md｜我的個人網站專案脈絡\n\n## 6. 已確認的長期決策\n\n- 維持既有受眾\n';
+ const project='# PROJECT.md｜我的個人網站專案脈絡\n\n## 6. 已確認的長期決策\n\n| ID | 日期 | 決策 | 理由／效果 | 狀態 | 來源（學員確認摘要） | 取代 ID |\n| --- | --- | --- | --- | --- | --- | --- |\n\n## 7. 目前階段與下一步\n- 開發中\n';
  writeFileSync(join(site,'PROJECT.md'),project);
  writeFileSync(join(site,'src','home.astro'),'<h1>Original heading</h1>\n');
  writeFileSync(join(site,'src','about.astro'),'<h1>Keep this page</h1>\n');
