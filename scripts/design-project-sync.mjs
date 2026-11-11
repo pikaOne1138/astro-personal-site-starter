@@ -1,56 +1,62 @@
 #!/usr/bin/env node
-// Student project decision handoff: explicit, reviewable proposal for PROJECT.md.
-// Does not approve a design change, alter website source, push, merge or deploy.
+// Update the EXISTING student PROJECT.md long-term decisions table.
+// Explicit student confirmation required; proposals or chat notes never publish.
 import {existsSync,readFileSync,writeFileSync} from 'node:fs';
 import {join,resolve} from 'node:path';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {loadSession} from './design-session.mjs';
 
-const marker='## 9. 已確認的設計改善方向';
-const safe=x=>String(x).replace(/[\r\n|<>]/g,' ').trim().slice(0,320);
-const nonempty=x=>typeof x==='string'&&x.trim().length>0;
-const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
-
-export function renderDecisionSection(session){
+const section='## 6. 已確認的長期決策';
+const safe=x=>String(x).replace(/[\r\n|<>]/g,' ').trim().slice(0,300);
+const git=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8'}).trim();
+export function buildDecisionRows(session,approval){
  const picked=session.options.find(x=>x.id===session.selectedId&&x.status==='chosen');
- if(!picked&&!session.notes.confirmed.length)throw Error('No confirmed decisions; proposals alone cannot update PROJECT.md');
- const rejected=[...session.notes.rejected,...session.options.filter(x=>x.status==='rejected').map(x=>x.title+'（'+x.reason+'）')];
- const confirmed=[...session.notes.confirmed,...(picked?[picked.title+'：'+picked.reason+'；首屏 '+picked.firstScreen+'；段落 '+picked.sectionFlow+'；手機 '+picked.mobileFlow]:[])];
- const list=values=>values.length?values.map(v=>'- '+safe(v)).join('\n'):'- 無';
- return [marker,'','> 以下是學員已確認的設計意圖與否決理由，並非已套用的網站版本、視覺驗收或發布核准。',
-   '','### 已確認',list(confirmed),'','### 明確否決（保留理由）',list(rejected),
-   '','### 必須保留不變',list(session.preserve),''].join('\n');
+ const choices=[
+  ...session.notes.confirmed.map(x=>['CONFIRMED',x,'學員已確認的設計偏好']),
+  ...session.notes.rejected.map(x=>['REJECTED',x,'學員明確否決，後續不得再次引入']),
+  ...session.preserve.map(x=>['PRESERVE',x,'既有內容／功能需保留不動']),
+  ...session.options.filter(x=>x.status==='rejected').map(x=>['REJECTED',x.title,x.reason]),
+  ...(picked?[['CONFIRMED',picked.title,picked.reason+'；首屏：'+picked.firstScreen+'；區段：'+picked.sectionFlow+'；手機：'+picked.mobileFlow]]:[])
+ ];
+ if(!choices.some(x=>x[0]==='CONFIRMED'))throw Error('No confirmed design choice; cannot sync provisional ideas');
+ const date=new Date().toISOString().slice(0,10);
+ return choices.map(([state,choice,reason])=>{
+  const hash=createHash('sha256').update(state+'\0'+choice+'\0'+reason).digest('hex').slice(0,12);
+  return {id:'D-'+hash,row:'| D-'+hash+' | '+date+' | '+safe(choice)+' | '+safe(reason)+' | '+state+' | '+safe(approval)+' | — |'};
+ });
 }
 export function prepareSync({root,approval,apply=false}){
  const cwd=resolve(root||process.cwd());
- if(!nonempty(approval))throw Error('Student decision confirmation text required; never infer approval from a chosen candidate');
+ if(typeof approval!=='string'||!approval.trim())throw Error('Student confirmation text is required');
  const session=loadSession(cwd);
- const path=join(cwd,'PROJECT.md');
- if(!existsSync(path))throw Error('PROJECT.md missing; refusing to invent or overwrite student project context');
- const original=readFileSync(path,'utf8');
- if(!original.includes('# PROJECT.md')||!original.includes('## 6. 已確認的長期決策'))throw Error('Unrecognized PROJECT.md structure');
- if(original.includes(marker))throw Error('Existing design-decision section needs human reconciliation; no automatic overwrite');
- // Never overwrite uncommitted student edits, even if user has asked to update
- // confirmed decisions. An explicit staged commit or manual reconciliation is safer.
- try{
-  const changes=git(cwd,'status','--porcelain','--','PROJECT.md');
-  if(changes)throw Error('PROJECT.md contains uncommitted edits; preserve/review those first');
- }catch(e){if(e.message.startsWith('PROJECT.md contains'))throw e;throw Error('Cannot verify clean Git project context: '+e.message);}
- const section=renderDecisionSection(session);
- const text=original.replace(/\s*$/,'')+'\n\n'+section+
-  '\n> 確認來源（學員原話）：'+safe(approval)+'\n';
- if(apply)writeFileSync(path,text,{flag:'w'});
- return {path,changed:apply,preview:text.slice(original.length),approval:safe(approval),publicationApproved:false};
+ const file=join(cwd,'PROJECT.md');
+ if(!existsSync(file))throw Error('PROJECT.md missing');
+ const original=readFileSync(file,'utf8');
+ const start=original.indexOf(section);
+ const end=start<0?-1:original.indexOf('\n## ',start+section.length);
+ if(!original.includes('# PROJECT.md')||start<0||end<0)throw Error('Unrecognized PROJECT.md long-term decision section');
+ const modified=git(cwd,'status','--porcelain','--','PROJECT.md');
+ if(modified)throw Error('PROJECT.md contains uncommitted edits; resolve them first');
+ const rows=buildDecisionRows(session,approval).filter(x=>!original.includes('| '+x.id+' |'));
+ if(!rows.length)throw Error('No new confirmed decisions; refusing duplicate entries');
+ const before=original.slice(0,end).replace(/\s*$/,'');
+ const after=original.slice(end);
+ // Keep the original decision table and its existing entries, including history.
+ // The starter placeholder is documentation, not a verified decision.
+ const prefix=before.replace(/^\| D-001 \| 待確認 \| 尚無 \| 首次討論後新增 \| 待確認 \| 待確認 \| — \|\s*$/m,'');
+ const result=prefix+'\n'+rows.map(x=>x.row).join('\n')+'\n'+after;
+ if(apply)writeFileSync(file,result);
+ return {path:file,changed:apply,ids:rows.map(x=>x.id),preview:rows.map(x=>x.row).join('\n'),publicationApproved:false};
 }
 export function runCli(argv=process.argv.slice(2)){
  try{
-  const [cmd,...parts]=argv,opts={};
-  for(let i=0;i<parts.length;i+=2){if(!parts[i]?.startsWith('--')||i+1>=parts.length)throw Error('Expected --root and --approval');opts[parts[i].slice(2)]=parts[i+1];}
-  if(!['preview','apply'].includes(cmd))throw Error('Usage: design-project-sync.mjs preview|apply --approval "student confirmed..." [--root path]');
-  const result=prepareSync({root:opts.root,approval:opts.approval,apply:cmd==='apply'});
-  process.stdout.write(JSON.stringify(result,null,2)+'\n');
-  return 0;
+  const [command,...args]=argv,opts={};
+  for(let i=0;i<args.length;i+=2){if(!args[i]?.startsWith('--')||i+1>=args.length)throw Error('Expected --root and --approval');opts[args[i].slice(2)]=args[i+1];}
+  if(!['preview','apply'].includes(command))throw Error('Usage: design-project-sync.mjs preview|apply --approval "student confirmed decision" [--root path]');
+  const result=prepareSync({root:opts.root,approval:opts.approval,apply:command==='apply'});
+  process.stdout.write(JSON.stringify(result,null,2)+'\n');return 0;
  }catch(e){process.stderr.write('Design PROJECT sync: '+e.message+'\n');return 1;}
 }
 if(process.argv[1]&&resolve(process.argv[1])===resolve(fileURLToPath(import.meta.url)))process.exitCode=runCli();
