@@ -2,6 +2,10 @@
 
 本包給 AI 讀取；學員不用安裝 Node、CLI，也不需要老師的 GitHub Repository 權限。
 
+## 同一位 AI 網站夥伴：不只第一次建站
+
+若不確定今天要做什麼，或是網站已完成、想改設計、更新文章、修問題，可從 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt` 的長期 AI 網站夥伴入口開始（`/guide/` 第 07 步直接複製同一份原文）。AI 會先理解你說的需求，只有目的不明確才給兩層簡單選擇。具體任務直接進流程，不需要每次重新建立網站。這是沿用既有維護提示詞，沒有第二份正式入口。初次建站可繼續使用下面三條原有技術路線與各自提示詞；它們不被新選單改名或取代。
+
 ## 選擇建站入口（先選一條，不需三條都走）
 有三種方式開始，AI 先讀 `.ai/astro-site-entry/SKILL.md` 判斷（它只負責分流，不重寫技術規則）：
 - **A 復刻既有網站**：提供本人擁有或已授權的來源網站網址，AI 依 `.ai/url-to-frontend-replica/SKILL.md` 盤點並重建；不強制使用 Starter 規劃器。
@@ -33,6 +37,10 @@ C 路線的唯一正式起始提示詞是 `docs/student-builder-pack/START-INTER
 ## 可選：先討論設計，不立即建站
 
 若還不確定網站方向，可先使用同一份 ZIP 中 `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt`，從 `/guide/` 複製「先討論網站設計」提示詞給能讀取檔案的 AI。這階段不需要 Site Brief JSON，也不用先安裝額外 Skill；AI 依 `AGENTS.md` 與 `astro-design-consultation` 討論，完成 Design Brief 後再回到 `/starter/` 進入原本建站流程。不能讀 ZIP 或 `.ai/` 的純聊天 AI 不應宣稱已載入 Skill。
+
+## 可選：檢查已上線網站的健康狀況
+
+網站已上線、想知道 HTTPS、主要頁面、部署、安全漏洞、套件版本或備份是否有問題，可從 `/guide/` 複製「檢查我的網站健康狀況」，來源為 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`，交給可存取網站及必要 GitHub 資料的 AI。這是**唯讀、按需一次性檢查**，不是另一套建站入口，不會自動修復、安裝每日巡檢或發布；權限不足時 AI 仍先檢查公開網址可查的項目。
 
 ## 可持續的網站脈絡
 - ZIP 根目錄另有 `PROJECT-TEMPLATE.md` 和 `AGENTS.md`。第一次需求討論時，AI 可逐步把已確認資訊寫入 PROJECT；未確認的資料保留「待確認」。
