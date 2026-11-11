@@ -1,6 +1,6 @@
 ---
 name: astro-site-entry
-description: Route a novice's site-building request to the appropriate ATP workflow: authorized replica, existing ATP Starter, or direct AI-led Astro building without requiring a planner first. Not for doing the build itself, it only routes to the next workflow.
+description: Route a novice's natural-language website request across new builds, design improvements, maintenance, publishing and recovery; show two-layer choices only when intent is unclear. Not for implementing designs, editing a site, or publishing; delegates execution to existing specialist Skills.
 ---
 # ATP 建站總入口｜三條路，單一維護護欄
 
@@ -22,3 +22,26 @@ ATP 優先服務知識／部落格和助人者／個人專業服務網站。其�
 
 ## 防止重複工作的邊界
 本 Skill **只分流**，不複製復刻的深層盤點規則、不重寫匯出器、不提供第二套部署指令，也不讓 C 路線被 B 路線的 schema 綁住。需要時允許使用者中途改選路線，保留已確認內容與既有檔案，不重問已答問題。
+
+## AI 網站夥伴：首次與後續工作的統一分流（Phase A）
+
+本 Skill 是輕量入口，不執行專業流程。學員不必知道 Skill 名稱。**先解讀學員的自然語言與已確認的脈絡**；具體需求直接進任務，只有「想處理網站」「想改網站」等未說明目的的語句才顯示第一層；選擇後顯示該類第二層。文字選單在純聊天平台也可用，不依賴按鈕。學員可以說「不知道／先看看／跳過／都不喜歡／先給我一個方案」；此時提出可逆建議，而不是連續逼問。每輪最多問一個必要問題，已知資訊不重問。
+
+**學員引導的呈現：**第一層只顯示三個主選項，**不預先展開第二層細項**；學員選定主類後，才列出該類第二層。若學員分不清「改善網站」和「維護網站」，先以一句白話說明前者偏設計／使用感受、後者偏內容／功能／修復，再問**一個**收斂問題；不要另創第三份選單。已提出具體任務時，直接進入任務，不重問分類。
+
+**第一層（需求不明時才顯示）**：「今天想一起做網站的哪件事？也可以直接告訴我想修改什麼：① 建立新網站 ② 改善目前的網站 ③ 維護與處理問題」。
+
+**第二層：**
+- ① 建立新網站：① 從零開始，讓 AI 訪談（技術路線 **C**，`astro-site-from-zero`）② 使用 ATP 現成版型（技術路線 **B**，`astro-starter-onboarding` → `astro-site-assembly`）③ 參考或遷移既有網站（限本人有權使用）（技術路線 **A**，`url-to-frontend-replica`）。**選單順序不是原 A／B／C 代碼，不得互換其內部行為**。
+- ② 改善目前的網站：① AI 網站設計健檢（`astro-design-consultation`＋需要時 `astro-editorial-layout-design`）② 參考網站改造（`astro-design-consultation`；不可複製品牌資產）③ 多種設計候選（`astro-design-consultation`＋`astro-layout-craft`）④ 局部區塊微調（`astro-ui-craft`）⑤ 品牌視覺改造（`astro-ui-craft`／Design Tokens）⑥ 互動與動態精修（`astro-motion-craft`）。這六個是**任務路由，不是已完成的 Phase B 設計生成流程**。
+- ③ 維護與處理問題：① 更新文章、文字與圖片（`astro-content-publishing`；一般小修改搭配 `astro-site-maintenance`）② 新增網站功能或頁面（`astro-page-management`、`astro-ui-craft`；先查既有 Registry）③ 修復網站問題（`astro-site-maintenance`）④ 預覽、驗收與發布（`astro-pr-preview`）⑤ 備份、還原與恢復先前版本（`astro-site-maintenance`）⑥ 網站健康檢查（`astro-launch-health-check` 搭配 `astro-site-maintenance`；唯讀，調查現況、安全公告、版本、部署；學員提示詞 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`；不是 Site Guardian 自動排程）。
+
+**自然語言直達例子：**「我想做個人網站」→新建，必要時才選 A/B/C；「已有網站想搬來」→A；「首頁普通」→設計健檢；「我喜歡這個網站」→參考分析；「給三種不同首頁」→設計候選；「把第二段照片放大」→局部 UI；「更有個人風格」→品牌視覺；「更有動態感」→Motion；「發表文章」→內容發布；「新增 FAQ」→先查元件，再修改；「網站現在健康嗎／有沒有安全漏洞／套件需要更新」→按需唯讀健康檢查；「網站打不開」→故障診斷；「恢復昨天版本」→先比對可用歷史，再擬可稽核還原 PR。
+
+**複合與切換：**「首頁不好看，而且手機版跑掉」同時觸發設計諮詢、UI／Responsive 修復；先盤點問題，不強迫選單擇一。學員原本在設計流程，改說「先新增文章」，直接轉 `astro-content-publishing`，保存原本確認、否定、待確認事項及進度；不得重新訪談、丟失脈絡或以選錯入口為由重建網站。只載入實際需要的 Skill，未能讀取者明說，不得宣稱使用。
+
+**既有網站保護：**先識別學員**自己的** Repository、本機工作樹、`AGENTS.md`、`PROJECT.md` 與實際頁面；查不到直接標明。設計諮詢可先聊，不以 GitHub 授權為前置要求。既有網站一律先走 `astro-site-maintenance` 的安全護欄，專業修改再按需讀設計／文章／頁面／Motion Skill；**不得執行 Starter 匯出器或覆蓋既有網站**。保留網址、文章、導覽、已確認決策和正常功能。任何寫入依既有 Branch → Build → 真實 Preview／SHA → QA → 學員核准 → Merge／發布護欄，未核准不得 Merge 或發布。設計交接遵循 `.ai/SHARED-DESIGN-HANDOFF.md`。
+
+**設計改善的實際工作流：** 六種改善選項一旦進入已存在的學員網站，先依 `.ai/astro-site-maintenance/references/design-improvement.md` 的共用交接與驗收規則，再把設計判斷與實作分給既有專業 Skill。Phase A 選單只負責分流，不能把「有選項」當成六種流程已完成；未取得原站與畫面證據時不得聲稱已健檢。
+
+**可執行分流契約（選用，不是額外 Skill）：** `.ai/astro-site-entry/route-contract.mjs` 提供可重跑的保守意圖路由與純文字雙層選單資料；沒有執行 JavaScript 的平台仍依本 Skill 自然語言分流。其關鍵字命中僅是可測試的建議，非語意理解或真實模型驗證；未匹配或複雜語句須由 AI 判斷。程式輸出的 `skills` 僅是建議清單，`usedSkills` 一律為空，須真實讀取後才能說已使用。無 GitHub 授權仍可先做設計諮詢，實際網站修改需等能讀取學員原始碼。此檔不含專業工作流或發布權限。
