@@ -5,7 +5,15 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 # Astro Site Maintenance｜更新、備份與復原
 
 ## 學員的維護啟動儀式
-學員用 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt`（`/guide/` 第 07 步可複製，唯一正式版本）開新對話時，依序：(1) 先讀學員站的 `PROJECT.md`、狀態與真實工作樹，用白話報告「網站現在是什麼、網址、上次改了什麼」，讀不到就明說；(2) 一次問一個「這次要改什麼」；(3) 動手前複述「將修改 A、會影響 B、不會動 C」，學員說好才做；(4) 做完提供不影響正式站的預覽，並把變更寫回 `PROJECT.md`。學員已用具體文字說清楚、可逆的小修改（例如「價格改為 2,000 元」）可直接做並給預覽，不再索取相同授權；範圍不明或有連帶影響才補問。維護不重跑匯出器，也不受首次組站的 G-00 開工紀錄影響。正式發布仍需針對該版本的明確核准。
+學員用 `docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt`（`/guide/` 第 07 步可複製，唯一正式的長期 AI 夥伴入口）開新對話時，先依 `.ai/astro-site-entry/SKILL.md` 判斷自然語言任務；明確意圖不問選單，模糊意圖提供雙層引導。若是維護任務，再依序：(1) 先讀學員站的 `PROJECT.md`、狀態與真實工作樹，用白話報告「網站現在是什麼、網址、上次改了什麼」，讀不到就明說；(2) 一次問一個「這次要改什麼」；(3) 動手前複述「將修改 A、會影響 B、不會動 C」，學員說好才做；(4) 做完提供不影響正式站的預覽，並把變更寫回 `PROJECT.md`。學員已用具體文字說清楚、可逆的小修改（例如「價格改為 2,000 元」）可直接做並給預覽，不再索取相同授權；範圍不明或有連帶影響才補問。維護不重跑匯出器，也不受首次組站的 G-00 開工紀錄影響。正式發布仍需針對該版本的明確核准。
+
+## 已有網站的設計改善
+
+當學員選擇設計健檢、參考網站改造、多種設計候選、局部區塊微調、品牌視覺改造、互動與動態精修，先依 `.ai/astro-site-maintenance/references/design-improvement.md` 的共同流程確認影響範圍、設計交接與前後驗收，再按需呼叫對應專業 Skill。本 Skill 管安全修改、版本與發布；不代替 `astro-design-consultation` 的設計決策，也不要求學員重新建立網站。設計諮詢可先討論，只有真的要修改原始碼時才需 Repo 寫入能力。
+
+## 按需網站健康檢查（唯讀）
+
+若學員問網站現況、安全漏洞、版本更新、GitHub Actions／部署健康、是否需要維護，先轉 `.ai/astro-launch-health-check/SKILL.md`，搭配學員包 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md` 的唯讀查證指引。不要把「幫我檢查」視為授權修改、建立 Issue、安裝套件或啟動每日巡檢；缺少網站 Repo 權限時仍先檢查可取得的公開網站證據，再標記其餘 NOT TESTED／BLOCKED。單次按需健康檢查和 Site Guardian 定期 Actions 巡檢不同，不能說已啟用自動監控。
 
 ## 用途
 學員說「改首頁、寫文章、上傳圖片、修壞網站、恢復昨天版本、換電腦」時使用。與 `astro-content-publishing`、`astro-pr-preview`、`astro-starter-deploy` 分工，不自建 CMS、資料庫或會員後台。
