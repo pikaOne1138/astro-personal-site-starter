@@ -81,6 +81,14 @@ Alongside this layout-source skill, ALWAYS read `.ai/astro-editorial-layout-desi
 當學員說「調整首頁第二段」「移動圖片」「改手機排列」時，先讀**學員自己的現況**、對應頁面與 Layout，再量測/截圖原始版，列出需變更的區段、受影響共用元件、手機重排；以最小 diff 修改，不重跑 Site Brief 生成器覆蓋已完成內容。保留原有品牌、頁面結構及 URL，不讓局部需求演變成全站換版。共用 Header/Nav 的變動需要同步查每個頁面，新增/移動頁面交 `astro-page-management`。至少 1440、1280、768、390px 比較 before/after，檢查長中文標題、焦點、版心寬度與溢出。修改完必須 Branch → PR → 真實 Preview → 學員確認 → 才合併。
 
 
+## 既有網站多方案比較與局部結構變更
+
+學員要求「三種首頁」「參考這個構圖」時，先保存原站的 Hero、Section 順序、文章／服務內頁、手機閱讀順序及共用導航。用**同一批真實內容與功能**提出兩到三案，每案至少交代：主視覺如何聚焦、區段順序／欄位比例、列表與圖片形式、內頁承接、390px 重排、取捨及可能牽動的共用檔案。若只改配色與字體，標為 Theme 選項而非新 Layout。
+
+候選方案的技術落地：不覆蓋正式站，也不在同一工作樹反覆破壞原版；以可回退的不同分支／隔離 Preview 提供真正可看的畫面。候選需要用同一組內容和寬度比較；若平台尚無安全 Preview，先做本機可驗證畫面並標示限制，不造假網址。選定後才依 `astro-site-maintenance` 的授權、PR 與 QA 進行。
+
+局部結構調整時，若只是移動一段的圖片或改兩欄比例，保持其餘頁面閱讀結構不動；若需更改整頁導覽或新增頁面，交 `astro-page-management`。以修改前後四尺寸真實截圖、區段順序與影響範圍作驗收。共用順序見 `.ai/astro-site-maintenance/references/design-improvement.md`。
+
 ## 共用設計判斷
 
 共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
