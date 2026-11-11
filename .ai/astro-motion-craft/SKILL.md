@@ -154,6 +154,14 @@ description: Design, tune and audit restrained Astro motion interactions using r
 - 頁面切換先評估 Astro 官方 `astro:transitions` 的 `ClientRouter`、`transition:animate`；啟用後需驗證 client-side navigation 下既有 script 的初始化時機、返回鍵、焦點與 reduced motion，並非只加一段 CSS 就完成。
 
 
+## 已有網站的互動與動態精修
+
+當學員說「死板」「更有生命力」時，不直接增加動畫。先開啟學員網站並盤點現有互動：按鈕、導覽、圖片、文章閱讀、FAQ、焦點與載入狀態；辨認真正缺乏回饋的操作節點，允許結論是 **none／不加效果**。
+
+每項候選要明列 `target`、`purpose`、`effect`、`fallback`、`qa`、成本（JS／載入／使用者注意力）。先查本站既有 Effects Registry 和可用 recipe，確認後才在隔離分支修改。不能為了加 Motion 擅自換 Layout、文字或功能；已有效果的節點應優先精修而不是疊加新套件。
+
+交付需有可觀察的互動驗證：預設／hover／focus／觸控下的操作結果，`prefers-reduced-motion`、無 JS 時內容可讀性、鍵盤與觸控替代路徑；對滾動動畫驗證內容不因初始化失敗而隱藏。重型 WebGL／沉浸式效果需另外說明弱裝置降級與實測效能，未驗證不可宣稱流暢。回報修改前後行為與真實 Preview SHA；學員核准前不得 Merge。共用流程見 `.ai/astro-site-maintenance/references/design-improvement.md`。
+
 ## 共用設計判斷
 
 共用的設計判斷（Structure before decoration、Layout ≠ Theme、證據分級、尊重被否決的方案、不虛構）見 `.ai/SHARED-DESIGN-HANDOFF.md`，隨學員 ZIP 附上，按需閱讀。上游已確認的設計目的與否決方案必須保留；要修改先說明理由並請學員確認。
