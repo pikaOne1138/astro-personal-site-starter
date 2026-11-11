@@ -20,7 +20,7 @@ export function inspectAdoption({root,id,paths}){
  if(cwd!==top)throw Error('Run at the student repository root');
  if(trim(cwd,'branch','--show-current')==='main'||trim(cwd,'branch','--show-current')==='master')
   throw Error('Create a non-production feature branch before adopting');
- const dirty=trim(cwd,'status','--porcelain','--untracked-files=all').split('\n').filter(x=>x&&!x.endsWith('.ai/design-session.json')&&!x.endsWith('.ai\\design-session.json'));
+ const dirty=run(cwd,['status','--porcelain','--untracked-files=all']).trimEnd().split('\n').filter(x=>x&&!x.endsWith('.ai/design-session.json')&&!x.endsWith('.ai\\design-session.json'));
  if(dirty.length)throw Error('Original site has unsaved changes; review before adopting');
  const session=loadSession(cwd),candidate=session.options.find(x=>x.id===id);
  if(!candidate||candidate.status!=='chosen'||session.selectedId!==id)throw Error('Candidate not explicitly selected in design session');
