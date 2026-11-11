@@ -56,6 +56,7 @@ for (const path of [
   'scripts/design-worktrees.mjs',
   'scripts/design-adopt.mjs',
   'scripts/design-project-sync.mjs',
+  'scripts/design-qa.mjs',
   'scripts/site-status.mjs',
   'scripts/check-secrets.mjs',
   'scripts/check-project-context.mjs',
