@@ -59,7 +59,14 @@ try{
  assert.ok(updated.includes('長中文標題不可截斷'));
  assert.ok(updated.includes('拒絕巨型照片 Hero'));
  assert.ok(updated.includes('關於我頁面'));
- assert.throws(()=>prepareSync({root:site,approval:'retry',apply:true}),/Existing design-decision section|uncommitted edits/);
+ assert.throws(()=>prepareSync({root:site,approval:'retry',apply:true}),/uncommitted edits/);
+ git(site,'add','PROJECT.md');git(site,'commit','-m','student confirmed design decisions');
+ applyCommand(site,'note',{type:'confirmed',text:'手機版列表維持單欄'});
+ const later=prepareSync({root:site,approval:'學員下一次明確確認',apply:true});
+ assert.equal(later.changed,true);
+ const persisted=readFileSync(join(site,'PROJECT.md'),'utf8');
+ assert.ok(persisted.includes('長中文標題不可截斷')&&persisted.includes('手機版列表維持單欄'));
+ assert.equal((persisted.match(/長中文標題不可截斷/g)||[]).length,1,'repeatable sync must not duplicate old decisions');
  console.log('PASS: student worktree candidate, selective adoption, rollback and explicit PROJECT decisions');
  console.log('NOT TESTED: real learner website redesign or visual quality');
 }finally{rmSync(root,{recursive:true,force:true});}
