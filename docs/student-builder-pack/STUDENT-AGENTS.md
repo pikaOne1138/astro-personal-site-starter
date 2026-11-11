@@ -64,6 +64,14 @@
 
 自然語言優先；模糊任務採第一層「建立新網站／改善目前的網站／維護與處理問題」，第二層完整選項及其 Skill 對應以 `.ai/astro-site-entry/SKILL.md` 為準。本檔既有任務表是技術查找索引，不另建立選單 SSOT。設計健檢、參考網站、多種候選、局部微調、品牌視覺、Motion 六種改善意圖都必須可以直達。複合要求可同時路由，不強制只能選一項；變更任務時保留確認事項。已有站先讀本站 Repo／PROJECT／AGENTS，絕不重跑建站匯出器。純設計討論不需要 GitHub 權限。讀不到 Skill 就明說，不假裝使用；完整流程在既有專業 Skill。
 
+## 既有網站設計改善：執行與交付工具
+
+學員說「首頁不好看、參考別站、給不同版型、只改一個區塊、品牌不一致、動效太死板」時，先讀 `.ai/astro-site-entry/SKILL.md` 和 `.ai/astro-site-maintenance/references/design-improvement.md`，只載入與這次需求相關的專業 Skill。**學員不需要知道或執行下列指令，AI 在有權限的工作環境自行操作**；只有純聊天權限時先提供方案與可複製交接，不能假裝已修改網站。
+
+真正修改前可用 `npm run design:scope` 鎖定修改檔案與影響頁面，完成後由同工具的 `review` 核對實際 Git 差異。需要不同候選時才用 `npm run design:candidate` 建立隔離 Git 工作區，使用相同內容實際修改候選 Astro 網站；選擇、否決與待辦交由 `npm run design:session` 保存。已選方案僅可透過 `npm run design:adopt` 對非正式分支做明確檔案範圍的採用與未提交撤回，不會自動 Merge。長期確認的偏好使用 `npm run design:project` 預覽差異，再更新現有 `PROJECT.md` 決策表；不替學員確認提案。
+
+有真實 Build 和瀏覽器能力時，用 `npm run design:qa` 在兩個已提交的版本產生 1440／1280／768／390 截圖，再用 `npm run design:compare` 產出並排比較。若只有圖片或沒有相應路由的檢查資料，標 `NOT TESTED`，不可說已通過設計 QA；若要線上預覽仍要使用 `astro-pr-preview` 驗證實際 PR HEAD 與平台 Preview。每次發布另需學員對當次版本的明確授權。
+
 ## 將「人話」轉成任務與 Skill
 
 | 使用者說法 | 工作意圖 | 優先讀取 |
