@@ -2,6 +2,20 @@
 
 本文件供學員自己的 Astro 網站使用。由 `astro-site-entry` 判斷任務，進入既有網站時以 `astro-site-maintenance` 為修改護欄。這是各設計 Skill 共享的**操作規約**，不是新 Skill、不是新的網站生成器，也不是必須照表填寫的問卷。
 
+## 從對話到真實 Astro 修改：學員 AI 操作鏈
+
+學員只需要說自然語言需求；**以下指令由有 Repo 與執行環境權限的 AI 操作**，不是要求學員填技術表單。先讀 `AGENTS.md`、`PROJECT.md`、頁面、現有 Blocks／Effects Registry，保留 URL、文章、功能及已否決的方向；只讀得出已確認的事實。任務進入網站實作時，以最小必要範圍執行：
+
+1. **劃定邊界**：依任務路由選對應專業 Skill；`node scripts/design-scope.mjs start --id homepage --mode local-ui --scope "首頁第二段" --paths "src/pages/index.astro" --pages "/" --preserved "其他內頁和文章網址不變"`。模式由 `design-review-evidence.mjs` 的六種值決定：`design-audit`、`reference`、`candidates`、`local-ui`、`brand`、`motion`。這只是明確修改範圍，**不是自動修改程式或取得學員同意**。所有必要跨檔影響應在修改前盤點，不得為了通過檢查擅自略過共用元件受影響頁面。
+2. **專業實作**：設計健檢與參考改造先以證據診斷，再交 Layout／Editorial／UI；局部修改與品牌改造交 UI／Tokens；互動修改交 Motion，必須確認 reduced-motion、觸控、鍵盤與無 JS。AI 在**指定的學員站工作分支**真正修改現有 Astro 程式與內容，不能把 Skill 文字當成已改完。
+3. **候選比較（需要多案才做）**：用 `node scripts/design-worktrees.mjs create --id editorial --dir "../candidate-editorial"` 建隔離工作目錄；每案由專業 Skill 在**各自工作目錄**真正寫入不同布局並 Commit。現有工具只隔離 Git，**不會自動生成候選畫面**；沒有可用 Git 時不冒稱已完成候選。候選選擇或否決記錄在 `design-session.mjs`，同內容同基礎配色仍要看得出結構差異。
+4. **局部採用／撤回**：在學員自己**非 main 的整合分支**，先 `node scripts/design-adopt.mjs inspect --id editorial --paths "src/pages/index.astro" --approval "學員確認採用首頁"`，核對候選的原始碼差異、排除未選檔案；確認後才 `apply`。若尚未 Commit 且沒有其他修改，可 `undo --id editorial` 還原這次選用的 patch。新增／刪除／改名檔案不走這個捷徑，須另行人工比對與 PR 審查；已 Commit 或 HEAD 改變後需用 Git 正常的 revert PR，不得強制 reset。
+5. **長期決策**：學員確實確認、而非 AI 假設的設計選擇，先 `node scripts/design-project-sync.mjs preview --approval "學員已確認的原話"` 查看將新增內容；確認後才 `apply` 寫回**現有** `PROJECT.md`。若有衝突或未提交修改就停止，絕不覆蓋原文。此動作不會同步程式碼或授權發布。
+6. **兩版真實截圖**：在各自已 Commit 的原版／新版工作目錄，使用 `node scripts/design-qa.mjs capture --id editorial --stage before --out "../design-evidence/before" --paths "/,/services/"` 與相應的 `after`；它會實際執行 `npm run build`、`npm run qa:responsive`，並核對四尺寸、頁面與完整 Git SHA。完整資料夾保留為唯讀證據，不重用同一輸出路徑。再以 `node scripts/design-compare.mjs --before "../design-evidence/before" --after "../design-evidence/after" --out "../design-evidence/comparison" --paths "/,/services/"` 產生 HTML 並排與 JSON 對照。跨站候選需各別實測，不能把方案圖冒充真的建置結果。
+7. **範圍與交付**：`node scripts/design-scope.mjs review --id homepage` 檢查實際 Git 變動是否超出既定檔案範圍；新增的本地操作狀態不代表 Preview 已部署。最後再走既有 `astro-pr-preview` 驗證 PR HEAD、真實平台預覽網址、功能及視覺，交給學員決定。無 Browser、Git 或可用 Preview 時標 `BLOCKED`／`NOT TESTED`；不假設已有人看過畫面。**未經明確授權不可 Merge／Production Deploy**。
+
+單純文字健檢不應強制建立 worktree、執行 QA 或開 PR；只有學員確實要求改站時才進入上述【寫】流程。上面只是把既有工具與安全邊界接起來，並非另一套網站生成框架。工具與程式改動是否真的成功，必須看當次執行證據。
+
 ## 共用工作順序
 
 1. **確認要處理的是哪個網站與範圍。** 已有 Repo 時讀 `AGENTS.md`、`PROJECT.md`、實際頁面、共用元件及部署狀態；無 Repo 權限時可以做設計討論，但不可冒充已檢查原站。學員已有明確需求直接處理，不強迫重新選單。
