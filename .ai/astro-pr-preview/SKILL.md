@@ -54,7 +54,7 @@ description: Safely build, verify, preview, and release student-owned Astro site
 - Preview URL 沒出現：先查 Git 整合／分支與權限／Workflow 是否真的支援，而不是直接猜網址。
 - Preview 舊版：比較 PR head SHA 與部署 commit，更新到最新 head 再驗證。
 - 原始碼 Public 不代表未發布 Preview 可忽略隱私；Private 不代表預覽網站只限授權者。
-- 若無法執行瀏覽器驗證，明確標註待人工 QA。
+- 若無法執行瀏覽器驗證，該部分標註 NOT TESTED，說明缺少的工具或環境；不要把真人測試當作必要前置條件，但網站擁有者的 Merge／發布核准不可省略。
 - 永遠先取得學員批准才合併與發布，不虛報功能、資格、表單、預約或部署成功。
 - 向初學者說明失敗時只講三件事：壞在哪一關、AI 要做什麼、怎樣才算成功（Build 成功 ＋ 部署成功 ＋ 最新預覽網址打得開且內容一致 ＋ 學員看過畫面）。
 - 回報時必須列出：學員 Repo URL、PR URL、Head SHA；該次 Build 的 Actions URL 與狀態；Preview 託管服務、真實可開啟的預覽網址、對應的 Commit SHA 與實際檢查的頁面／裝置；Production branch、人工授權 Gate，以及學員是否已明確同意正式發布。缺少帳號授權或尚未配置預覽時標為「尚未完成」，不可杜撰網址。
