@@ -35,7 +35,7 @@ try{
  writeFileSync(join(candidateDir,'src','about.astro'),'<h1>Unselected candidate change</h1>\n');
  git(candidateDir,'add','.');git(candidateDir,'commit','-m','design a distinct homepage');
  const original=readFileSync(join(site,'src','home.astro'),'utf8');
- assert.throws(()=>adoptCandidate({root:site,id:'editorial',paths:['src/home.astro'],approval:''}),/approval/);
+ assert.throws(()=>adoptCandidate({root:site,id:'editorial',paths:['src/home.astro'],approval:''}),/approved scope/);
  const planned=adoptCandidate({root:site,id:'editorial',paths:['src/home.astro'],approval:'首頁用文章',dryRun:true});
  assert.equal(planned.status,'READY_TO_REVIEW');
  assert.equal(readFileSync(join(site,'src','home.astro'),'utf8'),original);
