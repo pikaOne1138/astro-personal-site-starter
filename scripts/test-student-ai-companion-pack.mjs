@@ -32,7 +32,8 @@ const required=[
  'docs/student-builder-pack/START-MAINTENANCE-PROMPT.txt',
  'docs/student-builder-pack/STUDENT-AGENTS.md',
  'AGENTS.md',
- 'START-HERE.md'
+ 'START-HERE.md',
+ 'docs/student-builder-pack/HEALTH-CHECK-PROMPT.md'
 ];
 for(const name of required){
  assert.ok(entries.has(name),'missing ZIP member '+name);

@@ -20,7 +20,8 @@ export const OPTIONS={
     {id:'feature',label:'新增網站功能或頁面',skills:['astro-page-management','astro-ui-craft']},
     {id:'repair',label:'修復網站問題',skills:['astro-site-maintenance']},
     {id:'preview',label:'預覽、驗收與發布',skills:['astro-pr-preview']},
-    {id:'restore',label:'備份、還原與恢復先前版本',skills:['astro-site-maintenance']}
+    {id:'restore',label:'備份、還原與恢復先前版本',skills:['astro-site-maintenance']},
+    {id:'health',label:'網站健康檢查',skills:['astro-launch-health-check','astro-site-maintenance']}
   ]
 };
 export const FIRST_LAYER=[
@@ -29,6 +30,7 @@ export const FIRST_LAYER=[
   {id:'maintain',label:'維護與處理問題'}
 ];
 const RULES=[
+ ['health',/網站.{0,6}(健康|健檢)|健康檢查|安全漏洞|套件.{0,8}(更新|版本)|有沒有.{0,5}漏洞|目前.{0,4}網站.{0,5}正常嗎/],
  ['restore',/恢復.{0,8}(昨天|之前|版本)|還原|回復.{0,6}版本|備份/],
  ['repair',/打不開|跑掉|壞掉|故障|404|錯誤|手機版.{0,6}(跑|壞|溢出)/],
  ['content',/發表.{0,8}文章|新增.{0,8}文章|更新.{0,8}文章|寫.{0,8}文章|修改.{0,8}文字|換.{0,8}圖片/],

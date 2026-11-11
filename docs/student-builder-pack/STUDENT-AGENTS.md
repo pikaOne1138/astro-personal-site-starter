@@ -64,6 +64,10 @@
 
 自然語言優先；模糊任務採第一層「建立新網站／改善目前的網站／維護與處理問題」，第二層完整選項及其 Skill 對應以 `.ai/astro-site-entry/SKILL.md` 為準。本檔既有任務表是技術查找索引，不另建立選單 SSOT。設計健檢、參考網站、多種候選、局部微調、品牌視覺、Motion 六種改善意圖都必須可以直達。複合要求可同時路由，不強制只能選一項；變更任務時保留確認事項。已有站先讀本站 Repo／PROJECT／AGENTS，絕不重跑建站匯出器。純設計討論不需要 GitHub 權限。讀不到 Skill 就明說，不假裝使用；完整流程在既有專業 Skill。
 
+## 已上線網站的按需健康檢查（只讀）
+
+學員說「網站目前健康嗎」「有沒有影響我的安全漏洞」「需要更新 Astro 嗎」時，直接進入 `.ai/astro-launch-health-check/SKILL.md`，配合 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`；沒有實際讀取文件就不要聲稱已使用。先查公開站、再依可用權限查 lockfile、GitHub Actions、Dependabot、部署紀錄與官方公告，精確區分已證實／推測／未測。單次唯讀檢查**不授權任何寫入、PR、Merge、部署或自動排程安裝**。Site Guardian 長期自動巡檢屬另一項經授權的安裝工作，不得宣稱本提示詞已提供。
+
 ## 既有網站設計改善：執行與交付工具
 
 學員說「首頁不好看、參考別站、給不同版型、只改一個區塊、品牌不一致、動效太死板」時，先讀 `.ai/astro-site-entry/SKILL.md` 和 `.ai/astro-site-maintenance/references/design-improvement.md`，只載入與這次需求相關的專業 Skill。**學員不需要知道或執行下列指令，AI 在有權限的工作環境自行操作**；只有純聊天權限時先提供方案與可複製交接，不能假裝已修改網站。

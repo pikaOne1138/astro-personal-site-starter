@@ -73,7 +73,8 @@
         "feature",
         "repair",
         "preview",
-        "restore"
+        "restore",
+        "health"
       ]
     },
     {
@@ -312,6 +313,30 @@
       "message": "我想修改網站",
       "type": "second-menu",
       "layer": "improve"
+    },
+    {
+      "name": "on-demand health question",
+      "message": "我的網站有沒有安全漏洞？",
+      "type": "direct",
+      "routes": [
+        "health"
+      ],
+      "skills": [
+        "astro-launch-health-check",
+        "astro-site-maintenance"
+      ],
+      "noExporter": true
+    },
+    {
+      "name": "health menu sixth option",
+      "message": "⑥",
+      "state": {
+        "menuLayer": "maintain"
+      },
+      "type": "direct",
+      "routes": [
+        "health"
+      ]
     }
   ]
 }

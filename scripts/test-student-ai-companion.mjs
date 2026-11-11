@@ -17,6 +17,7 @@ const checks=[
  ['A/B/C original technical mapping', /技術路線 \*\*C\*\*/.test(entry) && /技術路線 \*\*B\*\*/.test(entry) && /技術路線 \*\*A\*\*/.test(entry)],
  ['pack includes skills and canonical prompt', /'\.ai'/.test(pack) && /'docs'/.test(pack) && /'docs\/student-builder-pack\/STUDENT-AGENTS.md'/.test(pack)],
  ['guide imports maintenance source', /START-MAINTENANCE-PROMPT\.txt/.test(guide) && /startMaintenancePrompt/.test(guide)],
+ ['on-demand health routed and no standalone Skill', /網站健康檢查/.test(entry) && /HEALTH-CHECK-PROMPT\.md/.test(entry) && /HEALTH-CHECK-PROMPT\.md/.test(pack)],
  ['publication requires approval', /沒有我明確同意，(?:不要|不得)合併或發布/.test(prompt)],
 ];
 for(const [name,ok] of checks){console.log((ok?'PASS':'FAIL')+' '+name);}

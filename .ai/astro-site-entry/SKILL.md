@@ -34,9 +34,9 @@ ATP 優先服務知識／部落格和助人者／個人專業服務網站。其�
 **第二層：**
 - ① 建立新網站：① 從零開始，讓 AI 訪談（技術路線 **C**，`astro-site-from-zero`）② 使用 ATP 現成版型（技術路線 **B**，`astro-starter-onboarding` → `astro-site-assembly`）③ 參考或遷移既有網站（限本人有權使用）（技術路線 **A**，`url-to-frontend-replica`）。**選單順序不是原 A／B／C 代碼，不得互換其內部行為**。
 - ② 改善目前的網站：① AI 網站設計健檢（`astro-design-consultation`＋需要時 `astro-editorial-layout-design`）② 參考網站改造（`astro-design-consultation`；不可複製品牌資產）③ 多種設計候選（`astro-design-consultation`＋`astro-layout-craft`）④ 局部區塊微調（`astro-ui-craft`）⑤ 品牌視覺改造（`astro-ui-craft`／Design Tokens）⑥ 互動與動態精修（`astro-motion-craft`）。這六個是**任務路由，不是已完成的 Phase B 設計生成流程**。
-- ③ 維護與處理問題：① 更新文章、文字與圖片（`astro-content-publishing`；一般小修改搭配 `astro-site-maintenance`）② 新增網站功能或頁面（`astro-page-management`、`astro-ui-craft`；先查既有 Registry）③ 修復網站問題（`astro-site-maintenance`）④ 預覽、驗收與發布（`astro-pr-preview`）⑤ 備份、還原與恢復先前版本（`astro-site-maintenance`）。
+- ③ 維護與處理問題：① 更新文章、文字與圖片（`astro-content-publishing`；一般小修改搭配 `astro-site-maintenance`）② 新增網站功能或頁面（`astro-page-management`、`astro-ui-craft`；先查既有 Registry）③ 修復網站問題（`astro-site-maintenance`）④ 預覽、驗收與發布（`astro-pr-preview`）⑤ 備份、還原與恢復先前版本（`astro-site-maintenance`）⑥ 網站健康檢查（`astro-launch-health-check` 搭配 `astro-site-maintenance`；唯讀，調查現況、安全公告、版本、部署；學員提示詞 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`；不是 Site Guardian 自動排程）。
 
-**自然語言直達例子：**「我想做個人網站」→新建，必要時才選 A/B/C；「已有網站想搬來」→A；「首頁普通」→設計健檢；「我喜歡這個網站」→參考分析；「給三種不同首頁」→設計候選；「把第二段照片放大」→局部 UI；「更有個人風格」→品牌視覺；「更有動態感」→Motion；「發表文章」→內容發布；「新增 FAQ」→先查元件，再修改；「網站打不開」→故障診斷；「恢復昨天版本」→先比對可用歷史，再擬可稽核還原 PR。
+**自然語言直達例子：**「我想做個人網站」→新建，必要時才選 A/B/C；「已有網站想搬來」→A；「首頁普通」→設計健檢；「我喜歡這個網站」→參考分析；「給三種不同首頁」→設計候選；「把第二段照片放大」→局部 UI；「更有個人風格」→品牌視覺；「更有動態感」→Motion；「發表文章」→內容發布；「新增 FAQ」→先查元件，再修改；「網站現在健康嗎／有沒有安全漏洞／套件需要更新」→按需唯讀健康檢查；「網站打不開」→故障診斷；「恢復昨天版本」→先比對可用歷史，再擬可稽核還原 PR。
 
 **複合與切換：**「首頁不好看，而且手機版跑掉」同時觸發設計諮詢、UI／Responsive 修復；先盤點問題，不強迫選單擇一。學員原本在設計流程，改說「先新增文章」，直接轉 `astro-content-publishing`，保存原本確認、否定、待確認事項及進度；不得重新訪談、丟失脈絡或以選錯入口為由重建網站。只載入實際需要的 Skill，未能讀取者明說，不得宣稱使用。
 

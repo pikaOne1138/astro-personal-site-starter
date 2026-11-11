@@ -145,6 +145,7 @@ function zip(items) {
 mkdirSync(resolve('public'),{recursive:true});
 const data=zip(entries);writeFileSync(output,data);
 console.log('Student distribution:',entries.size,'files,',data.length,'bytes');
+if(!entries.has('docs/student-builder-pack/HEALTH-CHECK-PROMPT.md'))throw Error('Missing student health check prompt');
 if(!entries.has('scripts/export-starter.mjs')||!entries.has('AGENTS.md')||!entries.has('PROJECT-TEMPLATE.md')||!entries.has('scripts/student-project-context.mjs')||!entries.has('.ai/astro-pr-preview/SKILL.md')||!entries.has('src/data/layout-directions.json'))throw Error('Student pack lacks required core files');
 
 

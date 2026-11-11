@@ -12,6 +12,10 @@
 
 主匯出器能組裝哪些版型、各自的組裝狀態，以 `BUILDER-PACK-VERSION.json` 與 `definitions.mjs` 為準；非 Ready 的版型不能當成已驗收。AI 應依 `layoutSlug`、`definitions.mjs` 的 engine 與 `docs/student-builder-pack/EXPANDED-LAYOUTS.md` 選擇對應 Renderer。產生的網站是 Beta 第一版，AI 仍需按真實內容補齊必要內頁、圖片與服務資訊，並和學員一起確認、預覽及部署；ZIP 下載本身不是網站發布。
 
+## 已上線網站的按需健康檢查
+
+想確認網站是否正常、是否有真正影響本站的安全漏洞或重要套件更新，可使用 `/guide/` 的「檢查我的網站健康狀況」提示詞（`docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`）。這是現有 AI 網站夥伴的唯讀維護任務，與首次建站及修改網站共用原有 Skills；不會自動安裝 Site Guardian 排程或修改正式網站。
+
 ## 資料包版本
 `/guide/` 會顯示目前下載包的來源 Commit；ZIP 根目錄的 `BUILDER-PACK-VERSION.json` 保存相同資訊。請將 Site Brief JSON 與**同一個測試站版本**的 AI 建站資料包交給 AI。若兩者來自不同測試環境，重新從目前的 `/starter/` 與 `/guide/` 下載。
 

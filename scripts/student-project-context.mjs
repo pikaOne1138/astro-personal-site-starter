@@ -85,6 +85,10 @@ export function finalizeStudentSite(directory,plan,options={}){
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
  for(const file of ['site-status.mjs','check-secrets.mjs','check-project-context.mjs','qa-student-responsive.mjs','theme-css.mjs','design-session.mjs','design-compare.mjs','design-worktrees.mjs','design-adopt.mjs','design-project-sync.mjs','design-qa.mjs','design-scope.mjs'])copyFileSync(new URL('./'+file,import.meta.url),join(scripts,file));
+ const healthDoc=join(directory,'docs','student-builder-pack','HEALTH-CHECK-PROMPT.md');
+ mkdirSync(join(directory,'docs','student-builder-pack'),{recursive:true});
+ if(existsSync(healthDoc))throw Error('Student site already contains health-check prompt; refusing overwrite');
+ copyFileSync(new URL('../docs/student-builder-pack/HEALTH-CHECK-PROMPT.md',import.meta.url),healthDoc);
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));

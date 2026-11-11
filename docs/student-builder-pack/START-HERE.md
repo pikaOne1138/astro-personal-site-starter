@@ -38,6 +38,10 @@ C 路線的唯一正式起始提示詞是 `docs/student-builder-pack/START-INTER
 
 若還不確定網站方向，可先使用同一份 ZIP 中 `docs/student-builder-pack/DESIGN-CONSULTATION-PROMPT.txt`，從 `/guide/` 複製「先討論網站設計」提示詞給能讀取檔案的 AI。這階段不需要 Site Brief JSON，也不用先安裝額外 Skill；AI 依 `AGENTS.md` 與 `astro-design-consultation` 討論，完成 Design Brief 後再回到 `/starter/` 進入原本建站流程。不能讀 ZIP 或 `.ai/` 的純聊天 AI 不應宣稱已載入 Skill。
 
+## 可選：檢查已上線網站的健康狀況
+
+網站已上線、想知道 HTTPS、主要頁面、部署、安全漏洞、套件版本或備份是否有問題，可從 `/guide/` 複製「檢查我的網站健康狀況」，來源為 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md`，交給可存取網站及必要 GitHub 資料的 AI。這是**唯讀、按需一次性檢查**，不是另一套建站入口，不會自動修復、安裝每日巡檢或發布；權限不足時 AI 仍先檢查公開網址可查的項目。
+
 ## 可持續的網站脈絡
 - ZIP 根目錄另有 `PROJECT-TEMPLATE.md` 和 `AGENTS.md`。第一次需求討論時，AI 可逐步把已確認資訊寫入 PROJECT；未確認的資料保留「待確認」。
 - 產出的學員**獨立網站**根目錄應有 `PROJECT.md`、`AGENTS.md`；兩者要隨網站提交到**學員自己的** Git 倉庫，供新對話、新工具接手。重新取得新版 ZIP 不得覆蓋網站現有的 PROJECT。

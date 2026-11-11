@@ -11,6 +11,10 @@ description: Safely update, back up, recover and maintain beginner-owned Astro w
 
 當學員選擇設計健檢、參考網站改造、多種設計候選、局部區塊微調、品牌視覺改造、互動與動態精修，先依 `.ai/astro-site-maintenance/references/design-improvement.md` 的共同流程確認影響範圍、設計交接與前後驗收，再按需呼叫對應專業 Skill。本 Skill 管安全修改、版本與發布；不代替 `astro-design-consultation` 的設計決策，也不要求學員重新建立網站。設計諮詢可先討論，只有真的要修改原始碼時才需 Repo 寫入能力。
 
+## 按需網站健康檢查（唯讀）
+
+若學員問網站現況、安全漏洞、版本更新、GitHub Actions／部署健康、是否需要維護，先轉 `.ai/astro-launch-health-check/SKILL.md`，搭配學員包 `docs/student-builder-pack/HEALTH-CHECK-PROMPT.md` 的唯讀查證指引。不要把「幫我檢查」視為授權修改、建立 Issue、安裝套件或啟動每日巡檢；缺少網站 Repo 權限時仍先檢查可取得的公開網站證據，再標記其餘 NOT TESTED／BLOCKED。單次按需健康檢查和 Site Guardian 定期 Actions 巡檢不同，不能說已啟用自動監控。
+
 ## 用途
 學員說「改首頁、寫文章、上傳圖片、修壞網站、恢復昨天版本、換電腦」時使用。與 `astro-content-publishing`、`astro-pr-preview`、`astro-starter-deploy` 分工，不自建 CMS、資料庫或會員後台。
 
