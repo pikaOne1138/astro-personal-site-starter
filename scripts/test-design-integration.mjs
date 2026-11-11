@@ -49,7 +49,7 @@ try{
  assert.equal(restored.status,'REVERTED_UNCOMMITTED');
  assert.equal(readFileSync(join(site,'src','home.astro'),'utf8'),original);
  const version=git(site,'rev-parse','HEAD');
- assert.equal(version,created.base,'neither adoption nor undo commits the student's site');
+ assert.equal(version,created.base,"neither adoption nor undo commits the student's site");
  const preview=prepareSync({root:site,approval:'學員已確認文字先行'});
  assert.equal(preview.changed,false);
  assert.equal(readFileSync(join(site,'PROJECT.md'),'utf8'),project);
