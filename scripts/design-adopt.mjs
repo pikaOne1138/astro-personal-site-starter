@@ -33,9 +33,10 @@ export function inspectAdoption({root,id,paths}){
   if(!pathValid(p)||protectedPath(p))throw Error('Unsafe or protected path '+p);
   if(!changed.includes(p))throw Error('Path is not a candidate change: '+p);
  }
+ const changes=trim(cwd,'diff','--name-status',head,branch,'--',...paths).split('\\n').filter(Boolean);
+ if(changes.some(line=>/^[DR]/.test(line)))throw Error('Deletes and renames require a separate explicit review; refusing automatic adoption');
  const patch=run(cwd,['diff','--binary',head,branch,'--',...paths]);
  if(!patch.trim())throw Error('Selected candidate files produce no changes');
- try{run(cwd,['apply','--check','--binary','-'],{input:patch});}catch{}
  // execFileSync with piped stdin below verifies the exact in-memory patch.
  const apply=argv=>execFileSync('git',argv,{cwd,encoding:'utf8',input:patch,stdio:['pipe','pipe','pipe']});
  apply(['apply','--check','--binary','-']);
