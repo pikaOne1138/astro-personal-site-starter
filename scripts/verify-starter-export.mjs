@@ -22,6 +22,12 @@ function assertStudentContext(site,expectedSlug){
  execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
  const pkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
  if(!pkg.scripts['qa:responsive']||!pkg.devDependencies?.playwright)throw Error('Student export missing portable Playwright QA: '+expectedSlug);
+ if(pkg.dependencies?.astro!=='^7.4.11')throw Error('Student export must use patched Astro 7: '+expectedSlug+' got '+pkg.dependencies?.astro);
+ const qaScript=readFileSync(join(site,'scripts/qa-student-responsive.mjs'),'utf8');
+ if(!qaScript.includes('PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH'))throw Error('Student export missing Chromium path override: '+expectedSlug);
+ const readme=readFileSync(join(site,'README.md'),'utf8');
+ if(readme.includes('Layout: 田野筆記 (field-notes)')&&expectedSlug!=='field-notes')throw Error('Surrogate layout leaked into README: '+expectedSlug);
+ if(readme.includes('Layout: 清晰臨床 (clinician)')&&expectedSlug!=='clinician')throw Error('Surrogate layout leaked into README: '+expectedSlug);
  const workflow=readFileSync(join(site,'.github/workflows/pr-check.yml'),'utf8');
  for(const gate of ['npm run build','npm run qa:responsive','npm run check:secrets','npm run verify'])if(!workflow.includes(gate))throw Error('Student PR lacks quality gate '+gate+' for '+expectedSlug);
 }
