@@ -75,6 +75,21 @@ try{
  settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy,headings};
  settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
+ // Replace the seed renderer description with the actual selected Art Direction site.
+ const readmePath=join(generated,'README.md');
+ const readme=readFileSync(readmePath,'utf8');
+ const compositionSection='## Selected visual composition';
+ const brandSection='## Brand typography and images';
+ if(!readme.includes(compositionSection)||!readme.includes(brandSection))throw Error('Student README composition markers missing');
+ const selectedGuide=[
+  compositionSection,'',
+  'Layout: '+adapter.slug+' (Art Direction adapter).',
+  'Site configuration: site.config.json. Actual layout: generated src/components/ and src/pages/.',
+  'Inspect the generated files; the surrogate selected/Home.astro is not the active renderer.',
+  'This layout is in-progress and needs real visual QA before publishing.',''
+ ].join('\\n');
+ writeFileSync(readmePath,readme.slice(0,readme.indexOf(compositionSection))+selectedGuide+readme.slice(readme.indexOf(brandSection)));
+
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.
  if(plan.contentDirectory){
   const relativeContent=text(plan.contentDirectory,'contentDirectory',2000);
