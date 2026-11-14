@@ -87,7 +87,8 @@ let browser;
 const rows = [];
 try {
   await new Promise((ok, fail) => { server.once('error', fail); server.listen(port, '127.0.0.1', ok); });
-  browser = await chromium.launch({ headless: true });
+  const browserExecutablePath = process.env.CHROME_PATH || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
+  browser = await chromium.launch({ headless: true, ...(browserExecutablePath ? { executablePath: browserExecutablePath } : {}) });
   for (const path of paths) {
     for (const width of widths) {
       const page = await browser.newPage({
