@@ -87,7 +87,7 @@ try{
   'Site configuration: site.config.json. Actual layout: generated src/components/ and src/pages/.',
   'Inspect the generated files; the surrogate selected/Home.astro is not the active renderer.',
   'This layout is in-progress and needs real visual QA before publishing.',''
- ].join('\\n');
+ ].join('\n');
  writeFileSync(readmePath,readme.slice(0,readme.indexOf(compositionSection))+selectedGuide+readme.slice(readme.indexOf(brandSection)));
 
  // Local source inputs only: copy Markdown from an explicitly supplied sibling directory.
