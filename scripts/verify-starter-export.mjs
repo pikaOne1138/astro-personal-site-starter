@@ -17,7 +17,7 @@ function assertStudentContext(site,expectedSlug){
  const project=readFileSync(join(site,'PROJECT.md'),'utf8');
  if(config.layoutSlug!==expectedSlug)throw Error('Export config Layout mismatch: expected '+expectedSlug+', got '+config.layoutSlug);
  if(!project.includes('Layout ID（規劃選擇）：`'+expectedSlug+'`'))throw Error('PROJECT Layout mismatch for '+expectedSlug);
- for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','public/favicon.svg'])
+ for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','public/favicon.svg','site-state.json'])
   if(!existsSync(join(site,path)))throw Error('Student export missing '+path+' for '+expectedSlug);
  execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
  const pkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
