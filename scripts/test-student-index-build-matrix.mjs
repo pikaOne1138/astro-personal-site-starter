@@ -36,4 +36,15 @@ try{
   for(const path of ['rss.xml','sitemap.xml'])if(!existsSync(join(site,'dist',path)))throw Error(item.name+' missing '+path);
   console.log('PASS',item.name,item.indexed?'INDEX':'NOINDEX');
  }
+ // A future publish date is not a scheduler. The site must refuse to expose it.
+ const future=new Date(Date.now()+14*86400000).toISOString().slice(0,10);
+ const path=join(site,'src/content/articles','future-post.md');
+ const article=draft=>['---','title: Future publication guard fixture','description: Only for automated regression','publishedAt: '+future,'draft: '+draft,'---','Future article must not be public'].join('\\n');
+ writeFileSync(path,article(false));
+ const rejected=spawnSync('npm',['run','build'],{cwd:site,env:{...process.env,SITE_PUBLICATION_TIME_ZONE:'Asia/Taipei'},encoding:'utf8',timeout:240000,maxBuffer:8*1024*1024});
+ if(rejected.status===0)throw Error('Future article was publicly built without a scheduler');
+ writeFileSync(path,article(true));
+ run('npm',['run','build'],site,{SITE_PUBLICATION_TIME_ZONE:'Asia/Taipei'});
+ if(existsSync(join(site,'dist/articles/future-post/index.html')))throw Error('Future draft exposed in generated website');
+ console.log('PASS future-dated public article rejected; same article as draft builds without exposure');
 }finally{rmSync(tmp,{recursive:true,force:true});}
