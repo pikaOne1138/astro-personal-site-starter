@@ -85,7 +85,7 @@ export function finalizeStudentSite(directory,plan,options={}){
  // Without this file the learner AGENTS references an unavailable resource.
  const initialState=join(directory,'site-state.json');
  if(existsSync(initialState))throw Error('Refusing to overwrite existing learner site-state.json');
- writeFileSync(initialState,JSON.stringify({version:1,stage:'preview'},null,2)+'\\n',{flag:'wx'});
+ writeFileSync(initialState,JSON.stringify({version:1,stage:'preview'},null,2)+'\n',{flag:'wx'});
  const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
