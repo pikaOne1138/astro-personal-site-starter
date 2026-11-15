@@ -18,7 +18,15 @@ for(const file of paths){
  const html=readFileSync(file,'utf8');
  const main=html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1];
  if(!main)continue;
- const text=decode(main.replace(/<(script|style|svg|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi,' ').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+ // Match the article's own body when available: sidebar navigation, cross-links
+ // and footer copy must not make unrelated articles match a Chinese query.
+ const reading=main.match(/<article\\b[^>]*class="[^"]*\\breading\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/article>/i)?.[1];
+ const searchable=(reading||main)
+  .replace(/<aside\\b[^>]*>[\\s\\S]*?<\\/aside>/gi,' ')
+  .replace(/<nav\\b[^>]*>[\\s\\S]*?<\\/nav>/gi,' ')
+  .replace(/<section\\b[^>]*class="[^"]*\\brelated-articles\\b[^"]*"[^>]*>[\\s\\S]*?<\\/section>/gi,' ')
+  .replace(/<(script|style|svg|noscript)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi,' ');
+ const text=decode(searchable.replace(/<[^>]+>/g,' ').replace(/\\s+/g,' ').trim());
  if(!text)continue;
  const title=decode(html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1]||'文章');
  const route=relativePath.replace(/index\.html$/,'');
