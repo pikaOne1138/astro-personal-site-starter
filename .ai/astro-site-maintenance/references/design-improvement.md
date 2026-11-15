@@ -43,6 +43,8 @@
 - 學員明確選定：`node scripts/design-session.mjs choose --id editorial --reason "學員希望文章優先"`；否決用 `reject --id editorial --reason "學員不喜歡這個閱讀動線"`。沒有學員實際決定時不可自行執行選定、否決。
 - 只記錄對話決策：`note --type confirmed|rejected|pending --text "內容"`。換對話前用 `handoff` 產生白話可複製摘要；用 `show` 讀既有狀態。
 
+初次建立 `design-session.json` 會讓 Git 顯示未追蹤檔。AI 在建立候選 worktree 之前，應先明確確認是否將其去敏後提交在工作分支，或不把該檔納入候選基線；不能假裝主工作目錄仍乾淨，也不能替學員記錄未經確認的決策。
+
 內容保存在學員工作目錄的 `.ai` 資料夾下的 `design-session.json`，**只表示當前設計會話狀態**。不會更改版型、圖檔、原始碼、已發布內容或正式分支，不會自動寫入 `PROJECT.md`；只有學員確認為長期規則，AI 才依現有維護程序核對後更新 `PROJECT.md`。此檔可由學員自行決定是否保留於私有版本控制，但不能存個資、憑證或未獲授權的來源素材。若站點沒有此腳本或 AI 無法操作終端機，回退至上方的純文字三欄交接摘要，不要求學員為此額外安裝工具。
 
 ## 多個候選方案的獨立工作區
@@ -52,6 +54,8 @@
 `node scripts/design-worktrees.mjs create --id editorial --dir "../candidate-editorial"`
 
 此命令只在學員自己的 Git Repo 執行，從**已提交的 HEAD** 建立本地 `design/editorial` 分支及新工作目錄，不推送 GitHub、不部署、不合併。原網站若有尚未提交的程式變更，會拒絕建立候選；已有候選資料夾與同名分支也會拒絕覆蓋。可用 `node scripts/design-worktrees.mjs list` 查看候選工作目錄。
+
+**每個 Git worktree 都是獨立資料夾，不會共享 `node_modules`。** AI 應先在新候選資料夾確認 `package-lock.json`；存在時執行 `npm ci`，否則依已有的套件管理設定安裝依賴，不能把原目錄安裝成功當作候選可 Build。安裝與 QA 由有能力的 AI 代行，不要求學員輸入指令，無法安裝時回報 BLOCKED。
 
 AI 接著才依 Layout、Editorial 與 UI Skills **實際修改候選工作目錄中的 Astro 頁面**，用學員真實內容分別 Build 並在可用的隔離預覽環境檢查。每個候選都要記錄其 Git SHA、真實頁面／四寬度截圖與主要取捨。若沒有真實畫面，只能稱設計草案。學員選定候選後，仍須用既有 PR Preview、安全修改及核准流程整合，**不能因候選被選中就直接 Merge 或發布**。不需要多方案的局部小改，不必額外建立 worktree。
 
