@@ -332,6 +332,11 @@ if(hasAssemblyAdapter){
 assets['public/tokens.css']=readFileSync(new URL('../src/styles/tokens.css',import.meta.url),'utf8');
 assets['public/legacy-aliases.css']=readFileSync(new URL('../src/styles/legacy-aliases.css',import.meta.url),'utf8');
 assets['public/theme.css']=themeCss(settings.brand);
+const faviconColor=/^#[a-fA-F0-9]{6}$/.test(settings.brand.primaryColor)?settings.brand.primaryColor:'#4A6572';
+assets['public/favicon.svg']='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="'+faviconColor+'"/><path d="M13 19 Q23 15 32 23 Q41 15 51 19 V45 Q41 42 32 49 Q23 42 13 45 Z M32 23 V49" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linejoin="round"/></svg>';
+assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace('<link rel="stylesheet" href={base+\'site.css\'}/>','<link rel="icon" type="image/svg+xml" href={base+\'favicon.svg\'}/><link rel="stylesheet" href={base+\'site.css\'}/>');
+assets['README.md']+='\\n## 瀏覽器分頁圖示（Favicon）\\n\\n預設的 public/favicon.svg 是可替換的幾何圖示草案，並非學員已核准的正式品牌 Logo。網站主人提供或核准圖示後，直接替換此檔；不可虛稱已取得 Logo 授權。\\n';
+
 assets['public/component-contract.css']=readFileSync(new URL('../src/styles/component-contract.css',import.meta.url),'utf8');
 assets['src/layouts/SiteLayout.astro']=assets['src/layouts/SiteLayout.astro'].replace("<link rel=\"stylesheet\" href={base+'site.css'}/>","<link rel=\"stylesheet\" href={base+'tokens.css'}/><link rel=\"stylesheet\" href={base+'legacy-aliases.css'}/><link rel=\"stylesheet\" href={base+'theme.css'}/><link rel=\"stylesheet\" href={base+'component-contract.css'}/><link rel=\"stylesheet\" href={base+'site.css'}/>");
 pkg.scripts['sync:theme']='node scripts/theme-css.mjs';
