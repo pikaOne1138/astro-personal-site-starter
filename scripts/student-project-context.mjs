@@ -81,6 +81,11 @@ export function installComponentLibrary(directory){
 /** Install runtime guards only into a newly generated, independently owned site. */
 export function finalizeStudentSite(directory,plan,options={}){
  installProjectContext(directory,plan,options);
+ // Preview state is only an initialization marker, not evidence of approval.
+ // Without this file the learner AGENTS references an unavailable resource.
+ const initialState=join(directory,'site-state.json');
+ if(existsSync(initialState))throw Error('Refusing to overwrite existing learner site-state.json');
+ writeFileSync(initialState,JSON.stringify({version:1,stage:'preview'},null,2)+'\n',{flag:'wx'});
  const ignore=['node_modules/','dist/','.astro/','.env','.env.*','!.env.example','*.pem','*.key','qa-artifacts/','.DS_Store'].join('\n')+'\n';
  writeFileSync(join(directory,'.gitignore'),ignore,{flag:'wx'});
  const scripts=join(directory,'scripts');mkdirSync(scripts,{recursive:true});
@@ -89,6 +94,9 @@ export function finalizeStudentSite(directory,plan,options={}){
  mkdirSync(join(directory,'docs','student-builder-pack'),{recursive:true});
  if(existsSync(healthDoc))throw Error('Student site already contains health-check prompt; refusing overwrite');
  copyFileSync(new URL('../docs/student-builder-pack/HEALTH-CHECK-PROMPT.md',import.meta.url),healthDoc);
+ const customizationDoc=join(directory,'docs','student-builder-pack','CUSTOMIZATION-GUIDE.md');
+ if(existsSync(customizationDoc))throw Error('Student site already contains customization guide; refusing overwrite');
+ copyFileSync(new URL('../docs/student-builder-pack/CUSTOMIZATION-GUIDE.md',import.meta.url),customizationDoc);
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));

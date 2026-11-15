@@ -17,11 +17,19 @@ function assertStudentContext(site,expectedSlug){
  const project=readFileSync(join(site,'PROJECT.md'),'utf8');
  if(config.layoutSlug!==expectedSlug)throw Error('Export config Layout mismatch: expected '+expectedSlug+', got '+config.layoutSlug);
  if(!project.includes('Layout ID（規劃選擇）：`'+expectedSlug+'`'))throw Error('PROJECT Layout mismatch for '+expectedSlug);
- for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs'])
+ for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','public/favicon.svg','site-state.json'])
   if(!existsSync(join(site,path)))throw Error('Student export missing '+path+' for '+expectedSlug);
  execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
  const pkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
  if(!pkg.scripts['qa:responsive']||!pkg.devDependencies?.playwright)throw Error('Student export missing portable Playwright QA: '+expectedSlug);
+ if(pkg.dependencies?.astro!=='^7.4.11')throw Error('Student export must use patched Astro 7: '+expectedSlug+' got '+pkg.dependencies?.astro);
+ const qaScript=readFileSync(join(site,'scripts/qa-student-responsive.mjs'),'utf8');
+ if(!qaScript.includes('PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH'))throw Error('Student export missing Chromium path override: '+expectedSlug);
+ const readme=readFileSync(join(site,'README.md'),'utf8');
+ if(readme.includes('Layout: 田野筆記 (field-notes)')&&expectedSlug!=='field-notes')throw Error('Surrogate layout leaked into README: '+expectedSlug);
+ if(readme.includes('Layout: 清晰臨床 (clinician)')&&expectedSlug!=='clinician')throw Error('Surrogate layout leaked into README: '+expectedSlug);
+ const siteLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
+ if(!siteLayout.includes('favicon.svg'))throw Error('Student page does not link shipped favicon: '+expectedSlug);
  const workflow=readFileSync(join(site,'.github/workflows/pr-check.yml'),'utf8');
  for(const gate of ['npm run build','npm run qa:responsive','npm run check:secrets','npm run verify'])if(!workflow.includes(gate))throw Error('Student PR lacks quality gate '+gate+' for '+expectedSlug);
 }
@@ -72,6 +80,20 @@ async function captureStudentSite(slug,kind,site,scenario={}){
     if(scenario.searchState&&route==='articles/'&&width===390){
       const matches=await page.evaluate(async()=>{const index=await import('/pagefind/pagefind.js');return (await index.search('nativewithdrawuniquetoken')).results.length;});
       if(scenario.searchState==='published'?matches===0:matches!==0)errors.push('Pagefind publication/withdrawal result mismatch: '+matches);
+    }
+    // Run 2 regression: Traditional Chinese must use exact public HTML content,
+    // not Pagefind's approximate CJK token results or shared navigation copy.
+    if(kind==='knowledge'&&scenario.searchState==='published'&&route==='search/'&&width===390){
+      const input=page.locator('#search input[type="search"], #search input.pagefind-ui__search-input').first();
+      await input.waitFor({timeout:10000});
+      await input.fill('QA 正文唯一識別');
+      await page.waitForFunction(()=>document.querySelector('#exact-search')?.textContent?.includes('找到'),null,{timeout:10000});
+      const result=await page.locator('#exact-search').textContent();
+      if(!result.includes('QA 長中文文章標題'))errors.push('CJK exact search missed published article: '+result);
+      await input.fill('QA 正文唯一識別不會存在的結尾');
+      await page.waitForFunction(()=>document.querySelector('#exact-search')?.textContent?.includes('沒有符合'),null,{timeout:10000});
+      const missing=await page.locator('#exact-search').textContent();
+      if(!missing.includes('沒有符合'))errors.push('CJK false positive was not removed: '+missing);
     }
     // Test the single navigation tree as a visitor would operate it.
     // At mobile widths links are intentionally hidden until the toggle opens.
@@ -547,6 +569,14 @@ try{
       const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
       for(const id of ['owned-note','second-note'])if(!archive.includes('href="/articles/'+id+'/"'))throw Error('Native published article lacks archive link: '+slug+' '+id);
       const home=readFileSync(join(site,'dist/index.html'),'utf8');
+      if(slug==='sidebar-journal'){
+        for(const token of ['PERSONAL PUBLICATION','LATEST NOTES / HOME','ON THE DESK','A SMALL INTRODUCTION','FIELD / 2026'])
+          if(home.includes(token))throw Error('Learner sidebar journal leaks hardcoded English decoration: '+token);
+        const articleHtml=readFileSync(join(site,'dist/articles/owned-note/index.html'),'utf8');
+        if(!articleHtml.includes('繼續閱讀')||!articleHtml.includes('/articles/second-note/'))
+          throw Error('Learner sidebar journal missing related published articles');
+      }
+
       for(const value of [plan.brand.name,plan.content.headline,plan.content.intro])if(!home.includes(value))throw Error('Native homepage lost owned copy: '+slug+' '+value);
       if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍','https://booking.example.test/owned-service'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
       const about=readFileSync(join(site,'dist/about/index.html'),'utf8');

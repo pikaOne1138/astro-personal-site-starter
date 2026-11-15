@@ -28,10 +28,10 @@ const run = (base, scenario) => {
     : '<h1>' + '這是一段可以正常換行的中文標題'.repeat(12) + '</h1>';
   writeFileSync(join(root, 'dist', 'index.html'), html(body, base));
   writeFileSync(join(root, 'dist', 'about', 'index.html'), html('<h1>獨立網站關於頁</h1>', base));
-  const testPort = 44000 + Math.floor(Math.random() * 10000);
+  // Avoid probabilistic port collisions when many CI jobs run on the same host.
   const result = spawnSync(process.execPath, ['scripts/qa-student-responsive.mjs'], {
     cwd: root,
-    env: { ...process.env, ATP_QA_PORT: String(testPort) },
+    env: { ...process.env, ATP_QA_PORT: '0' },
     encoding: 'utf8',
     timeout: 100000
   });

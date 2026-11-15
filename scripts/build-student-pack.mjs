@@ -9,6 +9,8 @@ const root = resolve('.');
 const output = resolve('public/AI-建站資料包.zip');
 const entries = new Map();
 function add(from, to = from) {
+  // Internal research prototypes are neither learner source code nor public routes.
+  if (/^src[/\\]pages[/\\]internal(?:[/\\]|$)/.test(from)) return;
   const full = resolve(root, from);
   const st = statSync(full);
   if (st.isDirectory()) {
@@ -95,6 +97,8 @@ for (const name of [...entries.keys()]) {
 
 for (const name of [...entries.keys()]) if (/^(?:docs\/(?:student-builder-pack|interview-evaluation)\/(?:interview-scenarios\.json|INTERVIEW-EVALUATION\.md|CROSS-MODEL-E2E-TEST-PACK\.md)|scripts\/(?:evaluate-interview-results|test-interview-evaluation)\.mjs)$/.test(name)) entries.delete(name);
 if ([...entries.keys()].some(n=>/interview-scenarios|INTERVIEW-EVALUATION|CROSS-MODEL-E2E-TEST-PACK|evaluate-interview|test-interview-evaluation/.test(n)))throw Error('Student ZIP exposes private evaluation materials');
+if ([...entries.keys()].some(path=>path.startsWith('src/pages/internal/')))
+  throw Error('Student ZIP must not include teacher-only internal research pages');
 // One provenance record for the website and the existing student ZIP.
 // Use the checked-out source SHA; do not claim that this is a deployed PR SHA.
 let sourceSha='unknown';

@@ -43,7 +43,7 @@ description: 為繁體中文知識型（部落格、專欄、教學、策展、�
 | 3 | `wireframe.md`（1440＋390 ASCII、欄比、手機重排規則） | 每區塊有配方 ID 與手機規則 |
 | 4 | `tokens.css`（`--ed-*`），對比已算 | 無 CSS 也可讀 |
 | 5 | `src/pages/*.astro` | `npm run build` 通過 |
-| 6 | `node scripts/audit.mjs …` ＋ 看截圖 | 依 `checklists/visual-qa.md` |
+| 6 | `node .ai/astro-editorial-layout-design/scripts/audit.mjs …` ＋ 看截圖 | 依 `checklists/visual-qa.md` |
 | 7 | 結構性修正（欄比、斷行、順序、隱藏次要欄位） | 分數 ≥ 85（`checklists/scoring.md`） |
 | 8 | `DECISIONS.md`＋截圖＋audit 報告 | 誠實列出未驗證項目 |
 
@@ -80,7 +80,7 @@ description: 為繁體中文知識型（部落格、專欄、教學、策展、�
 cd your-astro-project
 npm i -D playwright-core && npx playwright install chromium     # 或 CHROME_PATH=…
 npm run build && npm run preview -- --port 4321 &
-node path/to/scripts/audit.mjs --base http://localhost:4321 --paths /,/about --out ./audit-out
+node .ai/astro-editorial-layout-design/scripts/audit.mjs --base http://localhost:4321 --paths /,/about --out ./audit-out
 ```
 - `visual-qa.md`：四寬度 × 12 類檢查（[A] 腳本、[V] 目視、[M] 手動）。
 - `scoring.md`：100 分制＋5 道門檻（無截圖＝0 分；水平捲動上限 60；編造資格上限 50；只換配色上限 60）。

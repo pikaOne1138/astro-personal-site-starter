@@ -2,4 +2,100 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 const base=import.meta.env.BASE_URL;
 ---
-<SiteLayout title="站內搜尋" searchable={false}><section class="interior"><h1>站內搜尋</h1><p>搜尋本站實際公開頁面與文章。</p><link rel="stylesheet" href={base+'pagefind/pagefind-ui.css'}/><div id="search"></div><noscript>全文搜尋需要 JavaScript；仍可使用上方導覽閱讀所有公開內容。</noscript></section><script is:inline src={base+'pagefind/pagefind-ui.js'}></script><script is:inline define:vars={{base}}>window.addEventListener('DOMContentLoaded',()=>{new PagefindUI({element:'#search',bundlePath:base+'pagefind/',showSubResults:true});});</script></SiteLayout>
+<SiteLayout title="站內搜尋" searchable={false}>
+  <section class="interior">
+    <h1>站內搜尋</h1>
+    <p>搜尋本站實際公開頁面與文章。中文查詢採精確詞句比對，其他語言使用 Pagefind 全文搜尋。</p>
+    <link rel="stylesheet" href={base+'pagefind/pagefind-ui.css'}/>
+    <div id="search"></div>
+    <div id="exact-search" role="status" aria-live="polite" hidden></div>
+    <noscript>全文搜尋需要 JavaScript；仍可使用上方導覽閱讀所有公開內容。</noscript>
+  </section>
+  <style is:global>
+    #search[data-exact-active="true"] .pagefind-ui__results,
+    #search[data-exact-active="true"] .pagefind-ui__message,
+    #search[data-exact-active="true"] .pagefind-ui__button {display:none!important}
+    #exact-search[hidden] {display:none}
+    #exact-search ul {list-style:none;padding:0}
+    #exact-search li {padding:1rem 0;border-bottom:1px solid currentColor}
+    #exact-search a {font-weight:600}
+  </style>
+  <script is:inline src={base+'pagefind/pagefind-ui.js'}></script>
+  <script is:inline define:vars={{base}}>
+    window.addEventListener('DOMContentLoaded',()=>{
+      new PagefindUI({element:'#search',bundlePath:base+'pagefind/',showSubResults:true,
+        translations:{
+          placeholder:'輸入關鍵字搜尋',clear_search:'清除搜尋',load_more:'載入更多結果',
+          search_label:'搜尋本站內容',filters_label:'篩選',
+          zero_results:'沒有符合「[SEARCH_TERM]」的結果',
+          one_result:'找到 [COUNT] 筆「[SEARCH_TERM]」的結果',
+          many_results:'找到 [COUNT] 筆「[SEARCH_TERM]」的結果',
+          total_zero_results:'沒有結果',total_one_result:'共 [COUNT] 筆結果',
+          total_many_results:'共 [COUNT] 筆結果',
+          alt_search:'找不到「[SEARCH_TERM]」，改為顯示「[DIFFERENT_TERM]」的結果',
+          search_suggestion:'找不到「[SEARCH_TERM]」，請試試其他詞句',
+          searching:'正在搜尋「[SEARCH_TERM]」…',results_label:'搜尋結果',
+          keyboard_navigate:'移動',keyboard_select:'選取',keyboard_clear:'清除',
+          keyboard_close:'關閉',keyboard_search:'搜尋',error_search:'搜尋失敗',
+          filter_selected_one:'已選 [COUNT] 項',filter_selected_many:'已選 [COUNT] 項',
+          input_hint:'輸入時會顯示搜尋結果',loading:'載入中'
+        }});
+      // Pagefind's CJK tokenization can return approximate non-matching pages.
+      // Use the already-built real HTML companion index only for Han queries.
+      // Pagefind remains the full-text search engine for all other queries.
+      const host=document.querySelector('#search');
+      const exact=document.querySelector('#exact-search');
+      if(!host||!exact)return;
+      let loaded;
+      let generation=0;
+      // The Pagefind component can mount its input asynchronously.
+      // Delegate events from the stable host instead of losing the handler.
+      host.addEventListener('input',async event=>{
+        const input=event.target;
+        if(!(input instanceof HTMLInputElement)||!input.matches('input[type="search"], input.pagefind-ui__search-input'))return;
+        const requestId=++generation;
+        const query=input.value.trim().normalize('NFKC');
+        if(!/[\u3400-\u9fff]/u.test(query)){
+          host.removeAttribute('data-exact-active');
+          exact.hidden=true;
+          exact.replaceChildren();
+          return;
+        }
+        host.setAttribute('data-exact-active','true');
+        exact.hidden=false;
+        exact.textContent='正在搜尋…';
+        try{
+          loaded??=fetch(base+'search/exact-zh.json').then(response=>{
+            if(!response.ok)throw Error('index unavailable');
+            return response.json();
+          });
+          const index=await loaded;
+          if(requestId!==generation)return;
+          const terms=query.toLocaleLowerCase().split(/\s+/u).filter(Boolean);
+          const docs=(Array.isArray(index.docs)?index.docs:[]).filter(doc=>{
+            const text=String(doc.title||'')+' '+String(doc.text||'');
+            const hay=text.normalize('NFKC').toLocaleLowerCase();
+            return terms.every(term=>hay.includes(term));
+          });
+          const count=document.createElement('p');
+          count.textContent=docs.length?'找到 '+docs.length+' 筆精確符合的結果':'沒有符合「'+query+'」的結果';
+          const list=document.createElement('ul');
+          for(const doc of docs.slice(0,30)){
+            const dest=new URL(doc.url,location.origin);
+            if(dest.origin!==location.origin||!dest.pathname.startsWith(base))continue;
+            const li=document.createElement('li');
+            const a=document.createElement('a');
+            a.href=dest.pathname;
+            a.textContent=doc.title||doc.url;
+            li.append(a);
+            list.append(li);
+          }
+          exact.replaceChildren(count,list);
+        }catch{
+          if(requestId!==generation)return;
+          exact.textContent='精確搜尋索引無法載入，請重新整理後再試。';
+        }
+      });
+    });
+  </script>
+</SiteLayout>
