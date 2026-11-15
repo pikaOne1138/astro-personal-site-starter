@@ -83,6 +83,8 @@ If changes to an article's public URL, legal/medical content or data ownership a
 
 
 ## 學員日常文章修改｜一次一句話也能操作
+- **日期與文章身份**：學員說「今天／昨天／早上七點」時，先以學員所在地時區核對年月日，frontmatter 的 `publishedAt` 採已確認的 `YYYY-MM-DD`；不可直接用 `new Date().toISOString().slice(0,10)` 當學員當地日期。未來日期不代表已排程公開；缺少真正排程功能時先維持 draft，明確說明。
+- **文章順序與編號**：公開文章排序必須先以日期、再以穩定識別碼決定；流水號只供顯示，不能作為編輯／下架文章的唯一身份。學員說「05 那篇」時，先找到標題與 slug 請對方確認。
 - **新增草稿**：「把這篇＿＿整理成文章，先存 draft，給我預覽，不要公開。」AI 應詢問真正缺少的文章材料、核對 slug/日期，寫入實際 Content Collection，確認草稿不在正式文章列表／RSS／Sitemap／搜尋；**公開的 PR Preview 仍可能洩露內容**，敏感草稿只在受限環境預覽。
 - **編輯舊文章**：「修改＿＿文章中的＿＿，網址不要改。」保留既有 slug／publishedAt，若 schema 有 updatedAt 且內容真的變更才更新；提供原文與改動差異。
 - **排定公開**：「把這篇文章準備好，等我確認再發布。」必須先完成文字／SEO/內鏈/圖片來源/手機 QA；沒有真正排程服務不能宣稱可定時自動發布。
