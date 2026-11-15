@@ -39,7 +39,7 @@ try{
  // A future publish date is not a scheduler. The site must refuse to expose it.
  const future=new Date(Date.now()+14*86400000).toISOString().slice(0,10);
  const path=join(site,'src/content/articles','future-post.md');
- const article=draft=>['---','title: Future publication guard fixture','description: Only for automated regression','publishedAt: '+future,'draft: '+draft,'---','Future article must not be public'].join('\\n');
+ const article=draft=>['---','title: Future publication guard fixture','description: Only for automated regression','publishedAt: '+future,'draft: '+draft,'---','Future article must not be public'].join('\n');
  writeFileSync(path,article(false));
  const rejected=spawnSync('npm',['run','build'],{cwd:site,env:{...process.env,SITE_PUBLICATION_TIME_ZONE:'Asia/Taipei'},encoding:'utf8',timeout:240000,maxBuffer:8*1024*1024});
  if(rejected.status===0)throw Error('Future article was publicly built without a scheduler');
