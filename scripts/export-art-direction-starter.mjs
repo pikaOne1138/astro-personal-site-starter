@@ -35,8 +35,11 @@ const email=data.contact?.email||'';if(email&&(!/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]
 const contact={email,url:https(data.contact?.url,'contact URL'),bookingUrl:https(data.contact?.bookingUrl,'booking URL')};
 const pageContent=Object.create(null);for(const [key,value] of Object.entries(plan.pageContent||{}))pageContent[key]=list(value,'page paragraphs');
 if(!pageContent.about?.length)pageContent.about=['bio','purpose','approach','background'].map(k=>plan.about?.[k]).filter(v=>typeof v==='string'&&v.trim()).map(v=>text(v,'about paragraph'));
+// The planner may intentionally disable the optional knowledge topic archive.
+// Keep mandatory site pages protected, but honor this explicit learner choice.
+const topicsEnabled=plan.kind==='knowledge' && !plan.navigation?.some(item=>item.id==='topics'&&item.enabled===false);
 // Essential routes are explicit and cannot be silently disabled or moved.
-const essentials=plan.kind==='knowledge'?[['articles','文章','articles/'],['topics','主題','topics/'],['about','關於','about/'],['page-search','搜尋','search/']]:[['services','服務說明','services/'],['about','關於','about/'],['faq','FAQ','faq/'],['page-contact','聯絡','contact/'],['page-privacy','隱私','privacy/'],['page-search','搜尋','search/']];
+const essentials=plan.kind==='knowledge'?[['articles','文章','articles/'],...(topicsEnabled?[['topics','主題','topics/']]:[]),['about','關於','about/'],['page-search','搜尋','search/']]:[['services','服務說明','services/'],['about','關於','about/'],['faq','FAQ','faq/'],['page-contact','聯絡','contact/'],['page-privacy','隱私','privacy/'],['page-search','搜尋','search/']];
 const navigation=Array.isArray(plan.navigation)?structuredClone(plan.navigation):[];
 for(const [id,label,path] of essentials){const existing=navigation.find(x=>x.id===id);if(existing){if(existing.enabled===false||existing.parentId||(existing.path&&existing.path!==path))throw Error('Essential route must stay enabled at '+path);existing.path=path;existing.enabled=true}else navigation.push({id,label,path,enabled:true});}
 for(const item of navigation)if(item.enabled){item.path=item.path??item.id+'/';if(essentials.some(([id,,path])=>item.id!==id&&item.path===path))throw Error('Reserved essential route collision');if(item.path==='topics/'&&plan.kind==='helper')throw Error('Topics route requires knowledge adapter');}
@@ -73,8 +76,10 @@ try{
  const run=spawnSync(process.execPath,[new URL('./export-starter.mjs',import.meta.url).pathname,seed,generated,'--defer-student-context'],{encoding:'utf8'});if(run.status!==0)throw Error('Starter scaffold validation failed: '+run.stderr);
  const settings=JSON.parse(readFileSync(join(generated,'site.config.json'),'utf8'));
  settings.content=content;settings.pageContent=pageContent;settings.services=services;settings.layoutContent={copy,headings};
- settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles','topics','page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
+ settings.artDirection={topics:normalizedTopics,scope:{suitable:list(data.scope?.suitable,'suitable'),notSuitable:list(data.scope?.notSuitable,'notSuitable')},serviceFacts:facts,faq:questions,visitorIntents,contact,explicitPageIds:plan.kind==='knowledge'?['about','articles',...(topicsEnabled?['topics']:[]),'page-search']:['about','services','articles','faq','page-contact','page-privacy','page-search']};
  adapter.compose(generated,settings);
+ // Do not export a public topics route when the learner deliberately disabled it.
+ if(plan.kind==='knowledge'&&!topicsEnabled)rmSync(join(generated,'src/pages/topics'),{recursive:true,force:true});
  // Replace the seed renderer description with the actual selected Art Direction site.
  const readmePath=join(generated,'README.md');
  const readme=readFileSync(readmePath,'utf8');
@@ -106,7 +111,7 @@ try{
  const pkg=JSON.parse(readFileSync(join(generated,'package.json'),'utf8'));pkg.scripts.build=pkg.scripts.build.replace('node scripts/audit-generated-links.mjs dist','node scripts/verify-navigation.mjs');writeFileSync(join(generated,'package.json'),JSON.stringify(pkg,null,2)+'\n');
  writeFileSync(join(generated,'scripts/verify-navigation.mjs'),`import {auditLinks} from './audit-generated-links.mjs';\nimport config from '../site.config.json' with {type:'json'};\nconst result=auditLinks('dist',process.env.ASTRO_BASE_PATH||config.base||'/');\nif(result.failures.length)throw Error(result.failures.join('\\n'));\nconsole.log('Independent internal routes PASS:',result.pages);\n`);
  // A build-time route validates configured topic references before generating any public content.
- if(plan.kind==='knowledge'){
+ if(plan.kind==='knowledge'&&topicsEnabled){
   writeFileSync(join(generated,'src/pages/topics/index.astro'),readFileSync(join(generated,'src/pages/topics/index.astro'),'utf8').replace("const posts=await getCollection('articles',({data})=>!data.draft);","const posts=await getCollection('articles',({data})=>!data.draft);for(const entry of posts)for(const topic of entry.data.topics)if(!config.artDirection.topics.some(t=>t.slug===topic))throw Error('Unknown topic '+topic+' in '+entry.id);"));
  }
  finalizeStudentSite(generated,{...plan,layoutSlug:adapter.slug,navigation:settings.navigation??navigation});
