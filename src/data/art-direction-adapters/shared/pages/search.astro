@@ -45,11 +45,14 @@ const base=import.meta.env.BASE_URL;
       // Pagefind remains the full-text search engine for all other queries.
       const host=document.querySelector('#search');
       const exact=document.querySelector('#exact-search');
-      const input=host?.querySelector('input[type="search"], input.pagefind-ui__search-input');
-      if(!input||!exact)return;
+      if(!host||!exact)return;
       let loaded;
       let generation=0;
-      input.addEventListener('input',async()=>{
+      // The Pagefind component can mount its input asynchronously.
+      // Delegate events from the stable host instead of losing the handler.
+      host.addEventListener('input',async event=>{
+        const input=event.target;
+        if(!(input instanceof HTMLInputElement)||!input.matches('input[type="search"], input.pagefind-ui__search-input'))return;
         const requestId=++generation;
         const query=input.value.trim().normalize('NFKC');
         if(!/[\u3400-\u9fff]/u.test(query)){
