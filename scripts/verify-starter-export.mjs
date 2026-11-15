@@ -79,6 +79,20 @@ async function captureStudentSite(slug,kind,site,scenario={}){
       const matches=await page.evaluate(async()=>{const index=await import('/pagefind/pagefind.js');return (await index.search('nativewithdrawuniquetoken')).results.length;});
       if(scenario.searchState==='published'?matches===0:matches!==0)errors.push('Pagefind publication/withdrawal result mismatch: '+matches);
     }
+    // Run 2 regression: Traditional Chinese must use exact public HTML content,
+    // not Pagefind's approximate CJK token results or shared navigation copy.
+    if(kind==='knowledge'&&scenario.searchState==='published'&&route==='search/'&&width===390){
+      const input=page.locator('#search input[type="search"], #search input.pagefind-ui__search-input').first();
+      await input.waitFor({timeout:10000});
+      await input.fill('QA 正文唯一識別');
+      await page.waitForFunction(()=>document.querySelector('#exact-search')?.textContent?.includes('找到'),null,{timeout:10000});
+      const result=await page.locator('#exact-search').textContent();
+      if(!result.includes('QA 長中文文章標題'))errors.push('CJK exact search missed published article: '+result);
+      await input.fill('QA 正文唯一識別不會存在的結尾');
+      await page.waitForFunction(()=>document.querySelector('#exact-search')?.textContent?.includes('沒有符合'),null,{timeout:10000});
+      const missing=await page.locator('#exact-search').textContent();
+      if(!missing.includes('沒有符合'))errors.push('CJK false positive was not removed: '+missing);
+    }
     // Test the single navigation tree as a visitor would operate it.
     // At mobile widths links are intentionally hidden until the toggle opens.
     let keyboardFocus=true,escapeNavigation=true;
