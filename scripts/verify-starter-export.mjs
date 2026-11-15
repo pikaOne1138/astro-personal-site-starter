@@ -17,7 +17,7 @@ function assertStudentContext(site,expectedSlug){
  const project=readFileSync(join(site,'PROJECT.md'),'utf8');
  if(config.layoutSlug!==expectedSlug)throw Error('Export config Layout mismatch: expected '+expectedSlug+', got '+config.layoutSlug);
  if(!project.includes('Layout ID（規劃選擇）：`'+expectedSlug+'`'))throw Error('PROJECT Layout mismatch for '+expectedSlug);
- for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md'])
+ for(const path of ['AGENTS.md','CLAUDE.md','GEMINI.md','.gitignore','scripts/check-project-context.mjs','scripts/check-secrets.mjs','scripts/site-status.mjs','scripts/qa-student-responsive.mjs','docs/student-builder-pack/CUSTOMIZATION-GUIDE.md','public/favicon.svg'])
   if(!existsSync(join(site,path)))throw Error('Student export missing '+path+' for '+expectedSlug);
  execFileSync(process.execPath,[join(site,'scripts/check-project-context.mjs'),site],{stdio:'pipe'});
  const pkg=JSON.parse(readFileSync(join(site,'package.json'),'utf8'));
@@ -28,6 +28,8 @@ function assertStudentContext(site,expectedSlug){
  const readme=readFileSync(join(site,'README.md'),'utf8');
  if(readme.includes('Layout: 田野筆記 (field-notes)')&&expectedSlug!=='field-notes')throw Error('Surrogate layout leaked into README: '+expectedSlug);
  if(readme.includes('Layout: 清晰臨床 (clinician)')&&expectedSlug!=='clinician')throw Error('Surrogate layout leaked into README: '+expectedSlug);
+ const siteLayout=readFileSync(join(site,'src/layouts/SiteLayout.astro'),'utf8');
+ if(!siteLayout.includes('favicon.svg'))throw Error('Student page does not link shipped favicon: '+expectedSlug);
  const workflow=readFileSync(join(site,'.github/workflows/pr-check.yml'),'utf8');
  for(const gate of ['npm run build','npm run qa:responsive','npm run check:secrets','npm run verify'])if(!workflow.includes(gate))throw Error('Student PR lacks quality gate '+gate+' for '+expectedSlug);
 }
