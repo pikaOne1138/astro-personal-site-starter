@@ -89,6 +89,9 @@ export function finalizeStudentSite(directory,plan,options={}){
  mkdirSync(join(directory,'docs','student-builder-pack'),{recursive:true});
  if(existsSync(healthDoc))throw Error('Student site already contains health-check prompt; refusing overwrite');
  copyFileSync(new URL('../docs/student-builder-pack/HEALTH-CHECK-PROMPT.md',import.meta.url),healthDoc);
+ const customizationDoc=join(directory,'docs','student-builder-pack','CUSTOMIZATION-GUIDE.md');
+ if(existsSync(customizationDoc))throw Error('Student site already contains customization guide; refusing overwrite');
+ copyFileSync(new URL('../docs/student-builder-pack/CUSTOMIZATION-GUIDE.md',import.meta.url),customizationDoc);
  writeFileSync(join(directory,'CLAUDE.md'),'@AGENTS.md\n請先閱讀 PROJECT.md 並檢查 npm run status。\n',{flag:'wx'});
  writeFileSync(join(directory,'GEMINI.md'),'請先閱讀 AGENTS.md 與 PROJECT.md，並檢查 npm run status。\n',{flag:'wx'});
  const pkgPath=join(directory,'package.json'),pkg=JSON.parse(readFileSync(pkgPath,'utf8'));
