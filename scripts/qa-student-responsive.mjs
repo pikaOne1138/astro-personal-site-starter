@@ -7,7 +7,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 
 const config = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
 const port = Number(process.env.ATP_QA_PORT || 4397);
-const origin = 'http://127.0.0.1:' + port;
+let origin = 'http://127.0.0.1:' + port;
 const configuredBase = process.env.ASTRO_BASE_PATH || config.base || '/';
 const segments = String(configuredBase).split('/').filter(Boolean);
 const prefix = segments.length ? '/' + segments.join('/') + '/' : '/';
@@ -87,6 +87,8 @@ let browser;
 const rows = [];
 try {
   await new Promise((ok, fail) => { server.once('error', fail); server.listen(port, '127.0.0.1', ok); });
+  // Port 0 asks the OS for a free ephemeral socket, preventing QA fixture collisions.
+  origin = 'http://127.0.0.1:' + server.address().port;
   const browserExecutablePath = process.env.CHROME_PATH || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
   browser = await chromium.launch({ headless: true, ...(browserExecutablePath ? { executablePath: browserExecutablePath } : {}) });
   for (const path of paths) {
