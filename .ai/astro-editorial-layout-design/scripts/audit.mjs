@@ -71,10 +71,22 @@ function measure() {
   };
   // 解析顏色 → [r,g,b,a]
   const parse = (c) => {
-    const m = c.match(/rgba?\(([^)]+)\)/);
-    if (!m) return [0, 0, 0, 0];
-    const p = m[1].split(/[ ,/]+/).filter(Boolean).map(Number);
-    return [p[0], p[1], p[2], p[3] === undefined ? 1 : p[3]];
+    const rgb = c.match(/^rgba?\(([^)]+)\)$/i);
+    if (rgb) {
+      const p = rgb[1].split(/[ ,/]+/).filter(Boolean).map(Number);
+      if (p.length >= 3 && p.every(Number.isFinite)) return [p[0], p[1], p[2], p[3] === undefined ? 1 : p[3]];
+    }
+    // Chromium resolves color-mix() to CSS Color 4 color(srgb ...), not rgb().
+    // Treat these as real opaque/alpha colors instead of silently making them
+    // transparent, which previously produced fake 1:1 contrast failures.
+    const srgb = c.match(/^color\(srgb\s+([^)]*)\)$/i);
+    if (srgb) {
+      const p = srgb[1].trim().split(/[\s/]+/).filter(Boolean).map(Number);
+      if (p.length >= 3 && p.every(Number.isFinite))
+        return [p[0]*255, p[1]*255, p[2]*255, p[3] === undefined ? 1 : p[3]];
+    }
+    // Unknown gamut or syntax cannot be assessed safely; count NOT TESTED.
+    return null;
   };
   const over = (top, bot) => {
     const a = top[3];
@@ -93,6 +105,7 @@ function measure() {
       const cs = getComputedStyle(n);
       if (cs.backgroundImage !== 'none') return null;
       const c = parse(cs.backgroundColor);
+      if (!c) return null;
       if (c[3] > 0) stack.push(c);
       if (c[3] === 1) break;
       n = n.parentElement;
@@ -156,7 +169,9 @@ function measure() {
     const cs = getComputedStyle(el);
     const bg = effBg(el);
     if (!bg) { skipped++; return; }
-    const fg = over(parse(cs.color), bg);
+    const parsedFg = parse(cs.color);
+    if (!parsedFg) { skipped++; return; }
+    const fg = over(parsedFg, bg);
     const cr = ratio(fg, bg);
     const fs = px(cs.fontSize);
     const bold = +cs.fontWeight >= 700;
