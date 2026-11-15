@@ -553,6 +553,14 @@ try{
       const archive=readFileSync(join(site,'dist/articles/index.html'),'utf8');
       for(const id of ['owned-note','second-note'])if(!archive.includes('href="/articles/'+id+'/"'))throw Error('Native published article lacks archive link: '+slug+' '+id);
       const home=readFileSync(join(site,'dist/index.html'),'utf8');
+      if(slug==='sidebar-journal'){
+        for(const token of ['PERSONAL PUBLICATION','LATEST NOTES / HOME','ON THE DESK','A SMALL INTRODUCTION','FIELD / 2026'])
+          if(home.includes(token))throw Error('Learner sidebar journal leaks hardcoded English decoration: '+token);
+        const articleHtml=readFileSync(join(site,'dist/articles/owned-note/index.html'),'utf8');
+        if(!articleHtml.includes('繼續閱讀')||!articleHtml.includes('/articles/second-note/'))
+          throw Error('Learner sidebar journal missing related published articles');
+      }
+
       for(const value of [plan.brand.name,plan.content.headline,plan.content.intro])if(!home.includes(value))throw Error('Native homepage lost owned copy: '+slug+' '+value);
       if(kind==='helper'){const service=readFileSync(join(site,'dist/services/owned-service/index.html'),'utf8');for(const value of ['QA 詳情正文','QA 服務範圍','https://booking.example.test/owned-service'])if(!service.includes(value))throw Error('Native service lost real facts: '+slug+' '+value);}
       const about=readFileSync(join(site,'dist/about/index.html'),'utf8');
